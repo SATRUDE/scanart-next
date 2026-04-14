@@ -20,6 +20,9 @@ export const metadata: Metadata = {
   verification: {
     google: 'Q044oiN2tnwr8F7eUthQjHaf0jXLsFmHuS1ZnN2aEV0',
   },
+  other: {
+    'p:domain_verify': 'f545c7d3764c8418167cc16b7612b605',
+  },
   openGraph: {
     title: 'Scandinavian Art Gallery - Curated Nordic Artwork & Prints',
     description: 'Discover exquisite Scandinavian and Nordic artwork from talented artists. Shop curated wall art, prints, and original pieces.',
