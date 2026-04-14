@@ -1,0 +1,2679 @@
+[
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-80dd-9d79-ca93a570403e",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:20:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "heading_1",
+    "heading_1": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "The Art of Choosing Art: A Comprehensive Guide",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "The Art of Choosing Art: A Comprehensive Guide",
+          "href": null
+        }
+      ],
+      "is_toggleable": false,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-802b-aac0-d2f8974cb183",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Selecting the perfect piece of art for your space is more than just finding something that matches your couch. It's about discovering pieces that resonate with you on a deeper level, that tell your story, and that bring joy every time you see them.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Selecting the perfect piece of art for your space is more than just finding something that matches your couch. It's about discovering pieces that resonate with you on a deeper level, that tell your story, and that bring joy every time you see them.",
+          "href": null
+        }
+      ],
+      "icon": null,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-804d-aa01-c76774f7aeda",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "heading_2",
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Why Art Matters in Your Space",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Why Art Matters in Your Space",
+          "href": null
+        }
+      ],
+      "is_toggleable": false,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-80b7-ba7f-e77c47ceaf0f",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Art isn't just decoration—it's expression. The right artwork can transform a room, create a focal point, set a mood, and reflect your personality. Whether you're an experienced collector or a first-time buyer, understanding how to choose art that speaks to you is essential.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Art isn't just decoration—it's expression. The right artwork can transform a room, create a focal point, set a mood, and reflect your personality. Whether you're an experienced collector or a first-time buyer, understanding how to choose art that speaks to you is essential.",
+          "href": null
+        }
+      ],
+      "icon": null,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-803e-8577-ef2fbc1c1749",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "heading_3",
+    "heading_3": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Consider Your Space",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Consider Your Space",
+          "href": null
+        }
+      ],
+      "is_toggleable": false,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-8091-a668-ed050a7bd1e7",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Before diving into the vast world of art, take a moment to assess your space:",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Before diving into the vast world of art, take a moment to assess your space:",
+          "href": null
+        }
+      ],
+      "icon": null,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-8048-a054-c350444cab37",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "bulleted_list_item",
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Size and scale:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Size and scale:",
+          "href": null
+        },
+        {
+          "type": "text",
+          "text": {
+            "content": " Measure your walls to understand what dimensions would work best. A common mistake is choosing art that's too small for the wall.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": " Measure your walls to understand what dimensions would work best. A common mistake is choosing art that's too small for the wall.",
+          "href": null
+        }
+      ],
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-80af-9fe7-f552af4af5f5",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "bulleted_list_item",
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Lighting:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Lighting:",
+          "href": null
+        },
+        {
+          "type": "text",
+          "text": {
+            "content": " Notice how natural and artificial light hits your walls throughout the day. Some mediums, like oil paintings, may require specific lighting considerations.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": " Notice how natural and artificial light hits your walls throughout the day. Some mediums, like oil paintings, may require specific lighting considerations.",
+          "href": null
+        }
+      ],
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-80d6-ba84-d5a3481409d6",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "bulleted_list_item",
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Color scheme:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Color scheme:",
+          "href": null
+        },
+        {
+          "type": "text",
+          "text": {
+            "content": " While art doesn't need to match your décor perfectly, consider how it will interact with your existing color palette.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": " While art doesn't need to match your décor perfectly, consider how it will interact with your existing color palette.",
+          "href": null
+        }
+      ],
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-801c-bb54-c9b165cd1fa1",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "heading_3",
+    "heading_3": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Define Your Art Preferences",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Define Your Art Preferences",
+          "href": null
+        }
+      ],
+      "is_toggleable": false,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-8049-92d5-c7a252383e47",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Art is deeply personal. Take time to understand what styles, mediums, and subjects resonate with you:",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Art is deeply personal. Take time to understand what styles, mediums, and subjects resonate with you:",
+          "href": null
+        }
+      ],
+      "icon": null,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-803e-af35-f710feba84f1",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "bulleted_list_item",
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Visit galleries and museums:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Visit galleries and museums:",
+          "href": null
+        },
+        {
+          "type": "text",
+          "text": {
+            "content": " Expose yourself to different art forms and notice what catches your eye.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": " Expose yourself to different art forms and notice what catches your eye.",
+          "href": null
+        }
+      ],
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-8068-b6c1-df16bf3ed892",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "bulleted_list_item",
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Create digital collections:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Create digital collections:",
+          "href": null
+        },
+        {
+          "type": "text",
+          "text": {
+            "content": " Use platforms like Pinterest or Instagram to save artwork you're drawn to and identify patterns in your preferences.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": " Use platforms like Pinterest or Instagram to save artwork you're drawn to and identify patterns in your preferences.",
+          "href": null
+        }
+      ],
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-8004-a0c1-f09a4c9dab10",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "bulleted_list_item",
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Trust your instincts:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Trust your instincts:",
+          "href": null
+        },
+        {
+          "type": "text",
+          "text": {
+            "content": " The most important question is: \"Does this piece move me?\" If you feel a connection, that's often the strongest indicator you've found the right piece.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": " The most important question is: \"Does this piece move me?\" If you feel a connection, that's often the strongest indicator you've found the right piece.",
+          "href": null
+        }
+      ],
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-80ab-8855-e6a54948cdeb",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "heading_2",
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Types of Art to Consider",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Types of Art to Consider",
+          "href": null
+        }
+      ],
+      "is_toggleable": false,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-80a8-9d26-c416a0a6c4d0",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "heading_3",
+    "heading_3": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Paintings and Prints",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Paintings and Prints",
+          "href": null
+        }
+      ],
+      "is_toggleable": false,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-8021-93f0-e93fce3a6574",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "From original canvases to limited edition prints, paintings offer endless variety:",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "From original canvases to limited edition prints, paintings offer endless variety:",
+          "href": null
+        }
+      ],
+      "icon": null,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-80e7-8b24-dae56d858354",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "bulleted_list_item",
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Original paintings:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Original paintings:",
+          "href": null
+        },
+        {
+          "type": "text",
+          "text": {
+            "content": " While often more expensive, original works have unique texture, depth, and the knowledge you own a one-of-a-kind piece.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": " While often more expensive, original works have unique texture, depth, and the knowledge you own a one-of-a-kind piece.",
+          "href": null
+        }
+      ],
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-80db-85a2-f5b39c4f2a65",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "bulleted_list_item",
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Prints:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Prints:",
+          "href": null
+        },
+        {
+          "type": "text",
+          "text": {
+            "content": " High-quality prints can be excellent alternatives to originals, especially for collectors on a budget. Look for limited editions signed by the artist.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": " High-quality prints can be excellent alternatives to originals, especially for collectors on a budget. Look for limited editions signed by the artist.",
+          "href": null
+        }
+      ],
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-80ff-88a2-cc85178f4644",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "bulleted_list_item",
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Digital art:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Digital art:",
+          "href": null
+        },
+        {
+          "type": "text",
+          "text": {
+            "content": " The emerging world of digital art offers innovative options, including pieces that can change over time or respond to environmental factors.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": " The emerging world of digital art offers innovative options, including pieces that can change over time or respond to environmental factors.",
+          "href": null
+        }
+      ],
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-80ce-8fe9-c32e9aa63a14",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "heading_3",
+    "heading_3": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Photography",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Photography",
+          "href": null
+        }
+      ],
+      "is_toggleable": false,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-80fb-b499-e59ed1760128",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Photography can capture moments, emotions, and perspectives in powerful ways:",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Photography can capture moments, emotions, and perspectives in powerful ways:",
+          "href": null
+        }
+      ],
+      "icon": null,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-802f-8c9e-ef8a8e3891fa",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "bulleted_list_item",
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Black and white:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Black and white:",
+          "href": null
+        },
+        {
+          "type": "text",
+          "text": {
+            "content": " Timeless and dramatic, black and white photography works in almost any décor style.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": " Timeless and dramatic, black and white photography works in almost any décor style.",
+          "href": null
+        }
+      ],
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-80d1-9bc2-d0eb3cd18fa9",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "bulleted_list_item",
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Color photography:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Color photography:",
+          "href": null
+        },
+        {
+          "type": "text",
+          "text": {
+            "content": " Can add vibrant focal points to minimal spaces or complement existing color schemes.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": " Can add vibrant focal points to minimal spaces or complement existing color schemes.",
+          "href": null
+        }
+      ],
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-80dc-9825-d9f2a1c334a4",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "bulleted_list_item",
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Abstract photography:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Abstract photography:",
+          "href": null
+        },
+        {
+          "type": "text",
+          "text": {
+            "content": " Offers the intrigue of abstract art with the realism of photography.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": " Offers the intrigue of abstract art with the realism of photography.",
+          "href": null
+        }
+      ],
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-8048-8f25-d983e21fbf14",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "heading_3",
+    "heading_3": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Sculpture and 3D Art",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Sculpture and 3D Art",
+          "href": null
+        }
+      ],
+      "is_toggleable": false,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-8072-8d67-ff974b8998c7",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Don't limit yourself to wall art:",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Don't limit yourself to wall art:",
+          "href": null
+        }
+      ],
+      "icon": null,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-8009-8313-c247ce4b3fa3",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "bulleted_list_item",
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Tabletop sculptures:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Tabletop sculptures:",
+          "href": null
+        },
+        {
+          "type": "text",
+          "text": {
+            "content": " Small sculptures can add interest to bookshelves, mantels, or side tables.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": " Small sculptures can add interest to bookshelves, mantels, or side tables.",
+          "href": null
+        }
+      ],
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-800d-afaa-cb2a0b21a6b0",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "bulleted_list_item",
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Floor sculptures:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Floor sculptures:",
+          "href": null
+        },
+        {
+          "type": "text",
+          "text": {
+            "content": " Larger pieces can serve as statement pieces in spacious rooms.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": " Larger pieces can serve as statement pieces in spacious rooms.",
+          "href": null
+        }
+      ],
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-80ee-9597-f1373e88dcb4",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "bulleted_list_item",
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Mixed media installations:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Mixed media installations:",
+          "href": null
+        },
+        {
+          "type": "text",
+          "text": {
+            "content": " These can create truly unique focal points in your home.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": " These can create truly unique focal points in your home.",
+          "href": null
+        }
+      ],
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-80fe-8c07-ffbf43e90a0a",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "heading_2",
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Where to Find Art",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Where to Find Art",
+          "href": null
+        }
+      ],
+      "is_toggleable": false,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-80df-8b9e-cade67a4eef2",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "The art world has never been more accessible:",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "The art world has never been more accessible:",
+          "href": null
+        }
+      ],
+      "icon": null,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-802c-a525-ddbaf41a96bc",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "bulleted_list_item",
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Local galleries:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Local galleries:",
+          "href": null
+        },
+        {
+          "type": "text",
+          "text": {
+            "content": " Support your local art scene and build relationships with gallery owners who can alert you to new artists or pieces.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": " Support your local art scene and build relationships with gallery owners who can alert you to new artists or pieces.",
+          "href": null
+        }
+      ],
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-801d-a6ba-dc0e7cac3045",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "bulleted_list_item",
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Art fairs:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Art fairs:",
+          "href": null
+        },
+        {
+          "type": "text",
+          "text": {
+            "content": " These events gather multiple galleries and artists in one place, allowing you to see diverse options in a single visit.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": " These events gather multiple galleries and artists in one place, allowing you to see diverse options in a single visit.",
+          "href": null
+        }
+      ],
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-80d2-bb1d-da8620e19877",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "bulleted_list_item",
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Online platforms:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Online platforms:",
+          "href": null
+        },
+        {
+          "type": "text",
+          "text": {
+            "content": " Websites like Artsy, Saatchi Art, and Etsy connect collectors directly with artists worldwide.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": " Websites like Artsy, Saatchi Art, and Etsy connect collectors directly with artists worldwide.",
+          "href": null
+        }
+      ],
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-8042-b817-c3e2fddacbbb",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "bulleted_list_item",
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Student exhibitions:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Student exhibitions:",
+          "href": null
+        },
+        {
+          "type": "text",
+          "text": {
+            "content": " Art schools often host exhibitions where you can discover emerging talent at affordable prices.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": " Art schools often host exhibitions where you can discover emerging talent at affordable prices.",
+          "href": null
+        }
+      ],
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-808c-b41e-fd3aa8bea47f",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "heading_2",
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Budgeting for Art",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Budgeting for Art",
+          "href": null
+        }
+      ],
+      "is_toggleable": false,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-8076-a4d2-e920444655de",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Art collecting doesn't have to break the bank:",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Art collecting doesn't have to break the bank:",
+          "href": null
+        }
+      ],
+      "icon": null,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-80ea-a045-d0ae42e1cb32",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "bulleted_list_item",
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Set a realistic budget:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Set a realistic budget:",
+          "href": null
+        },
+        {
+          "type": "text",
+          "text": {
+            "content": " Determine what you can comfortably spend before you begin searching.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": " Determine what you can comfortably spend before you begin searching.",
+          "href": null
+        }
+      ],
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-80c5-b243-ca64393aea98",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "bulleted_list_item",
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Consider art as an investment:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Consider art as an investment:",
+          "href": null
+        },
+        {
+          "type": "text",
+          "text": {
+            "content": " While you should primarily buy what you love, some art can appreciate in value over time.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": " While you should primarily buy what you love, some art can appreciate in value over time.",
+          "href": null
+        }
+      ],
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-8031-bbbb-edb90e2fd872",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "bulleted_list_item",
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Explore alternative options:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Explore alternative options:",
+          "href": null
+        },
+        {
+          "type": "text",
+          "text": {
+            "content": " Prints, photography, and works by emerging artists can be more affordable entry points.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": " Prints, photography, and works by emerging artists can be more affordable entry points.",
+          "href": null
+        }
+      ],
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-80d2-b0bc-f7f07ae38af8",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "heading_3",
+    "heading_3": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Caring for Your Art Collection",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Caring for Your Art Collection",
+          "href": null
+        }
+      ],
+      "is_toggleable": false,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-80e4-a4b6-f009ebce9c5d",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Once you've chosen your pieces, proper care ensures they'll remain beautiful for years to come:",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Once you've chosen your pieces, proper care ensures they'll remain beautiful for years to come:",
+          "href": null
+        }
+      ],
+      "icon": null,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-8016-a44d-cab1cc2cfd88",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "bulleted_list_item",
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Proper framing:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Proper framing:",
+          "href": null
+        },
+        {
+          "type": "text",
+          "text": {
+            "content": " Invest in quality, acid-free framing materials to protect works on paper.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": " Invest in quality, acid-free framing materials to protect works on paper.",
+          "href": null
+        }
+      ],
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-80fa-90ab-fb2c6a7a9458",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "bulleted_list_item",
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Avoid direct sunlight:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Avoid direct sunlight:",
+          "href": null
+        },
+        {
+          "type": "text",
+          "text": {
+            "content": " UV rays can fade colors over time, particularly in photographs and watercolors.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": " UV rays can fade colors over time, particularly in photographs and watercolors.",
+          "href": null
+        }
+      ],
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-80b7-8735-d4db36fb03a6",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "bulleted_list_item",
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Regular maintenance:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Regular maintenance:",
+          "href": null
+        },
+        {
+          "type": "text",
+          "text": {
+            "content": " Dust sculptures and frames regularly with a soft cloth, and consider professional cleaning for valuable pieces.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": " Dust sculptures and frames regularly with a soft cloth, and consider professional cleaning for valuable pieces.",
+          "href": null
+        }
+      ],
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-80bb-8063-caa14ca1e31c",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "heading_2",
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Final Thoughts",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Final Thoughts",
+          "href": null
+        }
+      ],
+      "is_toggleable": false,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-80dd-bd85-c9ba48eeb6a8",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Choosing art is a journey, not a destination. Your collection will likely evolve as your tastes change and your spaces transform. The most important rule is to select pieces that bring you joy and meaning.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Choosing art is a journey, not a destination. Your collection will likely evolve as your tastes change and your spaces transform. The most important rule is to select pieces that bring you joy and meaning.",
+          "href": null
+        }
+      ],
+      "icon": null,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-80c5-9ae5-c08c8ba15ac2",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Remember that empty walls are simply canvases waiting for your story to unfold. Take your time, trust your instincts, and soon you'll create a home gallery that not only enhances your space but also enriches your daily life.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Remember that empty walls are simply canvases waiting for your story to unfold. Take your time, trust your instincts, and soon you'll create a home gallery that not only enhances your space but also enriches your daily life.",
+          "href": null
+        }
+      ],
+      "icon": null,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-8018-886b-c305ec3a2910",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-08T09:18:00.000Z",
+    "last_edited_time": "2025-08-08T09:18:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Whether you're drawn to bold contemporary statements or subtle classical aesthetics, the perfect art for your space is out there—waiting for you to discover it.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Whether you're drawn to bold contemporary statements or subtle classical aesthetics, the perfect art for your space is out there—waiting for you to discover it.",
+          "href": null
+        }
+      ],
+      "icon": null,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24b33fb2-2b5f-8063-a84c-c735486bc7ec",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-8042-8170-c599acd604bd"
+    },
+    "created_time": "2025-08-10T10:44:00.000Z",
+    "last_edited_time": "2025-08-10T10:44:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [],
+      "icon": null,
+      "color": "default"
+    },
+    "archived": false
+  }
+]

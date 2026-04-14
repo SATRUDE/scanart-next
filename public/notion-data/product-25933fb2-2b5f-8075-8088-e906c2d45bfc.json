@@ -1,0 +1,28 @@
+{
+  "id": "25933fb2-2b5f-8075-8088-e906c2d45bfc",
+  "name": "Vinkveld",
+  "slug": "vinkveld2",
+  "description": "This lively artwork by Sia Siamos bursts with energy and colour, capturing a playful, expressive style that instantly enlivens any space. Printed on high-quality, museum-level paper to preserve its rich details and vibrant palette for years to come.",
+  "category": "Botanical",
+  "artist": "Sia Siamos",
+  "artistId": "5",
+  "brand": "",
+  "inStock": true,
+  "featured": true,
+  "published": true,
+  "image": "/images/products/vinkveld.png",
+  "secondaryImage": "/images/products/vinkveld-scene.avif",
+  "availableSizes": [
+    "50x70cm"
+  ],
+  "priceCategory": "Premium",
+  "productId": "17",
+  "recommendedProducts": [
+    "Hyttefrokost",
+    "Morgenlevering",
+    "Hummer og Vin",
+    "Birdie Blue"
+  ],
+  "created_time": "2025-08-24T09:38:00.000Z",
+  "last_edited_time": "2025-08-24T12:03:00.000Z"
+}

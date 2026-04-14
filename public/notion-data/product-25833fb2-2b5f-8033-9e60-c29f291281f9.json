@@ -1,0 +1,28 @@
+{
+  "id": "25833fb2-2b5f-8033-9e60-c29f291281f9",
+  "name": "Mean Snothing",
+  "slug": "mean-snothing2",
+  "description": "This striking Scandinavian wall art by Simen Wahlqvist showcases a vibrant illustration on high-quality, museum-level paper, ensuring rich colours and archival longevity.",
+  "category": "Illustrations",
+  "artist": "Simen Wahlqvist",
+  "artistId": "2",
+  "brand": "",
+  "inStock": true,
+  "featured": true,
+  "published": true,
+  "image": "/images/products/mean-snothing.png",
+  "secondaryImage": "/images/products/mean-snothing-scene.avif",
+  "availableSizes": [
+    "50x50cm"
+  ],
+  "priceCategory": "Budget",
+  "productId": "2",
+  "recommendedProducts": [
+    "Slingshot",
+    "Half Man",
+    "Eye Nose Eye",
+    "Morgenstrekk"
+  ],
+  "created_time": "2025-08-23T21:40:00.000Z",
+  "last_edited_time": "2025-08-24T11:50:00.000Z"
+}

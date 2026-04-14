@@ -1,0 +1,28 @@
+{
+  "id": "25833fb2-2b5f-8035-bcd5-e762f4db18fc",
+  "name": "Morgenstrekk",
+  "slug": "morgenstrekk2",
+  "description": "This striking Scandinavian wall art by Simen Wahlqvist showcases a vibrant illustration on high-quality, museum-level paper, ensuring rich colours and archival longevity.",
+  "category": "Illustrations",
+  "artist": "Simen Wahlqvist",
+  "artistId": "2",
+  "brand": "",
+  "inStock": true,
+  "featured": false,
+  "published": true,
+  "image": "/images/products/morgenstrekk.png",
+  "secondaryImage": "/images/products/morgenstrekk-scene.avif",
+  "availableSizes": [
+    "50x70cm"
+  ],
+  "priceCategory": "Premium",
+  "productId": "5",
+  "recommendedProducts": [
+    "Slingshot",
+    "Half Man",
+    "Eye Nose Eye",
+    "Mean Snothing"
+  ],
+  "created_time": "2025-08-23T21:42:00.000Z",
+  "last_edited_time": "2025-08-24T11:30:00.000Z"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "25933fb2-2b5f-8097-a224-c99dde451eba",
+  "name": "Tree Top Peach",
+  "slug": "tree-top-peach2",
+  "description": "This abstract Scandinavian wall art by Helene Brox features colourful art on museum-level paper, ensuring rich colours and archival longevity.",
+  "category": "Botanical",
+  "artist": "Helene Brox",
+  "artistId": "1",
+  "brand": "",
+  "inStock": true,
+  "featured": false,
+  "published": true,
+  "image": "/images/products/tree-top-peach.png",
+  "secondaryImage": "/images/products/tree-top-peach-scene.avif",
+  "availableSizes": [
+    "50x70cm"
+  ],
+  "priceCategory": "Premium",
+  "productId": "10",
+  "recommendedProducts": [
+    "Dancer",
+    "Dragon",
+    "IThinkIThink",
+    "Swallow Dive"
+  ],
+  "created_time": "2025-08-24T09:33:00.000Z",
+  "last_edited_time": "2025-08-24T11:38:00.000Z"
+}

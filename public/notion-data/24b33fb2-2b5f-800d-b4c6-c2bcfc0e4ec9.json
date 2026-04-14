@@ -1,0 +1,669 @@
+[
+  {
+    "object": "block",
+    "id": "24b33fb2-2b5f-806d-8c75-defd037f92d5",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24b33fb2-2b5f-800d-b4c6-c2bcfc0e4ec9"
+    },
+    "created_time": "2025-08-10T16:41:00.000Z",
+    "last_edited_time": "2025-08-10T16:46:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "archived": false,
+    "in_trash": false,
+    "type": "heading_1",
+    "heading_1": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Summer Art Scene: Oslo's Contemporary Exhibitions 2025",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Summer Art Scene: Oslo's Contemporary Exhibitions 2025",
+          "href": null
+        }
+      ],
+      "is_toggleable": false,
+      "color": "default"
+    }
+  },
+  {
+    "object": "block",
+    "id": "24b33fb2-2b5f-80db-9748-d6adea41959a",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24b33fb2-2b5f-800d-b4c6-c2bcfc0e4ec9"
+    },
+    "created_time": "2025-08-10T16:46:00.000Z",
+    "last_edited_time": "2025-08-10T16:46:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "archived": false,
+    "in_trash": false,
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "As the midnight sun illuminates Norway's capital, Oslo's art scene comes alive with an exceptional array of contemporary exhibitions this summer. From established institutions to emerging gallery spaces, the city offers art enthusiasts a diverse and thought-provoking cultural experience.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "As the midnight sun illuminates Norway's capital, Oslo's art scene comes alive with an exceptional array of contemporary exhibitions this summer. From established institutions to emerging gallery spaces, the city offers art enthusiasts a diverse and thought-provoking cultural experience.",
+          "href": null
+        }
+      ],
+      "color": "default"
+    }
+  },
+  {
+    "object": "block",
+    "id": "24b33fb2-2b5f-80b3-b821-f233dff64c83",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24b33fb2-2b5f-800d-b4c6-c2bcfc0e4ec9"
+    },
+    "created_time": "2025-08-10T16:46:00.000Z",
+    "last_edited_time": "2025-08-10T16:46:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "archived": false,
+    "in_trash": false,
+    "type": "heading_2",
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "The National Museum: Northern Light and Shadow",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "The National Museum: Northern Light and Shadow",
+          "href": null
+        }
+      ],
+      "is_toggleable": false,
+      "color": "default"
+    }
+  },
+  {
+    "object": "block",
+    "id": "24b33fb2-2b5f-80b8-ac7a-c4c0f785ea48",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24b33fb2-2b5f-800d-b4c6-c2bcfc0e4ec9"
+    },
+    "created_time": "2025-08-10T16:46:00.000Z",
+    "last_edited_time": "2025-08-10T16:46:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "archived": false,
+    "in_trash": false,
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "The National Museum's summer showcase \"Northern Light and Shadow\" (June 15 - September 5) explores how Scandinavian artists interpret their unique relationship with light. The exhibition features installations that play with Norway's extended summer daylight hours, creating immersive experiences that blend traditional Norwegian aesthetics with contemporary artistic expression.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "The National Museum's summer showcase \"Northern Light and Shadow\" (June 15 - September 5) explores how Scandinavian artists interpret their unique relationship with light. The exhibition features installations that play with Norway's extended summer daylight hours, creating immersive experiences that blend traditional Norwegian aesthetics with contemporary artistic expression.",
+          "href": null
+        }
+      ],
+      "color": "default"
+    }
+  },
+  {
+    "object": "block",
+    "id": "24b33fb2-2b5f-80b8-a99d-ee187ed5139c",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24b33fb2-2b5f-800d-b4c6-c2bcfc0e4ec9"
+    },
+    "created_time": "2025-08-10T16:46:00.000Z",
+    "last_edited_time": "2025-08-10T16:46:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "archived": false,
+    "in_trash": false,
+    "type": "heading_2",
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Astrup Fearnley Museum: Global Perspectives",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Astrup Fearnley Museum: Global Perspectives",
+          "href": null
+        }
+      ],
+      "is_toggleable": false,
+      "color": "default"
+    }
+  },
+  {
+    "object": "block",
+    "id": "24b33fb2-2b5f-803d-a23e-dec494184882",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24b33fb2-2b5f-800d-b4c6-c2bcfc0e4ec9"
+    },
+    "created_time": "2025-08-10T16:46:00.000Z",
+    "last_edited_time": "2025-08-10T16:46:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "archived": false,
+    "in_trash": false,
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "The Astrup Fearnley Museum presents \"Oceanic Dialogues\" (July 1 - August 30), bringing together artists from Norway, Australia, and Pacific Island nations. This exhibition examines our relationship with water and climate through multimedia installations, creating conversations between Nordic and Southern Hemisphere perspectives on environmental challenges.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "The Astrup Fearnley Museum presents \"Oceanic Dialogues\" (July 1 - August 30), bringing together artists from Norway, Australia, and Pacific Island nations. This exhibition examines our relationship with water and climate through multimedia installations, creating conversations between Nordic and Southern Hemisphere perspectives on environmental challenges.",
+          "href": null
+        }
+      ],
+      "color": "default"
+    }
+  },
+  {
+    "object": "block",
+    "id": "24b33fb2-2b5f-8076-a3c5-fb81a7897c85",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24b33fb2-2b5f-800d-b4c6-c2bcfc0e4ec9"
+    },
+    "created_time": "2025-08-10T16:46:00.000Z",
+    "last_edited_time": "2025-08-10T16:46:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "archived": false,
+    "in_trash": false,
+    "type": "heading_2",
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Emerging Spaces in Grünerløkka",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Emerging Spaces in Grünerløkka",
+          "href": null
+        }
+      ],
+      "is_toggleable": false,
+      "color": "default"
+    }
+  },
+  {
+    "object": "block",
+    "id": "24b33fb2-2b5f-80b6-951e-ec753e180205",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24b33fb2-2b5f-800d-b4c6-c2bcfc0e4ec9"
+    },
+    "created_time": "2025-08-10T16:46:00.000Z",
+    "last_edited_time": "2025-08-10T16:46:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "archived": false,
+    "in_trash": false,
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Oslo's trendy Grünerløkka district has become a hotspot for independent galleries showcasing experimental works by emerging Norwegian artists. The collective exhibition \"Summer Flux\" spans multiple venues throughout the neighborhood, featuring digital art, sound installations, and performance pieces that challenge conventional artistic boundaries.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Oslo's trendy Grünerløkka district has become a hotspot for independent galleries showcasing experimental works by emerging Norwegian artists. The collective exhibition \"Summer Flux\" spans multiple venues throughout the neighborhood, featuring digital art, sound installations, and performance pieces that challenge conventional artistic boundaries.",
+          "href": null
+        }
+      ],
+      "color": "default"
+    }
+  },
+  {
+    "object": "block",
+    "id": "24b33fb2-2b5f-80dd-9ddc-dd8f1ffdb452",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24b33fb2-2b5f-800d-b4c6-c2bcfc0e4ec9"
+    },
+    "created_time": "2025-08-10T16:46:00.000Z",
+    "last_edited_time": "2025-08-10T16:46:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "archived": false,
+    "in_trash": false,
+    "type": "heading_2",
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Outdoor Installations: Art in the City",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Outdoor Installations: Art in the City",
+          "href": null
+        }
+      ],
+      "is_toggleable": false,
+      "color": "default"
+    }
+  },
+  {
+    "object": "block",
+    "id": "24b33fb2-2b5f-805f-a8c7-fabdd87fd4c8",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24b33fb2-2b5f-800d-b4c6-c2bcfc0e4ec9"
+    },
+    "created_time": "2025-08-10T16:46:00.000Z",
+    "last_edited_time": "2025-08-10T16:46:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "archived": false,
+    "in_trash": false,
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "The annual \"Oslo Sculpture Park\" temporary exhibition transforms the Ekeberg Park into an open-air gallery featuring monumental works by both Norwegian and international sculptors. This year's theme \"Resonance in Nature\" encourages visitors to experience art within Oslo's stunning natural landscapes.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "The annual \"Oslo Sculpture Park\" temporary exhibition transforms the Ekeberg Park into an open-air gallery featuring monumental works by both Norwegian and international sculptors. This year's theme \"Resonance in Nature\" encourages visitors to experience art within Oslo's stunning natural landscapes.",
+          "href": null
+        }
+      ],
+      "color": "default"
+    }
+  },
+  {
+    "object": "block",
+    "id": "24b33fb2-2b5f-80d9-8ed4-c82f40c979c5",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24b33fb2-2b5f-800d-b4c6-c2bcfc0e4ec9"
+    },
+    "created_time": "2025-08-10T16:46:00.000Z",
+    "last_edited_time": "2025-08-10T16:46:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "archived": false,
+    "in_trash": false,
+    "type": "heading_2",
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Digital Art Experience: The Fjord Project",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Digital Art Experience: The Fjord Project",
+          "href": null
+        }
+      ],
+      "is_toggleable": false,
+      "color": "default"
+    }
+  },
+  {
+    "object": "block",
+    "id": "24b33fb2-2b5f-80dc-a61e-cbfd17e0990f",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24b33fb2-2b5f-800d-b4c6-c2bcfc0e4ec9"
+    },
+    "created_time": "2025-08-10T16:46:00.000Z",
+    "last_edited_time": "2025-08-10T16:46:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "archived": false,
+    "in_trash": false,
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "For those interested in cutting-edge artistic expressions, \"The Fjord Project\" at the SALT venue offers a fully immersive digital experience combining Norwegian landscape imagery with interactive technology. Visitors can influence the evolving digital environment through movement and sound interaction.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "For those interested in cutting-edge artistic expressions, \"The Fjord Project\" at the SALT venue offers a fully immersive digital experience combining Norwegian landscape imagery with interactive technology. Visitors can influence the evolving digital environment through movement and sound interaction.",
+          "href": null
+        }
+      ],
+      "color": "default"
+    }
+  },
+  {
+    "object": "block",
+    "id": "24b33fb2-2b5f-8057-b130-c7fa12ffff73",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24b33fb2-2b5f-800d-b4c6-c2bcfc0e4ec9"
+    },
+    "created_time": "2025-08-10T16:46:00.000Z",
+    "last_edited_time": "2025-08-10T16:46:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "archived": false,
+    "in_trash": false,
+    "type": "heading_2",
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Practical Information",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Practical Information",
+          "href": null
+        }
+      ],
+      "is_toggleable": false,
+      "color": "default"
+    }
+  },
+  {
+    "object": "block",
+    "id": "24b33fb2-2b5f-8071-a619-cd915c05e321",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24b33fb2-2b5f-800d-b4c6-c2bcfc0e4ec9"
+    },
+    "created_time": "2025-08-10T16:46:00.000Z",
+    "last_edited_time": "2025-08-10T16:46:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "archived": false,
+    "in_trash": false,
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Most exhibitions run from June through August, with extended evening hours during the peak summer months. Many venues offer combination tickets, and the Oslo Pass provides free entry to most major museums and galleries. For the most current information on exhibition dates and special events, check the official websites of each institution.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Most exhibitions run from June through August, with extended evening hours during the peak summer months. Many venues offer combination tickets, and the Oslo Pass provides free entry to most major museums and galleries. For the most current information on exhibition dates and special events, check the official websites of each institution.",
+          "href": null
+        }
+      ],
+      "color": "default"
+    }
+  },
+  {
+    "object": "block",
+    "id": "24b33fb2-2b5f-80ee-ae53-e3b70eac5ac9",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24b33fb2-2b5f-800d-b4c6-c2bcfc0e4ec9"
+    },
+    "created_time": "2025-08-10T16:46:00.000Z",
+    "last_edited_time": "2025-08-10T16:46:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "archived": false,
+    "in_trash": false,
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Whether you're a dedicated art aficionado or simply looking to experience Norway's cultural offerings, Oslo's summer exhibitions provide a perfect blend of traditional Norwegian artistic sensibilities and contemporary global perspectives.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Whether you're a dedicated art aficionado or simply looking to experience Norway's cultural offerings, Oslo's summer exhibitions provide a perfect blend of traditional Norwegian artistic sensibilities and contemporary global perspectives.",
+          "href": null
+        }
+      ],
+      "color": "default"
+    }
+  }
+]

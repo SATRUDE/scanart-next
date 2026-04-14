@@ -1,0 +1,28 @@
+{
+  "id": "25933fb2-2b5f-806c-91e3-d6a543d98a98",
+  "name": "Hyttefrokost",
+  "slug": "hyttefrokost2",
+  "description": "This lively artwork by Sia Siamos bursts with energy and colour, capturing a playful, expressive style that instantly enlivens any space. Printed on high-quality, museum-level paper to preserve its rich details and vibrant palette for years to come.",
+  "category": "Botanical",
+  "artist": "Sia Siamos",
+  "artistId": "5",
+  "brand": "",
+  "inStock": true,
+  "featured": false,
+  "published": true,
+  "image": "/images/products/Hyttefrokost.png",
+  "secondaryImage": "/images/products/Hyttefrokost-scene.avif",
+  "availableSizes": [
+    "50x70cm"
+  ],
+  "priceCategory": "Premium",
+  "productId": "18",
+  "recommendedProducts": [
+    "Vinkveld",
+    "Hummer og Vin",
+    "Morgenlevering",
+    "Birdie Green"
+  ],
+  "created_time": "2025-08-24T09:40:00.000Z",
+  "last_edited_time": "2025-08-24T12:03:00.000Z"
+}

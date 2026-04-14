@@ -1,0 +1,28 @@
+{
+  "id": "25933fb2-2b5f-8038-b599-f96a307224e5",
+  "name": "Morgenlevering",
+  "slug": "morgenlevering2",
+  "description": "This lively artwork by Sia Siamos bursts with energy and colour, capturing a playful, expressive style that instantly enlivens any space. Printed on high-quality, museum-level paper to preserve its rich details and vibrant palette for years to come.",
+  "category": "Botanical",
+  "artist": "Sia Siamos",
+  "artistId": "5",
+  "brand": "",
+  "inStock": true,
+  "featured": false,
+  "published": true,
+  "image": "/images/products/Morgenlevering.png",
+  "secondaryImage": "/images/products/Morgenlevering-scene.avif",
+  "availableSizes": [
+    "50x70cm"
+  ],
+  "priceCategory": "Premium",
+  "productId": "19",
+  "recommendedProducts": [
+    "Hummer og Vin",
+    "Vinkveld",
+    "Hyttefrokost",
+    "Birdie Pink"
+  ],
+  "created_time": "2025-08-24T09:42:00.000Z",
+  "last_edited_time": "2025-08-24T12:03:00.000Z"
+}

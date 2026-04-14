@@ -1,0 +1,23 @@
+{
+  "id": "25833fb2-2b5f-808e-83a4-ddb5dac3e5b0",
+  "name": "Botanical Study: Monstera",
+  "slug": "botanical-study-monstera",
+  "description": "A detailed illustration of monstera leaves in various stages of growth. Meticulously drawn with fine line work and subtle watercolor washes in soothing green tones.",
+  "category": "Botanical",
+  "artist": "Renate Thor",
+  "artistId": "3",
+  "brand": "",
+  "inStock": false,
+  "featured": true,
+  "published": false,
+  "image": "",
+  "secondaryImage": "",
+  "availableSizes": [
+    "A2",
+    "A3"
+  ],
+  "productId": "BO-RT-2025-03",
+  "created_time": "2025-08-23T14:51:00.000Z",
+  "last_edited_time": "2025-08-23T14:51:00.000Z",
+  "pricing": null
+}

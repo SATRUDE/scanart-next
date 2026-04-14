@@ -1,0 +1,28 @@
+{
+  "id": "25833fb2-2b5f-8055-8f2f-d773f2ff55bf",
+  "name": "Dancer",
+  "slug": "dancer2",
+  "description": "This abstract Scandinavian wall art by Helene Brox features colourful art on museum-level paper, ensuring rich colours and archival longevity.",
+  "category": "Abstract",
+  "artist": "Helene Brox",
+  "artistId": "1",
+  "brand": "",
+  "inStock": true,
+  "featured": false,
+  "published": true,
+  "image": "/images/products/dancer.png",
+  "secondaryImage": "/images/products/dancer-scene.avif",
+  "availableSizes": [
+    "50x70cm"
+  ],
+  "priceCategory": "Premium",
+  "productId": "7",
+  "recommendedProducts": [
+    "IThinkIThink",
+    "Swallow Dive",
+    "Tree Top Peach",
+    "Dragon"
+  ],
+  "created_time": "2025-08-23T21:47:00.000Z",
+  "last_edited_time": "2025-08-24T11:39:00.000Z"
+}

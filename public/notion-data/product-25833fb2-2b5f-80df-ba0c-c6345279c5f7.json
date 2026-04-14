@@ -1,0 +1,28 @@
+{
+  "id": "25833fb2-2b5f-80df-ba0c-c6345279c5f7",
+  "name": "Half Man",
+  "slug": "half-man2",
+  "description": "This striking Scandinavian wall art by Simen Wahlqvist showcases a vibrant illustration on high-quality, museum-level paper, ensuring rich colours and archival longevity.",
+  "category": "Illustrations",
+  "artist": "Simen Wahlqvist",
+  "artistId": "2",
+  "brand": "",
+  "inStock": true,
+  "featured": false,
+  "published": true,
+  "image": "/images/products/half-man.png",
+  "secondaryImage": "/images/products/half-man-scene.avif",
+  "availableSizes": [
+    "50x50cm"
+  ],
+  "priceCategory": "Budget",
+  "productId": "3",
+  "recommendedProducts": [
+    "Eye Nose Eye",
+    "Morgenstrekk",
+    "Slingshot",
+    "Mean Snothing"
+  ],
+  "created_time": "2025-08-23T18:26:00.000Z",
+  "last_edited_time": "2025-08-24T11:30:00.000Z"
+}

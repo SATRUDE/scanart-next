@@ -1,0 +1,28 @@
+{
+  "id": "25833fb2-2b5f-8081-882a-ed391fd69ec1",
+  "name": "Swallow Dive",
+  "slug": "swallow-dive2",
+  "description": "This abstract Scandinavian wall art by Helene Brox features colourful art on museum-level paper, ensuring rich colours and archival longevity.",
+  "category": "Abstract",
+  "artist": "Helene Brox",
+  "artistId": "1",
+  "brand": "",
+  "inStock": true,
+  "featured": false,
+  "published": true,
+  "image": "/images/products/swallow-dive.png",
+  "secondaryImage": "/images/products/swallow-dive-scene.avif",
+  "availableSizes": [
+    "50x70cm"
+  ],
+  "priceCategory": "Premium",
+  "productId": "9",
+  "recommendedProducts": [
+    "Dancer",
+    "Dragon",
+    "IThinkIThink",
+    "Tree Top Peach"
+  ],
+  "created_time": "2025-08-23T21:48:00.000Z",
+  "last_edited_time": "2025-08-24T11:38:00.000Z"
+}

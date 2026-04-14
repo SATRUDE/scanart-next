@@ -1,0 +1,28 @@
+{
+  "id": "25833fb2-2b5f-80e9-b0c6-e7cf6f79bd67",
+  "name": "Slingshot",
+  "slug": "Slingshot2",
+  "description": "This striking Scandinavian wall art by Simen Wahlqvist showcases a vibrant illustration on high-quality, museum-level paper, ensuring rich colours and archival longevity.",
+  "category": "Illustrations",
+  "artist": "Simen Wahlqvist",
+  "artistId": "2",
+  "brand": "",
+  "inStock": true,
+  "featured": false,
+  "published": true,
+  "image": "/images/products/slingshot.png",
+  "secondaryImage": "/images/products/slingshot-scene.avif",
+  "availableSizes": [
+    "50x50cm"
+  ],
+  "priceCategory": "Budget",
+  "productId": "6",
+  "recommendedProducts": [
+    "Mean Snothing",
+    "Morgenstrekk",
+    "Eye Nose Eye",
+    "Half Man"
+  ],
+  "created_time": "2025-08-23T21:46:00.000Z",
+  "last_edited_time": "2025-08-24T11:49:00.000Z"
+}

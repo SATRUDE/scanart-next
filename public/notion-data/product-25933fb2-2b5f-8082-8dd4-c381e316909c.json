@@ -1,0 +1,28 @@
+{
+  "id": "25933fb2-2b5f-8082-8dd4-c381e316909c",
+  "name": "Eltsjoen",
+  "slug": "eltsjoen2",
+  "description": "This vivid Scandinavian wall art by Ingunn Dybendall features vibrant art on museum-level paper, ensuring rich colours and archival longevity.",
+  "category": "Botanical",
+  "artist": "Ingunn Dybendal",
+  "artistId": "4",
+  "brand": "",
+  "inStock": true,
+  "featured": false,
+  "published": true,
+  "image": "/images/products/eltsjoen.png",
+  "secondaryImage": "/images/products/eltsjoen-scene.avif",
+  "availableSizes": [
+    "50x70cm"
+  ],
+  "priceCategory": "Premium",
+  "productId": "11",
+  "recommendedProducts": [
+    "Trysilkaffe",
+    "Dancer",
+    "Dragon",
+    "IThinkIThink"
+  ],
+  "created_time": "2025-08-24T09:34:00.000Z",
+  "last_edited_time": "2025-08-24T11:38:00.000Z"
+}

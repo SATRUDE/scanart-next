@@ -1,0 +1,570 @@
+[
+  {
+    "id": "25833fb2-2b5f-808f-a1b1-d75d659e533b",
+    "name": "Birdie Blue",
+    "slug": "birdie-blue",
+    "description": "This vibrant Scandinavian wall art by Renate Thor features a colourful illustration on museum-level paper, ensuring rich colours and archival longevity.",
+    "category": "Abstract",
+    "artist": "Renate Thor",
+    "artistId": "3",
+    "brand": "",
+    "inStock": true,
+    "featured": true,
+    "published": true,
+    "image": "/images/products/birdie-blue.png",
+    "secondaryImage": "/images/products/birdie-blue-scene.avif",
+    "availableSizes": [
+      "A2",
+      "A3",
+      "A1"
+    ],
+    "priceCategory": "Premium",
+    "productId": "13",
+    "recommendedProducts": [
+      "Birdie Brown",
+      "Birdie Green",
+      "Birdie Pink",
+      "Morgenstrekk"
+    ],
+    "created_time": "2025-08-23T14:51:00.000Z",
+    "last_edited_time": "2025-08-28T07:42:00.000Z"
+  },
+  {
+    "id": "25833fb2-2b5f-8035-bc91-ca626a82c560",
+    "name": "Birdie Brown",
+    "slug": "birdie-brown2",
+    "description": "This vibrant Scandinavian wall art by Renate Thor features a colourful illustration on museum-level paper, ensuring rich colours and archival longevity.",
+    "category": "Abstract",
+    "artist": "Renate Thor",
+    "artistId": "3",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/birdie-brown.png",
+    "secondaryImage": "/images/products/birdie-brown-scene.avif",
+    "availableSizes": [
+      "A2",
+      "A3",
+      "A1"
+    ],
+    "priceCategory": "Premium",
+    "productId": "14",
+    "recommendedProducts": [
+      "Birdie Blue",
+      "Birdie Green",
+      "Birdie Pink",
+      "Slingshot"
+    ],
+    "created_time": "2025-08-23T18:18:00.000Z",
+    "last_edited_time": "2025-08-24T11:50:00.000Z"
+  },
+  {
+    "id": "25833fb2-2b5f-8069-ba4b-ca39c0b7feca",
+    "name": "Birdie Green",
+    "slug": "birdie-green2",
+    "description": "This vibrant Scandinavian wall art by Renate Thor features a colourful illustration on museum-level paper, ensuring rich colours and archival longevity.",
+    "category": "Abstract",
+    "artist": "Renate Thor",
+    "artistId": "3",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/birdie-green.png",
+    "secondaryImage": "/images/products/birdie-green-scene.avif",
+    "availableSizes": [
+      "A2",
+      "A3",
+      "A1"
+    ],
+    "priceCategory": "Premium",
+    "productId": "16",
+    "recommendedProducts": [
+      "Birdie Brown",
+      "Birdie Pink",
+      "Birdie Blue",
+      "Tree Top Peach"
+    ],
+    "created_time": "2025-08-23T18:12:00.000Z",
+    "last_edited_time": "2025-08-24T11:32:00.000Z"
+  },
+  {
+    "id": "25833fb2-2b5f-805d-a3f1-c8fc41f4237f",
+    "name": "Birdie Pink",
+    "slug": "birdie-pink2",
+    "description": "This vibrant Scandinavian wall art by Renate Thor features a colourful illustration on museum-level paper, ensuring rich colours and archival longevity.",
+    "category": "Abstract",
+    "artist": "Renate Thor",
+    "artistId": "3",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/birdie-pink.png",
+    "secondaryImage": "/images/products/birdie-pink-scene.avif",
+    "availableSizes": [
+      "A2",
+      "A3",
+      "A1"
+    ],
+    "priceCategory": "Premium",
+    "productId": "15",
+    "recommendedProducts": [
+      "Birdie Blue",
+      "Birdie Green",
+      "Birdie Brown",
+      "Mean Snothing"
+    ],
+    "created_time": "2025-08-23T18:17:00.000Z",
+    "last_edited_time": "2025-08-24T11:32:00.000Z"
+  },
+  {
+    "id": "25833fb2-2b5f-8055-8f2f-d773f2ff55bf",
+    "name": "Dancer",
+    "slug": "dancer2",
+    "description": "This abstract Scandinavian wall art by Helene Brox features colourful art on museum-level paper, ensuring rich colours and archival longevity.",
+    "category": "Abstract",
+    "artist": "Helene Brox",
+    "artistId": "1",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/dancer.png",
+    "secondaryImage": "/images/products/dancer-scene.avif",
+    "availableSizes": [
+      "50x70cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "7",
+    "recommendedProducts": [
+      "IThinkIThink",
+      "Swallow Dive",
+      "Tree Top Peach",
+      "Dragon"
+    ],
+    "created_time": "2025-08-23T21:47:00.000Z",
+    "last_edited_time": "2025-08-24T11:39:00.000Z"
+  },
+  {
+    "id": "25833fb2-2b5f-80db-8bff-e7df3e96cc59",
+    "name": "Dragon",
+    "slug": "dragon2",
+    "description": "This abstract Scandinavian wall art by Helene Brox features colourful art on museum-level paper, ensuring rich colours and archival longevity.",
+    "category": "Abstract",
+    "artist": "Helene Brox",
+    "artistId": "1",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/dragon.png",
+    "secondaryImage": "/images/products/dragon-scene.avif",
+    "availableSizes": [
+      "50x70cm"
+    ],
+    "priceCategory": "Standard",
+    "productId": "1",
+    "recommendedProducts": [
+      "Dancer",
+      "IThinkIThink",
+      "Swallow Dive",
+      "Tree Top Peach"
+    ],
+    "created_time": "2025-08-23T18:20:00.000Z",
+    "last_edited_time": "2025-08-28T07:42:00.000Z"
+  },
+  {
+    "id": "25933fb2-2b5f-8082-8dd4-c381e316909c",
+    "name": "Eltsjoen",
+    "slug": "eltsjoen2",
+    "description": "This vivid Scandinavian wall art by Ingunn Dybendall features vibrant art on museum-level paper, ensuring rich colours and archival longevity.",
+    "category": "Botanical",
+    "artist": "Ingunn Dybendal",
+    "artistId": "4",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/eltsjoen.png",
+    "secondaryImage": "/images/products/eltsjoen-scene.avif",
+    "availableSizes": [
+      "50x70cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "11",
+    "recommendedProducts": [
+      "Trysilkaffe",
+      "Dancer",
+      "Dragon",
+      "IThinkIThink"
+    ],
+    "created_time": "2025-08-24T09:34:00.000Z",
+    "last_edited_time": "2025-08-24T11:38:00.000Z"
+  },
+  {
+    "id": "25833fb2-2b5f-804d-abaa-fed77eeeb706",
+    "name": "Eye Nose Eye",
+    "slug": "eye-nose-eye2",
+    "description": "This striking Scandinavian wall art by Simen Wahlqvist showcases a vibrant illustration on high-quality, museum-level paper, ensuring rich colours and archival longevity.",
+    "category": "Illustrations",
+    "artist": "Simen Wahlqvist",
+    "artistId": "2",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/eye-nose-eye.png",
+    "secondaryImage": "/images/products/eye-nose-eye-scene.avif",
+    "availableSizes": [
+      "50x50cm"
+    ],
+    "priceCategory": "Budget",
+    "productId": "4",
+    "recommendedProducts": [
+      "Mean Snothing",
+      "Morgenstrekk",
+      "Half Man",
+      "Slingshot"
+    ],
+    "created_time": "2025-08-23T21:41:00.000Z",
+    "last_edited_time": "2025-08-24T11:30:00.000Z"
+  },
+  {
+    "id": "25833fb2-2b5f-80df-ba0c-c6345279c5f7",
+    "name": "Half Man",
+    "slug": "half-man2",
+    "description": "This striking Scandinavian wall art by Simen Wahlqvist showcases a vibrant illustration on high-quality, museum-level paper, ensuring rich colours and archival longevity.",
+    "category": "Illustrations",
+    "artist": "Simen Wahlqvist",
+    "artistId": "2",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/half-man.png",
+    "secondaryImage": "/images/products/half-man-scene.avif",
+    "availableSizes": [
+      "50x50cm"
+    ],
+    "priceCategory": "Budget",
+    "productId": "3",
+    "recommendedProducts": [
+      "Eye Nose Eye",
+      "Morgenstrekk",
+      "Slingshot",
+      "Mean Snothing"
+    ],
+    "created_time": "2025-08-23T18:26:00.000Z",
+    "last_edited_time": "2025-08-24T11:30:00.000Z"
+  },
+  {
+    "id": "25933fb2-2b5f-80e9-8300-ffb3584852bc",
+    "name": "Hummer og Vin",
+    "slug": "hummer-og-vi2",
+    "description": "This lively artwork by Sia Siamos bursts with energy and colour, capturing a playful, expressive style that instantly enlivens any space. Printed on high-quality, museum-level paper to preserve its rich details and vibrant palette for years to come.",
+    "category": "Botanical",
+    "artist": "Sia Siamos",
+    "artistId": "5",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/hummer-og-vin.png",
+    "secondaryImage": "/images/products/hummer-og-vin-scene.avif",
+    "availableSizes": [
+      "50x70cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "20",
+    "recommendedProducts": [
+      "Morgenlevering",
+      "Hyttefrokost",
+      "Vinkveld",
+      "Birdie Brown"
+    ],
+    "created_time": "2025-08-24T09:43:00.000Z",
+    "last_edited_time": "2025-08-24T11:38:00.000Z"
+  },
+  {
+    "id": "25933fb2-2b5f-806c-91e3-d6a543d98a98",
+    "name": "Hyttefrokost",
+    "slug": "hyttefrokost2",
+    "description": "This lively artwork by Sia Siamos bursts with energy and colour, capturing a playful, expressive style that instantly enlivens any space. Printed on high-quality, museum-level paper to preserve its rich details and vibrant palette for years to come.",
+    "category": "Botanical",
+    "artist": "Sia Siamos",
+    "artistId": "5",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/Hyttefrokost.png",
+    "secondaryImage": "/images/products/Hyttefrokost-scene.avif",
+    "availableSizes": [
+      "50x70cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "18",
+    "recommendedProducts": [
+      "Vinkveld",
+      "Hummer og Vin",
+      "Morgenlevering",
+      "Birdie Green"
+    ],
+    "created_time": "2025-08-24T09:40:00.000Z",
+    "last_edited_time": "2025-08-24T12:03:00.000Z"
+  },
+  {
+    "id": "25833fb2-2b5f-807a-9f02-cd4bad77ab1a",
+    "name": "IThinkIThink",
+    "slug": "ithinkithink2",
+    "description": "This abstract Scandinavian wall art by Helene Brox features colourful art on museum-level paper, ensuring rich colours and archival longevity.",
+    "category": "Abstract",
+    "artist": "Helene Brox",
+    "artistId": "1",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/i-think-i-think.png",
+    "secondaryImage": "/images/products/i-think-i-think-scene.avif",
+    "availableSizes": [
+      "50x70cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "8",
+    "recommendedProducts": [
+      "Dancer",
+      "Dragon",
+      "Swallow Dive",
+      "Tree Top Peach"
+    ],
+    "created_time": "2025-08-23T21:47:00.000Z",
+    "last_edited_time": "2025-08-24T11:38:00.000Z"
+  },
+  {
+    "id": "25833fb2-2b5f-8033-9e60-c29f291281f9",
+    "name": "Mean Snothing",
+    "slug": "mean-snothing2",
+    "description": "This striking Scandinavian wall art by Simen Wahlqvist showcases a vibrant illustration on high-quality, museum-level paper, ensuring rich colours and archival longevity.",
+    "category": "Illustrations",
+    "artist": "Simen Wahlqvist",
+    "artistId": "2",
+    "brand": "",
+    "inStock": true,
+    "featured": true,
+    "published": true,
+    "image": "/images/products/mean-snothing.png",
+    "secondaryImage": "/images/products/mean-snothing-scene.avif",
+    "availableSizes": [
+      "50x50cm"
+    ],
+    "priceCategory": "Budget",
+    "productId": "2",
+    "recommendedProducts": [
+      "Slingshot",
+      "Half Man",
+      "Eye Nose Eye",
+      "Morgenstrekk"
+    ],
+    "created_time": "2025-08-23T21:40:00.000Z",
+    "last_edited_time": "2025-08-24T11:50:00.000Z"
+  },
+  {
+    "id": "25933fb2-2b5f-8038-b599-f96a307224e5",
+    "name": "Morgenlevering",
+    "slug": "morgenlevering2",
+    "description": "This lively artwork by Sia Siamos bursts with energy and colour, capturing a playful, expressive style that instantly enlivens any space. Printed on high-quality, museum-level paper to preserve its rich details and vibrant palette for years to come.",
+    "category": "Botanical",
+    "artist": "Sia Siamos",
+    "artistId": "5",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/Morgenlevering.png",
+    "secondaryImage": "/images/products/Morgenlevering-scene.avif",
+    "availableSizes": [
+      "50x70cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "19",
+    "recommendedProducts": [
+      "Hummer og Vin",
+      "Vinkveld",
+      "Hyttefrokost",
+      "Birdie Pink"
+    ],
+    "created_time": "2025-08-24T09:42:00.000Z",
+    "last_edited_time": "2025-08-24T12:03:00.000Z"
+  },
+  {
+    "id": "25833fb2-2b5f-8035-bcd5-e762f4db18fc",
+    "name": "Morgenstrekk",
+    "slug": "morgenstrekk2",
+    "description": "This striking Scandinavian wall art by Simen Wahlqvist showcases a vibrant illustration on high-quality, museum-level paper, ensuring rich colours and archival longevity.",
+    "category": "Illustrations",
+    "artist": "Simen Wahlqvist",
+    "artistId": "2",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/morgenstrekk.png",
+    "secondaryImage": "/images/products/morgenstrekk-scene.avif",
+    "availableSizes": [
+      "50x70cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "5",
+    "recommendedProducts": [
+      "Slingshot",
+      "Half Man",
+      "Eye Nose Eye",
+      "Mean Snothing"
+    ],
+    "created_time": "2025-08-23T21:42:00.000Z",
+    "last_edited_time": "2025-08-24T11:30:00.000Z"
+  },
+  {
+    "id": "25833fb2-2b5f-80e9-b0c6-e7cf6f79bd67",
+    "name": "Slingshot",
+    "slug": "Slingshot2",
+    "description": "This striking Scandinavian wall art by Simen Wahlqvist showcases a vibrant illustration on high-quality, museum-level paper, ensuring rich colours and archival longevity.",
+    "category": "Illustrations",
+    "artist": "Simen Wahlqvist",
+    "artistId": "2",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/slingshot.png",
+    "secondaryImage": "/images/products/slingshot-scene.avif",
+    "availableSizes": [
+      "50x50cm"
+    ],
+    "priceCategory": "Budget",
+    "productId": "6",
+    "recommendedProducts": [
+      "Mean Snothing",
+      "Morgenstrekk",
+      "Eye Nose Eye",
+      "Half Man"
+    ],
+    "created_time": "2025-08-23T21:46:00.000Z",
+    "last_edited_time": "2025-08-24T11:49:00.000Z"
+  },
+  {
+    "id": "25833fb2-2b5f-8081-882a-ed391fd69ec1",
+    "name": "Swallow Dive",
+    "slug": "swallow-dive2",
+    "description": "This abstract Scandinavian wall art by Helene Brox features colourful art on museum-level paper, ensuring rich colours and archival longevity.",
+    "category": "Abstract",
+    "artist": "Helene Brox",
+    "artistId": "1",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/swallow-dive.png",
+    "secondaryImage": "/images/products/swallow-dive-scene.avif",
+    "availableSizes": [
+      "50x70cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "9",
+    "recommendedProducts": [
+      "Dancer",
+      "Dragon",
+      "IThinkIThink",
+      "Tree Top Peach"
+    ],
+    "created_time": "2025-08-23T21:48:00.000Z",
+    "last_edited_time": "2025-08-24T11:38:00.000Z"
+  },
+  {
+    "id": "25933fb2-2b5f-8097-a224-c99dde451eba",
+    "name": "Tree Top Peach",
+    "slug": "tree-top-peach2",
+    "description": "This abstract Scandinavian wall art by Helene Brox features colourful art on museum-level paper, ensuring rich colours and archival longevity.",
+    "category": "Botanical",
+    "artist": "Helene Brox",
+    "artistId": "1",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/tree-top-peach.png",
+    "secondaryImage": "/images/products/tree-top-peach-scene.avif",
+    "availableSizes": [
+      "50x70cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "10",
+    "recommendedProducts": [
+      "Dancer",
+      "Dragon",
+      "IThinkIThink",
+      "Swallow Dive"
+    ],
+    "created_time": "2025-08-24T09:33:00.000Z",
+    "last_edited_time": "2025-08-24T11:38:00.000Z"
+  },
+  {
+    "id": "25933fb2-2b5f-8066-83d3-ce953cc0fab9",
+    "name": "Trysilkaffe",
+    "slug": "trysilkaffe2",
+    "description": "This vivid Scandinavian wall art by Ingunn Dybendall features vibrant art on museum-level paper, ensuring rich colours and archival longevity.",
+    "category": "Botanical",
+    "artist": "Ingunn Dybendal",
+    "artistId": "4",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/trysilkaffe.png",
+    "secondaryImage": "/images/products/trysilkaffe-scene.avif",
+    "availableSizes": [
+      "50x70cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "12",
+    "recommendedProducts": [
+      "Eltsjoen",
+      "Dancer",
+      "Swallow Dive",
+      "Tree Top Peach"
+    ],
+    "created_time": "2025-08-24T09:36:00.000Z",
+    "last_edited_time": "2025-08-24T11:38:00.000Z"
+  },
+  {
+    "id": "25933fb2-2b5f-8075-8088-e906c2d45bfc",
+    "name": "Vinkveld",
+    "slug": "vinkveld2",
+    "description": "This lively artwork by Sia Siamos bursts with energy and colour, capturing a playful, expressive style that instantly enlivens any space. Printed on high-quality, museum-level paper to preserve its rich details and vibrant palette for years to come.",
+    "category": "Botanical",
+    "artist": "Sia Siamos",
+    "artistId": "5",
+    "brand": "",
+    "inStock": true,
+    "featured": true,
+    "published": true,
+    "image": "/images/products/vinkveld.png",
+    "secondaryImage": "/images/products/vinkveld-scene.avif",
+    "availableSizes": [
+      "50x70cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "17",
+    "recommendedProducts": [
+      "Hyttefrokost",
+      "Morgenlevering",
+      "Hummer og Vin",
+      "Birdie Blue"
+    ],
+    "created_time": "2025-08-24T09:38:00.000Z",
+    "last_edited_time": "2025-08-24T12:03:00.000Z"
+  }
+]

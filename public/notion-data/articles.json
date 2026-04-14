@@ -1,0 +1,118 @@
+[
+  {
+    "id": "24933fb2-2b5f-8042-8170-c599acd604bd",
+    "slug": "the-art-of-choosing-art-comprehensive-guide",
+    "title": "The Art of Choosing Art: A Comprehensive Guide",
+    "excerpt": "Selecting the perfect piece of art for your space is more than just finding something that matches your couch.",
+    "published": true,
+    "featured": false,
+    "image": "/images/journal/vinkveld-scene.avif",
+    "author": "",
+    "category": "Design",
+    "tags": [],
+    "relatedArticles": [
+      "who-are-scandinavian-art",
+      "an-interview-by-nordic-notes"
+    ],
+    "selectedArtworkIds": [
+      "birdie-blue",
+      "hummer-og-vin",
+      "swallow-dive"
+    ],
+    "created_time": "2025-08-08T09:17:00.000Z",
+    "last_edited_time": "2025-08-10T10:50:00.000Z"
+  },
+  {
+    "id": "24933fb2-2b5f-801b-9c06-f43d8b542e9a",
+    "slug": "who-are-scandinavian-art",
+    "title": "Who are Scandinavian Art?",
+    "excerpt": "Scandinavian Art offers art enthusiasts the chance to enhance their homes with the distinct Scandinavian aesthetic.",
+    "published": true,
+    "featured": true,
+    "image": "/images/journal/mac.png",
+    "author": "",
+    "category": "About",
+    "tags": [],
+    "relatedArticles": [
+      "the-art-of-choosing-art-comprehensive-guide",
+      "an-interview-by-nordic-notes"
+    ],
+    "selectedArtworkIds": [
+      "eye-nose-eye",
+      "morgenstrekk",
+      "slingshot"
+    ],
+    "created_time": "2025-08-08T14:57:00.000Z",
+    "last_edited_time": "2025-08-08T15:04:00.000Z"
+  },
+  {
+    "id": "24933fb2-2b5f-80f0-8b51-e9967fad3374",
+    "slug": "an-interview-by-nordic-notes",
+    "title": "An interview by Nordic Notes",
+    "excerpt": "How contemporary artists are reimagining botanical illustration for modern spaces.",
+    "published": true,
+    "featured": false,
+    "image": "/images/journal/kitchen.png",
+    "author": "",
+    "category": "About",
+    "tags": [],
+    "relatedArticles": [
+      "who-are-scandinavian-art"
+    ],
+    "selectedArtworkIds": [
+      "eye-nose-eye",
+      "morgenstrekk",
+      "slingshot"
+    ],
+    "created_time": "2025-08-08T15:02:00.000Z",
+    "last_edited_time": "2025-08-08T15:03:00.000Z"
+  },
+  {
+    "id": "25f33fb2-2b5f-80a3-b8ff-e013a99672ad",
+    "slug": "create-an-art-wall",
+    "title": "How to Create a Stunning Art Wall with Multiple Pieces",
+    "excerpt": "A step-by-step guide to designing a cohesive art wall that reflects your personal style while keeping a Scandinavian aesthetic in mind.",
+    "published": false,
+    "featured": false,
+    "image": "",
+    "author": "",
+    "category": "Home Decor",
+    "tags": [],
+    "relatedArticles": [
+      "who-are-scandinavian-art",
+      "the-art-of-choosing-art-comprehensive-guide",
+      "an-interview-by-nordic-notes"
+    ],
+    "selectedArtworkIds": [
+      "hyttefrokost",
+      "birdie-blue",
+      "slingshot"
+    ],
+    "created_time": "2025-08-30T20:39:00.000Z",
+    "last_edited_time": "2025-08-30T20:42:00.000Z"
+  },
+  {
+    "id": "25f33fb2-2b5f-8098-adf7-ce74dd91217d",
+    "slug": "art-exhibitions-oslo-sep",
+    "title": "Upcoming Art Exhibitions in Oslo",
+    "excerpt": "A guide to the most exciting art exhibitions happening in Oslo in 2025, from MUNCH and the National Museum to the Autumn Exhibition.",
+    "published": false,
+    "featured": false,
+    "image": "",
+    "author": "",
+    "category": "Exhibitions",
+    "tags": [],
+    "relatedArticles": [
+      "who-are-scandinavian-art",
+      "an-interview-by-nordic-notes",
+      "the-art-of-choosing-art-comprehensive-guide"
+    ],
+    "selectedArtworkIds": [
+      "birdie-green",
+      "mean-snothing",
+      "hummer-og-vin"
+    ],
+    "created_time": "2025-08-30T21:06:00.000Z",
+    "last_edited_time": "2025-08-30T21:11:00.000Z"
+  }
+]

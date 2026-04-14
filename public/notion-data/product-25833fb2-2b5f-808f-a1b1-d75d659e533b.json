@@ -1,0 +1,30 @@
+{
+  "id": "25833fb2-2b5f-808f-a1b1-d75d659e533b",
+  "name": "Birdie Blue",
+  "slug": "birdie-blue",
+  "description": "This vibrant Scandinavian wall art by Renate Thor features a colourful illustration on museum-level paper, ensuring rich colours and archival longevity.",
+  "category": "Abstract",
+  "artist": "Renate Thor",
+  "artistId": "3",
+  "brand": "",
+  "inStock": true,
+  "featured": true,
+  "published": true,
+  "image": "/images/products/birdie-blue.png",
+  "secondaryImage": "/images/products/birdie-blue-scene.avif",
+  "availableSizes": [
+    "A2",
+    "A3",
+    "A1"
+  ],
+  "priceCategory": "Premium",
+  "productId": "13",
+  "recommendedProducts": [
+    "Birdie Brown",
+    "Birdie Green",
+    "Birdie Pink",
+    "Morgenstrekk"
+  ],
+  "created_time": "2025-08-23T14:51:00.000Z",
+  "last_edited_time": "2025-08-28T07:42:00.000Z"
+}

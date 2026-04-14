@@ -1,0 +1,1380 @@
+[
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-80df-9209-e3ad406edd76",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-80f0-8b51-e9967fad3374"
+    },
+    "created_time": "2025-08-08T15:02:00.000Z",
+    "last_edited_time": "2025-08-08T15:02:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "heading_3",
+    "heading_3": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "This interview was conducted by Nicola by Nordic Notes.",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "This interview was conducted by Nicola by Nordic Notes.",
+          "href": null
+        }
+      ],
+      "is_toggleable": false,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-80c5-bccd-e125be6595f1",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-80f0-8b51-e9967fad3374"
+    },
+    "created_time": "2025-08-08T15:02:00.000Z",
+    "last_edited_time": "2025-08-08T15:02:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Nordic Notes is a brilliant website where readers can be inspired with Nordic style. I highly recommend all to take a look and lose yourself in the articles.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Nordic Notes is a brilliant website where readers can be inspired with Nordic style. I highly recommend all to take a look and lose yourself in the articles.",
+          "href": null
+        }
+      ],
+      "icon": null,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-8039-837a-eb9722bfaef0",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-80f0-8b51-e9967fad3374"
+    },
+    "created_time": "2025-08-08T15:02:00.000Z",
+    "last_edited_time": "2025-08-08T15:02:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "To find the original article, read it here: ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "To find the original article, read it here: ",
+          "href": null
+        },
+        {
+          "type": "text",
+          "text": {
+            "content": "https://nordicnotes.co.uk/my-chat-with-scandinavian-art/",
+            "link": {
+              "url": "https://nordicnotes.co.uk/my-chat-with-scandinavian-art/"
+            }
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "https://nordicnotes.co.uk/my-chat-with-scandinavian-art/",
+          "href": "https://nordicnotes.co.uk/my-chat-with-scandinavian-art/"
+        }
+      ],
+      "icon": null,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-808e-a32a-c3611696d2a1",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-80f0-8b51-e9967fad3374"
+    },
+    "created_time": "2025-08-08T15:02:00.000Z",
+    "last_edited_time": "2025-08-08T15:02:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "heading_3",
+    "heading_3": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Scandinavian Art – My chat with founder Mark Diffey",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Scandinavian Art – My chat with founder Mark Diffey",
+          "href": null
+        }
+      ],
+      "is_toggleable": false,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-80dc-9e45-f5c665d4b36e",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-80f0-8b51-e9967fad3374"
+    },
+    "created_time": "2025-08-08T15:02:00.000Z",
+    "last_edited_time": "2025-08-08T15:02:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Nothing makes a house feel like a home more than when it reflects the people living there. And while we all have a favourite cup to drink from, or cushion on the sofa, it’s through the art we hang on our walls that we can create a space that is as unique as we are.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Nothing makes a house feel like a home more than when it reflects the people living there. And while we all have a favourite cup to drink from, or cushion on the sofa, it’s through the art we hang on our walls that we can create a space that is as unique as we are.",
+          "href": null
+        }
+      ],
+      "icon": null,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-80b5-98b3-ea7078f21c77",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-80f0-8b51-e9967fad3374"
+    },
+    "created_time": "2025-08-08T15:02:00.000Z",
+    "last_edited_time": "2025-08-08T15:02:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Offering a carefully considered collection of contemporary artworks, from established and as well as upcoming artists, new online print store Scandinavian Art gives us all the opportunity to tell our own story.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Offering a carefully considered collection of contemporary artworks, from established and as well as upcoming artists, new online print store Scandinavian Art gives us all the opportunity to tell our own story.",
+          "href": null
+        }
+      ],
+      "icon": null,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-80cf-917c-e9c07c4cad0a",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-80f0-8b51-e9967fad3374"
+    },
+    "created_time": "2025-08-08T15:02:00.000Z",
+    "last_edited_time": "2025-08-08T15:02:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Whether you’re looking for bright botanicals, bold geometrics or colourful motifs, you won’t find their prints anywhere else, and with each one meticulously produced using state-of-the-art techniques on premium paper you are ensured vibrant colours and lasting quality too.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Whether you’re looking for bright botanicals, bold geometrics or colourful motifs, you won’t find their prints anywhere else, and with each one meticulously produced using state-of-the-art techniques on premium paper you are ensured vibrant colours and lasting quality too.",
+          "href": null
+        }
+      ],
+      "icon": null,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-8048-91db-ee4ebbfa4a74",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-80f0-8b51-e9967fad3374"
+    },
+    "created_time": "2025-08-08T15:02:00.000Z",
+    "last_edited_time": "2025-08-08T15:02:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Based in Oslo, but originally from the UK, I recently chatted to the founder of Scandinavian Art, Mark Diffey to find out more:",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Based in Oslo, but originally from the UK, I recently chatted to the founder of Scandinavian Art, Mark Diffey to find out more:",
+          "href": null
+        }
+      ],
+      "icon": null,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-8036-b357-ce134428cdaa",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-80f0-8b51-e9967fad3374"
+    },
+    "created_time": "2025-08-08T15:02:00.000Z",
+    "last_edited_time": "2025-08-08T15:02:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "heading_3",
+    "heading_3": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Shall we start with a little about you, what your background is, and why you’re so passionate about Scandinavian art?",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Shall we start with a little about you, what your background is, and why you’re so passionate about Scandinavian art?",
+          "href": null
+        }
+      ],
+      "is_toggleable": false,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-80c3-9c5d-ea4d710ad69e",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-80f0-8b51-e9967fad3374"
+    },
+    "created_time": "2025-08-08T15:02:00.000Z",
+    "last_edited_time": "2025-08-08T15:02:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "I was lucky enough to grow up five minutes from the beach in Bournemouth. After studying computer science and going on to work as a web designer internationally, it was finding love that brought me to Norway.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "I was lucky enough to grow up five minutes from the beach in Bournemouth. After studying computer science and going on to work as a web designer internationally, it was finding love that brought me to Norway.",
+          "href": null
+        }
+      ],
+      "icon": null,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-8022-85b3-fd47293875b6",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-80f0-8b51-e9967fad3374"
+    },
+    "created_time": "2025-08-08T15:02:00.000Z",
+    "last_edited_time": "2025-08-08T15:02:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "It was after buying my first home in Oslo that I dived into the world of interiors, and the diverse world of Scandinavian art. Packed with personalities, and as the perfect partner to a paired back sense of style, almost five years on it feels nice to be able to share a piece of Norway with the rest of the world, especially my home country.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "It was after buying my first home in Oslo that I dived into the world of interiors, and the diverse world of Scandinavian art. Packed with personalities, and as the perfect partner to a paired back sense of style, almost five years on it feels nice to be able to share a piece of Norway with the rest of the world, especially my home country.",
+          "href": null
+        }
+      ],
+      "icon": null,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-80a0-ad73-f09f1e4e6e46",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-80f0-8b51-e9967fad3374"
+    },
+    "created_time": "2025-08-08T15:02:00.000Z",
+    "last_edited_time": "2025-08-08T15:02:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "heading_3",
+    "heading_3": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "How did you turn this passion into an online print store, and what for you makes Scandinavian Art different?",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "How did you turn this passion into an online print store, and what for you makes Scandinavian Art different?",
+          "href": null
+        }
+      ],
+      "is_toggleable": false,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-80ca-ab58-db952a35d456",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-80f0-8b51-e9967fad3374"
+    },
+    "created_time": "2025-08-08T15:02:00.000Z",
+    "last_edited_time": "2025-08-08T15:02:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "The idea for Scandinavian Art was born after I found there was a real gap in the online market. After speaking about how I was struggling to find high-quality prints that fitted my home with an artist friend of mine, as well as a number of local artists, I also saw there was a real appetite for them to sell internationally too.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "The idea for Scandinavian Art was born after I found there was a real gap in the online market. After speaking about how I was struggling to find high-quality prints that fitted my home with an artist friend of mine, as well as a number of local artists, I also saw there was a real appetite for them to sell internationally too.",
+          "href": null
+        }
+      ],
+      "icon": null,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-80b1-bf32-d1144426b367",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-80f0-8b51-e9967fad3374"
+    },
+    "created_time": "2025-08-08T15:02:00.000Z",
+    "last_edited_time": "2025-08-08T15:02:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "For me, what makes Scandinavian Art different is that by showcasing and selling a unique selection of works by artists from this area we not only ensure everything you buy has a story to tell, but we also build a passionate community of artists and patrons.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "For me, what makes Scandinavian Art different is that by showcasing and selling a unique selection of works by artists from this area we not only ensure everything you buy has a story to tell, but we also build a passionate community of artists and patrons.",
+          "href": null
+        }
+      ],
+      "icon": null,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-800b-973b-d391a2c90009",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-80f0-8b51-e9967fad3374"
+    },
+    "created_time": "2025-08-08T15:02:00.000Z",
+    "last_edited_time": "2025-08-08T15:02:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "heading_3",
+    "heading_3": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "What are you looking for in the artists who participate, and what qualities do the artworks you showcase need to have?",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "What are you looking for in the artists who participate, and what qualities do the artworks you showcase need to have?",
+          "href": null
+        }
+      ],
+      "is_toggleable": false,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-8085-81c0-fa6cf14ab2af",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-80f0-8b51-e9967fad3374"
+    },
+    "created_time": "2025-08-08T15:02:00.000Z",
+    "last_edited_time": "2025-08-08T15:02:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Firstly, everything we sell at Scandinavian Art is handpicked. When choosing artworks, I always look for something I like, and something I instantly have a positive response to. Buying art should be an emotive experience after all.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Firstly, everything we sell at Scandinavian Art is handpicked. When choosing artworks, I always look for something I like, and something I instantly have a positive response to. Buying art should be an emotive experience after all.",
+          "href": null
+        }
+      ],
+      "icon": null,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-80ad-9530-d849c4655ecb",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-80f0-8b51-e9967fad3374"
+    },
+    "created_time": "2025-08-08T15:02:00.000Z",
+    "last_edited_time": "2025-08-08T15:02:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "However, I fully understand tastes are varied so I’m always on the lookout for recommendations. Talented people are often the best at spotting other talented people. When it comes to the artists we proudly represent, a close and transparent relationship with them is important, and I keep in touch with them as much as possible especially when it comes to the curatorial decisions of the site.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "However, I fully understand tastes are varied so I’m always on the lookout for recommendations. Talented people are often the best at spotting other talented people. When it comes to the artists we proudly represent, a close and transparent relationship with them is important, and I keep in touch with them as much as possible especially when it comes to the curatorial decisions of the site.",
+          "href": null
+        }
+      ],
+      "icon": null,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-80eb-8636-c0b87639f8b6",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-80f0-8b51-e9967fad3374"
+    },
+    "created_time": "2025-08-08T15:02:00.000Z",
+    "last_edited_time": "2025-08-08T15:02:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "heading_3",
+    "heading_3": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "If someone is looking to start their own Scandinavian art collection what would be your top three tips?",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "If someone is looking to start their own Scandinavian art collection what would be your top three tips?",
+          "href": null
+        }
+      ],
+      "is_toggleable": false,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-8092-9322-cfab9cdc4033",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-80f0-8b51-e9967fad3374"
+    },
+    "created_time": "2025-08-08T15:02:00.000Z",
+    "last_edited_time": "2025-08-08T15:02:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "numbered_list_item",
+    "numbered_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Think about your space and style",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Think about your space and style",
+          "href": null
+        }
+      ],
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-802b-b7b6-eba3b6f55538",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-80f0-8b51-e9967fad3374"
+    },
+    "created_time": "2025-08-08T15:02:00.000Z",
+    "last_edited_time": "2025-08-08T15:02:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Firstly, it’s important to think about your style. Scandinavian interiors are often so clean and minimal leaving a lot of space for louder art pieces. However, if you already have a busy interior space then a simpler, paired back piece can work best.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Firstly, it’s important to think about your style. Scandinavian interiors are often so clean and minimal leaving a lot of space for louder art pieces. However, if you already have a busy interior space then a simpler, paired back piece can work best.",
+          "href": null
+        }
+      ],
+      "icon": null,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-801d-8448-d8bab5422ba4",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-80f0-8b51-e9967fad3374"
+    },
+    "created_time": "2025-08-08T15:02:00.000Z",
+    "last_edited_time": "2025-08-08T15:02:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "numbered_list_item",
+    "numbered_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Connect with the artist",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Connect with the artist",
+          "href": null
+        }
+      ],
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-80e6-bf2e-c15b27e3fa17",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-80f0-8b51-e9967fad3374"
+    },
+    "created_time": "2025-08-08T15:02:00.000Z",
+    "last_edited_time": "2025-08-08T15:02:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Scandinavia is very much about community, and I think it’s nice to feel that way about art too. You’re not just buying a print but investing in a story, and reading about the artist, and connecting with what inspires them, can make a piece feel much more special.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Scandinavia is very much about community, and I think it’s nice to feel that way about art too. You’re not just buying a print but investing in a story, and reading about the artist, and connecting with what inspires them, can make a piece feel much more special.",
+          "href": null
+        }
+      ],
+      "icon": null,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-80b0-93de-d8cac329e793",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-80f0-8b51-e9967fad3374"
+    },
+    "created_time": "2025-08-08T15:02:00.000Z",
+    "last_edited_time": "2025-08-08T15:02:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "numbered_list_item",
+    "numbered_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Always feel welcome to ask",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Always feel welcome to ask",
+          "href": null
+        }
+      ],
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-8010-80a8-f2271e4de010",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-80f0-8b51-e9967fad3374"
+    },
+    "created_time": "2025-08-08T15:02:00.000Z",
+    "last_edited_time": "2025-08-08T15:02:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Yes, we are an online store, but feel free to reach out to ask questions. Starting to collect can be daunting, but research is important, as well as enjoyable. With us being so familiar with our artists, and the artworks themselves, we can help to guide you throughout.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Yes, we are an online store, but feel free to reach out to ask questions. Starting to collect can be daunting, but research is important, as well as enjoyable. With us being so familiar with our artists, and the artworks themselves, we can help to guide you throughout.",
+          "href": null
+        }
+      ],
+      "icon": null,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-8064-a87a-cff973c914d7",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-80f0-8b51-e9967fad3374"
+    },
+    "created_time": "2025-08-08T15:02:00.000Z",
+    "last_edited_time": "2025-08-08T15:02:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "heading_3",
+    "heading_3": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Finally, for anyone looking for more art inspiration, what galleries in Oslo would you recommend they visit, and why?",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Finally, for anyone looking for more art inspiration, what galleries in Oslo would you recommend they visit, and why?",
+          "href": null
+        }
+      ],
+      "is_toggleable": false,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-8042-b475-dc2a825f1afd",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-80f0-8b51-e9967fad3374"
+    },
+    "created_time": "2025-08-08T15:02:00.000Z",
+    "last_edited_time": "2025-08-08T15:02:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "I think it’s hard to beat the classics, so my first recommendation has to be the National Gallery. The largest museum in the Nordics, and with ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "I think it’s hard to beat the classics, so my first recommendation has to be the National Gallery. The largest museum in the Nordics, and with ",
+          "href": null
+        },
+        {
+          "type": "text",
+          "text": {
+            "content": "6,500",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "6,500",
+          "href": null
+        },
+        {
+          "type": "text",
+          "text": {
+            "content": " pieces of permanent art, craft and design on display, it’s one of those places you can walk around all day. With a fantastic café on every floor too, once your legs get tired be sure to treat yourself to a coffee and cinnamon bun.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": " pieces of permanent art, craft and design on display, it’s one of those places you can walk around all day. With a fantastic café on every floor too, once your legs get tired be sure to treat yourself to a coffee and cinnamon bun.",
+          "href": null
+        }
+      ],
+      "icon": null,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-8056-9987-d181310a9af0",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-80f0-8b51-e9967fad3374"
+    },
+    "created_time": "2025-08-08T15:02:00.000Z",
+    "last_edited_time": "2025-08-08T15:02:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Taking twelve years to complete and set over thirteen floors the Munch museum in Bjørvika is well worth a visit. Beyond seeing The Scream, essentially the Scandinavian Mona Lisa, the art throughout serves as a window into Munch’s life, and how his personal experiences not only shaped his work but would go on and shape an entire visual language.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Taking twelve years to complete and set over thirteen floors the Munch museum in Bjørvika is well worth a visit. Beyond seeing The Scream, essentially the Scandinavian Mona Lisa, the art throughout serves as a window into Munch’s life, and how his personal experiences not only shaped his work but would go on and shape an entire visual language.",
+          "href": null
+        }
+      ],
+      "icon": null,
+      "color": "default"
+    },
+    "archived": false
+  },
+  {
+    "object": "block",
+    "id": "24933fb2-2b5f-8062-9d58-f2a826a9ca85",
+    "parent": {
+      "type": "page_id",
+      "page_id": "24933fb2-2b5f-80f0-8b51-e9967fad3374"
+    },
+    "created_time": "2025-08-08T15:02:00.000Z",
+    "last_edited_time": "2025-08-08T15:02:00.000Z",
+    "created_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "last_edited_by": {
+      "object": "user",
+      "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+    },
+    "has_children": false,
+    "in_trash": false,
+    "type": "paragraph",
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Finally, another must-visit for me is Vigeland Sculpture Park in Frogner. Oslo’s largest public park, and set within ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Finally, another must-visit for me is Vigeland Sculpture Park in Frogner. Oslo’s largest public park, and set within ",
+          "href": null
+        },
+        {
+          "type": "text",
+          "text": {
+            "content": "80-acres",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "80-acres",
+          "href": null
+        },
+        {
+          "type": "text",
+          "text": {
+            "content": ", it’s the perfect place to spend a slow Sunday. Home to over ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": ", it’s the perfect place to spend a slow Sunday. Home to over ",
+          "href": null
+        },
+        {
+          "type": "text",
+          "text": {
+            "content": "200",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "200",
+          "href": null
+        },
+        {
+          "type": "text",
+          "text": {
+            "content": " granite, bronze and wrought iron sculptures by Gustav Vigeland, seeing these extraordinary works in such an extraordinary setting makes them all the more powerful.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": " granite, bronze and wrought iron sculptures by Gustav Vigeland, seeing these extraordinary works in such an extraordinary setting makes them all the more powerful.",
+          "href": null
+        }
+      ],
+      "icon": null,
+      "color": "default"
+    },
+    "archived": false
+  }
+]
