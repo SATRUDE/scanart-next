@@ -6,7 +6,8 @@ import { getAllProducts, getProductBySlug, getRecommendedProducts } from '@/lib/
 import { getArtistById } from '@/data/artists';
 import { ProductActions } from '@/components/ProductActions';
 import { ProductImageGalleryWrapper } from '@/components/ProductImageGalleryWrapper';
-import { SmartImage } from '@/components/SmartImage';
+import { ArtistSection } from '@/components/ArtistSection';
+import { PrintCard } from '@/components/PrintCard';
 import { getLowestProductPrices } from '@/lib/pricing';
 
 export async function generateStaticParams() {
@@ -88,36 +89,18 @@ export default async function ProductPage({
           )}
 
           <ProductActions product={product} />
+
+          {artist && <ArtistSection artist={artist} />}
         </div>
       </div>
-
-      {artist && (
-        <div className="mt-16 pt-8 border-t">
-          <div className="flex items-start gap-4">
-            {artist.image && (
-              <div className="h-12 w-12 rounded-full overflow-hidden flex-shrink-0">
-                <img src={artist.image} alt={artist.name} className="w-full h-full object-cover" />
-              </div>
-            )}
-            <div>
-              <h3 className="font-medium">{artist.name}</h3>
-              {artist.location && <p className="text-sm text-muted-foreground">{artist.location}</p>}
-              {artist.bio && <p className="text-sm text-muted-foreground mt-2">{artist.bio}</p>}
-            </div>
-          </div>
-        </div>
-      )}
 
       {recommended.length > 0 && (
         <div className="mt-16">
           <h2 className="text-2xl text-neutral-900 mb-8">You may also like</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {recommended.map(rec => (
-              <Link key={rec.id} href={`/product/${rec.slug}`} className="group">
-                <div className="aspect-[3/4] overflow-hidden bg-neutral-50 mb-4 rounded">
-                  <SmartImage src={rec.image} alt={rec.name} className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300" />
-                </div>
-                <h3 className="text-sm text-neutral-900">{rec.name}</h3>
+              <Link key={rec.id} href={`/product/${rec.slug}`}>
+                <PrintCard product={rec} />
               </Link>
             ))}
           </div>
