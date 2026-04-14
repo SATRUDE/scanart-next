@@ -23,14 +23,21 @@ export async function generateMetadata({
   const product = await getProductBySlug(slug);
   if (!product) return {};
 
+  const desc = product.description || `${product.name} by ${product.artist || product.brand} - Scandinavian Art Gallery`;
   return {
     title: product.name,
-    description: product.description || `${product.name} by ${product.artist || product.brand} - Scandinavian Art Gallery`,
+    description: desc,
     openGraph: {
       title: product.name,
-      description: product.description,
+      description: desc,
       images: [product.image],
       type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: product.name,
+      description: desc,
+      images: [product.image],
     },
   };
 }

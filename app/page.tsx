@@ -55,6 +55,25 @@ export default async function HomePage() {
       <QualityPromise />
       <Testimonials />
       <FullWidthImage />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'WebSite',
+            name: 'Scandinavian Art Gallery',
+            url: 'https://www.scandinavianart.co.uk',
+            description: 'Curated selection of exquisite Nordic artwork and prints from talented Scandinavian artists.',
+            publisher: {
+              '@type': 'Organization',
+              name: 'Scandinavian Art Gallery',
+              url: 'https://www.scandinavianart.co.uk',
+              logo: 'https://www.scandinavianart.co.uk/images/scandinavian-art-gallery-og.png',
+            },
+          }),
+        }}
+      />
     </div>
   );
 }
