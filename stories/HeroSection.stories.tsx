@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { HeroSection } from '@/components/HeroSection';
 import { LanguageProvider } from '@/contexts/LanguageContext';
+import { Product } from '@/contexts/CartContext';
 
-const mockProducts = [
+const mockProducts: Product[] = [
   {
     id: '1', name: 'Birdie Blue', slug: 'birdie-blue',
     prices: { A3: { GBP: 42, NOK: 577, USD: 54, DKK: 367, SEK: 577 }, A2: { GBP: 56, NOK: 770, USD: 72, DKK: 490, SEK: 770 } },
