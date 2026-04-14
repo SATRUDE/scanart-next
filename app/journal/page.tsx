@@ -20,10 +20,10 @@ export default async function JournalPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {articles.map(article => (
           <Link key={article.id} href={`/article/${article.slug}`} className="group">
-            {article.featuredImage && (
+            {article.image && (
               <div className="aspect-[4/3] overflow-hidden bg-neutral-50 rounded mb-4">
                 <img
-                  src={article.featuredImage}
+                  src={article.image}
                   alt={article.title}
                   className="w-full h-full object-cover transition-all duration-300 group-hover:scale-[1.02]"
                 />

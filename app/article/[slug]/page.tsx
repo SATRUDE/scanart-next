@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
-import { getAllArticles, getArticleBySlug } from '@/lib/articles';
+import { getAllArticles, getArticleBySlug, getArticleBlocks } from '@/lib/articles';
+import { NotionBlockRenderer } from '@/components/NotionBlockRenderer';
 
 export async function generateStaticParams() {
   const articles = await getAllArticles();
@@ -24,7 +25,7 @@ export async function generateMetadata({
     openGraph: {
       title: article.title,
       description: article.excerpt,
-      images: article.featuredImage ? [article.featuredImage] : [],
+      images: article.image ? [article.image] : [],
       type: 'article',
     },
   };
@@ -42,10 +43,12 @@ export default async function ArticlePage({
     notFound();
   }
 
+  const blocks = await getArticleBlocks(article.id);
   const allArticles = await getAllArticles();
-  const relatedArticles = allArticles
-    .filter(a => a.id !== article.id)
-    .slice(0, 3);
+  const relatedSlugs = article.relatedArticles || [];
+  const relatedArticles = relatedSlugs.length > 0
+    ? allArticles.filter(a => relatedSlugs.includes(a.slug))
+    : allArticles.filter(a => a.id !== article.id).slice(0, 3);
 
   return (
     <div className="container mx-auto px-8 py-8">
@@ -65,23 +68,14 @@ export default async function ArticlePage({
           )}
         </header>
 
-        {article.featuredImage && (
+        {article.image && (
           <div className="aspect-[16/9] overflow-hidden bg-neutral-50 rounded mb-8">
-            <img src={article.featuredImage} alt={article.title} className="w-full h-full object-cover" />
+            <img src={article.image} alt={article.title} className="w-full h-full object-cover" />
           </div>
         )}
 
-        <div className="prose prose-neutral max-w-none">
-          {article.contentSection1 && <div dangerouslySetInnerHTML={{ __html: article.contentSection1 }} />}
-          {article.contentSection2 && <div dangerouslySetInnerHTML={{ __html: article.contentSection2 }} />}
-          {article.contentSection3 && <div dangerouslySetInnerHTML={{ __html: article.contentSection3 }} />}
-        </div>
-
-        {article.quoteText && (
-          <blockquote className="my-12 border-l-4 border-primary pl-6 text-xl text-neutral-700 italic">
-            <p>{article.quoteText}</p>
-            {article.quoteAuthor && <cite className="text-sm text-muted-foreground not-italic mt-2 block">— {article.quoteAuthor}</cite>}
-          </blockquote>
+        {blocks.length > 0 && (
+          <NotionBlockRenderer blocks={blocks} />
         )}
       </article>
 
@@ -91,9 +85,9 @@ export default async function ArticlePage({
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {relatedArticles.map(ra => (
               <Link key={ra.id} href={`/article/${ra.slug}`} className="group">
-                {ra.featuredImage && (
+                {ra.image && (
                   <div className="aspect-[4/3] overflow-hidden bg-neutral-50 rounded mb-3">
-                    <img src={ra.featuredImage} alt={ra.title} className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300" />
+                    <img src={ra.image} alt={ra.title} className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300" />
                   </div>
                 )}
                 <h3 className="text-sm font-medium text-neutral-900 group-hover:text-neutral-600 transition-colors">{ra.title}</h3>
@@ -111,8 +105,8 @@ export default async function ArticlePage({
             '@type': 'Article',
             headline: article.title,
             description: article.excerpt,
-            image: article.featuredImage,
-            datePublished: article.publishedDate,
+            image: article.image,
+            datePublished: article.created_time,
             publisher: {
               '@type': 'Organization',
               name: 'Scandinavian Art Gallery',

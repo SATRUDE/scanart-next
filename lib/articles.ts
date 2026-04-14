@@ -8,20 +8,20 @@ export interface Article {
   excerpt: string;
   category: string;
   featured: boolean;
-  featuredImage: string;
-  featuredProducts: string[];
+  image: string;
+  author: string;
+  tags: string[];
+  relatedArticles: string[];
   selectedArtworkIds: string[];
-  relatedArticleIds: string[];
   published: boolean;
-  publishedDate: string;
-  contentSection1: string;
-  contentSection2: string;
-  contentSection3: string;
-  contentImages: string[];
-  quoteText: string;
-  quoteAuthor: string;
-  ctaText: string;
-  ctaLink: string;
+  created_time: string;
+  last_edited_time: string;
+}
+
+export interface NotionBlock {
+  id: string;
+  type: string;
+  [key: string]: any;
 }
 
 export async function getAllArticles(): Promise<Article[]> {
@@ -38,4 +38,14 @@ export async function getAllArticles(): Promise<Article[]> {
 export async function getArticleBySlug(slug: string): Promise<Article | null> {
   const articles = await getAllArticles();
   return articles.find(a => a.slug === slug) ?? null;
+}
+
+export async function getArticleBlocks(articleId: string): Promise<NotionBlock[]> {
+  const filePath = path.join(process.cwd(), 'public', 'notion-data', `${articleId}.json`);
+  try {
+    const data = await fs.readFile(filePath, 'utf-8');
+    return JSON.parse(data);
+  } catch {
+    return [];
+  }
 }
