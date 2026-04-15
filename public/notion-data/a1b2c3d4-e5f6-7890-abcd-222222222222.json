@@ -1,0 +1,101 @@
+[
+  {
+    "object": "block", "id": "art2-001", "type": "heading_1",
+    "heading_1": { "rich_text": [{ "type": "text", "text": { "content": "The Complete Guide to Choosing Print Sizes for Your Home" }, "plain_text": "The Complete Guide to Choosing Print Sizes for Your Home" }] }
+  },
+  {
+    "object": "block", "id": "art2-002", "type": "paragraph",
+    "paragraph": { "rich_text": [{ "type": "text", "text": { "content": "One of the most common questions we hear is: what size print should I get? It is a surprisingly important decision. The wrong size can make a beautiful piece of art look lost on a large wall or cramped in a small space. This guide walks you through everything you need to know about art print sizes — from A3 to A1 and the centimetre options in between — so you can choose with confidence." }, "plain_text": "One of the most common questions we hear is: what size print should I get? It is a surprisingly important decision. The wrong size can make a beautiful piece of art look lost on a large wall or cramped in a small space. This guide walks you through everything you need to know about art print sizes — from A3 to A1 and the centimetre options in between — so you can choose with confidence." }] }
+  },
+  {
+    "object": "block", "id": "art2-003", "type": "heading_2",
+    "heading_2": { "rich_text": [{ "type": "text", "text": { "content": "Understanding Print Sizes: A3, A2, and A1 Explained" }, "plain_text": "Understanding Print Sizes: A3, A2, and A1 Explained" }] }
+  },
+  {
+    "object": "block", "id": "art2-004", "type": "paragraph",
+    "paragraph": { "rich_text": [{ "type": "text", "text": { "content": "If you are not familiar with A-series paper sizes, here is a quick reference. These are the standard sizes used across Europe and increasingly worldwide for art prints:" }, "plain_text": "If you are not familiar with A-series paper sizes, here is a quick reference. These are the standard sizes used across Europe and increasingly worldwide for art prints:" }] }
+  },
+  {
+    "object": "block", "id": "art2-005", "type": "bulleted_list_item",
+    "bulleted_list_item": { "rich_text": [{ "type": "text", "text": { "content": "A3 (29.7 x 42 cm / 11.7 x 16.5 in) — The most compact option. Perfect for smaller walls, bathrooms, home offices, and gallery wall arrangements where you want to combine several pieces." }, "plain_text": "A3 (29.7 x 42 cm / 11.7 x 16.5 in) — The most compact option. Perfect for smaller walls, bathrooms, home offices, and gallery wall arrangements where you want to combine several pieces." }] }
+  },
+  {
+    "object": "block", "id": "art2-006", "type": "bulleted_list_item",
+    "bulleted_list_item": { "rich_text": [{ "type": "text", "text": { "content": "A2 (42 x 59.4 cm / 16.5 x 23.4 in) — The versatile middle ground. Works well above a desk, in a hallway, or as part of a pair flanking a window. This is our most popular size." }, "plain_text": "A2 (42 x 59.4 cm / 16.5 x 23.4 in) — The versatile middle ground. Works well above a desk, in a hallway, or as part of a pair flanking a window. This is our most popular size." }] }
+  },
+  {
+    "object": "block", "id": "art2-007", "type": "bulleted_list_item",
+    "bulleted_list_item": { "rich_text": [{ "type": "text", "text": { "content": "A1 (59.4 x 84.1 cm / 23.4 x 33.1 in) — The statement maker. Best for large walls, above sofas, in dining rooms, or as a single feature piece. An A1 print commands attention and can anchor an entire room." }, "plain_text": "A1 (59.4 x 84.1 cm / 23.4 x 33.1 in) — The statement maker. Best for large walls, above sofas, in dining rooms, or as a single feature piece. An A1 print commands attention and can anchor an entire room." }] }
+  },
+  {
+    "object": "block", "id": "art2-008", "type": "paragraph",
+    "paragraph": { "rich_text": [{ "type": "text", "text": { "content": "We also offer 50x50cm and 50x70cm sizes for certain prints. The square 50x50cm format works beautifully for symmetrical compositions and pairs well with other square pieces. The 50x70cm format is similar to A2 but with slightly different proportions that suit certain artworks." }, "plain_text": "We also offer 50x50cm and 50x70cm sizes for certain prints. The square 50x50cm format works beautifully for symmetrical compositions and pairs well with other square pieces. The 50x70cm format is similar to A2 but with slightly different proportions that suit certain artworks." }] }
+  },
+  {
+    "object": "block", "id": "art2-009", "type": "heading_2",
+    "heading_2": { "rich_text": [{ "type": "text", "text": { "content": "Room by Room: Which Size Works Where" }, "plain_text": "Room by Room: Which Size Works Where" }] }
+  },
+  {
+    "object": "block", "id": "art2-010", "type": "heading_3",
+    "heading_3": { "rich_text": [{ "type": "text", "text": { "content": "Living Room" }, "plain_text": "Living Room" }] }
+  },
+  {
+    "object": "block", "id": "art2-011", "type": "paragraph",
+    "paragraph": { "rich_text": [{ "type": "text", "text": { "content": "The living room is where most people want their most impactful piece. If you are hanging art above a sofa, the general rule is that the artwork should be roughly 60-75% of the width of the sofa. For a standard three-seater, that usually means an A1 print or a pair of A2 prints side by side. A single A3 above a large sofa will look too small — it is a common mistake that is easily avoided." }, "plain_text": "The living room is where most people want their most impactful piece. If you are hanging art above a sofa, the general rule is that the artwork should be roughly 60-75% of the width of the sofa. For a standard three-seater, that usually means an A1 print or a pair of A2 prints side by side. A single A3 above a large sofa will look too small — it is a common mistake that is easily avoided." }] }
+  },
+  {
+    "object": "block", "id": "art2-012", "type": "heading_3",
+    "heading_3": { "rich_text": [{ "type": "text", "text": { "content": "Bedroom" }, "plain_text": "Bedroom" }] }
+  },
+  {
+    "object": "block", "id": "art2-013", "type": "paragraph",
+    "paragraph": { "rich_text": [{ "type": "text", "text": { "content": "Above the bed, A2 is often the sweet spot — large enough to be the focal point but not so dominant that it overwhelms the space. If your bed has a tall headboard, consider hanging the print slightly higher than you normally would. For bedside walls or the space above a chest of drawers, A3 works perfectly." }, "plain_text": "Above the bed, A2 is often the sweet spot — large enough to be the focal point but not so dominant that it overwhelms the space. If your bed has a tall headboard, consider hanging the print slightly higher than you normally would. For bedside walls or the space above a chest of drawers, A3 works perfectly." }] }
+  },
+  {
+    "object": "block", "id": "art2-014", "type": "heading_3",
+    "heading_3": { "rich_text": [{ "type": "text", "text": { "content": "Hallway and Entryway" }, "plain_text": "Hallway and Entryway" }] }
+  },
+  {
+    "object": "block", "id": "art2-015", "type": "paragraph",
+    "paragraph": { "rich_text": [{ "type": "text", "text": { "content": "Hallways are often narrow, so a single A2 or 50x70cm print works well. Hang it at eye level — this is one space where you view art from close range, so the details matter. For a longer hallway, consider a series of three A3 prints spaced evenly along the wall." }, "plain_text": "Hallways are often narrow, so a single A2 or 50x70cm print works well. Hang it at eye level — this is one space where you view art from close range, so the details matter. For a longer hallway, consider a series of three A3 prints spaced evenly along the wall." }] }
+  },
+  {
+    "object": "block", "id": "art2-016", "type": "heading_3",
+    "heading_3": { "rich_text": [{ "type": "text", "text": { "content": "Home Office" }, "plain_text": "Home Office" }] }
+  },
+  {
+    "object": "block", "id": "art2-017", "type": "paragraph",
+    "paragraph": { "rich_text": [{ "type": "text", "text": { "content": "An A3 or A2 print above or beside your desk adds personality to video calls and provides a visual break during the working day. Choose something that inspires without distracting — botanical prints and calm abstract compositions work particularly well." }, "plain_text": "An A3 or A2 print above or beside your desk adds personality to video calls and provides a visual break during the working day. Choose something that inspires without distracting — botanical prints and calm abstract compositions work particularly well." }] }
+  },
+  {
+    "object": "block", "id": "art2-018", "type": "heading_2",
+    "heading_2": { "rich_text": [{ "type": "text", "text": { "content": "The Tape Test: Try Before You Buy" }, "plain_text": "The Tape Test: Try Before You Buy" }] }
+  },
+  {
+    "object": "block", "id": "art2-019", "type": "paragraph",
+    "paragraph": { "rich_text": [{ "type": "text", "text": { "content": "Here is a trick that interior designers use: cut a piece of paper or newspaper to the exact dimensions of the print size you are considering. Tape it to the wall where you plan to hang the artwork. Live with it for a day or two. You will quickly get a sense of whether the size feels right for the space — and it costs nothing to test." }, "plain_text": "Here is a trick that interior designers use: cut a piece of paper or newspaper to the exact dimensions of the print size you are considering. Tape it to the wall where you plan to hang the artwork. Live with it for a day or two. You will quickly get a sense of whether the size feels right for the space — and it costs nothing to test." }] }
+  },
+  {
+    "object": "block", "id": "art2-020", "type": "heading_2",
+    "heading_2": { "rich_text": [{ "type": "text", "text": { "content": "Does the Frame Change the Size?" }, "plain_text": "Does the Frame Change the Size?" }] }
+  },
+  {
+    "object": "block", "id": "art2-021", "type": "paragraph",
+    "paragraph": { "rich_text": [{ "type": "text", "text": { "content": "Yes — and it is worth accounting for. A frame adds roughly 3-5cm to each side of the print, depending on the frame profile. So an A2 print in a frame will have an overall dimension closer to 48 x 65cm. This is worth measuring if you are fitting art into a specific wall space, such as between two windows or above a piece of furniture with limited clearance." }, "plain_text": "Yes — and it is worth accounting for. A frame adds roughly 3-5cm to each side of the print, depending on the frame profile. So an A2 print in a frame will have an overall dimension closer to 48 x 65cm. This is worth measuring if you are fitting art into a specific wall space, such as between two windows or above a piece of furniture with limited clearance." }] }
+  },
+  {
+    "object": "block", "id": "art2-022", "type": "heading_2",
+    "heading_2": { "rich_text": [{ "type": "text", "text": { "content": "When in Doubt, Go Bigger" }, "plain_text": "When in Doubt, Go Bigger" }] }
+  },
+  {
+    "object": "block", "id": "art2-023", "type": "paragraph",
+    "paragraph": { "rich_text": [{ "type": "text", "text": { "content": "If you are torn between two sizes, our advice is to go with the larger option. Art that is too small for a space tends to look like an afterthought. A slightly oversized piece, on the other hand, creates intentional impact. It is far more common to regret going too small than too large." }, "plain_text": "If you are torn between two sizes, our advice is to go with the larger option. Art that is too small for a space tends to look like an afterthought. A slightly oversized piece, on the other hand, creates intentional impact. It is far more common to regret going too small than too large." }] }
+  },
+  {
+    "object": "block", "id": "art2-024", "type": "divider"
+  },
+  {
+    "object": "block", "id": "art2-025", "type": "paragraph",
+    "paragraph": { "rich_text": [{ "type": "text", "text": { "content": "All of our prints are available in multiple sizes and can be ordered with or without professional framing. Browse the collection and use the size selector on each product page to see pricing for every option." }, "plain_text": "All of our prints are available in multiple sizes and can be ordered with or without professional framing. Browse the collection and use the size selector on each product page to see pricing for every option." }] }
+  }
+]

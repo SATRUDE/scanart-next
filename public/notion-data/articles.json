@@ -114,5 +114,62 @@
     ],
     "created_time": "2025-08-30T21:06:00.000Z",
     "last_edited_time": "2025-08-30T21:11:00.000Z"
+  },
+  {
+    "id": "a1b2c3d4-e5f6-7890-abcd-111111111111",
+    "slug": "how-to-style-scandinavian-wall-art-living-room",
+    "title": "How to Style Scandinavian Wall Art in Your Living Room",
+    "excerpt": "A practical guide to choosing, placing, and styling Nordic wall art that transforms your living room into a curated Scandinavian space.",
+    "published": true,
+    "featured": true,
+    "image": "/images/products/morgenstrekk-scene.avif",
+    "author": "",
+    "category": "Styling",
+    "tags": [
+      "scandinavian wall art",
+      "living room",
+      "nordic design",
+      "interior styling"
+    ],
+    "relatedArticles": [
+      "the-art-of-choosing-art-comprehensive-guide",
+      "complete-guide-choosing-print-sizes"
+    ],
+    "selectedArtworkIds": [
+      "morgenstrekk2",
+      "birdie-blue",
+      "eltsjoen2"
+    ],
+    "created_time": "2026-04-15T10:00:00.000Z",
+    "last_edited_time": "2026-04-15T10:00:00.000Z"
+  },
+  {
+    "id": "a1b2c3d4-e5f6-7890-abcd-222222222222",
+    "slug": "complete-guide-choosing-print-sizes",
+    "title": "The Complete Guide to Choosing Print Sizes for Your Home",
+    "excerpt": "Not sure whether to go A3, A2, or A1? This guide breaks down art print sizes, where each works best, and how to pick the right one for your wall.",
+    "published": true,
+    "featured": false,
+    "image": "/images/products/hummer-og-vin-scene.avif",
+    "author": "",
+    "category": "Guide",
+    "tags": [
+      "print sizes",
+      "art print guide",
+      "A2 print",
+      "A3 print",
+      "wall art sizing"
+    ],
+    "relatedArticles": [
+      "how-to-style-scandinavian-wall-art-living-room",
+      "the-art-of-choosing-art-comprehensive-guide"
+    ],
+    "selectedArtworkIds": [
+      "hummer-og-vi2",
+      "tree-top-peach2",
+      "dancer2"
+    ],
+    "created_time": "2026-04-15T10:00:00.000Z",
+    "last_edited_time": "2026-04-15T10:00:00.000Z"
   }
 ]
