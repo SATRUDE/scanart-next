@@ -65,8 +65,24 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
+function getInitialCountry(): CountryInfo {
+  if (typeof document !== 'undefined') {
+    const match = document.cookie.match(/geo-country=(\w+)/);
+    if (match) {
+      const found = countries.find(c => c.code === match[1]);
+      if (found) return found;
+    }
+  }
+  return countries[0];
+}
+
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [selectedCountry, setSelectedCountry] = useState<CountryInfo>(countries[0]); // Default to Great Britain
+  const [selectedCountry, setSelectedCountryState] = useState<CountryInfo>(getInitialCountry);
+
+  const setSelectedCountry = (country: CountryInfo) => {
+    setSelectedCountryState(country);
+    document.cookie = `geo-country=${country.code};path=/;max-age=${60 * 60 * 24 * 365}`;
+  };
 
   const formatPrice = (prices: { GBP: number; NOK: number; USD: number; DKK: number; SEK: number }) => {
     const price = prices[selectedCountry.currency];
