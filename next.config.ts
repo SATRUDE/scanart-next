@@ -8,6 +8,15 @@ const nextConfig: NextConfig = {
       { protocol: 'https', hostname: 'www.scandinavianart.co.uk' },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/shop/:slug',
+        destination: '/product/:slug',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
