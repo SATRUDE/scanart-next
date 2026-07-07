@@ -5,6 +5,9 @@ import { getAllArticles } from '@/lib/articles';
 export const metadata: Metadata = {
   title: 'Journal',
   description: 'Read about Scandinavian art, Nordic design, and the artists behind our curated collection.',
+  alternates: {
+    canonical: '/journal',
+  },
 };
 
 export default async function JournalPage() {

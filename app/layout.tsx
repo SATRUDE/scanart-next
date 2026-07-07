@@ -39,9 +39,6 @@ export const metadata: Metadata = {
     images: ['/images/scandinavian-art-gallery-og.png'],
     site: '@scandinavianart',
   },
-  alternates: {
-    canonical: 'https://www.scandinavianart.co.uk',
-  },
 };
 
 export default function RootLayout({

@@ -1,9 +1,16 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getFeaturedProducts } from '@/lib/products';
 import { HeroSection } from '@/components/HeroSection';
 import { QualityPromise } from '@/components/QualityPromise';
 import { Testimonials } from '@/components/Testimonials';
 import { FullWidthImage } from '@/components/FullWidthImage';
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: '/',
+  },
+};
 
 export default async function HomePage() {
   const featuredProducts = await getFeaturedProducts();
