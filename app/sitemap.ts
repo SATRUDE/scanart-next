@@ -1,8 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { getAllProducts } from '@/lib/products';
 import { getAllArticles } from '@/lib/articles';
-
-const BASE_URL = 'https://www.scandinavianart.co.uk';
+import { BASE_URL } from '@/lib/site';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const products = await getAllProducts();

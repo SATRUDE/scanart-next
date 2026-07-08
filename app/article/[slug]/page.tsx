@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import { getAllArticles, getArticleBySlug, getArticleBlocks } from '@/lib/articles';
 import { NotionBlockRenderer } from '@/components/NotionBlockRenderer';
+import { BASE_URL } from '@/lib/site';
 
 export async function generateStaticParams() {
   const articles = await getAllArticles();
@@ -108,7 +109,8 @@ export default async function ArticlePage({
             '@type': 'Article',
             headline: article.title,
             description: article.excerpt,
-            image: article.image,
+            // schema.org requires absolute image URLs; omit the field when there is no image
+            ...(article.image ? { image: new URL(article.image, BASE_URL).toString() } : {}),
             datePublished: article.created_time,
             publisher: {
               '@type': 'Organization',

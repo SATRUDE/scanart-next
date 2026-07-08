@@ -9,6 +9,7 @@ import { ProductImageGalleryWrapper } from '@/components/ProductImageGalleryWrap
 import { ArtistSection } from '@/components/ArtistSection';
 import { PrintCard } from '@/components/PrintCard';
 import { getLowestProductPrices } from '@/lib/pricing';
+import { BASE_URL } from '@/lib/site';
 
 export async function generateStaticParams() {
   const products = await getAllProducts();
@@ -119,7 +120,8 @@ export default async function ProductPage({
             '@type': 'Product',
             name: product.name,
             description: product.description,
-            image: product.image,
+            // schema.org requires absolute image URLs; catalogue paths are site-relative
+            image: new URL(product.image, BASE_URL).toString(),
             brand: { '@type': 'Brand', name: product.brand },
             offers: {
               '@type': 'Offer',
