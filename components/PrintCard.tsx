@@ -69,11 +69,7 @@ export const PrintCard: React.FC<PrintCardProps> = ({
           {product.name}
         </h3>
         <p className="text-sm text-neutral-900">
-          {(() => {
-            const lowestPrices = getLowestProductPrices(product);
-            console.log(`🎴 PrintCard (${product.name}): Displaying lowest prices:`, lowestPrices);
-            return formatPrice(lowestPrices, currency);
-          })()}
+          {formatPrice(getLowestProductPrices(product), currency)}
         </p>
         {!product.inStock && (
           <p className="text-xs text-neutral-400 mt-1">Out of stock</p>
