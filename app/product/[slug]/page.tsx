@@ -122,7 +122,10 @@ export default async function ProductPage({
             description: product.description,
             // schema.org requires absolute image URLs; catalogue paths are site-relative
             image: new URL(product.image, BASE_URL).toString(),
-            brand: { '@type': 'Brand', name: product.brand },
+            // brand is empty across the exported catalogue; the artist is the
+            // meaningful maker for an art print, expressed as brand + creator
+            brand: { '@type': 'Brand', name: product.artist || product.brand },
+            creator: { '@type': 'Person', name: product.artist || product.brand },
             offers: {
               '@type': 'Offer',
               availability: product.inStock ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
