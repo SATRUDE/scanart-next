@@ -6,25 +6,25 @@ import { Article } from '@/lib/articles';
 
 interface JournalGridProps {
   articles: Article[];
-  tags: string[];
+  categories: string[];
 }
 
-export const JournalGrid: React.FC<JournalGridProps> = ({ articles, tags }) => {
-  const [selectedTag, setSelectedTag] = useState('All');
+export const JournalGrid: React.FC<JournalGridProps> = ({ articles, categories }) => {
+  const [selectedCategory, setSelectedCategory] = useState('All');
 
-  // Deep links (/journal?tag=...) are applied after hydration rather than via
-  // useSearchParams, which would opt the page out of static prerendering and
-  // strip the article list from the served HTML.
+  // Deep links (/journal?category=...) are applied after hydration rather than
+  // via useSearchParams, which would opt the page out of static prerendering
+  // and strip the article list from the served HTML.
   useEffect(() => {
-    const tag = new URLSearchParams(window.location.search).get('tag');
+    const category = new URLSearchParams(window.location.search).get('category');
     // eslint-disable-next-line react-hooks/set-state-in-effect -- one-off sync from the URL after hydration; reading it during render would cause a server/client mismatch
-    if (tag && tags.includes(tag)) setSelectedTag(tag);
-  }, [tags]);
+    if (category && categories.includes(category)) setSelectedCategory(category);
+  }, [categories]);
 
   const filteredArticles = useMemo(() => {
-    if (selectedTag === 'All') return articles;
-    return articles.filter(a => a.tags.includes(selectedTag));
-  }, [articles, selectedTag]);
+    if (selectedCategory === 'All') return articles;
+    return articles.filter(a => a.category === selectedCategory);
+  }, [articles, selectedCategory]);
 
   return (
     <div className="container mx-auto px-8 py-8">
@@ -33,17 +33,17 @@ export const JournalGrid: React.FC<JournalGridProps> = ({ articles, tags }) => {
         <p className="text-muted-foreground">{filteredArticles.length} articles</p>
       </div>
 
-      {tags.length > 0 && (
+      {categories.length > 0 && (
         <div className="flex flex-wrap gap-2 mb-8">
-          {['All', ...tags].map(tag => (
+          {['All', ...categories].map(cat => (
             <button
-              key={tag}
-              onClick={() => setSelectedTag(tag)}
+              key={cat}
+              onClick={() => setSelectedCategory(cat)}
               className={`px-4 py-2 rounded-full text-sm transition-colors ${
-                selectedTag === tag ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground hover:bg-muted/80'
+                selectedCategory === cat ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground hover:bg-muted/80'
               }`}
             >
-              {tag}
+              {cat}
             </button>
           ))}
         </div>

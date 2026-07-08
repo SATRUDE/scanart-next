@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default async function JournalPage() {
   const articles = await getAllArticles();
-  const tags = [...new Set(articles.flatMap(a => a.tags))].sort();
+  const categories = [...new Set(articles.map(a => a.category).filter(Boolean))].sort();
 
-  return <JournalGrid articles={articles} tags={tags} />;
+  return <JournalGrid articles={articles} categories={categories} />;
 }
