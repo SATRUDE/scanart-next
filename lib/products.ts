@@ -88,3 +88,16 @@ export async function getRecommendedProducts(productNames: string[]): Promise<Pr
   const products = await getAllProducts();
   return products.filter(p => productNames.includes(p.name));
 }
+
+export async function getProductLastEditedMap(): Promise<Record<string, string>> {
+  const filePath = path.join(process.cwd(), 'public', 'notion-data', 'products.json');
+  try {
+    const data = await fs.readFile(filePath, 'utf-8');
+    const raw: (NotionProduct & { last_edited_time?: string })[] = JSON.parse(data);
+    return Object.fromEntries(
+      raw.filter(p => p.last_edited_time).map(p => [p.slug, p.last_edited_time as string])
+    );
+  } catch {
+    return {};
+  }
+}
