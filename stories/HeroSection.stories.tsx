@@ -12,7 +12,7 @@ const mockProducts: Product[] = [
     artist: 'Renate Thor', artistId: '', inStock: true, published: true, featured: true, sizes: { A3: true, A2: true },
   },
   {
-    id: '2', name: 'Mean Snothing', slug: 'mean-snothing2',
+    id: '2', name: 'Mean Snothing', slug: 'mean-snothing',
     prices: { '50x70cm': { GBP: 56, NOK: 770, USD: 72, DKK: 490, SEK: 770 } },
     image: '/images/products/mean-snothing.png', secondaryImage: '/images/products/mean-snothing-scene.avif',
     description: 'Abstract piece', category: 'Abstract', brand: 'Simen Strum',

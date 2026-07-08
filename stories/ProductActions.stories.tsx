@@ -38,7 +38,7 @@ export const MultipleSizes: Story = {
 export const SingleSize: Story = {
   args: {
     product: {
-      id: '2', name: 'Dragon', slug: 'dragon2',
+      id: '2', name: 'Dragon', slug: 'dragon',
       prices: { '50x70cm': { GBP: 56, NOK: 770, USD: 72, DKK: 490, SEK: 770 } },
       image: '/images/products/dragon.png', secondaryImage: '',
       description: '', category: 'Illustrations', brand: 'Simen Strum',
