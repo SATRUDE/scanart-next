@@ -55,6 +55,7 @@ export default function RootLayout({
           defer
           src="https://datamachine.vercel.app/script.js"
           data-website-id="a2c30bff-57c9-4b47-a7a1-c77bb1718e41"
+          data-domains="www.scandinavianart.co.uk"
           strategy="afterInteractive"
         />
       </head>
