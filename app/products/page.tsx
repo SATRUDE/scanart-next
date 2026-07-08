@@ -11,7 +11,17 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function ProductsPage() {
+export default async function ProductsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+  // Awaiting searchParams (a Dynamic API) opts this page into request-time
+  // rendering, so ProductsGrid's useSearchParams resolves on the server and
+  // the served HTML carries the full product grid instead of the Suspense
+  // fallback. Statically prerendered, this page served no product content.
+  await searchParams;
+
   const products = await getAllProducts();
   const categories = [...new Set(products.map(p => p.category))].sort();
 
