@@ -10,11 +10,7 @@
   "author": "",
   "category": "Guide",
   "tags": [
-   "print sizes",
-   "art print guide",
-   "A2 print",
-   "A3 print",
-   "wall art sizing"
+   "print sizes"
   ],
   "relatedArticles": [
    "how-to-style-scandinavian-wall-art-living-room",
@@ -26,7 +22,7 @@
    "dancer"
   ],
   "created_time": "2026-07-08T08:01:00.000Z",
-  "last_edited_time": "2026-07-08T08:01:00.000Z"
+  "last_edited_time": "2026-07-08T09:47:00.000Z"
  },
  {
   "id": "39733fb2-2b5f-81de-9270-d2c8a98fb436",
@@ -34,15 +30,12 @@
   "title": "How to Style Scandinavian Wall Art in Your Living Room",
   "excerpt": "A practical guide to choosing, placing, and styling Nordic wall art that transforms your living room into a curated Scandinavian space.",
   "published": true,
-  "featured": true,
+  "featured": false,
   "image": "/images/products/morgenstrekk-scene.avif",
   "author": "",
   "category": "Styling",
   "tags": [
-   "scandinavian wall art",
-   "living room",
-   "nordic design",
-   "interior styling"
+   "art print guide"
   ],
   "relatedArticles": [
    "the-art-of-choosing-art-comprehensive-guide",
@@ -54,7 +47,33 @@
    "eltsjoen"
   ],
   "created_time": "2026-07-08T08:01:00.000Z",
-  "last_edited_time": "2026-07-08T08:01:00.000Z"
+  "last_edited_time": "2026-07-08T09:47:00.000Z"
+ },
+ {
+  "id": "39733fb2-2b5f-81c5-932d-c99aec007d62",
+  "slug": "art-in-oslo-july-2026",
+  "title": "Art in Oslo, July 2026",
+  "excerpt": "A short, curated shortlist of what's actually worth seeing in Oslo this month: Paula Rego at MUNCH, the Freia Friezes out of the factory for the first time, Cecilia Kristensen's showroom afternoons, and the 1893 Scream.",
+  "published": true,
+  "featured": true,
+  "image": "https://www.munch.no/globalassets/kunstverk/2026-utstillinger/paula-rego/t05534.jpg",
+  "author": "",
+  "category": "Exhibitions",
+  "tags": [
+   "What's on"
+  ],
+  "relatedArticles": [
+   "the-art-of-choosing-art-comprehensive-guide",
+   "who-are-scandinavian-art",
+   "an-interview-by-nordic-notes"
+  ],
+  "selectedArtworkIds": [
+   "birdie-blue",
+   "swallow-dive",
+   "hyttefrokost"
+  ],
+  "created_time": "2026-07-08T07:22:00.000Z",
+  "last_edited_time": "2026-07-08T09:47:00.000Z"
  },
  {
   "id": "24933fb2-2b5f-80f0-8b51-e9967fad3374",
