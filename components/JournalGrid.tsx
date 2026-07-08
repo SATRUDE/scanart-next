@@ -17,6 +17,7 @@ export const JournalGrid: React.FC<JournalGridProps> = ({ articles, tags }) => {
   // strip the article list from the served HTML.
   useEffect(() => {
     const tag = new URLSearchParams(window.location.search).get('tag');
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- one-off sync from the URL after hydration; reading it during render would cause a server/client mismatch
     if (tag && tags.includes(tag)) setSelectedTag(tag);
   }, [tags]);
 
