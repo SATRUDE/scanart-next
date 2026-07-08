@@ -57,21 +57,16 @@ export function getLowestProductPrice(product: any, currency: 'GBP' | 'NOK' | 'U
 
 export function getLowestProductPrices(product: any): { GBP: number; NOK: number; USD: number; DKK: number; SEK: number } {
   if (!product || !product.prices) {
-    console.log('❌ getLowestProductPrices: No product or prices found:', product);
     return { GBP: 0, NOK: 0, USD: 0, DKK: 0, SEK: 0 };
   }
-  
-  console.log('🔍 getLowestProductPrices: Product prices object:', product.prices);
-  
+
   const currencies = ['GBP', 'NOK', 'USD', 'DKK', 'SEK'] as const;
   const result: any = {};
   
   currencies.forEach(currency => {
     const pricesForCurrency = Object.values(product.prices).map((priceObj: any) => priceObj[currency] || 0);
     result[currency] = Math.min(...pricesForCurrency);
-    console.log(`   - Lowest price for ${currency}: ${result[currency]}`);
   });
-  
-  console.log('💰 getLowestProductPrices: Final lowest prices result:', result);
+
   return result;
 }
