@@ -4,6 +4,7 @@ import { Header } from '@/components/Header';
 import { Cart } from '@/components/Cart';
 import { Footer } from '@/components/Footer';
 import { RouteChangeTracker } from '@/components/RouteChangeTracker';
+import { getAllProducts } from '@/lib/products';
 import Script from 'next/script';
 import './globals.css';
 
@@ -30,22 +31,25 @@ export const metadata: Metadata = {
     siteName: 'Scandinavian Art Gallery',
     locale: 'en_GB',
     type: 'website',
-    images: [{ url: '/images/scandinavian-art-gallery-og.png' }],
+    images: [{ url: '/images/scandinavian-art-gallery-og.jpg' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Scandinavian Art Gallery - Curated Nordic Artwork & Prints',
     description: 'Discover exquisite Scandinavian and Nordic artwork from talented artists.',
-    images: ['/images/scandinavian-art-gallery-og.png'],
+    images: ['/images/scandinavian-art-gallery-og.jpg'],
     site: '@scandinavianart',
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const products = await getAllProducts();
+  const categories = [...new Set(products.map(p => p.category))].sort();
+
   return (
     <html lang="en">
       <head>
@@ -62,7 +66,7 @@ export default function RootLayout({
       <body>
         <Providers>
           <div className="min-h-screen bg-background">
-            <Header />
+            <Header categories={categories} />
             <main>{children}</main>
             <Cart />
           </div>

@@ -135,6 +135,20 @@ export default async function ProductPage({
           }),
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Home', item: BASE_URL },
+              { '@type': 'ListItem', position: 2, name: 'All Artwork', item: `${BASE_URL}/products` },
+              { '@type': 'ListItem', position: 3, name: product.name, item: `${BASE_URL}/product/${product.slug}` },
+            ],
+          }),
+        }}
+      />
     </div>
   );
 }

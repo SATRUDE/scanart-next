@@ -24,4 +24,8 @@ const meta: Meta<typeof Header> = {
 export default meta;
 type Story = StoryObj<typeof Header>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  args: {
+    categories: ['Abstract', 'Botanical', 'Illustrations'],
+  },
+};
