@@ -138,6 +138,20 @@ export default async function ArticlePage({
           }),
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Home', item: BASE_URL },
+              { '@type': 'ListItem', position: 2, name: 'Journal', item: `${BASE_URL}/journal` },
+              { '@type': 'ListItem', position: 3, name: article.title, item: `${BASE_URL}/article/${article.slug}` },
+            ],
+          }),
+        }}
+      />
     </div>
   );
 }
