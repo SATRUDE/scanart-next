@@ -128,9 +128,12 @@ export default async function ProductPage({
             creator: { '@type': 'Person', name: product.artist || product.brand },
             offers: {
               '@type': 'Offer',
+              url: `${BASE_URL}/product/${product.slug}`,
               availability: product.inStock ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
               priceCurrency: 'GBP',
               price: getLowestProductPrices(product).GBP,
+              // prices hold season-long; the horizon renews with each build
+              priceValidUntil: `${new Date().getFullYear()}-12-31`,
             },
           }),
         }}
