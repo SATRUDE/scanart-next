@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { Artist } from '@/data/artists';
 
 interface ArtistSectionProps {
@@ -15,7 +16,11 @@ export const ArtistSection: React.FC<ArtistSectionProps> = ({ artist }) => {
           </div>
         )}
         <div>
-          <h3 className="font-medium">{artist.name}</h3>
+          <h3 className="font-medium">
+            <Link href={`/artist/${artist.slug}`} className="hover:text-neutral-600 transition-colors">
+              {artist.name}
+            </Link>
+          </h3>
           {artist.location && <p className="text-sm text-muted-foreground">{artist.location}</p>}
           {artist.bio && <p className="text-sm text-muted-foreground mt-2">{artist.bio}</p>}
         </div>

@@ -79,6 +79,11 @@ export async function getProductsByCategory(category: string): Promise<Product[]
   return products.filter(p => p.category === category);
 }
 
+export async function getProductsByArtist(artistId: string): Promise<Product[]> {
+  const products = await getAllProducts();
+  return products.filter(p => p.artistId === artistId);
+}
+
 export async function getFeaturedProducts(): Promise<Product[]> {
   const products = await getAllProducts();
   return products.filter(p => p.featured);

@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { getAllProducts, getProductLastEditedMap } from '@/lib/products';
 import { getAllArticles } from '@/lib/articles';
+import { artists } from '@/data/artists';
 import { BASE_URL } from '@/lib/site';
 
 // Fallback for records without an edit date: the Next.js migration went live
@@ -40,5 +41,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.6 as const,
       changeFrequency: 'monthly' as const,
     })),
+    // artist pages exist only for artists with published work; an artist page
+    // changes when one of their prints does
+    ...artists
+      .filter(artist => products.some(p => p.artistId === artist.id))
+      .map(artist => ({
+        url: `${BASE_URL}/artist/${artist.slug}`,
+        lastModified: latest(
+          products
+            .filter(p => p.artistId === artist.id)
+            .map(p => productEdited[p.slug])
+            .filter(Boolean)
+            .map(d => new Date(d))
+        ),
+        priority: 0.6 as const,
+        changeFrequency: 'monthly' as const,
+      })),
   ];
 }
