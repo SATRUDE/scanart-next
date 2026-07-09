@@ -10,7 +10,13 @@ import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from 
 import { useCart } from '@/contexts/CartContext';
 import { LanguagePicker } from '@/components/LanguagePicker';
 
-export const Header: React.FC = () => {
+interface HeaderProps {
+  // Live catalogue categories, derived server-side in the root layout so the
+  // nav never links to an empty category or misses a populated one
+  categories: string[];
+}
+
+export const Header: React.FC<HeaderProps> = ({ categories }) => {
   const { getTotalItems, toggleCart } = useCart();
   const totalItems = getTotalItems();
   const router = useRouter();
@@ -190,7 +196,7 @@ export const Header: React.FC = () => {
               <div className="pt-4 border-t">
                 <p className="text-sm text-muted-foreground mb-4 px-[14px] py-[0px]">Categories</p>
                 <div className="flex flex-col space-y-3 px-[14px] py-[0px]">
-                  {['Botanical', 'Abstract', 'Photography'].map((cat) => (
+                  {categories.map((cat) => (
                     <Link key={cat} href={`/products?category=${cat}`} className="text-left transition-opacity hover:opacity-60" onClick={() => setMobileMenuOpen(false)}>
                       {cat}
                     </Link>
