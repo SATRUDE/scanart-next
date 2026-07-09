@@ -77,6 +77,11 @@ export default async function HomePage() {
               name: 'Scandinavian Art Gallery',
               url: 'https://www.scandinavianart.co.uk',
               logo: 'https://www.scandinavianart.co.uk/images/scandinavian-art-gallery-og.png',
+              // the gallery's live profiles, same URLs the Footer links
+              sameAs: [
+                'https://www.instagram.com/helloscandinavianart/',
+                'https://www.facebook.com/people/Scandinavian-Art/61563171855842/',
+              ],
             },
           }),
         }}
