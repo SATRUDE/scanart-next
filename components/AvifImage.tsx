@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 interface AvifImageProps {
   src: string;
@@ -24,12 +24,23 @@ export const AvifImage: React.FC<AvifImageProps> = ({
   const [imageSrc, setImageSrc] = useState(src);
   const [hasError, setHasError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const imgRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
     setImageSrc(src);
     setHasError(false);
     setIsLoading(true);
   }, [src]);
+
+  // An image that finishes loading before hydration never fires onLoad, which
+  // left it at opacity-0 behind the pulse forever (cached images especially).
+  // After mount, treat an already-complete image as loaded.
+  useEffect(() => {
+    const img = imgRef.current;
+    if (img && img.complete && img.naturalWidth > 0) {
+      setIsLoading(false);
+    }
+  }, [imageSrc]);
 
   const handleLoad = () => {
     setIsLoading(false);
@@ -68,6 +79,7 @@ export const AvifImage: React.FC<AvifImageProps> = ({
         <div className="absolute inset-0 bg-gray-200 animate-pulse rounded" />
       )}
       <img
+        ref={imgRef}
         src={imageSrc}
         alt={alt}
         loading={loading}
