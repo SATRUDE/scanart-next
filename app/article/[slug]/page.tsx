@@ -131,6 +131,12 @@ export default async function ArticlePage({
             // schema.org requires absolute image URLs; omit the field when there is no image
             ...(article.image ? { image: new URL(article.image, BASE_URL).toString() } : {}),
             datePublished: article.created_time,
+            ...(article.last_edited_time ? { dateModified: article.last_edited_time } : {}),
+            // author is blank across the exported articles; the gallery is the
+            // byline (Mark's call, 2026-07-09), a named writer becomes a Person
+            author: article.author
+              ? { '@type': 'Person', name: article.author }
+              : { '@type': 'Organization', name: 'Scandinavian Art Gallery' },
             publisher: {
               '@type': 'Organization',
               name: 'Scandinavian Art Gallery',
