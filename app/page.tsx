@@ -76,7 +76,7 @@ export default async function HomePage() {
               '@type': 'Organization',
               name: 'Scandinavian Art Gallery',
               url: 'https://www.scandinavianart.co.uk',
-              logo: 'https://www.scandinavianart.co.uk/images/scandinavian-art-gallery-og.png',
+              logo: 'https://www.scandinavianart.co.uk/images/scandinavian-art-gallery-og.jpg',
             },
           }),
         }}

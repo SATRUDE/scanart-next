@@ -31,13 +31,13 @@ export const metadata: Metadata = {
     siteName: 'Scandinavian Art Gallery',
     locale: 'en_GB',
     type: 'website',
-    images: [{ url: '/images/scandinavian-art-gallery-og.png' }],
+    images: [{ url: '/images/scandinavian-art-gallery-og.jpg' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Scandinavian Art Gallery - Curated Nordic Artwork & Prints',
     description: 'Discover exquisite Scandinavian and Nordic artwork from talented artists.',
-    images: ['/images/scandinavian-art-gallery-og.png'],
+    images: ['/images/scandinavian-art-gallery-og.jpg'],
     site: '@scandinavianart',
   },
 };
