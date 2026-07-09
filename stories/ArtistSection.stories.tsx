@@ -15,6 +15,7 @@ export const RenateThor: Story = {
     artist: {
       id: '3',
       name: 'Renate Thor',
+      slug: 'renate-thor',
       location: 'Trondheim, Norway',
       bio: 'Renate Thor is an Oslo-based illustrator, artist and graphic artist. She is known for her playful artworks and illustrations, using bold colours and compositions. She is driven by the process of her craft, allowing it to guide her to the result through free and playful experimentation.',
       image: '/images/artists/renate.png',
@@ -27,6 +28,7 @@ export const SimenWahlqvist: Story = {
     artist: {
       id: '2',
       name: 'Simen Wahlqvist',
+      slug: 'simen-wahlqvist',
       location: 'Oslo, Norway',
       bio: 'Simen Wahlqvist is a Norwegian graphic designer and illustrator based in Oslo. In his work he aims to capture moments, often before they happen, with as few lines as possible.',
       image: '/images/artists/simen.png',
@@ -39,6 +41,7 @@ export const SiaSiamos: Story = {
     artist: {
       id: '5',
       name: 'Sia Siamos',
+      slug: 'sia-siamos',
       location: 'Bergen, Norway',
       bio: 'Athanasia Siamos is a Greek and Norwegian illustrator living in Bergen.',
       image: '/images/artists/sia-siamos.png',
@@ -51,6 +54,7 @@ export const NoImage: Story = {
     artist: {
       id: '99',
       name: 'Unknown Artist',
+      slug: 'unknown-artist',
       location: 'Stockholm, Sweden',
       bio: 'An emerging Scandinavian artist.',
       image: '',
