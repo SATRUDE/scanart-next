@@ -3,7 +3,9 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import { getAllArticles, getArticleBySlug, getArticleBlocks } from '@/lib/articles';
+import { getAllProducts } from '@/lib/products';
 import { NotionBlockRenderer } from '@/components/NotionBlockRenderer';
+import { PrintCard } from '@/components/PrintCard';
 import { BASE_URL } from '@/lib/site';
 
 export async function generateStaticParams() {
@@ -48,6 +50,10 @@ export default async function ArticlePage({
   }
 
   const blocks = await getArticleBlocks(article.id);
+  const allProducts = await getAllProducts();
+  const featuredPrints = (article.selectedArtworkIds || [])
+    .map(artworkSlug => allProducts.find(p => p.slug === artworkSlug))
+    .filter((p): p is NonNullable<typeof p> => Boolean(p));
   const allArticles = await getAllArticles();
   const relatedSlugs = article.relatedArticles || [];
   const relatedArticles = relatedSlugs.length > 0
@@ -82,6 +88,19 @@ export default async function ArticlePage({
           <NotionBlockRenderer blocks={blocks} />
         )}
       </article>
+
+      {featuredPrints.length > 0 && (
+        <div className="mt-16 max-w-3xl mx-auto">
+          <h2 className="text-2xl text-neutral-900 mb-8">Prints featured in this piece</h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+            {featuredPrints.map(print => (
+              <Link key={print.id} href={`/product/${print.slug}`}>
+                <PrintCard product={print} />
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
 
       {relatedArticles.length > 0 && (
         <div className="mt-16 max-w-3xl mx-auto">
