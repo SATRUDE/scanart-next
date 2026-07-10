@@ -146,7 +146,7 @@ export default async function ProductPage({
             '@type': 'BreadcrumbList',
             itemListElement: [
               { '@type': 'ListItem', position: 1, name: 'Home', item: BASE_URL },
-              { '@type': 'ListItem', position: 2, name: 'All Artwork', item: `${BASE_URL}/products` },
+              { '@type': 'ListItem', position: 2, name: 'Art Prints', item: `${BASE_URL}/products` },
               { '@type': 'ListItem', position: 3, name: product.name, item: `${BASE_URL}/product/${product.slug}` },
             ],
           }),

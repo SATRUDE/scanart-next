@@ -123,7 +123,7 @@ export default async function ArtistPage({
             '@type': 'BreadcrumbList',
             itemListElement: [
               { '@type': 'ListItem', position: 1, name: 'Home', item: BASE_URL },
-              { '@type': 'ListItem', position: 2, name: 'All Artwork', item: `${BASE_URL}/products` },
+              { '@type': 'ListItem', position: 2, name: 'Art Prints', item: `${BASE_URL}/products` },
               { '@type': 'ListItem', position: 3, name: artist.name, item: `${BASE_URL}/artist/${artist.slug}` },
             ],
           }),

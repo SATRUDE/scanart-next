@@ -4,8 +4,8 @@ import { getAllProducts } from '@/lib/products';
 import { ProductsGrid } from '@/components/ProductsGrid';
 
 export const metadata: Metadata = {
-  title: 'All Artwork',
-  description: 'Browse our curated collection of Scandinavian and Nordic artwork. Shop wall art, prints, and original pieces from talented Scandinavian artists.',
+  title: 'Nordic & Scandinavian Art Prints',
+  description: 'Shop Nordic and Scandinavian art prints from talented artists. Curated wall art and original pieces, with free UK delivery.',
   alternates: {
     canonical: '/products',
   },
