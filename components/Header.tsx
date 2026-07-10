@@ -59,6 +59,7 @@ export const Header: React.FC<HeaderProps> = ({ categories }) => {
     : pathname.startsWith('/journal') ? 'journal'
     : pathname.startsWith('/article/') ? 'article'
     : pathname.startsWith('/checkout') ? 'checkout'
+    : pathname.startsWith('/about') ? 'about'
     : 'home';
 
   return (
@@ -92,6 +93,14 @@ export const Header: React.FC<HeaderProps> = ({ categories }) => {
               }`}
             >
               Journal
+            </Link>
+            <Link
+              href="/about"
+              className={`hidden md:block transition-opacity hover:opacity-60 ml-6 ${
+                currentPage === 'about' ? 'opacity-100' : 'opacity-60'
+              }`}
+            >
+              About
             </Link>
           </div>
 
@@ -208,6 +217,7 @@ export const Header: React.FC<HeaderProps> = ({ categories }) => {
                 <div className="flex flex-col space-y-3 px-[14px] py-[0px]">
                   <Link href="/products" className="text-left transition-opacity hover:opacity-60" onClick={() => setMobileMenuOpen(false)}>Shop All</Link>
                   <Link href="/journal" className="text-left transition-opacity hover:opacity-60" onClick={() => setMobileMenuOpen(false)}>Journal</Link>
+                  <Link href="/about" className="text-left transition-opacity hover:opacity-60" onClick={() => setMobileMenuOpen(false)}>About</Link>
                   <a href="mailto:hello@scandinavianart.co.uk" className="text-left transition-opacity hover:opacity-60">Send Email</a>
                   <a href="https://www.instagram.com/helloscandinavianart/" target="_blank" rel="noopener noreferrer" className="text-left transition-opacity hover:opacity-60">Instagram</a>
                   <a href="https://www.facebook.com/people/Scandinavian-Art/61563171855842/" target="_blank" rel="noopener noreferrer" className="text-left transition-opacity hover:opacity-60">Facebook</a>
