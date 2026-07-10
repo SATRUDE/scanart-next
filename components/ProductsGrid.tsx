@@ -58,7 +58,7 @@ export const ProductsGrid: React.FC<ProductsGridProps> = ({ products, categories
       <div className="container mx-auto px-8 py-8">
         <div className="mb-8">
           <h1 className="text-3xl text-neutral-900 mb-2">
-            {searchQuery ? `Search: "${searchQuery}"` : 'All Artwork'}
+            {searchQuery ? `Search: "${searchQuery}"` : 'Nordic & Scandinavian Art Prints'}
           </h1>
           <p className="text-muted-foreground">{filteredProducts.length} prints</p>
         </div>
