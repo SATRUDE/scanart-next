@@ -38,7 +38,7 @@ export const artists: Artist[] = [
     slug: 'ingunn-dybendal',
     location: 'Oslo, Norway',
     bio: 'Ingunn Dybendal is an artist and illustrator based in Oslo, Norway.',
-    image: '/images/artists/ingunn-dybendal.png'
+    image: ''
   },
   {
     id: '5',
@@ -54,7 +54,7 @@ export const artists: Artist[] = [
     slug: 'nils-andersson',
     location: 'Malmö, Sweden',
     bio: 'A contemporary artist whose work bridges traditional Scandinavian craftsmanship with modern aesthetic sensibilities. His pieces tell stories of heritage and innovation.',
-    image: '/images/artists/nils-andersson.png'
+    image: ''
   }
 ];
 
@@ -64,4 +64,11 @@ export const getArtistById = (id: string) => {
 
 export const getArtistBySlug = (slug: string) => {
   return artists.find(artist => artist.slug === slug);
+};
+
+export const getArtistInitials = (name: string) => {
+  const parts = name.trim().split(/\s+/);
+  const first = parts[0]?.[0] ?? '';
+  const last = parts.length > 1 ? parts[parts.length - 1][0] : '';
+  return (first + last).toUpperCase();
 }; 

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
-import { artists, getArtistBySlug } from '@/data/artists';
+import { artists, getArtistBySlug, getArtistInitials } from '@/data/artists';
 import { getProductsByArtist } from '@/lib/products';
 import { PrintCard } from '@/components/PrintCard';
 import { BASE_URL } from '@/lib/site';
@@ -68,9 +68,13 @@ export default async function ArtistPage({
 
       <header className="mb-16">
         <div className="flex items-start gap-6">
-          {artist.image && (
+          {artist.image ? (
             <div className="h-20 w-20 rounded-full overflow-hidden flex-shrink-0">
               <img src={artist.image} alt={artist.name} className="w-full h-full object-cover" />
+            </div>
+          ) : (
+            <div aria-hidden="true" className="h-20 w-20 rounded-full bg-muted flex items-center justify-center flex-shrink-0">
+              <span className="text-xl font-medium text-muted-foreground">{getArtistInitials(artist.name)}</span>
             </div>
           )}
           <div>
