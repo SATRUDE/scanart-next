@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next';
 import { getAllProducts, getProductLastEditedMap } from '@/lib/products';
 import { getAllArticles } from '@/lib/articles';
 import { artists } from '@/data/artists';
+import { categoryLandings } from '@/lib/categories';
 import { BASE_URL } from '@/lib/site';
 
 // Fallback for records without an edit date: the Next.js migration went live
