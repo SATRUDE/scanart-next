@@ -16,11 +16,42 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div className="min-h-screen">
+      {/* Hero: full-bleed image darkened for legibility, left-pinned text.
+          Adapted from the SPN HeroFull pattern, rebuilt in SA's own tokens. */}
+      <section className="container mx-auto px-8 pt-8">
+        <div className="relative flex items-center overflow-hidden rounded min-h-[60vh] md:min-h-[70vh]">
+          {/* full-bleed cover image; this project uses plain <img> (see FullWidthImage), not next/image */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/products/tree-top-peach-scene.avif"
+            alt="A framed Scandinavian art print in a light Nordic interior"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+          {/* mobile base + desktop left gradient keep white text legible on this light image */}
+          <div className="absolute inset-0 bg-black/45 md:bg-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/45 to-transparent" />
+          <div className="relative max-w-lg px-8 py-16 text-white md:px-12 lg:px-16">
+            <h1 className="text-3xl md:text-4xl font-normal leading-tight tracking-tight">
+              Bringing Scandinavian art into homes around the world
+            </h1>
+            <p className="mt-4 text-lg leading-relaxed text-white/90">
+              An online gallery working directly with Scandinavian artists to bring authentic Nordic prints to a wider audience.
+            </p>
+            <Link
+              href="/products"
+              className="mt-8 inline-flex h-10 items-center justify-center rounded-md bg-white px-6 text-sm font-medium text-gray-900 hover:bg-white/90"
+            >
+              Explore the collection
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <section className="py-16">
         <div className="container mx-auto px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-16">
             <div className="lg:col-span-1">
-              <h1 className="text-3xl text-neutral-900 mb-0">About Scandinavian Art</h1>
+              <h2 className="text-3xl text-neutral-900 mb-0">About Scandinavian Art</h2>
             </div>
             <div className="lg:col-span-2">
               <p className="text-lg text-neutral-600 leading-relaxed mb-4">
