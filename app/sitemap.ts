@@ -29,6 +29,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: BASE_URL, lastModified: latest([...productDates, ...articleDates]), priority: 1.0, changeFrequency: 'daily' },
     { url: `${BASE_URL}/products`, lastModified: latest(productDates), priority: 0.9, changeFrequency: 'weekly' },
     { url: `${BASE_URL}/journal`, lastModified: latest(articleDates), priority: 0.8, changeFrequency: 'weekly' },
+    // static page; date is its publication, bumped by hand when the copy changes
+    { url: `${BASE_URL}/about`, lastModified: new Date('2026-07-10'), priority: 0.5, changeFrequency: 'yearly' },
     ...products.map(p => ({
       url: `${BASE_URL}/product/${p.slug}`,
       lastModified: productEdited[p.slug] ? new Date(productEdited[p.slug]) : SITE_LAUNCH,
