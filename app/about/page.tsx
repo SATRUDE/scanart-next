@@ -30,19 +30,24 @@ export default function AboutPage() {
           {/* mobile base + desktop left gradient keep white text legible on this light image */}
           <div className="absolute inset-0 bg-black/45 md:bg-transparent" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/45 to-transparent" />
-          <div className="relative max-w-lg px-8 py-16 text-white md:px-12 lg:px-16">
-            <h1 className="text-3xl md:text-4xl font-normal leading-tight tracking-tight">
-              Bringing Scandinavian art into homes around the world
-            </h1>
-            <p className="mt-4 text-lg leading-relaxed text-white/90">
-              An online gallery working directly with Scandinavian artists to bring authentic Nordic prints to a wider audience.
-            </p>
-            <Link
-              href="/products"
-              className="mt-8 inline-flex h-10 items-center justify-center rounded-md bg-white px-6 text-sm font-medium text-gray-900 hover:bg-white/90"
-            >
-              Explore the collection
-            </Link>
+          {/* text constrained to the page container so it aligns with the nav and body content */}
+          <div className="relative w-full">
+            <div className="container mx-auto px-8">
+              <div className="max-w-lg py-16 text-white">
+                <h1 className="text-3xl md:text-4xl font-normal leading-tight tracking-tight">
+                  Bringing Scandinavian art into homes around the world
+                </h1>
+                <p className="mt-4 text-lg leading-relaxed text-white/90">
+                  An online gallery working directly with Scandinavian artists to bring authentic Nordic prints to a wider audience.
+                </p>
+                <Link
+                  href="/products"
+                  className="mt-8 inline-flex h-10 items-center justify-center rounded-md bg-white px-6 text-sm font-medium text-gray-900 hover:bg-white/90"
+                >
+                  Explore the collection
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
