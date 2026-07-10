@@ -18,7 +18,7 @@ export default function AboutPage() {
     <div className="min-h-screen">
       {/* Hero: full-bleed image darkened for legibility, left-pinned text.
           Adapted from the SPN HeroFull pattern, rebuilt in SA's own tokens. */}
-      <section className="container mx-auto px-8 pt-8">
+      <section className="mx-auto max-w-[1680px] px-8 pt-8">
         <div className="relative flex items-center overflow-hidden rounded min-h-[60vh] md:min-h-[70vh]">
           {/* full-bleed cover image; this project uses plain <img> (see FullWidthImage), not next/image */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
