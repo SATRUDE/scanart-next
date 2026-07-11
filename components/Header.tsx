@@ -9,6 +9,7 @@ import { Input } from '@/components/ui/input';
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from '@/components/ui/sheet';
 import { useCart } from '@/contexts/CartContext';
 import { LanguagePicker } from '@/components/LanguagePicker';
+import { getCategoryLandingByCategory } from '@/lib/categories';
 
 interface HeaderProps {
   // Live catalogue categories, derived server-side in the root layout so the
@@ -205,11 +206,14 @@ export const Header: React.FC<HeaderProps> = ({ categories }) => {
               <div className="pt-4 border-t">
                 <p className="text-sm text-muted-foreground mb-4 px-[14px] py-[0px]">Categories</p>
                 <div className="flex flex-col space-y-3 px-[14px] py-[0px]">
-                  {categories.map((cat) => (
-                    <Link key={cat} href={`/products?category=${cat}`} className="text-left transition-opacity hover:opacity-60" onClick={() => setMobileMenuOpen(false)}>
+                  {categories.map((cat) => {
+                    const landing = getCategoryLandingByCategory(cat);
+                    return (
+                    <Link key={cat} href={landing ? `/category/${landing.slug}` : `/products?category=${cat}`} className="text-left transition-opacity hover:opacity-60" onClick={() => setMobileMenuOpen(false)}>
                       {cat}
                     </Link>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
               <div className="pt-4 border-t">
