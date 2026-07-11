@@ -1,7 +1,14 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb';
 import { getAllArticles, getArticleBySlug, getArticleBlocks } from '@/lib/articles';
 import { getAllProducts } from '@/lib/products';
 import { NotionBlockRenderer } from '@/components/NotionBlockRenderer';
@@ -62,10 +69,21 @@ export default async function ArticlePage({
 
   return (
     <div className="container mx-auto px-8 py-8">
-      <Link href="/journal" className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground mb-8">
-        <ArrowLeft className="h-4 w-4 mr-2" />
-        Back to Journal
-      </Link>
+      <Breadcrumb className="mb-8">
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink asChild><Link href="/">Home</Link></BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbLink asChild><Link href="/journal">Journal</Link></BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbPage>{article.title}</BreadcrumbPage>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
 
       <article className="max-w-3xl mx-auto">
         <header className="mb-8">
