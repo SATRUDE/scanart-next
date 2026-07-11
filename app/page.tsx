@@ -6,6 +6,8 @@ import { QualityPromise } from '@/components/QualityPromise';
 import { Testimonials } from '@/components/Testimonials';
 import { FullWidthImage } from '@/components/FullWidthImage';
 import { getCategoryLandingByCategory } from '@/lib/categories';
+import { getAllArticles } from '@/lib/articles';
+import { ArticleCard } from '@/components/ArticleCard';
 
 export const metadata: Metadata = {
   alternates: {
@@ -15,6 +17,7 @@ export const metadata: Metadata = {
 
 export default async function HomePage() {
   const featuredProducts = await getFeaturedProducts();
+  const latestArticles = (await getAllArticles()).slice(0, 3);
 
   return (
     <div className="min-h-screen">
@@ -66,6 +69,30 @@ export default async function HomePage() {
       <QualityPromise />
       <Testimonials />
       <FullWidthImage />
+
+      {/* From the journal: the homepage's first internal link into the journal/content pages */}
+      {latestArticles.length > 0 && (
+        <section className="container mx-auto px-8 py-16">
+          <div className="flex items-center justify-between gap-6 mb-8">
+            <h2 className="text-3xl font-normal text-neutral-900">From the journal</h2>
+            <Link
+              href="/journal"
+              className="text-sm font-medium text-neutral-900 hover:text-neutral-600 transition-colors whitespace-nowrap"
+            >
+              Read the journal →
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {latestArticles.map((article, i) => (
+              <ArticleCard
+                key={article.id}
+                article={article}
+                imageAspectClass={i === 2 ? 'aspect-[16/9]' : 'aspect-[4/3]'}
+              />
+            ))}
+          </div>
+        </section>
+      )}
 
       <script
         type="application/ld+json"
