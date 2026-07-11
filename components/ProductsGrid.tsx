@@ -7,6 +7,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { getLowestProductPrices } from '@/lib/pricing';
 import { SmartImage } from '@/components/SmartImage';
 import { getArtistById } from '@/data/artists';
+import { getCategoryLandingByCategory } from '@/lib/categories';
 import { Product } from '@/contexts/CartContext';
 
 interface ProductsGridProps {
@@ -19,7 +20,9 @@ export const ProductsGrid: React.FC<ProductsGridProps> = ({ products, categories
   const initialCategory = searchParams.get('category') || 'All';
   const searchQuery = searchParams.get('q') || '';
 
-  const [selectedCategory, setSelectedCategory] = useState(initialCategory);
+  // Read-only now: category chips link to the /category/<slug> landing pages, so
+  // the only thing that sets this is a legacy /products?category= deep link on mount.
+  const [selectedCategory] = useState(initialCategory);
   const [sortBy, setSortBy] = useState('name');
   const { formatPrice } = useLanguage();
 
@@ -65,17 +68,26 @@ export const ProductsGrid: React.FC<ProductsGridProps> = ({ products, categories
 
         {!searchQuery && (
           <div className="flex flex-wrap gap-2 mb-8">
-            {['All', ...categories].map(cat => (
-              <button
-                key={cat}
-                onClick={() => setSelectedCategory(cat)}
-                className={`px-4 py-2 rounded-full text-sm transition-colors ${
-                  selectedCategory === cat ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground hover:bg-muted/80'
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
+            {['All', ...categories].map(cat => {
+              const landing = cat === 'All' ? null : getCategoryLandingByCategory(cat);
+              // Category chips link to the /category/<slug> landing pages (so they're
+              // crawlable and get their own SEO), falling back to the in-page filter
+              // only if a category has no landing page yet.
+              const href = cat === 'All'
+                ? '/products'
+                : landing ? `/category/${landing.slug}` : `/products?category=${encodeURIComponent(cat)}`;
+              return (
+                <Link
+                  key={cat}
+                  href={href}
+                  className={`px-4 py-2 rounded-full text-sm transition-colors ${
+                    selectedCategory === cat ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground hover:bg-muted/80'
+                  }`}
+                >
+                  {cat}
+                </Link>
+              );
+            })}
           </div>
         )}
 

@@ -5,6 +5,7 @@ import { HeroSection } from '@/components/HeroSection';
 import { QualityPromise } from '@/components/QualityPromise';
 import { Testimonials } from '@/components/Testimonials';
 import { FullWidthImage } from '@/components/FullWidthImage';
+import { getCategoryLandingByCategory } from '@/lib/categories';
 
 export const metadata: Metadata = {
   alternates: {
@@ -40,15 +41,18 @@ export default async function HomePage() {
               { name: 'Botanical', image: '/images/homepage/botanical.avif', desc: 'Discover nature-inspired pieces that bring organic beauty and tranquility to your space.' },
               { name: 'Illustrations', image: '/images/homepage/illustration.avif', desc: 'Playful, characterful, and full of charm — our illustration pieces blend Scandinavian wit with bold, contemporary style.' },
               { name: 'Abstract', image: '/images/homepage/abstract.avif', desc: 'Explore contemporary abstract art that adds modern sophistication to your home.' },
-            ].map(cat => (
-              <Link key={cat.name} href={`/products?category=${cat.name}`} className="group cursor-pointer">
+            ].map(cat => {
+              const landing = getCategoryLandingByCategory(cat.name);
+              return (
+              <Link key={cat.name} href={landing ? `/category/${landing.slug}` : `/products?category=${cat.name}`} className="group cursor-pointer">
                 <div className="aspect-[4/5] overflow-hidden bg-neutral-50 rounded mb-4">
                   <img src={cat.image} alt={`${cat.name} Category`} className="w-full h-full object-cover transition-all duration-300 group-hover:scale-[1.02]" />
                 </div>
                 <h3 className="text-lg font-medium mb-2">{cat.name}</h3>
                 <p className="text-muted-foreground text-sm">{cat.desc}</p>
               </Link>
-            ))}
+              );
+            })}
           </div>
 
           <div className="text-center mt-12">

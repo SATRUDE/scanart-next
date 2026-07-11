@@ -48,3 +48,9 @@ export const categoryLandings: CategoryLanding[] = [
 export function getCategoryLandingBySlug(slug: string): CategoryLanding | undefined {
   return categoryLandings.find(c => c.slug === slug);
 }
+
+// Map a catalogue category value (e.g. "Botanical") to its landing page, so the
+// homepage, nav and products filter all link to /category/<slug> consistently.
+export function getCategoryLandingByCategory(category: string): CategoryLanding | undefined {
+  return categoryLandings.find(c => c.category === category);
+}
