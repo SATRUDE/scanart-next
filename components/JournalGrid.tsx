@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState, useMemo, useEffect } from 'react';
-import Link from 'next/link';
 import { Article } from '@/lib/articles';
+import { ArticleCard } from '@/components/ArticleCard';
 
 interface JournalGridProps {
   articles: Article[];
@@ -51,28 +51,7 @@ export const JournalGrid: React.FC<JournalGridProps> = ({ articles, categories }
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {filteredArticles.map(article => (
-          <Link key={article.id} href={`/article/${article.slug}`} className="group">
-            {article.image && (
-              <div className="aspect-[4/3] overflow-hidden bg-neutral-50 rounded mb-4">
-                <img
-                  src={article.image}
-                  alt={article.title}
-                  className="w-full h-full object-cover transition-all duration-300 group-hover:scale-[1.02]"
-                />
-              </div>
-            )}
-            <div className="space-y-2">
-              {article.category && (
-                <span className="text-xs text-muted-foreground uppercase tracking-wider">{article.category}</span>
-              )}
-              <h2 className="text-lg font-medium text-neutral-900 group-hover:text-neutral-600 transition-colors">
-                {article.title}
-              </h2>
-              {article.excerpt && (
-                <p className="text-sm text-muted-foreground line-clamp-3">{article.excerpt}</p>
-              )}
-            </div>
-          </Link>
+          <ArticleCard key={article.id} article={article} titleAs="h2" />
         ))}
       </div>
 
