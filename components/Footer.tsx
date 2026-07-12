@@ -18,6 +18,7 @@ export const Footer: React.FC = () => {
             <ul className="text-sm text-neutral-900 space-y-2">
               <li><Link href="/about" className="hover:text-neutral-600 transition-colors">About</Link></li>
               <li><Link href="/journal" className="hover:text-neutral-600 transition-colors">Journal</Link></li>
+              <li><Link href="/artists" className="hover:text-neutral-600 transition-colors">Artists</Link></li>
               <li><button disabled className="text-neutral-400 cursor-not-allowed opacity-50">Newsletter</button></li>
               <li><Link href="/products" className="hover:text-neutral-600 transition-colors">Shop All</Link></li>
             </ul>
