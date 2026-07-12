@@ -66,17 +66,17 @@ export const Cart: React.FC = () => {
                             {item.size && <p className="text-xs text-muted-foreground">Size: {item.size.charAt(0).toUpperCase() + item.size.slice(1)}</p>}
                             {item.frame && item.frame !== 'no-frame' && <p className="text-xs text-muted-foreground">Frame: {getFrameName(item.frame)}</p>}
                           </div>
-                          <button onClick={() => removeFromCart(item.product.id, item.size, item.frame)} className="text-muted-foreground hover:text-foreground">
+                          <button aria-label={`Remove ${item.product.name}`} onClick={() => removeFromCart(item.product.id, item.size, item.frame)} className="text-muted-foreground hover:text-foreground">
                             <X className="h-4 w-4" />
                           </button>
                         </div>
                         <div className="flex items-center justify-between">
                           <div className="flex items-center space-x-2">
-                            <Button size="icon" className="h-6 w-6 border border-neutral-200 bg-background text-foreground hover:bg-gray-50 hover:text-gray-900" onClick={() => updateQuantity(item.product.id, item.quantity - 1, item.size, item.frame)}>
+                            <Button aria-label="Decrease quantity" size="icon" className="h-6 w-6 border border-neutral-200 bg-background text-foreground hover:bg-gray-50 hover:text-gray-900" onClick={() => updateQuantity(item.product.id, item.quantity - 1, item.size, item.frame)}>
                               <Minus className="h-3 w-3" />
                             </Button>
                             <span className="w-8 text-center text-sm">{item.quantity}</span>
-                            <Button size="icon" className="h-6 w-6 border border-neutral-200 bg-background text-foreground hover:bg-gray-50 hover:text-gray-900" onClick={() => updateQuantity(item.product.id, item.quantity + 1, item.size, item.frame)}>
+                            <Button aria-label="Increase quantity" size="icon" className="h-6 w-6 border border-neutral-200 bg-background text-foreground hover:bg-gray-50 hover:text-gray-900" onClick={() => updateQuantity(item.product.id, item.quantity + 1, item.size, item.frame)}>
                               <Plus className="h-3 w-3" />
                             </Button>
                           </div>
