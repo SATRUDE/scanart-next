@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { LegalPage, LegalSection } from '@/components/LegalPage';
 import { COMPANY } from '@/config/company';
-import { getAllShippingRates } from '@/config/shipping';
+import { DeliveryRatesTable } from '@/components/DeliveryRatesTable';
 
 export const metadata: Metadata = {
   title: 'Delivery & Returns',
@@ -12,8 +12,6 @@ export const metadata: Metadata = {
 
 // The date this policy takes effect; bump by hand when the wording changes.
 const LAST_UPDATED = '12 July 2026';
-
-const rates = getAllShippingRates();
 
 const sections: LegalSection[] = [
   {
@@ -39,27 +37,8 @@ const sections: LegalSection[] = [
     heading: 'Delivery times and costs',
     body: (
       <>
-        <div className="overflow-x-auto">
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="border-b border-border text-left">
-                <th className="py-2 pr-4 font-medium text-neutral-900">Destination</th>
-                <th className="py-2 pr-4 font-medium text-neutral-900">Cost</th>
-                <th className="py-2 font-medium text-neutral-900">Estimated delivery</th>
-              </tr>
-            </thead>
-            <tbody>
-              {rates.map(rate => (
-                <tr key={rate.countryCode} className="border-b border-border">
-                  <td className="py-2 pr-4">{rate.countryName}</td>
-                  <td className="py-2 pr-4">£{rate.costs.GBP.toFixed(2)}</td>
-                  <td className="py-2">{rate.estimatedDays}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <p>Costs are shown here in GBP; at checkout they appear in your selected currency.</p>
+        <DeliveryRatesTable />
+        <p>Costs are shown in your selected currency; change it from the menu at the top of the page.</p>
       </>
     ),
   },
