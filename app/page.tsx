@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { getFeaturedProducts } from '@/lib/products';
+import { getFeaturedProducts, getProductsByArtist } from '@/lib/products';
+import { artists } from '@/data/artists';
+import { ArtistsList, ArtistWithCount } from '@/components/ArtistsList';
 import { HeroSection } from '@/components/HeroSection';
 import { QualityPromise } from '@/components/QualityPromise';
 import { Testimonials } from '@/components/Testimonials';
@@ -18,6 +20,15 @@ export const metadata: Metadata = {
 export default async function HomePage() {
   const featuredProducts = await getFeaturedProducts();
   const latestArticles = (await getAllArticles()).slice(0, 3);
+
+  // Artists with published work, most-published first, for the homepage teaser
+  const artistsWithCounts: ArtistWithCount[] = [];
+  for (const artist of artists) {
+    const products = await getProductsByArtist(artist.id);
+    if (products.length > 0) artistsWithCounts.push({ ...artist, printCount: products.length });
+  }
+  artistsWithCounts.sort((a, b) => b.printCount - a.printCount || a.name.localeCompare(b.name));
+  const featuredArtists = artistsWithCounts.slice(0, 3);
 
   return (
     <div className="min-h-screen">
@@ -69,6 +80,24 @@ export default async function HomePage() {
       <QualityPromise />
       <Testimonials />
       <FullWidthImage />
+
+      {/* Meet the artists: homepage door-in to the /artists hub and artist pages */}
+      {featuredArtists.length > 0 && (
+        <section className="container mx-auto px-8 py-16">
+          <div className="max-w-3xl mx-auto">
+            <div className="flex items-center justify-between gap-6 mb-8">
+              <h2 className="text-3xl font-normal text-neutral-900">Meet the artists</h2>
+              <Link
+                href="/artists"
+                className="text-sm font-medium text-neutral-900 hover:text-neutral-600 transition-colors whitespace-nowrap"
+              >
+                View all artists →
+              </Link>
+            </div>
+            <ArtistsList artists={featuredArtists} />
+          </div>
+        </section>
+      )}
 
       {/* From the journal: the homepage's first internal link into the journal/content pages */}
       {latestArticles.length > 0 && (
