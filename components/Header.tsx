@@ -232,6 +232,7 @@ export const Header: React.FC<HeaderProps> = ({ categories }) => {
                   <Link href="/journal" className="text-left transition-opacity hover:opacity-60" onClick={() => setMobileMenuOpen(false)}>Journal</Link>
                   <Link href="/artists" className="text-left transition-opacity hover:opacity-60" onClick={() => setMobileMenuOpen(false)}>Artists</Link>
                   <Link href="/about" className="text-left transition-opacity hover:opacity-60" onClick={() => setMobileMenuOpen(false)}>About</Link>
+                  <Link href="/help" className="text-left transition-opacity hover:opacity-60" onClick={() => setMobileMenuOpen(false)}>Help</Link>
                   <a href="mailto:hello@scandinavianart.co.uk" className="text-left transition-opacity hover:opacity-60">Send Email</a>
                   <a href="https://www.instagram.com/helloscandinavianart/" target="_blank" rel="noopener noreferrer" className="text-left transition-opacity hover:opacity-60">Instagram</a>
                   <a href="https://www.facebook.com/people/Scandinavian-Art/61563171855842/" target="_blank" rel="noopener noreferrer" className="text-left transition-opacity hover:opacity-60">Facebook</a>
