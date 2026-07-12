@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   alternates: { canonical: '/privacy' },
 };
 
-// TODO_LEGAL: set this to the date the policy takes effect when it's signed off.
+// The date this policy takes effect; bump by hand when the wording changes.
 const LAST_UPDATED = '12 July 2026';
 
 const sections: LegalSection[] = [
@@ -18,10 +18,14 @@ const sections: LegalSection[] = [
     body: (
       <>
         <p>
-          Scandinavian Art is an online gallery selling art prints, operated by {COMPANY.name} ({COMPANY.orgNr}),
-          a business based in {COMPANY.country}. We are the data controller for the personal data described here.
+          Scandinavian Art is an online gallery selling art prints, operated from {COMPANY.country}
+          {COMPANY.orgNr ? ` (org.nr ${COMPANY.orgNr})` : ''}. We are the data controller for the personal
+          data described here.
         </p>
-        <p>You can reach us at {COMPANY.email}. Our registered address is {COMPANY.address}.</p>
+        <p>
+          You can reach us at {COMPANY.email}.
+          {COMPANY.address ? ` Our registered address is ${COMPANY.address}.` : ''}
+        </p>
       </>
     ),
   },
@@ -70,6 +74,7 @@ const sections: LegalSection[] = [
         <ul className="list-disc pl-5 space-y-1">
           <li><strong>Stripe</strong> — to take payment.</li>
           <li><strong>Gelato</strong> and its delivery partners — to print and ship your order.</li>
+          <li><strong>Slack</strong> — your order details are sent to our team as an order notification.</li>
         </ul>
         <p>
           Some of these providers operate outside {COMPANY.country} and the EEA. Where your data is transferred abroad,
@@ -82,9 +87,10 @@ const sections: LegalSection[] = [
     heading: 'How long we keep it',
     body: (
       <p>
-        We keep order and transaction records for as long as we need them and as required by Norwegian accounting law
-        {/* TODO_LEGAL: confirm exact retention period (bokføringsloven is typically 5 years) */}. Other personal data is
-        kept no longer than necessary for the purposes above.
+        We hold personal data only as long as we need it. We do not keep our own customer database: your order and
+        payment details are held by our payment and print partners (Stripe and Gelato) under their own policies, and
+        for as long as we need them to meet accounting and tax obligations. Our website analytics (Umami) is cookieless
+        and aggregate, and is retained in line with our analytics settings.
       </p>
     ),
   },
@@ -114,5 +120,5 @@ const sections: LegalSection[] = [
 ];
 
 export default function PrivacyPage() {
-  return <LegalPage title="Privacy Policy" lastUpdated={LAST_UPDATED} sections={sections} draftNotice />;
+  return <LegalPage title="Privacy Policy" lastUpdated={LAST_UPDATED} sections={sections} />;
 }

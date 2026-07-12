@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   alternates: { canonical: '/terms' },
 };
 
-// TODO_LEGAL: set this to the date the terms take effect when they're signed off.
+// The date these terms take effect; bump by hand when the wording changes.
 const LAST_UPDATED = '12 July 2026';
 
 const sections: LegalSection[] = [
@@ -17,9 +17,9 @@ const sections: LegalSection[] = [
     heading: 'About us and these terms',
     body: (
       <p>
-        Scandinavian Art is operated by {COMPANY.name} ({COMPANY.orgNr}), a business based in {COMPANY.country}, contactable
-        at {COMPANY.email}. These terms govern your use of this site and any purchase you make. By placing an order you
-        accept them.
+        Scandinavian Art is an online art-print gallery operated from {COMPANY.country}
+        {COMPANY.orgNr ? ` (org.nr ${COMPANY.orgNr})` : ''}, contactable at {COMPANY.email}. These terms govern your use
+        of this site and any purchase you make. By placing an order you accept them.
       </p>
     ),
   },
@@ -110,9 +110,8 @@ const sections: LegalSection[] = [
     heading: 'Governing law',
     body: (
       <p>
-        These terms are governed by the law of {COMPANY.country}
-        {/* TODO_LEGAL: confirm governing-law/applicable-law wording for cross-border consumer sales */}. This does not
-        deprive you of the mandatory consumer protections of your country of residence.
+        These terms are governed by the law of {COMPANY.country}. This does not deprive you of the mandatory consumer
+        protections of your country of residence.
       </p>
     ),
   },
@@ -123,5 +122,5 @@ const sections: LegalSection[] = [
 ];
 
 export default function TermsPage() {
-  return <LegalPage title="Terms & Conditions" lastUpdated={LAST_UPDATED} sections={sections} draftNotice />;
+  return <LegalPage title="Terms & Conditions" lastUpdated={LAST_UPDATED} sections={sections} />;
 }

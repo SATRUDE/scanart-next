@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   alternates: { canonical: '/delivery' },
 };
 
-// TODO_LEGAL: set this to the date the policy takes effect when it's signed off.
+// The date this policy takes effect; bump by hand when the wording changes.
 const LAST_UPDATED = '12 July 2026';
 
 const rates = getAllShippingRates();
@@ -95,8 +95,8 @@ const sections: LegalSection[] = [
     heading: 'How refunds are made',
     body: (
       <p>
-        Refunds are made to your original payment method via Stripe
-        {/* TODO_LEGAL: confirm the refund timeframe you want to commit to, e.g. within 14 days */}.
+        Refunds are made to your original payment method via Stripe, normally within 14 days of your cancellation or of
+        our agreeing a refund.
       </p>
     ),
   },
@@ -113,5 +113,5 @@ const sections: LegalSection[] = [
 ];
 
 export default function DeliveryPage() {
-  return <LegalPage title="Delivery & Returns" lastUpdated={LAST_UPDATED} sections={sections} draftNotice />;
+  return <LegalPage title="Delivery & Returns" lastUpdated={LAST_UPDATED} sections={sections} />;
 }
