@@ -32,9 +32,9 @@ export const Footer: React.FC = () => {
           </div>
           <div>
             <ul className="text-sm text-neutral-900 space-y-2">
-              <li><button disabled className="text-neutral-400 cursor-not-allowed opacity-50">Privacy</button></li>
-              <li><button disabled className="text-neutral-400 cursor-not-allowed opacity-50">Terms</button></li>
-              <li><button disabled className="text-neutral-400 cursor-not-allowed opacity-50">Delivery</button></li>
+              <li><Link href="/privacy" className="hover:text-neutral-600 transition-colors">Privacy</Link></li>
+              <li><Link href="/terms" className="hover:text-neutral-600 transition-colors">Terms</Link></li>
+              <li><Link href="/delivery" className="hover:text-neutral-600 transition-colors">Delivery</Link></li>
             </ul>
           </div>
         </div>
