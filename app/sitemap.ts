@@ -34,6 +34,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE_URL}/artists`, lastModified: latest(productDates), priority: 0.7, changeFrequency: 'weekly' },
     // static page; date is its publication, bumped by hand when the copy changes
     { url: `${BASE_URL}/about`, lastModified: new Date('2026-07-10'), priority: 0.5, changeFrequency: 'yearly' },
+    { url: `${BASE_URL}/help`, lastModified: new Date('2026-07-12'), priority: 0.5, changeFrequency: 'monthly' },
     // legal pages; low priority, change rarely
     { url: `${BASE_URL}/privacy`, lastModified: new Date('2026-07-12'), priority: 0.3, changeFrequency: 'yearly' },
     { url: `${BASE_URL}/terms`, lastModified: new Date('2026-07-12'), priority: 0.3, changeFrequency: 'yearly' },
