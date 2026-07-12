@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { artists } from '@/data/artists';
 import { getProductsByArtist } from '@/lib/products';
 import { ArtistsList, ArtistWithCount } from '@/components/ArtistsList';
+import { BASE_URL } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Artists',
@@ -22,6 +23,23 @@ export default async function ArtistsPage() {
   }
   withCounts.sort((a, b) => b.printCount - a.printCount || a.name.localeCompare(b.name));
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Artists',
+    description: 'The Scandinavian and Nordic artists behind the collection.',
+    url: `${BASE_URL}/artists`,
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: withCounts.map((artist, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: artist.name,
+        url: `${BASE_URL}/artist/${artist.slug}`,
+      })),
+    },
+  };
+
   return (
     <div className="container mx-auto px-8 py-8">
       <div className="max-w-3xl mx-auto">
@@ -34,6 +52,7 @@ export default async function ArtistsPage() {
         </div>
         <ArtistsList artists={withCounts} />
       </div>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
     </div>
   );
 }
