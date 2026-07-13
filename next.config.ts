@@ -27,6 +27,11 @@ const LEGACY_PRODUCT_SLUGS: Record<string, string> = {
 
 const nextConfig: NextConfig = {
   images: {
+    // Serve AVIF (then WebP) from the optimizer; both far smaller than the source.
+    formats: ['image/avif', 'image/webp'],
+    // Local files are content-stable, so cache optimized variants for a month
+    // to avoid re-optimizing on every request.
+    minimumCacheTTL: 2678400,
     remotePatterns: [
       { protocol: 'https', hostname: '**.notion.so' },
       { protocol: 'https', hostname: '**.amazonaws.com' },

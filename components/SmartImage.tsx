@@ -1,12 +1,17 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import Image from 'next/image';
 
 interface SmartImageProps {
   src: string;
   alt: string;
   className?: string;
   loading?: 'lazy' | 'eager';
+  /** LCP images: paint immediately (eager, no skeleton/fade, preloaded). */
+  priority?: boolean;
+  /** Responsive sizes hint so the optimizer serves a correctly-sized image. */
+  sizes?: string;
   onLoad?: () => void;
   onError?: () => void;
   secondarySrc?: string;
@@ -14,18 +19,23 @@ interface SmartImageProps {
 }
 
 export const SmartImage: React.FC<SmartImageProps> = ({
-  src, alt, className = '', loading = 'lazy', onLoad, onError, secondarySrc, useSecondary = false,
+  src, alt, className = '', loading = 'lazy', priority = false, sizes = '100vw',
+  onLoad, onError, secondarySrc, useSecondary = false,
 }) => {
-  const [imageSrc, setImageSrc] = useState(useSecondary && secondarySrc ? secondarySrc : src);
+  const desiredSrc = useSecondary && secondarySrc ? secondarySrc : src;
+  const [imageSrc, setImageSrc] = useState(desiredSrc);
   const [hasError, setHasError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    const newSrc = useSecondary && secondarySrc ? secondarySrc : src;
-    setImageSrc(newSrc);
+  // Reset during render when the desired source changes (matching AvifImage),
+  // rather than in an effect, which would trigger cascading renders.
+  const [prevDesired, setPrevDesired] = useState(desiredSrc);
+  if (prevDesired !== desiredSrc) {
+    setPrevDesired(desiredSrc);
+    setImageSrc(desiredSrc);
     setHasError(false);
     setIsLoading(true);
-  }, [src, secondarySrc, useSecondary]);
+  }
 
   const getFallbackSrc = (originalSrc: string): string | null => {
     if (originalSrc.endsWith('.png')) return null;
@@ -46,11 +56,25 @@ export const SmartImage: React.FC<SmartImageProps> = ({
     onError?.();
   };
 
+  // Priority (LCP) images must paint the moment they arrive: no opacity gate and
+  // no skeleton, both of which delay the largest contentful paint. Below-the-fold
+  // images keep the lazy skeleton + fade-in.
+  const showSkeleton = !priority && isLoading;
+
   return (
     <div className={`relative ${className}`}>
-      {isLoading && <div className="absolute inset-0 bg-gray-200 animate-pulse rounded" />}
-      <img src={imageSrc} alt={alt} loading={loading} onLoad={handleLoad} onError={handleError}
-        className={`${className} ${isLoading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`} />
+      {showSkeleton && <div className="absolute inset-0 bg-gray-200 animate-pulse rounded" />}
+      <Image
+        src={imageSrc}
+        alt={alt}
+        fill
+        sizes={sizes}
+        priority={priority}
+        {...(priority ? {} : { loading })}
+        onLoad={handleLoad}
+        onError={handleError}
+        className={`object-cover ${priority ? '' : isLoading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`}
+      />
     </div>
   );
 };
