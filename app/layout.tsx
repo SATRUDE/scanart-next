@@ -5,11 +5,12 @@ import { Cart } from '@/components/Cart';
 import { Footer } from '@/components/Footer';
 import { RouteChangeTracker } from '@/components/RouteChangeTracker';
 import { getAllProducts } from '@/lib/products';
+import { BASE_URL } from '@/lib/site';
 import Script from 'next/script';
 import './globals.css';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.scandinavianart.co.uk'),
+  metadataBase: new URL(BASE_URL),
   title: {
     default: 'Scandinavian Art Gallery - Curated Nordic Artwork & Prints',
     template: '%s | Scandinavian Art Gallery',
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Scandinavian Art Gallery - Curated Nordic Artwork & Prints',
     description: 'Discover exquisite Scandinavian and Nordic artwork from talented artists. Shop curated wall art, prints, and original pieces.',
-    url: 'https://www.scandinavianart.co.uk',
+    url: BASE_URL,
     siteName: 'Scandinavian Art Gallery',
     locale: 'en_GB',
     type: 'website',
