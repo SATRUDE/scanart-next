@@ -3,6 +3,7 @@ import { getAllProducts, getProductLastEditedMap } from '@/lib/products';
 import { getAllArticles } from '@/lib/articles';
 import { artists } from '@/data/artists';
 import { categoryLandings } from '@/lib/categories';
+import { collections } from '@/lib/collections';
 import { BASE_URL } from '@/lib/site';
 
 // Fallback for records without an edit date: the Next.js migration went live
@@ -48,6 +49,26 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         lastModified: latest(
           products
             .filter(p => p.category === cat.category)
+            .map(p => productEdited[p.slug])
+            .filter(Boolean)
+            .map(d => new Date(d))
+        ),
+        priority: 0.7 as const,
+        changeFrequency: 'weekly' as const,
+      })),
+    // curated collection landing pages (by room); a page changes when one of
+    // its featured prints does, and only lists if at least one still exists
+    ...collections
+      .map(col => {
+        const slugs = new Set(col.productSlugs);
+        const featured = products.filter(p => slugs.has(p.slug));
+        return { col, featured };
+      })
+      .filter(({ featured }) => featured.length > 0)
+      .map(({ col, featured }) => ({
+        url: `${BASE_URL}/collection/${col.slug}`,
+        lastModified: latest(
+          featured
             .map(p => productEdited[p.slug])
             .filter(Boolean)
             .map(d => new Date(d))
