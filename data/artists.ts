@@ -28,7 +28,7 @@ export const artists: Artist[] = [
     id: '3',
     name: 'Renate Thor',
     slug: 'renate-thor',
-    location: 'Trondheim, Norway',
+    location: 'Oslo, Norway',
     bio: 'Renate Thor is an Oslo-based illustrator, artist and graphic artist. She is known for her playful artworks and illustrations, using bold colours and compositions. She is driven by the process of her craft, allowing it to guide her to the result through free and playful experimentation. She works with screen printing for her artworks, using paper stencils and bold colored ink to create her unusual compositions. She loves the unpredictability of layering and blending in screen printing techniques, and imitates some of the same principles in her illustration work. Renate is a graduate of Westerdals School Of Communication, and has an MA in illustration from Oslo National Academy Of The Arts.',
     image: '/images/artists/renate.png'
   },
