@@ -81,7 +81,7 @@ export const ProductsGrid: React.FC<ProductsGridProps> = ({ products, categories
                   key={cat}
                   href={href}
                   className={`px-4 py-2 rounded-full text-sm transition-colors ${
-                    selectedCategory === cat ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground hover:bg-muted/80'
+                    selectedCategory === cat ? 'bg-primary text-primary-foreground' : 'bg-muted text-neutral-700 hover:bg-muted/80'
                   }`}
                 >
                   {cat}
@@ -92,7 +92,9 @@ export const ProductsGrid: React.FC<ProductsGridProps> = ({ products, categories
         )}
 
         <div className="flex justify-end mb-6">
+          <label htmlFor="sort-products" className="sr-only">Sort products</label>
           <select
+            id="sort-products"
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
             className="text-sm border rounded px-3 py-1.5"
@@ -119,7 +121,7 @@ export const ProductsGrid: React.FC<ProductsGridProps> = ({ products, categories
                   <span>&bull;</span>
                   <span>{product.category}</span>
                 </div>
-                <h3 className="text-sm text-neutral-900">{product.name}</h3>
+                <h2 className="text-sm text-neutral-900">{product.name}</h2>
                 <p className="text-sm text-neutral-900">
                   {formatPrice(getLowestProductPrices(product))}
                 </p>

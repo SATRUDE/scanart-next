@@ -40,7 +40,7 @@ export const JournalGrid: React.FC<JournalGridProps> = ({ articles, categories }
               key={cat}
               onClick={() => setSelectedCategory(cat)}
               className={`px-4 py-2 rounded-full text-sm transition-colors ${
-                selectedCategory === cat ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground hover:bg-muted/80'
+                selectedCategory === cat ? 'bg-primary text-primary-foreground' : 'bg-muted text-neutral-700 hover:bg-muted/80'
               }`}
             >
               {cat}

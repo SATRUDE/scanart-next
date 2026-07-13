@@ -122,11 +122,11 @@ export const Header: React.FC<HeaderProps> = ({ categories }) => {
 
           {!isSearchOpen && (
             <div className="flex items-center space-x-4">
-              <Button variant="ghost" size="icon" className="hidden md:inline-flex" onClick={() => setIsSearchOpen(true)}>
+              <Button variant="ghost" size="icon" aria-label="Search" className="hidden md:inline-flex" onClick={() => setIsSearchOpen(true)}>
                 <Search className="h-4 w-4" />
               </Button>
 
-              <Button variant="ghost" size="icon" className="md:hidden"
+              <Button variant="ghost" size="icon" aria-label="Search" className="md:hidden"
                 onClick={() => {
                   setMenuOpenedBySearch(true);
                   setMobileMenuOpen(true);
@@ -145,7 +145,7 @@ export const Header: React.FC<HeaderProps> = ({ categories }) => {
                 <LanguagePicker />
               </div>
 
-              <Button variant="ghost" size="icon" onClick={toggleCart} className="relative">
+              <Button variant="ghost" size="icon" aria-label="Open cart" onClick={toggleCart} className="relative">
                 <ShoppingBag className="h-4 w-4" />
                 {totalItems > 0 && (
                   <span className="absolute -top-1 -right-1 h-4 w-4 rounded-full bg-primary text-xs text-primary-foreground flex items-center justify-center">
@@ -154,7 +154,7 @@ export const Header: React.FC<HeaderProps> = ({ categories }) => {
                 )}
               </Button>
 
-              <Button variant="ghost" size="icon" onClick={() => { setMenuOpenedBySearch(false); setMobileMenuOpen(true); }} className="md:hidden">
+              <Button variant="ghost" size="icon" aria-label="Open menu" onClick={() => { setMenuOpenedBySearch(false); setMobileMenuOpen(true); }} className="md:hidden">
                 <Menu className="h-4 w-4" />
               </Button>
             </div>
@@ -172,7 +172,7 @@ export const Header: React.FC<HeaderProps> = ({ categories }) => {
                   autoFocus
                   data-search="true"
                 />
-                <Button variant="ghost" size="icon" type="button" onClick={() => { setIsSearchOpen(false); setLocalSearchQuery(''); }} className="ml-4">
+                <Button variant="ghost" size="icon" aria-label="Close search" type="button" onClick={() => { setIsSearchOpen(false); setLocalSearchQuery(''); }} className="ml-4">
                   <X className="h-4 w-4" />
                 </Button>
               </form>
@@ -183,7 +183,7 @@ export const Header: React.FC<HeaderProps> = ({ categories }) => {
 
       <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
         <SheetTrigger asChild>
-          <Button variant="ghost" size="icon" className="md:hidden sr-only">
+          <Button variant="ghost" size="icon" aria-label="Open menu" className="md:hidden sr-only">
             <Menu className="h-4 w-4" />
           </Button>
         </SheetTrigger>
