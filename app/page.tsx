@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { getFeaturedProducts, getProductsByArtist } from '@/lib/products';
 import { artists } from '@/data/artists';
 import { ArtistsList, ArtistWithCount } from '@/components/ArtistsList';
@@ -60,8 +61,8 @@ export default async function HomePage() {
               const landing = getCategoryLandingByCategory(cat.name);
               return (
               <Link key={cat.name} href={landing ? `/category/${landing.slug}` : `/products?category=${cat.name}`} className="group cursor-pointer">
-                <div className="aspect-[4/5] overflow-hidden bg-neutral-50 rounded mb-4">
-                  <img src={cat.image} alt={`${cat.name} Category`} className="w-full h-full object-cover transition-all duration-300 group-hover:scale-[1.02]" />
+                <div className="relative aspect-[4/5] overflow-hidden bg-neutral-50 rounded mb-4">
+                  <Image src={cat.image} alt={`${cat.name} Category`} fill sizes="(max-width: 1024px) 100vw, 33vw" className="object-cover transition-all duration-300 group-hover:scale-[1.02]" />
                 </div>
                 <h3 className="text-lg font-medium mb-2">{cat.name}</h3>
                 <p className="text-muted-foreground text-sm">{cat.desc}</p>

@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Article } from '@/lib/articles';
 
 interface ArticleCardProps {
@@ -20,11 +21,13 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
   return (
     <Link href={`/article/${article.slug}`} className="group">
       {article.image && (
-        <div className={`${imageAspectClass} overflow-hidden bg-neutral-50 rounded mb-4`}>
-          <img
+        <div className={`relative ${imageAspectClass} overflow-hidden bg-neutral-50 rounded mb-4`}>
+          <Image
             src={article.image}
             alt={article.title}
-            className="w-full h-full object-cover transition-all duration-300 group-hover:scale-[1.02]"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="object-cover transition-all duration-300 group-hover:scale-[1.02]"
           />
         </div>
       )}

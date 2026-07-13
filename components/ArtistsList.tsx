@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ChevronRight } from 'lucide-react';
 import { Artist, getArtistInitials } from '@/data/artists';
 
@@ -24,8 +25,8 @@ export const ArtistsList: React.FC<ArtistsListProps> = ({ artists }) => {
             className="group flex items-center gap-5 py-6"
           >
             {artist.image ? (
-              <div className="h-16 w-16 rounded-full overflow-hidden flex-shrink-0">
-                <img src={artist.image} alt={artist.name} className="w-full h-full object-cover" />
+              <div className="relative h-16 w-16 rounded-full overflow-hidden flex-shrink-0">
+                <Image src={artist.image} alt={artist.name} fill sizes="64px" className="object-cover" />
               </div>
             ) : (
               <div aria-hidden="true" className="h-16 w-16 rounded-full bg-muted flex items-center justify-center flex-shrink-0">
