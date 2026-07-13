@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -23,10 +24,13 @@ export const ProductImageGalleryWrapper: React.FC<ProductImageGalleryWrapperProp
   return (
     <div>
       <div className="aspect-[3/4] overflow-hidden bg-neutral-50 rounded cursor-pointer relative" onClick={() => setShowLightbox(true)}>
-        <img
+        <Image
           src={validImages[selectedIndex]}
           alt={`${productName} - Image ${selectedIndex + 1}`}
-          className="w-full h-full object-cover hover:scale-[1.02] transition-transform duration-300"
+          fill
+          priority
+          sizes="(max-width: 1024px) 100vw, 50vw"
+          className="object-cover hover:scale-[1.02] transition-transform duration-300"
         />
         {hasMultiple && (
           <>
@@ -50,6 +54,9 @@ export const ProductImageGalleryWrapper: React.FC<ProductImageGalleryWrapperProp
           <Button aria-label="Close image viewer" size="icon" variant="ghost" className="absolute top-4 right-4 text-white hover:bg-white/10" onClick={() => setShowLightbox(false)}>
             <X className="h-6 w-6" />
           </Button>
+          {/* Lightbox opens on click (not the LCP) and is object-contain in a
+              variable-size overlay, which next/image fill doesn't suit; keep raw. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={validImages[selectedIndex]} alt={productName} className="max-h-[90vh] max-w-[90vw] object-contain" onClick={(e) => e.stopPropagation()} />
           {hasMultiple && (
             <>
