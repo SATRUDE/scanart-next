@@ -58,7 +58,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ products }) => {
                     <span>&bull;</span>
                     <span>{product.category}</span>
                   </div>
-                  <h3 className="text-lg mb-3">{product.name}</h3>
+                  <p className="text-lg mb-3">{product.name}</p>
                   <div>
                     <span className="text-xl">{formatPrice(getLowestProductPrices(product))}</span>
                   </div>
