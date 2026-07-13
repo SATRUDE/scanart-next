@@ -8,6 +8,7 @@ import { getLowestProductPrices } from '@/lib/pricing';
 import { SmartImage } from '@/components/SmartImage';
 import { getArtistById } from '@/data/artists';
 import { getCategoryLandingByCategory } from '@/lib/categories';
+import { collections } from '@/lib/collections';
 import { Product } from '@/contexts/CartContext';
 
 interface ProductsGridProps {
@@ -88,6 +89,17 @@ export const ProductsGrid: React.FC<ProductsGridProps> = ({ products, categories
                 </Link>
               );
             })}
+            {/* Curated collection landings (by room) alongside the category chips,
+                so each has a crawlable internal link from this indexed page. */}
+            {collections.map(col => (
+              <Link
+                key={col.slug}
+                href={`/collection/${col.slug}`}
+                className="px-4 py-2 rounded-full text-sm transition-colors bg-muted text-neutral-700 hover:bg-muted/80"
+              >
+                {col.chipLabel}
+              </Link>
+            ))}
           </div>
         )}
 
