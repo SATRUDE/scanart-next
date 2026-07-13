@@ -1,4 +1,5 @@
 import type { MetadataRoute } from 'next';
+import { BASE_URL } from '@/lib/site';
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -7,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/admin/', '/api/'],
     },
-    sitemap: 'https://www.scandinavianart.co.uk/sitemap.xml',
+    sitemap: `${BASE_URL}/sitemap.xml`,
   };
 }

@@ -8,6 +8,7 @@ import { QualityPromise } from '@/components/QualityPromise';
 import { Testimonials } from '@/components/Testimonials';
 import { FullWidthImage } from '@/components/FullWidthImage';
 import { getCategoryLandingByCategory } from '@/lib/categories';
+import { BASE_URL } from '@/lib/site';
 import { getAllArticles } from '@/lib/articles';
 import { ArticleCard } from '@/components/ArticleCard';
 
@@ -130,13 +131,13 @@ export default async function HomePage() {
             '@context': 'https://schema.org',
             '@type': 'WebSite',
             name: 'Scandinavian Art Gallery',
-            url: 'https://www.scandinavianart.co.uk',
+            url: BASE_URL,
             description: 'Curated selection of exquisite Nordic artwork and prints from talented Scandinavian artists.',
             publisher: {
               '@type': 'Organization',
               name: 'Scandinavian Art Gallery',
-              url: 'https://www.scandinavianart.co.uk',
-              logo: 'https://www.scandinavianart.co.uk/images/scandinavian-art-gallery-og.jpg',
+              url: BASE_URL,
+              logo: `${BASE_URL}/images/scandinavian-art-gallery-og.jpg`,
               // the gallery's live profiles, same URLs the Footer links
               sameAs: [
                 'https://www.instagram.com/helloscandinavianart/',
