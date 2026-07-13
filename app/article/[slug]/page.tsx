@@ -158,6 +158,10 @@ export default async function ArticlePage({
             publisher: {
               '@type': 'Organization',
               name: 'Scandinavian Art Gallery',
+              logo: {
+                '@type': 'ImageObject',
+                url: `${BASE_URL}/images/scandinavian-art-gallery-og.jpg`,
+              },
             },
           }),
         }}
