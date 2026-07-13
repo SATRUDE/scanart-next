@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { SmartImage } from '@/components/SmartImage';
@@ -38,13 +38,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ products }) => {
       </div>
       <div className="lg:w-1/2">
         <div className="space-y-8 p-8">
-          {heroProducts.map((product) => (
+          {heroProducts.map((product, index) => (
             <Link key={product.id} href={`/product/${product.slug}`} className="relative cursor-pointer group max-w-2xl ml-auto block">
               <div className="bg-white rounded overflow-hidden border border-gray-100">
                 <div className="aspect-[3/4] overflow-hidden">
                   <SmartImage
                     src={product.image}
                     alt={product.name}
+                    priority={index === 0}
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                     className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
                     secondarySrc={product.secondaryImage}
                     useSecondary={true}

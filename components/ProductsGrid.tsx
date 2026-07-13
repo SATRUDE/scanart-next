@@ -106,12 +106,14 @@ export const ProductsGrid: React.FC<ProductsGridProps> = ({ products, categories
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {filteredProducts.map(product => (
+          {filteredProducts.map((product, index) => (
             <Link key={product.id} href={`/product/${product.slug}`} className="group cursor-pointer">
               <div className="aspect-[3/4] overflow-hidden bg-neutral-50 mb-4 rounded">
                 <SmartImage
                   src={product.image}
                   alt={product.name}
+                  priority={index < 4}
+                  sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                   className="w-full h-full object-cover transition-all duration-300 group-hover:scale-[1.02]"
                 />
               </div>
