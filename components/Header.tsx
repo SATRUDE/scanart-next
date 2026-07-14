@@ -66,10 +66,11 @@ export const Header: React.FC<HeaderProps> = ({ categories }) => {
 
   return (
     <>
-      <div className="bg-black text-white py-2">
+      {/* Announcement bar: red-600 (#d4183d) from the DS foundation red ramp. */}
+      <div className="bg-[#d4183d] text-white py-2">
         <div className="container mx-auto px-4 flex items-center justify-center gap-2">
           <Globe className="h-4 w-4" />
-          <span className="text-sm">We Ship Worldwide</span>
+          <span className="text-sm">From Scandinavian Artists, delivered worldwide</span>
         </div>
       </div>
 
