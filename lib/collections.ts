@@ -18,6 +18,9 @@ export interface Collection {
   productSlugs: string[];
   stylingHeading: string;
   stylingTips: string[];
+  /** Optional illustrated version of the styling tips (label + tip + image). When
+   *  present, the collection page renders image cards instead of the plain list. */
+  stylingCards?: { label: string; tip: string; image: string; alt: string }[];
   /** Contextual interlink to a related journal article, if one fits. */
   relatedArticleSlug?: string;
   relatedArticleLabel?: string;
@@ -53,6 +56,26 @@ export const collections: Collection[] = [
       'One large print makes a feature wall; a pair or trio (the Birdie prints sit well together) makes an easy gallery wall.',
       'Warm tones like Tree Top Peach soften a minimalist room, while a bold abstract lifts a calmer palette.',
     ],
+    stylingCards: [
+      {
+        label: 'Height',
+        tip: 'Hang the centre of the piece at eye level, roughly 145 to 150 cm off the floor. Above a sofa, leave 15 to 25 cm between the frame and the sofa back.',
+        image: '/images/collections/living-room-height.jpg',
+        alt: 'Framed prints hung on the wall above a green sofa',
+      },
+      {
+        label: 'Grouping',
+        tip: 'One large print makes a feature wall; a pair or trio (the Birdie prints sit well together) makes an easy gallery wall.',
+        image: '/images/collections/living-room-grouping.jpg',
+        alt: 'A pair of framed prints hung side by side above a sideboard',
+      },
+      {
+        label: 'Tone',
+        tip: 'Warm tones like Tree Top Peach soften a minimalist room, while a bold abstract lifts a calmer palette.',
+        image: '/images/collections/living-room-tone.jpg',
+        alt: 'A single bold red print in a calm, neutral room',
+      },
+    ],
     relatedArticleSlug: 'how-to-style-scandinavian-wall-art-living-room',
     relatedArticleLabel: 'How to style Scandinavian wall art in the living room',
   },
@@ -84,6 +107,26 @@ export const collections: Collection[] = [
       'Softer, cooler tones settle a bedroom. Save the boldest pieces for the rooms you pass through, not the ones you rest in.',
       'A wide single print suits the space above a headboard; a matching pair works either side of the bed or above bedside tables.',
     ],
+    stylingCards: [
+      {
+        label: 'Placement',
+        tip: 'Centre a piece over the bed, about 15 to 20 cm above the headboard, and keep it within the width of the bed so it feels anchored.',
+        image: '/images/collections/bedroom-placement.jpg',
+        alt: 'A framed print on the wall beside a made bed',
+      },
+      {
+        label: 'Palette',
+        tip: 'Softer, cooler tones settle a bedroom. Save the boldest pieces for the rooms you pass through, not the ones you rest in.',
+        image: '/images/collections/bedroom-palette.jpg',
+        alt: 'A single framed print in a calm, green-toned bedroom',
+      },
+      {
+        label: 'Pairing',
+        tip: 'A wide single print suits the space above a headboard; a matching pair works either side of the bed or above bedside tables.',
+        image: '/images/collections/bedroom-pairing.jpg',
+        alt: 'A pair of framed prints on the wall above a bed',
+      },
+    ],
     relatedArticleSlug: 'complete-guide-choosing-print-sizes',
     relatedArticleLabel: 'A complete guide to choosing print sizes',
   },
@@ -114,6 +157,26 @@ export const collections: Collection[] = [
       'Hang a piece in your eyeline from the desk, at or just above screen height, so it gives you something when you look up.',
       'A small grid of illustrations suits a narrow desk wall; one bold abstract holds a larger space behind you on calls.',
       'Graphic, characterful pieces keep a workspace from feeling flat. Save the calmest botanicals for the rooms you relax in.',
+    ],
+    stylingCards: [
+      {
+        label: 'Sightline',
+        tip: 'Hang a piece in your eyeline from the desk, at or just above screen height, so it gives you something when you look up.',
+        image: '/images/collections/office-sightline.jpg',
+        alt: 'A framed print hung at eye level above a home-office desk',
+      },
+      {
+        label: 'Layout',
+        tip: 'A small grid of illustrations suits a narrow desk wall; one bold abstract holds a larger space behind you on calls.',
+        image: '/images/collections/office-layout.jpg',
+        alt: 'A pair of framed prints above a home-office desk',
+      },
+      {
+        label: 'Character',
+        tip: 'Graphic, characterful pieces keep a workspace from feeling flat. Save the calmest botanicals for the rooms you relax in.',
+        image: '/images/collections/office-character.jpg',
+        alt: 'A bold graphic print above a home-office desk',
+      },
     ],
     relatedArticleSlug: 'the-art-of-choosing-art-comprehensive-guide',
     relatedArticleLabel: 'The art of choosing art: a comprehensive guide',
