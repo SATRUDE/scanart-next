@@ -18,6 +18,9 @@ export interface Collection {
   productSlugs: string[];
   stylingHeading: string;
   stylingTips: string[];
+  /** Optional illustrated version of the styling tips (label + tip + image). When
+   *  present, the collection page renders image cards instead of the plain list. */
+  stylingCards?: { label: string; tip: string; image: string; alt: string }[];
   /** Contextual interlink to a related journal article, if one fits. */
   relatedArticleSlug?: string;
   relatedArticleLabel?: string;
@@ -52,6 +55,26 @@ export const collections: Collection[] = [
       'Hang the centre of the piece at eye level, roughly 145 to 150 cm off the floor. Above a sofa, leave 15 to 25 cm between the frame and the sofa back.',
       'One large print makes a feature wall; a pair or trio (the Birdie prints sit well together) makes an easy gallery wall.',
       'Warm tones like Tree Top Peach soften a minimalist room, while a bold abstract lifts a calmer palette.',
+    ],
+    stylingCards: [
+      {
+        label: 'Height',
+        tip: 'Hang the centre of the piece at eye level, roughly 145 to 150 cm off the floor. Above a sofa, leave 15 to 25 cm between the frame and the sofa back.',
+        image: '/images/collections/living-room-height.jpg',
+        alt: 'Framed prints hung on the wall above a green sofa',
+      },
+      {
+        label: 'Grouping',
+        tip: 'One large print makes a feature wall; a pair or trio (the Birdie prints sit well together) makes an easy gallery wall.',
+        image: '/images/collections/living-room-grouping.jpg',
+        alt: 'A pair of framed prints hung side by side above a sideboard',
+      },
+      {
+        label: 'Tone',
+        tip: 'Warm tones like Tree Top Peach soften a minimalist room, while a bold abstract lifts a calmer palette.',
+        image: '/images/collections/living-room-tone.jpg',
+        alt: 'A single bold red print in a calm, neutral room',
+      },
     ],
     relatedArticleSlug: 'how-to-style-scandinavian-wall-art-living-room',
     relatedArticleLabel: 'How to style Scandinavian wall art in the living room',

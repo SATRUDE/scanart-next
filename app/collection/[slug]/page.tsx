@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowLeft } from 'lucide-react';
 import { collections, getCollectionBySlug } from '@/lib/collections';
 import { getAllProducts } from '@/lib/products';
@@ -84,15 +85,35 @@ export default async function CollectionPage({
         ))}
       </div>
 
-      <section className="mt-16 max-w-3xl">
+      <section className="mt-16">
         <h2 className="text-2xl text-neutral-900">{collection.stylingHeading}</h2>
-        <ul className="mt-4 space-y-3">
-          {collection.stylingTips.map((tip, i) => (
-            <li key={i} className="text-muted-foreground leading-relaxed">{tip}</li>
-          ))}
-        </ul>
+        {collection.stylingCards ? (
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+            {collection.stylingCards.map((card, i) => (
+              <div key={i}>
+                <div className="relative aspect-[4/3] overflow-hidden rounded bg-neutral-50 mb-4">
+                  <Image
+                    src={card.image}
+                    alt={card.alt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover"
+                  />
+                </div>
+                <p className="text-xs uppercase tracking-wider text-muted-foreground mb-2">{card.label}</p>
+                <p className="text-sm text-neutral-900 leading-relaxed">{card.tip}</p>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <ul className="mt-4 space-y-3 max-w-3xl">
+            {collection.stylingTips.map((tip, i) => (
+              <li key={i} className="text-muted-foreground leading-relaxed">{tip}</li>
+            ))}
+          </ul>
+        )}
         {collection.relatedArticleSlug && (
-          <p className="mt-6 text-sm">
+          <p className="mt-8 text-sm">
             <Link href={`/article/${collection.relatedArticleSlug}`} className="font-medium text-neutral-900 hover:text-neutral-600 transition-colors">
               Read more: {collection.relatedArticleLabel} →
             </Link>
