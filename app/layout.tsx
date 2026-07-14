@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     default: 'Scandinavian Art Gallery - Curated Nordic Artwork & Prints',
     template: '%s | Scandinavian Art Gallery',
   },
-  description: 'Scandinavian Art Gallery - Curated selection of exquisite Nordic artwork and prints from talented Scandinavian artists. Free UK delivery.',
+  description: 'Scandinavian Art Gallery - Curated selection of exquisite Nordic artwork and prints from talented Scandinavian artists. Worldwide delivery.',
   keywords: ['Scandinavian art', 'Nordic art', 'Scandinavian wall art', 'Nordic prints', 'Scandinavian artists', 'art gallery', 'wall art', 'prints', 'artwork', 'Nordic design'],
   authors: [{ name: 'Scandinavian Art Gallery' }],
   robots: 'index, follow',

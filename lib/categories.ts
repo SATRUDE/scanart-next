@@ -18,30 +18,30 @@ export const categoryLandings: CategoryLanding[] = [
     category: 'Botanical',
     title: 'Botanical Art Prints',
     description:
-      'Scandinavian and Nordic botanical prints: plants, flowers and the natural world. Framing options and free UK delivery.',
+      'Scandinavian and Nordic botanical prints: plants, flowers and the natural world. Framing options and worldwide delivery.',
     heading: 'Botanical Prints',
     intro:
-      'Botanical prints from our Scandinavian and Nordic artists: plants, flowers and the natural world, chosen for the same considered, understated style that runs through the gallery. Framing options and free UK delivery.',
+      'Botanical prints from our Scandinavian and Nordic artists: plants, flowers and the natural world, chosen for the same considered, understated style that runs through the gallery. Framing options and worldwide delivery.',
   },
   {
     slug: 'abstract',
     category: 'Abstract',
     title: 'Abstract Art Prints',
     description:
-      'Nordic abstract wall art: shape, colour and composition pared back to what matters. Framing options and free UK delivery.',
+      'Nordic abstract wall art: shape, colour and composition pared back to what matters. Framing options and worldwide delivery.',
     heading: 'Abstract Prints',
     intro:
-      'Abstract prints with a Nordic sensibility: shape, colour and composition pared back to what matters. Nordic abstract wall art from the gallery’s Scandinavian artists, with framing options and free UK delivery.',
+      'Abstract prints with a Nordic sensibility: shape, colour and composition pared back to what matters. Nordic abstract wall art from the gallery’s Scandinavian artists, with framing options and worldwide delivery.',
   },
   {
     slug: 'illustrations',
     category: 'Illustrations',
     title: 'Scandinavian Illustrations',
     description:
-      'Scandinavian illustration prints from Nordic artists: characterful, hand-drawn work with clean lines. Framing options and free UK delivery.',
+      'Scandinavian illustration prints from Nordic artists: characterful, hand-drawn work with clean lines. Framing options and worldwide delivery.',
     heading: 'Illustrations',
     intro:
-      'Scandinavian illustrations from our Nordic artists: characterful, hand-drawn work with the clean lines the region is known for. Framing options and free UK delivery.',
+      'Scandinavian illustrations from our Nordic artists: characterful, hand-drawn work with the clean lines the region is known for. Framing options and worldwide delivery.',
   },
 ];
 

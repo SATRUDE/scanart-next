@@ -29,10 +29,10 @@ export const collections: Collection[] = [
     chipLabel: 'Living Room',
     title: 'Scandinavian Living Room Wall Art',
     description:
-      'Curated Scandinavian and Nordic wall art for the living room: warm, characterful prints from independent Norwegian artists. Framing options and free UK delivery.',
+      'Curated Scandinavian and Nordic wall art for the living room: warm, characterful prints from independent Norwegian artists. Framing options and worldwide delivery.',
     heading: 'Scandinavian Wall Art for the Living Room',
     intro:
-      'The living room is where a piece of art earns its keep, it sets the tone the moment you walk in. Our Scandinavian and Nordic prints bring warmth and quiet character to the space, from calm botanical landscapes to bold abstracts that anchor a sofa or feature wall. Each is printed to museum quality by independent Norwegian artists, with framing and sizes to suit the room.',
+      'The living room sets the tone the moment you walk in, so the wall is worth a piece with real presence. Our Scandinavian and Nordic prints run from calm botanical landscapes to bold, colourful abstracts, work that can anchor a sofa or carry a feature wall on its own. All are printed to museum quality by the independent Norwegian artists behind the gallery.',
     productSlugs: [
       'tree-top-peach',
       'eltsjoen',
@@ -49,8 +49,8 @@ export const collections: Collection[] = [
     ],
     stylingHeading: 'Styling art in the living room',
     stylingTips: [
-      'Hang the centre of your piece at eye level, about 145 to 150 cm from the floor. Above a sofa, leave 15 to 25 cm between the frame and the sofa back.',
-      'One large print makes a feature wall; a pair or trio (the Birdie prints sit beautifully together) makes an easy gallery wall.',
+      'Hang the centre of the piece at eye level, roughly 145 to 150 cm off the floor. Above a sofa, leave 15 to 25 cm between the frame and the sofa back.',
+      'One large print makes a feature wall; a pair or trio (the Birdie prints sit well together) makes an easy gallery wall.',
       'Warm tones like Tree Top Peach soften a minimalist room, while a bold abstract lifts a calmer palette.',
     ],
     relatedArticleSlug: 'how-to-style-scandinavian-wall-art-living-room',
@@ -61,10 +61,10 @@ export const collections: Collection[] = [
     chipLabel: 'Bedroom',
     title: 'Scandinavian Bedroom Wall Art',
     description:
-      'Calm Scandinavian and Nordic wall art for the bedroom: restful botanicals and soft abstracts from independent Norwegian artists. Framing options and free UK delivery.',
+      'Calm Scandinavian and Nordic wall art for the bedroom: restful botanicals and soft abstracts from independent Norwegian artists. Framing options and worldwide delivery.',
     heading: 'Scandinavian Wall Art for the Bedroom',
     intro:
-      'The bedroom asks for calm. These Scandinavian and Nordic prints lean into it, restful botanicals, soft landscapes and quiet abstracts in gentle palettes that help the room wind down rather than shout. Each is printed to museum quality by independent Norwegian artists, with framing and sizes to suit the wall above a bed or a reading corner.',
+      'The bedroom asks for calm, and these prints lean into it. Restful botanicals, soft landscapes and quiet abstracts in gentle palettes, chosen to help the room wind down rather than compete with it. Every piece is made to order and finished to museum standard, with sizes to suit the wall above a bed or a quiet reading corner.',
     productSlugs: [
       'eltsjoen',
       'trysilkaffe',
@@ -80,9 +80,9 @@ export const collections: Collection[] = [
     ],
     stylingHeading: 'Styling art in the bedroom',
     stylingTips: [
-      'Centre a piece over the bed, hung about 15 to 20 cm above the headboard, and keep it within the width of the bed so it feels anchored.',
-      'Softer, cooler tones settle a bedroom; save the boldest pieces for rooms you pass through rather than rest in.',
-      'A wide single print suits the space above a headboard; a pair works either side of the bed or above matching tables.',
+      'Centre a piece over the bed, about 15 to 20 cm above the headboard, and keep it within the width of the bed so it feels anchored.',
+      'Softer, cooler tones settle a bedroom. Save the boldest pieces for the rooms you pass through, not the ones you rest in.',
+      'A wide single print suits the space above a headboard; a matching pair works either side of the bed or above bedside tables.',
     ],
     relatedArticleSlug: 'complete-guide-choosing-print-sizes',
     relatedArticleLabel: 'A complete guide to choosing print sizes',
@@ -92,10 +92,10 @@ export const collections: Collection[] = [
     chipLabel: 'Home Office',
     title: 'Scandinavian Home Office Wall Art',
     description:
-      'Scandinavian and Nordic wall art for the home office: characterful illustrations and bold abstracts from independent Norwegian artists. Framing options and free UK delivery.',
+      'Scandinavian and Nordic wall art for the home office: characterful illustrations and bold abstracts from independent Norwegian artists. Framing options and worldwide delivery.',
     heading: 'Scandinavian Wall Art for the Home Office',
     intro:
-      'A home office should keep you interested without pulling focus. These Scandinavian and Nordic prints bring personality to the desk wall, characterful hand-drawn illustrations and bold abstracts with enough energy to lift a working day. Each is printed to museum quality by independent Norwegian artists, with framing and sizes to suit a desk nook or a full feature wall.',
+      'A good home office holds your interest without stealing your focus. These prints bring some personality to the desk wall: characterful, hand-drawn illustrations and bold abstracts with enough energy to carry a working day. All are produced to museum quality, in sizes from a single desk print to a full wall behind you on calls.',
     productSlugs: [
       'eye-nose-eye',
       'half-man',
@@ -111,9 +111,9 @@ export const collections: Collection[] = [
     ],
     stylingHeading: 'Styling art in the home office',
     stylingTips: [
-      'Hang a piece where it sits in your eyeline from the desk, at or just above screen height, so it lifts you when you glance up.',
+      'Hang a piece in your eyeline from the desk, at or just above screen height, so it gives you something when you look up.',
       'A small grid of illustrations suits a narrow desk wall; one bold abstract holds a larger space behind you on calls.',
-      'Characterful, graphic pieces keep a workspace from feeling flat; save the calmest botanicals for rooms you relax in.',
+      'Graphic, characterful pieces keep a workspace from feeling flat. Save the calmest botanicals for the rooms you relax in.',
     ],
     relatedArticleSlug: 'the-art-of-choosing-art-comprehensive-guide',
     relatedArticleLabel: 'The art of choosing art: a comprehensive guide',
