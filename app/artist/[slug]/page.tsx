@@ -75,7 +75,7 @@ export default async function ArtistPage({
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbLink asChild><Link href="/products">Art Prints</Link></BreadcrumbLink>
+            <BreadcrumbLink asChild><Link href="/artists">Artists</Link></BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
@@ -141,7 +141,7 @@ export default async function ArtistPage({
             '@type': 'BreadcrumbList',
             itemListElement: [
               { '@type': 'ListItem', position: 1, name: 'Home', item: BASE_URL },
-              { '@type': 'ListItem', position: 2, name: 'Art Prints', item: `${BASE_URL}/products` },
+              { '@type': 'ListItem', position: 2, name: 'Artists', item: `${BASE_URL}/artists` },
               { '@type': 'ListItem', position: 3, name: artist.name, item: `${BASE_URL}/artist/${artist.slug}` },
             ],
           }),
