@@ -97,7 +97,7 @@ export default async function CollectionPage({
                     alt={card.alt}
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover"
+                    className="object-cover object-top"
                   />
                 </div>
                 <p className="text-xs uppercase tracking-wider text-muted-foreground mb-2">{card.label}</p>

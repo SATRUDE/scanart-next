@@ -107,6 +107,26 @@ export const collections: Collection[] = [
       'Softer, cooler tones settle a bedroom. Save the boldest pieces for the rooms you pass through, not the ones you rest in.',
       'A wide single print suits the space above a headboard; a matching pair works either side of the bed or above bedside tables.',
     ],
+    stylingCards: [
+      {
+        label: 'Placement',
+        tip: 'Centre a piece over the bed, about 15 to 20 cm above the headboard, and keep it within the width of the bed so it feels anchored.',
+        image: '/images/collections/bedroom-placement.jpg',
+        alt: 'A framed print on the wall beside a made bed',
+      },
+      {
+        label: 'Palette',
+        tip: 'Softer, cooler tones settle a bedroom. Save the boldest pieces for the rooms you pass through, not the ones you rest in.',
+        image: '/images/collections/bedroom-palette.jpg',
+        alt: 'A single framed print in a calm, green-toned bedroom',
+      },
+      {
+        label: 'Pairing',
+        tip: 'A wide single print suits the space above a headboard; a matching pair works either side of the bed or above bedside tables.',
+        image: '/images/collections/bedroom-pairing.jpg',
+        alt: 'A pair of framed prints on the wall above a bed',
+      },
+    ],
     relatedArticleSlug: 'complete-guide-choosing-print-sizes',
     relatedArticleLabel: 'A complete guide to choosing print sizes',
   },
@@ -137,6 +157,26 @@ export const collections: Collection[] = [
       'Hang a piece in your eyeline from the desk, at or just above screen height, so it gives you something when you look up.',
       'A small grid of illustrations suits a narrow desk wall; one bold abstract holds a larger space behind you on calls.',
       'Graphic, characterful pieces keep a workspace from feeling flat. Save the calmest botanicals for the rooms you relax in.',
+    ],
+    stylingCards: [
+      {
+        label: 'Sightline',
+        tip: 'Hang a piece in your eyeline from the desk, at or just above screen height, so it gives you something when you look up.',
+        image: '/images/collections/office-sightline.jpg',
+        alt: 'A framed print hung at eye level above a home-office desk',
+      },
+      {
+        label: 'Layout',
+        tip: 'A small grid of illustrations suits a narrow desk wall; one bold abstract holds a larger space behind you on calls.',
+        image: '/images/collections/office-layout.jpg',
+        alt: 'A pair of framed prints above a home-office desk',
+      },
+      {
+        label: 'Character',
+        tip: 'Graphic, characterful pieces keep a workspace from feeling flat. Save the calmest botanicals for the rooms you relax in.',
+        image: '/images/collections/office-character.jpg',
+        alt: 'A bold graphic print above a home-office desk',
+      },
     ],
     relatedArticleSlug: 'the-art-of-choosing-art-comprehensive-guide',
     relatedArticleLabel: 'The art of choosing art: a comprehensive guide',
