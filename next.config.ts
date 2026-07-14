@@ -36,6 +36,12 @@ const nextConfig: NextConfig = {
       { protocol: 'https', hostname: '**.notion.so' },
       { protocol: 'https', hostname: '**.amazonaws.com' },
       { protocol: 'https', hostname: 'www.scandinavianart.co.uk' },
+      // Remote-hosted article featured images (some journal articles hotlink
+      // their hero). next/image only optimises allow-listed hosts, so without
+      // these the optimizer 400s and the image breaks. Rehosting these locally
+      // is the tracked follow-up (external hotlinks are a single point of failure).
+      { protocol: 'https', hostname: 'upload.wikimedia.org' },
+      { protocol: 'https', hostname: 'www.munch.no' },
     ],
   },
   async redirects() {
