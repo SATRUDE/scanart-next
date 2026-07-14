@@ -74,6 +74,8 @@ export default async function CollectionPage({
         <p className="text-muted-foreground">{products.length} {products.length === 1 ? 'print' : 'prints'}</p>
       </div>
 
+      {/* Section heading for the grid (sr-only): keeps the heading order h1 -> h2 -> card h3 */}
+      <h2 className="sr-only">Prints</h2>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {products.map(product => (
           <Link key={product.id} href={`/product/${product.slug}`}>

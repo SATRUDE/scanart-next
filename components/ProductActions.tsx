@@ -32,6 +32,7 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
 
   useEffect(() => {
     if (availableSizes.length > 0 && !selectedSize) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- one-off: default the selected size once the available options are known
       setSelectedSize(availableSizes[0]);
     }
   }, [availableSizes, selectedSize]);
@@ -39,7 +40,7 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
   const handleAddToCart = () => {
     if (product.sizes && !selectedSize) return;
     addToCart(product, quantity, selectedSize || undefined, selectedFrame);
-    (window as any).umami?.track('add-to-cart', {
+    (window as unknown as { umami?: { track: (event: string, data?: Record<string, unknown>) => void } }).umami?.track('add-to-cart', {
       productId: product.id,
       productName: product.name,
       quantity,
@@ -106,11 +107,11 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
       </div>
 
       <div className="flex items-center space-x-3">
-        <Button size="icon" variant="outline" onClick={() => setQuantity(Math.max(1, quantity - 1))}>
+        <Button size="icon" variant="outline" aria-label="Decrease quantity" onClick={() => setQuantity(Math.max(1, quantity - 1))}>
           <Minus className="h-4 w-4" />
         </Button>
         <span className="w-8 text-center">{quantity}</span>
-        <Button size="icon" variant="outline" onClick={() => setQuantity(quantity + 1)}>
+        <Button size="icon" variant="outline" aria-label="Increase quantity" onClick={() => setQuantity(quantity + 1)}>
           <Plus className="h-4 w-4" />
         </Button>
       </div>

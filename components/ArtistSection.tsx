@@ -20,11 +20,11 @@ export const ArtistSection: React.FC<ArtistSectionProps> = ({ artist }) => {
           </div>
         )}
         <div>
-          <h3 className="font-medium">
+          <h2 className="font-medium">
             <Link href={`/artist/${artist.slug}`} className="hover:text-neutral-600 transition-colors">
               {artist.name}
             </Link>
-          </h3>
+          </h2>
           {artist.location && <p className="text-sm text-muted-foreground">{artist.location}</p>}
           {artist.bio && <p className="text-sm text-muted-foreground mt-2">{artist.bio}</p>}
         </div>
