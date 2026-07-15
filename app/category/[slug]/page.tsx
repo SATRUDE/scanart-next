@@ -86,6 +86,15 @@ export default async function CategoryPage({
             name: category.title,
             description: category.description,
             url: `${BASE_URL}/category/${category.slug}`,
+            mainEntity: {
+              '@type': 'ItemList',
+              itemListElement: products.map((p, i) => ({
+                '@type': 'ListItem',
+                position: i + 1,
+                url: `${BASE_URL}/product/${p.slug}`,
+                name: p.name,
+              })),
+            },
           }),
         }}
       />
