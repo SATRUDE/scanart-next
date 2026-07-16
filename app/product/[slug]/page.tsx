@@ -17,6 +17,7 @@ import { ArtistSection } from '@/components/ArtistSection';
 import { PrintCard } from '@/components/PrintCard';
 import { getLowestProductPrices } from '@/lib/pricing';
 import { BASE_URL } from '@/lib/site';
+import { shippingRates } from '@/config/shipping';
 
 export async function generateStaticParams() {
   const products = await getAllProducts();
@@ -75,6 +76,44 @@ export default async function ProductPage({
   if (product.secondaryImage && product.secondaryImage.trim() !== '' && product.secondaryImage !== product.image) {
     images.push(product.secondaryImage);
   }
+
+  // Merchant-listing structured-data fields, built entirely from repo data:
+  // shipping from config/shipping.ts, returns from the 14-day made-to-order
+  // policy in data/help.ts. A few representative destinations (Google reads
+  // shippingDetails that way), priced in GBP to match the Offer's priceCurrency.
+  // These are an eligibility signal for richer product results, not a ranking lever.
+  const shippingDetails = shippingRates
+    .filter(r => ['GB', 'NO', 'US'].includes(r.countryCode))
+    .map(r => {
+      const days = (r.estimatedDays || '').match(/(\d+)\s*-\s*(\d+)/);
+      const detail: Record<string, unknown> = {
+        '@type': 'OfferShippingDetails',
+        shippingRate: { '@type': 'MonetaryAmount', value: r.costs.GBP, currency: 'GBP' },
+        shippingDestination: { '@type': 'DefinedRegion', addressCountry: r.countryCode },
+      };
+      if (days) {
+        detail.deliveryTime = {
+          '@type': 'ShippingDeliveryTime',
+          transitTime: {
+            '@type': 'QuantitativeValue',
+            minValue: Number(days[1]),
+            maxValue: Number(days[2]),
+            unitCode: 'DAY',
+          },
+        };
+      }
+      return detail;
+    });
+
+  // 14-day right to cancel; made to order, so nothing is sent back and the
+  // refund is issued on request (data/help.ts, "Returns & refunds").
+  const returnPolicy = {
+    '@type': 'MerchantReturnPolicy',
+    applicableCountry: ['GB', 'NO', 'US', 'DK', 'SE'],
+    returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
+    merchantReturnDays: 14,
+    returnFees: 'https://schema.org/FreeReturn',
+  };
 
   return (
     <div className="container mx-auto px-8 py-8">
@@ -152,6 +191,9 @@ export default async function ProductPage({
               price: getLowestProductPrices(product).GBP,
               // prices hold season-long; the horizon renews with each build
               priceValidUntil: `${new Date().getFullYear()}-12-31`,
+              itemCondition: 'https://schema.org/NewCondition',
+              shippingDetails,
+              hasMerchantReturnPolicy: returnPolicy,
             },
           }),
         }}
