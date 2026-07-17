@@ -14,6 +14,16 @@ function latest(dates: Date[]): Date {
   return dates.length ? new Date(Math.max(...dates.map(Number))) : SITE_LAUNCH;
 }
 
+// Absolute URL for a site-relative image path, matching how the product and
+// article pages build their JSON-LD/OG image URLs (new URL(path, BASE_URL)).
+// Empty and externally-hosted images (e.g. an article hero hotlinked from
+// another domain) are skipped so the image sitemap only ever references our
+// own domain, which is what Google expects for the <image:image> extension.
+function siteImage(src: string | undefined): string | undefined {
+  if (!src || /^https?:\/\//i.test(src)) return undefined;
+  return new URL(src, BASE_URL).toString();
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const products = await getAllProducts();
   const articles = await getAllArticles();
@@ -76,18 +86,31 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: 0.7 as const,
         changeFrequency: 'weekly' as const,
       })),
-    ...products.map(p => ({
-      url: `${BASE_URL}/product/${p.slug}`,
-      lastModified: productEdited[p.slug] ? new Date(productEdited[p.slug]) : SITE_LAUNCH,
-      priority: 0.7 as const,
-      changeFrequency: 'monthly' as const,
-    })),
-    ...articles.map(a => ({
-      url: `${BASE_URL}/article/${a.slug}`,
-      lastModified: a.last_edited_time ? new Date(a.last_edited_time) : SITE_LAUNCH,
-      priority: 0.6 as const,
-      changeFrequency: 'monthly' as const,
-    })),
+    ...products.map(p => {
+      // the print itself, plus a distinct secondary shot where one exists
+      const images = [...new Set(
+        [siteImage(p.image), siteImage(p.secondaryImage)].filter(
+          (u): u is string => Boolean(u)
+        )
+      )];
+      return {
+        url: `${BASE_URL}/product/${p.slug}`,
+        lastModified: productEdited[p.slug] ? new Date(productEdited[p.slug]) : SITE_LAUNCH,
+        priority: 0.7 as const,
+        changeFrequency: 'monthly' as const,
+        ...(images.length ? { images } : {}),
+      };
+    }),
+    ...articles.map(a => {
+      const image = siteImage(a.image);
+      return {
+        url: `${BASE_URL}/article/${a.slug}`,
+        lastModified: a.last_edited_time ? new Date(a.last_edited_time) : SITE_LAUNCH,
+        priority: 0.6 as const,
+        changeFrequency: 'monthly' as const,
+        ...(image ? { images: [image] } : {}),
+      };
+    }),
     // artist pages exist only for artists with published work; an artist page
     // changes when one of their prints does
     ...artists
