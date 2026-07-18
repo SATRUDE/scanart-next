@@ -43,8 +43,8 @@ export async function generateMetadata({
     openGraph: {
       title: product.name,
       description: desc,
+      url: `${BASE_URL}/product/${product.slug}`,
       images: [product.image],
-      type: 'website',
     },
     twitter: {
       card: 'summary_large_image',
@@ -167,6 +167,21 @@ export default async function ProductPage({
           </div>
         </div>
       )}
+
+      {/* Product Open Graph tags for rich pins and link unfurls. Next's typed
+          Metadata API has no product og:type and its `other` field emits
+          name= rather than the property= that Open Graph needs, so these are
+          rendered directly and React hoists them into <head>. Values mirror
+          the Offer JSON-LD below (lowest price in GBP, the catalogue currency). */}
+      <meta property="og:type" content="product" />
+      <meta property="og:price:amount" content={String(getLowestProductPrices(product).GBP)} />
+      <meta property="og:price:currency" content="GBP" />
+      <meta property="product:price:amount" content={String(getLowestProductPrices(product).GBP)} />
+      <meta property="product:price:currency" content="GBP" />
+      <meta
+        property="product:availability"
+        content={product.inStock ? 'in stock' : 'out of stock'}
+      />
 
       {/* JSON-LD structured data */}
       <script
