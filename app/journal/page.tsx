@@ -1,14 +1,18 @@
 import type { Metadata } from 'next';
 import { getAllArticles } from '@/lib/articles';
 import { JournalGrid } from '@/components/JournalGrid';
-import { BASE_URL } from '@/lib/site';
+import { BASE_URL, socialCard } from '@/lib/site';
+
+const PAGE_TITLE = 'Journal';
+const PAGE_DESCRIPTION = 'Read about Scandinavian art, Nordic design, and the artists behind our curated collection.';
 
 export const metadata: Metadata = {
-  title: 'Journal',
-  description: 'Read about Scandinavian art, Nordic design, and the artists behind our curated collection.',
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
   alternates: {
     canonical: '/journal',
   },
+  ...socialCard({ title: PAGE_TITLE, description: PAGE_DESCRIPTION, path: '/journal' }),
 };
 
 export default async function JournalPage() {

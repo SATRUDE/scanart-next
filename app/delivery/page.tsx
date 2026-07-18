@@ -3,11 +3,16 @@ import Link from 'next/link';
 import { LegalPage, LegalSection } from '@/components/LegalPage';
 import { COMPANY } from '@/config/company';
 import { DeliveryRatesTable } from '@/components/DeliveryRatesTable';
+import { socialCard } from '@/lib/site';
+
+const PAGE_TITLE = 'Delivery & Returns';
+const PAGE_DESCRIPTION = 'How Scandinavian Art prints are made, shipped worldwide, and our returns and refunds policy.';
 
 export const metadata: Metadata = {
-  title: 'Delivery & Returns',
-  description: 'How Scandinavian Art prints are made, shipped worldwide, and our returns and refunds policy.',
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
   alternates: { canonical: '/delivery' },
+  ...socialCard({ title: PAGE_TITLE, description: PAGE_DESCRIPTION, path: '/delivery' }),
 };
 
 // The date this policy takes effect; bump by hand when the wording changes.

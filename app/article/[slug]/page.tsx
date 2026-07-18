@@ -13,7 +13,7 @@ import { getAllArticles, getArticleBySlug, getArticleBlocks } from '@/lib/articl
 import { getAllProducts } from '@/lib/products';
 import { NotionBlockRenderer } from '@/components/NotionBlockRenderer';
 import { PrintCard } from '@/components/PrintCard';
-import { BASE_URL } from '@/lib/site';
+import { BASE_URL, OG_IMAGE } from '@/lib/site';
 
 export async function generateStaticParams() {
   const articles = await getAllArticles();
@@ -38,8 +38,14 @@ export async function generateMetadata({
     openGraph: {
       title: article.title,
       description: article.excerpt,
-      images: article.image ? [article.image] : [],
+      images: [article.image || OG_IMAGE],
       type: 'article',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: article.title,
+      description: article.excerpt,
+      images: [article.image || OG_IMAGE],
     },
   };
 }

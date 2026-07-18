@@ -5,7 +5,7 @@ import { ArrowLeft } from 'lucide-react';
 import { categoryLandings, getCategoryLandingBySlug } from '@/lib/categories';
 import { getProductsByCategory } from '@/lib/products';
 import { PrintCard } from '@/components/PrintCard';
-import { BASE_URL } from '@/lib/site';
+import { BASE_URL, socialCard } from '@/lib/site';
 
 export async function generateStaticParams() {
   return categoryLandings.map(c => ({ slug: c.slug }));
@@ -20,17 +20,21 @@ export async function generateMetadata({
   const category = getCategoryLandingBySlug(slug);
   if (!category) return {};
 
+  // Lead print as the social image; socialCard falls back to the site OG image.
+  const products = await getProductsByCategory(category.category);
+
   return {
     title: category.title,
     description: category.description,
     alternates: {
       canonical: `/category/${category.slug}`,
     },
-    openGraph: {
+    ...socialCard({
       title: category.title,
       description: category.description,
-      type: 'website',
-    },
+      path: `/category/${category.slug}`,
+      image: products[0]?.image,
+    }),
   };
 }
 

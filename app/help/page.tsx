@@ -2,11 +2,16 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { helpGroups } from '@/data/help';
 import { HelpSections } from '@/components/HelpSections';
+import { socialCard } from '@/lib/site';
+
+const PAGE_TITLE = 'Help';
+const PAGE_DESCRIPTION = 'Answers to common questions about ordering, delivery, returns and our prints at Scandinavian Art.';
 
 export const metadata: Metadata = {
-  title: 'Help',
-  description: 'Answers to common questions about ordering, delivery, returns and our prints at Scandinavian Art.',
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
   alternates: { canonical: '/help' },
+  ...socialCard({ title: PAGE_TITLE, description: PAGE_DESCRIPTION, path: '/help' }),
 };
 
 const faqJsonLd = {

@@ -2,14 +2,18 @@ import type { Metadata } from 'next';
 import { artists } from '@/data/artists';
 import { getProductsByArtist } from '@/lib/products';
 import { ArtistsList, ArtistWithCount } from '@/components/ArtistsList';
-import { BASE_URL } from '@/lib/site';
+import { BASE_URL, socialCard } from '@/lib/site';
+
+const PAGE_TITLE = 'Artists';
+const PAGE_DESCRIPTION = 'Meet the Scandinavian artists behind the collection, a small group of illustrators and printmakers working across Norway and Sweden.';
 
 export const metadata: Metadata = {
-  title: 'Artists',
-  description: 'Meet the Scandinavian artists behind the collection, a small group of illustrators and printmakers working across Norway and Sweden.',
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
   alternates: {
     canonical: '/artists',
   },
+  ...socialCard({ title: PAGE_TITLE, description: PAGE_DESCRIPTION, path: '/artists' }),
 };
 
 export default async function ArtistsPage() {
