@@ -2,11 +2,16 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { LegalPage, LegalSection } from '@/components/LegalPage';
 import { COMPANY } from '@/config/company';
+import { socialCard } from '@/lib/site';
+
+const PAGE_TITLE = 'Terms & Conditions';
+const PAGE_DESCRIPTION = 'The terms on which Scandinavian Art sells art prints and you use this site.';
 
 export const metadata: Metadata = {
-  title: 'Terms & Conditions',
-  description: 'The terms on which Scandinavian Art sells art prints and you use this site.',
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
   alternates: { canonical: '/terms' },
+  ...socialCard({ title: PAGE_TITLE, description: PAGE_DESCRIPTION, path: '/terms' }),
 };
 
 // The date these terms take effect; bump by hand when the wording changes.

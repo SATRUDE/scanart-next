@@ -2,15 +2,19 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { QualityPromise } from '@/components/QualityPromise';
 import { FullWidthImage } from '@/components/FullWidthImage';
-import { BASE_URL } from '@/lib/site';
+import { BASE_URL, socialCard } from '@/lib/site';
+
+const PAGE_TITLE = 'About';
+const PAGE_DESCRIPTION =
+  'The story of Scandinavian Art: an online gallery working directly with Scandinavian artists to bring authentic Nordic prints into homes around the world.';
 
 export const metadata: Metadata = {
-  title: 'About',
-  description:
-    'The story of Scandinavian Art: an online gallery working directly with Scandinavian artists to bring authentic Nordic prints into homes around the world.',
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
   alternates: {
     canonical: '/about',
   },
+  ...socialCard({ title: PAGE_TITLE, description: PAGE_DESCRIPTION, path: '/about' }),
 };
 
 export default function AboutPage() {

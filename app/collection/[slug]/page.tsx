@@ -6,7 +6,7 @@ import { ArrowLeft } from 'lucide-react';
 import { collections, getCollectionBySlug } from '@/lib/collections';
 import { getAllProducts } from '@/lib/products';
 import { PrintCard } from '@/components/PrintCard';
-import { BASE_URL } from '@/lib/site';
+import { BASE_URL, socialCard } from '@/lib/site';
 
 export async function generateStaticParams() {
   return collections.map(c => ({ slug: c.slug }));
@@ -21,17 +21,25 @@ export async function generateMetadata({
   const collection = getCollectionBySlug(slug);
   if (!collection) return {};
 
+  // Lead curated print as the social image; socialCard falls back to the site
+  // OG image if the slug no longer resolves.
+  const all = await getAllProducts();
+  const leadImage = collection.productSlugs
+    .map(s => all.find(p => p.slug === s))
+    .find(Boolean)?.image;
+
   return {
     title: collection.title,
     description: collection.description,
     alternates: {
       canonical: `/collection/${collection.slug}`,
     },
-    openGraph: {
+    ...socialCard({
       title: collection.title,
       description: collection.description,
-      type: 'website',
-    },
+      path: `/collection/${collection.slug}`,
+      image: leadImage,
+    }),
   };
 }
 

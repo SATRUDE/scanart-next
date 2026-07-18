@@ -12,7 +12,7 @@ import {
 import { artists, getArtistBySlug, getArtistInitials } from '@/data/artists';
 import { getProductsByArtist } from '@/lib/products';
 import { PrintCard } from '@/components/PrintCard';
-import { BASE_URL } from '@/lib/site';
+import { BASE_URL, OG_IMAGE } from '@/lib/site';
 
 export async function generateStaticParams() {
   // only artists with published work get a page
@@ -43,8 +43,14 @@ export async function generateMetadata({
     openGraph: {
       title: artist.name,
       description: desc,
-      images: artist.image ? [artist.image] : [],
+      images: [artist.image || OG_IMAGE],
       type: 'profile',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: artist.name,
+      description: desc,
+      images: [artist.image || OG_IMAGE],
     },
   };
 }

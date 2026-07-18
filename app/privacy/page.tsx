@@ -2,11 +2,16 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { LegalPage, LegalSection } from '@/components/LegalPage';
 import { COMPANY } from '@/config/company';
+import { socialCard } from '@/lib/site';
+
+const PAGE_TITLE = 'Privacy Policy';
+const PAGE_DESCRIPTION = 'How Scandinavian Art collects, uses and protects your personal data.';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy',
-  description: 'How Scandinavian Art collects, uses and protects your personal data.',
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
   alternates: { canonical: '/privacy' },
+  ...socialCard({ title: PAGE_TITLE, description: PAGE_DESCRIPTION, path: '/privacy' }),
 };
 
 // The date this policy takes effect; bump by hand when the wording changes.

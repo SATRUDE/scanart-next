@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import { getAllProducts } from '@/lib/products';
 import { ProductsGrid } from '@/components/ProductsGrid';
-import { BASE_URL } from '@/lib/site';
+import { BASE_URL, socialCard } from '@/lib/site';
 
 const PAGE_TITLE = 'Nordic & Scandinavian Art Prints';
 const PAGE_DESCRIPTION =
@@ -14,6 +14,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/products',
   },
+  ...socialCard({ title: PAGE_TITLE, description: PAGE_DESCRIPTION, path: '/products' }),
 };
 
 export default async function ProductsPage({
