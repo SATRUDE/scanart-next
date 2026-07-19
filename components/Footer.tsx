@@ -3,6 +3,8 @@
 import React from 'react';
 import Link from 'next/link';
 import { ResponsiveText } from '@/components/ResponsiveText';
+import { categoryLandings } from '@/lib/categories';
+import { collections } from '@/lib/collections';
 
 export const Footer: React.FC = () => {
   return (
@@ -14,7 +16,21 @@ export const Footer: React.FC = () => {
               A Scandinavian art gallery, where we curate an exquisite selection of artworks.
             </p>
           </div>
-          <div className="lg:col-start-4">
+          <div>
+            <ul className="text-sm text-neutral-900 space-y-2">
+              {categoryLandings.map(category => (
+                <li key={category.slug}>
+                  <Link href={`/category/${category.slug}`} className="hover:text-neutral-600 transition-colors">{category.category}</Link>
+                </li>
+              ))}
+              {collections.map(collection => (
+                <li key={collection.slug}>
+                  <Link href={`/collection/${collection.slug}`} className="hover:text-neutral-600 transition-colors">{collection.chipLabel}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
             <ul className="text-sm text-neutral-900 space-y-2">
               <li><Link href="/about" className="hover:text-neutral-600 transition-colors">About</Link></li>
               <li><Link href="/journal" className="hover:text-neutral-600 transition-colors">Journal</Link></li>
