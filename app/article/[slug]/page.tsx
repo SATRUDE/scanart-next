@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   Breadcrumb,
   BreadcrumbList,
@@ -103,8 +104,15 @@ export default async function ArticlePage({
         </header>
 
         {article.image && (
-          <div className="aspect-[16/9] overflow-hidden bg-neutral-50 rounded mb-8">
-            <img src={article.image} alt={article.title} className="w-full h-full object-cover" />
+          <div className="relative aspect-[16/9] overflow-hidden bg-neutral-50 rounded mb-8">
+            <Image
+              src={article.image}
+              alt={article.title}
+              fill
+              sizes="(max-width: 768px) 100vw, 768px"
+              className="object-cover"
+              preload
+            />
           </div>
         )}
 
@@ -133,8 +141,14 @@ export default async function ArticlePage({
             {relatedArticles.map(ra => (
               <Link key={ra.id} href={`/article/${ra.slug}`} className="group">
                 {ra.image && (
-                  <div className="aspect-[4/3] overflow-hidden bg-neutral-50 rounded mb-3">
-                    <img src={ra.image} alt={ra.title} className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300" />
+                  <div className="relative aspect-[4/3] overflow-hidden bg-neutral-50 rounded mb-3">
+                    <Image
+                      src={ra.image}
+                      alt={ra.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 256px"
+                      className="object-cover group-hover:scale-[1.02] transition-transform duration-300"
+                    />
                   </div>
                 )}
                 <h3 className="text-sm font-medium text-neutral-900 group-hover:text-neutral-600 transition-colors">{ra.title}</h3>
