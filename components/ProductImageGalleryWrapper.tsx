@@ -28,7 +28,7 @@ export const ProductImageGalleryWrapper: React.FC<ProductImageGalleryWrapperProp
           src={validImages[selectedIndex]}
           alt={`${productName} - Image ${selectedIndex + 1}`}
           fill
-          priority
+          preload
           sizes="(max-width: 1024px) 100vw, 50vw"
           className="object-cover hover:scale-[1.02] transition-transform duration-300"
         />

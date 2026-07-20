@@ -69,7 +69,7 @@ export const SmartImage: React.FC<SmartImageProps> = ({
         alt={alt}
         fill
         sizes={sizes}
-        priority={priority}
+        preload={priority}
         {...(priority ? {} : { loading })}
         onLoad={handleLoad}
         onError={handleError}
