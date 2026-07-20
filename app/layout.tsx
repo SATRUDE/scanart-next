@@ -12,10 +12,10 @@ import './globals.css';
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: 'Scandinavian Art Gallery - Curated Nordic Artwork & Prints',
+    default: 'Scandinavian Art Gallery | Framed Nordic Art Prints',
     template: '%s | Scandinavian Art Gallery',
   },
-  description: 'Scandinavian Art Gallery - Curated selection of exquisite Nordic artwork and prints from talented Scandinavian artists. Worldwide delivery.',
+  description: 'Curated Scandinavian and Nordic art prints from independent artists. Shop framed or unframed wall art, delivered worldwide. Discover the collection.',
   keywords: ['Scandinavian art', 'Nordic art', 'Scandinavian wall art', 'Nordic prints', 'Scandinavian artists', 'art gallery', 'wall art', 'prints', 'artwork', 'Nordic design'],
   authors: [{ name: 'Scandinavian Art Gallery' }],
   robots: 'index, follow',
@@ -26,8 +26,8 @@ export const metadata: Metadata = {
     'p:domain_verify': 'f545c7d3764c8418167cc16b7612b605',
   },
   openGraph: {
-    title: 'Scandinavian Art Gallery - Curated Nordic Artwork & Prints',
-    description: 'Discover exquisite Scandinavian and Nordic artwork from talented artists. Shop curated wall art, prints, and original pieces.',
+    title: 'Scandinavian Art Gallery | Framed Nordic Art Prints',
+    description: 'Curated Scandinavian and Nordic art prints from independent artists. Shop framed or unframed wall art, delivered worldwide.',
     url: BASE_URL,
     siteName: 'Scandinavian Art Gallery',
     locale: 'en_GB',
@@ -36,8 +36,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Scandinavian Art Gallery - Curated Nordic Artwork & Prints',
-    description: 'Discover exquisite Scandinavian and Nordic artwork from talented artists.',
+    title: 'Scandinavian Art Gallery | Framed Nordic Art Prints',
+    description: 'Curated Scandinavian and Nordic art prints from independent artists. Framed or unframed, delivered worldwide.',
     images: ['/images/scandinavian-art-gallery-og.jpg'],
     site: '@scandinavianart',
   },
