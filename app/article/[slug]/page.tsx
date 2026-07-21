@@ -174,7 +174,15 @@ export default async function ArticlePage({
             // byline (Mark's call, 2026-07-09), a named writer becomes a Person
             author: article.author
               ? { '@type': 'Person', name: article.author }
-              : { '@type': 'Organization', name: 'Scandinavian Art Gallery' },
+              : {
+                  '@type': 'Organization',
+                  name: 'Scandinavian Art Gallery',
+                  // Google-recommended author.url: a page that uniquely
+                  // identifies the author. For the gallery byline that is the
+                  // site homepage. A named Person author would point to a bio
+                  // page; none exist yet, so the Person branch stays url-less.
+                  url: BASE_URL,
+                },
             publisher: {
               '@type': 'Organization',
               name: 'Scandinavian Art Gallery',
