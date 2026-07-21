@@ -4,9 +4,9 @@ import { getAllProducts } from '@/lib/products';
 import { ProductsGrid } from '@/components/ProductsGrid';
 import { BASE_URL, socialCard } from '@/lib/site';
 
-const PAGE_TITLE = 'Nordic & Scandinavian Art Prints';
+const PAGE_TITLE = 'Nordic & Scandinavian Art Prints: A Curated Collection';
 const PAGE_DESCRIPTION =
-  'Shop Nordic and Scandinavian art prints from talented artists. Curated wall art and original pieces, with worldwide delivery.';
+  'A curated collection of Scandinavian and Nordic art prints by independent Norwegian artists. Framed or unframed, with worldwide delivery.';
 
 export const metadata: Metadata = {
   title: PAGE_TITLE,
