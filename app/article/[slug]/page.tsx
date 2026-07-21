@@ -15,6 +15,7 @@ import { getAllProducts } from '@/lib/products';
 import { NotionBlockRenderer } from '@/components/NotionBlockRenderer';
 import { PrintCard } from '@/components/PrintCard';
 import { BASE_URL, OG_IMAGE } from '@/lib/site';
+import { getBrowseLinksForArticle } from '@/lib/article-browse';
 
 export async function generateStaticParams() {
   const articles = await getAllArticles();
@@ -64,6 +65,7 @@ export default async function ArticlePage({
   }
 
   const blocks = await getArticleBlocks(article.id);
+  const browseLinks = getBrowseLinksForArticle(article.slug);
   const allProducts = await getAllProducts();
   const featuredPrints = (article.selectedArtworkIds || [])
     .map(artworkSlug => allProducts.find(p => p.slug === artworkSlug))
@@ -118,6 +120,25 @@ export default async function ArticlePage({
 
         {blocks.length > 0 && (
           <NotionBlockRenderer blocks={blocks} />
+        )}
+
+        {browseLinks.length > 0 && (
+          <footer className="mt-12 border-t pt-8">
+            <p className="text-sm text-muted-foreground">
+              Keep browsing:{' '}
+              {browseLinks.map((link, i) => (
+                <span key={link.href}>
+                  {i > 0 && ' · '}
+                  <Link
+                    href={link.href}
+                    className="underline underline-offset-2 hover:text-neutral-600 transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </span>
+              ))}
+            </p>
+          </footer>
         )}
       </article>
 
