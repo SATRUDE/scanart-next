@@ -6,6 +6,7 @@ import { ArrowLeft } from 'lucide-react';
 import { collections, getCollectionBySlug } from '@/lib/collections';
 import { getAllProducts } from '@/lib/products';
 import { PrintCard } from '@/components/PrintCard';
+import { LandingCrossLinks } from '@/components/LandingCrossLinks';
 import { BASE_URL, socialCard } from '@/lib/site';
 
 export async function generateStaticParams() {
@@ -129,12 +130,7 @@ export default async function CollectionPage({
         )}
       </section>
 
-      <nav className="mt-16 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground">
-        <Link href="/products" className="hover:text-foreground">All prints</Link>
-        <Link href="/category/botanical" className="hover:text-foreground">Botanical prints</Link>
-        <Link href="/category/abstract" className="hover:text-foreground">Abstract prints</Link>
-        <Link href="/artists" className="hover:text-foreground">Meet the artists</Link>
-      </nav>
+      <LandingCrossLinks current={{ type: 'collection', slug: collection.slug }} />
 
       <script
         type="application/ld+json"

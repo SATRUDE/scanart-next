@@ -5,6 +5,7 @@ import { ArrowLeft } from 'lucide-react';
 import { categoryLandings, getCategoryLandingBySlug } from '@/lib/categories';
 import { getProductsByCategory } from '@/lib/products';
 import { PrintCard } from '@/components/PrintCard';
+import { LandingCrossLinks } from '@/components/LandingCrossLinks';
 import { BASE_URL, socialCard } from '@/lib/site';
 
 export async function generateStaticParams() {
@@ -98,6 +99,8 @@ export default async function CategoryPage({
           ))}
         </div>
       </section>
+
+      <LandingCrossLinks current={{ type: 'category', slug: category.slug }} />
 
       <script
         type="application/ld+json"
