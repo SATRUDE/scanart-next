@@ -78,6 +78,7 @@ export default async function CollectionPage({
       <header className="mb-16">
         <h1 className="text-3xl text-neutral-900">{collection.heading}</h1>
         <p className="text-muted-foreground leading-relaxed mt-4 max-w-3xl">{collection.intro}</p>
+        <p className="text-muted-foreground leading-relaxed mt-4 max-w-3xl">{collection.intro2}</p>
       </header>
 
       <div className="mb-8">
@@ -130,8 +131,34 @@ export default async function CollectionPage({
         )}
       </section>
 
+      <section className="mt-16">
+        <h2 className="text-2xl text-neutral-900">Common questions</h2>
+        <div className="mt-4 max-w-3xl space-y-6">
+          {collection.faqs.map(faq => (
+            <div key={faq.question}>
+              <h3 className="font-medium text-neutral-900">{faq.question}</h3>
+              <p className="text-muted-foreground leading-relaxed mt-1">{faq.answer}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
       <LandingCrossLinks current={{ type: 'collection', slug: collection.slug }} />
 
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: collection.faqs.map(faq => ({
+              '@type': 'Question',
+              name: faq.question,
+              acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+            })),
+          }),
+        }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
