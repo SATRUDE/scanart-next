@@ -12,7 +12,7 @@ import {
 import { artists, getArtistBySlug, getArtistInitials } from '@/data/artists';
 import { getProductsByArtist } from '@/lib/products';
 import { PrintCard } from '@/components/PrintCard';
-import { BASE_URL, OG_IMAGE } from '@/lib/site';
+import { BASE_URL, OG_IMAGE, SITE_NAME, OG_LOCALE, TWITTER_SITE } from '@/lib/site';
 
 export async function generateStaticParams() {
   // only artists with published work get a page
@@ -43,11 +43,15 @@ export async function generateMetadata({
     openGraph: {
       title: artist.name,
       description: desc,
+      url: `${BASE_URL}/artist/${artist.slug}`,
+      siteName: SITE_NAME,
+      locale: OG_LOCALE,
       images: [artist.image || OG_IMAGE],
       type: 'profile',
     },
     twitter: {
       card: 'summary_large_image',
+      site: TWITTER_SITE,
       title: artist.name,
       description: desc,
       images: [artist.image || OG_IMAGE],

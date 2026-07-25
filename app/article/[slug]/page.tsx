@@ -14,7 +14,7 @@ import { getAllArticles, getArticleBySlug, getArticleBlocks } from '@/lib/articl
 import { getAllProducts } from '@/lib/products';
 import { NotionBlockRenderer } from '@/components/NotionBlockRenderer';
 import { PrintCard } from '@/components/PrintCard';
-import { BASE_URL, OG_IMAGE } from '@/lib/site';
+import { BASE_URL, OG_IMAGE, SITE_NAME, OG_LOCALE, TWITTER_SITE } from '@/lib/site';
 import { getBrowseLinksForArticle } from '@/lib/article-browse';
 
 export async function generateStaticParams() {
@@ -40,11 +40,15 @@ export async function generateMetadata({
     openGraph: {
       title: article.title,
       description: article.excerpt,
+      url: `${BASE_URL}/article/${article.slug}`,
+      siteName: SITE_NAME,
+      locale: OG_LOCALE,
       images: [article.image || OG_IMAGE],
       type: 'article',
     },
     twitter: {
       card: 'summary_large_image',
+      site: TWITTER_SITE,
       title: article.title,
       description: article.excerpt,
       images: [article.image || OG_IMAGE],
