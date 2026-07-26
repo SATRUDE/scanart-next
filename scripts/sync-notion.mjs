@@ -7,7 +7,13 @@ import { Client } from '@notionhq/client';
 // Runs automatically before every build (prebuild), or manually: npm run sync
 //
 // Behaviour:
-// - NOTION_API_KEY missing  -> skip with a warning, keep the committed snapshot
+// - NOTION_API_KEY missing on a production deploy (VERCEL_ENV=production)
+//   -> fail the build. The committed snapshot is only a fallback and can lag
+//   behind Notion, so shipping it to production would silently 404 any newer
+//   published article (it is in the sitemap but absent from the fallback JSON).
+// - NOTION_API_KEY missing elsewhere (local dev, previews, CI worktrees)
+//   -> skip with a warning, keep the committed snapshot so contributors can
+//   build without the key
 // - NOTION_API_KEY present  -> sync or die; a failed sync fails the build so a
 //   half-written snapshot never ships
 // - Only Published articles are exported; drafts stay out of the public JSON
@@ -17,6 +23,10 @@ const OUT_DIR = path.join(process.cwd(), 'public', 'notion-data');
 
 const apiKey = process.env.NOTION_API_KEY;
 if (!apiKey) {
+  if (process.env.VERCEL_ENV === 'production') {
+    console.error('[sync-notion] NOTION_API_KEY is required for a production build but is not set. Refusing to ship the committed fallback snapshot, which may be stale and would 404 newer published articles.');
+    process.exit(1);
+  }
   console.warn('[sync-notion] NOTION_API_KEY not set; keeping the committed snapshot.');
   process.exit(0);
 }
