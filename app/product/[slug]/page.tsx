@@ -16,7 +16,7 @@ import { ProductImageGalleryWrapper } from '@/components/ProductImageGalleryWrap
 import { ArtistSection } from '@/components/ArtistSection';
 import { PrintCard } from '@/components/PrintCard';
 import { getLowestProductPrices } from '@/lib/pricing';
-import { BASE_URL } from '@/lib/site';
+import { BASE_URL, SITE_NAME, OG_LOCALE, TWITTER_SITE } from '@/lib/site';
 import { shippingRates } from '@/config/shipping';
 
 export async function generateStaticParams() {
@@ -40,14 +40,21 @@ export async function generateMetadata({
     alternates: {
       canonical: `/product/${product.slug}`,
     },
+    // Next merges metadata shallowly, so a page that sets its own openGraph/
+    // twitter must restate the layout's site-wide fields or they drop (see
+    // lib/site.ts). og:type is intentionally omitted here: it is emitted as a
+    // product og:type via a direct <meta> in the page body below.
     openGraph: {
       title: product.name,
       description: desc,
       url: `${BASE_URL}/product/${product.slug}`,
+      siteName: SITE_NAME,
+      locale: OG_LOCALE,
       images: [product.image],
     },
     twitter: {
       card: 'summary_large_image',
+      site: TWITTER_SITE,
       title: product.name,
       description: desc,
       images: [product.image],
