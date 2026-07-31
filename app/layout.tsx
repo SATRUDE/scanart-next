@@ -19,6 +19,13 @@ export const metadata: Metadata = {
   keywords: ['Scandinavian art', 'Nordic art', 'Scandinavian wall art', 'Nordic prints', 'Scandinavian artists', 'art gallery', 'wall art', 'prints', 'artwork', 'Nordic design'],
   authors: [{ name: 'Scandinavian Art Gallery' }],
   robots: 'index, follow',
+  alternates: {
+    types: {
+      'application/rss+xml': [
+        { url: '/feed.xml', title: 'Scandinavian Art Gallery Journal' },
+      ],
+    },
+  },
   verification: {
     google: 'Q044oiN2tnwr8F7eUthQjHaf0jXLsFmHuS1ZnN2aEV0',
   },
