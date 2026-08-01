@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Artist, getArtistInitials } from '@/data/artists';
 
 interface ArtistSectionProps {
@@ -12,7 +13,7 @@ export const ArtistSection: React.FC<ArtistSectionProps> = ({ artist }) => {
       <div className="flex items-start gap-4">
         {artist.image ? (
           <div className="h-12 w-12 rounded-full overflow-hidden flex-shrink-0">
-            <img src={artist.image} alt={artist.name} className="w-full h-full object-cover" />
+            <Image src={artist.image} alt={artist.name} width={48} height={48} className="w-full h-full object-cover" />
           </div>
         ) : (
           <div aria-hidden="true" className="h-12 w-12 rounded-full bg-muted flex items-center justify-center flex-shrink-0">

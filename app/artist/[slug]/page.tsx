@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   Breadcrumb,
   BreadcrumbList,
@@ -98,7 +99,7 @@ export default async function ArtistPage({
         <div className="flex items-start gap-6">
           {artist.image ? (
             <div className="h-20 w-20 rounded-full overflow-hidden flex-shrink-0">
-              <img src={artist.image} alt={artist.name} className="w-full h-full object-cover" />
+              <Image src={artist.image} alt={artist.name} width={80} height={80} className="w-full h-full object-cover" />
             </div>
           ) : (
             <div aria-hidden="true" className="h-20 w-20 rounded-full bg-muted flex items-center justify-center flex-shrink-0">
