@@ -56,7 +56,7 @@ export const categoryLandings: CategoryLanding[] = [
   {
     slug: 'abstract',
     category: 'Abstract',
-    title: 'Abstract Art Prints',
+    title: 'Nordic Abstract Wall Art Prints',
     description:
       'Nordic abstract wall art from independent Norwegian artists: pared-back figures and bold bird motifs in confident flat colour. Framing options, worldwide delivery.',
     heading: 'Abstract Prints',
