@@ -4,7 +4,7 @@ import { collections } from '@/lib/collections';
 
 interface LandingCrossLinksProps {
   /** The landing this block sits on, so it never links back to itself. */
-  current: { type: 'category' | 'collection'; slug: string };
+  current: { type: 'category' | 'collection' | 'wall-art'; slug: string };
 }
 
 /**
@@ -40,6 +40,9 @@ export function LandingCrossLinks({ current }: LandingCrossLinksProps) {
         {collectionLinks.map(l => (
           <Link key={l.href} href={l.href} className="hover:text-foreground">{l.label}</Link>
         ))}
+        {current.type !== 'wall-art' && (
+          <Link href="/scandinavian-wall-art" className="hover:text-foreground">Scandinavian Wall Art</Link>
+        )}
         <Link href="/artists" className="hover:text-foreground">Meet the artists</Link>
       </nav>
     </section>
