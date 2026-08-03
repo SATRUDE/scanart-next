@@ -72,6 +72,17 @@ export default async function RootLayout({
           data-performance="true"
           strategy="afterInteractive"
         />
+        {/* Umami heatmap recorder (click coordinates + scroll depth, no DOM
+            capture). Completely inert until the Heatmaps toggle is on in the
+            Umami dashboard: it self-configures from the /recorder endpoint,
+            currently {"enabled":false}. Waits on the tracker's session, so it
+            sits alongside script.js above. */}
+        <Script
+          defer
+          src="https://datamachine.vercel.app/recorder.js"
+          data-website-id="a2c30bff-57c9-4b47-a7a1-c77bb1718e41"
+          strategy="afterInteractive"
+        />
         {/* Pinterest Tag (conversion + retargeting). Enhanced-match email is
             intentionally omitted: we have no visitor email at page load. */}
         <Script id="pinterest-tag" strategy="afterInteractive">
