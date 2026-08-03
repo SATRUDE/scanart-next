@@ -28,6 +28,9 @@ export const Footer: React.FC = () => {
                   <Link href={`/collection/${collection.slug}`} className="hover:text-neutral-600 transition-colors">{collection.chipLabel}</Link>
                 </li>
               ))}
+              <li>
+                <Link href="/scandinavian-wall-art" className="hover:text-neutral-600 transition-colors">Wall Art</Link>
+              </li>
             </ul>
           </div>
           <div>

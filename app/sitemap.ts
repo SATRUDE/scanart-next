@@ -50,6 +50,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE_URL}/privacy`, lastModified: new Date('2026-07-12'), priority: 0.3, changeFrequency: 'yearly' },
     { url: `${BASE_URL}/terms`, lastModified: new Date('2026-07-12'), priority: 0.3, changeFrequency: 'yearly' },
     { url: `${BASE_URL}/delivery`, lastModified: new Date('2026-07-12'), priority: 0.3, changeFrequency: 'yearly' },
+    // wall-art landing shows the full catalogue, so it changes when any print does
+    { url: `${BASE_URL}/scandinavian-wall-art`, lastModified: latest(productDates), priority: 0.8, changeFrequency: 'weekly' },
     // category landing pages exist only for categories with published work; a
     // category page changes when one of its prints does
     ...categoryLandings
