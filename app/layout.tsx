@@ -5,6 +5,7 @@ import { Cart } from '@/components/Cart';
 import { Footer } from '@/components/Footer';
 import { RouteChangeTracker } from '@/components/RouteChangeTracker';
 import { ScrollDepth } from '@/components/ScrollDepth';
+import { WebVitalsReporter } from '@/components/WebVitalsReporter';
 import { getAllProducts } from '@/lib/products';
 import { BASE_URL } from '@/lib/site';
 import Script from 'next/script';
@@ -104,6 +105,7 @@ pintrk('page');`}
           <Footer />
           <RouteChangeTracker />
           <ScrollDepth />
+          <WebVitalsReporter />
         </Providers>
       </body>
     </html>
