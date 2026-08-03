@@ -1,0 +1,569 @@
+[
+ {
+  "object": "block",
+  "id": "917d0157-7ab4-4d11-82a0-6e765f56dcf2",
+  "parent": {
+   "type": "page_id",
+   "page_id": "39b33fb2-2b5f-8135-9d5d-d455cee84a82"
+  },
+  "created_time": "2026-07-12T18:11:00.000Z",
+  "last_edited_time": "2026-07-12T18:11:00.000Z",
+  "created_by": {
+   "object": "user",
+   "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+  },
+  "last_edited_by": {
+   "object": "user",
+   "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+  },
+  "has_children": false,
+  "in_trash": false,
+  "type": "paragraph",
+  "paragraph": {
+   "rich_text": [
+    {
+     "type": "text",
+     "text": {
+      "content": "A print on the wall and a good book on the table do much the same job. Both slow you down and ask you to look properly. So if you love the work we sell, here are a few Nordic art and design books worth living with, the ones that reward a second and third read.",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "A print on the wall and a good book on the table do much the same job. Both slow you down and ask you to look properly. So if you love the work we sell, here are a few Nordic art and design books worth living with, the ones that reward a second and third read.",
+     "href": null
+    }
+   ],
+   "icon": null,
+   "color": "default"
+  },
+  "archived": false
+ },
+ {
+  "object": "block",
+  "id": "7586f2f1-8960-49b5-be4b-de609865ba00",
+  "parent": {
+   "type": "page_id",
+   "page_id": "39b33fb2-2b5f-8135-9d5d-d455cee84a82"
+  },
+  "created_time": "2026-07-12T18:11:00.000Z",
+  "last_edited_time": "2026-07-12T18:27:00.000Z",
+  "created_by": {
+   "object": "user",
+   "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+  },
+  "last_edited_by": {
+   "object": "user",
+   "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+  },
+  "has_children": false,
+  "in_trash": false,
+  "type": "paragraph",
+  "paragraph": {
+   "rich_text": [
+    {
+     "type": "text",
+     "text": {
+      "content": "Start broad. ",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "Start broad. ",
+     "href": null
+    },
+    {
+     "type": "text",
+     "text": {
+      "content": "Art of the Nordic Nations",
+      "link": {
+       "url": "https://www.amazon.co.uk/s?k=Art%20of%20the%20Nordic%20Nations"
+      }
+     },
+     "annotations": {
+      "bold": false,
+      "italic": true,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "Art of the Nordic Nations",
+     "href": "https://www.amazon.co.uk/s?k=Art%20of%20the%20Nordic%20Nations"
+    },
+    {
+     "type": "text",
+     "text": {
+      "content": " (Thames & Hudson) is about the closest thing to a single-volume survey of the region's art, and it is the one to reach for when you want to understand why Nordic art looks the way it does: the long northern light, the quiet interiors, the pull between clarity and melancholy that runs through so much of it.",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": " (Thames & Hudson) is about the closest thing to a single-volume survey of the region's art, and it is the one to reach for when you want to understand why Nordic art looks the way it does: the long northern light, the quiet interiors, the pull between clarity and melancholy that runs through so much of it.",
+     "href": null
+    }
+   ],
+   "icon": null,
+   "color": "default"
+  },
+  "archived": false
+ },
+ {
+  "object": "block",
+  "id": "9e4a54d2-e5de-4943-9350-a2dfaac00e6d",
+  "parent": {
+   "type": "page_id",
+   "page_id": "39b33fb2-2b5f-8135-9d5d-d455cee84a82"
+  },
+  "created_time": "2026-07-12T18:11:00.000Z",
+  "last_edited_time": "2026-07-12T18:11:00.000Z",
+  "created_by": {
+   "object": "user",
+   "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+  },
+  "last_edited_by": {
+   "object": "user",
+   "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+  },
+  "has_children": false,
+  "in_trash": false,
+  "type": "paragraph",
+  "paragraph": {
+   "rich_text": [
+    {
+     "type": "text",
+     "text": {
+      "content": "From there, follow the light to the painters themselves. Vilhelm Hammershøi built a whole career out of empty rooms and grey Copenhagen daylight, and once you have sat with his interiors you start noticing that calm everywhere. Harald Sohlberg and Harriet Backer gave the Norwegian landscape and the lamplit room the same still attention. Munch you already know, but he repays a proper monograph rather than a fridge magnet of The Scream.",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "From there, follow the light to the painters themselves. Vilhelm Hammershøi built a whole career out of empty rooms and grey Copenhagen daylight, and once you have sat with his interiors you start noticing that calm everywhere. Harald Sohlberg and Harriet Backer gave the Norwegian landscape and the lamplit room the same still attention. Munch you already know, but he repays a proper monograph rather than a fridge magnet of The Scream.",
+     "href": null
+    }
+   ],
+   "icon": null,
+   "color": "default"
+  },
+  "archived": false
+ },
+ {
+  "object": "block",
+  "id": "2475dda6-f2cd-4d16-8821-f3887c529182",
+  "parent": {
+   "type": "page_id",
+   "page_id": "39b33fb2-2b5f-8135-9d5d-d455cee84a82"
+  },
+  "created_time": "2026-07-12T18:11:00.000Z",
+  "last_edited_time": "2026-07-12T18:27:00.000Z",
+  "created_by": {
+   "object": "user",
+   "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+  },
+  "last_edited_by": {
+   "object": "user",
+   "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+  },
+  "has_children": false,
+  "in_trash": false,
+  "type": "paragraph",
+  "paragraph": {
+   "rich_text": [
+    {
+     "type": "text",
+     "text": {
+      "content": "Then there is design, which in the Nordic countries was never really treated as separate from art. ",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "Then there is design, which in the Nordic countries was never really treated as separate from art. ",
+     "href": null
+    },
+    {
+     "type": "text",
+     "text": {
+      "content": "Scandinavian Home",
+      "link": {
+       "url": "https://www.amazon.co.uk/s?k=Scandinavian%20Home%20Elizabeth%20Wilhide"
+      }
+     },
+     "annotations": {
+      "bold": false,
+      "italic": true,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "Scandinavian Home",
+     "href": "https://www.amazon.co.uk/s?k=Scandinavian%20Home%20Elizabeth%20Wilhide"
+    },
+    {
+     "type": "text",
+     "text": {
+      "content": " by Elizabeth Wilhide is a clear, country-by-country guide to the mid-century furniture and interiors the region is famous for. ",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": " by Elizabeth Wilhide is a clear, country-by-country guide to the mid-century furniture and interiors the region is famous for. ",
+     "href": null
+    },
+    {
+     "type": "text",
+     "text": {
+      "content": "New Nordic Houses",
+      "link": {
+       "url": "https://www.amazon.co.uk/s?k=New%20Nordic%20Houses%20Dominic%20Bradbury"
+      }
+     },
+     "annotations": {
+      "bold": false,
+      "italic": true,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "New Nordic Houses",
+     "href": "https://www.amazon.co.uk/s?k=New%20Nordic%20Houses%20Dominic%20Bradbury"
+    },
+    {
+     "type": "text",
+     "text": {
+      "content": " by Dominic Bradbury carries that instinct into the present, all cabins in the woods and coastal retreats, shot beautifully enough to frame.",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": " by Dominic Bradbury carries that instinct into the present, all cabins in the woods and coastal retreats, shot beautifully enough to frame.",
+     "href": null
+    }
+   ],
+   "icon": null,
+   "color": "default"
+  },
+  "archived": false
+ },
+ {
+  "object": "block",
+  "id": "d24df6f4-8847-45e8-a108-220a758fd912",
+  "parent": {
+   "type": "page_id",
+   "page_id": "39b33fb2-2b5f-8135-9d5d-d455cee84a82"
+  },
+  "created_time": "2026-07-12T18:11:00.000Z",
+  "last_edited_time": "2026-07-12T18:27:00.000Z",
+  "created_by": {
+   "object": "user",
+   "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+  },
+  "last_edited_by": {
+   "object": "user",
+   "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+  },
+  "has_children": false,
+  "in_trash": false,
+  "type": "paragraph",
+  "paragraph": {
+   "rich_text": [
+    {
+     "type": "text",
+     "text": {
+      "content": "If you want the feeling more than the history, ",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "If you want the feeling more than the history, ",
+     "href": null
+    },
+    {
+     "type": "text",
+     "text": {
+      "content": "North: How to Live Scandinavian",
+      "link": {
+       "url": "https://www.amazon.co.uk/s?k=North%20How%20to%20Live%20Scandinavian%20Aurell"
+      }
+     },
+     "annotations": {
+      "bold": false,
+      "italic": true,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "North: How to Live Scandinavian",
+     "href": "https://www.amazon.co.uk/s?k=North%20How%20to%20Live%20Scandinavian%20Aurell"
+    },
+    {
+     "type": "text",
+     "text": {
+      "content": " by Brontë Aurell and ",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": " by Brontë Aurell and ",
+     "href": null
+    },
+    {
+     "type": "text",
+     "text": {
+      "content": "The Monocle Book of the Nordics",
+      "link": {
+       "url": "https://www.amazon.co.uk/s?k=The%20Monocle%20Book%20of%20the%20Nordics"
+      }
+     },
+     "annotations": {
+      "bold": false,
+      "italic": true,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "The Monocle Book of the Nordics",
+     "href": "https://www.amazon.co.uk/s?k=The%20Monocle%20Book%20of%20the%20Nordics"
+    },
+    {
+     "type": "text",
+     "text": {
+      "content": " sit at the warmer, browsable end of the shelf: design, food and the small habits that make the region what it is.",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": " sit at the warmer, browsable end of the shelf: design, food and the small habits that make the region what it is.",
+     "href": null
+    }
+   ],
+   "icon": null,
+   "color": "default"
+  },
+  "archived": false
+ },
+ {
+  "object": "block",
+  "id": "f930d230-b25b-403a-a2f9-e7854a0d8f34",
+  "parent": {
+   "type": "page_id",
+   "page_id": "39b33fb2-2b5f-8135-9d5d-d455cee84a82"
+  },
+  "created_time": "2026-07-12T18:11:00.000Z",
+  "last_edited_time": "2026-07-12T18:11:00.000Z",
+  "created_by": {
+   "object": "user",
+   "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+  },
+  "last_edited_by": {
+   "object": "user",
+   "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+  },
+  "has_children": false,
+  "in_trash": false,
+  "type": "paragraph",
+  "paragraph": {
+   "rich_text": [
+    {
+     "type": "text",
+     "text": {
+      "content": "None of these will teach you to make art, and that is not why you own them. They train the eye. A few evenings with Hammershøi's rooms and you start choosing what goes on your own walls a little more carefully.",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "None of these will teach you to make art, and that is not why you own them. They train the eye. A few evenings with Hammershøi's rooms and you start choosing what goes on your own walls a little more carefully.",
+     "href": null
+    }
+   ],
+   "icon": null,
+   "color": "default"
+  },
+  "archived": false
+ },
+ {
+  "object": "block",
+  "id": "a42af8db-3c65-483d-b947-e037a7ea20b1",
+  "parent": {
+   "type": "page_id",
+   "page_id": "39b33fb2-2b5f-8135-9d5d-d455cee84a82"
+  },
+  "created_time": "2026-07-12T18:11:00.000Z",
+  "last_edited_time": "2026-07-12T18:11:00.000Z",
+  "created_by": {
+   "object": "user",
+   "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+  },
+  "last_edited_by": {
+   "object": "user",
+   "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+  },
+  "has_children": false,
+  "in_trash": false,
+  "type": "paragraph",
+  "paragraph": {
+   "rich_text": [
+    {
+     "type": "text",
+     "text": {
+      "content": "Which is where we come in. The prints we carry come from the same Nordic sensibility these books trace, the same light, the same restraint, the same quiet confidence. If a book sends you looking for a piece to live with, ",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "Which is where we come in. The prints we carry come from the same Nordic sensibility these books trace, the same light, the same restraint, the same quiet confidence. If a book sends you looking for a piece to live with, ",
+     "href": null
+    },
+    {
+     "type": "text",
+     "text": {
+      "content": "browse the collection",
+      "link": {
+       "url": "https://app.notion.com/products"
+      }
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "browse the collection",
+     "href": "https://app.notion.com/products"
+    },
+    {
+     "type": "text",
+     "text": {
+      "content": ", and if you would rather meet the people making that work now, ",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": ", and if you would rather meet the people making that work now, ",
+     "href": null
+    },
+    {
+     "type": "text",
+     "text": {
+      "content": "our artists are here",
+      "link": {
+       "url": "https://app.notion.com/artists"
+      }
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "our artists are here",
+     "href": "https://app.notion.com/artists"
+    },
+    {
+     "type": "text",
+     "text": {
+      "content": ".",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": ".",
+     "href": null
+    }
+   ],
+   "icon": null,
+   "color": "default"
+  },
+  "archived": false
+ }
+]

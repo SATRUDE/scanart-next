@@ -1,5 +1,224 @@
 [
  {
+  "id": "3a633fb2-2b5f-8128-b094-f6a0b7d2e51b",
+  "slug": "henie-onstad-in-focus",
+  "title": "Henie Onstad in focus: a fjord-side art centre",
+  "excerpt": "A fjord-side art centre founded by an Olympic skater, with a major Kai Fjell retrospective and Lap-See Lam's Ombres both on through the summer.",
+  "published": true,
+  "featured": false,
+  "image": "/images/journal/framed-prints-table.jpg",
+  "author": "",
+  "category": "Exhibitions",
+  "tags": [
+   "What's on"
+  ],
+  "relatedArticles": [
+   "art-in-oslo-july-2026"
+  ],
+  "selectedArtworkIds": [
+   "hyttefrokost",
+   "swallow-dive",
+   "eltsjoen"
+  ],
+  "created_time": "2026-07-23T03:55:00.000Z",
+  "last_edited_time": "2026-07-23T03:55:00.000Z"
+ },
+ {
+  "id": "3a633fb2-2b5f-81a9-85f1-f8550f4bb709",
+  "slug": "nordic-photography-books",
+  "title": "Nordic photography books: the North through a lens",
+  "excerpt": "Five photography books that chase the same northern light the painters did, from the ice of Greenland to the forests of Varmland.",
+  "published": true,
+  "featured": false,
+  "image": "/images/journal/bookshelf-print.jpg",
+  "author": "",
+  "category": "Guide",
+  "tags": [],
+  "relatedArticles": [
+   "nordic-art-and-design-books",
+   "nordic-artist-monographs",
+   "nordic-design-and-architecture-books",
+   "nordic-craft-books-glass-ceramics-textiles",
+   "contemporary-nordic-art-books"
+  ],
+  "selectedArtworkIds": [
+   "eltsjoen",
+   "birdie-blue",
+   "swallow-dive"
+  ],
+  "created_time": "2026-07-23T03:55:00.000Z",
+  "last_edited_time": "2026-07-23T03:55:00.000Z"
+ },
+ {
+  "id": "3a633fb2-2b5f-81ba-b0a1-c56964f53e6e",
+  "slug": "contemporary-nordic-art-books",
+  "title": "Contemporary Nordic art books: the scene now",
+  "excerpt": "Five contemporary Nordic art books, from a survey of the whole scene to monographs on Olafur Eliasson, Mamma Andersson, Tal R and Ida Ekblad, tracing the North as it is being made now.",
+  "published": true,
+  "featured": false,
+  "image": "/images/journal/reading-corner.jpg",
+  "author": "",
+  "category": "Guide",
+  "tags": [],
+  "relatedArticles": [
+   "nordic-art-and-design-books",
+   "nordic-artist-monographs",
+   "nordic-design-and-architecture-books",
+   "nordic-craft-books-glass-ceramics-textiles",
+   "nordic-photography-books"
+  ],
+  "selectedArtworkIds": [
+   "birdie-blue",
+   "birdie-green",
+   "dancer",
+   "swallow-dive"
+  ],
+  "created_time": "2026-07-23T03:55:00.000Z",
+  "last_edited_time": "2026-07-23T03:55:00.000Z"
+ },
+ {
+  "id": "3a633fb2-2b5f-81d9-8be7-fe93441ab48a",
+  "slug": "nordic-design-and-architecture-books",
+  "title": "Nordic design and architecture books: five worth owning",
+  "excerpt": "Five design and architecture books worth living with, from a survey of the whole tradition to monographs on Aalto, Jacobsen, Wegner and Juhl.",
+  "published": true,
+  "featured": false,
+  "image": "/images/journal/design-office.jpg",
+  "author": "",
+  "category": "Guide",
+  "tags": [
+   "nordic design"
+  ],
+  "relatedArticles": [
+   "nordic-art-and-design-books",
+   "nordic-artist-monographs",
+   "nordic-craft-books-glass-ceramics-textiles",
+   "nordic-photography-books",
+   "contemporary-nordic-art-books"
+  ],
+  "selectedArtworkIds": [
+   "eye-nose-eye",
+   "slingshot",
+   "mean-snothing"
+  ],
+  "created_time": "2026-07-23T03:55:00.000Z",
+  "last_edited_time": "2026-07-23T03:55:00.000Z"
+ },
+ {
+  "id": "3a633fb2-2b5f-81ed-9a22-c71fab0ea8bf",
+  "slug": "nordic-craft-books-glass-ceramics-textiles",
+  "title": "Nordic craft books: glass, ceramics and textiles",
+  "excerpt": "A curated shelf of five real books on Nordic craft, from Finnish glass and Scandinavian ceramics to Marimekko prints, Georg Jensen silver and Norwegian tapestry.",
+  "published": true,
+  "featured": false,
+  "image": "/images/journal/vinkveld-scene.avif",
+  "author": "",
+  "category": "Guide",
+  "tags": [
+   "nordic design"
+  ],
+  "relatedArticles": [
+   "nordic-art-and-design-books",
+   "nordic-artist-monographs",
+   "nordic-design-and-architecture-books",
+   "nordic-photography-books",
+   "contemporary-nordic-art-books"
+  ],
+  "selectedArtworkIds": [
+   "eltsjoen",
+   "hyttefrokost",
+   "morgenstrekk",
+   "birdie-green"
+  ],
+  "created_time": "2026-07-23T03:55:00.000Z",
+  "last_edited_time": "2026-07-23T03:55:00.000Z"
+ },
+ {
+  "id": "3a433fb2-2b5f-8129-a220-cf954c6bf832",
+  "slug": "what-is-scandinavian-art",
+  "title": "What is Scandinavian art?",
+  "excerpt": "Less a single movement than a sensibility: northern light, the landscape as main character, restraint, and beauty built into everyday life. A short history of Scandinavian art, from Dahl to design.",
+  "published": true,
+  "featured": false,
+  "image": "https://upload.wikimedia.org/wikipedia/commons/2/2e/P.S._Kr%C3%B8yer_-_Summer_evening_on_Skagen%27s_Beach._Anna_Ancher_and_Marie_Kr%C3%B8yer_walking_together._-_Google_Art_Project.jpg",
+  "author": "",
+  "category": "Guide",
+  "tags": [],
+  "relatedArticles": [
+   "who-are-scandinavian-art",
+   "nordic-art-and-design-books",
+   "nordic-artist-monographs"
+  ],
+  "selectedArtworkIds": [
+   "eltsjoen",
+   "dancer",
+   "hyttefrokost",
+   "birdie-blue"
+  ],
+  "created_time": "2026-07-21T14:35:00.000Z",
+  "last_edited_time": "2026-08-03T11:58:00.000Z"
+ },
+ {
+  "id": "3a433fb2-2b5f-814e-a4b8-ffe646c7f1da",
+  "slug": "nordic-artist-monographs",
+  "title": "Nordic artist monographs: where to start",
+  "excerpt": "Six monographs on the great Nordic painters, from Hammershøi's silent rooms to af Klint's radiant abstractions. Where to start when one artist asks for a closer look.",
+  "published": true,
+  "featured": false,
+  "image": "https://upload.wikimedia.org/wikipedia/commons/e/e8/Harald_Sohlberg_-_Winter_Night_in_the_Mountains_-_NG.M.01185_-_National_Museum_of_Art%2C_Architecture_and_Design.jpg",
+  "author": "",
+  "category": "Guide",
+  "tags": [],
+  "relatedArticles": [
+   "the-art-of-choosing-art-comprehensive-guide",
+   "nordic-art-and-design-books",
+   "what-is-scandinavian-art",
+   "nordic-design-and-architecture-books",
+   "nordic-craft-books-glass-ceramics-textiles",
+   "nordic-photography-books",
+   "contemporary-nordic-art-books"
+  ],
+  "selectedArtworkIds": [
+   "eltsjoen",
+   "hyttefrokost",
+   "morgenstrekk",
+   "swallow-dive"
+  ],
+  "created_time": "2026-07-21T13:41:00.000Z",
+  "last_edited_time": "2026-07-21T13:41:00.000Z"
+ },
+ {
+  "id": "39b33fb2-2b5f-8135-9d5d-d455cee84a82",
+  "slug": "nordic-art-and-design-books",
+  "title": "Nordic art and design books worth owning",
+  "excerpt": "A short reading list of Nordic art and design books worth living with, and where the prints on your wall fit in.",
+  "published": true,
+  "featured": false,
+  "image": "/images/journal/hammershoi-interior-strandgade.jpg",
+  "author": "",
+  "category": "Guide",
+  "tags": [
+   "nordic design"
+  ],
+  "relatedArticles": [
+   "who-are-scandinavian-art",
+   "the-art-of-choosing-art-comprehensive-guide",
+   "nordic-artist-monographs",
+   "nordic-design-and-architecture-books",
+   "nordic-craft-books-glass-ceramics-textiles",
+   "nordic-photography-books",
+   "contemporary-nordic-art-books"
+  ],
+  "selectedArtworkIds": [
+   "eltsjoen",
+   "morgenstrekk",
+   "dancer",
+   "birdie-blue"
+  ],
+  "created_time": "2026-07-12T18:11:00.000Z",
+  "last_edited_time": "2026-07-12T18:31:00.000Z"
+ },
+ {
   "id": "39733fb2-2b5f-81d9-9f29-c5f659213cdf",
   "slug": "complete-guide-choosing-print-sizes",
   "title": "The Complete Guide to Choosing Print Sizes for Your Home",
@@ -14,7 +233,8 @@
   ],
   "relatedArticles": [
    "how-to-style-scandinavian-wall-art-living-room",
-   "the-art-of-choosing-art-comprehensive-guide"
+   "the-art-of-choosing-art-comprehensive-guide",
+   "nordic-art-and-design-books"
   ],
   "selectedArtworkIds": [
    "hummer-og-vin",
@@ -39,7 +259,8 @@
   ],
   "relatedArticles": [
    "the-art-of-choosing-art-comprehensive-guide",
-   "complete-guide-choosing-print-sizes"
+   "complete-guide-choosing-print-sizes",
+   "nordic-art-and-design-books"
   ],
   "selectedArtworkIds": [
    "morgenstrekk",
@@ -56,7 +277,7 @@
   "excerpt": "A short, curated shortlist of what's actually worth seeing in Oslo this month: Paula Rego at MUNCH, the Freia Friezes out of the factory for the first time, Cecilia Kristensen's showroom afternoons, and the 1893 Scream.",
   "published": true,
   "featured": true,
-  "image": "https://www.munch.no/globalassets/kunstverk/2026-utstillinger/paula-rego/t05534.jpg",
+  "image": "/images/journal/art-in-oslo-rego.jpg",
   "author": "",
   "category": "Exhibitions",
   "tags": [
@@ -74,6 +295,30 @@
   ],
   "created_time": "2026-07-08T07:22:00.000Z",
   "last_edited_time": "2026-07-08T09:47:00.000Z"
+ },
+ {
+  "id": "25f33fb2-2b5f-80a3-b8ff-e013a99672ad",
+  "slug": "create-an-art-wall",
+  "title": "How to Create a Stunning Art Wall with Multiple Pieces",
+  "excerpt": "A step-by-step guide to designing a cohesive art wall that reflects your personal style while keeping a Scandinavian aesthetic in mind.",
+  "published": true,
+  "featured": false,
+  "image": "/images/journal/three-frames-living-room.jpg",
+  "author": "",
+  "category": "Home Decor",
+  "tags": [],
+  "relatedArticles": [
+   "who-are-scandinavian-art",
+   "the-art-of-choosing-art-comprehensive-guide",
+   "an-interview-by-nordic-notes"
+  ],
+  "selectedArtworkIds": [
+   "hyttefrokost",
+   "birdie-blue",
+   "slingshot"
+  ],
+  "created_time": "2025-08-30T20:39:00.000Z",
+  "last_edited_time": "2026-08-03T11:58:00.000Z"
  },
  {
   "id": "24933fb2-2b5f-80f0-8b51-e9967fad3374",
