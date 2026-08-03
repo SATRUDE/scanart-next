@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { track } from '@/lib/analytics';
 
 interface ProductImageGalleryWrapperProps {
   images: string[];
@@ -18,7 +19,11 @@ export const ProductImageGalleryWrapper: React.FC<ProductImageGalleryWrapperProp
   const hasMultiple = validImages.length > 1;
 
   const goTo = (index: number) => {
-    setSelectedIndex((index + validImages.length) % validImages.length);
+    const next = (index + validImages.length) % validImages.length;
+    setSelectedIndex(next);
+    // Image 0 is the print itself; anything after is a scene shot, and whether
+    // people look at scenes is the signal this event exists for.
+    track('gallery-image-view', { productName, imageIndex: next, isScene: next > 0 });
   };
 
   return (

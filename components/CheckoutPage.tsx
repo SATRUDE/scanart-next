@@ -18,6 +18,7 @@ import stripePromise from '@/config/stripe';
 import { OrderComplete } from '@/components/OrderComplete';
 import { getShippingRate, formatShippingCost } from '@/config/shipping';
 import { getFrameName, getFramePrice } from '@/config/frame';
+import { track } from '@/lib/analytics';
 
 const publishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
 
@@ -61,7 +62,7 @@ const PaymentForm: React.FC<{
       return;
     }
 
-    (window as any).umami?.track('pay', {
+    track('pay', {
       total,
       currency,
     });
@@ -112,6 +113,9 @@ const PaymentForm: React.FC<{
         });
 
         if (paymentError) {
+          // Error code only, never card details: a silently failing payment
+          // method must be visible in analytics.
+          track('checkout-error', { code: paymentError.code || 'unknown', total, currency });
           setError(paymentError.message || 'Payment failed');
           onError(paymentError.message || 'Payment failed');
         } else {
@@ -152,6 +156,7 @@ const PaymentForm: React.FC<{
       });
 
       if (paymentError) {
+        track('checkout-error', { code: paymentError.code || 'unknown', total, currency });
         setError(paymentError.message || 'Payment failed');
         onError(paymentError.message || 'Payment failed');
       } else {
@@ -159,6 +164,7 @@ const PaymentForm: React.FC<{
       }
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'Payment failed';
+      track('checkout-error', { code: 'exception', total, currency });
       setError(errorMessage);
       onError(errorMessage);
     } finally {
@@ -242,6 +248,9 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = () => {
   });
 
   const handleInputChange = (field: string, value: string) => {
+    if (field === 'country') {
+      track('shipping-country-selected', { country: value });
+    }
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 

@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { TrackedLink } from '@/components/TrackedLink';
 import { categoryLandings } from '@/lib/categories';
 import { collections } from '@/lib/collections';
 
@@ -33,17 +33,17 @@ export function LandingCrossLinks({ current }: LandingCrossLinksProps) {
     <section className="mt-16">
       <h2 className="text-2xl text-neutral-900">Explore more</h2>
       <nav className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground">
-        <Link href="/products" className="hover:text-foreground">All prints</Link>
+        <TrackedLink event="explore-more-click" eventData={{ from: `${current.type}/${current.slug}`, to: '/products' }} href="/products" className="hover:text-foreground">All prints</TrackedLink>
         {categoryLinks.map(l => (
-          <Link key={l.href} href={l.href} className="hover:text-foreground">{l.label}</Link>
+          <TrackedLink key={l.href} event="explore-more-click" eventData={{ from: `${current.type}/${current.slug}`, to: l.href }} href={l.href} className="hover:text-foreground">{l.label}</TrackedLink>
         ))}
         {collectionLinks.map(l => (
-          <Link key={l.href} href={l.href} className="hover:text-foreground">{l.label}</Link>
+          <TrackedLink key={l.href} event="explore-more-click" eventData={{ from: `${current.type}/${current.slug}`, to: l.href }} href={l.href} className="hover:text-foreground">{l.label}</TrackedLink>
         ))}
         {current.type !== 'wall-art' && (
-          <Link href="/scandinavian-wall-art" className="hover:text-foreground">Scandinavian Wall Art</Link>
+          <TrackedLink event="explore-more-click" eventData={{ from: `${current.type}/${current.slug}`, to: '/scandinavian-wall-art' }} href="/scandinavian-wall-art" className="hover:text-foreground">Scandinavian Wall Art</TrackedLink>
         )}
-        <Link href="/artists" className="hover:text-foreground">Meet the artists</Link>
+        <TrackedLink event="explore-more-click" eventData={{ from: `${current.type}/${current.slug}`, to: '/artists' }} href="/artists" className="hover:text-foreground">Meet the artists</TrackedLink>
       </nav>
     </section>
   );

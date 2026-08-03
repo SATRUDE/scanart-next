@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ResponsiveText } from '@/components/ResponsiveText';
 import { categoryLandings } from '@/lib/categories';
 import { collections } from '@/lib/collections';
+import { track } from '@/lib/analytics';
 
 export const Footer: React.FC = () => {
   return (
@@ -39,7 +40,11 @@ export const Footer: React.FC = () => {
               <li><Link href="/journal" className="hover:text-neutral-600 transition-colors">Journal</Link></li>
               <li><Link href="/artists" className="hover:text-neutral-600 transition-colors">Artists</Link></li>
               <li><Link href="/help" className="hover:text-neutral-600 transition-colors">Help</Link></li>
-              <li><button disabled className="text-neutral-400 cursor-not-allowed opacity-50">Newsletter</button></li>
+              <li>
+                {/* Painted door: the newsletter doesn't exist yet; counting presses
+                    on this deliberately inert button is the case for building it. */}
+                <button onClick={() => track('newsletter-click')} className="text-neutral-400 cursor-not-allowed opacity-50">Newsletter</button>
+              </li>
               <li><Link href="/products" className="hover:text-neutral-600 transition-colors">Shop All</Link></li>
             </ul>
           </div>

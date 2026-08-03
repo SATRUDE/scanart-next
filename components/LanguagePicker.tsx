@@ -4,6 +4,7 @@ import React from 'react';
 import { Globe } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger } from '@/components/ui/select';
 import { useLanguage, countries } from '@/contexts/LanguageContext';
+import { track } from '@/lib/analytics';
 
 export const LanguagePicker: React.FC = () => {
   const { selectedCountry, setSelectedCountry } = useLanguage();
@@ -11,6 +12,7 @@ export const LanguagePicker: React.FC = () => {
   const handleCountryChange = (countryCode: string) => {
     const country = countries.find(c => c.code === countryCode);
     if (country) {
+      track('currency-change', { from: selectedCountry.currency, to: country.currency, country: country.code });
       setSelectedCountry(country);
     }
   };

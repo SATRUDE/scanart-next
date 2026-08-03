@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { X, Plus, Minus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -10,6 +10,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { SmartImage } from '@/components/SmartImage';
 import { getProductPrices } from '@/lib/pricing';
 import { getFrameName, getFramePrice } from '@/config/frame';
+import { track } from '@/lib/analytics';
 
 export const Cart: React.FC = () => {
   const {
@@ -22,8 +23,20 @@ export const Cart: React.FC = () => {
   const { formatPrice, selectedCountry } = useLanguage();
   const router = useRouter();
 
+  // The cart-open step sits between add-to-cart and checkout in the funnel.
+  useEffect(() => {
+    if (state.isOpen) {
+      track('cart-open', {
+        itemCount: state.items.reduce((n, i) => n + i.quantity, 0),
+      });
+    }
+    // Deliberately only on open/close: mutating items with the cart open is
+    // not a second "open".
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state.isOpen]);
+
   const handleCheckout = () => {
-    (window as any).umami?.track('checkout', {
+    track('checkout', {
       itemCount: state.items.reduce((n, i) => n + i.quantity, 0),
       total: getTotalPriceInCurrency(selectedCountry.currency),
       currency: selectedCountry.currency,
@@ -66,7 +79,10 @@ export const Cart: React.FC = () => {
                             {item.size && <p className="text-xs text-muted-foreground">Size: {item.size.charAt(0).toUpperCase() + item.size.slice(1)}</p>}
                             {item.frame && item.frame !== 'no-frame' && <p className="text-xs text-muted-foreground">Frame: {getFrameName(item.frame)}</p>}
                           </div>
-                          <button aria-label={`Remove ${item.product.name}`} onClick={() => removeFromCart(item.product.id, item.size, item.frame)} className="text-muted-foreground hover:text-foreground">
+                          <button aria-label={`Remove ${item.product.name}`} onClick={() => {
+                            track('remove-from-cart', { productId: item.product.id, productName: item.product.name, size: item.size, frame: item.frame });
+                            removeFromCart(item.product.id, item.size, item.frame);
+                          }} className="text-muted-foreground hover:text-foreground">
                             <X className="h-4 w-4" />
                           </button>
                         </div>
