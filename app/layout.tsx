@@ -5,7 +5,6 @@ import { Cart } from '@/components/Cart';
 import { Footer } from '@/components/Footer';
 import { RouteChangeTracker } from '@/components/RouteChangeTracker';
 import { ScrollDepth } from '@/components/ScrollDepth';
-import { WebVitalsReporter } from '@/components/WebVitalsReporter';
 import { getAllProducts } from '@/lib/products';
 import { BASE_URL } from '@/lib/site';
 import Script from 'next/script';
@@ -70,6 +69,7 @@ export default async function RootLayout({
           src="https://datamachine.vercel.app/script.js"
           data-website-id="a2c30bff-57c9-4b47-a7a1-c77bb1718e41"
           data-domains="www.scandinavianart.co.uk"
+          data-performance="true"
           strategy="afterInteractive"
         />
         {/* Pinterest Tag (conversion + retargeting). Enhanced-match email is
@@ -105,7 +105,6 @@ pintrk('page');`}
           <Footer />
           <RouteChangeTracker />
           <ScrollDepth />
-          <WebVitalsReporter />
         </Providers>
       </body>
     </html>
