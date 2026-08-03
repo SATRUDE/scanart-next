@@ -1,0 +1,603 @@
+[
+ {
+  "object": "block",
+  "id": "a1117b0c-c83b-4542-92cf-874b60003f10",
+  "parent": {
+   "type": "page_id",
+   "page_id": "3a633fb2-2b5f-81a9-85f1-f8550f4bb709"
+  },
+  "created_time": "2026-07-23T03:55:00.000Z",
+  "last_edited_time": "2026-07-23T03:55:00.000Z",
+  "created_by": {
+   "object": "user",
+   "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+  },
+  "last_edited_by": {
+   "object": "user",
+   "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+  },
+  "has_children": false,
+  "in_trash": false,
+  "type": "paragraph",
+  "paragraph": {
+   "rich_text": [
+    {
+     "type": "text",
+     "text": {
+      "content": "Our ",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "Our ",
+     "href": null
+    },
+    {
+     "type": "text",
+     "text": {
+      "content": "Nordic art and design books",
+      "link": {
+       "url": "https://www.scandinavianart.co.uk/article/nordic-art-and-design-books"
+      }
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "Nordic art and design books",
+     "href": "https://www.scandinavianart.co.uk/article/nordic-art-and-design-books"
+    },
+    {
+     "type": "text",
+     "text": {
+      "content": " roundup took the wide view, and the ",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": " roundup took the wide view, and the ",
+     "href": null
+    },
+    {
+     "type": "text",
+     "text": {
+      "content": "Nordic artist monographs",
+      "link": {
+       "url": "https://www.scandinavianart.co.uk/article/nordic-artist-monographs"
+      }
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "Nordic artist monographs",
+     "href": "https://www.scandinavianart.co.uk/article/nordic-artist-monographs"
+    },
+    {
+     "type": "text",
+     "text": {
+      "content": " piece went deep on the painters. This shelf hands the North to the photographers. It is the same light the painters chased, the long low sun, the white winters, the stillness, only now it arrives through a lens and a darkroom rather than a brush. Set one of these on the table beside a print on the wall and you are looking at two halves of the same country, a century or so apart and chasing the same weather. Five books, one from each Nordic nation.",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": " piece went deep on the painters. This shelf hands the North to the photographers. It is the same light the painters chased, the long low sun, the white winters, the stillness, only now it arrives through a lens and a darkroom rather than a brush. Set one of these on the table beside a print on the wall and you are looking at two halves of the same country, a century or so apart and chasing the same weather. Five books, one from each Nordic nation.",
+     "href": null
+    }
+   ],
+   "icon": null,
+   "color": "default"
+  },
+  "archived": false
+ },
+ {
+  "object": "block",
+  "id": "aaaa0023-bf97-453e-8d39-9a979a2e6294",
+  "parent": {
+   "type": "page_id",
+   "page_id": "3a633fb2-2b5f-81a9-85f1-f8550f4bb709"
+  },
+  "created_time": "2026-07-23T03:55:00.000Z",
+  "last_edited_time": "2026-07-23T03:55:00.000Z",
+  "created_by": {
+   "object": "user",
+   "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+  },
+  "last_edited_by": {
+   "object": "user",
+   "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+  },
+  "has_children": false,
+  "in_trash": false,
+  "type": "paragraph",
+  "paragraph": {
+   "rich_text": [
+    {
+     "type": "text",
+     "text": {
+      "content": "Iceland comes first. Ragnar Axelsson spent the better part of forty years among the hunters and farmers of the far North Atlantic, and ",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "Iceland comes first. Ragnar Axelsson spent the better part of forty years among the hunters and farmers of the far North Atlantic, and ",
+     "href": null
+    },
+    {
+     "type": "text",
+     "text": {
+      "content": "Faces of the North",
+      "link": {
+       "url": "https://www.amazon.co.uk/dp/993542040X"
+      }
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "Faces of the North",
+     "href": "https://www.amazon.co.uk/dp/993542040X"
+    },
+    {
+     "type": "text",
+     "text": {
+      "content": " is what he brought back: Greenland, Iceland and the Faroes in stark black and white, weather you can feel through the page. Few photographers have looked this hard at a way of life that is quietly slipping away.",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": " is what he brought back: Greenland, Iceland and the Faroes in stark black and white, weather you can feel through the page. Few photographers have looked this hard at a way of life that is quietly slipping away.",
+     "href": null
+    }
+   ],
+   "icon": null,
+   "color": "default"
+  },
+  "archived": false
+ },
+ {
+  "object": "block",
+  "id": "0c13f8fd-f869-402b-941f-183e2a121a90",
+  "parent": {
+   "type": "page_id",
+   "page_id": "3a633fb2-2b5f-81a9-85f1-f8550f4bb709"
+  },
+  "created_time": "2026-07-23T03:55:00.000Z",
+  "last_edited_time": "2026-07-23T03:55:00.000Z",
+  "created_by": {
+   "object": "user",
+   "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+  },
+  "last_edited_by": {
+   "object": "user",
+   "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+  },
+  "has_children": false,
+  "in_trash": false,
+  "type": "paragraph",
+  "paragraph": {
+   "rich_text": [
+    {
+     "type": "text",
+     "text": {
+      "content": "From Finland, Pentti Sammallahti prints his own work to a standard almost nobody alive can match, and ",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "From Finland, Pentti Sammallahti prints his own work to a standard almost nobody alive can match, and ",
+     "href": null
+    },
+    {
+     "type": "text",
+     "text": {
+      "content": "Here Far Away",
+      "link": {
+       "url": "https://www.dewilewis.com/products/here-far-away"
+      }
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "Here Far Away",
+     "href": "https://www.dewilewis.com/products/here-far-away"
+    },
+    {
+     "type": "text",
+     "text": {
+      "content": " gathers more than forty years of it. Snow, dogs and small figures in enormous landscapes, all held in a soft silver light. Open it anywhere and the noise drops. It is the most quietly beautiful book on the list.",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": " gathers more than forty years of it. Snow, dogs and small figures in enormous landscapes, all held in a soft silver light. Open it anywhere and the noise drops. It is the most quietly beautiful book on the list.",
+     "href": null
+    }
+   ],
+   "icon": null,
+   "color": "default"
+  },
+  "archived": false
+ },
+ {
+  "object": "block",
+  "id": "0e44feda-d86e-4883-b357-ded220e4f0e4",
+  "parent": {
+   "type": "page_id",
+   "page_id": "3a633fb2-2b5f-81a9-85f1-f8550f4bb709"
+  },
+  "created_time": "2026-07-23T03:55:00.000Z",
+  "last_edited_time": "2026-07-23T03:55:00.000Z",
+  "created_by": {
+   "object": "user",
+   "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+  },
+  "last_edited_by": {
+   "object": "user",
+   "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+  },
+  "has_children": false,
+  "in_trash": false,
+  "type": "paragraph",
+  "paragraph": {
+   "rich_text": [
+    {
+     "type": "text",
+     "text": {
+      "content": "Norway sends us into the trees. Terje Abusdal's ",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "Norway sends us into the trees. Terje Abusdal's ",
+     "href": null
+    },
+    {
+     "type": "text",
+     "text": {
+      "content": "Slash & Burn",
+      "link": {
+       "url": "https://www.setantabooks.com/products/slash-burn"
+      }
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "Slash & Burn",
+     "href": "https://www.setantabooks.com/products/slash-burn"
+    },
+    {
+     "type": "text",
+     "text": {
+      "content": " walks into Finnskogen, the forest along the Swedish border once settled by Finnish farmers. Part documentary and part something stranger and more dreamlike, it won the Leica Oskar Barnack Award and proves Nordic photography kept getting interesting long after the old masters.",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": " walks into Finnskogen, the forest along the Swedish border once settled by Finnish farmers. Part documentary and part something stranger and more dreamlike, it won the Leica Oskar Barnack Award and proves Nordic photography kept getting interesting long after the old masters.",
+     "href": null
+    }
+   ],
+   "icon": null,
+   "color": "default"
+  },
+  "archived": false
+ },
+ {
+  "object": "block",
+  "id": "a2ad174d-56c7-4e39-9287-0fea81cd2041",
+  "parent": {
+   "type": "page_id",
+   "page_id": "3a633fb2-2b5f-81a9-85f1-f8550f4bb709"
+  },
+  "created_time": "2026-07-23T03:55:00.000Z",
+  "last_edited_time": "2026-07-23T03:55:00.000Z",
+  "created_by": {
+   "object": "user",
+   "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+  },
+  "last_edited_by": {
+   "object": "user",
+   "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+  },
+  "has_children": false,
+  "in_trash": false,
+  "type": "paragraph",
+  "paragraph": {
+   "rich_text": [
+    {
+     "type": "text",
+     "text": {
+      "content": "Sweden gives us two names for the price of one. Anders Petersen and JH Engstrom both grew up in rural Varmland, and for ",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "Sweden gives us two names for the price of one. Anders Petersen and JH Engstrom both grew up in rural Varmland, and for ",
+     "href": null
+    },
+    {
+     "type": "text",
+     "text": {
+      "content": "From Back Home",
+      "link": {
+       "url": "https://www.amazon.co.uk/dp/9171261648"
+      }
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "From Back Home",
+     "href": "https://www.amazon.co.uk/dp/9171261648"
+    },
+    {
+     "type": "text",
+     "text": {
+      "content": " they went back to photograph it together. Two very different styles laid over one landscape, in a book good enough to take the top prize at the Rencontres d'Arles.",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": " they went back to photograph it together. Two very different styles laid over one landscape, in a book good enough to take the top prize at the Rencontres d'Arles.",
+     "href": null
+    }
+   ],
+   "icon": null,
+   "color": "default"
+  },
+  "archived": false
+ },
+ {
+  "object": "block",
+  "id": "1d78f9f5-1fe9-415a-a64b-9510596478b4",
+  "parent": {
+   "type": "page_id",
+   "page_id": "3a633fb2-2b5f-81a9-85f1-f8550f4bb709"
+  },
+  "created_time": "2026-07-23T03:55:00.000Z",
+  "last_edited_time": "2026-07-23T03:55:00.000Z",
+  "created_by": {
+   "object": "user",
+   "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+  },
+  "last_edited_by": {
+   "object": "user",
+   "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+  },
+  "has_children": false,
+  "in_trash": false,
+  "type": "paragraph",
+  "paragraph": {
+   "rich_text": [
+    {
+     "type": "text",
+     "text": {
+      "content": "Denmark closes the shelf with the most personal book of the five. Jacob Aue Sobol lived three years in a tiny settlement on the east coast of Greenland, and ",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "Denmark closes the shelf with the most personal book of the five. Jacob Aue Sobol lived three years in a tiny settlement on the east coast of Greenland, and ",
+     "href": null
+    },
+    {
+     "type": "text",
+     "text": {
+      "content": "Sabine",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": true,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "Sabine",
+     "href": null
+    },
+    {
+     "type": "text",
+     "text": {
+      "content": " is the love story that came out of it: grainy, close, tender and unguarded. The original is a hard book to track down, and worth the hunt.",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": " is the love story that came out of it: grainy, close, tender and unguarded. The original is a hard book to track down, and worth the hunt.",
+     "href": null
+    }
+   ],
+   "icon": null,
+   "color": "default"
+  },
+  "archived": false
+ },
+ {
+  "object": "block",
+  "id": "ecf99049-fede-4b81-9285-e7bd55765f73",
+  "parent": {
+   "type": "page_id",
+   "page_id": "3a633fb2-2b5f-81a9-85f1-f8550f4bb709"
+  },
+  "created_time": "2026-07-23T03:55:00.000Z",
+  "last_edited_time": "2026-07-23T03:55:00.000Z",
+  "created_by": {
+   "object": "user",
+   "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+  },
+  "last_edited_by": {
+   "object": "user",
+   "id": "a75acbb5-0a51-455f-8c43-d19569c34453"
+  },
+  "has_children": false,
+  "in_trash": false,
+  "type": "paragraph",
+  "paragraph": {
+   "rich_text": [
+    {
+     "type": "text",
+     "text": {
+      "content": "What holds these five together is the light. The same pale, level, northern light that drew the painters to their easels draws the photographers to the ice, the forest and the kitchen table. None of them are showy books; they reward a slow look, the way a good print does. If a book here sends you looking for something to live with rather than shelve, our ",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "What holds these five together is the light. The same pale, level, northern light that drew the painters to their easels draws the photographers to the ice, the forest and the kitchen table. None of them are showy books; they reward a slow look, the way a good print does. If a book here sends you looking for something to live with rather than shelve, our ",
+     "href": null
+    },
+    {
+     "type": "text",
+     "text": {
+      "content": "botanical prints",
+      "link": {
+       "url": "https://www.scandinavianart.co.uk/category/botanical"
+      }
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "botanical prints",
+     "href": "https://www.scandinavianart.co.uk/category/botanical"
+    },
+    {
+     "type": "text",
+     "text": {
+      "content": " carry that same northern stillness, made by artists who work in it every day.",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": " carry that same northern stillness, made by artists who work in it every day.",
+     "href": null
+    }
+   ],
+   "icon": null,
+   "color": "default"
+  },
+  "archived": false
+ }
+]
