@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import { TrackedLink } from '@/components/TrackedLink';
 import Image from 'next/image';
 import { getFeaturedProducts, getProductsByArtist } from '@/lib/products';
 import { artists } from '@/data/artists';
@@ -46,9 +46,9 @@ export default async function HomePage() {
               <p className="text-lg text-neutral-600 leading-relaxed mb-4">
                 Carefully curated art pieces from talented Scandinavian artists, bringing authentic Nordic minimalism and truly timeless design into your home.
               </p>
-              <Link href="/products" className="inline-flex items-center justify-center rounded-md text-sm font-medium border border-gray-200 bg-background text-foreground hover:bg-gray-50 hover:text-gray-900 h-10 px-4 py-2">
+              <TrackedLink event="homepage-section-click" eventData={{ section: 'explore-categories', target: '/products' }} href="/products" className="inline-flex items-center justify-center rounded-md text-sm font-medium border border-gray-200 bg-background text-foreground hover:bg-gray-50 hover:text-gray-900 h-10 px-4 py-2">
                 All categories
-              </Link>
+              </TrackedLink>
             </div>
           </div>
 
@@ -60,21 +60,21 @@ export default async function HomePage() {
             ].map(cat => {
               const landing = getCategoryLandingByCategory(cat.name);
               return (
-              <Link key={cat.name} href={landing ? `/category/${landing.slug}` : `/products?category=${cat.name}`} className="group cursor-pointer">
+              <TrackedLink key={cat.name} event="homepage-section-click" eventData={{ section: 'category-tile', target: cat.name }} href={landing ? `/category/${landing.slug}` : `/products?category=${cat.name}`} className="group cursor-pointer">
                 <div className="relative aspect-[4/5] overflow-hidden bg-neutral-50 rounded mb-4">
                   <Image src={cat.image} alt={`${cat.name} Category`} fill sizes="(max-width: 1024px) 100vw, 33vw" className="object-cover transition-all duration-300 group-hover:scale-[1.02]" />
                 </div>
                 <h3 className="text-lg font-medium mb-2">{cat.name}</h3>
                 <p className="text-muted-foreground text-sm">{cat.desc}</p>
-              </Link>
+              </TrackedLink>
               );
             })}
           </div>
 
           <div className="text-center mt-12">
-            <Link href="/products" className="inline-flex items-center justify-center rounded-md text-sm font-medium border border-gray-200 bg-background text-foreground hover:bg-gray-50 hover:text-gray-900 h-10 px-4 py-2">
+            <TrackedLink event="homepage-section-click" eventData={{ section: 'view-all-products', target: '/products' }} href="/products" className="inline-flex items-center justify-center rounded-md text-sm font-medium border border-gray-200 bg-background text-foreground hover:bg-gray-50 hover:text-gray-900 h-10 px-4 py-2">
               View all products
-            </Link>
+            </TrackedLink>
           </div>
         </div>
       </section>
@@ -89,12 +89,14 @@ export default async function HomePage() {
           <div className="max-w-3xl mx-auto">
             <div className="flex items-center justify-between gap-6 mb-8">
               <h2 className="text-3xl font-normal text-neutral-900">Meet the artists</h2>
-              <Link
+              <TrackedLink
+                event="homepage-section-click"
+                eventData={{ section: 'meet-the-artists', target: '/artists' }}
                 href="/artists"
                 className="text-sm font-medium text-neutral-900 hover:text-neutral-600 transition-colors whitespace-nowrap"
               >
                 View all artists →
-              </Link>
+              </TrackedLink>
             </div>
             <ArtistsList artists={featuredArtists} />
           </div>
@@ -106,12 +108,14 @@ export default async function HomePage() {
         <section className="container mx-auto px-8 py-16">
           <div className="flex items-center justify-between gap-6 mb-8">
             <h2 className="text-3xl font-normal text-neutral-900">From the journal</h2>
-            <Link
+            <TrackedLink
+              event="homepage-section-click"
+              eventData={{ section: 'from-the-journal', target: '/journal' }}
               href="/journal"
               className="text-sm font-medium text-neutral-900 hover:text-neutral-600 transition-colors whitespace-nowrap"
             >
               Read the journal →
-            </Link>
+            </TrackedLink>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {latestArticles.map((article, i) => (

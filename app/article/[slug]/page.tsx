@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import { TrackedLink } from '@/components/TrackedLink';
 import Image from 'next/image';
 import {
   Breadcrumb,
@@ -85,11 +86,11 @@ export default async function ArticlePage({
       <Breadcrumb className="mb-8">
         <BreadcrumbList>
           <BreadcrumbItem>
-            <BreadcrumbLink asChild><Link href="/">Home</Link></BreadcrumbLink>
+            <BreadcrumbLink asChild><TrackedLink event="breadcrumb-click" eventData={{ level: 'home' }} href="/">Home</TrackedLink></BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbLink asChild><Link href="/journal">Journal</Link></BreadcrumbLink>
+            <BreadcrumbLink asChild><TrackedLink event="breadcrumb-click" eventData={{ level: 'journal' }} href="/journal">Journal</TrackedLink></BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
@@ -133,12 +134,14 @@ export default async function ArticlePage({
               {browseLinks.map((link, i) => (
                 <span key={link.href}>
                   {i > 0 && ' · '}
-                  <Link
+                  <TrackedLink
+                    event="keep-browsing-click"
+                    eventData={{ from: article.slug, to: link.href }}
                     href={link.href}
                     className="underline underline-offset-2 hover:text-neutral-600 transition-colors"
                   >
                     {link.label}
-                  </Link>
+                  </TrackedLink>
                 </span>
               ))}
             </p>
@@ -151,9 +154,9 @@ export default async function ArticlePage({
           <h2 className="text-2xl text-neutral-900 mb-8">Prints featured in this piece</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
             {featuredPrints.map(print => (
-              <Link key={print.id} href={`/product/${print.slug}`}>
+              <TrackedLink key={print.id} event="journal-to-product-click" eventData={{ article: article.slug, product: print.slug }} href={`/product/${print.slug}`}>
                 <PrintCard product={print} />
-              </Link>
+              </TrackedLink>
             ))}
           </div>
         </div>

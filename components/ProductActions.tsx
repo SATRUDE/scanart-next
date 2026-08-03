@@ -7,6 +7,7 @@ import { useCart, Product } from '@/contexts/CartContext';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { getProductPrices } from '@/lib/pricing';
 import { frameOptions, getFramePrice } from '@/config/frame';
+import { track } from '@/lib/analytics';
 
 interface ProductActionsProps {
   product: Product;
@@ -40,7 +41,7 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
   const handleAddToCart = () => {
     if (product.sizes && !selectedSize) return;
     addToCart(product, quantity, selectedSize || undefined, selectedFrame);
-    (window as unknown as { umami?: { track: (event: string, data?: Record<string, unknown>) => void } }).umami?.track('add-to-cart', {
+    track('add-to-cart', {
       productId: product.id,
       productName: product.name,
       quantity,
@@ -77,7 +78,10 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
             {availableSizes.map(size => (
               <button
                 key={size}
-                onClick={() => setSelectedSize(size)}
+                onClick={() => {
+                  setSelectedSize(size);
+                  track('select-size', { productId: product.id, productName: product.name, size });
+                }}
                 className={`px-4 py-2 border rounded text-sm transition-colors ${
                   selectedSize === size ? 'border-primary bg-primary text-primary-foreground' : 'border-border hover:border-primary'
                 }`}
@@ -95,7 +99,10 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
           {frameOptions.map(frame => (
             <button
               key={frame.id}
-              onClick={() => setSelectedFrame(frame.id)}
+              onClick={() => {
+                setSelectedFrame(frame.id);
+                track('select-frame', { productId: product.id, productName: product.name, frame: frame.id });
+              }}
               className={`px-4 py-2 border rounded text-sm transition-colors ${
                 selectedFrame === frame.id ? 'border-primary bg-primary text-primary-foreground' : 'border-border hover:border-primary'
               }`}

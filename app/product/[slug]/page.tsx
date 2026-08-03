@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import Link from 'next/link';
+import { TrackedLink } from '@/components/TrackedLink';
 import {
   Breadcrumb,
   BreadcrumbList,
@@ -132,11 +132,11 @@ export default async function ProductPage({
       <Breadcrumb className="mb-8">
         <BreadcrumbList>
           <BreadcrumbItem>
-            <BreadcrumbLink asChild><Link href="/">Home</Link></BreadcrumbLink>
+            <BreadcrumbLink asChild><TrackedLink event="breadcrumb-click" eventData={{ level: 'home' }} href="/">Home</TrackedLink></BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbLink asChild><Link href="/products">Art Prints</Link></BreadcrumbLink>
+            <BreadcrumbLink asChild><TrackedLink event="breadcrumb-click" eventData={{ level: 'products' }} href="/products">Art Prints</TrackedLink></BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
@@ -172,9 +172,9 @@ export default async function ProductPage({
           <h2 className="text-2xl text-neutral-900 mb-8">You may also like</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {recommended.map(rec => (
-              <Link key={rec.id} href={`/product/${rec.slug}`}>
+              <TrackedLink key={rec.id} event="related-product-click" eventData={{ from: product.slug, to: rec.slug }} href={`/product/${rec.slug}`}>
                 <PrintCard product={rec} />
-              </Link>
+              </TrackedLink>
             ))}
           </div>
         </div>

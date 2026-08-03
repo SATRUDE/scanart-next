@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from 'next/link';
+import { TrackedLink } from '@/components/TrackedLink';
 import Image from 'next/image';
 import { Artist, getArtistInitials } from '@/data/artists';
 
@@ -22,9 +22,9 @@ export const ArtistSection: React.FC<ArtistSectionProps> = ({ artist }) => {
         )}
         <div>
           <h2 className="font-medium">
-            <Link href={`/artist/${artist.slug}`} className="hover:text-neutral-600 transition-colors">
+            <TrackedLink event="artist-link-click" eventData={{ artist: artist.slug }} href={`/artist/${artist.slug}`} className="hover:text-neutral-600 transition-colors">
               {artist.name}
-            </Link>
+            </TrackedLink>
           </h2>
           {artist.location && <p className="text-sm text-muted-foreground">{artist.location}</p>}
           {artist.bio && <p className="text-sm text-muted-foreground mt-2">{artist.bio}</p>}

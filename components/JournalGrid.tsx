@@ -1,5 +1,7 @@
 'use client';
 
+import { track } from '@/lib/analytics';
+
 import React, { useState, useMemo, useEffect } from 'react';
 import { Article } from '@/lib/articles';
 import { ArticleCard } from '@/components/ArticleCard';
@@ -38,7 +40,10 @@ export const JournalGrid: React.FC<JournalGridProps> = ({ articles, categories }
           {['All', ...categories].map(cat => (
             <button
               key={cat}
-              onClick={() => setSelectedCategory(cat)}
+              onClick={() => {
+                setSelectedCategory(cat);
+                track('journal-filter-click', { category: cat });
+              }}
               className={`px-4 py-2 rounded-full text-sm transition-colors ${
                 selectedCategory === cat ? 'bg-primary text-primary-foreground' : 'bg-muted text-neutral-700 hover:bg-muted/80'
               }`}
