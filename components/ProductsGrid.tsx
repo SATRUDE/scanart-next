@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
 import { track } from '@/lib/analytics';
 import { useSearchParams } from 'next/navigation';
@@ -57,6 +57,17 @@ export const ProductsGrid: React.FC<ProductsGridProps> = ({ products, categories
       return 0;
     });
   }, [products, selectedCategory, sortBy, searchQuery]);
+
+  // Each submitted search is a visitor stating demand in their own words, the
+  // on-site twin of the GSC query report; results: 0 is a catalogue-gap signal.
+  // The ref fires one event per query so re-sorts don't re-count the search.
+  const resultCount = filteredProducts.length;
+  const lastTrackedQuery = React.useRef('');
+  useEffect(() => {
+    if (!searchQuery || lastTrackedQuery.current === searchQuery) return;
+    lastTrackedQuery.current = searchQuery;
+    track('site-search', { query: searchQuery, results: resultCount });
+  }, [searchQuery, resultCount]);
 
   return (
     <div>
