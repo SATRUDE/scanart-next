@@ -21,7 +21,15 @@ export const metadata: Metadata = {
 
 export default async function HomePage() {
   const featuredProducts = await getFeaturedProducts();
-  const latestArticles = (await getAllArticles()).slice(0, 3);
+  // Featured articles first (the Featured checkbox in Notion curates this
+  // teaser), newest fill the remaining slots. Keeps a stable homepage link to
+  // the pages we want search to treat as canonical for their topic, e.g. the
+  // books pillar, which the homepage was cannibalising in search results.
+  const allArticles = await getAllArticles();
+  const latestArticles = [
+    ...allArticles.filter(a => a.featured),
+    ...allArticles.filter(a => !a.featured),
+  ].slice(0, 3);
 
   // Artists with published work, most-published first, for the homepage teaser
   const artistsWithCounts: ArtistWithCount[] = [];
