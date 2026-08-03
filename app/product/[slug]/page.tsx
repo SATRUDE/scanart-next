@@ -34,9 +34,14 @@ export async function generateMetadata({
   if (!product) return {};
 
   const desc = product.description || `${product.name} by ${product.artist || product.brand} - Scandinavian Art Gallery`;
+  // The catalogue descriptions are written so their first sentence stands
+  // alone under ~155 chars as the search/social snippet; the full copy stays
+  // on the page body and in the Product JSON-LD. Google truncates a full-length
+  // meta description mid-word, so emit only that first sentence here.
+  const snippet = desc.includes('. ') ? `${desc.split('. ')[0]}.` : desc;
   return {
     title: product.name,
-    description: desc,
+    description: snippet,
     alternates: {
       canonical: `/product/${product.slug}`,
     },
@@ -46,7 +51,7 @@ export async function generateMetadata({
     // product og:type via a direct <meta> in the page body below.
     openGraph: {
       title: product.name,
-      description: desc,
+      description: snippet,
       url: `${BASE_URL}/product/${product.slug}`,
       siteName: SITE_NAME,
       locale: OG_LOCALE,
@@ -56,7 +61,7 @@ export async function generateMetadata({
       card: 'summary_large_image',
       site: TWITTER_SITE,
       title: product.name,
-      description: desc,
+      description: snippet,
       images: [product.image],
     },
   };
