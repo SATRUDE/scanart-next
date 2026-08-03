@@ -1,8 +1,10 @@
 import Link from 'next/link';
+import { TrackNotFound } from '@/components/TrackNotFound';
 
 export default function NotFound() {
   return (
     <div className="min-h-[60vh] flex items-center justify-center">
+      <TrackNotFound />
       <div className="text-center space-y-4">
         <h1 className="text-4xl font-medium text-neutral-900">404</h1>
         <p className="text-lg text-muted-foreground">Page not found</p>
