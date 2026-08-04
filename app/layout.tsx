@@ -3,7 +3,6 @@ import { Providers } from './providers';
 import { Header } from '@/components/Header';
 import { Cart } from '@/components/Cart';
 import { Footer } from '@/components/Footer';
-import { RouteChangeTracker } from '@/components/RouteChangeTracker';
 import { ScrollDepth } from '@/components/ScrollDepth';
 import { getAllProducts } from '@/lib/products';
 import { BASE_URL } from '@/lib/site';
@@ -114,7 +113,6 @@ pintrk('page');`}
             <Cart />
           </div>
           <Footer />
-          <RouteChangeTracker />
           <ScrollDepth />
         </Providers>
       </body>
