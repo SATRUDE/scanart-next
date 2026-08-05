@@ -144,6 +144,33 @@ export default async function ArtistPage({
           }),
         }}
       />
+      {/*
+        The prints on this page as a machine-readable list, matching the shape every
+        other print-listing route emits (category, collection, /products,
+        /scandinavian-wall-art, the /artists hub and /journal). Without it an artist
+        page is the one listing template whose items Google has to infer from markup.
+      */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'CollectionPage',
+            name: `Prints by ${artist.name}`,
+            description: `Art prints by ${artist.name}, ${artist.location}, at Scandinavian Art Gallery.`,
+            url: `${BASE_URL}/artist/${artist.slug}`,
+            mainEntity: {
+              '@type': 'ItemList',
+              itemListElement: products.map((p, i) => ({
+                '@type': 'ListItem',
+                position: i + 1,
+                url: `${BASE_URL}/product/${p.slug}`,
+                name: p.name,
+              })),
+            },
+          }),
+        }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
