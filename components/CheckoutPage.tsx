@@ -41,12 +41,15 @@ const cardElementOptions = {
 };
 
 // Payment Form Component
-const PaymentForm: React.FC<{ 
-  total: number; 
-  currency: string; 
-  onSuccess: () => void; 
+const PaymentForm: React.FC<{
+  total: number;
+  currency: string;
+  orderItems: { productId: string; size?: string; frame?: string; quantity: number }[];
+  countryCode: string;
+  discountCode?: string;
+  onSuccess: () => void;
   onError: (error: string) => void;
-}> = ({ total, currency, onSuccess, onError }) => {
+}> = ({ total, currency, orderItems, countryCode, discountCode, onSuccess, onError }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [isProcessing, setIsProcessing] = useState(false);
@@ -71,79 +74,32 @@ const PaymentForm: React.FC<{
     setError(null);
 
     try {
-      // For testing purposes, always process through Stripe even for free orders
-      // This allows us to test the full payment flow
-      if (total === 0) {
-        console.log('Free order detected - processing through Stripe for testing');
-        // Create a minimal payment intent for free orders to test the flow
-        console.log('Sending request to:', `/api/create-payment-intent`);
-        
-        // Calculate test amount based on currency (minimum Stripe requirement)
-        let testAmount = 0.30; // Default for GBP (£0.30 - minimum Stripe amount)
-        if (currency === 'USD') testAmount = 0.30; // $0.30 (minimum Stripe amount)
-        else if (currency === 'NOK') testAmount = 4; // ~4 NOK ≈ £0.30
-        else if (currency === 'DKK') testAmount = 3; // ~3 DKK ≈ £0.30
-        else if (currency === 'SEK') testAmount = 4; // ~4 SEK ≈ £0.30
-        
-        const response = await fetch(`/api/create-payment-intent`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            amount: testAmount,
-            currency: currency.toLowerCase(),
-          }),
-        });
-
-        const responseData = await response.json();
-        console.log('Test payment intent response:', responseData);
-        
-        if (!responseData.clientSecret) {
-          throw new Error('No client secret received from server');
-        }
-
-        const { clientSecret } = responseData;
-
-        // Confirm payment with test amount
-        const { error: paymentError } = await stripe.confirmCardPayment(clientSecret, {
-          payment_method: {
-            card: elements.getElement(CardElement)!,
-          },
-        });
-
-        if (paymentError) {
-          // Error code only, never card details: a silently failing payment
-          // method must be visible in analytics.
-          track('checkout-error', { code: paymentError.code || 'unknown', total, currency });
-          setError(paymentError.message || 'Payment failed');
-          onError(paymentError.message || 'Payment failed');
-        } else {
-          console.log('Test payment successful - proceeding with free order');
-          onSuccess();
-        }
-        return;
-      }
-
-      // Create payment intent for paid orders
-      console.log(`Sending payment request: ${total} ${currency}`);
-      
+      // The server recomputes the charge from the catalogue; the client sends
+      // what is being bought, never what it costs (lib/server/order.ts).
       const response = await fetch(`/api/create-payment-intent`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          amount: total,
+          items: orderItems,
           currency: currency.toLowerCase(),
+          countryCode,
+          discountCode,
         }),
       });
 
       const responseData = await response.json();
-      console.log('Payment intent response:', responseData);
-      
-      if (!responseData.clientSecret) {
-        throw new Error('No client secret received from server');
+
+      if (!response.ok || !responseData.clientSecret) {
+        throw new Error(responseData.error || 'No client secret received from server');
+      }
+
+      // The displayed total and the server's computed charge must agree; a
+      // mismatch means stale prices or a tampered cart, either way stop.
+      if (typeof responseData.amount === 'number' && Math.abs(responseData.amount - total) > 0.01) {
+        track('checkout-error', { code: 'amount-mismatch', total, currency });
+        throw new Error('Order total changed, please refresh and try again');
       }
 
       const { clientSecret } = responseData;
@@ -202,7 +158,7 @@ const PaymentForm: React.FC<{
           className="w-full" 
           disabled={!stripe || isProcessing}
         >
-          {isProcessing ? 'Processing...' : total === 0 ? `Test Payment (${currency === 'GBP' ? '£0.30' : currency === 'USD' ? '$0.30' : currency === 'NOK' ? '4 NOK' : currency === 'DKK' ? '3 DKK' : currency === 'SEK' ? '4 SEK' : '£0.30'})` : `Pay ${currency.toUpperCase()} ${total.toFixed(2)}`}
+          {isProcessing ? 'Processing...' : `Pay ${currency.toUpperCase()} ${total.toFixed(2)}`}
         </Button>
         
         <p className="text-xs text-muted-foreground text-center mt-2">
@@ -214,13 +170,8 @@ const PaymentForm: React.FC<{
 };
 
 // Main Checkout Component
-// Mock discount codes for demo purposes
-const validDiscountCodes = {
-  'WELCOME10': { percentage: 10, description: '10% off your first order' },
-  'SUMMER15': { percentage: 15, description: '15% summer discount' },
-  'SAVE20': { percentage: 20, description: '20% off' },
-  'TRUDE100': { percentage: 100, description: '100% off + free shipping + no tax - Free with test charge!' },
-};
+// Discount codes are validated server-side (/api/validate-discount); this
+// public repository must never contain a working code.
 
 export const CheckoutPage: React.FC<CheckoutPageProps> = () => {
   const router = useRouter();
@@ -234,7 +185,6 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = () => {
   const [discountError, setDiscountError] = useState<string | null>(null);
 
   // Debug log to verify component is loaded
-  console.log('CheckoutPage loaded with discount codes:', Object.keys(validDiscountCodes));
 
   const [formData, setFormData] = useState({
     email: '',
@@ -254,20 +204,26 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = () => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
-  const handleApplyDiscount = () => {
-    const code = discountCode.toUpperCase();
-    console.log('Applying discount code:', code);
-    const discount = validDiscountCodes[code as keyof typeof validDiscountCodes];
-    
-    if (discount) {
-      console.log('Discount applied:', discount);
-      setAppliedDiscount({ code, ...discount });
-      setDiscountError(null);
-      setDiscountCode('');
-    } else {
-      console.log('Invalid discount code');
-      setDiscountError('Invalid discount code');
-      setAppliedDiscount(null);
+  const handleApplyDiscount = async () => {
+    const code = discountCode.toUpperCase().trim();
+    if (!code) return;
+    try {
+      const response = await fetch('/api/validate-discount', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ code }),
+      });
+      const result = await response.json();
+      if (result.valid) {
+        setAppliedDiscount({ code: result.code, percentage: result.percentage, description: result.description });
+        setDiscountError(null);
+        setDiscountCode('');
+      } else {
+        setDiscountError('Invalid discount code');
+        setAppliedDiscount(null);
+      }
+    } catch {
+      setDiscountError('Could not check the code, please try again');
     }
   };
 
@@ -499,9 +455,8 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = () => {
     ? Math.round((subtotal * appliedDiscount.percentage / 100) * 100) / 100 
     : 0;
   
-  // Special handling for TRUDE100 - remove tax and shipping costs
   const finalTax = 0; // No tax for any orders
-  const finalShipping = appliedDiscount?.code === 'TRUDE100' ? 0 : shipping;
+  const finalShipping = shipping;
   
   const total = Math.round((subtotal + finalShipping + finalTax - discountAmount) * 100) / 100; // Round to 2 decimal places
 
@@ -640,30 +595,20 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  {/* Always show payment form, even for free orders */}
-                  {total === 0 && (
-                    // Free order notice
-                    <div className="mb-4 p-4 bg-green-50 border border-green-200 rounded-md">
-                      <div className="flex items-center">
-                        <CheckCircle className="h-5 w-5 text-green-600 mr-2" />
-                        <div>
-                          <p className="text-sm font-medium text-green-800">
-                            Free Order - Test Charge Required
-                          </p>
-                          <p className="text-xs text-green-600">
-                            Your order is completely free thanks to the discount code! A small test charge will be made to test the payment flow.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                  
                   {/* Payment form - always shown */}
                   {publishableKey ? (
                     <Elements stripe={stripePromise}>
                       <PaymentForm
                         total={total}
                         currency={selectedCountry.currency}
+                        orderItems={state.items.map(item => ({
+                          productId: item.product.id,
+                          size: item.size,
+                          frame: item.frame,
+                          quantity: item.quantity,
+                        }))}
+                        countryCode={selectedCountryCode}
+                        discountCode={appliedDiscount?.code}
                         onSuccess={handlePaymentSuccess}
                         onError={handlePaymentError}
                       />
