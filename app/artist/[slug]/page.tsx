@@ -1,3 +1,4 @@
+import type React from 'react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
@@ -13,7 +14,26 @@ import {
 import { artists, getArtistBySlug, getArtistInitials } from '@/data/artists';
 import { getProductsByArtist } from '@/lib/products';
 import { PrintCard } from '@/components/PrintCard';
+import { ArtistsList, type ArtistWithCount } from '@/components/ArtistsList';
+import { artistEditorial } from '@/lib/artist-editorial';
 import { BASE_URL, OG_IMAGE, SITE_NAME, OG_LOCALE, TWITTER_SITE } from '@/lib/site';
+
+
+// Ken's editorial paragraphs carry inline links in Markdown form
+// ([text](/path)); render them as real <Link>s, everything else as text.
+function renderInlineLinks(text: string): React.ReactNode[] {
+  return text.split(/(\[[^\]]+\]\([^)]+\))/g).map((part, i) => {
+    const match = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+    if (match) {
+      return (
+        <Link key={i} href={match[2]} className="underline hover:text-neutral-900">
+          {match[1]}
+        </Link>
+      );
+    }
+    return part;
+  });
+}
 
 export async function generateStaticParams() {
   // only artists with published work get a page
@@ -77,6 +97,17 @@ export default async function ArtistPage({
     notFound();
   }
 
+  const editorial = artistEditorial[artist.slug];
+
+  // The other artists with published prints, in data order, for the
+  // More-artists section (Stan's direction: the /artists row list reused).
+  const otherArtists: ArtistWithCount[] = [];
+  for (const other of artists) {
+    if (other.id === artist.id) continue;
+    const otherProducts = await getProductsByArtist(other.id);
+    if (otherProducts.length > 0) otherArtists.push({ ...other, printCount: otherProducts.length });
+  }
+
   return (
     <div className="container mx-auto px-8 py-8">
       <Breadcrumb className="mb-8">
@@ -128,6 +159,37 @@ export default async function ArtistPage({
           </Link>
         ))}
       </div>
+
+      {/* About the work: the About page's editorial split reused (Stan's
+          direction, SA Figma 219:162), copy by Ken wired verbatim from
+          lib/artist-editorial.ts. */}
+      {editorial && (
+        <section className="mt-16 lg:mt-24">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div className="lg:col-span-1">
+              <h2 className="text-2xl text-neutral-900 mb-0">{editorial.heading}</h2>
+            </div>
+            <div className="lg:col-span-2">
+              <p className="text-lg text-neutral-600 leading-relaxed mb-4">{renderInlineLinks(editorial.para1)}</p>
+              <p className="text-lg text-neutral-600 leading-relaxed">{renderInlineLinks(editorial.para2)}</p>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* More artists: the /artists row treatment reused so the roster reads
+          identically site-wide; page-one landers flow into the rest of it. */}
+      {otherArtists.length > 0 && (
+        <section className="mt-16 lg:mt-24 border-t pt-12 lg:pt-16">
+          <div className="flex items-center justify-between gap-6 mb-2">
+            <h2 className="text-2xl text-neutral-900">More artists</h2>
+            <Link href="/artists" className="text-sm font-medium text-neutral-900 hover:text-neutral-600 transition-colors whitespace-nowrap">
+              View all artists →
+            </Link>
+          </div>
+          <ArtistsList artists={otherArtists} />
+        </section>
+      )}
 
       <script
         type="application/ld+json"
