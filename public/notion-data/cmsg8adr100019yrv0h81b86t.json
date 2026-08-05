@@ -1,0 +1,346 @@
+[
+  {
+    "object": "block",
+    "id": "md-1",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Henie Onstad Kunstsenter sits on a low green promontory at Hovikodden, water on three sides, about 12 km west of the centre of Oslo. It was founded in 1968 by Sonja Henie, the three-time Olympic figure-skating champion who went on to a Hollywood career, and her husband Niels Onstad, a shipping magnate and collector. They gave both the art and the money to build the place, and they chose the word kunstsenter, art centre, over museum quite deliberately: somewhere that makes new work as readily as it keeps the old. Nearly sixty years on, the collection runs to more than 8,000 pieces and the building still feels like it was put there to catch the light off the fjord.",
+          "href": null,
+          "text": {
+            "content": "Henie Onstad Kunstsenter sits on a low green promontory at Hovikodden, water on three sides, about 12 km west of the centre of Oslo. It was founded in 1968 by Sonja Henie, the three-time Olympic figure-skating champion who went on to a Hollywood career, and her husband Niels Onstad, a shipping magnate and collector. They gave both the art and the money to build the place, and they chose the word kunstsenter, art centre, over museum quite deliberately: somewhere that makes new work as readily as it keeps the old. Nearly sixty years on, the collection runs to more than 8,000 pieces and the building still feels like it was put there to catch the light off the fjord.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-2",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Two shows carry the summer.",
+          "href": null,
+          "text": {
+            "content": "Two shows carry the summer.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-3",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "The big one is ",
+          "href": null,
+          "text": {
+            "content": "The big one is ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Kai Fjell",
+          "href": "https://www.hok.no/en/exhibitions/kai-fjell-2",
+          "text": {
+            "content": "Kai Fjell",
+            "link": {
+              "url": "https://www.hok.no/en/exhibitions/kai-fjell-2"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ", a retrospective of one of Norway's most-loved painters (1907 to 1989), on from 2 May to 1 November 2026. Fjell doesn't get a room this size very often. Expect dreamlike, folk-tinged scenes, women and landscapes and interiors, in colour laid on thick and warm. It is the kind of painting that rewards a slow lap.",
+          "href": null,
+          "text": {
+            "content": ", a retrospective of one of Norway's most-loved painters (1907 to 1989), on from 2 May to 1 November 2026. Fjell doesn't get a room this size very often. Expect dreamlike, folk-tinged scenes, women and landscapes and interiors, in colour laid on thick and warm. It is the kind of painting that rewards a slow lap.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-4",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Alongside it is ",
+          "href": null,
+          "text": {
+            "content": "Alongside it is ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Lap-See Lam: Ombres",
+          "href": "https://www.hok.no/en/exhibitions/lap-see-lam",
+          "text": {
+            "content": "Lap-See Lam: Ombres",
+            "link": {
+              "url": "https://www.hok.no/en/exhibitions/lap-see-lam"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ", running 11 June 2026 to 24 January 2027. Lam is the Swedish artist who won the Lise Wilhelmsen Art Award, and she works in film, virtual reality, sculpture and installation, drawing on the history of the Hong Kong Chinese diaspora and the family restaurant. It is a clean contrast to the Fjell rooms: quieter, stranger, and built for now.",
+          "href": null,
+          "text": {
+            "content": ", running 11 June 2026 to 24 January 2027. Lam is the Swedish artist who won the Lise Wilhelmsen Art Award, and she works in film, virtual reality, sculpture and installation, drawing on the history of the Hong Kong Chinese diaspora and the family restaurant. It is a clean contrast to the Fjell rooms: quieter, stranger, and built for now.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-5",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Give it a half-day rather than a dash. There is a sculpture park to walk, a cafe that looks straight out over the water, and enough of the permanent collection on show to make the trip out worth it on its own. In summer, book a timed ticket before you go.",
+          "href": null,
+          "text": {
+            "content": "Give it a half-day rather than a dash. There is a sculpture park to walk, a cafe that looks straight out over the water, and enough of the permanent collection on show to make the trip out worth it on its own. In summer, book a timed ticket before you go.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-6",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "If you'd rather stay in town, our ",
+          "href": null,
+          "text": {
+            "content": "If you'd rather stay in town, our ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Art in Oslo, July 2026",
+          "href": "https://www.scandinavianart.co.uk/article/art-in-oslo-july-2026",
+          "text": {
+            "content": "Art in Oslo, July 2026",
+            "link": {
+              "url": "https://www.scandinavianart.co.uk/article/art-in-oslo-july-2026"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " round has the city-centre shows. Hovikodden is a short hop on the E18 or the bus, and the fjord setting is half the pleasure.",
+          "href": null,
+          "text": {
+            "content": " round has the city-centre shows. Hovikodden is a short hop on the E18 or the bus, and the fjord setting is half the pleasure.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-7",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Consider this me telling you to make the trip while both shows overlap, which is now through to the end of the summer.",
+          "href": null,
+          "text": {
+            "content": "Consider this me telling you to make the trip while both shows overlap, which is now through to the end of the summer.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-8",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "If a day among the paintings leaves you wanting one of your own to live with, our ",
+          "href": null,
+          "text": {
+            "content": "If a day among the paintings leaves you wanting one of your own to live with, our ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "collection of prints",
+          "href": "https://www.scandinavianart.co.uk/products",
+          "text": {
+            "content": "collection of prints",
+            "link": {
+              "url": "https://www.scandinavianart.co.uk/products"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " is a good place to start.",
+          "href": null,
+          "text": {
+            "content": " is a good place to start.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  }
+]

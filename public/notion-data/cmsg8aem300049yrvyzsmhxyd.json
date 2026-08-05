@@ -1,0 +1,600 @@
+[
+  {
+    "object": "block",
+    "id": "md-1",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Our ",
+          "href": null,
+          "text": {
+            "content": "Our ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Nordic art and design books",
+          "href": "https://www.scandinavianart.co.uk/article/nordic-art-and-design-books",
+          "text": {
+            "content": "Nordic art and design books",
+            "link": {
+              "url": "https://www.scandinavianart.co.uk/article/nordic-art-and-design-books"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " guide took in the whole shelf at a glance, and the ",
+          "href": null,
+          "text": {
+            "content": " guide took in the whole shelf at a glance, and the ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Nordic artist monographs",
+          "href": "https://www.scandinavianart.co.uk/article/nordic-artist-monographs",
+          "text": {
+            "content": "Nordic artist monographs",
+            "link": {
+              "url": "https://www.scandinavianart.co.uk/article/nordic-artist-monographs"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " piece sat down with the painters one at a time. This one pulls a different set of books off the shelf: the design and architecture titles, the ones about chairs and rooms and buildings rather than canvases. A print on the wall and a well-made chair come from the same instinct, so if the work we sell speaks to you, these five are worth living with.",
+          "href": null,
+          "text": {
+            "content": " piece sat down with the painters one at a time. This one pulls a different set of books off the shelf: the design and architecture titles, the ones about chairs and rooms and buildings rather than canvases. A print on the wall and a well-made chair come from the same instinct, so if the work we sell speaks to you, these five are worth living with.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-2",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Start with the map. ",
+          "href": null,
+          "text": {
+            "content": "Start with the map. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Scandinavian Design",
+          "href": null,
+          "text": {
+            "content": "Scandinavian Design",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " by Charlotte and Peter Fiell (Taschen, first published 2002) is as close to a single-volume survey of the field as you will find, a country-by-country run through the furniture, lighting and objects that made the region famous, with 179 illustrated entries on the designers and firms behind them. Reach for it first and the other four make more sense. ",
+          "href": null,
+          "text": {
+            "content": " by Charlotte and Peter Fiell (Taschen, first published 2002) is as close to a single-volume survey of the field as you will find, a country-by-country run through the furniture, lighting and objects that made the region famous, with 179 illustrated entries on the designers and firms behind them. Reach for it first and the other four make more sense. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "On Amazon",
+          "href": "https://www.amazon.co.uk/dp/3836598426",
+          "text": {
+            "content": "On Amazon",
+            "link": {
+              "url": "https://www.amazon.co.uk/dp/3836598426"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ".",
+          "href": null,
+          "text": {
+            "content": ".",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-3",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Then the buildings. ",
+          "href": null,
+          "text": {
+            "content": "Then the buildings. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Alvar Aalto",
+          "href": null,
+          "text": {
+            "content": "Alvar Aalto",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " by Richard Weston (Phaidon, 1995) is the book to own on the Finnish master, less a picture album than a proper study that sets the architecture in its landscape and shows how the same hand moved from a sanatorium to a stacking stool without ever losing the thread. ",
+          "href": null,
+          "text": {
+            "content": " by Richard Weston (Phaidon, 1995) is the book to own on the Finnish master, less a picture album than a proper study that sets the architecture in its landscape and shows how the same hand moved from a sanatorium to a stacking stool without ever losing the thread. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "On Amazon",
+          "href": "https://www.amazon.co.uk/dp/071483159X",
+          "text": {
+            "content": "On Amazon",
+            "link": {
+              "url": "https://www.amazon.co.uk/dp/071483159X"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ".",
+          "href": null,
+          "text": {
+            "content": ".",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-4",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "For the Danes, two designers who worked at every scale. ",
+          "href": null,
+          "text": {
+            "content": "For the Danes, two designers who worked at every scale. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Room 606",
+          "href": null,
+          "text": {
+            "content": "Room 606",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " by Michael Sheridan (Phaidon, 2003) tells the story of Arne Jacobsen through a single preserved hotel room in Copenhagen, the last surviving interior of his SAS House, and uses it to trace how a total designer thought, from the tower down to the cutlery. ",
+          "href": null,
+          "text": {
+            "content": " by Michael Sheridan (Phaidon, 2003) tells the story of Arne Jacobsen through a single preserved hotel room in Copenhagen, the last surviving interior of his SAS House, and uses it to trace how a total designer thought, from the tower down to the cutlery. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "On Amazon",
+          "href": "https://www.amazon.co.uk/dp/0714842893",
+          "text": {
+            "content": "On Amazon",
+            "link": {
+              "url": "https://www.amazon.co.uk/dp/0714842893"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ".",
+          "href": null,
+          "text": {
+            "content": ".",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-5",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Hans J. Wegner: Just One Good Chair",
+          "href": null,
+          "text": {
+            "content": "Hans J. Wegner: Just One Good Chair",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " by Christian Holmsted Olesen (Hatje Cantz, 2014) is the definitive book on the man who designed roughly 500 of them and made the world care about the joinery. The title comes from Wegner's own line, that you cannot design just one good chair in a lifetime and must keep trying, which tells you everything about the discipline in the pages. ",
+          "href": null,
+          "text": {
+            "content": " by Christian Holmsted Olesen (Hatje Cantz, 2014) is the definitive book on the man who designed roughly 500 of them and made the world care about the joinery. The title comes from Wegner's own line, that you cannot design just one good chair in a lifetime and must keep trying, which tells you everything about the discipline in the pages. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "On Amazon",
+          "href": "https://www.amazon.co.uk/dp/3775738096",
+          "text": {
+            "content": "On Amazon",
+            "link": {
+              "url": "https://www.amazon.co.uk/dp/3775738096"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ".",
+          "href": null,
+          "text": {
+            "content": ".",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-6",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Close with ",
+          "href": null,
+          "text": {
+            "content": "Close with ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Finn Juhl: Life, Work, World",
+          "href": null,
+          "text": {
+            "content": "Finn Juhl: Life, Work, World",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " by Christian Bundegaard (Phaidon, 2019), the first full monograph on the architect and furniture designer who carried Danish Modern to America. Juhl treated a chair like a small piece of sculpture, and the book makes the case for him as the most quietly radical of the lot. ",
+          "href": null,
+          "text": {
+            "content": " by Christian Bundegaard (Phaidon, 2019), the first full monograph on the architect and furniture designer who carried Danish Modern to America. Juhl treated a chair like a small piece of sculpture, and the book makes the case for him as the most quietly radical of the lot. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "On Amazon",
+          "href": "https://www.amazon.co.uk/dp/0714878065",
+          "text": {
+            "content": "On Amazon",
+            "link": {
+              "url": "https://www.amazon.co.uk/dp/0714878065"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ".",
+          "href": null,
+          "text": {
+            "content": ".",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-7",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "None of these will teach you to draw a chair. What they do is sharpen the eye for line, proportion and restraint, the same qualities that decide what looks right on a wall. If a few evenings with Aalto and Wegner leave you wanting something with that clean northern feel of your own, our ",
+          "href": null,
+          "text": {
+            "content": "None of these will teach you to draw a chair. What they do is sharpen the eye for line, proportion and restraint, the same qualities that decide what looks right on a wall. If a few evenings with Aalto and Wegner leave you wanting something with that clean northern feel of your own, our ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "illustration prints",
+          "href": "https://www.scandinavianart.co.uk/category/illustrations",
+          "text": {
+            "content": "illustration prints",
+            "link": {
+              "url": "https://www.scandinavianart.co.uk/category/illustrations"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " are a good place to start looking.",
+          "href": null,
+          "text": {
+            "content": " are a good place to start looking.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  }
+]
