@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { Suspense } from 'react';
 import { getAllProducts } from '@/lib/products';
 import { ProductsGrid } from '@/components/ProductsGrid';
 import { BASE_URL, socialCard } from '@/lib/site';
@@ -17,17 +16,15 @@ export const metadata: Metadata = {
   ...socialCard({ title: PAGE_TITLE, description: PAGE_DESCRIPTION, path: '/products' }),
 };
 
-export default async function ProductsPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-}) {
-  // Awaiting searchParams (a Dynamic API) opts this page into request-time
-  // rendering, so ProductsGrid's useSearchParams resolves on the server and
-  // the served HTML carries the full product grid instead of the Suspense
-  // fallback. Statically prerendered, this page served no product content.
-  await searchParams;
-
+// Statically prerendered. This page used to await the searchParams prop (a
+// Dynamic API) so that ProductsGrid's useSearchParams resolved on the server
+// and the served HTML carried the catalogue rather than a Suspense fallback.
+// The cost was that /products alone was rendered per request and served
+// `Cache-Control: private, no-store`, so it never hit the CDN. The query is
+// now read by a leaf component behind its own Suspense boundary inside
+// ProductsGrid, which is what useSearchParams wants: only that leaf is
+// client-rendered, and the grid above it prerenders into the static HTML.
+export default async function ProductsPage() {
   const products = await getAllProducts();
   const categories = [...new Set(products.map(p => p.category))].sort();
 
@@ -54,9 +51,7 @@ export default async function ProductsPage({
 
   return (
     <>
-      <Suspense fallback={<div className="container mx-auto px-8 py-16 text-center text-muted-foreground">Loading products...</div>}>
-        <ProductsGrid products={products} categories={categories} />
-      </Suspense>
+      <ProductsGrid products={products} categories={categories} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionJsonLd) }}

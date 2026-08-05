@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, Suspense } from 'react';
 import Link from 'next/link';
 import { track } from '@/lib/analytics';
 import { useSearchParams } from 'next/navigation';
@@ -17,14 +17,44 @@ interface ProductsGridProps {
   categories: string[];
 }
 
-export const ProductsGrid: React.FC<ProductsGridProps> = ({ products, categories }) => {
+/**
+ * Lifts the URL query (`?category=`, `?q=`) into the grid's filter state.
+ *
+ * This lives in its own component behind a Suspense boundary on purpose:
+ * useSearchParams client-renders the tree up to the nearest boundary, so when
+ * the grid itself called the hook the entire catalogue was that tree and
+ * /products had to be dynamically rendered to get products into the served
+ * HTML. Isolated in a leaf that renders nothing, everything above it (the grid
+ * and its JSON-LD) prerenders into the static HTML, and the query is applied on
+ * hydration instead. Reading it through the hook rather than
+ * window.location.search keeps it reactive, so the header's search still
+ * re-filters when it pushes /products?q= while already on this page.
+ */
+const ProductsQuerySync: React.FC<{
+  onCategory: (value: string) => void;
+  onQuery: (value: string) => void;
+}> = ({ onCategory, onQuery }) => {
   const searchParams = useSearchParams();
-  const initialCategory = searchParams.get('category') || 'All';
-  const searchQuery = searchParams.get('q') || '';
+  const category = searchParams.get('category') || 'All';
+  const query = searchParams.get('q') || '';
 
-  // Read-only now: category chips link to the /category/<slug> landing pages, so
-  // the only thing that sets this is a legacy /products?category= deep link on mount.
-  const [selectedCategory] = useState(initialCategory);
+  useEffect(() => {
+    onCategory(category);
+  }, [category, onCategory]);
+
+  useEffect(() => {
+    onQuery(query);
+  }, [query, onQuery]);
+
+  return null;
+};
+
+export const ProductsGrid: React.FC<ProductsGridProps> = ({ products, categories }) => {
+  // Both default to "no filter" so the prerendered HTML is the full catalogue;
+  // ProductsQuerySync below overrides them on hydration when the URL asks for
+  // a legacy /products?category= deep link or a ?q= search.
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState('name');
   const { formatPrice } = useLanguage();
 
@@ -71,6 +101,9 @@ export const ProductsGrid: React.FC<ProductsGridProps> = ({ products, categories
 
   return (
     <div>
+      <Suspense fallback={null}>
+        <ProductsQuerySync onCategory={setSelectedCategory} onQuery={setSearchQuery} />
+      </Suspense>
       <div className="container mx-auto px-8 py-8">
         <div className="mb-8">
           <h1 className="text-3xl text-neutral-900 mb-2">
