@@ -1,0 +1,596 @@
+[
+  {
+    "object": "block",
+    "id": "md-1",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Pull one of these off the table and the line from wall to shelf almost draws itself: a Renate Thor abstract in the hall, a book of new Nordic painting open beside the coffee. Same north, same century, made now.",
+          "href": null,
+          "text": {
+            "content": "Pull one of these off the table and the line from wall to shelf almost draws itself: a Renate Thor abstract in the hall, a book of new Nordic painting open beside the coffee. Same north, same century, made now.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-2",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "This is the third shelf in our series. The first, ",
+          "href": null,
+          "text": {
+            "content": "This is the third shelf in our series. The first, ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Nordic art and design books",
+          "href": "https://www.scandinavianart.co.uk/article/nordic-art-and-design-books",
+          "text": {
+            "content": "Nordic art and design books",
+            "link": {
+              "url": "https://www.scandinavianart.co.uk/article/nordic-art-and-design-books"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ", took the wide view across art, interiors and design. The second, ",
+          "href": null,
+          "text": {
+            "content": ", took the wide view across art, interiors and design. The second, ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Nordic artist monographs",
+          "href": "https://www.scandinavianart.co.uk/article/nordic-artist-monographs",
+          "text": {
+            "content": "Nordic artist monographs",
+            "link": {
+              "url": "https://www.scandinavianart.co.uk/article/nordic-artist-monographs"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ", sat with the historic masters: Hammershoi's quiet rooms, Munch, Sohlberg, Astrup. This one carries the story forward to the artists working today. The North is not only something that happened a hundred years ago. It is being made right now, in studios in Oslo, Copenhagen, Stockholm and Reykjavik, and these five books are the best way in.",
+          "href": null,
+          "text": {
+            "content": ", sat with the historic masters: Hammershoi's quiet rooms, Munch, Sohlberg, Astrup. This one carries the story forward to the artists working today. The North is not only something that happened a hundred years ago. It is being made right now, in studios in Oslo, Copenhagen, Stockholm and Reykjavik, and these five books are the best way in.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-3",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Nordic Contemporary: Art from Denmark, Finland, Iceland, Norway and Sweden",
+          "href": null,
+          "text": {
+            "content": "Nordic Contemporary: Art from Denmark, Finland, Iceland, Norway and Sweden",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " (edited by Hossein Amirsadeghi and Sophie Braine, Thames and Hudson, 2015). Start here for the lie of the land. Profiles of roughly 150 artists, curators and galleries across all five nations, generously illustrated: the single best survey of who is doing what, and where. ",
+          "href": null,
+          "text": {
+            "content": " (edited by Hossein Amirsadeghi and Sophie Braine, Thames and Hudson, 2015). Start here for the lie of the land. Profiles of roughly 150 artists, curators and galleries across all five nations, generously illustrated: the single best survey of who is doing what, and where. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "On Amazon",
+          "href": "https://www.amazon.co.uk/dp/0500970653",
+          "text": {
+            "content": "On Amazon",
+            "link": {
+              "url": "https://www.amazon.co.uk/dp/0500970653"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ".",
+          "href": null,
+          "text": {
+            "content": ".",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-4",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Olafur Eliasson: Experience",
+          "href": null,
+          "text": {
+            "content": "Olafur Eliasson: Experience",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " (Phaidon, revised and expanded edition, 2022). The Icelandic-Danish artist who turned an artificial sun at Tate Modern into a national event. Nearly three decades of light, water, weather and glass gathered into one heavy, generous volume. If a single contemporary Nordic name has gone properly global, it is his. ",
+          "href": null,
+          "text": {
+            "content": " (Phaidon, revised and expanded edition, 2022). The Icelandic-Danish artist who turned an artificial sun at Tate Modern into a national event. Nearly three decades of light, water, weather and glass gathered into one heavy, generous volume. If a single contemporary Nordic name has gone properly global, it is his. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "On Amazon",
+          "href": "https://www.amazon.co.uk/dp/1838665684",
+          "text": {
+            "content": "On Amazon",
+            "link": {
+              "url": "https://www.amazon.co.uk/dp/1838665684"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ".",
+          "href": null,
+          "text": {
+            "content": ".",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-5",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Mamma Andersson: The Lost Paradise",
+          "href": null,
+          "text": {
+            "content": "Mamma Andersson: The Lost Paradise",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " (David Zwirner Books, 2021). Sweden's finest living painter, with a new essay by Karl Ove Knausgard. Her interiors and landscapes are dreamlike and faintly unsettling, folk memory filtered through a muted palette. The colour reproductions here do the brushwork justice. ",
+          "href": null,
+          "text": {
+            "content": " (David Zwirner Books, 2021). Sweden's finest living painter, with a new essay by Karl Ove Knausgard. Her interiors and landscapes are dreamlike and faintly unsettling, folk memory filtered through a muted palette. The colour reproductions here do the brushwork justice. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "On Amazon",
+          "href": "https://www.amazon.co.uk/dp/1644230569",
+          "text": {
+            "content": "On Amazon",
+            "link": {
+              "url": "https://www.amazon.co.uk/dp/1644230569"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ".",
+          "href": null,
+          "text": {
+            "content": ".",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-6",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Tal R",
+          "href": null,
+          "text": {
+            "content": "Tal R",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ", by Martin Herbert (Lund Humphries, Contemporary Painters series, 2018). The first full study of the Copenhagen-based painter, whose work sits somewhere between symbol, memory and pure colour. A clear, well-argued way into one of Denmark's most distinctive voices. ",
+          "href": null,
+          "text": {
+            "content": ", by Martin Herbert (Lund Humphries, Contemporary Painters series, 2018). The first full study of the Copenhagen-based painter, whose work sits somewhere between symbol, memory and pure colour. A clear, well-argued way into one of Denmark's most distinctive voices. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "On Amazon",
+          "href": "https://www.amazon.co.uk/dp/1848222319",
+          "text": {
+            "content": "On Amazon",
+            "link": {
+              "url": "https://www.amazon.co.uk/dp/1848222319"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ".",
+          "href": null,
+          "text": {
+            "content": ".",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-7",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Ida Ekblad: Melted Snow",
+          "href": null,
+          "text": {
+            "content": "Ida Ekblad: Melted Snow",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " (Lenz Press and Kunsthalle Zurich, 2022). Ekblad's first monograph, and a jolt of pure energy: a Norwegian painter and sculptor who works fast and loud, pulling in poetry, scrap metal and graffiti. Proof, if it were needed, that the Nordic scene is anything but quiet. ",
+          "href": null,
+          "text": {
+            "content": " (Lenz Press and Kunsthalle Zurich, 2022). Ekblad's first monograph, and a jolt of pure energy: a Norwegian painter and sculptor who works fast and loud, pulling in poetry, scrap metal and graffiti. Proof, if it were needed, that the Nordic scene is anything but quiet. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "At Lenz Press",
+          "href": "https://www.lenz.press/products/melted-snow",
+          "text": {
+            "content": "At Lenz Press",
+            "link": {
+              "url": "https://www.lenz.press/products/melted-snow"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ".",
+          "href": null,
+          "text": {
+            "content": ".",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-8",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Read a few of these together and the through-line appears: the same northern light and long winters that shaped the old masters still run through the work being made today. Our own artists belong to that story, ",
+          "href": null,
+          "text": {
+            "content": "Read a few of these together and the through-line appears: the same northern light and long winters that shaped the old masters still run through the work being made today. Our own artists belong to that story, ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Norwegian painters and printmakers working now",
+          "href": "https://www.scandinavianart.co.uk/artists",
+          "text": {
+            "content": "Norwegian painters and printmakers working now",
+            "link": {
+              "url": "https://www.scandinavianart.co.uk/artists"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ", and the ",
+          "href": null,
+          "text": {
+            "content": ", and the ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "abstract prints",
+          "href": "https://www.scandinavianart.co.uk/category/abstract",
+          "text": {
+            "content": "abstract prints",
+            "link": {
+              "url": "https://www.scandinavianart.co.uk/category/abstract"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " sit naturally on the same shelf as these books. If one of them sends you looking for a piece to live with, the collection is a good place to wander.",
+          "href": null,
+          "text": {
+            "content": " sit naturally on the same shelf as these books. If one of them sends you looking for a piece to live with, the collection is a good place to wander.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,496 @@
+[
+  {
+    "object": "block",
+    "id": "md-1",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "The quickest way to make a room feel Scandinavian isn't the furniture, it's the walls. Nordic homes treat a wall the way a gallery does: a few pieces, chosen slowly, each one given room to breathe. Which is good news if you're starting from scratch, because getting the look takes less than you'd think.",
+          "href": null,
+          "text": {
+            "content": "The quickest way to make a room feel Scandinavian isn't the furniture, it's the walls. Nordic homes treat a wall the way a gallery does: a few pieces, chosen slowly, each one given room to breathe. Which is good news if you're starting from scratch, because getting the look takes less than you'd think.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-2",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Here are eight ideas, roughly in order of commitment.",
+          "href": null,
+          "text": {
+            "content": "Here are eight ideas, roughly in order of commitment.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-3",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "1. One oversized print, nothing else",
+          "href": null,
+          "text": {
+            "content": "1. One oversized print, nothing else",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-4",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "A single large piece does more for a room than a scatter of small ones ever will. It sets the tone the moment you walk in, and it spares you the most common mistake in wall decor: hanging art too small for the wall it's on. Go bigger than feels safe. An A1 print above the sofa, a 50x70 at the end of a hallway. If you're not sure what fits where, our guide to choosing print sizes walks through it room by room, and the Scandinavian wall art page is a good place to hunt for the piece itself.",
+          "href": null,
+          "text": {
+            "content": "A single large piece does more for a room than a scatter of small ones ever will. It sets the tone the moment you walk in, and it spares you the most common mistake in wall decor: hanging art too small for the wall it's on. Go bigger than feels safe. An A1 print above the sofa, a 50x70 at the end of a hallway. If you're not sure what fits where, our guide to choosing print sizes walks through it room by room, and the Scandinavian wall art page is a good place to hunt for the piece itself.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-5",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "2. A gallery wall with breathing room",
+          "href": null,
+          "text": {
+            "content": "2. A gallery wall with breathing room",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-6",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "The Scandinavian gallery wall isn't the maximalist, floor-to-ceiling kind. It's a small, considered cluster: edges aligned, a palette shared across the pieces, and enough space between frames that each print still reads on its own. Keep the frames to one family too, wood, black or white, rather than all three at once. When you're ready for the mechanics, spacing, layouts, what goes where, we've put together a step-by-step guide to building an art wall.",
+          "href": null,
+          "text": {
+            "content": "The Scandinavian gallery wall isn't the maximalist, floor-to-ceiling kind. It's a small, considered cluster: edges aligned, a palette shared across the pieces, and enough space between frames that each print still reads on its own. Keep the frames to one family too, wood, black or white, rather than all three at once. When you're ready for the mechanics, spacing, layouts, what goes where, we've put together a step-by-step guide to building an art wall.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-7",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "3. Botanicals, to bring the outside in",
+          "href": null,
+          "text": {
+            "content": "3. Botanicals, to bring the outside in",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-8",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Nature runs through everything in Nordic interiors, and botanical prints are the easiest way to let it onto the walls. Start with Ingunn Dybendal's Eltsjoen or Helene Brox's Tree Top Peach, or browse the botanical collection whole. They earn their keep in kitchens and living rooms especially, anywhere plants already live.",
+          "href": null,
+          "text": {
+            "content": "Nature runs through everything in Nordic interiors, and botanical prints are the easiest way to let it onto the walls. Start with Ingunn Dybendal's Eltsjoen or Helene Brox's Tree Top Peach, or browse the botanical collection whole. They earn their keep in kitchens and living rooms especially, anywhere plants already live.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-9",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "4. Lean it, don't hang it",
+          "href": null,
+          "text": {
+            "content": "4. Lean it, don't hang it",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-10",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Not every print needs a nail. A framed print leant on a shelf, a mantelpiece or even the floor reads more relaxed than the same piece hung, and it makes rearranging painless: you can reshuffle a whole room in five minutes. It's also the renter's answer to a strict lease. Larger sizes lean best; rest a big frame against the wall and it looks deliberate rather than unfinished.",
+          "href": null,
+          "text": {
+            "content": "Not every print needs a nail. A framed print leant on a shelf, a mantelpiece or even the floor reads more relaxed than the same piece hung, and it makes rearranging painless: you can reshuffle a whole room in five minutes. It's also the renter's answer to a strict lease. Larger sizes lean best; rest a big frame against the wall and it looks deliberate rather than unfinished.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-11",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "5. Let one abstract carry the colour",
+          "href": null,
+          "text": {
+            "content": "5. Let one abstract carry the colour",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-12",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "That muted Scandinavian palette, white walls, grey textiles, pale wood, is really a stage. One abstract piece can hold all the colour in the room, and the restraint around it is what makes the colour sing. Helene Brox's Swallow Dive does this well, and Renate Thor's Birdie series comes in four colourways, blue, brown, green and pink, so there's a version for whatever your room is already doing. There's more in the abstract collection, and if it's the living room you're dressing, our living room styling guide goes deeper on palette and placement.",
+          "href": null,
+          "text": {
+            "content": "That muted Scandinavian palette, white walls, grey textiles, pale wood, is really a stage. One abstract piece can hold all the colour in the room, and the restraint around it is what makes the colour sing. Helene Brox's Swallow Dive does this well, and Renate Thor's Birdie series comes in four colourways, blue, brown, green and pink, so there's a version for whatever your room is already doing. There's more in the abstract collection, and if it's the living room you're dressing, our living room styling guide goes deeper on palette and placement.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-13",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "6. Something with a sense of humour",
+          "href": null,
+          "text": {
+            "content": "6. Something with a sense of humour",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-14",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Scandinavian design gets called serious, but there's a dry wit running through it that the minimalism headlines miss. One illustrated piece with a bit of mischief stops a carefully styled room taking itself too seriously. Simen Wahlqvist's line work, Morgenstrekk, Mean Snothing, is exactly this kind of thing, and a natural fit for the home office, where a little levity earns its keep. The rest of the illustrations are here.",
+          "href": null,
+          "text": {
+            "content": "Scandinavian design gets called serious, but there's a dry wit running through it that the minimalism headlines miss. One illustrated piece with a bit of mischief stops a carefully styled room taking itself too seriously. Simen Wahlqvist's line work, Morgenstrekk, Mean Snothing, is exactly this kind of thing, and a natural fit for the home office, where a little levity earns its keep. The rest of the illustrations are here.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-15",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "7. Keep the bedroom quiet",
+          "href": null,
+          "text": {
+            "content": "7. Keep the bedroom quiet",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-16",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "The bedroom wants the calmest art in the house. Softer palettes, simpler compositions, nothing that shouts. A useful test: would you be happy to look at it last thing at night and first thing in the morning? A 50x50 square above each bedside table, or one wide piece over the headboard, is usually all the room needs. The bedroom collection gathers the pieces that suit it.",
+          "href": null,
+          "text": {
+            "content": "The bedroom wants the calmest art in the house. Softer palettes, simpler compositions, nothing that shouts. A useful test: would you be happy to look at it last thing at night and first thing in the morning? A 50x50 square above each bedside table, or one wide piece over the headboard, is usually all the room needs. The bedroom collection gathers the pieces that suit it.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-17",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "8. Leave a wall empty",
+          "href": null,
+          "text": {
+            "content": "8. Leave a wall empty",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-18",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "The most Scandinavian idea of all costs nothing. In Nordic homes an empty wall isn't a wall you haven't got to yet; it's part of the composition, somewhere for the eye to rest between pieces. If every wall is dressed, nothing stands out. Hang less, and what you do hang matters more.",
+          "href": null,
+          "text": {
+            "content": "The most Scandinavian idea of all costs nothing. In Nordic homes an empty wall isn't a wall you haven't got to yet; it's part of the composition, somewhere for the eye to rest between pieces. If every wall is dressed, nothing stands out. Hang less, and what you do hang matters more.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-19",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "That's the spirit of the thing: choose slowly, give each piece space, and let the walls do the quiet work. If you're weighing up styles and can't decide, The Art of Choosing Art is the long answer. And when one of these ideas sends you looking for the piece itself, the wall art page is where to start.",
+          "href": null,
+          "text": {
+            "content": "That's the spirit of the thing: choose slowly, give each piece space, and let the walls do the quiet work. If you're weighing up styles and can't decide, The Art of Choosing Art is the long answer. And when one of these ideas sends you looking for the piece itself, the wall art page is where to start.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  }
+]

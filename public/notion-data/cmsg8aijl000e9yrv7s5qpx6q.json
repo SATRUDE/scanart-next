@@ -1,0 +1,262 @@
+[
+  {
+    "object": "block",
+    "id": "md-1",
+    "type": "heading_3",
+    "has_children": false,
+    "heading_3": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Our vision",
+          "href": null,
+          "text": {
+            "content": "Our vision",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-2",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Scandinavian Art offers art enthusiasts the chance to enhance their homes with the distinct Scandinavian aesthetic while also providing a unique opportunity for Scandinavian artists and expand their audience.",
+          "href": null,
+          "text": {
+            "content": "Scandinavian Art offers art enthusiasts the chance to enhance their homes with the distinct Scandinavian aesthetic while also providing a unique opportunity for Scandinavian artists and expand their audience.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-3",
+    "type": "heading_3",
+    "has_children": false,
+    "heading_3": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Core Principles",
+          "href": null,
+          "text": {
+            "content": "Core Principles",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-4",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "At its core, Scandinavian design celebrates natural materials, clean lines, and the concept of \"lagom\"—having just the right amount. This approach creates spaces that feel both serene and purposeful, where every element serves a function while contributing to the overall aesthetic harmony.",
+          "href": null,
+          "text": {
+            "content": "At its core, Scandinavian design celebrates natural materials, clean lines, and the concept of \"lagom\"—having just the right amount. This approach creates spaces that feel both serene and purposeful, where every element serves a function while contributing to the overall aesthetic harmony.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-5",
+    "type": "heading_3",
+    "has_children": false,
+    "heading_3": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Where it started",
+          "href": null,
+          "text": {
+            "content": "Where it started",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-6",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "The inspiration for Scandinavian Art came from a conversation with a friend, an artist residing in Oslo. We realised there was a gap in the market for Scandinavian art works in the rest of the world. This sparked the idea of creating a platform where these talented artists could showcase their work to a broader audience.",
+          "href": null,
+          "text": {
+            "content": "The inspiration for Scandinavian Art came from a conversation with a friend, an artist residing in Oslo. We realised there was a gap in the market for Scandinavian art works in the rest of the world. This sparked the idea of creating a platform where these talented artists could showcase their work to a broader audience.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-7",
+    "type": "heading_3",
+    "has_children": false,
+    "heading_3": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Exporting the Scandinavian lifestyle",
+          "href": null,
+          "text": {
+            "content": "Exporting the Scandinavian lifestyle",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-8",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "We work closely with local artists, leveraging their expertise to select the best and most authentic pieces. This direct connection ensures that our collection is always fresh, diverse, and of the highest quality. For our customers, this means access to unique and exclusive artworks that you won't find anywhere else. Our prints are produced using premium materials and state-of-the-art printing techniques, ensuring vibrant colours and lasting durability. By choosing Scandinavian Art, you are not only enhancing your space with beautiful and meaningful pieces but choosing to put a piece of Scandinavia in your home.",
+          "href": null,
+          "text": {
+            "content": "We work closely with local artists, leveraging their expertise to select the best and most authentic pieces. This direct connection ensures that our collection is always fresh, diverse, and of the highest quality. For our customers, this means access to unique and exclusive artworks that you won't find anywhere else. Our prints are produced using premium materials and state-of-the-art printing techniques, ensuring vibrant colours and lasting durability. By choosing Scandinavian Art, you are not only enhancing your space with beautiful and meaningful pieces but choosing to put a piece of Scandinavia in your home.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-9",
+    "type": "heading_3",
+    "has_children": false,
+    "heading_3": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Showcasing the Best of Scandinavia's Artists",
+          "href": null,
+          "text": {
+            "content": "Showcasing the Best of Scandinavia's Artists",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-10",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "For Scandinavian artists, our platform offers an invaluable opportunity to reach new audiences and expand their creative horizons. By showcasing their work to a broader market, they can gain the recognition and appreciation they deserve. This exposure not only helps them grow their careers but also encourages the continued evolution and diversification of Scandinavian art.We are committed to supporting these artists by providing a fair and transparent platform where their work can shine. Every purchase made through Scandinavian Art directly supports the artists, allowing them to continue creating and sharing their incredible talents with the world.",
+          "href": null,
+          "text": {
+            "content": "For Scandinavian artists, our platform offers an invaluable opportunity to reach new audiences and expand their creative horizons. By showcasing their work to a broader market, they can gain the recognition and appreciation they deserve. This exposure not only helps them grow their careers but also encourages the continued evolution and diversification of Scandinavian art.We are committed to supporting these artists by providing a fair and transparent platform where their work can shine. Every purchase made through Scandinavian Art directly supports the artists, allowing them to continue creating and sharing their incredible talents with the world.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  }
+]

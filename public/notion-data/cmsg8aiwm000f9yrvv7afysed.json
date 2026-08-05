@@ -1,0 +1,1702 @@
+[
+  {
+    "object": "block",
+    "id": "md-1",
+    "type": "heading_1",
+    "has_children": false,
+    "heading_1": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "The Art of Choosing Art: A Comprehensive Guide",
+          "href": null,
+          "text": {
+            "content": "The Art of Choosing Art: A Comprehensive Guide",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-2",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Selecting the perfect piece of art for your space is more than just finding something that matches your couch. It's about discovering pieces that resonate with you on a deeper level, that tell your story, and that bring joy every time you see them.",
+          "href": null,
+          "text": {
+            "content": "Selecting the perfect piece of art for your space is more than just finding something that matches your couch. It's about discovering pieces that resonate with you on a deeper level, that tell your story, and that bring joy every time you see them.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-3",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Why Art Matters in Your Space",
+          "href": null,
+          "text": {
+            "content": "Why Art Matters in Your Space",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-4",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Art isn't just decoration—it's expression. The right artwork can transform a room, create a focal point, set a mood, and reflect your personality. Whether you're an experienced collector or a first-time buyer, understanding how to choose art that speaks to you is essential.",
+          "href": null,
+          "text": {
+            "content": "Art isn't just decoration—it's expression. The right artwork can transform a room, create a focal point, set a mood, and reflect your personality. Whether you're an experienced collector or a first-time buyer, understanding how to choose art that speaks to you is essential.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-5",
+    "type": "heading_3",
+    "has_children": false,
+    "heading_3": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Consider Your Space",
+          "href": null,
+          "text": {
+            "content": "Consider Your Space",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-6",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Before diving into the vast world of art, take a moment to assess your space:",
+          "href": null,
+          "text": {
+            "content": "Before diving into the vast world of art, take a moment to assess your space:",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-7",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Size and scale:",
+          "href": null,
+          "text": {
+            "content": "Size and scale:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " Measure your walls to understand what dimensions would work best. A common mistake is choosing art that's too small for the wall.",
+          "href": null,
+          "text": {
+            "content": " Measure your walls to understand what dimensions would work best. A common mistake is choosing art that's too small for the wall.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-8",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Lighting:",
+          "href": null,
+          "text": {
+            "content": "Lighting:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " Notice how natural and artificial light hits your walls throughout the day. Some mediums, like oil paintings, may require specific lighting considerations.",
+          "href": null,
+          "text": {
+            "content": " Notice how natural and artificial light hits your walls throughout the day. Some mediums, like oil paintings, may require specific lighting considerations.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-9",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Color scheme:",
+          "href": null,
+          "text": {
+            "content": "Color scheme:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " While art doesn't need to match your décor perfectly, consider how it will interact with your existing color palette.",
+          "href": null,
+          "text": {
+            "content": " While art doesn't need to match your décor perfectly, consider how it will interact with your existing color palette.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-10",
+    "type": "heading_3",
+    "has_children": false,
+    "heading_3": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Define Your Art Preferences",
+          "href": null,
+          "text": {
+            "content": "Define Your Art Preferences",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-11",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Art is deeply personal. Take time to understand what styles, mediums, and subjects resonate with you:",
+          "href": null,
+          "text": {
+            "content": "Art is deeply personal. Take time to understand what styles, mediums, and subjects resonate with you:",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-12",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Visit galleries and museums:",
+          "href": null,
+          "text": {
+            "content": "Visit galleries and museums:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " Expose yourself to different art forms and notice what catches your eye.",
+          "href": null,
+          "text": {
+            "content": " Expose yourself to different art forms and notice what catches your eye.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-13",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Create digital collections:",
+          "href": null,
+          "text": {
+            "content": "Create digital collections:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " Use platforms like Pinterest or Instagram to save artwork you're drawn to and identify patterns in your preferences.",
+          "href": null,
+          "text": {
+            "content": " Use platforms like Pinterest or Instagram to save artwork you're drawn to and identify patterns in your preferences.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-14",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Trust your instincts:",
+          "href": null,
+          "text": {
+            "content": "Trust your instincts:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " The most important question is: \"Does this piece move me?\" If you feel a connection, that's often the strongest indicator you've found the right piece.",
+          "href": null,
+          "text": {
+            "content": " The most important question is: \"Does this piece move me?\" If you feel a connection, that's often the strongest indicator you've found the right piece.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-15",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Types of Art to Consider",
+          "href": null,
+          "text": {
+            "content": "Types of Art to Consider",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-16",
+    "type": "heading_3",
+    "has_children": false,
+    "heading_3": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Paintings and Prints",
+          "href": null,
+          "text": {
+            "content": "Paintings and Prints",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-17",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "From original canvases to limited edition prints, paintings offer endless variety:",
+          "href": null,
+          "text": {
+            "content": "From original canvases to limited edition prints, paintings offer endless variety:",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-18",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Original paintings:",
+          "href": null,
+          "text": {
+            "content": "Original paintings:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " While often more expensive, original works have unique texture, depth, and the knowledge you own a one-of-a-kind piece.",
+          "href": null,
+          "text": {
+            "content": " While often more expensive, original works have unique texture, depth, and the knowledge you own a one-of-a-kind piece.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-19",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Prints:",
+          "href": null,
+          "text": {
+            "content": "Prints:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " High-quality prints can be excellent alternatives to originals, especially for collectors on a budget. Look for limited editions signed by the artist.",
+          "href": null,
+          "text": {
+            "content": " High-quality prints can be excellent alternatives to originals, especially for collectors on a budget. Look for limited editions signed by the artist.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-20",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Digital art:",
+          "href": null,
+          "text": {
+            "content": "Digital art:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " The emerging world of digital art offers innovative options, including pieces that can change over time or respond to environmental factors.",
+          "href": null,
+          "text": {
+            "content": " The emerging world of digital art offers innovative options, including pieces that can change over time or respond to environmental factors.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-21",
+    "type": "heading_3",
+    "has_children": false,
+    "heading_3": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Photography",
+          "href": null,
+          "text": {
+            "content": "Photography",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-22",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Photography can capture moments, emotions, and perspectives in powerful ways:",
+          "href": null,
+          "text": {
+            "content": "Photography can capture moments, emotions, and perspectives in powerful ways:",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-23",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Black and white:",
+          "href": null,
+          "text": {
+            "content": "Black and white:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " Timeless and dramatic, black and white photography works in almost any décor style.",
+          "href": null,
+          "text": {
+            "content": " Timeless and dramatic, black and white photography works in almost any décor style.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-24",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Color photography:",
+          "href": null,
+          "text": {
+            "content": "Color photography:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " Can add vibrant focal points to minimal spaces or complement existing color schemes.",
+          "href": null,
+          "text": {
+            "content": " Can add vibrant focal points to minimal spaces or complement existing color schemes.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-25",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Abstract photography:",
+          "href": null,
+          "text": {
+            "content": "Abstract photography:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " Offers the intrigue of abstract art with the realism of photography.",
+          "href": null,
+          "text": {
+            "content": " Offers the intrigue of abstract art with the realism of photography.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-26",
+    "type": "heading_3",
+    "has_children": false,
+    "heading_3": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Sculpture and 3D Art",
+          "href": null,
+          "text": {
+            "content": "Sculpture and 3D Art",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-27",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Don't limit yourself to wall art:",
+          "href": null,
+          "text": {
+            "content": "Don't limit yourself to wall art:",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-28",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Tabletop sculptures:",
+          "href": null,
+          "text": {
+            "content": "Tabletop sculptures:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " Small sculptures can add interest to bookshelves, mantels, or side tables.",
+          "href": null,
+          "text": {
+            "content": " Small sculptures can add interest to bookshelves, mantels, or side tables.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-29",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Floor sculptures:",
+          "href": null,
+          "text": {
+            "content": "Floor sculptures:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " Larger pieces can serve as statement pieces in spacious rooms.",
+          "href": null,
+          "text": {
+            "content": " Larger pieces can serve as statement pieces in spacious rooms.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-30",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Mixed media installations:",
+          "href": null,
+          "text": {
+            "content": "Mixed media installations:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " These can create truly unique focal points in your home.",
+          "href": null,
+          "text": {
+            "content": " These can create truly unique focal points in your home.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-31",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Where to Find Art",
+          "href": null,
+          "text": {
+            "content": "Where to Find Art",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-32",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "The art world has never been more accessible:",
+          "href": null,
+          "text": {
+            "content": "The art world has never been more accessible:",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-33",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Local galleries:",
+          "href": null,
+          "text": {
+            "content": "Local galleries:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " Support your local art scene and build relationships with gallery owners who can alert you to new artists or pieces.",
+          "href": null,
+          "text": {
+            "content": " Support your local art scene and build relationships with gallery owners who can alert you to new artists or pieces.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-34",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Art fairs:",
+          "href": null,
+          "text": {
+            "content": "Art fairs:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " These events gather multiple galleries and artists in one place, allowing you to see diverse options in a single visit.",
+          "href": null,
+          "text": {
+            "content": " These events gather multiple galleries and artists in one place, allowing you to see diverse options in a single visit.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-35",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Online platforms:",
+          "href": null,
+          "text": {
+            "content": "Online platforms:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " Websites like Artsy, Saatchi Art, and Etsy connect collectors directly with artists worldwide.",
+          "href": null,
+          "text": {
+            "content": " Websites like Artsy, Saatchi Art, and Etsy connect collectors directly with artists worldwide.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-36",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Student exhibitions:",
+          "href": null,
+          "text": {
+            "content": "Student exhibitions:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " Art schools often host exhibitions where you can discover emerging talent at affordable prices.",
+          "href": null,
+          "text": {
+            "content": " Art schools often host exhibitions where you can discover emerging talent at affordable prices.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-37",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Budgeting for Art",
+          "href": null,
+          "text": {
+            "content": "Budgeting for Art",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-38",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Art collecting doesn't have to break the bank:",
+          "href": null,
+          "text": {
+            "content": "Art collecting doesn't have to break the bank:",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-39",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Set a realistic budget:",
+          "href": null,
+          "text": {
+            "content": "Set a realistic budget:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " Determine what you can comfortably spend before you begin searching.",
+          "href": null,
+          "text": {
+            "content": " Determine what you can comfortably spend before you begin searching.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-40",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Consider art as an investment:",
+          "href": null,
+          "text": {
+            "content": "Consider art as an investment:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " While you should primarily buy what you love, some art can appreciate in value over time.",
+          "href": null,
+          "text": {
+            "content": " While you should primarily buy what you love, some art can appreciate in value over time.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-41",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Explore alternative options:",
+          "href": null,
+          "text": {
+            "content": "Explore alternative options:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " Prints, photography, and works by emerging artists can be more affordable entry points.",
+          "href": null,
+          "text": {
+            "content": " Prints, photography, and works by emerging artists can be more affordable entry points.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-42",
+    "type": "heading_3",
+    "has_children": false,
+    "heading_3": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Caring for Your Art Collection",
+          "href": null,
+          "text": {
+            "content": "Caring for Your Art Collection",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-43",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Once you've chosen your pieces, proper care ensures they'll remain beautiful for years to come:",
+          "href": null,
+          "text": {
+            "content": "Once you've chosen your pieces, proper care ensures they'll remain beautiful for years to come:",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-44",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Proper framing:",
+          "href": null,
+          "text": {
+            "content": "Proper framing:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " Invest in quality, acid-free framing materials to protect works on paper.",
+          "href": null,
+          "text": {
+            "content": " Invest in quality, acid-free framing materials to protect works on paper.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-45",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Avoid direct sunlight:",
+          "href": null,
+          "text": {
+            "content": "Avoid direct sunlight:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " UV rays can fade colors over time, particularly in photographs and watercolors.",
+          "href": null,
+          "text": {
+            "content": " UV rays can fade colors over time, particularly in photographs and watercolors.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-46",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Regular maintenance:",
+          "href": null,
+          "text": {
+            "content": "Regular maintenance:",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " Dust sculptures and frames regularly with a soft cloth, and consider professional cleaning for valuable pieces.",
+          "href": null,
+          "text": {
+            "content": " Dust sculptures and frames regularly with a soft cloth, and consider professional cleaning for valuable pieces.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-47",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Final Thoughts",
+          "href": null,
+          "text": {
+            "content": "Final Thoughts",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-48",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Choosing art is a journey, not a destination. Your collection will likely evolve as your tastes change and your spaces transform. The most important rule is to select pieces that bring you joy and meaning.",
+          "href": null,
+          "text": {
+            "content": "Choosing art is a journey, not a destination. Your collection will likely evolve as your tastes change and your spaces transform. The most important rule is to select pieces that bring you joy and meaning.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-49",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Remember that empty walls are simply canvases waiting for your story to unfold. Take your time, trust your instincts, and soon you'll create a home gallery that not only enhances your space but also enriches your daily life.",
+          "href": null,
+          "text": {
+            "content": "Remember that empty walls are simply canvases waiting for your story to unfold. Take your time, trust your instincts, and soon you'll create a home gallery that not only enhances your space but also enriches your daily life.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-50",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Whether you're drawn to bold contemporary statements or subtle classical aesthetics, the perfect art for your space is out there—waiting for you to discover it.",
+          "href": null,
+          "text": {
+            "content": "Whether you're drawn to bold contemporary statements or subtle classical aesthetics, the perfect art for your space is out there—waiting for you to discover it.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  }
+]

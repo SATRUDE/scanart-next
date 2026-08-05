@@ -1,0 +1,234 @@
+[
+  {
+    "object": "block",
+    "id": "md-1",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "If you have a free afternoon this month, spend it at ",
+          "href": null,
+          "text": {
+            "content": "If you have a free afternoon this month, spend it at ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "MUNCH",
+          "href": "https://www.munch.no/en/",
+          "text": {
+            "content": "MUNCH",
+            "link": {
+              "url": "https://www.munch.no/en/"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ". Paula Rego is up until 2 August, her first big show in the Nordics, and it is not a quiet one: power, desire, anger, all of it painted at full volume. Rego made pictures that argue with you. Go before it closes, and you will not get long stretches to yourself. That is rather the point. Work like this is meant to be stood in front of, not scrolled past.",
+          "href": null,
+          "text": {
+            "content": ". Paula Rego is up until 2 August, her first big show in the Nordics, and it is not a quiet one: power, desire, anger, all of it painted at full volume. Rego made pictures that argue with you. Go before it closes, and you will not get long stretches to yourself. That is rather the point. Work like this is meant to be stood in front of, not scrolled past.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-2",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "While you are there, the Freia Friezes are worth the detour. Munch painted them for the Freia chocolate factory canteen, and this is the first time they have left the building. Seeing them in a gallery, rather than over the heads of people on their lunch break, changes what they are. That is a rare thing to catch.",
+          "href": null,
+          "text": {
+            "content": "While you are there, the Freia Friezes are worth the detour. Munch painted them for the Freia chocolate factory canteen, and this is the first time they have left the building. Seeing them in a gallery, rather than over the heads of people on their lunch break, changes what they are. That is a rare thing to catch.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-3",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "For something smaller and stranger, ",
+          "href": null,
+          "text": {
+            "content": "For something smaller and stranger, ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Art of Oslo",
+          "href": "https://artofoslo.com/",
+          "text": {
+            "content": "Art of Oslo",
+            "link": {
+              "url": "https://artofoslo.com/"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " opens its showroom on Sunday 12 July, 15:00 to 18:00, and again on 4 August. Cecilia Kristensen's work mixes digital images with gold and copper leaf and detail worked in by hand. A showroom afternoon is a different pace to a museum: fewer people, the artist's hand closer to the surface, no queue. If the big institutions feel like homework, this is the opposite.",
+          "href": null,
+          "text": {
+            "content": " opens its showroom on Sunday 12 July, 15:00 to 18:00, and again on 4 August. Cecilia Kristensen's work mixes digital images with gold and copper leaf and detail worked in by hand. A showroom afternoon is a different pace to a museum: fewer people, the artist's hand closer to the surface, no queue. If the big institutions feel like homework, this is the opposite.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-4",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "And if you only manage one thing, the ",
+          "href": null,
+          "text": {
+            "content": "And if you only manage one thing, the ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Nasjonalmuseet",
+          "href": "https://www.nasjonalmuseet.no/en/",
+          "text": {
+            "content": "Nasjonalmuseet",
+            "link": {
+              "url": "https://www.nasjonalmuseet.no/en/"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " is the safe bet, if only for the room that holds the first painted Scream from 1893. Most people arrive for that one wall and stay for the rest.",
+          "href": null,
+          "text": {
+            "content": " is the safe bet, if only for the room that holds the first painted Scream from 1893. Most people arrive for that one wall and stay for the rest.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-5",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "That is the shortlist. Oslo in summer is quietly one of the best art cities in Europe and does very little to tell you so. Consider this me telling you.",
+          "href": null,
+          "text": {
+            "content": "That is the shortlist. Oslo in summer is quietly one of the best art cities in Europe and does very little to tell you so. Consider this me telling you.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  }
+]
