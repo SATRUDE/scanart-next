@@ -42,6 +42,9 @@ const nextConfig: NextConfig = {
       // is the tracked follow-up (external hotlinks are a single point of failure).
       { protocol: 'https', hostname: 'upload.wikimedia.org' },
       { protocol: 'https', hostname: 'www.munch.no' },
+      // The socialagent Blob store: article heroes picked from the generated
+      // mockup gallery are rehosted there as permanent public URLs.
+      { protocol: 'https', hostname: 'm9gwpvkjxnjiqpwb.public.blob.vercel-storage.com' },
     ],
   },
   async redirects() {
