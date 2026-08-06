@@ -96,7 +96,7 @@ export const Header: React.FC<HeaderProps> = ({ categories }) => {
                 currentPage === 'inspire' ? 'opacity-100' : 'opacity-60'
               }`}
             >
-              Inspiration
+              Inspire
             </Link>
             <Link
               href="/journal"
@@ -239,7 +239,7 @@ export const Header: React.FC<HeaderProps> = ({ categories }) => {
                 <p className="text-sm text-muted-foreground mb-4 px-[14px] py-[0px]">More</p>
                 <div className="flex flex-col space-y-3 px-[14px] py-[0px]">
                   <Link href="/products" className="text-left transition-opacity hover:opacity-60" onClick={() => setMobileMenuOpen(false)}>Shop All</Link>
-                  <Link href="/inspire" className="text-left transition-opacity hover:opacity-60" onClick={() => setMobileMenuOpen(false)}>Inspiration</Link>
+                  <Link href="/inspire" className="text-left transition-opacity hover:opacity-60" onClick={() => setMobileMenuOpen(false)}>Inspire</Link>
                   <Link href="/journal" className="text-left transition-opacity hover:opacity-60" onClick={() => setMobileMenuOpen(false)}>Journal</Link>
                   <Link href="/artists" className="text-left transition-opacity hover:opacity-60" onClick={() => setMobileMenuOpen(false)}>Artists</Link>
                   <Link href="/about" className="text-left transition-opacity hover:opacity-60" onClick={() => setMobileMenuOpen(false)}>About</Link>
