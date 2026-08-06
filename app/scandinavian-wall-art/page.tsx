@@ -4,6 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { wallArtLanding } from '@/lib/wall-art';
 import { getAllProducts } from '@/lib/products';
 import { PrintCard } from '@/components/PrintCard';
+import { ReadMore } from '@/components/ReadMore';
 import { LandingCrossLinks } from '@/components/LandingCrossLinks';
 import { BASE_URL, socialCard } from '@/lib/site';
 
@@ -40,8 +41,10 @@ export default async function ScandinavianWallArtPage() {
 
       <header className="mb-16">
         <h1 className="text-3xl text-neutral-900">{wallArtLanding.heading}</h1>
-        <p className="text-muted-foreground leading-relaxed mt-4 max-w-3xl">{wallArtLanding.intro}</p>
-        <p className="text-muted-foreground leading-relaxed mt-4 max-w-3xl">{wallArtLanding.intro2}</p>
+        <ReadMore className="mt-4 max-w-3xl">
+          <p className="text-muted-foreground leading-relaxed">{wallArtLanding.intro}</p>
+          <p className="text-muted-foreground leading-relaxed mt-4">{wallArtLanding.intro2}</p>
+        </ReadMore>
       </header>
 
       <div className="mb-8">
