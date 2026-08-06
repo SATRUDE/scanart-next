@@ -5,6 +5,7 @@ import { ArrowLeft } from 'lucide-react';
 import { categoryLandings, getCategoryLandingBySlug } from '@/lib/categories';
 import { getProductsByCategory } from '@/lib/products';
 import { PrintCard } from '@/components/PrintCard';
+import { ReadMore } from '@/components/ReadMore';
 import { LandingCrossLinks } from '@/components/LandingCrossLinks';
 import { BASE_URL, socialCard } from '@/lib/site';
 
@@ -65,8 +66,10 @@ export default async function CategoryPage({
 
       <header className="mb-16">
         <h1 className="text-3xl text-neutral-900">{category.heading}</h1>
-        <p className="text-muted-foreground leading-relaxed mt-4 max-w-3xl">{category.intro}</p>
-        <p className="text-muted-foreground leading-relaxed mt-4 max-w-3xl">{category.intro2}</p>
+        <ReadMore className="mt-4 max-w-3xl">
+          <p className="text-muted-foreground leading-relaxed">{category.intro}</p>
+          <p className="text-muted-foreground leading-relaxed mt-4">{category.intro2}</p>
+        </ReadMore>
       </header>
 
       <div className="mb-8">
