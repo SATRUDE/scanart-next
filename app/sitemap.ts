@@ -41,6 +41,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: BASE_URL, lastModified: latest([...productDates, ...articleDates]), priority: 1.0, changeFrequency: 'daily' },
     { url: `${BASE_URL}/products`, lastModified: latest(productDates), priority: 0.9, changeFrequency: 'weekly' },
     { url: `${BASE_URL}/journal`, lastModified: latest(articleDates), priority: 0.8, changeFrequency: 'weekly' },
+    { url: `${BASE_URL}/inspire`, lastModified: new Date('2026-08-06'), priority: 0.7, changeFrequency: 'weekly' },
     // artists hub; links every artist detail page, changes when the roster's prints do
     { url: `${BASE_URL}/artists`, lastModified: latest(productDates), priority: 0.7, changeFrequency: 'weekly' },
     // static page; date is its publication, bumped by hand when the copy changes

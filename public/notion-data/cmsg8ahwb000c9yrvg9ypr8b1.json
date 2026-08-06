@@ -1,1 +1,1072 @@
-[]
+[
+  {
+    "object": "block",
+    "id": "md-1",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "A wall of art works differently to a single print. One piece is a statement; a group is a conversation, and like any conversation it needs someone to lead, a little space between voices, and room for a new one to join later. That is really all a gallery wall is. Here is how to build one that looks collected rather than assembled.",
+          "href": null,
+          "text": {
+            "content": "A wall of art works differently to a single print. One piece is a statement; a group is a conversation, and like any conversation it needs someone to lead, a little space between voices, and room for a new one to join later. That is really all a gallery wall is. Here is how to build one that looks collected rather than assembled.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-2",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Start with an anchor",
+          "href": null,
+          "text": {
+            "content": "Start with an anchor",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-3",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Every good art wall has one piece doing the heavy lifting. Choose your largest or boldest print, hang it first, and let everything else arrange itself around it. A piece with real density works well here: ",
+          "href": null,
+          "text": {
+            "content": "Every good art wall has one piece doing the heavy lifting. Choose your largest or boldest print, hang it first, and let everything else arrange itself around it. A piece with real density works well here: ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Eltsjoen",
+          "href": "/product/eltsjoen",
+          "text": {
+            "content": "Eltsjoen",
+            "link": {
+              "url": "/product/eltsjoen"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " by Ingunn Dybendal, a Nordic lake redrawn as coloured-pencil pattern, has enough going on to hold the centre of a wall on its own. So does a confident two-colour print like ",
+          "href": null,
+          "text": {
+            "content": " by Ingunn Dybendal, a Nordic lake redrawn as coloured-pencil pattern, has enough going on to hold the centre of a wall on its own. So does a confident two-colour print like ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Swallow Dive",
+          "href": "/product/swallow-dive",
+          "text": {
+            "content": "Swallow Dive",
+            "link": {
+              "url": "/product/swallow-dive"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " by Helene Brox, which reads clearly from across the room.",
+          "href": null,
+          "text": {
+            "content": " by Helene Brox, which reads clearly from across the room.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-4",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Place the anchor slightly off-centre in your planned arrangement rather than dead centre. A perfectly symmetrical wall can feel like a shop display; a little imbalance is what makes it feel collected.",
+          "href": null,
+          "text": {
+            "content": "Place the anchor slightly off-centre in your planned arrangement rather than dead centre. A perfectly symmetrical wall can feel like a shop display; a little imbalance is what makes it feel collected.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-5",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Space the pieces like they know each other",
+          "href": null,
+          "text": {
+            "content": "Space the pieces like they know each other",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-6",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "The most common mistake is hanging pieces too far apart, so the wall reads as scattered prints rather than one group. Keep 5 to 8 cm between frames and hold that gap consistently. Then treat the whole cluster as a single shape: its centre should sit at about 145 cm from the floor, standard eye level, regardless of how large the group grows.",
+          "href": null,
+          "text": {
+            "content": "The most common mistake is hanging pieces too far apart, so the wall reads as scattered prints rather than one group. Keep 5 to 8 cm between frames and hold that gap consistently. Then treat the whole cluster as a single shape: its centre should sit at about 145 cm from the floor, standard eye level, regardless of how large the group grows.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-7",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Mix sizes and orientations, keep one thread constant",
+          "href": null,
+          "text": {
+            "content": "Mix sizes and orientations, keep one thread constant",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-8",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Variety is what makes a multi-piece wall worth doing, but it needs one thing holding it together. That thread can be:",
+          "href": null,
+          "text": {
+            "content": "Variety is what makes a multi-piece wall worth doing, but it needs one thing holding it together. That thread can be:",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-9",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "A palette.",
+          "href": null,
+          "text": {
+            "content": "A palette.",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " Renate Thor's Birdie series is the easy worked example: the same tumbling flock of cream birds across four different grounds. Hang ",
+          "href": null,
+          "text": {
+            "content": " Renate Thor's Birdie series is the easy worked example: the same tumbling flock of cream birds across four different grounds. Hang ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Birdie Blue",
+          "href": "/product/birdie-blue",
+          "text": {
+            "content": "Birdie Blue",
+            "link": {
+              "url": "/product/birdie-blue"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " beside ",
+          "href": null,
+          "text": {
+            "content": " beside ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Birdie Pink",
+          "href": "/product/birdie-pink",
+          "text": {
+            "content": "Birdie Pink",
+            "link": {
+              "url": "/product/birdie-pink"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " and the pink print's cobalt tail feathers answer the blue ground next door. Add ",
+          "href": null,
+          "text": {
+            "content": " and the pink print's cobalt tail feathers answer the blue ground next door. Add ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Birdie Brown",
+          "href": "/product/birdie-brown",
+          "text": {
+            "content": "Birdie Brown",
+            "link": {
+              "url": "/product/birdie-brown"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " if the room leans warm; it was made to sit with its siblings.",
+          "href": null,
+          "text": {
+            "content": " if the room leans warm; it was made to sit with its siblings.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-10",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "A mood rather than a subject.",
+          "href": null,
+          "text": {
+            "content": "A mood rather than a subject.",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " Pieces do not need to match to belong together. A Sia Siamos table scene like ",
+          "href": null,
+          "text": {
+            "content": " Pieces do not need to match to belong together. A Sia Siamos table scene like ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Hummer og Vin",
+          "href": "/product/hummer-og-vin",
+          "text": {
+            "content": "Hummer og Vin",
+            "link": {
+              "url": "/product/hummer-og-vin"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ", all lobster, lemons and reaching hands, sits happily next to a Simen Wahlqvist figure like ",
+          "href": null,
+          "text": {
+            "content": ", all lobster, lemons and reaching hands, sits happily next to a Simen Wahlqvist figure like ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Half Man",
+          "href": "/product/half-man",
+          "text": {
+            "content": "Half Man",
+            "link": {
+              "url": "/product/half-man"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ". Different artists, different subjects, but the same looseness and humour, and that is enough.",
+          "href": null,
+          "text": {
+            "content": ". Different artists, different subjects, but the same looseness and humour, and that is enough.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-11",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "The frames.",
+          "href": null,
+          "text": {
+            "content": "The frames.",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " If the art varies wildly, matching frames will quietly hold the group together.",
+          "href": null,
+          "text": {
+            "content": " If the art varies wildly, matching frames will quietly hold the group together.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-12",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Mix orientations too: a portrait print beside a landscape one keeps the eye moving. For which sizes to combine, the ",
+          "href": null,
+          "text": {
+            "content": "Mix orientations too: a portrait print beside a landscape one keeps the eye moving. For which sizes to combine, the ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "print sizes guide",
+          "href": "/article/complete-guide-choosing-print-sizes",
+          "text": {
+            "content": "print sizes guide",
+            "link": {
+              "url": "/article/complete-guide-choosing-print-sizes"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " covers the practical side properly.",
+          "href": null,
+          "text": {
+            "content": " covers the practical side properly.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-13",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Rehearse on the floor, then hang in order",
+          "href": null,
+          "text": {
+            "content": "Rehearse on the floor, then hang in order",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-14",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Never start with a hammer. The sequence that works:",
+          "href": null,
+          "text": {
+            "content": "Never start with a hammer. The sequence that works:",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-15",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Lay the full arrangement out on the floor in front of the wall and live with it for a day. Shuffle until nothing feels forced.",
+          "href": null,
+          "text": {
+            "content": "Lay the full arrangement out on the floor in front of the wall and live with it for a day. Shuffle until nothing feels forced.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-16",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Cut paper templates of each frame, tape them up with masking tape, and check the gaps and the overall shape at actual height.",
+          "href": null,
+          "text": {
+            "content": "Cut paper templates of each frame, tape them up with masking tape, and check the gaps and the overall shape at actual height.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-17",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Hang the anchor first, then work outwards from it, one piece at a time, measuring each gap as you go.",
+          "href": null,
+          "text": {
+            "content": "Hang the anchor first, then work outwards from it, one piece at a time, measuring each gap as you go.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-18",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "It is slower than guessing. It is also the entire difference between a wall that works and a wall of regretted holes.",
+          "href": null,
+          "text": {
+            "content": "It is slower than guessing. It is also the entire difference between a wall that works and a wall of regretted holes.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-19",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Let it grow",
+          "href": null,
+          "text": {
+            "content": "Let it grow",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-20",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "The best art walls are grown, not bought in an afternoon. Start with three pieces, an anchor and two companions, and leave breathing room at the edges so the arrangement can take a fourth and fifth later. Odd numbers tend to hang together more naturally than even ones, and a new piece is allowed to shift the others; that is the wall living, not a mistake. If you want help choosing what earns the next spot, ",
+          "href": null,
+          "text": {
+            "content": "The best art walls are grown, not bought in an afternoon. Start with three pieces, an anchor and two companions, and leave breathing room at the edges so the arrangement can take a fourth and fifth later. Odd numbers tend to hang together more naturally than even ones, and a new piece is allowed to shift the others; that is the wall living, not a mistake. If you want help choosing what earns the next spot, ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "the art of choosing art",
+          "href": "/article/the-art-of-choosing-art-comprehensive-guide",
+          "text": {
+            "content": "the art of choosing art",
+            "link": {
+              "url": "/article/the-art-of-choosing-art-comprehensive-guide"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " is the longer read.",
+          "href": null,
+          "text": {
+            "content": " is the longer read.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-21",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "And if the wall in question is behind the sofa, the ",
+          "href": null,
+          "text": {
+            "content": "And if the wall in question is behind the sofa, the ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "living room styling guide",
+          "href": "/article/how-to-style-scandinavian-wall-art-living-room",
+          "text": {
+            "content": "living room styling guide",
+            "link": {
+              "url": "/article/how-to-style-scandinavian-wall-art-living-room"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " picks up where this one stops. Whenever you are ready to find the anchor, or the piece that joins the conversation next, the ",
+          "href": null,
+          "text": {
+            "content": " picks up where this one stops. Whenever you are ready to find the anchor, or the piece that joins the conversation next, the ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "full collection",
+          "href": "/products",
+          "text": {
+            "content": "full collection",
+            "link": {
+              "url": "/products"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " is the place to wander, or start with the wall you are actually standing in front of: ",
+          "href": null,
+          "text": {
+            "content": " is the place to wander, or start with the wall you are actually standing in front of: ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "living room",
+          "href": "/collection/living-room",
+          "text": {
+            "content": "living room",
+            "link": {
+              "url": "/collection/living-room"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ", ",
+          "href": null,
+          "text": {
+            "content": ", ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "bedroom",
+          "href": "/collection/bedroom",
+          "text": {
+            "content": "bedroom",
+            "link": {
+              "url": "/collection/bedroom"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " or ",
+          "href": null,
+          "text": {
+            "content": " or ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "home office",
+          "href": "/collection/home-office",
+          "text": {
+            "content": "home office",
+            "link": {
+              "url": "/collection/home-office"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ".",
+          "href": null,
+          "text": {
+            "content": ".",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  }
+]
