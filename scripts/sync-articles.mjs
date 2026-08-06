@@ -143,3 +143,15 @@ for (const r of rows) {
 }
 
 console.log(`[sync-articles] wrote ${articles.length} articles (${articles.filter((a) => a.published).length} published) from Neon.`);
+
+// The inspiration wall: scenes tagged on the socialagent Inspiration page.
+const sceneRows = await sql`SELECT * FROM "InspireScene" ORDER BY "createdAt" ASC`;
+const scenes = sceneRows.map((r) => ({
+  image: r.imageUrl,
+  alt: r.alt,
+  slugs: (() => { try { const v = JSON.parse(r.slugs); return Array.isArray(v) ? v : []; } catch { return []; } })(),
+  width: r.width,
+  height: r.height,
+}));
+await fs.writeFile(path.join(OUT_DIR, 'inspire.json'), JSON.stringify(scenes, null, 2));
+console.log(`[sync-articles] wrote ${scenes.length} inspire scenes from Neon.`);

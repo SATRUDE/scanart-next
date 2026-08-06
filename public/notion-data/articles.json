@@ -26,31 +26,7 @@
       "birdie-blue"
     ],
     "created_time": "2026-08-05T13:05:40.395Z",
-    "last_edited_time": "2026-08-05T13:14:54.485Z"
-  },
-  {
-    "id": "cmsg8adr100019yrv0h81b86t",
-    "slug": "henie-onstad-in-focus",
-    "title": "Henie Onstad in focus: a fjord-side art centre",
-    "excerpt": "A fjord-side art centre founded by an Olympic skater, with a major Kai Fjell retrospective and Lap-See Lam's Ombres both on through the summer.",
-    "published": true,
-    "featured": false,
-    "image": "/images/journal/framed-prints-table.jpg",
-    "author": "",
-    "category": "Exhibitions",
-    "tags": [
-      "What's on"
-    ],
-    "relatedArticles": [
-      "art-in-oslo-july-2026"
-    ],
-    "selectedArtworkIds": [
-      "hyttefrokost",
-      "swallow-dive",
-      "eltsjoen"
-    ],
-    "created_time": "2026-07-23T01:55:00.000Z",
-    "last_edited_time": "2026-08-05T13:14:55.645Z"
+    "last_edited_time": "2026-08-05T13:25:18.425Z"
   },
   {
     "id": "cmsg8ae1f00029yrvs115tisk",
@@ -161,6 +137,30 @@
     ],
     "created_time": "2026-07-23T01:55:00.000Z",
     "last_edited_time": "2026-08-05T13:14:57.743Z"
+  },
+  {
+    "id": "cmsg8adr100019yrv0h81b86t",
+    "slug": "henie-onstad-in-focus",
+    "title": "Henie Onstad in focus: a fjord-side art centre",
+    "excerpt": "A fjord-side art centre founded by an Olympic skater, with a major Kai Fjell retrospective and Lap-See Lam's Ombres both on through the summer.",
+    "published": true,
+    "featured": false,
+    "image": "/images/journal/framed-prints-table.jpg",
+    "author": "",
+    "category": "Exhibitions",
+    "tags": [
+      "What's on"
+    ],
+    "relatedArticles": [
+      "art-in-oslo-july-2026"
+    ],
+    "selectedArtworkIds": [
+      "hyttefrokost",
+      "swallow-dive",
+      "eltsjoen"
+    ],
+    "created_time": "2026-07-23T01:55:00.000Z",
+    "last_edited_time": "2026-08-05T13:14:55.645Z"
   },
   {
     "id": "cmsg8afoz00069yrv6491i6pi",
@@ -330,7 +330,7 @@
     "id": "cmsg8ahwb000c9yrvg9ypr8b1",
     "slug": "create-an-art-wall",
     "title": "How to Create a Stunning Art Wall with Multiple Pieces",
-    "excerpt": "A step-by-step guide to designing a cohesive art wall that reflects your personal style while keeping a Scandinavian aesthetic in mind.",
+    "excerpt": "A gallery wall is a conversation between pieces: one anchor, consistent gaps, and a thread that holds the variety together. How to plan it, hang it in the right order, and leave room for it to grow.",
     "published": true,
     "featured": false,
     "image": "/images/journal/three-frames-living-room.jpg",
@@ -349,7 +349,7 @@
       "slingshot"
     ],
     "created_time": "2025-08-30T18:39:00.000Z",
-    "last_edited_time": "2026-08-05T13:15:01.020Z"
+    "last_edited_time": "2026-08-05T13:38:27.602Z"
   },
   {
     "id": "cmsg8ai8s000d9yrvukjqu084",

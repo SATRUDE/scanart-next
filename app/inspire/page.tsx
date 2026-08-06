@@ -1,30 +1,33 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { inspireScenes } from '@/lib/inspire';
+import { getInspireScenes } from '@/lib/inspire';
 import { getAllProducts } from '@/lib/products';
-import { socialCard } from '@/lib/site';
+import { BASE_URL, socialCard } from '@/lib/site';
 
-export const metadata: Metadata = {
-  title: 'Inspiration',
-  description:
-    'Scandinavian art prints styled in real rooms: bedrooms, kitchens, desks and dining corners. Browse the scenes and click through to the prints they feature.',
-  alternates: {
-    canonical: '/inspire',
-  },
-  ...socialCard({
-    title: 'Inspiration',
-    description:
-      'Scandinavian art prints styled in real rooms. Browse the scenes and click through to the prints they feature.',
-    path: '/inspire',
-    image: inspireScenes[0]?.image,
-  }),
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const scenes = await getInspireScenes();
+  const description =
+    'Scandinavian art print inspiration: framed Nordic prints styled in real bedrooms, kitchens, dining rooms and home offices. Browse the scenes and click through to the prints they feature.';
+  return {
+    title: 'Scandinavian Art Print Inspiration | Styled Room Ideas',
+    description,
+    alternates: {
+      canonical: '/inspire',
+    },
+    ...socialCard({
+      title: 'Scandinavian Art Print Inspiration',
+      description,
+      path: '/inspire',
+      image: scenes[0]?.image,
+    }),
+  };
+}
 
 export default async function InspirePage() {
   // Resolve each scene's slugs against the live catalogue; a scene whose
   // every print has been retired drops out rather than dead-linking.
-  const all = await getAllProducts();
+  const [inspireScenes, all] = await Promise.all([getInspireScenes(), getAllProducts()]);
   const bySlug = new Map(all.map(p => [p.slug, p]));
   const scenes = inspireScenes
     .map(scene => ({
@@ -35,8 +38,38 @@ export default async function InspirePage() {
     }))
     .filter(scene => scene.products.length > 0);
 
+  // Gallery structured data: the wall as an ImageGallery of ImageObjects,
+  // each pointing at the product it features — the Google Images signal the
+  // own-domain-only image sitemap can't carry for Blob-hosted scenes.
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Scandinavian Art Print Inspiration',
+    url: `${BASE_URL}/inspire`,
+    mainEntity: {
+      '@type': 'ImageGallery',
+      name: 'Scandinavian art prints styled in real rooms',
+      image: scenes.map(scene => ({
+        '@type': 'ImageObject',
+        contentUrl: scene.image,
+        description: scene.alt,
+        width: scene.width,
+        height: scene.height,
+        about: scene.products.map(p => ({
+          '@type': 'Product',
+          name: p.name,
+          url: `${BASE_URL}/product/${p.slug}`,
+        })),
+      })),
+    },
+  };
+
   return (
     <div className="container mx-auto px-8 py-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <header className="mb-16">
         <h1 className="text-3xl text-neutral-900">Inspiration</h1>
         <p className="text-muted-foreground leading-relaxed mt-4 max-w-3xl">
