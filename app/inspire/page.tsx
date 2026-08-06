@@ -10,7 +10,9 @@ export async function generateMetadata(): Promise<Metadata> {
   const description =
     'Scandinavian art print inspiration: framed Nordic prints styled in real bedrooms, kitchens, dining rooms and home offices. Browse the scenes and click through to the prints they feature.';
   return {
-    title: 'Scandinavian Art Print Inspiration | Styled Room Ideas',
+    // Absolute: the layout template's '| Scandinavian Art Gallery' suffix
+    // would push this past Google's ~60-char truncation point.
+    title: { absolute: 'Scandinavian Art Print Inspiration | Styled Room Ideas' },
     description,
     alternates: {
       canonical: '/inspire',
