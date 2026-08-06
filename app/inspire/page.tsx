@@ -71,7 +71,7 @@ export default async function InspirePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <header className="mb-16">
-        <h1 className="text-3xl text-neutral-900">Inspiration</h1>
+        <h1 className="text-3xl text-neutral-900">Inspire</h1>
         <p className="text-muted-foreground leading-relaxed mt-4 max-w-3xl">
           Our prints, styled in rooms like yours. Browse the wall for a feeling rather than a
           search term, and when a scene stops you, the print it features is one click away.
