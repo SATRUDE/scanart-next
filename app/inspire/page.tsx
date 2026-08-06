@@ -55,11 +55,10 @@ export default async function InspirePage() {
         description: scene.alt,
         width: scene.width,
         height: scene.height,
-        about: scene.products.map(p => ({
-          '@type': 'Product',
-          name: p.name,
-          url: `${BASE_URL}/product/${p.slug}`,
-        })),
+        // Plain URL references: declaring typed Product entities here made
+        // Search Console demand offers/review/aggregateRating on each — the
+        // product pages carry the full Product markup, the wall just points.
+        about: scene.products.map(p => `${BASE_URL}/product/${p.slug}`),
       })),
     },
   };
