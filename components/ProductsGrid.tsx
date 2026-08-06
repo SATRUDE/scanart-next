@@ -63,9 +63,14 @@ export const ProductsGrid: React.FC<ProductsGridProps> = ({ products, categories
 
     if (searchQuery) {
       const q = searchQuery.toLowerCase();
+      // Match the artist through the same `artist || brand` fallback the rest of
+      // the codebase uses (product page, product feed, HeroSection): `brand` is
+      // empty on every product in the exported catalogue, so matching it alone
+      // meant an artist-name search found nothing while the card below still
+      // displayed that artist's name.
       filtered = filtered.filter(p =>
         p.name.toLowerCase().includes(q) ||
-        p.brand.toLowerCase().includes(q) ||
+        (p.artist || p.brand).toLowerCase().includes(q) ||
         p.category.toLowerCase().includes(q)
       );
     } else if (selectedCategory !== 'All') {
