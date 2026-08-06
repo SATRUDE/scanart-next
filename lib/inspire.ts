@@ -3,7 +3,9 @@
 // store (allow-listed in next.config); slugs are resolved against the live
 // catalogue at render, so a retired print quietly drops its scene.
 // Curated by hand — add a scene by rehosting the image in socialagent
-// (/api/rehost) and appending here with its real pixel dimensions.
+// (or any image), re-encode web-sized (sips -Z 1600, jpeg q82 — multi-MB PNGs
+// break the image optimizer), upload to the Blob store, and append here with
+// the JPEG's real pixel dimensions.
 
 export interface InspireScene {
   image: string;
@@ -16,87 +18,87 @@ export interface InspireScene {
 
 export const inspireScenes: InspireScene[] = [
   {
-    image: 'https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/composed/scratch_test_2026-08-05-1785921492911-png-1786004464723.png',
+    image: 'https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/inspire/inspire-01-1786005113826.jpg',
     alt: 'Hyttefrokost by Sia Siamos framed in oak on a warm white wall, above a cane chair under a paper pendant',
     slugs: ['hyttefrokost'],
-    width: 848,
-    height: 1264,
+    width: 1073,
+    height: 1600,
   },
   {
-    image: 'https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/composed/image__6__2x_upscaled_1784623863100-png-1786004467097.png',
+    image: 'https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/inspire/inspire-02-1786005115210.jpg',
     alt: 'Hyttefrokost hanging on a pale green wall beside a chrome cantilever chair',
     slugs: ['hyttefrokost'],
-    width: 1144,
-    height: 1704,
+    width: 1074,
+    height: 1600,
   },
   {
-    image: 'https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/composed/image__7__2x_upscaled_1784624339256-png-1786004468287.png',
+    image: 'https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/inspire/inspire-03-1786005116015.jpg',
     alt: 'Hummer og Vin leaning on a dark desk beside a white arch sculpture',
     slugs: ['hummer-og-vin'],
-    width: 2048,
-    height: 2048,
+    width: 1600,
+    height: 1600,
   },
   {
-    image: 'https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/composed/scratch_test_2026-07-20-1784579791165_2x_upscaled_1784629394218-png-1786004469245.png',
+    image: 'https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/inspire/inspire-04-1786005116702.jpg',
     alt: 'Mean Snothing framed on a grey tray table with a patterned ceramic bowl',
     slugs: ['mean-snothing'],
-    width: 1856,
-    height: 2262,
+    width: 1313,
+    height: 1600,
   },
   {
-    image: 'https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/composed/mockup_crop_2026-07-20-1784574937600-png-1786004470422.png',
+    image: 'https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/inspire/inspire-05-1786005117457.jpg',
     alt: 'Half Man on a green sideboard in a warm yellow kitchen corner',
     slugs: ['half-man'],
-    width: 830,
-    height: 888,
+    width: 1495,
+    height: 1600,
   },
   {
-    image: 'https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/composed/mockup_edit_2026-07-21-1784638871802-png-1786004472065.png',
+    image: 'https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/inspire/inspire-06-1786005118346.jpg',
     alt: 'Birdie Pink above a bed with yellow striped bedding and a green glass lamp',
     slugs: ['birdie-pink'],
-    width: 585,
-    height: 838,
+    width: 1117,
+    height: 1600,
   },
   {
-    image: 'https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/composed/scratch_test_2026-07-21-1784636521045-png-1786004472636.png',
+    image: 'https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/inspire/inspire-07-1786005119148.jpg',
     alt: 'Birdie Green on a pale blue bedroom wall above a light oak bed',
     slugs: ['birdie-green'],
-    width: 565,
-    height: 850,
+    width: 1063,
+    height: 1600,
   },
   {
-    image: 'https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/composed/mockup_edit_2026-07-21-1784634836712_2x_upscaled_1784634908121-png-1786004473570.png',
+    image: 'https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/inspire/inspire-08-1786005119818.jpg',
     alt: 'Birdie Brown leaning on a dark desk beside a white ribbed vase',
     slugs: ['birdie-brown'],
-    width: 2048,
-    height: 2048,
+    width: 1600,
+    height: 1600,
   },
   {
-    image: 'https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/composed/mockup_edit_2026-07-21-1784630574828_2x_upscaled_1784630761505-png-1786004475008.png',
+    image: 'https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/inspire/inspire-09-1786005120699.jpg',
     alt: 'Birdie Blue over a light wood dining table in a soft blue room',
     slugs: ['birdie-blue'],
-    width: 1526,
-    height: 1256,
+    width: 1600,
+    height: 1317,
   },
   {
-    image: 'https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/composed/mockup_edit_2026-07-21-1784629946925_2x_upscaled_1784629986443-png-1786004476087.png',
+    image: 'https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/inspire/inspire-10-1786005121528.jpg',
     alt: 'Birdie Green on a sage wall beside a cane cantilever chair',
     slugs: ['birdie-green'],
-    width: 1052,
-    height: 1870,
+    width: 900,
+    height: 1600,
   },
   {
-    image: 'https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/composed/mockup_edit_2026-08-05-1785932268916_2x_upscaled_1785932963707-png-1786004477027.png',
+    image: 'https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/inspire/inspire-11-1786005122196.jpg',
     alt: 'Vinkveld above a cobalt side table and an oxblood chair, lit by a cone pendant',
     slugs: ['vinkveld'],
-    width: 1150,
-    height: 1704,
+    width: 1080,
+    height: 1600,
   },
   {
-    image: 'https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/composed/mockup_edit_2026-08-05-1785939267068-png-1786004478138.png',
+    image: 'https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/inspire/inspire-12-1786005122997.jpg',
     alt: 'Eye Nose Eye leaning on an olive green sideboard filled with books',
     slugs: ['eye-nose-eye'],
-    width: 928,
-    height: 1152,
+    width: 1289,
+    height: 1600,
   },
 ];
