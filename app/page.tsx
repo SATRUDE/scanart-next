@@ -21,6 +21,11 @@ export const metadata: Metadata = {
 
 export default async function HomePage() {
   const featuredProducts = await getFeaturedProducts();
+  // Hero-only override: Vinkveld shows its styled Inspire scene in the hero
+  // rotation (Mark's pick, 2026-08-07); the product page keeps the clean print.
+  const heroProducts = featuredProducts.map(p =>
+    p.slug === 'vinkveld' ? { ...p, image: '/images/homepage/vinkveld-scene.jpg' } : p
+  );
   // Featured articles first (the Featured checkbox in Notion curates this
   // teaser), newest fill the remaining slots. Keeps a stable homepage link to
   // the pages we want search to treat as canonical for their topic, e.g. the
@@ -42,7 +47,7 @@ export default async function HomePage() {
 
   return (
     <div className="min-h-screen">
-      <HeroSection products={featuredProducts} />
+      <HeroSection products={heroProducts} />
 
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-8">
