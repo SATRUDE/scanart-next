@@ -3,6 +3,7 @@ import { Providers } from './providers';
 import { Header } from '@/components/Header';
 import { Cart } from '@/components/Cart';
 import { Footer } from '@/components/Footer';
+import { LocaleSuggestionBanner } from '@/components/LocaleSuggestionBanner';
 import { ScrollDepth } from '@/components/ScrollDepth';
 import { getAllProducts } from '@/lib/products';
 import { BASE_URL } from '@/lib/site';
@@ -108,6 +109,9 @@ pintrk('page');`}
         </noscript>
         <Providers>
           <div className="min-h-screen bg-background">
+            {/* First-visit suggestion for Norwegian-speaking browsers; renders
+                nothing on /no pages, after dismissal, or for everyone else. */}
+            <LocaleSuggestionBanner />
             <Header categories={categories} />
             <main>{children}</main>
             <Cart />
