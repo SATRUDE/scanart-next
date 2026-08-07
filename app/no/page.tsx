@@ -36,6 +36,11 @@ export const metadata: Metadata = {
 
 export default async function NorwegianHomePage() {
   const featuredProducts = await getFeaturedProducts();
+  // Hero-only override: Vinkveld shows its styled Inspire scene (Mark's
+  // pick, 2026-08-07), matching the English homepage.
+  const heroProducts = featuredProducts.map(p =>
+    p.slug === 'vinkveld' ? { ...p, image: '/images/homepage/vinkveld-scene.jpg' } : p
+  );
   // Featured articles first, newest fill the remaining slots; same curation
   // as the English homepage (see app/page.tsx).
   const allArticles = await getAllArticles();
@@ -63,7 +68,7 @@ export default async function NorwegianHomePage() {
 
   return (
     <div className="min-h-screen">
-      <HeroSection products={featuredProducts} strings={no.home.hero} categoryLabels={no.shared.categoryLabels} />
+      <HeroSection products={heroProducts} strings={no.home.hero} categoryLabels={no.shared.categoryLabels} />
 
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-8">
