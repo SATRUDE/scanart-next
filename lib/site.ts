@@ -29,11 +29,14 @@ export function socialCard({
   description,
   path,
   image = OG_IMAGE,
+  ogLocale = OG_LOCALE,
 }: {
   title: string;
   description: string;
   path: string;
   image?: string;
+  /** Open Graph locale; the Norwegian pages pass 'nb_NO'. */
+  ogLocale?: string;
 }): Pick<Metadata, 'openGraph' | 'twitter'> {
   return {
     openGraph: {
@@ -41,7 +44,7 @@ export function socialCard({
       description,
       url: `${BASE_URL}${path}`,
       siteName: SITE_NAME,
-      locale: OG_LOCALE,
+      locale: ogLocale,
       type: 'website',
       images: [{ url: image }],
     },
