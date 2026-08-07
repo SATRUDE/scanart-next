@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { helpGroups } from '@/data/help';
 import { HelpSections } from '@/components/HelpSections';
 import { socialCard } from '@/lib/site';
+import { hreflangPair } from '@/lib/i18n';
 
 const PAGE_TITLE = 'Help';
 const PAGE_DESCRIPTION = 'Answers to common questions about ordering, delivery, returns and our prints at Scandinavian Art.';
@@ -10,7 +11,7 @@ const PAGE_DESCRIPTION = 'Answers to common questions about ordering, delivery, 
 export const metadata: Metadata = {
   title: PAGE_TITLE,
   description: PAGE_DESCRIPTION,
-  alternates: { canonical: '/help' },
+  alternates: { canonical: '/help', languages: hreflangPair('/help') },
   ...socialCard({ title: PAGE_TITLE, description: PAGE_DESCRIPTION, path: '/help' }),
 };
 

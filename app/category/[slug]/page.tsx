@@ -8,6 +8,7 @@ import { PrintCard } from '@/components/PrintCard';
 import { ReadMore } from '@/components/ReadMore';
 import { LandingCrossLinks } from '@/components/LandingCrossLinks';
 import { BASE_URL, socialCard } from '@/lib/site';
+import { hreflangPair } from '@/lib/i18n';
 
 export async function generateStaticParams() {
   return categoryLandings.map(c => ({ slug: c.slug }));
@@ -30,6 +31,7 @@ export async function generateMetadata({
     description: category.description,
     alternates: {
       canonical: `/category/${category.slug}`,
+      languages: hreflangPair(`/category/${category.slug}`),
     },
     ...socialCard({
       title: category.title,

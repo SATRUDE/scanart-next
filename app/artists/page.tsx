@@ -3,6 +3,7 @@ import { artists } from '@/data/artists';
 import { getProductsByArtist } from '@/lib/products';
 import { ArtistsList, ArtistWithCount } from '@/components/ArtistsList';
 import { BASE_URL, socialCard } from '@/lib/site';
+import { hreflangPair } from '@/lib/i18n';
 
 const PAGE_TITLE = 'Artists';
 const PAGE_DESCRIPTION = 'Meet the Scandinavian artists behind the collection, a small group of illustrators and printmakers working across Norway and Sweden.';
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
   description: PAGE_DESCRIPTION,
   alternates: {
     canonical: '/artists',
+    languages: hreflangPair('/artists'),
   },
   ...socialCard({ title: PAGE_TITLE, description: PAGE_DESCRIPTION, path: '/artists' }),
 };

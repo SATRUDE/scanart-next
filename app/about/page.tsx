@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { QualityPromise } from '@/components/QualityPromise';
 import { FullWidthImage } from '@/components/FullWidthImage';
 import { BASE_URL, socialCard } from '@/lib/site';
+import { hreflangPair } from '@/lib/i18n';
 
 const PAGE_TITLE = 'About';
 const PAGE_DESCRIPTION =
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
   description: PAGE_DESCRIPTION,
   alternates: {
     canonical: '/about',
+    languages: hreflangPair('/about'),
   },
   ...socialCard({ title: PAGE_TITLE, description: PAGE_DESCRIPTION, path: '/about' }),
 };

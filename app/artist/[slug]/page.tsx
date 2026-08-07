@@ -17,6 +17,7 @@ import { PrintCard } from '@/components/PrintCard';
 import { ArtistsList, type ArtistWithCount } from '@/components/ArtistsList';
 import { artistEditorial } from '@/lib/artist-editorial';
 import { BASE_URL, OG_IMAGE, SITE_NAME, OG_LOCALE, TWITTER_SITE } from '@/lib/site';
+import { hreflangPair } from '@/lib/i18n';
 
 
 // Ken's editorial paragraphs carry inline links in Markdown form
@@ -60,6 +61,7 @@ export async function generateMetadata({
     description: desc,
     alternates: {
       canonical: `/artist/${artist.slug}`,
+      languages: hreflangPair(`/artist/${artist.slug}`),
     },
     openGraph: {
       title: artist.name,

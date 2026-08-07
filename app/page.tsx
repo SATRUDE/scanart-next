@@ -12,10 +12,12 @@ import { getCategoryLandingByCategory } from '@/lib/categories';
 import { BASE_URL } from '@/lib/site';
 import { getAllArticles } from '@/lib/articles';
 import { ArticleCard } from '@/components/ArticleCard';
+import { hreflangPair } from '@/lib/i18n';
 
 export const metadata: Metadata = {
   alternates: {
     canonical: '/',
+    languages: hreflangPair('/'),
   },
 };
 

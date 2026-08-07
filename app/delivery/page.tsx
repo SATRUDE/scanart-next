@@ -4,6 +4,7 @@ import { LegalPage, LegalSection } from '@/components/LegalPage';
 import { COMPANY } from '@/config/company';
 import { DeliveryRatesTable } from '@/components/DeliveryRatesTable';
 import { socialCard } from '@/lib/site';
+import { hreflangPair } from '@/lib/i18n';
 
 const PAGE_TITLE = 'Delivery & Returns';
 const PAGE_DESCRIPTION = 'How Scandinavian Art prints are made, shipped worldwide, and our returns and refunds policy.';
@@ -11,7 +12,7 @@ const PAGE_DESCRIPTION = 'How Scandinavian Art prints are made, shipped worldwid
 export const metadata: Metadata = {
   title: PAGE_TITLE,
   description: PAGE_DESCRIPTION,
-  alternates: { canonical: '/delivery' },
+  alternates: { canonical: '/delivery', languages: hreflangPair('/delivery') },
   ...socialCard({ title: PAGE_TITLE, description: PAGE_DESCRIPTION, path: '/delivery' }),
 };
 
