@@ -24,7 +24,9 @@ export default async function HomePage() {
   // Hero-only override: Vinkveld shows its styled Inspire scene in the hero
   // rotation (Mark's pick, 2026-08-07); the product page keeps the clean print.
   const heroProducts = featuredProducts.map(p =>
-    p.slug === 'vinkveld' ? { ...p, image: '/images/homepage/vinkveld-scene.jpg' } : p
+    p.slug === 'vinkveld'
+      ? { ...p, image: '/images/homepage/vinkveld-scene.jpg', secondaryImage: '/images/homepage/vinkveld-scene.jpg' }
+      : p
   );
   // Featured articles first (the Featured checkbox in Notion curates this
   // teaser), newest fill the remaining slots. Keeps a stable homepage link to
