@@ -39,7 +39,9 @@ export default async function NorwegianHomePage() {
   // Hero-only override: Vinkveld shows its styled Inspire scene (Mark's
   // pick, 2026-08-07), matching the English homepage.
   const heroProducts = featuredProducts.map(p =>
-    p.slug === 'vinkveld' ? { ...p, image: '/images/homepage/vinkveld-scene.jpg' } : p
+    p.slug === 'vinkveld'
+      ? { ...p, image: '/images/homepage/vinkveld-scene.jpg', secondaryImage: '/images/homepage/vinkveld-scene.jpg' }
+      : p
   );
   // Featured articles first, newest fill the remaining slots; same curation
   // as the English homepage (see app/page.tsx).
