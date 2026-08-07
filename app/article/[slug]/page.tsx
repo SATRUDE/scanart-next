@@ -155,7 +155,7 @@ export default async function ArticlePage({
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
             {featuredPrints.map(print => (
               <TrackedLink key={print.id} event="journal-to-product-click" eventData={{ article: article.slug, product: print.slug }} href={`/product/${print.slug}`}>
-                <PrintCard product={print} />
+                <PrintCard product={print} sizes="(max-width: 768px) 50vw, 33vw" />
               </TrackedLink>
             ))}
           </div>

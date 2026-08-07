@@ -153,9 +153,10 @@ export default async function ArtistPage({
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {products.map(product => (
+        {products.map((product, index) => (
           <Link key={product.id} href={`/product/${product.slug}`}>
-            <PrintCard product={product} />
+            {/* first desktop row is above the fold: preload it, lazy-load the rest */}
+            <PrintCard product={product} priority={index < 4} />
           </Link>
         ))}
       </div>

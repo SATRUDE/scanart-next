@@ -1,6 +1,6 @@
 import React from 'react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
-import { AvifImage } from './AvifImage';
+import { SmartImage } from './SmartImage';
 import { getArtistById } from '@/data/artists';
 import { getLowestProductPrices } from '@/lib/pricing';
 
@@ -26,13 +26,27 @@ interface PrintCardProps {
   currency?: 'GBP' | 'NOK' | 'USD' | 'DKK' | 'SEK';
   onClick?: () => void;
   className?: string;
+  /** Set on the cards above the fold so the LCP image is preloaded, not lazy. */
+  priority?: boolean;
+  /**
+   * Responsive width hint for the optimiser. The default matches the
+   * 2/3/4-column grid the landing templates use; the article and product
+   * "related prints" grids have their own column counts and pass their own.
+   */
+  sizes?: string;
 }
+
+/** Column widths of the 2/3/4 grid used by the category, collection, wall-art
+ *  and artist templates. Same hint ProductsGrid gives for the same layout. */
+const DEFAULT_SIZES = '(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw';
 
 export const PrintCard: React.FC<PrintCardProps> = ({
   product,
   currency = 'GBP',
   onClick,
-  className = ''
+  className = '',
+  priority = false,
+  sizes = DEFAULT_SIZES
 }) => {
   const formatPrice = (prices: any, selectedCurrency: string) => {
     const price = prices[selectedCurrency];
@@ -52,11 +66,17 @@ export const PrintCard: React.FC<PrintCardProps> = ({
       onClick={onClick}
     >
       <div className="aspect-[3/4] overflow-hidden bg-neutral-50 mb-6">
-        <AvifImage
+        {/* SmartImage, not the raw-<img> AvifImage: this card is the whole
+            print grid on the category, collection, wall-art and artist
+            templates, and outside next/image those pages served the full-size
+            source PNG (7.5 MB across /scandinavian-wall-art's twenty prints).
+            SmartImage keeps the same .avif-to-.png fallback and skeleton. */}
+        <SmartImage
           src={product.image}
           alt={product.name}
+          priority={priority}
+          sizes={sizes}
           className="w-full h-full object-cover transition-all duration-300 group-hover:scale-[1.02]"
-          fallbackSrc={product.image.replace('.avif', '.png')}
         />
       </div>
       <div className="space-y-2">

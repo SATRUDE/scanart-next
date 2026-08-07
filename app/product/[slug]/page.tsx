@@ -173,7 +173,7 @@ export default async function ProductPage({
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {recommended.map(rec => (
               <TrackedLink key={rec.id} event="related-product-click" eventData={{ from: product.slug, to: rec.slug }} href={`/product/${rec.slug}`}>
-                <PrintCard product={rec} />
+                <PrintCard product={rec} sizes="(max-width: 768px) 50vw, 25vw" />
               </TrackedLink>
             ))}
           </div>
