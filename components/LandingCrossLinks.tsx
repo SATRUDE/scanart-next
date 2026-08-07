@@ -1,10 +1,28 @@
 import { TrackedLink } from '@/components/TrackedLink';
 import { categoryLandings } from '@/lib/categories';
 import { collections } from '@/lib/collections';
+import type { CrossLinksStrings } from '@/lib/i18n';
+
+// English defaults so existing callers render identically with no props.
+const DEFAULT_STRINGS: CrossLinksStrings = {
+  heading: 'Explore more',
+  allPrints: 'All prints',
+  wallArt: 'Scandinavian Wall Art',
+  meetTheArtists: 'Meet the artists',
+  categoryLabels: {},
+};
 
 interface LandingCrossLinksProps {
   /** The landing this block sits on, so it never links back to itself. */
   current: { type: 'category' | 'collection' | 'wall-art'; slug: string };
+  /** Localised labels; default to the English strings/config labels. */
+  strings?: CrossLinksStrings;
+  /**
+   * 'no' points category links (and the artists hub) into the /no tree, where
+   * Norwegian pages exist; collections, /products and the wall-art landing
+   * stay on their English routes, which are the only versions in phase 1.
+   */
+  locale?: 'en' | 'no';
 }
 
 /**
@@ -20,10 +38,15 @@ interface LandingCrossLinksProps {
  * existing collection-page nav style (a flat wrap of small text links); no new
  * design language and no copy to write, labels come from the config.
  */
-export function LandingCrossLinks({ current }: LandingCrossLinksProps) {
+export function LandingCrossLinks({ current, strings = DEFAULT_STRINGS, locale = 'en' }: LandingCrossLinksProps) {
+  const categoryPrefix = locale === 'no' ? '/no' : '';
+  const artistsHref = locale === 'no' ? '/no/artists' : '/artists';
   const categoryLinks = categoryLandings
     .filter(c => !(current.type === 'category' && c.slug === current.slug))
-    .map(c => ({ href: `/category/${c.slug}`, label: c.heading }));
+    .map(c => ({
+      href: `${categoryPrefix}/category/${c.slug}`,
+      label: strings.categoryLabels[c.slug] ?? c.heading,
+    }));
 
   const collectionLinks = collections
     .filter(c => !(current.type === 'collection' && c.slug === current.slug))
@@ -31,9 +54,9 @@ export function LandingCrossLinks({ current }: LandingCrossLinksProps) {
 
   return (
     <section className="mt-16">
-      <h2 className="text-2xl text-neutral-900">Explore more</h2>
+      <h2 className="text-2xl text-neutral-900">{strings.heading}</h2>
       <nav className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground">
-        <TrackedLink event="explore-more-click" eventData={{ from: `${current.type}/${current.slug}`, to: '/products' }} href="/products" className="hover:text-foreground">All prints</TrackedLink>
+        <TrackedLink event="explore-more-click" eventData={{ from: `${current.type}/${current.slug}`, to: '/products' }} href="/products" className="hover:text-foreground">{strings.allPrints}</TrackedLink>
         {categoryLinks.map(l => (
           <TrackedLink key={l.href} event="explore-more-click" eventData={{ from: `${current.type}/${current.slug}`, to: l.href }} href={l.href} className="hover:text-foreground">{l.label}</TrackedLink>
         ))}
@@ -41,9 +64,9 @@ export function LandingCrossLinks({ current }: LandingCrossLinksProps) {
           <TrackedLink key={l.href} event="explore-more-click" eventData={{ from: `${current.type}/${current.slug}`, to: l.href }} href={l.href} className="hover:text-foreground">{l.label}</TrackedLink>
         ))}
         {current.type !== 'wall-art' && (
-          <TrackedLink event="explore-more-click" eventData={{ from: `${current.type}/${current.slug}`, to: '/scandinavian-wall-art' }} href="/scandinavian-wall-art" className="hover:text-foreground">Scandinavian Wall Art</TrackedLink>
+          <TrackedLink event="explore-more-click" eventData={{ from: `${current.type}/${current.slug}`, to: '/scandinavian-wall-art' }} href="/scandinavian-wall-art" className="hover:text-foreground">{strings.wallArt}</TrackedLink>
         )}
-        <TrackedLink event="explore-more-click" eventData={{ from: `${current.type}/${current.slug}`, to: '/artists' }} href="/artists" className="hover:text-foreground">Meet the artists</TrackedLink>
+        <TrackedLink event="explore-more-click" eventData={{ from: `${current.type}/${current.slug}`, to: artistsHref }} href={artistsHref} className="hover:text-foreground">{strings.meetTheArtists}</TrackedLink>
       </nav>
     </section>
   );

@@ -10,9 +10,14 @@ import { useEffect, useRef, useState } from 'react';
 export function ReadMore({
   children,
   className,
+  moreLabel = 'Read more',
+  lessLabel = 'Read less',
 }: {
   children: React.ReactNode;
   className?: string;
+  /** Localised toggle labels; default to the English strings. */
+  moreLabel?: string;
+  lessLabel?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [expanded, setExpanded] = useState(false);
@@ -40,7 +45,7 @@ export function ReadMore({
           aria-expanded={expanded}
           className="mt-2 text-sm font-medium text-neutral-900 hover:text-neutral-600 transition-colors"
         >
-          {expanded ? 'Read less' : 'Read more'}
+          {expanded ? lessLabel : moreLabel}
         </button>
       )}
     </div>

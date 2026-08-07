@@ -7,16 +7,21 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from '@/components/ui/accordion';
-import { helpGroups } from '@/data/help';
+import { helpGroups, HelpGroup } from '@/data/help';
+
+interface HelpSectionsProps {
+  /** Localised FAQ groups; defaults to the English data/help.ts content. */
+  groups?: HelpGroup[];
+}
 
 // The grouped FAQ sections: each category is a heading (left) with its
 // accordion (right) on SA's section grid. All rows closed by default
 // (Accordion type="single" collapsible); one opens on click.
-export const HelpSections: React.FC = () => {
+export const HelpSections: React.FC<HelpSectionsProps> = ({ groups = helpGroups }) => {
   return (
     <div className="container mx-auto px-8">
       <div className="space-y-16">
-        {helpGroups.map((group, gi) => (
+        {groups.map((group, gi) => (
           <section key={group.category} className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div className="lg:col-span-1">
               <h2 className="text-2xl font-normal text-neutral-900">{group.category}</h2>

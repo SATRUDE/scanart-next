@@ -21,12 +21,21 @@ interface LegalPageProps {
   // DRAFT-only banner. Remove (pass false / omit) once the wording is signed
   // off and the business details are filled in. See the three TODO_* below.
   draftNotice?: boolean;
+  /** Localised chrome labels; default to the English strings. */
+  strings?: {
+    home?: string;
+    homeHref?: string;
+    lastUpdatedLabel?: string;
+  };
 }
 
 // Shared layout for the legal pages (Privacy, Terms, Delivery & Returns),
 // matching Stan's Figma template (node 21:2): breadcrumb, centred title +
 // "Last updated", then left-aligned numbered sections in a narrow prose column.
-export const LegalPage: React.FC<LegalPageProps> = ({ title, lastUpdated, sections, draftNotice }) => {
+export const LegalPage: React.FC<LegalPageProps> = ({ title, lastUpdated, sections, draftNotice, strings }) => {
+  const home = strings?.home ?? 'Home';
+  const homeHref = strings?.homeHref ?? '/';
+  const lastUpdatedLabel = strings?.lastUpdatedLabel ?? 'Last updated:';
   // px-4 sm:px-6 matches the nav container (components/Header.tsx) so the
   // breadcrumb's left edge lines up with the logo.
   return (
@@ -34,7 +43,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ title, lastUpdated, sectio
       <Breadcrumb className="mb-8">
         <BreadcrumbList>
           <BreadcrumbItem>
-            <BreadcrumbLink asChild><Link href="/">Home</Link></BreadcrumbLink>
+            <BreadcrumbLink asChild><Link href={homeHref}>{home}</Link></BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
@@ -46,7 +55,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ title, lastUpdated, sectio
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-12">
           <h1 className="text-3xl font-normal text-neutral-900 mb-2">{title}</h1>
-          <p className="text-sm text-muted-foreground">Last updated: {lastUpdated}</p>
+          <p className="text-sm text-muted-foreground">{lastUpdatedLabel} {lastUpdated}</p>
           {draftNotice && (
             <p className="text-sm text-muted-foreground mt-4">
               Draft for review, final wording to be confirmed before publication.
