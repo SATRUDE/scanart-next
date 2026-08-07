@@ -15,13 +15,18 @@ import { artists, getArtistBySlug, getArtistInitials } from '@/data/artists';
 import { getProductsByArtist } from '@/lib/products';
 import { PrintCard } from '@/components/PrintCard';
 import { ArtistsList, type ArtistWithCount } from '@/components/ArtistsList';
-import { artistEditorial } from '@/lib/artist-editorial';
-import { BASE_URL, OG_IMAGE, SITE_NAME, OG_LOCALE, TWITTER_SITE } from '@/lib/site';
+import { BASE_URL, OG_IMAGE, SITE_NAME, TWITTER_SITE } from '@/lib/site';
 import { hreflangPair } from '@/lib/i18n';
+import { no } from '@/lib/i18n/no';
 
+// The Norwegian artist pages: app/artist/[slug]/page.tsx mirrored exactly
+// (same params, same components, same classes), with bios, locations and the
+// editorial copy swapped for lib/i18n/no.ts. Any artist missing a translation
+// falls back to the English data, so the EN/NO pair always exists together.
 
 // Ken's editorial paragraphs carry inline links in Markdown form
 // ([text](/path)); render them as real <Link>s, everything else as text.
+// Same helper as the English page.
 function renderInlineLinks(text: string): React.ReactNode[] {
   return text.split(/(\[[^\]]+\]\([^)]+\))/g).map((part, i) => {
     const match = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
@@ -37,7 +42,7 @@ function renderInlineLinks(text: string): React.ReactNode[] {
 }
 
 export async function generateStaticParams() {
-  // only artists with published work get a page
+  // only artists with published work get a page; same set as the English tree
   const withProducts = [];
   for (const artist of artists) {
     const products = await getProductsByArtist(artist.id);
@@ -55,20 +60,21 @@ export async function generateMetadata({
   const artist = getArtistBySlug(slug);
   if (!artist) return {};
 
-  const desc = artist.bio || `Art prints by ${artist.name} - Scandinavian Art Gallery`;
+  const copy = no.artists[artist.slug];
+  const desc = copy?.bio || artist.bio || `${no.artistPage.metaDescriptionPrefix} ${artist.name} - Scandinavian Art Gallery`;
   return {
     title: artist.name,
     description: desc,
     alternates: {
-      canonical: `/artist/${artist.slug}`,
+      canonical: `/no/artist/${artist.slug}`,
       languages: hreflangPair(`/artist/${artist.slug}`),
     },
     openGraph: {
       title: artist.name,
       description: desc,
-      url: `${BASE_URL}/artist/${artist.slug}`,
+      url: `${BASE_URL}/no/artist/${artist.slug}`,
       siteName: SITE_NAME,
-      locale: OG_LOCALE,
+      locale: 'nb_NO',
       images: [artist.image || OG_IMAGE],
       type: 'profile',
     },
@@ -82,7 +88,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function ArtistPage({
+export default async function NorwegianArtistPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
@@ -99,15 +105,25 @@ export default async function ArtistPage({
     notFound();
   }
 
-  const editorial = artistEditorial[artist.slug];
+  const copy = no.artists[artist.slug];
+  const bio = copy?.bio || artist.bio;
+  const location = copy?.location || artist.location;
+  const editorial = no.artistEditorial[artist.slug];
 
   // The other artists with published prints, in data order, for the
-  // More-artists section (Stan's direction: the /artists row list reused).
+  // More-artists section; bios and locations in Norwegian.
   const otherArtists: ArtistWithCount[] = [];
   for (const other of artists) {
     if (other.id === artist.id) continue;
     const otherProducts = await getProductsByArtist(other.id);
-    if (otherProducts.length > 0) otherArtists.push({ ...other, printCount: otherProducts.length });
+    if (otherProducts.length > 0) {
+      const otherCopy = no.artists[other.slug];
+      otherArtists.push({
+        ...other,
+        ...(otherCopy ? { bio: otherCopy.bio, location: otherCopy.location } : {}),
+        printCount: otherProducts.length,
+      });
+    }
   }
 
   return (
@@ -115,11 +131,11 @@ export default async function ArtistPage({
       <Breadcrumb className="mb-8">
         <BreadcrumbList>
           <BreadcrumbItem>
-            <BreadcrumbLink asChild><Link href="/">Home</Link></BreadcrumbLink>
+            <BreadcrumbLink asChild><Link href="/no">{no.artistPage.breadcrumbHome}</Link></BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbLink asChild><Link href="/artists">Artists</Link></BreadcrumbLink>
+            <BreadcrumbLink asChild><Link href="/no/artists">{no.artistPage.breadcrumbArtists}</Link></BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
@@ -141,31 +157,35 @@ export default async function ArtistPage({
           )}
           <div>
             <h1 className="text-3xl text-neutral-900">{artist.name}</h1>
-            {artist.location && <p className="text-sm text-muted-foreground mt-1">{artist.location}</p>}
-            {artist.bio && (
-              <p className="text-muted-foreground leading-relaxed mt-4 max-w-3xl">{artist.bio}</p>
+            {location && <p className="text-sm text-muted-foreground mt-1">{location}</p>}
+            {bio && (
+              <p className="text-muted-foreground leading-relaxed mt-4 max-w-3xl">{bio}</p>
             )}
           </div>
         </div>
       </header>
 
       <div className="mb-8">
-        <h2 className="text-2xl text-neutral-900 mb-2">Prints by {artist.name}</h2>
-        <p className="text-muted-foreground">{products.length} {products.length === 1 ? 'print' : 'prints'}</p>
+        <h2 className="text-2xl text-neutral-900 mb-2">{no.artistPage.printsBy} {artist.name}</h2>
+        <p className="text-muted-foreground">{products.length} {products.length === 1 ? no.shared.printOne : no.shared.printOther}</p>
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {products.map((product, index) => (
           <Link key={product.id} href={`/product/${product.slug}`}>
             {/* first desktop row is above the fold: preload it, lazy-load the rest */}
-            <PrintCard product={product} priority={index < 4} />
+            <PrintCard
+              product={product}
+              priority={index < 4}
+              categoryLabel={no.shared.categoryLabels[product.category]}
+              outOfStockLabel={no.shared.outOfStock}
+            />
           </Link>
         ))}
       </div>
 
-      {/* About the work: the About page's editorial split reused (Stan's
-          direction, SA Figma 219:162), copy by Ken wired verbatim from
-          lib/artist-editorial.ts. */}
+      {/* About the work: the About page's editorial split reused, copy from
+          the Norwegian dictionary (lib/i18n/no.ts). */}
       {editorial && (
         <section className="mt-16 lg:mt-24">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -180,17 +200,17 @@ export default async function ArtistPage({
         </section>
       )}
 
-      {/* More artists: the /artists row treatment reused so the roster reads
-          identically site-wide; page-one landers flow into the rest of it. */}
+      {/* More artists: the /no/artists row treatment reused so the roster
+          reads identically site-wide. */}
       {otherArtists.length > 0 && (
         <section className="mt-16 lg:mt-24 border-t pt-12 lg:pt-16">
           <div className="flex items-center justify-between gap-6 mb-2">
-            <h2 className="text-2xl text-neutral-900">More artists</h2>
-            <Link href="/artists" className="text-sm font-medium text-neutral-900 hover:text-neutral-600 transition-colors whitespace-nowrap">
-              View all artists →
+            <h2 className="text-2xl text-neutral-900">{no.artistPage.moreArtists}</h2>
+            <Link href="/no/artists" className="text-sm font-medium text-neutral-900 hover:text-neutral-600 transition-colors whitespace-nowrap">
+              {no.artistPage.viewAllArtists} →
             </Link>
           </div>
-          <ArtistsList artists={otherArtists} />
+          <ArtistsList artists={otherArtists} locale="no" printLabels={{ one: no.shared.printOne, other: no.shared.printOther }} />
         </section>
       )}
 
@@ -201,29 +221,26 @@ export default async function ArtistPage({
             '@context': 'https://schema.org',
             '@type': 'Person',
             name: artist.name,
-            description: artist.bio,
+            description: bio,
             // schema.org requires absolute image URLs; artist paths are site-relative
             ...(artist.image ? { image: new URL(artist.image, BASE_URL).toString() } : {}),
-            url: `${BASE_URL}/artist/${artist.slug}`,
-            jobTitle: 'Artist',
+            url: `${BASE_URL}/no/artist/${artist.slug}`,
+            jobTitle: no.artistPage.jobTitle,
           }),
         }}
       />
-      {/*
-        The prints on this page as a machine-readable list, matching the shape every
-        other print-listing route emits (category, collection, /products,
-        /scandinavian-wall-art, the /artists hub and /journal). Without it an artist
-        page is the one listing template whose items Google has to infer from markup.
-      */}
+      {/* The prints on this page as a machine-readable list, matching the
+          shape the English artist pages emit. */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'CollectionPage',
-            name: `Prints by ${artist.name}`,
-            description: `Art prints by ${artist.name}, ${artist.location}, at Scandinavian Art Gallery.`,
-            url: `${BASE_URL}/artist/${artist.slug}`,
+            name: `${no.artistPage.printsBy} ${artist.name}`,
+            description: `${no.artistPage.metaDescriptionPrefix} ${artist.name}, ${location}, hos Scandinavian Art Gallery.`,
+            url: `${BASE_URL}/no/artist/${artist.slug}`,
+            inLanguage: 'no',
             mainEntity: {
               '@type': 'ItemList',
               itemListElement: products.map((p, i) => ({
@@ -243,9 +260,9 @@ export default async function ArtistPage({
             '@context': 'https://schema.org',
             '@type': 'BreadcrumbList',
             itemListElement: [
-              { '@type': 'ListItem', position: 1, name: 'Home', item: BASE_URL },
-              { '@type': 'ListItem', position: 2, name: 'Artists', item: `${BASE_URL}/artists` },
-              { '@type': 'ListItem', position: 3, name: artist.name, item: `${BASE_URL}/artist/${artist.slug}` },
+              { '@type': 'ListItem', position: 1, name: no.artistPage.breadcrumbHome, item: `${BASE_URL}/no` },
+              { '@type': 'ListItem', position: 2, name: no.artistPage.breadcrumbArtists, item: `${BASE_URL}/no/artists` },
+              { '@type': 'ListItem', position: 3, name: artist.name, item: `${BASE_URL}/no/artist/${artist.slug}` },
             ],
           }),
         }}

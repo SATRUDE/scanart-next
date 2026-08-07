@@ -10,18 +10,27 @@ export interface ArtistWithCount extends Artist {
 
 interface ArtistsListProps {
   artists: ArtistWithCount[];
+  /** 'no' links rows into the /no tree; defaults to the English routes. */
+  locale?: 'en' | 'no';
+  /** Localised print-count nouns; default to the English strings. */
+  printLabels?: { one: string; other: string };
 }
 
 // A single editorial column: one row per artist, small circular avatar (or an
 // initials fallback when there is no portrait), name, location + print count,
 // and a short bio. The whole row links to the artist's detail page.
-export const ArtistsList: React.FC<ArtistsListProps> = ({ artists }) => {
+export const ArtistsList: React.FC<ArtistsListProps> = ({
+  artists,
+  locale = 'en',
+  printLabels = { one: 'print', other: 'prints' },
+}) => {
+  const hrefPrefix = locale === 'no' ? '/no' : '';
   return (
     <ul>
       {artists.map(artist => (
         <li key={artist.id} className="border-b border-border last:border-0">
           <Link
-            href={`/artist/${artist.slug}`}
+            href={`${hrefPrefix}/artist/${artist.slug}`}
             className="group flex items-center gap-5 py-6"
           >
             {artist.image ? (
@@ -38,7 +47,7 @@ export const ArtistsList: React.FC<ArtistsListProps> = ({ artists }) => {
                 {artist.name}
               </h2>
               <p className="text-sm text-muted-foreground">
-                {artist.location} · {artist.printCount} {artist.printCount === 1 ? 'print' : 'prints'}
+                {artist.location} · {artist.printCount} {artist.printCount === 1 ? printLabels.one : printLabels.other}
               </p>
               {artist.bio && (
                 <p className="text-sm text-muted-foreground mt-1 line-clamp-2">{artist.bio}</p>

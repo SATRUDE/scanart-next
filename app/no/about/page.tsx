@@ -4,22 +4,23 @@ import { QualityPromise } from '@/components/QualityPromise';
 import { FullWidthImage } from '@/components/FullWidthImage';
 import { BASE_URL, socialCard } from '@/lib/site';
 import { hreflangPair } from '@/lib/i18n';
+import { no } from '@/lib/i18n/no';
 
-const PAGE_TITLE = 'About';
-const PAGE_DESCRIPTION =
-  'The story of Scandinavian Art: an online gallery working directly with Scandinavian artists to bring authentic Nordic prints into homes around the world.';
+// The Norwegian About page: app/about/page.tsx mirrored exactly (same
+// components, same classes), with the copy swapped for lib/i18n/no.ts.
+const t = no.about;
 
 export const metadata: Metadata = {
-  title: PAGE_TITLE,
-  description: PAGE_DESCRIPTION,
+  title: t.meta.title,
+  description: t.meta.description,
   alternates: {
-    canonical: '/about',
+    canonical: '/no/about',
     languages: hreflangPair('/about'),
   },
-  ...socialCard({ title: PAGE_TITLE, description: PAGE_DESCRIPTION, path: '/about' }),
+  ...socialCard({ title: t.meta.title, description: t.meta.description, path: '/no/about', ogLocale: 'nb_NO' }),
 };
 
-export default function AboutPage() {
+export default function NorwegianAboutPage() {
   return (
     <div className="min-h-screen">
       {/* Hero: full-bleed image darkened for legibility, left-pinned text.
@@ -30,7 +31,7 @@ export default function AboutPage() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/images/products/tree-top-peach-scene.avif"
-            alt="A framed Scandinavian art print in a light Nordic interior"
+            alt={t.heroImageAlt}
             className="absolute inset-0 h-full w-full object-cover"
           />
           {/* mobile base + desktop left gradient keep white text legible on this light image */}
@@ -41,16 +42,16 @@ export default function AboutPage() {
             <div className="container mx-auto px-8">
               <div className="max-w-lg py-16 text-white">
                 <h1 className="text-3xl md:text-4xl font-normal leading-tight tracking-tight">
-                  Bringing Scandinavian art into homes around the world
+                  {t.heroTitle}
                 </h1>
                 <p className="mt-4 text-lg leading-relaxed text-white/90">
-                  An online gallery working directly with Scandinavian artists to bring authentic Nordic prints to a wider audience.
+                  {t.heroSub}
                 </p>
                 <Link
                   href="/products"
                   className="mt-8 inline-flex h-10 items-center justify-center rounded-md bg-white px-6 text-sm font-medium text-gray-900 hover:bg-white/90"
                 >
-                  Explore the collection
+                  {t.heroCta}
                 </Link>
               </div>
             </div>
@@ -62,44 +63,44 @@ export default function AboutPage() {
         <div className="container mx-auto px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-16">
             <div className="lg:col-span-1">
-              <h2 className="text-3xl text-neutral-900 mb-0">About Scandinavian Art</h2>
+              <h2 className="text-3xl text-neutral-900 mb-0">{t.aboutHeading}</h2>
             </div>
             <div className="lg:col-span-2">
               <p className="text-lg text-neutral-600 leading-relaxed mb-4">
-                Scandinavian Art exists to bring the distinct Scandinavian aesthetic into homes around the world, while giving the artists behind it the chance to reach a wider audience.
+                {t.aboutPara1}
               </p>
               <p className="text-lg text-neutral-600 leading-relaxed mb-4">
-                The idea came from a conversation with a friend, an artist living in Oslo. We realised how little Scandinavian artwork reached the rest of the world, and set out to create a place where these talented artists could showcase their work to a broader audience.
+                {t.aboutPara2}
               </p>
               <p className="text-lg text-neutral-600 leading-relaxed mb-4">
-                At its core, Scandinavian design celebrates natural materials, clean lines and the concept of lagom, having just the right amount. The prints we curate carry that spirit: serene, purposeful and timeless.
+                {t.aboutPara3}
               </p>
               <Link href="/products" className="inline-flex items-center justify-center rounded-md text-sm font-medium border border-gray-200 bg-background text-foreground hover:bg-gray-50 hover:text-gray-900 h-10 px-4 py-2">
-                View all products
+                {t.viewAllProducts}
               </Link>
             </div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div className="lg:col-span-1">
-              <h2 className="text-3xl text-neutral-900 mb-0">Working with artists</h2>
+              <h2 className="text-3xl text-neutral-900 mb-0">{t.artistsHeading}</h2>
             </div>
             <div className="lg:col-span-2">
               <p className="text-lg text-neutral-600 leading-relaxed mb-4">
-                We work directly with local artists, leveraging their expertise to select the most authentic pieces, so the collection stays fresh, diverse and of the highest quality. Every print is produced on museum-quality paper using premium printing techniques, with professional framing available.
+                {t.artistsPara1}
               </p>
               <p className="text-lg text-neutral-600 leading-relaxed mb-4">
-                Every purchase directly supports the artist behind it, helping them gain the recognition they deserve and continue creating. By choosing Scandinavian Art, you put a piece of Scandinavia in your home and support the people who make it.
+                {t.artistsPara2}
               </p>
               <Link href="/journal" className="inline-flex items-center justify-center rounded-md text-sm font-medium border border-gray-200 bg-background text-foreground hover:bg-gray-50 hover:text-gray-900 h-10 px-4 py-2">
-                Read the journal
+                {t.readTheJournal}
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      <QualityPromise />
+      <QualityPromise strings={no.qualityPromise} />
       <FullWidthImage />
 
       <script
@@ -108,8 +109,9 @@ export default function AboutPage() {
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'AboutPage',
-            name: 'About Scandinavian Art',
-            url: `${BASE_URL}/about`,
+            name: t.jsonLdName,
+            url: `${BASE_URL}/no/about`,
+            inLanguage: 'no',
             mainEntity: {
               '@type': 'Organization',
               name: 'Scandinavian Art Gallery',

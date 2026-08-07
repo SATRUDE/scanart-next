@@ -34,6 +34,10 @@ interface PrintCardProps {
    * "related prints" grids have their own column counts and pass their own.
    */
   sizes?: string;
+  /** Localised category label; defaults to the catalogue value. */
+  categoryLabel?: string;
+  /** Localised out-of-stock label; defaults to the English string. */
+  outOfStockLabel?: string;
 }
 
 /** Column widths of the 2/3/4 grid used by the category, collection, wall-art
@@ -46,7 +50,9 @@ export const PrintCard: React.FC<PrintCardProps> = ({
   onClick,
   className = '',
   priority = false,
-  sizes = DEFAULT_SIZES
+  sizes = DEFAULT_SIZES,
+  categoryLabel,
+  outOfStockLabel = 'Out of stock'
 }) => {
   const formatPrice = (prices: any, selectedCurrency: string) => {
     const price = prices[selectedCurrency];
@@ -83,7 +89,7 @@ export const PrintCard: React.FC<PrintCardProps> = ({
         <div className="flex items-center gap-2 text-xs text-neutral-500 tracking-wide">
           <span>{product.artistId ? getArtistById(product.artistId)?.name || product.brand : product.brand}</span>
           <span>•</span>
-          <span>{product.category}</span>
+          <span>{categoryLabel ?? product.category}</span>
         </div>
         <h3 className="text-sm text-neutral-900 leading-relaxed">
           {product.name}
@@ -92,7 +98,7 @@ export const PrintCard: React.FC<PrintCardProps> = ({
           {formatPrice(getLowestProductPrices(product), currency)}
         </p>
         {!product.inStock && (
-          <p className="text-xs text-neutral-400 mt-1">Out of stock</p>
+          <p className="text-xs text-neutral-400 mt-1">{outOfStockLabel}</p>
         )}
       </div>
     </div>
