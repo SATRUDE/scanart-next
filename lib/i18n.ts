@@ -30,6 +30,16 @@ export function noPathFor(pathname: string): string | null {
 }
 
 /**
+ * The English twin of a /no path (the inverse of noPathFor). Undefined input
+ * or a /no path with no clean twin falls back to the English homepage.
+ */
+export function enPathFor(noPathname: string): string {
+  if (noPathname === '/no') return '/';
+  if (noPathname.startsWith('/no/')) return noPathname.slice(3);
+  return '/';
+}
+
+/**
  * hreflang alternates for a translated EN/NO pair, for Metadata.alternates.
  * `enPath` is the English page ('/' for the homepage); the Norwegian page is
  * always the /no-prefixed twin. English is the x-default.

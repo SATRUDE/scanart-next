@@ -7,7 +7,7 @@ import { ResponsiveText } from '@/components/ResponsiveText';
 import { categoryLandings } from '@/lib/categories';
 import { collections } from '@/lib/collections';
 import { track } from '@/lib/analytics';
-import { footerStrings, isNoPath } from '@/lib/i18n';
+import { enPathFor, footerStrings, isNoPath, noPathFor } from '@/lib/i18n';
 
 export const Footer: React.FC = () => {
   // The Footer is mounted once in the root layout, which cannot know the
@@ -25,6 +25,11 @@ export const Footer: React.FC = () => {
   const artistsHref = isNo ? '/no/artists' : '/artists';
   const helpHref = isNo ? '/no/help' : '/help';
   const deliveryHref = isNo ? '/no/delivery' : '/delivery';
+  // Crawlable EN/NO pairing (the SEO fix): on an English page with a Norwegian
+  // twin, link to it; on a Norwegian page, link back to the English original.
+  // A plain footer link, not the header language switch — that stays a Stan
+  // brief per the no-invented-design-language rule.
+  const langSwitchHref = isNo ? enPathFor(pathname) : noPathFor(pathname);
 
   return (
     <footer className="bg-neutral-100 py-16">
@@ -85,8 +90,16 @@ export const Footer: React.FC = () => {
         <div className="mb-16">
           <ResponsiveText text="SCANDINAVIAN ART" />
         </div>
-        <div>
+        <div className="flex flex-wrap items-center gap-4">
           <p className="text-sm text-neutral-900">Copyright &copy; 2025 SCANDINAVIAN ART</p>
+          {langSwitchHref && (
+            <Link
+              href={langSwitchHref}
+              className="text-sm text-neutral-600 underline hover:text-neutral-900 transition-colors"
+            >
+              {isNo ? 'Read in English' : 'Les på norsk'}
+            </Link>
+          )}
         </div>
       </div>
     </footer>
