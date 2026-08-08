@@ -171,7 +171,7 @@ export const collections: Collection[] = [
       {
         question: 'What if the print does not suit the room once it is up?',
         answer:
-          'You have 30 days to return it, so there is room to live with a piece before you commit. It helps to order the frame that matches your others, unframed, or a wood, black or white frame for £25 extra, all chosen on the product page. Prints are made to order and delivered worldwide, with the cost shown at checkout.',
+          'You have 14 days to change your mind, so there is room to live with a piece before you commit. It helps to order the frame that matches your others, unframed, or a wood, black or white frame for £25 extra, all chosen on the product page. Prints are made to order and delivered worldwide, with the cost shown at checkout.',
       },
     ],
   },

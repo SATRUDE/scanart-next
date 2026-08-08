@@ -106,7 +106,7 @@ export const no = {
         title: 'Ekthet',
         desc: 'Hvert verk kommer direkte fra skandinaviske kunstnere, og støtter lokale talenter og kreative miljøer.',
       },
-      { title: 'Fornøydgaranti', desc: '30 dagers returrett på alle kjøp.' },
+      { title: 'Fornøydgaranti', desc: '14 dager til å ombestemme deg på alle kjøp.' },
     ],
   } satisfies QualityPromiseStrings,
 
