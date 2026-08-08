@@ -55,8 +55,13 @@ export const JournalGrid: React.FC<JournalGridProps> = ({ articles, categories }
       )}
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {filteredArticles.map(article => (
-          <ArticleCard key={article.id} article={article} titleAs="h2" />
+        {/* The first card only: the grid is one column on mobile, which is the
+            viewport Google measures, so card 0 is the LCP element there and the
+            top-left card on wider screens. Preloading more than one would give
+            the browser competing LCP candidates, which the next/image docs warn
+            against. */}
+        {filteredArticles.map((article, index) => (
+          <ArticleCard key={article.id} article={article} titleAs="h2" priority={index === 0} />
         ))}
       </div>
 
