@@ -79,16 +79,20 @@ export default async function InspirePage() {
 
       <h2 className="sr-only">Styled scenes</h2>
       <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 [column-fill:balance]">
-        {scenes.map(scene => (
+        {scenes.map((scene, index) => (
           <div key={scene.image} className="mb-6 break-inside-avoid">
             <Link href={`/product/${scene.products[0].slug}`} className="group block">
               <div className="overflow-hidden rounded bg-neutral-50">
+                {/* This page is a wall of room scenes with almost no text above
+                    it, so the first scene is the LCP element at every width.
+                    Preload that one and leave the other eleven lazy. */}
                 <Image
                   src={scene.image}
                   alt={scene.alt}
                   width={scene.width}
                   height={scene.height}
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  preload={index === 0}
                   className="w-full h-auto transition-transform duration-300 group-hover:scale-[1.02]"
                 />
               </div>

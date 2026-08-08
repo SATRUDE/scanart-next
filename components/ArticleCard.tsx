@@ -10,12 +10,21 @@ interface ArticleCardProps {
   titleAs?: 'h2' | 'h3';
   // The image aspect ratio, so the homepage teaser can vary card heights.
   imageAspectClass?: string;
+  /**
+   * Set on the one card above the fold so its image is preloaded rather than
+   * lazy. Same prop name as PrintCard's, and like PrintCard it maps to
+   * next/image's `preload` (Next 16 deprecated `priority` on the image itself).
+   * Defaults to false, which is what the homepage teaser wants: those cards sit
+   * at the bottom of the page and must stay lazy.
+   */
+  priority?: boolean;
 }
 
 export const ArticleCard: React.FC<ArticleCardProps> = ({
   article,
   titleAs = 'h3',
   imageAspectClass = 'aspect-[4/3]',
+  priority = false,
 }) => {
   const TitleTag = titleAs;
   return (
@@ -27,6 +36,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
             alt={article.title}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            preload={priority}
             className="object-cover transition-all duration-300 group-hover:scale-[1.02]"
           />
         </div>
