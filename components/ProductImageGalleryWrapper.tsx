@@ -5,9 +5,15 @@ import Image from 'next/image';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { track } from '@/lib/analytics';
+import type { ProductImage } from '@/lib/product-image-alt';
 
 interface ProductImageGalleryWrapperProps {
-  images: string[];
+  /**
+   * Each image carries its own alt text, built from catalogue data by
+   * lib/product-image-alt. Pairing the two here rather than passing parallel
+   * arrays keeps them in step when a blank src is filtered out below.
+   */
+  images: ProductImage[];
   productName: string;
 }
 
@@ -15,7 +21,7 @@ export const ProductImageGalleryWrapper: React.FC<ProductImageGalleryWrapperProp
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [showLightbox, setShowLightbox] = useState(false);
 
-  const validImages = images.filter(img => img && img.trim() !== '');
+  const validImages = images.filter(img => img.src && img.src.trim() !== '');
   const hasMultiple = validImages.length > 1;
 
   const goTo = (index: number) => {
@@ -30,8 +36,8 @@ export const ProductImageGalleryWrapper: React.FC<ProductImageGalleryWrapperProp
     <div>
       <div className="aspect-[3/4] overflow-hidden bg-neutral-50 rounded cursor-pointer relative" onClick={() => setShowLightbox(true)}>
         <Image
-          src={validImages[selectedIndex]}
-          alt={`${productName} - Image ${selectedIndex + 1}`}
+          src={validImages[selectedIndex].src}
+          alt={validImages[selectedIndex].alt}
           fill
           preload
           sizes="(max-width: 1024px) 100vw, 50vw"
@@ -62,7 +68,7 @@ export const ProductImageGalleryWrapper: React.FC<ProductImageGalleryWrapperProp
           {/* Lightbox opens on click (not the LCP) and is object-contain in a
               variable-size overlay, which next/image fill doesn't suit; keep raw. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={validImages[selectedIndex]} alt={productName} className="max-h-[90vh] max-w-[90vw] object-contain" onClick={(e) => e.stopPropagation()} />
+          <img src={validImages[selectedIndex].src} alt={validImages[selectedIndex].alt} className="max-h-[90vh] max-w-[90vw] object-contain" onClick={(e) => e.stopPropagation()} />
           {hasMultiple && (
             <>
               <Button aria-label="Previous image" size="icon" variant="ghost" className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:bg-white/10" onClick={(e) => { e.stopPropagation(); goTo(selectedIndex - 1); }}>

@@ -16,6 +16,7 @@ import { ProductImageGalleryWrapper } from '@/components/ProductImageGalleryWrap
 import { ArtistSection } from '@/components/ArtistSection';
 import { PrintCard } from '@/components/PrintCard';
 import { getLowestProductPrices } from '@/lib/pricing';
+import { productImages } from '@/lib/product-image-alt';
 import { BASE_URL, SITE_NAME, OG_LOCALE, TWITTER_SITE } from '@/lib/site';
 import { shippingRates } from '@/config/shipping';
 
@@ -84,10 +85,9 @@ export default async function ProductPage({
     ? await getRecommendedProducts(product.recommendedProducts)
     : [];
 
-  const images = [product.image];
-  if (product.secondaryImage && product.secondaryImage.trim() !== '' && product.secondaryImage !== product.image) {
-    images.push(product.secondaryImage);
-  }
+  // Gallery images, each with alt text describing the work rather than its
+  // place in the gallery; these are the images the image sitemap submits.
+  const images = productImages(product);
 
   // Merchant-listing structured-data fields, built entirely from repo data:
   // shipping from config/shipping.ts, returns from the 14-day made-to-order
