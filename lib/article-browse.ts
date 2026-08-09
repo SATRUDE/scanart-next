@@ -27,12 +27,30 @@ const browseLinksByArticle: Record<string, BrowseLink[]> = {
     { href: '/category/abstract', label: 'abstract art prints' },
     { href: '/category/botanical', label: 'botanical art prints' },
   ],
+  // Eight ways to dress a wall: the flagship wall-art landing is the direct
+  // subject match, and the living room is where most of its ideas are set.
+  'scandinavian-wall-decor-ideas': [
+    { href: '/scandinavian-wall-art', label: 'Scandinavian wall art' },
+    { href: '/collection/living-room', label: 'living room wall art collection' },
+  ],
+  // A gallery wall is several prints at once, so the full catalogue is the
+  // honest next step, with the living room as the usual setting.
+  'create-an-art-wall': [
+    { href: '/products', label: 'browse the full print collection' },
+    { href: '/collection/living-room', label: 'living room wall art collection' },
+  ],
   'nordic-art-and-design-books': [
     { href: '/collection/living-room', label: 'living room wall art collection' },
     { href: '/category/illustrations', label: 'Scandinavian illustrations' },
   ],
   // About / interview pieces: the honest next steps from a story about the
   // gallery are the full catalogue and the people behind it.
+  // The informational pillar: someone who has just read what Scandinavian art
+  // is wants to see it, and then the people making it.
+  'what-is-scandinavian-art': [
+    { href: '/products', label: 'browse the full print collection' },
+    { href: '/artists', label: 'meet the gallery’s artists' },
+  ],
   'who-are-scandinavian-art': [
     { href: '/products', label: 'browse the full print collection' },
     { href: '/artists', label: 'meet the gallery’s artists' },
@@ -74,6 +92,13 @@ const browseLinksByArticle: Record<string, BrowseLink[]> = {
     { href: '/category/botanical', label: 'botanical art prints' },
   ],
 };
+
+/**
+ * The whole curated map, exposed so a test can check every destination still
+ * resolves to a landing page that exists. Call `getBrowseLinksForArticle` for
+ * anything that renders.
+ */
+export const browseLinkTargets: Readonly<Record<string, BrowseLink[]>> = browseLinksByArticle;
 
 export function getBrowseLinksForArticle(slug: string): BrowseLink[] {
   return browseLinksByArticle[slug] ?? [];
