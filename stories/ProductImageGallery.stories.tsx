@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { ProductImageGalleryWrapper } from '@/components/ProductImageGalleryWrapper';
+import { productImages } from '@/lib/product-image-alt';
 
 const meta: Meta<typeof ProductImageGalleryWrapper> = {
   title: 'Components/ProductImageGallery',
@@ -10,23 +11,45 @@ const meta: Meta<typeof ProductImageGalleryWrapper> = {
 export default meta;
 type Story = StoryObj<typeof ProductImageGalleryWrapper>;
 
+// Built the same way the product page builds them, so the stories show the
+// real alt text rather than a hand-written stand-in.
+const birdieBlue = {
+  name: 'Birdie Blue',
+  artist: 'Renate Thor',
+  category: 'Abstract',
+  image: '/images/products/birdie-blue.png',
+  secondaryImage: '/images/products/birdie-blue-scene.avif',
+};
+
 export const SingleImage: Story = {
   args: {
-    images: ['/images/products/birdie-blue.png'],
+    images: productImages({ ...birdieBlue, secondaryImage: '' }),
     productName: 'Birdie Blue',
   },
 };
 
 export const MultipleImages: Story = {
   args: {
-    images: ['/images/products/birdie-blue.png', '/images/products/birdie-blue-scene.avif'],
+    images: productImages(birdieBlue),
     productName: 'Birdie Blue',
   },
 };
 
 export const ThreeImages: Story = {
   args: {
-    images: ['/images/products/dragon.png', '/images/products/dragon-scene.avif', '/images/products/dancer.png'],
+    images: [
+      ...productImages({
+        name: 'Dragon',
+        artist: 'Helene Brox',
+        category: 'Illustrations',
+        image: '/images/products/dragon.png',
+        secondaryImage: '/images/products/dragon-scene.avif',
+      }),
+      {
+        src: '/images/products/dancer.png',
+        alt: 'Dragon by Helene Brox, shown alongside another print in the series',
+      },
+    ],
     productName: 'Dragon',
   },
 };
