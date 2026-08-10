@@ -5,10 +5,7 @@ import { artists } from '@/data/artists';
 import { categoryLandings } from '@/lib/categories';
 import { collections } from '@/lib/collections';
 import { BASE_URL } from '@/lib/site';
-
-// Fallback for records without an edit date: the Next.js migration went live
-// mid-April 2026, so nothing on this site is older than that.
-const SITE_LAUNCH = new Date('2026-04-14');
+import { latestSitemapDate, sitemapDate } from '@/lib/sitemap-dates';
 
 // The date the Norwegian translations of the hand-dated static pages went
 // live; bump by hand when the Norwegian wording changes, as with the English
@@ -22,10 +19,6 @@ function pairAlternates(enPath: string) {
   const en = `${BASE_URL}${enPath}`;
   const noUrl = `${BASE_URL}/no${enPath}`;
   return { languages: { en, no: noUrl, 'x-default': en } };
-}
-
-function latest(dates: Date[]): Date {
-  return dates.length ? new Date(Math.max(...dates.map(Number))) : SITE_LAUNCH;
 }
 
 // Absolute URL for a site-relative image path, matching how the product and
@@ -52,12 +45,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     .map(a => new Date(a.last_edited_time));
 
   return [
-    { url: BASE_URL, lastModified: latest([...productDates, ...articleDates]), priority: 1.0, changeFrequency: 'daily', alternates: pairAlternates('') },
-    { url: `${BASE_URL}/products`, lastModified: latest(productDates), priority: 0.9, changeFrequency: 'weekly' },
-    { url: `${BASE_URL}/journal`, lastModified: latest(articleDates), priority: 0.8, changeFrequency: 'weekly' },
+    { url: BASE_URL, lastModified: latestSitemapDate([...productDates, ...articleDates]), priority: 1.0, changeFrequency: 'daily', alternates: pairAlternates('') },
+    { url: `${BASE_URL}/products`, lastModified: latestSitemapDate(productDates), priority: 0.9, changeFrequency: 'weekly' },
+    { url: `${BASE_URL}/journal`, lastModified: latestSitemapDate(articleDates), priority: 0.8, changeFrequency: 'weekly' },
     { url: `${BASE_URL}/inspire`, lastModified: new Date('2026-08-06'), priority: 0.7, changeFrequency: 'weekly' },
     // artists hub; links every artist detail page, changes when the roster's prints do
-    { url: `${BASE_URL}/artists`, lastModified: latest(productDates), priority: 0.7, changeFrequency: 'weekly', alternates: pairAlternates('/artists') },
+    { url: `${BASE_URL}/artists`, lastModified: latestSitemapDate(productDates), priority: 0.7, changeFrequency: 'weekly', alternates: pairAlternates('/artists') },
     // static page; date is its publication, bumped by hand when the copy changes
     { url: `${BASE_URL}/about`, lastModified: new Date('2026-07-10'), priority: 0.5, changeFrequency: 'yearly', alternates: pairAlternates('/about') },
     { url: `${BASE_URL}/help`, lastModified: new Date('2026-07-12'), priority: 0.5, changeFrequency: 'monthly', alternates: pairAlternates('/help') },
@@ -68,13 +61,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // the Norwegian tree (phase 1): the same stable pages under /no, dated by
     // the same content that dates their English twins; the hand-dated static
     // pages carry the translation date instead
-    { url: `${BASE_URL}/no`, lastModified: latest([...productDates, ...articleDates]), priority: 1.0, changeFrequency: 'daily', alternates: pairAlternates('') },
-    { url: `${BASE_URL}/no/artists`, lastModified: latest(productDates), priority: 0.7, changeFrequency: 'weekly', alternates: pairAlternates('/artists') },
+    { url: `${BASE_URL}/no`, lastModified: latestSitemapDate([...productDates, ...articleDates]), priority: 1.0, changeFrequency: 'daily', alternates: pairAlternates('') },
+    { url: `${BASE_URL}/no/artists`, lastModified: latestSitemapDate(productDates), priority: 0.7, changeFrequency: 'weekly', alternates: pairAlternates('/artists') },
     { url: `${BASE_URL}/no/about`, lastModified: NO_TRANSLATED, priority: 0.5, changeFrequency: 'yearly', alternates: pairAlternates('/about') },
     { url: `${BASE_URL}/no/help`, lastModified: NO_TRANSLATED, priority: 0.5, changeFrequency: 'monthly', alternates: pairAlternates('/help') },
     { url: `${BASE_URL}/no/delivery`, lastModified: NO_TRANSLATED, priority: 0.3, changeFrequency: 'yearly', alternates: pairAlternates('/delivery') },
     // wall-art landing shows the full catalogue, so it changes when any print does
-    { url: `${BASE_URL}/scandinavian-wall-art`, lastModified: latest(productDates), priority: 0.8, changeFrequency: 'weekly' },
+    { url: `${BASE_URL}/scandinavian-wall-art`, lastModified: latestSitemapDate(productDates), priority: 0.8, changeFrequency: 'weekly' },
     // category landing pages exist only for categories with published work; a
     // category page changes when one of its prints does. Each has a Norwegian
     // twin under /no/category (same params, same product-driven date), and
@@ -82,7 +75,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...categoryLandings
       .filter(cat => products.some(p => p.category === cat.category))
       .flatMap(cat => {
-        const lastModified = latest(
+        const lastModified = latestSitemapDate(
           products
             .filter(p => p.category === cat.category)
             .map(p => productEdited[p.slug])
@@ -118,7 +111,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       .filter(({ featured }) => featured.length > 0)
       .map(({ col, featured }) => ({
         url: `${BASE_URL}/collection/${col.slug}`,
-        lastModified: latest(
+        lastModified: latestSitemapDate(
           featured
             .map(p => productEdited[p.slug])
             .filter(Boolean)
@@ -136,7 +129,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       )];
       return {
         url: `${BASE_URL}/product/${p.slug}`,
-        lastModified: productEdited[p.slug] ? new Date(productEdited[p.slug]) : SITE_LAUNCH,
+        lastModified: sitemapDate(productEdited[p.slug]),
         priority: 0.7 as const,
         changeFrequency: 'monthly' as const,
         ...(images.length ? { images } : {}),
@@ -146,7 +139,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       const image = siteImage(a.image);
       return {
         url: `${BASE_URL}/article/${a.slug}`,
-        lastModified: a.last_edited_time ? new Date(a.last_edited_time) : SITE_LAUNCH,
+        lastModified: sitemapDate(a.last_edited_time),
         priority: 0.6 as const,
         changeFrequency: 'monthly' as const,
         ...(image ? { images: [image] } : {}),
@@ -159,7 +152,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...artists
       .filter(artist => products.some(p => p.artistId === artist.id))
       .flatMap(artist => {
-        const lastModified = latest(
+        const lastModified = latestSitemapDate(
           products
             .filter(p => p.artistId === artist.id)
             .map(p => productEdited[p.slug])
