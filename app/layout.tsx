@@ -116,7 +116,12 @@ pintrk('page');`}
             <main>{children}</main>
             <Cart />
           </div>
-          <Footer />
+          {/* The copyright year is resolved here, in the server layout, so the
+              footer never carries a hand-written year. It is fixed at build,
+              which is what every page of a statically rendered site can offer;
+              the site redeploys several times a week, so the only window where
+              it can lag is a new year with no deploy in it. */}
+          <Footer year={new Date().getFullYear()} />
           <ScrollDepth />
         </Providers>
       </body>
