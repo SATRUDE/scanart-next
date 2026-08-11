@@ -9,7 +9,16 @@ import { collections } from '@/lib/collections';
 import { track } from '@/lib/analytics';
 import { enPathFor, footerStrings, isNoPath, noPathFor } from '@/lib/i18n';
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  /**
+   * The year shown in the copyright line. The root layout passes the year it
+   * renders in, so the line follows the calendar instead of being hand-edited;
+   * the default only covers isolated renders such as Storybook.
+   */
+  year?: number;
+}
+
+export const Footer: React.FC<FooterProps> = ({ year = new Date().getFullYear() }) => {
   // The Footer is mounted once in the root layout, which cannot know the
   // route, so the Norwegian tree is detected here: under /no the labels come
   // from the Norwegian chrome strings, and links stay inside /no where a
@@ -91,7 +100,7 @@ export const Footer: React.FC = () => {
           <ResponsiveText text="SCANDINAVIAN ART" />
         </div>
         <div className="flex flex-wrap items-center gap-4">
-          <p className="text-sm text-neutral-900">Copyright &copy; 2025 SCANDINAVIAN ART</p>
+          <p className="text-sm text-neutral-900">Copyright &copy; {year} SCANDINAVIAN ART</p>
           {langSwitchHref && (
             <Link
               href={langSwitchHref}
