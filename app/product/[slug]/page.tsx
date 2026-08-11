@@ -16,6 +16,7 @@ import { ProductImageGalleryWrapper } from '@/components/ProductImageGalleryWrap
 import { ArtistSection } from '@/components/ArtistSection';
 import { PrintCard } from '@/components/PrintCard';
 import { getLowestProductPrices } from '@/lib/pricing';
+import { priceValidUntil } from '@/lib/price-validity';
 import { productImages } from '@/lib/product-image-alt';
 import { BASE_URL, SITE_NAME, OG_LOCALE, TWITTER_SITE } from '@/lib/site';
 import { shippingRates } from '@/config/shipping';
@@ -216,8 +217,18 @@ export default async function ProductPage({
               availability: product.inStock ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
               priceCurrency: 'GBP',
               price: getLowestProductPrices(product).GBP,
-              // prices hold season-long; the horizon renews with each build
-              priceValidUntil: `${new Date().getFullYear()}-12-31`,
+              // A rolling one-year horizon from the build, not the end of the
+              // build's calendar year. Product pages are statically generated,
+              // so whatever is written here is frozen into the HTML until the
+              // next deploy: a calendar-year expression built in December left
+              // every offer claiming a date days away, and a quiet new year
+              // with no deploy in it would have put all twenty into the past.
+              // Google reads a lapsed priceValidUntil as a stale offer, which
+              // is a merchant-listing eligibility risk on exactly the pages we
+              // are trying to get into Shopping free listings. A year ahead
+              // can never lapse between deploys, and the site rebuilds several
+              // times a week, so in practice it stays a year out.
+              priceValidUntil: priceValidUntil(),
               itemCondition: 'https://schema.org/NewCondition',
               shippingDetails,
               hasMerchantReturnPolicy: returnPolicy,
