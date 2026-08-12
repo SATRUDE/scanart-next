@@ -3,15 +3,20 @@ import { getProductPrice } from '@/lib/pricing';
 import { getFramePrice } from '@/config/frame';
 import { getShippingRate } from '@/config/shipping';
 import type { Country } from '@/contexts/LanguageContext';
+import { lookupDiscountCode, type DiscountLookup } from '@/lib/server/discounts';
+import type { MetadataItem } from '@/lib/server/order-metadata';
 
 // Server-side order maths: the single source of truth for what an order
 // costs. The client's totals are display only; the payment intent amount is
 // always recomputed here from the catalogue, so a tampered request cannot
 // change what gets charged.
 //
-// Discount codes live in the DISCOUNT_CODES env var ("CODE:10,CODE2:15"),
-// never in source: this repository is public, so any code committed here is
-// published. No env var means no valid codes, which fails safe.
+// Discount codes live in the socialagent store (lib/server/discounts.ts).
+// They were in the DISCOUNT_CODES env var until 2026-08-12; that var could
+// never say how often a code had been redeemed, and had in fact never been set
+// in production, so every code a buyer typed was rejected. Either way the rule
+// is unchanged: no code found means no discount, which fails safe, and no
+// working code is ever committed to this public repository.
 
 export type Currency = 'GBP' | 'NOK' | 'USD' | 'DKK' | 'SEK';
 export const CURRENCIES: Currency[] = ['GBP', 'NOK', 'USD', 'DKK', 'SEK'];
@@ -28,32 +33,19 @@ export interface ComputedOrder {
   subtotal: number;
   shipping: number;
   discount: { code: string; percentage: number } | null;
-}
-
-function parseDiscountCodes(): Record<string, number> {
-  const raw = process.env.DISCOUNT_CODES || '';
-  const codes: Record<string, number> = {};
-  for (const entry of raw.split(',')) {
-    const [code, pct] = entry.split(':').map(s => s?.trim());
-    const percentage = Number(pct);
-    if (code && Number.isFinite(percentage) && percentage > 0 && percentage <= 100) {
-      codes[code.toUpperCase()] = percentage;
-    }
-  }
-  return codes;
-}
-
-export function validateDiscountCode(code: string): { code: string; percentage: number } | null {
-  const normalised = code.trim().toUpperCase();
-  const percentage = parseDiscountCodes()[normalised];
-  return percentage ? { code: normalised, percentage } : null;
+  discountAmount: number;
+  /** The priced lines, ready to be recorded onto the PaymentIntent. */
+  items: MetadataItem[];
 }
 
 export async function computeOrderAmount(
   items: OrderItemInput[],
   currency: Currency,
   countryCode: string,
-  discountCode?: string
+  discountCode?: string,
+  // Injected so the maths can be tested without a database. Production always
+  // uses the store; see lib/server/discounts.ts.
+  lookup: DiscountLookup = lookupDiscountCode
 ): Promise<ComputedOrder> {
   if (!Array.isArray(items) || items.length === 0 || items.length > 50) {
     throw new Error('Invalid order items');
@@ -63,6 +55,11 @@ export async function computeOrderAmount(
   const byId = new Map(products.map(p => [p.id, p]));
 
   let subtotal = 0;
+  // Built here rather than from the request body, because this is the only
+  // place that knows what each line actually costs. It becomes the order
+  // recorded on the PaymentIntent, so what Stripe carries is what we charged,
+  // not what the browser said it was buying.
+  const resolved: MetadataItem[] = [];
   for (const item of items) {
     const product = byId.get(item.productId);
     const quantity = Math.floor(item.quantity);
@@ -74,17 +71,24 @@ export async function computeOrderAmount(
     if (!unitPrice) throw new Error(`No price for product: ${item.productId}`);
     const frameCost = item.frame ? getFramePrice(item.frame, currency) : 0;
     subtotal += (unitPrice + frameCost) * quantity;
+    resolved.push({
+      slug: product.slug,
+      size: item.size,
+      frame: item.frame,
+      quantity,
+      unitPrice: Math.round((unitPrice + frameCost) * 100) / 100,
+    });
   }
   subtotal = Math.round(subtotal * 100) / 100;
 
   const shippingRate = getShippingRate(countryCode as Country | 'ELSEWHERE');
   const shipping = shippingRate ? shippingRate.costs[currency] || 0 : 0;
 
-  const discount = discountCode ? validateDiscountCode(discountCode) : null;
+  const discount = discountCode ? await lookup(discountCode) : null;
   const discountAmount = discount
     ? Math.round(((subtotal * discount.percentage) / 100) * 100) / 100
     : 0;
 
   const amount = Math.round((subtotal + shipping - discountAmount) * 100) / 100;
-  return { amount, subtotal, shipping, discount };
+  return { amount, subtotal, shipping, discount, discountAmount, items: resolved };
 }
