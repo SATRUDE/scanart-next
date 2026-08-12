@@ -7,7 +7,6 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Separator } from '@/components/ui/separator';
 import { useCart } from '@/contexts/CartContext';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -22,8 +21,11 @@ import {
   defaultDestination,
   destinationName,
   getAddressFormat,
-  type ShippingCountry,
+  shippingZoneFor,
 } from '@/lib/address';
+import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { Check, ChevronsUpDown } from 'lucide-react';
 import { getFrameName, getFramePrice } from '@/config/frame';
 import { track } from '@/lib/analytics';
 
@@ -188,6 +190,90 @@ const PaymentForm: React.FC<{
   );
 };
 
+/**
+ * Country picker for the shipping address.
+ *
+ * A searchable list rather than a dropdown, because there are 267 countries
+ * and scrolling to Slovenia is not a checkout experience. The five with their
+ * own shipping rate sit at the top, since they are most of our buyers; the
+ * rest follow alphabetically and are found by typing.
+ */
+const CountryPicker: React.FC<{ value: string; onChange: (value: string) => void }> = ({
+  value,
+  onChange,
+}) => {
+  const [open, setOpen] = useState(false);
+  const priced = DESTINATIONS.filter(d => d.priced);
+  const rest = DESTINATIONS.filter(d => !d.priced);
+
+  return (
+    <Popover open={open} onOpenChange={setOpen}>
+      <PopoverTrigger asChild>
+        <Button
+          id="country"
+          type="button"
+          variant="outline"
+          role="combobox"
+          aria-expanded={open}
+          className="w-full justify-between font-normal"
+        >
+          {destinationName(value)}
+          <ChevronsUpDown className="h-4 w-4 opacity-50" />
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent className="w-[--radix-popover-trigger-width] p-0" align="start">
+        <Command>
+          <CommandInput placeholder="Search for your country" />
+          <CommandList>
+            <CommandEmpty>No country by that name.</CommandEmpty>
+            <CommandGroup heading="Where we ship most">
+              {priced.map(destination => (
+                <CountryOptionRow
+                  key={destination.code}
+                  destination={destination}
+                  selected={value === destination.code}
+                  onSelect={() => {
+                    onChange(destination.code);
+                    setOpen(false);
+                  }}
+                />
+              ))}
+            </CommandGroup>
+            <CommandGroup heading="Everywhere else">
+              {rest.map(destination => (
+                <CountryOptionRow
+                  key={destination.code}
+                  destination={destination}
+                  selected={value === destination.code}
+                  onSelect={() => {
+                    onChange(destination.code);
+                    setOpen(false);
+                  }}
+                />
+              ))}
+            </CommandGroup>
+          </CommandList>
+        </Command>
+      </PopoverContent>
+    </Popover>
+  );
+};
+
+const CountryOptionRow: React.FC<{
+  destination: { code: string; name: string };
+  selected: boolean;
+  onSelect: () => void;
+}> = ({ destination, selected, onSelect }) => (
+  <CommandItem
+    // Searching by name AND code, so "DE" finds Germany as readily as typing it.
+    value={`${destination.name} ${destination.code}`}
+    onSelect={onSelect}
+  >
+    <Check className={`mr-2 h-4 w-4 ${selected ? 'opacity-100' : 'opacity-0'}`} />
+    {destination.name}
+  </CommandItem>
+);
+
 // Main Checkout Component
 // Discount codes are validated server-side (/api/validate-discount); this
 // public repository must never contain a working code.
@@ -217,12 +303,12 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = () => {
     city: '',
     state: '',
     zipCode: '',
-    country: defaultDestination(selectedCountry.code) as ShippingCountry,
+    country: defaultDestination(selectedCountry.code),
   });
 
   const handleInputChange = (field: string, value: string) => {
     if (field === 'country') {
-      const destination = value as ShippingCountry;
+      const destination = value;
       // The event keeps carrying the readable name, so this stays comparable
       // with every shipping-country-selected recorded before the field held a
       // code rather than a name.
@@ -460,9 +546,12 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = () => {
 
   const subtotal = getTotalPriceInCurrency(selectedCountry.currency);
   
-  // The form already holds the destination code, so there is nothing to map.
+  // The form holds the real country code; the RATE is looked up by zone. Both
+  // sides must agree: the server prices the same way, and if the displayed
+  // total and the server's charge disagree the payment is refused, so getting
+  // this wrong would block every rest-of-world order rather than mispricing it.
   const selectedCountryCode = formData.country;
-  const shippingRate = getShippingRate(selectedCountryCode);
+  const shippingRate = getShippingRate(shippingZoneFor(selectedCountryCode));
   // How this destination writes an address: what the postal code is called,
   // and whether a region is a real thing there at all.
   const addressFormat = getAddressFormat(selectedCountryCode);
@@ -563,21 +652,10 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = () => {
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="country">Country</Label>
-                    <Select
+                    <CountryPicker
                       value={formData.country}
-                      onValueChange={(value: string) => handleInputChange('country', value)}
-                    >
-                      <SelectTrigger id="country">
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {DESTINATIONS.map(destination => (
-                          <SelectItem key={destination.code} value={destination.code}>
-                            {destination.name}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
+                      onChange={value => handleInputChange('country', value)}
+                    />
                   </div>
                   {/* Country sits above these because it decides what they
                       are called and whether a region exists at all. */}
