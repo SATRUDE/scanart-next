@@ -2,9 +2,9 @@ import { getAllProducts } from '@/lib/products';
 import { getProductPrice } from '@/lib/pricing';
 import { getFramePrice } from '@/config/frame';
 import { getShippingRate } from '@/config/shipping';
-import type { Country } from '@/contexts/LanguageContext';
 import { lookupDiscountCode, type DiscountLookup } from '@/lib/server/discounts';
 import type { MetadataItem } from '@/lib/server/order-metadata';
+import { shippingZoneFor } from '@/lib/address';
 
 // Server-side order maths: the single source of truth for what an order
 // costs. The client's totals are display only; the payment intent amount is
@@ -81,7 +81,11 @@ export async function computeOrderAmount(
   }
   subtotal = Math.round(subtotal * 100) / 100;
 
-  const shippingRate = getShippingRate(countryCode as Country | 'ELSEWHERE');
+  // Every country maps to a zone that HAS a rate. An unrecognised code lands
+  // on Rest of World, never on nothing: getShippingRate returns undefined for
+  // a code it does not know, and turning that into zero meant a request
+  // carrying `countryCode: "ZZ"` was quietly charged no delivery at all.
+  const shippingRate = getShippingRate(shippingZoneFor(countryCode));
   const shipping = shippingRate ? shippingRate.costs[currency] || 0 : 0;
 
   const discount = discountCode ? await lookup(discountCode) : null;

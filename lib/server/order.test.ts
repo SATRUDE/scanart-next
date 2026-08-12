@@ -141,9 +141,30 @@ describe('computeOrderAmount', () => {
     await expect(computeOrderAmount([], 'GBP', 'GB')).rejects.toThrow('Invalid order items');
   });
 
-  it('falls back to zero shipping for unknown countries, like the client', async () => {
+  // This test used to assert that an unknown country shipped for FREE, which
+  // is what the code did: getShippingRate returns undefined for a code it does
+  // not know and the caller turned that into zero. So a request carrying
+  // countryCode "ZZ" bought a print with no delivery charge at all. The server
+  // sets the price, so it must have a price for every input.
+  it('charges the Rest of World rate for an unrecognised country, never nothing', async () => {
     const [product] = await getAllProducts();
-    const order = await computeOrderAmount([{ productId: product.id, quantity: 1 }], 'GBP', 'XX');
-    expect(order.shipping).toBe(0);
+    const restOfWorld = getShippingRate('ELSEWHERE')!.costs.GBP;
+
+    for (const code of ['XX', 'ZZ', '', 'not-a-country']) {
+      const order = await computeOrderAmount([{ productId: product.id, quantity: 1 }], 'GBP', code);
+      expect(order.shipping, `${code} shipped for nothing`).toBe(restOfWorld);
+    }
+  });
+
+  it('prices a real country outside the five at the Rest of World rate', async () => {
+    const [product] = await getAllProducts();
+    const germany = await computeOrderAmount([{ productId: product.id, quantity: 1 }], 'GBP', 'DE');
+    expect(germany.shipping).toBe(getShippingRate('ELSEWHERE')!.costs.GBP);
+  });
+
+  it('still prices the five named countries at their own rate', async () => {
+    const [product] = await getAllProducts();
+    const norway = await computeOrderAmount([{ productId: product.id, quantity: 1 }], 'NOK', 'NO');
+    expect(norway.shipping).toBe(getShippingRate('NO')!.costs.NOK);
   });
 });
