@@ -1,15 +1,21 @@
 import { describe, it, expect } from 'vitest';
 import { FRAME_SIZES, getFramePrice, getFrameName, frameOptions, type FrameSize } from './frame';
 
-// Gelato's charge for the frame alone, quoted live on 2026-08-12. Every price
-// in config/frame.ts has to sit above its row here or we are paying people to
-// take frames, which is what the single flat price was doing on the big sizes.
+// Gelato's charge for the frame alone, quoted live on 2026-08-12 against the
+// 200gsm uncoated stock the shop sells. Every price in config/frame.ts has to
+// sit above its row here or we are paying people to take frames, which is what
+// the single flat price was doing on the big sizes.
+//
+// These moved once already: they were measured against 250gsm archival, and
+// choosing the lighter paper made the rolled print cheaper without moving the
+// framed one, so the frame had more to cover. Re-measure when the paper
+// changes.
 const GELATO_FRAME_COST: Record<string, Record<FrameSize, number>> = {
-  GBP: { A3: 10.82, A2: 19.85, '50x50cm': 25.01, '50x70cm': 31.09, A1: 39.23 },
-  USD: { A3: 22.9, A2: 37.53, '50x50cm': 37.57, '50x70cm': 46.79, A1: 60.44 },
-  NOK: { A3: 140.55, A2: 253.9, '50x50cm': 377.14, '50x70cm': 476.99, A1: 472.02 },
-  DKK: { A3: 132.63, A2: 224.01, '50x50cm': 279.39, '50x70cm': 354.52, A1: 428.02 },
-  SEK: { A3: 179.73, A2: 303.99, '50x50cm': 364.27, '50x70cm': 448.59, A1: 539.61 },
+  GBP: { A3: 13.62, A2: 22.75, '50x50cm': 25.01, '50x70cm': 31.09, A1: 43.73 },
+  USD: { A3: 25.47, A2: 40.74, '50x50cm': 37.57, '50x70cm': 46.79, A1: 64.85 },
+  NOK: { A3: 209.76, A2: 335.7, '50x50cm': 377.14, '50x70cm': 476.99, A1: 586.0 },
+  DKK: { A3: 166.52, A2: 250.67, '50x50cm': 279.39, '50x70cm': 354.52, A1: 457.98 },
+  SEK: { A3: 211.73, A2: 325.88, '50x50cm': 364.27, '50x70cm': 448.59, A1: 588.09 },
 };
 
 const CURRENCIES = ['GBP', 'USD', 'NOK', 'DKK', 'SEK'] as const;

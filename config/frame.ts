@@ -10,6 +10,12 @@
 // These cover Gelato's charge for the frame with about 25% on top, rounded to
 // something a person would write.
 //
+// Re-measured after Mark chose 200gsm uncoated over the 250gsm archival
+// (2026-08-12). That decision made the rolled print cheaper without moving the
+// framed one, so the gap the frame has to cover GREW, and three of the first
+// set of prices went underwater. Worth remembering: the frame's price depends
+// on the paper, so changing one means re-checking the other.
+//
 // They deliberately do NOT carry the extra postage a framed parcel costs (a
 // framed A1 weighs 2,808g against a rolled print's 125g). Delivery is priced
 // separately and is being moved to Gelato's own quote, so loading postage in
@@ -51,17 +57,16 @@ const NO_CHARGE: Record<FrameSize, CurrencyPrices> = {
  * The three frame colours cost Gelato the same as each other, so they are
  * priced the same. Only the size moves the number.
  *
- * NOK A1 is set level with 50x70cm rather than below it: Gelato charges very
- * slightly more to frame the smaller 50x70 for Norway than the larger A1, and
- * a price list where a bigger print frames cheaper reads as a mistake.
- * Levelling up covers both.
+ * USD 50x50cm is set level with A2 rather than below it: Gelato charges
+ * slightly less to frame it, and a price list where a bigger print frames
+ * cheaper reads as a mistake. Levelling up covers both.
  */
 const FRAMED_PRICES: Record<FrameSize, CurrencyPrices> = {
-  A3: { GBP: 14, USD: 29, NOK: 180, DKK: 166, SEK: 225 },
-  A2: { GBP: 25, USD: 47, NOK: 320, DKK: 280, SEK: 380 },
-  '50x50cm': { GBP: 32, USD: 47, NOK: 475, DKK: 350, SEK: 455 },
+  A3: { GBP: 18, USD: 32, NOK: 265, DKK: 210, SEK: 265 },
+  A2: { GBP: 29, USD: 51, NOK: 420, DKK: 315, SEK: 410 },
+  '50x50cm': { GBP: 32, USD: 51, NOK: 475, DKK: 350, SEK: 455 },
   '50x70cm': { GBP: 39, USD: 59, NOK: 600, DKK: 445, SEK: 560 },
-  A1: { GBP: 49, USD: 76, NOK: 600, DKK: 535, SEK: 675 },
+  A1: { GBP: 55, USD: 82, NOK: 735, DKK: 575, SEK: 735 },
 };
 
 export const frameOptions: FrameOption[] = [
