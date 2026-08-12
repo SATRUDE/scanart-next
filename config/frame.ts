@@ -25,6 +25,8 @@
 // they can be checked rather than taken on trust. The numbers below are a
 // snapshot of 2026-08-12; re-check when Gelato's prices move.
 
+import { PUBLISHED_FRAMES, isUsable } from './generated-prices';
+
 export type FrameSize = 'A3' | 'A2' | '50x50cm' | '50x70cm' | 'A1';
 
 /** Every size the catalogue sells, largest last. */
@@ -61,13 +63,27 @@ const NO_CHARGE: Record<FrameSize, CurrencyPrices> = {
  * slightly less to frame it, and a price list where a bigger print frames
  * cheaper reads as a mistake. Levelling up covers both.
  */
-const FRAMED_PRICES: Record<FrameSize, CurrencyPrices> = {
+const COMPILED_FRAMED_PRICES: Record<FrameSize, CurrencyPrices> = {
   A3: { GBP: 18, USD: 32, NOK: 265, DKK: 210, SEK: 265 },
   A2: { GBP: 29, USD: 51, NOK: 420, DKK: 315, SEK: 410 },
   '50x50cm': { GBP: 32, USD: 51, NOK: 475, DKK: 350, SEK: 455 },
   '50x70cm': { GBP: 39, USD: 59, NOK: 600, DKK: 445, SEK: 560 },
   A1: { GBP: 55, USD: 82, NOK: 735, DKK: 575, SEK: 735 },
 };
+
+/**
+ * The above with anything published from socialagent's Costs page laid over
+ * it, size by size. A size never published, or published incomplete, keeps
+ * the compiled price: this list stays the floor under a network-written one.
+ */
+const FRAMED_PRICES: Record<FrameSize, CurrencyPrices> = (() => {
+  const merged = { ...COMPILED_FRAMED_PRICES };
+  for (const size of FRAME_SIZES) {
+    const published = PUBLISHED_FRAMES?.[size];
+    if (isUsable(published)) merged[size] = { ...published };
+  }
+  return merged;
+})();
 
 export const frameOptions: FrameOption[] = [
   { id: 'no-frame', name: 'No Frame', prices: NO_CHARGE },
