@@ -17,6 +17,7 @@ import { PrintCard } from '@/components/PrintCard';
 import { ArtistsList, type ArtistWithCount } from '@/components/ArtistsList';
 import { BASE_URL, OG_IMAGE, SITE_NAME, TWITTER_SITE } from '@/lib/site';
 import { hreflangPair } from '@/lib/i18n';
+import { metaSnippet } from '@/lib/meta-snippet';
 import { no } from '@/lib/i18n/no';
 
 // The Norwegian artist pages: app/artist/[slug]/page.tsx mirrored exactly
@@ -62,16 +63,20 @@ export async function generateMetadata({
 
   const copy = no.artists[artist.slug];
   const desc = copy?.bio || artist.bio || `${no.artistPage.metaDescriptionPrefix} ${artist.name} - Scandinavian Art Gallery`;
+  // Same trim as the English twin: the Norwegian bio is body copy, so only its
+  // opening sentence goes in the snippet fields. The full bio still reaches the
+  // page body and the Person JSON-LD below.
+  const snippet = metaSnippet(desc);
   return {
     title: artist.name,
-    description: desc,
+    description: snippet,
     alternates: {
       canonical: `/no/artist/${artist.slug}`,
       languages: hreflangPair(`/artist/${artist.slug}`),
     },
     openGraph: {
       title: artist.name,
-      description: desc,
+      description: snippet,
       url: `${BASE_URL}/no/artist/${artist.slug}`,
       siteName: SITE_NAME,
       locale: 'nb_NO',
@@ -82,7 +87,7 @@ export async function generateMetadata({
       card: 'summary_large_image',
       site: TWITTER_SITE,
       title: artist.name,
-      description: desc,
+      description: snippet,
       images: [artist.image || OG_IMAGE],
     },
   };
