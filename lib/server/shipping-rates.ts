@@ -140,9 +140,9 @@ export async function quoteDelivery(
     const [rates, overrides, fx] = await Promise.all([
       sql`SELECT "size", "frame", "shipCost", "shipCostAdditional", "quotedAt"
           FROM "ShippingRate" WHERE "country" = ${countryCode}` as unknown as Promise<RateRow[]>,
-      sql`SELECT "frame", "priceEur" FROM "DeliveryPrice"
-          WHERE "country" = ${countryCode}` as unknown as Promise<
-        { frame: string; priceEur: number }[]
+      sql`SELECT "size", "frame", "price" FROM "DeliveryPrice"
+          WHERE "country" = ${countryCode} AND "currency" = ${currency}` as unknown as Promise<
+        { size: string; frame: string; price: number }[]
       >,
       sql`SELECT "perEur" FROM "FxRate" WHERE "currency" = ${currency}` as unknown as Promise<
         { perEur: number }[]
@@ -159,13 +159,16 @@ export async function quoteDelivery(
 
     for (const item of items) {
       const frame = item.frame && item.frame !== 'no-frame' ? 'wood' : 'no-frame';
-      const override = overrides.find(o => o.frame === frame);
+      // Matched on size as well as frame, and on the currency the buyer is
+      // paying in, because that is what the price was typed in.
+      const override = overrides.find(o => o.size === item.size && o.frame === frame);
 
       if (override) {
-        // A price Mark set is a PRICE, not a cost: no buffer, no rounding up
-        // on top of it. He typed the number he wants charged.
+        // A price Mark set is charged exactly as typed: no buffer, no
+        // conversion, no rounding up on top of it. Gelato's cost is the guide
+        // he set it against, not a floor to be applied again here.
         usedOverride = true;
-        priced.push({ first: override.priceEur, additional: override.priceEur, quantity: item.quantity });
+        priced.push({ first: override.price, additional: override.price, quantity: item.quantity });
         continue;
       }
 
@@ -182,15 +185,23 @@ export async function quoteDelivery(
       // Costs become prices HERE, per row, so a single print is charged the
       // exact figure the Costs page shows against its size rather than that
       // figure recomputed from a different direction.
+      // Converted here rather than on the total, because the basket can hold
+      // both a price Mark set (already in the buyer's currency) and one
+      // derived from a cost (in euros).
       priced.push({
-        first: priceFromCost(row.shipCost),
-        additional: row.shipCostAdditional === null ? null : priceFromCost(row.shipCostAdditional),
+        first: roundUp(priceFromCost(row.shipCost) * perEur, currency),
+        additional:
+          row.shipCostAdditional === null
+            ? null
+            : roundUp(priceFromCost(row.shipCostAdditional) * perEur, currency),
         quantity: item.quantity,
       });
     }
 
-    const eur = combineDelivery(priced);
-    const amount = roundUp(eur * perEur, currency);
+    // No rounding on the total. Every item was either typed by Mark, and is
+    // charged exactly as typed, or was rounded when it was converted just
+    // above. Rounding again would quietly move a price he set.
+    const amount = combineDelivery(priced);
 
     const oldest = rates.reduce(
       (acc, r) => Math.min(acc, new Date(r.quotedAt).getTime()),

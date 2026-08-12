@@ -118,3 +118,17 @@ describe('the buffer', () => {
     expect(charged).toBeGreaterThan(21.1 * perEur);
   });
 });
+
+describe('a price set by hand', () => {
+  // Mark's rule, 2026-08-12: the price he types is the price charged. Gelato's
+  // cost is what he sets it against, not a floor to be re-applied.
+  it('is not rounded, buffered or converted by combineDelivery', () => {
+    const typed = 100;
+    expect(combineDelivery([{ first: typed, additional: typed, quantity: 1 }])).toBe(100);
+    expect(combineDelivery([{ first: 89.5, additional: 89.5, quantity: 1 }])).toBe(89.5);
+  });
+
+  it('still charges the additional rate for a second print', () => {
+    expect(combineDelivery([{ first: 100, additional: 100, quantity: 2 }])).toBe(200);
+  });
+});

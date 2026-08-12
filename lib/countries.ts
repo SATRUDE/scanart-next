@@ -13,6 +13,11 @@ export interface CountryOption {
   name: string;
 }
 
+// Deliberately WITHOUT the withdrawn and transitionally reserved alpha-2
+// codes. ICU resolves them to their successor's name, so BU came out as
+// "Myanmar (Burma)" beside MM, UK as "United Kingdom" beside GB, and SU as
+// "Russia" beside RU: fourteen countries appeared twice in the picker, once
+// under a code no postal system has used in decades (Mark, 2026-08-12).
 export const ALL_COUNTRIES: CountryOption[] = [
   { code: 'AF', name: "Afghanistan" },
   { code: 'AX', name: "Åland Islands" },
@@ -38,7 +43,6 @@ export const ALL_COUNTRIES: CountryOption[] = [
   { code: 'BE', name: "Belgium" },
   { code: 'BZ', name: "Belize" },
   { code: 'BJ', name: "Benin" },
-  { code: 'DY', name: "Benin" },
   { code: 'BM', name: "Bermuda" },
   { code: 'BT', name: "Bhutan" },
   { code: 'BO', name: "Bolivia" },
@@ -50,7 +54,6 @@ export const ALL_COUNTRIES: CountryOption[] = [
   { code: 'BN', name: "Brunei" },
   { code: 'BG', name: "Bulgaria" },
   { code: 'BF', name: "Burkina Faso" },
-  { code: 'HV', name: "Burkina Faso" },
   { code: 'BI', name: "Burundi" },
   { code: 'KH', name: "Cambodia" },
   { code: 'CM', name: "Cameroon" },
@@ -71,7 +74,6 @@ export const ALL_COUNTRIES: CountryOption[] = [
   { code: 'KM', name: "Comoros" },
   { code: 'CG', name: "Congo - Brazzaville" },
   { code: 'CD', name: "Congo - Kinshasa" },
-  { code: 'ZR', name: "Congo - Kinshasa" },
   { code: 'CK', name: "Cook Islands" },
   { code: 'CR', name: "Costa Rica" },
   { code: 'CI', name: "Côte d’Ivoire" },
@@ -98,13 +100,11 @@ export const ALL_COUNTRIES: CountryOption[] = [
   { code: 'FJ', name: "Fiji" },
   { code: 'FI', name: "Finland" },
   { code: 'FR', name: "France" },
-  { code: 'FX', name: "France" },
   { code: 'GF', name: "French Guiana" },
   { code: 'PF', name: "French Polynesia" },
   { code: 'GA', name: "Gabon" },
   { code: 'GM', name: "Gambia" },
   { code: 'GE', name: "Georgia" },
-  { code: 'DD', name: "Germany" },
   { code: 'DE', name: "Germany" },
   { code: 'GH', name: "Ghana" },
   { code: 'GI', name: "Gibraltar" },
@@ -171,7 +171,6 @@ export const ALL_COUNTRIES: CountryOption[] = [
   { code: 'MS', name: "Montserrat" },
   { code: 'MA', name: "Morocco" },
   { code: 'MZ', name: "Mozambique" },
-  { code: 'BU', name: "Myanmar (Burma)" },
   { code: 'MM', name: "Myanmar (Burma)" },
   { code: 'NA', name: "Namibia" },
   { code: 'NR', name: "Nauru" },
@@ -205,7 +204,6 @@ export const ALL_COUNTRIES: CountryOption[] = [
   { code: 'RE', name: "Réunion" },
   { code: 'RO', name: "Romania" },
   { code: 'RU', name: "Russia" },
-  { code: 'SU', name: "Russia" },
   { code: 'RW', name: "Rwanda" },
   { code: 'WS', name: "Samoa" },
   { code: 'SM', name: "San Marino" },
@@ -213,9 +211,7 @@ export const ALL_COUNTRIES: CountryOption[] = [
   { code: 'CQ', name: "Sark" },
   { code: 'SA', name: "Saudi Arabia" },
   { code: 'SN', name: "Senegal" },
-  { code: 'CS', name: "Serbia" },
   { code: 'RS', name: "Serbia" },
-  { code: 'YU', name: "Serbia" },
   { code: 'SC', name: "Seychelles" },
   { code: 'SL', name: "Sierra Leone" },
   { code: 'SG', name: "Singapore" },
@@ -248,7 +244,6 @@ export const ALL_COUNTRIES: CountryOption[] = [
   { code: 'TZ', name: "Tanzania" },
   { code: 'TH', name: "Thailand" },
   { code: 'TL', name: "Timor-Leste" },
-  { code: 'TP', name: "Timor-Leste" },
   { code: 'TG', name: "Togo" },
   { code: 'TK', name: "Tokelau" },
   { code: 'TO', name: "Tonga" },
@@ -263,23 +258,18 @@ export const ALL_COUNTRIES: CountryOption[] = [
   { code: 'UA', name: "Ukraine" },
   { code: 'AE', name: "United Arab Emirates" },
   { code: 'GB', name: "United Kingdom" },
-  { code: 'UK', name: "United Kingdom" },
   { code: 'US', name: "United States" },
   { code: 'UY', name: "Uruguay" },
   { code: 'VI', name: "US Virgin Islands" },
   { code: 'UZ', name: "Uzbekistan" },
-  { code: 'NH', name: "Vanuatu" },
   { code: 'VU', name: "Vanuatu" },
   { code: 'VA', name: "Vatican City" },
   { code: 'VE', name: "Venezuela" },
-  { code: 'VD', name: "Vietnam" },
   { code: 'VN', name: "Vietnam" },
   { code: 'WF', name: "Wallis & Futuna" },
   { code: 'EH', name: "Western Sahara" },
-  { code: 'YD', name: "Yemen" },
   { code: 'YE', name: "Yemen" },
   { code: 'ZM', name: "Zambia" },
-  { code: 'RH', name: "Zimbabwe" },
   { code: 'ZW', name: "Zimbabwe" },
 ];
 
