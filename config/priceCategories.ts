@@ -1,3 +1,5 @@
+import { PUBLISHED_ARTWORK, isUsable } from './generated-prices';
+
 export interface PriceCategory {
   [size: string]: {
     GBP: number;
@@ -8,7 +10,7 @@ export interface PriceCategory {
   };
 }
 
-export const priceCategories: { [category: string]: PriceCategory } = {
+const compiledCategories: { [category: string]: PriceCategory } = {
   // Standard pricing for most products (42 GBP for 50x50cm, 56 GBP for 50x70cm)
   'Standard': {
     '50x50cm': {
@@ -123,6 +125,29 @@ export const priceCategories: { [category: string]: PriceCategory } = {
     }
   }
 };
+
+/**
+ * The compiled prices with anything published from socialagent laid over the
+ * top, size by size.
+ *
+ * Merged rather than replaced, and only where the published figures are
+ * complete: a category or size socialagent has never touched keeps the price
+ * written here, and a malformed row is ignored rather than obeyed. This file
+ * stays the floor under a network-written one.
+ */
+export const priceCategories: { [category: string]: PriceCategory } = (() => {
+  const merged: { [category: string]: PriceCategory } = {};
+  for (const [category, sizes] of Object.entries(compiledCategories)) {
+    merged[category] = { ...sizes };
+  }
+  for (const [category, sizes] of Object.entries(PUBLISHED_ARTWORK ?? {})) {
+    if (!merged[category]) merged[category] = {};
+    for (const [size, prices] of Object.entries(sizes)) {
+      if (isUsable(prices)) merged[category][size] = { ...prices };
+    }
+  }
+  return merged;
+})();
 
 // Helper function to get prices for a specific category and size
 export const getPriceForCategory = (category: string, size: string) => {
