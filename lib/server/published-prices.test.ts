@@ -40,3 +40,13 @@ describe('published prices', () => {
     }
   });
 });
+
+describe('retiring a price list', () => {
+  // Nothing is retired today, so this pins the behaviour rather than the
+  // data: every list the shop compiles is still offered.
+  it('offers all four compiled lists while nothing is retired', () => {
+    expect(Object.keys(priceCategories).sort()).toEqual(
+      ['Budget', 'Luxary', 'Premium', 'Standard'],
+    );
+  });
+});

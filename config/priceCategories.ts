@@ -1,4 +1,4 @@
-import { PUBLISHED_ARTWORK, isUsable } from './generated-prices';
+import { PUBLISHED_ARTWORK, PUBLISHED_RETIRED, isUsable } from './generated-prices';
 
 export interface PriceCategory {
   [size: string]: {
@@ -145,6 +145,12 @@ export const priceCategories: { [category: string]: PriceCategory } = (() => {
     for (const [size, prices] of Object.entries(sizes)) {
       if (isUsable(prices)) merged[category][size] = { ...prices };
     }
+  }
+  // A list retired in socialagent stops being offered here. A product still
+  // sitting on one would lose its prices, so socialagent refuses to retire a
+  // list that has any: this only ever removes a list nothing was using.
+  for (const category of PUBLISHED_RETIRED ?? []) {
+    delete merged[category];
   }
   return merged;
 })();

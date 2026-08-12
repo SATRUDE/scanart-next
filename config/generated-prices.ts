@@ -50,6 +50,9 @@ export const PUBLISHED_ARTWORK: Record<string, Record<string, PublishedPrices>> 
   },
 };
 
+/** Price lists retired in socialagent, which the shop stops offering. */
+export const PUBLISHED_RETIRED: string[] = [];
+
 /** What a frame adds, by size. Colours are priced the same as each other. */
 export const PUBLISHED_FRAMES: Record<string, PublishedPrices> = {
   'A3': { GBP: 18, USD: 32, NOK: 300, DKK: 210, SEK: 265 },
