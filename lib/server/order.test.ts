@@ -30,7 +30,7 @@ describe('computeOrderAmount', () => {
     const [product] = await getAllProducts();
     const size = Object.keys(product.sizes ?? {})[0];
     const unit = getProductPrice(product, size, 'GBP');
-    const frame = getFramePrice('wood', 'GBP');
+    const frame = getFramePrice('wood', size, 'GBP');
     const shipping = getShippingRate('GB')?.costs.GBP || 0;
 
     const order = await computeOrderAmount(
@@ -111,7 +111,7 @@ describe('computeOrderAmount', () => {
     const [product] = await getAllProducts();
     const size = Object.keys(product.sizes ?? {})[0];
     const unit = getProductPrice(product, size, 'NOK');
-    const frame = getFramePrice('wood', 'NOK');
+    const frame = getFramePrice('wood', size, 'NOK');
 
     const order = await computeOrderAmount(
       [{ productId: product.id, size, frame: 'wood', quantity: 2 }],

@@ -207,7 +207,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         }
       }
 
-      const frameCost = item.frame ? getFramePrice(item.frame, 'GBP') : 0;
+      const frameCost = item.frame ? getFramePrice(item.frame, item.size, 'GBP') : 0;
 
       return total + ((price + frameCost) * item.quantity);
     }, 0);
@@ -230,7 +230,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       }
       
       // Add frame cost
-      const frameCost = item.frame ? getFramePrice(item.frame, currency) : 0;
+      const frameCost = item.frame ? getFramePrice(item.frame, item.size, currency) : 0;
       
       return total + ((price + frameCost) * item.quantity);
     }, 0);

@@ -69,7 +69,7 @@ export async function computeOrderAmount(
     }
     const unitPrice = getProductPrice(product, item.size, currency);
     if (!unitPrice) throw new Error(`No price for product: ${item.productId}`);
-    const frameCost = item.frame ? getFramePrice(item.frame, currency) : 0;
+    const frameCost = item.frame ? getFramePrice(item.frame, item.size, currency) : 0;
     subtotal += (unitPrice + frameCost) * quantity;
     resolved.push({
       slug: product.slug,

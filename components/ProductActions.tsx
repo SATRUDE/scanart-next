@@ -51,11 +51,11 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
   };
 
   const currentPrices = getProductPrices(product, selectedSize || undefined);
-  const framePriceGBP = getFramePrice(selectedFrame, 'GBP');
-  const framePriceNOK = getFramePrice(selectedFrame, 'NOK');
-  const framePriceUSD = getFramePrice(selectedFrame, 'USD');
-  const framePriceDKK = getFramePrice(selectedFrame, 'DKK');
-  const framePriceSEK = getFramePrice(selectedFrame, 'SEK');
+  const framePriceGBP = getFramePrice(selectedFrame, selectedSize || undefined, 'GBP');
+  const framePriceNOK = getFramePrice(selectedFrame, selectedSize || undefined, 'NOK');
+  const framePriceUSD = getFramePrice(selectedFrame, selectedSize || undefined, 'USD');
+  const framePriceDKK = getFramePrice(selectedFrame, selectedSize || undefined, 'DKK');
+  const framePriceSEK = getFramePrice(selectedFrame, selectedSize || undefined, 'SEK');
 
   const totalPrices = {
     GBP: (currentPrices.GBP || 0) + framePriceGBP,
