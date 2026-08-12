@@ -98,11 +98,11 @@ export const Cart: React.FC = () => {
                           </div>
                           <p className="text-sm">
                             {formatPrice({
-                              GBP: getProductPrices(item.product, item.size).GBP + getFramePrice(item.frame || 'no-frame', 'GBP'),
-                              USD: getProductPrices(item.product, item.size).USD + getFramePrice(item.frame || 'no-frame', 'USD'),
-                              NOK: getProductPrices(item.product, item.size).NOK + getFramePrice(item.frame || 'no-frame', 'NOK'),
-                              DKK: getProductPrices(item.product, item.size).DKK + getFramePrice(item.frame || 'no-frame', 'DKK'),
-                              SEK: getProductPrices(item.product, item.size).SEK + getFramePrice(item.frame || 'no-frame', 'SEK'),
+                              GBP: getProductPrices(item.product, item.size).GBP + getFramePrice(item.frame || 'no-frame', item.size, 'GBP'),
+                              USD: getProductPrices(item.product, item.size).USD + getFramePrice(item.frame || 'no-frame', item.size, 'USD'),
+                              NOK: getProductPrices(item.product, item.size).NOK + getFramePrice(item.frame || 'no-frame', item.size, 'NOK'),
+                              DKK: getProductPrices(item.product, item.size).DKK + getFramePrice(item.frame || 'no-frame', item.size, 'DKK'),
+                              SEK: getProductPrices(item.product, item.size).SEK + getFramePrice(item.frame || 'no-frame', item.size, 'SEK'),
                             })}
                           </p>
                         </div>

@@ -50,7 +50,10 @@ export default defineConfig({
         test: {
           name: 'unit',
           environment: 'node',
-          include: ['lib/**/*.test.ts', 'app/api/**/*.test.ts'],
+          // config/ holds the money: prices, frame charges, shipping rates.
+        // It was outside the runner, which is why a flat frame price that lost
+        // money on big sizes was never caught by a test.
+        include: ['lib/**/*.test.ts', 'app/api/**/*.test.ts', 'config/**/*.test.ts'],
         },
         resolve: {
           alias: { '@': dirname },

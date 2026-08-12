@@ -286,11 +286,11 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = () => {
           frame: item.frame && item.frame !== 'no-frame' ? getFrameName(item.frame) : null,
           quantity: item.quantity,
           price: formatPrice({ 
-            GBP: Math.round(((getProductPrice(item.product, item.size, 'GBP') + getFramePrice(item.frame || 'no-frame', 'GBP')) * item.quantity) * 100) / 100, 
-            NOK: Math.round(((getProductPrice(item.product, item.size, 'NOK') + getFramePrice(item.frame || 'no-frame', 'NOK')) * item.quantity) * 100) / 100, 
-            USD: Math.round(((getProductPrice(item.product, item.size, 'USD') + getFramePrice(item.frame || 'no-frame', 'USD')) * item.quantity) * 100) / 100, 
-            DKK: Math.round(((getProductPrice(item.product, item.size, 'DKK') + getFramePrice(item.frame || 'no-frame', 'DKK')) * item.quantity) * 100) / 100, 
-            SEK: Math.round(((getProductPrice(item.product, item.size, 'SEK') + getFramePrice(item.frame || 'no-frame', 'SEK')) * item.quantity) * 100) / 100 
+            GBP: Math.round(((getProductPrice(item.product, item.size, 'GBP') + getFramePrice(item.frame || 'no-frame', item.size, 'GBP')) * item.quantity) * 100) / 100, 
+            NOK: Math.round(((getProductPrice(item.product, item.size, 'NOK') + getFramePrice(item.frame || 'no-frame', item.size, 'NOK')) * item.quantity) * 100) / 100, 
+            USD: Math.round(((getProductPrice(item.product, item.size, 'USD') + getFramePrice(item.frame || 'no-frame', item.size, 'USD')) * item.quantity) * 100) / 100, 
+            DKK: Math.round(((getProductPrice(item.product, item.size, 'DKK') + getFramePrice(item.frame || 'no-frame', item.size, 'DKK')) * item.quantity) * 100) / 100, 
+            SEK: Math.round(((getProductPrice(item.product, item.size, 'SEK') + getFramePrice(item.frame || 'no-frame', item.size, 'SEK')) * item.quantity) * 100) / 100 
           }),
         })),
         total: formatPrice({ 
@@ -351,11 +351,11 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = () => {
           frame: item.frame && item.frame !== 'no-frame' ? getFrameName(item.frame) : null,
           quantity: item.quantity,
           price: formatPrice({ 
-            GBP: Math.round(((getProductPrice(item.product, item.size, 'GBP') + getFramePrice(item.frame || 'no-frame', 'GBP')) * item.quantity) * 100) / 100, 
-            NOK: Math.round(((getProductPrice(item.product, item.size, 'NOK') + getFramePrice(item.frame || 'no-frame', 'NOK')) * item.quantity) * 100) / 100, 
-            USD: Math.round(((getProductPrice(item.product, item.size, 'USD') + getFramePrice(item.frame || 'no-frame', 'USD')) * item.quantity) * 100) / 100, 
-            DKK: Math.round(((getProductPrice(item.product, item.size, 'DKK') + getFramePrice(item.frame || 'no-frame', 'DKK')) * item.quantity) * 100) / 100, 
-            SEK: Math.round(((getProductPrice(item.product, item.size, 'SEK') + getFramePrice(item.frame || 'no-frame', 'SEK')) * item.quantity) * 100) / 100 
+            GBP: Math.round(((getProductPrice(item.product, item.size, 'GBP') + getFramePrice(item.frame || 'no-frame', item.size, 'GBP')) * item.quantity) * 100) / 100, 
+            NOK: Math.round(((getProductPrice(item.product, item.size, 'NOK') + getFramePrice(item.frame || 'no-frame', item.size, 'NOK')) * item.quantity) * 100) / 100, 
+            USD: Math.round(((getProductPrice(item.product, item.size, 'USD') + getFramePrice(item.frame || 'no-frame', item.size, 'USD')) * item.quantity) * 100) / 100, 
+            DKK: Math.round(((getProductPrice(item.product, item.size, 'DKK') + getFramePrice(item.frame || 'no-frame', item.size, 'DKK')) * item.quantity) * 100) / 100, 
+            SEK: Math.round(((getProductPrice(item.product, item.size, 'SEK') + getFramePrice(item.frame || 'no-frame', item.size, 'SEK')) * item.quantity) * 100) / 100 
           }),
         })),
         total: formatPrice({ 
@@ -404,11 +404,11 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = () => {
           frame: item.frame && item.frame !== 'no-frame' ? getFrameName(item.frame) : null,
           quantity: item.quantity,
           price: formatPrice({ 
-            GBP: Math.round(((getProductPrice(item.product, item.size, 'GBP') + getFramePrice(item.frame || 'no-frame', 'GBP')) * item.quantity) * 100) / 100, 
-            NOK: Math.round(((getProductPrice(item.product, item.size, 'NOK') + getFramePrice(item.frame || 'no-frame', 'NOK')) * item.quantity) * 100) / 100, 
-            USD: Math.round(((getProductPrice(item.product, item.size, 'USD') + getFramePrice(item.frame || 'no-frame', 'USD')) * item.quantity) * 100) / 100, 
-            DKK: Math.round(((getProductPrice(item.product, item.size, 'DKK') + getFramePrice(item.frame || 'no-frame', 'DKK')) * item.quantity) * 100) / 100, 
-            SEK: Math.round(((getProductPrice(item.product, item.size, 'SEK') + getFramePrice(item.frame || 'no-frame', 'SEK')) * item.quantity) * 100) / 100 
+            GBP: Math.round(((getProductPrice(item.product, item.size, 'GBP') + getFramePrice(item.frame || 'no-frame', item.size, 'GBP')) * item.quantity) * 100) / 100, 
+            NOK: Math.round(((getProductPrice(item.product, item.size, 'NOK') + getFramePrice(item.frame || 'no-frame', item.size, 'NOK')) * item.quantity) * 100) / 100, 
+            USD: Math.round(((getProductPrice(item.product, item.size, 'USD') + getFramePrice(item.frame || 'no-frame', item.size, 'USD')) * item.quantity) * 100) / 100, 
+            DKK: Math.round(((getProductPrice(item.product, item.size, 'DKK') + getFramePrice(item.frame || 'no-frame', item.size, 'DKK')) * item.quantity) * 100) / 100, 
+            SEK: Math.round(((getProductPrice(item.product, item.size, 'SEK') + getFramePrice(item.frame || 'no-frame', item.size, 'SEK')) * item.quantity) * 100) / 100 
           }),
         })),
         total: formatPrice({ 
@@ -731,11 +731,11 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = () => {
                       )}
                       <p className="text-xs text-muted-foreground">Qty: {item.quantity}</p>
                       <p className="text-sm">{formatPrice({ 
-                        GBP: Math.round(((getProductPrice(item.product, item.size, 'GBP') + getFramePrice(item.frame || 'no-frame', 'GBP')) * item.quantity) * 100) / 100, 
-                        NOK: Math.round(((getProductPrice(item.product, item.size, 'NOK') + getFramePrice(item.frame || 'no-frame', 'NOK')) * item.quantity) * 100) / 100, 
-                        USD: Math.round(((getProductPrice(item.product, item.size, 'USD') + getFramePrice(item.frame || 'no-frame', 'USD')) * item.quantity) * 100) / 100, 
-                        DKK: Math.round(((getProductPrice(item.product, item.size, 'DKK') + getFramePrice(item.frame || 'no-frame', 'DKK')) * item.quantity) * 100) / 100, 
-                        SEK: Math.round(((getProductPrice(item.product, item.size, 'SEK') + getFramePrice(item.frame || 'no-frame', 'SEK')) * item.quantity) * 100) / 100 
+                        GBP: Math.round(((getProductPrice(item.product, item.size, 'GBP') + getFramePrice(item.frame || 'no-frame', item.size, 'GBP')) * item.quantity) * 100) / 100, 
+                        NOK: Math.round(((getProductPrice(item.product, item.size, 'NOK') + getFramePrice(item.frame || 'no-frame', item.size, 'NOK')) * item.quantity) * 100) / 100, 
+                        USD: Math.round(((getProductPrice(item.product, item.size, 'USD') + getFramePrice(item.frame || 'no-frame', item.size, 'USD')) * item.quantity) * 100) / 100, 
+                        DKK: Math.round(((getProductPrice(item.product, item.size, 'DKK') + getFramePrice(item.frame || 'no-frame', item.size, 'DKK')) * item.quantity) * 100) / 100, 
+                        SEK: Math.round(((getProductPrice(item.product, item.size, 'SEK') + getFramePrice(item.frame || 'no-frame', item.size, 'SEK')) * item.quantity) * 100) / 100 
                       })}</p>
                     </div>
                   </div>
