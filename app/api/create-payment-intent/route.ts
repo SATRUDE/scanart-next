@@ -2,6 +2,7 @@ import Stripe from 'stripe';
 import { NextResponse } from 'next/server';
 import { computeOrderAmount, CURRENCIES, type Currency, type OrderItemInput } from '@/lib/server/order';
 import { buildOrderDescription, buildOrderMetadata } from '@/lib/server/order-metadata';
+import { isDeliverable } from '@/lib/address';
 
 function getStripe() {
   const key = process.env.STRIPE_SECRET_KEY;
@@ -49,8 +50,14 @@ export async function POST(request: Request) {
     if (!CURRENCIES.includes(upperCurrency)) {
       return NextResponse.json({ error: 'Invalid currency' }, { status: 400 });
     }
-    if (typeof countryCode !== 'string' || !countryCode) {
-      return NextResponse.json({ error: 'Invalid country' }, { status: 400 });
+    // Must be a real country, not merely a string. Pricing already refuses to
+    // ship anything for free, but an order still has to be POSTABLE: a payment
+    // carrying "ZZ" would take money for a parcel with nowhere to go.
+    if (typeof countryCode !== 'string' || !isDeliverable(countryCode)) {
+      return NextResponse.json(
+        { error: 'Choose the country you want the print delivered to' },
+        { status: 400 }
+      );
     }
 
     const order = await computeOrderAmount(items, upperCurrency, countryCode, discountCode);
