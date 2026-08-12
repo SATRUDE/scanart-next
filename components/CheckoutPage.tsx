@@ -47,9 +47,20 @@ const PaymentForm: React.FC<{
   orderItems: { productId: string; size?: string; frame?: string; quantity: number }[];
   countryCode: string;
   discountCode?: string;
+  // Recorded onto the PaymentIntent so a completed order is fulfillable from
+  // Stripe alone, without depending on this browser reaching us afterwards.
+  customer: {
+    email: string;
+    firstName: string;
+    lastName: string;
+    address: string;
+    city: string;
+    state: string;
+    zipCode: string;
+  };
   onSuccess: () => void;
   onError: (error: string) => void;
-}> = ({ total, currency, orderItems, countryCode, discountCode, onSuccess, onError }) => {
+}> = ({ total, currency, orderItems, countryCode, discountCode, customer, onSuccess, onError }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [isProcessing, setIsProcessing] = useState(false);
@@ -86,6 +97,7 @@ const PaymentForm: React.FC<{
           currency: currency.toLowerCase(),
           countryCode,
           discountCode,
+          customer,
         }),
       });
 
@@ -608,6 +620,15 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = () => {
                           quantity: item.quantity,
                         }))}
                         countryCode={selectedCountryCode}
+                        customer={{
+                          email: formData.email,
+                          firstName: formData.firstName,
+                          lastName: formData.lastName,
+                          address: formData.address,
+                          city: formData.city,
+                          state: formData.state,
+                          zipCode: formData.zipCode,
+                        }}
                         discountCode={appliedDiscount?.code}
                         onSuccess={handlePaymentSuccess}
                         onError={handlePaymentError}

@@ -1,56 +1,30 @@
 import { NextResponse } from 'next/server';
+import { sendSlackOrder, shouldNotifyFromBrowser, type SlackOrder } from '@/lib/server/slack-order';
 
-async function sendSlackNotification(orderData: any) {
-  const slackWebhookUrl = process.env.SLACK_WEBHOOK_URL;
-  if (!slackWebhookUrl) return;
-
-  const { customer, items, total, currency, orderId, discountCode } = orderData;
-
-  const itemsList = items.map((item: any) =>
-    `\u2022 ${item.name} (${item.size}) - Qty: ${item.quantity} - ${item.price}`
-  ).join('\n');
-
-  const message: any = {
-    text: "*New Sale Completed!*",
-    blocks: [
-      { type: "header", text: { type: "plain_text", text: "New Sale Completed!", emoji: true } },
-      {
-        type: "section",
-        fields: [
-          { type: "mrkdwn", text: `*Order ID:*\n${orderId || 'N/A'}` },
-          { type: "mrkdwn", text: `*Total:*\n${total} ${currency.toUpperCase()}` },
-          { type: "mrkdwn", text: `*Customer:*\n${customer.firstName} ${customer.lastName}` },
-          { type: "mrkdwn", text: `*Email:*\n${customer.email}` },
-        ],
-      },
-      { type: "section", text: { type: "mrkdwn", text: `*Items:*\n${itemsList}` } },
-      {
-        type: "section",
-        fields: [
-          { type: "mrkdwn", text: `*Shipping Address:*\n${customer.address}\n${customer.city}, ${customer.state} ${customer.zipCode}\n${customer.country}` },
-        ],
-      },
-    ],
-  };
-
-  if (discountCode) {
-    message.blocks.push({ type: "section", text: { type: "mrkdwn", text: `*Discount Applied:*\n${discountCode}` } });
-  }
-
-  await fetch(slackWebhookUrl, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(message),
-  });
-}
-
+// The browser's "the card cleared" call.
+//
+// This was the ONLY record of a completed order's contents, which made it a
+// single point of failure sitting in the customer's browser. The Stripe
+// webhook is the record now (app/api/stripe-webhook), and this route stands
+// down as soon as that webhook is configured, so exactly one Slack message is
+// sent per order and there is never a gap in between.
 export async function POST(request: Request) {
   try {
-    const orderData = await request.json();
-    await sendSlackNotification(orderData);
-    return NextResponse.json({ success: true, message: 'Order processed and notification sent' });
-  } catch (error: any) {
-    console.error('Error processing order completion:', error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    const orderData = (await request.json()) as SlackOrder;
+
+    if (!shouldNotifyFromBrowser()) {
+      return NextResponse.json({
+        success: true,
+        message: 'The Stripe webhook records this order.',
+        notified: false,
+      });
+    }
+
+    await sendSlackOrder(orderData);
+    return NextResponse.json({ success: true, notified: true });
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : 'Order notification failed';
+    console.error('Error processing order completion:', message);
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }
