@@ -10,10 +10,15 @@ import {
 
 // This is one half of a contract with socialagent's Orders page, which decodes
 // what is written here. The fixture is the real basket from the near-sale on
-// 2026-08-11, Birdie Brown A1 with a wood frame, so a format change is checked
+// 2026-08-11, Birdie Brown A1 with a wood frame: 1,401 kr of goods plus 89 kr
+// delivery to Norway, so 1,490 kr to pay. A format change is therefore checked
 // against an order that actually happened.
+//
+// Worth knowing when reading the analytics: the site's `checkout` event fires
+// from the cart, where delivery is not yet known, so its `total` is the goods
+// subtotal and always reads 89 kr light against what Stripe is asked to charge.
 
-const BIRDIE = { slug: 'birdie-brown', size: 'A1', frame: 'wood', quantity: 1, unitPrice: 1312 };
+const BIRDIE = { slug: 'birdie-brown', size: 'A1', frame: 'wood', quantity: 1, unitPrice: 1401 };
 
 /** The decoder from socialagent, inlined so the contract is checked, not assumed. */
 function decode(encoded: string) {
@@ -35,7 +40,7 @@ function decode(encoded: string) {
 describe('encodeOrderItems', () => {
   it('round-trips through the decoder socialagent uses', () => {
     expect(decode(encodeOrderItems([BIRDIE]))).toEqual([
-      { slug: 'birdie-brown', size: 'A1', frame: 'wood', quantity: 1, unitPrice: 1312 },
+      { slug: 'birdie-brown', size: 'A1', frame: 'wood', quantity: 1, unitPrice: 1401 },
     ]);
   });
 
@@ -94,12 +99,12 @@ describe('buildOrderMetadata', () => {
     const metadata = buildOrderMetadata({
       items: [BIRDIE],
       currency: 'nok',
-      subtotal: 1312,
+      subtotal: 1401,
       shipping: 89,
       countryCode: 'NO',
     });
     expect(metadata.order_currency).toBe('NOK');
-    expect(metadata.order_subtotal).toBe('1312.00');
+    expect(metadata.order_subtotal).toBe('1401.00');
     expect(metadata.order_shipping).toBe('89.00');
     expect(metadata.order_country).toBe('NO');
     expect(metadata.order_items_1).toContain('birdie-brown');
@@ -109,7 +114,7 @@ describe('buildOrderMetadata', () => {
     const metadata = buildOrderMetadata({
       items: [BIRDIE],
       currency: 'NOK',
-      subtotal: 1312,
+      subtotal: 1401,
       shipping: 89,
       countryCode: 'NO',
       discount: null,
@@ -122,14 +127,14 @@ describe('buildOrderMetadata', () => {
     const metadata = buildOrderMetadata({
       items: [BIRDIE],
       currency: 'NOK',
-      subtotal: 1312,
+      subtotal: 1401,
       shipping: 89,
       countryCode: 'NO',
       discount: { code: 'SUMMER10', percentage: 10 },
-      discountAmount: 131.2,
+      discountAmount: 140.1,
     });
     expect(metadata.order_discount_code).toBe('SUMMER10');
-    expect(metadata.order_discount_amount).toBe('131.20');
+    expect(metadata.order_discount_amount).toBe('140.10');
   });
 
   it('stays inside Stripe\'s 50-key limit even on a huge basket', () => {
