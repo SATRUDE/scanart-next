@@ -22,7 +22,7 @@ export interface PublishedPrices {
 }
 
 /** When socialagent last published. Empty means never. */
-export const PUBLISHED_AT = '2026-08-12T13:56:06.012Z';
+export const PUBLISHED_AT = '2026-08-12T14:24:17.389Z';
 
 /** Artwork prices, by price category and then size. */
 export const PUBLISHED_ARTWORK: Record<string, Record<string, PublishedPrices>> = {
@@ -33,22 +33,14 @@ export const PUBLISHED_ARTWORK: Record<string, Record<string, PublishedPrices>> 
     '50x50cm': { GBP: 42, USD: 54, NOK: 600, DKK: 400, SEK: 600 },
     '50x70cm': { GBP: 56, USD: 72, NOK: 800, DKK: 500, SEK: 800 },
   },
-  'Standard': {
-    '50x50cm': { GBP: 42, USD: 54, NOK: 600, DKK: 370, SEK: 600 },
-    '50x70cm': { GBP: 56, USD: 72, NOK: 770, DKK: 490, SEK: 770 },
-  },
   'Budget': {
     '50x50cm': { GBP: 35, USD: 45, NOK: 480, DKK: 307, SEK: 480 },
-    '50x70cm': { GBP: 45, USD: 58, NOK: 617, DKK: 395, SEK: 617 },
-  },
-  'Luxary': {
-    'A3': { GBP: 60, USD: 77, NOK: 823, DKK: 526, SEK: 823 },
-    'A2': { GBP: 80, USD: 103, NOK: 1100, DKK: 703, SEK: 1100 },
-    'A1': { GBP: 110, USD: 141, NOK: 1500, DKK: 960, SEK: 1500 },
-    '50x50cm': { GBP: 60, USD: 77, NOK: 823, DKK: 526, SEK: 823 },
-    '50x70cm': { GBP: 80, USD: 103, NOK: 1100, DKK: 703, SEK: 1100 },
+    '50x70cm': { GBP: 45, USD: 58, NOK: 700, DKK: 395, SEK: 617 },
   },
 };
+
+/** Price lists retired here, which the shop stops offering. */
+export const PUBLISHED_RETIRED: string[] = ['Luxary', 'Standard'];
 
 /** What a frame adds, by size. Colours are priced the same as each other. */
 export const PUBLISHED_FRAMES: Record<string, PublishedPrices> = {
