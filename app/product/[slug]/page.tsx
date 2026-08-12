@@ -17,6 +17,7 @@ import { ArtistSection } from '@/components/ArtistSection';
 import { PrintCard } from '@/components/PrintCard';
 import { getLowestProductPrices } from '@/lib/pricing';
 import { priceValidUntil } from '@/lib/price-validity';
+import { metaSnippet } from '@/lib/meta-snippet';
 import { productImages } from '@/lib/product-image-alt';
 import { BASE_URL, SITE_NAME, OG_LOCALE, TWITTER_SITE } from '@/lib/site';
 import { shippingRates } from '@/config/shipping';
@@ -40,7 +41,7 @@ export async function generateMetadata({
   // alone under ~155 chars as the search/social snippet; the full copy stays
   // on the page body and in the Product JSON-LD. Google truncates a full-length
   // meta description mid-word, so emit only that first sentence here.
-  const snippet = desc.includes('. ') ? `${desc.split('. ')[0]}.` : desc;
+  const snippet = metaSnippet(desc);
   return {
     title: product.name,
     description: snippet,
