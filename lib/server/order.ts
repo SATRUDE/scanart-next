@@ -1,10 +1,9 @@
 import { getAllProducts } from '@/lib/products';
 import { getProductPrice } from '@/lib/pricing';
 import { getFramePrice } from '@/config/frame';
-import { getShippingRate } from '@/config/shipping';
 import { lookupDiscountCode, type DiscountLookup } from '@/lib/server/discounts';
 import type { MetadataItem } from '@/lib/server/order-metadata';
-import { shippingZoneFor } from '@/lib/address';
+import { quoteDelivery, type DeliveryItem, type DeliveryQuote } from '@/lib/server/shipping-rates';
 
 // Server-side order maths: the single source of truth for what an order
 // costs. The client's totals are display only; the payment intent amount is
@@ -32,6 +31,8 @@ export interface ComputedOrder {
   amount: number;
   subtotal: number;
   shipping: number;
+  /** Where the delivery figure came from, for the order record. */
+  shippingSource: DeliveryQuote['source'];
   discount: { code: string; percentage: number } | null;
   discountAmount: number;
   /** The priced lines, ready to be recorded onto the PaymentIntent. */
@@ -43,9 +44,15 @@ export async function computeOrderAmount(
   currency: Currency,
   countryCode: string,
   discountCode?: string,
-  // Injected so the maths can be tested without a database. Production always
-  // uses the store; see lib/server/discounts.ts.
-  lookup: DiscountLookup = lookupDiscountCode
+  // Both injected so the maths can be tested without a database. Production
+  // always uses the store; see lib/server/discounts.ts and
+  // lib/server/shipping-rates.ts.
+  lookup: DiscountLookup = lookupDiscountCode,
+  deliver: (
+    country: string,
+    currency: Currency,
+    items: DeliveryItem[]
+  ) => Promise<DeliveryQuote> = quoteDelivery
 ): Promise<ComputedOrder> {
   if (!Array.isArray(items) || items.length === 0 || items.length > 50) {
     throw new Error('Invalid order items');
@@ -81,12 +88,12 @@ export async function computeOrderAmount(
   }
   subtotal = Math.round(subtotal * 100) / 100;
 
-  // Every country maps to a zone that HAS a rate. An unrecognised code lands
-  // on Rest of World, never on nothing: getShippingRate returns undefined for
-  // a code it does not know, and turning that into zero meant a request
-  // carrying `countryCode: "ZZ"` was quietly charged no delivery at all.
-  const shippingRate = getShippingRate(shippingZoneFor(countryCode));
-  const shipping = shippingRate ? shippingRate.costs[currency] || 0 : 0;
+  // Delivery comes from Gelato's own prices, swept into the socialagent store,
+  // or whatever Mark has set by hand for that country. It falls back to
+  // config/shipping.ts when the store cannot answer, which is why that table
+  // still exists: it is a safety net now, not a price list.
+  const delivery = await deliver(countryCode, currency, resolved);
+  const shipping = delivery.amount;
 
   const discount = discountCode ? await lookup(discountCode) : null;
   const discountAmount = discount
@@ -94,5 +101,5 @@ export async function computeOrderAmount(
     : 0;
 
   const amount = Math.round((subtotal + shipping - discountAmount) * 100) / 100;
-  return { amount, subtotal, shipping, discount, discountAmount, items: resolved };
+  return { amount, subtotal, shipping, shippingSource: delivery.source, discount, discountAmount, items: resolved };
 }

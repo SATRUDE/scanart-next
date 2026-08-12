@@ -1,6 +1,12 @@
 import { describe, it, expect } from 'vitest';
 import { computeOrderAmount } from './order';
 import type { DiscountLookup } from './discounts';
+import type { DeliveryQuote } from './shipping-rates';
+
+// Delivery is injected, like the discount lookup, so these stay about the
+// order maths and never reach for a database or Gelato.
+const DELIVERY = 60;
+const deliver = async (): Promise<DeliveryQuote> => ({ amount: DELIVERY, source: 'gelato' });
 import { getAllProducts } from '@/lib/products';
 import { getProductPrice } from '@/lib/pricing';
 import { getShippingRate } from '@/config/shipping';
@@ -31,16 +37,17 @@ describe('computeOrderAmount', () => {
     const size = Object.keys(product.sizes ?? {})[0];
     const unit = getProductPrice(product, size, 'GBP');
     const frame = getFramePrice('wood', size, 'GBP');
-    const shipping = getShippingRate('GB')?.costs.GBP || 0;
-
     const order = await computeOrderAmount(
       [{ productId: product.id, size, frame: 'wood', quantity: 2 }],
       'GBP',
-      'GB'
+      'GB',
+      undefined,
+      noCodes,
+      deliver
     );
 
     expect(order.subtotal).toBe(Math.round((unit + frame) * 2 * 100) / 100);
-    expect(order.amount).toBe(Math.round((order.subtotal + shipping) * 100) / 100);
+    expect(order.amount).toBe(Math.round((order.subtotal + DELIVERY) * 100) / 100);
     expect(order.discount).toBeNull();
   });
 
@@ -141,30 +148,51 @@ describe('computeOrderAmount', () => {
     await expect(computeOrderAmount([], 'GBP', 'GB')).rejects.toThrow('Invalid order items');
   });
 
-  // This test used to assert that an unknown country shipped for FREE, which
-  // is what the code did: getShippingRate returns undefined for a code it does
-  // not know and the caller turned that into zero. So a request carrying
-  // countryCode "ZZ" bought a print with no delivery charge at all. The server
-  // sets the price, so it must have a price for every input.
-  it('charges the Rest of World rate for an unrecognised country, never nothing', async () => {
+  // Delivery now comes from Gelato's swept prices, and this is the guarantee
+  // that survives that change: whatever the country, and whatever the store
+  // says, an order is never posted for nothing. It used to be, because
+  // getShippingRate returns undefined for a code it does not know and the
+  // caller turned that into zero, so "ZZ" bought free delivery.
+  it('never charges nothing for delivery, whatever the country', async () => {
     const [product] = await getAllProducts();
-    const restOfWorld = getShippingRate('ELSEWHERE')!.costs.GBP;
-
-    for (const code of ['XX', 'ZZ', '', 'not-a-country']) {
-      const order = await computeOrderAmount([{ productId: product.id, quantity: 1 }], 'GBP', code);
-      expect(order.shipping, `${code} shipped for nothing`).toBe(restOfWorld);
+    for (const code of ['XX', 'ZZ', '', 'not-a-country', 'DE', 'NO']) {
+      const order = await computeOrderAmount(
+        [{ productId: product.id, quantity: 1 }],
+        'GBP',
+        code,
+        undefined,
+        noCodes
+      );
+      expect(order.shipping, `${code} shipped for nothing`).toBeGreaterThan(0);
     }
   });
 
-  it('prices a real country outside the five at the Rest of World rate', async () => {
+  it('falls back to the static table when the store cannot answer', async () => {
     const [product] = await getAllProducts();
-    const germany = await computeOrderAmount([{ productId: product.id, quantity: 1 }], 'GBP', 'DE');
-    expect(germany.shipping).toBe(getShippingRate('ELSEWHERE')!.costs.GBP);
+    const restOfWorld = getShippingRate('ELSEWHERE')!.costs.GBP;
+    const order = await computeOrderAmount(
+      [{ productId: product.id, quantity: 1 }],
+      'GBP',
+      'ZZ',
+      undefined,
+      noCodes,
+      async () => ({ amount: restOfWorld, source: 'fallback' })
+    );
+    expect(order.shipping).toBe(restOfWorld);
+    expect(order.shippingSource).toBe('fallback');
   });
 
-  it('still prices the five named countries at their own rate', async () => {
+  it('records where the delivery figure came from, for the order record', async () => {
     const [product] = await getAllProducts();
-    const norway = await computeOrderAmount([{ productId: product.id, quantity: 1 }], 'NOK', 'NO');
-    expect(norway.shipping).toBe(getShippingRate('NO')!.costs.NOK);
+    const order = await computeOrderAmount(
+      [{ productId: product.id, quantity: 1 }],
+      'NOK',
+      'NO',
+      undefined,
+      noCodes,
+      async () => ({ amount: 105, source: 'set-by-hand' })
+    );
+    expect(order.shipping).toBe(105);
+    expect(order.shippingSource).toBe('set-by-hand');
   });
 });
