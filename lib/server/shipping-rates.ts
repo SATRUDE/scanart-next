@@ -70,6 +70,20 @@ export function roundUp(amount: number, currency: Currency): number {
 }
 
 /**
+ * A cost turned into a price: add the buffer, round up to the next whole euro,
+ * then take a penny off. 5.51 becomes 5.99 (Mark, 2026-08-12). This is the
+ * number the Costs page shows in the delivery columns, so the two agree.
+ *
+ * Guarded, because a cost landing exactly on a whole number would otherwise
+ * round to a penny below itself: the one input where "round up" rounds down.
+ */
+export function priceFromCost(cost: number, buffer = BUFFER): number {
+  const nearlyWhole = Math.ceil(cost * (1 + buffer)) - 0.01;
+  const price = nearlyWhole >= cost ? nearlyWhole : Math.ceil(cost) + 0.99;
+  return Math.round(price * 100) / 100;
+}
+
+/**
  * Gelato charges first item + additional x (n-1), and the two are nothing
  * alike: a second rolled print adds about a tenth of the first, a second
  * framed one about half. So the dearest thing in the basket pays the
@@ -148,8 +162,8 @@ export async function quoteDelivery(
       const override = overrides.find(o => o.frame === frame);
 
       if (override) {
-        // A price Mark set applies per item, whatever size it is: he set one
-        // number for rolled and one for framed, not one per size.
+        // A price Mark set is a PRICE, not a cost: no buffer, no rounding up
+        // on top of it. He typed the number he wants charged.
         usedOverride = true;
         priced.push({ first: override.priceEur, additional: override.priceEur, quantity: item.quantity });
         continue;
@@ -165,11 +179,18 @@ export async function quoteDelivery(
         forFrame.reduce<RateRow | undefined>((a, b) => (!a || b.shipCost > a.shipCost ? b : a), undefined);
       if (!row) return { amount: fallback(countryCode, currency), source: 'fallback' };
 
-      priced.push({ first: row.shipCost, additional: row.shipCostAdditional, quantity: item.quantity });
+      // Costs become prices HERE, per row, so a single print is charged the
+      // exact figure the Costs page shows against its size rather than that
+      // figure recomputed from a different direction.
+      priced.push({
+        first: priceFromCost(row.shipCost),
+        additional: row.shipCostAdditional === null ? null : priceFromCost(row.shipCostAdditional),
+        quantity: item.quantity,
+      });
     }
 
     const eur = combineDelivery(priced);
-    const amount = roundUp(eur * perEur * (1 + BUFFER), currency);
+    const amount = roundUp(eur * perEur, currency);
 
     const oldest = rates.reduce(
       (acc, r) => Math.min(acc, new Date(r.quotedAt).getTime()),
