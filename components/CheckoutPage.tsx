@@ -17,6 +17,13 @@ import { Elements, CardElement, useStripe, useElements } from '@stripe/react-str
 import stripePromise from '@/config/stripe';
 import { OrderComplete } from '@/components/OrderComplete';
 import { getShippingRate, formatShippingCost } from '@/config/shipping';
+import {
+  DESTINATIONS,
+  defaultDestination,
+  destinationName,
+  getAddressFormat,
+  type ShippingCountry,
+} from '@/lib/address';
 import { getFrameName, getFramePrice } from '@/config/frame';
 import { track } from '@/lib/analytics';
 
@@ -198,6 +205,10 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = () => {
 
   // Debug log to verify component is loaded
 
+  // `country` holds a destination CODE, not a display name: the name is for
+  // showing, the code is what prices the delivery. It starts wherever the
+  // buyer is already browsing, so their first act on this form is not to
+  // correct us about which country they live in.
   const [formData, setFormData] = useState({
     email: '',
     firstName: '',
@@ -206,12 +217,22 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = () => {
     city: '',
     state: '',
     zipCode: '',
-    country: 'United States',
+    country: defaultDestination(selectedCountry.code) as ShippingCountry,
   });
 
   const handleInputChange = (field: string, value: string) => {
     if (field === 'country') {
-      track('shipping-country-selected', { country: value });
+      const destination = value as ShippingCountry;
+      // The event keeps carrying the readable name, so this stays comparable
+      // with every shipping-country-selected recorded before the field held a
+      // code rather than a name.
+      track('shipping-country-selected', { country: destinationName(destination) });
+      // Somewhere with no region must not inherit the last one's: a stale
+      // "CA" would otherwise ride along on a Norwegian address, invisibly,
+      // because the field it came from is no longer on screen.
+      const keepRegion = getAddressFormat(destination).hasRegion;
+      setFormData(prev => ({ ...prev, country: destination, state: keepRegion ? prev.state : '' }));
+      return;
     }
     setFormData(prev => ({ ...prev, [field]: value }));
   };
@@ -257,7 +278,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = () => {
           city: formData.city,
           state: formData.state,
           zipCode: formData.zipCode,
-          country: formData.country,
+          country: destinationName(formData.country),
         },
         items: state.items.map(item => ({
           name: item.product.name,
@@ -322,7 +343,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = () => {
           city: formData.city,
           state: formData.state,
           zipCode: formData.zipCode,
-          country: formData.country,
+          country: destinationName(formData.country),
         },
         items: state.items.map(item => ({
           name: item.product.name,
@@ -375,7 +396,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = () => {
           city: formData.city,
           state: formData.state,
           zipCode: formData.zipCode,
-          country: formData.country,
+          country: destinationName(formData.country),
         },
         items: state.items.map(item => ({
           name: item.product.name,
@@ -439,22 +460,12 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = () => {
 
   const subtotal = getTotalPriceInCurrency(selectedCountry.currency);
   
-  // Map country names to country codes for shipping calculation
-  const getCountryCode = (countryName: string): string => {
-    const countryMap: { [key: string]: string } = {
-      'United States': 'US',
-      'United Kingdom': 'GB',
-      'Norway': 'NO',
-      'Denmark': 'DK',
-      'Sweden': 'SE',
-      'Canada': 'ELSEWHERE' // Use ELSEWHERE for countries not in our shipping config
-    };
-    return countryMap[countryName] || 'ELSEWHERE';
-  };
-  
-  // Get shipping rate for selected country in checkout form
-  const selectedCountryCode = getCountryCode(formData.country);
-  const shippingRate = getShippingRate(selectedCountryCode as any);
+  // The form already holds the destination code, so there is nothing to map.
+  const selectedCountryCode = formData.country;
+  const shippingRate = getShippingRate(selectedCountryCode);
+  // How this destination writes an address: what the postal code is called,
+  // and whether a region is a real thing there at all.
+  const addressFormat = getAddressFormat(selectedCountryCode);
   
     // Get shipping cost in user's selected currency
   const shipping: number = shippingRate ? shippingRate.costs[selectedCountry.currency] || 0 : 0;
@@ -550,7 +561,31 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = () => {
                       required
                     />
                   </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="country">Country</Label>
+                    <Select
+                      value={formData.country}
+                      onValueChange={(value: string) => handleInputChange('country', value)}
+                    >
+                      <SelectTrigger id="country">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {DESTINATIONS.map(destination => (
+                          <SelectItem key={destination.code} value={destination.code}>
+                            {destination.name}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  {/* Country sits above these because it decides what they
+                      are called and whether a region exists at all. */}
+                  <div
+                    className={`grid grid-cols-1 gap-4 ${
+                      addressFormat.hasRegion ? 'sm:grid-cols-3' : 'sm:grid-cols-2'
+                    }`}
+                  >
                     <div className="space-y-2">
                       <Label htmlFor="city">City</Label>
                       <Input
@@ -560,40 +595,27 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = () => {
                         required
                       />
                     </div>
+                    {addressFormat.hasRegion && (
+                      <div className="space-y-2">
+                        <Label htmlFor="state">{addressFormat.regionLabel}</Label>
+                        <Input
+                          id="state"
+                          value={formData.state}
+                          onChange={(e) => handleInputChange('state', e.target.value)}
+                          required
+                        />
+                      </div>
+                    )}
                     <div className="space-y-2">
-                      <Label htmlFor="state">State</Label>
-                      <Input
-                        id="state"
-                        value={formData.state}
-                        onChange={(e) => handleInputChange('state', e.target.value)}
-                        required
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="zipCode">ZIP Code</Label>
+                      <Label htmlFor="zipCode">{addressFormat.postalLabel}</Label>
                       <Input
                         id="zipCode"
                         value={formData.zipCode}
                         onChange={(e) => handleInputChange('zipCode', e.target.value)}
+                        placeholder={addressFormat.postalExample}
                         required
                       />
                     </div>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="country">Country</Label>
-                    <Select value={formData.country} onValueChange={(value: string) => handleInputChange('country', value)}>
-                      <SelectTrigger>
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="United States">United States</SelectItem>
-                        <SelectItem value="Canada">Canada</SelectItem>
-                        <SelectItem value="United Kingdom">United Kingdom</SelectItem>
-                        <SelectItem value="Norway">Norway</SelectItem>
-                        <SelectItem value="Denmark">Denmark</SelectItem>
-                        <SelectItem value="Sweden">Sweden</SelectItem>
-                      </SelectContent>
-                    </Select>
                   </div>
                 </CardContent>
               </Card>
