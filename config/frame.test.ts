@@ -33,10 +33,19 @@ describe('frame pricing covers what the frame costs', () => {
   });
 
   it('keeps a real margin rather than scraping the cost', () => {
+    // Mark chose 700 kr for the A1 Norwegian frame (2026-08-13, chat), a
+    // 1.19x margin against the 1.2x asked of everything else: the frame is
+    // an upsell, none of it is shared with the artist, and the round number
+    // matters more to him than the last few kroner. A price he chose gets a
+    // floor that documents the choice, not a test that argues with it. The
+    // floor is not gone: 1.15 still fails if Gelato's frame price creeps up.
+    const CHOSEN: Record<string, Partial<Record<FrameSize, number>>> = {
+      NOK: { A1: 1.15 },
+    };
     for (const currency of CURRENCIES) {
       for (const size of FRAME_SIZES) {
         const margin = getFramePrice('wood', size, currency) / GELATO_FRAME_COST[currency][size];
-        expect(margin, `${currency} ${size}`).toBeGreaterThan(1.2);
+        expect(margin, `${currency} ${size}`).toBeGreaterThan(CHOSEN[currency]?.[size] ?? 1.2);
       }
     }
   });
