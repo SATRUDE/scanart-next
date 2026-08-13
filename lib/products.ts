@@ -1,7 +1,7 @@
 import fs from 'fs/promises';
 import path from 'path';
 import { Product } from '@/contexts/CartContext';
-import { priceCategories } from '@/config/priceCategories';
+import { priceCategories, offeredPriceCategories, type PriceCategory } from '@/config/priceCategories';
 
 interface NotionProduct {
   id: string;
@@ -23,9 +23,12 @@ interface NotionProduct {
   recommendedProducts: string[];
 }
 
-function convertNotionProductToProduct(np: NotionProduct): Product {
+function convertNotionProductToProduct(
+  np: NotionProduct,
+  categories: { [category: string]: PriceCategory } = priceCategories
+): Product {
   const prices: { [key: string]: { GBP: number; NOK: number; USD: number; DKK: number; SEK: number } } = {};
-  const categoryPrices = priceCategories[np.priceCategory];
+  const categoryPrices = categories[np.priceCategory];
   if (categoryPrices) {
     np.availableSizes.forEach(size => {
       if (categoryPrices[size]) prices[size] = categoryPrices[size] as { GBP: number; NOK: number; USD: number; DKK: number; SEK: number };
@@ -60,9 +63,22 @@ export async function getAllProducts(): Promise<Product[]> {
   try {
     const data = await fs.readFile(filePath, 'utf-8');
     const notionProducts: NotionProduct[] = JSON.parse(data);
-    return notionProducts
-      .filter(p => p.published)
-      .map(convertNotionProductToProduct);
+    const published = notionProducts.filter(p => p.published);
+    // Retirements are applied here rather than in config/priceCategories.ts
+    // because this is the only place that knows which lists the catalogue is
+    // actually using, and a list still in use must not be taken away.
+    const { offered, refused } = offeredPriceCategories(published.map(p => p.priceCategory));
+    if (refused.length > 0) {
+      console.warn(
+        `Price ${refused.length === 1 ? 'list' : 'lists'} ${refused.join(', ')} retired in socialagent, ` +
+          `but still priced here: ${published
+            .filter(p => refused.includes(p.priceCategory))
+            .map(p => p.slug)
+            .join(', ')} would have no price at all. Move ${refused.length === 1 ? 'those prints' : 'them'} ` +
+          `onto a live list before retiring it.`
+      );
+    }
+    return published.map(p => convertNotionProductToProduct(p, offered));
   } catch {
     return [];
   }
