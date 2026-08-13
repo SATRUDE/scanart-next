@@ -35,11 +35,12 @@ jobs:
 
       - run: npm ci
 
-      # Lint is deliberately NOT here yet. The repo has a standing baseline of
-      # 17 lint errors reaching into CheckoutPage and CartContext, so a lint
-      # gate can never go green until that is cleaned up, and a check that can
-      # never pass teaches everyone to ignore the whole workflow. Ticketed;
-      # add the step back when the baseline is zero.
+      # Zero-tolerance on warnings as well as errors: the baseline was
+      # cleared on 2026-08-13 and the way it grew to 36 in the first place
+      # was warnings being free.
+      - name: Lint
+        run: npm run lint -- --max-warnings 0
+
       - name: Types
         run: npm run typecheck
 

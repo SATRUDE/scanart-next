@@ -599,6 +599,11 @@ function SidebarMenuBadge({
   );
 }
 
+/** A random width between 50 and 90%, drawn once per skeleton. */
+function skeletonWidth(): string {
+  return `${Math.floor(Math.random() * 40) + 50}%`;
+}
+
 function SidebarMenuSkeleton({
   className,
   showIcon = false,
@@ -606,10 +611,9 @@ function SidebarMenuSkeleton({
 }: React.ComponentProps<"div"> & {
   showIcon?: boolean;
 }) {
-  // Random width between 50 to 90%.
-  const width = React.useMemo(() => {
-    return `${Math.floor(Math.random() * 40) + 50}%`;
-  }, []);
+  // Stable per mount; the impure draw lives outside render because the
+  // compiler will not memoise anything it cannot prove pure.
+  const [width] = React.useState(skeletonWidth);
 
   return (
     <div

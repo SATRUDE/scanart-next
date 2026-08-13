@@ -81,6 +81,7 @@ export const AvifImage: React.FC<AvifImageProps> = ({
       {isLoading && (
         <div className="absolute inset-0 bg-gray-200 animate-pulse rounded" />
       )}
+      {/* eslint-disable-next-line @next/next/no-img-element -- this component IS the image loader: it negotiates AVIF/fallback itself, which next/image would fight */}
       <img
         ref={markLoadedIfComplete}
         src={imageSrc}

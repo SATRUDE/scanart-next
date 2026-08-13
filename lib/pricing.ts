@@ -1,71 +1,79 @@
-// Helper functions for handling size-based pricing
+// Helper functions for handling size-based pricing.
+//
+// Typed structurally rather than importing Product from CartContext: that
+// module is 'use client', and lib/ code is read by API routes, where a
+// runtime import of a client module breaks the build (lib/address.ts learnt
+// this the hard way on 2026-08-12). These shapes are the subset the helpers
+// actually touch, and anything satisfying Product satisfies them.
 
-export function getProductPrice(product: any, size?: string, currency: 'GBP' | 'NOK' | 'USD' | 'DKK' | 'SEK' = 'GBP'): number {
-  if (!product || !product.prices) return 0;
-  
+export interface CurrencyPrices {
+  GBP: number;
+  NOK: number;
+  USD: number;
+  DKK: number;
+  SEK: number;
+}
+
+export type Currency = keyof CurrencyPrices;
+
+/** The slice of a product these helpers read. Null and undefined are fine. */
+export interface PricedProduct {
+  prices?: { [size: string]: CurrencyPrices } | null;
+}
+
+const NO_PRICES: CurrencyPrices = { GBP: 0, NOK: 0, USD: 0, DKK: 0, SEK: 0 };
+
+export function getProductPrice(
+  product: PricedProduct | null | undefined,
+  size?: string,
+  currency: Currency = 'GBP'
+): number {
+  return getProductPrices(product, size)[currency] || 0;
+}
+
+export function getProductPrices(
+  product: PricedProduct | null | undefined,
+  size?: string
+): CurrencyPrices {
+  const prices = product?.prices;
+  if (!prices) return NO_PRICES;
+
   // If size is specified and exists in the product prices, use it
-  if (size && product.prices[size]) {
-    return product.prices[size][currency] || 0;
+  if (size && prices[size]) {
+    return prices[size];
   }
-  
+
   // Fallback to 'default' pricing if no size-specific price exists
-  if (product.prices['default']) {
-    return product.prices['default'][currency] || 0;
+  if (prices['default']) {
+    return prices['default'];
   }
-  
+
   // Fallback to first available price key
-  const availableKeys = Object.keys(product.prices);
-  if (availableKeys.length > 0) {
-    const firstKey = availableKeys[0];
-    return product.prices[firstKey][currency] || 0;
+  const firstKey = Object.keys(prices)[0];
+  if (firstKey) {
+    return prices[firstKey];
   }
-  
-  return 0;
+
+  return NO_PRICES;
 }
 
-export function getProductPrices(product: any, size?: string): { GBP: number; NOK: number; USD: number; DKK: number; SEK: number } {
-  if (!product || !product.prices) {
-    return { GBP: 0, NOK: 0, USD: 0, DKK: 0, SEK: 0 };
-  }
-  
-  // If size is specified and exists in the product prices, use it
-  if (size && product.prices[size]) {
-    return product.prices[size];
-  }
-  
-  // Fallback to 'default' pricing if no size-specific price exists
-  if (product.prices['default']) {
-    return product.prices['default'];
-  }
-  
-  // Fallback to first available price key
-  const availableKeys = Object.keys(product.prices);
-  if (availableKeys.length > 0) {
-    const firstKey = availableKeys[0];
-    return product.prices[firstKey];
-  }
-  
-  return { GBP: 0, NOK: 0, USD: 0, DKK: 0, SEK: 0 };
+export function getLowestProductPrice(
+  product: PricedProduct | null | undefined,
+  currency: Currency = 'GBP'
+): number {
+  return getLowestProductPrices(product)[currency];
 }
 
-export function getLowestProductPrice(product: any, currency: 'GBP' | 'NOK' | 'USD' | 'DKK' | 'SEK' = 'GBP'): number {
-  if (!product || !product.prices) return 0;
-  
-  const prices = Object.values(product.prices).map((priceObj: any) => priceObj[currency] || 0);
-  return Math.min(...prices);
-}
+export function getLowestProductPrices(product: PricedProduct | null | undefined): CurrencyPrices {
+  const prices = product?.prices;
+  if (!prices) return { ...NO_PRICES };
 
-export function getLowestProductPrices(product: any): { GBP: number; NOK: number; USD: number; DKK: number; SEK: number } {
-  if (!product || !product.prices) {
-    return { GBP: 0, NOK: 0, USD: 0, DKK: 0, SEK: 0 };
-  }
+  const currencies = Object.keys(NO_PRICES) as Currency[];
+  const result = { ...NO_PRICES };
 
-  const currencies = ['GBP', 'NOK', 'USD', 'DKK', 'SEK'] as const;
-  const result: any = {};
-  
   currencies.forEach(currency => {
-    const pricesForCurrency = Object.values(product.prices).map((priceObj: any) => priceObj[currency] || 0);
-    result[currency] = Math.min(...pricesForCurrency);
+    const pricesForCurrency = Object.values(prices).map(priceObj => priceObj[currency] || 0);
+    if (pricesForCurrency.length) result[currency] = Math.min(...pricesForCurrency);
   });
 
   return result;

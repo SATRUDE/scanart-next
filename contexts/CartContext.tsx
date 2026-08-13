@@ -146,13 +146,13 @@ function loadCartFromStorage() {
   try {
     const data = localStorage.getItem('scanart-cart');
     if (data) return JSON.parse(data);
-  } catch (e) { /* ignore */ }
+  } catch { /* ignore */ }
   return [];
 }
 function saveCartToStorage(items: CartItem[]) {
   try {
     localStorage.setItem('scanart-cart', JSON.stringify(items));
-  } catch (e) { /* ignore */ }
+  } catch { /* ignore */ }
 }
 
 export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {

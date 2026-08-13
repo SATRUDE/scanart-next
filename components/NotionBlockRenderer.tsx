@@ -84,6 +84,7 @@ export const NotionBlockRenderer: React.FC<NotionBlockRendererProps> = ({ blocks
         const imageUrl = image?.file?.url || image?.external?.url;
         return (
           <div key={id} className="my-6">
+            {/* eslint-disable-next-line @next/next/no-img-element -- Notion serves images from arbitrary signed URLs that next/image would refuse without a domain allowlist */}
             <img src={imageUrl} alt={image?.caption?.[0]?.plain_text || 'Article image'} className="w-full h-auto rounded-lg" />
             {image?.caption && image.caption.length > 0 && (
               <p className="text-sm text-gray-600 mt-2 text-center">{renderRichText(image.caption)}</p>

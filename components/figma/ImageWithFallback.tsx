@@ -10,7 +10,7 @@ interface ImageWithFallbackProps extends React.ImgHTMLAttributes<HTMLImageElemen
 
 export function ImageWithFallback(props: ImageWithFallbackProps) {
   const [didError, setDidError] = useState(false)
-  const [isLoading, setIsLoading] = useState(true)
+  const [, setIsLoading] = useState(true)
 
   const handleError = () => {
     setDidError(true)
@@ -23,7 +23,12 @@ export function ImageWithFallback(props: ImageWithFallbackProps) {
     props.onLoad?.()
   }
 
-  const { src, alt, style, className, onLoad, onError, ...rest } = props
+  // onLoad and onError are pulled out only to keep them off {...rest}: the
+  // wrapped handlers above replace them.
+  const { src, alt, style, className, ...rest } = props
+  // The originals are replaced by the wrapped handlers above.
+  delete (rest as Partial<ImageWithFallbackProps>).onLoad
+  delete (rest as Partial<ImageWithFallbackProps>).onError
 
   // If no src provided, show placeholder
   if (!src || (typeof src === 'string' && src.trim() === '')) {
@@ -33,6 +38,7 @@ export function ImageWithFallback(props: ImageWithFallbackProps) {
         style={style}
       >
         <div className="flex items-center justify-center w-full h-full">
+          {/* eslint-disable-next-line @next/next/no-img-element -- the whole point of this component is manual load/error handling */}
           <img src={ERROR_IMG_SRC} alt="No image available" {...rest} />
         </div>
       </div>
@@ -45,10 +51,12 @@ export function ImageWithFallback(props: ImageWithFallbackProps) {
       style={style}
     >
       <div className="flex items-center justify-center w-full h-full">
+        {/* eslint-disable-next-line @next/next/no-img-element -- the whole point of this component is manual load/error handling */}
         <img src={ERROR_IMG_SRC} alt="Error loading image" {...rest} data-original-url={src} />
       </div>
     </div>
   ) : (
+    // eslint-disable-next-line @next/next/no-img-element -- the whole point of this component is manual load/error handling
     <img 
       src={src} 
       alt={alt} 
