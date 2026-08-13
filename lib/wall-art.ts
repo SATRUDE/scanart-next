@@ -5,7 +5,11 @@
 // room-modified tail handled by the existing /collection/* pages. Shared with
 // app/sitemap.ts, the footer and LandingCrossLinks so wiring never drifts.
 // Body copy drafted by Ken (Studio board, 2026-08-03) and wired verbatim;
-// title/description are Peggy's search snippets drawn from the query data.
+// retargeted at the BUYING queries by his 2026-08-13 pass: the informational
+// wall-art cluster never clicked (1 impression in 28 days by August), while
+// "buy scandinavian art prints" showed us at position 43 with the old copy
+// answering a different question. Title and H1 now say what those searchers
+// typed; delivery claims are out of the title because they rot.
 
 export interface WallArtLanding {
   title: string;
@@ -13,6 +17,9 @@ export interface WallArtLanding {
   heading: string;
   intro: string;
   intro2: string;
+  /** The framing offer, the heart of the buying queries, as its own section. */
+  framedHeading: string;
+  framedBody: string;
   stylingHeading: string;
   faqs: { question: string; answer: string }[];
 }
@@ -22,35 +29,38 @@ export interface WallArtLanding {
 // real internal links (the sibling landings' stylingBody is a plain string).
 
 export const wallArtLanding: WallArtLanding = {
-  title: 'Scandinavian Wall Art | Framed Nordic Prints, UK Delivery',
+  title: 'Buy Scandinavian Art Prints | Framed Nordic Prints',
   description:
-    'Scandinavian wall art by independent Norwegian artists. Framed and unframed Nordic prints for the living room, bedroom and home office, delivered across the UK and worldwide.',
-  heading: 'Scandinavian Wall Art',
+    'Buy Scandinavian art prints by five independent Norwegian artists. Twenty Nordic prints, each framed in wood, black or white, or unframed, made to order.',
+  heading: 'Buy Scandinavian Art Prints',
   intro:
-    "Wall art, in a Scandinavian home, does the work the furniture politely declines: it brings the colour, the character and the occasional joke to rooms that keep everything else calm. This page holds the whole gallery, twenty prints by five independent Norwegian artists working across three registers. There are bold Nordic abstracts, from Renate Thor's rhythmic Birdie flock to Helene Brox's pared-back cream figures; botanical prints that run from Ingunn Dybendal's jewel-bright patterned landscapes to Sia Siamos's cabin breakfasts and kitchen tables; and Simen Wahlqvist's dry, few-lined illustrations. Different hands, one sensibility: clean form, confident colour, nothing wasted.",
+    "This page is the whole gallery: twenty Scandinavian art prints, every one by an artist living and working in Norway, and every one sold framed or unframed. Renate Thor screen-prints her tumbling Birdie flock in Trondheim. Helene Brox paints pared-back cream figures in Oslo. Ingunn Dybendal draws folk flowers and patterned lakeland in coloured pencil, Sia Siamos crowds tables with lobster, wine and cabin breakfasts, and Simen Wahlqvist fits an entire joke into a handful of lines. Five hands, three styles, and not a filler print among them.",
   intro2:
-    'There is no single Scandinavian look to buy into, but there is a shared temperament, and it makes choosing easier than a wall of twenty prints might suggest. Start with what the room needs: a bold abstract lifts a pale, minimal space, a soft botanical settles a busy one, and an illustration adds the glint of wit a too-tasteful room is quietly missing. Everything here comes from the five independent Norwegian artists behind the gallery, and every print is produced to the same museum standard, so the choice is about character, never quality.',
-  stylingHeading: 'Styling Scandinavian wall art, room by room',
+    "Buying Scandinavian art prints online usually means scrolling a marketplace of ten thousand posters that have never been within a thousand miles of a fjord. This is the opposite. A small gallery, five artists we work with directly, and every print made to order rather than pulled from a warehouse. Choose the piece first and the frame second, and if you can't choose between two, the four Birdie colourways and Wahlqvist's squares are built to hang as pairs.",
+  framedHeading: 'Framed or unframed',
+  framedBody:
+    "Every print here comes with the choice of three frames, wood, black or white, sized to the print. Wood suits the warmer botanical pieces and rooms with timber already in them; black sharpens the graphic abstracts and illustrations; white almost disappears against a pale Scandinavian wall and lets the colour do the talking. Grouping prints? Keep the frame the same across the set and the wall reads as one decision. And if you have a framer you trust, every piece is sold unframed too.",
+  stylingHeading: 'Scandinavian wall art, room by room',
   faqs: [
     {
-      question: 'How do I choose wall art for a Scandinavian-style interior?',
+      question: 'Where can I buy Scandinavian art prints?',
       answer:
-        "Work with the restraint rather than against it. Pale walls and light wood are a ready-made gallery, so one confident piece usually beats several competing ones. Choose by the room's job: calm botanicals where you rest, bold abstracts where the scheme needs a lift, characterful illustrations where a little wit helps. Then pick a print whose ground colour echoes something already in the room, a rug, a cushion, a run of book spines, and it will look like it was always there.",
+        'Right here, from the gallery itself rather than a marketplace. We work directly with five independent artists in Oslo, Trondheim and Bergen, and each print is made to order when you buy it: pick the size and the frame on the product page and it goes to print for you.',
     },
     {
-      question: 'What makes wall art Scandinavian?',
+      question: 'Can I buy the prints framed?',
       answer:
-        'Restraint, mostly, and an eye kept on nature. Clean forms, flat confident colour and subjects that trace back to the Nordic outdoors and the life lived around it: birds, mountains, kitchen tables, the first stretch of the morning. It is a sensibility rather than a strict style. The prints in this gallery are all by artists living and working in Norway, so here the word describes where the work comes from as well as how it looks.',
+        'Yes. Every product page offers a wood, black or white frame alongside the unframed print, sized to the piece, so a framed print arrives finished rather than as a project. Unframed suits anyone with a frame waiting at home or a framer they already trust.',
     },
     {
-      question: 'Can I buy Scandinavian wall art framed, and what sizes are there?',
+      question: 'What sizes do the prints come in?',
       answer:
-        "Yes. Every print can be ordered unframed or with a wood, black or white frame, chosen on the product page. Sizes vary by artwork: most prints are 50 x 70 cm, Simen Wahlqvist's square illustrations are 50 x 50 cm, and Renate Thor's Birdie series comes in A3, A2 and A1. Everything is made to order and delivered worldwide, the UK included, with delivery costs shown at checkout.",
+        "Most prints are 50 x 70 cm. Simen Wahlqvist's square illustrations are 50 x 50 cm, and Renate Thor's Birdie series comes in A3, A2 and A1. Each product page lists the sizes for that piece; as a rule of thumb, the larger formats hold a sofa or bed wall alone, and the smaller ones sit happily on a picture shelf or in a group.",
     },
     {
-      question: 'How do I put together a Nordic gallery wall?',
+      question: 'Scandinavian, Nordic or Scandi: is there a difference?',
       answer:
-        "Slowly, and around one print you are sure of. Something has to connect the pieces: the four Birdie colourways share a composition, so any pair or trio reads as a set, and Simen Wahlqvist's squares line up naturally along a hallway or a picture shelf. A botanical beside an abstract works when the two share a colour. Keep the frames consistent, all wood, all black or all white, keep the gaps even, and let the wall grow a piece at a time.",
+        "Not one that matters when you're choosing a print. Scandinavian strictly means Norway, Sweden and Denmark; Nordic adds Finland and Iceland; Scandi is what everyone says by the third mention. The artists here all live and work in Norway, so the prints qualify under whichever word you searched for.",
     },
   ],
 };
