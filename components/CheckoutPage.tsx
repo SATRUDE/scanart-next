@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { ArrowLeft, CreditCard, Truck, Shield, CheckCircle, AlertCircle, Mail } from 'lucide-react';
+import { ArrowLeft, CreditCard, Truck, Shield, AlertCircle, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -15,7 +15,7 @@ import { getProductPrice } from '@/lib/pricing';
 import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import stripePromise from '@/config/stripe';
 import { OrderComplete } from '@/components/OrderComplete';
-import { getShippingRate, formatShippingCost } from '@/config/shipping';
+import { getShippingRate } from '@/config/shipping';
 import {
   DESTINATIONS,
   defaultDestination,
@@ -31,7 +31,12 @@ import { track } from '@/lib/analytics';
 
 const publishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
 
-interface CheckoutPageProps {}
+// At module scope because the React compiler (rightly) refuses impure calls
+// in anything it might memoise: a Date.now() inside the component would give
+// a cached handler a stale clock. Out here it runs when the order does.
+function orderReference(prefix: string): string {
+  return `${prefix}-${Date.now()}`;
+}
 
 // Stripe Card Element styling
 const cardElementOptions = {
@@ -278,13 +283,12 @@ const CountryOptionRow: React.FC<{
 // Discount codes are validated server-side (/api/validate-discount); this
 // public repository must never contain a working code.
 
-export const CheckoutPage: React.FC<CheckoutPageProps> = () => {
+export const CheckoutPage: React.FC = () => {
   const router = useRouter();
   const onBack = () => router.push('/products');
   const { state, getTotalPriceInCurrency, clearCart } = useCart();
   const { formatPrice, selectedCountry } = useLanguage();
   const [orderComplete, setOrderComplete] = useState(false);
-  const [paymentError, setPaymentError] = useState<string | null>(null);
   const [discountCode, setDiscountCode] = useState('');
   const [appliedDiscount, setAppliedDiscount] = useState<{ code: string; percentage: number; description: string } | null>(null);
   const [discountError, setDiscountError] = useState<string | null>(null);
@@ -355,7 +359,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = () => {
     try {
       // Prepare order data for Slack notification
       const orderData = {
-        orderId: `ORD-${Date.now()}`,
+        orderId: orderReference('ORD'),
         customer: {
           firstName: formData.firstName,
           lastName: formData.lastName,
@@ -411,16 +415,16 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = () => {
     clearCart();
   };
 
-  const handlePaymentError = (error: string) => {
-    setPaymentError(error);
-  };
+  // The form shows its own error beside the card field, which is where the
+  // buyer is looking; this page-level copy was stored and never rendered.
+  const handlePaymentError = () => {};
 
   // Add test mode function
   const handleTestMode = async () => {
     try {
       // Prepare order data for Slack notification
       const orderData = {
-        orderId: `TEST-${Date.now()}`,
+        orderId: orderReference('TEST'),
         customer: {
           firstName: formData.firstName,
           lastName: formData.lastName,
@@ -473,7 +477,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = () => {
     try {
       // Prepare order data for Slack notification
       const orderData = {
-        orderId: `ORD-${Date.now()}`,
+        orderId: orderReference('ORD'),
         customer: {
           firstName: formData.firstName,
           lastName: formData.lastName,
@@ -558,9 +562,6 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = () => {
   
     // Get shipping cost in user's selected currency
   const shipping: number = shippingRate ? shippingRate.costs[selectedCountry.currency] || 0 : 0;
-  
-  // Remove tax completely - no tax charged
-  const tax = 0;
   
   // Calculate discount
   const discountAmount = appliedDiscount 

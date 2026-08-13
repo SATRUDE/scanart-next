@@ -1,8 +1,7 @@
 import React from 'react';
-import { ImageWithFallback } from './figma/ImageWithFallback';
 import { SmartImage } from './SmartImage';
 import { getArtistById } from '@/data/artists';
-import { getLowestProductPrices } from '@/lib/pricing';
+import { getLowestProductPrices, type CurrencyPrices } from '@/lib/pricing';
 
 interface PrintCardProps {
   product: {
@@ -54,8 +53,8 @@ export const PrintCard: React.FC<PrintCardProps> = ({
   categoryLabel,
   outOfStockLabel = 'Out of stock'
 }) => {
-  const formatPrice = (prices: any, selectedCurrency: string) => {
-    const price = prices[selectedCurrency];
+  const formatPrice = (prices: CurrencyPrices, selectedCurrency: string) => {
+    const price = prices[selectedCurrency as keyof CurrencyPrices];
     const symbols: { [key: string]: string } = {
       GBP: '£',
       NOK: 'kr',

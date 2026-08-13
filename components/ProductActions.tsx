@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Plus, Minus, ShoppingBag } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useCart, Product } from '@/contexts/CartContext';
@@ -13,23 +13,30 @@ interface ProductActionsProps {
   product: Product;
 }
 
+const SIZE_ORDER: Record<string, number> = {
+  'A5': 1, 'A4': 2, 'A3': 3, '50x50cm': 4, 'A2': 5, '50x70cm': 6, 'A1': 7, 'A0': 8,
+};
+
 export const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
   const { addToCart } = useCart();
-  const { formatPrice, selectedCountry } = useLanguage();
+  const { formatPrice } = useLanguage();
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [selectedFrame, setSelectedFrame] = useState<string>('no-frame');
 
-  const sizeOrder: Record<string, number> = {
-    'A5': 1, 'A4': 2, 'A3': 3, '50x50cm': 4, 'A2': 5, '50x70cm': 6, 'A1': 7, 'A0': 8,
-  };
 
-  const availableSizes = product.sizes
-    ? Object.entries(product.sizes)
-        .filter(([, available]) => available)
-        .map(([size]) => size)
-        .sort((a, b) => (sizeOrder[a] ?? 99) - (sizeOrder[b] ?? 99))
-    : [];
+  // Memoised because the array's identity feeds the useEffect below: a fresh
+  // array every render would re-run the effect every render.
+  const availableSizes = useMemo(
+    () =>
+      product.sizes
+        ? Object.entries(product.sizes)
+            .filter(([, available]) => available)
+            .map(([size]) => size)
+            .sort((a, b) => (SIZE_ORDER[a] ?? 99) - (SIZE_ORDER[b] ?? 99))
+        : [],
+    [product.sizes],
+  );
 
   useEffect(() => {
     if (availableSizes.length > 0 && !selectedSize) {

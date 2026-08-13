@@ -21,7 +21,9 @@ export interface Article {
 export interface NotionBlock {
   id: string;
   type: string;
-  [key: string]: any;
+  // Notion's per-type payloads, typed at the point of use: the renderer casts
+  // block[type] to the shape it needs, so unknown loses nothing here.
+  [key: string]: unknown;
 }
 
 export async function getAllArticles(): Promise<Article[]> {
