@@ -62,22 +62,29 @@ export default async function ScandinavianWallArtPage() {
         ))}
       </div>
 
+      {/* The framing offer as its own section: it is the heart of the buying
+          queries this page is aimed at, so it gets a heading rather than a
+          clause (Ken's retarget, 2026-08-13). */}
+      <section className="mt-16">
+        <h2 className="text-2xl text-neutral-900">{wallArtLanding.framedHeading}</h2>
+        <p className="text-muted-foreground leading-relaxed mt-4 max-w-3xl">{wallArtLanding.framedBody}</p>
+      </section>
+
       <section className="mt-16">
         <h2 className="text-2xl text-neutral-900">{wallArtLanding.stylingHeading}</h2>
         {/* Rendered as JSX rather than a config string so the room mentions can
             carry real internal links to the collection landings. Copy by Ken. */}
         <p className="text-muted-foreground leading-relaxed mt-4 max-w-3xl">
-          Which print goes first depends on the room. In the living room, let one confident piece anchor
-          the sofa wall and build outwards from it; our{' '}
+          Where the print will hang decides which one to buy. In the living room, one confident piece
+          should anchor the sofa wall, and the{' '}
           <Link href="/collection/living-room" className="underline hover:text-neutral-900">living room collection</Link>{' '}
-          gathers the prints with that kind of presence. The bedroom rewards softer choices, muted botanicals
-          and quiet abstracts you are happy to wake up to, and there is a{' '}
-          <Link href="/collection/bedroom" className="underline hover:text-neutral-900">bedroom edit</Link>{' '}
-          for exactly that. The home office suits the characterful end of the catalogue, a wry illustration
-          or a graphic abstract hung in your eyeline from the desk, collected on the{' '}
-          <Link href="/collection/home-office" className="underline hover:text-neutral-900">home office page</Link>.
-          Wherever a piece hangs, centre it at roughly 145 to 150 cm from the floor, and when you group
-          prints, keep the frame choice consistent so the wall reads as one decision.
+          gathers the prints with that kind of presence. The bedroom rewards the softer end of the
+          gallery, muted botanicals and quiet abstracts you're happy to wake up to, collected in the{' '}
+          <Link href="/collection/bedroom" className="underline hover:text-neutral-900">bedroom edit</Link>.
+          The home office suits the catalogue's dry wit, a Wahlqvist illustration hung in your eyeline
+          from the desk, and there's a{' '}
+          <Link href="/collection/home-office" className="underline hover:text-neutral-900">home office page</Link>{' '}
+          for exactly that. Wherever it hangs, centre the piece at roughly 145 to 150 cm from the floor.
         </p>
       </section>
 

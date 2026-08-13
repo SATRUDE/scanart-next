@@ -41,8 +41,10 @@ export const collections: Collection[] = [
     description:
       'Curated Scandinavian and Nordic wall art for the living room: warm, characterful prints from independent Norwegian artists. Framing options and worldwide delivery.',
     heading: 'Scandinavian Wall Art for the Living Room',
+    // Ken's buyer-language rewrite (Studio row, 2026-08-13), written to
+    // dovetail with intro2, which owns the morning-light idea.
     intro:
-      'The living room sets the tone the moment you walk in, so the wall is worth a piece with real presence. Our Scandinavian and Nordic prints run from calm botanical landscapes to bold, colourful abstracts, work that can anchor a sofa or carry a feature wall on its own. All are printed to museum quality by the independent Norwegian artists behind the gallery.',
+      'The living room wall is the one guests actually look at, so it deserves a print bought on purpose rather than a poster that came with the frame. This edit gathers our Scandinavian wall art with living room presence: Sia Siamos’s warm table scenes, Renate Thor’s Birdie flock, Helene Brox’s bold cream figures among them. Each piece is made to order and can be bought framed, in wood, black or white, or unframed, whichever suits the wall it’s headed for.',
     intro2:
       'It is also the room a print is seen in most, in morning light and lamplight both, so it pays to choose something you will still enjoy on the hundredth glance rather than the first. Scandinavian living room wall art tends to earn that staying power through restraint, confident colour and clean form over busy detail. Start with one piece you are sure of and build the wall around it; a gallery grouping rarely works when it all arrives at once.',
     productSlugs: [

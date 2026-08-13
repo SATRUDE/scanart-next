@@ -28,8 +28,9 @@ export const categoryLandings: CategoryLanding[] = [
     description:
       'Scandinavian botanical prints: folk florals, patterned Nordic landscapes and vivid still lifes by independent Norwegian artists. Framing options, worldwide delivery.',
     heading: 'Botanical Prints',
+    // Ken's buyer-language rewrite (Studio row, 2026-08-13).
     intro:
-      'Botanical, in this gallery’s hands, means more than flowers in a vase, though Ingunn Dybendal’s Trysilkaffe gives you exactly that: a mug of wildly patterned blooms in joyful folk colour. It means the natural world as Nordic artists actually live with it. Dybendal’s Eltsjoen turns mountain, water and forest into dense, jewel-bright pattern; Helene Brox’s Tree Top Peach fills its frame with birds among branches in a soft papercut style; and Sia Siamos paints what happens when the outdoors reaches the table: cabin breakfasts, ripe tomatoes and grapes, a carafe of water against green kitchen tiles.',
+      'Botanical, in this gallery’s hands, means the natural world as Nordic artists actually live with it. Ingunn Dybendal draws folk flowers and a patterned lakeland in coloured pencil, Helene Brox threads dozens of birds through a soft papercut lattice, and Sia Siamos paints the outdoors arriving at the table: lobster and wine, cabin breakfasts, ripe tomatoes against green tiles. Every botanical print here is made to order and sold framed, wood, black or white, or unframed if you’d rather choose your own.',
     intro2:
       'That range makes botanical prints one of the easiest ways into art for a Scandinavian-style home. White walls and pale wood are a palette waiting for exactly this kind of warmth, and a botanical piece supplies it without tipping the room into clutter. All three are independent artists working in Norway, and every piece in the category is produced to museum standard.',
     stylingHeading: 'Styling botanical prints',
@@ -60,8 +61,11 @@ export const categoryLandings: CategoryLanding[] = [
     description:
       'Nordic abstract wall art from independent Norwegian artists: pared-back figures and bold bird motifs in confident flat colour. Framing options, worldwide delivery.',
     heading: 'Abstract Prints',
+    // Ken's buyer-language rewrite (Studio row, 2026-08-13). Also fixes a
+    // live factual error: the old intro put both artists in Oslo, and Renate
+    // Thor works in Trondheim (data/artists.ts).
     intro:
-      'Abstract art in the Nordic tradition leans towards clarity rather than chaos: forms pared back until only the essential shape is left, one or two flat colours doing the work of ten. The prints in this collection carry that sensibility. Helene Brox paints loose, cut-out-like figures in cream on a single field of colour, a dancer mid-stride, a swallow caught in its dive, while Renate Thor’s Birdie series, rooted in her screen-printing practice, turns a flock of birds into bold, rhythmic pattern across four colourways. Both are independent Norwegian artists working in Oslo.',
+      'Nordic abstraction leans to clarity rather than chaos: forms pared back until only the essential shape is left, one or two flat colours doing the work of ten. Helene Brox paints her loose, cut-out figures in Oslo; Renate Thor screen-prints the tumbling Birdie flock in Trondheim. If you’re looking to buy Scandinavian abstract art prints with real presence, this is the confident end of the gallery, and you choose the frame on each product page: wood, black, white or none at all.',
     intro2:
       'Modern Scandinavian wall art of this kind suits rooms that are already close to calm. If your space leans minimalist, pale wood, quiet textiles, plenty of light, an abstract print gives the eye one confident place to land without shouting over the room. And because the compositions are simple, they read from across the room as well as they do up close.',
     stylingHeading: 'Styling abstract prints',
@@ -92,8 +96,10 @@ export const categoryLandings: CategoryLanding[] = [
     description:
       'Characterful Scandinavian illustration prints by Oslo illustrator Simen Wahlqvist: few lines, dry wit, clean colour. Framing options and worldwide delivery.',
     heading: 'Illustrations',
+    // Ken's buyer-language rewrite (Studio row, 2026-08-13). Keeps the
+    // sole-illustrator caveat: revisit if a second illustrator joins.
     intro:
-      'Every illustration print here is, for now, the work of one artist: Simen Wahlqvist, an Oslo-based graphic designer and illustrator who sets out to capture a moment, often just before it happens, in as few lines as possible. By his own rule, if a drawing makes him laugh, it’s done. It shows. Morgenstrekk catches that first full-body stretch of the morning, and the square prints around it carry the same dry wit, each built from a handful of confident lines and one or two colours.',
+      'Every illustration print here is the work of one artist: Simen Wahlqvist, an Oslo illustrator who catches a moment, usually just before it happens, in as few lines as possible. His rule is that a drawing is done when it makes him laugh, and it shows. If you’re after a Nordic art print that gets a second look from every guest, start here: each piece can be bought framed or unframed, and the black frame does the square prints a particular favour.',
     intro2:
       'This is the clean-lined, characterful end of Scandinavian art, and an easy first print to buy. It suits hallways, home offices and any room that has come out a little too tasteful and needs one thing with a glint in its eye. Simen is one of the independent Norwegian artists behind the gallery, and his prints are made on archival, museum-level paper.',
     stylingHeading: 'Styling illustration prints',

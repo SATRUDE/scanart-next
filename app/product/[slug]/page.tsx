@@ -27,6 +27,23 @@ export async function generateStaticParams() {
   return products.map(p => ({ slug: p.slug }));
 }
 
+// Ken's worked examples, one per artist (Studio row, 2026-08-13): a visual
+// hook up to ~90 chars, then the fixed buying close. All verified under 155
+// characters. The other fifteen products fall back to their art-led first
+// sentence until their strings are written.
+const BUYER_DESCRIPTIONS: Record<string, string> = {
+  'birdie-blue':
+    'A tumbling flock of cream birds on petrol blue, straight from her screen-printing practice. Buy Birdie Blue framed in wood, black or white, or unframed.',
+  'swallow-dive':
+    'Cobalt birds dive edge to edge over warm cream, all the movement carried by shape alone. Buy Swallow Dive framed in wood, black or white, or unframed.',
+  'morgenstrekk':
+    "The day's first full-body stretch, drawn in a handful of lines. Buy Morgenstrekk framed in wood, black or white, or unframed, printed to order.",
+  'eltsjoen':
+    'A Nordic lake redrawn as dense coloured-pencil pattern, stroke by stroke. Buy Eltsjoen framed in wood, black or white, or unframed, printed to order.',
+  'hummer-og-vin':
+    'Lobster, lemons and red wine on a crowded summer table, painted mid-conversation. Buy Hummer og Vin framed in wood, black or white, or unframed.',
+};
+
 export async function generateMetadata({
   params,
 }: {
@@ -42,9 +59,20 @@ export async function generateMetadata({
   // on the page body and in the Product JSON-LD. Google truncates a full-length
   // meta description mid-word, so emit only that first sentence here.
   const snippet = metaSnippet(desc);
+  // The buying queries say "framed" and the old titles never did (Ken's
+  // buyer-language pass, 2026-08-13). Absolute, dropping the layout's
+  // "| Scandinavian Art Gallery" suffix: the longest name+artist combination
+  // in the catalogue lands at 58 characters, inside Google's ~60-char cut,
+  // and the suffix would push every one of them over. "Scandinavian" is
+  // carried by the description so both query families are served.
+  const buyerTitle = `${product.name} by ${product.artist || product.brand} | Framed Nordic Art Print`;
+  // Five hand-written buyer descriptions, one per artist as worked examples;
+  // the rest keep their art-led first sentence until the remaining fifteen
+  // are written (offered on Ken's row).
+  const buyerDescription = BUYER_DESCRIPTIONS[product.slug] ?? snippet;
   return {
-    title: product.name,
-    description: snippet,
+    title: { absolute: buyerTitle },
+    description: buyerDescription,
     alternates: {
       canonical: `/product/${product.slug}`,
     },
@@ -53,8 +81,8 @@ export async function generateMetadata({
     // lib/site.ts). og:type is intentionally omitted here: it is emitted as a
     // product og:type via a direct <meta> in the page body below.
     openGraph: {
-      title: product.name,
-      description: snippet,
+      title: buyerTitle,
+      description: buyerDescription,
       url: `${BASE_URL}/product/${product.slug}`,
       siteName: SITE_NAME,
       locale: OG_LOCALE,
@@ -63,8 +91,8 @@ export async function generateMetadata({
     twitter: {
       card: 'summary_large_image',
       site: TWITTER_SITE,
-      title: product.name,
-      description: snippet,
+      title: buyerTitle,
+      description: buyerDescription,
       images: [product.image],
     },
   };
