@@ -1,0 +1,50 @@
+# Runs the checks on every pull request and every push to main.
+#
+# There was no CI at all until 2026-08-13, which is how main's suite came to
+# be red overnight without anyone noticing: the Publish button on socialagent's
+# Costs page commits a generated price file straight to main, so a machine can
+# turn the shop's tests red with no human in the loop. Pushes are checked as
+# well as pull requests for exactly that reason.
+#
+# Deliberately does NOT run `npm run build`: its prebuild step syncs articles
+# from Neon, so a build here would need database credentials to prove something
+# these three checks already prove. Lint, types and tests need no secrets.
+
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+# A new push supersedes an in-flight run on the same branch.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # Lint is deliberately NOT here yet. The repo has a standing baseline of
+      # 17 lint errors reaching into CheckoutPage and CartContext, so a lint
+      # gate can never go green until that is cleaned up, and a check that can
+      # never pass teaches everyone to ignore the whole workflow. Ticketed;
+      # add the step back when the baseline is zero.
+      - name: Types
+        run: npm run typecheck
+
+      # The one that matters most here: the price invariants live in these
+      # tests, and a published price that breaks one is a price that should
+      # never have reached the shop.
+      - name: Tests
+        run: npm test
