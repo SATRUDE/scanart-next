@@ -1,4 +1,4 @@
-import { PUBLISHED_ARTWORK, isUsable } from './generated-prices';
+import { PUBLISHED_ARTWORK, PUBLISHED_RETIRED, isUsable } from './generated-prices';
 
 export interface PriceCategory {
   [size: string]: {
@@ -148,6 +148,54 @@ export const priceCategories: { [category: string]: PriceCategory } = (() => {
   }
   return merged;
 })();
+
+/** What a retirement pass did, so the caller can say so out loud. */
+export interface OfferedCategories {
+  offered: { [category: string]: PriceCategory };
+  /** Retired and removed, because nothing was using them. */
+  removed: string[];
+  /** Retired but kept, because a published print still sits on them. */
+  refused: string[];
+}
+
+/**
+ * The lists the shop offers, with socialagent's retirements applied.
+ *
+ * A retirement is honoured only for a list that no published print sits on,
+ * and that guard is the whole point rather than caution for its own sake. A
+ * print whose list has gone has no prices at all: it renders at zero, goes
+ * into the basket at zero, and `computeOrderAmount` then throws `No price for
+ * product` for the WHOLE order, not just that line, so one stranded print
+ * stops every basket it appears in. Meanwhile a list nothing sits on is
+ * invisible whether it is removed or not, because `priceCategories` is read
+ * in exactly one place, keyed by a product's own `priceCategory`. Removing
+ * an unused list therefore changes nothing and removing a used one breaks
+ * checkout, which leaves refusing as the only outcome worth having.
+ *
+ * socialagent has its own guard against retiring a list a print is on, but it
+ * cannot see the catalogue: the prints still live in Notion and the baked
+ * products.json, not in its database. On 2026-08-12 it retired `Standard`
+ * while `dragon` was still on it, which is why the check belongs here.
+ */
+export function offeredPriceCategories(
+  inUse: Iterable<string>,
+  retired: readonly string[] = PUBLISHED_RETIRED ?? [],
+  categories: { [category: string]: PriceCategory } = priceCategories
+): OfferedCategories {
+  const used = new Set(inUse);
+  const offered = { ...categories };
+  const removed: string[] = [];
+  const refused: string[] = [];
+  for (const category of retired) {
+    if (used.has(category)) {
+      refused.push(category);
+    } else if (category in offered) {
+      delete offered[category];
+      removed.push(category);
+    }
+  }
+  return { offered, removed, refused };
+}
 
 // Helper function to get prices for a specific category and size
 export const getPriceForCategory = (category: string, size: string) => {
