@@ -46,5 +46,11 @@ jobs:
       # The one that matters most here: the price invariants live in these
       # tests, and a published price that breaks one is a price that should
       # never have reached the shop.
+      #
+      # The unit project only. The storybook project runs in a real browser
+      # and needs Playwright's Chromium, which this runner does not install;
+      # its first run on main died launching a browser that was not there,
+      # with all 190 unit tests green underneath. Install the browser and
+      # widen this if the visual tests ever earn a place in the gate.
       - name: Tests
-        run: npm test
+        run: npm test -- --project unit
