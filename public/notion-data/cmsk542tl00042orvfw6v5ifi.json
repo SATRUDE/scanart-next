@@ -8,10 +8,10 @@
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "One of the questions we hear most is: what size print should I get? It's a surprisingly important decision. The wrong size can make a beautiful piece of art look lost on a large wall or cramped in a small space. This guide walks you through the sizes we actually print, from A3 up to A1 and the two 50 cm formats, so you can choose with confidence.",
+          "plain_text": "The bedroom is the only room you look at while lying down, and almost nobody styles it that way. The art goes above the headboard, where the only people who ever see it are guests passing the open door.",
           "href": null,
           "text": {
-            "content": "One of the questions we hear most is: what size print should I get? It's a surprisingly important decision. The wrong size can make a beautiful piece of art look lost on a large wall or cramped in a small space. This guide walks you through the sizes we actually print, from A3 up to A1 and the two 50 cm formats, so you can choose with confidence.",
+            "content": "The bedroom is the only room you look at while lying down, and almost nobody styles it that way. The art goes above the headboard, where the only people who ever see it are guests passing the open door.",
             "link": null
           },
           "annotations": {
@@ -28,16 +28,16 @@
   {
     "object": "block",
     "id": "md-2",
-    "type": "heading_2",
+    "type": "paragraph",
     "has_children": false,
-    "heading_2": {
+    "paragraph": {
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "Understanding print sizes: A3, A2 and A1 explained",
+          "plain_text": "That is not a reason to leave the headboard wall bare. It is a reason to think about two walls instead of one.",
           "href": null,
           "text": {
-            "content": "Understanding print sizes: A3, A2 and A1 explained",
+            "content": "That is not a reason to leave the headboard wall bare. It is a reason to think about two walls instead of one.",
             "link": null
           },
           "annotations": {
@@ -54,16 +54,16 @@
   {
     "object": "block",
     "id": "md-3",
-    "type": "paragraph",
+    "type": "heading_2",
     "has_children": false,
-    "paragraph": {
+    "heading_2": {
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "If you're not familiar with A-series paper sizes, here's a quick reference. These are the standard sizes used across Europe for art prints:",
+          "plain_text": "Two walls, two jobs",
           "href": null,
           "text": {
-            "content": "If you're not familiar with A-series paper sizes, here's a quick reference. These are the standard sizes used across Europe for art prints:",
+            "content": "Two walls, two jobs",
             "link": null
           },
           "annotations": {
@@ -80,16 +80,16 @@
   {
     "object": "block",
     "id": "md-4",
-    "type": "bulleted_list_item",
+    "type": "paragraph",
     "has_children": false,
-    "bulleted_list_item": {
+    "paragraph": {
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "A3 (29.7 x 42 cm): the most compact option. Suits smaller walls, home offices and gallery wall arrangements where several pieces share the space.",
+          "plain_text": "The wall above the bed is the one that frames the room from the doorway. It wants presence: one substantial piece, or a considered pair, centred on the bed.",
           "href": null,
           "text": {
-            "content": "A3 (29.7 x 42 cm): the most compact option. Suits smaller walls, home offices and gallery wall arrangements where several pieces share the space.",
+            "content": "The wall above the bed is the one that frames the room from the doorway. It wants presence: one substantial piece, or a considered pair, centred on the bed.",
             "link": null
           },
           "annotations": {
@@ -106,16 +106,16 @@
   {
     "object": "block",
     "id": "md-5",
-    "type": "bulleted_list_item",
+    "type": "paragraph",
     "has_children": false,
-    "bulleted_list_item": {
+    "paragraph": {
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "A2 (42 x 59.4 cm): the versatile middle ground. Works above a desk, in a hallway, or as one of a pair flanking a window.",
+          "plain_text": "The wall opposite the bed is the one you actually look at, twice a day, at your least critical and most receptive. It can afford to be gentler and more personal. A single quiet print here does more for how the room feels than anything above your head ever will.",
           "href": null,
           "text": {
-            "content": "A2 (42 x 59.4 cm): the versatile middle ground. Works above a desk, in a hallway, or as one of a pair flanking a window.",
+            "content": "The wall opposite the bed is the one you actually look at, twice a day, at your least critical and most receptive. It can afford to be gentler and more personal. A single quiet print here does more for how the room feels than anything above your head ever will.",
             "link": null
           },
           "annotations": {
@@ -132,16 +132,16 @@
   {
     "object": "block",
     "id": "md-6",
-    "type": "bulleted_list_item",
+    "type": "heading_2",
     "has_children": false,
-    "bulleted_list_item": {
+    "heading_2": {
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "A1 (59.4 x 84.1 cm): the statement maker. Best for large walls, above sofas, or as a single feature piece that anchors an entire room.",
+          "plain_text": "Height and width above the headboard",
           "href": null,
           "text": {
-            "content": "A1 (59.4 x 84.1 cm): the statement maker. Best for large walls, above sofas, or as a single feature piece that anchors an entire room.",
+            "content": "Height and width above the headboard",
             "link": null
           },
           "annotations": {
@@ -164,44 +164,10 @@
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "In our gallery the A sizes belong to Renate Thor's ",
+          "plain_text": "Two numbers save most of the guesswork.",
           "href": null,
           "text": {
-            "content": "In our gallery the A sizes belong to Renate Thor's ",
-            "link": null
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": "Birdie prints",
-          "href": "/product/birdie-blue",
-          "text": {
-            "content": "Birdie prints",
-            "link": {
-              "url": "/product/birdie-blue"
-            }
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": ", which come in all three. The rest of the catalogue is printed at the size chosen for the artwork: 50 x 70 cm for most pieces, and 50 x 50 cm for the square illustrations. The square format is quietly useful, sitting well on a picture shelf and holding a narrow wall a rectangle would crowd, while 50 x 70 lands between A2 and A1, big enough to hold a wall on its own.",
-          "href": null,
-          "text": {
-            "content": ", which come in all three. The rest of the catalogue is printed at the size chosen for the artwork: 50 x 70 cm for most pieces, and 50 x 50 cm for the square illustrations. The square format is quietly useful, sitting well on a picture shelf and holding a narrow wall a rectangle would crowd, while 50 x 70 lands between A2 and A1, big enough to hold a wall on its own.",
+            "content": "Two numbers save most of the guesswork.",
             "link": null
           },
           "annotations": {
@@ -218,16 +184,16 @@
   {
     "object": "block",
     "id": "md-8",
-    "type": "heading_2",
+    "type": "bulleted_list_item",
     "has_children": false,
-    "heading_2": {
+    "bulleted_list_item": {
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "Room by room: which size works where",
+          "plain_text": "Leave roughly 20 to 25 cm between the top of the headboard and the bottom of the frame. Any higher and the art floats off on its own; any lower and it looks like it slipped.",
           "href": null,
           "text": {
-            "content": "Room by room: which size works where",
+            "content": "Leave roughly 20 to 25 cm between the top of the headboard and the bottom of the frame. Any higher and the art floats off on its own; any lower and it looks like it slipped.",
             "link": null
           },
           "annotations": {
@@ -244,16 +210,16 @@
   {
     "object": "block",
     "id": "md-9",
-    "type": "heading_3",
+    "type": "bulleted_list_item",
     "has_children": false,
-    "heading_3": {
+    "bulleted_list_item": {
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "Living room",
+          "plain_text": "Aim for the art to span about two thirds of the bed's width. Above a double, a single portrait print can look stranded. A pair, or one large piece, holds the wall.",
           "href": null,
           "text": {
-            "content": "Living room",
+            "content": "Aim for the art to span about two thirds of the bed's width. Above a double, a single portrait print can look stranded. A pair, or one large piece, holds the wall.",
             "link": null
           },
           "annotations": {
@@ -276,44 +242,10 @@
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "The living room is where most people want their most impactful piece. If you're hanging art above a sofa, the general rule is that the artwork should be roughly 60 to 75 per cent of the sofa's width. For a standard three-seater, that usually means an A1, a 50 x 70, or a pair of A2 prints side by side. A single A3 above a large sofa will look too small; it's a common mistake that's easily avoided. The ",
+          "plain_text": "Centre the arrangement on the bed, not on the wall. Beds are rarely dead centre once you have allowed for a door or a radiator, and the eye reads the bed as the middle of the room regardless.",
           "href": null,
           "text": {
-            "content": "The living room is where most people want their most impactful piece. If you're hanging art above a sofa, the general rule is that the artwork should be roughly 60 to 75 per cent of the sofa's width. For a standard three-seater, that usually means an A1, a 50 x 70, or a pair of A2 prints side by side. A single A3 above a large sofa will look too small; it's a common mistake that's easily avoided. The ",
-            "link": null
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": "living room collection",
-          "href": "/collection/living-room",
-          "text": {
-            "content": "living room collection",
-            "link": {
-              "url": "/collection/living-room"
-            }
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": " is picked with that wall in mind.",
-          "href": null,
-          "text": {
-            "content": " is picked with that wall in mind.",
+            "content": "Centre the arrangement on the bed, not on the wall. Beds are rarely dead centre once you have allowed for a door or a radiator, and the eye reads the bed as the middle of the room regardless.",
             "link": null
           },
           "annotations": {
@@ -330,16 +262,16 @@
   {
     "object": "block",
     "id": "md-11",
-    "type": "heading_3",
+    "type": "heading_2",
     "has_children": false,
-    "heading_3": {
+    "heading_2": {
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "Bedroom",
+          "plain_text": "Quiet, not bland",
           "href": null,
           "text": {
-            "content": "Bedroom",
+            "content": "Quiet, not bland",
             "link": null
           },
           "annotations": {
@@ -362,10 +294,522 @@
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "Above the bed, A2 or 50 x 70 is often the sweet spot: large enough to be the focal point without dominating a room meant for winding down. If your bed has a tall headboard, consider hanging the print slightly higher than you normally would. For bedside walls or the space above a chest of drawers, A3 works perfectly. The ",
+          "plain_text": "Bedrooms reward restraint, which is not the same as beige. The prints that work here tend to carry one clear idea in a soft palette.",
           "href": null,
           "text": {
-            "content": "Above the bed, A2 or 50 x 70 is often the sweet spot: large enough to be the focal point without dominating a room meant for winding down. If your bed has a tall headboard, consider hanging the print slightly higher than you normally would. For bedside walls or the space above a chest of drawers, A3 works perfectly. The ",
+            "content": "Bedrooms reward restraint, which is not the same as beige. The prints that work here tend to carry one clear idea in a soft palette.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-13",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Tree Top Peach",
+          "href": "/product/tree-top-peach",
+          "text": {
+            "content": "Tree Top Peach",
+            "link": {
+              "url": "/product/tree-top-peach"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " is the gentlest thing in the gallery, a papercut lattice of branches and birds in a single warm tone. It settles a room without disappearing into it.",
+          "href": null,
+          "text": {
+            "content": " is the gentlest thing in the gallery, a papercut lattice of branches and birds in a single warm tone. It settles a room without disappearing into it.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-14",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Swallow Dive",
+          "href": "/product/swallow-dive",
+          "text": {
+            "content": "Swallow Dive",
+            "link": {
+              "url": "/product/swallow-dive"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " is all movement, but in two colours only, cobalt on cream. Calm from the bed, confident from the door.",
+          "href": null,
+          "text": {
+            "content": " is all movement, but in two colours only, cobalt on cream. Calm from the bed, confident from the door.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-15",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Birdie Pink",
+          "href": "/product/birdie-pink",
+          "text": {
+            "content": "Birdie Pink",
+            "link": {
+              "url": "/product/birdie-pink"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " is soft rose with cobalt tail feathers, sweet enough for a nursery and sharp enough not to be twee.",
+          "href": null,
+          "text": {
+            "content": " is soft rose with cobalt tail feathers, sweet enough for a nursery and sharp enough not to be twee.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-16",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Morgenstrekk",
+          "href": "/product/morgenstrekk",
+          "text": {
+            "content": "Morgenstrekk",
+            "link": {
+              "url": "/product/morgenstrekk"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " is a figure taking the day's first stretch, ochre on peach. It is a good-natured thing to wake up facing.",
+          "href": null,
+          "text": {
+            "content": " is a figure taking the day's first stretch, ochre on peach. It is a good-natured thing to wake up facing.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-17",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "One steer from experience: be careful with faces. The deadpan illustrations are excellent company in a home office and slightly odd company at 3am, when something with eyes is looking back at you across the duvet.",
+          "href": null,
+          "text": {
+            "content": "One steer from experience: be careful with faces. The deadpan illustrations are excellent company in a home office and slightly odd company at 3am, when something with eyes is looking back at you across the duvet.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-18",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Pairs beat singles here",
+          "href": null,
+          "text": {
+            "content": "Pairs beat singles here",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-19",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Bedrooms are symmetrical rooms. Two bedside tables, two lamps, two of you. Art tends to follow, and a pair of prints above the headboard reads as deliberate in a way a lone print often does not.",
+          "href": null,
+          "text": {
+            "content": "Bedrooms are symmetrical rooms. Two bedside tables, two lamps, two of you. Art tends to follow, and a pair of prints above the headboard reads as deliberate in a way a lone print often does not.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-20",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "The easiest pair is two colourways of the same image. Hang ",
+          "href": null,
+          "text": {
+            "content": "The easiest pair is two colourways of the same image. Hang ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Birdie Blue",
+          "href": "/product/birdie-blue",
+          "text": {
+            "content": "Birdie Blue",
+            "link": {
+              "url": "/product/birdie-blue"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " and ",
+          "href": null,
+          "text": {
+            "content": " and ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Birdie Brown",
+          "href": "/product/birdie-brown",
+          "text": {
+            "content": "Birdie Brown",
+            "link": {
+              "url": "/product/birdie-brown"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " side by side and you get variation and repetition at once, which is the whole trick of a small series. Keep the gap tight, 5 to 8 cm, so they read as one object.",
+          "href": null,
+          "text": {
+            "content": " side by side and you get variation and repetition at once, which is the whole trick of a small series. Keep the gap tight, 5 to 8 cm, so they read as one object.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-21",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "If you would rather build something looser across the wall, the ",
+          "href": null,
+          "text": {
+            "content": "If you would rather build something looser across the wall, the ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "guide to making an art wall",
+          "href": "/article/create-an-art-wall",
+          "text": {
+            "content": "guide to making an art wall",
+            "link": {
+              "url": "/article/create-an-art-wall"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " covers spacing and anchors in more detail.",
+          "href": null,
+          "text": {
+            "content": " covers spacing and anchors in more detail.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-22",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Small bedrooms",
+          "href": null,
+          "text": {
+            "content": "Small bedrooms",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-23",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "When there is no wall to spare, stop hanging and start leaning. A print propped on a chest of drawers or a low shelf, overlapping a lamp or a stack of books, gives the room art without another set of holes in the plaster. It also lets you swap it in ten seconds, which is the real luxury.",
+          "href": null,
+          "text": {
+            "content": "When there is no wall to spare, stop hanging and start leaning. A print propped on a chest of drawers or a low shelf, overlapping a lamp or a stack of books, gives the room art without another set of holes in the plaster. It also lets you swap it in ten seconds, which is the real luxury.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-24",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "One practical note for above a bed: choose acrylic glazing over glass, and fix it properly into the wall rather than the plasterboard alone. It is the one wall where the consequences of a bad fixing land directly on your head.",
+          "href": null,
+          "text": {
+            "content": "One practical note for above a bed: choose acrylic glazing over glass, and fix it properly into the wall rather than the plasterboard alone. It is the one wall where the consequences of a bad fixing land directly on your head.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-25",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "If you want to see the calmer end of things in one place, the ",
+          "href": null,
+          "text": {
+            "content": "If you want to see the calmer end of things in one place, the ",
             "link": null
           },
           "annotations": {
@@ -396,398 +840,10 @@
         },
         {
           "type": "text",
-          "plain_text": " gathers the calmer pieces that suit the room.",
+          "plain_text": " gathers the prints chosen with exactly this room in mind.",
           "href": null,
           "text": {
-            "content": " gathers the calmer pieces that suit the room.",
-            "link": null
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        }
-      ]
-    }
-  },
-  {
-    "object": "block",
-    "id": "md-13",
-    "type": "heading_3",
-    "has_children": false,
-    "heading_3": {
-      "rich_text": [
-        {
-          "type": "text",
-          "plain_text": "Hallway and entryway",
-          "href": null,
-          "text": {
-            "content": "Hallway and entryway",
-            "link": null
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        }
-      ]
-    }
-  },
-  {
-    "object": "block",
-    "id": "md-14",
-    "type": "paragraph",
-    "has_children": false,
-    "paragraph": {
-      "rich_text": [
-        {
-          "type": "text",
-          "plain_text": "Hallways are often narrow, so a single A2 or 50 x 70 cm print works well. Hang it at eye level; this is one space where you view art from close range, so the details matter. For a longer hallway, consider a series of three A3 prints, or the square 50 x 50 illustrations, spaced evenly along the wall.",
-          "href": null,
-          "text": {
-            "content": "Hallways are often narrow, so a single A2 or 50 x 70 cm print works well. Hang it at eye level; this is one space where you view art from close range, so the details matter. For a longer hallway, consider a series of three A3 prints, or the square 50 x 50 illustrations, spaced evenly along the wall.",
-            "link": null
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        }
-      ]
-    }
-  },
-  {
-    "object": "block",
-    "id": "md-15",
-    "type": "heading_3",
-    "has_children": false,
-    "heading_3": {
-      "rich_text": [
-        {
-          "type": "text",
-          "plain_text": "Home office",
-          "href": null,
-          "text": {
-            "content": "Home office",
-            "link": null
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        }
-      ]
-    }
-  },
-  {
-    "object": "block",
-    "id": "md-16",
-    "type": "paragraph",
-    "has_children": false,
-    "paragraph": {
-      "rich_text": [
-        {
-          "type": "text",
-          "plain_text": "An A3 or A2 print above or beside your desk adds personality to video calls and gives you somewhere to look that isn't the screen. Choose something that inspires without distracting; the ",
-          "href": null,
-          "text": {
-            "content": "An A3 or A2 print above or beside your desk adds personality to video calls and gives you somewhere to look that isn't the screen. Choose something that inspires without distracting; the ",
-            "link": null
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": "home office collection",
-          "href": "/collection/home-office",
-          "text": {
-            "content": "home office collection",
-            "link": {
-              "url": "/collection/home-office"
-            }
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": " leans characterful for exactly that reason.",
-          "href": null,
-          "text": {
-            "content": " leans characterful for exactly that reason.",
-            "link": null
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        }
-      ]
-    }
-  },
-  {
-    "object": "block",
-    "id": "md-17",
-    "type": "heading_2",
-    "has_children": false,
-    "heading_2": {
-      "rich_text": [
-        {
-          "type": "text",
-          "plain_text": "The tape test: try before you buy",
-          "href": null,
-          "text": {
-            "content": "The tape test: try before you buy",
-            "link": null
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        }
-      ]
-    }
-  },
-  {
-    "object": "block",
-    "id": "md-18",
-    "type": "paragraph",
-    "has_children": false,
-    "paragraph": {
-      "rich_text": [
-        {
-          "type": "text",
-          "plain_text": "Here's a trick that interior designers use: cut a piece of paper or newspaper to the exact dimensions of the print size you're considering, and tape it to the wall where you plan to hang the artwork. Live with it for a day or two. You'll quickly get a sense of whether the size feels right for the space, and it costs nothing to test.",
-          "href": null,
-          "text": {
-            "content": "Here's a trick that interior designers use: cut a piece of paper or newspaper to the exact dimensions of the print size you're considering, and tape it to the wall where you plan to hang the artwork. Live with it for a day or two. You'll quickly get a sense of whether the size feels right for the space, and it costs nothing to test.",
-            "link": null
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        }
-      ]
-    }
-  },
-  {
-    "object": "block",
-    "id": "md-19",
-    "type": "heading_2",
-    "has_children": false,
-    "heading_2": {
-      "rich_text": [
-        {
-          "type": "text",
-          "plain_text": "Does the frame change the size?",
-          "href": null,
-          "text": {
-            "content": "Does the frame change the size?",
-            "link": null
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        }
-      ]
-    }
-  },
-  {
-    "object": "block",
-    "id": "md-20",
-    "type": "paragraph",
-    "has_children": false,
-    "paragraph": {
-      "rich_text": [
-        {
-          "type": "text",
-          "plain_text": "Yes, and it's worth accounting for. A frame adds a few centimetres to each side of the print, so if you're fitting art into a specific spot, between two windows, say, or above a piece of furniture with limited clearance, measure with the frame in mind. The frame itself, wood, black or white, is chosen on each product page.",
-          "href": null,
-          "text": {
-            "content": "Yes, and it's worth accounting for. A frame adds a few centimetres to each side of the print, so if you're fitting art into a specific spot, between two windows, say, or above a piece of furniture with limited clearance, measure with the frame in mind. The frame itself, wood, black or white, is chosen on each product page.",
-            "link": null
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        }
-      ]
-    }
-  },
-  {
-    "object": "block",
-    "id": "md-21",
-    "type": "heading_2",
-    "has_children": false,
-    "heading_2": {
-      "rich_text": [
-        {
-          "type": "text",
-          "plain_text": "When in doubt, go bigger",
-          "href": null,
-          "text": {
-            "content": "When in doubt, go bigger",
-            "link": null
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        }
-      ]
-    }
-  },
-  {
-    "object": "block",
-    "id": "md-22",
-    "type": "paragraph",
-    "has_children": false,
-    "paragraph": {
-      "rich_text": [
-        {
-          "type": "text",
-          "plain_text": "If you're torn between two sizes, our advice is to go with the larger option. Art that's too small for a space tends to look like an afterthought. A slightly oversized piece, on the other hand, creates intentional impact. It's far more common to regret going too small than too large.",
-          "href": null,
-          "text": {
-            "content": "If you're torn between two sizes, our advice is to go with the larger option. Art that's too small for a space tends to look like an afterthought. A slightly oversized piece, on the other hand, creates intentional impact. It's far more common to regret going too small than too large.",
-            "link": null
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        }
-      ]
-    }
-  },
-  {
-    "object": "block",
-    "id": "md-23",
-    "type": "paragraph",
-    "has_children": false,
-    "paragraph": {
-      "rich_text": [
-        {
-          "type": "text",
-          "plain_text": "Every print's available sizes and prices sit on its product page. Start from the whole gallery on our ",
-          "href": null,
-          "text": {
-            "content": "Every print's available sizes and prices sit on its product page. Start from the whole gallery on our ",
-            "link": null
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": "Scandinavian wall art",
-          "href": "/scandinavian-wall-art",
-          "text": {
-            "content": "Scandinavian wall art",
-            "link": {
-              "url": "/scandinavian-wall-art"
-            }
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": " page or from the room collections above, and once the size is settled, ",
-          "href": null,
-          "text": {
-            "content": " page or from the room collections above, and once the size is settled, ",
-            "link": null
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": "how to style Scandinavian wall art in the living room",
-          "href": "/article/how-to-style-scandinavian-wall-art-living-room",
-          "text": {
-            "content": "how to style Scandinavian wall art in the living room",
-            "link": {
-              "url": "/article/how-to-style-scandinavian-wall-art-living-room"
-            }
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": " is the companion piece for placing it.",
-          "href": null,
-          "text": {
-            "content": " is the companion piece for placing it.",
+            "content": " gathers the prints chosen with exactly this room in mind.",
             "link": null
           },
           "annotations": {

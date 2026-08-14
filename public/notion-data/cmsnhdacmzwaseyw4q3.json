@@ -1,0 +1,550 @@
+[
+  {
+    "object": "block",
+    "id": "md-1",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Astrup Fearnley Museet sits right on the water at Strandpromenaden 2, out at the end of Tjuvholmen on Oslo's central waterfront. The museum was founded in 1993 and later moved out here into a Renzo Piano building, or rather buildings: low volumes clad in timber the weather has taken to a soft silver-grey, under one long curved glass roof that steps straight over the canal running between them, carried on slender steel columns rigged like the masts in the harbour behind. Piano designed the park as well as the buildings. Behind it all sits a collection of nearly 1,500 works of international contemporary art, Jeff Koons, Damien Hirst, Cindy Sherman, Wolfgang Tillmans and Félix González-Torres among them, and the museum rehangs it rather than leaving it be.",
+          "href": null,
+          "text": {
+            "content": "Astrup Fearnley Museet sits right on the water at Strandpromenaden 2, out at the end of Tjuvholmen on Oslo's central waterfront. The museum was founded in 1993 and later moved out here into a Renzo Piano building, or rather buildings: low volumes clad in timber the weather has taken to a soft silver-grey, under one long curved glass roof that steps straight over the canal running between them, carried on slender steel columns rigged like the masts in the harbour behind. Piano designed the park as well as the buildings. Behind it all sits a collection of nearly 1,500 works of international contemporary art, Jeff Koons, Damien Hirst, Cindy Sherman, Wolfgang Tillmans and Félix González-Torres among them, and the museum rehangs it rather than leaving it be.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-2",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Two things are on now.",
+          "href": null,
+          "text": {
+            "content": "Two things are on now.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-3",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "The main event is ",
+          "href": null,
+          "text": {
+            "content": "The main event is ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Beatriz González",
+          "href": "https://www.afmuseet.no/en/exhibitions/beatriz-gonzalez/",
+          "text": {
+            "content": "Beatriz González",
+            "link": {
+              "url": "https://www.afmuseet.no/en/exhibitions/beatriz-gonzalez/"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ", 12 June to 11 October 2026, more than 150 works spanning the Colombian painter's practice from the 1960s onwards. González died in January 2026, aged 93, so what was planned as a survey now reads as a memorial. She worked from images everyone had already seen, press photographs and famous European paintings, and repainted them flat and loud, in a palette that won't let you look past it. Not a difficult show to enjoy, and not an easy one to shake off. It's co-produced with the Pinacoteca de São Paulo and the Barbican in London, and curated here by the museum's director, Solveig Øvstebø.",
+          "href": null,
+          "text": {
+            "content": ", 12 June to 11 October 2026, more than 150 works spanning the Colombian painter's practice from the 1960s onwards. González died in January 2026, aged 93, so what was planned as a survey now reads as a memorial. She worked from images everyone had already seen, press photographs and famous European paintings, and repainted them flat and loud, in a palette that won't let you look past it. Not a difficult show to enjoy, and not an easy one to shake off. It's co-produced with the Pinacoteca de São Paulo and the Barbican in London, and curated here by the museum's director, Solveig Øvstebø.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-4",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Across the canal, the ",
+          "href": null,
+          "text": {
+            "content": "Across the canal, the ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Astrup Fearnley Collection",
+          "href": "https://www.afmuseet.no/en/exhibitions/astrup-fearnley-collection-2/",
+          "text": {
+            "content": "Astrup Fearnley Collection",
+            "link": {
+              "url": "https://www.afmuseet.no/en/exhibitions/astrup-fearnley-collection-2/"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " hang runs all year, to 30 December. This one sets five years of new acquisitions against the known works: Kara Walker, Klara Lidén, Nina Beier, and Synnøve Anker Aurdal's woven Fossen, made across the late eighties. Go in without a plan and let the rooms argue with each other.",
+          "href": null,
+          "text": {
+            "content": " hang runs all year, to 30 December. This one sets five years of new acquisitions against the known works: Kara Walker, Klara Lidén, Nina Beier, and Synnøve Anker Aurdal's woven Fossen, made across the late eighties. Go in without a plan and let the rooms argue with each other.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-5",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "The practical bits, all from the museum's own ",
+          "href": null,
+          "text": {
+            "content": "The practical bits, all from the museum's own ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "visit page",
+          "href": "https://www.afmuseet.no/en/visit-us/",
+          "text": {
+            "content": "visit page",
+            "link": {
+              "url": "https://www.afmuseet.no/en/visit-us/"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ". Adults 180 kr, students and seniors 100 kr, under-20s and Oslo Pass holders free. Open Monday to Wednesday and Friday 12:00 to 17:00, Thursday to 19:00, weekends from 11:00, and daily through August. The ",
+          "href": null,
+          "text": {
+            "content": ". Adults 180 kr, students and seniors 100 kr, under-20s and Oslo Pass holders free. Open Monday to Wednesday and Friday 12:00 to 17:00, Thursday to 19:00, weekends from 11:00, and daily through August. The ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "what's on",
+          "href": "https://www.afmuseet.no/en/whats-on/",
+          "text": {
+            "content": "what's on",
+            "link": {
+              "url": "https://www.afmuseet.no/en/whats-on/"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " listings show guided tours in English from Sunday 23 August, González at 14:00 and the collection at 15:00. Outside, the ",
+          "href": null,
+          "text": {
+            "content": " listings show guided tours in English from Sunday 23 August, González at 14:00 and the collection at 15:00. Outside, the ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Tjuvholmen Sculpture Park",
+          "href": "https://www.afmuseet.no/en/tjuvholmen-sculpture-park/",
+          "text": {
+            "content": "Tjuvholmen Sculpture Park",
+            "link": {
+              "url": "https://www.afmuseet.no/en/tjuvholmen-sculpture-park/"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " holds seven works by Louise Bourgeois, Antony Gormley, Anish Kapoor, Ellsworth Kelly, Ugo Rondinone, Franz West and Fischli & Weiss, which is a good hour on its own.",
+          "href": null,
+          "text": {
+            "content": " holds seven works by Louise Bourgeois, Antony Gormley, Anish Kapoor, Ellsworth Kelly, Ugo Rondinone, Franz West and Fischli & Weiss, which is a good hour on its own.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-6",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "If you can only get here in winter, two big shows land in November: ",
+          "href": null,
+          "text": {
+            "content": "If you can only get here in winter, two big shows land in November: ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Material Shifts",
+          "href": "https://www.afmuseet.no/en/exhibitions/material-shifts/",
+          "text": {
+            "content": "Material Shifts",
+            "link": {
+              "url": "https://www.afmuseet.no/en/exhibitions/material-shifts/"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ", an international sculpture survey filling every gallery from 13 November, and ",
+          "href": null,
+          "text": {
+            "content": ", an international sculpture survey filling every gallery from 13 November, and ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Pushwagner",
+          "href": "https://www.afmuseet.no/en/exhibitions/pushwagner/",
+          "text": {
+            "content": "Pushwagner",
+            "link": {
+              "url": "https://www.afmuseet.no/en/exhibitions/pushwagner/"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " from 28 November to 11 April, the first major museum showing of Hariton Pushwagner in Norway since he died in 2018.",
+          "href": null,
+          "text": {
+            "content": " from 28 November to 11 April, the first major museum showing of Hariton Pushwagner in Norway since he died in 2018.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-7",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "For a day further out of town, ",
+          "href": null,
+          "text": {
+            "content": "For a day further out of town, ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Henie Onstad",
+          "href": "/article/henie-onstad-in-focus",
+          "text": {
+            "content": "Henie Onstad",
+            "link": {
+              "url": "/article/henie-onstad-in-focus"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " is the other fjord-side option, and its Kai Fjell retrospective, Good will Prevail, runs to 1 November.",
+          "href": null,
+          "text": {
+            "content": " is the other fjord-side option, and its Kai Fjell retrospective, Good will Prevail, runs to 1 November.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-8",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Consider this me telling you to see González before 11 October. Flat colour, hard edges, a printed image pushed until it says something: if that's your language, ",
+          "href": null,
+          "text": {
+            "content": "Consider this me telling you to see González before 11 October. Flat colour, hard edges, a printed image pushed until it says something: if that's your language, ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Renate Thor's screenprints",
+          "href": "/product/birdie-blue",
+          "text": {
+            "content": "Renate Thor's screenprints",
+            "link": {
+              "url": "/product/birdie-blue"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " speak it too, and ",
+          "href": null,
+          "text": {
+            "content": " speak it too, and ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "the artists behind them",
+          "href": "/artists",
+          "text": {
+            "content": "the artists behind them",
+            "link": {
+              "url": "/artists"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " are working in the same city.",
+          "href": null,
+          "text": {
+            "content": " are working in the same city.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  }
+]

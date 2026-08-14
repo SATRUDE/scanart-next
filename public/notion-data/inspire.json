@@ -1,6 +1,6 @@
 [
   {
-    "image": "https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/inspire/inspire-01-1786005113826.jpg",
+    "image": "/notion-data/heroes/inspire-scene-1-02f47199.jpg",
     "alt": "Hyttefrokost by Sia Siamos framed in oak on a warm white wall, above a cane chair under a paper pendant",
     "slugs": [
       "hyttefrokost"
@@ -9,16 +9,7 @@
     "height": 1600
   },
   {
-    "image": "https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/inspire/inspire-02-1786005115210.jpg",
-    "alt": "Hyttefrokost hanging on a pale green wall beside a chrome cantilever chair",
-    "slugs": [
-      "hyttefrokost"
-    ],
-    "width": 1074,
-    "height": 1600
-  },
-  {
-    "image": "https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/inspire/inspire-03-1786005116015.jpg",
+    "image": "/notion-data/heroes/inspire-scene-2-5582af26.jpg",
     "alt": "Hummer og Vin leaning on a dark desk beside a white arch sculpture",
     "slugs": [
       "hummer-og-vin"
@@ -27,7 +18,7 @@
     "height": 1600
   },
   {
-    "image": "https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/inspire/inspire-04-1786005116702.jpg",
+    "image": "/notion-data/heroes/inspire-scene-3-a4a691a3.jpg",
     "alt": "Mean Snothing framed on a grey tray table with a patterned ceramic bowl",
     "slugs": [
       "mean-snothing"
@@ -36,7 +27,7 @@
     "height": 1600
   },
   {
-    "image": "https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/inspire/inspire-05-1786005117457.jpg",
+    "image": "/notion-data/heroes/inspire-scene-4-376e3925.jpg",
     "alt": "Half Man on a green sideboard in a warm yellow kitchen corner",
     "slugs": [
       "half-man"
@@ -45,7 +36,7 @@
     "height": 1600
   },
   {
-    "image": "https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/inspire/inspire-06-1786005118346.jpg",
+    "image": "/notion-data/heroes/inspire-scene-5-57068b08.jpg",
     "alt": "Birdie Pink above a bed with yellow striped bedding and a green glass lamp",
     "slugs": [
       "birdie-pink"
@@ -54,7 +45,7 @@
     "height": 1600
   },
   {
-    "image": "https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/inspire/inspire-07-1786005119148.jpg",
+    "image": "/notion-data/heroes/inspire-scene-6-b283d557.jpg",
     "alt": "Birdie Green on a pale blue bedroom wall above a light oak bed",
     "slugs": [
       "birdie-green"
@@ -63,7 +54,7 @@
     "height": 1600
   },
   {
-    "image": "https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/inspire/inspire-08-1786005119818.jpg",
+    "image": "/notion-data/heroes/inspire-scene-7-f3952db2.jpg",
     "alt": "Birdie Brown leaning on a dark desk beside a white ribbed vase",
     "slugs": [
       "birdie-brown"
@@ -72,7 +63,7 @@
     "height": 1600
   },
   {
-    "image": "https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/inspire/inspire-09-1786005120699.jpg",
+    "image": "/notion-data/heroes/inspire-scene-8-e7ab6e48.jpg",
     "alt": "Birdie Blue over a light wood dining table in a soft blue room",
     "slugs": [
       "birdie-blue"
@@ -81,7 +72,7 @@
     "height": 1317
   },
   {
-    "image": "https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/inspire/inspire-10-1786005121528.jpg",
+    "image": "/notion-data/heroes/inspire-scene-9-744926b2.jpg",
     "alt": "Birdie Green on a sage wall beside a cane cantilever chair",
     "slugs": [
       "birdie-green"
@@ -90,7 +81,7 @@
     "height": 1600
   },
   {
-    "image": "https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/inspire/inspire-11-1786005122196.jpg",
+    "image": "/notion-data/heroes/inspire-scene-10-3f8ff93c.jpg",
     "alt": "Vinkveld above a cobalt side table and an oxblood chair, lit by a cone pendant",
     "slugs": [
       "vinkveld"
@@ -99,12 +90,48 @@
     "height": 1600
   },
   {
-    "image": "https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/inspire/inspire-12-1786005122997.jpg",
+    "image": "/notion-data/heroes/inspire-scene-11-473b81ac.jpg",
     "alt": "Eye Nose Eye leaning on an olive green sideboard filled with books",
     "slugs": [
       "eye-nose-eye"
     ],
     "width": 1289,
     "height": 1600
+  },
+  {
+    "image": "/notion-data/heroes/inspire-scene-12-4f27165e.jpg",
+    "alt": "birdie pink styled in a room scene",
+    "slugs": [
+      "birdie-pink"
+    ],
+    "width": 896,
+    "height": 1195
+  },
+  {
+    "image": "/notion-data/heroes/inspire-scene-13-2dffb10f.jpg",
+    "alt": "birdie green styled in a room scene",
+    "slugs": [
+      "birdie-green"
+    ],
+    "width": 1194,
+    "height": 1600
+  },
+  {
+    "image": "/notion-data/heroes/inspire-scene-14-f0058a95.jpg",
+    "alt": "swallow dive styled in a room scene",
+    "slugs": [
+      "swallow-dive"
+    ],
+    "width": 1024,
+    "height": 1024
+  },
+  {
+    "image": "/notion-data/heroes/inspire-scene-15-6b57bdc1.jpg",
+    "alt": "dancer styled in a room scene",
+    "slugs": [
+      "dancer"
+    ],
+    "width": 1600,
+    "height": 1394
   }
 ]

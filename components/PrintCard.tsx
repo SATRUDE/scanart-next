@@ -78,7 +78,10 @@ export const PrintCard: React.FC<PrintCardProps> = ({
             SmartImage keeps the same .avif-to-.png fallback and skeleton. */}
         <SmartImage
           src={product.image}
-          alt={product.name}
+          // Descriptive for image search: the work, its maker, what it is.
+          alt={`${product.name} Scandinavian art print by ${
+            product.artistId ? getArtistById(product.artistId)?.name || product.brand : product.brand
+          }`}
           priority={priority}
           sizes={sizes}
           className="w-full h-full object-cover transition-all duration-300 group-hover:scale-[1.02]"
