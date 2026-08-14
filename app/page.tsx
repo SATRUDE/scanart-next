@@ -61,7 +61,16 @@ export default async function HomePage() {
             </div>
             <div className="lg:col-span-2">
               <p className="text-lg text-neutral-600 leading-relaxed mb-4">
-                Carefully curated art pieces from talented Scandinavian artists, bringing authentic Nordic minimalism and truly timeless design into your home.
+                Carefully curated{' '}
+                <TrackedLink
+                  event="homepage-section-click"
+                  eventData={{ section: 'explore-categories-copy', target: '/scandinavian-wall-art' }}
+                  href="/scandinavian-wall-art"
+                  className="underline underline-offset-2 hover:text-neutral-900"
+                >
+                  Scandinavian wall art
+                </TrackedLink>{' '}
+                from talented Nordic artists, bringing authentic minimalism and truly timeless design into your home.
               </p>
               <TrackedLink event="homepage-section-click" eventData={{ section: 'explore-categories', target: '/products' }} href="/products" className="inline-flex items-center justify-center rounded-md text-sm font-medium border border-gray-200 bg-background text-foreground hover:bg-gray-50 hover:text-gray-900 h-10 px-4 py-2">
                 All categories
