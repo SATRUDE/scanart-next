@@ -1,0 +1,1348 @@
+[
+  {
+    "object": "block",
+    "id": "md-1",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Renate Thor's ",
+          "href": null,
+          "text": {
+            "content": "Renate Thor's ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Birdie prints",
+          "href": "https://www.scandinavianart.co.uk/product/birdie-blue",
+          "text": {
+            "content": "Birdie prints",
+            "link": {
+              "url": "https://www.scandinavianart.co.uk/product/birdie-blue"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " are filed under Abstract, and the first thing you notice is that they're full of birds. Dozens of them, cream wings, marigold tails, packed edge to edge. Nothing about that is abstract in the way most people mean the word. The label's still right, though, because pack a flock that tightly and it stops reading as birds and starts reading as pattern.",
+          "href": null,
+          "text": {
+            "content": " are filed under Abstract, and the first thing you notice is that they're full of birds. Dozens of them, cream wings, marigold tails, packed edge to edge. Nothing about that is abstract in the way most people mean the word. The label's still right, though, because pack a flock that tightly and it stops reading as birds and starts reading as pattern.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-2",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "That gap is worth a few hundred words: what abstraction means in a Nordic idiom, and what it means in most people's heads.",
+          "href": null,
+          "text": {
+            "content": "That gap is worth a few hundred words: what abstraction means in a Nordic idiom, and what it means in most people's heads.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-3",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "The abstraction most people picture",
+          "href": null,
+          "text": {
+            "content": "The abstraction most people picture",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-4",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Say \"abstract art\" and the image that arrives is usually mid-century New York. Big canvases, poured paint and floating fields, Pollock and Rothko, and a deliberate break with the visible world. That version made abstraction famous, and it set the terms while it was at it: to be abstract is to have no subject.",
+          "href": null,
+          "text": {
+            "content": "Say \"abstract art\" and the image that arrives is usually mid-century New York. Big canvases, poured paint and floating fields, Pollock and Rothko, and a deliberate break with the visible world. That version made abstraction famous, and it set the terms while it was at it: to be abstract is to have no subject.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-5",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "The North never really signed up to that.",
+          "href": null,
+          "text": {
+            "content": "The North never really signed up to that.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-6",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Nordic abstraction kept the subject",
+          "href": null,
+          "text": {
+            "content": "Nordic abstraction kept the subject",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-7",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "The region has a decent claim on the origin story. Hilma af Klint painted her first abstract picture in a Stockholm studio in 1906, five years before Kandinsky claimed the same first for himself, and by her death in 1944 she hadn't exhibited a single one of them (",
+          "href": null,
+          "text": {
+            "content": "The region has a decent claim on the origin story. Hilma af Klint painted her first abstract picture in a Stockholm studio in 1906, five years before Kandinsky claimed the same first for himself, and by her death in 1944 she hadn't exhibited a single one of them (",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Tate tells it well",
+          "href": "https://www.tate.org.uk/tate-etc/issue-27-spring-2013/first-abstract-artist-and-its-not-kandinsky",
+          "text": {
+            "content": "Tate tells it well",
+            "link": {
+              "url": "https://www.tate.org.uk/tate-etc/issue-27-spring-2013/first-abstract-artist-and-its-not-kandinsky"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "). Even so, af Klint's abstractions are diagrams. She was trying to set down a reality she believed was genuinely there, not empty the picture out.",
+          "href": null,
+          "text": {
+            "content": "). Even so, af Klint's abstractions are diagrams. She was trying to set down a reality she believed was genuinely there, not empty the picture out.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-8",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Norway's abstract painters, when they arrived, did much the same. Jakob Weidemann (1923 to 2001) pioneered abstract painting in Norway in the decades after the Second World War, and his mature work gets described as abstract expressionism with nature as its basis. His best-known pictures are the skogbunnbilder, the forest floor paintings, shown at Kunstnernes Hus in Oslo in 1961: abstract, and also unmistakably a long look at the ground in a Norwegian wood. His contemporary Gunnar S. Gundersen (1921 to 1983) pushed nearer to pure form, debuting in 1947 and quickly counted among the leaders of abstract art in Norway, building his pictures out of flat fields of colour.",
+          "href": null,
+          "text": {
+            "content": "Norway's abstract painters, when they arrived, did much the same. Jakob Weidemann (1923 to 2001) pioneered abstract painting in Norway in the decades after the Second World War, and his mature work gets described as abstract expressionism with nature as its basis. His best-known pictures are the skogbunnbilder, the forest floor paintings, shown at Kunstnernes Hus in Oslo in 1961: abstract, and also unmistakably a long look at the ground in a Norwegian wood. His contemporary Gunnar S. Gundersen (1921 to 1983) pushed nearer to pure form, debuting in 1947 and quickly counted among the leaders of abstract art in Norway, building his pictures out of flat fields of colour.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-9",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Flat fields of colour. Hold onto that one.",
+          "href": null,
+          "text": {
+            "content": "Flat fields of colour. Hold onto that one.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-10",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "The other half of the story was printed",
+          "href": null,
+          "text": {
+            "content": "The other half of the story was printed",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-11",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Painting's only half of it. Nordic abstraction had its widest life on cloth and paper. Maija Isola (1927 to 2001) made around 500 patterns for Marimekko across forty years, simple, bold, flat patterns printed at a dramatic scale, and her Unikko poppy of 1964 is the one everybody can picture: a flower cut back to a few flat shapes and blown up until the size does half the work. Marimekko's Finnish rather than Scandinavian strictly, but the instinct is regional. Reduce the motif, flatten the colour, repeat it.",
+          "href": null,
+          "text": {
+            "content": "Painting's only half of it. Nordic abstraction had its widest life on cloth and paper. Maija Isola (1927 to 2001) made around 500 patterns for Marimekko across forty years, simple, bold, flat patterns printed at a dramatic scale, and her Unikko poppy of 1964 is the one everybody can picture: a flower cut back to a few flat shapes and blown up until the size does half the work. Marimekko's Finnish rather than Scandinavian strictly, but the instinct is regional. Reduce the motif, flatten the colour, repeat it.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-12",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "The other thing behind the look is the stencil. A screenprint starts by cutting a shape out of paper, laying it over the mesh and pulling ink across it, and a cut edge can't describe anything: no modelling, no brushwork, no visible hand. It gives you silhouette, and then everything rests on whether the silhouette reads. Renate Thor still works this way, which is a large part of why her prints look the way they do.",
+          "href": null,
+          "text": {
+            "content": "The other thing behind the look is the stencil. A screenprint starts by cutting a shape out of paper, laying it over the mesh and pulling ink across it, and a cut edge can't describe anything: no modelling, no brushwork, no visible hand. It gives you silhouette, and then everything rests on whether the silhouette reads. Renate Thor still works this way, which is a large part of why her prints look the way they do.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-13",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Put the two halves together and you've got the tension running through the whole tradition: folk pattern on one side, all repetition and ornament, modernist reduction on the other, stripping back until only the essential is left. Print is where the two meet. The folk end of that story, the rosemaling and the painted chests, sits in ",
+          "href": null,
+          "text": {
+            "content": "Put the two halves together and you've got the tension running through the whole tradition: folk pattern on one side, all repetition and ornament, modernist reduction on the other, stripping back until only the essential is left. Print is where the two meet. The folk end of that story, the rosemaling and the painted chests, sits in ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "what is Scandinavian art",
+          "href": "https://www.scandinavianart.co.uk/article/what-is-scandinavian-art",
+          "text": {
+            "content": "what is Scandinavian art",
+            "link": {
+              "url": "https://www.scandinavianart.co.uk/article/what-is-scandinavian-art"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " if you want the longer history first.",
+          "href": null,
+          "text": {
+            "content": " if you want the longer history first.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-14",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "So what does it actually look like",
+          "href": null,
+          "text": {
+            "content": "So what does it actually look like",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-15",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Four habits, if you want a shorthand.",
+          "href": null,
+          "text": {
+            "content": "Four habits, if you want a shorthand.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-16",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Flat colour rather than built-up paint.",
+          "href": null,
+          "text": {
+            "content": "Flat colour rather than built-up paint.",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " One ground, a figure or two on it, and the join between them left crisp.",
+          "href": null,
+          "text": {
+            "content": " One ground, a figure or two on it, and the join between them left crisp.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-17",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Shape carrying the whole picture.",
+          "href": null,
+          "text": {
+            "content": "Shape carrying the whole picture.",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " No modelling, no depth, no brushstroke to admire.",
+          "href": null,
+          "text": {
+            "content": " No modelling, no depth, no brushstroke to admire.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-18",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "A motif you can still name.",
+          "href": null,
+          "text": {
+            "content": "A motif you can still name.",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " A bird, a body, water, a flower. Abstracted, not abandoned.",
+          "href": null,
+          "text": {
+            "content": " A bird, a body, water, a flower. Abstracted, not abandoned.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-19",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Restraint about how much.",
+          "href": null,
+          "text": {
+            "content": "Restraint about how much.",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " Two colours where four were available.",
+          "href": null,
+          "text": {
+            "content": " Two colours where four were available.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-20",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Which is why it hangs so easily in an ordinary room. This is abstraction that was always meant for a wall someone lives in front of, rather than a museum atrium.",
+          "href": null,
+          "text": {
+            "content": "Which is why it hangs so easily in an ordinary room. This is abstraction that was always meant for a wall someone lives in front of, rather than a museum atrium.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-21",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "How the gallery's own abstracts read against that",
+          "href": null,
+          "text": {
+            "content": "How the gallery's own abstracts read against that",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-22",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Eight of the twenty prints here are filed as ",
+          "href": null,
+          "text": {
+            "content": "Eight of the twenty prints here are filed as ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "abstract",
+          "href": "https://www.scandinavianart.co.uk/category/abstract",
+          "text": {
+            "content": "abstract",
+            "link": {
+              "url": "https://www.scandinavianart.co.uk/category/abstract"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ", the largest group in the gallery, and all eight fit the description.",
+          "href": null,
+          "text": {
+            "content": ", the largest group in the gallery, and all eight fit the description.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-23",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Renate Thor",
+          "href": "https://www.scandinavianart.co.uk/artist/renate-thor",
+          "text": {
+            "content": "Renate Thor",
+            "link": {
+              "url": "https://www.scandinavianart.co.uk/artist/renate-thor"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " works in screen print, cutting paper stencils and layering bold coloured ink, and by her own account she likes the unpredictability of the blending. Her four Birdie colourways share one composition and change only the temperature. ",
+          "href": null,
+          "text": {
+            "content": " works in screen print, cutting paper stencils and layering bold coloured ink, and by her own account she likes the unpredictability of the blending. Her four Birdie colourways share one composition and change only the temperature. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Birdie Blue",
+          "href": "https://www.scandinavianart.co.uk/product/birdie-blue",
+          "text": {
+            "content": "Birdie Blue",
+            "link": {
+              "url": "https://www.scandinavianart.co.uk/product/birdie-blue"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " is petrol blue with marigold tails, the coolest of the set. ",
+          "href": null,
+          "text": {
+            "content": " is petrol blue with marigold tails, the coolest of the set. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Birdie Brown",
+          "href": "https://www.scandinavianart.co.uk/product/birdie-brown",
+          "text": {
+            "content": "Birdie Brown",
+            "link": {
+              "url": "https://www.scandinavianart.co.uk/product/birdie-brown"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " goes to dark chocolate and burnt orange. ",
+          "href": null,
+          "text": {
+            "content": " goes to dark chocolate and burnt orange. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Birdie Green",
+          "href": "https://www.scandinavianart.co.uk/product/birdie-green",
+          "text": {
+            "content": "Birdie Green",
+            "link": {
+              "url": "https://www.scandinavianart.co.uk/product/birdie-green"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " throws candy pink against emerald. ",
+          "href": null,
+          "text": {
+            "content": " throws candy pink against emerald. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Birdie Pink",
+          "href": "https://www.scandinavianart.co.uk/product/birdie-pink",
+          "text": {
+            "content": "Birdie Pink",
+            "link": {
+              "url": "https://www.scandinavianart.co.uk/product/birdie-pink"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " is rose with cobalt tail feathers, and the cobalt's what stops it turning sweet. Same shape, four different weathers: reduction doing exactly what it does on a printed textile.",
+          "href": null,
+          "text": {
+            "content": " is rose with cobalt tail feathers, and the cobalt's what stops it turning sweet. Same shape, four different weathers: reduction doing exactly what it does on a printed textile.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-24",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Helene Brox",
+          "href": "https://www.scandinavianart.co.uk/artist/helene-brox",
+          "text": {
+            "content": "Helene Brox",
+            "link": {
+              "url": "https://www.scandinavianart.co.uk/artist/helene-brox"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " works the other way round, one shape on one field. ",
+          "href": null,
+          "text": {
+            "content": " works the other way round, one shape on one field. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Dancer",
+          "href": "https://www.scandinavianart.co.uk/product/dancer",
+          "text": {
+            "content": "Dancer",
+            "link": {
+              "url": "https://www.scandinavianart.co.uk/product/dancer"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " is a cream figure mid-stride on sky blue, no face and no floor, the movement carried entirely by the outline. ",
+          "href": null,
+          "text": {
+            "content": " is a cream figure mid-stride on sky blue, no face and no floor, the movement carried entirely by the outline. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Swallow Dive",
+          "href": "https://www.scandinavianart.co.uk/product/swallow-dive",
+          "text": {
+            "content": "Swallow Dive",
+            "link": {
+              "url": "https://www.scandinavianart.co.uk/product/swallow-dive"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " is stricter still, one blue and one cream, diving birds edge to edge with no horizon to land on. ",
+          "href": null,
+          "text": {
+            "content": " is stricter still, one blue and one cream, diving birds edge to edge with no horizon to land on. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Dragon",
+          "href": "https://www.scandinavianart.co.uk/product/dragon",
+          "text": {
+            "content": "Dragon",
+            "link": {
+              "url": "https://www.scandinavianart.co.uk/product/dragon"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " is the loud one, ribbons of white, red, pink and grey on black that only assemble into a beast once you find the pale blue eyes. And ",
+          "href": null,
+          "text": {
+            "content": " is the loud one, ribbons of white, red, pink and grey on black that only assemble into a beast once you find the pale blue eyes. And ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "IThinkIThink",
+          "href": "https://www.scandinavianart.co.uk/product/ithinkithink",
+          "text": {
+            "content": "IThinkIThink",
+            "link": {
+              "url": "https://www.scandinavianart.co.uk/product/ithinkithink"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " puts its confession in green brush strokes across a cobalt head on shocking pink, which is roughly where abstraction and cartoon shake hands.",
+          "href": null,
+          "text": {
+            "content": " puts its confession in green brush strokes across a cobalt head on shocking pink, which is roughly where abstraction and cartoon shake hands.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-25",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "If the word's been putting you off",
+          "href": null,
+          "text": {
+            "content": "If the word's been putting you off",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-26",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "It puts plenty of people off, and fairly: abstract art has a reputation for asking you to work. Nothing here does. Every one of these prints is a recognisable thing, simplified until the shape does the talking, which is a much older northern habit than the word suggests.",
+          "href": null,
+          "text": {
+            "content": "It puts plenty of people off, and fairly: abstract art has a reputation for asking you to work. Nothing here does. Every one of these prints is a recognisable thing, simplified until the shape does the talking, which is a much older northern habit than the word suggests.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-27",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Practically, they suit a room that's already close to calm: one confident piece on a pale wall, or a pair of Birdies hung to read as a single gesture. ",
+          "href": null,
+          "text": {
+            "content": "Practically, they suit a room that's already close to calm: one confident piece on a pale wall, or a pair of Birdies hung to read as a single gesture. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "How to style Scandinavian wall art in a living room",
+          "href": "https://www.scandinavianart.co.uk/article/how-to-style-scandinavian-wall-art-living-room",
+          "text": {
+            "content": "How to style Scandinavian wall art in a living room",
+            "link": {
+              "url": "https://www.scandinavianart.co.uk/article/how-to-style-scandinavian-wall-art-living-room"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " covers placement, and ",
+          "href": null,
+          "text": {
+            "content": " covers placement, and ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Scandinavian wall decor ideas",
+          "href": "https://www.scandinavianart.co.uk/article/scandinavian-wall-decor-ideas",
+          "text": {
+            "content": "Scandinavian wall decor ideas",
+            "link": {
+              "url": "https://www.scandinavianart.co.uk/article/scandinavian-wall-decor-ideas"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " has the wider options. When you'd rather look than read, the ",
+          "href": null,
+          "text": {
+            "content": " has the wider options. When you'd rather look than read, the ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "abstract prints",
+          "href": "https://www.scandinavianart.co.uk/category/abstract",
+          "text": {
+            "content": "abstract prints",
+            "link": {
+              "url": "https://www.scandinavianart.co.uk/category/abstract"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " are all in one place, and the ",
+          "href": null,
+          "text": {
+            "content": " are all in one place, and the ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "full wall art collection",
+          "href": "https://www.scandinavianart.co.uk/scandinavian-wall-art",
+          "text": {
+            "content": "full wall art collection",
+            "link": {
+              "url": "https://www.scandinavianart.co.uk/scandinavian-wall-art"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " sets them next to everything else.",
+          "href": null,
+          "text": {
+            "content": " sets them next to everything else.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  }
+]

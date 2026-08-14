@@ -1,0 +1,1134 @@
+[
+  {
+    "object": "block",
+    "id": "md-1",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Denmark once spent 122 years cataloguing the wild plants of its kingdom, Norway included. ",
+          "href": null,
+          "text": {
+            "content": "Denmark once spent 122 years cataloguing the wild plants of its kingdom, Norway included. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Flora Danica",
+          "href": "https://www.kb.dk/en/services/cultural-heritage-research-and-study/cultural-heritage-data-and-datasets/flora-danica",
+          "text": {
+            "content": "Flora Danica",
+            "link": {
+              "url": "https://www.kb.dk/en/services/cultural-heritage-research-and-study/cultural-heritage-data-and-datasets/flora-danica"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " ran from 1761 to 1883 and gathered 3,240 coloured copperplate engravings, one plant to a plate, proposed by the botanist G. C. Oeder so the flora of the Danish crown lands would be on record. ",
+          "href": null,
+          "text": {
+            "content": " ran from 1761 to 1883 and gathered 3,240 coloured copperplate engravings, one plant to a plate, proposed by the botanist G. C. Oeder so the flora of the Danish crown lands would be on record. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Curtis's Botanical Magazine",
+          "href": "https://en.wikipedia.org/wiki/Curtis%27s_Botanical_Magazine",
+          "text": {
+            "content": "Curtis's Botanical Magazine",
+            "link": {
+              "url": "https://en.wikipedia.org/wiki/Curtis%27s_Botanical_Magazine"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " took on the same job in Britain from 1787, and it's still running, past 11,000 plates.",
+          "href": null,
+          "text": {
+            "content": " took on the same job in Britain from 1787, and it's still running, past 11,000 plates.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-2",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "That's the botanical print most of us carry around in our heads, and it's a lovely thing: the specimen dead centre on a plain ground, roots and seed head included, drawn to scale with nothing around it to distract from what it is. It's also a page out of a reference book. It was made to be checked against a real plant.",
+          "href": null,
+          "text": {
+            "content": "That's the botanical print most of us carry around in our heads, and it's a lovely thing: the specimen dead centre on a plain ground, roots and seed head included, drawn to scale with nothing around it to distract from what it is. It's also a page out of a reference book. It was made to be checked against a real plant.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-3",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "None of the seven ",
+          "href": null,
+          "text": {
+            "content": "None of the seven ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "botanical prints",
+          "href": "/category/botanical",
+          "text": {
+            "content": "botanical prints",
+            "link": {
+              "url": "/category/botanical"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " in this gallery (botaniske trykk, if you're shopping in Norwegian) is doing that job. Three artists, seven pictures, not one specimen study among them. Here's what the Nordic version actually looks like.",
+          "href": null,
+          "text": {
+            "content": " in this gallery (botaniske trykk, if you're shopping in Norwegian) is doing that job. Three artists, seven pictures, not one specimen study among them. Here's what the Nordic version actually looks like.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-4",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Folk flowers that were never meant to be identifiable",
+          "href": null,
+          "text": {
+            "content": "Folk flowers that were never meant to be identifiable",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-5",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Trysilkaffe",
+          "href": "/product/trysilkaffe",
+          "text": {
+            "content": "Trysilkaffe",
+            "link": {
+              "url": "/product/trysilkaffe"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " by ",
+          "href": null,
+          "text": {
+            "content": " by ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Ingunn Dybendal",
+          "href": "/artist/ingunn-dybendal",
+          "text": {
+            "content": "Ingunn Dybendal",
+            "link": {
+              "url": "/artist/ingunn-dybendal"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " crams a green mug with an impossible bouquet: folk flowers in red, purple and teal above a diamond-check cloth, every bloom a different invention, drawn petal by petal in coloured pencil. Even the mug carries its own tulip motif. Pattern on pattern on pattern.",
+          "href": null,
+          "text": {
+            "content": " crams a green mug with an impossible bouquet: folk flowers in red, purple and teal above a diamond-check cloth, every bloom a different invention, drawn petal by petal in coloured pencil. Even the mug carries its own tulip motif. Pattern on pattern on pattern.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-6",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "There's a long Norwegian precedent for that attitude to a flower. Rosemaling, the decorative painting that flourished from the 1700s to the mid-1800s in valleys such as Hallingdal and Telemark, is built on fantasy flowers: blooms so stylised that no specific flower is identifiable, laid out with scrollwork across ale bowls, cupboards, trunks and church interiors. The aim was ornament, not accuracy.",
+          "href": null,
+          "text": {
+            "content": "There's a long Norwegian precedent for that attitude to a flower. Rosemaling, the decorative painting that flourished from the 1700s to the mid-1800s in valleys such as Hallingdal and Telemark, is built on fantasy flowers: blooms so stylised that no specific flower is identifiable, laid out with scrollwork across ale bowls, cupboards, trunks and church interiors. The aim was ornament, not accuracy.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-7",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "I couldn't tell you whether Dybendal is thinking about any of that, and I'm not going to put it in her mouth. But it's a useful contrast. Where a botanical plate answers \"which plant is this?\", Trysilkaffe is answering something closer to \"what do flowers do to a room?\"",
+          "href": null,
+          "text": {
+            "content": "I couldn't tell you whether Dybendal is thinking about any of that, and I'm not going to put it in her mouth. But it's a useful contrast. Where a botanical plate answers \"which plant is this?\", Trysilkaffe is answering something closer to \"what do flowers do to a room?\"",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-8",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "A landscape drawn as pattern",
+          "href": null,
+          "text": {
+            "content": "A landscape drawn as pattern",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-9",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Her second print pushes further. ",
+          "href": null,
+          "text": {
+            "content": "Her second print pushes further. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Eltsjoen",
+          "href": "/product/eltsjoen",
+          "text": {
+            "content": "Eltsjoen",
+            "link": {
+              "url": "/product/eltsjoen"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " reimagines a Nordic lake as dense coloured-pencil pattern: pink sky, dark mountain, patterned forest, blue water. Every band of the scene turns into ornament, clouds stretched into ribbons, trees turned into folk motifs, the water pooling in pale rings around a bridge. It's the most detailed piece in the gallery and it rewards the hundredth look as much as the first.",
+          "href": null,
+          "text": {
+            "content": " reimagines a Nordic lake as dense coloured-pencil pattern: pink sky, dark mountain, patterned forest, blue water. Every band of the scene turns into ornament, clouds stretched into ribbons, trees turned into folk motifs, the water pooling in pale rings around a bridge. It's the most detailed piece in the gallery and it rewards the hundredth look as much as the first.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-10",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "A purist could reasonably ask what it's doing in a botanical category, since there isn't one identifiable plant in it. The plate tradition lifts the plant out of the landscape to study it. Eltsjoen puts the whole landscape back and treats a forest as a texture, which is how a forest actually reads when you're standing in front of one.",
+          "href": null,
+          "text": {
+            "content": "A purist could reasonably ask what it's doing in a botanical category, since there isn't one identifiable plant in it. The plate tradition lifts the plant out of the landscape to study it. Eltsjoen puts the whole landscape back and treats a forest as a texture, which is how a forest actually reads when you're standing in front of one.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-11",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Silhouette instead of description",
+          "href": null,
+          "text": {
+            "content": "Silhouette instead of description",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-12",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Tree Top Peach",
+          "href": "/product/tree-top-peach",
+          "text": {
+            "content": "Tree Top Peach",
+            "link": {
+              "url": "/product/tree-top-peach"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " by ",
+          "href": null,
+          "text": {
+            "content": " by ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Helene Brox",
+          "href": "/artist/helene-brox",
+          "text": {
+            "content": "Helene Brox",
+            "link": {
+              "url": "/artist/helene-brox"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " weaves branches and perched birds into a soft peach lattice inside its own drawn border, papercut style. Look longer and the birds keep arriving, dozens of small silhouettes tucked among the tangle, all in a single warm tone on cream.",
+          "href": null,
+          "text": {
+            "content": " weaves branches and perched birds into a soft peach lattice inside its own drawn border, papercut style. Look longer and the birds keep arriving, dozens of small silhouettes tucked among the tangle, all in a single warm tone on cream.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-13",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Paper cutting has its own Nordic lineage. Hans Christian Andersen was a serious practitioner, cutting figures while he improvised stories for party guests and handing the result over at the end of the tale. About a thousand of them still exist, on the count of the Royal Danish Library, which holds two of the collections itself. Smaller figures do the rounds, but they tend to be one museum's holdings rather than the total. The technique forces a decision a botanical plate never has to make: with one tone and one cut edge you can't describe a leaf, only its shape. Brox's branches work the same way, and it's why the print settles a bedroom or a reading corner instead of demanding attention from it.",
+          "href": null,
+          "text": {
+            "content": "Paper cutting has its own Nordic lineage. Hans Christian Andersen was a serious practitioner, cutting figures while he improvised stories for party guests and handing the result over at the end of the tale. About a thousand of them still exist, on the count of the Royal Danish Library, which holds two of the collections itself. Smaller figures do the rounds, but they tend to be one museum's holdings rather than the total. The technique forces a decision a botanical plate never has to make: with one tone and one cut edge you can't describe a leaf, only its shape. Brox's branches work the same way, and it's why the print settles a bedroom or a reading corner instead of demanding attention from it.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-14",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "The other end of botanical: plants once they're indoors",
+          "href": null,
+          "text": {
+            "content": "The other end of botanical: plants once they're indoors",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-15",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Four of the seven are ",
+          "href": null,
+          "text": {
+            "content": "Four of the seven are ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Sia Siamos",
+          "href": "/artist/sia-siamos",
+          "text": {
+            "content": "Sia Siamos",
+            "link": {
+              "url": "/artist/sia-siamos"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "'s table scenes, and they're botanical in the most literal sense going. This is what happens to plants after someone has picked them.",
+          "href": null,
+          "text": {
+            "content": "'s table scenes, and they're botanical in the most literal sense going. This is what happens to plants after someone has picked them.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-16",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Hummer og Vin",
+          "href": "/product/hummer-og-vin",
+          "text": {
+            "content": "Hummer og Vin",
+            "link": {
+              "url": "/product/hummer-og-vin"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " looks straight down on lemons, vine tomatoes, grapes and carrots crowding a green cloth around a lobster, hands reaching in from the edges.",
+          "href": null,
+          "text": {
+            "content": " looks straight down on lemons, vine tomatoes, grapes and carrots crowding a green cloth around a lobster, hands reaching in from the edges.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-17",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Hyttefrokost",
+          "href": "/product/hyttefrokost",
+          "text": {
+            "content": "Hyttefrokost",
+            "link": {
+              "url": "/product/hyttefrokost"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " heaps ripe tomatoes and grapes on a striped board against green tiles, with cherry tomatoes scattering across a lilac table.",
+          "href": null,
+          "text": {
+            "content": " heaps ripe tomatoes and grapes on a striped board against green tiles, with cherry tomatoes scattering across a lilac table.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-18",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Morgenlevering",
+          "href": "/product/morgenlevering",
+          "text": {
+            "content": "Morgenlevering",
+            "link": {
+              "url": "/product/morgenlevering"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " is breakfast in full swing: cafetière coffee, croissants on a checked cloth, pink carnations in a red vase.",
+          "href": null,
+          "text": {
+            "content": " is breakfast in full swing: cafetière coffee, croissants on a checked cloth, pink carnations in a red vase.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-19",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Vinkveld",
+          "href": "/product/vinkveld",
+          "text": {
+            "content": "Vinkveld",
+            "link": {
+              "url": "/product/vinkveld"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " is olives, dark grapes and vine tomatoes in thick, glossy strokes, the cork already adrift.",
+          "href": null,
+          "text": {
+            "content": " is olives, dark grapes and vine tomatoes in thick, glossy strokes, the cork already adrift.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-20",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "The titles are plain Norwegian, and ",
+          "href": null,
+          "text": {
+            "content": "The titles are plain Norwegian, and ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "the Norwegian words behind the prints",
+          "href": "/article/norwegian-words-behind-the-prints",
+          "text": {
+            "content": "the Norwegian words behind the prints",
+            "link": {
+              "url": "/article/norwegian-words-behind-the-prints"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " takes them one by one if you want the vocabulary.",
+          "href": null,
+          "text": {
+            "content": " takes them one by one if you want the vocabulary.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-21",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Fruit and cut flowers have carried still life for centuries, so the subject is old. The handling isn't. Every outline here is quick and confident, closer to a sketchbook page than a formal arrangement, painted loose enough that the scene feels mid-conversation. These aren't drawn to be checked against anything. They're drawn to be recognised, which is a different sort of accuracy.",
+          "href": null,
+          "text": {
+            "content": "Fruit and cut flowers have carried still life for centuries, so the subject is old. The handling isn't. Every outline here is quick and confident, closer to a sketchbook page than a formal arrangement, painted loose enough that the scene feels mid-conversation. These aren't drawn to be checked against anything. They're drawn to be recognised, which is a different sort of accuracy.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-22",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "What the seven have in common",
+          "href": null,
+          "text": {
+            "content": "What the seven have in common",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-23",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Colour first, pattern a close second, and plants treated as part of a life rather than as objects of study. This end of the tradition is folk art rather than science, which is also why it sits so easily in a modern room: it was always meant to be decoration and it's unembarrassed about it.",
+          "href": null,
+          "text": {
+            "content": "Colour first, pattern a close second, and plants treated as part of a life rather than as objects of study. This end of the tradition is folk art rather than science, which is also why it sits so easily in a modern room: it was always meant to be decoration and it's unembarrassed about it.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-24",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "It hangs better than plates do, too. Botanical plates want a set and a grid, four or six matched in identical frames. These seven all print at 50 x 70 cm, so a pair works without any of that formality, and the pairing becomes a choice about temperament rather than taxonomy. A Dybendal beside a Siamos is pattern next to appetite.",
+          "href": null,
+          "text": {
+            "content": "It hangs better than plates do, too. Botanical plates want a set and a grid, four or six matched in identical frames. These seven all print at 50 x 70 cm, so a pair works without any of that formality, and the pairing becomes a choice about temperament rather than taxonomy. A Dybendal beside a Siamos is pattern next to appetite.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-25",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "If that's the corner of the gallery you want, start with the ",
+          "href": null,
+          "text": {
+            "content": "If that's the corner of the gallery you want, start with the ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "botanical prints",
+          "href": "/category/botanical",
+          "text": {
+            "content": "botanical prints",
+            "link": {
+              "url": "/category/botanical"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " and let the rest of the ",
+          "href": null,
+          "text": {
+            "content": " and let the rest of the ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Scandinavian wall art",
+          "href": "/scandinavian-wall-art",
+          "text": {
+            "content": "Scandinavian wall art",
+            "link": {
+              "url": "/scandinavian-wall-art"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " wait its turn. For the wider background, ",
+          "href": null,
+          "text": {
+            "content": " wait its turn. For the wider background, ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "what is Scandinavian art",
+          "href": "/article/what-is-scandinavian-art",
+          "text": {
+            "content": "what is Scandinavian art",
+            "link": {
+              "url": "/article/what-is-scandinavian-art"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " covers the sensibility all twenty prints share.",
+          "href": null,
+          "text": {
+            "content": " covers the sensibility all twenty prints share.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  }
+]

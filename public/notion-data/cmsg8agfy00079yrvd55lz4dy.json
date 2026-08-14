@@ -25,11 +25,11 @@
         {
           "type": "text",
           "plain_text": "Nordic art and design books",
-          "href": "https://www.scandinavianart.co.uk/article/nordic-art-and-design-books",
+          "href": "/article/nordic-art-and-design-books",
           "text": {
             "content": "Nordic art and design books",
             "link": {
-              "url": "https://www.scandinavianart.co.uk/article/nordic-art-and-design-books"
+              "url": "/article/nordic-art-and-design-books"
             }
           },
           "annotations": {
@@ -506,12 +506,46 @@
         },
         {
           "type": "text",
-          "plain_text": "the artists behind our prints",
-          "href": "https://www.scandinavianart.co.uk/artists",
+          "plain_text": "the artists",
+          "href": "/artists",
           "text": {
-            "content": "the artists behind our prints",
+            "content": "the artists",
             "link": {
-              "url": "https://www.scandinavianart.co.uk/artists"
+              "url": "/artists"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " behind ",
+          "href": null,
+          "text": {
+            "content": " behind ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "our prints",
+          "href": "/scandinavian-wall-art",
+          "text": {
+            "content": "our prints",
+            "link": {
+              "url": "/scandinavian-wall-art"
             }
           },
           "annotations": {
@@ -541,11 +575,11 @@
         {
           "type": "text",
           "plain_text": "abstract prints",
-          "href": "https://www.scandinavianart.co.uk/category/abstract",
+          "href": "/category/abstract",
           "text": {
             "content": "abstract prints",
             "link": {
-              "url": "https://www.scandinavianart.co.uk/category/abstract"
+              "url": "/category/abstract"
             }
           },
           "annotations": {

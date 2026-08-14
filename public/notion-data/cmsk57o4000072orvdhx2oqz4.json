@@ -1,0 +1,924 @@
+[
+  {
+    "object": "block",
+    "id": "md-1",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Nobody polices the word \"print\". A £4 poster and a £400 signed edition can both be described as an art print, quite legally, by people who are not trying to mislead you. Which means the noun on the listing tells you nothing, and the spec underneath it tells you everything.",
+          "href": null,
+          "text": {
+            "content": "Nobody polices the word \"print\". A £4 poster and a £400 signed edition can both be described as an art print, quite legally, by people who are not trying to mislead you. Which means the noun on the listing tells you nothing, and the spec underneath it tells you everything.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-2",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Here is what the words usually mean, and what to check before you spend anything.",
+          "href": null,
+          "text": {
+            "content": "Here is what the words usually mean, and what to check before you spend anything.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-3",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "The vocabulary, roughly sorted",
+          "href": null,
+          "text": {
+            "content": "The vocabulary, roughly sorted",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-4",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Original.",
+          "href": null,
+          "text": {
+            "content": "Original.",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " Made by hand, one of one. A painting, a drawing, a collage. There is no second copy.",
+          "href": null,
+          "text": {
+            "content": " Made by hand, one of one. A painting, a drawing, a collage. There is no second copy.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-5",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Original print.",
+          "href": null,
+          "text": {
+            "content": "Original print.",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " Printed by the artist as the artwork itself: a screen print, a lithograph, an etching. Usually editioned and numbered, and the printing is part of the making rather than a copy of it. Renate Thor works this way in her own practice, building images from paper stencils and layered ink, which is why ",
+          "href": null,
+          "text": {
+            "content": " Printed by the artist as the artwork itself: a screen print, a lithograph, an etching. Usually editioned and numbered, and the printing is part of the making rather than a copy of it. Renate Thor works this way in her own practice, building images from paper stencils and layered ink, which is why ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Birdie Blue",
+          "href": "/product/birdie-blue",
+          "text": {
+            "content": "Birdie Blue",
+            "link": {
+              "url": "/product/birdie-blue"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " reads as pattern first and birds second.",
+          "href": null,
+          "text": {
+            "content": " reads as pattern first and birds second.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-6",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Giclée, or fine art print.",
+          "href": null,
+          "text": {
+            "content": "Giclée, or fine art print.",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " A high-quality inkjet reproduction of an original work, on heavy archival paper with pigment inks. This is what most good gallery prints are, ours included.",
+          "href": null,
+          "text": {
+            "content": " A high-quality inkjet reproduction of an original work, on heavy archival paper with pigment inks. This is what most good gallery prints are, ours included.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-7",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Poster.",
+          "href": null,
+          "text": {
+            "content": "Poster.",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " Usually offset-litho on thin coated stock, printed in the thousands. Perfectly fine for a band you loved in 2004. It will go yellow at the edges within a few years.",
+          "href": null,
+          "text": {
+            "content": " Usually offset-litho on thin coated stock, printed in the thousands. Perfectly fine for a band you loved in 2004. It will go yellow at the edges within a few years.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-8",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "None of those terms is regulated, so treat them as a starting point rather than a guarantee.",
+          "href": null,
+          "text": {
+            "content": "None of those terms is regulated, so treat them as a starting point rather than a guarantee.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-9",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "What to check instead",
+          "href": null,
+          "text": {
+            "content": "What to check instead",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-10",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "The paper.",
+          "href": null,
+          "text": {
+            "content": "The paper.",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " You want heavyweight and archival, which in practice means acid-free. Thin coated poster stock discolours, and no frame will save it.",
+          "href": null,
+          "text": {
+            "content": " You want heavyweight and archival, which in practice means acid-free. Thin coated poster stock discolours, and no frame will save it.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-11",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "The ink.",
+          "href": null,
+          "text": {
+            "content": "The ink.",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " Pigment inks hold their colour far longer than dye inks. If a seller will not say which they use, assume the cheaper answer.",
+          "href": null,
+          "text": {
+            "content": " Pigment inks hold their colour far longer than dye inks. If a seller will not say which they use, assume the cheaper answer.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-12",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "A border.",
+          "href": null,
+          "text": {
+            "content": "A border.",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " A white margin lets you frame the piece without a mount and handle it without ever touching the image.",
+          "href": null,
+          "text": {
+            "content": " A white margin lets you frame the piece without a mount and handle it without ever touching the image.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-13",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "The edition.",
+          "href": null,
+          "text": {
+            "content": "The edition.",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " Numbered is not automatically better. An edition of 500 is not scarce, and a good open-edition print is not lesser art. Buy the picture, not the number.",
+          "href": null,
+          "text": {
+            "content": " Numbered is not automatically better. An edition of 500 is not scarce, and a good open-edition print is not lesser art. Buy the picture, not the number.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-14",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Whether the artist is paid.",
+          "href": null,
+          "text": {
+            "content": "Whether the artist is paid.",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " This is the one people skip. Plenty of \"Scandinavian style\" prints online are stock graphics with nobody behind them. If you cannot find out who made it, that is your answer.",
+          "href": null,
+          "text": {
+            "content": " This is the one people skip. Plenty of \"Scandinavian style\" prints online are stock graphics with nobody behind them. If you cannot find out who made it, that is your answer.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-15",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Where ours sit, plainly",
+          "href": null,
+          "text": {
+            "content": "Where ours sit, plainly",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-16",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Every print in the gallery is made to order on museum-quality archival paper, produced through our print-on-demand partner at a facility close to your delivery address wherever possible, which keeps shipping distances short. Production takes 1 to 4 business days before it is dispatched.",
+          "href": null,
+          "text": {
+            "content": "Every print in the gallery is made to order on museum-quality archival paper, produced through our print-on-demand partner at a facility close to your delivery address wherever possible, which keeps shipping distances short. Production takes 1 to 4 business days before it is dispatched.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-17",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Nothing sits in a warehouse waiting for you, and nothing is printed speculatively and then binned. The work is by the five independent artists behind the gallery, all based in Norway, each with ",
+          "href": null,
+          "text": {
+            "content": "Nothing sits in a warehouse waiting for you, and nothing is printed speculatively and then binned. The work is by the five independent artists behind the gallery, all based in Norway, each with ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "their own page",
+          "href": "/artists",
+          "text": {
+            "content": "their own page",
+            "link": {
+              "url": "/artists"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " explaining how they work. You can order any piece unframed, or with a wood, black or white frame for £25, chosen on the product page.",
+          "href": null,
+          "text": {
+            "content": " explaining how they work. You can order any piece unframed, or with a wood, black or white frame for £25, chosen on the product page.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-18",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "That is the honest answer to \"is it a print or a poster\": it is a giclée fine art print, made when you order it, by artists who are named and paid.",
+          "href": null,
+          "text": {
+            "content": "That is the honest answer to \"is it a print or a poster\": it is a giclée fine art print, made when you order it, by artists who are named and paid.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-19",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Making it last",
+          "href": null,
+          "text": {
+            "content": "Making it last",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-20",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "A good print will outlive the room it goes in, if you treat it sensibly.",
+          "href": null,
+          "text": {
+            "content": "A good print will outlive the room it goes in, if you treat it sensibly.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-21",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Keep it out of direct sunlight. Pigment inks and archival paper are patient, not immortal, and a south-facing window will win eventually.",
+          "href": null,
+          "text": {
+            "content": "Keep it out of direct sunlight. Pigment inks and archival paper are patient, not immortal, and a south-facing window will win eventually.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-22",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Frame it behind glazing. Glass or acrylic both do the job of stopping dust, damp and cooking film settling into the surface.",
+          "href": null,
+          "text": {
+            "content": "Frame it behind glazing. Glass or acrylic both do the job of stopping dust, damp and cooking film settling into the surface.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-23",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Handle it by the edges, or by the white border, with clean dry hands.",
+          "href": null,
+          "text": {
+            "content": "Handle it by the edges, or by the white border, with clean dry hands.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-24",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "If you are storing one, keep it flat or rolled loosely in a tube. Never folded, and never taped across the image.",
+          "href": null,
+          "text": {
+            "content": "If you are storing one, keep it flat or rolled loosely in a tube. Never folded, and never taped across the image.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-25",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Give it a year before you decide you were wrong about it. Prints grow on people.",
+          "href": null,
+          "text": {
+            "content": "Give it a year before you decide you were wrong about it. Prints grow on people.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-26",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "If you are choosing between two and cannot decide, ",
+          "href": null,
+          "text": {
+            "content": "If you are choosing between two and cannot decide, ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "have a proper look at the collection",
+          "href": "/products",
+          "text": {
+            "content": "have a proper look at the collection",
+            "link": {
+              "url": "/products"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " and see which one you keep coming back to. That is generally the one.",
+          "href": null,
+          "text": {
+            "content": " and see which one you keep coming back to. That is generally the one.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  }
+]

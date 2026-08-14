@@ -8,6 +8,7 @@
 // Env: ARTICLES_DATABASE_URL (or DATABASE_URL) — the socialagent Neon
 // connection string. Absent locally: the committed snapshot is kept. Absent
 // on a production build: fail, a stale snapshot would 404 newer articles.
+import crypto from 'node:crypto';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { neon } from '@neondatabase/serverless';
@@ -107,6 +108,39 @@ const parse = (json, fallback) => {
 
 const rows = await sql`SELECT * FROM "Article" ORDER BY "createdAt" DESC`;
 
+// Google Images credits the host that serves the file, and article heroes and
+// inspire scenes have been serving from the Blob store's domain, so the
+// gallery-wall image queries we surface for never credit our site. Localise
+// every remote image at sync time: download once into public (content-hashed
+// per source URL so a changed image re-downloads), rewrite the path, and on
+// any failure keep the remote URL so a flaky fetch can never break a build.
+const HEROES_DIR = path.join(OUT_DIR, 'heroes');
+await fs.mkdir(HEROES_DIR, { recursive: true });
+const keptHeroFiles = new Set();
+
+const localiseImage = async (url, baseName) => {
+  if (!url || !url.startsWith('http')) return url;
+  try {
+    const hash = crypto.createHash('sha256').update(url).digest('hex').slice(0, 8);
+    const extMatch = new URL(url).pathname.match(/\.(jpe?g|png|webp|avif)$/i);
+    const ext = extMatch ? extMatch[0].toLowerCase() : '.jpg';
+    const file = `${baseName}-${hash}${ext}`;
+    const target = path.join(HEROES_DIR, file);
+    keptHeroFiles.add(file);
+    try {
+      await fs.access(target);
+    } catch {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`fetch ${res.status}`);
+      await fs.writeFile(target, Buffer.from(await res.arrayBuffer()));
+    }
+    return `/notion-data/heroes/${file}`;
+  } catch (err) {
+    console.warn(`[sync-articles] keeping remote image for ${baseName}: ${err.message}`);
+    return url;
+  }
+};
+
 const articles = rows.map((r) => ({
   id: r.id,
   slug: r.slug ?? '',
@@ -123,6 +157,10 @@ const articles = rows.map((r) => ({
   created_time: r.createdAt.toISOString(),
   last_edited_time: r.updatedAt.toISOString(),
 }));
+
+for (const a of articles) {
+  a.image = await localiseImage(a.image, a.slug || a.id);
+}
 
 await fs.mkdir(OUT_DIR, { recursive: true });
 
@@ -153,5 +191,13 @@ const scenes = sceneRows.map((r) => ({
   width: r.width,
   height: r.height,
 }));
+for (const [i, s] of scenes.entries()) {
+  s.image = await localiseImage(s.image, `inspire-scene-${i + 1}`);
+}
 await fs.writeFile(path.join(OUT_DIR, 'inspire.json'), JSON.stringify(scenes, null, 2));
 console.log(`[sync-articles] wrote ${scenes.length} inspire scenes from Neon.`);
+
+// Heroes whose source URL is gone from the data age out rather than pile up.
+for (const entry of await fs.readdir(HEROES_DIR)) {
+  if (!keptHeroFiles.has(entry)) await fs.rm(path.join(HEROES_DIR, entry));
+}

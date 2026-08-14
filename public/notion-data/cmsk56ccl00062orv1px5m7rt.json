@@ -1,0 +1,880 @@
+[
+  {
+    "object": "block",
+    "id": "md-1",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Half the prints in the gallery are titled in Norwegian, and the titles are not decoration. They tell you what the picture is of, usually in one word, because Norwegian is very good at doing that.",
+          "href": null,
+          "text": {
+            "content": "Half the prints in the gallery are titled in Norwegian, and the titles are not decoration. They tell you what the picture is of, usually in one word, because Norwegian is very good at doing that.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-2",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "If you have ever wondered what a hyttefrokost is, or why a print is called Vinkveld, here is the short version. It is also a decent way into how Norwegians talk about the parts of a day worth keeping.",
+          "href": null,
+          "text": {
+            "content": "If you have ever wondered what a hyttefrokost is, or why a print is called Vinkveld, here is the short version. It is also a decent way into how Norwegians talk about the parts of a day worth keeping.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-3",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Norwegian just sticks words together",
+          "href": null,
+          "text": {
+            "content": "Norwegian just sticks words together",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-4",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "English breaks compounds apart, so we get \"morning stretch\" and \"wine evening\" as two words each. Norwegian jams them into one: morgenstrekk, vinkveld. The result is a language that can name a very specific pleasure in a single word and then use it as though everyone already agreed it deserved one.",
+          "href": null,
+          "text": {
+            "content": "English breaks compounds apart, so we get \"morning stretch\" and \"wine evening\" as two words each. Norwegian jams them into one: morgenstrekk, vinkveld. The result is a language that can name a very specific pleasure in a single word and then use it as though everyone already agreed it deserved one.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-5",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "That is exactly what these titles are doing.",
+          "href": null,
+          "text": {
+            "content": "That is exactly what these titles are doing.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-6",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "The ones about the time of day",
+          "href": null,
+          "text": {
+            "content": "The ones about the time of day",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-7",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Morgenstrekk.",
+          "href": null,
+          "text": {
+            "content": "Morgenstrekk.",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " Morgen is morning, strekk is a stretch. The first full-body stretch of the day, the one before your feet touch the floor. ",
+          "href": null,
+          "text": {
+            "content": " Morgen is morning, strekk is a stretch. The first full-body stretch of the day, the one before your feet touch the floor. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Morgenstrekk",
+          "href": "/product/morgenstrekk",
+          "text": {
+            "content": "Morgenstrekk",
+            "link": {
+              "url": "/product/morgenstrekk"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " by Simen Wahlqvist draws it as a figure reaching for a small sun with a charging cable trailing off him to a plug at the skirting board, which is either very funny or slightly too accurate.",
+          "href": null,
+          "text": {
+            "content": " by Simen Wahlqvist draws it as a figure reaching for a small sun with a charging cable trailing off him to a plug at the skirting board, which is either very funny or slightly too accurate.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-8",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Morgenlevering.",
+          "href": null,
+          "text": {
+            "content": "Morgenlevering.",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " Morning delivery, from levere, to deliver. ",
+          "href": null,
+          "text": {
+            "content": " Morning delivery, from levere, to deliver. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Morgenlevering",
+          "href": "/product/morgenlevering",
+          "text": {
+            "content": "Morgenlevering",
+            "link": {
+              "url": "/product/morgenlevering"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " by Sia Siamos paints a breakfast table that looks like it has just arrived, coffee poured, croissants out, carnations in a red vase.",
+          "href": null,
+          "text": {
+            "content": " by Sia Siamos paints a breakfast table that looks like it has just arrived, coffee poured, croissants out, carnations in a red vase.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-9",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Vinkveld.",
+          "href": null,
+          "text": {
+            "content": "Vinkveld.",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " Vin is wine and kveld is evening, and kveld is the better half of that pairing. It means the evening as a thing in itself, the stretch after the day is done. ",
+          "href": null,
+          "text": {
+            "content": " Vin is wine and kveld is evening, and kveld is the better half of that pairing. It means the evening as a thing in itself, the stretch after the day is done. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Vinkveld",
+          "href": "/product/vinkveld",
+          "text": {
+            "content": "Vinkveld",
+            "link": {
+              "url": "/product/vinkveld"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " is that hour painted in thick strokes, olives and grapes and a bottle with the cork already adrift.",
+          "href": null,
+          "text": {
+            "content": " is that hour painted in thick strokes, olives and grapes and a bottle with the cork already adrift.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-10",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "The ones about somewhere you go",
+          "href": null,
+          "text": {
+            "content": "The ones about somewhere you go",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-11",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Hyttefrokost.",
+          "href": null,
+          "text": {
+            "content": "Hyttefrokost.",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " Hytte is a cabin, frokost is breakfast. Norwegians own a remarkable number of hytter, and the cabin breakfast is the slow one, eaten late, with nowhere to be. ",
+          "href": null,
+          "text": {
+            "content": " Hytte is a cabin, frokost is breakfast. Norwegians own a remarkable number of hytter, and the cabin breakfast is the slow one, eaten late, with nowhere to be. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Hyttefrokost",
+          "href": "/product/hyttefrokost",
+          "text": {
+            "content": "Hyttefrokost",
+            "link": {
+              "url": "/product/hyttefrokost"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " has exactly that pace: tomatoes heaped on a board, a cloth thrown down rather than laid.",
+          "href": null,
+          "text": {
+            "content": " has exactly that pace: tomatoes heaped on a board, a cloth thrown down rather than laid.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-12",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Trysilkaffe.",
+          "href": null,
+          "text": {
+            "content": "Trysilkaffe.",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " Kaffe is coffee, and Trysil is a mountain town in eastern Norway best known for its skiing. Put them together and you have coffee in a specific place, which in a country that drinks as much of it as this one is practically a genre. ",
+          "href": null,
+          "text": {
+            "content": " Kaffe is coffee, and Trysil is a mountain town in eastern Norway best known for its skiing. Put them together and you have coffee in a specific place, which in a country that drinks as much of it as this one is practically a genre. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Trysilkaffe",
+          "href": "/product/trysilkaffe",
+          "text": {
+            "content": "Trysilkaffe",
+            "link": {
+              "url": "/product/trysilkaffe"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " by Ingunn Dybendal fills a green mug with an impossible folk bouquet, drawn petal by petal in coloured pencil.",
+          "href": null,
+          "text": {
+            "content": " by Ingunn Dybendal fills a green mug with an impossible folk bouquet, drawn petal by petal in coloured pencil.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-13",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Eltsjoen.",
+          "href": null,
+          "text": {
+            "content": "Eltsjoen.",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " The ending is the giveaway: sjøen is the lake, or the sea, depending on where you are standing. ",
+          "href": null,
+          "text": {
+            "content": " The ending is the giveaway: sjøen is the lake, or the sea, depending on where you are standing. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Eltsjoen",
+          "href": "/product/eltsjoen",
+          "text": {
+            "content": "Eltsjoen",
+            "link": {
+              "url": "/product/eltsjoen"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " turns a Nordic lake landscape into pure pattern, clouds stretched into ribbons and forest turned to folk motifs. The proper Norwegian spelling uses ø, written here as oe so the internet can cope with it.",
+          "href": null,
+          "text": {
+            "content": " turns a Nordic lake landscape into pure pattern, clouds stretched into ribbons and forest turned to folk motifs. The proper Norwegian spelling uses ø, written here as oe so the internet can cope with it.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-14",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "The one that needs no translation",
+          "href": null,
+          "text": {
+            "content": "The one that needs no translation",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-15",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Hummer og Vin.",
+          "href": null,
+          "text": {
+            "content": "Hummer og Vin.",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " Lobster and wine. Og is and, and that is the entire vocabulary lesson. ",
+          "href": null,
+          "text": {
+            "content": " Lobster and wine. Og is and, and that is the entire vocabulary lesson. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Hummer og Vin",
+          "href": "/product/hummer-og-vin",
+          "text": {
+            "content": "Hummer og Vin",
+            "link": {
+              "url": "/product/hummer-og-vin"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " looks straight down on a summer table mid-toast, hands reaching in from the edges, candles leaning at friendly angles.",
+          "href": null,
+          "text": {
+            "content": " looks straight down on a summer table mid-toast, hands reaching in from the edges, candles leaning at friendly angles.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-16",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Koselig, the word that is on none of them",
+          "href": null,
+          "text": {
+            "content": "Koselig, the word that is on none of them",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-17",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "The word hovering behind the lot is koselig. It gets translated as cosy, which undersells it: koselig is closer to a warm, unhurried, good-company sort of nice, and it can describe a room, a meal, a person or an entire evening.",
+          "href": null,
+          "text": {
+            "content": "The word hovering behind the lot is koselig. It gets translated as cosy, which undersells it: koselig is closer to a warm, unhurried, good-company sort of nice, and it can describe a room, a meal, a person or an entire evening.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-18",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "None of these prints is called Koselig. All of them are about it. A cabin breakfast, a wine evening, a morning stretch, a table with hands reaching into the frame. That is the through line running through ",
+          "href": null,
+          "text": {
+            "content": "None of these prints is called Koselig. All of them are about it. A cabin breakfast, a wine evening, a morning stretch, a table with hands reaching into the frame. That is the through line running through ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "the artists here",
+          "href": "/artists",
+          "text": {
+            "content": "the artists here",
+            "link": {
+              "url": "/artists"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ", and it is a large part of why the pictures feel like company rather than decoration.",
+          "href": null,
+          "text": {
+            "content": ", and it is a large part of why the pictures feel like company rather than decoration.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-19",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "If one of the words has landed, the picture that goes with it is a click away.",
+          "href": null,
+          "text": {
+            "content": "If one of the words has landed, the picture that goes with it is a click away.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  }
+]

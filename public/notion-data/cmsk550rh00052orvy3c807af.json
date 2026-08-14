@@ -1,0 +1,828 @@
+[
+  {
+    "object": "block",
+    "id": "md-1",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Kitchens are hostile to art. Steam, cooking grease, heat off the hob, and about forty centimetres of free wall between the units and the extractor. Dining rooms are the exact opposite: the one room where people sit still for two hours with nothing to look at but the walls.",
+          "href": null,
+          "text": {
+            "content": "Kitchens are hostile to art. Steam, cooking grease, heat off the hob, and about forty centimetres of free wall between the units and the extractor. Dining rooms are the exact opposite: the one room where people sit still for two hours with nothing to look at but the walls.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-2",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Same meal, two completely different styling problems. Worth treating them separately.",
+          "href": null,
+          "text": {
+            "content": "Same meal, two completely different styling problems. Worth treating them separately.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-3",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "The kitchen: work around the units",
+          "href": null,
+          "text": {
+            "content": "The kitchen: work around the units",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-4",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "You are not looking for a feature wall in here. You are looking for the leftover pieces of wall that nobody has hung a rail on yet.",
+          "href": null,
+          "text": {
+            "content": "You are not looking for a feature wall in here. You are looking for the leftover pieces of wall that nobody has hung a rail on yet.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-5",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "The end of a run of units, where the worktop stops and there is a slice of wall before the door.",
+          "href": null,
+          "text": {
+            "content": "The end of a run of units, where the worktop stops and there is a slice of wall before the door.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-6",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Above a doorway or a hatch, which is dead space in almost every kitchen.",
+          "href": null,
+          "text": {
+            "content": "Above a doorway or a hatch, which is dead space in almost every kitchen.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-7",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "The wall the kitchen table sits against, if you have one.",
+          "href": null,
+          "text": {
+            "content": "The wall the kitchen table sits against, if you have one.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-8",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "The worktop itself, with a small print leaning against the splashback behind the kettle.",
+          "href": null,
+          "text": {
+            "content": "The worktop itself, with a small print leaning against the splashback behind the kettle.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-9",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Small and square tends to fit these gaps better than a tall portrait print. Simen Wahlqvist's 50 x 50 cm illustrations were not designed for kitchens, but they slot into awkward spans neatly, and a deadpan drawing is good company while you wait for the pasta.",
+          "href": null,
+          "text": {
+            "content": "Small and square tends to fit these gaps better than a tall portrait print. Simen Wahlqvist's 50 x 50 cm illustrations were not designed for kitchens, but they slot into awkward spans neatly, and a deadpan drawing is good company while you wait for the pasta.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-10",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Two practical rules. Never hang anything directly above the hob, because the film of cooking grease is real and it does not come off a mount. And in a kitchen, framing behind glazing is not optional, it is the only thing standing between your print and the steam.",
+          "href": null,
+          "text": {
+            "content": "Two practical rules. Never hang anything directly above the hob, because the film of cooking grease is real and it does not come off a mount. And in a kitchen, framing behind glazing is not optional, it is the only thing standing between your print and the steam.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-11",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "The dining room: hang it lower than you think",
+          "href": null,
+          "text": {
+            "content": "The dining room: hang it lower than you think",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-12",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "The standard advice is to centre art at about 145 to 150 cm, which is average standing eye level. In a dining room everybody is sitting down. Drop the centre of the piece by 10 to 15 cm and the art meets the room where it actually lives.",
+          "href": null,
+          "text": {
+            "content": "The standard advice is to centre art at about 145 to 150 cm, which is average standing eye level. In a dining room everybody is sitting down. Drop the centre of the piece by 10 to 15 cm and the art meets the room where it actually lives.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-13",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "The other dining-room quirk is light. A low pendant over the table throws most of its light downwards, which leaves the walls dim and the art in shadow after dark. Either hang where a wall light or the pendant's spill reaches, or accept that the piece is a daytime pleasure and choose something with enough contrast to hold up in low light.",
+          "href": null,
+          "text": {
+            "content": "The other dining-room quirk is light. A low pendant over the table throws most of its light downwards, which leaves the walls dim and the art in shadow after dark. Either hang where a wall light or the pendant's spill reaches, or accept that the piece is a daytime pleasure and choose something with enough contrast to hold up in low light.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-14",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Food on the wall is not a cliché if it is good",
+          "href": null,
+          "text": {
+            "content": "Food on the wall is not a cliché if it is good",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-15",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "There is a reason still life has survived five hundred years. Painted well, a table full of food is a painting about company, not about lunch.",
+          "href": null,
+          "text": {
+            "content": "There is a reason still life has survived five hundred years. Painted well, a table full of food is a painting about company, not about lunch.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-16",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Sia Siamos",
+          "href": "/artist/sia-siamos",
+          "text": {
+            "content": "Sia Siamos",
+            "link": {
+              "url": "/artist/sia-siamos"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " paints exactly that, and all four of her prints are versions of the same generous idea.",
+          "href": null,
+          "text": {
+            "content": " paints exactly that, and all four of her prints are versions of the same generous idea.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-17",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Hummer og Vin",
+          "href": "/product/hummer-og-vin",
+          "text": {
+            "content": "Hummer og Vin",
+            "link": {
+              "url": "/product/hummer-og-vin"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " looks straight down on a lobster dinner mid-toast, hands reaching in from the edges of the cloth.",
+          "href": null,
+          "text": {
+            "content": " looks straight down on a lobster dinner mid-toast, hands reaching in from the edges of the cloth.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-18",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Vinkveld",
+          "href": "/product/vinkveld",
+          "text": {
+            "content": "Vinkveld",
+            "link": {
+              "url": "/product/vinkveld"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " is a wine evening in thick, glossy strokes, the cork already adrift. The moodiest of the four, and the one for a dining wall.",
+          "href": null,
+          "text": {
+            "content": " is a wine evening in thick, glossy strokes, the cork already adrift. The moodiest of the four, and the one for a dining wall.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-19",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Morgenlevering",
+          "href": "/product/morgenlevering",
+          "text": {
+            "content": "Morgenlevering",
+            "link": {
+              "url": "/product/morgenlevering"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " is a breakfast table in full swing, cafetière and croissants and carnations in a red vase.",
+          "href": null,
+          "text": {
+            "content": " is a breakfast table in full swing, cafetière and croissants and carnations in a red vase.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-20",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Hyttefrokost",
+          "href": "/product/hyttefrokost",
+          "text": {
+            "content": "Hyttefrokost",
+            "link": {
+              "url": "/product/hyttefrokost"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " piles tomatoes and grapes against green tiles with proper holiday ease.",
+          "href": null,
+          "text": {
+            "content": " piles tomatoes and grapes against green tiles with proper holiday ease.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-21",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "They were painted as kin, so they pair beautifully. Breakfast on one wall and wine on the other marks out the two ends of a day, and it gives an open-plan kitchen and dining space a bit of narrative rather than two unrelated pictures.",
+          "href": null,
+          "text": {
+            "content": "They were painted as kin, so they pair beautifully. Breakfast on one wall and wine on the other marks out the two ends of a day, and it gives an open-plan kitchen and dining space a bit of narrative rather than two unrelated pictures.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-22",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "If you would rather not hang your dinner",
+          "href": null,
+          "text": {
+            "content": "If you would rather not hang your dinner",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-23",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Not everyone wants food art in the room where they eat. Fair enough.",
+          "href": null,
+          "text": {
+            "content": "Not everyone wants food art in the room where they eat. Fair enough.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-24",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Trysilkaffe",
+          "href": "/product/trysilkaffe",
+          "text": {
+            "content": "Trysilkaffe",
+            "link": {
+              "url": "/product/trysilkaffe"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " brings folk pattern instead, an impossible bouquet crammed into a green mug, drawn petal by petal in coloured pencil. ",
+          "href": null,
+          "text": {
+            "content": " brings folk pattern instead, an impossible bouquet crammed into a green mug, drawn petal by petal in coloured pencil. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Birdie Green",
+          "href": "/product/birdie-green",
+          "text": {
+            "content": "Birdie Green",
+            "link": {
+              "url": "/product/birdie-green"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " does the other job: emerald and candy pink, fresh enough to lift a kitchen that has gone slightly too tasteful. Both bring colour without adding another plate to the table.",
+          "href": null,
+          "text": {
+            "content": " does the other job: emerald and candy pink, fresh enough to lift a kitchen that has gone slightly too tasteful. Both bring colour without adding another plate to the table.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-25",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Have a browse of the ",
+          "href": null,
+          "text": {
+            "content": "Have a browse of the ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "botanical prints",
+          "href": "/category/botanical",
+          "text": {
+            "content": "botanical prints",
+            "link": {
+              "url": "/category/botanical"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " if the food-and-flowers end of the gallery is where your kitchen wants to go.",
+          "href": null,
+          "text": {
+            "content": " if the food-and-flowers end of the gallery is where your kitchen wants to go.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  }
+]
