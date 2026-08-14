@@ -79,10 +79,10 @@ export default async function ScandinavianWallArtPage() {
           should anchor the sofa wall, and the{' '}
           <Link href="/collection/living-room" className="underline hover:text-neutral-900">living room collection</Link>{' '}
           gathers the prints with that kind of presence. The bedroom rewards the softer end of the
-          gallery, muted botanicals and quiet abstracts you're happy to wake up to, collected in the{' '}
+          gallery, muted botanicals and quiet abstracts you&apos;re happy to wake up to, collected in the{' '}
           <Link href="/collection/bedroom" className="underline hover:text-neutral-900">bedroom edit</Link>.
-          The home office suits the catalogue's dry wit, a Wahlqvist illustration hung in your eyeline
-          from the desk, and there's a{' '}
+          The home office suits the catalogue&apos;s dry wit, a Wahlqvist illustration hung in your eyeline
+          from the desk, and there&apos;s a{' '}
           <Link href="/collection/home-office" className="underline hover:text-neutral-900">home office page</Link>{' '}
           for exactly that. Wherever it hangs, centre the piece at roughly 145 to 150 cm from the floor.
         </p>
