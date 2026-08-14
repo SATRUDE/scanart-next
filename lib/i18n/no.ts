@@ -316,14 +316,14 @@ export const no = {
 
   categories: {
     botanical: {
-      title: 'Botaniske kunsttrykk',
+      title: 'Botaniske trykk og kunstplakater',
       description:
-        'Skandinaviske botaniske trykk: folkelige blomstermotiver, mønstrede nordiske landskap og fargesterke stilleben fra uavhengige norske kunstnere. Innramming og levering til hele verden.',
+        'Botaniske trykk og kunstplakater fra norske kunstnere: blomstermotiver, nordiske landskap og fargerike stilleben. Alle i 50x70 cm, med eller uten ramme.',
       heading: 'Botaniske trykk',
       intro:
-        'Botanisk betyr mer enn blomster i en vase i dette galleriet, selv om Ingunn Dybendals Trysilkaffe gir deg akkurat det: et krus med vilt mønstrede blomster i glade, folkelige farger. Det betyr naturen slik nordiske kunstnere faktisk lever med den. Dybendals Eltsjoen gjør fjell, vann og skog om til et tett, juvelklart mønster; Helene Brox’ Tree Top Peach fyller rammen med fugler blant grener i en myk papirklippstil; og Sia Siamos maler det som skjer når naturen når frem til bordet: hyttefrokoster, modne tomater og druer, en karaffel med vann mot grønne kjøkkenfliser.',
+        'Botaniske trykk er en av de enkleste veiene inn i kunsten for et hjem i skandinavisk stil, og her spenner de fra blomster til dekkede bord. Ingunn Dybendal tegner folkelige blomstermotiver og et mønstret nordisk landskap, Helene Brox fyller rammen med fugler blant grener i en myk papirklippstil, og Sia Siamos maler fargerike stilleben fra kjøkkenbordet. Hvert botanisk kunsttrykk lages på bestilling i 50x70 cm, med eller uten ramme.',
       intro2:
-        'Den bredden gjør botaniske trykk til en av de enkleste veiene inn i kunsten for et hjem i skandinavisk stil. Hvite vegger og lyst treverk er en palett som venter på nettopp denne typen varme, og et botanisk verk gir rommet det uten at det tipper over i rot. Alle tre er uavhengige kunstnere som arbeider i Norge, og hvert verk i kategorien produseres i museumskvalitet.',
+        'Hvite vegger og lyst treverk er en palett som venter på nettopp denne typen varme, og en botanisk plakat gir rommet det uten at det tipper over i rot. Alle tre er uavhengige kunstnere som arbeider i Norge, og hvert verk i kategorien produseres i museumskvalitet.',
       stylingHeading: 'Slik bruker du botaniske trykk',
       stylingBody:
         'Kjøkken og spiseplasser er det naturlige hjemmet for Sia Siamos’ bordscener; heng en der du faktisk spiser, så gjør den nytte for seg hver dag. De mildere verkene, spesielt Tree Top Peach, passer på soverom og i lesekroker, mens det tette mønsteret i Eltsjoen belønner en vegg du passerer langsomt, en gang eller en trappeavsats. Alt her deler samme format på 50 x 70 cm, så par kommer lett: prøv en Dybendal ved siden av en Siamos og la fargene snakke sammen.',
@@ -346,14 +346,14 @@ export const no = {
       ],
     },
     abstract: {
-      title: 'Nordisk abstrakt veggkunst',
+      title: 'Abstrakte trykk og kunstplakater',
       description:
-        'Nordisk abstrakt veggkunst fra uavhengige norske kunstnere: rendyrkede figurer og djerve fuglemotiver i trygge, flate farger. Innramming og levering til hele verden.',
+        'Abstrakte trykk og kunstplakater fra norske kunstnere: rene silhuetter og djerve fuglemotiver i flate farger. I A3 til A1 og 50x70 cm, med eller uten ramme.',
       heading: 'Abstrakte trykk',
       intro:
-        'Abstrakt kunst i den nordiske tradisjonen heller mot klarhet snarere enn kaos: former skrelles ned til bare den essensielle silhuetten står igjen, og én eller to flate farger gjør jobben til ti. Trykkene i denne samlingen bærer den holdningen. Helene Brox maler løse, papirklippaktige figurer i kremhvitt på én fargeflate, en danser midt i steget, en svale fanget i stupet, mens Renate Thors Birdie-serie, med røtter i silketrykkpraksisen hennes, gjør en fugleflokk om til et djervt, rytmisk mønster i fire fargevarianter. Begge er uavhengige norske kunstnere som arbeider i Oslo.',
+        'Leter du etter abstrakt kunst som plakat eller trykk, er dette den rolige, nordiske enden av sjangeren: former skrelles ned til bare den essensielle silhuetten står igjen, og én eller to flate farger gjør jobben til ti. Helene Brox maler løse, papirklippaktige figurer i kremhvitt på én fargeflate, mens Renate Thors Birdie-serie, med røtter i silketrykkpraksisen hennes, gjør en fugleflokk om til et djervt, rytmisk mønster i fire fargevarianter. Begge er uavhengige norske kunstnere, og hvert trykk kan bestilles med eller uten ramme, fra A3 opp til A1 og 50x70 cm.',
       intro2:
-        'Moderne skandinavisk veggkunst av dette slaget passer i rom som allerede nærmer seg ro. Hvis rommet ditt heller mot det minimalistiske, lyst treverk, rolige tekstiler, rikelig med lys, gir et abstrakt trykk øyet ett trygt sted å lande uten å rope over rommet. Og fordi komposisjonene er enkle, leses de like godt fra andre siden av rommet som på nært hold.',
+        'Abstrakt veggkunst av dette slaget passer i stuer og soverom som allerede nærmer seg ro. Hvis rommet ditt heller mot det minimalistiske, lyst treverk, rolige tekstiler, rikelig med lys, gir et abstrakt trykk øyet ett trygt sted å lande uten å rope over rommet. Og fordi komposisjonene er enkle, leses de like godt fra andre siden av rommet som på nært hold.',
       stylingHeading: 'Slik bruker du abstrakte trykk',
       stylingBody:
         'Ett stort abstrakt verk kan bære en vegg alene; heng det med midten av verket omtrent 145 til 150 cm fra gulvet. Birdie-trykkene er laget for å grupperes: et par eller en rekke på tre leses som én bevisst gest, fordi hver fargevariant deler samme komposisjon. Velg et trykk der bunnfargen speiler noe som allerede finnes i rommet, en pute, et teppe, en rad bokrygger, så faller veggen på plass.',
@@ -376,12 +376,12 @@ export const no = {
       ],
     },
     illustrations: {
-      title: 'Skandinaviske illustrasjoner',
+      title: 'Illustrasjoner og morsomme plakater',
       description:
-        'Karakterfulle skandinaviske illustrasjonstrykk av Oslo-illustratøren Simen Wahlqvist: få streker, tørr humor, rene farger. Innramming og levering til hele verden.',
+        'Morsomme plakater og illustrasjonstrykk av Oslo-illustratøren Simen Wahlqvist: få streker, tørr humor, rene farger. Til kontoret, med eller uten ramme.',
       heading: 'Illustrasjoner',
       intro:
-        'Hvert illustrasjonstrykk her er, foreløpig, arbeidet til én kunstner: Simen Wahlqvist, en grafisk designer og illustratør fra Oslo som prøver å fange et øyeblikk, ofte rett før det skjer, med så få streker som mulig. Regelen hans er enkel: får en tegning ham til å le, er den ferdig. Og det synes. Morgenstrekk fanger dagens aller første helkroppsstrekk, og de kvadratiske trykkene rundt bærer den samme tørre humoren, hvert av dem bygget av en håndfull trygge streker og én eller to farger.',
+        'Er du på jakt etter morsomme plakater med litt mer strek i, er dette stedet: hvert illustrasjonstrykk her er laget av Simen Wahlqvist, en grafisk designer og illustratør fra Oslo som fanger et øyeblikk, ofte rett før det skjer, med så få streker som mulig. Regelen hans er enkel: får en tegning ham til å le, er den ferdig. Morgenstrekk fanger dagens aller første helkroppsstrekk, og de kvadratiske trykkene rundt bærer den samme tørre humoren i én eller to farger.',
       intro2:
         'Dette er den rene, karakterfulle enden av skandinavisk kunst, og et enkelt første trykk å kjøpe. Det passer i ganger, på hjemmekontor og i ethvert rom som er blitt litt for smakfullt og trenger én ting med glimt i øyet. Simen er en av de uavhengige norske kunstnerne bak galleriet, og trykkene hans lages på arkivbestandig papir av museumskvalitet.',
       stylingHeading: 'Slik bruker du illustrasjonstrykk',
