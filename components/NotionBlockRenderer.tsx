@@ -67,8 +67,14 @@ export const NotionBlockRenderer: React.FC<NotionBlockRendererProps> = ({ blocks
     const { id, type } = block;
 
     switch (type) {
+      // A body heading_1 renders as <h2>, not <h1>: the article template already
+      // gives the page its single <h1> (the title), so an <h1> here is a duplicate.
+      // The classes are unchanged, so the heading looks exactly as it always has.
+      // heading_2 and heading_3 keep their tags on purpose — most articles use
+      // heading_2 for their sections, which is already correct under the page h1,
+      // and demoting them would skip a level on every article with no heading_1.
       case 'heading_1':
-        return (<h1 key={id} className="text-3xl font-bold mb-6 mt-8">{renderRichText(richTextOf(block, 'heading_1'))}</h1>);
+        return (<h2 key={id} className="text-3xl font-bold mb-6 mt-8">{renderRichText(richTextOf(block, 'heading_1'))}</h2>);
       case 'heading_2':
         return (<h2 key={id} className="text-2xl font-semibold mb-4 mt-6">{renderRichText(richTextOf(block, 'heading_2'))}</h2>);
       case 'heading_3':

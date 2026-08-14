@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
+import { expect, within } from 'storybook/test';
 import { NotionBlockRenderer } from '@/components/NotionBlockRenderer';
 
 const meta: Meta<typeof NotionBlockRenderer> = {
@@ -25,6 +26,40 @@ export const AllBlockTypes: Story = {
       { id: '10', type: 'quote', quote: { rich_text: [{ plain_text: 'Art is not what you see, but what you make others see.' }] } },
       { id: '11', type: 'paragraph', paragraph: { rich_text: [{ plain_text: 'Final paragraph after the quote.' }] } },
     ],
+  },
+};
+
+// The article template owns the page's single <h1> (the title), so nothing the
+// body renders may be an <h1>. One published article opened with a top-level
+// heading repeating its own title and shipped two identical <h1>s; articles
+// publish unattended, so this guards the shape rather than the one article.
+export const BodyHeadingsNeverRenderAnH1: Story = {
+  args: {
+    blocks: [
+      { id: '1', type: 'heading_1', heading_1: { rich_text: [{ plain_text: 'A top-level body heading' }] } },
+      { id: '2', type: 'paragraph', paragraph: { rich_text: [{ plain_text: 'Body copy under the top-level heading.' }] } },
+      { id: '3', type: 'heading_2', heading_2: { rich_text: [{ plain_text: 'A section heading' }] } },
+      { id: '4', type: 'heading_3', heading_3: { rich_text: [{ plain_text: 'A subsection heading' }] } },
+    ],
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    // No <h1> anywhere in rendered article body.
+    await expect(canvas.queryAllByRole('heading', { level: 1 })).toHaveLength(0);
+
+    // heading_1 comes through as an <h2>, keeping its visual weight.
+    await expect(
+      canvas.getByRole('heading', { level: 2, name: 'A top-level body heading' })
+    ).toBeInTheDocument();
+
+    // heading_2 and heading_3 are unchanged.
+    await expect(
+      canvas.getByRole('heading', { level: 2, name: 'A section heading' })
+    ).toBeInTheDocument();
+    await expect(
+      canvas.getByRole('heading', { level: 3, name: 'A subsection heading' })
+    ).toBeInTheDocument();
   },
 };
 
