@@ -103,7 +103,7 @@ export const collections: Collection[] = [
       {
         question: 'Can I order a living room print framed, and how is it delivered?',
         answer:
-          'Yes. Every print can be ordered unframed, or with a wood, black or white frame for £25 extra, chosen on the product page before you add it to the basket. Prints are made to order on museum-quality archival paper and delivered worldwide, with the cost shown at checkout.',
+          'Yes. Every print can be ordered unframed, or with a wood, black or white frame, chosen on the product page before you add it to the basket, where the price for the size you pick is shown. Prints are made to order on museum-quality archival paper and delivered worldwide, with the cost shown at checkout.',
       },
     ],
   },
@@ -173,7 +173,7 @@ export const collections: Collection[] = [
       {
         question: 'What if the print does not suit the room once it is up?',
         answer:
-          'You have 14 days to change your mind, so there is room to live with a piece before you commit. It helps to order the frame that matches your others, unframed, or a wood, black or white frame for £25 extra, all chosen on the product page. Prints are made to order and delivered worldwide, with the cost shown at checkout.',
+          'You have 14 days to change your mind, so there is room to live with a piece before you commit. It helps to order the frame that matches your others, unframed, or a wood, black or white frame, all chosen on the product page, where the price for the size you pick is shown. Prints are made to order and delivered worldwide, with the cost shown at checkout.',
       },
     ],
   },
@@ -243,7 +243,7 @@ export const collections: Collection[] = [
       {
         question: 'Can I order an office print framed, and how quickly does it arrive?',
         answer:
-          'Yes. Choose unframed, or a wood, black or white frame for £25 extra, on the product page before adding to the basket. Every print is made to order on museum-quality archival paper, typically 1 to 4 business days in production plus delivery to your region, with the cost shown at checkout.',
+          'Yes. Choose unframed, or a wood, black or white frame, on the product page before adding to the basket, where the price for the size you pick is shown. Every print is made to order on museum-quality archival paper, typically 1 to 4 business days in production plus delivery to your region, with the cost shown at checkout.',
       },
     ],
   },
