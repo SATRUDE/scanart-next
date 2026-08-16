@@ -60,6 +60,68 @@ interface RateRow {
   quotedAt: string | Date;
 }
 
+export interface OverrideRow {
+  size: string;
+  frame: string;
+  price: number | null;
+  currency: string | null;
+  priceEur: number;
+  updatedAt: string | Date;
+}
+
+/**
+ * The row Mark set for this item, or nothing. Matched on size AND frame, like
+ * the rates path; an unknown size takes the dearest row for the frame, because
+ * a size we cannot identify is not a reason to post something cheaply.
+ */
+export function findOverride(
+  overrides: OverrideRow[],
+  size: string | undefined,
+  frame: string
+): OverrideRow | undefined {
+  const forFrame = overrides.filter(o => o.frame === frame);
+  return (
+    forFrame.find(o => o.size === size) ??
+    forFrame.reduce<OverrideRow | undefined>(
+      (a, b) => (!a || b.priceEur > a.priceEur ? b : a),
+      undefined
+    )
+  );
+}
+
+/**
+ * The whole basket at exactly the numbers Mark typed, or null.
+ *
+ * A price he set is charged VERBATIM: no buffer, no currency round-trip, no
+ * rounding step. That is only possible when every item in the basket has an
+ * override whose currency IS the checkout currency; one item outside the
+ * record, or a buyer paying in a currency other than the one Mark priced,
+ * and the quote falls through to the EUR path below.
+ */
+export function nativeOverrideTotal(
+  overrides: OverrideRow[],
+  items: DeliveryItem[],
+  currency: Currency
+): number | null {
+  if (!items.length) return null;
+  let total = 0;
+  for (const item of items) {
+    const frame = item.frame && item.frame !== 'no-frame' ? 'wood' : 'no-frame';
+    const override = findOverride(overrides, item.size, frame);
+    if (
+      !override ||
+      override.currency !== currency ||
+      typeof override.price !== 'number' ||
+      !Number.isFinite(override.price) ||
+      override.price <= 0
+    ) {
+      return null;
+    }
+    total += override.price * Math.max(1, Math.floor(item.quantity));
+  }
+  return Math.round(total * 100) / 100;
+}
+
 function databaseUrl(): string | undefined {
   return process.env.ARTICLES_DATABASE_URL ?? process.env.DATABASE_URL;
 }
@@ -140,14 +202,30 @@ export async function quoteDelivery(
     const [rates, overrides, fx] = await Promise.all([
       sql`SELECT "size", "frame", "shipCost", "shipCostAdditional", "quotedAt"
           FROM "ShippingRate" WHERE "country" = ${countryCode}` as unknown as Promise<RateRow[]>,
-      sql`SELECT "frame", "priceEur" FROM "DeliveryPrice"
-          WHERE "country" = ${countryCode}` as unknown as Promise<
-        { frame: string; priceEur: number }[]
+      sql`SELECT "size", "frame", "price", "currency", "priceEur", "updatedAt"
+          FROM "DeliveryPrice" WHERE "country" = ${countryCode}` as unknown as Promise<
+        OverrideRow[]
       >,
       sql`SELECT "perEur" FROM "FxRate" WHERE "currency" = ${currency}` as unknown as Promise<
         { perEur: number }[]
       >,
     ]);
+
+    // The record answering in the buyer's own currency needs neither the
+    // rates nor an exchange rate, so it is tried FIRST: what Mark typed is
+    // what is charged, to the penny, per size.
+    const native = nativeOverrideTotal(overrides, items, currency);
+    if (native !== null) {
+      const oldestSet = overrides.reduce(
+        (acc, o) => Math.min(acc, new Date(o.updatedAt).getTime()),
+        Number.POSITIVE_INFINITY
+      );
+      return {
+        amount: native,
+        source: 'set-by-hand',
+        ageDays: Math.floor((Date.now() - oldestSet) / 86_400_000),
+      };
+    }
 
     const perEur = fx[0]?.perEur;
     if (!rates.length || !perEur) {
@@ -159,11 +237,13 @@ export async function quoteDelivery(
 
     for (const item of items) {
       const frame = item.frame && item.frame !== 'no-frame' ? 'wood' : 'no-frame';
-      const override = overrides.find(o => o.frame === frame);
+      const override = findOverride(overrides, item.size, frame);
 
       if (override) {
-        // A price Mark set is a PRICE, not a cost: no buffer, no rounding up
-        // on top of it. He typed the number he wants charged.
+        // A price Mark set is a PRICE, not a cost: no buffer added. The buyer
+        // is paying in a currency other than the one he priced (the verbatim
+        // case returned above), so the EUR figure converts and the final
+        // round-up makes it chargeable.
         usedOverride = true;
         priced.push({ first: override.priceEur, additional: override.priceEur, quantity: item.quantity });
         continue;
