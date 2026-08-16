@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { getAllArticles } from '@/lib/articles';
 import { JournalGrid } from '@/components/JournalGrid';
+import { JournalBooksSeries } from '@/components/JournalBooksSeries';
 import { BASE_URL, socialCard } from '@/lib/site';
 
 const PAGE_TITLE = 'Journal';
@@ -39,6 +40,9 @@ export default async function JournalPage() {
   return (
     <>
       <JournalGrid articles={articles} categories={categories} />
+      <div className="container mx-auto px-8 pb-16">
+        <JournalBooksSeries articles={articles} />
+      </div>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
     </>
   );
