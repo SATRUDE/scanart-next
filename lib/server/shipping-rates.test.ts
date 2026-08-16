@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { combineDelivery, roundUp, priceFromCost, BUFFER } from './shipping-rates';
+import { combineDelivery, roundUp, priceFromCost, BUFFER, findOverride, nativeOverrideTotal } from './shipping-rates';
 
 // The real Gelato figures for an A1 to Oslo, quoted 2026-08-12, in EUR:
 // rolled 8.48 first and 0.70 for each after, framed 21.10 and 9.50.
@@ -116,5 +116,66 @@ describe('the buffer', () => {
     const perEur = 10.9705;
     const charged = roundUp(priceFromCost(21.1) * perEur, 'NOK');
     expect(charged).toBeGreaterThan(21.1 * perEur);
+  });
+});
+
+describe('the delivery record is charged faithfully', () => {
+  // Fixtures are the real record as of 16 Aug 2026: per-size rows, the exact
+  // price and currency Mark typed, and the EUR shadow of each.
+  const gb = (size: string, frame: string, price: number, priceEur: number) => ({
+    size, frame, price, priceEur, currency: 'GBP', updatedAt: '2026-08-13T06:08:22.121Z',
+  });
+  const GB_ROWS = [
+    gb('A1', 'wood', 13.99, 16.37),
+    gb('50x70cm', 'wood', 13.99, 16.37),
+    gb('50x50cm', 'wood', 9.99, 11.69),
+    gb('A2', 'wood', 9.99, 11.69),
+    gb('A3', 'wood', 9.99, 11.69),
+    gb('A3', 'no-frame', 5.99, 7.01),
+  ];
+  const NO_ROWS = [
+    { size: 'A3', frame: 'no-frame', price: 100, priceEur: 9.12, currency: 'NOK', updatedAt: '2026-08-13' },
+  ];
+
+  it('matches on size: a framed A3 pays the A3 price, never the A1 row', () => {
+    expect(findOverride(GB_ROWS, 'A3', 'wood')?.price).toBe(9.99);
+    expect(findOverride(GB_ROWS, 'A1', 'wood')?.price).toBe(13.99);
+  });
+
+  it('an unknown size takes the DEAREST row for its frame', () => {
+    expect(findOverride(GB_ROWS, '70x100cm', 'wood')?.price).toBe(13.99);
+  });
+
+  it('charges the number Mark typed, verbatim, in his currency', () => {
+    expect(nativeOverrideTotal(GB_ROWS, [{ size: 'A3', frame: 'no-frame', quantity: 1 }], 'GBP')).toBe(5.99);
+    expect(nativeOverrideTotal(NO_ROWS, [{ size: 'A3', frame: 'no-frame', quantity: 1 }], 'NOK')).toBe(100);
+  });
+
+  it('a quantity multiplies the verbatim price with no rounding step', () => {
+    expect(nativeOverrideTotal(GB_ROWS, [{ size: 'A3', frame: 'no-frame', quantity: 2 }], 'GBP')).toBe(11.98);
+  });
+
+  it('a buyer paying in another currency falls through to the EUR path', () => {
+    expect(nativeOverrideTotal(NO_ROWS, [{ size: 'A3', frame: 'no-frame', quantity: 1 }], 'GBP')).toBeNull();
+  });
+
+  it('an unknown size still gets a Mark-set price: the dearest for its frame', () => {
+    expect(
+      nativeOverrideTotal(GB_ROWS, [{ size: 'A1', frame: 'no-frame', quantity: 1 }], 'GBP')
+    ).toBe(5.99);
+  });
+
+  it('an item whose frame has no rows spoils the verbatim path for the basket', () => {
+    expect(
+      nativeOverrideTotal(NO_ROWS, [
+        { size: 'A3', frame: 'no-frame', quantity: 1 },
+        { size: 'A3', frame: 'wood', quantity: 1 },
+      ], 'NOK')
+    ).toBeNull();
+  });
+
+  it('refuses a row with no usable typed price', () => {
+    const bad = [{ size: 'A3', frame: 'no-frame', price: 0, priceEur: 7.01, currency: 'GBP', updatedAt: '2026-08-13' }];
+    expect(nativeOverrideTotal(bad, [{ size: 'A3', frame: 'no-frame', quantity: 1 }], 'GBP')).toBeNull();
   });
 });
