@@ -11,7 +11,7 @@ const DEFAULT_STRINGS: QualityPromiseStrings = {
     { title: 'Quality', desc: 'We only print on museum quality paper.' },
     { title: 'Worldwide', desc: 'Available to buy worldwide.' },
     { title: 'Expert Framing', desc: 'Professional framing services available for all prints.' },
-    { title: 'Authenticity', desc: 'Each piece is sourced directly from Scandinavian artists — supporting local talent and creative communities.' },
+    { title: 'Authenticity', desc: 'Each piece is sourced directly from Scandinavian artists, supporting local talent and creative communities.' },
     { title: 'Satisfaction', desc: '14 days to change your mind on any order.' },
   ],
 };

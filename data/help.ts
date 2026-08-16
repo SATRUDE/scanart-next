@@ -29,7 +29,7 @@ export const helpGroups: HelpGroup[] = [
       },
       {
         q: 'Can I add a frame?',
-        a: 'Yes. Every print can be ordered unframed, or with a Wood, Black or White frame for £25 extra (shown in your currency on the product page). Choose your frame before adding the print to your basket.',
+        a: 'Yes. Every print can be ordered unframed, or with a Wood, Black or White frame. The frame price depends on the size of the print and is shown in your currency on the product page. Choose your frame before adding the print to your basket.',
       },
       {
         q: 'Can I change or cancel my order?',

@@ -243,7 +243,7 @@ export const no = {
           },
           {
             q: 'Kan jeg legge til en ramme?',
-            a: 'Ja. Hvert trykk kan bestilles uten ramme, eller med ramme i tre, sort eller hvitt for £25 ekstra (vist i din valuta på produktsiden). Velg rammen før du legger trykket i handlekurven.',
+            a: 'Ja. Hvert trykk kan bestilles uten ramme, eller med ramme i tre, sort eller hvitt. Prisen på rammen avhenger av størrelsen på trykket, og vises i din valuta på produktsiden. Velg rammen før du legger trykket i handlekurven.',
           },
           {
             q: 'Kan jeg endre eller avbestille bestillingen min?',
