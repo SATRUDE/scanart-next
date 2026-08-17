@@ -72,7 +72,7 @@
     "featured": false,
     "published": true,
     "image": "/images/products/birdie-green.png",
-    "secondaryImage": "/images/products/birdie-green-scene.avif",
+    "secondaryImage": "https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/composed/_edit_2026-07-21-1784629946925_2x_upscaled_1784629986443-png-1786004476087.png",
     "availableSizes": [
       "A2",
       "A3",
@@ -102,7 +102,7 @@
     "featured": false,
     "published": true,
     "image": "/images/products/birdie-pink.png",
-    "secondaryImage": "/images/products/birdie-pink-scene.avif",
+    "secondaryImage": "https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/inspire/inspire-06-1786005118346.jpg",
     "availableSizes": [
       "A2",
       "A3",
@@ -132,7 +132,7 @@
     "featured": false,
     "published": true,
     "image": "/images/products/dancer.png",
-    "secondaryImage": "/images/products/dancer-scene.avif",
+    "secondaryImage": "https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/composed/_edit_2026-08-08-1786206620578_2x_upscaled_1786206677013-png-1786694955122.png",
     "availableSizes": [
       "50x70cm"
     ],
@@ -244,7 +244,7 @@
     "featured": false,
     "published": true,
     "image": "/images/products/half-man.png",
-    "secondaryImage": "/images/products/half-man-scene.avif",
+    "secondaryImage": "https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/inspire/inspire-05-1786005117457.jpg",
     "availableSizes": [
       "50x50cm"
     ],
@@ -272,7 +272,7 @@
     "featured": false,
     "published": true,
     "image": "/images/products/hummer-og-vin.png",
-    "secondaryImage": "/images/products/hummer-og-vin-scene.avif",
+    "secondaryImage": "https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/composed/image__7__2x_upscaled_1784624339256-png-1785928391126.png",
     "availableSizes": [
       "50x70cm"
     ],
@@ -300,7 +300,7 @@
     "featured": false,
     "published": true,
     "image": "/images/products/Hyttefrokost.png",
-    "secondaryImage": "/images/products/Hyttefrokost-scene.avif",
+    "secondaryImage": "https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/inspire/inspire-01-1786005113826.jpg",
     "availableSizes": [
       "50x70cm"
     ],
@@ -356,7 +356,7 @@
     "featured": true,
     "published": true,
     "image": "/images/products/mean-snothing.png",
-    "secondaryImage": "/images/products/mean-snothing-scene.avif",
+    "secondaryImage": "https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/composed/_test_2026-07-20-1784579791165_2x_upscaled_1784629394218-png-1785928384524.png",
     "availableSizes": [
       "50x50cm"
     ],

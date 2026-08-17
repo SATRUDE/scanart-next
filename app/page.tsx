@@ -80,15 +80,17 @@ export default async function HomePage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {[
-              { name: 'Botanical', image: '/images/homepage/botanical.avif', desc: 'Discover nature-inspired pieces that bring organic beauty and tranquility to your space.' },
-              { name: 'Illustrations', image: '/images/homepage/illustration.avif', desc: 'Playful, characterful, and full of charm — our illustration pieces blend Scandinavian wit with bold, contemporary style.' },
-              { name: 'Abstract', image: '/images/homepage/abstract.avif', desc: 'Explore contemporary abstract art that adds modern sophistication to your home.' },
+              // Tile scenes are InspireScene shots that honestly contain a
+              // print from their category (Stan's 16 Aug curation).
+              { name: 'Botanical', image: 'https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/inspire/inspire-01-1786005113826.jpg', alt: 'Hyttefrokost botanical print above a cane chair', desc: 'Discover nature-inspired pieces that bring organic beauty and tranquility to your space.' },
+              { name: 'Illustrations', image: 'https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/composed/_test_2026-07-20-1784579791165_2x_upscaled_1784629394218-png-1785928384524.png', alt: 'Mean Snothing illustration print on a tray table', desc: 'Playful, characterful, and full of charm, our illustration pieces blend Scandinavian wit with bold, contemporary style.' },
+              { name: 'Abstract', image: 'https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/composed/_edit_2026-07-21-1784634836712_2x_upscaled_1784634908121-png-1785930367765.png', alt: 'Birdie Brown abstract print on a dark desk', desc: 'Explore contemporary abstract art that adds modern sophistication to your home.' },
             ].map(cat => {
               const landing = getCategoryLandingByCategory(cat.name);
               return (
               <TrackedLink key={cat.name} event="homepage-section-click" eventData={{ section: 'category-tile', target: cat.name }} href={landing ? `/category/${landing.slug}` : `/products?category=${cat.name}`} className="group cursor-pointer">
                 <div className="relative aspect-[4/5] overflow-hidden bg-neutral-50 rounded mb-4">
-                  <Image src={cat.image} alt={`${cat.name} Category`} fill sizes="(max-width: 1024px) 100vw, 33vw" className="object-cover transition-all duration-300 group-hover:scale-[1.02]" />
+                  <Image src={cat.image} alt={cat.alt} fill sizes="(max-width: 1024px) 100vw, 33vw" className="object-cover transition-all duration-300 group-hover:scale-[1.02]" />
                 </div>
                 <h3 className="text-lg font-medium mb-2">{cat.name}</h3>
                 <p className="text-muted-foreground text-sm">{cat.desc}</p>
