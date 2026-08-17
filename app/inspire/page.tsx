@@ -4,13 +4,19 @@ import Image from 'next/image';
 import { getInspireScenes } from '@/lib/inspire';
 import { getAllProducts } from '@/lib/products';
 import { BASE_URL, socialCard } from '@/lib/site';
+import { metaTitle } from '@/lib/meta-title';
 
 export async function generateMetadata(): Promise<Metadata> {
   const scenes = await getInspireScenes();
+  // Was 186 characters, so the last third never reached a result. Trimmed to
+  // fit the slot with the words buyers search kept at the front: the room
+  // names, "framed" and "Nordic prints".
   const description =
-    'Scandinavian art print inspiration: framed Nordic prints styled in real bedrooms, kitchens, dining rooms and home offices. Browse the scenes and click through to the prints they feature.';
+    'Scandinavian art print inspiration: framed Nordic prints styled in bedrooms, kitchens, dining rooms and home offices. Click through to shop the scenes.';
   return {
-    title: 'Scandinavian Art Print Inspiration | Styled Room Ideas',
+    // 54 characters of its own, and it already carries its own pipe, so the
+    // layout's brand suffix both overflowed it and read as a second divider.
+    title: metaTitle('Scandinavian Art Print Inspiration | Styled Room Ideas'),
     description,
     alternates: {
       canonical: '/inspire',

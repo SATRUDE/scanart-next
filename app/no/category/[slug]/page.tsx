@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { metaTitle } from '@/lib/meta-title';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
@@ -39,7 +40,10 @@ export async function generateMetadata({
   const products = await getProductsByCategory(landing.category);
 
   return {
-    title: copy.title,
+    // The Norwegian category titles are the longest in the /no tree, and
+    // "Illustrasjoner og morsomme plakater" plus the layout's brand suffix ran
+    // to 62 characters. metaTitle keeps the suffix on the ones with room.
+    title: metaTitle(copy.title),
     description: copy.description,
     alternates: {
       canonical: `/no/category/${slug}`,
