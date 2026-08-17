@@ -48,14 +48,6 @@ export const artists: Artist[] = [
     bio: 'Athanasia Siamos is a Greek and Norwegian illustrator living in Bergen.',
     image: '/images/artists/sia-siamos.png'
   },
-  {
-    id: '6',
-    name: 'Nils Andersson',
-    slug: 'nils-andersson',
-    location: 'Malmö, Sweden',
-    bio: 'A contemporary artist whose work bridges traditional Scandinavian craftsmanship with modern aesthetic sensibilities. His pieces tell stories of heritage and innovation.',
-    image: ''
-  }
 ];
 
 export const getArtistById = (id: string) => {
