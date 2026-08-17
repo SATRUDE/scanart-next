@@ -1,15 +1,20 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { PrintCard } from '@/components/PrintCard';
+import { LanguageProvider } from '@/contexts/LanguageContext';
 
 const meta: Meta<typeof PrintCard> = {
   title: 'Components/ProductCard',
   component: PrintCard,
   tags: ['autodocs'],
   decorators: [
+    // The card prices itself from the language context when no currency prop
+    // is passed, so stories need the provider exactly as the app does.
     (Story) => (
-      <div className="max-w-xs">
-        <Story />
-      </div>
+      <LanguageProvider>
+        <div className="max-w-xs">
+          <Story />
+        </div>
+      </LanguageProvider>
     ),
   ],
 };

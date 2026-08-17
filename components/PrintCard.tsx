@@ -1,4 +1,7 @@
+'use client';
+
 import React from 'react';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { SmartImage } from './SmartImage';
 import { getArtistById } from '@/data/artists';
 import { getLowestProductPrices, type CurrencyPrices } from '@/lib/pricing';
@@ -45,7 +48,7 @@ const DEFAULT_SIZES = '(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw';
 
 export const PrintCard: React.FC<PrintCardProps> = ({
   product,
-  currency = 'GBP',
+  currency,
   onClick,
   className = '',
   priority = false,
@@ -53,6 +56,14 @@ export const PrintCard: React.FC<PrintCardProps> = ({
   categoryLabel,
   outOfStockLabel = 'Out of stock'
 }) => {
+  // The picker's country prices every card unless a caller overrides it.
+  // Before this, the prop defaulted to GBP and no template passed one, so
+  // seven page types (the /no tree included) quoted pounds whatever the
+  // buyer had selected; only /products, pricing inside ProductsGrid via
+  // this same context, followed the picker.
+  const { selectedCountry } = useLanguage();
+  const activeCurrency = currency ?? selectedCountry.currency;
+
   const formatPrice = (prices: CurrencyPrices, selectedCurrency: string) => {
     const price = prices[selectedCurrency as keyof CurrencyPrices];
     const symbols: { [key: string]: string } = {
@@ -97,7 +108,7 @@ export const PrintCard: React.FC<PrintCardProps> = ({
           {product.name}
         </h3>
         <p className="text-sm text-neutral-900">
-          {formatPrice(getLowestProductPrices(product), currency)}
+          {formatPrice(getLowestProductPrices(product), activeCurrency)}
         </p>
         {!product.inStock && (
           <p className="text-xs text-neutral-400 mt-1">{outOfStockLabel}</p>
