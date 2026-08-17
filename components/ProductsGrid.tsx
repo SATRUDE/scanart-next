@@ -146,7 +146,7 @@ export const ProductsGrid: React.FC<ProductsGridProps> = ({ products, categories
               <Link
                 key={col.slug}
                 href={`/collection/${col.slug}`}
-                onClick={() => track('products-filter-click', { type: 'room', value: col.slug })}
+                onClick={() => track('products-filter-click', { type: col.axis, value: col.slug })}
                 className="px-4 py-2 rounded-full text-sm transition-colors bg-muted text-neutral-700 hover:bg-muted/80"
               >
                 {col.chipLabel}
