@@ -45,8 +45,12 @@ export interface Collection {
 
 export const collections: Collection[] = [
   {
-    slug: 'birds',
-    chipLabel: 'Birds',
+    // Labelled for the axis, not just today's contents: every print here is
+    // currently a bird, and the H1 and copy say so, but the chip and the URL
+    // are the durable parts (Mark, 2026-08-17) and renaming a live collection
+    // costs a redirect. An animal print widens the heading, never the slug.
+    slug: 'birds-and-animals',
+    chipLabel: 'Birds & Animals',
     axis: 'subject',
     title:
       'Scandinavian Bird Wall Art & Prints',
