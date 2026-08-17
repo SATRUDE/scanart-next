@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest';
 
-import { META_SNIPPET_MAX_LENGTH, metaSnippet } from './meta-snippet';
+import { META_SNIPPET_MAX_LENGTH, clipToLength, metaSnippet } from './meta-snippet';
 import productsData from '../public/notion-data/products.json';
+import articlesData from '../public/notion-data/articles.json';
 
 describe('metaSnippet', () => {
   it('takes the first sentence when the copy runs on', () => {
@@ -76,5 +77,48 @@ describe('metaSnippet', () => {
       const previous = desc.includes('. ') ? `${desc.split('. ')[0]}.` : desc;
       expect(metaSnippet(desc)).toBe(previous);
     }
+  });
+});
+
+describe('clipToLength', () => {
+  it('leaves copy that already fits exactly as it is', () => {
+    const excerpt =
+      'Five Nordic photography books that look north, from Arctic light to the quiet of a Finnish forest.';
+    expect(excerpt.length).toBeLessThanOrEqual(META_SNIPPET_MAX_LENGTH);
+    expect(clipToLength(excerpt)).toBe(excerpt);
+  });
+
+  it('cuts an over-long excerpt at a word boundary and marks the cut', () => {
+    const result = clipToLength('The quick brown fox jumps over the lazy dog and keeps going.', 20);
+    expect(result.length).toBeLessThanOrEqual(20);
+    expect(result.endsWith('…')).toBe(true);
+    expect(result).not.toContain('  ');
+    // Never mid-word: everything before the ellipsis is whole words.
+    expect('The quick brown fox jumps over the lazy dog and keeps going.').toContain(
+      result.slice(0, -1)
+    );
+  });
+
+  it('keeps the teaser where metaSnippet would have thrown most of it away', () => {
+    // The reason articles do not use metaSnippet: an excerpt opening on a hook
+    // rather than a summary loses the substance to the first-sentence rule.
+    const excerpt =
+      'Say abstract art and most people picture mid-century New York. The Nordic version arrived by ' +
+      'a different route, through landscape and folk pattern, and it looks different for it.';
+    expect(metaSnippet(excerpt).length).toBeLessThan(70);
+    expect(clipToLength(excerpt).length).toBeGreaterThan(140);
+  });
+
+  it('brings every journal excerpt inside the snippet slot', () => {
+    const excerpts = (articlesData as { excerpt: string }[]).map(a => a.excerpt);
+    expect(excerpts.length).toBeGreaterThan(0);
+    for (const excerpt of excerpts) {
+      expect(clipToLength(excerpt).length).toBeLessThanOrEqual(META_SNIPPET_MAX_LENGTH);
+    }
+  });
+
+  it('normalises whitespace and handles blank copy', () => {
+    expect(clipToLength('  two   words  ')).toBe('two words');
+    expect(clipToLength('   ')).toBe('');
   });
 });

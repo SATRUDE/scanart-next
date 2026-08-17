@@ -17,6 +17,8 @@ import { NotionBlockRenderer } from '@/components/NotionBlockRenderer';
 import { PrintCard } from '@/components/PrintCard';
 import { BASE_URL, OG_IMAGE, SITE_NAME, OG_LOCALE, TWITTER_SITE } from '@/lib/site';
 import { getBrowseLinksForArticle } from '@/lib/article-browse';
+import { clipToLength } from '@/lib/meta-snippet';
+import { metaTitle } from '@/lib/meta-title';
 
 export async function generateStaticParams() {
   const articles = await getAllArticles();
@@ -32,15 +34,28 @@ export async function generateMetadata({
   const article = await getArticleBySlug(slug);
   if (!article) return {};
 
+  // A headline is written to read as a headline, not to leave 27 characters
+  // spare for the layout's "| Scandinavian Art Gallery" suffix, so the journal
+  // was where the templated title overflowed worst: 22 of 26 ran past the ~60
+  // characters a result shows, including the site's biggest impression earner
+  // (nordic-art-and-design-books, 243 impressions over the 28 days to 15 Aug,
+  // cut at "worth ow..."). metaTitle keeps the suffix where it fits and drops
+  // it where it would cost the headline, the same call the product pages make.
+  const title = metaTitle(article.title);
+  // Excerpts are teasers rather than stand-alone opening sentences, so they get
+  // the plain clip and not metaSnippet's first-sentence rule, which would have
+  // cut two of them to under 65 characters.
+  const description = clipToLength(article.excerpt);
+
   return {
-    title: article.title,
-    description: article.excerpt,
+    title,
+    description,
     alternates: {
       canonical: `/article/${article.slug}`,
     },
     openGraph: {
       title: article.title,
-      description: article.excerpt,
+      description,
       url: `${BASE_URL}/article/${article.slug}`,
       siteName: SITE_NAME,
       locale: OG_LOCALE,
@@ -51,7 +66,7 @@ export async function generateMetadata({
       card: 'summary_large_image',
       site: TWITTER_SITE,
       title: article.title,
-      description: article.excerpt,
+      description,
       images: [article.image || OG_IMAGE],
     },
   };

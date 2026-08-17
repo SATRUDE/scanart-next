@@ -2,13 +2,16 @@ import type { Metadata } from 'next';
 import { getAllProducts } from '@/lib/products';
 import { ProductsGrid } from '@/components/ProductsGrid';
 import { BASE_URL, socialCard } from '@/lib/site';
+import { metaTitle } from '@/lib/meta-title';
 
 const PAGE_TITLE = 'Nordic & Scandinavian Art Prints: A Curated Collection';
 const PAGE_DESCRIPTION =
   'A curated collection of Scandinavian and Nordic art prints by independent Norwegian artists. Framed or unframed, with worldwide delivery.';
 
 export const metadata: Metadata = {
-  title: PAGE_TITLE,
+  // 54 characters of its own, so the layout's brand suffix pushed the rendered
+  // title to 81 and Google cut it. metaTitle drops the suffix here.
+  title: metaTitle(PAGE_TITLE),
   description: PAGE_DESCRIPTION,
   alternates: {
     canonical: '/products',
