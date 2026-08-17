@@ -78,3 +78,26 @@ export function getLowestProductPrices(product: PricedProduct | null | undefined
 
   return result;
 }
+
+const CURRENCY_SYMBOLS: Record<Currency, string> = {
+  GBP: '£',
+  NOK: 'kr',
+  USD: '$',
+  DKK: 'kr',
+  SEK: 'kr',
+};
+
+/**
+ * The one place a price becomes a string. Kroner currencies read "600 kr",
+ * the rest "£42" / "$54". PrintCard used to carry a private formatter that
+ * wrote "kr600", so category, collection, artist and article cards disagreed
+ * with the prints grid, the product page and the cart, which all format via
+ * the language context. Both now call this.
+ */
+export function formatDisplayPrice(price: number, currency: Currency): string {
+  const symbol = CURRENCY_SYMBOLS[currency] ?? '';
+  if (currency === 'NOK' || currency === 'DKK' || currency === 'SEK') {
+    return `${price} ${symbol}`;
+  }
+  return `${symbol}${price}`;
+}

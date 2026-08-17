@@ -1,6 +1,7 @@
 'use client';
 
 import React, { createContext, useContext, useState, ReactNode } from 'react';
+import { formatDisplayPrice } from '@/lib/pricing';
 
 export type Currency = 'GBP' | 'NOK' | 'USD' | 'DKK' | 'SEK';
 export type Country = 'GB' | 'NO' | 'US' | 'DK' | 'SE';
@@ -84,13 +85,10 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
     document.cookie = `geo-country=${country.code};path=/;max-age=${60 * 60 * 24 * 365}`;
   };
 
-  const formatPrice = (prices: { GBP: number; NOK: number; USD: number; DKK: number; SEK: number }) => {
-    const price = prices[selectedCountry.currency];
-    if (selectedCountry.currency === 'NOK' || selectedCountry.currency === 'DKK' || selectedCountry.currency === 'SEK') {
-      return `${price} ${selectedCountry.symbol}`;
-    }
-    return `${selectedCountry.symbol}${price}`;
-  };
+  // Delegates to the shared formatter so cards formatting outside this
+  // context can never drift from it again (they did: "kr600" vs "600 kr").
+  const formatPrice = (prices: { GBP: number; NOK: number; USD: number; DKK: number; SEK: number }) =>
+    formatDisplayPrice(prices[selectedCountry.currency], selectedCountry.currency);
 
   return (
     <LanguageContext.Provider
