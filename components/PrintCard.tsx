@@ -4,7 +4,7 @@ import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { SmartImage } from './SmartImage';
 import { getArtistById } from '@/data/artists';
-import { getLowestProductPrices, type CurrencyPrices } from '@/lib/pricing';
+import { formatDisplayPrice, getLowestProductPrices } from '@/lib/pricing';
 
 interface PrintCardProps {
   product: {
@@ -64,17 +64,6 @@ export const PrintCard: React.FC<PrintCardProps> = ({
   const { selectedCountry } = useLanguage();
   const activeCurrency = currency ?? selectedCountry.currency;
 
-  const formatPrice = (prices: CurrencyPrices, selectedCurrency: string) => {
-    const price = prices[selectedCurrency as keyof CurrencyPrices];
-    const symbols: { [key: string]: string } = {
-      GBP: '£',
-      NOK: 'kr',
-      USD: '$',
-      DKK: 'kr',
-      SEK: 'kr'
-    };
-    return `${symbols[selectedCurrency]}${price}`;
-  };
 
   return (
     <div 
@@ -108,7 +97,7 @@ export const PrintCard: React.FC<PrintCardProps> = ({
           {product.name}
         </h3>
         <p className="text-sm text-neutral-900">
-          {formatPrice(getLowestProductPrices(product), activeCurrency)}
+          {formatDisplayPrice(getLowestProductPrices(product)[activeCurrency], activeCurrency)}
         </p>
         {!product.inStock && (
           <p className="text-xs text-neutral-400 mt-1">{outOfStockLabel}</p>
