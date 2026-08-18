@@ -34,10 +34,15 @@ const browseLinksByArticle: Record<string, BrowseLink[]> = {
     { href: '/collection/living-room', label: 'living room wall art collection' },
   ],
   // A gallery wall is several prints at once, so the full catalogue is the
-  // honest next step, with the living room as the usual setting.
+  // honest next step, with the living room as the usual setting. The piece also
+  // builds its worked example out of the bird prints (Swallow Dive as the
+  // anchor, then Birdie Blue, Pink and Brown, all four named in the body), and a
+  // set of colourways is exactly what a gallery wall wants, so the birds
+  // collection is a third genuine door rather than a generic one.
   'create-an-art-wall': [
     { href: '/products', label: 'browse the full print collection' },
     { href: '/collection/living-room', label: 'living room wall art collection' },
+    { href: '/collection/birds-and-animals', label: 'bird and animal art prints' },
   ],
   'nordic-art-and-design-books': [
     { href: '/collection/living-room', label: 'living room wall art collection' },
@@ -90,6 +95,14 @@ const browseLinksByArticle: Record<string, BrowseLink[]> = {
   'nordic-craft-books-glass-ceramics-textiles': [
     { href: '/collection/living-room', label: 'living room wall art collection' },
     { href: '/category/botanical', label: 'botanical art prints' },
+  ],
+  // The Norwegian titles this piece explains ARE the kitchen collection: it
+  // walks through hyttefrokost, vinkveld, morgenlevering and Hummer og Vin,
+  // which is all four of that collection's prints, so the kitchen landing is
+  // the one page a reader who has just learned the words would want next.
+  'norwegian-words-behind-the-prints': [
+    { href: '/collection/kitchen', label: 'kitchen wall art collection' },
+    { href: '/products', label: 'browse the full print collection' },
   ],
 };
 
