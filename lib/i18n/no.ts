@@ -154,7 +154,7 @@ export const no = {
         'Slik lages og sendes trykkene fra Scandinavian Art til hele verden, og slik fungerer retur og refusjon.',
     },
     pageTitle: 'Levering og retur',
-    lastUpdated: '12. juli 2026',
+    lastUpdated: '18. august 2026',
     lastUpdatedLabel: 'Sist oppdatert:',
     breadcrumbHome: 'Hjem',
     sections: {
@@ -165,16 +165,15 @@ export const no = {
       },
       production: {
         heading: 'Produksjonstid',
-        // Rendered around an <em> on "etter" by the page, mirroring the
-        // English page's emphasis.
-        bodyBefore: 'Bestillinger produseres og sendes vanligvis innen 1 til 4 virkedager. Leveringsestimatene nedenfor gjelder tiden ',
+        bodyBefore: 'Bestillinger produseres og sendes vanligvis innen 1 til 4 virkedager. Leveringstiden begynner ',
         bodyEm: 'etter',
         bodyAfter:
-          ' at pakken er sendt, så den totale ventetiden er produksjonstid pluss leveringstid. Du ser et estimat for din adresse i kassen.',
+          ' at pakken er sendt og varierer etter leveringssted. Du ser et estimat for adressen din i kassen.',
       },
       times: {
         heading: 'Leveringstider og kostnader',
-        note: 'Kostnadene vises i valutaen du har valgt; bytt valuta fra menyen øverst på siden.',
+        body:
+          'Leveringskostnaden avhenger av leveringsstedet og størrelsen, rammen og antallet i handlekurven. Vi beregner den fra den gjeldende leveringskostnaden og viser det nøyaktige beløpet før du betaler i kassen.',
       },
       worldwide: {
         heading: 'Frakt til hele verden og importavgifter',
