@@ -20,7 +20,6 @@ import { priceValidUntil } from '@/lib/price-validity';
 import { metaSnippet } from '@/lib/meta-snippet';
 import { productImages } from '@/lib/product-image-alt';
 import { BASE_URL, SITE_NAME, OG_LOCALE, TWITTER_SITE } from '@/lib/site';
-import { shippingRates } from '@/config/shipping';
 
 export async function generateStaticParams() {
   const products = await getAllProducts();
@@ -118,34 +117,6 @@ export default async function ProductPage({
   // Gallery images, each with alt text describing the work rather than its
   // place in the gallery; these are the images the image sitemap submits.
   const images = productImages(product);
-
-  // Merchant-listing structured-data fields, built entirely from repo data:
-  // shipping from config/shipping.ts, returns from the 14-day made-to-order
-  // policy in data/help.ts. A few representative destinations (Google reads
-  // shippingDetails that way), priced in GBP to match the Offer's priceCurrency.
-  // These are an eligibility signal for richer product results, not a ranking lever.
-  const shippingDetails = shippingRates
-    .filter(r => ['GB', 'NO', 'US'].includes(r.countryCode))
-    .map(r => {
-      const days = (r.estimatedDays || '').match(/(\d+)\s*-\s*(\d+)/);
-      const detail: Record<string, unknown> = {
-        '@type': 'OfferShippingDetails',
-        shippingRate: { '@type': 'MonetaryAmount', value: r.costs.GBP, currency: 'GBP' },
-        shippingDestination: { '@type': 'DefinedRegion', addressCountry: r.countryCode },
-      };
-      if (days) {
-        detail.deliveryTime = {
-          '@type': 'ShippingDeliveryTime',
-          transitTime: {
-            '@type': 'QuantitativeValue',
-            minValue: Number(days[1]),
-            maxValue: Number(days[2]),
-            unitCode: 'DAY',
-          },
-        };
-      }
-      return detail;
-    });
 
   // 14-day right to cancel; made to order, so nothing is sent back and the
   // refund is issued on request (data/help.ts, "Returns & refunds").
@@ -259,7 +230,6 @@ export default async function ProductPage({
               // times a week, so in practice it stays a year out.
               priceValidUntil: priceValidUntil(),
               itemCondition: 'https://schema.org/NewCondition',
-              shippingDetails,
               hasMerchantReturnPolicy: returnPolicy,
             },
           }),

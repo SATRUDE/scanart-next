@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { LegalPage, LegalSection } from '@/components/LegalPage';
 import { COMPANY } from '@/config/company';
-import { DeliveryRatesTable } from '@/components/DeliveryRatesTable';
 import { socialCard } from '@/lib/site';
 import { hreflangPair } from '@/lib/i18n';
 
@@ -17,7 +16,7 @@ export const metadata: Metadata = {
 };
 
 // The date this policy takes effect; bump by hand when the wording changes.
-const LAST_UPDATED = '12 July 2026';
+const LAST_UPDATED = '18 August 2026';
 
 const sections: LegalSection[] = [
   {
@@ -33,19 +32,18 @@ const sections: LegalSection[] = [
     heading: 'Production time',
     body: (
       <p>
-        Orders are typically produced and dispatched within 1 to 4 business days. The delivery estimates below are the
-        time <em>after</em> dispatch, so your total wait is production time plus delivery time. You will see an estimate
-        for your address at checkout.
+        Orders are typically produced and dispatched within 1 to 4 business days. Delivery time starts after dispatch
+        and varies by destination. You will see an estimate for your address at checkout.
       </p>
     ),
   },
   {
     heading: 'Delivery times and costs',
     body: (
-      <>
-        <DeliveryRatesTable />
-        <p>Costs are shown in your selected currency; change it from the menu at the top of the page.</p>
-      </>
+      <p>
+        Delivery cost depends on the destination and the size, frame and quantity in your basket. We calculate it from
+        the current fulfilment cost and show the exact amount before you pay at checkout.
+      </p>
     ),
   },
   {

@@ -2,13 +2,12 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { LegalPage, LegalSection } from '@/components/LegalPage';
 import { COMPANY } from '@/config/company';
-import { DeliveryRatesTable } from '@/components/DeliveryRatesTable';
 import { socialCard } from '@/lib/site';
 import { hreflangPair } from '@/lib/i18n';
 import { no } from '@/lib/i18n/no';
 
 // The Norwegian Delivery & Returns page: app/delivery/page.tsx mirrored
-// exactly (same LegalPage template, same rates table), with the copy swapped
+// exactly (same LegalPage template), with the copy swapped
 // for lib/i18n/no.ts. Terms and Privacy have no Norwegian versions in phase
 // one, so those links go to the English routes.
 const t = no.delivery;
@@ -47,10 +46,7 @@ const sections: LegalSection[] = [
   {
     heading: t.sections.times.heading,
     body: (
-      <>
-        <DeliveryRatesTable />
-        <p>{t.sections.times.note}</p>
-      </>
+      <p>{t.sections.times.body}</p>
     ),
   },
   {
