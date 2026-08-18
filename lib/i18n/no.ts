@@ -457,10 +457,6 @@ export const no = {
       location: 'Bergen, Norge',
       bio: 'Athanasia Siamos er en gresk-norsk illustratør bosatt i Bergen.',
     },
-    'nils-andersson': {
-      location: 'Malmö, Sverige',
-      bio: 'En samtidskunstner som bygger bro mellom tradisjonelt skandinavisk håndverk og et moderne estetisk uttrykk. Verkene hans forteller historier om arv og fornyelse.',
-    },
   } as Record<string, ArtistCopy>,
 
   // Norwegian versions of lib/artist-editorial.ts, keyed by slug. para2 keeps
