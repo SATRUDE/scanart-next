@@ -53,4 +53,20 @@ describe('browse links', () => {
   it('returns nothing for an article with no curated entry', () => {
     expect(getBrowseLinksForArticle('an-article-that-does-not-exist')).toEqual([]);
   });
+
+  // The point of the map is that an indexable landing page has at least one
+  // editorial door into it. Birds & Animals and Kitchen shipped with none, and
+  // both sat at "Discovered - currently not indexed" until they got one, so a
+  // new collection landing added without a matching article entry is a
+  // regression this test should catch rather than the next index-status read.
+  it('gives every collection landing at least one article linking to it', () => {
+    const linked = new Set(
+      Object.values(browseLinkTargets).flatMap(links => links.map(l => l.href))
+    );
+    for (const collection of collections) {
+      expect(linked, `no article links to /collection/${collection.slug}`).toContain(
+        `/collection/${collection.slug}`
+      );
+    }
+  });
 });
