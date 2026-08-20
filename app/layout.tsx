@@ -6,7 +6,7 @@ import { Footer } from '@/components/Footer';
 import { LocaleSuggestionBanner } from '@/components/LocaleSuggestionBanner';
 import { ScrollDepth } from '@/components/ScrollDepth';
 import { getAllProducts } from '@/lib/products';
-import { BASE_URL } from '@/lib/site';
+import { BASE_URL, SITE_NAME } from '@/lib/site';
 import Script from 'next/script';
 import './globals.css';
 
@@ -20,13 +20,13 @@ export const metadata: Metadata = {
   keywords: ['Scandinavian art', 'Nordic art', 'Scandinavian wall art', 'Nordic prints', 'Scandinavian artists', 'art gallery', 'wall art', 'prints', 'artwork', 'Nordic design'],
   authors: [{ name: 'Scandinavian Art Gallery' }],
   robots: 'index, follow',
-  alternates: {
-    types: {
-      'application/rss+xml': [
-        { url: '/feed.xml', title: 'Scandinavian Art Gallery Journal' },
-      ],
-    },
-  },
+  // NOTE: the RSS autodiscovery link is NOT declared here. Metadata objects are
+  // merged *shallowly* down the segment tree, so a page that sets `alternates`
+  // at all (every page in this app sets `alternates.canonical`) replaces the
+  // root's whole `alternates` object and drops a `types` entry declared here.
+  // It lived here until 2026-08-20 and reached no page's <head> as a result, so
+  // it is rendered as a raw <link> in the <head> below instead: that applies to
+  // every route, including any added later, with no per-page opt-in to forget.
   verification: {
     google: 'Q044oiN2tnwr8F7eUthQjHaf0jXLsFmHuS1ZnN2aEV0',
   },
@@ -62,6 +62,16 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Journal RSS autodiscovery, so readers and aggregators can find
+            /feed.xml from any page. Absolute href: some feed readers do not
+            resolve a relative one. See the note on `metadata` above for why
+            this is not declared through alternates.types. */}
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title={`${SITE_NAME} Journal`}
+          href={`${BASE_URL}/feed.xml`}
+        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <Script
