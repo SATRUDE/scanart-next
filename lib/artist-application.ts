@@ -98,9 +98,9 @@ export const COPY = {
   // make a commitment nobody has agreed to.
   intro2:
     'If you make prints and think yours would sit well beside what is already here, tell us about them. It takes a few minutes and a person reads every one.',
-  beforeYouStart: 'Before you start',
-  beforeYouStartBody:
-    'It is worth a look at who we already show and what the gallery is, so you can judge the fit yourself before spending the time.',
+  // Removed 2026-08-21 on Mark's call: the section sent an applicant away to
+  // read two other pages before they had started, which is the wrong thing to
+  // do to someone who has already decided to apply.
   onlyRoute: 'Applications only come through this form, so there is no need to email separately.',
   offeringLegend: 'What are you asking for?',
   aboutYou: 'About you and your work',
