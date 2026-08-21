@@ -16,6 +16,14 @@ export interface Article {
   published: boolean;
   created_time: string;
   last_edited_time: string;
+  /**
+   * When the article actually went live, from the socialagent store's
+   * `publishedAt`. Distinct from `created_time`, which is when the draft row
+   * was made: since scheduled publishing landed on 2026-08-14 a piece can sit
+   * in the drawer for a week or more before it goes out. Optional because the
+   * committed fallback snapshot predates the field.
+   */
+  published_time?: string;
 }
 
 export interface NotionBlock {

@@ -156,6 +156,12 @@ const articles = rows.map((r) => ({
   selectedArtworkIds: parse(r.selectedArtworkIds, []),
   created_time: r.createdAt.toISOString(),
   last_edited_time: r.updatedAt.toISOString(),
+  // When it actually went live. Populated on all PUBLISHED rows and null on
+  // drafts, so the feed falls back to created_time where it is absent. NOT
+  // scheduledAt: that is the intended time, null on everything published
+  // before scheduling existed, and it disagrees with publishedAt where a
+  // piece went out a day late.
+  published_time: r.publishedAt ? r.publishedAt.toISOString() : null,
 }));
 
 for (const a of articles) {
