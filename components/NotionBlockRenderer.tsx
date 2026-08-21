@@ -1,4 +1,5 @@
 import React from 'react';
+import { OutboundLink } from '@/components/OutboundLink';
 
 interface NotionBlock {
   id: string;
@@ -21,12 +22,15 @@ interface RichTextSegment {
 
 interface NotionBlockRendererProps {
   blocks: NotionBlock[];
+  /** The article these blocks belong to, so an outbound click can be attributed
+   *  to the piece that sent it. Optional: a caller with no slug still renders. */
+  articleSlug?: string;
 }
 
 // Render a Notion rich-text array, preserving inline links and formatting.
 // Previously every segment was rendered as plain text, which dropped links
 // (Amazon links, internal /products and /artists links) and bold/italic.
-function renderRichText(richText?: RichTextSegment[]): React.ReactNode {
+function renderRichText(richText?: RichTextSegment[], articleSlug?: string): React.ReactNode {
   if (!richText) return null;
   return richText.map((seg, i) => {
     const annotations = seg.annotations || {};
@@ -41,12 +45,15 @@ function renderRichText(richText?: RichTextSegment[]): React.ReactNode {
     const href = seg.href || seg.text?.link?.url;
     if (href) {
       const isExternal = /^https?:\/\//i.test(href);
-      node = (
-        <a
-          href={href}
-          className="underline underline-offset-2 hover:text-neutral-600 transition-colors"
-          {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-        >
+      const className = 'underline underline-offset-2 hover:text-neutral-600 transition-colors';
+      // External links go through OutboundLink so the click is recorded; the
+      // rendered anchor, its classes and its rel/target are unchanged.
+      node = isExternal ? (
+        <OutboundLink href={href} articleSlug={articleSlug} label={seg.plain_text} className={className}>
+          {node}
+        </OutboundLink>
+      ) : (
+        <a href={href} className={className}>
           {node}
         </a>
       );
@@ -62,7 +69,7 @@ function richTextOf(block: NotionBlock, key: string): RichTextSegment[] | undefi
   return payload?.rich_text;
 }
 
-export const NotionBlockRenderer: React.FC<NotionBlockRendererProps> = ({ blocks }) => {
+export const NotionBlockRenderer: React.FC<NotionBlockRendererProps> = ({ blocks, articleSlug }) => {
   const renderBlock = (block: NotionBlock) => {
     const { id, type } = block;
 
@@ -74,17 +81,17 @@ export const NotionBlockRenderer: React.FC<NotionBlockRendererProps> = ({ blocks
       // heading_2 for their sections, which is already correct under the page h1,
       // and demoting them would skip a level on every article with no heading_1.
       case 'heading_1':
-        return (<h2 key={id} className="text-3xl font-bold mb-6 mt-8">{renderRichText(richTextOf(block, 'heading_1'))}</h2>);
+        return (<h2 key={id} className="text-3xl font-bold mb-6 mt-8">{renderRichText(richTextOf(block, 'heading_1'), articleSlug)}</h2>);
       case 'heading_2':
-        return (<h2 key={id} className="text-2xl font-semibold mb-4 mt-6">{renderRichText(richTextOf(block, 'heading_2'))}</h2>);
+        return (<h2 key={id} className="text-2xl font-semibold mb-4 mt-6">{renderRichText(richTextOf(block, 'heading_2'), articleSlug)}</h2>);
       case 'heading_3':
-        return (<h3 key={id} className="text-xl font-medium mb-3 mt-5">{renderRichText(richTextOf(block, 'heading_3'))}</h3>);
+        return (<h3 key={id} className="text-xl font-medium mb-3 mt-5">{renderRichText(richTextOf(block, 'heading_3'), articleSlug)}</h3>);
       case 'paragraph':
-        return (<p key={id} className="mb-4 leading-relaxed">{renderRichText(richTextOf(block, 'paragraph'))}</p>);
+        return (<p key={id} className="mb-4 leading-relaxed">{renderRichText(richTextOf(block, 'paragraph'), articleSlug)}</p>);
       case 'bulleted_list_item':
-        return (<li key={id} className="mb-2 ml-4">{renderRichText(richTextOf(block, 'bulleted_list_item'))}</li>);
+        return (<li key={id} className="mb-2 ml-4">{renderRichText(richTextOf(block, 'bulleted_list_item'), articleSlug)}</li>);
       case 'numbered_list_item':
-        return (<li key={id} className="mb-2 ml-4">{renderRichText(richTextOf(block, 'numbered_list_item'))}</li>);
+        return (<li key={id} className="mb-2 ml-4">{renderRichText(richTextOf(block, 'numbered_list_item'), articleSlug)}</li>);
       case 'image': {
         const image = block.image as { file?: { url: string }; external?: { url: string }; caption?: RichTextSegment[] } | undefined;
         const imageUrl = image?.file?.url || image?.external?.url;
@@ -99,7 +106,7 @@ export const NotionBlockRenderer: React.FC<NotionBlockRendererProps> = ({ blocks
         );
       }
       case 'quote':
-        return (<blockquote key={id} className="border-l-4 border-gray-300 pl-4 my-6 italic">{renderRichText(richTextOf(block, 'quote'))}</blockquote>);
+        return (<blockquote key={id} className="border-l-4 border-gray-300 pl-4 my-6 italic">{renderRichText(richTextOf(block, 'quote'), articleSlug)}</blockquote>);
       case 'divider':
         return <hr key={id} className="my-8 border-gray-300" />;
       case 'code':

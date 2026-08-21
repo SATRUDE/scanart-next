@@ -139,7 +139,7 @@ export default async function ArticlePage({
         )}
 
         {blocks.length > 0 && (
-          <NotionBlockRenderer blocks={blocks} />
+          <NotionBlockRenderer blocks={blocks} articleSlug={article.slug} />
         )}
 
         {browseLinks.length > 0 && (
