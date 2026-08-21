@@ -13,7 +13,7 @@ export const artists: Artist[] = [
     name: 'Helene Brox',
     slug: 'helene-brox',
     location: 'Oslo, Norway',
-    bio: 'Helene Brox is an artist and illustrator based in Oslo, Norway.',
+    bio: 'Helene Brox is an illustrator, hand letterer and mural painter based in Oslo, and a founding member of the illustration agency Heiaklubben. Her book covers won silver and a diploma at Norway\u2019s \u00c5rets vakreste b\u00f8ker in 2016, and she invents wholly unreal grafted plants to sell as prints.',
     image: '/images/artists/helene-brox.png'
   },
   {
@@ -29,7 +29,7 @@ export const artists: Artist[] = [
     name: 'Ingunn Dybendal',
     slug: 'ingunn-dybendal',
     location: 'Oslo, Norway',
-    bio: 'Ingunn Dybendal is an artist and illustrator based in Oslo, Norway.',
+    bio: 'Ingunn Dybendal is an illustrator living and working in Oslo, part of the Heiaklubben collective, with an illustration degree from Falmouth. Her work runs from a Google Doodle to a 360 square metre wall in Hamar, and her motto is more is more is more is more.',
     image: ''
   },
   {
@@ -37,7 +37,7 @@ export const artists: Artist[] = [
     name: 'Sia Siamos',
     slug: 'sia-siamos',
     location: 'Bergen, Norway',
-    bio: 'Athanasia Siamos is a Greek and Norwegian illustrator living in Bergen.',
+    bio: 'Sia Siamos is a half Greek, half Norwegian illustrator living in Bergen, with a soft spot for still life, food and everyday moments. She came to illustration from graphic design, drawn to the quiet details that say the most, and works digital or analogue as the subject asks.',
     image: '/images/artists/sia-siamos.png'
   },
 ];
