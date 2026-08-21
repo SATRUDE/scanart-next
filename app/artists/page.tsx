@@ -61,12 +61,17 @@ export default async function ArtistsPage() {
 
         {/* The inbound door for artist acquisition (Viggo scouts the outbound
             half). Flat muted band rather than a bordered card: SA is flat by
-            default, and a tint avoids leaning on the weak border token. */}
+            default, and a tint avoids leaning on the weak border token.
+            Stan's original copy promised "we will reply either way". Removed:
+            whether we answer every applicant is still an open decision, and
+            the form itself deliberately stops short of the same promise, so
+            the two pages should not disagree. If Mark decides yes, it goes
+            back in both places. */}
         <section aria-labelledby="artist-apply" className="mt-16 rounded-xl bg-muted/30 p-6">
           <h2 id="artist-apply" className="text-lg font-medium mb-2">Are you an artist?</h2>
           <p className="text-neutral-600">
-            We are a small gallery and we take on very few, but we look at everything that
-            comes in. Tell us about your work and we will reply either way.
+            We are a small gallery and we take on very few, but a person reads everything
+            that comes in. Tell us about your work.
           </p>
           <TrackedLink
             event="artist-apply-click"
