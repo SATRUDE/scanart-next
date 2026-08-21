@@ -22,14 +22,14 @@ export const Footer: React.FC<FooterProps> = ({ year = new Date().getFullYear() 
   // The Footer is mounted once in the root layout, which cannot know the
   // route, so the Norwegian tree is detected here: under /no the labels come
   // from the Norwegian chrome strings, and links stay inside /no where a
-  // Norwegian page exists (categories, about, artists, help, delivery).
-  // Untranslated areas (collections, wall art, inspire, journal, shop all,
-  // privacy, terms) keep their English routes. English pages take the English
-  // branch and render exactly as before.
+  // Norwegian page exists (categories, collections, about, artists, help,
+  // delivery; collections joined in phase 2, 2026-08-21). Untranslated areas
+  // (wall art, inspire, journal, shop all, privacy, terms) keep their English
+  // routes. English pages take the English branch and render exactly as before.
   const pathname = usePathname();
   const isNo = isNoPath(pathname);
   const t = footerStrings[isNo ? 'no' : 'en'];
-  const categoryHrefPrefix = isNo ? '/no' : '';
+  const localeHrefPrefix = isNo ? '/no' : '';
   const aboutHref = isNo ? '/no/about' : '/about';
   const artistsHref = isNo ? '/no/artists' : '/artists';
   const helpHref = isNo ? '/no/help' : '/help';
@@ -53,12 +53,12 @@ export const Footer: React.FC<FooterProps> = ({ year = new Date().getFullYear() 
             <ul className="text-sm text-neutral-900 space-y-2">
               {categoryLandings.map(category => (
                 <li key={category.slug}>
-                  <Link href={`${categoryHrefPrefix}/category/${category.slug}`} className="hover:text-neutral-600 transition-colors">{t.categoryLabels[category.slug] ?? category.category}</Link>
+                  <Link href={`${localeHrefPrefix}/category/${category.slug}`} className="hover:text-neutral-600 transition-colors">{t.categoryLabels[category.slug] ?? category.category}</Link>
                 </li>
               ))}
               {collections.map(collection => (
                 <li key={collection.slug}>
-                  <Link href={`/collection/${collection.slug}`} className="hover:text-neutral-600 transition-colors">{collection.chipLabel}</Link>
+                  <Link href={`${localeHrefPrefix}/collection/${collection.slug}`} className="hover:text-neutral-600 transition-colors">{t.collectionLabels[collection.slug] ?? collection.chipLabel}</Link>
                 </li>
               ))}
               <li>

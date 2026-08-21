@@ -15,6 +15,7 @@ import type {
   TestimonialsStrings,
   CrossLinksStrings,
   CategoryLandingCopy,
+  CollectionLandingCopy,
   ArtistCopy,
   ArtistEditorialCopy,
   HelpGroupCopy,
@@ -30,6 +31,10 @@ export const no = {
     printOne: 'trykk',
     printOther: 'trykk',
     commonQuestions: 'Vanlige spørsmål',
+    /** Prefix on the collection pages' link out to a related journal piece.
+     *  The article itself is English: journal articles stay untranslated in
+     *  phase 1, so this is a deliberate crossing out of the /no tree. */
+    readMoreArticle: 'Les mer',
     outOfStock: 'Utsolgt',
     home: 'Hjem',
     artists: 'Kunstnere',
@@ -53,6 +58,15 @@ export const no = {
       abstract: 'Abstrakte trykk',
       illustrations: 'Illustrasjoner',
     },
+    // The English chipLabels translated. Rooms read as the plain room name in
+    // Norwegian; "Birds & Animals" needs the "og" rather than an ampersand.
+    collectionLabels: {
+      'living-room': 'Stue',
+      bedroom: 'Soverom',
+      'home-office': 'Hjemmekontor',
+      kitchen: 'Kjøkken',
+      'birds-and-animals': 'Fugler og dyr',
+    } as Record<string, string>,
   } satisfies CrossLinksStrings,
 
   home: {
@@ -405,6 +419,242 @@ export const no = {
       ],
     },
   } as Record<string, CategoryLandingCopy>,
+
+  // Norwegian collection landings (phase 2, 2026-08-21). Same shape as the
+  // English config in lib/collections.ts, copy only: productSlugs, the styling
+  // card images and the related-article slugs all still come from there, so the
+  // curation can never drift between the two languages.
+  //
+  // Deliberately NOT translated: the English copy's "museum quality" and
+  // "museum-quality archival paper" claims (living room FAQ, bedroom intro,
+  // home office intro and FAQ). Those claims are already open to question on the
+  // board after the 200gsm uncoated decision, and minting fresh copies of a
+  // doubtful claim in a second language would only widen the problem. The
+  // Norwegian says made to order and leaves the paper out.
+  collections: {
+    'living-room': {
+      title: 'Skandinavisk veggkunst til stua',
+      description:
+        'Utvalgt skandinavisk og nordisk veggkunst til stua: varme trykk med karakter fra uavhengige norske kunstnere. Velg med eller uten ramme, sendes over hele verden.',
+      heading: 'Skandinavisk veggkunst til stua',
+      intro:
+        'Stueveggen er den gjestene faktisk ser på, så den fortjener et trykk du har valgt med vilje, ikke en plakat som fulgte med rammen. Dette utvalget samler den skandinaviske veggkunsten vår som har nok nærvær for en stue: Sia Siamos sine varme bordscener, Ingunn Dybendals mønstrede innsjølandskap og Helene Brox sine djerve, kremhvite figurer, blant andre. Hvert verk lages på bestilling og kan kjøpes med ramme i tre, svart eller hvitt, eller helt uten.',
+      intro2:
+        'Stua er også rommet der et trykk blir sett mest, både i morgenlys og i lampelys, så det lønner seg å velge noe du fortsatt liker ved hundrede blikk og ikke bare ved det første. Skandinavisk veggkunst til stua får den holdbarheten gjennom tilbakeholdenhet: trygg farge og ren form framfor travle detaljer. Start med ett verk du er sikker på, og bygg veggen rundt det. En gallerivegg blir sjelden god når alt kommer opp samtidig.',
+      stylingHeading: 'Slik henger du kunst i stua',
+      stylingTips: [
+        'Heng midten av verket i øyehøyde, omtrent 145 til 150 cm over gulvet. Over en sofa bør du la det stå 15 til 25 cm mellom rammen og sofaryggen.',
+        'Ett stort trykk gir en blikkfangervegg; et par eller en trio (Swallow Dive og Tree Top Peach går fint sammen) gir en enkel gallerivegg.',
+        'Varme toner som Tree Top Peach myker opp et minimalistisk rom, mens et djervt abstrakt verk løfter en roligere palett.',
+      ],
+      stylingCards: [
+        {
+          label: 'Høyde',
+          tip: 'Heng midten av verket i øyehøyde, omtrent 145 til 150 cm over gulvet. Over en sofa bør du la det stå 15 til 25 cm mellom rammen og sofaryggen.',
+          alt: 'Innrammet skandinavisk veggkunst hengt over en grønn sofa i en rolig stue',
+        },
+        {
+          label: 'Gruppering',
+          tip: 'Ett stort trykk gir en blikkfangervegg; et par eller en trio (Swallow Dive og Tree Top Peach går fint sammen) gir en enkel gallerivegg.',
+          alt: 'To innrammede skandinaviske trykk side om side over et skjenk i en stue',
+        },
+        {
+          label: 'Tone',
+          tip: 'Varme toner som Tree Top Peach myker opp et minimalistisk rom, mens et djervt abstrakt verk løfter en roligere palett.',
+          alt: 'Ett djervt rødt kunsttrykk på en nøytral vegg i en skandinavisk stue',
+        },
+      ],
+      relatedArticleLabel: 'Slik styler du skandinavisk veggkunst i stua',
+      faqs: [
+        {
+          question: 'Hvilken veggkunst passer best i en skandinavisk stue?',
+          answer:
+            'Sikt mot ett verk med nok nærvær til å bære hovedveggen, og hold resten av rommet roligere rundt det. Et djervt, fargesterkt abstrakt verk løfter en lys, minimalistisk innredning, mens et rolig botanisk landskap demper et rom som allerede har mye farge og mønster. Trikset er å la én ting lede framfor å henge flere verk som konkurrerer.',
+        },
+        {
+          question: 'Hvor stort bør et trykk over sofaen være?',
+          answer:
+            'Velg stort. Ett enkelt verk fungerer best når det dekker en god del av sofaens bredde, eller du kan henge et par eller en trio som dekker samme spenn. Størrelsene varierer med verket og står på hver produktside, og de større formatene som A1 eller 50 x 70 cm passer en sofavegg. Sentrer verket i øyehøyde, omtrent 145 til 150 cm over gulvet, og la det stå 15 til 25 cm mellom rammen og sofaryggen.',
+        },
+        {
+          question: 'Kan jeg bestille et stuetrykk med ramme, og hvordan sendes det?',
+          answer:
+            'Ja. Alle trykk kan bestilles uten ramme, eller med ramme i tre, svart eller hvitt. Du velger på produktsiden før du legger det i kurven, og der ser du prisen for størrelsen du har valgt. Trykkene lages på bestilling og sendes over hele verden, med frakten oppgitt i kassen.',
+        },
+      ],
+    },
+
+    bedroom: {
+      title: 'Skandinavisk veggkunst til soverommet',
+      description:
+        'Rolig skandinavisk og nordisk veggkunst til soverommet: dempede botaniske motiv og myke abstrakte verk fra uavhengige norske kunstnere. Med eller uten ramme, sendes over hele verden.',
+      heading: 'Skandinavisk veggkunst til soverommet',
+      intro:
+        'Soverommet ber om ro, og disse trykkene lener seg inn i den. Dempede botaniske motiv, myke landskap og stille abstrakte verk i varsomme paletter, valgt for å hjelpe rommet med å roe ned framfor å konkurrere med det. Hvert verk lages på bestilling, i størrelser som passer veggen over en seng eller en stille lesekrok.',
+      intro2:
+        'I motsetning til rommene du viser fram, velges soverommet for et publikum på én, så stol på det som faktisk roer deg og ikke på det som ser riktig ut på et bilde. Den beste skandinaviske veggkunsten til soverommet er verket du liker å våkne til og det siste du ser om kvelden, og da betyr det oftest mykt framfor slående. Hold paletten nær veggene og sengetøyet, og la rommet holde seg lavt og hvilende.',
+      stylingHeading: 'Slik henger du kunst på soverommet',
+      stylingTips: [
+        'Sentrer et verk over sengen, omtrent 15 til 20 cm over hodegavlen, og hold det innenfor sengens bredde så det føles forankret.',
+        'Mykere, kjøligere toner roer et soverom. Spar de djerveste verkene til rommene du går gjennom, ikke dem du hviler i.',
+        'Ett bredt trykk passer plassen over en hodegavl; et likt par fungerer på hver side av sengen eller over nattbordene.',
+      ],
+      stylingCards: [
+        {
+          label: 'Plassering',
+          tip: 'Sentrer et verk over sengen, omtrent 15 til 20 cm over hodegavlen, og hold det innenfor sengens bredde så det føles forankret.',
+          alt: 'Et innrammet skandinavisk trykk på veggen ved en oppredd seng',
+        },
+        {
+          label: 'Palett',
+          tip: 'Mykere, kjøligere toner roer et soverom. Spar de djerveste verkene til rommene du går gjennom, ikke dem du hviler i.',
+          alt: 'Ett innrammet kunsttrykk i et rolig, grønntonet skandinavisk soverom',
+        },
+        {
+          label: 'Parvis',
+          tip: 'Ett bredt trykk passer plassen over en hodegavl; et likt par fungerer på hver side av sengen eller over nattbordene.',
+          alt: 'To innrammede skandinaviske trykk på veggen over en seng',
+        },
+      ],
+      relatedArticleLabel: 'En komplett guide til å velge størrelse på trykk',
+      faqs: [
+        {
+          question: 'Hvilken kunst passer på et soverom?',
+          answer:
+            'Hold det mykt. Varsomme botaniske motiv, tilslørte landskap og stille abstrakte verk i dempede eller kjølige toner hjelper soverommet med å roe ned, der et djervt verk med sterke kontraster kan holde rommet våkent. Match paletten i trykket til veggene og sengetøyet, så veggen leses som en del av rommet framfor en kunngjøring.',
+        },
+        {
+          question: 'Hvor bør jeg henge kunst over sengen?',
+          answer:
+            'Sentrer verket over sengen, omtrent 15 til 20 cm over hodegavlen, og hold det innenfor sengens bredde så det føles forankret. Ett bredt trykk passer plassen over en hodegavl, mens et likt par fungerer på hver side av sengen eller over nattbordene. Størrelsene varierer med verket og står på hver produktside.',
+        },
+        {
+          question: 'Hva om trykket ikke passer i rommet når det først henger?',
+          answer:
+            'Du har 14 dager på å ombestemme deg, så det er rom for å leve med et verk før du bestemmer deg. Det hjelper å bestille den rammen som matcher de andre du har: uten ramme, eller ramme i tre, svart eller hvitt, alt valgt på produktsiden, der prisen for størrelsen du velger står. Trykkene lages på bestilling og sendes over hele verden, med frakten oppgitt i kassen.',
+        },
+      ],
+    },
+
+    'home-office': {
+      title: 'Skandinavisk veggkunst til hjemmekontoret',
+      description:
+        'Skandinavisk og nordisk veggkunst til hjemmekontoret: illustrasjoner med karakter og djerve abstrakte verk fra uavhengige norske kunstnere. Med eller uten ramme, sendes over hele verden.',
+      heading: 'Skandinavisk veggkunst til hjemmekontoret',
+      intro:
+        'Et godt hjemmekontor holder interessen din uten å stjele fokuset. Disse trykkene gir litt personlighet til veggen bak skrivebordet: håndtegnede illustrasjoner med karakter og djerve abstrakte verk med nok energi til å bære en arbeidsdag. Alle lages på bestilling, i størrelser fra ett enkelt trykk over pulten til en hel vegg bak deg på møter.',
+      intro2:
+        'Hjemmekontoret er ofte det ene hjørnet av huset du får innrede helt etter egen smak, uten andre å ta hensyn til, så det er verdt et verk med litt karakter. God skandinavisk veggkunst til hjemmekontoret gjør seg fortjent til plassen ved å løfte stemningen i rommet uten å kreve oppmerksomhet: en lun illustrasjon eller et trygt abstrakt verk som gjør pulten mindre lik en arbeidsstasjon. Velg farger som trives sammen med skjermen og skrivebordet framfor å slåss med dem.',
+      stylingHeading: 'Slik henger du kunst på hjemmekontoret',
+      stylingTips: [
+        'Heng et verk i synsfeltet fra pulten, i eller rett over skjermhøyde, så det gir deg noe når du ser opp.',
+        'Et lite rutenett av illustrasjoner passer en smal vegg ved pulten; ett djervt abstrakt verk bærer en større flate bak deg på møter.',
+        'Grafiske verk med karakter holder en arbeidsplass fra å føles flat. Spar de roligste botaniske motivene til rommene du slapper av i.',
+      ],
+      stylingCards: [
+        {
+          label: 'Synslinje',
+          tip: 'Heng et verk i synsfeltet fra pulten, i eller rett over skjermhøyde, så det gir deg noe når du ser opp.',
+          alt: 'Et innrammet skandinavisk trykk hengt i øyehøyde over et skrivebord på et hjemmekontor',
+        },
+        {
+          label: 'Oppsett',
+          tip: 'Et lite rutenett av illustrasjoner passer en smal vegg ved pulten; ett djervt abstrakt verk bærer en større flate bak deg på møter.',
+          alt: 'To innrammede skandinaviske kunsttrykk over et skrivebord på et hjemmekontor',
+        },
+        {
+          label: 'Karakter',
+          tip: 'Grafiske verk med karakter holder en arbeidsplass fra å føles flat. Spar de roligste botaniske motivene til rommene du slapper av i.',
+          alt: 'Et djervt grafisk skandinavisk trykk over et skrivebord på et hjemmekontor',
+        },
+      ],
+      relatedArticleLabel: 'Kunsten å velge kunst: en grundig guide',
+      faqs: [
+        {
+          question: 'Hvilken kunst fungerer på et hjemmekontor?',
+          answer:
+            'Noe med personlighet som fortsatt lar deg konsentrere deg. Illustrasjoner med karakter og djerve, grafiske abstrakte verk holder en arbeidsplass fra å føles flat, mens de roligste botaniske motivene passer bedre i rommene du slapper av i. Sikt mot ett verk med et glimt i seg framfor en travel vegg som konkurrerer med skjermen.',
+        },
+        {
+          question: 'Hvor bør jeg henge et trykk på hjemmekontoret?',
+          answer:
+            'Sett det i synsfeltet fra pulten, i eller rett over skjermhøyde, så det gir deg noe når du ser opp. Et lite rutenett av trykk passer en smal vegg ved pulten, mens ett større verk bærer flaten bak deg på møter. Størrelsene varierer med verket og står på hver produktside, fra ett enkelt trykk over pulten til et format som fyller veggen.',
+        },
+        {
+          question: 'Kan jeg bestille et kontortrykk med ramme, og hvor raskt kommer det?',
+          answer:
+            'Ja. Velg uten ramme, eller ramme i tre, svart eller hvitt, på produktsiden før du legger det i kurven, der prisen for størrelsen du velger står. Hvert trykk lages på bestilling, normalt 1 til 4 virkedager i produksjon i tillegg til frakt til din region, med frakten oppgitt i kassen.',
+        },
+      ],
+    },
+
+    kitchen: {
+      title: 'Skandinavisk veggkunst til kjøkkenet',
+      description:
+        'Veggkunst til kjøkkenet med skandinavisk karakter: fire mat- og bordstilleben av Bergensillustratøren Sia Siamos, med tips til hvordan du henger dem. Med eller uten ramme.',
+      heading: 'Skandinavisk veggkunst til kjøkkenet',
+      intro:
+        'Fire trykk, og mellom seg en hel hummer, to karafler, en presskanne og flere tomater enn ett bord trenger. Alle fire er av Sia Siamos, en gresk og norsk illustratør bosatt i Bergen, som maler mat slik du faktisk møter den: midt i måltidet, med hender som strekker seg inn fra kanten og korken alt ute av flasken. På et kjøkken gjør de det et landskap ikke kan, nemlig å være enige med rommet. Hvert av dem kommer i én størrelse, 50 x 70 cm, med ramme i tre, svart eller hvitt, eller uten.',
+      intro2:
+        'Kjøkken er hardere mot et trykk enn noe annet rom, og det er verdt å vite før du henger noe du er glad i der. Damp, matsprut og en vegg med ettermiddagssol treffer alle her, så hold verket unna arbeidssonen mellom platetopp og vask, og unna direkte lys hvis rommet tillater det. Alt annet slapper av: et kjøkken tåler mer farge enn en stue gjør, fordi det alt finnes farge der, fliser og panner og frukt og resten. Disse fire er malt høyt nok til å holde stand mot alt det.',
+      stylingHeading: 'Ideer til veggkunst på kjøkkenet',
+      stylingTips: [
+        'Heng det der du spiser, ikke der du lager mat. Veggen bak kjøkkenbordet, en frokostkrok eller spiseenden av rommet tar et trykk langt bedre enn stretchen over benken, og det er veggen du faktisk sitter og ser på.',
+        'Ingen ledig vegg? Gå opp og bortover. Ett trykk over en døråpning, på enden av en innredningsrekke eller lent på en hylle mellom glassene fungerer alt, og et verk på 50 x 70 cm som står lent mot en tallerkenhylle ser bevisst ut framfor hjemløst.',
+        'Heng to og la dem se på hverandre tvers over rommet: Vinkvelds mørke kveldsfliser mot Morgenleverings morgenlys. Det paret leses som en hel dag, som er en bedre grunn til å kjøpe to trykk enn symmetri er.',
+        'Rammefargen gjør mer arbeid på et kjøkken enn andre steder. Svart skjerper en innredning i hvitt og lyst tre, en treramme varmer opp et kjøkken som har blitt litt klinisk, og hvit forsvinner nesten inn i en malt vegg.',
+      ],
+      relatedArticleLabel: 'De norske ordene bak trykkene',
+      faqs: [
+        {
+          question: 'Hvilken veggkunst fungerer på et kjøkken?',
+          answer:
+            'Mat, hvis du vil ha det enkle svaret. En bordscene eller et stilleben hører hjemme på et kjøkken på en måte et portrett eller et landskap aldri helt gjør, og det tåler mer farge enn du ville hengt i et roligere rom. De fire trykkene her er nettopp det: en hummermiddag, en hyttefrokost, et morgenbord og en vinkveld, alle djerve nok til å konkurrere med fliser og åpne hyller.',
+        },
+        {
+          question: 'Hvor bør jeg henge kunst på et lite kjøkken?',
+          answer:
+            'Se over øyehøyde og mot endene. Veggen over et lite bord, den flate enden av en innredningsrekke, plassen over en døråpning og gapet over en radiator er alle brukbare, og et trykk som står lent på en hylle eller tallerkenhylle trenger ingen vegg i det hele tatt. Det ene stedet du bør unngå, er arbeidsstrekket mellom platetopp og vask, der damp og sprut havner.',
+        },
+        {
+          question: 'Hvilken størrelse har kjøkkentrykkene, og kan jeg bestille dem med ramme?',
+          answer:
+            'Alle fire kommer i én størrelse, 50 x 70 cm, som passer de fleste kjøkkenvegger uten at du trenger å måle opp. Velg uten ramme, eller ramme i tre, svart eller hvitt, på produktsiden før du legger det i kurven, der prisen for den størrelsen står. Trykkene lages på bestilling og sendes over hele verden med frakten oppgitt i kassen, og du har 14 dager fra levering på å ombestemme deg.',
+        },
+      ],
+    },
+
+    'birds-and-animals': {
+      title: 'Skandinavisk fuglekunst og dyretrykk',
+      description:
+        'Nordisk fugle- og dyrekunst av den norske kunstneren Helene Brox: en stupende koboltblå svale, ferskenfargede grener som skjuler en flokk, og en drage i fargebånd.',
+      heading: 'Fugle- og dyrekunst fra nordiske kunstnere',
+      intro:
+        'Hvert vesen her er en form før det er et vesen. Helene Brox arbeider flatt og uten dill: en koboltblå svale skåret ned til selve vingekastet, dusinvis av små silhuetter skjult i et ferskenfarget gitter av grener, og en drage som slynger seg over sort i bånd av hvitt, rødt og rosa. Det er dette som gjør at et dyretrykk sitter godt i et skandinavisk rom, mønster og silhuett framfor detaljer fra en feltguide. Alle tre kan kjøpes med ramme i tre, svart eller hvitt, eller uten.',
+      intro2:
+        'Tre trykk, tre nokså ulike stemninger. Swallow Dive er bare to farger, kobolt på kremhvitt, og den vil ha en vegg for seg selv der stupet har et sted å gå. Tree Top Peach er den mildeste av de tre, nærmere en folkelig papirklipp enn en illustrasjon, og den belønner å bli hengt der du faktisk sitter. Dragon er den høylytte, et fabeldyr sett i glimt på sort bunn, og den trenger en vegg som holder nervene i sjakk. Velg på bunnfargen framfor vesenet: kobolt går kjølig mot hvite vegger og lyst tre, fersken går varmt sammen med tre og jordnære tekstiler, og sort forankrer et helt rom. Få bakgrunnen riktig, så ordner resten seg selv.',
+      stylingHeading: 'Slik henger du fugle- og dyretrykk',
+      stylingTips: [
+        'Ett enkelt dyretrykk gjør seg best med en vegg for seg selv. Sentrer det i øyehøyde, omtrent 145 til 150 cm over gulvet, og la plassen på hver side stå tom; bevegelsen i disse trykkene trenger et sted å gå.',
+        'Match bunnfargen til rommet, ikke til fuglene. Kobolt trives på hvite vegger og lyst tre, mens Tree Top Peach vil ha varme rundt seg: tre, lær, jordnære tekstiler.',
+        'Swallow Dive og Tree Top Peach henger godt sammen fordi ingen av dem roper. Samme størrelse, samme ramme, en jevn åpning på 5 til 8 cm, og de leses som et bevisst par framfor to trykk som tilfeldigvis begge har fugler i seg. Dragon gjør seg best alene.',
+        'Vil du heller holde deg til én kunstner over en større vegg, sitter begge disse godt ved siden av de abstrakte verkene til Helene Brox, som deler samme flatfargespråk.',
+      ],
+      relatedArticleLabel: 'Slik lager du en kunstvegg med flere verk',
+      faqs: [
+        {
+          question: 'Hva gjør at et dyretrykk føles skandinavisk?',
+          answer:
+            'Flat farge og silhuett, stort sett. Hvert trykk her behandler vesenet som en form framfor en studie: Swallow Dive bærer en hel stupende fugl i to farger, Tree Top Peach er nærmere en folkelig papirklipp enn en illustrasjon, og Dragon løser fabeldyret opp i ren rytme. Helene Brox er en uavhengig kunstner som arbeider i Oslo, og det er derfor disse leses som nordiske dyretrykk framfor noe fra tradisjonen med zoologiske plansjer.',
+        },
+        {
+          question: 'Hvilke størrelser kommer disse trykkene i, og kan jeg få dem med ramme?',
+          answer:
+            'Alle tre kommer i én størrelse, 50 x 70 cm. Størrelsene står på hver produktside, der du også velger uten ramme eller ramme i tre, svart eller hvitt, med prisen for størrelsen du har valgt oppgitt før du legger det i kurven. Hvert trykk lages på bestilling og sendes over hele verden, med frakten oppgitt i kassen.',
+        },
+      ],
+    },
+  } as Record<string, CollectionLandingCopy>,
 
   artistsIndex: {
     meta: {

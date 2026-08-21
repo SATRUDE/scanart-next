@@ -16,16 +16,16 @@ export function isNoPath(pathname: string): boolean {
 }
 
 /**
- * The /no twin of an English path, where phase 1 has one, else null.
- * Category and artist slugs are not validated here: the Norwegian routes use
- * the same generateStaticParams and data sources as the English ones, so every
- * English category/artist page that renders has a Norwegian twin by
- * construction.
+ * The /no twin of an English path, where one exists, else null.
+ * Category, artist and collection slugs are not validated here: the Norwegian
+ * routes use the same generateStaticParams and data sources as the English
+ * ones, so every English category/artist/collection page that renders has a
+ * Norwegian twin by construction. Collections joined in phase 2 (2026-08-21).
  */
 export function noPathFor(pathname: string): string | null {
   if (pathname === '/') return '/no';
   if (/^\/(about|delivery|help|artists)$/.test(pathname)) return `/no${pathname}`;
-  if (/^\/(category|artist)\/[^/]+$/.test(pathname)) return `/no${pathname}`;
+  if (/^\/(category|artist|collection)\/[^/]+$/.test(pathname)) return `/no${pathname}`;
   return null;
 }
 
@@ -84,6 +84,8 @@ export interface FooterStrings {
   tagline: string;
   /** Category landing slug -> visible label. */
   categoryLabels: Record<string, string>;
+  /** Collection landing slug -> visible label. */
+  collectionLabels: Record<string, string>;
   wallArt: string;
   about: string;
   inspire: string;
@@ -168,6 +170,7 @@ export const footerStrings: Record<Locale, FooterStrings> = {
   en: {
     tagline: 'A Scandinavian art gallery, where we curate an exquisite selection of artworks.',
     categoryLabels: {},
+    collectionLabels: {},
     wallArt: 'Wall Art',
     about: 'About',
     inspire: 'Inspire',
@@ -187,6 +190,13 @@ export const footerStrings: Record<Locale, FooterStrings> = {
       botanical: 'Botanisk',
       abstract: 'Abstrakt',
       illustrations: 'Illustrasjoner',
+    },
+    collectionLabels: {
+      'living-room': 'Stue',
+      bedroom: 'Soverom',
+      'home-office': 'Hjemmekontor',
+      kitchen: 'Kjøkken',
+      'birds-and-animals': 'Fugler og dyr',
     },
     wallArt: 'Veggkunst',
     about: 'Om oss',
@@ -244,6 +254,8 @@ export interface CrossLinksStrings {
   meetTheArtists: string;
   /** Category landing slug -> visible label. */
   categoryLabels: Record<string, string>;
+  /** Collection landing slug -> visible label (the English chipLabel translated). */
+  collectionLabels: Record<string, string>;
 }
 
 export interface CategoryLandingCopy {
@@ -254,6 +266,26 @@ export interface CategoryLandingCopy {
   intro2: string;
   stylingHeading: string;
   stylingBody: string;
+  faqs: { question: string; answer: string }[];
+}
+
+/**
+ * Norwegian copy for a collection landing page. Copy only: the curated
+ * productSlugs, the styling-card images and the related-article slug stay in
+ * lib/collections.ts so the curation cannot drift between languages.
+ * stylingCards and relatedArticleLabel are optional because two collections
+ * (kitchen, birds-and-animals) run on a plain tip list with no cards.
+ */
+export interface CollectionLandingCopy {
+  title: string;
+  description: string;
+  heading: string;
+  intro: string;
+  intro2: string;
+  stylingHeading: string;
+  stylingTips: string[];
+  stylingCards?: { label: string; tip: string; alt: string }[];
+  relatedArticleLabel?: string;
   faqs: { question: string; answer: string }[];
 }
 

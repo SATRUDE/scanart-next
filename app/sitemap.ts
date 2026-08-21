@@ -114,17 +114,34 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         return { col, featured };
       })
       .filter(({ featured }) => featured.length > 0)
-      .map(({ col, featured }) => ({
-        url: `${BASE_URL}/collection/${col.slug}`,
-        lastModified: latestCatalogueDate(
+      // Each has a Norwegian twin under /no/collection since phase 2
+      // (2026-08-21): same curation, same print-driven date, and the two
+      // entries declare each other via hreflang alternates.
+      .flatMap(({ col, featured }) => {
+        const lastModified = latestCatalogueDate(
           featured
             .map(p => productEdited[p.slug])
             .filter(Boolean)
             .map(d => new Date(d))
-        ),
-        priority: 0.7 as const,
-        changeFrequency: 'weekly' as const,
-      })),
+        );
+        const alternates = pairAlternates(`/collection/${col.slug}`);
+        return [
+          {
+            url: `${BASE_URL}/collection/${col.slug}`,
+            lastModified,
+            priority: 0.7 as const,
+            changeFrequency: 'weekly' as const,
+            alternates,
+          },
+          {
+            url: `${BASE_URL}/no/collection/${col.slug}`,
+            lastModified,
+            priority: 0.7 as const,
+            changeFrequency: 'weekly' as const,
+            alternates,
+          },
+        ];
+      }),
     ...products.map(p => {
       // the print itself, plus a distinct secondary shot where one exists
       const images = [...new Set(

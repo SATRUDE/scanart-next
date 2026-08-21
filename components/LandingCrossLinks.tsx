@@ -10,6 +10,7 @@ const DEFAULT_STRINGS: CrossLinksStrings = {
   wallArt: 'Scandinavian Wall Art',
   meetTheArtists: 'Meet the artists',
   categoryLabels: {},
+  collectionLabels: {},
 };
 
 interface LandingCrossLinksProps {
@@ -18,9 +19,12 @@ interface LandingCrossLinksProps {
   /** Localised labels; default to the English strings/config labels. */
   strings?: CrossLinksStrings;
   /**
-   * 'no' points category links (and the artists hub) into the /no tree, where
-   * Norwegian pages exist; collections, /products and the wall-art landing
-   * stay on their English routes, which are the only versions in phase 1.
+   * 'no' points category, collection and artists-hub links into the /no tree,
+   * where Norwegian pages exist. /products and the wall-art landing stay on
+   * their English routes, which are still the only versions of those two.
+   * Collections joined the /no tree in phase 2 (2026-08-21); before that they
+   * were linked in English from the Norwegian pages, which leaked the tree
+   * straight back out to English and is the fault this fixes.
    */
   locale?: 'en' | 'no';
 }
@@ -39,18 +43,21 @@ interface LandingCrossLinksProps {
  * design language and no copy to write, labels come from the config.
  */
 export function LandingCrossLinks({ current, strings = DEFAULT_STRINGS, locale = 'en' }: LandingCrossLinksProps) {
-  const categoryPrefix = locale === 'no' ? '/no' : '';
+  const localePrefix = locale === 'no' ? '/no' : '';
   const artistsHref = locale === 'no' ? '/no/artists' : '/artists';
   const categoryLinks = categoryLandings
     .filter(c => !(current.type === 'category' && c.slug === current.slug))
     .map(c => ({
-      href: `${categoryPrefix}/category/${c.slug}`,
+      href: `${localePrefix}/category/${c.slug}`,
       label: strings.categoryLabels[c.slug] ?? c.heading,
     }));
 
   const collectionLinks = collections
     .filter(c => !(current.type === 'collection' && c.slug === current.slug))
-    .map(c => ({ href: `/collection/${c.slug}`, label: c.chipLabel }));
+    .map(c => ({
+      href: `${localePrefix}/collection/${c.slug}`,
+      label: strings.collectionLabels[c.slug] ?? c.chipLabel,
+    }));
 
   return (
     <section className="mt-16">
