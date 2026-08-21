@@ -345,3 +345,41 @@ export interface ProductActionsStrings {
   /** Frame option id -> visible label. Falls back to the config's name. */
   frameLabels?: Record<string, string>;
 }
+
+/** Labels on the checkout page. Strings only: the payment flow itself is
+ *  identical in both trees. */
+export interface CheckoutStrings {
+  heading: string;
+  subheading: string;
+  cartEmpty: string;
+  continueShopping: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  address: string;
+  country: string;
+  city: string;
+  searchCountry: string;
+  noCountry: string;
+  cardDetails: string;
+  processing: string;
+  payPrefix: string;
+  orderSummary: string;
+  discountPlaceholder: string;
+  apply: string;
+  percentOff: string;
+  subtotal: string;
+  shipping: string;
+  free: string;
+  discount: string;
+  total: string;
+  secureHeading: string;
+  secureBody: string;
+  shipsMostHeading: string;
+  elsewhereHeading: string;
+  payNotice: string;
+  invalidCode: string;
+  couldNotCheckCode: string;
+  orderTotalChanged: string;
+  paymentFailed: string;
+}
