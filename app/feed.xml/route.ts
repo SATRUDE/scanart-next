@@ -27,13 +27,35 @@ function rssDate(value: string | undefined): string {
   return (isNaN(d.getTime()) ? new Date() : d).toUTCString();
 }
 
+/**
+ * The date a feed reader should sort and show an item by: when it was
+ * published, falling back to when the draft was created.
+ *
+ * Why the fallback rather than just publishedAt: the committed articles
+ * snapshot is the no-database fallback for a build without
+ * ARTICLES_DATABASE_URL, and it predates the field, so published_time can be
+ * absent or null. Falling back preserves today's behaviour exactly in that
+ * case rather than emitting an empty pubDate.
+ */
+export function feedDate(article: {
+  published_time?: string | null;
+  created_time?: string;
+  last_edited_time?: string;
+}): string | undefined {
+  return article.published_time || article.created_time || article.last_edited_time;
+}
+
 export async function GET(): Promise<Response> {
   const articles = await getAllArticles();
 
-  // Newest first, by publication (created) date, with last edit as a tiebreak.
+  // Newest first by PUBLICATION date, not by when the draft was created. Those
+  // were the same thing until scheduled publishing landed on 2026-08-14; since
+  // then an article can sit in the drawer for a week, and sorting or stamping by
+  // created_time puts it into the feed already backdated and therefore already
+  // buried below whatever appeared in between.
   const sorted = [...articles].sort((a, b) => {
-    const at = new Date(a.created_time || a.last_edited_time).getTime();
-    const bt = new Date(b.created_time || b.last_edited_time).getTime();
+    const at = new Date(feedDate(a) ?? 0).getTime();
+    const bt = new Date(feedDate(b) ?? 0).getTime();
     return bt - at;
   });
 
@@ -51,7 +73,7 @@ export async function GET(): Promise<Response> {
       <title>${escapeXml(article.title)}</title>
       <link>${url}</link>
       <guid isPermaLink="true">${url}</guid>
-      <pubDate>${rssDate(article.created_time)}</pubDate>
+      <pubDate>${rssDate(feedDate(article))}</pubDate>
       <description>${escapeXml(article.excerpt || '')}</description>${category}
     </item>`;
     })
