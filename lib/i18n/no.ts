@@ -350,12 +350,12 @@ export const no = {
         'Abstrakte trykk og kunstplakater fra norske kunstnere: rene silhuetter og djerve fuglemotiver i flate farger. I A3 til A1 og 50x70 cm, med eller uten ramme.',
       heading: 'Abstrakte trykk',
       intro:
-        'Leter du etter abstrakt kunst som plakat eller trykk, er dette den rolige, nordiske enden av sjangeren: former skrelles ned til bare den essensielle silhuetten står igjen, og én eller to flate farger gjør jobben til ti. Helene Brox maler løse, papirklippaktige figurer i kremhvitt på én fargeflate, mens Renate Thors Birdie-serie, med røtter i silketrykkpraksisen hennes, gjør en fugleflokk om til et djervt, rytmisk mønster i fire fargevarianter. Begge er uavhengige norske kunstnere, og hvert trykk kan bestilles med eller uten ramme, fra A3 opp til A1 og 50x70 cm.',
+        'Leter du etter abstrakt kunst som plakat eller trykk, er dette den rolige, nordiske enden av sjangeren: former skrelles ned til bare den essensielle silhuetten står igjen, og én eller to flate farger gjør jobben til ti. Helene Brox maler løse, papirklippaktige figurer i kremhvitt på én fargeflate, og skjærer en stupende svale ned til selve vingekastet. Hun er en uavhengig norsk kunstner, og hvert trykk kan bestilles med eller uten ramme, i 50 x 70 cm.',
       intro2:
         'Abstrakt veggkunst av dette slaget passer i stuer og soverom som allerede nærmer seg ro. Hvis rommet ditt heller mot det minimalistiske, lyst treverk, rolige tekstiler, rikelig med lys, gir et abstrakt trykk øyet ett trygt sted å lande uten å rope over rommet. Og fordi komposisjonene er enkle, leses de like godt fra andre siden av rommet som på nært hold.',
       stylingHeading: 'Slik bruker du abstrakte trykk',
       stylingBody:
-        'Ett stort abstrakt verk kan bære en vegg alene; heng det med midten av verket omtrent 145 til 150 cm fra gulvet. Birdie-trykkene er laget for å grupperes: et par eller en rekke på tre leses som én bevisst gest, fordi hver fargevariant deler samme komposisjon. Velg et trykk der bunnfargen speiler noe som allerede finnes i rommet, en pute, et teppe, en rad bokrygger, så faller veggen på plass.',
+        'Ett stort abstrakt verk kan bære en vegg alene; heng det med midten av verket omtrent 145 til 150 cm fra gulvet. Disse fire deler samme flatfargespråk, så to av dem side om side leses som én bevisst gest snarere enn to trykk uten sammenheng. Velg et trykk der bunnfargen speiler noe som allerede finnes i rommet, en pute, et teppe, en rad bokrygger, så faller veggen på plass.',
       faqs: [
         {
           question: 'Hva gjør abstrakt kunst skandinavisk?',
@@ -365,7 +365,7 @@ export const no = {
         {
           question: 'Hvilke størrelser finnes de abstrakte trykkene i?',
           answer:
-            'Renate Thors Birdie-trykk finnes i A3, A2 og A1; Helene Brox’ verk trykkes i 50 x 70 cm. Som en tommelfingerregel: velg A1 eller 50 x 70 cm over en sofa eller seng, og A3 til hyller og mindre vegger.',
+            'Helene Brox’ verk trykkes alle i 50 x 70 cm, som er et romslig format for ett enkelt trykk. Som en tommelfingerregel bærer 50 x 70 cm en sofa- eller sengevegg alene, og to av dem fyller en bredere vegg uten at du trenger et tredje.',
         },
         {
           question: 'Kan jeg kjøpe abstrakte trykk med ramme?',
@@ -444,10 +444,6 @@ export const no = {
       location: 'Oslo, Norge',
       bio: 'Simen Wahlqvist er en norsk grafisk designer og illustratør bosatt i Oslo. I arbeidet sitt prøver han å fange øyeblikk, ofte før de skjer, med så få streker som mulig. Får en illustrasjon ham selv til å le, er den ferdig!',
     },
-    'renate-thor': {
-      location: 'Trondheim, Norge',
-      bio: 'Renate Thor er en illustratør, kunstner og grafiker født i Trondheim og bosatt i Oslo. Hun er kjent for lekne kunstverk og illustrasjoner med djerve farger og komposisjoner. Hun drives av prosessen i håndverket sitt, og lar den lede henne frem til resultatet gjennom fri og leken eksperimentering. Kunstverkene lager hun med silketrykk, med papirsjablonger og kraftig farget trykkfarge, i uvanlige komposisjoner. Hun elsker uforutsigbarheten i lagene og blandingene i silketrykket, og etterligner noen av de samme prinsippene i illustrasjonsarbeidet sitt. Renate er utdannet ved Westerdals og har en master i illustrasjon fra Kunsthøgskolen i Oslo.',
-    },
     'ingunn-dybendal': {
       location: 'Oslo, Norge',
       bio: 'Ingunn Dybendal er kunstner og illustratør bosatt i Oslo.',
@@ -475,13 +471,6 @@ export const no = {
         'Simen Wahlqvist er en norsk grafisk designer og illustratør bosatt i Oslo, og regelen hans er enkel: fang øyeblikket, ofte rett før det skjer, med så få streker som mulig. Får en tegning ham til å le, er den ferdig. Den testen forklarer alle de fem trykkene hans her. Slingshot lader en tilfreds figur inn i et fredstegn gjort om til sprettert; Mean Snothing gir en mann en Newton-pendel til øyne; Half Man deler en figur rent i to. Hvert av dem er en håndfull streker og to eller tre flate farger, der tegningen bærer hele vitsen.',
       para2:
         'Tørr humor viser seg å være utmerket selskap ved et skrivebord. Wahlqvists kvadratiske trykk passer naturlig på [hjemmekontoret](/collection/home-office), der Mean Snothing gjør seg fortjent til veggplassen bedre enn noen motivasjonsplakat, og Slingshot beholder et ordentlig glimt i øyet. Morgenstrekk, det mildeste verket hans, passer på et soverom eller i gangen du passerer på vei ut. Er det den sparsomme, vittige streken som treffer deg, er det arbeidet hans som bærer [illustrasjonene](/no/category/illustrations) våre, og to av disse henger sammen som ruter fra samme tegneseriestripe.',
-    },
-    'renate-thor': {
-      heading: 'Én flokk, fire stemninger',
-      para1:
-        'Renate Thor er silketrykker først og fremst, og det synes. Hun bygger komposisjonene sine med papirsjablonger og kraftig farget trykkfarge, på jakt etter uforutsigbarheten i lagvis trykking, og Birdie-serien er den metoden destillert: én tumlende flokk kremhvite fugler, pakket kant til kant til den leses som mønster, trykket på fire ulike bunnfarger. Petroleumsblå, mørk sjokolade, smaragdgrønn og rosa endrer temperaturen i den samme tegningen fullstendig. Thor er født i Trondheim og bosatt i Oslo, utdannet ved Westerdals og med en master i illustrasjon fra Kunsthøgskolen i Oslo.',
-      para2:
-        'Å velge en Birdie er mest et spørsmål om hva rommet allerede gjør. Birdie Blue er den kjøligste og mest klassisk skandinaviske, hjemme i en [stue](/collection/living-room) som heller mot blått og grått; Birdie Brown varmes opp av treverk og lær; Birdie Green frisker opp et kjøkken eller en gang; [Birdie Pink](/product/birdie-pink) er myk nok for et soverom eller barnerom. Og fordi alle fire deler én komposisjon, er de laget for å henge i par: to fargevarianter side om side gjør ett enkelt trykk om til en liten serie.',
     },
     'ingunn-dybendal': {
       heading: 'Mønster hele veien ned',

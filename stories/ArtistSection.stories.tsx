@@ -10,15 +10,15 @@ const meta: Meta<typeof ArtistSection> = {
 export default meta;
 type Story = StoryObj<typeof ArtistSection>;
 
-export const RenateThor: Story = {
+export const HeleneBrox: Story = {
   args: {
     artist: {
-      id: '3',
-      name: 'Renate Thor',
-      slug: 'renate-thor',
-      location: 'Trondheim, Norway',
-      bio: 'Renate Thor is an Oslo-based illustrator, artist and graphic artist. She is known for her playful artworks and illustrations, using bold colours and compositions. She is driven by the process of her craft, allowing it to guide her to the result through free and playful experimentation.',
-      image: '/images/artists/renate.png',
+      id: '1',
+      name: 'Helene Brox',
+      slug: 'helene-brox',
+      location: 'Oslo, Norway',
+      bio: 'Helene Brox is an artist and illustrator based in Oslo, Norway.',
+      image: '/images/artists/helene-brox.png',
     },
   },
 };

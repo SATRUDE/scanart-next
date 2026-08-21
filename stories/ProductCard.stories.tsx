@@ -26,14 +26,14 @@ export const Default: Story = {
   args: {
     product: {
       id: '1',
-      name: 'Birdie Blue',
+      name: 'Swallow Dive',
       prices: {
         A3: { GBP: 42, NOK: 577, USD: 54, DKK: 367, SEK: 577 },
         A2: { GBP: 56, NOK: 770, USD: 72, DKK: 490, SEK: 770 },
       },
-      image: '/images/products/birdie-blue.png',
+      image: '/images/products/swallow-dive.png',
       category: 'Abstract',
-      brand: 'Renate Thor',
+      brand: 'Helene Brox',
       inStock: true,
     },
     currency: 'GBP',

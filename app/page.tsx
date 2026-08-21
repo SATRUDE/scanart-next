@@ -84,7 +84,7 @@ export default async function HomePage() {
               // print from their category (Stan's 16 Aug curation).
               { name: 'Botanical', image: 'https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/inspire/inspire-01-1786005113826.jpg', alt: 'Hyttefrokost botanical print above a cane chair', desc: 'Discover nature-inspired pieces that bring organic beauty and tranquility to your space.' },
               { name: 'Illustrations', image: 'https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/composed/_test_2026-07-20-1784579791165_2x_upscaled_1784629394218-png-1785928384524.png', alt: 'Mean Snothing illustration print on a tray table', desc: 'Playful, characterful, and full of charm, our illustration pieces blend Scandinavian wit with bold, contemporary style.' },
-              { name: 'Abstract', image: 'https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/composed/_edit_2026-07-21-1784634836712_2x_upscaled_1784634908121-png-1785930367765.png', alt: 'Birdie Brown abstract print on a dark desk', desc: 'Explore contemporary abstract art that adds modern sophistication to your home.' },
+              { name: 'Abstract', image: '/notion-data/heroes/inspire-scene-14-f0058a95.jpg', alt: 'Swallow Dive abstract print framed in oak, leaning against a sage green wall', desc: 'Explore contemporary abstract art that adds modern sophistication to your home.' },
             ].map(cat => {
               const landing = getCategoryLandingByCategory(cat.name);
               return (

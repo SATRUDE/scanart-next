@@ -28,11 +28,9 @@ export async function generateStaticParams() {
 
 // Ken's worked examples, one per artist (Studio row, 2026-08-13): a visual
 // hook up to ~90 chars, then the fixed buying close. All verified under 155
-// characters. The other fifteen products fall back to their art-led first
+// characters. The remaining products fall back to their art-led first
 // sentence until their strings are written.
 const BUYER_DESCRIPTIONS: Record<string, string> = {
-  'birdie-blue':
-    'A tumbling flock of cream birds on petrol blue, straight from her screen-printing practice. Buy Birdie Blue framed in wood, black or white, or unframed.',
   'swallow-dive':
     'Cobalt birds dive edge to edge over warm cream, all the movement carried by shape alone. Buy Swallow Dive framed in wood, black or white, or unframed.',
   'morgenstrekk':

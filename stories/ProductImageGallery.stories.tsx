@@ -13,25 +13,25 @@ type Story = StoryObj<typeof ProductImageGalleryWrapper>;
 
 // Built the same way the product page builds them, so the stories show the
 // real alt text rather than a hand-written stand-in.
-const birdieBlue = {
-  name: 'Birdie Blue',
-  artist: 'Renate Thor',
+const swallowDive = {
+  name: 'Swallow Dive',
+  artist: 'Helene Brox',
   category: 'Abstract',
-  image: '/images/products/birdie-blue.png',
-  secondaryImage: '/images/products/birdie-blue-scene.avif',
+  image: '/images/products/swallow-dive.png',
+  secondaryImage: '/images/products/swallow-dive-scene.avif',
 };
 
 export const SingleImage: Story = {
   args: {
-    images: productImages({ ...birdieBlue, secondaryImage: '' }),
-    productName: 'Birdie Blue',
+    images: productImages({ ...swallowDive, secondaryImage: '' }),
+    productName: 'Swallow Dive',
   },
 };
 
 export const MultipleImages: Story = {
   args: {
-    images: productImages(birdieBlue),
-    productName: 'Birdie Blue',
+    images: productImages(swallowDive),
+    productName: 'Swallow Dive',
   },
 };
 

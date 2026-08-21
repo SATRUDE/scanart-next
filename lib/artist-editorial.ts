@@ -27,13 +27,6 @@ export const artistEditorial: Record<string, ArtistEditorial> = {
     para2:
       "Deadpan humour turns out to be excellent company at a desk. Wahlqvist's square prints are a natural fit for the [home office](/collection/home-office), where Mean Snothing earns its wall space better than any motivational poster and Slingshot keeps a proper glint in its eye. Morgenstrekk, his gentlest piece, suits a bedroom or the hallway you pass on the way out. If the spare, witty line is what draws you, his work anchors our [illustrations](/category/illustrations), and any two of these hang together like frames from the same strip.",
   },
-  'renate-thor': {
-    heading: 'One flock, four moods',
-    para1:
-      "Renate Thor is a screen printer first, and it shows. She builds her compositions with paper stencils and boldly coloured ink, chasing the unpredictability of layered printing, and her Birdie series is that method distilled: one tumbling flock of cream birds, packed edge to edge until it reads as pattern, printed across four different grounds. Petrol blue, dark chocolate, emerald and rose pink each change the temperature of the same drawing completely. Trondheim-born and Oslo-based, Thor trained at Westerdals and holds an MA in illustration from the Oslo National Academy of the Arts.",
-    para2:
-      "Choosing a Birdie is mostly a question of what the room already does. Birdie Blue is the coolest and most classically Scandinavian, at home in a [living room](/collection/living-room) that leans blue and grey; Birdie Brown warms to wood and leather; Birdie Green freshens a kitchen or hallway; [Birdie Pink](/product/birdie-pink) is soft enough for a bedroom or nursery. And because all four share one composition, they were made for hanging in pairs: two colourways side by side turn a single print into a small series.",
-  },
   'ingunn-dybendal': {
     heading: 'Pattern all the way down',
     para1:

@@ -1,125 +1,5 @@
 [
   {
-    "id": "25833fb2-2b5f-808f-a1b1-d75d659e533b",
-    "name": "Birdie Blue",
-    "slug": "birdie-blue",
-    "description": "Birdie Blue by Renate Thor fills a petrol-blue ground with a tumbling flock of cream birds, their tails flashing marigold orange. Rooted in her screen-printing practice, the composition packs the flock edge to edge until it reads as pattern first and birds second, tiny red eyes keeping the whole thing alive. It is the coolest and most classically Scandinavian of the four Birdie colourways, made for a room that already leans blue.",
-    "category": "Abstract",
-    "artist": "Renate Thor",
-    "artistId": "3",
-    "brand": "",
-    "inStock": true,
-    "featured": true,
-    "published": true,
-    "image": "/images/products/birdie-blue.png",
-    "secondaryImage": "/images/products/birdie-blue-scene.avif",
-    "availableSizes": [
-      "A2",
-      "A3",
-      "A1"
-    ],
-    "priceCategory": "Premium",
-    "productId": "13",
-    "recommendedProducts": [
-      "Birdie Brown",
-      "Birdie Green",
-      "Birdie Pink",
-      "Morgenstrekk"
-    ],
-    "created_time": "2025-08-23T14:51:00.000Z",
-    "last_edited_time": "2025-08-28T07:42:00.000Z"
-  },
-  {
-    "id": "25833fb2-2b5f-8035-bc91-ca626a82c560",
-    "name": "Birdie Brown",
-    "slug": "birdie-brown",
-    "description": "A flock of cream birds tumbles across a dark chocolate ground in Birdie Brown, the warmest of Renate Thor's four Birdie colourways. Where its siblings run cool, this one is all autumn: burnt orange flashing between the wings, each bird given a single pale blue eye. It is the colourway for rooms that lean warm, wood, leather, earthy textiles, and it pairs naturally with the other Birdies if you are building a wall.",
-    "category": "Abstract",
-    "artist": "Renate Thor",
-    "artistId": "3",
-    "brand": "",
-    "inStock": true,
-    "featured": false,
-    "published": true,
-    "image": "/images/products/birdie-brown.png",
-    "secondaryImage": "/images/products/birdie-brown-scene.avif",
-    "availableSizes": [
-      "A2",
-      "A3",
-      "A1"
-    ],
-    "priceCategory": "Premium",
-    "productId": "14",
-    "recommendedProducts": [
-      "Birdie Blue",
-      "Birdie Green",
-      "Birdie Pink",
-      "Slingshot"
-    ],
-    "created_time": "2025-08-23T18:18:00.000Z",
-    "last_edited_time": "2025-08-24T11:50:00.000Z"
-  },
-  {
-    "id": "25833fb2-2b5f-8069-ba4b-ca39c0b7feca",
-    "name": "Birdie Green",
-    "slug": "birdie-green",
-    "description": "Birdie Green sets Renate Thor's tumbling flock loose on a bright emerald ground, cream wings threaded with candy-pink tails. That green and pink pairing makes this the most playful of the four Birdie colourways, the same tumbling, edge-to-edge composition suddenly full of spring. Tiny red eyes punctuate the flock, and the whole print brings real freshness to a kitchen, a hallway or any room taking itself a touch too seriously.",
-    "category": "Abstract",
-    "artist": "Renate Thor",
-    "artistId": "3",
-    "brand": "",
-    "inStock": true,
-    "featured": false,
-    "published": true,
-    "image": "/images/products/birdie-green.png",
-    "secondaryImage": "https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/composed/_edit_2026-07-21-1784629946925_2x_upscaled_1784629986443-png-1786004476087.png",
-    "availableSizes": [
-      "A2",
-      "A3",
-      "A1"
-    ],
-    "priceCategory": "Premium",
-    "productId": "16",
-    "recommendedProducts": [
-      "Birdie Brown",
-      "Birdie Pink",
-      "Birdie Blue",
-      "Tree Top Peach"
-    ],
-    "created_time": "2025-08-23T18:12:00.000Z",
-    "last_edited_time": "2025-08-24T11:32:00.000Z"
-  },
-  {
-    "id": "25833fb2-2b5f-805d-a3f1-c8fc41f4237f",
-    "name": "Birdie Pink",
-    "slug": "birdie-pink",
-    "description": "Birdie Pink is the softest of Renate Thor's Birdie series, a flock of cream birds drifting across rose pink with cobalt blue tail feathers. The blue is the trick: without it the print would simply be sweet, with it the whole composition sharpens. Same tumbling flock as its three siblings, but here the mood softens enough for a bedroom or a nursery wall, and the red dots of the birds' eyes keep just enough mischief in it.",
-    "category": "Abstract",
-    "artist": "Renate Thor",
-    "artistId": "3",
-    "brand": "",
-    "inStock": true,
-    "featured": false,
-    "published": true,
-    "image": "/images/products/birdie-pink.png",
-    "secondaryImage": "https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/inspire/inspire-06-1786005118346.jpg",
-    "availableSizes": [
-      "A2",
-      "A3",
-      "A1"
-    ],
-    "priceCategory": "Premium",
-    "productId": "15",
-    "recommendedProducts": [
-      "Birdie Blue",
-      "Birdie Green",
-      "Birdie Brown",
-      "Mean Snothing"
-    ],
-    "created_time": "2025-08-23T18:17:00.000Z",
-    "last_edited_time": "2025-08-24T11:32:00.000Z"
-  },
-  {
     "id": "25833fb2-2b5f-8055-8f2f-d773f2ff55bf",
     "name": "Dancer",
     "slug": "dancer",
@@ -281,8 +161,7 @@
     "recommendedProducts": [
       "Morgenlevering",
       "Hyttefrokost",
-      "Vinkveld",
-      "Birdie Brown"
+      "Vinkveld"
     ],
     "created_time": "2025-08-24T09:43:00.000Z",
     "last_edited_time": "2025-08-24T11:38:00.000Z"
@@ -309,8 +188,7 @@
     "recommendedProducts": [
       "Vinkveld",
       "Hummer og Vin",
-      "Morgenlevering",
-      "Birdie Green"
+      "Morgenlevering"
     ],
     "created_time": "2025-08-24T09:40:00.000Z",
     "last_edited_time": "2025-08-24T12:03:00.000Z"
@@ -393,8 +271,7 @@
     "recommendedProducts": [
       "Hummer og Vin",
       "Vinkveld",
-      "Hyttefrokost",
-      "Birdie Pink"
+      "Hyttefrokost"
     ],
     "created_time": "2025-08-24T09:42:00.000Z",
     "last_edited_time": "2025-08-24T12:03:00.000Z"
@@ -561,8 +438,7 @@
     "recommendedProducts": [
       "Hyttefrokost",
       "Morgenlevering",
-      "Hummer og Vin",
-      "Birdie Blue"
+      "Hummer og Vin"
     ],
     "created_time": "2025-08-24T09:38:00.000Z",
     "last_edited_time": "2025-08-24T12:03:00.000Z"

@@ -12,8 +12,8 @@ type Story = StoryObj<typeof AvifImage>;
 
 export const Default: Story = {
   args: {
-    src: '/images/products/birdie-blue-scene.avif',
-    alt: 'Birdie Blue Scene',
+    src: '/images/products/swallow-dive-scene.avif',
+    alt: 'Swallow Dive Scene',
     className: 'w-full h-full object-cover rounded',
   },
 };

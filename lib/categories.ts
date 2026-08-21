@@ -59,18 +59,17 @@ export const categoryLandings: CategoryLanding[] = [
     category: 'Abstract',
     title: 'Nordic Abstract Wall Art Prints',
     description:
-      'Nordic abstract wall art from independent Norwegian artists: pared-back figures and bold bird motifs in confident flat colour. Framing options, worldwide delivery.',
+      'Nordic abstract wall art from an independent Norwegian artist: pared-back figures and bold bird silhouettes in confident flat colour. Framing options, worldwide delivery.',
     heading: 'Abstract Prints',
-    // Ken's buyer-language rewrite (Studio row, 2026-08-13). Also fixes a
-    // live factual error: the old intro put both artists in Oslo, and Renate
-    // Thor works in Trondheim (data/artists.ts).
+    // Ken's buyer-language rewrite (Studio row, 2026-08-13), trimmed to one
+    // artist when Renate Thor's Birdie series left the catalogue (21 Aug).
     intro:
-      'Nordic abstraction leans to clarity rather than chaos: forms pared back until only the essential shape is left, one or two flat colours doing the work of ten. Helene Brox paints her loose, cut-out figures in Oslo; Renate Thor screen-prints the tumbling Birdie flock in Trondheim. If you’re looking to buy Scandinavian abstract art prints with real presence, this is the confident end of the gallery, and you choose the frame on each product page: wood, black, white or none at all.',
+      'Nordic abstraction leans to clarity rather than chaos: forms pared back until only the essential shape is left, one or two flat colours doing the work of ten. Helene Brox paints her loose, cut-out figures in Oslo, and cuts a diving swallow down to the plunge of its wings. If you’re looking to buy Scandinavian abstract art prints with real presence, this is the confident end of the gallery, and you choose the frame on each product page: wood, black, white or none at all.',
     intro2:
       'Modern Scandinavian wall art of this kind suits rooms that are already close to calm. If your space leans minimalist, pale wood, quiet textiles, plenty of light, an abstract print gives the eye one confident place to land without shouting over the room. And because the compositions are simple, they read from across the room as well as they do up close.',
     stylingHeading: 'Styling abstract prints',
     stylingBody:
-      'One large abstract can carry a feature wall alone; hang it with the centre of the piece roughly 145 to 150 cm from the floor. The Birdie prints are made for grouping: a pair or a row of three reads as one deliberate gesture, because each colourway shares the same composition. Pick a print whose ground colour echoes something already in the room, a cushion, a rug, a run of book spines, and the wall clicks into place.',
+      'One large abstract can carry a feature wall alone; hang it with the centre of the piece roughly 145 to 150 cm from the floor. These four share a flat-colour language, so a pair hung side by side reads as one deliberate gesture rather than two unrelated prints. Pick a print whose ground colour echoes something already in the room, a cushion, a rug, a run of book spines, and the wall clicks into place.',
     faqs: [
       {
         question: 'What makes abstract art Scandinavian?',
@@ -80,7 +79,7 @@ export const categoryLandings: CategoryLanding[] = [
       {
         question: 'What sizes do the abstract prints come in?',
         answer:
-          'Renate Thor’s Birdie prints come in A3, A2 and A1; Helene Brox’s pieces are printed at 50 x 70 cm. As a rule of thumb, go A1 or 50 x 70 cm above a sofa or bed, and A3 for shelves and smaller walls.',
+          'Helene Brox’s pieces are all printed at 50 x 70 cm, which is a generous single-print size. As a rule of thumb, 50 x 70 cm holds a sofa or bed wall on its own, and a pair of them fills a wider wall without needing a third.',
       },
       {
         question: 'Can I buy abstract prints framed?',

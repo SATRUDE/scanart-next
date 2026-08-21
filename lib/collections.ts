@@ -45,55 +45,50 @@ export interface Collection {
 
 export const collections: Collection[] = [
   {
-    // Labelled for the axis, not just today's contents: every print here is
-    // currently a bird, and the H1 and copy say so, but the chip and the URL
+    // Labelled for the axis, not just today's contents: the chip and the URL
     // are the durable parts (Mark, 2026-08-17) and renaming a live collection
-    // costs a redirect. An animal print widens the heading, never the slug.
+    // costs a redirect. An animal print widens the heading, never the slug, and
+    // that is exactly what happened on 2026-08-21: retiring the four Birdie
+    // prints left only two birds, under the three-print floor this file's test
+    // enforces, so Dragon joins as the animal half and the H1 widens to match
+    // the chip. The title tag stays bird-led because that is where the demand is.
     slug: 'birds-and-animals',
     chipLabel: 'Birds & Animals',
     axis: 'subject',
     title:
       'Scandinavian Bird Wall Art & Prints',
     description:
-      'Nordic bird wall art from Norwegian artists: Renate Thor\'s four Birdie colourways, Helene Brox\'s cobalt swallows and peach branches. Framed or unframed.',
+      'Nordic bird and animal wall art by Norwegian artist Helene Brox: a diving cobalt swallow, peach branches hiding a flock, and a dragon in ribbons of colour.',
     heading:
-      'Bird Wall Art from Nordic Artists',
+      'Bird & Animal Wall Art from Nordic Artists',
     intro:
-      'Every bird here is a shape before it\'s a bird. Renate Thor\'s Birdie flock comes out of her screen-printing practice, paper stencils and flat ink, four colourways of the same tumbling crowd. Helene Brox works flatter still: a cobalt swallow cut down to the plunge of its wings, or dozens of small silhouettes hidden in a peach lattice of branches. That\'s what makes a bird print sit well in a Scandinavian room, pattern and silhouette rather than field-guide detail. All six can be bought framed in wood, black or white, or unframed.',
+      'Every creature here is a shape before it\'s a creature. Helene Brox works flat and unfussy: a cobalt swallow cut down to the plunge of its wings, dozens of small silhouettes hidden in a peach lattice of branches, and a dragon that coils across black in ribbons of white, red and pink. That\'s what makes an animal print sit well in a Scandinavian room, pattern and silhouette rather than field-guide detail. All three can be bought framed in wood, black or white, or unframed.',
     intro2:
-      'Birds are also one of the few subjects you can happily buy twice. The four Birdie colourways are the same composition in different moods, so a pair or a trio reads as a set without having to match anything else in the room, while the two Brox prints are quite capable of holding a wall alone. Choose on the ground colour rather than the birds: petrol blue and emerald run cool, rose pink and dark chocolate run warm, and Tree Top Peach is the gentlest of the six. Get the background right for the wall and the birds look after themselves.',
+      'Three prints, three quite different moods. Swallow Dive is only two colours, cobalt on cream, and it wants a wall to itself where the dive has somewhere to go. Tree Top Peach is the gentlest of the three, closer to a folk papercut than an illustration, and it rewards hanging where you actually sit. Dragon is the loud one, a beast glimpsed in fragments on a black ground, and it needs a wall that can hold its nerve. Choose on the ground colour rather than the creature: cobalt runs cool against white walls and pale wood, peach runs warm alongside wood and earthy textiles, and black will anchor a whole room. Get the background right and the rest looks after itself.',
     productSlugs: [
-      'birdie-blue',
-      'birdie-green',
-      'birdie-pink',
-      'birdie-brown',
       'swallow-dive',
       'tree-top-peach',
+      'dragon',
     ],
-    stylingHeading: 'Styling bird prints',
+    stylingHeading: 'Styling bird and animal prints',
     stylingTips: [
-      'Hang the Birdie colourways as a pair or a trio, same size and same frame, with an even 5 to 8 cm gap so the flock reads as one piece rather than three prints.',
-      'A single bird print does better with a wall to itself. Centre it at eye level, roughly 145 to 150 cm off the floor, and leave the space either side empty; the movement in these prints needs somewhere to go.',
-      'Match the ground colour to the room, not the birds. Petrol blue and emerald sit happily on white walls and pale wood, while Birdie Brown wants warmth around it: wood, leather, earthy textiles.',
-      'Mixing the two artists works if the frames agree. Swallow Dive is only two colours, cobalt on cream, so it\'s quiet enough to hang near a Birdie without either one losing.',
+      'A single animal print does better with a wall to itself. Centre it at eye level, roughly 145 to 150 cm off the floor, and leave the space either side empty; the movement in these prints needs somewhere to go.',
+      'Match the ground colour to the room, not the birds. Cobalt sits happily on white walls and pale wood, while Tree Top Peach wants warmth around it: wood, leather, earthy textiles.',
+      'Swallow Dive and Tree Top Peach hang well together because neither shouts. Same size, same frame, an even 5 to 8 cm gap, and they read as a considered pair rather than two prints that happened to both have birds in them. Dragon is better on its own.',
+      'If you would rather stay with one artist across a bigger wall, both of these sit comfortably beside Helene Brox\'s abstract pieces, which share the same flat-colour language.',
     ],
     relatedArticleSlug: 'create-an-art-wall',
     relatedArticleLabel: 'How to create an art wall with multiple pieces',
     faqs: [
       {
-        question: 'What makes a bird print feel Scandinavian?',
+        question: 'What makes an animal print feel Scandinavian?',
         answer:
-          'Flat colour and silhouette, mostly. All six prints here treat the bird as a shape rather than a study: Renate Thor packs her flock edge to edge until it reads as pattern first, Helene Brox carries a whole diving swallow in two colours, and Tree Top Peach is closer to a folk papercut than an illustration. Both artists are independent and working in Norway, which is why these read as Nordic bird prints rather than anything out of the wildlife-plate tradition.',
+          'Flat colour and silhouette, mostly. Every print here treats the creature as a shape rather than a study: Swallow Dive carries a whole diving bird in two colours, Tree Top Peach is closer to a folk papercut than an illustration, and Dragon dissolves its beast into pure rhythm. Helene Brox is an independent artist working in Oslo, which is why these read as Nordic animal prints rather than anything out of the wildlife-plate tradition.',
       },
       {
-        question: 'Can I buy the Birdie prints as a set?',
+        question: 'What sizes do these prints come in, and can I have them framed?',
         answer:
-          'You can buy them individually and group them yourself, which is how most people do it. There are four colourways of the same tumbling flock, blue, green, pink and brown, and all four come in A3, A2 and A1, so it\'s easy to order two or three at a matching size in the same frame. Buying them one at a time also lets you live with the first before you commit to the wall.',
-      },
-      {
-        question: 'What sizes do the bird prints come in, and can I have them framed?',
-        answer:
-          'The four Birdie prints come in A3, A2 and A1. Swallow Dive and Tree Top Peach come in one size, 50 x 70 cm. Sizes are listed on each product page, where you also choose unframed or a wood, black or white frame, with the price for the size you\'ve picked shown before you add it to the basket. Every print is made to order and delivered worldwide, with the cost shown at checkout.',
+          'All three come in one size, 50 x 70 cm. Sizes are listed on each product page, where you also choose unframed or a wood, black or white frame, with the price for the size you\'ve picked shown before you add it to the basket. Every print is made to order and delivered worldwide, with the cost shown at checkout.',
       },
     ],
   },
@@ -108,7 +103,7 @@ export const collections: Collection[] = [
     // Ken's buyer-language rewrite (Studio row, 2026-08-13), written to
     // dovetail with intro2, which owns the morning-light idea.
     intro:
-      'The living room wall is the one guests actually look at, so it deserves a print bought on purpose rather than a poster that came with the frame. This edit gathers our Scandinavian wall art with living room presence: Sia Siamos’s warm table scenes, Renate Thor’s Birdie flock, Helene Brox’s bold cream figures among them. Each piece is made to order and can be bought framed, in wood, black or white, or unframed, whichever suits the wall it’s headed for.',
+      'The living room wall is the one guests actually look at, so it deserves a print bought on purpose rather than a poster that came with the frame. This edit gathers our Scandinavian wall art with living room presence: Sia Siamos’s warm table scenes, Ingunn Dybendal’s patterned lakeland, Helene Brox’s bold cream figures among them. Each piece is made to order and can be bought framed, in wood, black or white, or unframed, whichever suits the wall it’s headed for.',
     intro2:
       'It is also the room a print is seen in most, in morning light and lamplight both, so it pays to choose something you will still enjoy on the hundredth glance rather than the first. Scandinavian living room wall art tends to earn that staying power through restraint, confident colour and clean form over busy detail. Start with one piece you are sure of and build the wall around it; a gallery grouping rarely works when it all arrives at once.',
     productSlugs: [
@@ -117,9 +112,6 @@ export const collections: Collection[] = [
       'vinkveld',
       'hyttefrokost',
       'morgenlevering',
-      'birdie-blue',
-      'birdie-green',
-      'birdie-pink',
       'dancer',
       'swallow-dive',
       'morgenstrekk',
@@ -128,7 +120,7 @@ export const collections: Collection[] = [
     stylingHeading: 'Styling art in the living room',
     stylingTips: [
       'Hang the centre of the piece at eye level, roughly 145 to 150 cm off the floor. Above a sofa, leave 15 to 25 cm between the frame and the sofa back.',
-      'One large print makes a feature wall; a pair or trio (the Birdie prints sit well together) makes an easy gallery wall.',
+      'One large print makes a feature wall; a pair or trio (Swallow Dive and Tree Top Peach sit well together) makes an easy gallery wall.',
       'Warm tones like Tree Top Peach soften a minimalist room, while a bold abstract lifts a calmer palette.',
     ],
     stylingCards: [
@@ -140,7 +132,7 @@ export const collections: Collection[] = [
       },
       {
         label: 'Grouping',
-        tip: 'One large print makes a feature wall; a pair or trio (the Birdie prints sit well together) makes an easy gallery wall.',
+        tip: 'One large print makes a feature wall; a pair or trio (Swallow Dive and Tree Top Peach sit well together) makes an easy gallery wall.',
         image: '/images/collections/living-room-grouping.jpg',
         alt: 'A pair of framed Scandinavian prints side by side above a sideboard in a living room',
       },
@@ -193,8 +185,6 @@ export const collections: Collection[] = [
       'ithinkithink',
       'swallow-dive',
       'vinkveld',
-      'birdie-blue',
-      'birdie-green',
     ],
     stylingHeading: 'Styling art in the bedroom',
     stylingTips: [
@@ -262,8 +252,6 @@ export const collections: Collection[] = [
       'slingshot',
       'dragon',
       'dancer',
-      'birdie-blue',
-      'birdie-pink',
       'ithinkithink',
       'swallow-dive',
     ],
