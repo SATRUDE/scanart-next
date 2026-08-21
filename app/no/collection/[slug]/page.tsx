@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { metaTitle } from '@/lib/meta-title';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -10,6 +11,24 @@ import { ReadMore } from '@/components/ReadMore';
 import { LandingCrossLinks } from '@/components/LandingCrossLinks';
 import { BASE_URL, socialCard } from '@/lib/site';
 import { hreflangPair } from '@/lib/i18n';
+import { no } from '@/lib/i18n/no';
+
+// The Norwegian collection landing pages (phase 2, 2026-08-21):
+// app/collection/[slug]/page.tsx mirrored exactly (same params, same
+// components, same classes), with the copy swapped for lib/i18n/no.ts.
+//
+// Only the COPY is translated. productSlugs, the styling-card images and the
+// related-article slug all still come from lib/collections.ts, so the curation
+// cannot drift between the two languages: add a print to a collection once and
+// both pages pick it up.
+//
+// Falls back to the English collection copy for any collection added before its
+// translation, so the EN/NO pair always exists together rather than 404ing.
+function getCopy(slug: string) {
+  const collection = getCollectionBySlug(slug);
+  if (!collection) return undefined;
+  return { collection, copy: no.collections[slug] ?? collection };
+}
 
 export async function generateStaticParams() {
   return collections.map(c => ({ slug: c.slug }));
@@ -21,8 +40,9 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const collection = getCollectionBySlug(slug);
-  if (!collection) return {};
+  const found = getCopy(slug);
+  if (!found) return {};
+  const { collection, copy } = found;
 
   // Lead curated print as the social image; socialCard falls back to the site
   // OG image if the slug no longer resolves.
@@ -32,33 +52,36 @@ export async function generateMetadata({
     .find(Boolean)?.image;
 
   return {
-    title: collection.title,
-    description: collection.description,
+    // metaTitle keeps the brand suffix only where the title has room for it;
+    // "Skandinavisk veggkunst til hjemmekontoret" is long enough to lose it.
+    title: metaTitle(copy.title),
+    description: copy.description,
     alternates: {
-      canonical: `/collection/${collection.slug}`,
-      // Norwegian twins landed 2026-08-21, so the pair declares itself both ways.
-      languages: hreflangPair(`/collection/${collection.slug}`),
+      canonical: `/no/collection/${slug}`,
+      languages: hreflangPair(`/collection/${slug}`),
     },
     ...socialCard({
-      title: collection.title,
-      description: collection.description,
-      path: `/collection/${collection.slug}`,
+      title: copy.title,
+      description: copy.description,
+      path: `/no/collection/${slug}`,
       image: leadImage,
+      ogLocale: 'nb_NO',
     }),
   };
 }
 
-export default async function CollectionPage({
+export default async function NorwegianCollectionPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const collection = getCollectionBySlug(slug);
+  const found = getCopy(slug);
 
-  if (!collection) {
+  if (!found) {
     notFound();
   }
+  const { collection, copy } = found;
 
   // Resolve the curated slug list to products, preserving the configured order
   // and silently dropping any slug that no longer exists in the catalogue.
@@ -72,41 +95,56 @@ export default async function CollectionPage({
     notFound();
   }
 
+  // Styling cards carry their images from the English config and their words
+  // from the Norwegian one; fall back to the English cards if a translation
+  // has no cards of its own.
+  const stylingCards = collection.stylingCards?.map((card, i) => ({
+    image: card.image,
+    label: copy.stylingCards?.[i]?.label ?? card.label,
+    tip: copy.stylingCards?.[i]?.tip ?? card.tip,
+    alt: copy.stylingCards?.[i]?.alt ?? card.alt,
+  }));
+
   return (
     <div className="container mx-auto px-8 py-8">
       <Link href="/products" className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground mb-8">
         <ArrowLeft className="h-4 w-4 mr-2" />
-        Back to products
+        {no.shared.backToProducts}
       </Link>
 
       <header className="mb-16">
-        <h1 className="text-3xl text-neutral-900">{collection.heading}</h1>
-        <ReadMore className="mt-4 max-w-3xl">
-          <p className="text-muted-foreground leading-relaxed">{collection.intro}</p>
-          <p className="text-muted-foreground leading-relaxed mt-4">{collection.intro2}</p>
+        <h1 className="text-3xl text-neutral-900">{copy.heading}</h1>
+        <ReadMore className="mt-4 max-w-3xl" moreLabel={no.shared.readMore} lessLabel={no.shared.readLess}>
+          <p className="text-muted-foreground leading-relaxed">{copy.intro}</p>
+          <p className="text-muted-foreground leading-relaxed mt-4">{copy.intro2}</p>
         </ReadMore>
       </header>
 
       <div className="mb-8">
-        <p className="text-muted-foreground">{products.length} {products.length === 1 ? 'print' : 'prints'}</p>
+        <p className="text-muted-foreground">{products.length} {products.length === 1 ? no.shared.printOne : no.shared.printOther}</p>
       </div>
 
       {/* Section heading for the grid (sr-only): keeps the heading order h1 -> h2 -> card h3 */}
-      <h2 className="sr-only">Prints</h2>
+      <h2 className="sr-only">{no.shared.printsSrHeading}</h2>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {products.map((product, index) => (
           <Link key={product.id} href={`/product/${product.slug}`}>
             {/* first desktop row is above the fold: preload it, lazy-load the rest */}
-            <PrintCard product={product} priority={index < 4} />
+            <PrintCard
+              product={product}
+              priority={index < 4}
+              categoryLabel={no.shared.categoryLabels[product.category]}
+              outOfStockLabel={no.shared.outOfStock}
+            />
           </Link>
         ))}
       </div>
 
       <section className="mt-16">
-        <h2 className="text-2xl text-neutral-900">{collection.stylingHeading}</h2>
-        {collection.stylingCards ? (
+        <h2 className="text-2xl text-neutral-900">{copy.stylingHeading}</h2>
+        {stylingCards ? (
           <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
-            {collection.stylingCards.map((card, i) => (
+            {stylingCards.map((card, i) => (
               <div key={i}>
                 <div className="relative aspect-[4/3] overflow-hidden rounded bg-neutral-50 mb-4">
                   <Image
@@ -124,7 +162,7 @@ export default async function CollectionPage({
           </div>
         ) : (
           <ul className="mt-4 space-y-3 max-w-3xl">
-            {collection.stylingTips.map((tip, i) => (
+            {copy.stylingTips.map((tip, i) => (
               <li key={i} className="text-muted-foreground leading-relaxed">{tip}</li>
             ))}
           </ul>
@@ -132,16 +170,16 @@ export default async function CollectionPage({
         {collection.relatedArticleSlug && (
           <p className="mt-8 text-sm">
             <Link href={`/article/${collection.relatedArticleSlug}`} className="font-medium text-neutral-900 hover:text-neutral-600 transition-colors">
-              Read more: {collection.relatedArticleLabel} →
+              {no.shared.readMoreArticle}: {copy.relatedArticleLabel ?? collection.relatedArticleLabel} →
             </Link>
           </p>
         )}
       </section>
 
       <section className="mt-16">
-        <h2 className="text-2xl text-neutral-900">Common questions</h2>
+        <h2 className="text-2xl text-neutral-900">{no.shared.commonQuestions}</h2>
         <div className="mt-4 max-w-3xl space-y-6">
-          {collection.faqs.map(faq => (
+          {copy.faqs.map(faq => (
             <div key={faq.question}>
               <h3 className="font-medium text-neutral-900">{faq.question}</h3>
               <p className="text-muted-foreground leading-relaxed mt-1">{faq.answer}</p>
@@ -150,7 +188,7 @@ export default async function CollectionPage({
         </div>
       </section>
 
-      <LandingCrossLinks current={{ type: 'collection', slug: collection.slug }} />
+      <LandingCrossLinks current={{ type: 'collection', slug }} strings={no.crossLinks} locale="no" />
 
       <script
         type="application/ld+json"
@@ -158,7 +196,8 @@ export default async function CollectionPage({
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'FAQPage',
-            mainEntity: collection.faqs.map(faq => ({
+            inLanguage: 'no',
+            mainEntity: copy.faqs.map(faq => ({
               '@type': 'Question',
               name: faq.question,
               acceptedAnswer: { '@type': 'Answer', text: faq.answer },
@@ -172,9 +211,10 @@ export default async function CollectionPage({
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'CollectionPage',
-            name: collection.title,
-            description: collection.description,
-            url: `${BASE_URL}/collection/${collection.slug}`,
+            name: copy.title,
+            description: copy.description,
+            url: `${BASE_URL}/no/collection/${slug}`,
+            inLanguage: 'no',
             mainEntity: {
               '@type': 'ItemList',
               itemListElement: products.map((p, i) => ({
@@ -194,9 +234,9 @@ export default async function CollectionPage({
             '@context': 'https://schema.org',
             '@type': 'BreadcrumbList',
             itemListElement: [
-              { '@type': 'ListItem', position: 1, name: 'Home', item: BASE_URL },
-              { '@type': 'ListItem', position: 2, name: 'Art Prints', item: `${BASE_URL}/products` },
-              { '@type': 'ListItem', position: 3, name: collection.heading, item: `${BASE_URL}/collection/${collection.slug}` },
+              { '@type': 'ListItem', position: 1, name: no.shared.home, item: `${BASE_URL}/no` },
+              { '@type': 'ListItem', position: 2, name: no.crossLinks.allPrints, item: `${BASE_URL}/products` },
+              { '@type': 'ListItem', position: 3, name: copy.heading, item: `${BASE_URL}/no/collection/${slug}` },
             ],
           }),
         }}
