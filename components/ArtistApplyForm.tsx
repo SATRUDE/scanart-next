@@ -1,0 +1,297 @@
+'use client';
+
+import { useRef, useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import { track } from '@/lib/analytics';
+import {
+  COPY,
+  OFFERINGS,
+  OFFERING_LABEL,
+  RECOMMENDED_HINT,
+  validate,
+  type ArtistApplication,
+  type Errors,
+  type Offering,
+} from '@/lib/artist-application';
+
+/**
+ * A VISIBLE border, applied locally rather than waiting on a token decision.
+ *
+ * The design system's border tokens are unusable on a form: `border-neutral-200`
+ * is 1.26:1 against white and `border-gray-100` on outline buttons is 1.10:1,
+ * both far under the 3:1 that WCAG 1.4.11 wants for a control boundary. Stan
+ * proposed a `border-strong` token at neutral/500 (#737373, 4.74:1) and that is
+ * Mark's call to adopt.
+ *
+ * Rather than ship an inaccessible form while the token is decided, or invent a
+ * token nobody agreed to, this uses neutral-500 directly here. If the token is
+ * adopted it is a find-and-replace in one file; if it is not, this page is still
+ * accessible. Ticket: "The size and frame pickers have a 1.25:1 border".
+ */
+const FIELD = 'border-neutral-500';
+
+export function ArtistApplyForm() {
+  const [values, setValues] = useState<Partial<ArtistApplication>>({ keepOnFile: false });
+  const [errors, setErrors] = useState<Errors>({});
+  const [state, setState] = useState<'editing' | 'sending' | 'sent' | 'failed'>('editing');
+  const summaryRef = useRef<HTMLDivElement>(null);
+
+  const set = <K extends keyof ArtistApplication>(key: K, value: ArtistApplication[K]) =>
+    setValues(v => ({ ...v, [key]: value }));
+
+  const submit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const found = validate(values);
+    setErrors(found);
+    if (Object.keys(found).length > 0) {
+      // Move focus to the summary so a keyboard or screen-reader user is told
+      // what happened rather than left wondering why nothing submitted.
+      summaryRef.current?.focus();
+      return;
+    }
+    setState('sending');
+    track('artist-application-submit', {});
+    try {
+      const res = await fetch('/api/artist-application', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(values),
+      });
+      if (!res.ok) {
+        const body = (await res.json().catch(() => ({}))) as { errors?: Errors };
+        if (body.errors) {
+          setErrors(body.errors);
+          setState('editing');
+          summaryRef.current?.focus();
+          return;
+        }
+        setState('failed');
+        return;
+      }
+      setState('sent');
+    } catch {
+      setState('failed');
+    }
+  };
+
+  if (state === 'sent') {
+    return (
+      <div role="status" className="rounded-lg bg-muted/30 p-8">
+        <h2 className="text-2xl text-neutral-900">{COPY.thanksHeading}</h2>
+        <p className="mt-4 max-w-prose text-muted-foreground leading-relaxed">{COPY.thanksBody}</p>
+      </div>
+    );
+  }
+
+  const hasErrors = Object.keys(errors).length > 0;
+
+  return (
+    <form onSubmit={submit} noValidate className="space-y-10">
+      <div
+        ref={summaryRef}
+        tabIndex={-1}
+        role={hasErrors ? 'alert' : undefined}
+        className={hasErrors ? 'rounded border border-destructive p-4 text-sm' : 'sr-only'}
+      >
+        {hasErrors ? COPY.errorSummary : ''}
+      </div>
+
+      <fieldset>
+        <legend className="text-sm font-medium text-neutral-900">{COPY.offeringLegend}</legend>
+        <p className="mt-1 text-sm text-muted-foreground">{RECOMMENDED_HINT}</p>
+        <div className="mt-3 space-y-1">
+          {OFFERINGS.map(o => (
+            // The whole 44px row is the target, not the 14px control: shadcn's
+            // radio is 14x14 at SA's root size, which only passes 2.5.8 on the
+            // spacing exception and only just.
+            <label
+              key={o}
+              className="flex min-h-11 cursor-pointer items-center gap-3 rounded px-1 text-sm hover:bg-secondary"
+            >
+              <input
+                type="radio"
+                name="offering"
+                value={o}
+                checked={values.offering === o}
+                onChange={() => set('offering', o as Offering)}
+                className={`h-4 w-4 ${FIELD}`}
+              />
+              <span>{OFFERING_LABEL[o]}</span>
+            </label>
+          ))}
+        </div>
+        {errors.offering && <FieldError id="offering-error">{errors.offering}</FieldError>}
+      </fieldset>
+
+      <fieldset className="space-y-6">
+        <legend className="text-sm font-medium text-neutral-900">{COPY.aboutYou}</legend>
+
+        <Field label="Your name" name="name" required error={errors.name}>
+          <Input
+            id="name"
+            className={FIELD}
+            value={values.name ?? ''}
+            onChange={e => set('name', e.target.value)}
+            aria-invalid={Boolean(errors.name)}
+            aria-describedby={errors.name ? 'name-error' : undefined}
+          />
+        </Field>
+
+        <Field label="Where you are based" name="basedIn" required error={errors.basedIn}>
+          <Input
+            id="basedIn"
+            className={FIELD}
+            placeholder="Bergen, Norway"
+            value={values.basedIn ?? ''}
+            onChange={e => set('basedIn', e.target.value)}
+            aria-invalid={Boolean(errors.basedIn)}
+            aria-describedby={errors.basedIn ? 'basedIn-error' : undefined}
+          />
+        </Field>
+
+        <Field label="A note on your work" name="styleNote" required error={errors.styleNote}>
+          <Textarea
+            id="styleNote"
+            rows={4}
+            className={FIELD}
+            placeholder="What you make, and how. A few sentences is plenty."
+            value={values.styleNote ?? ''}
+            onChange={e => set('styleNote', e.target.value)}
+            aria-invalid={Boolean(errors.styleNote)}
+            aria-describedby={errors.styleNote ? 'styleNote-error' : undefined}
+          />
+        </Field>
+
+        <Field label="Why you think it fits here" name="whyFit" required error={errors.whyFit}>
+          <Textarea
+            id="whyFit"
+            rows={4}
+            className={FIELD}
+            placeholder="Having looked at the artists we show, where would yours sit?"
+            value={values.whyFit ?? ''}
+            onChange={e => set('whyFit', e.target.value)}
+            aria-invalid={Boolean(errors.whyFit)}
+            aria-describedby={errors.whyFit ? 'whyFit-error' : undefined}
+          />
+        </Field>
+
+        <Field label="Email" name="email" required error={errors.email}>
+          <Input
+            id="email"
+            type="email"
+            className={FIELD}
+            placeholder="you@example.com"
+            value={values.email ?? ''}
+            onChange={e => set('email', e.target.value)}
+            aria-invalid={Boolean(errors.email)}
+            aria-describedby={errors.email ? 'email-error' : undefined}
+          />
+        </Field>
+      </fieldset>
+
+      <fieldset>
+        {/* The requirement is "one of the two", so it sits on the legend and the
+            error attaches here rather than to an arbitrary one of them. */}
+        <legend className="text-sm font-medium text-neutral-900">{COPY.linksLegend}</legend>
+        <p className="mt-1 text-sm text-muted-foreground">
+          {COPY.linksHint} <span className="text-muted-foreground">{COPY.required}</span>
+        </p>
+        <div className="mt-3 space-y-4">
+          <div>
+            <Label htmlFor="website" className="text-sm">
+              Website
+            </Label>
+            <Input
+              id="website"
+              className={`mt-1 ${FIELD}`}
+              placeholder="https://"
+              value={values.website ?? ''}
+              onChange={e => set('website', e.target.value)}
+            />
+          </div>
+          <div>
+            <Label htmlFor="instagram" className="text-sm">
+              Instagram
+            </Label>
+            <Input
+              id="instagram"
+              className={`mt-1 ${FIELD}`}
+              placeholder="@yourname"
+              value={values.instagram ?? ''}
+              onChange={e => set('instagram', e.target.value)}
+            />
+          </div>
+        </div>
+        {errors.links && <FieldError id="links-error">{errors.links}</FieldError>}
+      </fieldset>
+
+      <div>
+        {/* Sets ScoutedArtist WAITING, which the store documents as "open door,
+            revisit later". A real state rather than a sentiment. */}
+        <label className="flex min-h-11 cursor-pointer items-start gap-3 text-sm">
+          <input
+            type="checkbox"
+            checked={values.keepOnFile ?? false}
+            onChange={e => set('keepOnFile', e.target.checked)}
+            className={`mt-0.5 h-4 w-4 ${FIELD}`}
+          />
+          <span>{COPY.keepOnFile}</span>
+        </label>
+        <p className="mt-4 max-w-prose text-sm text-muted-foreground">{COPY.privacy}</p>
+      </div>
+
+      {state === 'failed' && (
+        <p role="alert" className="text-sm text-destructive">
+          {COPY.sendFailed}
+        </p>
+      )}
+
+      <Button type="submit" size="lg" disabled={state === 'sending'} className="w-full sm:w-auto">
+        {state === 'sending' ? COPY.submitting : COPY.submit}
+      </Button>
+    </form>
+  );
+}
+
+/** A label that always stays visible, plus a word marker rather than an
+ *  asterisk. Placeholder contrast is 4.58:1, clearing 4.5:1 by 0.08, which is
+ *  too thin a margin to let a placeholder carry a field's meaning. */
+function Field({
+  label,
+  name,
+  required,
+  error,
+  children,
+}: {
+  label: string;
+  name: string;
+  required?: boolean;
+  error?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div>
+      <div className="flex items-baseline justify-between gap-4">
+        <Label htmlFor={name} className="text-sm">
+          {label}
+        </Label>
+        <span className="text-xs text-muted-foreground">
+          {required ? COPY.required : COPY.optional}
+        </span>
+      </div>
+      <div className="mt-1">{children}</div>
+      {error && <FieldError id={`${name}-error`}>{error}</FieldError>}
+    </div>
+  );
+}
+
+function FieldError({ id, children }: { id: string; children: React.ReactNode }) {
+  return (
+    <p id={id} className="mt-2 text-sm text-destructive">
+      {children}
+    </p>
+  );
+}
