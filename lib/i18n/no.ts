@@ -193,7 +193,7 @@ export const no = {
         heading: 'Frakt til hele verden og importavgifter',
         // {country} is filled in by the page from COMPANY.country.
         body:
-          'Vi sender til hele verden. For bestillinger som leveres utenfor {country}, kan importavgifter, toll eller lokale skatter påløpe ved ankomst, og disse er kjøperens ansvar.',
+          'Vi sender til hele verden. Trykkene lages på bestilling, og avhengig av størrelse og innramming kan bestillingen din bli produsert i et annet land enn det den leveres til. Krysser bestillingen en tollgrense, kan importavgifter, toll eller lokale skatter påløpe ved ankomst, og disse er kjøperens ansvar.',
       },
       cancellations: {
         heading: 'Angrerett og retur ved ombestemmelse',
@@ -278,7 +278,7 @@ export const no = {
           },
           {
             q: 'Må jeg betale toll eller importavgifter?',
-            a: 'Bestillinger innenfor Norge har ingenting ekstra å betale. For bestillinger som leveres andre steder, kan importavgifter, toll eller lokale skatter påløpe ved ankomst, og disse er kjøperens ansvar.',
+            a: 'Trykkene lages på bestilling, og avhengig av størrelse og innramming kan bestillingen din bli produsert i et annet land enn det den leveres til. Krysser bestillingen en tollgrense, kan importavgifter, toll eller lokale skatter påløpe ved ankomst, og disse er kjøperens ansvar. Er du i tvil, ta kontakt før du bestiller, så sjekker vi hvor akkurat det trykket blir laget.',
           },
           {
             q: 'Hvordan lages trykkene deres?',

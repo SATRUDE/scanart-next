@@ -50,8 +50,9 @@ const sections: LegalSection[] = [
     heading: 'Worldwide shipping and import duties',
     body: (
       <p>
-        We ship worldwide. For orders delivered outside {COMPANY.country}, import duties, customs charges or local taxes
-        may apply on arrival and are the buyer&apos;s responsibility.
+        We ship worldwide. Prints are made to order, and depending on the size and framing your order may be produced
+        in a different country from the one it is delivered to. Where an order crosses a customs border, import duties,
+        customs charges or local taxes may apply on arrival and are the buyer&apos;s responsibility.
       </p>
     ),
   },
