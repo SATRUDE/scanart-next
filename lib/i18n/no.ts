@@ -799,6 +799,25 @@ export const no = {
   },
 
   journal: {
+    page: {
+      heading: 'Journal',
+      /** Phase 1 keeps the articles in English, so the index says so up front
+       *  rather than letting a reader click through and be surprised. */
+      intro: 'Artiklene er foreløpig på engelsk.',
+      allChip: 'Alle',
+      /** "18 artikler". */
+      articlesSuffix: 'artikler',
+      empty: 'Ingen artikler ennå. Kom tilbake snart!',
+      booksSeriesHeading: 'Serien om nordiske bøker',
+      categoryLabels: {
+        About: 'Om oss',
+        Design: 'Design',
+        Exhibitions: 'Utstillinger',
+        Guide: 'Guide',
+        'Home Decor': 'Interiør',
+        Styling: 'Styling',
+      },
+    },
     meta: {
       title: 'Journal',
       description:
@@ -966,6 +985,8 @@ export const no = {
       socialDescription: 'Tre raske spørsmål om besøket ditt.',
     },
     heading: 'Si hva du mener',
+    intro:
+      'Tre spørsmål, ingen av dem obligatoriske. Vi er et lite galleri og vi leser hvert svar, så hvis noe gjorde at du ikke kjøpte, vil vi mye heller vite det enn å gjette.',
   },
 
 };

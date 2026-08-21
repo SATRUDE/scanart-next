@@ -3,15 +3,27 @@
 import { track } from '@/lib/analytics';
 
 import React, { useState, useMemo, useEffect } from 'react';
+import type { JournalStrings } from '@/lib/i18n';
 import { Article } from '@/lib/articles';
 import { ArticleCard } from '@/components/ArticleCard';
+
+const EN: JournalStrings = {
+  heading: 'Journal',
+  allChip: 'All',
+  articlesSuffix: 'articles',
+  empty: 'No articles yet. Check back soon!',
+  booksSeriesHeading: 'The Nordic books series',
+};
 
 interface JournalGridProps {
   articles: Article[];
   categories: string[];
+  /** Localised labels; defaults to the English strings above. */
+  strings?: JournalStrings;
 }
 
-export const JournalGrid: React.FC<JournalGridProps> = ({ articles, categories }) => {
+export const JournalGrid: React.FC<JournalGridProps> = ({ articles, categories, strings }) => {
+  const t = strings ?? EN;
   const [selectedCategory, setSelectedCategory] = useState('All');
 
   // Deep links (/journal?category=...) are applied after hydration rather than
@@ -31,8 +43,11 @@ export const JournalGrid: React.FC<JournalGridProps> = ({ articles, categories }
   return (
     <div className="container mx-auto px-8 py-8">
       <div className="mb-8">
-        <h1 className="text-3xl text-neutral-900 mb-2">Journal</h1>
-        <p className="text-muted-foreground">{filteredArticles.length} articles</p>
+        <h1 className="text-3xl text-neutral-900 mb-2">{t.heading}</h1>
+        <p className="text-muted-foreground">
+          {filteredArticles.length} {t.articlesSuffix}
+        </p>
+        {t.intro && <p className="text-muted-foreground mt-2">{t.intro}</p>}
       </div>
 
       {categories.length > 0 && (
@@ -48,7 +63,7 @@ export const JournalGrid: React.FC<JournalGridProps> = ({ articles, categories }
                 selectedCategory === cat ? 'bg-primary text-primary-foreground' : 'bg-muted text-neutral-700 hover:bg-muted/80'
               }`}
             >
-              {cat}
+              {cat === 'All' ? t.allChip : t.categoryLabels?.[cat] ?? cat}
             </button>
           ))}
         </div>
@@ -67,7 +82,7 @@ export const JournalGrid: React.FC<JournalGridProps> = ({ articles, categories }
 
       {filteredArticles.length === 0 && (
         <div className="text-center py-16">
-          <p className="text-muted-foreground">No articles yet. Check back soon!</p>
+          <p className="text-muted-foreground">{t.empty}</p>
         </div>
       )}
     </div>

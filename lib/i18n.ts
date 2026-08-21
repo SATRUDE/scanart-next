@@ -383,3 +383,15 @@ export interface CheckoutStrings {
   orderTotalChanged: string;
   paymentFailed: string;
 }
+
+/** Labels on the journal index. */
+export interface JournalStrings {
+  heading: string;
+  intro?: string;
+  allChip: string;
+  articlesSuffix: string;
+  empty: string;
+  booksSeriesHeading: string;
+  /** Article category -> visible label. Falls back to the raw value. */
+  categoryLabels?: Record<string, string>;
+}

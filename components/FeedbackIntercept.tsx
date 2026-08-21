@@ -8,7 +8,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { track } from '@/lib/analytics';
 import { scrollDepthPercent } from '@/lib/scroll-depth';
 import {
-  COPY,
+  COPY as COPY_EN,
   DISMISSED_DAYS,
   DISMISSED_KEY,
   DONE_DAYS,
@@ -18,6 +18,8 @@ import {
   PAYMENT_TOUCHED_KEY,
   Q1_ANSWERS,
   Q2_ANSWERS,
+  COPY_NO,
+  ANSWER_LABELS_NO,
   checkoutEligible,
   expiryFrom,
   productPageEligible,
@@ -59,6 +61,13 @@ function FeedbackInterceptForPath({
   placement: 'product' | 'checkout';
   pathname: string;
 }) {
+  // The Norwegian tree gets the Norwegian labels. Chosen from the pathname
+  // rather than passed in, because this component already keys on it, and the
+  // posted answer stays English either way (see ANSWER_LABELS_NO).
+  const isNo = pathname === '/no' || pathname.startsWith('/no/');
+  const COPY = isNo ? COPY_NO : COPY_EN;
+  const label = (answer: string) => (isNo ? ANSWER_LABELS_NO[answer] ?? answer : answer);
+
   const [step, setStep] = useState<Step>('hidden');
   const [q1, setQ1] = useState<string | null>(null);
   const [freeText, setFreeText] = useState('');
@@ -305,7 +314,7 @@ function FeedbackInterceptForPath({
                   setStep('q2');
                 }}
               >
-                {a}
+                {label(a)}
               </Button>
             ))}
           </div>
@@ -326,7 +335,7 @@ function FeedbackInterceptForPath({
                 }}
                 className="rounded border border-border px-3 py-1.5 text-left text-sm text-foreground hover:bg-secondary focus-visible:outline focus-visible:outline-2"
               >
-                {a}
+                {label(a)}
               </button>
             ))}
           </div>
