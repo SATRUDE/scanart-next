@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { sendSlackFeedback, validateFeedback } from '@/lib/server/slack-feedback';
+import { recordFeedback } from '@/lib/server/feedback-store';
 
 /**
  * One answer, one POST. The form posts per step rather than on submit, so a
@@ -24,11 +25,9 @@ export async function POST(request: Request): Promise<NextResponse> {
     return NextResponse.json({ error: result.error }, { status: 400 });
   }
 
-  try {
-    await sendSlackFeedback(result);
-  } catch {
-    // Swallowed deliberately, see above.
-  }
+  // Both, and neither can fail the other: Slack is how an answer gets noticed
+  // today, the row is how a pattern becomes visible across several answers.
+  await Promise.allSettled([sendSlackFeedback(result), recordFeedback(result)]);
 
   return NextResponse.json({ ok: true });
 }
