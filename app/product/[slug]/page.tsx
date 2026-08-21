@@ -19,6 +19,7 @@ import { getLowestProductPrices } from '@/lib/pricing';
 import { priceValidUntil } from '@/lib/price-validity';
 import { metaSnippet } from '@/lib/meta-snippet';
 import { productImages } from '@/lib/product-image-alt';
+import { FeedbackIntercept } from '@/components/FeedbackIntercept';
 import { BASE_URL, SITE_NAME, OG_LOCALE, TWITTER_SITE } from '@/lib/site';
 
 export async function generateStaticParams() {
@@ -161,6 +162,7 @@ export default async function ProductPage({
           )}
 
           <ProductActions product={product} />
+          <FeedbackIntercept placement="product" />
 
           {artist && <ArtistSection artist={artist} />}
         </div>

@@ -73,6 +73,11 @@ export const Footer: React.FC<FooterProps> = ({ year = new Date().getFullYear() 
               <li><Link href="/journal" className="hover:text-neutral-600 transition-colors">{t.journal}</Link></li>
               <li><Link href={artistsHref} className="hover:text-neutral-600 transition-colors">{t.artists}</Link></li>
               <li><Link href={helpHref} className="hover:text-neutral-600 transition-colors">{t.help}</Link></li>
+              {/* The intercept's permanent re-entry route: the corner card parks
+                  itself for 60 days on dismissal and that is per-device, so
+                  someone who said no and then hit the thing that annoyed them
+                  needs a door that is always there. */}
+              <li><Link href="/feedback" className="hover:text-neutral-600 transition-colors">{t.feedback}</Link></li>
               <li>
                 {/* Painted door: the newsletter doesn't exist yet; counting presses
                     on this deliberately inert button is the case for building it. */}
