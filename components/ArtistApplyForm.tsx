@@ -11,6 +11,8 @@ import {
   OFFERINGS,
   OFFERING_LABEL,
   RECOMMENDED_HINT,
+  MESSAGES,
+  type ApplyCopy,
   validate,
   type ArtistApplication,
   type Errors,
@@ -33,7 +35,27 @@ import {
  */
 const FIELD = 'border-neutral-500';
 
-export function ArtistApplyForm() {
+const EN_COPY: ApplyCopy = {
+  ...COPY,
+  offeringLabels: OFFERING_LABEL,
+  recommendedHint: RECOMMENDED_HINT,
+  fieldLabels: {
+    name: 'Your name',
+    basedIn: 'Where you are based',
+    styleNote: 'A note on your work',
+    whyFit: 'Why you think it fits here',
+    email: 'Email',
+    website: 'Website',
+    instagram: 'Instagram',
+  },
+};
+
+export function ArtistApplyForm({
+  copy,
+  locale = 'en',
+}: { copy?: ApplyCopy; locale?: 'en' | 'no' } = {}) {
+  const t = copy ?? EN_COPY;
+  const messages = MESSAGES[locale];
   const [values, setValues] = useState<Partial<ArtistApplication>>({ keepOnFile: false });
   const [errors, setErrors] = useState<Errors>({});
   const [state, setState] = useState<'editing' | 'sending' | 'sent' | 'failed'>('editing');
@@ -44,7 +66,7 @@ export function ArtistApplyForm() {
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const found = validate(values);
+    const found = validate(values, messages);
     setErrors(found);
     if (Object.keys(found).length > 0) {
       // Move focus to the summary so a keyboard or screen-reader user is told
@@ -80,8 +102,8 @@ export function ArtistApplyForm() {
   if (state === 'sent') {
     return (
       <div role="status" className="rounded-lg bg-muted/30 p-8">
-        <h2 className="text-2xl text-neutral-900">{COPY.thanksHeading}</h2>
-        <p className="mt-4 max-w-prose text-muted-foreground leading-relaxed">{COPY.thanksBody}</p>
+        <h2 className="text-2xl text-neutral-900">{t.thanksHeading}</h2>
+        <p className="mt-4 max-w-prose text-muted-foreground leading-relaxed">{t.thanksBody}</p>
       </div>
     );
   }
@@ -96,12 +118,12 @@ export function ArtistApplyForm() {
         role={hasErrors ? 'alert' : undefined}
         className={hasErrors ? 'rounded border border-destructive p-4 text-sm' : 'sr-only'}
       >
-        {hasErrors ? COPY.errorSummary : ''}
+        {hasErrors ? t.errorSummary : ''}
       </div>
 
       <fieldset>
-        <legend className="text-sm font-medium text-neutral-900">{COPY.offeringLegend}</legend>
-        <p className="mt-1 text-sm text-muted-foreground">{RECOMMENDED_HINT}</p>
+        <legend className="text-sm font-medium text-neutral-900">{t.offeringLegend}</legend>
+        <p className="mt-1 text-sm text-muted-foreground">{t.recommendedHint}</p>
         <div className="mt-3 space-y-1">
           {OFFERINGS.map(o => (
             // The whole 44px row is the target, not the 14px control: shadcn's
@@ -119,7 +141,7 @@ export function ArtistApplyForm() {
                 onChange={() => set('offering', o as Offering)}
                 className={`h-4 w-4 ${FIELD}`}
               />
-              <span>{OFFERING_LABEL[o]}</span>
+              <span>{t.offeringLabels[o]}</span>
             </label>
           ))}
         </div>
@@ -127,9 +149,9 @@ export function ArtistApplyForm() {
       </fieldset>
 
       <fieldset className="space-y-6">
-        <legend className="text-sm font-medium text-neutral-900">{COPY.aboutYou}</legend>
+        <legend className="text-sm font-medium text-neutral-900">{t.aboutYou}</legend>
 
-        <Field label="Your name" name="name" required error={errors.name}>
+        <Field words={{ required: t.required, optional: t.optional }} label={t.fieldLabels.name} name="name" required error={errors.name}>
           <Input
             id="name"
             className={FIELD}
@@ -140,7 +162,7 @@ export function ArtistApplyForm() {
           />
         </Field>
 
-        <Field label="Where you are based" name="basedIn" required error={errors.basedIn}>
+        <Field words={{ required: t.required, optional: t.optional }} label={t.fieldLabels.basedIn} name="basedIn" required error={errors.basedIn}>
           <Input
             id="basedIn"
             className={FIELD}
@@ -152,7 +174,7 @@ export function ArtistApplyForm() {
           />
         </Field>
 
-        <Field label="A note on your work" name="styleNote" required error={errors.styleNote}>
+        <Field words={{ required: t.required, optional: t.optional }} label={t.fieldLabels.styleNote} name="styleNote" required error={errors.styleNote}>
           <Textarea
             id="styleNote"
             rows={4}
@@ -165,7 +187,7 @@ export function ArtistApplyForm() {
           />
         </Field>
 
-        <Field label="Why you think it fits here" name="whyFit" required error={errors.whyFit}>
+        <Field words={{ required: t.required, optional: t.optional }} label={t.fieldLabels.whyFit} name="whyFit" required error={errors.whyFit}>
           <Textarea
             id="whyFit"
             rows={4}
@@ -178,7 +200,7 @@ export function ArtistApplyForm() {
           />
         </Field>
 
-        <Field label="Email" name="email" required error={errors.email}>
+        <Field words={{ required: t.required, optional: t.optional }} label={t.fieldLabels.email} name="email" required error={errors.email}>
           <Input
             id="email"
             type="email"
@@ -195,14 +217,14 @@ export function ArtistApplyForm() {
       <fieldset>
         {/* The requirement is "one of the two", so it sits on the legend and the
             error attaches here rather than to an arbitrary one of them. */}
-        <legend className="text-sm font-medium text-neutral-900">{COPY.linksLegend}</legend>
+        <legend className="text-sm font-medium text-neutral-900">{t.linksLegend}</legend>
         <p className="mt-1 text-sm text-muted-foreground">
-          {COPY.linksHint} <span className="text-muted-foreground">{COPY.required}</span>
+          {t.linksHint} <span className="text-muted-foreground">{t.required}</span>
         </p>
         <div className="mt-3 space-y-4">
           <div>
             <Label htmlFor="website" className="text-sm">
-              Website
+              {t.fieldLabels.website}
             </Label>
             <Input
               id="website"
@@ -214,7 +236,7 @@ export function ArtistApplyForm() {
           </div>
           <div>
             <Label htmlFor="instagram" className="text-sm">
-              Instagram
+              {t.fieldLabels.instagram}
             </Label>
             <Input
               id="instagram"
@@ -238,19 +260,19 @@ export function ArtistApplyForm() {
             onChange={e => set('keepOnFile', e.target.checked)}
             className={`mt-0.5 h-4 w-4 ${FIELD}`}
           />
-          <span>{COPY.keepOnFile}</span>
+          <span>{t.keepOnFile}</span>
         </label>
-        <p className="mt-4 max-w-prose text-sm text-muted-foreground">{COPY.privacy}</p>
+        <p className="mt-4 max-w-prose text-sm text-muted-foreground">{t.privacy}</p>
       </div>
 
       {state === 'failed' && (
         <p role="alert" className="text-sm text-destructive">
-          {COPY.sendFailed}
+          {t.sendFailed}
         </p>
       )}
 
       <Button type="submit" size="lg" disabled={state === 'sending'} className="w-full sm:w-auto">
-        {state === 'sending' ? COPY.submitting : COPY.submit}
+        {state === 'sending' ? t.submitting : t.submit}
       </Button>
     </form>
   );
@@ -265,12 +287,14 @@ function Field({
   required,
   error,
   children,
+  words,
 }: {
   label: string;
   name: string;
   required?: boolean;
   error?: string;
   children: React.ReactNode;
+  words: { required: string; optional: string };
 }) {
   return (
     <div>
@@ -279,7 +303,7 @@ function Field({
           {label}
         </Label>
         <span className="text-xs text-muted-foreground">
-          {required ? COPY.required : COPY.optional}
+          {required ? words.required : words.optional}
         </span>
       </div>
       <div className="mt-1">{children}</div>

@@ -20,6 +20,7 @@ import type {
   ArtistEditorialCopy,
   HelpGroupCopy,
 } from '@/lib/i18n';
+import type { ApplyCopy } from '@/lib/artist-application';
 
 export const no = {
   shared: {
@@ -835,6 +836,109 @@ export const no = {
    *  buyerDescription is the <155 char search/social snippet; where it is
    *  absent the page falls back to the first sentence of description, exactly
    *  as the English page does. */
+  /** The Norwegian wall-art landing. Two deliberate departures from a literal
+   *  translation, both flagged for Mark:
+   *  - The English page targets "buy Scandinavian art prints"; the Norwegian
+   *    one targets what a Norwegian actually types. The slug stays English.
+   *  - The English FAQ "Scandinavian, Nordic or Scandi: is there a
+   *    difference?" is an English-search-term question that means nothing in
+   *    Norwegian, so it is replaced by one a Norwegian buyer does ask. */
+  /** The artist application page and form. The English copy deliberately does
+   *  NOT promise a reply (that decision is still open), and the Norwegian does
+   *  not either. */
+  apply: {
+    h1: 'Vis oss arbeidet ditt',
+    intro:
+      'Vi er et lite galleri: en håndfull illustratører og grafikere som arbeider i Norge og Sverige. Vi leser alt som kommer inn, og vi tar inn svært få.',
+    intro2:
+      'Lager du trykk og tror dine ville stått godt ved siden av det som alt er her, så fortell oss om dem. Det tar noen minutter, og et menneske leser hver enkelt.',
+    onlyRoute: 'Søknader kommer bare gjennom dette skjemaet, så du behøver ikke sende e-post i tillegg.',
+    offeringLegend: 'Hva spør du om?',
+    aboutYou: 'Om deg og arbeidet ditt',
+    linksLegend: 'Hvor kan vi se arbeidet ditt?',
+    linksHint: 'Én er nok.',
+    required: 'Påkrevd',
+    optional: 'Valgfritt',
+    keepOnFile: 'Passer det ikke nå, behold opplysningene mine og se på dem igjen senere',
+    privacy:
+      'Vi bruker det du sender kun til å vurdere arbeidet ditt. Ingenting havner på en e-postliste, og ingenting deles.',
+    submit: 'Send det inn',
+    submitting: 'Sender',
+    thanksHeading: 'Takk, det er hos oss nå',
+    thanksBody:
+      'Et menneske kommer til å lese det. Passer det, tar vi kontakt; gjør det ikke, er ikke det en dom over arbeidet, bare over hva dette lille galleriet kan bære.',
+    errorSummary: 'Det er litt mer å fylle ut.',
+    sendFailed: 'Noe gikk galt under sendingen. Prøv igjen om et øyeblikk.',
+    offeringLabels: {
+      Prints: 'Å selge trykk gjennom galleriet',
+      Commission: 'Et oppdrag eller et samarbeid',
+      Unsure: 'Ikke sikker ennå',
+    },
+    recommendedHint: 'Trykk er det vi driver mest med',
+    fieldLabels: {
+      name: 'Navnet ditt',
+      basedIn: 'Hvor du holder til',
+      styleNote: 'Litt om arbeidet ditt',
+      whyFit: 'Hvorfor du tror det passer her',
+      email: 'E-post',
+      website: 'Nettside',
+      instagram: 'Instagram',
+    },
+  } satisfies ApplyCopy,
+
+  wallArt: {
+    title: 'Kjøp skandinaviske kunsttrykk | Innrammede nordiske trykk',
+    description:
+      'Kjøp skandinaviske kunsttrykk av fire uavhengige norske kunstnere. Seksten nordiske trykk, hvert med ramme i tre, svart eller hvit, eller uten ramme, laget på bestilling.',
+    heading: 'Kjøp skandinaviske kunsttrykk',
+    intro:
+      'Denne siden er hele galleriet: seksten skandinaviske kunsttrykk, hvert av dem av en kunstner som lever og arbeider i Norge, og hvert av dem solgt med eller uten ramme. Helene Brox maler nedskrelte, kremhvite figurer i Oslo og skjærer en svale ned til selve stupet av vingene. Ingunn Dybendal tegner folkeblomster og mønstret innsjølandskap i fargeblyant, Sia Siamos fyller bord med hummer, vin og hyttefrokost, og Simen Wahlqvist får plass til en hel vits i en håndfull streker. Fire hender, tre uttrykk, og ikke et fyllbilde blant dem.',
+    intro2:
+      'Å kjøpe skandinaviske kunsttrykk på nett betyr vanligvis å skrolle gjennom et marked med ti tusen plakater som aldri har vært i nærheten av en fjord. Dette er det motsatte. Et lite galleri, fire kunstnere vi jobber direkte med, og hvert trykk laget på bestilling framfor hentet fra et lager. Velg bildet først og rammen etterpå, og klarer du ikke å velge mellom to, er kvadratene til Wahlqvist og fugleparet til Brox laget for å henge sammen.',
+    framedHeading: 'Med eller uten ramme',
+    framedBody:
+      'Hvert trykk her kommer med valget mellom tre rammer, tre, svart eller hvit, tilpasset trykket. Tre passer de varmere botaniske bildene og rom som allerede har tre i seg; svart skjerper de grafiske abstraktene og illustrasjonene; hvit forsvinner nesten mot en lys skandinavisk vegg og lar fargen snakke. Skal du henge flere sammen? Hold rammen lik gjennom hele gruppen, og veggen leses som én beslutning. Og har du en innrammer du stoler på, selges hvert bilde uten ramme også.',
+    stylingHeading: 'Skandinavisk veggkunst, rom for rom',
+    backToProducts: 'Tilbake til trykkene',
+    printsSrHeading: 'Trykk',
+    printsSuffix: 'trykk',
+    commonQuestions: 'Vanlige spørsmål',
+    breadcrumbPrints: 'Kunsttrykk',
+    /** The styling paragraph is rendered as JSX so the room mentions can carry
+     *  real links, so it is split around them. */
+    styling: {
+      p1: 'Hvor trykket skal henge avgjør hvilket du bør kjøpe. I stua bør ett selvsikkert bilde bære sofaveggen, og ',
+      livingRoomLink: 'stuesamlingen',
+      p2: ' samler trykkene med den typen nærvær. Soverommet belønner den mykere enden av galleriet, dempede botaniske motiver og rolige abstrakter du gjerne våkner til, samlet i ',
+      bedroomLink: 'soveromsutvalget',
+      p3: '. Hjemmekontoret passer den tørre humoren i katalogen, en Wahlqvist-illustrasjon hengt i synsfeltet fra skrivebordet, og det finnes ',
+      homeOfficeLink: 'en egen side for hjemmekontor',
+      p4: ' til nettopp det. Uansett hvor det henger: sentrer bildet omtrent 145 til 150 cm over gulvet.',
+    },
+    faqs: [
+      {
+        question: 'Hvor kan jeg kjøpe skandinaviske kunsttrykk?',
+        answer:
+          'Her, fra galleriet selv framfor et markedsplass. Vi jobber direkte med fire uavhengige kunstnere i Oslo og Bergen, og hvert trykk lages på bestilling når du kjøper det: velg størrelse og ramme på produktsiden, og det går i trykk for deg.',
+      },
+      {
+        question: 'Kan jeg kjøpe trykkene innrammet?',
+        answer:
+          'Ja. Hver produktside tilbyr ramme i tre, svart eller hvit ved siden av trykket uten ramme, tilpasset bildet, så et innrammet trykk kommer ferdig framfor som et prosjekt. Uten ramme passer den som har en ramme klar hjemme eller en innrammer de allerede bruker.',
+      },
+      {
+        question: 'Hvilke størrelser kommer trykkene i?',
+        answer:
+          'De fleste trykk er 50 x 70 cm, og de kvadratiske illustrasjonene til Simen Wahlqvist er 50 x 50 cm. Hver produktside lister størrelsene for det bildet; som en tommelfingerregel bærer de større formatene en sofa- eller sengevegg alene, mens de mindre står fint på en billedhylle eller i en gruppe.',
+      },
+      {
+        question: 'Hva betyr det at trykkene lages på bestilling?',
+        answer:
+          'Det betyr at ingenting ligger på lager og venter. Når du kjøper, går bildet i trykk i den størrelsen og med den rammen du valgte, og blir sendt til deg derfra. Det tar noen dager lenger enn et lagervare, og til gjengjeld finnes trykket ditt ikke før du bestiller det.',
+      },
+    ],
+  },
+
   productCopy: {
     dancer: {
       description:
