@@ -688,7 +688,7 @@ export const no = {
   artists: {
     'helene-brox': {
       location: 'Oslo, Norge',
-      bio: 'Helene Brox er kunstner og illustratør bosatt i Oslo.',
+      bio: 'Helene Brox er illustratør, veggmaler og arbeider med håndtegnede bokstaver, bosatt i Oslo, og en av grunnleggerne av illustrasjonsbyrået Heiaklubben. Bokomslagene hennes fikk sølv og diplom i Årets vakreste bøker i 2016, og hun finner opp helt urealistiske, podede planter som hun selger som trykk.',
     },
     'simen-wahlqvist': {
       location: 'Oslo, Norge',
@@ -696,11 +696,11 @@ export const no = {
     },
     'ingunn-dybendal': {
       location: 'Oslo, Norge',
-      bio: 'Ingunn Dybendal er kunstner og illustratør bosatt i Oslo.',
+      bio: 'Ingunn Dybendal er illustratør, bosatt og arbeidende i Oslo, med illustrasjonsutdanning fra Falmouth og en plass i kollektivet Heiaklubben. Arbeidene hennes strekker seg fra en Google Doodle til en vegg på 360 kvadratmeter på Hamar, og mottoet hennes er more is more is more is more.',
     },
     'sia-siamos': {
       location: 'Bergen, Norge',
-      bio: 'Athanasia Siamos er en gresk-norsk illustratør bosatt i Bergen.',
+      bio: 'Sia Siamos er en halvt gresk, halvt norsk illustratør bosatt i Bergen, med sansen for stilleben, mat og hverdagsøyeblikk. Hun kom til illustrasjonen fra grafisk design, tiltrukket av de stille detaljene som sier mest, og arbeider digitalt eller analogt alt etter hva motivet ber om.',
     },
   } as Record<string, ArtistCopy>,
 
