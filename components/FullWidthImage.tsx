@@ -19,9 +19,9 @@ const SCENES = [
     position: 'object-center',
   },
   {
-    src: 'https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/inspire/inspire-06-1786005118346.jpg',
-    alt: 'Birdie Pink print above a bed with yellow striped linen',
-    position: 'object-top',
+    src: '/notion-data/heroes/inspire-scene-10-3f8ff93c.jpg',
+    alt: 'Vinkveld print above a cobalt side table and an oxblood chair, lit by a cone pendant',
+    position: 'object-center',
   },
   {
     src: 'https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/composed/_edit_2026-08-08-1786206620578_2x_upscaled_1786206677013-png-1786694955122.png',

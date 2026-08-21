@@ -10,11 +10,11 @@ function CartWithToggle() {
 
   const addSampleItem = () => {
     addToCart({
-      id: '1', name: 'Birdie Blue', slug: 'birdie-blue',
+      id: '1', name: 'Swallow Dive', slug: 'swallow-dive',
       prices: { A3: { GBP: 42, NOK: 577, USD: 54, DKK: 367, SEK: 577 } },
-      image: '/images/products/birdie-blue.png', secondaryImage: '',
-      description: '', category: 'Abstract', brand: 'Renate Thor',
-      artist: 'Renate Thor', artistId: '', inStock: true, published: true, featured: false,
+      image: '/images/products/swallow-dive.png', secondaryImage: '',
+      description: '', category: 'Abstract', brand: 'Helene Brox',
+      artist: 'Helene Brox', artistId: '', inStock: true, published: true, featured: false,
       sizes: { A3: true },
     }, 1, 'A3');
   };

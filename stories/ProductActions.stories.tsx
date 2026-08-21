@@ -25,11 +25,11 @@ type Story = StoryObj<typeof ProductActions>;
 export const MultipleSizes: Story = {
   args: {
     product: {
-      id: '1', name: 'Birdie Blue', slug: 'birdie-blue',
+      id: '1', name: 'Swallow Dive', slug: 'swallow-dive',
       prices: { A3: { GBP: 42, NOK: 577, USD: 54, DKK: 367, SEK: 577 }, A2: { GBP: 56, NOK: 770, USD: 72, DKK: 490, SEK: 770 }, A1: { GBP: 77, NOK: 1058, USD: 99, DKK: 673, SEK: 1058 } },
-      image: '/images/products/birdie-blue.png', secondaryImage: '',
-      description: '', category: 'Abstract', brand: 'Renate Thor',
-      artist: 'Renate Thor', artistId: '', inStock: true, published: true, featured: false,
+      image: '/images/products/swallow-dive.png', secondaryImage: '',
+      description: '', category: 'Abstract', brand: 'Helene Brox',
+      artist: 'Helene Brox', artistId: '', inStock: true, published: true, featured: false,
       sizes: { A3: true, A2: true, A1: true },
     },
   },

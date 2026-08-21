@@ -5,11 +5,11 @@ import { Product } from '@/contexts/CartContext';
 
 const mockProducts: Product[] = [
   {
-    id: '1', name: 'Birdie Blue', slug: 'birdie-blue',
+    id: '1', name: 'Swallow Dive', slug: 'swallow-dive',
     prices: { A3: { GBP: 42, NOK: 577, USD: 54, DKK: 367, SEK: 577 }, A2: { GBP: 56, NOK: 770, USD: 72, DKK: 490, SEK: 770 } },
-    image: '/images/products/birdie-blue.png', secondaryImage: '/images/products/birdie-blue-scene.avif',
-    description: 'A vibrant blue bird illustration', category: 'Abstract', brand: 'Renate Thor',
-    artist: 'Renate Thor', artistId: '', inStock: true, published: true, featured: true, sizes: { A3: true, A2: true },
+    image: '/images/products/swallow-dive.png', secondaryImage: '/images/products/swallow-dive-scene.avif',
+    description: 'A cobalt swallow cut down to the plunge of its wings', category: 'Abstract', brand: 'Helene Brox',
+    artist: 'Helene Brox', artistId: '', inStock: true, published: true, featured: true, sizes: { A3: true, A2: true },
   },
   {
     id: '2', name: 'Mean Snothing', slug: 'mean-snothing',
