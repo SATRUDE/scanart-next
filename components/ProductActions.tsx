@@ -3,6 +3,17 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Plus, Minus, ShoppingBag } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import type { ProductActionsStrings } from '@/lib/i18n';
+
+const EN: ProductActionsStrings = {
+  size: 'Size',
+  frame: 'Frame',
+  decreaseQuantity: 'Decrease quantity',
+  increaseQuantity: 'Increase quantity',
+  soldOut: 'Sold Out',
+  selectSize: 'Select Size',
+  addToCart: 'Add to Cart',
+};
 import { useCart, Product } from '@/contexts/CartContext';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { getProductPrices } from '@/lib/pricing';
@@ -11,13 +22,16 @@ import { track } from '@/lib/analytics';
 
 interface ProductActionsProps {
   product: Product;
+  /** Localised labels; defaults to the English strings above. */
+  strings?: ProductActionsStrings;
 }
 
 const SIZE_ORDER: Record<string, number> = {
   'A5': 1, 'A4': 2, 'A3': 3, '50x50cm': 4, 'A2': 5, '50x70cm': 6, 'A1': 7, 'A0': 8,
 };
 
-export const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
+export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings }) => {
+  const t = strings ?? EN;
   const { addToCart } = useCart();
   const { formatPrice } = useLanguage();
   const [quantity, setQuantity] = useState(1);
@@ -80,7 +94,7 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
 
       {availableSizes.length > 0 && (
         <div>
-          <p className="text-sm text-muted-foreground mb-2">Size</p>
+          <p className="text-sm text-muted-foreground mb-2">{t.size}</p>
           <div className="flex flex-wrap gap-2">
             {availableSizes.map(size => (
               <button
@@ -101,7 +115,7 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
       )}
 
       <div>
-        <p className="text-sm text-muted-foreground mb-2">Frame</p>
+        <p className="text-sm text-muted-foreground mb-2">{t.frame}</p>
         <div className="flex flex-wrap gap-2">
           {frameOptions.map(frame => (
             <button
@@ -114,18 +128,18 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
                 selectedFrame === frame.id ? 'border-primary bg-primary text-primary-foreground' : 'border-border hover:border-primary'
               }`}
             >
-              {frame.name}
+              {t.frameLabels?.[frame.id] ?? frame.name}
             </button>
           ))}
         </div>
       </div>
 
       <div className="flex items-center space-x-3">
-        <Button size="icon" variant="outline" aria-label="Decrease quantity" onClick={() => setQuantity(Math.max(1, quantity - 1))}>
+        <Button size="icon" variant="outline" aria-label={t.decreaseQuantity} onClick={() => setQuantity(Math.max(1, quantity - 1))}>
           <Minus className="h-4 w-4" />
         </Button>
         <span className="w-8 text-center">{quantity}</span>
-        <Button size="icon" variant="outline" aria-label="Increase quantity" onClick={() => setQuantity(quantity + 1)}>
+        <Button size="icon" variant="outline" aria-label={t.increaseQuantity} onClick={() => setQuantity(quantity + 1)}>
           <Plus className="h-4 w-4" />
         </Button>
       </div>
@@ -140,7 +154,7 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
         data-primary-cta="add-to-cart"
       >
         <ShoppingBag className="h-4 w-4 mr-2" />
-        {!hasAvailableSizes ? 'Sold Out' : (product.sizes && !selectedSize) ? 'Select Size' : 'Add to Cart'}
+        {!hasAvailableSizes ? t.soldOut : (product.sizes && !selectedSize) ? t.selectSize : t.addToCart}
       </Button>
     </div>
   );

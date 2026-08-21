@@ -313,3 +313,35 @@ export interface HelpGroupCopy {
   category: string;
   items: HelpItemCopy[];
 }
+
+/** Labels for the catalogue grid on /products and /no/products. */
+export interface ProductsGridStrings {
+  heading: string;
+  searchPrefix: string;
+  printsSuffix: string;
+  allChip: string;
+  sortLabel: string;
+  sortName: string;
+  sortPriceLow: string;
+  sortPriceHigh: string;
+  outOfStock: string;
+  emptyHeading: string;
+  emptyCta: string;
+  /** Catalogue category value -> visible label. Falls back to the raw value. */
+  categoryLabels?: Record<string, string>;
+  /** Collection slug -> chip label. Falls back to the config's chipLabel. */
+  collectionChips?: Record<string, string>;
+}
+
+/** Labels on the buying control on a product page. */
+export interface ProductActionsStrings {
+  size: string;
+  frame: string;
+  decreaseQuantity: string;
+  increaseQuantity: string;
+  soldOut: string;
+  selectSize: string;
+  addToCart: string;
+  /** Frame option id -> visible label. Falls back to the config's name. */
+  frameLabels?: Record<string, string>;
+}
