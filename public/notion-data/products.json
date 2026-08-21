@@ -259,7 +259,7 @@
     "artistId": "5",
     "brand": "",
     "inStock": true,
-    "featured": false,
+    "featured": true,
     "published": true,
     "image": "/images/products/Morgenlevering.png",
     "secondaryImage": "/images/products/Morgenlevering-scene.avif",
