@@ -23,11 +23,17 @@ export const metadata: Metadata = {
 
 export default async function HomePage() {
   const featuredProducts = await getFeaturedProducts();
-  // Hero-only override: Vinkveld shows its styled Inspire scene in the hero
-  // rotation (Mark's pick, 2026-08-07); the product page keeps the clean print.
+  // Hero-only override: these prints show their styled room scene in the hero
+  // rotation, while the product page keeps the clean print. Mark picks the
+  // scene; add a slug here and drop the file in public/images/homepage.
+  // vinkveld 2026-08-07, morgenlevering 2026-08-21.
+  const heroScenes: Record<string, string> = {
+    vinkveld: '/images/homepage/vinkveld-scene.jpg',
+    morgenlevering: '/images/homepage/morgenlevering-scene.jpg',
+  };
   const heroProducts = featuredProducts.map(p =>
-    p.slug === 'vinkveld'
-      ? { ...p, image: '/images/homepage/vinkveld-scene.jpg', secondaryImage: '/images/homepage/vinkveld-scene.jpg' }
+    heroScenes[p.slug]
+      ? { ...p, image: heroScenes[p.slug], secondaryImage: heroScenes[p.slug] }
       : p
   );
   // Featured articles first (the Featured checkbox in Notion curates this
