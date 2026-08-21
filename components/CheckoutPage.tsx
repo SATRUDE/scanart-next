@@ -790,10 +790,14 @@ export const CheckoutPage: React.FC = () => {
                 {state.items.map((item) => (
                   <div key={`${item.product.id}-${item.size || 'no-size'}-${item.frame || 'no-frame'}`} className="flex gap-4">
                     <div className="h-16 w-16 flex-shrink-0 overflow-hidden rounded-md border">
+                      {/* 64px box (h-16 w-16): without this hint SmartImage's
+                          '100vw' default makes the browser pick a full-viewport
+                          variant to fill a thumbnail. */}
                       <SmartImage
                         src={item.product.image}
                         alt={item.product.name}
                         className="h-full w-full object-cover"
+                        sizes="64px"
                       />
                     </div>
                     <div className="flex-1 space-y-1">
