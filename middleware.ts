@@ -24,8 +24,29 @@ const LOCALE_SEEN = 'locale-offered';
  */
 const BOT = /bot|crawl|spider|slurp|bingpreview|facebookexternalhit|embedly|quora|pinterest|vkshare|whatsapp|telegram|lighthouse|headlesschrome/i;
 
+/**
+ * Where the visitor is, as far as we can tell.
+ *
+ * `x-vercel-ip-country` is the real signal and it is always present in
+ * production. It is absent on localhost and on any host that is not Vercel,
+ * which made the whole Norwegian-by-default behaviour impossible to see while
+ * developing, so `Accept-Language` is a fallback for exactly that case.
+ *
+ * It is a FALLBACK and not a second signal on purpose. Browser language says
+ * what someone reads, not where they are, and a Norwegian speaker in London
+ * should not be redirected out of English. Since the geo header is always there
+ * in production, this branch never runs for a real visitor: it exists so the
+ * feature can be tested by changing a browser's preferred language.
+ */
+function countryOf(request: NextRequest): string {
+  const geo = request.headers.get('x-vercel-ip-country');
+  if (geo) return geo;
+  const accept = request.headers.get('accept-language') || '';
+  return /\b(nb|nn|no)\b/i.test(accept.split(',')[0] || '') ? 'NO' : 'GB';
+}
+
 export function middleware(request: NextRequest) {
-  const country = request.headers.get('x-vercel-ip-country') || 'GB';
+  const country = countryOf(request);
   const { pathname, search } = request.nextUrl;
 
   // A Norwegian visitor, on an English page that HAS a Norwegian twin, who has
