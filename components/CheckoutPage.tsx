@@ -183,6 +183,7 @@ const PaymentForm: React.FC<{
           type="submit" 
           className="w-full" 
           disabled={!stripe || isProcessing}
+          data-primary-cta="pay"
         >
           {isProcessing ? 'Processing...' : `Pay ${currency.toUpperCase()} ${total.toFixed(2)}`}
         </Button>

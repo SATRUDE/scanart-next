@@ -135,6 +135,9 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
         disabled={!hasAvailableSizes || (product.sizes && !selectedSize)}
         className="w-full"
         size="lg"
+        // Watched by FeedbackIntercept: the card refuses to render if it would
+        // cover this. Occlusion is the test, not co-presence.
+        data-primary-cta="add-to-cart"
       >
         <ShoppingBag className="h-4 w-4 mr-2" />
         {!hasAvailableSizes ? 'Sold Out' : (product.sizes && !selectedSize) ? 'Select Size' : 'Add to Cart'}

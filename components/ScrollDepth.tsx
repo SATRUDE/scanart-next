@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import { track } from '@/lib/analytics';
+import { scrollDepthPercent } from '@/lib/scroll-depth';
 
 const THRESHOLDS = [25, 50, 75, 100] as const;
 
@@ -24,8 +25,7 @@ export function ScrollDepth() {
     const measure = () => {
       ticking = false;
       const doc = document.documentElement;
-      const scrollable = doc.scrollHeight - window.innerHeight;
-      const depth = scrollable <= 0 ? 100 : Math.round((window.scrollY / scrollable) * 100);
+      const depth = scrollDepthPercent(window.scrollY, doc.scrollHeight, window.innerHeight);
       for (const t of THRESHOLDS) {
         if (depth >= t && !fired.current.has(t)) {
           fired.current.add(t);

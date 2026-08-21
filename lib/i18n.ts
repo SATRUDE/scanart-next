@@ -92,6 +92,8 @@ export interface FooterStrings {
   journal: string;
   artists: string;
   help: string;
+  /** Footer link to /feedback: the intercept's permanent re-entry route. */
+  feedback: string;
   newsletter: string;
   shopAll: string;
   sendEmail: string;
@@ -177,6 +179,7 @@ export const footerStrings: Record<Locale, FooterStrings> = {
     journal: 'Journal',
     artists: 'Artists',
     help: 'Help',
+    feedback: 'Feedback',
     newsletter: 'Newsletter',
     shopAll: 'Shop All',
     sendEmail: 'Send Email',
@@ -204,6 +207,7 @@ export const footerStrings: Record<Locale, FooterStrings> = {
     journal: 'Journal',
     artists: 'Kunstnere',
     help: 'Hjelp',
+    feedback: 'Tilbakemelding',
     newsletter: 'Nyhetsbrev',
     shopAll: 'Alle trykk',
     sendEmail: 'Send e-post',
