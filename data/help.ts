@@ -89,7 +89,7 @@ export const helpGroups: HelpGroup[] = [
       },
       {
         q: 'What sizes are available?',
-        a: 'Sizes vary by artwork and are shown on each product page. Common sizes are A3, A2, A1, 50x50cm and 50x70cm.',
+        a: "Sizes vary by artwork and are shown on each product page. Most prints are 50x70cm, and Simen Wahlqvist's square illustrations are 50x50cm.",
       },
       {
         q: 'Are these original artworks?',
