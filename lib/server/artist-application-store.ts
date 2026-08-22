@@ -51,12 +51,39 @@ export function buildWhyFit(a: ArtistApplication): string {
   return `Asking for: ${OFFERING_LABEL[a.offering]}\n\n${a.whyFit}`;
 }
 
-export async function recordApplication(a: ArtistApplication): Promise<void> {
+const OFFERING_ENUM: Record<ArtistApplication['offering'], 'PRINTS' | 'COMMISSION' | 'UNSURE'> = {
+  Prints: 'PRINTS',
+  Commission: 'COMMISSION',
+  Unsure: 'UNSURE',
+};
+
+/**
+ * TWO rows, on purpose, and the compromises above are why.
+ *
+ * `ScoutedArtist` is the working record: it is what the Talent board triages, so
+ * its status moves, notes get added to it and it can be deleted. That makes it a
+ * poor archive, and it is lossy besides.
+ *
+ * `ArtistApplication` is the archive. It holds the submission as sent, with the
+ * email, the offering and keepOnFile as real columns, and it is never edited. It
+ * also records which candidate row came from it, so socialagent can offer a jump
+ * to the board without the archive depending on that row surviving.
+ *
+ * Each insert is independent: the archive must not be lost because the queue
+ * insert failed, or the other way about.
+ */
+export async function recordApplication(
+  a: ArtistApplication,
+  locale: 'en' | 'no' = 'en',
+): Promise<void> {
   const url = databaseUrl();
   if (!url) return;
+  const sql = neon(url);
+  const sourceUrl = locale === 'no' ? '/no/artists/apply' : '/artists/apply';
+
+  let scoutedArtistId: string | null = null;
   try {
-    const sql = neon(url);
-    await sql`
+    const rows = (await sql`
       INSERT INTO "ScoutedArtist"
         ("id", "name", "basedIn", "styleNote", "whyFit", "links", "sourceUrl", "status", "updatedAt")
       VALUES (
@@ -66,12 +93,38 @@ export async function recordApplication(a: ArtistApplication): Promise<void> {
         ${a.styleNote},
         ${buildWhyFit(a)},
         ${buildLinks(a)},
-        ${'/artists/apply'},
+        ${sourceUrl},
         ${a.keepOnFile ? 'WAITING' : 'NEW'},
         NOW()
       )
+      RETURNING "id"
+    `) as { id: string }[];
+    scoutedArtistId = rows[0]?.id ?? null;
+  } catch (error) {
+    console.error('[artist-application] could not record the candidate row:', error);
+  }
+
+  try {
+    await sql`
+      INSERT INTO "ArtistApplication"
+        ("id", "name", "basedIn", "styleNote", "whyFit", "email", "website", "instagram",
+         "offering", "keepOnFile", "locale", "scoutedArtistId")
+      VALUES (
+        gen_random_uuid()::text,
+        ${a.name},
+        ${a.basedIn},
+        ${a.styleNote},
+        ${a.whyFit},
+        ${a.email},
+        ${a.website ?? null},
+        ${a.instagram ?? null},
+        ${OFFERING_ENUM[a.offering]}::"ApplicationOffering",
+        ${a.keepOnFile},
+        ${locale},
+        ${scoutedArtistId}
+      )
     `;
   } catch (error) {
-    console.error('[artist-application] could not record the application:', error);
+    console.error('[artist-application] could not archive the application:', error);
   }
 }

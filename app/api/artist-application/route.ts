@@ -41,7 +41,13 @@ export async function POST(request: Request): Promise<NextResponse> {
 
   // Both, and neither can fail the other. Slack is how it gets noticed today;
   // the row is how it joins the review queue.
-  await Promise.allSettled([sendSlackApplication(application), recordApplication(application)]);
+  // Only ever 'no' or 'en': anything else, including a missing value, is 'en'.
+  const locale = (body as { locale?: unknown }).locale === 'no' ? 'no' : 'en';
+
+  await Promise.allSettled([
+    sendSlackApplication(application),
+    recordApplication(application, locale),
+  ]);
 
   return NextResponse.json({ ok: true });
 }
