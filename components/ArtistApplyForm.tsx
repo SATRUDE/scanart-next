@@ -69,21 +69,35 @@ export function ArtistApplyForm({
   const [state, setState] = useState<'editing' | 'sending' | 'sent' | 'failed'>('editing');
   const summaryRef = useRef<HTMLDivElement>(null);
 
-  const set = <K extends keyof ArtistApplication>(key: K, value: ArtistApplication[K]) =>
+  // Fired once, on the first field anyone touches. Page views tell us who
+  // arrived and the submit events tell us who finished; without this there is
+  // no way to separate "read it and left" from "started and gave up".
+  const started = useRef(false);
+  const set = <K extends keyof ArtistApplication>(key: K, value: ArtistApplication[K]) => {
+    if (!started.current) {
+      started.current = true;
+      track('artist-application-start', { locale });
+    }
     setValues(v => ({ ...v, [key]: value }));
+  };
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     const found = validate(values, messages);
     setErrors(found);
     if (Object.keys(found).length > 0) {
+      // The drop-off signal. Someone who cannot get past validation usually
+      // leaves, and the field names say which question is doing it.
+      track('artist-application-invalid', { locale, fields: Object.keys(found).sort().join(',') });
       // Move focus to the summary so a keyboard or screen-reader user is told
       // what happened rather than left wondering why nothing submitted.
       summaryRef.current?.focus();
       return;
     }
     setState('sending');
-    track('artist-application-submit', {});
+    // An ATTEMPT, not a success: it fires before the request. Compare against
+    // artist-application-sent to see whether attempts are actually landing.
+    track('artist-application-submit', { locale, offering: values.offering ?? 'unset' });
     try {
       const res = await fetch('/api/artist-application', {
         method: 'POST',
@@ -93,16 +107,28 @@ export function ArtistApplyForm({
       if (!res.ok) {
         const body = (await res.json().catch(() => ({}))) as { errors?: Errors };
         if (body.errors) {
+          // Rejected by the server but not by the browser, so the two copies of
+          // validate() disagreed. Worth knowing: it should not happen.
+          track('artist-application-invalid', {
+            locale,
+            fields: Object.keys(body.errors).sort().join(','),
+            source: 'server',
+          });
           setErrors(body.errors);
           setState('editing');
           summaryRef.current?.focus();
           return;
         }
+        track('artist-application-failed', { locale, reason: `http-${res.status}` });
         setState('failed');
         return;
       }
+      track('artist-application-sent', { locale, offering: values.offering ?? 'unset' });
       setState('sent');
     } catch {
+      // The request never completed, so the applicant saw a failure we would
+      // otherwise never hear about.
+      track('artist-application-failed', { locale, reason: 'network' });
       setState('failed');
     }
   };
