@@ -20,12 +20,20 @@ export function FeedbackPageForm({
   q3,
   q1Answers,
   q2Answers,
+  answerLabels,
+  sendLabel = 'Send',
+  thanks = 'Thank you, that is genuinely useful.',
 }: {
   q1: string;
   q2: string;
   q3: string;
   q1Answers: string[];
   q2Answers: string[];
+  /** Canonical answer -> visible label. The canonical value is still what is
+   *  posted, so both trees produce comparable records. */
+  answerLabels?: Record<string, string>;
+  sendLabel?: string;
+  thanks?: string;
 }) {
   const [a1, setA1] = useState<string | null>(null);
   const [a2, setA2] = useState<string | null>(null);
@@ -52,7 +60,7 @@ export function FeedbackPageForm({
 
   if (sent) {
     return (
-      <p className="mt-10 text-foreground">Thank you, that is genuinely useful.</p>
+      <p className="mt-10 text-foreground">{thanks}</p>
     );
   }
 
@@ -63,7 +71,7 @@ export function FeedbackPageForm({
         <div className="mt-3 flex flex-wrap gap-2">
           {q1Answers.map(a => (
             <Button key={a} size="sm" variant={a1 === a ? 'default' : 'outline'} onClick={() => setA1(a)}>
-              {a}
+              {answerLabels?.[a] ?? a}
             </Button>
           ))}
         </div>
@@ -82,7 +90,7 @@ export function FeedbackPageForm({
                 a2 === a ? 'border-foreground bg-secondary text-foreground' : 'border-border text-foreground hover:bg-secondary'
               }`}
             >
-              {a}
+              {answerLabels?.[a] ?? a}
             </button>
           ))}
         </div>
@@ -94,7 +102,7 @@ export function FeedbackPageForm({
       </fieldset>
 
       <Button onClick={send} disabled={!a1 && !a2 && !a3.trim()}>
-        Send
+        {sendLabel}
       </Button>
     </div>
   );

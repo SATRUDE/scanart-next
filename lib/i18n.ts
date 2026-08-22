@@ -317,3 +317,85 @@ export interface HelpGroupCopy {
   category: string;
   items: HelpItemCopy[];
 }
+
+/** Labels for the catalogue grid on /products and /no/products. */
+export interface ProductsGridStrings {
+  heading: string;
+  searchPrefix: string;
+  printsSuffix: string;
+  allChip: string;
+  sortLabel: string;
+  sortName: string;
+  sortPriceLow: string;
+  sortPriceHigh: string;
+  outOfStock: string;
+  emptyHeading: string;
+  emptyCta: string;
+  /** Catalogue category value -> visible label. Falls back to the raw value. */
+  categoryLabels?: Record<string, string>;
+  /** Collection slug -> chip label. Falls back to the config's chipLabel. */
+  collectionChips?: Record<string, string>;
+}
+
+/** Labels on the buying control on a product page. */
+export interface ProductActionsStrings {
+  size: string;
+  frame: string;
+  decreaseQuantity: string;
+  increaseQuantity: string;
+  soldOut: string;
+  selectSize: string;
+  addToCart: string;
+  /** Frame option id -> visible label. Falls back to the config's name. */
+  frameLabels?: Record<string, string>;
+}
+
+/** Labels on the checkout page. Strings only: the payment flow itself is
+ *  identical in both trees. */
+export interface CheckoutStrings {
+  heading: string;
+  subheading: string;
+  cartEmpty: string;
+  continueShopping: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  address: string;
+  country: string;
+  city: string;
+  searchCountry: string;
+  noCountry: string;
+  cardDetails: string;
+  processing: string;
+  payPrefix: string;
+  orderSummary: string;
+  discountPlaceholder: string;
+  apply: string;
+  percentOff: string;
+  subtotal: string;
+  shipping: string;
+  free: string;
+  discount: string;
+  total: string;
+  secureHeading: string;
+  secureBody: string;
+  shipsMostHeading: string;
+  elsewhereHeading: string;
+  payNotice: string;
+  invalidCode: string;
+  couldNotCheckCode: string;
+  orderTotalChanged: string;
+  paymentFailed: string;
+}
+
+/** Labels on the journal index. */
+export interface JournalStrings {
+  heading: string;
+  intro?: string;
+  allChip: string;
+  articlesSuffix: string;
+  empty: string;
+  booksSeriesHeading: string;
+  /** Article category -> visible label. Falls back to the raw value. */
+  categoryLabels?: Record<string, string>;
+}

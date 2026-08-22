@@ -11,10 +11,29 @@ import { getArtistById } from '@/data/artists';
 import { getCategoryLandingByCategory } from '@/lib/categories';
 import { collections } from '@/lib/collections';
 import { Product } from '@/contexts/CartContext';
+import type { ProductsGridStrings } from '@/lib/i18n';
+
+const EN: ProductsGridStrings = {
+  heading: 'Nordic & Scandinavian Art Prints',
+  searchPrefix: 'Search',
+  printsSuffix: 'prints',
+  allChip: 'All',
+  sortLabel: 'Sort products',
+  sortName: 'Name',
+  sortPriceLow: 'Price: Low to High',
+  sortPriceHigh: 'Price: High to Low',
+  outOfStock: 'Out of stock',
+  emptyHeading: 'No products found',
+  emptyCta: 'View all products',
+};
 
 interface ProductsGridProps {
   products: Product[];
   categories: string[];
+  /** Keeps every link inside the tree the grid is rendered in. */
+  locale?: 'en' | 'no';
+  /** Localised labels; defaults to the English strings above. */
+  strings?: ProductsGridStrings;
 }
 
 /**
@@ -49,7 +68,14 @@ const ProductsQuerySync: React.FC<{
   return null;
 };
 
-export const ProductsGrid: React.FC<ProductsGridProps> = ({ products, categories }) => {
+export const ProductsGrid: React.FC<ProductsGridProps> = ({
+  products,
+  categories,
+  locale = 'en',
+  strings,
+}) => {
+  const t = strings ?? EN;
+  const p1 = locale === 'no' ? '/no' : '';
   // Both default to "no filter" so the prerendered HTML is the full catalogue;
   // ProductsQuerySync below overrides them on hydration when the URL asks for
   // a legacy /products?category= deep link or a ?q= search.
@@ -112,9 +138,9 @@ export const ProductsGrid: React.FC<ProductsGridProps> = ({ products, categories
       <div className="container mx-auto px-8 py-8">
         <div className="mb-8">
           <h1 className="text-3xl text-neutral-900 mb-2">
-            {searchQuery ? `Search: "${searchQuery}"` : 'Nordic & Scandinavian Art Prints'}
+            {searchQuery ? `${t.searchPrefix}: "${searchQuery}"` : t.heading}
           </h1>
-          <p className="text-muted-foreground">{filteredProducts.length} prints</p>
+          <p className="text-muted-foreground">{filteredProducts.length} {t.printsSuffix}</p>
         </div>
 
         {!searchQuery && (
@@ -125,8 +151,8 @@ export const ProductsGrid: React.FC<ProductsGridProps> = ({ products, categories
               // crawlable and get their own SEO), falling back to the in-page filter
               // only if a category has no landing page yet.
               const href = cat === 'All'
-                ? '/products'
-                : landing ? `/category/${landing.slug}` : `/products?category=${encodeURIComponent(cat)}`;
+                ? `${p1}/products`
+                : landing ? `${p1}/category/${landing.slug}` : `${p1}/products?category=${encodeURIComponent(cat)}`;
               return (
                 <Link
                   key={cat}
@@ -136,7 +162,7 @@ export const ProductsGrid: React.FC<ProductsGridProps> = ({ products, categories
                     selectedCategory === cat ? 'bg-primary text-primary-foreground' : 'bg-muted text-neutral-700 hover:bg-muted/80'
                   }`}
                 >
-                  {cat}
+                  {cat === 'All' ? t.allChip : t.categoryLabels?.[cat] ?? cat}
                 </Link>
               );
             })}
@@ -145,33 +171,33 @@ export const ProductsGrid: React.FC<ProductsGridProps> = ({ products, categories
             {collections.map(col => (
               <Link
                 key={col.slug}
-                href={`/collection/${col.slug}`}
+                href={`${p1}/collection/${col.slug}`}
                 onClick={() => track('products-filter-click', { type: col.axis, value: col.slug })}
                 className="px-4 py-2 rounded-full text-sm transition-colors bg-muted text-neutral-700 hover:bg-muted/80"
               >
-                {col.chipLabel}
+                {t.collectionChips?.[col.slug] ?? col.chipLabel}
               </Link>
             ))}
           </div>
         )}
 
         <div className="flex justify-end mb-6">
-          <label htmlFor="sort-products" className="sr-only">Sort products</label>
+          <label htmlFor="sort-products" className="sr-only">{t.sortLabel}</label>
           <select
             id="sort-products"
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
             className="text-sm border rounded px-3 py-1.5"
           >
-            <option value="name">Name</option>
-            <option value="price-low">Price: Low to High</option>
-            <option value="price-high">Price: High to Low</option>
+            <option value="name">{t.sortName}</option>
+            <option value="price-low">{t.sortPriceLow}</option>
+            <option value="price-high">{t.sortPriceHigh}</option>
           </select>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {filteredProducts.map((product, index) => (
-            <Link key={product.id} href={`/product/${product.slug}`} className="group cursor-pointer">
+            <Link key={product.id} href={`${p1}/product/${product.slug}`} className="group cursor-pointer">
               <div className="aspect-[3/4] overflow-hidden bg-neutral-50 mb-4 rounded">
                 <SmartImage
                   src={product.image}
@@ -185,13 +211,13 @@ export const ProductsGrid: React.FC<ProductsGridProps> = ({ products, categories
                 <div className="flex items-center gap-2 text-xs text-muted-foreground">
                   <span>{product.artistId ? getArtistById(product.artistId)?.name || product.brand : product.brand}</span>
                   <span>&bull;</span>
-                  <span>{product.category}</span>
+                  <span>{t.categoryLabels?.[product.category] ?? product.category}</span>
                 </div>
                 <h2 className="text-sm text-neutral-900">{product.name}</h2>
                 <p className="text-sm text-neutral-900">
                   {formatPrice(getLowestProductPrices(product))}
                 </p>
-                {!product.inStock && <p className="text-xs text-neutral-400">Out of stock</p>}
+                {!product.inStock && <p className="text-xs text-neutral-400">{t.outOfStock}</p>}
               </div>
             </Link>
           ))}
@@ -199,8 +225,8 @@ export const ProductsGrid: React.FC<ProductsGridProps> = ({ products, categories
 
         {filteredProducts.length === 0 && (
           <div className="text-center py-16">
-            <p className="text-muted-foreground mb-4">No products found</p>
-            <Link href="/products" className="text-primary hover:underline">View all products</Link>
+            <p className="text-muted-foreground mb-4">{t.emptyHeading}</p>
+            <Link href={`${p1}/products`} className="text-primary hover:underline">{t.emptyCta}</Link>
           </div>
         )}
       </div>

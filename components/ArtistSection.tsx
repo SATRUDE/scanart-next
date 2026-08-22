@@ -5,9 +5,16 @@ import { Artist, getArtistInitials } from '@/data/artists';
 
 interface ArtistSectionProps {
   artist: Artist;
+  /** Keeps the artist link inside the tree this section is rendered in. */
+  locale?: 'en' | 'no';
+  /** Localised location and bio; defaults to the English values on Artist. */
+  copy?: { location: string; bio: string };
 }
 
-export const ArtistSection: React.FC<ArtistSectionProps> = ({ artist }) => {
+export const ArtistSection: React.FC<ArtistSectionProps> = ({ artist, locale = 'en', copy }) => {
+  const hrefPrefix = locale === 'no' ? '/no' : '';
+  const location = copy?.location ?? artist.location;
+  const bio = copy?.bio ?? artist.bio;
   return (
     <div className="mt-16 pt-8 border-t">
       <div className="flex items-start gap-4">
@@ -22,12 +29,12 @@ export const ArtistSection: React.FC<ArtistSectionProps> = ({ artist }) => {
         )}
         <div>
           <h2 className="font-medium">
-            <TrackedLink event="artist-link-click" eventData={{ artist: artist.slug }} href={`/artist/${artist.slug}`} className="hover:text-neutral-600 transition-colors">
+            <TrackedLink event="artist-link-click" eventData={{ artist: artist.slug }} href={`${hrefPrefix}/artist/${artist.slug}`} className="hover:text-neutral-600 transition-colors">
               {artist.name}
             </TrackedLink>
           </h2>
-          {artist.location && <p className="text-sm text-muted-foreground">{artist.location}</p>}
-          {artist.bio && <p className="text-sm text-muted-foreground mt-2">{artist.bio}</p>}
+          {location && <p className="text-sm text-muted-foreground">{location}</p>}
+          {bio && <p className="text-sm text-muted-foreground mt-2">{bio}</p>}
         </div>
       </div>
     </div>

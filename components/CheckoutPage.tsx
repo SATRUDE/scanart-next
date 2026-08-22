@@ -10,6 +10,7 @@ import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
 import { useCart } from '@/contexts/CartContext';
 import { useLanguage } from '@/contexts/LanguageContext';
+import type { CheckoutStrings } from '@/lib/i18n';
 import { SmartImage } from '@/components/SmartImage';
 import { getProductPrice } from '@/lib/pricing';
 import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
@@ -55,9 +56,46 @@ const cardElementOptions = {
 };
 
 // Payment Form Component
+const EN: CheckoutStrings = {
+  heading: 'Checkout',
+  subheading: 'Complete your purchase below',
+  cartEmpty: 'Your cart is empty',
+  continueShopping: 'Continue Shopping',
+  email: 'Email',
+  firstName: 'First Name',
+  lastName: 'Last Name',
+  address: 'Address',
+  country: 'Country',
+  city: 'City',
+  searchCountry: 'Search for your country',
+  noCountry: 'No country by that name.',
+  cardDetails: 'Card Details',
+  processing: 'Processing...',
+  payPrefix: 'Pay',
+  orderSummary: 'Order Summary',
+  discountPlaceholder: 'Discount code',
+  apply: 'Apply',
+  percentOff: 'off applied',
+  subtotal: 'Subtotal',
+  shipping: 'Shipping',
+  free: 'Free',
+  discount: 'Discount',
+  total: 'Total',
+  secureHeading: 'Secure Checkout',
+  secureBody: 'Your payment information is encrypted and secure. We never store your credit card details.',
+  shipsMostHeading: 'Where we ship most',
+  elsewhereHeading: 'Everywhere else',
+  payNotice: 'Purchasing can take up to a minute to process. Please do not refresh.',
+  invalidCode: 'Invalid discount code',
+  couldNotCheckCode: 'Could not check the code, please try again',
+  orderTotalChanged: 'Order total changed, please refresh and try again',
+  paymentFailed: 'Payment failed',
+};
+
 const PaymentForm: React.FC<{
   total: number;
   currency: string;
+  t: CheckoutStrings;
   orderItems: { productId: string; size?: string; frame?: string; quantity: number }[];
   countryCode: string;
   discountCode?: string;
@@ -74,7 +112,7 @@ const PaymentForm: React.FC<{
   };
   onSuccess: () => void;
   onError: (error: string) => void;
-}> = ({ total, currency, orderItems, countryCode, discountCode, customer, onSuccess, onError }) => {
+}> = ({ total, currency, t, orderItems, countryCode, discountCode, customer, onSuccess, onError }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [isProcessing, setIsProcessing] = useState(false);
@@ -125,7 +163,7 @@ const PaymentForm: React.FC<{
       // mismatch means stale prices or a tampered cart, either way stop.
       if (typeof responseData.amount === 'number' && Math.abs(responseData.amount - total) > 0.01) {
         track('checkout-error', { code: 'amount-mismatch', total, currency });
-        throw new Error('Order total changed, please refresh and try again');
+        throw new Error(t.orderTotalChanged);
       }
 
       const { clientSecret } = responseData;
@@ -139,13 +177,13 @@ const PaymentForm: React.FC<{
 
       if (paymentError) {
         track('checkout-error', { code: paymentError.code || 'unknown', total, currency });
-        setError(paymentError.message || 'Payment failed');
-        onError(paymentError.message || 'Payment failed');
+        setError(paymentError.message || t.paymentFailed);
+        onError(paymentError.message || t.paymentFailed);
       } else {
         onSuccess();
       }
     } catch (err) {
-      const errorMessage = err instanceof Error ? err.message : 'Payment failed';
+      const errorMessage = err instanceof Error ? err.message : t.paymentFailed;
       track('checkout-error', { code: 'exception', total, currency });
       setError(errorMessage);
       onError(errorMessage);
@@ -158,7 +196,7 @@ const PaymentForm: React.FC<{
     <form onSubmit={handleSubmit}>
       <div className="space-y-4">
         <div>
-          <Label htmlFor="card-element">Card Details</Label>
+          <Label htmlFor="card-element">{t.cardDetails}</Label>
           <div className="mt-1 p-3 border border-gray-300 rounded-md">
             {stripe && elements ? (
               <CardElement
@@ -185,12 +223,10 @@ const PaymentForm: React.FC<{
           disabled={!stripe || isProcessing}
           data-primary-cta="pay"
         >
-          {isProcessing ? 'Processing...' : `Pay ${currency.toUpperCase()} ${total.toFixed(2)}`}
+          {isProcessing ? t.processing : `${t.payPrefix} ${currency.toUpperCase()} ${total.toFixed(2)}`}
         </Button>
         
-        <p className="text-xs text-muted-foreground text-center mt-2">
-          Purchasing can take up to a minute to process. Please do not refresh.
-        </p>
+        <p className="text-xs text-muted-foreground text-center mt-2">{t.payNotice}</p>
       </div>
     </form>
   );
@@ -204,10 +240,11 @@ const PaymentForm: React.FC<{
  * own shipping rate sit at the top, since they are most of our buyers; the
  * rest follow alphabetically and are found by typing.
  */
-const CountryPicker: React.FC<{ value: string; onChange: (value: string) => void }> = ({
-  value,
-  onChange,
-}) => {
+const CountryPicker: React.FC<{
+  value: string;
+  onChange: (value: string) => void;
+  t: CheckoutStrings;
+}> = ({ value, onChange, t }) => {
   const [open, setOpen] = useState(false);
   const priced = DESTINATIONS.filter(d => d.priced);
   const rest = DESTINATIONS.filter(d => !d.priced);
@@ -229,10 +266,10 @@ const CountryPicker: React.FC<{ value: string; onChange: (value: string) => void
       </PopoverTrigger>
       <PopoverContent className="w-[--radix-popover-trigger-width] p-0" align="start">
         <Command>
-          <CommandInput placeholder="Search for your country" />
+          <CommandInput placeholder={t.searchCountry} />
           <CommandList>
-            <CommandEmpty>No country by that name.</CommandEmpty>
-            <CommandGroup heading="Where we ship most">
+            <CommandEmpty>{t.noCountry}</CommandEmpty>
+            <CommandGroup heading={t.shipsMostHeading}>
               {priced.map(destination => (
                 <CountryOptionRow
                   key={destination.code}
@@ -245,7 +282,7 @@ const CountryPicker: React.FC<{ value: string; onChange: (value: string) => void
                 />
               ))}
             </CommandGroup>
-            <CommandGroup heading="Everywhere else">
+            <CommandGroup heading={t.elsewhereHeading}>
               {rest.map(destination => (
                 <CountryOptionRow
                   key={destination.code}
@@ -284,7 +321,8 @@ const CountryOptionRow: React.FC<{
 // Discount codes are validated server-side (/api/validate-discount); this
 // public repository must never contain a working code.
 
-export const CheckoutPage: React.FC = () => {
+export const CheckoutPage: React.FC<{ strings?: CheckoutStrings }> = ({ strings }) => {
+  const t = strings ?? EN;
   const router = useRouter();
   const onBack = () => router.push('/products');
   const { state, getTotalPriceInCurrency, clearCart } = useCart();
@@ -343,11 +381,11 @@ export const CheckoutPage: React.FC = () => {
         setDiscountError(null);
         setDiscountCode('');
       } else {
-        setDiscountError('Invalid discount code');
+        setDiscountError(t.invalidCode);
         setAppliedDiscount(null);
       }
     } catch {
-      setDiscountError('Could not check the code, please try again');
+      setDiscountError(t.couldNotCheckCode);
     }
   };
 
@@ -538,8 +576,8 @@ export const CheckoutPage: React.FC = () => {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h2 className="text-2xl mb-4">Your cart is empty</h2>
-          <Button onClick={onBack}>Continue Shopping</Button>
+          <h2 className="text-2xl mb-4">{t.cartEmpty}</h2>
+          <Button onClick={onBack}>{t.continueShopping}</Button>
         </div>
       </div>
     );
@@ -587,8 +625,8 @@ export const CheckoutPage: React.FC = () => {
           {/* Checkout Form */}
           <div className="space-y-6 order-2 lg:order-1">
             <div>
-              <h1 className="text-3xl tracking-tight mb-2">Checkout</h1>
-              <p className="text-muted-foreground">Complete your purchase below</p>
+              <h1 className="text-3xl tracking-tight mb-2">{t.heading}</h1>
+              <p className="text-muted-foreground">{t.subheading}</p>
             </div>
 
             <div className="space-y-6">
@@ -602,7 +640,7 @@ export const CheckoutPage: React.FC = () => {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
+                    <Label htmlFor="email">{t.email}</Label>
                     <Input
                       id="email"
                       type="email"
@@ -625,7 +663,7 @@ export const CheckoutPage: React.FC = () => {
                 <CardContent className="space-y-4">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="firstName">First Name</Label>
+                      <Label htmlFor="firstName">{t.firstName}</Label>
                       <Input
                         id="firstName"
                         value={formData.firstName}
@@ -634,7 +672,7 @@ export const CheckoutPage: React.FC = () => {
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="lastName">Last Name</Label>
+                      <Label htmlFor="lastName">{t.lastName}</Label>
                       <Input
                         id="lastName"
                         value={formData.lastName}
@@ -644,7 +682,7 @@ export const CheckoutPage: React.FC = () => {
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="address">Address</Label>
+                    <Label htmlFor="address">{t.address}</Label>
                     <Input
                       id="address"
                       value={formData.address}
@@ -653,8 +691,9 @@ export const CheckoutPage: React.FC = () => {
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="country">Country</Label>
+                    <Label htmlFor="country">{t.country}</Label>
                     <CountryPicker
+                      t={t}
                       value={formData.country}
                       onChange={value => handleInputChange('country', value)}
                     />
@@ -667,7 +706,7 @@ export const CheckoutPage: React.FC = () => {
                     }`}
                   >
                     <div className="space-y-2">
-                      <Label htmlFor="city">City</Label>
+                      <Label htmlFor="city">{t.city}</Label>
                       <Input
                         id="city"
                         value={formData.city}
@@ -722,6 +761,7 @@ export const CheckoutPage: React.FC = () => {
                           quantity: item.quantity,
                         }))}
                         countryCode={selectedCountryCode}
+                        t={t}
                         customer={{
                           email: formData.email,
                           firstName: formData.firstName,
@@ -785,7 +825,7 @@ export const CheckoutPage: React.FC = () => {
           <div className="space-y-6 order-1 lg:order-2">
             <Card>
               <CardHeader>
-                <CardTitle className="text-lg">Order Summary</CardTitle>
+                <CardTitle className="text-lg">{t.orderSummary}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 {state.items.map((item) => (
@@ -831,7 +871,7 @@ export const CheckoutPage: React.FC = () => {
                 <div className="space-y-3">
                   <div className="flex gap-2">
                     <Input
-                      placeholder="Discount code"
+                      placeholder={t.discountPlaceholder}
                       value={discountCode}
                       onChange={(e) => setDiscountCode(e.target.value)}
                       className="flex-1"
@@ -842,7 +882,7 @@ export const CheckoutPage: React.FC = () => {
                       onClick={handleApplyDiscount}
                       disabled={!discountCode.trim()}
                     >
-                      Apply
+                      {t.apply}
                     </Button>
                   </div>
                   
@@ -877,12 +917,12 @@ export const CheckoutPage: React.FC = () => {
 
                 <div className="space-y-2">
                   <div className="flex justify-between text-sm">
-                    <span>Subtotal</span>
+                    <span>{t.subtotal}</span>
                     <span>{formatPrice({ GBP: subtotal, NOK: subtotal, USD: subtotal, DKK: subtotal, SEK: subtotal })}</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span>Shipping</span>
-                    <span>{finalShipping === 0 ? 'Free' : formatPrice({ 
+                    <span>{t.shipping}</span>
+                    <span>{finalShipping === 0 ? t.free : formatPrice({ 
                       GBP: selectedCountry.currency === 'GBP' ? finalShipping : 0,
                       NOK: selectedCountry.currency === 'NOK' ? finalShipping : 0,
                       USD: selectedCountry.currency === 'USD' ? finalShipping : 0,
@@ -892,13 +932,13 @@ export const CheckoutPage: React.FC = () => {
                   </div>
                   {appliedDiscount && (
                     <div className="flex justify-between text-sm text-green-600">
-                      <span>Discount ({appliedDiscount.percentage}%)</span>
+                      <span>{t.discount} ({appliedDiscount.percentage}%)</span>
                       <span>-{formatPrice({ GBP: discountAmount, NOK: discountAmount, USD: discountAmount, DKK: discountAmount, SEK: discountAmount })}</span>
                     </div>
                   )}
                   <Separator />
                   <div className="flex justify-between">
-                    <span>Total</span>
+                    <span>{t.total}</span>
                     <span>{formatPrice({ GBP: total, NOK: total, USD: total, DKK: total, SEK: total })}</span>
                   </div>
                 </div>
@@ -911,10 +951,8 @@ export const CheckoutPage: React.FC = () => {
                 <div className="flex items-start space-x-3">
                   <Shield className="h-5 w-5 mt-0.5 text-green-600" />
                   <div>
-                    <h4 className="text-sm mb-1">Secure Checkout</h4>
-                    <p className="text-xs text-muted-foreground">
-                      Your payment information is encrypted and secure. We never store your credit card details.
-                    </p>
+                    <h4 className="text-sm mb-1">{t.secureHeading}</h4>
+                    <p className="text-xs text-muted-foreground">{t.secureBody}</p>
                   </div>
                 </div>
               </CardContent>

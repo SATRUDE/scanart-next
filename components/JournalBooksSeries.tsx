@@ -21,6 +21,8 @@ const SERIES_SLUGS = [
 interface JournalBooksSeriesProps {
   /** The published articles the journal page already loaded via getAllArticles(). */
   articles: Article[];
+  /** Localised heading; defaults to the English string. */
+  heading?: string;
 }
 
 /**
@@ -32,7 +34,7 @@ interface JournalBooksSeriesProps {
  * LandingCrossLinks, no new design language. Renders nothing if none of the
  * series articles are in the data.
  */
-export function JournalBooksSeries({ articles }: JournalBooksSeriesProps) {
+export function JournalBooksSeries({ articles, heading }: JournalBooksSeriesProps) {
   const bySlug = new Map(articles.map(a => [a.slug, a]));
   const series = SERIES_SLUGS.flatMap(slug => bySlug.get(slug) ?? []);
 
@@ -40,7 +42,7 @@ export function JournalBooksSeries({ articles }: JournalBooksSeriesProps) {
 
   return (
     <section className="mt-8">
-      <h2 className="text-2xl text-neutral-900">The Nordic books series</h2>
+      <h2 className="text-2xl text-neutral-900">{heading ?? 'The Nordic books series'}</h2>
       <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
         {series.map(article => (
           <li key={article.slug}>

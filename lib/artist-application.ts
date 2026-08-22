@@ -61,33 +61,103 @@ export type Errors = Partial<Record<FieldName, string>>;
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
-export function validate(input: Partial<ArtistApplication>): Errors {
+export function validate(
+  input: Partial<ArtistApplication>,
+  m: ValidationMessages = EN_MESSAGES,
+): Errors {
   const e: Errors = {};
-  const need = (k: 'name' | 'basedIn' | 'styleNote' | 'whyFit', label: string) => {
+  const need = (k: 'name' | 'basedIn' | 'styleNote' | 'whyFit') => {
+    const label = m.labels[k];
     const v = (input[k] ?? '').trim();
-    if (!v) e[k] = `${label} is required.`;
-    else if (v.length > MAX[k]) e[k] = `${label} is a little long, ${MAX[k]} characters at most.`;
+    if (!v) e[k] = m.isRequired(label);
+    else if (v.length > MAX[k]) e[k] = m.tooLong(label, MAX[k]);
   };
-  need('name', 'Your name');
-  need('basedIn', 'Where you are based');
-  need('styleNote', 'A note on your work');
-  need('whyFit', 'Why you think it fits');
+  need('name');
+  need('basedIn');
+  need('styleNote');
+  need('whyFit');
 
   const email = (input.email ?? '').trim();
-  if (!email) e.email = 'An email address is required, since it is how we reply.';
-  else if (!EMAIL.test(email) || email.length > MAX.email) e.email = 'That does not look like an email address.';
+  if (!email) e.email = m.emailRequired;
+  else if (!EMAIL.test(email) || email.length > MAX.email) e.email = m.emailInvalid;
 
   // One of the two is enough: `links` is what a reviewer actually clicks.
   const site = (input.website ?? '').trim();
   const insta = (input.instagram ?? '').trim();
-  if (!site && !insta) e.links = 'Give us at least one place to see your work.';
-  else if (site.length > MAX.url || insta.length > MAX.url) e.links = 'That link is too long.';
+  if (!site && !insta) e.links = m.linksRequired;
+  else if (site.length > MAX.url || insta.length > MAX.url) e.links = m.linkTooLong;
 
   if (!input.offering || !(OFFERINGS as readonly string[]).includes(input.offering)) {
-    e.offering = 'Let us know what you are asking for.';
+    e.offering = m.offeringRequired;
   }
   return e;
 }
+
+/** The shape of the apply-page copy, in either language. */
+export type ApplyCopy = {
+  h1: string; intro: string; intro2: string; onlyRoute: string;
+  offeringLegend: string; aboutYou: string; linksLegend: string; linksHint: string;
+  required: string; optional: string; keepOnFile: string; privacy: string;
+  submit: string; submitting: string; thanksHeading: string; thanksBody: string;
+  errorSummary: string; sendFailed: string;
+  offeringLabels: Record<Offering, string>;
+  recommendedHint: string;
+  fieldLabels: { name: string; basedIn: string; styleNote: string; whyFit: string; email: string; website: string; instagram: string };
+};
+
+/** Validation wording, so the Norwegian form can report in Norwegian while
+ *  the API keeps reporting in English.
+ *
+ *  These stay OUT of ApplyCopy because they hold functions, and ApplyCopy
+ *  crosses the server/client boundary as props. The form picks its set from
+ *  MESSAGES by locale instead; the build catches it if that ever regresses. */
+export interface ValidationMessages {
+  isRequired: (label: string) => string;
+  tooLong: (label: string, max: number) => string;
+  emailRequired: string;
+  emailInvalid: string;
+  linksRequired: string;
+  linkTooLong: string;
+  offeringRequired: string;
+  labels: { name: string; basedIn: string; styleNote: string; whyFit: string };
+}
+
+export const EN_MESSAGES: ValidationMessages = {
+  isRequired: label => `${label} is required.`,
+  tooLong: (label, max) => `${label} is a little long, ${max} characters at most.`,
+  emailRequired: 'An email address is required, since it is how we reply.',
+  emailInvalid: 'That does not look like an email address.',
+  linksRequired: 'Give us at least one place to see your work.',
+  linkTooLong: 'That link is too long.',
+  offeringRequired: 'Let us know what you are asking for.',
+  labels: {
+    name: 'Your name',
+    basedIn: 'Where you are based',
+    styleNote: 'A note on your work',
+    whyFit: 'Why you think it fits',
+  },
+};
+
+export const NO_MESSAGES: ValidationMessages = {
+  isRequired: label => `${label} må fylles ut.`,
+  tooLong: (label, max) => `${label} er i overkant langt, maks ${max} tegn.`,
+  emailRequired: 'En e-postadresse må fylles ut, siden det er slik vi svarer.',
+  emailInvalid: 'Det ser ikke ut som en e-postadresse.',
+  linksRequired: 'Gi oss minst ett sted vi kan se arbeidet ditt.',
+  linkTooLong: 'Den lenken er for lang.',
+  offeringRequired: 'Si oss hva du spør om.',
+  labels: {
+    name: 'Navnet ditt',
+    basedIn: 'Hvor du holder til',
+    styleNote: 'Litt om arbeidet ditt',
+    whyFit: 'Hvorfor du tror det passer',
+  },
+};
+
+export const MESSAGES: Record<'en' | 'no', ValidationMessages> = {
+  en: EN_MESSAGES,
+  no: NO_MESSAGES,
+};
 
 export const COPY = {
   h1: 'Show us your work',
@@ -98,9 +168,9 @@ export const COPY = {
   // make a commitment nobody has agreed to.
   intro2:
     'If you make prints and think yours would sit well beside what is already here, tell us about them. It takes a few minutes and a person reads every one.',
-  beforeYouStart: 'Before you start',
-  beforeYouStartBody:
-    'It is worth a look at who we already show and what the gallery is, so you can judge the fit yourself before spending the time.',
+  // Removed 2026-08-21 on Mark's call: the section sent an applicant away to
+  // read two other pages before they had started, which is the wrong thing to
+  // do to someone who has already decided to apply.
   onlyRoute: 'Applications only come through this form, so there is no need to email separately.',
   offeringLegend: 'What are you asking for?',
   aboutYou: 'About you and your work',

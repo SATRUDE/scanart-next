@@ -42,7 +42,10 @@ export const Header: React.FC<HeaderProps> = ({ categories }) => {
   const handleSearch = (query: string) => {
     setLocalSearchQuery(query);
     if (query.trim()) {
-      router.push(`/products?q=${encodeURIComponent(query)}`);
+      // Search from a Norwegian page lands on the Norwegian catalogue.
+      // isNoPath rather than the p1 below, which is declared further down.
+      const prefix = isNoPath(pathname) ? '/no' : '';
+      router.push(`${prefix}/products?q=${encodeURIComponent(query)}`);
       setMobileMenuOpen(false);
       setIsSearchOpen(false);
     }
@@ -61,6 +64,10 @@ export const Header: React.FC<HeaderProps> = ({ categories }) => {
   // Norwegian page exists (home, artists, about, help, categories). English
   // pages take the English branch and render exactly as before.
   const isNo = isNoPath(pathname);
+  // Before the Norwegian shop existed these three had no twin, so they were
+  // hardcoded to the English routes. They have twins now, so the nav stays in
+  // whichever tree the visitor is in.
+  const p1 = isNo ? '/no' : '';
   const t = headerStrings[isNo ? 'no' : 'en'];
   const localPath = isNo ? (pathname === '/no' ? '/' : pathname.slice('/no'.length)) : pathname;
   const homeHref = isNo ? '/no' : '/';
@@ -98,7 +105,7 @@ export const Header: React.FC<HeaderProps> = ({ categories }) => {
               SCANDINAVIAN ART
             </Link>
             <Link
-              href="/products"
+              href={`${p1}/products`}
               className={`hidden md:block transition-opacity hover:opacity-60 ${
                 currentPage === 'products' ? 'opacity-100' : 'opacity-60'
               }`}
@@ -106,7 +113,7 @@ export const Header: React.FC<HeaderProps> = ({ categories }) => {
               {t.nav.prints}
             </Link>
             <Link
-              href="/inspire"
+              href={`${p1}/inspire`}
               className={`hidden md:block transition-opacity hover:opacity-60 ml-6 ${
                 currentPage === 'inspire' ? 'opacity-100' : 'opacity-60'
               }`}
@@ -114,7 +121,7 @@ export const Header: React.FC<HeaderProps> = ({ categories }) => {
               {t.nav.inspire}
             </Link>
             <Link
-              href="/journal"
+              href={`${p1}/journal`}
               className={`hidden md:block transition-opacity hover:opacity-60 ml-6 ${
                 currentPage === 'journal' ? 'opacity-100' : 'opacity-60'
               }`}
@@ -253,9 +260,9 @@ export const Header: React.FC<HeaderProps> = ({ categories }) => {
               <div className="pt-4 border-t">
                 <p className="text-sm text-muted-foreground mb-4 px-[14px] py-[0px]">{t.moreLabel}</p>
                 <div className="flex flex-col space-y-3 px-[14px] py-[0px]">
-                  <Link href="/products" className="text-left transition-opacity hover:opacity-60" onClick={() => setMobileMenuOpen(false)}>{t.nav.shopAll}</Link>
-                  <Link href="/inspire" className="text-left transition-opacity hover:opacity-60" onClick={() => setMobileMenuOpen(false)}>{t.nav.inspire}</Link>
-                  <Link href="/journal" className="text-left transition-opacity hover:opacity-60" onClick={() => setMobileMenuOpen(false)}>{t.nav.journal}</Link>
+                  <Link href={`${p1}/products`} className="text-left transition-opacity hover:opacity-60" onClick={() => setMobileMenuOpen(false)}>{t.nav.shopAll}</Link>
+                  <Link href={`${p1}/inspire`} className="text-left transition-opacity hover:opacity-60" onClick={() => setMobileMenuOpen(false)}>{t.nav.inspire}</Link>
+                  <Link href={`${p1}/journal`} className="text-left transition-opacity hover:opacity-60" onClick={() => setMobileMenuOpen(false)}>{t.nav.journal}</Link>
                   <Link href={artistsHref} className="text-left transition-opacity hover:opacity-60" onClick={() => setMobileMenuOpen(false)}>{t.nav.artists}</Link>
                   <Link href={aboutHref} className="text-left transition-opacity hover:opacity-60" onClick={() => setMobileMenuOpen(false)}>{t.nav.about}</Link>
                   <Link href={helpHref} className="text-left transition-opacity hover:opacity-60" onClick={() => setMobileMenuOpen(false)}>{t.nav.help}</Link>

@@ -62,7 +62,25 @@ export const Q2_ANSWERS = [
   'Other',
 ] as const;
 
-export const COPY = {
+/** The shape of the three-question copy, in either language. */
+export interface FeedbackCopy {
+  invitation: string;
+  invitationYes: string;
+  invitationNo: string;
+  pill: string;
+  q1: string;
+  q2: string;
+  q3: string;
+  q3Placeholder: string;
+  send: string;
+  skip: string;
+  thanks: string;
+  close: string;
+  dismissAria: string;
+  stepOf: (n: number) => string;
+}
+
+export const COPY: FeedbackCopy = {
   invitation: 'Could we ask you three quick questions?',
   invitationYes: 'Yes, happy to',
   invitationNo: 'Not now',
@@ -77,7 +95,53 @@ export const COPY = {
   close: 'Close',
   dismissAria: 'Dismiss this feedback request',
   stepOf: (n: number) => `${n} of 3`,
-} as const;
+};
+
+
+/**
+ * The Norwegian labels for the same three questions.
+ *
+ * Deliberately in this module rather than lib/i18n/no.ts: the intercept is a
+ * client component, and importing the full Norwegian dictionary into it would
+ * ship every /no string to every browser. This is the small subset the client
+ * actually needs.
+ *
+ * ANSWER_LABELS_NO maps each canonical English answer to its Norwegian label.
+ * The label is what a Norwegian visitor reads; the English value is still what
+ * gets posted and stored, so the feedback table stays in one language and
+ * stays comparable across both trees. Translating the stored value instead
+ * would have split every count in two.
+ */
+export const COPY_NO: FeedbackCopy = {
+  invitation: 'Kan vi stille deg tre raske spørsmål?',
+  invitationYes: 'Ja, gjerne',
+  invitationNo: 'Ikke nå',
+  pill: 'Gi tilbakemelding',
+  q1: 'Fant du det du lette etter?',
+  q2: 'Hva stoppet deg fra å kjøpe i dag?',
+  q3: 'Er det noe annet du vil si oss?',
+  q3Placeholder: 'Valgfritt, og lest av et menneske',
+  send: 'Send',
+  skip: 'Hopp over',
+  thanks: 'Takk, det er virkelig nyttig.',
+  close: 'Lukk',
+  dismissAria: 'Lukk denne forespørselen om tilbakemelding',
+  stepOf: (n: number) => `${n} av 3`,
+};
+
+export const ANSWER_LABELS_NO: Record<string, string> = {
+  Yes: 'Ja',
+  Nearly: 'Nesten',
+  No: 'Nei',
+  'Just browsing': 'Bare ser meg rundt',
+  Price: 'Pris',
+  'Delivery cost': 'Fraktkostnad',
+  'Delivery time': 'Leveringstid',
+  'I was not sure about the shop': 'Jeg var usikker på butikken',
+  'I could not find the right size or frame': 'Jeg fant ikke riktig størrelse eller ramme',
+  'Something did not work': 'Noe fungerte ikke',
+  Other: 'Annet',
+};
 
 /** An ISO date `days` from `now`, which is all a storage key ever holds. */
 export function expiryFrom(now: Date, days: number): string {

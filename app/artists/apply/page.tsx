@@ -60,22 +60,6 @@ export default function ArtistApplyPage() {
           <p className="mt-4 text-muted-foreground leading-relaxed">{COPY.intro}</p>
           <p className="mt-4 text-muted-foreground leading-relaxed">{COPY.intro2}</p>
 
-          <h2 className="mt-10 text-sm font-medium uppercase tracking-wider text-muted-foreground">
-            {COPY.beforeYouStart}
-          </h2>
-          <p className="mt-3 text-muted-foreground leading-relaxed">{COPY.beforeYouStartBody}</p>
-          <ul className="mt-3 space-y-1 text-sm">
-            <li>
-              <Link href="/artists" className="underline underline-offset-2 hover:text-neutral-900">
-                The artists we show
-              </Link>
-            </li>
-            <li>
-              <Link href="/about" className="underline underline-offset-2 hover:text-neutral-900">
-                What the gallery is
-              </Link>
-            </li>
-          </ul>
           <p className="mt-6 text-sm text-muted-foreground">{COPY.onlyRoute}</p>
         </div>
 
