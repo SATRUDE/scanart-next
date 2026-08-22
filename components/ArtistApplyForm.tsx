@@ -102,7 +102,9 @@ export function ArtistApplyForm({
       const res = await fetch('/api/artist-application', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(values),
+        // The locale travels with the submission so the archive records which
+        // form was used, rather than guessing from a Referer header.
+        body: JSON.stringify({ ...values, locale }),
       });
       if (!res.ok) {
         const body = (await res.json().catch(() => ({}))) as { errors?: Errors };
