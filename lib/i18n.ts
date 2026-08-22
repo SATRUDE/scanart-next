@@ -102,12 +102,6 @@ export interface FooterStrings {
   delivery: string;
 }
 
-export interface BannerStrings {
-  message: string;
-  cta: string;
-  dismiss: string;
-  close: string;
-}
 
 // English chrome: must match the literals the components previously hardcoded,
 // so English pages render identically.
@@ -219,12 +213,22 @@ export const footerStrings: Record<Locale, FooterStrings> = {
 
 // The first-visit suggestion banner is Norwegian-only by design: it is shown
 // to visitors whose browser prefers Norwegian, on English pages.
-export const bannerStrings: BannerStrings = {
-  message: 'Denne siden finnes også på norsk.',
-  cta: 'Se siden på norsk',
-  dismiss: 'Fortsett på engelsk',
-  close: 'Lukk',
-};
+// RETIRED 2026-08-21. The first-visit "this page is also in Norwegian" banner
+// is gone, along with components/LocaleSuggestionBanner.tsx.
+//
+// It was the third mechanism doing one job. A Norwegian visitor is now
+// redirected to the /no twin automatically by the middleware (geo, 302, once
+// per visitor, bots excluded), and the header control offers both languages
+// explicitly at any time. Mark's call: "I don't think we need this banner now
+// then if we have it automatic plus the toggle."
+//
+// It also fired on navigator.language rather than location, so it targeted
+// Norwegian SPEAKERS anywhere rather than people in Norway, which is a
+// different question from the one the redirect answers.
+//
+// If the redirect is ever turned off, this needs to come back: without either,
+// a Norwegian visitor is never offered Norwegian at all.
+
 
 // ---------------------------------------------------------------------------
 // Page dictionary types (implemented by lib/i18n/no.ts, server-side only).
