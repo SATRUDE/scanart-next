@@ -48,6 +48,14 @@ const EN_COPY: ApplyCopy = {
     website: 'Website',
     instagram: 'Instagram',
   },
+  fieldPlaceholders: {
+    basedIn: 'Bergen, Norway',
+    styleNote: 'What you make, and how. A few sentences is plenty.',
+    whyFit: 'Having looked at the artists we show, where would yours sit?',
+    email: 'you@example.com',
+    website: 'https://',
+    instagram: '@yourname',
+  },
 };
 
 export function ArtistApplyForm({
@@ -166,7 +174,7 @@ export function ArtistApplyForm({
           <Input
             id="basedIn"
             className={FIELD}
-            placeholder="Bergen, Norway"
+            placeholder={t.fieldPlaceholders.basedIn}
             value={values.basedIn ?? ''}
             onChange={e => set('basedIn', e.target.value)}
             aria-invalid={Boolean(errors.basedIn)}
@@ -179,7 +187,7 @@ export function ArtistApplyForm({
             id="styleNote"
             rows={4}
             className={FIELD}
-            placeholder="What you make, and how. A few sentences is plenty."
+            placeholder={t.fieldPlaceholders.styleNote}
             value={values.styleNote ?? ''}
             onChange={e => set('styleNote', e.target.value)}
             aria-invalid={Boolean(errors.styleNote)}
@@ -192,7 +200,7 @@ export function ArtistApplyForm({
             id="whyFit"
             rows={4}
             className={FIELD}
-            placeholder="Having looked at the artists we show, where would yours sit?"
+            placeholder={t.fieldPlaceholders.whyFit}
             value={values.whyFit ?? ''}
             onChange={e => set('whyFit', e.target.value)}
             aria-invalid={Boolean(errors.whyFit)}
@@ -205,7 +213,7 @@ export function ArtistApplyForm({
             id="email"
             type="email"
             className={FIELD}
-            placeholder="you@example.com"
+            placeholder={t.fieldPlaceholders.email}
             value={values.email ?? ''}
             onChange={e => set('email', e.target.value)}
             aria-invalid={Boolean(errors.email)}
@@ -229,7 +237,7 @@ export function ArtistApplyForm({
             <Input
               id="website"
               className={`mt-1 ${FIELD}`}
-              placeholder="https://"
+              placeholder={t.fieldPlaceholders.website}
               value={values.website ?? ''}
               onChange={e => set('website', e.target.value)}
             />
@@ -241,7 +249,7 @@ export function ArtistApplyForm({
             <Input
               id="instagram"
               className={`mt-1 ${FIELD}`}
-              placeholder="@yourname"
+              placeholder={t.fieldPlaceholders.instagram}
               value={values.instagram ?? ''}
               onChange={e => set('instagram', e.target.value)}
             />
