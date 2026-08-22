@@ -101,6 +101,12 @@ describe('Norwegian dictionary', () => {
     expect(offenders, `Norwegian copy links to English pages that have a /no twin:\n${offenders.join('\n')}`).toEqual([]);
   });
 
+  // The apply form is not a /no-prefix-and-done route, so it fell outside the
+  // pattern and the language control had nothing to offer on the English page.
+  it('maps the artist apply page to its Norwegian twin', () => {
+    expect(noPathFor('/artists/apply')).toBe('/no/artists/apply');
+  });
+
   it('maps a collection path to its Norwegian twin', () => {
     expect(noPathFor('/collection/living-room')).toBe('/no/collection/living-room');
     expect(noPathFor('/category/botanical')).toBe('/no/category/botanical');

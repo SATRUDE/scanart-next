@@ -24,6 +24,10 @@ export function isNoPath(pathname: string): boolean {
  */
 export function noPathFor(pathname: string): string | null {
   if (pathname === '/') return '/no';
+  // Not covered by the pattern below: the apply form is the one two-segment
+  // page under /artists with a twin, and without this the language control
+  // offers a Norwegian reader nothing on the English form.
+  if (pathname === '/artists/apply') return '/no/artists/apply';
   if (/^\/(about|delivery|help|artists)$/.test(pathname)) return `/no${pathname}`;
   if (/^\/(category|artist|collection)\/[^/]+$/.test(pathname)) return `/no${pathname}`;
   return null;

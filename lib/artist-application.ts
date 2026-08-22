@@ -103,6 +103,12 @@ export type ApplyCopy = {
   offeringLabels: Record<Offering, string>;
   recommendedHint: string;
   fieldLabels: { name: string; basedIn: string; styleNote: string; whyFit: string; email: string; website: string; instagram: string };
+  /** Example answers. A placeholder never carries a field's meaning here (the
+   *  labels do that), but an English example under a Norwegian label still
+   *  reads as a half-translated page, so they travel with the copy. */
+  fieldPlaceholders: {
+    basedIn: string; styleNote: string; whyFit: string; email: string; website: string; instagram: string;
+  };
 };
 
 /** Validation wording, so the Norwegian form can report in Norwegian while

@@ -678,6 +678,13 @@ export const no = {
     intro:
       'Møt de skandinaviske kunstnerne bak samlingen, en liten gruppe illustratører og grafikere som arbeider i Norge og Sverige.',
     jsonLdDescription: 'De skandinaviske og nordiske kunstnerne bak samlingen.',
+    /** The way in to /no/artists/apply. The English hub has carried this band
+     *  since the form was built; the Norwegian one had no link to it at all. */
+    apply: {
+      heading: 'Er du kunstner?',
+      body: 'Vi er et lite galleri og tar inn svært få, men et menneske leser alt som kommer inn. Fortell oss om arbeidet ditt.',
+      cta: 'Be om å bli vurdert',
+    },
   },
 
   artistPage: {
@@ -883,6 +890,14 @@ export const no = {
       email: 'E-post',
       website: 'Nettside',
       instagram: 'Instagram',
+    },
+    fieldPlaceholders: {
+      basedIn: 'Bergen, Norge',
+      styleNote: 'Hva du lager, og hvordan. Noen setninger holder.',
+      whyFit: 'Når du har sett på kunstnerne vi viser, hvor ville ditt eget passet inn?',
+      email: 'deg@eksempel.no',
+      website: 'https://',
+      instagram: '@navnetditt',
     },
   } satisfies ApplyCopy,
 
