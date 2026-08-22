@@ -154,7 +154,7 @@ export const collections: Collection[] = [
       {
         question: 'How big should a print be above the sofa?',
         answer:
-          "Go large. A single piece works best when it fills a good part of the sofa’s width, or hang a pair or trio to cover the same span. Sizes vary by artwork and are shown on each product page, with the larger formats such as A1 or 50 x 70 cm suiting a sofa wall. Centre the piece at eye level, roughly 145 to 150 cm from the floor, and leave 15 to 25 cm between the frame and the sofa back.",
+          "Go large. A single piece works best when it fills a good part of the sofa’s width, or hang a pair or trio to cover the same span. Sizes vary by artwork and are shown on each product page, and the larger format, 50 x 70 cm, suits a sofa wall. Centre the piece at eye level, roughly 145 to 150 cm from the floor, and leave 15 to 25 cm between the frame and the sofa back.",
       },
       {
         question: 'Can I order a living room print framed, and how is it delivered?',

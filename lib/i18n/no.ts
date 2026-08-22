@@ -326,7 +326,7 @@ export const no = {
           },
           {
             q: 'Hvilke størrelser finnes?',
-            a: 'Størrelsene varierer fra verk til verk og vises på hver produktside. Vanlige størrelser er A3, A2, A1, 50x50 cm og 50x70 cm.',
+            a: 'Størrelsene varierer fra verk til verk og vises på hver produktside. De fleste trykkene er 50x70 cm, og Simen Wahlqvists kvadratiske illustrasjoner er 50x50 cm.',
           },
           {
             q: 'Er dette originale kunstverk?',
@@ -371,7 +371,7 @@ export const no = {
     abstract: {
       title: 'Abstrakte trykk og kunstplakater',
       description:
-        'Abstrakte trykk og kunstplakater fra norske kunstnere: rene silhuetter og djerve fuglemotiver i flate farger. I A3 til A1 og 50x70 cm, med eller uten ramme.',
+        'Abstrakte trykk og kunstplakater fra norske kunstnere: rene silhuetter og djerve fuglemotiver i flate farger. I 50 x 70 cm, med eller uten ramme.',
       heading: 'Abstrakte trykk',
       intro:
         'Leter du etter abstrakt kunst som plakat eller trykk, er dette den rolige, nordiske enden av sjangeren: former skrelles ned til bare den essensielle silhuetten står igjen, og én eller to flate farger gjør jobben til ti. Helene Brox maler løse, papirklippaktige figurer i kremhvitt på én fargeflate, og skjærer en stupende svale ned til selve vingekastet. Hun er en uavhengig norsk kunstner, og hvert trykk kan bestilles med eller uten ramme, i 50 x 70 cm.',
@@ -484,7 +484,7 @@ export const no = {
         {
           question: 'Hvor stort bør et trykk over sofaen være?',
           answer:
-            'Velg stort. Ett enkelt verk fungerer best når det dekker en god del av sofaens bredde, eller du kan henge et par eller en trio som dekker samme spenn. Størrelsene varierer med verket og står på hver produktside, og de større formatene som A1 eller 50 x 70 cm passer en sofavegg. Sentrer verket i øyehøyde, omtrent 145 til 150 cm over gulvet, og la det stå 15 til 25 cm mellom rammen og sofaryggen.',
+            'Velg stort. Ett enkelt verk fungerer best når det dekker en god del av sofaens bredde, eller du kan henge et par eller en trio som dekker samme spenn. Størrelsene varierer med verket og står på hver produktside, og det største formatet, 50 x 70 cm, passer en sofavegg. Sentrer verket i øyehøyde, omtrent 145 til 150 cm over gulvet, og la det stå 15 til 25 cm mellom rammen og sofaryggen.',
         },
         {
           question: 'Kan jeg bestille et stuetrykk med ramme, og hvordan sendes det?',
