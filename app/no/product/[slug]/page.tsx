@@ -19,6 +19,7 @@ import { getLowestProductPrices } from '@/lib/pricing';
 import { priceValidUntil } from '@/lib/price-validity';
 import { metaSnippet } from '@/lib/meta-snippet';
 import { productImages } from '@/lib/product-image-alt';
+import { productImageLd } from '@/lib/licensable-image';
 import { FeedbackIntercept } from '@/components/FeedbackIntercept';
 import { BASE_URL, SITE_NAME, TWITTER_SITE } from '@/lib/site';
 import { hreflangPair } from '@/lib/i18n';
@@ -190,7 +191,10 @@ export default async function NorwegianProductPage({
             name: product.name,
             description,
             inLanguage: 'nb-NO',
-            image: new URL(product.image, BASE_URL).toString(),
+            // Same licence metadata as the English twin, with the acquire link
+            // kept inside the /no tree so a Norwegian image result lands on the
+            // Norwegian page.
+            image: productImageLd(product, `/no/product/${product.slug}`),
             brand: { '@type': 'Brand', name: product.artist || product.brand },
             creator: { '@type': 'Person', name: product.artist || product.brand },
             offers: {
