@@ -19,6 +19,7 @@ import { getLowestProductPrices } from '@/lib/pricing';
 import { priceValidUntil } from '@/lib/price-validity';
 import { metaSnippet } from '@/lib/meta-snippet';
 import { productImages } from '@/lib/product-image-alt';
+import { productImageLd } from '@/lib/licensable-image';
 import { FeedbackIntercept } from '@/components/FeedbackIntercept';
 import { BASE_URL, SITE_NAME, OG_LOCALE, TWITTER_SITE } from '@/lib/site';
 
@@ -205,8 +206,10 @@ export default async function ProductPage({
             '@type': 'Product',
             name: product.name,
             description: product.description,
-            // schema.org requires absolute image URLs; catalogue paths are site-relative
-            image: new URL(product.image, BASE_URL).toString(),
+            // The print as an ImageObject carrying its licence metadata, plus
+            // the scene shot as a plain URL. Absolute either way: schema.org
+            // requires it and catalogue paths are site-relative.
+            image: productImageLd(product, `/product/${product.slug}`),
             // brand is empty across the exported catalogue; the artist is the
             // meaningful maker for an art print, expressed as brand + creator
             brand: { '@type': 'Brand', name: product.artist || product.brand },
