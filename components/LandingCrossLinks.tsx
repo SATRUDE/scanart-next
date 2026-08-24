@@ -8,6 +8,7 @@ const DEFAULT_STRINGS: CrossLinksStrings = {
   heading: 'Explore more',
   allPrints: 'All prints',
   wallArt: 'Scandinavian Wall Art',
+  nordicArt: 'Nordic Art',
   meetTheArtists: 'Meet the artists',
   categoryLabels: {},
   collectionLabels: {},
@@ -15,7 +16,7 @@ const DEFAULT_STRINGS: CrossLinksStrings = {
 
 interface LandingCrossLinksProps {
   /** The landing this block sits on, so it never links back to itself. */
-  current: { type: 'category' | 'collection' | 'wall-art'; slug: string };
+  current: { type: 'category' | 'collection' | 'wall-art' | 'nordic-art'; slug: string };
   /** Localised labels; default to the English strings/config labels. */
   strings?: CrossLinksStrings;
   /**
@@ -72,6 +73,10 @@ export function LandingCrossLinks({ current, strings = DEFAULT_STRINGS, locale =
         ))}
         {current.type !== 'wall-art' && (
           <TrackedLink event="explore-more-click" eventData={{ from: `${current.type}/${current.slug}`, to: '/scandinavian-wall-art' }} href="/scandinavian-wall-art" className="hover:text-foreground">{strings.wallArt}</TrackedLink>
+        )}
+        {/* English-only page for now, so the link stays off the /no variants. */}
+        {current.type !== 'nordic-art' && locale === 'en' && (
+          <TrackedLink event="explore-more-click" eventData={{ from: `${current.type}/${current.slug}`, to: '/nordic-art' }} href="/nordic-art" className="hover:text-foreground">{strings.nordicArt}</TrackedLink>
         )}
         <TrackedLink event="explore-more-click" eventData={{ from: `${current.type}/${current.slug}`, to: artistsHref }} href={artistsHref} className="hover:text-foreground">{strings.meetTheArtists}</TrackedLink>
       </nav>

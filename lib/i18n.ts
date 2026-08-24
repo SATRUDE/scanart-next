@@ -263,6 +263,7 @@ export interface CrossLinksStrings {
   heading: string;
   allPrints: string;
   wallArt: string;
+  nordicArt: string;
   meetTheArtists: string;
   /** Category landing slug -> visible label. */
   categoryLabels: Record<string, string>;
