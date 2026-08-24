@@ -1,4 +1,3 @@
-import type { Metadata } from 'next';
 import { Providers } from './providers';
 import { Header } from '@/components/Header';
 import { Cart } from '@/components/Cart';
@@ -9,57 +8,37 @@ import { BASE_URL, SITE_NAME } from '@/lib/site';
 import Script from 'next/script';
 import './globals.css';
 
-export const metadata: Metadata = {
-  metadataBase: new URL(BASE_URL),
-  title: {
-    default: 'Scandinavian Art Gallery | Framed Nordic Art Prints',
-    template: '%s | Scandinavian Art Gallery',
-  },
-  description: 'Curated Scandinavian and Nordic art prints from independent artists. Shop framed or unframed wall art, delivered worldwide. Discover the collection.',
-  keywords: ['Scandinavian art', 'Nordic art', 'Scandinavian wall art', 'Nordic prints', 'Scandinavian artists', 'art gallery', 'wall art', 'prints', 'artwork', 'Nordic design'],
-  authors: [{ name: 'Scandinavian Art Gallery' }],
-  robots: 'index, follow',
-  // NOTE: the RSS autodiscovery link is NOT declared here. Metadata objects are
-  // merged *shallowly* down the segment tree, so a page that sets `alternates`
-  // at all (every page in this app sets `alternates.canonical`) replaces the
-  // root's whole `alternates` object and drops a `types` entry declared here.
-  // It lived here until 2026-08-20 and reached no page's <head> as a result, so
-  // it is rendered as a raw <link> in the <head> below instead: that applies to
-  // every route, including any added later, with no per-page opt-in to forget.
-  verification: {
-    google: 'Q044oiN2tnwr8F7eUthQjHaf0jXLsFmHuS1ZnN2aEV0',
-  },
-  other: {
-    'p:domain_verify': 'f545c7d3764c8418167cc16b7612b605',
-  },
-  openGraph: {
-    title: 'Scandinavian Art Gallery | Framed Nordic Art Prints',
-    description: 'Curated Scandinavian and Nordic art prints from independent artists. Shop framed or unframed wall art, delivered worldwide.',
-    url: BASE_URL,
-    siteName: 'Scandinavian Art Gallery',
-    locale: 'en_GB',
-    type: 'website',
-    images: [{ url: '/images/scandinavian-art-gallery-og.jpg' }],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Scandinavian Art Gallery | Framed Nordic Art Prints',
-    description: 'Curated Scandinavian and Nordic art prints from independent artists. Framed or unframed, delivered worldwide.',
-    images: ['/images/scandinavian-art-gallery-og.jpg'],
-    site: '@scandinavianart',
-  },
-};
-
-export default async function RootLayout({
+/**
+ * The document every page shares, with the language as a prop.
+ *
+ * Next.js renders <html> only in a root layout, and a nested layout cannot.
+ * That is why /no pages served `lang="en"` until 24 August 2026 while an inline
+ * script and a client effect corrected it after the fact: right for anyone
+ * running JS, wrong in the HTML itself, which is a WCAG 3.1.1 (Level A)
+ * failure for a screen reader reading the served markup.
+ *
+ * The fix is two root layouts, one per route group, sharing this component. The
+ * alternative was reading the pathname from `headers()` in a single root
+ * layout, which would opt all 37 pages out of static rendering: too high a
+ * price on a site whose LCP is already a known problem.
+ *
+ * To be clear about what this is NOT: `lang` is not a search signal. Google's
+ * multi-regional documentation says "we don't use any code-level language
+ * information such as lang attributes, or the URL", and determines language
+ * from visible content. This is an accessibility fix and nothing else.
+ */
+export async function SiteDocument({
   children,
+  lang,
 }: {
   children: React.ReactNode;
+  lang: 'en' | 'no';
 }) {
   const products = await getAllProducts();
   const categories = [...new Set(products.map(p => p.category))].sort();
 
   return (
-    <html lang="en">
+    <html lang={lang}>
       <head>
         {/* Journal RSS autodiscovery, so readers and aggregators can find
             /feed.xml from any page. Absolute href: some feed readers do not
