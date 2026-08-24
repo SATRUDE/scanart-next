@@ -135,6 +135,7 @@ export default async function NorwegianCollectionPage({
               priority={index < 4}
               categoryLabel={no.shared.categoryLabels[product.category]}
               outOfStockLabel={no.shared.outOfStock}
+              locale="no"
             />
           </Link>
         ))}

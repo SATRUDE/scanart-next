@@ -97,7 +97,7 @@ export default async function NorwegianProductPage({
     ? await getRecommendedProducts(product.recommendedProducts)
     : [];
 
-  const images = productImages(product);
+  const images = productImages(product, 'no');
   const description = no.productCopy[slug]?.description ?? product.description;
   const categoryLabel = no.shared.categoryLabels[product.category] ?? product.category;
 
@@ -160,7 +160,7 @@ export default async function NorwegianProductPage({
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {recommended.map(rec => (
               <TrackedLink key={rec.id} event="related-product-click" eventData={{ from: product.slug, to: rec.slug }} href={`/no/product/${rec.slug}`}>
-                <PrintCard product={rec} sizes="(max-width: 768px) 50vw, 25vw" outOfStockLabel={no.shared.outOfStock} />
+                <PrintCard product={rec} sizes="(max-width: 768px) 50vw, 25vw" outOfStockLabel={no.shared.outOfStock} locale="no" />
               </TrackedLink>
             ))}
           </div>
@@ -194,7 +194,7 @@ export default async function NorwegianProductPage({
             // Same licence metadata as the English twin, with the acquire link
             // kept inside the /no tree so a Norwegian image result lands on the
             // Norwegian page.
-            image: productImageLd(product, `/no/product/${product.slug}`),
+            image: productImageLd(product, `/no/product/${product.slug}`, 'no'),
             brand: { '@type': 'Brand', name: product.artist || product.brand },
             creator: { '@type': 'Person', name: product.artist || product.brand },
             offers: {
