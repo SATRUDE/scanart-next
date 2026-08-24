@@ -21,6 +21,10 @@ const NO_TRANSLATED = new Date('2026-08-07');
 // index, legal) went live; bump by hand when that Norwegian wording changes.
 const NO_TRANSLATED_SHOP = new Date('2026-08-21');
 
+// The date the artist application page went live in both languages; bump by
+// hand when its copy changes, as with the other hand-dated static pages.
+const APPLY_PUBLISHED = new Date('2026-08-21');
+
 // hreflang alternates for a translated EN/NO pair, attached to BOTH entries
 // of the pair so each URL declares the other (and English as the x-default).
 // `enPath` is '' for the homepage.
@@ -60,6 +64,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE_URL}/inspire`, lastModified: new Date('2026-08-06'), priority: 0.7, changeFrequency: 'weekly', alternates: pairAlternates('/inspire') },
     // artists hub; links every artist detail page, changes when the roster's prints do
     { url: `${BASE_URL}/artists`, lastModified: latestCatalogueDate(productDates), priority: 0.7, changeFrequency: 'weekly', alternates: pairAlternates('/artists') },
+    // the inbound half of artist acquisition, and the only door an artist can
+    // find on their own. Indexable with a self-referential canonical, so
+    // leaving it out of the sitemap declared nothing while Google was free to
+    // crawl it anyway. Dated by the page's own copy, like the other statics.
+    { url: `${BASE_URL}/artists/apply`, lastModified: APPLY_PUBLISHED, priority: 0.5, changeFrequency: 'yearly', alternates: pairAlternates('/artists/apply') },
     // static page; date is its publication, bumped by hand when the copy changes
     { url: `${BASE_URL}/about`, lastModified: new Date('2026-07-10'), priority: 0.5, changeFrequency: 'yearly', alternates: pairAlternates('/about') },
     { url: `${BASE_URL}/help`, lastModified: new Date('2026-07-12'), priority: 0.5, changeFrequency: 'monthly', alternates: pairAlternates('/help') },
@@ -72,6 +81,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // pages carry the translation date instead
     { url: `${BASE_URL}/no`, lastModified: latestCatalogueDate([...productDates, ...articleDates]), priority: 1.0, changeFrequency: 'daily', alternates: pairAlternates('') },
     { url: `${BASE_URL}/no/artists`, lastModified: latestCatalogueDate(productDates), priority: 0.7, changeFrequency: 'weekly', alternates: pairAlternates('/artists') },
+    { url: `${BASE_URL}/no/artists/apply`, lastModified: APPLY_PUBLISHED, priority: 0.5, changeFrequency: 'yearly', alternates: pairAlternates('/artists/apply') },
     { url: `${BASE_URL}/no/about`, lastModified: NO_TRANSLATED, priority: 0.5, changeFrequency: 'yearly', alternates: pairAlternates('/about') },
     { url: `${BASE_URL}/no/help`, lastModified: NO_TRANSLATED, priority: 0.5, changeFrequency: 'monthly', alternates: pairAlternates('/help') },
     { url: `${BASE_URL}/no/delivery`, lastModified: NO_TRANSLATED, priority: 0.3, changeFrequency: 'yearly', alternates: pairAlternates('/delivery') },
@@ -83,9 +93,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE_URL}/no/scandinavian-wall-art`, lastModified: latestCatalogueDate(productDates), priority: 0.8, changeFrequency: 'weekly', alternates: pairAlternates('/scandinavian-wall-art') },
     { url: `${BASE_URL}/no/privacy`, lastModified: NO_TRANSLATED_SHOP, priority: 0.3, changeFrequency: 'yearly', alternates: pairAlternates('/privacy') },
     { url: `${BASE_URL}/no/terms`, lastModified: NO_TRANSLATED_SHOP, priority: 0.3, changeFrequency: 'yearly', alternates: pairAlternates('/terms') },
-    // /no/checkout, /no/feedback and /no/artists/apply are deliberately absent,
-    // matching their English twins: checkout and feedback are noindex, and the
-    // apply page is reached from /no/artists rather than from search.
+    // /no/checkout and /no/feedback are deliberately absent, matching their
+    // English twins: both are noindex, and a noindex page has no business in a
+    // sitemap. The apply pair used to sit in that same sentence on the grounds
+    // that an artist reaches it from the artists hub; that was the wrong test.
+    // Both apply pages are indexable and canonical, so search was always a
+    // second door in, and an artist looking for a gallery to submit to is
+    // exactly the visitor we want to arrive from it (2026-08-24).
     // wall-art landing shows the full catalogue, so it changes when any print does
     { url: `${BASE_URL}/scandinavian-wall-art`, lastModified: latestCatalogueDate(productDates), priority: 0.8, changeFrequency: 'weekly', alternates: pairAlternates('/scandinavian-wall-art') },
     // category landing pages exist only for categories with published work; a
