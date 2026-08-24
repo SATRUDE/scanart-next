@@ -62,6 +62,7 @@ export const no = {
     heading: 'Utforsk mer',
     allPrints: 'Alle trykk',
     wallArt: 'Skandinavisk veggkunst',
+    nordicArt: 'Nordisk kunst',
     meetTheArtists: 'Møt kunstnerne',
     categoryLabels: {
       botanical: 'Botaniske trykk',

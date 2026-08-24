@@ -102,6 +102,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // exactly the visitor we want to arrive from it (2026-08-24).
     // wall-art landing shows the full catalogue, so it changes when any print does
     { url: `${BASE_URL}/scandinavian-wall-art`, lastModified: latestCatalogueDate(productDates), priority: 0.8, changeFrequency: 'weekly', alternates: pairAlternates('/scandinavian-wall-art') },
+    // English-only for now: no /no sibling yet, so no alternates pair.
+    { url: `${BASE_URL}/nordic-art`, lastModified: latestCatalogueDate(productDates), priority: 0.8, changeFrequency: 'weekly' },
     // category landing pages exist only for categories with published work; a
     // category page changes when one of its prints does. Each has a Norwegian
     // twin under /no/category (same params, same product-driven date), and
