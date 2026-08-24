@@ -64,7 +64,7 @@ export default async function NorwegianWallArtPage() {
         {products.map((product, index) => (
           <Link key={product.id} href={`/no/product/${product.slug}`}>
             {/* first desktop row is above the fold: preload it, lazy-load the rest */}
-            <PrintCard product={product} priority={index < 4} outOfStockLabel={no.shared.outOfStock} />
+            <PrintCard product={product} priority={index < 4} outOfStockLabel={no.shared.outOfStock} locale="no" />
           </Link>
         ))}
       </div>

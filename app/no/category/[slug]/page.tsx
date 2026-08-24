@@ -109,6 +109,7 @@ export default async function NorwegianCategoryPage({
               priority={index < 4}
               categoryLabel={categoryLabel}
               outOfStockLabel={no.shared.outOfStock}
+              locale="no"
             />
           </Link>
         ))}

@@ -17,7 +17,7 @@
 // This applies to the PRINT image only. See the note on the scene shot below.
 
 import { BASE_URL } from './site';
-import { printImageAlt, type ProductImageAltSource } from './product-image-alt';
+import { printImageAlt, type AltLocale, type ProductImageAltSource } from './product-image-alt';
 
 /**
  * A URL to the page setting out the terms an image may be used under.
@@ -54,13 +54,14 @@ export interface LicensableImageSource extends ProductImageAltSource {
  */
 export function productImageLd(
   product: LicensableImageSource & { secondaryImage?: string },
-  pagePath: string
+  pagePath: string,
+  locale: AltLocale = 'en'
 ): Array<Record<string, unknown> | string> {
   const absolute = (src: string) => new URL(src, BASE_URL).toString();
   const acquireLicensePage = `${BASE_URL}${pagePath}`;
 
   const entries: Array<Record<string, unknown> | string> = [
-    printImageObject(product, acquireLicensePage),
+    printImageObject(product, acquireLicensePage, locale),
   ];
 
   const scene = product.secondaryImage?.trim();
@@ -73,7 +74,8 @@ export function productImageLd(
 
 function printImageObject(
   product: LicensableImageSource,
-  acquireLicensePage: string
+  acquireLicensePage: string,
+  locale: AltLocale
 ): Record<string, unknown> | string {
   const creator = (product.artist || product.brand || '').trim();
   const contentUrl = new URL(product.image, BASE_URL).toString();
@@ -88,7 +90,9 @@ function printImageObject(
   return {
     '@type': 'ImageObject',
     contentUrl,
-    caption: printImageAlt(product),
+    // The caption describes the picture, so it follows the page's language the
+    // same way the Product description already does.
+    caption: printImageAlt(product, locale),
     creator: { '@type': 'Person', name: creator },
     creditText: creator,
     // The artwork is the artist's; we sell prints of it. No year, because the

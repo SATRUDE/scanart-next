@@ -50,12 +50,46 @@ describe('printImageAlt', () => {
   it('never leaks the positional wording it replaced', () => {
     expect(printImageAlt(birdieBrown)).not.toMatch(/Image \d/);
   });
+
+  it('describes the print in Norwegian for a /no page', () => {
+    expect(printImageAlt(birdieBrown, 'no')).toBe(
+      'Birdie Brown av Renate Thor, et abstrakt skandinavisk kunsttrykk'
+    );
+  });
+
+  it('agrees the Norwegian adjective with kunsttrykk in every category', () => {
+    const inNorwegian = (category: string) =>
+      printImageAlt({ name: 'Trysilkaffe', artist: 'Ingunn Dybendal', category }, 'no');
+
+    expect(inNorwegian('Botanical')).toBe(
+      'Trysilkaffe av Ingunn Dybendal, et botanisk skandinavisk kunsttrykk'
+    );
+    expect(inNorwegian('Illustrations')).toBe(
+      'Trysilkaffe av Ingunn Dybendal, et illustrert skandinavisk kunsttrykk'
+    );
+  });
+
+  it('drops the adjective, not the noun, for an unmapped category in Norwegian', () => {
+    expect(printImageAlt({ name: 'Untitled', artist: 'Renate Thor', category: 'Sculpture' }, 'no')).toBe(
+      'Untitled av Renate Thor, et skandinavisk kunsttrykk'
+    );
+  });
+
+  it('leaves no English in the Norwegian alt text', () => {
+    expect(printImageAlt(birdieBrown, 'no')).not.toMatch(/\b(by|an?|art print)\b/);
+  });
 });
 
 describe('sceneImageAlt', () => {
   it('says the print is styled in a room rather than shown on its own', () => {
     expect(sceneImageAlt(birdieBrown)).toBe(
       'Birdie Brown by Renate Thor, framed and styled in a room setting'
+    );
+  });
+
+  it('says the same thing in Norwegian', () => {
+    expect(sceneImageAlt(birdieBrown, 'no')).toBe(
+      'Birdie Brown av Renate Thor, innrammet i et nordisk interiør'
     );
   });
 });
@@ -82,5 +116,22 @@ describe('productImages', () => {
     expect(
       productImages({ ...birdieBrown, secondaryImage: '/images/products/birdie-brown.png' })
     ).toHaveLength(1);
+  });
+
+  it('carries the locale into both images, which is what the /no page renders', () => {
+    expect(productImages(birdieBrown, 'no')).toEqual([
+      {
+        src: '/images/products/birdie-brown.png',
+        alt: 'Birdie Brown av Renate Thor, et abstrakt skandinavisk kunsttrykk',
+      },
+      {
+        src: '/images/products/birdie-brown-scene.avif',
+        alt: 'Birdie Brown av Renate Thor, innrammet i et nordisk interiør',
+      },
+    ]);
+  });
+
+  it('still speaks English when no locale is given, so every English caller is unchanged', () => {
+    expect(productImages(birdieBrown)).toEqual(productImages(birdieBrown, 'en'));
   });
 });

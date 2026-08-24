@@ -5,6 +5,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { SmartImage } from './SmartImage';
 import { getArtistById } from '@/data/artists';
 import { formatDisplayPrice, getLowestProductPrices } from '@/lib/pricing';
+import { printImageAlt, type AltLocale } from '@/lib/product-image-alt';
 
 interface PrintCardProps {
   product: {
@@ -40,6 +41,11 @@ interface PrintCardProps {
   categoryLabel?: string;
   /** Localised out-of-stock label; defaults to the English string. */
   outOfStockLabel?: string;
+  /**
+   * Language of the page this card sits on, which is what the image's alt text
+   * is written in. Defaults to English; the /no templates pass 'no'.
+   */
+  locale?: AltLocale;
 }
 
 /** Column widths of the 2/3/4 grid used by the category, collection, wall-art
@@ -54,7 +60,8 @@ export const PrintCard: React.FC<PrintCardProps> = ({
   priority = false,
   sizes = DEFAULT_SIZES,
   categoryLabel,
-  outOfStockLabel = 'Out of stock'
+  outOfStockLabel = 'Out of stock',
+  locale = 'en'
 }) => {
   // The picker's country prices every card unless a caller overrides it.
   // Before this, the prop defaulted to GBP and no template passed one, so
@@ -78,10 +85,20 @@ export const PrintCard: React.FC<PrintCardProps> = ({
             SmartImage keeps the same .avif-to-.png fallback and skeleton. */}
         <SmartImage
           src={product.image}
-          // Descriptive for image search: the work, its maker, what it is.
-          alt={`${product.name} Scandinavian art print by ${
-            product.artistId ? getArtistById(product.artistId)?.name || product.brand : product.brand
-          }`}
+          // Descriptive for image search: the work, its maker, what it is. The
+          // same helper the product gallery uses, so the whole site describes a
+          // print one way and in the language of the page it is on. This card
+          // had its own second wording ("Dancer Scandinavian art print by
+          // Helene Brox") until 24 Aug 2026.
+          alt={printImageAlt(
+            {
+              name: product.name,
+              artist: product.artistId ? getArtistById(product.artistId)?.name : undefined,
+              brand: product.brand,
+              category: product.category,
+            },
+            locale
+          )}
           priority={priority}
           sizes={sizes}
           className="w-full h-full object-cover transition-all duration-300 group-hover:scale-[1.02]"

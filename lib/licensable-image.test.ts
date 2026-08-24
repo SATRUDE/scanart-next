@@ -51,6 +51,18 @@ describe('productImageLd', () => {
     expect(print.acquireLicensePage).toBe(`${BASE_URL}/no/product/dancer`);
   });
 
+  it('captions the image in the language of the page, English by default', () => {
+    const [english] = productImageLd(dancer, '/product/dancer') as [Record<string, unknown>];
+    const [norwegian] = productImageLd(dancer, '/no/product/dancer', 'no') as [
+      Record<string, unknown>,
+    ];
+
+    expect(english.caption).toBe('Dancer by Helene Brox, an abstract Scandinavian art print');
+    expect(norwegian.caption).toBe(
+      'Dancer av Helene Brox, et abstrakt skandinavisk kunsttrykk'
+    );
+  });
+
   it('drops to a bare URL rather than emit an ImageObject nobody can be credited for', () => {
     const anonymous = { name: 'Untitled', image: '/images/products/x.png' };
 

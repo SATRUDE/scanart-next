@@ -184,6 +184,7 @@ export default async function NorwegianArtistPage({
               priority={index < 4}
               categoryLabel={no.shared.categoryLabels[product.category]}
               outOfStockLabel={no.shared.outOfStock}
+              locale="no"
             />
           </Link>
         ))}
