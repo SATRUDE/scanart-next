@@ -70,9 +70,9 @@ const sections: LegalSection[] = [
     body: (
       <p>
         {fill(t.sections.contact.bodyBefore, { email: COMPANY.email })}
-        <Link href="/terms" className="underline hover:text-neutral-900">{t.sections.contact.termsLabel}</Link>
+        <Link href="/no/terms" className="underline hover:text-neutral-900">{t.sections.contact.termsLabel}</Link>
         {t.sections.contact.bodyBetween}
-        <Link href="/privacy" className="underline hover:text-neutral-900">{t.sections.contact.privacyLabel}</Link>
+        <Link href="/no/privacy" className="underline hover:text-neutral-900">{t.sections.contact.privacyLabel}</Link>
         {t.sections.contact.bodyAfter}
       </p>
     ),

@@ -70,7 +70,7 @@ export default async function NorwegianHomePage() {
 
   return (
     <div className="min-h-screen">
-      <HeroSection products={heroProducts} strings={no.home.hero} categoryLabels={no.shared.categoryLabels} />
+      <HeroSection products={heroProducts} strings={no.home.hero} categoryLabels={no.shared.categoryLabels} locale="no" />
 
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-8">
@@ -82,7 +82,7 @@ export default async function NorwegianHomePage() {
               <p className="text-lg text-neutral-600 leading-relaxed mb-4">
                 {no.home.exploreIntro}
               </p>
-              <TrackedLink event="homepage-section-click" eventData={{ section: 'explore-categories', target: '/products', locale: 'no' }} href="/products" className="inline-flex items-center justify-center rounded-md text-sm font-medium border border-gray-200 bg-background text-foreground hover:bg-gray-50 hover:text-gray-900 h-10 px-4 py-2">
+              <TrackedLink event="homepage-section-click" eventData={{ section: 'explore-categories', target: '/no/products', locale: 'no' }} href="/no/products" className="inline-flex items-center justify-center rounded-md text-sm font-medium border border-gray-200 bg-background text-foreground hover:bg-gray-50 hover:text-gray-900 h-10 px-4 py-2">
                 {no.home.allCategories}
               </TrackedLink>
             </div>
@@ -97,7 +97,7 @@ export default async function NorwegianHomePage() {
               const landing = getCategoryLandingByCategory(cat.name);
               const tile = no.home.categoryTiles[cat.name];
               return (
-              <TrackedLink key={cat.name} event="homepage-section-click" eventData={{ section: 'category-tile', target: cat.name, locale: 'no' }} href={landing ? `/no/category/${landing.slug}` : `/products?category=${cat.name}`} className="group cursor-pointer">
+              <TrackedLink key={cat.name} event="homepage-section-click" eventData={{ section: 'category-tile', target: cat.name, locale: 'no' }} href={landing ? `/no/category/${landing.slug}` : `/no/products?category=${cat.name}`} className="group cursor-pointer">
                 <div className="relative aspect-[4/5] overflow-hidden bg-neutral-50 rounded mb-4">
                   <Image src={cat.image} alt={`Kategorien ${tile?.name ?? cat.name}`} fill sizes="(max-width: 1024px) 100vw, 33vw" className="object-cover transition-all duration-300 group-hover:scale-[1.02]" />
                 </div>
@@ -109,7 +109,7 @@ export default async function NorwegianHomePage() {
           </div>
 
           <div className="text-center mt-12">
-            <TrackedLink event="homepage-section-click" eventData={{ section: 'view-all-products', target: '/products', locale: 'no' }} href="/products" className="inline-flex items-center justify-center rounded-md text-sm font-medium border border-gray-200 bg-background text-foreground hover:bg-gray-50 hover:text-gray-900 h-10 px-4 py-2">
+            <TrackedLink event="homepage-section-click" eventData={{ section: 'view-all-products', target: '/no/products', locale: 'no' }} href="/no/products" className="inline-flex items-center justify-center rounded-md text-sm font-medium border border-gray-200 bg-background text-foreground hover:bg-gray-50 hover:text-gray-900 h-10 px-4 py-2">
               {no.home.viewAllProducts}
             </TrackedLink>
           </div>
@@ -118,7 +118,7 @@ export default async function NorwegianHomePage() {
 
       <QualityPromise strings={no.qualityPromise} />
       <Testimonials strings={no.testimonials} />
-      <FullWidthImage />
+      <FullWidthImage locale="no" />
 
       {/* Meet the artists: homepage door-in to the /no/artists hub and artist pages */}
       {featuredArtists.length > 0 && (
@@ -148,8 +148,8 @@ export default async function NorwegianHomePage() {
             <h2 className="text-3xl font-normal text-neutral-900">{no.home.fromTheJournal}</h2>
             <TrackedLink
               event="homepage-section-click"
-              eventData={{ section: 'from-the-journal', target: '/journal', locale: 'no' }}
-              href="/journal"
+              eventData={{ section: 'from-the-journal', target: '/no/journal', locale: 'no' }}
+              href="/no/journal"
               className="text-sm font-medium text-neutral-900 hover:text-neutral-600 transition-colors whitespace-nowrap"
             >
               {no.home.readTheJournal} →

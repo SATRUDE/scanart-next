@@ -81,7 +81,7 @@ export default async function NorwegianCategoryPage({
 
   return (
     <div className="container mx-auto px-8 py-8">
-      <Link href="/products" className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground mb-8">
+      <Link href="/no/products" className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground mb-8">
         <ArrowLeft className="h-4 w-4 mr-2" />
         {no.shared.backToProducts}
       </Link>
@@ -102,7 +102,7 @@ export default async function NorwegianCategoryPage({
       <h2 className="sr-only">{no.shared.printsSrHeading}</h2>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {products.map((product, index) => (
-          <Link key={product.id} href={`/product/${product.slug}`}>
+          <Link key={product.id} href={`/no/product/${product.slug}`}>
             {/* first desktop row is above the fold: preload it, lazy-load the rest */}
             <PrintCard
               product={product}

@@ -23,15 +23,24 @@ interface HeroSectionProps {
   strings?: HeroStrings;
   /** Catalogue category value -> visible label (e.g. Norwegian names). */
   categoryLabels?: Record<string, string>;
+  /**
+   * Keeps the hero's links inside the tree it is rendered in. The Norwegian
+   * homepage passed `strings` and `categoryLabels` from the day it shipped but
+   * had no way to say which tree it was, so the CTA and all three featured
+   * prints sent a Norwegian reader to the English pages.
+   */
+  locale?: 'en' | 'no';
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({
   products,
   strings = DEFAULT_STRINGS,
   categoryLabels = {},
+  locale = 'en',
 }) => {
   const { formatPrice } = useLanguage();
   const heroProducts = products.slice(0, 3);
+  const p1 = locale === 'no' ? '/no' : '';
 
   return (
     <div className="flex flex-col lg:flex-row bg-white">
@@ -47,7 +56,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-3">
-            <Link href="/products">
+            <Link href={`${p1}/products`}>
               <Button size="lg">{strings.cta}</Button>
             </Link>
           </div>
@@ -56,7 +65,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       <div className="lg:w-1/2">
         <div className="space-y-8 p-8">
           {heroProducts.map((product, index) => (
-            <Link key={product.id} href={`/product/${product.slug}`} className="relative cursor-pointer group max-w-2xl ml-auto block">
+            <Link key={product.id} href={`${p1}/product/${product.slug}`} className="relative cursor-pointer group max-w-2xl ml-auto block">
               <div className="bg-white rounded overflow-hidden border border-gray-100">
                 <div className="aspect-[3/4] overflow-hidden">
                   <SmartImage
