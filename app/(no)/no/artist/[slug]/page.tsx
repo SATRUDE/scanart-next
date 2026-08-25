@@ -177,7 +177,7 @@ export default async function NorwegianArtistPage({
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {products.map((product, index) => (
-          <Link key={product.id} href={`/product/${product.slug}`}>
+          <Link key={product.id} href={`/no/product/${product.slug}`}>
             {/* first desktop row is above the fold: preload it, lazy-load the rest */}
             <PrintCard
               product={product}

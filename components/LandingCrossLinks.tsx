@@ -64,7 +64,7 @@ export function LandingCrossLinks({ current, strings = DEFAULT_STRINGS, locale =
     <section className="mt-16">
       <h2 className="text-2xl text-neutral-900">{strings.heading}</h2>
       <nav className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground">
-        <TrackedLink event="explore-more-click" eventData={{ from: `${current.type}/${current.slug}`, to: '/products' }} href="/products" className="hover:text-foreground">{strings.allPrints}</TrackedLink>
+        <TrackedLink event="explore-more-click" eventData={{ from: `${current.type}/${current.slug}`, to: `${localePrefix}/products` }} href={`${localePrefix}/products`} className="hover:text-foreground">{strings.allPrints}</TrackedLink>
         {categoryLinks.map(l => (
           <TrackedLink key={l.href} event="explore-more-click" eventData={{ from: `${current.type}/${current.slug}`, to: l.href }} href={l.href} className="hover:text-foreground">{l.label}</TrackedLink>
         ))}
@@ -72,7 +72,7 @@ export function LandingCrossLinks({ current, strings = DEFAULT_STRINGS, locale =
           <TrackedLink key={l.href} event="explore-more-click" eventData={{ from: `${current.type}/${current.slug}`, to: l.href }} href={l.href} className="hover:text-foreground">{l.label}</TrackedLink>
         ))}
         {current.type !== 'wall-art' && (
-          <TrackedLink event="explore-more-click" eventData={{ from: `${current.type}/${current.slug}`, to: '/scandinavian-wall-art' }} href="/scandinavian-wall-art" className="hover:text-foreground">{strings.wallArt}</TrackedLink>
+          <TrackedLink event="explore-more-click" eventData={{ from: `${current.type}/${current.slug}`, to: `${localePrefix}/scandinavian-wall-art` }} href={`${localePrefix}/scandinavian-wall-art`} className="hover:text-foreground">{strings.wallArt}</TrackedLink>
         )}
         {/* English-only page for now, so the link stays off the /no variants. */}
         {current.type !== 'nordic-art' && locale === 'en' && (

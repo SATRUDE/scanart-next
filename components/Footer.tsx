@@ -21,11 +21,20 @@ interface FooterProps {
 export const Footer: React.FC<FooterProps> = ({ year = new Date().getFullYear() }) => {
   // The Footer is mounted once in the root layout, which cannot know the
   // route, so the Norwegian tree is detected here: under /no the labels come
-  // from the Norwegian chrome strings, and links stay inside /no where a
-  // Norwegian page exists (categories, collections, about, artists, help,
-  // delivery; collections joined in phase 2, 2026-08-21). Untranslated areas
-  // (wall art, inspire, journal, shop all, privacy, terms) keep their English
-  // routes. English pages take the English branch and render exactly as before.
+  // from the Norwegian chrome strings, and every link stays inside /no.
+  // English pages take the English branch and render exactly as before.
+  //
+  // As of 2026-08-25 every destination in this footer has a Norwegian twin, so
+  // there is no exception list left to keep. Articles are the one part of the
+  // site with no /no version, and no link here points at one.
+  //
+  // The exception list is what rotted, twice. It was written in phase 1 when
+  // wall art, shop all, privacy, terms, inspire, journal and feedback really
+  // had no twin, and it went on sending Norwegian readers to English for weeks
+  // after each of those pages shipped, because nothing failed when a twin
+  // appeared. lib/i18n-no.test.ts now derives the answer from which page
+  // directories exist under app/(no)/no and walks this file's hrefs, so the
+  // next Norwegian page makes the suite fail until the links follow it.
   const pathname = usePathname();
   const isNo = isNoPath(pathname);
   const t = footerStrings[isNo ? 'no' : 'en'];
@@ -62,28 +71,28 @@ export const Footer: React.FC<FooterProps> = ({ year = new Date().getFullYear() 
                 </li>
               ))}
               <li>
-                <Link href="/scandinavian-wall-art" className="hover:text-neutral-600 transition-colors">{t.wallArt}</Link>
+                <Link href={`${localeHrefPrefix}/scandinavian-wall-art`} className="hover:text-neutral-600 transition-colors">{t.wallArt}</Link>
               </li>
             </ul>
           </div>
           <div>
             <ul className="text-sm text-neutral-900 space-y-2">
               <li><Link href={aboutHref} className="hover:text-neutral-600 transition-colors">{t.about}</Link></li>
-              <li><Link href="/inspire" className="hover:text-neutral-600 transition-colors">{t.inspire}</Link></li>
-              <li><Link href="/journal" className="hover:text-neutral-600 transition-colors">{t.journal}</Link></li>
+              <li><Link href={`${localeHrefPrefix}/inspire`} className="hover:text-neutral-600 transition-colors">{t.inspire}</Link></li>
+              <li><Link href={`${localeHrefPrefix}/journal`} className="hover:text-neutral-600 transition-colors">{t.journal}</Link></li>
               <li><Link href={artistsHref} className="hover:text-neutral-600 transition-colors">{t.artists}</Link></li>
               <li><Link href={helpHref} className="hover:text-neutral-600 transition-colors">{t.help}</Link></li>
               {/* The intercept's permanent re-entry route: the corner card parks
                   itself for 60 days on dismissal and that is per-device, so
                   someone who said no and then hit the thing that annoyed them
                   needs a door that is always there. */}
-              <li><Link href="/feedback" className="hover:text-neutral-600 transition-colors">{t.feedback}</Link></li>
+              <li><Link href={`${localeHrefPrefix}/feedback`} className="hover:text-neutral-600 transition-colors">{t.feedback}</Link></li>
               <li>
                 {/* Painted door: the newsletter doesn't exist yet; counting presses
                     on this deliberately inert button is the case for building it. */}
                 <button onClick={() => track('newsletter-click')} className="text-neutral-400 cursor-not-allowed opacity-50">{t.newsletter}</button>
               </li>
-              <li><Link href="/products" className="hover:text-neutral-600 transition-colors">{t.shopAll}</Link></li>
+              <li><Link href={`${localeHrefPrefix}/products`} className="hover:text-neutral-600 transition-colors">{t.shopAll}</Link></li>
             </ul>
           </div>
           <div>
@@ -95,8 +104,8 @@ export const Footer: React.FC<FooterProps> = ({ year = new Date().getFullYear() 
           </div>
           <div>
             <ul className="text-sm text-neutral-900 space-y-2">
-              <li><Link href="/privacy" className="hover:text-neutral-600 transition-colors">{t.privacy}</Link></li>
-              <li><Link href="/terms" className="hover:text-neutral-600 transition-colors">{t.terms}</Link></li>
+              <li><Link href={`${localeHrefPrefix}/privacy`} className="hover:text-neutral-600 transition-colors">{t.privacy}</Link></li>
+              <li><Link href={`${localeHrefPrefix}/terms`} className="hover:text-neutral-600 transition-colors">{t.terms}</Link></li>
               <li><Link href={deliveryHref} className="hover:text-neutral-600 transition-colors">{t.delivery}</Link></li>
             </ul>
           </div>

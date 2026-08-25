@@ -62,8 +62,8 @@ export default function NorwegianHelpPage() {
             <p className="text-sm text-neutral-900">
               {t.seeAlso}{' '}
               <Link href="/no/delivery" className="hover:text-neutral-600 transition-colors">{t.deliveryLabel}</Link>{' · '}
-              <Link href="/terms" className="hover:text-neutral-600 transition-colors">{t.termsLabel}</Link>{' · '}
-              <Link href="/privacy" className="hover:text-neutral-600 transition-colors">{t.privacyLabel}</Link>
+              <Link href="/no/terms" className="hover:text-neutral-600 transition-colors">{t.termsLabel}</Link>{' · '}
+              <Link href="/no/privacy" className="hover:text-neutral-600 transition-colors">{t.privacyLabel}</Link>
             </p>
           </div>
         </div>

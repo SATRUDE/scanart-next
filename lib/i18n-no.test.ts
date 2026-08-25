@@ -1,4 +1,6 @@
 import { describe, it, expect } from 'vitest';
+import { readdirSync, readFileSync, statSync } from 'node:fs';
+import { join } from 'node:path';
 import { collections } from './collections';
 import { categoryLandings } from './categories';
 import { no } from './i18n/no';
@@ -101,6 +103,84 @@ describe('Norwegian dictionary', () => {
     expect(offenders, `Norwegian copy links to English pages that have a /no twin:\n${offenders.join('\n')}`).toEqual([]);
   });
 
+  // ---------------------------------------------------------------------------
+  // The same fault, in the JSX this time.
+  //
+  // The test above walks the Norwegian COPY. It has never seen an href written
+  // in a page or a component, which is where the leak had quietly grown to 19
+  // of the 48 links on /no by 25 Aug 2026: all three hero prints, /products
+  // four times, wall art, privacy, terms, and every print on the Norwegian
+  // category and collection pages. Each one was correct when written and went
+  // stale the day its Norwegian twin shipped.
+  //
+  // So the answer is not a list. It is derived from the routes that exist:
+  // a directory under app/(no)/no IS the Norwegian twin of the same-named
+  // English route. Ship a new Norwegian page and this test starts demanding
+  // the links follow it, which is the only version of this guard that does not
+  // need somebody to remember.
+  const APP_NO = join(process.cwd(), 'app', '(no)', 'no');
+
+  /** First path segment of an internal href: '/product/dragon?x=1' -> 'product'. */
+  const firstSegment = (href: string) => href.split(/[?#]/)[0].split('/')[1] ?? '';
+
+  /** The English route segments that now have a Norwegian page of their own. */
+  const translatedSegments = new Set(
+    readdirSync(APP_NO).filter(entry => statSync(join(APP_NO, entry)).isDirectory())
+  );
+
+  const tsxFilesUnder = (dir: string): string[] =>
+    readdirSync(dir).flatMap(entry => {
+      const full = join(dir, entry);
+      if (statSync(full).isDirectory()) return tsxFilesUnder(full);
+      return entry.endsWith('.tsx') ? [full] : [];
+    });
+
+  /**
+   * EVERY component, not a list of the ones known to render under /no. A
+   * component mounted in the Norwegian tree that hardcodes an English path is
+   * a leak on half its renders, and which components those are is not visible
+   * from here: FullWidthImage was missed on the first pass of this very fix
+   * precisely because it was not on a hand-picked list of three.
+   *
+   * Sweeping all of them costs nothing. A literal English href in a shared
+   * component is either a leak already or one render away from being one, so
+   * the honest default is that they all carry their locale, and the fix in
+   * every case is a prefix the component already has or a `locale` prop.
+   */
+  const COMPONENTS = join(process.cwd(), 'components');
+
+  it('never links out of the Norwegian tree to a route that has a /no page', () => {
+    const offenders: string[] = [];
+    for (const file of [...tsxFilesUnder(APP_NO), ...tsxFilesUnder(COMPONENTS)]) {
+      const source = readFileSync(file, 'utf8');
+      // href="/x" and href={`/x/${...}`}. A template literal that opens with an
+      // interpolation (href={`${prefix}/x`}) is locale-aware by construction and
+      // is not a literal English path, so it is not matched here.
+      for (const m of source.matchAll(/href=(?:"(\/[^"]*)"|\{`(\/[^`$]*))/g)) {
+        const href = m[1] ?? m[2];
+        if (href.startsWith('/no/') || href === '/no') continue;
+        const segment = firstSegment(href);
+        if (translatedSegments.has(segment)) {
+          offenders.push(`${file.replace(process.cwd() + '/', '')} -> ${href} (twin: /no${href})`);
+        }
+      }
+    }
+    expect(
+      offenders,
+      `Links inside the Norwegian tree point at English pages that have a /no twin:\n${offenders.join('\n')}`
+    ).toEqual([]);
+  });
+
+  // Articles are the one genuinely untranslated part of the site, so the /no
+  // journal and the Norwegian collection pages link out to /article on purpose.
+  // Pinning it means the guard above cannot be "fixed" by translating articles
+  // halfway and leaving the links pointing at pages that do not exist.
+  it('treats articles as the one untranslated route', () => {
+    expect(translatedSegments.has('article')).toBe(false);
+    expect(translatedSegments.has('product')).toBe(true);
+    expect(translatedSegments.has('products')).toBe(true);
+  });
+
   // The apply form is not a /no-prefix-and-done route, so it fell outside the
   // pattern and the language control had nothing to offer on the English page.
   it('maps the artist apply page to its Norwegian twin', () => {
@@ -110,7 +190,13 @@ describe('Norwegian dictionary', () => {
   it('maps a collection path to its Norwegian twin', () => {
     expect(noPathFor('/collection/living-room')).toBe('/no/collection/living-room');
     expect(noPathFor('/category/botanical')).toBe('/no/category/botanical');
-    // products and articles stay English in phase 1, so they have no twin
+    // Articles have no twin and never have. Products DO have one now, and
+    // noPathFor still says otherwise: pinned deliberately rather than quietly
+    // corrected, because this function also decides which visitors middleware
+    // 302s into Norwegian and what the header language control offers, so
+    // widening it changes what a buyer sees rather than only where a link
+    // points. That is Mark's call and it has its own ticket; the link guard
+    // above deliberately does not depend on this answer.
     expect(noPathFor('/product/swallow-dive')).toBeNull();
     expect(noPathFor('/article/what-is-scandinavian-art')).toBeNull();
   });

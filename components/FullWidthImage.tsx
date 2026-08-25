@@ -30,13 +30,23 @@ const SCENES = [
   },
 ];
 
-export const FullWidthImage: React.FC = () => {
+interface FullWidthImageProps {
+  /**
+   * Keeps the strip's link inside the tree it is rendered in. It appears on
+   * four pages, two of them Norwegian, and sent all four to the English
+   * /inspire until 2026-08-25.
+   */
+  locale?: 'en' | 'no';
+}
+
+export const FullWidthImage: React.FC<FullWidthImageProps> = ({ locale = 'en' }) => {
+  const inspireHref = locale === 'no' ? '/no/inspire' : '/inspire';
   return (
     <section className="w-full mb-0">
       <TrackedLink
         event="homepage-section-click"
-        eventData={{ section: 'inspire-strip', target: 'inspire' }}
-        href="/inspire"
+        eventData={{ section: 'inspire-strip', target: inspireHref }}
+        href={inspireHref}
         className="relative grid grid-cols-3 gap-0 group"
         aria-label="Be inspired: see our prints in real rooms"
       >
