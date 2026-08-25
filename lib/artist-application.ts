@@ -61,6 +61,15 @@ export type Errors = Partial<Record<FieldName, string>>;
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
+/** True for the shapes a person actually types for their site or Instagram:
+ *  a bare domain, an http(s) URL, or an @handle. False for any other scheme,
+ *  which is what keeps javascript: and data: out of the stored links. */
+export function looksLikeWebAddress(value: string): boolean {
+  if (/^@?[A-Za-z0-9._]{1,30}$/.test(value)) return true; // an Instagram handle
+  if (/^[a-z][a-z0-9+.-]*:/i.test(value)) return /^https?:\/\//i.test(value);
+  return /^[^\s]+\.[^\s]{2,}/.test(value); // a bare domain like kari.example
+}
+
 export function validate(
   input: Partial<ArtistApplication>,
   m: ValidationMessages = EN_MESSAGES,
@@ -82,10 +91,17 @@ export function validate(
   else if (!EMAIL.test(email) || email.length > MAX.email) e.email = m.emailInvalid;
 
   // One of the two is enough: `links` is what a reviewer actually clicks.
+  // And clicks is the point: these end up as live hrefs on the Talent page,
+  // so a value that is not a web address (javascript:, data:, ftp:) is refused
+  // here rather than sanitised there. A bare domain is fine; a scheme other
+  // than http(s) is not.
   const site = (input.website ?? '').trim();
   const insta = (input.instagram ?? '').trim();
   if (!site && !insta) e.links = m.linksRequired;
   else if (site.length > MAX.url || insta.length > MAX.url) e.links = m.linkTooLong;
+  else if ((site && !looksLikeWebAddress(site)) || (insta && !looksLikeWebAddress(insta))) {
+    e.links = m.linksRequired;
+  }
 
   if (!input.offering || !(OFFERINGS as readonly string[]).includes(input.offering)) {
     e.offering = m.offeringRequired;

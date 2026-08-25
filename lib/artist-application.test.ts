@@ -67,3 +67,20 @@ describe('what reaches the store', () => {
     expect(buildWhyFit(good)).toContain(good.whyFit);
   });
 });
+
+describe('what counts as a place to see work', () => {
+  // These end up as live hrefs on the Talent page, so the validation is the
+  // only thing between an applicant and a javascript: link in the dashboard.
+  it('refuses a link whose scheme is not http(s)', () => {
+    expect(validate({ ...good, website: 'javascript:alert(1)' }).links).toBeTruthy();
+    expect(validate({ ...good, website: 'data:text/html,x' }).links).toBeTruthy();
+    expect(validate({ ...good, instagram: 'javascript:alert(1)', website: '' }).links).toBeTruthy();
+  });
+
+  it('still accepts the shapes people actually type', () => {
+    expect(validate({ ...good, website: 'https://kari.example' }).links).toBeUndefined();
+    expect(validate({ ...good, website: 'kari.example' }).links).toBeUndefined();
+    expect(validate({ ...good, website: '', instagram: '@kari.tegner' }).links).toBeUndefined();
+    expect(validate({ ...good, website: '', instagram: 'kari_tegner' }).links).toBeUndefined();
+  });
+});
