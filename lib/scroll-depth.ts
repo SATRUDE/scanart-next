@@ -11,5 +11,7 @@
 export function scrollDepthPercent(scrollY: number, scrollHeight: number, innerHeight: number): number {
   const scrollable = scrollHeight - innerHeight;
   if (scrollable <= 0) return 100;
-  return Math.round((scrollY / scrollable) * 100);
+  // Clamped: macOS rubber-band scrolling lets scrollY overshoot the scrollable
+  // height for a moment, and an analytics event saying 103% read is nonsense.
+  return Math.min(100, Math.max(0, Math.round((scrollY / scrollable) * 100)));
 }
