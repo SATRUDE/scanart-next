@@ -1,6 +1,11 @@
 import { describe, expect, it } from 'vitest';
 
-import { printImageAlt, productImages, sceneImageAlt } from '@/lib/product-image-alt';
+import {
+  printImageAlt,
+  productImages,
+  sceneImageAlt,
+  secondaryFirstImageAlt,
+} from '@/lib/product-image-alt';
 
 const birdieBrown = {
   name: 'Birdie Brown',
@@ -133,5 +138,34 @@ describe('productImages', () => {
 
   it('still speaks English when no locale is given, so every English caller is unchanged', () => {
     expect(productImages(birdieBrown)).toEqual(productImages(birdieBrown, 'en'));
+  });
+});
+
+describe('secondaryFirstImageAlt', () => {
+  it('describes the styled scene, because that is the image such a surface shows', () => {
+    expect(secondaryFirstImageAlt(birdieBrown)).toBe(
+      'Birdie Brown by Renate Thor, framed and styled in a room setting'
+    );
+  });
+
+  it('falls back to the print when there is no scene to show', () => {
+    expect(secondaryFirstImageAlt({ ...birdieBrown, secondaryImage: '' })).toBe(
+      'Birdie Brown by Renate Thor, an abstract Scandinavian art print'
+    );
+  });
+
+  it('treats a secondary that merely repeats the print as no scene at all', () => {
+    expect(
+      secondaryFirstImageAlt({
+        ...birdieBrown,
+        secondaryImage: '/images/products/birdie-brown.png',
+      })
+    ).toBe('Birdie Brown by Renate Thor, an abstract Scandinavian art print');
+  });
+
+  it('speaks Norwegian on the /no tree', () => {
+    expect(secondaryFirstImageAlt(birdieBrown, 'no')).toBe(
+      'Birdie Brown av Renate Thor, innrammet i et nordisk interiør'
+    );
   });
 });
