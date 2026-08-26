@@ -144,3 +144,21 @@ export function productImages(
 
   return images;
 }
+
+/**
+ * The alt text for a surface that shows the styled scene where a print has one
+ * and the print itself otherwise: what `SmartImage` renders when it is passed
+ * `useSecondary`, as the homepage hero does.
+ *
+ * It reads the answer out of `productImages` rather than re-testing
+ * `secondaryImage`, so the "is there a real second image" rule stays in one
+ * place. The order is print-then-scene, so the last entry is the one shown.
+ */
+export function secondaryFirstImageAlt(
+  product: ProductImageAltSource & { image: string; secondaryImage?: string },
+  locale: AltLocale = 'en'
+): string {
+  const images = productImages(product, locale);
+
+  return images[images.length - 1].alt;
+}

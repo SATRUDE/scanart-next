@@ -7,6 +7,7 @@ import { useSearchParams } from 'next/navigation';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { getLowestProductPrices } from '@/lib/pricing';
 import { SmartImage } from '@/components/SmartImage';
+import { printImageAlt } from '@/lib/product-image-alt';
 import { getArtistById } from '@/data/artists';
 import { getCategoryLandingByCategory } from '@/lib/categories';
 import { collections } from '@/lib/collections';
@@ -201,7 +202,7 @@ export const ProductsGrid: React.FC<ProductsGridProps> = ({
               <div className="aspect-[3/4] overflow-hidden bg-neutral-50 mb-4 rounded">
                 <SmartImage
                   src={product.image}
-                  alt={product.name}
+                  alt={printImageAlt(product, locale)}
                   priority={index < 4}
                   sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                   className="w-full h-full object-cover transition-all duration-300 group-hover:scale-[1.02]"

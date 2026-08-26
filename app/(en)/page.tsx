@@ -31,10 +31,14 @@ export default async function HomePage() {
     vinkveld: '/images/homepage/vinkveld-scene.jpg',
     morgenlevering: '/images/homepage/morgenlevering-scene.jpg',
   };
+  // The scene goes in `secondaryImage`, which is the slot the hero displays
+  // (its SmartImage is passed `useSecondary`). It used to go in both slots, so
+  // the print and the scene were the same file and nothing downstream could
+  // tell them apart: the alt text came out describing a bare print over a photo
+  // of a styled room, and an image error fell back to the file that had just
+  // failed. Keeping the print in `image` fixes both and shows the same picture.
   const heroProducts = featuredProducts.map(p =>
-    heroScenes[p.slug]
-      ? { ...p, image: heroScenes[p.slug], secondaryImage: heroScenes[p.slug] }
-      : p
+    heroScenes[p.slug] ? { ...p, secondaryImage: heroScenes[p.slug] } : p
   );
   // Featured articles first (the Featured checkbox in Notion curates this
   // teaser), newest fill the remaining slots. Keeps a stable homepage link to

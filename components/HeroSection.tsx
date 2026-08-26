@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { SmartImage } from '@/components/SmartImage';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { getLowestProductPrices } from '@/lib/pricing';
+import { secondaryFirstImageAlt } from '@/lib/product-image-alt';
 import { Product } from '@/contexts/CartContext';
 import type { HeroStrings } from '@/lib/i18n';
 
@@ -68,9 +69,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             <Link key={product.id} href={`${p1}/product/${product.slug}`} className="relative cursor-pointer group max-w-2xl ml-auto block">
               <div className="bg-white rounded overflow-hidden border border-gray-100">
                 <div className="aspect-[3/4] overflow-hidden">
+                  {/* useSecondary below means the styled scene is what is
+                      actually on screen where a print has one, so the alt
+                      describes that rather than the bare print. */}
                   <SmartImage
                     src={product.image}
-                    alt={product.name}
+                    alt={secondaryFirstImageAlt(product, locale)}
                     priority={index === 0}
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
