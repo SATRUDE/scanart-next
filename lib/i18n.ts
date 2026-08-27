@@ -166,6 +166,67 @@ export const headerStrings: Record<Locale, HeaderStrings> = {
   },
 };
 
+/**
+ * Accessible names for the icon-only controls, which carry no visible words and
+ * so were invisible to every pass that looked at the Norwegian pages.
+ *
+ * The chrome above was translated in phase 1 and these were missed, which left
+ * a Norwegian screen-reader user hearing "Decrease quantity" and "Next image"
+ * on the buying path: in the basket, and on every /no/product gallery. The
+ * visible copy on those controls is fine because there is none.
+ *
+ * Interpolated labels keep the variable part out of the dictionary (the print's
+ * name, the currency code), so these stay plain strings like the rest.
+ */
+export interface ChromeAriaStrings {
+  cart: {
+    /** Prefixed to the print's name: "Remove Dragon" / "Fjern Dragon". */
+    removePrefix: string;
+    decreaseQuantity: string;
+    increaseQuantity: string;
+  };
+  gallery: {
+    previousImage: string;
+    nextImage: string;
+    closeViewer: string;
+  };
+  /** The homepage strip of room scenes, which is one big link. */
+  inspireStrip: string;
+  /** Prefixed to ": Norsk, GBP". */
+  languageAndCurrency: string;
+}
+
+export const chromeAria: Record<Locale, ChromeAriaStrings> = {
+  en: {
+    cart: {
+      removePrefix: 'Remove',
+      decreaseQuantity: 'Decrease quantity',
+      increaseQuantity: 'Increase quantity',
+    },
+    gallery: {
+      previousImage: 'Previous image',
+      nextImage: 'Next image',
+      closeViewer: 'Close image viewer',
+    },
+    inspireStrip: 'Be inspired: see our prints in real rooms',
+    languageAndCurrency: 'Language and currency',
+  },
+  no: {
+    cart: {
+      removePrefix: 'Fjern',
+      decreaseQuantity: 'Reduser antall',
+      increaseQuantity: 'Øk antall',
+    },
+    gallery: {
+      previousImage: 'Forrige bilde',
+      nextImage: 'Neste bilde',
+      closeViewer: 'Lukk bildevisning',
+    },
+    inspireStrip: 'La deg inspirere: se trykkene våre i ekte rom',
+    languageAndCurrency: 'Språk og valuta',
+  },
+};
+
 export const footerStrings: Record<Locale, FooterStrings> = {
   en: {
     tagline: 'A Scandinavian art gallery, where we curate an exquisite selection of artworks.',
