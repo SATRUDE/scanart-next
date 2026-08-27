@@ -12,6 +12,7 @@ import {
 import { useLanguage, countries } from '@/contexts/LanguageContext';
 import { track } from '@/lib/analytics';
 import { LOCALE_LABEL, currentLocale, localeOptions, twinMissing } from '@/lib/locale-switch';
+import { chromeAria } from '@/lib/i18n';
 
 /**
  * One header control, two things: language and currency.
@@ -45,6 +46,7 @@ export const LanguagePicker: React.FC = () => {
   const locale = currentLocale(pathname);
   const locales = localeOptions(pathname);
   const noTwin = twinMissing(pathname);
+  const t = chromeAria[locale];
 
   const chooseCurrency = (code: string) => {
     const country = countries.find(c => c.code === code);
@@ -61,7 +63,7 @@ export const LanguagePicker: React.FC = () => {
     <Popover>
       <PopoverTrigger
         className="flex items-center gap-2 rounded px-2 py-1.5 text-sm hover:bg-muted/50"
-        aria-label={`Language and currency: ${LOCALE_LABEL[locale]}, ${selectedCountry.currency}`}
+        aria-label={`${t.languageAndCurrency}: ${LOCALE_LABEL[locale]}, ${selectedCountry.currency}`}
         data-language="true"
       >
         <Globe className="h-4 w-4" aria-hidden="true" />

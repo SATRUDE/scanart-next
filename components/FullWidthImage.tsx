@@ -1,4 +1,5 @@
 import React from 'react';
+import { chromeAria } from '@/lib/i18n';
 import Image from 'next/image';
 import { TrackedLink } from '@/components/TrackedLink';
 
@@ -41,6 +42,7 @@ interface FullWidthImageProps {
 
 export const FullWidthImage: React.FC<FullWidthImageProps> = ({ locale = 'en' }) => {
   const inspireHref = locale === 'no' ? '/no/inspire' : '/inspire';
+  const t = chromeAria[locale];
   return (
     <section className="w-full mb-0">
       <TrackedLink
@@ -48,7 +50,7 @@ export const FullWidthImage: React.FC<FullWidthImageProps> = ({ locale = 'en' })
         eventData={{ section: 'inspire-strip', target: inspireHref }}
         href={inspireHref}
         className="relative grid grid-cols-3 gap-0 group"
-        aria-label="Be inspired: see our prints in real rooms"
+        aria-label={t.inspireStrip}
       >
         {SCENES.map(scene => (
           <div key={scene.src} className="relative aspect-[3/4] overflow-hidden">

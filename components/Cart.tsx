@@ -7,6 +7,8 @@ import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from '@/components/ui/sheet';
 import { useCart } from '@/contexts/CartContext';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { usePathname } from 'next/navigation';
+import { chromeAria, isNoPath } from '@/lib/i18n';
 import { SmartImage } from '@/components/SmartImage';
 import { getProductPrices } from '@/lib/pricing';
 import { getFrameName, getFramePrice } from '@/config/frame';
@@ -21,6 +23,7 @@ export const Cart: React.FC = () => {
     getTotalPriceInCurrency,
   } = useCart();
   const { formatPrice, selectedCountry } = useLanguage();
+  const t = chromeAria[isNoPath(usePathname() || '/') ? 'no' : 'en'];
   const router = useRouter();
 
   // The cart-open step sits between add-to-cart and checkout in the funnel.
@@ -82,7 +85,7 @@ export const Cart: React.FC = () => {
                             {item.size && <p className="text-xs text-muted-foreground">Size: {item.size.charAt(0).toUpperCase() + item.size.slice(1)}</p>}
                             {item.frame && item.frame !== 'no-frame' && <p className="text-xs text-muted-foreground">Frame: {getFrameName(item.frame)}</p>}
                           </div>
-                          <button aria-label={`Remove ${item.product.name}`} onClick={() => {
+                          <button aria-label={`${t.cart.removePrefix} ${item.product.name}`} onClick={() => {
                             track('remove-from-cart', { productId: item.product.id, productName: item.product.name, size: item.size, frame: item.frame });
                             removeFromCart(item.product.id, item.size, item.frame);
                           }} className="text-muted-foreground hover:text-foreground">
@@ -91,11 +94,11 @@ export const Cart: React.FC = () => {
                         </div>
                         <div className="flex items-center justify-between">
                           <div className="flex items-center space-x-2">
-                            <Button aria-label="Decrease quantity" size="icon" className="h-6 w-6 border border-neutral-200 bg-background text-foreground hover:bg-gray-50 hover:text-gray-900" onClick={() => updateQuantity(item.product.id, item.quantity - 1, item.size, item.frame)}>
+                            <Button aria-label={t.cart.decreaseQuantity} size="icon" className="h-6 w-6 border border-neutral-200 bg-background text-foreground hover:bg-gray-50 hover:text-gray-900" onClick={() => updateQuantity(item.product.id, item.quantity - 1, item.size, item.frame)}>
                               <Minus className="h-3 w-3" />
                             </Button>
                             <span className="w-8 text-center text-sm">{item.quantity}</span>
-                            <Button aria-label="Increase quantity" size="icon" className="h-6 w-6 border border-neutral-200 bg-background text-foreground hover:bg-gray-50 hover:text-gray-900" onClick={() => updateQuantity(item.product.id, item.quantity + 1, item.size, item.frame)}>
+                            <Button aria-label={t.cart.increaseQuantity} size="icon" className="h-6 w-6 border border-neutral-200 bg-background text-foreground hover:bg-gray-50 hover:text-gray-900" onClick={() => updateQuantity(item.product.id, item.quantity + 1, item.size, item.frame)}>
                               <Plus className="h-3 w-3" />
                             </Button>
                           </div>
