@@ -3,12 +3,16 @@ import Link from 'next/link';
 import { ArtistApplyForm } from '@/components/ArtistApplyForm';
 import { COPY } from '@/lib/artist-application';
 import { socialCard } from '@/lib/site';
+import { hreflangPair } from '@/lib/i18n';
 
 export const metadata: Metadata = {
   title: 'Show us your work',
   description:
     'A small Scandinavian print gallery, taking on very few artists. Tell us about your work and a person will read it.',
-  alternates: { canonical: '/artists/apply' },
+  alternates: {
+    canonical: '/artists/apply',
+    languages: hreflangPair('/artists/apply'),
+  },
   ...socialCard({
     title: 'Show us your work',
     description: 'Tell a small Scandinavian print gallery about your work.',

@@ -201,3 +201,60 @@ describe('Norwegian dictionary', () => {
     expect(noPathFor('/article/what-is-scandinavian-art')).toBeNull();
   });
 });
+
+// ---------------------------------------------------------------------------
+// hreflang has to point BOTH ways or Google throws the annotation away.
+//
+// Every Norwegian page declared its pair (`en` at the English twin, `no` at
+// itself, `x-default` at the English twin) and 23 of the 40 English twins
+// declared nothing back: all 16 product pages, plus /products, /artists/apply,
+// /inspire, /journal, /privacy, /terms and /scandinavian-wall-art. Verified by
+// fetching every sitemap URL as Googlebot on 27 Aug 2026 and parsing the
+// rendered head, because grepping the source for this has been wrong here
+// before. Google's localized-versions guidance is explicit that a return link
+// is required, so the half we shipped was doing nothing at all.
+//
+// The guard is derived rather than listed, for the same reason as the link
+// guard above: a page added to one tree and not the other is exactly the
+// mistake, so a hand-maintained list would go stale the same way. /no/checkout
+// and /no/feedback annotate on neither side deliberately (noindex utility
+// pages), and this test asks only that the two sides agree.
+describe('hreflang return links', () => {
+  const EN_ROOT = join(process.cwd(), 'app', '(en)');
+  const NO_ROOT = join(process.cwd(), 'app', '(no)', 'no');
+
+  /** Route path of a page.tsx relative to its tree root: 'product/[slug]', '' for the root page. */
+  const routesUnder = (dir: string, prefix = ''): string[] =>
+    readdirSync(dir).flatMap(entry => {
+      const full = join(dir, entry);
+      if (statSync(full).isDirectory()) return routesUnder(full, prefix ? `${prefix}/${entry}` : entry);
+      return entry === 'page.tsx' ? [prefix] : [];
+    });
+
+  const declaresPair = (root: string, route: string) =>
+    readFileSync(join(root, route, 'page.tsx'), 'utf8').includes('hreflangPair(');
+
+  it('gives every Norwegian page that declares a pair an English twin that declares one back', () => {
+    const offenders: string[] = [];
+    for (const route of routesUnder(NO_ROOT)) {
+      if (!declaresPair(NO_ROOT, route)) continue;
+      try {
+        if (!declaresPair(EN_ROOT, route)) {
+          offenders.push(`/${route} declares hreflang under /no and app/(en)/${route}/page.tsx does not answer`);
+        }
+      } catch {
+        offenders.push(`/no/${route} has no English twin at app/(en)/${route}/page.tsx`);
+      }
+    }
+    expect(
+      offenders,
+      `Norwegian pages annotate an English twin that never links back, so Google discards the pair:\n${offenders.join('\n')}`
+    ).toEqual([]);
+  });
+
+  it('keeps the annotation off the pages that deliberately have none on either side', () => {
+    for (const route of ['checkout', 'feedback']) {
+      expect(declaresPair(NO_ROOT, route), `/no/${route} should not annotate`).toBe(false);
+    }
+  });
+});

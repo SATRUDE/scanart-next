@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { LegalPage, LegalSection } from '@/components/LegalPage';
 import { COMPANY } from '@/config/company';
 import { socialCard } from '@/lib/site';
+import { hreflangPair } from '@/lib/i18n';
 
 const PAGE_TITLE = 'Terms & Conditions';
 const PAGE_DESCRIPTION = 'The terms on which Scandinavian Art sells art prints and you use this site.';
@@ -10,7 +11,10 @@ const PAGE_DESCRIPTION = 'The terms on which Scandinavian Art sells art prints a
 export const metadata: Metadata = {
   title: PAGE_TITLE,
   description: PAGE_DESCRIPTION,
-  alternates: { canonical: '/terms' },
+  alternates: {
+    canonical: '/terms',
+    languages: hreflangPair('/terms'),
+  },
   ...socialCard({ title: PAGE_TITLE, description: PAGE_DESCRIPTION, path: '/terms' }),
 };
 

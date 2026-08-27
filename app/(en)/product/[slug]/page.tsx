@@ -22,6 +22,7 @@ import { productImages } from '@/lib/product-image-alt';
 import { productImageLd } from '@/lib/licensable-image';
 import { FeedbackIntercept } from '@/components/FeedbackIntercept';
 import { BASE_URL, SITE_NAME, OG_LOCALE, TWITTER_SITE } from '@/lib/site';
+import { hreflangPair } from '@/lib/i18n';
 
 export async function generateStaticParams() {
   const products = await getAllProducts();
@@ -74,6 +75,7 @@ export async function generateMetadata({
     description: buyerDescription,
     alternates: {
       canonical: `/product/${product.slug}`,
+      languages: hreflangPair(`/product/${product.slug}`),
     },
     // Next merges metadata shallowly, so a page that sets its own openGraph/
     // twitter must restate the layout's site-wide fields or they drop (see
