@@ -3,6 +3,7 @@ import { getAllProducts } from '@/lib/products';
 import { ProductsGrid } from '@/components/ProductsGrid';
 import { BASE_URL, socialCard } from '@/lib/site';
 import { metaTitle } from '@/lib/meta-title';
+import { hreflangPair } from '@/lib/i18n';
 
 const PAGE_TITLE = 'Nordic & Scandinavian Art Prints: A Curated Collection';
 const PAGE_DESCRIPTION =
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
   description: PAGE_DESCRIPTION,
   alternates: {
     canonical: '/products',
+    languages: hreflangPair('/products'),
   },
   ...socialCard({ title: PAGE_TITLE, description: PAGE_DESCRIPTION, path: '/products' }),
 };

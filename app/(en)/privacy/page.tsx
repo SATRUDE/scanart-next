@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { LegalPage, LegalSection } from '@/components/LegalPage';
 import { COMPANY } from '@/config/company';
 import { socialCard } from '@/lib/site';
+import { hreflangPair } from '@/lib/i18n';
 
 const PAGE_TITLE = 'Privacy Policy';
 const PAGE_DESCRIPTION = 'How Scandinavian Art collects, uses and protects your personal data.';
@@ -10,7 +11,10 @@ const PAGE_DESCRIPTION = 'How Scandinavian Art collects, uses and protects your 
 export const metadata: Metadata = {
   title: PAGE_TITLE,
   description: PAGE_DESCRIPTION,
-  alternates: { canonical: '/privacy' },
+  alternates: {
+    canonical: '/privacy',
+    languages: hreflangPair('/privacy'),
+  },
   ...socialCard({ title: PAGE_TITLE, description: PAGE_DESCRIPTION, path: '/privacy' }),
 };
 

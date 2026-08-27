@@ -7,6 +7,7 @@ import { PrintCard } from '@/components/PrintCard';
 import { ReadMore } from '@/components/ReadMore';
 import { LandingCrossLinks } from '@/components/LandingCrossLinks';
 import { BASE_URL, socialCard } from '@/lib/site';
+import { hreflangPair } from '@/lib/i18n';
 
 export async function generateMetadata(): Promise<Metadata> {
   const products = await getAllProducts();
@@ -19,6 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
     description: wallArtLanding.description,
     alternates: {
       canonical: '/scandinavian-wall-art',
+      languages: hreflangPair('/scandinavian-wall-art'),
     },
     ...socialCard({
       title: wallArtLanding.title,

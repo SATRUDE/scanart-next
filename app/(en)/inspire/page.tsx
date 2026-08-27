@@ -5,6 +5,7 @@ import { getInspireScenes } from '@/lib/inspire';
 import { getAllProducts } from '@/lib/products';
 import { BASE_URL, socialCard } from '@/lib/site';
 import { metaTitle } from '@/lib/meta-title';
+import { hreflangPair } from '@/lib/i18n';
 
 export async function generateMetadata(): Promise<Metadata> {
   const scenes = await getInspireScenes();
@@ -20,6 +21,7 @@ export async function generateMetadata(): Promise<Metadata> {
     description,
     alternates: {
       canonical: '/inspire',
+      languages: hreflangPair('/inspire'),
     },
     ...socialCard({
       title: 'Scandinavian Art Print Inspiration',

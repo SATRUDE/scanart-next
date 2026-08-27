@@ -3,6 +3,7 @@ import { getAllArticles } from '@/lib/articles';
 import { JournalGrid } from '@/components/JournalGrid';
 import { JournalBooksSeries } from '@/components/JournalBooksSeries';
 import { BASE_URL, socialCard } from '@/lib/site';
+import { hreflangPair } from '@/lib/i18n';
 
 const PAGE_TITLE = 'Journal';
 const PAGE_DESCRIPTION = 'Read about Scandinavian art, Nordic design, and the artists behind our curated collection.';
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
   description: PAGE_DESCRIPTION,
   alternates: {
     canonical: '/journal',
+    languages: hreflangPair('/journal'),
   },
   ...socialCard({ title: PAGE_TITLE, description: PAGE_DESCRIPTION, path: '/journal' }),
 };
