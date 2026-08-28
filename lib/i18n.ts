@@ -91,6 +91,12 @@ export interface FooterStrings {
   /** Collection landing slug -> visible label. */
   collectionLabels: Record<string, string>;
   wallArt: string;
+  /**
+   * The /nordic-art landing. Rendered on the English branch only, because that
+   * page has no Norwegian twin; the Norwegian value is carried anyway so the
+   * link needs no new copy on the day one ships.
+   */
+  nordicArt: string;
   about: string;
   inspire: string;
   journal: string;
@@ -233,6 +239,7 @@ export const footerStrings: Record<Locale, FooterStrings> = {
     categoryLabels: {},
     collectionLabels: {},
     wallArt: 'Wall Art',
+    nordicArt: 'Nordic Art',
     about: 'About',
     inspire: 'Inspire',
     journal: 'Journal',
@@ -261,6 +268,7 @@ export const footerStrings: Record<Locale, FooterStrings> = {
       'birds-and-animals': 'Fugler og dyr',
     },
     wallArt: 'Veggkunst',
+    nordicArt: 'Nordisk kunst',
     about: 'Om oss',
     inspire: 'Inspirasjon',
     journal: 'Journal',
