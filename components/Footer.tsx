@@ -73,6 +73,17 @@ export const Footer: React.FC<FooterProps> = ({ year = new Date().getFullYear() 
               <li>
                 <Link href={`${localeHrefPrefix}/scandinavian-wall-art`} className="hover:text-neutral-600 transition-colors">{t.wallArt}</Link>
               </li>
+              {/* English only: /nordic-art has no Norwegian twin, so the link is
+                  guarded the same way LandingCrossLinks guards it. The wall-art
+                  landing above has been in this list since it shipped and is in
+                  the index; this one had links from nine pages in all, the ones
+                  that render LandingCrossLinks, which is what a landing page
+                  built to own a query family cannot run on. */}
+              {!isNo && (
+                <li>
+                  <Link href="/nordic-art" className="hover:text-neutral-600 transition-colors">{t.nordicArt}</Link>
+                </li>
+              )}
             </ul>
           </div>
           <div>
