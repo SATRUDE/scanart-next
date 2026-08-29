@@ -28,6 +28,16 @@ const LEGACY_PRODUCT_SLUGS: Record<string, string> = {
 // position 7. Send that equity to the nearest live intent rather than a 404.
 // The three "2"-suffixed Birdie slugs are here too, repointed straight at the
 // destination instead of chaining through a slug that no longer resolves.
+//
+// The destination is the BIRD collection, not the abstract category. Every one
+// of these slugs is a bird print, and /collection/birds-and-animals (added
+// 2026-08-17) is a curated page of bird and animal work, so it matches what the
+// visitor was looking for; /category/abstract holds four prints of which one is
+// a bird. These URLs are still earning on both search surfaces four weeks after
+// the retirement, which is what makes the destination worth getting right:
+// /product/birdie-brown sits at position 1.5 and birdie-pink at 7.0 in web
+// search, and the "birdie art" family took ~56 image-search impressions in the
+// 28 days to 2026-08-26.
 const RETIRED_PRODUCT_SLUGS = [
   'birdie-blue',
   'birdie-brown',
@@ -79,7 +89,7 @@ const nextConfig: NextConfig = {
       })),
       ...RETIRED_PRODUCT_SLUGS.map(slug => ({
         source: `/product/${slug}`,
-        destination: '/category/abstract',
+        destination: '/collection/birds-and-animals',
         permanent: true,
       })),
       {
