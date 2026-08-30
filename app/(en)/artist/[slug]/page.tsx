@@ -18,7 +18,7 @@ import { ArtistsList, type ArtistWithCount } from '@/components/ArtistsList';
 import { artistEditorial } from '@/lib/artist-editorial';
 import { BASE_URL, OG_IMAGE, SITE_NAME, OG_LOCALE, TWITTER_SITE } from '@/lib/site';
 import { hreflangPair } from '@/lib/i18n';
-import { metaSnippet } from '@/lib/meta-snippet';
+import { artistMetaDescription, artistMetaTitle } from '@/lib/artist-meta';
 
 // Ken's editorial paragraphs carry inline links in Markdown form
 // ([text](/path)); render them as real <Link>s, everything else as text.
@@ -55,20 +55,23 @@ export async function generateMetadata({
   const artist = getArtistBySlug(slug);
   if (!artist) return {};
 
-  const desc = artist.bio || `Art prints by ${artist.name} - Scandinavian Art Gallery`;
-  // The bio is body copy and runs to hundreds of characters, so it is trimmed
-  // to its opening sentence for the snippet fields. The full bio still reaches
-  // the page body and the Person JSON-LD below.
-  const snippet = metaSnippet(desc);
+  // Both fields lead on the offer rather than on the biography. We rank on page
+  // one for these artists' own names and took no clicks from it in August,
+  // because "Sia Siamos | Scandinavian Art Gallery" promises nothing that the
+  // artist's own site and Instagram, both above us, do not already give. The
+  // one thing we have is that the prints are for sale here. The full bio still
+  // reaches the page body and the Person JSON-LD below.
+  const title = artistMetaTitle(artist.name);
+  const snippet = artistMetaDescription(artist.name, artist.bio);
   return {
-    title: artist.name,
+    title,
     description: snippet,
     alternates: {
       canonical: `/artist/${artist.slug}`,
       languages: hreflangPair(`/artist/${artist.slug}`),
     },
     openGraph: {
-      title: artist.name,
+      title,
       description: snippet,
       url: `${BASE_URL}/artist/${artist.slug}`,
       siteName: SITE_NAME,
@@ -79,7 +82,7 @@ export async function generateMetadata({
     twitter: {
       card: 'summary_large_image',
       site: TWITTER_SITE,
-      title: artist.name,
+      title,
       description: snippet,
       images: [artist.image || OG_IMAGE],
     },
