@@ -8,13 +8,30 @@
 //
 // Every fact below comes from one of two places and nowhere else:
 //   - the Artist Agreement (Mark, 30 Aug 2026): the 60% share, monthly payment
-//     by the 15th, the 14-day clearance, the monthly report, non-exclusivity,
-//     the artist keeping their IP, no price without consent, the 20% discount
-//     latitude, withdrawal at any time, 30 days' notice, who carries returns,
-//     the marketing licence, and promotional prints paid at the same rate.
-//   - the live site's own published copy: Gelato, made to order near the
-//     buyer, museum-quality archival paper, 50x70cm as the common size, the
-//     three frame options, worldwide shipping (data/help.ts, app/delivery).
+//     by the 15th, the 14-day clearance, non-exclusivity, the artist keeping
+//     their IP, no price without consent, the 20% discount latitude,
+//     withdrawal at any time, 30 days' notice, who carries returns, the
+//     marketing licence, and promotional prints paid at the same rate.
+//   - the live site's own published copy: made to order near the buyer,
+//     museum-quality archival paper, 50x70cm as the common size, the three
+//     frame options, worldwide shipping (data/help.ts, app/delivery).
+//
+// One claim comes from neither: that the artists already on the roster have
+// checked prints of their own work and are happy with them. That is Mark's,
+// given in chat on 30 Aug. Treat it as his to stand behind, not as something
+// verified elsewhere on the site.
+//
+// The print partner is deliberately NOT named here, on Mark's steer of the
+// same day: artists don't warm to a print-on-demand brand, so the page sells
+// the paper and the artists' own verdict on it instead. Note that /delivery
+// and data/help.ts DO name Gelato publicly, so this is an omission rather
+// than a secret, and the two are not in conflict.
+//
+// Two promises in the agreement are deliberately NOT on this page, both cut by
+// Mark on 30 Aug: the monthly sales report (section 9) and the equitable
+// marketing commitment (section 14). We still owe both. They just read as
+// small print rather than as reasons to join, so don't reinstate either from
+// the agreement alone.
 //
 // Three things the agreement does NOT settle, so they are deliberately absent
 // rather than guessed at: file formats and resolution, how many pieces an
@@ -59,13 +76,12 @@ export const SECTIONS: HowItWorksSection[] = [
     heading: 'When you get paid',
     body: [
       "Monthly. A sale counts as final once the customer's 14-day return window has closed, and everything that cleared during a month is paid to you by the 15th of the next one.",
-      "You also get a monthly sales report: what sold, how many, and at what price. You shouldn't have to ask us how you're doing.",
     ],
   },
   {
     heading: 'How the prints are made',
     body: [
-      "Every print is made to order by our print partner, Gelato, at a facility as close to the customer as we can get, so the work doesn't travel further than it has to. It's printed on museum-quality archival paper. Most prints are 50x70cm, ordered either unframed or in a wood, black or white frame, and we ship worldwide.",
+      "Every print is made to order and produced as close to the customer as we can get, so the work doesn't travel further than it has to. It's printed on museum-quality archival paper, and the artists already with us have checked prints of their own work and are happy with what comes off the press. Most prints are 50x70cm, ordered either unframed or in a wood, black or white frame, and we ship worldwide.",
       "If a print turns up damaged or faulty, that's ours to fix and ours to pay for. If a customer simply changes their mind inside 30 days, we cover the delivery on that too. Neither comes off your share.",
     ],
   },
@@ -94,7 +110,6 @@ export const SECTIONS: HowItWorksSection[] = [
     heading: 'What you get on the site',
     body: [
       "Your own artist page: your portrait, a proper bio and your prints together in one place, linked from every print of yours we sell.",
-      "We market the work too, and we try to do that evenly across everyone we represent. If it ever looks to you like we aren't, say so. That's a conversation, not a complaint.",
     ],
   },
   {
