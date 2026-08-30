@@ -18,10 +18,14 @@
 //     on 30 Aug: they are buyer facts, and an artist deciding whether to join
 //     does not need the product spec.
 //
-// One claim comes from neither: that the artists already on the roster have
-// checked prints of their own work and are happy with them. That is Mark's,
-// given in chat on 30 Aug. Treat it as his to stand behind, not as something
-// verified elsewhere on the site.
+// Two claims come from neither, both Mark's in chat on 30 Aug and both his to
+// stand behind rather than verified elsewhere on the site: that the artists
+// already on the roster have checked prints of their own work and are happy
+// with them, and that we market across Instagram, Facebook and Pinterest.
+// (On the last: Megan's brief has Instagram and Facebook live since 5 Aug with
+// Pinterest awaiting its API review. Manual posting needs no API, so the claim
+// can be true while the automation is not. Flagged to Mark, not silently
+// changed.)
 //
 // The print partner is deliberately NOT named here, on Mark's steer of the
 // same day: artists don't warm to a print-on-demand brand, so the page sells
@@ -123,13 +127,14 @@ export const SECTIONS: HowItWorksSection[] = [
   {
     heading: 'What you get on the site',
     body: [
-      "Your own artist page: your portrait, a proper bio and your prints together in one place, linked from every print of yours we sell.",
+      "All your prints together in one place, in front of an international audience rather than a local one.",
+      "You get a profile of your own too, with a written bio, and we market the work across Instagram, Facebook and Pinterest.",
     ],
   },
   {
     heading: 'How to start',
     body: [
-      "Two ways in, and neither takes long. Fill in the form on the site, which is a few minutes' work, or write straight to hello@scandinavianart.co.uk if you would rather reply to whoever sent you this. Either way, tell us where you're based, what you make and why you think it would fit. A person reads every one.",
+      "Two ways in, and neither takes long. Fill in the form on the site, which is a few minutes' work, or write straight to hello@scandinavianart.co.uk. Either way, tell us where you're based, what you make and why you think it would fit. A person reads every one.",
       "If it's a yes, we'll come back to you about which pieces to start with and what files we need, and you'll see the full agreement in writing before you commit to anything.",
     ],
   },

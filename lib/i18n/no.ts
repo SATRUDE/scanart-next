@@ -312,13 +312,14 @@ export const no = {
       {
         heading: 'Hva du får på siden',
         body: [
-          'Din egen kunstnerside: portrettet ditt, en ordentlig biografi og trykkene dine samlet på ett sted, lenket fra hvert trykk av deg vi selger.',
+          'Alle trykkene dine samlet på ett sted, foran et internasjonalt publikum og ikke bare et lokalt.',
+          'Du får også en egen profil med en skrevet biografi, og vi markedsfører arbeidet på Instagram, Facebook og Pinterest.',
         ],
       },
       {
         heading: 'Slik kommer du i gang',
         body: [
-          'To veier inn, og ingen av dem tar lang tid. Fyll ut skjemaet på siden, som er noen få minutters arbeid, eller skriv rett til hello@scandinavianart.co.uk om du heller vil svare den som sendte deg denne. Uansett hvilken du velger: fortell hvor du holder til, hva du lager og hvorfor du tror det ville passe. Et menneske leser hvert eneste ett.',
+          'To veier inn, og ingen av dem tar lang tid. Fyll ut skjemaet på siden, som er noen få minutters arbeid, eller skriv rett til hello@scandinavianart.co.uk. Uansett hvilken du velger: fortell hvor du holder til, hva du lager og hvorfor du tror det ville passe. Et menneske leser hvert eneste ett.',
           'Blir det ja, kommer vi tilbake til deg om hvilke arbeider vi begynner med og hvilke filer vi trenger, og du får se hele avtalen skriftlig før du forplikter deg til noe.',
         ],
       },
