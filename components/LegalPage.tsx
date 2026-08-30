@@ -18,6 +18,10 @@ interface LegalPageProps {
   title: string;
   lastUpdated: string;
   sections: LegalSection[];
+  /** Optional lede between the title and section 1. The legal pages proper
+   *  (Privacy, Terms, Delivery) pass nothing and are unchanged; the artist
+   *  how-it-works page needs a sentence of context before the numbered list. */
+  intro?: React.ReactNode;
   // DRAFT-only banner. Remove (pass false / omit) once the wording is signed
   // off and the business details are filled in. See the three TODO_* below.
   draftNotice?: boolean;
@@ -32,7 +36,7 @@ interface LegalPageProps {
 // Shared layout for the legal pages (Privacy, Terms, Delivery & Returns),
 // matching Stan's Figma template (node 21:2): breadcrumb, centred title +
 // "Last updated", then left-aligned numbered sections in a narrow prose column.
-export const LegalPage: React.FC<LegalPageProps> = ({ title, lastUpdated, sections, draftNotice, strings }) => {
+export const LegalPage: React.FC<LegalPageProps> = ({ title, lastUpdated, sections, intro, draftNotice, strings }) => {
   const home = strings?.home ?? 'Home';
   const homeHref = strings?.homeHref ?? '/';
   const lastUpdatedLabel = strings?.lastUpdatedLabel ?? 'Last updated:';
@@ -62,6 +66,10 @@ export const LegalPage: React.FC<LegalPageProps> = ({ title, lastUpdated, sectio
             </p>
           )}
         </div>
+
+        {intro && (
+          <div className="mb-12 text-neutral-600 leading-relaxed space-y-3">{intro}</div>
+        )}
 
         <div className="space-y-8">
           {sections.map((section, i) => (

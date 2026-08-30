@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { artists } from '@/data/artists';
 import { getProductsByArtist } from '@/lib/products';
 import { ArtistsList, ArtistWithCount } from '@/components/ArtistsList';
-import { TrackedLink } from '@/components/TrackedLink';
+import { ArtistApplyBand } from '@/components/ArtistApplyBand';
 import { BASE_URL, socialCard } from '@/lib/site';
 import { hreflangPair } from '@/lib/i18n';
 import { no } from '@/lib/i18n/no';
@@ -69,22 +69,18 @@ export default async function NorwegianArtistsPage() {
         </div>
         <ArtistsList artists={withCounts} locale="no" printLabels={{ one: no.shared.printOne, other: no.shared.printOther }} />
 
-        {/* The twin of the band on app/artists/page.tsx. /no/artists/apply has
-            existed since the Norwegian tree landed, but nothing on the
+        {/* The twin of the band on app/(en)/artists/page.tsx. /no/artists/apply
+            has existed since the Norwegian tree landed, but nothing on the
             Norwegian side linked to it, so the roster was a dead end and the
             form was reachable only by typing the URL. */}
-        <section aria-labelledby="artist-apply" className="mt-16 rounded-xl bg-muted/30 p-6">
-          <h2 id="artist-apply" className="text-lg font-medium mb-2">{t.apply.heading}</h2>
-          <p className="text-neutral-600">{t.apply.body}</p>
-          <TrackedLink
-            event="artist-apply-click"
-            eventData={{ source: 'artists-index', locale: 'no' }}
-            href="/no/artists/apply"
-            className="mt-4 inline-block underline underline-offset-2 hover:text-neutral-900"
-          >
-            {t.apply.cta}
-          </TrackedLink>
-        </section>
+        <ArtistApplyBand
+          heading={t.apply.heading}
+          body={<p>{t.apply.body}</p>}
+          ctaLabel={t.apply.cta}
+          href="/no/artists/apply"
+          source="artists-index"
+          locale="no"
+        />
       </div>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
     </div>
