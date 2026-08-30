@@ -258,3 +258,68 @@ describe('hreflang return links', () => {
     }
   });
 });
+
+// ---------------------------------------------------------------------------
+// Every Norwegian page needs noPathFor to know it exists.
+//
+// noPathFor is an ALLOWLIST, and it decides three things at once: which
+// visitors middleware 302s into Norwegian, what the header language control
+// offers, and where a "Norsk" link points. A /no page missing from it is
+// therefore live and correct and completely unreachable from its English
+// twin, which is exactly how /artists/how-it-works shipped on 30 Aug: both
+// languages built, both deployed, and no route between them. I had removed a
+// hand-rolled language link on the reasoning that the header picker "already
+// finds the twin". It does, but only for paths on this list.
+//
+// So this walks the Norwegian tree and fails on any static page the function
+// cannot map. The gaps that exist today are named below with their reason,
+// which is the point: a NEW page cannot quietly join them.
+describe('noPathFor knows about every Norwegian page', () => {
+  const APP_NO = join(process.cwd(), 'app', '(no)', 'no');
+
+  /**
+   * Known, deliberate gaps. Widening noPathFor changes what a BUYER sees (it
+   * moves the 302), not merely where a link points, so these are Mark's call
+   * and carry their own ticket. Named here so they stay visible rather than
+   * becoming the silent default.
+   */
+  const KNOWN_GAPS = new Set([
+    '/products',
+    '/checkout',
+    '/feedback',
+    '/inspire',
+    '/journal',
+    '/privacy',
+    '/terms',
+    '/scandinavian-wall-art',
+  ]);
+
+  /** English paths of every STATIC page under app/(no)/no. */
+  const norwegianPages = (dir: string, prefix = ''): string[] =>
+    readdirSync(dir).flatMap(entry => {
+      const full = join(dir, entry);
+      if (statSync(full).isDirectory()) {
+        // Dynamic segments are covered by the pattern tests above.
+        if (entry.startsWith('[')) return [];
+        return norwegianPages(full, `${prefix}/${entry}`);
+      }
+      return entry === 'page.tsx' ? [prefix || '/'] : [];
+    });
+
+  it('maps every static Norwegian page back from its English path', () => {
+    const missing = norwegianPages(APP_NO)
+      .filter(en => !KNOWN_GAPS.has(en))
+      .filter(en => noPathFor(en) !== (en === '/' ? '/no' : `/no${en}`));
+
+    expect(
+      missing,
+      `These /no pages exist but noPathFor cannot reach them, so the language control offers nothing on the English page:\n${missing.join('\n')}`,
+    ).toEqual([]);
+  });
+
+  it('still maps the artist pages that this guard was written for', () => {
+    expect(noPathFor('/artists')).toBe('/no/artists');
+    expect(noPathFor('/artists/apply')).toBe('/no/artists/apply');
+    expect(noPathFor('/artists/how-it-works')).toBe('/no/artists/how-it-works');
+  });
+});
