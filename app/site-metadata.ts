@@ -38,13 +38,13 @@ export const siteMetadata: Metadata = {
     siteName: 'Scandinavian Art Gallery',
     locale: 'en_GB',
     type: 'website',
-    images: [{ url: '/images/scandinavian-art-gallery-og.jpg' }],
+    images: [{ url: '/images/scandinavian-art-gallery-og-wahlqvist.jpg' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Scandinavian Art Gallery | Framed Nordic Art Prints',
     description: 'Curated Scandinavian and Nordic art prints from independent artists. Framed or unframed, delivered worldwide.',
-    images: ['/images/scandinavian-art-gallery-og.jpg'],
+    images: ['/images/scandinavian-art-gallery-og-wahlqvist.jpg'],
     site: '@scandinavianart',
   },
 };
