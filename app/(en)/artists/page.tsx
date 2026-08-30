@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { artists } from '@/data/artists';
 import { getProductsByArtist } from '@/lib/products';
 import { ArtistsList, ArtistWithCount } from '@/components/ArtistsList';
-import { TrackedLink } from '@/components/TrackedLink';
+import { ArtistApplyBand } from '@/components/ArtistApplyBand';
 import { BASE_URL, socialCard } from '@/lib/site';
 import { hreflangPair } from '@/lib/i18n';
 
@@ -60,28 +60,20 @@ export default async function ArtistsPage() {
         <ArtistsList artists={withCounts} />
 
         {/* The inbound door for artist acquisition (Viggo scouts the outbound
-            half). Flat muted band rather than a bordered card: SA is flat by
-            default, and a tint avoids leaning on the weak border token.
-            Stan's original copy promised "we will reply either way". Removed:
-            whether we answer every applicant is still an open decision, and
-            the form itself deliberately stops short of the same promise, so
-            the two pages should not disagree. If Mark decides yes, it goes
-            back in both places. */}
-        <section aria-labelledby="artist-apply" className="mt-16 rounded-xl bg-muted/30 p-6">
-          <h2 id="artist-apply" className="text-lg font-medium mb-2">Are you an artist?</h2>
-          <p className="text-neutral-600">
-            We are a small gallery and we take on very few, but a person reads everything
-            that comes in. Tell us about your work.
-          </p>
-          <TrackedLink
-            event="artist-apply-click"
-            eventData={{ source: 'artists-index' }}
-            href="/artists/apply"
-            className="mt-4 inline-block underline underline-offset-2 hover:text-neutral-900"
-          >
-            Ask to be considered
-          </TrackedLink>
-        </section>
+            half). Shared with /no/artists and /artists/how-it-works; the design
+            and copy notes live on the component. */}
+        <ArtistApplyBand
+          heading="Are you an artist?"
+          body={
+            <p>
+              We are a small gallery and we take on very few, but a person reads everything
+              that comes in. Tell us about your work.
+            </p>
+          }
+          ctaLabel="Ask to be considered"
+          href="/artists/apply"
+          source="artists-index"
+        />
       </div>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
     </div>

@@ -115,8 +115,19 @@ export const SECTIONS: HowItWorksSection[] = [
   {
     heading: 'How to start',
     body: [
-      "Send us the form and tell us where you're based, what you make and why you think it fits. A person reads every one of them.",
+      "Two ways in, and neither takes long. Fill in the form on the site, which is a few minutes' work, or write straight to hello@scandinavianart.co.uk if you would rather reply to whoever sent you this. Either way, tell us where you're based, what you make and why you think it would fit. A person reads every one.",
       "If it's a yes, we'll come back to you about which pieces to start with and what files we need, and you'll see the full agreement in writing before you commit to anything.",
     ],
   },
 ];
+
+/** The apply band at the foot of the page. Same component as the one on
+ *  /artists, different copy: a reader who has got this far has read the terms,
+ *  so the band closes rather than introduces. No promise of a reply, matching
+ *  the form and the other bands. */
+export const BAND = {
+  heading: 'Ready to show us your work?',
+  bodyBefore: "It takes a few minutes, and a person reads every one. If you would rather write to us directly, we're at ",
+  bodyAfter: '.',
+  cta: 'Fill in the form',
+};

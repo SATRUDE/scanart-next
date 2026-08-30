@@ -246,7 +246,12 @@ export const no = {
     lastUpdated: '30. august 2026',
     lastUpdatedLabel: 'Sist oppdatert:',
     breadcrumbHome: 'Hjem',
-    applyCta: 'Vis oss arbeidet ditt',
+    band: {
+      heading: 'Klar til å vise oss arbeidet ditt?',
+      bodyBefore: 'Det tar noen minutter, og et menneske leser hvert eneste ett. Vil du heller skrive til oss direkte, finner du oss på ',
+      bodyAfter: '.',
+      cta: 'Fyll ut skjemaet',
+    },
     intro:
       'Vi er et lite galleri som selger skandinaviske og nordiske kunsttrykk, og vi tar inn svært få kunstnere. Vurderer du å ta kontakt, er dette nøyaktig hvordan det fungerer: hva det koster deg, hva du tjener, hvem som trykker arbeidet, og hva du beholder. Vi vil heller at du vet alt nå enn at du finner det ut senere.',
     sections: [
@@ -313,7 +318,7 @@ export const no = {
       {
         heading: 'Slik kommer du i gang',
         body: [
-          'Send oss skjemaet og fortell hvor du holder til, hva du lager og hvorfor du tror det passer. Et menneske leser hvert eneste ett.',
+          'To veier inn, og ingen av dem tar lang tid. Fyll ut skjemaet på siden, som er noen få minutters arbeid, eller skriv rett til hello@scandinavianart.co.uk om du heller vil svare den som sendte deg denne. Uansett hvilken du velger: fortell hvor du holder til, hva du lager og hvorfor du tror det ville passe. Et menneske leser hvert eneste ett.',
           'Blir det ja, kommer vi tilbake til deg om hvilke arbeider vi begynner med og hvilke filer vi trenger, og du får se hele avtalen skriftlig før du forplikter deg til noe.',
         ],
       },
