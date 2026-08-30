@@ -259,7 +259,6 @@ export const no = {
         heading: 'Hvem vi tar inn',
         body: [
           'Vi er små med vilje. Det er bare en håndfull kunstnere på siden, og hver enkelt er her fordi arbeidet står godt ved siden av de andre, ikke fordi de fylte et hull i en katalog.',
-          'Det er egentlig det meste av tilbudet. Trykkene dine er ikke én oppføring blant tusenvis. Noen kan se alle vi representerer i én rulling, og det er hele poenget.',
         ],
       },
       {

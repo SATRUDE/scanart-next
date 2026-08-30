@@ -56,7 +56,6 @@ export const SECTIONS: HowItWorksSection[] = [
     heading: 'Who we take on',
     body: [
       "We're deliberately small. There's only a handful of artists on the site, and each one is here because the work sits well beside the others, not because they filled a gap in a catalogue.",
-      "That's most of the offer, really. Your prints aren't one listing among thousands. Someone can see everyone we represent in a single scroll, and that's the point.",
     ],
   },
   {
