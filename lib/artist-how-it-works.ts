@@ -51,6 +51,13 @@
 // is why the page can say we cannot shorten it. Mark asked for that on 30 Aug,
 // and he is right that it reads better as law than as our policy.
 //
+// Section 5 opens on the artist sending files and us holding them, added on
+// Mark's prompt of 30 Aug: it is the first thing an artist actually does and
+// the page skipped straight past it. Kept deliberately plain. We do not
+// describe HOW the files are kept (no storage, encryption or backup claims),
+// because none of that is written down anywhere and an unverifiable security
+// promise is the worst kind to make.
+//
 // Three things the agreement does NOT settle, so they are deliberately absent
 // rather than guessed at: file formats and resolution, how many pieces an
 // artist starts with, and how long we take to reply. Section 10 says we will
@@ -99,7 +106,8 @@ export const SECTIONS: HowItWorksSection[] = [
   {
     heading: 'How the prints are made',
     body: [
-      "Every print is made to order and produced as close to the customer as we can get, so the work doesn't travel further than it has to. It's printed on museum-quality archival paper, and the artists already with us have checked prints of their own work and are happy with what comes off the press.",
+      "It starts with your files. You send them once, we keep them safe, and nothing is printed until somebody orders it. We'll tell you exactly what we need when we get that far.",
+      "Each order is then produced as close to the customer as we can get, so the work doesn't travel further than it has to. It's printed on museum-quality archival paper, and the artists already with us have checked prints of their own work and are happy with what comes off the press.",
       "If a print turns up damaged or faulty, that's ours to fix and ours to pay for. If a customer simply changes their mind inside 14 days, we cover the delivery on that too. Neither comes off your share.",
     ],
   },

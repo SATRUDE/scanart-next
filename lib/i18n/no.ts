@@ -284,7 +284,8 @@ export const no = {
       {
         heading: 'Slik lages trykkene',
         body: [
-          'Hvert trykk lages på bestilling og produseres så nært kunden som vi klarer, slik at arbeidet ikke reiser lenger enn det må. Det trykkes på arkivpapir av museumskvalitet, og kunstnerne som allerede er med oss har sett trykk av sitt eget arbeid og er fornøyde med det som kommer ut.',
+          'Det begynner med filene dine. Du sender dem én gang, vi tar vare på dem, og ingenting trykkes før noen bestiller. Vi sier nøyaktig hva vi trenger når vi kommer så langt.',
+          'Hver bestilling produseres så nært kunden som vi klarer, slik at arbeidet ikke reiser lenger enn det må. Det trykkes på arkivpapir av museumskvalitet, og kunstnerne som allerede er med oss har sett trykk av sitt eget arbeid og er fornøyde med det som kommer ut.',
           'Kommer et trykk frem skadet eller med feil, er det vårt å ordne og vårt å betale for. Ombestemmer kunden seg innen 14 dager, dekker vi frakten på det også. Ingen av delene går ut over din andel.',
         ],
       },
