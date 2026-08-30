@@ -278,13 +278,14 @@ export const no = {
         heading: 'Når du får betalt',
         body: [
           'Månedlig. Et salg regnes som endelig når kundens angrefrist på 14 dager har gått ut, og alt som er gjort opp i løpet av en måned utbetales til deg innen den 15. i den neste.',
+          'De 14 dagene er ikke våre å bestemme. Angreretten gir alle som handler på nett den fristen, og vi kan ikke korte den ned, så det er den delen av ventetiden ingen her har valgt.',
         ],
       },
       {
         heading: 'Slik lages trykkene',
         body: [
-          'Hvert trykk lages på bestilling og produseres så nært kunden som vi klarer, slik at arbeidet ikke reiser lenger enn det må. Det trykkes på arkivpapir av museumskvalitet, og kunstnerne som allerede er med oss har sett trykk av sitt eget arbeid og er fornøyde med det som kommer ut. De fleste trykkene er 50x70 cm, og bestilles enten uten ramme eller med ramme i tre, sort eller hvit. Vi sender til hele verden.',
-          'Kommer et trykk frem skadet eller med feil, er det vårt å ordne og vårt å betale for. Ombestemmer kunden seg innen 30 dager, dekker vi frakten på det også. Ingen av delene går ut over din andel.',
+          'Hvert trykk lages på bestilling og produseres så nært kunden som vi klarer, slik at arbeidet ikke reiser lenger enn det må. Det trykkes på arkivpapir av museumskvalitet, og kunstnerne som allerede er med oss har sett trykk av sitt eget arbeid og er fornøyde med det som kommer ut.',
+          'Kommer et trykk frem skadet eller med feil, er det vårt å ordne og vårt å betale for. Ombestemmer kunden seg innen 14 dager, dekker vi frakten på det også. Ingen av delene går ut over din andel.',
         ],
       },
       {

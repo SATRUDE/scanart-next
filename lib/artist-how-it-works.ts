@@ -12,9 +12,11 @@
 //     their IP, no price without consent, the 20% discount latitude,
 //     withdrawal at any time, 30 days' notice, who carries returns, the
 //     marketing licence, and promotional prints paid at the same rate.
-//   - the live site's own published copy: made to order near the buyer,
-//     museum-quality archival paper, 50x70cm as the common size, the three
-//     frame options, worldwide shipping (data/help.ts, app/delivery).
+//   - the live site's own published copy: made to order near the buyer, and
+//     museum-quality archival paper (data/help.ts, app/delivery). Sizes,
+//     frame options and worldwide shipping were here too until Mark cut them
+//     on 30 Aug: they are buyer facts, and an artist deciding whether to join
+//     does not need the product spec.
 //
 // One claim comes from neither: that the artists already on the roster have
 // checked prints of their own work and are happy with them. That is Mark's,
@@ -32,6 +34,18 @@
 // marketing commitment (section 14). We still owe both. They just read as
 // small print rather than as reasons to join, so don't reinstate either from
 // the agreement alone.
+//
+// The change-of-mind window is 14 days, NOT the 30 the agreement's section 7c
+// states. Mark settled it on 30 Aug when I put the discrepancy to him. 14 is
+// what /delivery and data/help.ts have published all along, and it is the
+// statutory figure, so the agreement is the document that needs correcting
+// here, not this page. Do not "fix" this back to 30 from the contract.
+//
+// The 14-day clearance is in the agreement AND is a statutory right: the
+// withdrawal period for distance selling is 14 days under Norwegian
+// angrerettloven and the UK's Consumer Contracts Regulations 2013 alike, which
+// is why the page can say we cannot shorten it. Mark asked for that on 30 Aug,
+// and he is right that it reads better as law than as our policy.
 //
 // Three things the agreement does NOT settle, so they are deliberately absent
 // rather than guessed at: file formats and resolution, how many pieces an
@@ -75,13 +89,14 @@ export const SECTIONS: HowItWorksSection[] = [
     heading: 'When you get paid',
     body: [
       "Monthly. A sale counts as final once the customer's 14-day return window has closed, and everything that cleared during a month is paid to you by the 15th of the next one.",
+      "The 14 days aren't ours to set. Consumer law gives anyone buying online that right, and we can't shorten it, so it's the one part of the wait that nobody here chose.",
     ],
   },
   {
     heading: 'How the prints are made',
     body: [
-      "Every print is made to order and produced as close to the customer as we can get, so the work doesn't travel further than it has to. It's printed on museum-quality archival paper, and the artists already with us have checked prints of their own work and are happy with what comes off the press. Most prints are 50x70cm, ordered either unframed or in a wood, black or white frame, and we ship worldwide.",
-      "If a print turns up damaged or faulty, that's ours to fix and ours to pay for. If a customer simply changes their mind inside 30 days, we cover the delivery on that too. Neither comes off your share.",
+      "Every print is made to order and produced as close to the customer as we can get, so the work doesn't travel further than it has to. It's printed on museum-quality archival paper, and the artists already with us have checked prints of their own work and are happy with what comes off the press.",
+      "If a print turns up damaged or faulty, that's ours to fix and ours to pay for. If a customer simply changes their mind inside 14 days, we cover the delivery on that too. Neither comes off your share.",
     ],
   },
   {
