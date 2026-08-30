@@ -3,7 +3,12 @@ import type { Metadata } from 'next';
 export const BASE_URL = 'https://www.scandinavianart.co.uk';
 
 // The site-wide social sharing image, also the layout default (app/layout.tsx).
-export const OG_IMAGE = '/images/scandinavian-art-gallery-og.jpg';
+//
+// A NEW filename rather than a replaced file, deliberately: Facebook, LinkedIn
+// and Slack cache an og:image against its URL, so overwriting the old path
+// would have left every existing share showing the previous picture for weeks.
+// Cropped to 1200x630, which is the ratio the previews actually render.
+export const OG_IMAGE = '/images/scandinavian-art-gallery-og-wahlqvist.jpg';
 
 // Shared social-card identity, mirrored in app/layout.tsx. Kept here so pages
 // that build their own openGraph/twitter (article, artist) restate the same
