@@ -253,7 +253,7 @@ export const no = {
       cta: 'Fyll ut skjemaet',
     },
     intro:
-      'Vi er et lite galleri som selger skandinaviske og nordiske kunsttrykk, og vi tar inn svært få kunstnere. Vurderer du å ta kontakt, er dette nøyaktig hvordan det fungerer: hva det koster deg, hva du tjener, hvem som trykker arbeidet, og hva du beholder. Vi vil heller at du vet alt nå enn at du finner det ut senere.',
+      'Vi er et lite galleri som selger skandinaviske og nordiske kunsttrykk, og vi tar inn svært få kunstnere. Vurderer du å ta kontakt, er dette nøyaktig hvordan det fungerer: hva det koster deg, hva du tjener, hvem som trykker arbeidet, og hva du beholder. Vi vil heller at du vet alt nå enn at du finner det ut senere. Alt sammen står i den skriftlige avtalen vi ville signert med deg, så ingenting av det hviler på hva noen husker.',
     sections: [
       {
         heading: 'Hvem vi tar inn',
@@ -284,7 +284,8 @@ export const no = {
       {
         heading: 'Slik lages trykkene',
         body: [
-          'Hvert trykk lages på bestilling og produseres så nært kunden som vi klarer, slik at arbeidet ikke reiser lenger enn det må. Det trykkes på arkivpapir av museumskvalitet, og kunstnerne som allerede er med oss har sett trykk av sitt eget arbeid og er fornøyde med det som kommer ut.',
+          'Det begynner med filene dine. Du sender dem én gang, vi tar vare på dem, og ingenting trykkes før noen bestiller. Vi sier nøyaktig hva vi trenger når vi kommer så langt.',
+          'Hver bestilling produseres så nært kunden som vi klarer, slik at arbeidet ikke reiser lenger enn det må. Det trykkes på arkivpapir av museumskvalitet, og kunstnerne som allerede er med oss har sett trykk av sitt eget arbeid og er fornøyde med det som kommer ut.',
           'Kommer et trykk frem skadet eller med feil, er det vårt å ordne og vårt å betale for. Ombestemmer kunden seg innen 14 dager, dekker vi frakten på det også. Ingen av delene går ut over din andel.',
         ],
       },
