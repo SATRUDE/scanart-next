@@ -233,6 +233,95 @@ export const no = {
     },
   },
 
+  /** The unlisted artist how-it-works page. Norwegian is not optional here:
+   *  most of the roster and most prospects are Norwegian, and this is the link
+   *  Mark sends them. Mirrors lib/artist-how-it-works.ts section for section;
+   *  keep the two in step when the terms change, and bump both dates. */
+  artistsHowItWorks: {
+    meta: {
+      title: 'Slik fungerer det å selge trykk hos oss',
+      description: 'Hva det koster, hva du tjener, hvem som trykker arbeidet og hva du beholder.',
+    },
+    pageTitle: 'Slik fungerer det å selge trykk hos oss',
+    lastUpdated: '30. august 2026',
+    lastUpdatedLabel: 'Sist oppdatert:',
+    breadcrumbHome: 'Hjem',
+    applyCta: 'Vis oss arbeidet ditt',
+    intro:
+      'Vi er et lite galleri som selger skandinaviske og nordiske kunsttrykk, og vi tar inn svært få kunstnere. Vurderer du å ta kontakt, er dette nøyaktig hvordan det fungerer: hva det koster deg, hva du tjener, hvem som trykker arbeidet, og hva du beholder. Vi vil heller at du vet alt nå enn at du finner det ut senere.',
+    sections: [
+      {
+        heading: 'Hvem vi tar inn',
+        body: [
+          'Vi er små med vilje. Det er bare en håndfull kunstnere på siden, og hver enkelt er her fordi arbeidet står godt ved siden av de andre, ikke fordi de fylte et hull i en katalog.',
+          'Det er egentlig det meste av tilbudet. Trykkene dine er ikke én oppføring blant tusenvis. Noen kan se alle vi representerer i én rulling, og det er hele poenget.',
+        ],
+      },
+      {
+        heading: 'Hva det koster deg',
+        body: [
+          'Ingenting. Det er gratis å bli lagt ut. Du betaler ikke for å være på siden, du betaler ikke for trykking, og du betaler ikke for innramming, pakking eller frakt. Vi tar alt sammen, og vi tjener bare penger når du gjør det.',
+        ],
+      },
+      {
+        heading: 'Hva du tjener',
+        body: [
+          'Når et trykk selges, trekkes kostnaden ved å trykke det og få det frem til kunden fra salget først. Det som står igjen deles, og 60 % av det er ditt.',
+          'Kampanjetrykk fungerer på samme måte. Vil vi sende et trykk til en stylist eller et magasin, spør vi deg først, og du får betalt for det akkurat som om noen hadde kjøpt det.',
+        ],
+      },
+      {
+        heading: 'Når du får betalt',
+        body: [
+          'Månedlig. Et salg regnes som endelig når kundens angrefrist på 14 dager har gått ut, og alt som er gjort opp i løpet av en måned utbetales til deg innen den 15. i den neste.',
+          'Du får også en månedlig salgsrapport: hva som ble solgt, hvor mange, og til hvilken pris. Du skal slippe å spørre oss om hvordan det går.',
+        ],
+      },
+      {
+        heading: 'Slik lages trykkene',
+        body: [
+          'Hvert trykk lages på bestilling av trykkpartneren vår, Gelato, så nært kunden som vi klarer, slik at arbeidet ikke reiser lenger enn det må. Det trykkes på arkivpapir av museumskvalitet. De fleste trykkene er 50x70 cm, og bestilles enten uten ramme eller med ramme i tre, sort eller hvit. Vi sender til hele verden.',
+          'Kommer et trykk frem skadet eller med feil, er det vårt å ordne og vårt å betale for. Ombestemmer kunden seg innen 30 dager, dekker vi frakten på det også. Ingen av delene går ut over din andel.',
+        ],
+      },
+      {
+        heading: 'Arbeidet ditt forblir ditt',
+        body: [
+          'Du beholder alle immaterielle rettigheter til arbeidet ditt. Vi har lisens til å gjengi det for trykkene vi selger og til å bruke det i vår egen markedsføring av galleriet, og det er hele omfanget. Vi kan ikke selge det videre, lisensiere det til andre eller bruke det til noe annet enn å promotere trykkene.',
+          'Ingenting av dette er eksklusivt heller. Du står fritt til å selge det samme bildet gjennom din egen butikk, et annet galleri eller hvor som helst ellers samtidig. Vi ville aldri be deg velge.',
+        ],
+      },
+      {
+        heading: 'Du godkjenner hver pris',
+        body: [
+          'Ingen av trykkene dine legges ut til en pris du ikke har godkjent. Vi foreslår en, du sier ja eller ikke, og ingenting listes før du har gjort det.',
+          'Det ene slingringsmonnet vi tar oss, er rabatt. Vi kan kjøre et salg på opptil 20 % uten å komme tilbake til deg hver gang. Går vi dypere enn det, spør vi.',
+        ],
+      },
+      {
+        heading: 'Du kan ta ned arbeid, og du kan slutte',
+        body: [
+          'Du kan trekke et hvilket som helst arbeid fra siden når som helst, og du trenger ikke gi oss en grunn. Vi tar det av salg.',
+          'Å avslutte samarbeidet helt krever 30 dagers skriftlig varsel, fra begge sider. Det er ingen bindingstid, ingen minsteperiode og ingenting å betale.',
+        ],
+      },
+      {
+        heading: 'Hva du får på siden',
+        body: [
+          'Din egen kunstnerside: portrettet ditt, en ordentlig biografi og trykkene dine samlet på ett sted, lenket fra hvert trykk av deg vi selger.',
+          'Vi markedsfører også arbeidet, og vi prøver å gjøre det jevnt på tvers av alle vi representerer. Ser det noen gang ut for deg som at vi ikke gjør det, si fra. Det er en samtale, ikke en klage.',
+        ],
+      },
+      {
+        heading: 'Slik kommer du i gang',
+        body: [
+          'Send oss skjemaet og fortell hvor du holder til, hva du lager og hvorfor du tror det passer. Et menneske leser hvert eneste ett.',
+          'Blir det ja, kommer vi tilbake til deg om hvilke arbeider vi begynner med og hvilke filer vi trenger, og du får se hele avtalen skriftlig før du forplikter deg til noe.',
+        ],
+      },
+    ],
+  },
+
   help: {
     meta: {
       title: 'Hjelp',
