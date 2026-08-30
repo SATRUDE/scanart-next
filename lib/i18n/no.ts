@@ -253,7 +253,7 @@ export const no = {
       cta: 'Fyll ut skjemaet',
     },
     intro:
-      'Vi er et lite galleri som selger skandinaviske og nordiske kunsttrykk, og vi tar inn svært få kunstnere. Vurderer du å ta kontakt, er dette nøyaktig hvordan det fungerer: hva det koster deg, hva du tjener, hvem som trykker arbeidet, og hva du beholder. Vi vil heller at du vet alt nå enn at du finner det ut senere.',
+      'Vi er et lite galleri som selger skandinaviske og nordiske kunsttrykk, og vi tar inn svært få kunstnere. Vurderer du å ta kontakt, er dette nøyaktig hvordan det fungerer: hva det koster deg, hva du tjener, hvem som trykker arbeidet, og hva du beholder. Vi vil heller at du vet alt nå enn at du finner det ut senere. Alt sammen står i den skriftlige avtalen vi ville signert med deg, så ingenting av det hviler på hva noen husker.',
     sections: [
       {
         heading: 'Hvem vi tar inn',

@@ -51,6 +51,13 @@
 // is why the page can say we cannot shorten it. Mark asked for that on 30 Aug,
 // and he is right that it reads better as law than as our policy.
 //
+// The intro names the written agreement, on Mark's prompt of 30 Aug: the page
+// described the terms without ever saying they are contractual, which reads as
+// a set of nice promises rather than something an artist can hold us to. It is
+// the strongest reassurance on the page and it was missing. Section 10 already
+// said they would see the agreement before committing; that stays, as the
+// practical follow-through rather than a repeat.
+//
 // Section 5 opens on the artist sending files and us holding them, added on
 // Mark's prompt of 30 Aug: it is the first thing an artist actually does and
 // the page skipped straight past it. Kept deliberately plain. We do not
@@ -74,7 +81,7 @@ export interface HowItWorksSection {
 export const LAST_UPDATED = '30 August 2026';
 
 export const INTRO =
-  "We're a small gallery selling Scandinavian and Nordic art prints, and we take on very few artists. If you're weighing up whether to get in touch, here's exactly how it works: what it costs you, what you earn, who does the printing, and what you keep. We'd rather you knew all of it now than found it out later.";
+  "We're a small gallery selling Scandinavian and Nordic art prints, and we take on very few artists. If you're weighing up whether to get in touch, here's exactly how it works: what it costs you, what you earn, who does the printing, and what you keep. We'd rather you knew all of it now than found it out later. All of it is in the written agreement we'd sign with you, so none of it depends on anyone's memory.";
 
 export const SECTIONS: HowItWorksSection[] = [
   {
