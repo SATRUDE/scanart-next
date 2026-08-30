@@ -8,6 +8,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { getLowestProductPrices } from '@/lib/pricing';
 import { SmartImage } from '@/components/SmartImage';
 import { printImageAlt } from '@/lib/product-image-alt';
+import { shouldTrackSiteSearch } from '@/lib/site-search-signal';
 import { getArtistById } from '@/data/artists';
 import { getCategoryLandingByCategory } from '@/lib/categories';
 import { collections } from '@/lib/collections';
@@ -123,13 +124,18 @@ export const ProductsGrid: React.FC<ProductsGridProps> = ({
   // Each submitted search is a visitor stating demand in their own words, the
   // on-site twin of the GSC query report; results: 0 is a catalogue-gap signal.
   // The ref fires one event per query so re-sorts don't re-count the search.
+  //
+  // A search against an empty catalogue is not recorded at all: it would report
+  // results: 0 and read as a gap when the truth is that there was nothing to
+  // search. See lib/site-search-signal.ts for the case that prompted this.
   const resultCount = filteredProducts.length;
   const lastTrackedQuery = React.useRef('');
   useEffect(() => {
-    if (!searchQuery || lastTrackedQuery.current === searchQuery) return;
+    if (!shouldTrackSiteSearch(searchQuery, products.length)) return;
+    if (lastTrackedQuery.current === searchQuery) return;
     lastTrackedQuery.current = searchQuery;
     track('site-search', { query: searchQuery, results: resultCount });
-  }, [searchQuery, resultCount]);
+  }, [searchQuery, resultCount, products.length]);
 
   return (
     <div>
