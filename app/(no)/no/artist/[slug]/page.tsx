@@ -17,7 +17,7 @@ import { PrintCard } from '@/components/PrintCard';
 import { ArtistsList, type ArtistWithCount } from '@/components/ArtistsList';
 import { BASE_URL, OG_IMAGE, SITE_NAME, TWITTER_SITE } from '@/lib/site';
 import { hreflangPair } from '@/lib/i18n';
-import { metaSnippet } from '@/lib/meta-snippet';
+import { artistMetaDescription, artistMetaTitle } from '@/lib/artist-meta';
 import { no } from '@/lib/i18n/no';
 
 // The Norwegian artist pages: app/artist/[slug]/page.tsx mirrored exactly
@@ -62,20 +62,21 @@ export async function generateMetadata({
   if (!artist) return {};
 
   const copy = no.artists[artist.slug];
-  const desc = copy?.bio || artist.bio || `${no.artistPage.metaDescriptionPrefix} ${artist.name} - Scandinavian Art Gallery`;
-  // Same trim as the English twin: the Norwegian bio is body copy, so only its
-  // opening sentence goes in the snippet fields. The full bio still reaches the
-  // page body and the Person JSON-LD below.
-  const snippet = metaSnippet(desc);
+  // Same shape as the English twin: the offer leads, the biography distinguishes.
+  // The Norwegian wording is the Norwegian homepage's own, not a translation of
+  // the English. The full bio still reaches the page body and the Person JSON-LD
+  // below.
+  const title = artistMetaTitle(artist.name, 'no');
+  const snippet = artistMetaDescription(artist.name, copy?.bio || artist.bio, 'no');
   return {
-    title: artist.name,
+    title,
     description: snippet,
     alternates: {
       canonical: `/no/artist/${artist.slug}`,
       languages: hreflangPair(`/artist/${artist.slug}`),
     },
     openGraph: {
-      title: artist.name,
+      title,
       description: snippet,
       url: `${BASE_URL}/no/artist/${artist.slug}`,
       siteName: SITE_NAME,
@@ -86,7 +87,7 @@ export async function generateMetadata({
     twitter: {
       card: 'summary_large_image',
       site: TWITTER_SITE,
-      title: artist.name,
+      title,
       description: snippet,
       images: [artist.image || OG_IMAGE],
     },

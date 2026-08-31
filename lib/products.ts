@@ -79,7 +79,18 @@ export async function getAllProducts(): Promise<Product[]> {
       );
     }
     return published.map(p => convertNotionProductToProduct(p, offered));
-  } catch {
+  } catch (error) {
+    // An unreadable catalogue is UNKNOWN, not empty, and the two used to be
+    // indistinguishable downstream: every product surface renders empty and a
+    // site search reports zero results for a query the catalogue would have
+    // matched. Saying so out loud is the same principle as the retired-price
+    // warning above, which this file already follows for the data it parses but
+    // did not follow for the read itself.
+    console.error(
+      `Could not read the catalogue at ${filePath}. Treating it as empty for this render, ` +
+        `so product surfaces will be blank rather than wrong:`,
+      error
+    );
     return [];
   }
 }
