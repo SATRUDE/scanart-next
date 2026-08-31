@@ -11,6 +11,7 @@ import {
   latestSitemapDate,
   sitemapDate,
 } from '@/lib/sitemap-dates';
+import { productSitemapImages, siteImage } from '@/lib/product-sitemap-images';
 
 // The date the Norwegian translations of the hand-dated static pages went
 // live; bump by hand when the Norwegian wording changes, as with the English
@@ -32,16 +33,6 @@ function pairAlternates(enPath: string) {
   const en = `${BASE_URL}${enPath}`;
   const noUrl = `${BASE_URL}/no${enPath}`;
   return { languages: { en, no: noUrl, 'x-default': en } };
-}
-
-// Absolute URL for a site-relative image path, matching how the product and
-// article pages build their JSON-LD/OG image URLs (new URL(path, BASE_URL)).
-// Empty and externally-hosted images (e.g. an article hero hotlinked from
-// another domain) are skipped so the image sitemap only ever references our
-// own domain, which is what Google expects for the <image:image> extension.
-function siteImage(src: string | undefined): string | undefined {
-  if (!src || /^https?:\/\//i.test(src)) return undefined;
-  return new URL(src, BASE_URL).toString();
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -174,12 +165,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         ];
       }),
     ...products.map(p => {
-      // the print itself, plus a distinct secondary shot where one exists
-      const images = [...new Set(
-        [siteImage(p.image), siteImage(p.secondaryImage)].filter(
-          (u): u is string => Boolean(u)
-        )
-      )];
+      const images = productSitemapImages(p);
       return {
         url: `${BASE_URL}/product/${p.slug}`,
         lastModified: catalogueDate(productEdited[p.slug]),
@@ -192,11 +178,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // The Norwegian twin of every product page (phase 3). Same date and same
     // images as the English entry, and the two declare each other via hreflang.
     ...products.map(p => {
-      const images = [...new Set(
-        [siteImage(p.image), siteImage(p.secondaryImage)].filter(
-          (u): u is string => Boolean(u)
-        )
-      )];
+      const images = productSitemapImages(p);
       return {
         url: `${BASE_URL}/no/product/${p.slug}`,
         lastModified: catalogueDate(productEdited[p.slug]),

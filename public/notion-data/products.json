@@ -12,7 +12,7 @@
     "featured": false,
     "published": true,
     "image": "/images/products/dancer.png",
-    "secondaryImage": "https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/composed/_edit_2026-08-08-1786206620578_2x_upscaled_1786206677013-png-1786694955122.png",
+    "secondaryImage": "/images/products/dancer-room.avif",
     "availableSizes": [
       "50x70cm"
     ],
@@ -124,7 +124,7 @@
     "featured": false,
     "published": true,
     "image": "/images/products/half-man.png",
-    "secondaryImage": "https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/inspire/inspire-05-1786005117457.jpg",
+    "secondaryImage": "/images/products/half-man-room.avif",
     "availableSizes": [
       "50x50cm"
     ],
@@ -152,7 +152,7 @@
     "featured": false,
     "published": true,
     "image": "/images/products/hummer-og-vin.png",
-    "secondaryImage": "https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/composed/image__7__2x_upscaled_1784624339256-png-1785928391126.png",
+    "secondaryImage": "/images/products/hummer-og-vin-room.avif",
     "availableSizes": [
       "50x70cm"
     ],
@@ -179,7 +179,7 @@
     "featured": false,
     "published": true,
     "image": "/images/products/Hyttefrokost.png",
-    "secondaryImage": "https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/inspire/inspire-01-1786005113826.jpg",
+    "secondaryImage": "/images/products/hyttefrokost-room.avif",
     "availableSizes": [
       "50x70cm"
     ],
@@ -234,7 +234,7 @@
     "featured": true,
     "published": true,
     "image": "/images/products/mean-snothing.png",
-    "secondaryImage": "https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/composed/_test_2026-07-20-1784579791165_2x_upscaled_1784629394218-png-1785928384524.png",
+    "secondaryImage": "/images/products/mean-snothing-room.avif",
     "availableSizes": [
       "50x50cm"
     ],
