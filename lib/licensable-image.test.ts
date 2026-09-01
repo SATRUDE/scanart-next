@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
 import { IMAGE_LICENCE_URL, productImageLd } from './licensable-image';
+import { productSitemapImages, siteImage } from './product-sitemap-images';
 import { getAllProducts } from './products';
 import { BASE_URL } from './site';
 
@@ -91,13 +92,34 @@ describe('against the real catalogue', () => {
     const products = await getAllProducts();
 
     for (const product of products) {
-      // app/sitemap.ts sends the print plus a distinct secondary shot, deduped.
-      const sitemapImages = [
-        ...new Set([product.image, product.secondaryImage].filter(Boolean)),
-      ];
+      // Ask the sitemap's own helper rather than re-deriving the list here.
+      // The earlier version of this test rebuilt it from `image` and
+      // `secondaryImage` directly and so left out `siteImage`, which drops an
+      // externally-hosted URL. That made the assertion vacuous for any product
+      // whose scene was hotlinked: the JSON-LD declared two images, the sitemap
+      // declared one, and this test passed.
+      const sitemapImages = productSitemapImages(product);
       const ld = productImageLd(product, `/product/${product.slug}`);
 
-      expect(ld).toHaveLength(sitemapImages.length);
+      expect(ld, product.slug).toHaveLength(sitemapImages.length);
     }
+  });
+
+  it('serves every catalogue image from our own domain, so the sitemap can declare it', async () => {
+    const products = await getAllProducts();
+
+    // Google accepts an image URL on another domain "as long as you verify both
+    // domains in Search Console", which we cannot do for a Blob host we do not
+    // own. So a hotlinked scene is silently absent from Google Images. Five
+    // prints shipped that way between 2026-08-17 and 2026-08-31; this keeps the
+    // sixth from happening quietly.
+    const hotlinked = products.flatMap(p =>
+      [p.image, p.secondaryImage]
+        .filter((src): src is string => Boolean(src?.trim()))
+        .filter(src => siteImage(src) === undefined)
+        .map(src => `${p.slug}: ${src}`)
+    );
+
+    expect(hotlinked).toEqual([]);
   });
 });
