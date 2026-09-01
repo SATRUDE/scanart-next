@@ -8,7 +8,9 @@ import { BASE_URL } from '@/lib/site';
 import {
   catalogueDate,
   latestCatalogueDate,
+  latestNorwegianCatalogueDate,
   latestSitemapDate,
+  norwegianCatalogueDate,
   sitemapDate,
 } from '@/lib/sitemap-dates';
 import { productSitemapImages, siteImage } from '@/lib/product-sitemap-images';
@@ -78,7 +80,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE_URL}/no/delivery`, lastModified: NO_TRANSLATED, priority: 0.3, changeFrequency: 'yearly', alternates: pairAlternates('/delivery') },
     // Phase 3, 2026-08-21: the shop itself. Dated by the same content that
     // dates their English twins, so a catalogue change moves both.
-    { url: `${BASE_URL}/no/products`, lastModified: latestCatalogueDate(productDates), priority: 0.9, changeFrequency: 'weekly', alternates: pairAlternates('/products') },
+    { url: `${BASE_URL}/no/products`, lastModified: latestNorwegianCatalogueDate(productDates), priority: 0.9, changeFrequency: 'weekly', alternates: pairAlternates('/products') },
     { url: `${BASE_URL}/no/inspire`, lastModified: NO_TRANSLATED_SHOP, priority: 0.7, changeFrequency: 'weekly', alternates: pairAlternates('/inspire') },
     { url: `${BASE_URL}/no/journal`, lastModified: latestSitemapDate(articleDates), priority: 0.8, changeFrequency: 'weekly', alternates: pairAlternates('/journal') },
     { url: `${BASE_URL}/no/scandinavian-wall-art`, lastModified: latestCatalogueDate(productDates), priority: 0.8, changeFrequency: 'weekly', alternates: pairAlternates('/scandinavian-wall-art') },
@@ -97,18 +99,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE_URL}/nordic-art`, lastModified: latestCatalogueDate(productDates), priority: 0.8, changeFrequency: 'weekly' },
     // category landing pages exist only for categories with published work; a
     // category page changes when one of its prints does. Each has a Norwegian
-    // twin under /no/category (same params, same product-driven date), and
-    // the two entries declare each other via hreflang alternates.
+    // twin under /no/category built from the same prints, but dated with the
+    // Norwegian floor rather than the English one, because the /no page is
+    // younger than the records behind it. The two entries declare each other
+    // via hreflang alternates.
     ...categoryLandings
       .filter(cat => products.some(p => p.category === cat.category))
       .flatMap(cat => {
-        const lastModified = latestCatalogueDate(
-          products
-            .filter(p => p.category === cat.category)
-            .map(p => productEdited[p.slug])
-            .filter(Boolean)
-            .map(d => new Date(d))
-        );
+        const dates = products
+          .filter(p => p.category === cat.category)
+          .map(p => productEdited[p.slug])
+          .filter(Boolean)
+          .map(d => new Date(d));
+        const lastModified = latestCatalogueDate(dates);
+        const noLastModified = latestNorwegianCatalogueDate(dates);
         const alternates = pairAlternates(`/category/${cat.slug}`);
         return [
           {
@@ -120,7 +124,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           },
           {
             url: `${BASE_URL}/no/category/${cat.slug}`,
-            lastModified,
+            lastModified: noLastModified,
             priority: 0.7 as const,
             changeFrequency: 'weekly' as const,
             alternates,
@@ -137,15 +141,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       })
       .filter(({ featured }) => featured.length > 0)
       // Each has a Norwegian twin under /no/collection since phase 2
-      // (2026-08-21): same curation, same print-driven date, and the two
-      // entries declare each other via hreflang alternates.
+      // (2026-08-21): same curation, but dated at the Norwegian floor, and the
+      // two entries declare each other via hreflang alternates.
       .flatMap(({ col, featured }) => {
-        const lastModified = latestCatalogueDate(
-          featured
-            .map(p => productEdited[p.slug])
-            .filter(Boolean)
-            .map(d => new Date(d))
-        );
+        const dates = featured
+          .map(p => productEdited[p.slug])
+          .filter(Boolean)
+          .map(d => new Date(d));
+        const lastModified = latestCatalogueDate(dates);
+        const noLastModified = latestNorwegianCatalogueDate(dates);
         const alternates = pairAlternates(`/collection/${col.slug}`);
         return [
           {
@@ -157,7 +161,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           },
           {
             url: `${BASE_URL}/no/collection/${col.slug}`,
-            lastModified,
+            lastModified: noLastModified,
             priority: 0.7 as const,
             changeFrequency: 'weekly' as const,
             alternates,
@@ -181,7 +185,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       const images = productSitemapImages(p);
       return {
         url: `${BASE_URL}/no/product/${p.slug}`,
-        lastModified: catalogueDate(productEdited[p.slug]),
+        // Floored at the Norwegian launch, not the English record's date: this
+        // page is younger than the record it describes. See NORWEGIAN_SHOP_LAUNCH.
+        lastModified: norwegianCatalogueDate(productEdited[p.slug]),
         priority: 0.7 as const,
         changeFrequency: 'monthly' as const,
         alternates: pairAlternates(`/product/${p.slug}`),

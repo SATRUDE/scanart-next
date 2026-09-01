@@ -2,10 +2,13 @@ import { describe, expect, it } from 'vitest';
 
 import {
   CATALOGUE_REVISED,
+  NORWEGIAN_SHOP_LAUNCH,
   SITE_LAUNCH,
   catalogueDate,
   latestCatalogueDate,
+  latestNorwegianCatalogueDate,
   latestSitemapDate,
+  norwegianCatalogueDate,
   sitemapDate,
 } from './sitemap-dates';
 
@@ -140,5 +143,71 @@ describe('the two floors together', () => {
     // be the stamp-everything pattern Google learns to discount.
     expect(sitemapDate(REAL_2026_EDIT)).toEqual(new Date(REAL_2026_EDIT));
     expect(sitemapDate(REAL_2026_EDIT).getTime()).toBeLessThan(CATALOGUE_REVISED.getTime());
+  });
+});
+
+// The Norwegian shop shipped on 2026-08-22 (PR #173) and is dated from the day
+// the translation was finished. Every /no catalogue page therefore describes a
+// record older than itself, which is what these tests pin.
+describe('norwegianCatalogueDate', () => {
+  it('floors a date that predates the Norwegian shop at its launch', () => {
+    // The exact failure measured on the live sitemap on 2026-09-01: all 16
+    // /no/product URLs claimed 2026-08-13, nine days before they existed.
+    expect(norwegianCatalogueDate('2026-08-13T00:00:00.000Z')).toEqual(
+      NORWEGIAN_SHOP_LAUNCH
+    );
+    expect(norwegianCatalogueDate(NOTION_2025)).toEqual(NORWEGIAN_SHOP_LAUNCH);
+  });
+
+  it('passes through a genuine edit made after the Norwegian launch', () => {
+    expect(norwegianCatalogueDate(AFTER_CATALOGUE_REVISED)).toEqual(
+      new Date(AFTER_CATALOGUE_REVISED)
+    );
+  });
+
+  it('floors a missing or unparseable date at the Norwegian launch', () => {
+    expect(norwegianCatalogueDate(null)).toEqual(NORWEGIAN_SHOP_LAUNCH);
+    expect(norwegianCatalogueDate('not a date')).toEqual(
+      NORWEGIAN_SHOP_LAUNCH
+    );
+  });
+
+  it('is never earlier than the English floor it sits above', () => {
+    // The whole point of the helper: a /no page is never dated older than its
+    // English twin would be. If CATALOGUE_REVISED is ever bumped past the
+    // Norwegian launch this must follow it rather than fall behind.
+    const floor = Math.max(
+      CATALOGUE_REVISED.getTime(),
+      NORWEGIAN_SHOP_LAUNCH.getTime()
+    );
+    expect(norwegianCatalogueDate(NOTION_2025).getTime()).toBe(floor);
+    expect(
+      norwegianCatalogueDate(NOTION_2025).getTime()
+    ).toBeGreaterThanOrEqual(catalogueDate(NOTION_2025).getTime());
+  });
+});
+
+describe('latestNorwegianCatalogueDate', () => {
+  it('floors a set of pre-launch dates at the Norwegian launch', () => {
+    expect(
+      latestNorwegianCatalogueDate([NOTION_2025, NOTION_2025_LATER])
+    ).toEqual(NORWEGIAN_SHOP_LAUNCH);
+  });
+
+  it('takes the newest date when one is after the Norwegian launch', () => {
+    expect(
+      latestNorwegianCatalogueDate([NOTION_2025, AFTER_CATALOGUE_REVISED])
+    ).toEqual(new Date(AFTER_CATALOGUE_REVISED));
+  });
+
+  it('gives the Norwegian launch for an empty list', () => {
+    expect(latestNorwegianCatalogueDate([])).toEqual(NORWEGIAN_SHOP_LAUNCH);
+  });
+
+  it('never reports a Norwegian landing as older than its English twin', () => {
+    const dates = [NOTION_2025, NOTION_2025_LATER];
+    expect(
+      latestNorwegianCatalogueDate(dates).getTime()
+    ).toBeGreaterThanOrEqual(latestCatalogueDate(dates).getTime());
   });
 });
