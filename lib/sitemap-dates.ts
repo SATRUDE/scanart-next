@@ -57,6 +57,26 @@ export const SITE_LAUNCH = new Date('2026-04-14T00:00:00.000Z');
  */
 export const CATALOGUE_REVISED = new Date('2026-08-13T00:00:00.000Z');
 
+/**
+ * When the Norwegian shop went live: the catalogue, the product pages, the
+ * category and collection landings and the Inspire wall under /no, shipped in
+ * PR #173 on 2026-08-22 and dated from the day the translation was finished.
+ *
+ * This is the same argument as SITE_LAUNCH, one level down. A Norwegian product
+ * page reads its date from the English product's Notion record, and every one
+ * of those predates the Norwegian page existing: measured on the live sitemap
+ * on 2026-09-01, all 16 /no/product URLs reported 2026-08-13, nine days before
+ * the pages were built. lastmod is a crawl-scheduling hint, so a URL Google
+ * first discovered on 22 August that claims it was last modified on the 13th is
+ * telling Google there has never been anything new to fetch. All 16 sat at
+ * "Discovered - currently not indexed" with no crawl ever recorded.
+ *
+ * BUMP THIS only when the Norwegian shop's own wording genuinely changes, on
+ * the same terms as CATALOGUE_REVISED: a date moved to "now" on every build is
+ * the stamp-everything pattern Google learns to discount.
+ */
+export const NORWEGIAN_SHOP_LAUNCH = new Date('2026-08-21T00:00:00.000Z');
+
 /** A usable Date, or null for missing, unparseable or non-finite input. */
 function parse(value: string | Date | null | undefined): Date | null {
   if (!value) return null;
@@ -120,4 +140,39 @@ export function latestCatalogueDate(
   values: (string | Date | null | undefined)[]
 ): Date {
   return latestFlooredAt(CATALOGUE_REVISED, values);
+}
+
+/**
+ * The lastmod for a single Norwegian catalogue page (/no/product/<slug>): the
+ * English record's own date, but never earlier than the Norwegian shop went
+ * live. The English twin keeps catalogueDate; only the /no entry gets this
+ * floor, because only the /no page is younger than the record it describes.
+ */
+export function norwegianCatalogueDate(
+  value: string | Date | null | undefined
+): Date {
+  return flooredAt(norwegianFloor(), value);
+}
+
+/**
+ * The lastmod for a Norwegian page derived from several catalogue records
+ * (/no/products, /no/category/<slug>, /no/collection/<slug>): the most recent
+ * of them, never earlier than the Norwegian shop went live.
+ */
+export function latestNorwegianCatalogueDate(
+  values: (string | Date | null | undefined)[]
+): Date {
+  return latestFlooredAt(norwegianFloor(), values);
+}
+
+/**
+ * The floor for Norwegian catalogue pages. Whichever of the two floors is
+ * later, so this stays correct if CATALOGUE_REVISED is ever bumped past the
+ * Norwegian launch: a /no page is never older than its English twin's floor,
+ * and never older than the day the Norwegian shop shipped.
+ */
+function norwegianFloor(): Date {
+  return CATALOGUE_REVISED.getTime() > NORWEGIAN_SHOP_LAUNCH.getTime()
+    ? CATALOGUE_REVISED
+    : NORWEGIAN_SHOP_LAUNCH;
 }
