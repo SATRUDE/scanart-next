@@ -6,9 +6,9 @@ import { FullWidthImage } from '@/components/FullWidthImage';
 import { BASE_URL, socialCard } from '@/lib/site';
 import { EYE_LEVEL_CM } from '@/lib/gallery-wall-calculator';
 
-const PAGE_TITLE = 'Gallery wall planner';
+const PAGE_TITLE = 'Gallery Wall Planner: Plan Your Wall to Scale';
 const PAGE_DESCRIPTION =
-  'Plan a gallery wall to scale. Set your wall, drag the prints into place, and read the hanging measurements straight off the drawing.';
+  'Free gallery wall planner. Enter your wall, drag the prints into place and read the hanging measurements off a to-scale drawing: spacing, height above the floor, where every hook goes.';
 
 /**
  * English only for now, like /nordic-art: no /no twin, so no hreflang pair.
@@ -16,8 +16,11 @@ const PAGE_DESCRIPTION =
  * links follow it.
  */
 export const metadata: Metadata = {
-  title: PAGE_TITLE,
+  // Absolute, as on /nordic-art: the layout's "| Scandinavian Art Gallery"
+  // suffix would push the query this page targets past Google's display cut.
+  title: { absolute: `${PAGE_TITLE} | Scandinavian Art` },
   description: PAGE_DESCRIPTION,
+  keywords: ['gallery wall planner', 'gallery wall layout', 'how to plan a gallery wall', 'gallery wall spacing', 'picture hanging height'],
   alternates: { canonical: '/gallery-wall-planner' },
   ...socialCard({
     title: PAGE_TITLE,
@@ -42,6 +45,30 @@ const RULES = [
   },
 ];
 
+/**
+ * The questions people bring to a gallery wall, answered from the same numbers
+ * the planner uses. Also the page's FAQPage schema, so an answer can show in
+ * search as one.
+ */
+const FAQ = [
+  {
+    question: 'How far apart should frames be on a gallery wall?',
+    answer: 'Between 5 and 8 cm, and the same distance between rows as between prints. Closer and the frames crowd each other; wider and they stop reading as one group. The planner clicks prints to exactly the gap you set.',
+  },
+  {
+    question: 'How high should a gallery wall be hung?',
+    answer: `Hang the group so its centre - the centre of the whole arrangement, not of each print - sits at about ${EYE_LEVEL_CM} cm from the floor. That is the convention galleries hang to. Above a sofa or sideboard, leave 15 to 25 cm between the furniture and the lowest frame.`,
+  },
+  {
+    question: 'How do I plan a gallery wall layout before drilling?',
+    answer: 'Measure the wall, decide the gap, and lay the arrangement out to scale first. The planner draws your wall with the prints on it and writes the measurements on the drawing, so you know each frame’s left edge and its top edge from the floor before you mark anything. Frames usually hang 3 to 5 cm below their hook.',
+  },
+  {
+    question: 'Which print sizes work together on a gallery wall?',
+    answer: 'Mixing one portrait size with one square size is the simplest way to get a wall that looks arranged rather than stacked: 50 × 70 cm portraits with 50 × 50 cm squares share a width, so columns line up while the heights vary. Every arrangement in the planner uses those two sizes.',
+  },
+];
+
 export default function GalleryWallPlannerPage() {
   return (
     <div className="min-h-screen">
@@ -55,6 +82,8 @@ export default function GalleryWallPlannerPage() {
             src="/images/journal/gallery-wall-living-room.jpg"
             alt="A gallery wall of framed prints above a sofa in a Scandinavian living room"
             className="absolute inset-0 h-full w-full object-cover"
+            fetchPriority="high"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-black/45 md:bg-transparent" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/45 to-transparent" />
@@ -93,7 +122,7 @@ export default function GalleryWallPlannerPage() {
         <div className="container mx-auto px-8">
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
             <div className="lg:col-span-1">
-              <h2 className="mb-0 text-3xl text-neutral-900">How the planner works</h2>
+              <h2 className="mb-0 text-3xl text-neutral-900">How to plan a gallery wall with it</h2>
             </div>
             <div className="lg:col-span-2">
               <p className="mb-4 text-lg leading-relaxed text-neutral-600">
@@ -110,7 +139,7 @@ export default function GalleryWallPlannerPage() {
 
           <div className="mt-16 grid grid-cols-1 gap-6 lg:grid-cols-3">
             <div className="lg:col-span-1">
-              <h2 className="mb-0 text-3xl text-neutral-900">Three rules for a wall that looks meant</h2>
+              <h2 className="mb-0 text-3xl text-neutral-900">Gallery wall spacing and height: three rules</h2>
             </div>
             <div className="lg:col-span-2 grid gap-8 sm:grid-cols-3">
               {RULES.map(rule => (
@@ -119,12 +148,40 @@ export default function GalleryWallPlannerPage() {
                   <p className="mt-2 text-sm leading-relaxed text-neutral-600">{rule.body}</p>
                 </div>
               ))}
-              <div className="sm:col-span-3">
-                <Link href="/article/create-an-art-wall" className="inline-flex h-10 items-center justify-center rounded-md border border-gray-200 bg-background px-4 py-2 text-sm font-medium text-foreground hover:bg-gray-50 hover:text-gray-900">
-                  Read the full guide to creating an art wall
-                </Link>
-              </div>
             </div>
+          </div>
+
+          <div className="mt-16 grid grid-cols-1 gap-6 lg:grid-cols-3">
+            <div className="lg:col-span-1">
+              <h2 className="mb-0 text-3xl text-neutral-900">Gallery wall questions</h2>
+            </div>
+            <dl className="lg:col-span-2 divide-y divide-neutral-200">
+              {FAQ.map(item => (
+                <div key={item.question} className="py-5 first:pt-0 last:pb-0">
+                  <dt className="text-base font-medium text-neutral-900">{item.question}</dt>
+                  <dd className="mt-2 text-base leading-relaxed text-neutral-600">{item.answer}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+
+          <div className="mt-16 grid grid-cols-1 gap-6 lg:grid-cols-3">
+            <div className="lg:col-span-1">
+              <h2 className="mb-0 text-3xl text-neutral-900">Keep reading</h2>
+            </div>
+            <nav aria-label="Related guides" className="lg:col-span-2 flex flex-col gap-3 text-base">
+              {[
+                ['/article/create-an-art-wall', 'How to create an art wall with multiple pieces'],
+                ['/article/how-to-frame-an-art-print', 'How to frame an art print, and the size trap to avoid'],
+                ['/article/complete-guide-choosing-print-sizes', 'The complete guide to choosing print sizes for your home'],
+                ['/article/how-to-style-scandinavian-wall-art-living-room', 'How to style Scandinavian wall art in your living room'],
+                ['/article/scandinavian-wall-decor-ideas', 'Scandinavian wall decor ideas: eight ways to dress a wall'],
+              ].map(([href, label]) => (
+                <Link key={href} href={href} className="text-neutral-800 underline decoration-neutral-300 underline-offset-4 transition-colors hover:text-neutral-900 hover:decoration-neutral-900">
+                  {label}
+                </Link>
+              ))}
+            </nav>
           </div>
         </div>
       </section>
@@ -132,6 +189,20 @@ export default function GalleryWallPlannerPage() {
       <QualityPromise />
       <FullWidthImage />
 
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: FAQ.map(item => ({
+              '@type': 'Question',
+              name: item.question,
+              acceptedAnswer: { '@type': 'Answer', text: item.answer },
+            })),
+          }),
+        }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
