@@ -56,7 +56,7 @@ const SNAP_RADIUS_CM = 10;
 /** A sofa for scale: a typical three-seater. */
 const SOFA = { width: 200, height: 85 };
 /** Stands in for the ceiling when no wall height is given. */
-const TYPICAL_CEILING = 260;
+const TYPICAL_CEILING = 250;
 
 /**
  * Ids for the first render come from POSITION, so the server and the client
@@ -656,7 +656,17 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
       </div>
 
       {/* ------------------------------------------------------ the wall */}
-      <div className="mt-5">
+      {/* The drawing bleeds past the article column - half again as wide,
+          within the viewport - while the text around it stays in the column.
+          Done with margins, not a transform: a transformed ancestor would
+          become the containing block of the fixed copy under the pointer. */}
+      <div
+        className="mt-5"
+        style={{
+          width: 'min(150%, calc(100vw - 2rem))',
+          marginLeft: 'calc((100% - min(150%, calc(100vw - 2rem))) / 2)',
+        }}
+      >
         <div
           ref={wallRef}
           role="group"
@@ -668,7 +678,11 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
           className="gw-wall relative mx-auto select-none overflow-hidden border border-neutral-300 bg-[#f7f6f3]"
           style={{
             aspectRatio: `${drawWidth} / ${drawHeight}`,
-            width: `min(100%, calc(62vh * ${drawWidth} / ${drawHeight}))`,
+            // Full width of the bleed; the height follows. A floor-to-ceiling
+            // drawing of a normal wall is nearly square, so at this width it
+            // can run taller than the viewport - accepted, as a picture in an
+            // article does. The cap only stops a narrow wall becoming a tower.
+            width: `min(100%, calc(120vh * ${drawWidth} / ${drawHeight}))`,
             minHeight: '260px',
             touchAction: 'none',
           }}
