@@ -204,6 +204,24 @@ export interface ChromeAriaStrings {
   inspireStrip: string;
   /** Prefixed to ": Norsk, GBP". */
   languageAndCurrency: string;
+  /** The gallery wall planner's drawing: the group, its toolbar, and remove. */
+  wallPlanner: {
+    wall: string;
+    selectedPrint: string;
+    removePrint: string;
+    addFirst: string;
+    /** One per side of a print. */
+    addSide: { left: string; right: string; above: string; below: string };
+    wontFit: string;
+    heightMarker: string;
+    startFrom: string;
+    sofaSwitch: string;
+    linesSwitch: string;
+    copyLink: string;
+    reset: string;
+    expand: string;
+    collapse: string;
+  };
 }
 
 export const chromeAria: Record<Locale, ChromeAriaStrings> = {
@@ -220,6 +238,22 @@ export const chromeAria: Record<Locale, ChromeAriaStrings> = {
     },
     inspireStrip: 'Be inspired: see our prints in real rooms',
     languageAndCurrency: 'Language and currency',
+    wallPlanner: {
+      wall: 'Your wall. Each print is a button: arrow keys nudge it by a centimetre, with Shift by ten; S changes its size; Delete removes it.',
+      selectedPrint: 'Selected print',
+      removePrint: 'Remove this print',
+      addFirst: 'Add the first print',
+      addSide: { left: 'Add a print to the left of this one', right: 'Add a print to the right of this one', above: 'Add a print above this one', below: 'Add a print below this one' },
+      wontFit: 'It would not fit the wall',
+      heightMarker: 'Height of the group above the floor. Drag, or use the arrow keys.',
+      startFrom: 'Start from an arrangement',
+      sofaSwitch: 'Show a sofa for scale',
+      linesSwitch: 'Show the measurement lines',
+      copyLink: 'Copy a link to this wall',
+      reset: 'Start again from the default wall',
+      expand: 'Fill the screen',
+      collapse: 'Close full screen',
+    },
   },
   no: {
     cart: {
@@ -234,6 +268,22 @@ export const chromeAria: Record<Locale, ChromeAriaStrings> = {
     },
     inspireStrip: 'La deg inspirere: se trykkene våre i ekte rom',
     languageAndCurrency: 'Språk og valuta',
+    wallPlanner: {
+      wall: 'Veggen din. Hvert trykk er en knapp: piltastene flytter det én centimeter, med Shift ti; S endrer størrelsen; Delete fjerner det.',
+      selectedPrint: 'Valgt trykk',
+      removePrint: 'Fjern dette trykket',
+      addFirst: 'Legg til det første trykket',
+      addSide: { left: 'Legg til et trykk til venstre for dette', right: 'Legg til et trykk til høyre for dette', above: 'Legg til et trykk over dette', below: 'Legg til et trykk under dette' },
+      wontFit: 'Det ville ikke få plass på veggen',
+      heightMarker: 'Gruppens høyde over gulvet. Dra, eller bruk piltastene.',
+      startFrom: 'Start fra et oppsett',
+      sofaSwitch: 'Vis en sofa for skala',
+      linesSwitch: 'Vis målelinjene',
+      copyLink: 'Kopier en lenke til denne veggen',
+      reset: 'Begynn på nytt med standardveggen',
+      expand: 'Fyll skjermen',
+      collapse: 'Lukk fullskjerm',
+    },
   },
 };
 

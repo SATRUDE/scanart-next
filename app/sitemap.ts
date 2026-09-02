@@ -97,6 +97,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE_URL}/scandinavian-wall-art`, lastModified: latestCatalogueDate(productDates), priority: 0.8, changeFrequency: 'weekly', alternates: pairAlternates('/scandinavian-wall-art') },
     // English-only for now: no /no sibling yet, so no alternates pair.
     { url: `${BASE_URL}/nordic-art`, lastModified: latestCatalogueDate(productDates), priority: 0.8, changeFrequency: 'weekly' },
+    // The planner: a tool, not a catalogue page, so dated by its last change.
+    { url: `${BASE_URL}/gallery-wall-planner`, lastModified: new Date('2026-09-02'), priority: 0.7, changeFrequency: 'monthly' },
     // category landing pages exist only for categories with published work; a
     // category page changes when one of its prints does. Each has a Norwegian
     // twin under /no/category built from the same prints, but dated with the
