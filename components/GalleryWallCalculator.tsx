@@ -5,6 +5,7 @@ import { TrackedLink } from '@/components/TrackedLink';
 import {
   calculateGalleryWall,
   formatCentimetres,
+  alignFromDrag,
   movePrintTo,
   PRINT_SIZES,
   type PrintAlign,
@@ -29,6 +30,10 @@ const ALIGNMENTS: { value: PrintAlign; label: string; glyph: string }[] = [
 ];
 
 const MAX_PRINTS = 12;
+
+/** Centimetres of wall a drag must travel before it counts as a row change.
+ *  Below this, vertical movement snaps the print within its own row. */
+const ROW_CHANGE_CM = 55;
 
 /** Where a print is, and where a drag would put it. */
 type Position = { row: number; index: number };
@@ -68,6 +73,11 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
      *  refuses: a ref read while rendering can be a frame stale, and on a drag
      *  that is exactly when it shows. */
     step: number;
+    /** Centimetres of wall per pixel of preview, so a vertical drag can be
+     *  read in the units the wall is measured in. */
+    cmPerPx: number;
+    /** Which of the three places the print will land on when released. */
+    align: PrintAlign;
   } | null>(null);
 
   /**
@@ -167,10 +177,24 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
     });
     const here = geometryRef.current.filter(g => g.row === row).sort((a, b) => a.x - b.x);
     const step = here.length > 1 ? here[1].x - here[0].x : 60;
+    // The scale, read off the print being dragged: its rendered height in
+    // pixels against its real height in centimetres. Vertical work is then
+    // done in centimetres, so the feel does not change with the preview size.
+    const rect = target.getBoundingClientRect();
+    const realHeight = PRINT_SIZES[safeRows[row][index].size].height;
+    const cmPerPx = rect.height > 0 ? realHeight / rect.height : 1;
     dragStartRef.current = { x: clientX, y: clientY };
     target.setPointerCapture(pointerId);
     draggingRef.current = true;
-    setDrag({ from: { row, index }, over: { row, index }, dx: 0, dy: 0, step });
+    setDrag({
+      from: { row, index },
+      over: { row, index },
+      dx: 0,
+      dy: 0,
+      step,
+      cmPerPx,
+      align: safeRows[row][index].align,
+    });
   };
 
   const moveDrag = (clientX: number, clientY: number) => {
@@ -191,6 +215,22 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
         const inRow = geometry.filter(g => g.row === ri);
         return inRow.length ? inRow.reduce((sum, g) => sum + g.y, 0) / inRow.length : 0;
       });
+      // HYSTERESIS. A print must be dragged a whole band away before it
+      // changes row; anything less snaps it within its own row instead.
+      // Without this the two gestures fight each other.
+      const dyCm = dy * current.cmPerPx;
+      if (Math.abs(dyCm) < ROW_CHANGE_CM) {
+        const row = safeRows[current.from.row] ?? [];
+        const self = row[current.from.index];
+        const inRow = geometry.filter(g => g.row === current.from.row).sort((a, b) => a.x - b.x);
+        let index = inRow.filter(g => centreX > g.x).length;
+        if (index > current.from.index) index -= 1;
+        const align = self
+          ? alignFromDrag(self, result.rowHeights[current.from.row] ?? 0, dyCm)
+          : current.align;
+        return { ...current, dx, dy, over: { row: current.from.row, index }, align };
+      }
+
       let over: Position;
       const firstRowTop = rowCentres[0] ?? 0;
       const lastRowBottom = rowCentres.at(-1) ?? 0;
@@ -217,12 +257,23 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
   const endDrag = () => {
     draggingRef.current = false;
     if (!drag) return;
-    const { from, over } = drag;
-    const same = from.row === over.row && from.index === over.index;
-    if (!same) setSettling(true);
+    const { from, over, align } = drag;
+    const samePlace = from.row === over.row && from.index === over.index;
+    const wasAlign = rows[from.row]?.[from.index]?.align;
+    const realigned = wasAlign !== undefined && wasAlign !== align;
+    if (!samePlace || realigned) setSettling(true);
     setDrag(null);
-    if (same) return;
-    setRows(prev => movePrintTo(prev, from, over));
+    if (samePlace && !realigned) return;
+    setRows(prev => {
+      const withAlign = prev.map((r, ri) =>
+        ri === from.row ? r.map((print, i) => (i === from.index ? { ...print, align } : print)) : r
+      );
+      return samePlace ? withAlign : movePrintTo(withAlign, from, over);
+    });
+    if (samePlace) {
+      setOrderMessage(align === 'centre' ? 'Print centred in its row.' : `Print snapped to the ${align} of its row.`);
+      return;
+    }
     setOrderMessage(
       over.row === -1 ? 'Print moved to a new row above.'
       : over.row >= rows.length ? 'Print moved to a new row below.'
@@ -414,12 +465,21 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
                         height: print.height === 70 ? '62px' : '46px',
                         // The row is as tall as its tallest print; a shorter
                         // one hangs at the top, centre or bottom of that band.
-                        alignSelf: wallPrint.align === 'top' ? 'flex-start' : wallPrint.align === 'bottom' ? 'flex-end' : 'center',
+                        // While dragging, show the place it will SNAP to
+                        // rather than following the finger, which is what
+                        // makes three positions feel like three positions.
+                        alignSelf: (isDragging ? (drag?.align ?? wallPrint.align) : wallPrint.align) === 'top'
+                          ? 'flex-start'
+                          : (isDragging ? (drag?.align ?? wallPrint.align) : wallPrint.align) === 'bottom'
+                            ? 'flex-end'
+                            : 'center',
                         // The dragged print tracks the pointer with no
                         // transition, or it would lag behind the finger.
                         // Everything else eases, which is the whole feel.
+                        // Horizontal follows the pointer; vertical does not,
+                        // because vertically there are only three places to be.
                         transform: isDragging
-                          ? `translate(${drag?.dx ?? 0}px, ${drag?.dy ?? 0}px) scale(1.06)`
+                          ? `translateX(${drag?.dx ?? 0}px) scale(1.06)`
                           : `translateX(${shift}px)`,
                         transition: isDragging || settling ? 'none' : 'transform 180ms cubic-bezier(0.2, 0, 0, 1)',
                         touchAction: 'none',

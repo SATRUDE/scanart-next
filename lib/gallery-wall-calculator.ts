@@ -208,3 +208,35 @@ export function alignmentOffset(
   const fraction = print.align === 'top' ? 0 : print.align === 'bottom' ? 1 : 0.5;
   return { slack, offset: slack * fraction };
 }
+
+/**
+ * Which of the three resting places a vertical drag has landed on.
+ *
+ * Three, not a free offset. A print can hang level with the top of its row,
+ * centred in it, or level with the bottom - and nothing in between, because
+ * a wall that is ALMOST aligned looks worse than one that obviously is not,
+ * and because those three are the only positions anyone hanging prints is
+ * actually aiming for.
+ *
+ * `slack` is the room the print has to move in, so a drag of a few pixels on
+ * a print with 20 cm of slack lands where the same drag on one with 2 cm does:
+ * the thresholds are proportions of the space, not absolute distances.
+ */
+export function alignFromDrag(
+  print: WallPrint,
+  rowHeight: number,
+  dragCm: number
+): PrintAlign {
+  const slack = Math.max(0, rowHeight - PRINT_SIZES[print.size].height);
+  if (slack === 0) return print.align;
+
+  // Where the print's top edge is now, as a fraction of the slack.
+  const startFraction = print.align === 'top' ? 0 : print.align === 'bottom' ? 1 : 0.5;
+  const proposed = startFraction + dragCm / slack;
+
+  // Nearest of the three, with the boundaries a quarter of the way in so the
+  // centre is not a hair-trigger between the two edges.
+  if (proposed < 0.25) return 'top';
+  if (proposed > 0.75) return 'bottom';
+  return 'centre';
+}

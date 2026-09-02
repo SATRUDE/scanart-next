@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   PRINT_SIZES,
+  alignFromDrag,
   alignmentOffset,
   calculateGalleryWall,
   formatCentimetres,
@@ -208,5 +209,50 @@ describe('alignment and the arithmetic', () => {
     const wall: WallPrint[][] = [[p('50x50', 'bottom')], [p('50x70')]];
     expect(movePrintTo(wall, { row: 0, index: 0 }, { row: 1, index: 1 }))
       .toEqual([[p('50x70'), p('50x50', 'bottom')]]);
+  });
+});
+
+describe('alignFromDrag', () => {
+  const square = p('50x50');           // 20 cm of slack in a 70 cm row
+  const tall = p('50x70');             // no slack at all
+
+  it('snaps to the top when dragged up from centre', () => {
+    expect(alignFromDrag(p('50x50', 'centre'), 70, -8)).toBe('top');
+  });
+
+  it('snaps to the bottom when dragged down from centre', () => {
+    expect(alignFromDrag(p('50x50', 'centre'), 70, 8)).toBe('bottom');
+  });
+
+  it('stays centred for a small drag, so a twitch does not move it', () => {
+    expect(alignFromDrag(square, 70, 1)).toBe('centre');
+    expect(alignFromDrag(square, 70, -1)).toBe('centre');
+  });
+
+  it('lands on the centre coming from an edge, rather than jumping past it', () => {
+    // The point of the quarter boundaries: dragging a top-aligned print down
+    // reaches centre before it reaches bottom.
+    expect(alignFromDrag(p('50x50', 'top'), 70, 10)).toBe('centre');
+    expect(alignFromDrag(p('50x50', 'bottom'), 70, -10)).toBe('centre');
+  });
+
+  it('reaches the far edge on a long drag', () => {
+    expect(alignFromDrag(p('50x50', 'top'), 70, 20)).toBe('bottom');
+    expect(alignFromDrag(p('50x50', 'bottom'), 70, -20)).toBe('top');
+  });
+
+  it('never moves a print that has no slack, whatever the drag', () => {
+    // The tallest print in its row sets the line; it has nowhere to go.
+    for (const dragCm of [-40, -5, 0, 5, 40]) {
+      expect(alignFromDrag(tall, 70, dragCm)).toBe('centre');
+    }
+    expect(alignFromDrag(p('50x70', 'top'), 70, 30)).toBe('top');
+  });
+
+  it('scales with the slack, not with absolute centimetres', () => {
+    // The same 6 cm drag: decisive on a print with little room, not on one
+    // with plenty. Otherwise a drag feels different per print size.
+    expect(alignFromDrag(p('50x50', 'centre'), 58, 6)).toBe('bottom');
+    expect(alignFromDrag(p('50x50', 'centre'), 200, 6)).toBe('centre');
   });
 });
