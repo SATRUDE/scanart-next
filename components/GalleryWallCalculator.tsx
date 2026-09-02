@@ -353,7 +353,9 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
     const high = drawHeight - box.h / 2;
     let next = Math.min(high, Math.max(low, wanted));
     if (snapping) for (const target of centreSnaps()) if (Math.abs(next - target) < 3) next = target;
-    setCentre(Math.round(next * 2) / 2);
+    // Whole centimetres. Half steps made the readout churn twice as fast as
+    // the hand moved, which read as a glitch rather than a measurement.
+    setCentre(Math.round(next));
   };
 
   const onMarkerPointerDown = (event: React.PointerEvent<HTMLElement>) => {
@@ -372,7 +374,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
     if (!delta) return;
     event.preventDefault();
     moveCentreTo(safeCentre + delta, false);
-    announce(`Group centre ${formatCentimetres(Math.round((safeCentre + delta) * 2) / 2)} from the floor.`);
+    announce(`Group centre ${formatCentimetres(Math.round(safeCentre + delta))} from the floor.`);
   };
 
   const pxPerCm = () => {
@@ -805,9 +807,9 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
               {groupDragging && (
                 <>
                   <div className="pointer-events-none absolute inset-x-0 border-t border-dashed border-neutral-900/40" style={{ top: y(safeCentre) }} />
-                  <Dimension axis="y" from={0} to={groupBottom} at={drawWidth - 3} x={x} y={y} h={h} label={`${formatCentimetres(round(groupBottom))} to floor`} labelSide="left" transition="none" />
+                  <Dimension axis="y" from={0} to={groupBottom} at={drawWidth - 3} x={x} y={y} h={h} label={`${formatCentimetres(Math.round(groupBottom))} to floor`} labelSide="left" transition="none" />
                   {safeWallHeight !== undefined && groupTop < safeWallHeight && (
-                    <Dimension axis="y" from={groupTop} to={safeWallHeight} at={drawWidth - 3} x={x} y={y} h={h} label={`${formatCentimetres(round(safeWallHeight - groupTop))} to ceiling`} labelSide="left" transition="none" />
+                    <Dimension axis="y" from={groupTop} to={safeWallHeight} at={drawWidth - 3} x={x} y={y} h={h} label={`${formatCentimetres(Math.round(safeWallHeight - groupTop))} to ceiling`} labelSide="left" transition="none" />
                   )}
                 </>
               )}
@@ -822,12 +824,20 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
                 onPointerDown={onMarkerPointerDown}
                 onKeyDown={onMarkerKey}
                 title="Drag to move the whole group up or down"
-                className={`absolute right-0 z-20 flex -translate-y-1/2 cursor-ns-resize items-center gap-1 rounded-l-md border border-r-0 bg-white py-1 pl-2 pr-2.5 text-[11px] tabular-nums shadow-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring ${groupDragging ? 'border-neutral-900 text-neutral-900' : 'border-neutral-300 text-neutral-700 hover:border-neutral-900 hover:text-neutral-900'}`}
+                // A fixed width and whole numbers, so the tab never changes
+                // shape while it moves; sitting on eye level is shown by weight,
+                // not by more words.
+                className={`absolute right-0 z-20 flex min-w-[4.75rem] -translate-y-1/2 cursor-ns-resize items-center justify-end gap-1 rounded-l-md border border-r-0 bg-white py-1 pl-2 pr-2.5 text-[11px] tabular-nums shadow-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring ${
+                  safeCentre === EYE_LEVEL_CM
+                    ? 'border-neutral-900 font-medium text-neutral-900'
+                    : groupDragging
+                      ? 'border-neutral-900 text-neutral-900'
+                      : 'border-neutral-300 text-neutral-700 hover:border-neutral-900 hover:text-neutral-900'
+                }`}
                 style={{ top: y(safeCentre), transition }}
               >
                 <span aria-hidden="true" className="text-xs leading-none">⇕</span>
                 {formatCentimetres(safeCentre)}
-                {safeCentre === EYE_LEVEL_CM && <span className="text-neutral-500"> · eye level</span>}
               </button>
             </>
           )}
