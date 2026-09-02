@@ -283,22 +283,12 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
     announce(`Print is now ${shortLabel(size)}.`);
   };
 
-  const addPrint = (where: 'beside' | 'below' | 'above') => {
+  const addPrintAt = (size: PrintSizeKey, at: { x: number; y: number }, said: string) => {
     if (printCount >= MAX_PRINTS) return;
-    const size: PrintSizeKey = prints.at(-1)?.size ?? '50x70';
-    const { width, height } = PRINT_SIZES[size];
-    const [print] = fresh([
-      printCount === 0
-        ? { size, x: 0, y: 0 }
-        : where === 'beside'
-          ? { size, x: box.minX + box.w + safeGap, y: box.minY }
-          : where === 'below'
-            ? { size, x: box.minX + (box.w - width) / 2, y: box.minY + box.h + safeGap }
-            : { size, x: box.minX + (box.w - width) / 2, y: box.minY - safeGap - height },
-    ]);
+    const [print] = fresh([{ size, x: at.x, y: at.y }]);
     commit([...prints, print]);
     setSelected(print.id);
-    announce(printCount === 0 ? 'First print added.' : `Print added ${where} the group.`);
+    announce(said);
   };
 
   const applyPreset = (key: string) => {
@@ -595,18 +585,36 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
     </label>
   );
 
-  // Whether a print would fit AFTER the group re-centres around it, which is
-  // what happens on adding. Judged at the current position, a group at eye
-  // level could never take a print above: there is only half a wall up there
-  // until it moves. The zone itself is drawn where the print would appear
-  // now, and may run off the wall's edge; the visible part is enough to find.
-  const canAdd = printCount > 0 && printCount < MAX_PRINTS && !drag && !groupDragging;
-  const nextSize = PRINT_SIZES[prints.at(-1)?.size ?? '50x70'];
-  const fitsWide = box.w + safeGap + nextSize.width <= drawWidth;
-  const fitsTall = safeCentre + (box.h + safeGap + nextSize.height) / 2 <= drawHeight && safeCentre - (box.h + safeGap + nextSize.height) / 2 >= 0;
-  const addBeside = canAdd && fitsWide;
-  const addBelow = canAdd && fitsTall;
-  const addAbove = canAdd && fitsTall;
+  /**
+   * Where a print can be added: on any side of any print, the same size as
+   * that print and flush with its edge, one gap away. A spot another print
+   * already occupies is not offered. A spot that is free but would carry the
+   * group past the wall once it re-centres IS offered, flagged, because
+   * knowing that a fourth print will not fit is part of planning a wall.
+   */
+  type Side = 'left' | 'right' | 'above' | 'below';
+  const addSpots = (() => {
+    if (printCount === 0 || printCount >= MAX_PRINTS || drag || groupDragging) return [];
+    const seen = new Set<string>();
+    const spots: { key: string; side: Side; size: PrintSizeKey; rect: Rect; fits: boolean }[] = [];
+    for (const { print, rect } of placed) {
+      const sides: [Side, Rect][] = [
+        ['left', { ...rect, x: rect.x - safeGap - rect.w }],
+        ['right', { ...rect, x: rect.x + rect.w + safeGap }],
+        ['above', { ...rect, y: rect.y - safeGap - rect.h }],
+        ['below', { ...rect, y: rect.y + rect.h + safeGap }],
+      ];
+      for (const [side, spot] of sides) {
+        const dedupe = `${print.size}:${Math.round(spot.x * 10)},${Math.round(spot.y * 10)}`;
+        if (seen.has(dedupe) || !isClear(spot, rects, safeGap)) continue;
+        seen.add(dedupe);
+        const grown = bounds([...rects, spot]);
+        const fits = grown.w <= drawWidth && safeCentre + grown.h / 2 <= drawHeight && safeCentre - grown.h / 2 >= 0;
+        spots.push({ key: `${side}-${print.id}`, side, size: print.size, rect: spot, fits });
+      }
+    }
+    return spots;
+  })();
 
   return (
     <section className="not-prose my-10 scroll-mt-20 border-y border-neutral-300 py-7" aria-labelledby={`${id}-title`}>
@@ -769,28 +777,27 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
             );
           })}
 
-          {/* Add zones: above, below and beside the group. Invisible until the
-              pointer is in the zone, then a ghost of the print that would be
-              added. Without hover (touch) they show faintly all the time. */}
-          {addAbove && (
-            <AddZone label={aria.addAbove} onClick={() => addPrint('above')} transition={transition} x={x} y={y} w={w} h={h}
-              zone={{ left: groupLeft, top: groupTop + safeGap + nextSize.height, w: box.w, h: nextSize.height + safeGap }}
-              ghost={{ left: groupLeft + (box.w - nextSize.width) / 2, top: groupTop + safeGap + nextSize.height, w: nextSize.width, h: nextSize.height }} />
-          )}
-          {addBelow && (
-            <AddZone label={aria.addBelow} onClick={() => addPrint('below')} transition={transition} x={x} y={y} w={w} h={h}
-              zone={{ left: groupLeft, top: groupBottom, w: box.w, h: nextSize.height + safeGap }}
-              ghost={{ left: groupLeft + (box.w - nextSize.width) / 2, top: groupBottom - safeGap, w: nextSize.width, h: nextSize.height }} />
-          )}
-          {addBeside && (
-            <AddZone label={aria.addBeside} onClick={() => addPrint('beside')} transition={transition} x={x} y={y} w={w} h={h}
-              zone={{ left: groupRight, top: groupTop, w: safeGap + nextSize.width, h: box.h }}
-              ghost={{ left: groupRight + safeGap, top: groupTop, w: nextSize.width, h: nextSize.height }} />
-          )}
+          {/* Add spots: invisible until the pointer is over one, then a ghost
+              of the print that would go there. Faint all the time where there
+              is no hover. Red where it is free but would not fit the wall. */}
+          {addSpots.map(spot => (
+            <button
+              key={spot.key}
+              type="button"
+              onClick={() => addPrintAt(spot.size, { x: spot.rect.x, y: spot.rect.y }, spot.fits ? `Print added ${spot.side === 'left' || spot.side === 'right' ? `to the ${spot.side} of` : spot.side} its neighbour.` : 'Print added, but the group no longer fits the wall.')}
+              aria-label={`${aria.addSide[spot.side]}${spot.fits ? '' : ` — ${aria.wontFit}`}`}
+              title={spot.fits ? undefined : aria.wontFit}
+              className={`group/spot absolute flex cursor-copy items-center justify-center border border-dashed opacity-0 outline-none transition-opacity duration-150 hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring [@media(hover:none)]:opacity-30 ${spot.fits ? 'border-neutral-400 text-neutral-500' : 'border-destructive/70 text-destructive'}`}
+              style={{ left: x(offset.left + spot.rect.x), top: y(offset.topFromFloor - spot.rect.y), width: w(spot.rect.w), height: h(spot.rect.h), transition }}
+            >
+              <span aria-hidden="true" className="text-lg leading-none">+</span>
+              {!spot.fits && <span aria-hidden="true" className="absolute bottom-1 text-[9px] uppercase tracking-wide">won’t fit</span>}
+            </button>
+          ))}
           {printCount === 0 && !drag && (
             <button
               type="button"
-              onClick={() => addPrint('below')}
+              onClick={() => addPrintAt('50x70', { x: 0, y: 0 }, 'First print added.')}
               aria-label={aria.addFirst}
               className="absolute left-1/2 flex -translate-x-1/2 items-center gap-1 whitespace-nowrap rounded-full border border-dashed border-neutral-300 bg-[#f7f6f3] px-3 py-1 text-xs text-neutral-500 transition-colors duration-150 hover:border-neutral-700 hover:text-neutral-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
               style={{ top: `calc(${y(EYE_LEVEL_CM)} - 14px)` }}
@@ -908,7 +915,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
         )}
 
         <p className="mt-2 text-xs text-neutral-500">
-          Drag a print anywhere; it clicks to its neighbours’ edges and centres, one gap away. Tap one to change its size or take it away. Hover above, below or beside the group to add one there.
+          Drag a print anywhere; it clicks to its neighbours’ edges and centres, one gap away. Tap one to change its size or take it away. Hover beside any print, or above or below it, to add one there.
         </p>
       </div>
 
@@ -979,49 +986,6 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
         Find the prints for it <span aria-hidden="true" className="ml-1">→</span>
       </TrackedLink>
     </section>
-  );
-}
-
-/**
- * A place a print can be added. The zone is the hit area; the ghost, drawn
- * inside it at the size and place the new print would take, appears when the
- * pointer arrives. Where there is no hover, the ghost is faintly always there.
- */
-type Box = { left: number; top: number; w: number; h: number };
-
-function AddZone({ label, onClick, zone, ghost, transition, x, y, w, h }: {
-  label: string;
-  onClick: () => void;
-  /** In wall centimetres; `top` is from the floor. */
-  zone: Box;
-  ghost: Box;
-  transition: string;
-  x: (cm: number) => string;
-  y: (cm: number) => string;
-  w: (cm: number) => string;
-  h: (cm: number) => string;
-}) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      aria-label={label}
-      className="group/add absolute cursor-copy outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-      style={{ left: x(zone.left), top: y(zone.top), width: w(zone.w), height: h(zone.h), transition }}
-    >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute flex items-center justify-center border border-dashed border-neutral-400 text-neutral-500 opacity-0 transition-opacity duration-150 group-hover/add:opacity-100 group-focus-visible/add:opacity-100 [@media(hover:none)]:opacity-40"
-        style={{
-          left: `${((ghost.left - zone.left) / zone.w) * 100}%`,
-          top: `${((zone.top - ghost.top) / zone.h) * 100}%`,
-          width: `${(ghost.w / zone.w) * 100}%`,
-          height: `${(ghost.h / zone.h) * 100}%`,
-        }}
-      >
-        <span className="text-lg leading-none">+</span>
-      </span>
-    </button>
   );
 }
 

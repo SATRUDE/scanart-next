@@ -209,10 +209,10 @@ export interface ChromeAriaStrings {
     wall: string;
     selectedPrint: string;
     removePrint: string;
-    addBeside: string;
-    addBelow: string;
-    addAbove: string;
     addFirst: string;
+    /** One per side of a print. */
+    addSide: { left: string; right: string; above: string; below: string };
+    wontFit: string;
     heightMarker: string;
   };
 }
@@ -235,10 +235,9 @@ export const chromeAria: Record<Locale, ChromeAriaStrings> = {
       wall: 'Your wall. Each print is a button: arrow keys nudge it by a centimetre, with Shift by ten; S changes its size; Delete removes it.',
       selectedPrint: 'Selected print',
       removePrint: 'Remove this print',
-      addBeside: 'Add a print beside the group',
-      addBelow: 'Add a print below the group',
-      addAbove: 'Add a print above the group',
       addFirst: 'Add the first print',
+      addSide: { left: 'Add a print to the left of this one', right: 'Add a print to the right of this one', above: 'Add a print above this one', below: 'Add a print below this one' },
+      wontFit: 'It would not fit the wall',
       heightMarker: 'Height of the group above the floor. Drag, or use the arrow keys.',
     },
   },
@@ -259,10 +258,9 @@ export const chromeAria: Record<Locale, ChromeAriaStrings> = {
       wall: 'Veggen din. Hvert trykk er en knapp: piltastene flytter det én centimeter, med Shift ti; S endrer størrelsen; Delete fjerner det.',
       selectedPrint: 'Valgt trykk',
       removePrint: 'Fjern dette trykket',
-      addBeside: 'Legg til et trykk ved siden av gruppen',
-      addBelow: 'Legg til et trykk under gruppen',
-      addAbove: 'Legg til et trykk over gruppen',
       addFirst: 'Legg til det første trykket',
+      addSide: { left: 'Legg til et trykk til venstre for dette', right: 'Legg til et trykk til høyre for dette', above: 'Legg til et trykk over dette', below: 'Legg til et trykk under dette' },
+      wontFit: 'Det ville ikke få plass på veggen',
       heightMarker: 'Gruppens høyde over gulvet. Dra, eller bruk piltastene.',
     },
   },
