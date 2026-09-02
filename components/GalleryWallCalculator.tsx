@@ -695,11 +695,10 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
           className="gw-wall relative mx-auto select-none overflow-hidden border border-neutral-300 bg-[#f7f6f3]"
           style={{
             aspectRatio: `${drawWidth} / ${drawHeight}`,
-            // Full width of the bleed; the height follows. A floor-to-ceiling
-            // drawing of a normal wall is nearly square, so at this width it
-            // can run taller than the viewport - accepted, as a picture in an
-            // article does. The cap only stops a narrow wall becoming a tower.
-            width: `min(100%, calc(120vh * ${drawWidth} / ${drawHeight}))`,
+            // As wide as the bleed allows, but never taller than the screen
+            // less the header: a wall you have to scroll to see the bottom of
+            // cannot be dragged across in one movement. The width follows.
+            width: `min(100%, calc(84vh * ${drawWidth} / ${drawHeight}))`,
             minHeight: '260px',
             touchAction: 'none',
           }}
