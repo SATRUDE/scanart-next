@@ -17,8 +17,25 @@ export type PrintSizeKey = keyof typeof PRINT_SIZES;
 export type FitStatus = 'fit' | 'tight' | 'exact' | 'no-fit';
 export type GapStatus = 'recommended' | 'tight' | 'wide';
 
+/**
+ * Where a print sits vertically inside its row.
+ *
+ * Only meaningful for a print shorter than the tallest in its row, and it is
+ * how a mixed row gets a clean line: aligning tops or bottoms against a taller
+ * neighbour reads as deliberate, where centring everything reads as a shop
+ * display. It changes nothing dimensional - the row is still as tall as its
+ * tallest print - so the arithmetic ignores it entirely.
+ */
+export type PrintAlign = 'top' | 'centre' | 'bottom';
+
+/** A print on the wall: what it is, and how it hangs in its row. */
+export interface WallPrint {
+  size: PrintSizeKey;
+  align: PrintAlign;
+}
+
 /** One horizontal run of prints. A wall is a stack of these. */
-export type WallRow = readonly PrintSizeKey[];
+export type WallRow = readonly WallPrint[];
 
 /** Where a print sits: which row, and how far along it. */
 export interface PrintPosition {
@@ -68,11 +85,11 @@ export function calculateGalleryWall({
   gap,
 }: GalleryWallInputs): GalleryWallResult {
   const rowWidths = rows.map(row => {
-    const width = row.reduce((sum, key) => sum + PRINT_SIZES[key].width, 0);
+    const width = row.reduce((sum, print) => sum + PRINT_SIZES[print.size].width, 0);
     return width + gap * Math.max(0, row.length - 1);
   });
   const rowHeights = rows.map(row =>
-    row.reduce((tallest, key) => Math.max(tallest, PRINT_SIZES[key].height), 0)
+    row.reduce((tallest, print) => Math.max(tallest, PRINT_SIZES[print.size].height), 0)
   );
 
   const totalWidth = rowWidths.length ? Math.max(...rowWidths) : 0;
@@ -117,7 +134,7 @@ export function formatCentimetres(value: number): string {
 }
 
 /** Drop any row that has been emptied, so a wall never carries a blank band. */
-function withoutEmptyRows(rows: PrintSizeKey[][]): PrintSizeKey[][] {
+function withoutEmptyRows<T>(rows: T[][]): T[][] {
   return rows.filter(row => row.length > 0);
 }
 
@@ -133,12 +150,12 @@ function withoutEmptyRows(rows: PrintSizeKey[][]): PrintSizeKey[][] {
  * Rows emptied by the move are removed, so dragging the last print out of a
  * row closes the gap rather than leaving a hole.
  */
-export function movePrintTo(
-  rows: readonly WallRow[],
+export function movePrintTo<T>(
+  rows: readonly (readonly T[])[],
   from: PrintPosition,
   to: PrintPosition
-): PrintSizeKey[][] {
-  const next: PrintSizeKey[][] = rows.map(row => [...row]);
+): T[][] {
+  const next: T[][] = rows.map(row => [...row]);
 
   const fromRow = next[from.row];
   if (
@@ -172,4 +189,22 @@ export function movePrintTo(
   // that row, which is what it looks like it should mean.
   target.splice(Math.min(to.index, target.length), 0, moved);
   return withoutEmptyRows(next);
+}
+
+/**
+ * How far down its row a print sits, as a fraction of the slack above and
+ * below it. 0 hangs its top edge level with the row's top, 1 hangs its bottom
+ * edge level with the row's bottom, 0.5 centres it.
+ *
+ * Returned as a fraction rather than centimetres so the preview and any real
+ * hanging guide can each scale it themselves, and so a print that is already
+ * the tallest in its row is unambiguously 0 slack rather than a special case.
+ */
+export function alignmentOffset(
+  print: WallPrint,
+  rowHeight: number
+): { slack: number; offset: number } {
+  const slack = Math.max(0, rowHeight - PRINT_SIZES[print.size].height);
+  const fraction = print.align === 'top' ? 0 : print.align === 'bottom' ? 1 : 0.5;
+  return { slack, offset: slack * fraction };
 }

@@ -7,15 +7,25 @@ import {
   formatCentimetres,
   movePrintTo,
   PRINT_SIZES,
+  type PrintAlign,
   type PrintSizeKey,
+  type WallPrint,
 } from '@/lib/gallery-wall-calculator';
 
 const DEFAULTS = { wallWidth: 240, wallHeight: '', gap: 6 };
 
+const centred = (size: PrintSizeKey): WallPrint => ({ size, align: 'centre' });
+
 /** A real wall rarely repeats one size, and rarely sits in one line. */
-const DEFAULT_ROWS: PrintSizeKey[][] = [
-  ['50x70', '50x50', '50x70'],
-  ['50x50', '50x50'],
+const DEFAULT_ROWS: WallPrint[][] = [
+  [centred('50x70'), centred('50x50'), centred('50x70')],
+  [centred('50x50'), centred('50x50')],
+];
+
+const ALIGNMENTS: { value: PrintAlign; label: string; glyph: string }[] = [
+  { value: 'top', label: 'Align its top edge with the row', glyph: '⌃' },
+  { value: 'centre', label: 'Centre it in the row', glyph: '–' },
+  { value: 'bottom', label: 'Align its bottom edge with the row', glyph: '⌄' },
 ];
 
 const MAX_PRINTS = 12;
@@ -36,7 +46,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
   const id = useId();
   const [wallWidthInput, setWallWidthInput] = useState(String(DEFAULTS.wallWidth));
   const [wallHeightInput, setWallHeightInput] = useState(DEFAULTS.wallHeight);
-  const [rows, setRows] = useState<PrintSizeKey[][]>(DEFAULT_ROWS);
+  const [rows, setRows] = useState<WallPrint[][]>(DEFAULT_ROWS);
   const [gapInput, setGapInput] = useState(String(DEFAULTS.gap));
 
   /**
@@ -109,16 +119,22 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
     return () => cancelAnimationFrame(frame);
   }, [settling]);
 
-  const setPrintAt = (row: number, index: number, size: PrintSizeKey) =>
-    setRows(current => current.map((r, ri) => (ri === row ? r.map((s, i) => (i === index ? size : s)) : r)));
+  const setSizeAt = (row: number, index: number, size: PrintSizeKey) =>
+    setRows(current => current.map((r, ri) => (ri === row ? r.map((print, i) => (i === index ? { ...print, size } : print)) : r)));
+
+  const setAlignAt = (row: number, index: number, align: PrintAlign) => {
+    setRows(current => current.map((r, ri) => (ri === row ? r.map((print, i) => (i === index ? { ...print, align } : print)) : r)));
+    setOrderMessage(align === 'centre' ? 'Print centred in its row.' : `Print aligned to the ${align} of its row.`);
+  };
 
   const addPrint = () =>
     setRows(current => {
       if (printCount >= MAX_PRINTS) return current;
       const last = current.at(-1) ?? [];
+      const like = last.at(-1)?.size ?? '50x70';
       return current.length
-        ? current.map((r, ri) => (ri === current.length - 1 ? [...r, last.at(-1) ?? '50x70'] : r))
-        : [['50x70']];
+        ? current.map((r, ri) => (ri === current.length - 1 ? [...r, centred(like)] : r))
+        : [[centred('50x70')]];
     });
 
   const removeAt = (row: number, index: number) =>
@@ -257,7 +273,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
         ? 'It fits, but the frames may start to feel separate. Bring the gap back to 5 to 8 cm.'
         : statusCopy;
 
-  const mixed = new Set(safeRows.flat()).size > 1;
+  const mixed = new Set(safeRows.flat().map(print => print.size)).size > 1;
 
   return (
     <section className="not-prose my-10 scroll-mt-20 border-y border-neutral-300 py-7" aria-labelledby={`${id}-title`}>
@@ -296,14 +312,36 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
           <div key={rowIndex} className="mt-3">
             <p className="text-xs uppercase tracking-wide text-neutral-500">Row {rowIndex + 1}</p>
             <ul className="mt-1 flex flex-wrap gap-3">
-              {row.map((size, index) => (
+              {row.map((print, index) => {
+                const tallestInRow = result.rowHeights[rowIndex] ?? 0;
+                const canAlign = PRINT_SIZES[print.size].height < tallestInRow;
+                return (
                 <li key={index} className="flex items-end gap-2 rounded-md border border-neutral-200 bg-neutral-50 p-2">
                   <label className="text-xs font-medium text-neutral-700" htmlFor={`${id}-print-${rowIndex}-${index}`}>
                     Print {index + 1}
-                    <select id={`${id}-print-${rowIndex}-${index}`} value={size} onChange={event => setPrintAt(rowIndex, index, event.currentTarget.value as PrintSizeKey)} className="mt-1 block min-h-11 rounded-md border border-neutral-300 bg-white px-2 text-sm text-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900">
+                    <select id={`${id}-print-${rowIndex}-${index}`} value={print.size} onChange={event => setSizeAt(rowIndex, index, event.currentTarget.value as PrintSizeKey)} className="mt-1 block min-h-11 rounded-md border border-neutral-300 bg-white px-2 text-sm text-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900">
                       {Object.entries(PRINT_SIZES).map(([value, option]) => <option key={value} value={value}>{option.label}</option>)}
                     </select>
                   </label>
+                  {/* Alignment only does something for a print SHORTER than
+                      the tallest in its row, so the control says so rather
+                      than offering three buttons that all look identical. */}
+                  <span role="group" aria-label={`How print ${index + 1} hangs in row ${rowIndex + 1}`} className="flex flex-col gap-0.5">
+                    {ALIGNMENTS.map(option => (
+                      <button
+                        key={option.value}
+                        type="button"
+                        onClick={() => setAlignAt(rowIndex, index, option.value)}
+                        disabled={!canAlign}
+                        aria-pressed={print.align === option.value}
+                        title={canAlign ? option.label : 'This print is the tallest in its row, so it sets the line'}
+                        className={`min-h-5 rounded border px-1.5 text-xs leading-none disabled:opacity-25 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring ${print.align === option.value && canAlign ? 'border-neutral-900 bg-neutral-900 text-white' : 'border-neutral-300 text-neutral-700 hover:border-neutral-900'}`}
+                      >
+                        <span aria-hidden="true">{option.glyph}</span>
+                        <span className="sr-only">{option.label}</span>
+                      </button>
+                    ))}
+                  </span>
                   {/* Dragging alone would shut out anyone on a keyboard, and
                       these also cover moving between rows without a pointer.
                       WCAG 2.1.1 and 2.5.7. */}
@@ -325,7 +363,8 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
                     Remove
                   </button>
                 </li>
-              ))}
+                );
+              })}
             </ul>
           </div>
         ))}
@@ -352,9 +391,9 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
             style={{ width: `${Math.min(100, (safeWallWidth / widest) * 100)}%`, gap: `${Math.max(3, safeGap * 0.6)}px`, minHeight: '150px' }}
           >
             {safeRows.map((row, rowIndex) => (
-              <div key={rowIndex} className="flex items-center justify-center" style={{ gap: `${Math.max(2, safeGap * 0.55)}px` }}>
-                {row.map((key, index) => {
-                  const print = PRINT_SIZES[key];
+              <div key={rowIndex} className="flex items-center justify-center" style={{ gap: `${Math.max(2, safeGap * 0.55)}px`, height: (result.rowHeights[rowIndex] ?? 70) === 70 ? '62px' : '46px' }}>
+                {row.map((wallPrint, index) => {
+                  const print = PRINT_SIZES[wallPrint.size];
                   const isDragging = drag?.from.row === rowIndex && drag?.from.index === index;
                   const shift = shiftFor(rowIndex, index);
                   return (
@@ -368,11 +407,14 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
                         event.preventDefault();
                         beginDrag(rowIndex, index, event.clientX, event.clientY, event.currentTarget, event.pointerId);
                       }}
-                      title={`Row ${rowIndex + 1}, print ${index + 1}, ${print.label}. Drag to move.`}
+                      title={`Row ${rowIndex + 1}, print ${index + 1}, ${print.label}, ${wallPrint.align === 'centre' ? 'centred' : wallPrint.align + '-aligned'}. Drag to move.`}
                       className={`border-2 bg-neutral-100 p-1 ${isDragging ? 'z-10 cursor-grabbing border-neutral-900 shadow-lg' : 'cursor-grab border-neutral-800'}`}
                       style={{
                         aspectRatio: `${print.width} / ${print.height}`,
                         height: print.height === 70 ? '62px' : '46px',
+                        // The row is as tall as its tallest print; a shorter
+                        // one hangs at the top, centre or bottom of that band.
+                        alignSelf: wallPrint.align === 'top' ? 'flex-start' : wallPrint.align === 'bottom' ? 'flex-end' : 'center',
                         // The dragged print tracks the pointer with no
                         // transition, or it would lag behind the finger.
                         // Everything else eases, which is the whole feel.

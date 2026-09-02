@@ -1,14 +1,19 @@
 import { describe, expect, it } from 'vitest';
 import {
   PRINT_SIZES,
+  alignmentOffset,
   calculateGalleryWall,
   formatCentimetres,
   movePrintTo,
+  type PrintAlign,
   type PrintSizeKey,
+  type WallPrint,
 } from './gallery-wall-calculator';
 
-const row = (size: PrintSizeKey, count: number): PrintSizeKey[] =>
-  Array.from({ length: count }, () => size);
+/** A print, centred unless the test cares. */
+const p = (size: PrintSizeKey, align: PrintAlign = 'centre'): WallPrint => ({ size, align });
+const row = (size: PrintSizeKey, count: number): WallPrint[] =>
+  Array.from({ length: count }, () => p(size));
 
 describe('a single row', () => {
   it('calculates the default arrangement and equal side margins', () => {
@@ -34,7 +39,7 @@ describe('a single row', () => {
   });
 
   it('takes the row height from the tallest print', () => {
-    expect(calculateGalleryWall({ wallWidth: 240, rows: [['50x50', '50x70', '50x50']], gap: 6 }).rowHeights).toEqual([70]);
+    expect(calculateGalleryWall({ wallWidth: 240, rows: [[p('50x50'), p('50x70'), p('50x50')]], gap: 6 }).rowHeights).toEqual([70]);
   });
 
   it('formats whole and half centimetres without false precision', () => {
@@ -44,7 +49,7 @@ describe('a single row', () => {
 });
 
 describe('a wall of several rows', () => {
-  const twoRows: PrintSizeKey[][] = [['50x70', '50x50'], ['50x50', '50x50', '50x50']];
+  const twoRows: WallPrint[][] = [[p('50x70'), p('50x50')], [p('50x50'), p('50x50'), p('50x50')]];
 
   it('measures across the WIDEST row, not the first or the total', () => {
     const r = calculateGalleryWall({ wallWidth: 240, rows: twoRows, gap: 6 });
@@ -58,7 +63,7 @@ describe('a wall of several rows', () => {
   });
 
   it('charges no vertical gap for a single row', () => {
-    expect(calculateGalleryWall({ wallWidth: 240, rows: [['50x70']], gap: 6 }).totalHeight).toBe(70);
+    expect(calculateGalleryWall({ wallWidth: 240, rows: [[p('50x70')]], gap: 6 }).totalHeight).toBe(70);
   });
 
   it('centres the side margin on the widest row', () => {
@@ -93,43 +98,43 @@ describe('a wall of several rows', () => {
 });
 
 describe('movePrintTo', () => {
-  const wall: PrintSizeKey[][] = [['50x70', '50x50'], ['50x50', '50x70']];
+  const wall: WallPrint[][] = [[p('50x70'), p('50x50')], [p('50x50'), p('50x70')]];
 
   it('moves a print along its own row', () => {
     expect(movePrintTo(wall, { row: 0, index: 0 }, { row: 0, index: 1 }))
-      .toEqual([['50x50', '50x70'], ['50x50', '50x70']]);
+      .toEqual([[p('50x50'), p('50x70')], [p('50x50'), p('50x70')]]);
   });
 
   it('moves a print into another row, at the position dropped', () => {
     expect(movePrintTo(wall, { row: 0, index: 0 }, { row: 1, index: 1 }))
-      .toEqual([['50x50'], ['50x50', '50x70', '50x70']]);
+      .toEqual([[p('50x50')], [p('50x50'), p('50x70'), p('50x70')]]);
   });
 
   it('makes a new row above when dropped past the top', () => {
     expect(movePrintTo(wall, { row: 1, index: 1 }, { row: -1, index: 0 }))
-      .toEqual([['50x70'], ['50x70', '50x50'], ['50x50']]);
+      .toEqual([[p('50x70')], [p('50x70'), p('50x50')], [p('50x50')]]);
   });
 
   it('makes a new row below when dropped past the bottom', () => {
     expect(movePrintTo(wall, { row: 0, index: 0 }, { row: 2, index: 0 }))
-      .toEqual([['50x50'], ['50x50', '50x70'], ['50x70']]);
+      .toEqual([[p('50x50')], [p('50x50'), p('50x70')], [p('50x70')]]);
   });
 
   it('closes a row emptied by the move rather than leaving a band', () => {
-    const single: PrintSizeKey[][] = [['50x70'], ['50x50']];
+    const single: WallPrint[][] = [[p('50x70')], [p('50x50')]];
     expect(movePrintTo(single, { row: 0, index: 0 }, { row: 1, index: 0 }))
-      .toEqual([['50x70', '50x50']]);
+      .toEqual([[p('50x70'), p('50x50')]]);
   });
 
   it('clamps a drop past the end of a row to the end of that row', () => {
     expect(movePrintTo(wall, { row: 0, index: 0 }, { row: 1, index: 99 }))
-      .toEqual([['50x50'], ['50x50', '50x70', '50x70']]);
+      .toEqual([[p('50x50')], [p('50x50'), p('50x70'), p('50x70')]]);
   });
 
   it('never mutates the wall it was given', () => {
-    const original: PrintSizeKey[][] = [['50x70', '50x50']];
+    const original: WallPrint[][] = [[p('50x70'), p('50x50')]];
     movePrintTo(original, { row: 0, index: 0 }, { row: 0, index: 1 });
-    expect(original).toEqual([['50x70', '50x50']]);
+    expect(original).toEqual([[p('50x70'), p('50x50')]]);
   });
 
   it('returns the wall untouched for a drop that goes nowhere', () => {
@@ -158,5 +163,50 @@ describe('movePrintTo', () => {
 describe('PRINT_SIZES', () => {
   it('offers only the sizes the catalogue actually sells', () => {
     expect(Object.keys(PRINT_SIZES).sort()).toEqual(['50x50', '50x70']);
+  });
+});
+
+describe('alignmentOffset', () => {
+  const tall = 70;
+
+  it('gives a print that already fills its row no slack at all', () => {
+    // The tallest print in a row cannot be aligned anywhere, and that is not
+    // a special case to handle elsewhere - it falls out as zero slack.
+    expect(alignmentOffset(p('50x70', 'top'), tall)).toEqual({ slack: 0, offset: 0 });
+    expect(alignmentOffset(p('50x70', 'bottom'), tall)).toEqual({ slack: 0, offset: 0 });
+  });
+
+  it('hangs a top-aligned print flush with the top of its row', () => {
+    expect(alignmentOffset(p('50x50', 'top'), tall)).toEqual({ slack: 20, offset: 0 });
+  });
+
+  it('hangs a bottom-aligned print flush with the bottom of its row', () => {
+    // The whole 20 cm of slack goes above it, so its bottom edge lines up
+    // with the taller print beside it.
+    expect(alignmentOffset(p('50x50', 'bottom'), tall)).toEqual({ slack: 20, offset: 20 });
+  });
+
+  it('centres by default, splitting the slack', () => {
+    expect(alignmentOffset(p('50x50', 'centre'), tall)).toEqual({ slack: 20, offset: 10 });
+  });
+
+  it('never returns negative slack for a print taller than the row it is given', () => {
+    expect(alignmentOffset(p('50x70', 'centre'), 50)).toEqual({ slack: 0, offset: 0 });
+  });
+});
+
+describe('alignment and the arithmetic', () => {
+  it('changes nothing dimensional, which is why it is safe to fiddle with', () => {
+    const centred: WallPrint[][] = [[p('50x70'), p('50x50', 'centre')]];
+    const topped: WallPrint[][] = [[p('50x70'), p('50x50', 'top')]];
+    const a = calculateGalleryWall({ wallWidth: 240, rows: centred, gap: 6 });
+    const b = calculateGalleryWall({ wallWidth: 240, rows: topped, gap: 6 });
+    expect(b).toEqual(a);
+  });
+
+  it('survives a move, so a print keeps how it hangs when it changes row', () => {
+    const wall: WallPrint[][] = [[p('50x50', 'bottom')], [p('50x70')]];
+    expect(movePrintTo(wall, { row: 0, index: 0 }, { row: 1, index: 1 }))
+      .toEqual([[p('50x70'), p('50x50', 'bottom')]]);
   });
 });
