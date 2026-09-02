@@ -216,6 +216,10 @@ export interface ChromeAriaStrings {
     heightMarker: string;
     startFrom: string;
     sofaSwitch: string;
+    linesSwitch: string;
+    copyPlan: string;
+    copyLink: string;
+    reset: string;
   };
 }
 
@@ -243,6 +247,10 @@ export const chromeAria: Record<Locale, ChromeAriaStrings> = {
       heightMarker: 'Height of the group above the floor. Drag, or use the arrow keys.',
       startFrom: 'Start from an arrangement',
       sofaSwitch: 'Show a sofa for scale',
+      linesSwitch: 'Show the measurement lines',
+      copyPlan: 'Copy the hanging plan as text',
+      copyLink: 'Copy a link to this wall',
+      reset: 'Start again from the default wall',
     },
   },
   no: {
@@ -268,6 +276,10 @@ export const chromeAria: Record<Locale, ChromeAriaStrings> = {
       heightMarker: 'Gruppens høyde over gulvet. Dra, eller bruk piltastene.',
       startFrom: 'Start fra et oppsett',
       sofaSwitch: 'Vis en sofa for skala',
+      linesSwitch: 'Vis målelinjene',
+      copyPlan: 'Kopier hengeplanen som tekst',
+      copyLink: 'Kopier en lenke til denne veggen',
+      reset: 'Begynn på nytt med standardveggen',
     },
   },
 };

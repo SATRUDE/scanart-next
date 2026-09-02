@@ -82,25 +82,33 @@ export default function GalleryWallPlannerPage() {
       {/* The planner is the page. */}
       <section id="planner" className="scroll-mt-20 py-16">
         <div className="container mx-auto px-8">
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-            <div className="lg:col-span-1">
-              <h2 className="mb-0 text-3xl text-neutral-900">Your wall</h2>
-            </div>
-            <div className="lg:col-span-2">
-              <p className="text-lg leading-relaxed text-neutral-600">
-                Everything happens on the drawing. Drag a print anywhere and it clicks to its neighbours, one gap apart. Tap one to change its size. Slide the whole group up or down by the marker at the right. The plan beneath lists where every hook goes.
-              </p>
-            </div>
-          </div>
-          <div className="mt-10">
-            <GalleryWallCalculator variant="page" />
-          </div>
+          <GalleryWallCalculator />
         </div>
       </section>
 
+      {/* The words live below the tool, where a reader who wants them - and a
+          search engine - will find them, and where they cannot slow down a
+          hand that just wants to drag. */}
       <section className="border-t border-neutral-200 py-16">
         <div className="container mx-auto px-8">
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+            <div className="lg:col-span-1">
+              <h2 className="mb-0 text-3xl text-neutral-900">How the planner works</h2>
+            </div>
+            <div className="lg:col-span-2">
+              <p className="mb-4 text-lg leading-relaxed text-neutral-600">
+                The drawing is your wall to scale, floor at the bottom, eye level marked. Drag a print anywhere and it clicks to its neighbours’ edges and centres, exactly one gap apart; hover beside any print to add another, tap one to change its size, and slide the whole group up or down by the marker at the right. Change the gap and the whole arrangement re-spaces itself.
+              </p>
+              <p className="mb-4 text-lg leading-relaxed text-neutral-600">
+                The measurements are written on the drawing the way a plan writes them: the group’s width and height, the space each side, the height of the top edge above the floor. Copy the plan and you get every frame’s left edge and top edge from the floor as text; copy the link and the wall comes back exactly as you left it. Frames usually hang 3 to 5 cm below their hook, so check yours before marking.
+              </p>
+              <Link href="/products" className="inline-flex h-10 items-center justify-center rounded-md border border-gray-200 bg-background px-4 py-2 text-sm font-medium text-foreground hover:bg-gray-50 hover:text-gray-900">
+                Find the prints for your wall
+              </Link>
+            </div>
+          </div>
+
+          <div className="mt-16 grid grid-cols-1 gap-6 lg:grid-cols-3">
             <div className="lg:col-span-1">
               <h2 className="mb-0 text-3xl text-neutral-900">Three rules for a wall that looks meant</h2>
             </div>

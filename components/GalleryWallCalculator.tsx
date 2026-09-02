@@ -1,8 +1,7 @@
 'use client';
 
 import { useEffect, useId, useRef, useState } from 'react';
-import { ChevronDown, Trash2 } from 'lucide-react';
-import { TrackedLink } from '@/components/TrackedLink';
+import { Check, ChevronDown, ClipboardList, Link2, RotateCcw, Trash2 } from 'lucide-react';
 import { chromeAria } from '@/lib/i18n';
 import {
   decodeArrangement,
@@ -59,6 +58,8 @@ const SNAP_RADIUS_CM = 10;
 const SOFA = { width: 200, height: 85 };
 /** Stands in for the ceiling when no wall height is given. */
 const TYPICAL_CEILING = 250;
+/** Narrower or lower than this is not a wall this plans for; the field says so. */
+const MIN_WALL_CM = 180;
 
 /**
  * Ids for the first render come from POSITION, so the server and the client
@@ -74,6 +75,15 @@ const reducedMotion = () =>
 
 const sizeOf = (print: FreePrint) => ({ w: PRINT_SIZES[print.size].width, h: PRINT_SIZES[print.size].height });
 const round = (value: number) => Math.round(value * 2) / 2;
+
+/** The small switch used on the wall's floor: a track and a knob, drawn in pixels. */
+function Switch({ on }: { on: boolean }) {
+  return (
+    <span aria-hidden="true" className={`relative inline-block rounded-full transition-colors ${on ? 'bg-neutral-900' : 'bg-neutral-300'}`} style={{ width: 22, height: 12 }}>
+      <span className="absolute rounded-full bg-white transition-transform" style={{ width: 8, height: 8, top: 2, left: 2, transform: on ? 'translateX(10px)' : 'none' }} />
+    </span>
+  );
+}
 const shortLabel = (size: PrintSizeKey) => PRINT_SIZES[size].label.split(',')[0];
 
 /**
@@ -82,20 +92,20 @@ const shortLabel = (size: PrintSizeKey) => PRINT_SIZES[size].label.split(',')[0]
  * Norwegian article route today, so this changes nothing yet - but
  * lib/i18n-no.test.ts sweeps EVERY component rather than a hand-picked list.
  */
-export function GalleryWallCalculator({ locale = 'en', variant = 'article' }: { locale?: 'en' | 'no'; variant?: 'article' | 'page' } = {}) {
-  const localePrefix = locale === 'no' ? '/no' : '';
-  /**
-   * 'article' sits mid-prose: ruled off top and bottom, its own heading, and
-   * the drawing bleeding past the reading column. 'page' is the planner as a
-   * landing page's centrepiece: the hero has already said what it is, and the
-   * container is already wide, so neither the heading nor the bleed applies.
-   */
-  const inArticle = variant === 'article';
+export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' } = {}) {
   const aria = chromeAria[locale].wallPlanner;
   const id = useId();
 
   const [wallWidthInput, setWallWidthInput] = useState(String(DEFAULTS.wallWidth));
   const [wallHeightInput, setWallHeightInput] = useState(DEFAULTS.wallHeight);
+  /**
+   * The wall's measurements as numbers, separate from what is in the fields.
+   * A field cannot refuse "1" on the way to "190", so the drawing keeps the
+   * last good value while you type and the field settles when you leave it:
+   * anything under the minimum becomes the minimum, silently, no error.
+   */
+  const [wallWidthCm, setWallWidthCm] = useState<number>(DEFAULTS.wallWidth);
+  const [wallHeightCm, setWallHeightCm] = useState<number | undefined>(undefined);
   const [gapInput, setGapInput] = useState(String(DEFAULTS.gap));
   const [centre, setCentre] = useState<number>(DEFAULTS.centreHeight);
   /** The whole group being dragged up or down by its height marker. */
@@ -113,6 +123,8 @@ export function GalleryWallCalculator({ locale = 'en', variant = 'article' }: { 
   const [prints, setPrints] = useState<FreePrint[]>(() => seeded(fromRows(PRESETS[2].rows, DEFAULTS.gap)));
   const [showSofa, setShowSofa] = useState(true);
   const [sofaOpen, setSofaOpen] = useState(false);
+  /** The dimension lines. Off, the drawing is just the wall and the prints. */
+  const [showLines, setShowLines] = useState(true);
   const [sofaWidthInput, setSofaWidthInput] = useState(String(SOFA.width));
   const [sofaHeightInput, setSofaHeightInput] = useState(String(SOFA.height));
   const [selected, setSelected] = useState<string | null>(null);
@@ -167,21 +179,19 @@ export function GalleryWallCalculator({ locale = 'en', variant = 'article' }: { 
   const settleTimer = useRef<number | null>(null);
   const refocusRef = useRef<string | null>(null);
 
-  const wallWidth = Number(wallWidthInput);
-  const wallHeight = wallHeightInput === '' ? undefined : Number(wallHeightInput);
+  const wallWidth = wallWidthCm;
+  const wallHeight = wallHeightCm;
   const gap = Number(gapInput);
   const centreHeight = centre;
   const printCount = prints.length;
 
-  const wallError = wallWidthInput === '' ? 'Enter your wall width.' : !(wallWidth > 0) ? 'Use a wall width greater than 0 cm.' : '';
-  const heightError = wallHeightInput !== '' && !(wallHeight !== undefined && wallHeight > 0) ? 'Use a height greater than 0 cm, or leave it blank.' : '';
   const gapError = gapInput === '' ? 'Enter the gap between frames.' : !(gap >= 0) ? 'The gap can’t be less than 0 cm.' : '';
-  const isValid = !wallError && !heightError && !gapError;
+  const isValid = !gapError;
 
-  const safeWallWidth = wallError ? DEFAULTS.wallWidth : wallWidth;
+  const safeWallWidth = wallWidth;
   const safeGap = gapError ? DEFAULTS.gap : gap;
   const safeCentre = centreHeight;
-  const safeWallHeight = heightError ? undefined : wallHeight;
+  const safeWallHeight = wallHeight;
   /** The sofa's own measurements, with the typical three-seater standing in for nonsense. */
   const sofaSize = {
     width: Number(sofaWidthInput) > 0 ? Number(sofaWidthInput) : SOFA.width,
@@ -269,7 +279,9 @@ export function GalleryWallCalculator({ locale = 'en', variant = 'article' }: { 
       const plan = free ?? (legacy ? { ...legacy, prints: fromRows(legacy.rows, legacy.gap) } : null);
       if (plan) {
         setWallWidthInput(String(plan.wallWidth));
+        setWallWidthCm(Math.max(MIN_WALL_CM, plan.wallWidth));
         setWallHeightInput(plan.wallHeight === undefined ? '' : String(plan.wallHeight));
+        setWallHeightCm(plan.wallHeight === undefined ? undefined : Math.max(MIN_WALL_CM, plan.wallHeight));
         setGapInput(String(plan.gap));
         setCentre(plan.centreHeight);
         setPrints(seeded(normalize(plan.prints, p => ({ w: PRINT_SIZES[p.size].width, h: PRINT_SIZES[p.size].height }))));
@@ -339,6 +351,25 @@ export function GalleryWallCalculator({ locale = 'en', variant = 'article' }: { 
     commit([...prints, print]);
     setSelected(print.id);
     announce(said);
+  };
+
+  /** Back to the wall you first saw: the default arrangement, wall, gap and height. */
+  const reset = () => {
+    setZooming(true);
+    setWallWidthInput(String(DEFAULTS.wallWidth));
+    setWallWidthCm(DEFAULTS.wallWidth);
+    setWallHeightInput('');
+    setWallHeightCm(undefined);
+    setGapInput(String(DEFAULTS.gap));
+    setCentre(DEFAULTS.centreHeight);
+    setShowSofa(true);
+    setSofaOpen(false);
+    setSofaWidthInput(String(SOFA.width));
+    setSofaHeightInput(String(SOFA.height));
+    setShowLines(true);
+    setPrints(fresh(fromRows(PRESETS[2].rows, DEFAULTS.gap)));
+    setSelected(null);
+    announce('Back to the starting wall.');
   };
 
   const applyPreset = (key: string) => {
@@ -564,12 +595,6 @@ export function GalleryWallCalculator({ locale = 'en', variant = 'article' }: { 
 
   const selectedEntry = selected ? placed.find(entry => entry.print.id === selected) ?? null : null;
 
-  const counts = displayPrints.reduce<Partial<Record<PrintSizeKey, number>>>((acc, print) => ({ ...acc, [print.size]: (acc[print.size] ?? 0) + 1 }), {});
-  const shoppingList = (Object.keys(PRINT_SIZES) as PrintSizeKey[])
-    .filter(size => counts[size])
-    .map(size => `${counts[size]} × ${shortLabel(size)}`)
-    .join(' and ');
-
   const statusCopy = !isValid
     ? 'Complete the measurements above to see your plan.'
     : printCount === 0
@@ -681,14 +706,15 @@ export function GalleryWallCalculator({ locale = 'en', variant = 'article' }: { 
   })();
 
   return (
-    <section className={`not-prose scroll-mt-20 ${inArticle ? 'my-10 border-y border-neutral-300 py-7' : ''}`} aria-labelledby={`${id}-title`}>
+    <section className="not-prose scroll-mt-20" aria-labelledby={`${id}-title`}>
       <style>{`
         @keyframes gw-print-in { from { opacity: 0; transform: scale(0.92); } to { opacity: 1; transform: none; } }
         @keyframes gw-pop-in { from { opacity: 0; transform: translate(-50%, 4px) scale(0.96); } to { opacity: 1; transform: translate(-50%, 0) scale(1); } }
         @media (prefers-reduced-motion: reduce) { .gw-wall * { transition: none !important; animation: none !important; } }
       `}</style>
 
-      <div className={inArticle ? 'mb-6 max-w-2xl' : 'sr-only'}>
+      {/* The page's hero has already said what this is; the heading is for the outline. */}
+      <div className="sr-only">
         <h3 id={`${id}-title`} className="text-2xl font-medium text-neutral-900">Plan your wall</h3>
         <p className="mt-2 leading-relaxed text-neutral-700">
           Your wall, to scale. Drag the prints wherever you like — they click to each other’s edges and to your gap — tap one to change its size, and slide the whole group up or down by the marker at the right. Then read the hanging measurements straight off the drawing.
@@ -700,13 +726,7 @@ export function GalleryWallCalculator({ locale = 'en', variant = 'article' }: { 
           within the viewport - while the text around it stays in the column.
           Done with margins, not a transform: a transformed ancestor would
           become the containing block of the fixed copy under the pointer. */}
-      <div
-        className="mt-5"
-        style={inArticle ? {
-          width: 'min(150%, calc(100vw - 2rem))',
-          marginLeft: 'calc((100% - min(150%, calc(100vw - 2rem))) / 2)',
-        } : undefined}
-      >
+      <div>
         {/* The toolbar and the drawing are one instrument: the same width,
             one border between them, so the controls read as part of the wall
             rather than a form that happens to sit above a picture. The width
@@ -715,8 +735,33 @@ export function GalleryWallCalculator({ locale = 'en', variant = 'article' }: { 
             bottom of cannot be dragged across in one movement. */}
         <div className="mx-auto w-full">
           <div className="flex flex-wrap items-end gap-x-3 gap-y-3 rounded-t border border-b-0 border-neutral-300 bg-white px-4 py-3">
-            {numberField('wall', 'Wall width', wallWidthInput, next => { setZooming(true); setWallWidthInput(next); }, 'Just the width you can use.', wallError, { min: 1, max: 2000, step: 1 })}
-            {numberField('height', 'Wall height', wallHeightInput, next => { setZooming(true); setWallHeightInput(next); }, 'Optional. Adds the ceiling and checks the fit.', heightError, { min: 1, max: 1000, step: 1, placeholder: '—' })}
+            {numberField('wall', 'Wall width', wallWidthInput, next => {
+              setWallWidthInput(next);
+              const n = Number(next);
+              if (next !== '' && n >= MIN_WALL_CM) { setZooming(true); setWallWidthCm(n); }
+            }, 'Just the width you can use.', '', {
+              min: MIN_WALL_CM, max: 2000, step: 1,
+              onBlur: () => {
+                const n = Number(wallWidthInput);
+                const settled = wallWidthInput === '' || !(n >= MIN_WALL_CM) ? Math.max(MIN_WALL_CM, wallWidthInput === '' ? wallWidthCm : n) : n;
+                setWallWidthInput(String(settled));
+                if (settled !== wallWidthCm) { setZooming(true); setWallWidthCm(settled); }
+              },
+            })}
+            {numberField('height', 'Wall height', wallHeightInput, next => {
+              setWallHeightInput(next);
+              const n = Number(next);
+              if (next === '') { setZooming(true); setWallHeightCm(undefined); }
+              else if (n >= MIN_WALL_CM) { setZooming(true); setWallHeightCm(n); }
+            }, 'Optional. Adds the ceiling and checks the fit.', '', {
+              min: MIN_WALL_CM, max: 1000, step: 1, placeholder: '—',
+              onBlur: () => {
+                if (wallHeightInput === '') return;
+                const settled = Math.max(MIN_WALL_CM, Number(wallHeightInput) || MIN_WALL_CM);
+                setWallHeightInput(String(settled));
+                if (settled !== wallHeightCm) { setZooming(true); setWallHeightCm(settled); }
+              },
+            })}
             {numberField('gap', 'Gap', gapInput, next => {
               // The wall follows the gap: what sat one gap apart sits one new
               // gap apart, and what was centred under a row stays centred.
@@ -742,6 +787,19 @@ export function GalleryWallCalculator({ locale = 'en', variant = 'article' }: { 
                 ))}
               </select>
               <ChevronDown aria-hidden="true" className="pointer-events-none absolute right-2.5 top-1/2 size-4 -translate-y-1/2 text-neutral-500" />
+            </div>
+            {/* The plan leaves as text or as a link; both from here, not from a
+                table under the drawing that repeated what the drawing shows. */}
+            <div className="flex h-9 items-stretch overflow-hidden rounded-md border border-neutral-300 bg-white text-neutral-700">
+              <button type="button" onClick={() => copy('plan')} disabled={printCount === 0} aria-label={aria.copyPlan} title={aria.copyPlan} className="flex w-9 items-center justify-center outline-none transition-colors hover:bg-neutral-100 hover:text-neutral-900 focus-visible:bg-neutral-100 disabled:opacity-40">
+                {copied === 'plan' ? <Check aria-hidden="true" className="size-4" /> : <ClipboardList aria-hidden="true" className="size-4" />}
+              </button>
+              <button type="button" onClick={() => copy('link')} aria-label={aria.copyLink} title={aria.copyLink} className="flex w-9 items-center justify-center border-l border-neutral-300 outline-none transition-colors hover:bg-neutral-100 hover:text-neutral-900 focus-visible:bg-neutral-100">
+                {copied === 'link' ? <Check aria-hidden="true" className="size-4" /> : <Link2 aria-hidden="true" className="size-4" />}
+              </button>
+              <button type="button" onClick={reset} aria-label={aria.reset} title={aria.reset} className="flex w-9 items-center justify-center border-l border-neutral-300 outline-none transition-colors hover:bg-neutral-100 hover:text-neutral-900 focus-visible:bg-neutral-100">
+                <RotateCcw aria-hidden="true" className="size-4" />
+              </button>
             </div>
           </div>
         {/* THE FRAME. A box of fixed size - the toolbar's width, the screen's
@@ -772,52 +830,56 @@ export function GalleryWallCalculator({ locale = 'en', variant = 'article' }: { 
         >
           {/* floor and ceiling */}
           <div className="pointer-events-none absolute inset-x-0 bottom-0 border-t border-neutral-400" />
-          <span className="pointer-events-none absolute bottom-1 right-2 text-[10px] uppercase tracking-wide text-neutral-500">Floor</span>
           {/* The sofa is part of the drawing, so its controls sit on the floor
               beside where it stands: a switch for whether it is there, and its
               name, which opens its measurements. */}
-          <div className="absolute bottom-2 left-2 z-20" onPointerDown={event => event.stopPropagation()}>
-            {sofaOpen && (
-              <div className="absolute bottom-full left-0 mb-2 flex w-max items-end gap-3 rounded-md border border-neutral-200 bg-white p-3 shadow-lg" style={{ animation: 'gw-print-in 140ms both' }}>
-                {numberField('sofa-w', 'Sofa width', sofaWidthInput, setSofaWidthInput, 'Arm to arm.', '', { min: 60, max: 400, step: 1 })}
-                {numberField('sofa-h', 'Sofa height', sofaHeightInput, setSofaHeightInput, 'Floor to the top of the back.', '', { min: 40, max: 150, step: 1 })}
-              </div>
-            )}
-            <div className="inline-flex h-7 w-fit items-center overflow-hidden rounded-md border border-neutral-300 bg-white/90 text-[11px] text-neutral-700">
-              <button
-                type="button"
-                role="switch"
-                aria-checked={showSofa}
-                aria-label={aria.sofaSwitch}
-                onClick={() => setShowSofa(current => !current)}
-                className="flex h-full items-center px-2 outline-none transition-colors hover:bg-neutral-100 focus-visible:bg-neutral-100"
-              >
-                <span
-                  aria-hidden="true"
-                  className={`relative inline-block rounded-full transition-colors ${showSofa ? 'bg-neutral-900' : 'bg-neutral-300'}`}
-                  style={{ width: 22, height: 12 }}
+          <div className="absolute bottom-2 left-2 z-20 flex items-center gap-2" onPointerDown={event => event.stopPropagation()}>
+            <div className="relative">
+              {sofaOpen && (
+                <div className="absolute bottom-full left-0 mb-2 flex w-max items-end gap-3 rounded-md border border-neutral-200 bg-white p-3 shadow-lg" style={{ animation: 'gw-print-in 140ms both' }}>
+                  {numberField('sofa-w', 'Sofa width', sofaWidthInput, setSofaWidthInput, 'Arm to arm.', '', { min: 60, max: 400, step: 1 })}
+                  {numberField('sofa-h', 'Sofa height', sofaHeightInput, setSofaHeightInput, 'Floor to the top of the back.', '', { min: 40, max: 150, step: 1 })}
+                </div>
+              )}
+              <div className="inline-flex h-7 w-fit items-center overflow-hidden rounded-md border border-neutral-300 bg-white/90 text-[11px] text-neutral-700">
+                <button
+                  type="button"
+                  role="switch"
+                  aria-checked={showSofa}
+                  aria-label={aria.sofaSwitch}
+                  onClick={() => setShowSofa(current => !current)}
+                  className="flex h-full items-center px-2 outline-none transition-colors hover:bg-neutral-100 focus-visible:bg-neutral-100"
                 >
-                  <span
-                    className="absolute rounded-full bg-white transition-transform"
-                    style={{ width: 8, height: 8, top: 2, left: 2, transform: showSofa ? 'translateX(10px)' : 'none' }}
-                  />
-                </span>
-              </button>
-              <button
-                type="button"
-                aria-expanded={sofaOpen}
-                onClick={() => setSofaOpen(current => !current)}
-                className="flex h-full items-center gap-1 border-l border-neutral-200 pl-2 pr-2 tabular-nums outline-none transition-colors hover:bg-neutral-100 hover:text-neutral-900 focus-visible:bg-neutral-100"
-              >
-                Sofa <span className="text-neutral-400">{sofaSize.width} × {sofaSize.height}</span>
-                <ChevronDown aria-hidden="true" className={`size-3 text-neutral-400 transition-transform ${sofaOpen ? 'rotate-180' : ''}`} />
-              </button>
+                  <Switch on={showSofa} />
+                </button>
+                <button
+                  type="button"
+                  aria-expanded={sofaOpen}
+                  onClick={() => setSofaOpen(current => !current)}
+                  className="flex h-full items-center gap-1 border-l border-neutral-200 pl-2 pr-2 tabular-nums outline-none transition-colors hover:bg-neutral-100 hover:text-neutral-900 focus-visible:bg-neutral-100"
+                >
+                  Sofa <span className="text-neutral-400">{sofaSize.width} × {sofaSize.height}</span>
+                  <ChevronDown aria-hidden="true" className={`size-3 text-neutral-400 transition-transform ${sofaOpen ? 'rotate-180' : ''}`} />
+                </button>
+              </div>
             </div>
+            {/* The measurements can be put away, leaving the wall and the prints. */}
+            <button
+              type="button"
+              role="switch"
+              aria-checked={showLines}
+              aria-label={aria.linesSwitch}
+              onClick={() => setShowLines(current => !current)}
+              className="inline-flex h-7 items-center gap-2 rounded-md border border-neutral-300 bg-white/90 px-2 text-[11px] text-neutral-700 outline-none transition-colors hover:bg-neutral-100 hover:text-neutral-900 focus-visible:bg-neutral-100"
+            >
+              <Switch on={showLines} />
+              Lines
+            </button>
           </div>
 
           {/* eye level */}
-          <div className="pointer-events-none absolute inset-x-0 border-t border-dashed border-neutral-300" style={{ top: y(EYE_LEVEL_CM), transition }} />
-          {safeCentre !== EYE_LEVEL_CM && (
+          {showLines && <div className="pointer-events-none absolute inset-x-0 border-t border-dashed border-neutral-300" style={{ top: y(EYE_LEVEL_CM), transition }} />}
+          {showLines && safeCentre !== EYE_LEVEL_CM && (
             <span className="pointer-events-none absolute right-2 bg-[#f7f6f3] px-1 text-[10px] tabular-nums text-neutral-500" style={{ top: `calc(${y(EYE_LEVEL_CM)} + 3px)`, transition }}>
               eye level · {EYE_LEVEL_CM} cm
             </span>
@@ -855,7 +917,7 @@ export function GalleryWallCalculator({ locale = 'en', variant = 'article' }: { 
               string above the group (margin, width, margin), the verticals on
               the left where nothing else lives. Each side margin carries its
               own number, so an off-centre group during a drag shows as one. */}
-          {printCount > 0 && !tooWide && (
+          {showLines && printCount > 0 && !tooWide && (
             <>
               {marginLeft > 0 && <Dimension axis="x" from={0} to={groupLeft} at={groupTop + 10} x={x} y={y} w={w} label={formatCentimetres(round(marginLeft))} transition={transition} />}
               <Dimension axis="x" from={groupLeft} to={groupRight} at={groupTop + 10} x={x} y={y} w={w} label={formatCentimetres(round(box.w))} transition={transition} />
@@ -867,10 +929,10 @@ export function GalleryWallCalculator({ locale = 'en', variant = 'article' }: { 
               {formatCentimetres(round(box.w - drawWidth))} too wide
             </span>
           )}
-          {printCount > 0 && !tooWide && groupLeft >= 12 && (
+          {showLines && printCount > 0 && !tooWide && groupLeft >= 12 && (
             <Dimension axis="y" from={0} to={groupTop} at={Math.min(8, groupLeft / 2)} x={x} y={y} h={h} label={`${formatCentimetres(round(groupTop))} floor to top edge`} transition={transition} />
           )}
-          {printCount > 0 && !tooWide && groupLeft >= 36 && (
+          {showLines && printCount > 0 && !tooWide && groupLeft >= 36 && (
             <Dimension axis="y" from={groupBottom} to={groupTop} at={groupLeft - 8} x={x} y={y} h={h} label={formatCentimetres(round(box.h))} labelSide="left" transition={transition} className="hidden sm:flex" />
           )}
 
@@ -1056,87 +1118,24 @@ export function GalleryWallCalculator({ locale = 'en', variant = 'article' }: { 
           </div>
         )}
 
-        <p className="mt-2 text-xs text-neutral-500">
-          Drag a print anywhere; it clicks to its neighbours’ edges and centres, one gap away. Tap one to change its size or take it away. Hover beside any print, or above or below it, to add one there.
-        </p>
       </div>
 
-      {/* ------------------------------------------------------ figures */}
-      <div className="mt-6 grid grid-cols-2 border-y border-neutral-300 sm:grid-cols-4 sm:divide-x sm:divide-neutral-300">
-        <Figure label="Group width" value={isValid && printCount ? formatCentimetres(round(box.w)) : '—'} />
-        <Figure label="Group height" value={isValid && printCount ? formatCentimetres(round(box.h)) : '—'} />
-        <Figure label="Space each side" value={!isValid || !printCount ? '—' : tooWide ? 'Does not fit' : formatCentimetres(round(settledMargin))} tone={tooWide ? 'bad' : undefined} />
-        <Figure label="Top edge from floor" value={isValid && printCount ? formatCentimetres(round(settledTop)) : '—'} />
-      </div>
-
-      <div className="mt-4 text-sm leading-relaxed text-neutral-800" role="status" aria-live="polite" aria-atomic="true">
-        <p className="font-medium">{statusCopy}</p>
+      {/* Under the drawing, only what needs acting on. The measurements are on
+          the drawing; a table repeating them was not useful. Announcements
+          stay for screen readers. */}
+      <div className="mt-3 min-h-5 text-sm leading-relaxed text-neutral-800" role="status" aria-live="polite" aria-atomic="true">
+        {isValid && printCount > 0 && (tooWide || tooTall) && <p className="font-medium text-destructive">{statusCopy}</p>}
         {sofaAdvice && (
-          <p className="mt-1 text-neutral-700">
+          <p className="text-neutral-700">
             Above a sofa, leave 15 to 25 cm between its back and the lowest frame.{' '}
             <button type="button" onClick={() => setCentre(sofaCentre)} className="border-b border-neutral-900 font-medium text-neutral-900 transition-colors hover:text-neutral-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring">
               Raise the centre to {sofaCentre} cm
             </button>
           </p>
         )}
-        {orderMessage && <p className="mt-1 text-neutral-700">{orderMessage}</p>}
+        <span className="sr-only">{statusCopy} {orderMessage}</span>
       </div>
-
-      {/* ------------------------------------------------- hanging plan */}
-      {printCount > 0 && (
-        <details className="mt-5 border-t border-neutral-300 pt-4">
-          <summary className="cursor-pointer text-sm font-medium text-neutral-900">Hanging plan — where each frame goes</summary>
-          <p className="mt-2 text-xs text-neutral-600">Measure from the left edge of the wall and up from the floor. Frames usually hang 3 to 5 cm below their hook, so check yours before you mark. Prints are numbered top to bottom, left to right.</p>
-          <div className="mt-3 overflow-x-auto">
-            <table className="w-full text-left text-sm tabular-nums">
-              <thead>
-                <tr className="text-xs uppercase tracking-wide text-neutral-600">
-                  <th className="py-1.5 pr-3 font-medium">Print</th>
-                  <th className="py-1.5 pr-3 font-medium">Size</th>
-                  <th className="py-1.5 pr-3 font-medium">Left edge</th>
-                  <th className="py-1.5 font-medium">Top edge from floor</th>
-                </tr>
-              </thead>
-              <tbody className="text-neutral-800">
-                {inReadingOrder.map((entry, i) => (
-                  <tr key={entry.print.id} className="border-t border-neutral-200">
-                    <td className="py-1.5 pr-3">Print {i + 1}</td>
-                    <td className="py-1.5 pr-3">{shortLabel(entry.print.size)}</td>
-                    <td className="py-1.5 pr-3">{formatCentimetres(round(entry.left))}</td>
-                    <td className="py-1.5">{formatCentimetres(round(entry.topFromFloor))}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <div className="mt-3 flex flex-wrap gap-2">
-            <button type="button" onClick={() => copy('plan')} className="min-h-10 rounded-md border border-neutral-900 px-3 text-sm font-medium text-neutral-900 transition-colors hover:bg-neutral-900 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring">
-              {copied === 'plan' ? 'Copied' : 'Copy the plan'}
-            </button>
-            <button type="button" onClick={() => copy('link')} className="min-h-10 rounded-md border border-neutral-300 px-3 text-sm text-neutral-800 transition-colors hover:border-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring">
-              {copied === 'link' ? 'Link copied' : 'Copy a link to this wall'}
-            </button>
-          </div>
-        </details>
-      )}
-
-      <p className="mt-6 text-sm text-neutral-700">
-        {shoppingList ? <>For this wall you need {shoppingList}. </> : null}
-        Frames add a little to each edge, so measure their outside before fixing any hooks.
-      </p>
-      <TrackedLink event="gallery-wall-calculator-products-click" eventData={{ article: 'create-an-art-wall' }} href={`${localePrefix}/products`} className="mt-2 inline-flex min-h-11 items-center border-b border-neutral-900 text-sm font-medium text-neutral-900 transition-colors hover:text-neutral-600 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring">
-        Find the prints for it <span aria-hidden="true" className="ml-1">→</span>
-      </TrackedLink>
     </section>
-  );
-}
-
-function Figure({ label, value, tone }: { label: string; value: string; tone?: 'bad' }) {
-  return (
-    <div className="py-4 first:pr-4 sm:px-4 sm:first:pl-0 sm:last:pr-0">
-      <span className="block text-xs uppercase tracking-wide text-neutral-600">{label}</span>
-      <strong className={`mt-1 block text-xl font-medium tabular-nums ${tone === 'bad' ? 'text-destructive' : 'text-neutral-900'}`}>{value}</strong>
-    </div>
   );
 }
 
