@@ -56,10 +56,14 @@ describe('gallery wall drag commits what it previews', () => {
     expect(inMove).toMatch(/press\.offset\.topFromFloor/);
   });
 
-  it('reads one rect from the DOM while dragging: the wall, for projection', () => {
+  it('reads only the wall\'s rect from the DOM while dragging, for projection', () => {
+    // Prints are mid-glide for a quarter of a second after every change;
+    // reading their rects would make the target flicker.
     const inMove = between('const onWallPointerMove', 'const onWallPointerUp');
-    expect(inMove.match(/getBoundingClientRect\(\)/g)?.length).toBe(1);
-    expect(inMove).toMatch(/wall\.getBoundingClientRect\(\)/);
+    const all = inMove.match(/getBoundingClientRect\(\)/g)?.length ?? 0;
+    const ofWall = inMove.match(/wall\.getBoundingClientRect\(\)/g)?.length ?? 0;
+    expect(all).toBeGreaterThan(0);
+    expect(all).toBe(ofWall);
     expect(inMove).toMatch(/\bresolve\(proposed, others, safeGap, SNAP_RADIUS_CM/);
   });
 

@@ -211,7 +211,9 @@ export interface ChromeAriaStrings {
     removePrint: string;
     addBeside: string;
     addBelow: string;
+    addAbove: string;
     addFirst: string;
+    heightMarker: string;
   };
 }
 
@@ -235,7 +237,9 @@ export const chromeAria: Record<Locale, ChromeAriaStrings> = {
       removePrint: 'Remove this print',
       addBeside: 'Add a print beside the group',
       addBelow: 'Add a print below the group',
+      addAbove: 'Add a print above the group',
       addFirst: 'Add the first print',
+      heightMarker: 'Height of the group above the floor. Drag, or use the arrow keys.',
     },
   },
   no: {
@@ -257,7 +261,9 @@ export const chromeAria: Record<Locale, ChromeAriaStrings> = {
       removePrint: 'Fjern dette trykket',
       addBeside: 'Legg til et trykk ved siden av gruppen',
       addBelow: 'Legg til et trykk under gruppen',
+      addAbove: 'Legg til et trykk over gruppen',
       addFirst: 'Legg til det første trykket',
+      heightMarker: 'Gruppens høyde over gulvet. Dra, eller bruk piltastene.',
     },
   },
 };

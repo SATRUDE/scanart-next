@@ -88,7 +88,10 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
   const [wallWidthInput, setWallWidthInput] = useState(String(DEFAULTS.wallWidth));
   const [wallHeightInput, setWallHeightInput] = useState(DEFAULTS.wallHeight);
   const [gapInput, setGapInput] = useState(String(DEFAULTS.gap));
-  const [centreInput, setCentreInput] = useState(String(DEFAULTS.centreHeight));
+  const [centre, setCentre] = useState<number>(DEFAULTS.centreHeight);
+  /** The whole group being dragged up or down by its height marker. */
+  const [groupDragging, setGroupDragging] = useState(false);
+  const groupDragRef = useRef<{ startY: number; startCentre: number } | null>(null);
   const [prints, setPrints] = useState<FreePrint[]>(() => seeded(fromRows(PRESETS[2].rows, DEFAULTS.gap)));
   const [showSofa, setShowSofa] = useState(true);
   const [selected, setSelected] = useState<string | null>(null);
@@ -146,18 +149,17 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
   const wallWidth = Number(wallWidthInput);
   const wallHeight = wallHeightInput === '' ? undefined : Number(wallHeightInput);
   const gap = Number(gapInput);
-  const centreHeight = Number(centreInput);
+  const centreHeight = centre;
   const printCount = prints.length;
 
   const wallError = wallWidthInput === '' ? 'Enter your wall width.' : !(wallWidth > 0) ? 'Use a wall width greater than 0 cm.' : '';
   const heightError = wallHeightInput !== '' && !(wallHeight !== undefined && wallHeight > 0) ? 'Use a height greater than 0 cm, or leave it blank.' : '';
   const gapError = gapInput === '' ? 'Enter the gap between frames.' : !(gap >= 0) ? 'The gap can’t be less than 0 cm.' : '';
-  const centreError = centreInput === '' || !(centreHeight > 0) ? 'Enter the height of the group’s centre from the floor.' : '';
-  const isValid = !wallError && !heightError && !gapError && !centreError;
+  const isValid = !wallError && !heightError && !gapError;
 
   const safeWallWidth = wallError ? DEFAULTS.wallWidth : wallWidth;
   const safeGap = gapError ? DEFAULTS.gap : gap;
-  const safeCentre = centreError ? DEFAULTS.centreHeight : centreHeight;
+  const safeCentre = centreHeight;
   const safeWallHeight = heightError ? undefined : wallHeight;
 
   /**
@@ -202,7 +204,8 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
   const tooWide = box.w > drawWidth;
   const tooTall = safeWallHeight !== undefined && box.h > safeWallHeight;
   const gapStatus = safeGap < 5 ? 'tight' : safeGap > 8 ? 'wide' : 'recommended';
-  const transition = `all ${REFLOW_MS}ms ${EASE}`;
+  // While the group rides the pointer nothing may lag behind it.
+  const transition = groupDragging ? 'none' : `all ${REFLOW_MS}ms ${EASE}`;
 
   /* ------------------------------------------------------------------ URL */
 
@@ -224,7 +227,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
         setWallWidthInput(String(plan.wallWidth));
         setWallHeightInput(plan.wallHeight === undefined ? '' : String(plan.wallHeight));
         setGapInput(String(plan.gap));
-        setCentreInput(String(plan.centreHeight));
+        setCentre(plan.centreHeight);
         setPrints(seeded(normalize(plan.prints, p => ({ w: PRINT_SIZES[p.size].width, h: PRINT_SIZES[p.size].height }))));
       }
       setHydrated(true);
@@ -280,19 +283,22 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
     announce(`Print is now ${shortLabel(size)}.`);
   };
 
-  const addPrint = (where: 'beside' | 'below') => {
+  const addPrint = (where: 'beside' | 'below' | 'above') => {
     if (printCount >= MAX_PRINTS) return;
     const size: PrintSizeKey = prints.at(-1)?.size ?? '50x70';
+    const { width, height } = PRINT_SIZES[size];
     const [print] = fresh([
       printCount === 0
         ? { size, x: 0, y: 0 }
         : where === 'beside'
           ? { size, x: box.minX + box.w + safeGap, y: box.minY }
-          : { size, x: box.minX + (box.w - PRINT_SIZES[size].width) / 2, y: box.minY + box.h + safeGap },
+          : where === 'below'
+            ? { size, x: box.minX + (box.w - width) / 2, y: box.minY + box.h + safeGap }
+            : { size, x: box.minX + (box.w - width) / 2, y: box.minY - safeGap - height },
     ]);
     commit([...prints, print]);
     setSelected(print.id);
-    announce(printCount === 0 ? 'First print added.' : where === 'beside' ? 'Print added beside the group.' : 'Print added below the group.');
+    announce(printCount === 0 ? 'First print added.' : `Print added ${where} the group.`);
   };
 
   const applyPreset = (key: string) => {
@@ -339,6 +345,36 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
 
   /* ----------------------------------------------------------------- drag */
 
+  /** Where the group's centre wants to click to: eye level, and clear of the sofa. */
+  const centreSnaps = (): number[] => [EYE_LEVEL_CM, ...(showSofa ? [SOFA.height + 20 + box.h / 2] : [])];
+
+  const moveCentreTo = (wanted: number, snapping: boolean) => {
+    const low = box.h / 2;
+    const high = drawHeight - box.h / 2;
+    let next = Math.min(high, Math.max(low, wanted));
+    if (snapping) for (const target of centreSnaps()) if (Math.abs(next - target) < 3) next = target;
+    setCentre(Math.round(next * 2) / 2);
+  };
+
+  const onMarkerPointerDown = (event: React.PointerEvent<HTMLElement>) => {
+    if (event.button !== 0 || printCount === 0) return;
+    event.preventDefault();
+    event.stopPropagation();
+    groupDragRef.current = { startY: event.clientY, startCentre: safeCentre };
+    setGroupDragging(true);
+    setSelected(null);
+    wallRef.current?.setPointerCapture(event.pointerId);
+  };
+
+  const onMarkerKey = (event: React.KeyboardEvent) => {
+    const step = event.shiftKey ? 10 : 1;
+    const delta = event.key === 'ArrowUp' ? step : event.key === 'ArrowDown' ? -step : 0;
+    if (!delta) return;
+    event.preventDefault();
+    moveCentreTo(safeCentre + delta, false);
+    announce(`Group centre ${formatCentimetres(Math.round((safeCentre + delta) * 2) / 2)} from the floor.`);
+  };
+
   const pxPerCm = () => {
     const rect = wallRef.current?.getBoundingClientRect();
     return rect && rect.width > 0 ? rect.width / drawWidth : 1;
@@ -373,8 +409,14 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
   };
 
   const onWallPointerMove = (event: React.PointerEvent) => {
-    const press = pressRef.current;
     const wall = wallRef.current;
+    const group = groupDragRef.current;
+    if (group && wall) {
+      const scale = wall.getBoundingClientRect().width / drawWidth;
+      moveCentreTo(group.startCentre - (event.clientY - group.startY) / scale, true);
+      return;
+    }
+    const press = pressRef.current;
     if (!press || !wall) return;
     const { clientX, clientY } = event;
 
@@ -417,6 +459,12 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
   };
 
   const onWallPointerUp = () => {
+    if (groupDragRef.current) {
+      groupDragRef.current = null;
+      setGroupDragging(false);
+      announce(`Group centre ${formatCentimetres(safeCentre)} from the floor.`);
+      return;
+    }
     const press = pressRef.current;
     pressRef.current = null;
     if (!press) return;
@@ -545,8 +593,18 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
     </label>
   );
 
-  const addBeside = printCount > 0 && printCount < MAX_PRINTS && !drag && groupRight + safeGap + 50 <= drawWidth;
-  const addBelow = printCount < MAX_PRINTS && !drag;
+  // Whether a print would fit AFTER the group re-centres around it, which is
+  // what happens on adding. Judged at the current position, a group at eye
+  // level could never take a print above: there is only half a wall up there
+  // until it moves. The zone itself is drawn where the print would appear
+  // now, and may run off the wall's edge; the visible part is enough to find.
+  const canAdd = printCount > 0 && printCount < MAX_PRINTS && !drag && !groupDragging;
+  const nextSize = PRINT_SIZES[prints.at(-1)?.size ?? '50x70'];
+  const fitsWide = box.w + safeGap + nextSize.width <= drawWidth;
+  const fitsTall = safeCentre + (box.h + safeGap + nextSize.height) / 2 <= drawHeight && safeCentre - (box.h + safeGap + nextSize.height) / 2 >= 0;
+  const addBeside = canAdd && fitsWide;
+  const addBelow = canAdd && fitsTall;
+  const addAbove = canAdd && fitsTall;
 
   return (
     <section className="not-prose my-10 scroll-mt-20 border-y border-neutral-300 py-7" aria-labelledby={`${id}-title`}>
@@ -559,15 +617,14 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
       <div className="mb-6 max-w-2xl">
         <h3 id={`${id}-title`} className="text-2xl font-medium text-neutral-900">Plan your wall</h3>
         <p className="mt-2 leading-relaxed text-neutral-700">
-          Your wall, to scale. Drag the prints wherever you like — they click to each other’s edges and to your gap — tap one to change its size, and read the hanging measurements straight off the drawing.
+          Your wall, to scale. Drag the prints wherever you like — they click to each other’s edges and to your gap — tap one to change its size, and slide the whole group up or down by the marker at the right. Then read the hanging measurements straight off the drawing.
         </p>
       </div>
 
-      <div className="grid grid-cols-2 gap-x-5 gap-y-4 sm:grid-cols-4">
+      <div className="grid grid-cols-2 gap-x-5 gap-y-4 sm:grid-cols-3">
         {numberField('wall', 'Wall width', wallWidthInput, setWallWidthInput, 'Just the width you can use.', wallError, { min: 1, max: 2000, step: 1 })}
         {numberField('height', 'Wall height', wallHeightInput, setWallHeightInput, 'Optional. Adds the ceiling and checks the fit.', heightError, { min: 1, max: 1000, step: 1, placeholder: 'Optional' })}
         {numberField('gap', 'Gap between frames', gapInput, setGapInput, '5 to 8 cm. Prints click to exactly this.', gapError, { min: 0, max: 30, step: 0.5 })}
-        {numberField('centre', 'Centre of the group', centreInput, setCentreInput, `From the floor. ${EYE_LEVEL_CM} cm is gallery eye level.`, centreError, { min: 30, max: 400, step: 1 })}
       </div>
 
       <div className="mt-6 flex flex-wrap items-center gap-2">
@@ -610,14 +667,14 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
           <div className="pointer-events-none absolute inset-x-0 bottom-0 border-t border-neutral-400" />
           <span className="pointer-events-none absolute bottom-1 right-2 text-[10px] uppercase tracking-wide text-neutral-500">Floor</span>
           {safeWallHeight !== undefined && (
-            <span className="pointer-events-none absolute right-2 top-1 text-[10px] uppercase tracking-wide text-neutral-500">Ceiling · {formatCentimetres(safeWallHeight)}</span>
+            <span className="pointer-events-none absolute left-2 top-1 text-[10px] uppercase tracking-wide text-neutral-500">Ceiling · {formatCentimetres(safeWallHeight)}</span>
           )}
 
           {/* eye level */}
           <div className="pointer-events-none absolute inset-x-0 border-t border-dashed border-neutral-300" style={{ top: y(EYE_LEVEL_CM), transition }} />
-          {(printCount === 0 || tooWide || marginRight >= 22) && (
-            <span className="pointer-events-none absolute right-2 text-[10px] tabular-nums text-neutral-500" style={{ top: `calc(${y(EYE_LEVEL_CM)} + 3px)`, transition }}>
-              {marginRight >= 50 || printCount === 0 ? `eye level · ${EYE_LEVEL_CM} cm` : 'eye level'}
+          {safeCentre !== EYE_LEVEL_CM && (
+            <span className="pointer-events-none absolute right-2 bg-[#f7f6f3] px-1 text-[10px] tabular-nums text-neutral-500" style={{ top: `calc(${y(EYE_LEVEL_CM)} + 3px)`, transition }}>
+              eye level · {EYE_LEVEL_CM} cm
             </span>
           )}
 
@@ -701,7 +758,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
                   height: h(rect.h),
                   // The held placeholder jumps between snap positions; that is
                   // the point of a snap. Everything else glides.
-                  transition: isHeld ? 'none' : `${transition}, box-shadow 120ms ease, border-color 120ms ease`,
+                  transition: isHeld || groupDragging ? 'none' : `${transition}, box-shadow 120ms ease, border-color 120ms ease`,
                   animation: 'gw-print-in 220ms both',
                 }}
               >
@@ -710,28 +767,69 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
             );
           })}
 
-          {/* add slots: beside the group, and below it */}
-          {addBeside && (
-            <button
-              type="button"
-              onClick={() => addPrint('beside')}
-              aria-label={aria.addBeside}
-              className="absolute flex items-center justify-center border border-dashed border-neutral-300 text-neutral-400 opacity-60 transition-[opacity,border-color,color] duration-150 hover:border-neutral-700 hover:text-neutral-800 hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-              style={{ left: x(groupRight + safeGap), top: y(groupTop), width: w(50), height: h(PRINT_SIZES[prints.at(-1)?.size ?? '50x70'].height), transition }}
-            >
-              <span aria-hidden="true" className="text-lg leading-none">+</span>
-            </button>
+          {/* Add zones: above, below and beside the group. Invisible until the
+              pointer is in the zone, then a ghost of the print that would be
+              added. Without hover (touch) they show faintly all the time. */}
+          {addAbove && (
+            <AddZone label={aria.addAbove} onClick={() => addPrint('above')} transition={transition} x={x} y={y} w={w} h={h}
+              zone={{ left: groupLeft, top: groupTop + safeGap + nextSize.height, w: box.w, h: nextSize.height + safeGap }}
+              ghost={{ left: groupLeft + (box.w - nextSize.width) / 2, top: groupTop + safeGap + nextSize.height, w: nextSize.width, h: nextSize.height }} />
           )}
           {addBelow && (
+            <AddZone label={aria.addBelow} onClick={() => addPrint('below')} transition={transition} x={x} y={y} w={w} h={h}
+              zone={{ left: groupLeft, top: groupBottom, w: box.w, h: nextSize.height + safeGap }}
+              ghost={{ left: groupLeft + (box.w - nextSize.width) / 2, top: groupBottom - safeGap, w: nextSize.width, h: nextSize.height }} />
+          )}
+          {addBeside && (
+            <AddZone label={aria.addBeside} onClick={() => addPrint('beside')} transition={transition} x={x} y={y} w={w} h={h}
+              zone={{ left: groupRight, top: groupTop, w: safeGap + nextSize.width, h: box.h }}
+              ghost={{ left: groupRight + safeGap, top: groupTop, w: nextSize.width, h: nextSize.height }} />
+          )}
+          {printCount === 0 && !drag && (
             <button
               type="button"
               onClick={() => addPrint('below')}
-              aria-label={printCount === 0 ? aria.addFirst : aria.addBelow}
+              aria-label={aria.addFirst}
               className="absolute left-1/2 flex -translate-x-1/2 items-center gap-1 whitespace-nowrap rounded-full border border-dashed border-neutral-300 bg-[#f7f6f3] px-3 py-1 text-xs text-neutral-500 transition-colors duration-150 hover:border-neutral-700 hover:text-neutral-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-              style={{ top: printCount === 0 ? `calc(${y(EYE_LEVEL_CM)} - 14px)` : `calc(${y(groupBottom)} + ${tooWide ? 36 : 16}px)`, transition }}
+              style={{ top: `calc(${y(EYE_LEVEL_CM)} - 14px)` }}
             >
-              <span aria-hidden="true">+</span> {printCount === 0 ? 'Add a print' : 'Add below'}
+              <span aria-hidden="true">+</span> Add a print
             </button>
+          )}
+
+          {/* The height marker: the group's centre, as a tab on the wall's
+              edge you drag up and down. While held, the distances that matter
+              for hanging - to the floor, to the ceiling - are drawn. */}
+          {printCount > 0 && (
+            <>
+              {groupDragging && (
+                <>
+                  <div className="pointer-events-none absolute inset-x-0 border-t border-dashed border-neutral-900/40" style={{ top: y(safeCentre) }} />
+                  <Dimension axis="y" from={0} to={groupBottom} at={drawWidth - 3} x={x} y={y} h={h} label={`${formatCentimetres(round(groupBottom))} to floor`} labelSide="left" transition="none" />
+                  {safeWallHeight !== undefined && groupTop < safeWallHeight && (
+                    <Dimension axis="y" from={groupTop} to={safeWallHeight} at={drawWidth - 3} x={x} y={y} h={h} label={`${formatCentimetres(round(safeWallHeight - groupTop))} to ceiling`} labelSide="left" transition="none" />
+                  )}
+                </>
+              )}
+              <button
+                type="button"
+                role="slider"
+                aria-label={aria.heightMarker}
+                aria-valuemin={Math.round(box.h / 2)}
+                aria-valuemax={Math.round(drawHeight - box.h / 2)}
+                aria-valuenow={Math.round(safeCentre)}
+                aria-valuetext={`${formatCentimetres(safeCentre)} from the floor`}
+                onPointerDown={onMarkerPointerDown}
+                onKeyDown={onMarkerKey}
+                title="Drag to move the whole group up or down"
+                className={`absolute right-0 z-20 flex -translate-y-1/2 cursor-ns-resize items-center gap-1 rounded-l-md border border-r-0 bg-white py-1 pl-2 pr-2.5 text-[11px] tabular-nums shadow-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring ${groupDragging ? 'border-neutral-900 text-neutral-900' : 'border-neutral-300 text-neutral-700 hover:border-neutral-900 hover:text-neutral-900'}`}
+                style={{ top: y(safeCentre), transition }}
+              >
+                <span aria-hidden="true" className="text-xs leading-none">⇕</span>
+                {formatCentimetres(safeCentre)}
+                {safeCentre === EYE_LEVEL_CM && <span className="text-neutral-500"> · eye level</span>}
+              </button>
+            </>
           )}
 
           {/* selection toolbar */}
@@ -800,7 +898,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
         )}
 
         <p className="mt-2 text-xs text-neutral-500">
-          Drag a print anywhere. It clicks to the edges and centres of its neighbours, and to exactly one gap away. Tap one to change its size or take it away.
+          Drag a print anywhere; it clicks to its neighbours’ edges and centres, one gap away. Tap one to change its size or take it away. Hover above, below or beside the group to add one there.
         </p>
       </div>
 
@@ -817,7 +915,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
         {sofaAdvice && (
           <p className="mt-1 text-neutral-700">
             Above a sofa, leave 15 to 25 cm between its back and the lowest frame.{' '}
-            <button type="button" onClick={() => setCentreInput(String(sofaCentre))} className="border-b border-neutral-900 font-medium text-neutral-900 transition-colors hover:text-neutral-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring">
+            <button type="button" onClick={() => setCentre(sofaCentre)} className="border-b border-neutral-900 font-medium text-neutral-900 transition-colors hover:text-neutral-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring">
               Raise the centre to {sofaCentre} cm
             </button>
           </p>
@@ -871,6 +969,49 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
         Find the prints for it <span aria-hidden="true" className="ml-1">→</span>
       </TrackedLink>
     </section>
+  );
+}
+
+/**
+ * A place a print can be added. The zone is the hit area; the ghost, drawn
+ * inside it at the size and place the new print would take, appears when the
+ * pointer arrives. Where there is no hover, the ghost is faintly always there.
+ */
+type Box = { left: number; top: number; w: number; h: number };
+
+function AddZone({ label, onClick, zone, ghost, transition, x, y, w, h }: {
+  label: string;
+  onClick: () => void;
+  /** In wall centimetres; `top` is from the floor. */
+  zone: Box;
+  ghost: Box;
+  transition: string;
+  x: (cm: number) => string;
+  y: (cm: number) => string;
+  w: (cm: number) => string;
+  h: (cm: number) => string;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-label={label}
+      className="group/add absolute cursor-copy outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+      style={{ left: x(zone.left), top: y(zone.top), width: w(zone.w), height: h(zone.h), transition }}
+    >
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute flex items-center justify-center border border-dashed border-neutral-400 text-neutral-500 opacity-0 transition-opacity duration-150 group-hover/add:opacity-100 group-focus-visible/add:opacity-100 [@media(hover:none)]:opacity-40"
+        style={{
+          left: `${((ghost.left - zone.left) / zone.w) * 100}%`,
+          top: `${((zone.top - ghost.top) / zone.h) * 100}%`,
+          width: `${(ghost.w / zone.w) * 100}%`,
+          height: `${(ghost.h / zone.h) * 100}%`,
+        }}
+      >
+        <span className="text-lg leading-none">+</span>
+      </span>
+    </button>
   );
 }
 
