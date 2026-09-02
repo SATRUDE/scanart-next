@@ -11,7 +11,16 @@ import {
 
 const DEFAULTS = { wallWidth: 240, printSize: '50x70' as PrintSizeKey, frameCount: 3, gap: 6 };
 
-export function GalleryWallCalculator() {
+/**
+ * `locale` follows LandingCrossLinks: the component carries its own prefix so
+ * a literal English path cannot leak on a Norwegian render. There is no
+ * Norwegian article route today, so this changes nothing yet - but
+ * lib/i18n-no.test.ts sweeps EVERY component rather than a hand-picked list,
+ * deliberately, because where a component is mounted is not visible from the
+ * guard and "article-only" is one page away from being untrue.
+ */
+export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' } = {}) {
+  const localePrefix = locale === 'no' ? '/no' : '';
   const id = useId();
   const [wallWidthInput, setWallWidthInput] = useState(String(DEFAULTS.wallWidth));
   const [printSize, setPrintSize] = useState<PrintSizeKey>(DEFAULTS.printSize);
@@ -119,7 +128,7 @@ export function GalleryWallCalculator() {
 
       <p className="mt-5 text-sm text-neutral-700">This is a planning guide based on print dimensions. Frames add a little width, so measure their outside edges before fixing any hooks.</p>
       <p className="mt-5 text-sm text-neutral-700">Now find the pieces that will make the row worth hanging.</p>
-      <TrackedLink event="gallery-wall-calculator-products-click" eventData={{ article: 'create-an-art-wall' }} href="/products" className="mt-2 inline-flex min-h-11 items-center border-b border-neutral-900 text-sm font-medium text-neutral-900 transition-colors hover:text-neutral-600 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring">Browse the print collection <span aria-hidden="true" className="ml-1">→</span></TrackedLink>
+      <TrackedLink event="gallery-wall-calculator-products-click" eventData={{ article: 'create-an-art-wall' }} href={`${localePrefix}/products`} className="mt-2 inline-flex min-h-11 items-center border-b border-neutral-900 text-sm font-medium text-neutral-900 transition-colors hover:text-neutral-600 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring">Browse the print collection <span aria-hidden="true" className="ml-1">→</span></TrackedLink>
     </section>
   );
 }
