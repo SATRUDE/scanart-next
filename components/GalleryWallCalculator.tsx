@@ -1,6 +1,6 @@
 'use client';
 
-import { useId, useState } from 'react';
+import { useId, useRef, useState } from 'react';
 import { TrackedLink } from '@/components/TrackedLink';
 import {
   calculateGalleryWall,
@@ -31,8 +31,17 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
   const [wallWidthInput, setWallWidthInput] = useState(String(DEFAULTS.wallWidth));
   const [prints, setPrints] = useState<PrintSizeKey[]>(DEFAULT_PRINTS);
   const [gapInput, setGapInput] = useState(String(DEFAULTS.gap));
+  /** Where the dragged print currently sits, for the outline. */
   const [dragIndex, setDragIndex] = useState<number | null>(null);
-  const [dropIndex, setDropIndex] = useState<number | null>(null);
+  /**
+   * The same index, kept in a ref because the drag needs it SYNCHRONOUSLY.
+   * dragenter fires faster than state settles, and the first attempt at this
+   * called setPrints from inside a setDragIndex updater - which React is
+   * entitled to drop, because updaters must be pure. Nothing moved at all.
+   */
+  const dragIndexRef = useRef<number | null>(null);
+  /** Where it started, so the announcement can describe the whole move. */
+  const dragOriginRef = useRef<number | null>(null);
   /**
    * What just happened to the order, announced separately from the fit copy.
    * A reorder is silent to a screen reader otherwise: the row rearranges and
@@ -59,19 +68,44 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
   const removePrintAt = (index: number) =>
     setPrints(current => current.filter((_, i) => i !== index));
 
+  /** The button path: move once and say so. */
   const reorder = (from: number, to: number) => {
     setPrints(current => {
-      const next = movePrint(current, from, to);
-      if (next !== current && to !== from && to >= 0 && to < current.length) {
-        setOrderMessage(`Print ${from + 1} moved to position ${to + 1} of ${current.length}.`);
-      }
-      return next;
+      if (to < 0 || to >= current.length || to === from) return current;
+      setOrderMessage(`Print ${from + 1} moved to position ${to + 1} of ${current.length}.`);
+      return movePrint(current, from, to);
     });
   };
 
+  /**
+   * The drag path: reflow as the print is dragged across its neighbours, so
+   * the row you are about to get is the row you can see. Deliberately silent -
+   * this fires on every neighbour crossed, and announcing each one would turn
+   * the live region into a stream.
+   */
+  const dragOver = (index: number) => {
+    const from = dragIndexRef.current;
+    if (from === null || from === index) return;
+    dragIndexRef.current = index;
+    setDragIndex(index);
+    setPrints(prev => movePrint(prev, from, index));
+  };
+
+  const startDrag = (index: number) => {
+    dragIndexRef.current = index;
+    dragOriginRef.current = index;
+    setDragIndex(index);
+  };
+
   const endDrag = () => {
+    const from = dragOriginRef.current;
+    const to = dragIndexRef.current;
+    if (from !== null && to !== null && from !== to) {
+      setOrderMessage(`Print moved from position ${from + 1} to ${to + 1} of ${prints.length}.`);
+    }
+    dragIndexRef.current = null;
+    dragOriginRef.current = null;
     setDragIndex(null);
-    setDropIndex(null);
   };
 
   const previewScale = Math.min(1, safeWallWidth / Math.max(result.totalWidth, safeWallWidth));
@@ -162,7 +196,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
       </fieldset>
 
       <div className="mt-7">
-        <p className="mb-2 text-xs uppercase tracking-wide text-neutral-600">Wall preview <span className="normal-case tracking-normal text-neutral-500">— drag a print to move it</span></p>
+        <p className="mb-2 text-xs uppercase tracking-wide text-neutral-600">Wall preview <span className="normal-case tracking-normal text-neutral-500">— drag a print and the others make room</span></p>
         {/* The preview is where the prints are actually arranged, so it is the
             drag surface: you move the picture, not a form row. It stays
             aria-hidden because it is a second representation of the same list
@@ -175,31 +209,31 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
             {safePrints.map((key, index) => {
               const print = PRINT_SIZES[key];
               const isDragging = dragIndex === index;
-              const isTarget = dropIndex === index && dragIndex !== null && dragIndex !== index;
               return (
                 <div
                   key={index}
                   draggable
                   onDragStart={event => {
-                    setDragIndex(index);
+                    startDrag(index);
                     event.dataTransfer.effectAllowed = 'move';
                     // Firefox refuses to start a drag with no payload.
                     event.dataTransfer.setData('text/plain', String(index));
                   }}
-                  onDragEnter={() => setDropIndex(index)}
+                  onDragEnter={() => dragOver(index)}
                   onDragOver={event => {
                     event.preventDefault();
                     event.dataTransfer.dropEffect = 'move';
+                    dragOver(index);
                   }}
                   onDragEnd={endDrag}
                   onDrop={event => {
+                    // The row already reflowed on the way in, so a drop only
+                    // has to stop the drag.
                     event.preventDefault();
-                    const from = dragIndex ?? Number(event.dataTransfer.getData('text/plain'));
-                    reorder(from, index);
                     endDrag();
                   }}
                   title={`Print ${index + 1}, ${print.label}. Drag to reorder.`}
-                  className={`shrink cursor-grab border-2 bg-neutral-100 p-1 transition-all active:cursor-grabbing ${isDragging ? 'border-neutral-400 opacity-40' : 'border-neutral-800'} ${isTarget ? 'ring-2 ring-neutral-900 ring-offset-2' : ''}`}
+                  className={`shrink cursor-grab border-2 bg-neutral-100 p-1 transition-all duration-150 active:cursor-grabbing ${isDragging ? 'border-neutral-900 ring-2 ring-neutral-900 ring-offset-2' : 'border-neutral-800'}`}
                   style={{ aspectRatio: `${print.width} / ${print.height}`, width: `${(print.width / printsWidth) * 100}%`, maxWidth: print.height === 70 ? '54px' : '62px' }}
                 >
                   <div className="h-full w-full border border-neutral-300" />
