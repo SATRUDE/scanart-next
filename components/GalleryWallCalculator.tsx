@@ -31,17 +31,40 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
   const [wallWidthInput, setWallWidthInput] = useState(String(DEFAULTS.wallWidth));
   const [prints, setPrints] = useState<PrintSizeKey[]>(DEFAULT_PRINTS);
   const [gapInput, setGapInput] = useState(String(DEFAULTS.gap));
-  /** Where the dragged print currently sits, for the outline. */
-  const [dragIndex, setDragIndex] = useState<number | null>(null);
   /**
-   * The same index, kept in a ref because the drag needs it SYNCHRONOUSLY.
-   * dragenter fires faster than state settles, and the first attempt at this
-   * called setPrints from inside a setDragIndex updater - which React is
-   * entitled to drop, because updaters must be pure. Nothing moved at all.
+   * A drag in progress. `from` is where the print started, `over` is the slot
+   * it would land in, `dx` is how far the pointer has travelled.
+   *
+   * The array is deliberately NOT reordered while dragging. Reordering on
+   * every crossing made the row jump a slot at a time, which is the thing
+   * Mark did not want. Instead the dragged print follows the pointer and the
+   * others are TRANSFORMED aside, so a gap opens where it will go and
+   * everything glides. The array is committed once, on release.
    */
-  const dragIndexRef = useRef<number | null>(null);
-  /** Where it started, so the announcement can describe the whole move. */
-  const dragOriginRef = useRef<number | null>(null);
+  const [drag, setDrag] = useState<{
+    from: number;
+    over: number;
+    dx: number;
+    /**
+     * One slot's width, measured at pointerdown and carried in STATE rather
+     * than read from the ref during render. eslint's react-hooks/refs is right
+     * to refuse the latter: a ref read while rendering does not trigger a
+     * re-render and can be a frame stale, which on a drag is exactly when it
+     * would show.
+     */
+    step: number;
+  } | null>(null);
+  /**
+   * Pointer events, not HTML5 drag. Native drag gives no usable pointer
+   * position mid-drag, no control over the drag image, and nothing at all on
+   * touch. Pointer events give all three and one code path for mouse, pen and
+   * finger.
+   */
+  const rowRef = useRef<HTMLDivElement | null>(null);
+  const dragStartXRef = useRef(0);
+  /** Slot centres measured at pointerdown, so the maths does not re-read the
+   *  DOM on every move (and cannot be confused by the transforms it applies). */
+  const centresRef = useRef<number[]>([]);
   /**
    * What just happened to the order, announced separately from the fit copy.
    * A reorder is silent to a screen reader otherwise: the row rearranges and
@@ -77,35 +100,62 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
     });
   };
 
-  /**
-   * The drag path: reflow as the print is dragged across its neighbours, so
-   * the row you are about to get is the row you can see. Deliberately silent -
-   * this fires on every neighbour crossed, and announcing each one would turn
-   * the live region into a stream.
-   */
-  const dragOver = (index: number) => {
-    const from = dragIndexRef.current;
-    if (from === null || from === index) return;
-    dragIndexRef.current = index;
-    setDragIndex(index);
-    setPrints(prev => movePrint(prev, from, index));
+  const beginDrag = (index: number, clientX: number, target: HTMLElement, pointerId: number) => {
+    const row = rowRef.current;
+    if (!row) return;
+    // Measure every slot's centre once, before anything moves.
+    centresRef.current = [...row.children].map(child => {
+      const rect = (child as HTMLElement).getBoundingClientRect();
+      return rect.left + rect.width / 2;
+    });
+    dragStartXRef.current = clientX;
+    target.setPointerCapture(pointerId);
+    const centres = centresRef.current;
+    const step = centres.length > 1 ? centres[1] - centres[0] : 0;
+    setDrag({ from: index, over: index, dx: 0, step });
   };
 
-  const startDrag = (index: number) => {
-    dragIndexRef.current = index;
-    dragOriginRef.current = index;
-    setDragIndex(index);
+  const moveDrag = (clientX: number) => {
+    setDrag(current => {
+      if (!current) return current;
+      const dx = clientX - dragStartXRef.current;
+      const centres = centresRef.current;
+      // Where the dragged print's own centre now is, and therefore which slot
+      // it belongs in: the count of slots whose centre it has passed.
+      const centre = (centres[current.from] ?? 0) + dx;
+      let over = 0;
+      for (let i = 0; i < centres.length; i++) if (centre > centres[i]) over = i;
+      if (centre <= centres[0]) over = 0;
+      return { ...current, dx, over };
+    });
   };
 
   const endDrag = () => {
-    const from = dragOriginRef.current;
-    const to = dragIndexRef.current;
-    if (from !== null && to !== null && from !== to) {
-      setOrderMessage(`Print moved from position ${from + 1} to ${to + 1} of ${prints.length}.`);
-    }
-    dragIndexRef.current = null;
-    dragOriginRef.current = null;
-    setDragIndex(null);
+    // Read the drag from state and call each setter separately. Doing the
+    // commit inside a setDrag updater is what broke this the first time: React
+    // may replay an updater, so movePrint ran twice from a shifting base and
+    // the print landed one slot short of where it had been dragged. Updaters
+    // must be pure; this is an event handler, so plain state is current here.
+    if (!drag) return;
+    const { from, over } = drag;
+    setDrag(null);
+    if (from === over) return;
+    setPrints(prev => movePrint(prev, from, over));
+    setOrderMessage(`Print moved from position ${from + 1} to ${over + 1} of ${prints.length}.`);
+  };
+
+  /**
+   * How far a print that is NOT being dragged must slide to make room.
+   *
+   * Every print in this catalogue is 50 cm wide, so one slot is one step; the
+   * step is measured rather than assumed so a future size of a different
+   * width still lands correctly.
+   */
+  const shiftFor = (index: number) => {
+    if (!drag || index === drag.from) return 0;
+    if (drag.from < drag.over && index > drag.from && index <= drag.over) return -drag.step;
+    if (drag.from > drag.over && index >= drag.over && index < drag.from) return drag.step;
+    return 0;
   };
 
   const previewScale = Math.min(1, safeWallWidth / Math.max(result.totalWidth, safeWallWidth));
@@ -196,7 +246,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
       </fieldset>
 
       <div className="mt-7">
-        <p className="mb-2 text-xs uppercase tracking-wide text-neutral-600">Wall preview <span className="normal-case tracking-normal text-neutral-500">— drag a print and the others make room</span></p>
+        <p className="mb-2 text-xs uppercase tracking-wide text-neutral-600">Wall preview <span className="normal-case tracking-normal text-neutral-500">— drag a print, the others make room</span></p>
         {/* The preview is where the prints are actually arranged, so it is the
             drag surface: you move the picture, not a form row. It stays
             aria-hidden because it is a second representation of the same list
@@ -205,36 +255,44 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
             Nothing here is focusable, so nothing focusable is hidden. */}
         <div className="h-40 overflow-hidden border border-neutral-300 px-3 pb-4 pt-6 sm:h-[180px] sm:px-6" aria-hidden="true">
         <div className="mx-auto flex h-full max-w-full items-center justify-center overflow-hidden border-x border-b border-neutral-300" style={{ width: `${previewScale * 100}%` }}>
-          <div className="flex max-w-full items-center justify-center" style={{ width: `${arrangementPercent}%`, gap: `${Math.max(2, safeGap * 0.55)}px` }}>
+          <div
+            ref={rowRef}
+            onPointerMove={event => { if (drag) moveDrag(event.clientX); }}
+            onPointerUp={endDrag}
+            onPointerCancel={endDrag}
+            className="flex max-w-full items-center justify-center"
+            style={{ width: `${arrangementPercent}%`, gap: `${Math.max(2, safeGap * 0.55)}px` }}
+          >
             {safePrints.map((key, index) => {
               const print = PRINT_SIZES[key];
-              const isDragging = dragIndex === index;
+              const isDragging = drag?.from === index;
+              const shift = shiftFor(index);
               return (
                 <div
                   key={index}
-                  draggable
-                  onDragStart={event => {
-                    startDrag(index);
-                    event.dataTransfer.effectAllowed = 'move';
-                    // Firefox refuses to start a drag with no payload.
-                    event.dataTransfer.setData('text/plain', String(index));
-                  }}
-                  onDragEnter={() => dragOver(index)}
-                  onDragOver={event => {
+                  onPointerDown={event => {
+                    // Left button / primary contact only, and take over from
+                    // the browser so no text selection or native drag starts.
+                    if (event.button !== 0) return;
                     event.preventDefault();
-                    event.dataTransfer.dropEffect = 'move';
-                    dragOver(index);
-                  }}
-                  onDragEnd={endDrag}
-                  onDrop={event => {
-                    // The row already reflowed on the way in, so a drop only
-                    // has to stop the drag.
-                    event.preventDefault();
-                    endDrag();
+                    beginDrag(index, event.clientX, event.currentTarget, event.pointerId);
                   }}
                   title={`Print ${index + 1}, ${print.label}. Drag to reorder.`}
-                  className={`shrink cursor-grab border-2 bg-neutral-100 p-1 transition-all duration-150 active:cursor-grabbing ${isDragging ? 'border-neutral-900 ring-2 ring-neutral-900 ring-offset-2' : 'border-neutral-800'}`}
-                  style={{ aspectRatio: `${print.width} / ${print.height}`, width: `${(print.width / printsWidth) * 100}%`, maxWidth: print.height === 70 ? '54px' : '62px' }}
+                  className={`shrink border-2 bg-neutral-100 p-1 ${isDragging ? 'z-10 cursor-grabbing border-neutral-900 shadow-lg' : 'cursor-grab border-neutral-800'}`}
+                  style={{
+                    aspectRatio: `${print.width} / ${print.height}`,
+                    width: `${(print.width / printsWidth) * 100}%`,
+                    maxWidth: print.height === 70 ? '54px' : '62px',
+                    // The dragged print tracks the pointer with no transition,
+                    // or it would lag behind the finger. Everything else eases,
+                    // which is the whole feel of it.
+                    transform: isDragging
+                      ? `translateX(${drag?.dx ?? 0}px) scale(1.06)`
+                      : `translateX(${shift}px)`,
+                    transition: isDragging ? 'none' : 'transform 180ms cubic-bezier(0.2, 0, 0, 1)',
+                    // Stops a touch drag scrolling the article instead.
+                    touchAction: 'none',
+                  }}
                 >
                   <div className="h-full w-full border border-neutral-300" />
                 </div>
