@@ -1,6 +1,6 @@
 'use client';
 
-import { useId, useRef, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import { TrackedLink } from '@/components/TrackedLink';
 import {
   calculateGalleryWall,
@@ -55,6 +55,19 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
     step: number;
   } | null>(null);
   /**
+   * True for exactly the one frame in which a drop is committed.
+   *
+   * On release two things change together: the array reorders, so each print
+   * lands in a new slot, and the transforms clear. Those cancel out - a print
+   * shifted -50px that moves one slot left is already exactly where it needs
+   * to be - so the correct amount of visible movement is NONE. With the
+   * transition still armed the browser animates the transform from -50 to 0
+   * anyway, which reads as the row springing back and then re-sorting itself.
+   * Suppressing the transition for that single frame makes the drop land
+   * silently, which is what it should have looked like all along.
+   */
+  const [settling, setSettling] = useState(false);
+  /**
    * Pointer events, not HTML5 drag. Native drag gives no usable pointer
    * position mid-drag, no control over the drag image, and nothing at all on
    * touch. Pointer events give all three and one code path for mouse, pen and
@@ -62,6 +75,16 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
    */
   const rowRef = useRef<HTMLDivElement | null>(null);
   const dragStartXRef = useRef(0);
+  /**
+   * Whether a drag is live, as a ref.
+   *
+   * The move handler cannot gate on the `drag` STATE: pointerdown sets it
+   * asynchronously, so the first pointermove of every drag arrives before the
+   * state exists and used to be thrown away. One dropped frame is invisible in
+   * practice, because moves keep coming, but it is a real gap and it made a
+   * test look like the whole feature was dead.
+   */
+  const draggingRef = useRef(false);
   /** Slot centres measured at pointerdown, so the maths does not re-read the
    *  DOM on every move (and cannot be confused by the transforms it applies). */
   const centresRef = useRef<number[]>([]);
@@ -91,6 +114,15 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
   const removePrintAt = (index: number) =>
     setPrints(current => current.filter((_, i) => i !== index));
 
+  // Re-arm the transitions on the frame after the commit, so the next drag
+  // animates normally. rAF rather than a timeout: it is exactly one frame,
+  // whatever the display is doing.
+  useEffect(() => {
+    if (!settling) return;
+    const frame = requestAnimationFrame(() => setSettling(false));
+    return () => cancelAnimationFrame(frame);
+  }, [settling]);
+
   /** The button path: move once and say so. */
   const reorder = (from: number, to: number) => {
     setPrints(current => {
@@ -110,6 +142,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
     });
     dragStartXRef.current = clientX;
     target.setPointerCapture(pointerId);
+    draggingRef.current = true;
     const centres = centresRef.current;
     const step = centres.length > 1 ? centres[1] - centres[0] : 0;
     setDrag({ from: index, over: index, dx: 0, step });
@@ -136,8 +169,10 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
     // may replay an updater, so movePrint ran twice from a shifting base and
     // the print landed one slot short of where it had been dragged. Updaters
     // must be pure; this is an event handler, so plain state is current here.
+    draggingRef.current = false;
     if (!drag) return;
     const { from, over } = drag;
+    if (from !== over) setSettling(true);
     setDrag(null);
     if (from === over) return;
     setPrints(prev => movePrint(prev, from, over));
@@ -257,7 +292,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
         <div className="mx-auto flex h-full max-w-full items-center justify-center overflow-hidden border-x border-b border-neutral-300" style={{ width: `${previewScale * 100}%` }}>
           <div
             ref={rowRef}
-            onPointerMove={event => { if (drag) moveDrag(event.clientX); }}
+            onPointerMove={event => { if (draggingRef.current) moveDrag(event.clientX); }}
             onPointerUp={endDrag}
             onPointerCancel={endDrag}
             className="flex max-w-full items-center justify-center"
@@ -289,7 +324,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
                     transform: isDragging
                       ? `translateX(${drag?.dx ?? 0}px) scale(1.06)`
                       : `translateX(${shift}px)`,
-                    transition: isDragging ? 'none' : 'transform 180ms cubic-bezier(0.2, 0, 0, 1)',
+                    transition: isDragging || settling ? 'none' : 'transform 180ms cubic-bezier(0.2, 0, 0, 1)',
                     // Stops a touch drag scrolling the article instead.
                     touchAction: 'none',
                   }}
