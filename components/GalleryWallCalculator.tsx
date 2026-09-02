@@ -778,12 +778,12 @@ export function GalleryWallCalculator({ locale = 'en', variant = 'article' }: { 
               name, which opens its measurements. */}
           <div className="absolute bottom-2 left-2 z-20" onPointerDown={event => event.stopPropagation()}>
             {sofaOpen && (
-              <div className="mb-2 flex items-end gap-3 rounded-md border border-neutral-200 bg-white p-3 shadow-lg" style={{ animation: 'gw-print-in 140ms both' }}>
+              <div className="absolute bottom-full left-0 mb-2 flex w-max items-end gap-3 rounded-md border border-neutral-200 bg-white p-3 shadow-lg" style={{ animation: 'gw-print-in 140ms both' }}>
                 {numberField('sofa-w', 'Sofa width', sofaWidthInput, setSofaWidthInput, 'Arm to arm.', '', { min: 60, max: 400, step: 1 })}
                 {numberField('sofa-h', 'Sofa height', sofaHeightInput, setSofaHeightInput, 'Floor to the top of the back.', '', { min: 40, max: 150, step: 1 })}
               </div>
             )}
-            <div className="flex h-7 items-center overflow-hidden rounded-md border border-neutral-300 bg-white/90 text-[11px] text-neutral-700">
+            <div className="inline-flex h-7 w-fit items-center overflow-hidden rounded-md border border-neutral-300 bg-white/90 text-[11px] text-neutral-700">
               <button
                 type="button"
                 role="switch"
