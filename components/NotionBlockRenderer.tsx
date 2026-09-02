@@ -1,5 +1,7 @@
 import React from 'react';
 import { OutboundLink } from '@/components/OutboundLink';
+import { GalleryWallCalculator } from '@/components/GalleryWallCalculator';
+import { galleryWallCalculatorInsertionIndex } from '@/lib/article-enhancements';
 
 interface NotionBlock {
   id: string;
@@ -131,7 +133,9 @@ export const NotionBlockRenderer: React.FC<NotionBlockRendererProps> = ({ blocks
       }
     };
 
-    blocks.forEach(block => {
+    const calculatorInsertionIndex = galleryWallCalculatorInsertionIndex(blocks, articleSlug);
+
+    blocks.forEach((block, index) => {
       if (block.type === 'bulleted_list_item') {
         if (listType !== 'bulleted') { flush(); listType = 'bulleted'; }
         currentList.push(renderBlock(block));
@@ -141,6 +145,11 @@ export const NotionBlockRenderer: React.FC<NotionBlockRendererProps> = ({ blocks
       } else {
         flush();
         rendered.push(renderBlock(block));
+      }
+
+      if (index === calculatorInsertionIndex) {
+        flush();
+        rendered.push(<GalleryWallCalculator key="gallery-wall-spacing-calculator" />);
       }
     });
     flush();
