@@ -80,8 +80,15 @@ const shortLabel = (size: PrintSizeKey) => PRINT_SIZES[size].label.split(',')[0]
  * Norwegian article route today, so this changes nothing yet - but
  * lib/i18n-no.test.ts sweeps EVERY component rather than a hand-picked list.
  */
-export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' } = {}) {
+export function GalleryWallCalculator({ locale = 'en', variant = 'article' }: { locale?: 'en' | 'no'; variant?: 'article' | 'page' } = {}) {
   const localePrefix = locale === 'no' ? '/no' : '';
+  /**
+   * 'article' sits mid-prose: ruled off top and bottom, its own heading, and
+   * the drawing bleeding past the reading column. 'page' is the planner as a
+   * landing page's centrepiece: the hero has already said what it is, and the
+   * container is already wide, so neither the heading nor the bleed applies.
+   */
+  const inArticle = variant === 'article';
   const aria = chromeAria[locale].wallPlanner;
   const id = useId();
 
@@ -634,14 +641,14 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
   })();
 
   return (
-    <section className="not-prose my-10 scroll-mt-20 border-y border-neutral-300 py-7" aria-labelledby={`${id}-title`}>
+    <section className={`not-prose scroll-mt-20 ${inArticle ? 'my-10 border-y border-neutral-300 py-7' : ''}`} aria-labelledby={`${id}-title`}>
       <style>{`
         @keyframes gw-print-in { from { opacity: 0; transform: scale(0.92); } to { opacity: 1; transform: none; } }
         @keyframes gw-pop-in { from { opacity: 0; transform: translate(-50%, 4px) scale(0.96); } to { opacity: 1; transform: translate(-50%, 0) scale(1); } }
         @media (prefers-reduced-motion: reduce) { .gw-wall * { transition: none !important; animation: none !important; } }
       `}</style>
 
-      <div className="mb-6 max-w-2xl">
+      <div className={inArticle ? 'mb-6 max-w-2xl' : 'sr-only'}>
         <h3 id={`${id}-title`} className="text-2xl font-medium text-neutral-900">Plan your wall</h3>
         <p className="mt-2 leading-relaxed text-neutral-700">
           Your wall, to scale. Drag the prints wherever you like — they click to each other’s edges and to your gap — tap one to change its size, and slide the whole group up or down by the marker at the right. Then read the hanging measurements straight off the drawing.
@@ -679,10 +686,10 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
           become the containing block of the fixed copy under the pointer. */}
       <div
         className="mt-5"
-        style={{
+        style={inArticle ? {
           width: 'min(150%, calc(100vw - 2rem))',
           marginLeft: 'calc((100% - min(150%, calc(100vw - 2rem))) / 2)',
-        }}
+        } : undefined}
       >
         <div
           ref={wallRef}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { OutboundLink } from '@/components/OutboundLink';
-import { GalleryWallCalculator } from '@/components/GalleryWallCalculator';
+import { GalleryWallPlannerTeaser } from '@/components/GalleryWallPlannerTeaser';
 import { galleryWallCalculatorInsertionIndex } from '@/lib/article-enhancements';
 
 interface NotionBlock {
@@ -149,7 +149,7 @@ export const NotionBlockRenderer: React.FC<NotionBlockRendererProps> = ({ blocks
 
       if (index === calculatorInsertionIndex) {
         flush();
-        rendered.push(<GalleryWallCalculator key="gallery-wall-spacing-calculator" />);
+        rendered.push(<GalleryWallPlannerTeaser key="gallery-wall-planner-teaser" />);
       }
     });
     flush();
