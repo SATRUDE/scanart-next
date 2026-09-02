@@ -204,6 +204,12 @@ export interface ChromeAriaStrings {
   inspireStrip: string;
   /** Prefixed to ": Norsk, GBP". */
   languageAndCurrency: string;
+  /** The gallery wall planner's drawing: the group, its toolbar, and remove. */
+  wallPlanner: {
+    wall: string;
+    selectedPrint: string;
+    removePrint: string;
+  };
 }
 
 export const chromeAria: Record<Locale, ChromeAriaStrings> = {
@@ -220,6 +226,11 @@ export const chromeAria: Record<Locale, ChromeAriaStrings> = {
     },
     inspireStrip: 'Be inspired: see our prints in real rooms',
     languageAndCurrency: 'Language and currency',
+    wallPlanner: {
+      wall: 'Your wall. Each print is a button: arrow keys move it, S changes its size, Delete removes it.',
+      selectedPrint: 'Selected print',
+      removePrint: 'Remove this print',
+    },
   },
   no: {
     cart: {
@@ -234,6 +245,11 @@ export const chromeAria: Record<Locale, ChromeAriaStrings> = {
     },
     inspireStrip: 'La deg inspirere: se trykkene våre i ekte rom',
     languageAndCurrency: 'Språk og valuta',
+    wallPlanner: {
+      wall: 'Veggen din. Hvert trykk er en knapp: piltastene flytter det, S endrer størrelsen, Delete fjerner det.',
+      selectedPrint: 'Valgt trykk',
+      removePrint: 'Fjern dette trykket',
+    },
   },
 };
 

@@ -240,3 +240,136 @@ export function alignFromDrag(
   if (proposed > 0.75) return 'bottom';
   return 'centre';
 }
+
+/**
+ * The museum convention: the centre of a group of pictures sits at about eye
+ * level, 145 cm from the floor. Where the plan hangs the group unless told
+ * otherwise, and the one number a first-time hanger most needs handed to them.
+ */
+export const EYE_LEVEL_CM = 145;
+
+/** A print placed on the wall, in centimetres from the wall's left edge and from the floor. */
+export interface PlacedPrint {
+  row: number;
+  index: number;
+  size: PrintSizeKey;
+  width: number;
+  height: number;
+  /** Left edge, from the left edge of the wall. Negative when the row is wider than the wall. */
+  left: number;
+  /** Top edge, from the floor. What you measure up to before marking a hook. */
+  topFromFloor: number;
+}
+
+export interface GalleryWallLayout {
+  prints: PlacedPrint[];
+  /** Top and bottom edges of the whole group, from the floor. */
+  groupTop: number;
+  groupBottom: number;
+  /** Left edge of each row, from the left edge of the wall. */
+  rowLefts: number[];
+  /** Top edge of each row, from the floor. */
+  rowTops: number[];
+}
+
+/**
+ * Where every print hangs, as real measurements.
+ *
+ * The rows are centred on the wall and the group is centred on `centreHeight`
+ * from the floor. This is the hanging plan, and it is also what the drawing is
+ * projected from, so the two cannot disagree - the picture on screen IS the
+ * numbers in the table, scaled.
+ */
+export function layoutGalleryWall(inputs: GalleryWallInputs, centreHeight: number = EYE_LEVEL_CM): GalleryWallLayout {
+  const { rows, gap, wallWidth } = inputs;
+  const { rowWidths, rowHeights, totalHeight } = calculateGalleryWall(inputs);
+  const groupTop = centreHeight + totalHeight / 2;
+  const groupBottom = groupTop - totalHeight;
+
+  const rowLefts = rowWidths.map(width => (wallWidth - width) / 2);
+  const rowTops: number[] = [];
+  let cursor = groupTop;
+  rowHeights.forEach(height => {
+    rowTops.push(cursor);
+    cursor -= height + gap;
+  });
+
+  const prints: PlacedPrint[] = [];
+  rows.forEach((row, ri) => {
+    let left = rowLefts[ri];
+    row.forEach((print, index) => {
+      const { width, height } = PRINT_SIZES[print.size];
+      const { offset } = alignmentOffset(print, rowHeights[ri]);
+      prints.push({ row: ri, index, size: print.size, width, height, left, topFromFloor: rowTops[ri] - offset });
+      left += width + gap;
+    });
+  });
+
+  return { prints, groupTop, groupBottom, rowLefts, rowTops };
+}
+
+/** How many of each size the wall needs, for the shopping list. */
+export function sizeCounts(rows: readonly WallRow[]): Partial<Record<PrintSizeKey, number>> {
+  const counts: Partial<Record<PrintSizeKey, number>> = {};
+  for (const row of rows) for (const print of row) counts[print.size] = (counts[print.size] ?? 0) + 1;
+  return counts;
+}
+
+/**
+ * Starting arrangements. Nobody begins from a blank wall - they begin from a
+ * shape they have seen and liked - so these are the shapes people actually
+ * hang, in the sizes we actually sell.
+ */
+export const PRESETS: readonly { key: string; label: string; rows: WallRow[] }[] = [
+  { key: 'row', label: 'Row of three', rows: [[{ size: '50x70', align: 'centre' }, { size: '50x70', align: 'centre' }, { size: '50x70', align: 'centre' }]] },
+  { key: 'grid', label: 'Two by two', rows: [[{ size: '50x70', align: 'centre' }, { size: '50x70', align: 'centre' }], [{ size: '50x70', align: 'centre' }, { size: '50x70', align: 'centre' }]] },
+  { key: 'pyramid', label: 'Pyramid', rows: [[{ size: '50x70', align: 'centre' }, { size: '50x50', align: 'centre' }, { size: '50x70', align: 'centre' }], [{ size: '50x50', align: 'centre' }, { size: '50x50', align: 'centre' }]] },
+  { key: 'salon', label: 'Salon', rows: [[{ size: '50x50', align: 'bottom' }, { size: '50x70', align: 'centre' }, { size: '50x50', align: 'bottom' }], [{ size: '50x70', align: 'centre' }, { size: '50x50', align: 'top' }, { size: '50x70', align: 'centre' }]] },
+];
+
+export interface Arrangement {
+  wallWidth: number;
+  wallHeight?: number;
+  gap: number;
+  centreHeight: number;
+  rows: WallRow[];
+}
+
+const SIZE_CODE: Record<PrintSizeKey, string> = { '50x70': 'p', '50x50': 's' };
+const ALIGN_CODE: Record<PrintAlign, string> = { top: 't', centre: 'c', bottom: 'b' };
+
+/**
+ * The whole plan as a short string, for the URL hash.
+ *
+ * `w240h0g6c145;pc,sc,pc|sc,sc` - wall, gap, centre, then rows of
+ * size+align letters. Short enough to read out, stable enough to bookmark:
+ * reload and the wall you were working on is still there, send the link and
+ * so is theirs.
+ */
+export function encodeArrangement(a: Arrangement): string {
+  const rows = a.rows.map(row => row.map(p => SIZE_CODE[p.size] + ALIGN_CODE[p.align]).join(',')).join('|');
+  return `w${a.wallWidth}h${a.wallHeight ?? 0}g${a.gap}c${a.centreHeight};${rows}`;
+}
+
+export function decodeArrangement(text: string): Arrangement | null {
+  const match = /^w(\d+(?:\.\d+)?)h(\d+(?:\.\d+)?)g(\d+(?:\.\d+)?)c(\d+(?:\.\d+)?);(.*)$/.exec(text.trim());
+  if (!match) return null;
+  const [, w, h, g, c, body] = match;
+  const sizes = Object.fromEntries(Object.entries(SIZE_CODE).map(([k, v]) => [v, k])) as Record<string, PrintSizeKey>;
+  const aligns = Object.fromEntries(Object.entries(ALIGN_CODE).map(([k, v]) => [v, k])) as Record<string, PrintAlign>;
+  const rows: WallRow[] = [];
+  for (const rowText of body.split('|')) {
+    if (!rowText) continue;
+    const row: WallPrint[] = [];
+    for (const code of rowText.split(',')) {
+      const size = sizes[code[0]];
+      const align = aligns[code[1]];
+      if (!size || !align) return null;
+      row.push({ size, align });
+    }
+    rows.push(row);
+  }
+  if (!rows.length) return null;
+  const wallHeight = Number(h);
+  return { wallWidth: Number(w), wallHeight: wallHeight > 0 ? wallHeight : undefined, gap: Number(g), centreHeight: Number(c), rows };
+}
