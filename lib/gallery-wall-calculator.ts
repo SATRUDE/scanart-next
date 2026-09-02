@@ -320,11 +320,11 @@ export function sizeCounts(rows: readonly WallRow[]): Partial<Record<PrintSizeKe
  * shape they have seen and liked - so these are the shapes people actually
  * hang, in the sizes we actually sell.
  */
-export const PRESETS: readonly { key: string; label: string; rows: WallRow[] }[] = [
-  { key: 'row', label: 'Row of three', rows: [[{ size: '50x70', align: 'centre' }, { size: '50x70', align: 'centre' }, { size: '50x70', align: 'centre' }]] },
-  { key: 'grid', label: 'Two by two', rows: [[{ size: '50x70', align: 'centre' }, { size: '50x70', align: 'centre' }], [{ size: '50x70', align: 'centre' }, { size: '50x70', align: 'centre' }]] },
-  { key: 'pyramid', label: 'Pyramid', rows: [[{ size: '50x70', align: 'centre' }, { size: '50x50', align: 'centre' }, { size: '50x70', align: 'centre' }], [{ size: '50x50', align: 'centre' }, { size: '50x50', align: 'centre' }]] },
-  { key: 'salon', label: 'Salon', rows: [[{ size: '50x50', align: 'bottom' }, { size: '50x70', align: 'centre' }, { size: '50x50', align: 'bottom' }], [{ size: '50x70', align: 'centre' }, { size: '50x50', align: 'top' }, { size: '50x70', align: 'centre' }]] },
+export const PRESETS: readonly { key: string; label: string; description: string; rows: WallRow[] }[] = [
+  { key: 'row', label: 'Row of three', description: 'Three portraits in a line. Calm, classic, hard to get wrong.', rows: [[{ size: '50x70', align: 'centre' }, { size: '50x70', align: 'centre' }, { size: '50x70', align: 'centre' }]] },
+  { key: 'grid', label: 'Two by two', description: 'A tight block of four. Reads as one large piece from across the room.', rows: [[{ size: '50x70', align: 'centre' }, { size: '50x70', align: 'centre' }], [{ size: '50x70', align: 'centre' }, { size: '50x70', align: 'centre' }]] },
+  { key: 'pyramid', label: 'Pyramid', description: 'Three above two, sizes mixed. The shape most gallery walls settle into.', rows: [[{ size: '50x70', align: 'centre' }, { size: '50x50', align: 'centre' }, { size: '50x70', align: 'centre' }], [{ size: '50x50', align: 'centre' }, { size: '50x50', align: 'centre' }]] },
+  { key: 'salon', label: 'Salon', description: 'Six prints, tops and bottoms staggered. Busier, and deliberately so.', rows: [[{ size: '50x50', align: 'bottom' }, { size: '50x70', align: 'centre' }, { size: '50x50', align: 'bottom' }], [{ size: '50x70', align: 'centre' }, { size: '50x50', align: 'top' }, { size: '50x70', align: 'centre' }]] },
 ];
 
 export interface Arrangement {

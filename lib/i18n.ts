@@ -217,7 +217,6 @@ export interface ChromeAriaStrings {
     startFrom: string;
     sofaSwitch: string;
     linesSwitch: string;
-    copyPlan: string;
     copyLink: string;
     reset: string;
     expand: string;
@@ -250,7 +249,6 @@ export const chromeAria: Record<Locale, ChromeAriaStrings> = {
       startFrom: 'Start from an arrangement',
       sofaSwitch: 'Show a sofa for scale',
       linesSwitch: 'Show the measurement lines',
-      copyPlan: 'Copy the hanging plan as text',
       copyLink: 'Copy a link to this wall',
       reset: 'Start again from the default wall',
       expand: 'Fill the screen',
@@ -281,7 +279,6 @@ export const chromeAria: Record<Locale, ChromeAriaStrings> = {
       startFrom: 'Start fra et oppsett',
       sofaSwitch: 'Vis en sofa for skala',
       linesSwitch: 'Vis målelinjene',
-      copyPlan: 'Kopier hengeplanen som tekst',
       copyLink: 'Kopier en lenke til denne veggen',
       reset: 'Begynn på nytt med standardveggen',
       expand: 'Fyll skjermen',

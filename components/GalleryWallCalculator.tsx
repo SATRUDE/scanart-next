@@ -1,7 +1,8 @@
 'use client';
 
 import { useEffect, useId, useRef, useState } from 'react';
-import { Check, ChevronDown, ClipboardList, Link2, Maximize2, RotateCcw, Trash2, X } from 'lucide-react';
+import { Check, ChevronDown, LayoutGrid, Link2, Maximize2, RotateCcw, Trash2, X } from 'lucide-react';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import * as SliderPrimitive from '@radix-ui/react-slider';
 import { Switch } from '@/components/ui/switch';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
@@ -13,6 +14,7 @@ import {
   PRESETS,
   PRINT_SIZES,
   type PrintSizeKey,
+  type WallRow,
 } from '@/lib/gallery-wall-calculator';
 import {
   bounds,
@@ -116,11 +118,13 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
   const [showLines, setShowLines] = useState(true);
   /** The instrument taking the whole screen. */
   const [expanded, setExpanded] = useState(false);
+  /** The arrangements dialog. */
+  const [arrangementsOpen, setArrangementsOpen] = useState(false);
   const [sofaWidthInput, setSofaWidthInput] = useState(String(SOFA.width));
   const [sofaHeightInput, setSofaHeightInput] = useState(String(SOFA.height));
   const [selected, setSelected] = useState<string | null>(null);
   const [orderMessage, setOrderMessage] = useState('');
-  const [copied, setCopied] = useState<'plan' | 'link' | null>(null);
+  const [copied, setCopied] = useState(false);
   const [hydrated, setHydrated] = useState(false);
 
   const nextId = useRef(0);
@@ -287,6 +291,14 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
     if (window.location.hash !== next) window.history.replaceState(null, '', next);
   }, [hydrated, isValid, drag, wallWidth, wallHeight, gap, centreHeight, prints]);
 
+  // Escape closes a selected print's toolbar.
+  useEffect(() => {
+    if (!selected) return;
+    const onKey = (event: KeyboardEvent) => { if (event.key === 'Escape') setSelected(null); };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [selected]);
+
   // Full screen: the page behind must not scroll, and Escape brings it back.
   useEffect(() => {
     if (!expanded) return;
@@ -308,7 +320,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
 
   useEffect(() => {
     if (!copied) return;
-    const timer = window.setTimeout(() => setCopied(null), 1800);
+    const timer = window.setTimeout(() => setCopied(false), 1800);
     return () => window.clearTimeout(timer);
   }, [copied]);
 
@@ -344,6 +356,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
       ? wanted
       : resolve(wanted, others, safeGap, SNAP_RADIUS_CM, { ...wanted, x: box.w - box.minX + safeGap, y: 0 });
     commit(prints.map(print => (print.id === printId ? { ...print, size, x: clear.x, y: clear.y } : print)));
+    setSelected(null);
     announce(`Print is now ${shortLabel(size)}.`);
   };
 
@@ -351,7 +364,6 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
     if (printCount >= MAX_PRINTS) return;
     const [print] = fresh([{ size, x: at.x, y: at.y }]);
     commit([...prints, print]);
-    setSelected(print.id);
     announce(said);
   };
 
@@ -367,6 +379,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
     if (!preset) return;
     setPrints(fresh(fromRows(preset.rows, safeGap)));
     setSelected(null);
+    setArrangementsOpen(false);
     announce(`${preset.label} arrangement.`);
   };
 
@@ -603,26 +616,12 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
                   ? 'It fits. At this gap the frames may start to feel separate; 5 to 8 cm usually reads best.'
                   : 'That fits comfortably, with room around the group.';
 
-  const inReadingOrder = [...placed].sort((a, b) => a.rect.y - b.rect.y || a.rect.x - b.rect.x);
-
-  const planText = () => {
-    const lines = [
-      `Hanging plan — ${formatCentimetres(safeWallWidth)} wall, group centred ${formatCentimetres(safeCentre)} from the floor`,
-      '',
-    ];
-    inReadingOrder.forEach((entry, i) => {
-      lines.push(`Print ${i + 1}, ${shortLabel(entry.print.size)}: left edge ${formatCentimetres(round(entry.left))} from the left, top edge ${formatCentimetres(round(entry.topFromFloor))} from the floor`);
-    });
-    lines.push('', 'Frames usually hang 3 to 5 cm below their hook. Check yours before marking.', window.location.href);
-    return lines.join('\n');
-  };
-
-  const copy = async (kind: 'plan' | 'link') => {
+  const copyLink = async () => {
     try {
-      await navigator.clipboard.writeText(kind === 'plan' ? planText() : window.location.href);
-      setCopied(kind);
+      await navigator.clipboard.writeText(window.location.href);
+      setCopied(true);
     } catch {
-      setCopied(null);
+      setCopied(false);
     }
   };
 
@@ -778,31 +777,43 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
               }
               setGapInput(next);
             }, '5 to 8 cm. Prints click to exactly this.', gapError, { min: 0, max: 30, step: 0.5 }, { min: 0, max: 20, step: 0.5 })}
-            {/* Starting arrangements as a menu: one quiet control that reads
-                "Layouts" and resets to it, since choosing one replaces the
-                wall rather than setting a lasting value. */}
-            <div className="relative sm:ml-auto">
-              <select
-                aria-label={aria.startFrom}
-                value=""
-                onChange={event => { if (event.currentTarget.value) applyPreset(event.currentTarget.value); }}
-                className="h-9 cursor-pointer appearance-none rounded-md border border-neutral-300 bg-white pl-3 pr-8 text-sm text-neutral-800 transition-colors hover:border-neutral-400 focus-visible:border-neutral-900 focus-visible:outline-none"
-              >
-                <option value="">Layouts</option>
-                {PRESETS.map(preset => (
-                  <option key={preset.key} value={preset.key}>{preset.label}</option>
-                ))}
-              </select>
-              <ChevronDown aria-hidden="true" className="pointer-events-none absolute right-2.5 top-1/2 size-4 -translate-y-1/2 text-neutral-500" />
-            </div>
-            {/* The plan leaves as text or as a link; both from here, not from a
-                table under the drawing that repeated what the drawing shows. */}
+            {/* Starting arrangements: a button that opens a set of cards, each a
+                small drawing of the wall it makes. Choose one and it is yours
+                to pull about. */}
+            <Dialog open={arrangementsOpen} onOpenChange={setArrangementsOpen}>
+              <DialogTrigger asChild>
+                <button type="button" className="flex h-9 items-center gap-2 rounded-md border border-neutral-300 bg-white px-3 text-sm text-neutral-800 outline-none transition-colors hover:border-neutral-400 hover:text-neutral-900 focus-visible:border-neutral-900 sm:ml-auto">
+                  <LayoutGrid aria-hidden="true" className="size-4 text-neutral-500" />
+                  Arrangements
+                </button>
+              </DialogTrigger>
+              <DialogContent className="gap-8 p-8 sm:max-w-3xl sm:p-10">
+                <DialogHeader className="gap-3">
+                  <DialogTitle className="text-2xl font-medium tracking-tight text-neutral-900">Start with an arrangement</DialogTitle>
+                  <DialogDescription className="text-base leading-relaxed text-neutral-600">Pick one and make it yours: every print can still be moved, resized or taken away.</DialogDescription>
+                </DialogHeader>
+                <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+                  {PRESETS.map(preset => (
+                    <button
+                      key={preset.key}
+                      type="button"
+                      onClick={() => applyPreset(preset.key)}
+                      className="flex flex-col gap-4 rounded-xl border border-neutral-200 bg-white p-5 text-left outline-none transition-[border-color,box-shadow] hover:border-neutral-900 hover:shadow-lg focus-visible:border-neutral-900 focus-visible:shadow-lg"
+                    >
+                      <ArrangementThumb rows={preset.rows} />
+                      <span className="flex flex-col gap-1.5 px-1">
+                        <span className="text-base font-medium text-neutral-900">{preset.label}</span>
+                        <span className="text-sm leading-relaxed text-neutral-600">{preset.description}</span>
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </DialogContent>
+            </Dialog>
+            {/* The wall leaves as a link - the URL carries it - and comes back the same. */}
             <div className="flex h-9 items-stretch overflow-hidden rounded-md border border-neutral-300 bg-white text-neutral-700">
-              <button type="button" onClick={() => copy('plan')} disabled={printCount === 0} aria-label={aria.copyPlan} title={aria.copyPlan} className="flex w-9 items-center justify-center outline-none transition-colors hover:bg-neutral-100 hover:text-neutral-900 focus-visible:bg-neutral-100 disabled:opacity-40">
-                {copied === 'plan' ? <Check aria-hidden="true" className="size-4" /> : <ClipboardList aria-hidden="true" className="size-4" />}
-              </button>
-              <button type="button" onClick={() => copy('link')} aria-label={aria.copyLink} title={aria.copyLink} className="flex w-9 items-center justify-center border-l border-neutral-300 outline-none transition-colors hover:bg-neutral-100 hover:text-neutral-900 focus-visible:bg-neutral-100">
-                {copied === 'link' ? <Check aria-hidden="true" className="size-4" /> : <Link2 aria-hidden="true" className="size-4" />}
+              <button type="button" onClick={copyLink} aria-label={aria.copyLink} title={aria.copyLink} className="flex w-9 items-center justify-center outline-none transition-colors hover:bg-neutral-100 hover:text-neutral-900 focus-visible:bg-neutral-100">
+                {copied ? <Check aria-hidden="true" className="size-4" /> : <Link2 aria-hidden="true" className="size-4" />}
               </button>
               <button type="button" onClick={reset} aria-label={aria.reset} title={aria.reset} className="flex w-9 items-center justify-center border-l border-neutral-300 outline-none transition-colors hover:bg-neutral-100 hover:text-neutral-900 focus-visible:bg-neutral-100">
                 <RotateCcw aria-hidden="true" className="size-4" />
@@ -840,7 +851,15 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
           onPointerMove={onWallPointerMove}
           onPointerUp={onWallPointerUp}
           onPointerCancel={onWallPointerUp}
-          onPointerDown={event => { if (event.target === event.currentTarget) { setSelected(null); setSofaOpen(false); } }}
+          // A press anywhere else - the surface, another print, an add slot -
+          // closes the selected print's toolbar, without taking that press
+          // from whatever it was for. The selected print itself toggles on tap.
+          onPointerDown={event => {
+            const target = event.target as Element;
+            if (target.closest('[role="toolbar"]')) return;
+            if (selected && target.closest(`[data-print-id="${selected}"]`)) return;
+            setSelected(null);
+          }}
           className="gw-wall relative h-full select-none border-x border-neutral-400 bg-[#f7f6f3]"
           style={{
             width: `min(100cqw, calc(100cqh * ${drawWidth} / ${drawHeight}))`,
@@ -1126,6 +1145,31 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
           know what advice people want. */}
       <div className="sr-only" role="status" aria-live="polite" aria-atomic="true">{statusCopy} {orderMessage}</div>
     </section>
+  );
+}
+
+/** A preset drawn small: the same geometry as the wall, on a card. */
+function ArrangementThumb({ rows }: { rows: readonly WallRow[] }) {
+  const prints = fromRows(rows, 6);
+  const box = bounds(prints.map(rectOf));
+  const pad = 24;
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox={`${-pad} ${-pad} ${box.w + pad * 2} ${box.h + pad * 2}`}
+      className="h-40 w-full rounded-lg bg-[#f7f6f3] text-neutral-800"
+      preserveAspectRatio="xMidYMid meet"
+    >
+      {prints.map((print, i) => {
+        const r = rectOf(print);
+        return (
+          <g key={i}>
+            <rect x={r.x} y={r.y} width={r.w} height={r.h} fill="white" stroke="currentColor" strokeWidth="2.5" />
+            <rect x={r.x + 6} y={r.y + 6} width={r.w - 12} height={r.h - 12} fill="none" stroke="currentColor" strokeOpacity="0.25" strokeWidth="1" />
+          </g>
+        );
+      })}
+    </svg>
   );
 }
 
