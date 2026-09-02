@@ -1,3 +1,15 @@
+// This file was `middleware.ts` until 2026-09-02. Next 16 deprecated that
+// filename in favour of `proxy`, and the dev server said so on every boot:
+// "The 'middleware' file convention is deprecated. Please use 'proxy' instead."
+// The rename is the whole change; the behaviour below is untouched.
+//
+// No runtime change came with it, which is the part worth recording. The docs
+// warn that `proxy` runs on nodejs and does not support the edge runtime, so a
+// file that opted into edge would have moved runtime on rename. This one never
+// declared a runtime, and Next 16 was already executing it through the proxy
+// pipeline before the file was renamed: the build labels it "Proxy
+// (Middleware)" and the dev request log times it as `proxy.ts`. So the old
+// name was the only thing left of the old convention.
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { noPathFor } from '@/lib/i18n';
@@ -45,7 +57,7 @@ function countryOf(request: NextRequest): string {
   return /\b(nb|nn|no)\b/i.test(accept.split(',')[0] || '') ? 'NO' : 'GB';
 }
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const country = countryOf(request);
   const { pathname, search } = request.nextUrl;
 

@@ -192,7 +192,7 @@ describe('Norwegian dictionary', () => {
     expect(noPathFor('/category/botanical')).toBe('/no/category/botanical');
     // Articles have no twin and never have. Products DO have one now, and
     // noPathFor still says otherwise: pinned deliberately rather than quietly
-    // corrected, because this function also decides which visitors middleware
+    // corrected, because this function also decides which visitors proxy.ts
     // 302s into Norwegian and what the header language control offers, so
     // widening it changes what a buyer sees rather than only where a link
     // points. That is Mark's call and it has its own ticket; the link guard
@@ -263,7 +263,7 @@ describe('hreflang return links', () => {
 // Every Norwegian page needs noPathFor to know it exists.
 //
 // noPathFor is an ALLOWLIST, and it decides three things at once: which
-// visitors middleware 302s into Norwegian, what the header language control
+// visitors proxy.ts 302s into Norwegian, what the header language control
 // offers, and where a "Norsk" link points. A /no page missing from it is
 // therefore live and correct and completely unreachable from its English
 // twin, which is exactly how /artists/how-it-works shipped on 30 Aug: both

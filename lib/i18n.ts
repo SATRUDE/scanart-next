@@ -294,7 +294,7 @@ export const footerStrings: Record<Locale, FooterStrings> = {
 // is gone, along with components/LocaleSuggestionBanner.tsx.
 //
 // It was the third mechanism doing one job. A Norwegian visitor is now
-// redirected to the /no twin automatically by the middleware (geo, 302, once
+// redirected to the /no twin automatically by proxy.ts (geo, 302, once
 // per visitor, bots excluded), and the header control offers both languages
 // explicitly at any time. Mark's call: "I don't think we need this banner now
 // then if we have it automatic plus the toggle."
