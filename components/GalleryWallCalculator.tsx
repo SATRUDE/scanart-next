@@ -91,6 +91,8 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
   const [centre, setCentre] = useState<number>(DEFAULTS.centreHeight);
   /** The whole group being dragged up or down by its height marker. */
   const [groupDragging, setGroupDragging] = useState(false);
+  /** The drawing's height, held for the length of a drag. */
+  const [frozenHeight, setFrozenHeight] = useState<number | null>(null);
   const groupDragRef = useRef<{ startY: number; startCentre: number } | null>(null);
   const [prints, setPrints] = useState<FreePrint[]>(() => seeded(fromRows(PRESETS[2].rows, DEFAULTS.gap)));
   const [showSofa, setShowSofa] = useState(true);
@@ -182,7 +184,16 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
   }));
 
   const drawWidth = safeWallWidth;
-  const drawHeight = safeWallHeight ?? TYPICAL_CEILING;
+  /**
+   * With no wall height given, the drawing shows a typical ceiling - but never
+   * one that cuts the group off. It grows to hold the COMMITTED group (never
+   * the one being dragged, or the wall would move under the pointer) and is
+   * frozen for the length of any drag. A given height is a fact and is drawn
+   * as one: a group past it is clipped, and the verdict says so.
+   */
+  const committedTop = placeGroup(bounds(prints.map(rectOf)), safeWallWidth, safeCentre).topFromFloor;
+  const wantedHeight = safeWallHeight ?? Math.max(TYPICAL_CEILING, Math.ceil(committedTop + 20));
+  const drawHeight = frozenHeight ?? wantedHeight;
   const x = (cm: number) => `${(cm / drawWidth) * 100}%`;
   const y = (fromFloor: number) => `${((drawHeight - fromFloor) / drawHeight) * 100}%`;
   const w = (cm: number) => `${(cm / drawWidth) * 100}%`;
@@ -339,8 +350,10 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
   const centreSnaps = (): number[] => [EYE_LEVEL_CM, ...(showSofa ? [SOFA.height + 20 + box.h / 2] : [])];
 
   const moveCentreTo = (wanted: number, snapping: boolean) => {
+    // Floor is a hard stop; the ceiling only when one has been given. With
+    // none, the drawing simply grows to hold the group once it is let go.
     const low = box.h / 2;
-    const high = drawHeight - box.h / 2;
+    const high = safeWallHeight !== undefined ? safeWallHeight - box.h / 2 : Infinity;
     let next = Math.min(high, Math.max(low, wanted));
     if (snapping) for (const target of centreSnaps()) if (Math.abs(next - target) < 3) next = target;
     // Whole centimetres. Half steps made the readout churn twice as fast as
@@ -353,6 +366,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
     event.preventDefault();
     event.stopPropagation();
     groupDragRef.current = { startY: event.clientY, startCentre: safeCentre };
+    setFrozenHeight(drawHeight);
     setGroupDragging(true);
     setSelected(null);
     wallRef.current?.setPointerCapture(event.pointerId);
@@ -395,6 +409,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
       dragging: false,
     };
     lastRectRef.current = rectOf(print);
+    setFrozenHeight(drawHeight);
     // Captured on the WALL, not the print: the wall is there for the whole
     // gesture, whatever happens to the print's node.
     wallRef.current?.setPointerCapture(event.pointerId);
@@ -451,8 +466,10 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
   };
 
   const onWallPointerUp = () => {
+    if (pressRef.current) setFrozenHeight(null);
     if (groupDragRef.current) {
       groupDragRef.current = null;
+      setFrozenHeight(null);
       setGroupDragging(false);
       announce(`Group centre ${formatCentimetres(safeCentre)} from the floor.`);
       return;
@@ -869,9 +886,11 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
               role="toolbar"
               aria-label={aria.selectedPrint}
               className="absolute z-20 flex -translate-x-1/2 items-center gap-1 rounded-lg border border-neutral-200 bg-white p-1 shadow-lg"
+              // Kept inside the drawing: above the print when there is room,
+              // over its top edge when there is not, and never off the sides.
               style={{
-                left: x(selectedEntry.left + selectedEntry.rect.w / 2),
-                top: `calc(${y(selectedEntry.topFromFloor)} - 46px)`,
+                left: `clamp(110px, ${x(selectedEntry.left + selectedEntry.rect.w / 2)}, calc(100% - 110px))`,
+                top: `max(6px, calc(${y(selectedEntry.topFromFloor)} - 46px))`,
                 animation: 'gw-pop-in 140ms both',
                 transition,
               }}
