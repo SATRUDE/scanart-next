@@ -214,6 +214,8 @@ export interface ChromeAriaStrings {
     addSide: { left: string; right: string; above: string; below: string };
     wontFit: string;
     heightMarker: string;
+    startFrom: string;
+    sofaSwitch: string;
   };
 }
 
@@ -239,6 +241,8 @@ export const chromeAria: Record<Locale, ChromeAriaStrings> = {
       addSide: { left: 'Add a print to the left of this one', right: 'Add a print to the right of this one', above: 'Add a print above this one', below: 'Add a print below this one' },
       wontFit: 'It would not fit the wall',
       heightMarker: 'Height of the group above the floor. Drag, or use the arrow keys.',
+      startFrom: 'Start from an arrangement',
+      sofaSwitch: 'Show a sofa for scale',
     },
   },
   no: {
@@ -262,6 +266,8 @@ export const chromeAria: Record<Locale, ChromeAriaStrings> = {
       addSide: { left: 'Legg til et trykk til venstre for dette', right: 'Legg til et trykk til høyre for dette', above: 'Legg til et trykk over dette', below: 'Legg til et trykk under dette' },
       wontFit: 'Det ville ikke få plass på veggen',
       heightMarker: 'Gruppens høyde over gulvet. Dra, eller bruk piltastene.',
+      startFrom: 'Start fra et oppsett',
+      sofaSwitch: 'Vis en sofa for skala',
     },
   },
 };

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { bounds, decodeFree, encodeFree, fromRows, guidesFor, isClear, normalize, placeGroup, rectOf, resolve, snap, tooClose, type Rect } from './gallery-wall-free';
+import { bounds, decodeFree, encodeFree, fromRows, guidesFor, isClear, normalize, placeGroup, rectOf, resolve, respace, snap, tooClose, type Rect } from './gallery-wall-free';
 import { PRESETS } from './gallery-wall-calculator';
 
 const r = (x: number, y: number, w = 50, h = 70): Rect => ({ x, y, w, h });
@@ -135,5 +135,48 @@ describe('free arrangement: resolve prefers snapped axes', () => {
     const crowded = [...others, { x: 112, y: 0, w: 50, h: 50 }];
     const above = resolve({ x: 58, y: 0, w: 50, h: 50 }, crowded, 6, 10, { x: 300, y: 300, w: 50, h: 50 });
     expect(above).toEqual({ x: 56, y: -56, w: 50, h: 50 });
+  });
+});
+
+describe('free arrangement: respacing to a new gap', () => {
+  const size = (p: { size: '50x70' | '50x50' }) => ({ w: 50, h: p.size === '50x70' ? 70 : 50 });
+
+  it('re-spaces every preset exactly as if it had been built at the new gap', () => {
+    for (const preset of PRESETS) {
+      const at6 = fromRows(preset.rows, 6);
+      const at10 = fromRows(preset.rows, 10);
+      const respaced = normalize(respace(at6, size, 6, 10), size);
+      expect(respaced.map(p => [Math.round(p.x * 10) / 10, Math.round(p.y * 10) / 10]), preset.key)
+        .toEqual(normalize(at10, size).map(p => [Math.round(p.x * 10) / 10, Math.round(p.y * 10) / 10]));
+    }
+  });
+
+  it('follows a column beside a two-by-two block', () => {
+    // Tall print left; squares at (56,0) (112,0) (56,56) (112,56), gap 6.
+    const wall = [
+      { size: '50x70' as const, x: 0, y: 0 },
+      { size: '50x50' as const, x: 56, y: 0 },
+      { size: '50x50' as const, x: 112, y: 0 },
+      { size: '50x50' as const, x: 56, y: 56 },
+      { size: '50x50' as const, x: 112, y: 56 },
+    ];
+    const out = respace(wall, size, 6, 8);
+    expect(out.map(p => [p.x, p.y])).toEqual([[0, 0], [58, 0], [116, 0], [58, 58], [116, 58]]);
+  });
+
+  it('leaves a print that relates to nothing where it was', () => {
+    const wall = [
+      { size: '50x70' as const, x: 0, y: 0 },
+      { size: '50x50' as const, x: 56, y: 0 },
+      { size: '50x50' as const, x: 300, y: 300 },
+    ];
+    const out = respace(wall, size, 6, 12);
+    expect(out[1]).toMatchObject({ x: 62, y: 0 });
+    expect(out[2]).toMatchObject({ x: 300, y: 300 });
+  });
+
+  it('is a no-op for an unchanged gap', () => {
+    const wall = [{ size: '50x70' as const, x: 0, y: 0 }, { size: '50x50' as const, x: 56, y: 0 }];
+    expect(respace(wall, size, 6, 6)).toEqual(wall);
   });
 });

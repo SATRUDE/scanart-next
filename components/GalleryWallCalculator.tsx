@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useId, useRef, useState } from 'react';
+import { ChevronDown, Trash2 } from 'lucide-react';
 import { TrackedLink } from '@/components/TrackedLink';
 import { chromeAria } from '@/lib/i18n';
 import {
@@ -22,6 +23,7 @@ import {
   placeGroup,
   rectOf,
   resolve,
+  respace,
   type FreePrint,
   type Rect,
 } from '@/lib/gallery-wall-free';
@@ -100,9 +102,19 @@ export function GalleryWallCalculator({ locale = 'en', variant = 'article' }: { 
   const [groupDragging, setGroupDragging] = useState(false);
   /** The drawing's height, held for the length of a drag. */
   const [frozenHeight, setFrozenHeight] = useState<number | null>(null);
+  /**
+   * True for the moment the wall changes scale. A zoom is instant: the box
+   * snaps to its new proportions, and if the prints eased to their new
+   * percentages at the same time they would be stretched for the length of
+   * the ease, since width and height change by different ratios.
+   */
+  const [zooming, setZooming] = useState(false);
   const groupDragRef = useRef<{ startY: number; startCentre: number } | null>(null);
   const [prints, setPrints] = useState<FreePrint[]>(() => seeded(fromRows(PRESETS[2].rows, DEFAULTS.gap)));
   const [showSofa, setShowSofa] = useState(true);
+  const [sofaOpen, setSofaOpen] = useState(false);
+  const [sofaWidthInput, setSofaWidthInput] = useState(String(SOFA.width));
+  const [sofaHeightInput, setSofaHeightInput] = useState(String(SOFA.height));
   const [selected, setSelected] = useState<string | null>(null);
   const [orderMessage, setOrderMessage] = useState('');
   const [copied, setCopied] = useState<'plan' | 'link' | null>(null);
@@ -170,6 +182,11 @@ export function GalleryWallCalculator({ locale = 'en', variant = 'article' }: { 
   const safeGap = gapError ? DEFAULTS.gap : gap;
   const safeCentre = centreHeight;
   const safeWallHeight = heightError ? undefined : wallHeight;
+  /** The sofa's own measurements, with the typical three-seater standing in for nonsense. */
+  const sofaSize = {
+    width: Number(sofaWidthInput) > 0 ? Number(sofaWidthInput) : SOFA.width,
+    height: Number(sofaHeightInput) > 0 ? Number(sofaHeightInput) : SOFA.height,
+  };
 
   /**
    * The arrangement as it will be when the drag is released: the held print
@@ -201,10 +218,18 @@ export function GalleryWallCalculator({ locale = 'en', variant = 'article' }: { 
   const committedTop = placeGroup(bounds(prints.map(rectOf)), safeWallWidth, safeCentre).topFromFloor;
   const wantedHeight = safeWallHeight ?? Math.max(TYPICAL_CEILING, Math.ceil(committedTop + 20));
   const drawHeight = frozenHeight ?? wantedHeight;
-  const x = (cm: number) => `${(cm / drawWidth) * 100}%`;
-  const y = (fromFloor: number) => `${((drawHeight - fromFloor) / drawHeight) * 100}%`;
-  const w = (cm: number) => `${(cm / drawWidth) * 100}%`;
-  const h = (cm: number) => `${(cm / drawHeight) * 100}%`;
+  /**
+   * ONE UNIT. Everything on the wall is measured in `cqw` of the wall itself -
+   * a hundredth of its rendered width - so one number, the wall's width in
+   * pixels, is the scale for both axes. Heights come from the floor up. The
+   * wall can then be any height the frame gives it: more wall above when the
+   * frame is taller than the drawing needs, never a stretched drawing.
+   */
+  const cq = (cm: number) => `${(cm / drawWidth) * 100}cqw`;
+  const x = cq;
+  const w = cq;
+  const h = cq;
+  const y = (fromFloor: number) => `calc(100% - ${cq(fromFloor)})`;
 
   const groupLeft = box.minX + offset.left;
   const groupRight = groupLeft + box.w;
@@ -222,8 +247,9 @@ export function GalleryWallCalculator({ locale = 'en', variant = 'article' }: { 
   const tooWide = box.w > drawWidth;
   const tooTall = safeWallHeight !== undefined && box.h > safeWallHeight;
   const gapStatus = safeGap < 5 ? 'tight' : safeGap > 8 ? 'wide' : 'recommended';
-  // While the group rides the pointer nothing may lag behind it.
-  const transition = groupDragging ? 'none' : `all ${REFLOW_MS}ms ${EASE}`;
+  // While the group rides the pointer nothing may lag behind it; while the
+  // wall changes scale nothing may ease.
+  const transition = groupDragging || zooming ? 'none' : `all ${REFLOW_MS}ms ${EASE}`;
 
   /* ------------------------------------------------------------------ URL */
 
@@ -259,6 +285,12 @@ export function GalleryWallCalculator({ locale = 'en', variant = 'article' }: { 
     const next = `#plan=${encodeURIComponent(encoded)}`;
     if (window.location.hash !== next) window.history.replaceState(null, '', next);
   }, [hydrated, isValid, drag, wallWidth, wallHeight, gap, centreHeight, prints]);
+
+  useEffect(() => {
+    if (!zooming) return;
+    const timer = window.setTimeout(() => setZooming(false), 80);
+    return () => window.clearTimeout(timer);
+  }, [zooming]);
 
   useEffect(() => {
     if (!copied) return;
@@ -354,7 +386,7 @@ export function GalleryWallCalculator({ locale = 'en', variant = 'article' }: { 
   /* ----------------------------------------------------------------- drag */
 
   /** Where the group's centre wants to click to: eye level, and clear of the sofa. */
-  const centreSnaps = (): number[] => [EYE_LEVEL_CM, ...(showSofa ? [SOFA.height + 20 + box.h / 2] : [])];
+  const centreSnaps = (): number[] => [EYE_LEVEL_CM, ...(showSofa ? [sofaSize.height + 20 + box.h / 2] : [])];
 
   const moveCentreTo = (wanted: number, snapping: boolean) => {
     // Floor is a hard stop; the ceiling only when one has been given. With
@@ -459,7 +491,7 @@ export function GalleryWallCalculator({ locale = 'en', variant = 'article' }: { 
     const wallRect = wall.getBoundingClientRect();
     const scale = wallRect.width / drawWidth;
     const pointerCmX = (clientX - wallRect.left) / scale;
-    const pointerFromFloor = drawHeight - (clientY - wallRect.top) / scale;
+    const pointerFromFloor = (wallRect.bottom - clientY) / scale;
     const proposed: Rect = {
       ...press.rect,
       x: pointerCmX - press.offset.left - press.grabCm.x,
@@ -473,10 +505,16 @@ export function GalleryWallCalculator({ locale = 'en', variant = 'article' }: { 
   };
 
   const onWallPointerUp = () => {
-    if (pressRef.current) setFrozenHeight(null);
+    // Letting go may grow the drawing to hold the group: that is a zoom.
+    const growsDrawing = safeWallHeight === undefined && Math.ceil(committedTop + 20) > drawHeight;
+    if (pressRef.current) {
+      setFrozenHeight(null);
+      if (growsDrawing) setZooming(true);
+    }
     if (groupDragRef.current) {
       groupDragRef.current = null;
       setFrozenHeight(null);
+      if (growsDrawing) setZooming(true);
       setGroupDragging(false);
       announce(`Group centre ${formatCentimetres(safeCentre)} from the floor.`);
       return;
@@ -514,7 +552,7 @@ export function GalleryWallCalculator({ locale = 'en', variant = 'article' }: { 
     const scale = wallRect.width / drawWidth;
     const settle = {
       left: wallRect.left + (nextOffset.left + landed.x) * scale,
-      top: wallRect.top + (drawHeight - (nextOffset.topFromFloor - landed.y)) * scale,
+      top: wallRect.bottom - (nextOffset.topFromFloor - landed.y) * scale,
     };
     setDrag(current => (current ? { ...current, settle } : current));
     if (settleTimer.current) window.clearTimeout(settleTimer.current);
@@ -552,7 +590,7 @@ export function GalleryWallCalculator({ locale = 'en', variant = 'article' }: { 
 
   // The drawing is honest about a sofa: a group centred at eye level often
   // hangs BEHIND one. Say so, with the number that fixes it, in one tap.
-  const sofaClearance = SOFA.height + 20;
+  const sofaClearance = sofaSize.height + 20;
   const sofaCentre = Math.ceil(safeCentre + (sofaClearance - settledBottom));
   const sofaAdvice = showSofa && printCount > 0 && isValid && settledBottom < sofaClearance;
 
@@ -579,6 +617,7 @@ export function GalleryWallCalculator({ locale = 'en', variant = 'article' }: { 
     }
   };
 
+  /** A measurement field for the toolbar: the unit inside the box, the label a whisper above it. */
   const numberField = (
     key: string,
     label: string,
@@ -588,24 +627,25 @@ export function GalleryWallCalculator({ locale = 'en', variant = 'article' }: { 
     error: string,
     extra: Partial<React.InputHTMLAttributes<HTMLInputElement>> = {}
   ) => (
-    <label className="text-sm font-medium text-neutral-800" htmlFor={`${id}-${key}`}>
-      {label}
-      <span className="mt-1 flex items-baseline gap-1.5">
+    <label className="flex flex-col gap-1" htmlFor={`${id}-${key}`}>
+      <span className="text-[10px] font-medium uppercase tracking-wide text-neutral-500">{label}</span>
+      <span className="relative">
         <input
           id={`${id}-${key}`}
           type="number"
           inputMode="decimal"
           value={value}
+          title={help}
           aria-invalid={Boolean(error)}
           aria-describedby={`${id}-${key}-help${error ? ` ${id}-${key}-error` : ''}`}
           onChange={event => onChange(event.currentTarget.value)}
-          className="min-h-11 w-full rounded-md border border-neutral-300 px-3 text-base tabular-nums text-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring aria-invalid:border-destructive"
+          className="h-9 w-[5.75rem] rounded-md border border-neutral-300 pl-2.5 pr-8 text-sm tabular-nums text-neutral-900 transition-colors hover:border-neutral-400 focus-visible:border-neutral-900 focus-visible:outline-none aria-invalid:border-destructive"
           {...extra}
         />
-        <span className="text-sm text-neutral-500">cm</span>
+        <span aria-hidden="true" className="pointer-events-none absolute inset-y-0 right-2.5 flex items-center text-xs text-neutral-400">cm</span>
       </span>
-      <span id={`${id}-${key}-help`} className="mt-1 block text-xs font-normal text-neutral-600">{help}</span>
-      {error && <span id={`${id}-${key}-error`} className="mt-1 block text-xs font-normal text-destructive">{error}</span>}
+      <span id={`${id}-${key}-help`} className="sr-only">{help}</span>
+      {error && <span id={`${id}-${key}-error`} className="text-xs text-destructive">{error}</span>}
     </label>
   );
 
@@ -655,30 +695,6 @@ export function GalleryWallCalculator({ locale = 'en', variant = 'article' }: { 
         </p>
       </div>
 
-      <div className="grid grid-cols-2 gap-x-5 gap-y-4 sm:grid-cols-3">
-        {numberField('wall', 'Wall width', wallWidthInput, setWallWidthInput, 'Just the width you can use.', wallError, { min: 1, max: 2000, step: 1 })}
-        {numberField('height', 'Wall height', wallHeightInput, setWallHeightInput, 'Optional. Adds the ceiling and checks the fit.', heightError, { min: 1, max: 1000, step: 1, placeholder: 'Optional' })}
-        {numberField('gap', 'Gap between frames', gapInput, setGapInput, '5 to 8 cm. Prints click to exactly this.', gapError, { min: 0, max: 30, step: 0.5 })}
-      </div>
-
-      <div className="mt-6 flex flex-wrap items-center gap-2">
-        <span className="mr-1 text-xs uppercase tracking-wide text-neutral-600">Start from</span>
-        {PRESETS.map(preset => (
-          <button
-            key={preset.key}
-            type="button"
-            onClick={() => applyPreset(preset.key)}
-            className="min-h-9 rounded-full border border-neutral-300 px-3 text-sm text-neutral-800 transition-colors hover:border-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-          >
-            {preset.label}
-          </button>
-        ))}
-        <label className="ml-auto flex min-h-9 cursor-pointer items-center gap-2 text-sm text-neutral-800">
-          <input type="checkbox" checked={showSofa} onChange={event => setShowSofa(event.currentTarget.checked)} className="size-4 accent-neutral-900" />
-          Show a sofa for scale
-        </label>
-      </div>
-
       {/* ------------------------------------------------------ the wall */}
       {/* The drawing bleeds past the article column - half again as wide,
           within the viewport - while the text around it stays in the column.
@@ -691,6 +707,54 @@ export function GalleryWallCalculator({ locale = 'en', variant = 'article' }: { 
           marginLeft: 'calc((100% - min(150%, calc(100vw - 2rem))) / 2)',
         } : undefined}
       >
+        {/* The toolbar and the drawing are one instrument: the same width,
+            one border between them, so the controls read as part of the wall
+            rather than a form that happens to sit above a picture. The width
+            is the drawing's: as wide as the bleed allows, never taller than
+            the screen less the header - a wall you have to scroll to see the
+            bottom of cannot be dragged across in one movement. */}
+        <div className="mx-auto w-full">
+          <div className="flex flex-wrap items-end gap-x-3 gap-y-3 rounded-t border border-b-0 border-neutral-300 bg-white px-4 py-3">
+            {numberField('wall', 'Wall width', wallWidthInput, next => { setZooming(true); setWallWidthInput(next); }, 'Just the width you can use.', wallError, { min: 1, max: 2000, step: 1 })}
+            {numberField('height', 'Wall height', wallHeightInput, next => { setZooming(true); setWallHeightInput(next); }, 'Optional. Adds the ceiling and checks the fit.', heightError, { min: 1, max: 1000, step: 1, placeholder: '—' })}
+            {numberField('gap', 'Gap', gapInput, next => {
+              // The wall follows the gap: what sat one gap apart sits one new
+              // gap apart, and what was centred under a row stays centred.
+              const wanted = Number(next);
+              if (wanted >= 0 && Number.isFinite(wanted) && next !== '' && wanted !== safeGap) {
+                setPrints(normalize(respace(prints, sizeOf, safeGap, wanted), sizeOf));
+              }
+              setGapInput(next);
+            }, '5 to 8 cm. Prints click to exactly this.', gapError, { min: 0, max: 30, step: 0.5 })}
+            {/* Starting arrangements as a menu: one quiet control that reads
+                "Layouts" and resets to it, since choosing one replaces the
+                wall rather than setting a lasting value. */}
+            <div className="relative sm:ml-auto">
+              <select
+                aria-label={aria.startFrom}
+                value=""
+                onChange={event => { if (event.currentTarget.value) applyPreset(event.currentTarget.value); }}
+                className="h-9 cursor-pointer appearance-none rounded-md border border-neutral-300 bg-white pl-3 pr-8 text-sm text-neutral-800 transition-colors hover:border-neutral-400 focus-visible:border-neutral-900 focus-visible:outline-none"
+              >
+                <option value="">Layouts</option>
+                {PRESETS.map(preset => (
+                  <option key={preset.key} value={preset.key}>{preset.label}</option>
+                ))}
+              </select>
+              <ChevronDown aria-hidden="true" className="pointer-events-none absolute right-2.5 top-1/2 size-4 -translate-y-1/2 text-neutral-500" />
+            </div>
+          </div>
+        {/* THE FRAME. A box of fixed size - the toolbar's width, the screen's
+            height less the header - that never changes shape. The wall is drawn
+            inside it at the scale that fits, standing on the frame's floor, so
+            a wider wall or a taller group makes the art smaller rather than
+            reshaping the page. The surface continues around the wall in a
+            slightly deeper tone: what is beyond your wall, not less of it.
+            Container-query units give the wall its size with no measuring. */}
+        <div
+          className="relative flex w-full items-end justify-center overflow-hidden rounded-b border border-neutral-300 bg-[#ebeae6]"
+          style={{ height: 'min(84vh, 75vw)', minHeight: '320px', containerType: 'size' }}
+        >
         <div
           ref={wallRef}
           role="group"
@@ -698,24 +762,58 @@ export function GalleryWallCalculator({ locale = 'en', variant = 'article' }: { 
           onPointerMove={onWallPointerMove}
           onPointerUp={onWallPointerUp}
           onPointerCancel={onWallPointerUp}
-          onPointerDown={event => { if (event.target === event.currentTarget) setSelected(null); }}
-          className="gw-wall relative mx-auto select-none overflow-hidden border border-neutral-300 bg-[#f7f6f3]"
+          onPointerDown={event => { if (event.target === event.currentTarget) { setSelected(null); setSofaOpen(false); } }}
+          className="gw-wall relative h-full select-none border-x border-neutral-400 bg-[#f7f6f3]"
           style={{
-            aspectRatio: `${drawWidth} / ${drawHeight}`,
-            // As wide as the bleed allows, but never taller than the screen
-            // less the header: a wall you have to scroll to see the bottom of
-            // cannot be dragged across in one movement. The width follows.
-            width: `min(100%, calc(84vh * ${drawWidth} / ${drawHeight}))`,
-            minHeight: '260px',
+            width: `min(100cqw, calc(100cqh * ${drawWidth} / ${drawHeight}))`,
+            containerType: 'inline-size',
             touchAction: 'none',
           }}
         >
           {/* floor and ceiling */}
           <div className="pointer-events-none absolute inset-x-0 bottom-0 border-t border-neutral-400" />
           <span className="pointer-events-none absolute bottom-1 right-2 text-[10px] uppercase tracking-wide text-neutral-500">Floor</span>
-          {safeWallHeight !== undefined && (
-            <span className="pointer-events-none absolute left-2 top-1 text-[10px] uppercase tracking-wide text-neutral-500">Ceiling · {formatCentimetres(safeWallHeight)}</span>
-          )}
+          {/* The sofa is part of the drawing, so its controls sit on the floor
+              beside where it stands: a switch for whether it is there, and its
+              name, which opens its measurements. */}
+          <div className="absolute bottom-2 left-2 z-20" onPointerDown={event => event.stopPropagation()}>
+            {sofaOpen && (
+              <div className="mb-2 flex items-end gap-3 rounded-md border border-neutral-200 bg-white p-3 shadow-lg" style={{ animation: 'gw-print-in 140ms both' }}>
+                {numberField('sofa-w', 'Sofa width', sofaWidthInput, setSofaWidthInput, 'Arm to arm.', '', { min: 60, max: 400, step: 1 })}
+                {numberField('sofa-h', 'Sofa height', sofaHeightInput, setSofaHeightInput, 'Floor to the top of the back.', '', { min: 40, max: 150, step: 1 })}
+              </div>
+            )}
+            <div className="flex h-7 items-center overflow-hidden rounded-md border border-neutral-300 bg-white/90 text-[11px] text-neutral-700">
+              <button
+                type="button"
+                role="switch"
+                aria-checked={showSofa}
+                aria-label={aria.sofaSwitch}
+                onClick={() => setShowSofa(current => !current)}
+                className="flex h-full items-center px-2 outline-none transition-colors hover:bg-neutral-100 focus-visible:bg-neutral-100"
+              >
+                <span
+                  aria-hidden="true"
+                  className={`relative inline-block rounded-full transition-colors ${showSofa ? 'bg-neutral-900' : 'bg-neutral-300'}`}
+                  style={{ width: 22, height: 12 }}
+                >
+                  <span
+                    className="absolute rounded-full bg-white transition-transform"
+                    style={{ width: 8, height: 8, top: 2, left: 2, transform: showSofa ? 'translateX(10px)' : 'none' }}
+                  />
+                </span>
+              </button>
+              <button
+                type="button"
+                aria-expanded={sofaOpen}
+                onClick={() => setSofaOpen(current => !current)}
+                className="flex h-full items-center gap-1 border-l border-neutral-200 pl-2 pr-2 tabular-nums outline-none transition-colors hover:bg-neutral-100 hover:text-neutral-900 focus-visible:bg-neutral-100"
+              >
+                Sofa <span className="text-neutral-400">{sofaSize.width} × {sofaSize.height}</span>
+                <ChevronDown aria-hidden="true" className={`size-3 text-neutral-400 transition-transform ${sofaOpen ? 'rotate-180' : ''}`} />
+              </button>
+            </div>
+          </div>
 
           {/* eye level */}
           <div className="pointer-events-none absolute inset-x-0 border-t border-dashed border-neutral-300" style={{ top: y(EYE_LEVEL_CM), transition }} />
@@ -732,7 +830,7 @@ export function GalleryWallCalculator({ locale = 'en', variant = 'article' }: { 
               viewBox="0 0 200 85"
               preserveAspectRatio="none"
               className="pointer-events-none absolute bottom-0 text-neutral-400/80"
-              style={{ left: x((drawWidth - SOFA.width) / 2), width: w(SOFA.width), height: h(SOFA.height), transition, animation: 'gw-print-in 260ms both' }}
+              style={{ left: x((drawWidth - sofaSize.width) / 2), width: w(sofaSize.width), height: h(sofaSize.height), transition, animation: 'gw-print-in 260ms both' }}
             >
               <g fill="currentColor" fillOpacity="0.07" stroke="currentColor" strokeWidth="1" vectorEffect="non-scaling-stroke">
                 <rect x="24" y="12" width="152" height="40" rx="8" />
@@ -805,7 +903,10 @@ export function GalleryWallCalculator({ locale = 'en', variant = 'article' }: { 
                   height: h(rect.h),
                   // The held placeholder jumps between snap positions; that is
                   // the point of a snap. Everything else glides.
-                  transition: isHeld || groupDragging ? 'none' : `${transition}, box-shadow 120ms ease, border-color 120ms ease`,
+                  // Built as one valid list: "none, box-shadow …" is not one,
+                  // the browser rejects it and keeps the old ease, and the
+                  // prints stretch for the length of a zoom.
+                  transition: isHeld || groupDragging || zooming ? 'none' : `${transition}, box-shadow 120ms ease, border-color 120ms ease`,
                   animation: 'gw-print-in 220ms both',
                 }}
               >
@@ -918,12 +1019,14 @@ export function GalleryWallCalculator({ locale = 'en', variant = 'article' }: { 
                 onClick={() => removePrint(selectedEntry.print.id)}
                 aria-label={aria.removePrint}
                 title="Remove"
-                className="min-h-8 min-w-8 rounded-md text-sm text-neutral-700 transition-colors hover:bg-neutral-100 hover:text-destructive"
+                className="flex min-h-8 min-w-8 items-center justify-center rounded-md text-neutral-700 transition-colors hover:bg-neutral-100 hover:text-destructive"
               >
-                <span aria-hidden="true">×</span>
+                <Trash2 aria-hidden="true" className="size-4" />
               </button>
             </div>
           )}
+        </div>
+        </div>
         </div>
 
         {/* the print under the pointer, pinned to the viewport so the reflowing wall cannot drag it about */}

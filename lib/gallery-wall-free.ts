@@ -231,3 +231,155 @@ export function decodeFree(text: string): FreeArrangement | null {
   const wallHeight = Number(h);
   return { wallWidth: Number(w), wallHeight: wallHeight > 0 ? wallHeight : undefined, gap: Number(g), centreHeight: Number(c), prints };
 }
+
+/**
+ * The same arrangement with a different gap.
+ *
+ * Positions are free coordinates, so the gap is not stored anywhere - it is
+ * only visible as the spaces between prints. To change it, the relations are
+ * read back off the geometry: which print sits exactly one gap from which,
+ * which edges and centres line up. The first print (top-left) stays put and
+ * every other one is placed from the relations to prints already placed,
+ * nearest gap-neighbour first, then an alignment. A print with no relation
+ * to anything keeps its coordinates. On a snapped wall every relation is
+ * exact, so a preset re-spaced this way equals the preset built at the new
+ * gap; on a wall someone has pulled about, the tidy parts follow and the
+ * loose parts stay where they were.
+ */
+export function respace<T extends { x: number; y: number }>(
+  prints: readonly T[],
+  sizeOf: (p: T) => { w: number; h: number },
+  oldGap: number,
+  newGap: number
+): T[] {
+  if (prints.length < 2 || Math.abs(oldGap - newGap) < EPS) return [...prints];
+  const rects = prints.map(p => ({ ...p, ...sizeOf(p) }));
+  const same = (a: number, b: number) => Math.abs(a - b) < 0.05;
+  const overlapY = (a: Rect, b: Rect) => a.y < b.y + b.h && a.y + a.h > b.y;
+  const overlapX = (a: Rect, b: Rect) => a.x < b.x + b.w && a.x + a.w > b.x;
+
+  const order = rects.map((_, i) => i).sort((a, b) => rects[a].y - rects[b].y || rects[a].x - rects[b].x);
+  const next: ({ x: number; y: number } | null)[] = rects.map(() => null);
+  next[order[0]] = { x: rects[order[0]].x, y: rects[order[0]].y };
+
+  /** New x for print i from a placed neighbour, or null if no relation. */
+  const solveX = (i: number): number | null => {
+    const p = rects[i];
+    const placed = rects.map((r, j) => ({ r, j })).filter(({ j }) => j !== i && next[j]);
+    // Nearest gap-neighbour to the left, then to the right.
+    const lefts = placed.filter(({ r }) => overlapY(p, r) && same(p.x - (r.x + r.w), oldGap)).sort((a, b) => b.r.x - a.r.x);
+    if (lefts.length) return next[lefts[0].j]!.x + lefts[0].r.w + newGap;
+    const rights = placed.filter(({ r }) => overlapY(p, r) && same(r.x - (p.x + p.w), oldGap)).sort((a, b) => a.r.x - b.r.x);
+    if (rights.length) return next[rights[0].j]!.x - newGap - p.w;
+    // Then an alignment with a print above or below: left edge, right edge, centre.
+    const stacked = placed.filter(({ r }) => overlapX(p, r) && !overlapY(p, r));
+    for (const { r, j } of stacked) {
+      if (same(p.x, r.x)) return next[j]!.x;
+      if (same(p.x + p.w, r.x + r.w)) return next[j]!.x + r.w - p.w;
+      if (same(p.x + p.w / 2, r.x + r.w / 2)) return next[j]!.x + r.w / 2 - p.w / 2;
+    }
+    return null;
+  };
+
+  const solveY = (i: number): number | null => {
+    const p = rects[i];
+    const placed = rects.map((r, j) => ({ r, j })).filter(({ j }) => j !== i && next[j]);
+    const aboves = placed.filter(({ r }) => overlapX(p, r) && same(p.y - (r.y + r.h), oldGap)).sort((a, b) => b.r.y - a.r.y);
+    if (aboves.length) return next[aboves[0].j]!.y + aboves[0].r.h + newGap;
+    const belows = placed.filter(({ r }) => overlapX(p, r) && same(r.y - (p.y + p.h), oldGap)).sort((a, b) => a.r.y - b.r.y);
+    if (belows.length) return next[belows[0].j]!.y - newGap - p.h;
+    const beside = placed.filter(({ r }) => overlapY(p, r) && !overlapX(p, r));
+    for (const { r, j } of beside) {
+      if (same(p.y, r.y)) return next[j]!.y;
+      if (same(p.y + p.h, r.y + r.h)) return next[j]!.y + r.h - p.h;
+      if (same(p.y + p.h / 2, r.y + r.h / 2)) return next[j]!.y + r.h / 2 - p.h / 2;
+    }
+    return null;
+  };
+
+  /**
+   * A run of prints joined by gaps along x (each overlapping its neighbour in
+   * y). Rows are runs; so is the pair of squares under a pyramid. A run's
+   * centre is what such a pair lines up with: the centre of the row above,
+   * which is a relation between two groups, not between two prints.
+   */
+  const runX = (start: number): number[] => {
+    const seen = new Set<number>([start]);
+    const queue = [start];
+    while (queue.length) {
+      const i = queue.pop()!;
+      rects.forEach((r, j) => {
+        if (seen.has(j)) return;
+        const p = rects[i];
+        if (overlapY(p, r) && (same(r.x - (p.x + p.w), oldGap) || same(p.x - (r.x + r.w), oldGap))) {
+          seen.add(j);
+          queue.push(j);
+        }
+      });
+    }
+    return [...seen];
+  };
+  const runCentreOld = (run: number[]) => {
+    const lo = Math.min(...run.map(i => rects[i].x));
+    const hi = Math.max(...run.map(i => rects[i].x + rects[i].w));
+    return { lo, hi, centre: (lo + hi) / 2 };
+  };
+  const runCentreNew = (run: number[]) => {
+    const placed = run.filter(i => next[i]);
+    if (!placed.length) return null;
+    const lo = Math.min(...placed.map(i => next[i]!.x));
+    const hi = Math.max(...placed.map(i => next[i]!.x + rects[i].w));
+    return (lo + hi) / 2;
+  };
+
+  /** Place, by group centring, one run that nothing else could place. */
+  const placeRunByCentre = (): boolean => {
+    for (const i of order) {
+      if (next[i]) continue;
+      const run = runX(i);
+      if (run.some(j => next[j])) continue;
+      const { lo, hi, centre } = runCentreOld(run);
+      const newWidth = hi - lo + (run.length - 1) * (newGap - oldGap);
+      const placedRuns = new Map<string, number[]>();
+      rects.forEach((_, j) => {
+        if (!next[j]) return;
+        const other = runX(j);
+        placedRuns.set(other.sort().join(','), other);
+      });
+      for (const other of placedRuns.values()) {
+        if (!same(runCentreOld(other).centre, centre)) continue;
+        const target = runCentreNew(other);
+        if (target === null) continue;
+        const leftmost = run.reduce((a, b) => (rects[a].x <= rects[b].x ? a : b));
+        next[leftmost] = { x: target - newWidth / 2, y: solveY(leftmost) ?? rects[leftmost].y };
+        return true;
+      }
+    }
+    return false;
+  };
+
+  // Place whatever can be placed from what is already placed - both axes,
+  // or it waits - until nothing more can be. When that stalls, place one run
+  // by group centring and go again. Whatever is left keeps its coordinates,
+  // taking any single axis it can.
+  for (;;) {
+    let progressed = false;
+    for (const i of order) {
+      if (next[i]) continue;
+      const x = solveX(i);
+      const y = solveY(i);
+      if (x === null || y === null) continue;
+      next[i] = { x, y };
+      progressed = true;
+    }
+    if (progressed) continue;
+    if (placeRunByCentre()) continue;
+    break;
+  }
+  for (const i of order) {
+    if (next[i]) continue;
+    next[i] = { x: solveX(i) ?? rects[i].x, y: solveY(i) ?? rects[i].y };
+  }
+
+  return prints.map((p, i) => (next[i] ? { ...p, x: next[i]!.x, y: next[i]!.y } : { ...p }));
+}
