@@ -220,6 +220,8 @@ export interface ChromeAriaStrings {
     copyPlan: string;
     copyLink: string;
     reset: string;
+    expand: string;
+    collapse: string;
   };
 }
 
@@ -251,6 +253,8 @@ export const chromeAria: Record<Locale, ChromeAriaStrings> = {
       copyPlan: 'Copy the hanging plan as text',
       copyLink: 'Copy a link to this wall',
       reset: 'Start again from the default wall',
+      expand: 'Fill the screen',
+      collapse: 'Close full screen',
     },
   },
   no: {
@@ -280,6 +284,8 @@ export const chromeAria: Record<Locale, ChromeAriaStrings> = {
       copyPlan: 'Kopier hengeplanen som tekst',
       copyLink: 'Kopier en lenke til denne veggen',
       reset: 'Begynn på nytt med standardveggen',
+      expand: 'Fyll skjermen',
+      collapse: 'Lukk fullskjerm',
     },
   },
 };
