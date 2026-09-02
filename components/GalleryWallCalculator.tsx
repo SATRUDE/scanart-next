@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useId, useRef, useState } from 'react';
+import { useEffect, useId, useLayoutEffect, useRef, useState } from 'react';
 import { TrackedLink } from '@/components/TrackedLink';
 import {
   calculateGalleryWall,
@@ -15,10 +15,30 @@ import {
 
 const DEFAULTS = { wallWidth: 240, wallHeight: '', gap: 6 };
 
-const centred = (size: PrintSizeKey): WallPrint => ({ size, align: 'centre' });
+/**
+ * useLayoutEffect on the client, useEffect on the server render.
+ *
+ * The reflow below MUST be measured and inverted before the browser paints,
+ * or the wall visibly jumps one frame before it glides. React warns about
+ * useLayoutEffect during prerender, hence the swap.
+ */
+const useIsomorphicLayoutEffect = typeof window === 'undefined' ? useEffect : useLayoutEffect;
+
+/**
+ * A print carries a stable id.
+ *
+ * The wall now RE-RENDERS as you drag - it shows the arrangement you will get,
+ * not an approximation of it - so prints change row and index mid-gesture.
+ * Identity has to survive that: it is what the drag holds on to, and what the
+ * reflow animation matches old positions to new ones by.
+ */
+type Print = WallPrint & { id: string };
+
+let nextPrintId = 0;
+const centred = (size: PrintSizeKey): Print => ({ id: `print-${nextPrintId++}`, size, align: 'centre' });
 
 /** A real wall rarely repeats one size, and rarely sits in one line. */
-const DEFAULT_ROWS: WallPrint[][] = [
+const DEFAULT_ROWS: Print[][] = [
   [centred('50x70'), centred('50x50'), centred('50x70')],
   [centred('50x50'), centred('50x50')],
 ];
@@ -30,10 +50,6 @@ const ALIGNMENTS: { value: PrintAlign; label: string; glyph: string }[] = [
 ];
 
 const MAX_PRINTS = 12;
-
-/** Centimetres of wall a drag must travel before it counts as a row change.
- *  Below this, vertical movement snaps the print within its own row. */
-const ROW_CHANGE_CM = 55;
 
 /** Where a print is, and where a drag would put it. */
 type Position = { row: number; index: number };
@@ -51,44 +67,36 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
   const id = useId();
   const [wallWidthInput, setWallWidthInput] = useState(String(DEFAULTS.wallWidth));
   const [wallHeightInput, setWallHeightInput] = useState(DEFAULTS.wallHeight);
-  const [rows, setRows] = useState<WallPrint[][]>(DEFAULT_ROWS);
+  const [rows, setRows] = useState<Print[][]>(DEFAULT_ROWS);
   const [gapInput, setGapInput] = useState(String(DEFAULTS.gap));
 
   /**
-   * A drag in flight. `from` is where the print started, `over` is where it
-   * would land, `dx`/`dy` are how far the pointer has travelled.
+   * A drag in flight.
    *
-   * The wall is deliberately NOT reordered while dragging. The dragged print
-   * follows the pointer and every other print is TRANSFORMED aside, so a gap
-   * opens where it will go and the wall glides. It is committed once, on
-   * release.
+   * `from` and `over` are both positions in the COMMITTED rows, which is what
+   * movePrintTo takes. The wall is rendered from that move applied, so what
+   * you see while dragging is the arrangement you will get: releasing commits
+   * the same rows the screen is already showing and moves nothing.
+   *
+   * The print you are holding is drawn twice - a faded placeholder in the slot
+   * it will occupy, and a copy pinned to the pointer - because those are two
+   * different questions ("where will this land" and "what am I holding") and
+   * one element cannot answer both.
    */
   const [drag, setDrag] = useState<{
+    id: string;
     from: Position;
     over: Position;
-    dx: number;
-    dy: number;
-    /** One slot's width, measured at pointerdown and carried in STATE rather
-     *  than read from a ref during render, which react-hooks/refs rightly
-     *  refuses: a ref read while rendering can be a frame stale, and on a drag
-     *  that is exactly when it shows. */
-    step: number;
-    /** Centimetres of wall per pixel of preview, so a vertical drag can be
-     *  read in the units the wall is measured in. */
-    cmPerPx: number;
-    /** Which of the three places the print will land on when released. */
+    /** Which of the three places in the row the print will land on. */
     align: PrintAlign;
+    /** Centimetres of wall per pixel of preview, so vertical drag can be read
+     *  in the units the wall is measured in. */
+    cmPerPx: number;
+    /** Live pointer position, and where in the print it was grabbed. */
+    pointer: { x: number; y: number };
+    grab: { x: number; y: number };
+    size: { width: number; height: number };
   } | null>(null);
-
-  /**
-   * True for the one frame in which a drop commits.
-   *
-   * On release the wall reorders AND the transforms clear, and those cancel
-   * out, so the correct amount of visible movement is none. With the
-   * transition armed the browser animates it anyway, which reads as the wall
-   * springing back and then re-sorting itself.
-   */
-  const [settling, setSettling] = useState(false);
 
   const wallRef = useRef<HTMLDivElement | null>(null);
   const dragStartRef = useRef({ x: 0, y: 0 });
@@ -98,8 +106,18 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
    * of every drag arrives before the state exists and would be thrown away.
    */
   const draggingRef = useRef(false);
-  /** Every slot's centre, measured once at pointerdown, before anything moves. */
-  const geometryRef = useRef<{ row: number; index: number; x: number; y: number }[]>([]);
+  /** The id of the print being held, for the reflow to leave alone. */
+  const heldRef = useRef<string | null>(null);
+  /**
+   * What the move handler needs synchronously. pointerdown sets state
+   * asynchronously, so the first pointermove of every drag arrives before
+   * `drag` exists and would otherwise be thrown away.
+   */
+  const dragInfoRef = useRef<{ id: string; from: Position; cmPerPx: number } | null>(null);
+  /** The last target read, so a row made by this drag does not erase it. */
+  const overRef = useRef<Position>({ row: 0, index: 0 });
+  /** Each print's last laid-out position, by id, for the reflow animation. */
+  const layoutRef = useRef(new Map<string, { x: number; y: number }>());
   const [orderMessage, setOrderMessage] = useState('');
 
   const wallWidth = Number(wallWidthInput);
@@ -116,18 +134,69 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
   const safeWallWidth = isValid ? wallWidth : DEFAULTS.wallWidth;
   const safeGap = isValid ? gap : DEFAULTS.gap;
   const safeRows = printCount ? rows : DEFAULT_ROWS;
+
+  /**
+   * The arrangement as it will be when the drag is released - the move already
+   * applied, the alignment already set.
+   *
+   * This, not the committed rows, is what gets rendered and measured. The old
+   * version left the wall untouched during a drag and slid the other prints
+   * aside with transforms, which could only ever approximate the real thing:
+   * the true layout also re-centres every row and can change a row's height,
+   * so releasing snapped the wall into a different arrangement than the one
+   * you were looking at. Previewing the genuine result is the only way the
+   * drop can be a no-op.
+   */
+  const displayRows: readonly Print[][] = (() => {
+    if (!drag) return safeRows;
+    const withAlign = safeRows.map((row, ri) =>
+      row.map((print, i) => (ri === drag.from.row && i === drag.from.index ? { ...print, align: drag.align } : print))
+    );
+    const samePlace = drag.from.row === drag.over.row && drag.from.index === drag.over.index;
+    return samePlace ? withAlign : movePrintTo(withAlign, drag.from, drag.over);
+  })();
+
   const result = calculateGalleryWall({
     wallWidth: safeWallWidth,
     wallHeight: isValid ? wallHeight : undefined,
-    rows: safeRows,
+    rows: displayRows,
     gap: safeGap,
   });
 
-  useEffect(() => {
-    if (!settling) return;
-    const frame = requestAnimationFrame(() => setSettling(false));
-    return () => cancelAnimationFrame(frame);
-  }, [settling]);
+  /**
+   * THE REFLOW. Every print that moved because of the preview above is put
+   * back where it was with a transform, then released to slide to where it
+   * now belongs - measured from layout offsets, which transforms do not
+   * affect, so a half-finished slide cannot poison the next measurement.
+   *
+   * The print being held is skipped: it is following the pointer.
+   */
+  useIsomorphicLayoutEffect(() => {
+    const wall = wallRef.current;
+    if (!wall) return;
+    const nodes = [...wall.querySelectorAll<HTMLElement>('[data-print-id]')];
+    const now = new Map(nodes.map(el => [el.dataset.printId ?? '', { x: el.offsetLeft, y: el.offsetTop }]));
+    const previous = layoutRef.current;
+    layoutRef.current = now;
+    const frames: number[] = [];
+    for (const el of nodes) {
+      const printId = el.dataset.printId ?? '';
+      if (printId === heldRef.current) continue;
+      const was = previous.get(printId);
+      const is = now.get(printId);
+      if (!was || !is) continue;
+      const dx = was.x - is.x;
+      const dy = was.y - is.y;
+      if (dx === 0 && dy === 0) continue;
+      el.style.transition = 'none';
+      el.style.transform = `translate(${dx}px, ${dy}px)`;
+      frames.push(requestAnimationFrame(() => {
+        el.style.transition = 'transform 180ms cubic-bezier(0.2, 0, 0, 1)';
+        el.style.transform = '';
+      }));
+    }
+    return () => frames.forEach(cancelAnimationFrame);
+  }, [displayRows, safeGap, safeWallWidth]);
 
   const setSizeAt = (row: number, index: number, size: PrintSizeKey) =>
     setRows(current => current.map((r, ri) => (ri === row ? r.map((print, i) => (i === index ? { ...print, size } : print)) : r)));
@@ -161,149 +230,133 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
     });
   };
 
-  const beginDrag = (row: number, index: number, clientX: number, clientY: number, target: HTMLElement, pointerId: number) => {
+  const beginDrag = (row: number, index: number, print: Print, clientX: number, clientY: number, target: HTMLElement, pointerId: number) => {
     const wall = wallRef.current;
     if (!wall) return;
-    // Measure every print's centre once, before any transform is applied.
-    geometryRef.current = [...wall.querySelectorAll('[data-print]')].map(node => {
-      const el = node as HTMLElement;
-      const rect = el.getBoundingClientRect();
-      return {
-        row: Number(el.dataset.row),
-        index: Number(el.dataset.index),
-        x: rect.left + rect.width / 2,
-        y: rect.top + rect.height / 2,
-      };
-    });
-    const here = geometryRef.current.filter(g => g.row === row).sort((a, b) => a.x - b.x);
-    const step = here.length > 1 ? here[1].x - here[0].x : 60;
+    const rect = target.getBoundingClientRect();
     // The scale, read off the print being dragged: its rendered height in
     // pixels against its real height in centimetres. Vertical work is then
     // done in centimetres, so the feel does not change with the preview size.
-    const rect = target.getBoundingClientRect();
-    const realHeight = PRINT_SIZES[safeRows[row][index].size].height;
-    const cmPerPx = rect.height > 0 ? realHeight / rect.height : 1;
+    const cmPerPx = rect.height > 0 ? PRINT_SIZES[print.size].height / rect.height : 1;
     dragStartRef.current = { x: clientX, y: clientY };
-    target.setPointerCapture(pointerId);
+    dragInfoRef.current = { id: print.id, from: { row, index }, cmPerPx };
+    overRef.current = { row, index };
+    heldRef.current = print.id;
+    // Captured on the WALL, not on the print. A print that changes row is
+    // re-parented in the DOM, and re-parenting a node silently drops its
+    // pointer capture - which would end the drag at the exact moment it
+    // succeeded. The wall is there for the whole gesture.
+    wall.setPointerCapture(pointerId);
     draggingRef.current = true;
     setDrag({
+      id: print.id,
       from: { row, index },
       over: { row, index },
-      dx: 0,
-      dy: 0,
-      step,
+      align: print.align,
       cmPerPx,
-      align: safeRows[row][index].align,
+      pointer: { x: clientX, y: clientY },
+      grab: { x: clientX - rect.left, y: clientY - rect.top },
+      size: { width: rect.width, height: rect.height },
     });
   };
 
   const moveDrag = (clientX: number, clientY: number) => {
-    setDrag(current => {
-      if (!current) return current;
-      const geometry = geometryRef.current;
-      const origin = geometry.find(g => g.row === current.from.row && g.index === current.from.index);
-      if (!origin) return current;
-      const dx = clientX - dragStartRef.current.x;
-      const dy = clientY - dragStartRef.current.y;
-      const centreX = origin.x + dx;
-      const centreY = origin.y + dy;
+    const wall = wallRef.current;
+    const info = dragInfoRef.current;
+    if (!wall || !info) return;
 
-      // Which band is the print over? The row whose centre line is nearest,
-      // unless it has been dragged clear above the first or below the last,
-      // which is how a print gets a row of its own.
-      const rowCentres = safeRows.map((_, ri) => {
-        const inRow = geometry.filter(g => g.row === ri);
-        return inRow.length ? inRow.reduce((sum, g) => sum + g.y, 0) / inRow.length : 0;
-      });
-      // HYSTERESIS. A print must be dragged a whole band away before it
-      // changes row; anything less snaps it within its own row instead.
-      // Without this the two gestures fight each other.
-      const dyCm = dy * current.cmPerPx;
-      if (Math.abs(dyCm) < ROW_CHANGE_CM) {
-        const row = safeRows[current.from.row] ?? [];
-        const self = row[current.from.index];
-        const inRow = geometry.filter(g => g.row === current.from.row).sort((a, b) => a.x - b.x);
-        let index = inRow.filter(g => centreX > g.x).length;
-        if (index > current.from.index) index -= 1;
-        const align = self
-          ? alignFromDrag(self, result.rowHeights[current.from.row] ?? 0, dyCm)
-          : current.align;
-        return { ...current, dx, dy, over: { row: current.from.row, index }, align };
-      }
-
-      let over: Position;
-      const firstRowTop = rowCentres[0] ?? 0;
-      const lastRowBottom = rowCentres.at(-1) ?? 0;
-      const bandHeight = current.step; // near enough: slots are square-ish
-      if (centreY < firstRowTop - bandHeight) {
-        over = { row: -1, index: 0 };
-      } else if (centreY > lastRowBottom + bandHeight) {
-        over = { row: safeRows.length, index: 0 };
-      } else {
-        let nearest = 0;
-        rowCentres.forEach((y, ri) => {
-          if (Math.abs(centreY - y) < Math.abs(centreY - rowCentres[nearest])) nearest = ri;
-        });
-        const inRow = geometry.filter(g => g.row === nearest).sort((a, b) => a.x - b.x);
-        let index = inRow.filter(g => centreX > g.x).length;
-        // Moving within its own row, the print's own slot does not count twice.
-        if (nearest === current.from.row && index > current.from.index) index -= 1;
-        over = { row: nearest, index };
-      }
-      return { ...current, dx, dy, over };
+    /**
+     * Hit-test against the wall AS IT IS NOW, not as it was at pointerdown.
+     *
+     * The wall reflows under the pointer while you drag, so measurements taken
+     * once at the start go stale the instant the first print moves aside - the
+     * row you are aiming at is no longer where it was. Reading the live rows
+     * each move is a handful of rect reads and it cannot drift.
+     *
+     * The print being held is excluded from its row's slots, which makes the
+     * count of slots to the left of the pointer the insertion index that
+     * movePrintTo wants: it splices the print out before putting it back.
+     */
+    const bands = [...wall.querySelectorAll<HTMLElement>('[data-wall-row]')].map(rowEl => {
+      const rect = rowEl.getBoundingClientRect();
+      const slots = [...rowEl.querySelectorAll<HTMLElement>('[data-print-id]')]
+        .filter(el => el.dataset.printId !== info.id)
+        .map(el => {
+          const slot = el.getBoundingClientRect();
+          return { id: el.dataset.printId ?? '', centre: slot.left + slot.width / 2 };
+        })
+        .sort((a, b) => a.centre - b.centre);
+      return { top: rect.top, bottom: rect.bottom, slots };
     });
+    if (!bands.length) return;
+
+    const first = bands[0];
+    const last = bands[bands.length - 1];
+    // Clear of the wall by half a row is how a print asks for a row of its own.
+    const margin = Math.max(12, ((last.bottom - first.top) / bands.length) * 0.5);
+
+    let over: Position;
+    if (clientY < first.top - margin) {
+      over = { row: -1, index: 0 };
+    } else if (clientY > last.bottom + margin) {
+      over = { row: safeRows.length, index: 0 };
+    } else {
+      let nearest = 0;
+      let best = Infinity;
+      bands.forEach((band, i) => {
+        const gap = clientY < band.top ? band.top - clientY : clientY > band.bottom ? clientY - band.bottom : 0;
+        if (gap < best) {
+          best = gap;
+          nearest = i;
+        }
+      });
+      const band = bands[nearest];
+      const anchor = band.slots[0]?.id;
+      const committed = anchor ? safeRows.findIndex(row => row.some(print => print.id === anchor)) : -1;
+      // A band with nothing in it but the print being dragged exists only
+      // because this drag made it, so there is no new target to read from it.
+      over = committed < 0
+        ? overRef.current
+        : { row: committed, index: band.slots.filter(slot => clientX > slot.centre).length };
+    }
+    overRef.current = over;
+
+    const self = safeRows[info.from.row]?.[info.from.index];
+    const align = !self
+      ? 'centre'
+      : over.row === info.from.row
+        // Still in its own row: vertical drag picks one of the three places a
+        // short print can hang in a taller row.
+        ? alignFromDrag(self, result.rowHeights[info.from.row] ?? 0, (clientY - dragStartRef.current.y) * info.cmPerPx)
+        : self.align;
+
+    setDrag(current => (current ? { ...current, over, align, pointer: { x: clientX, y: clientY } } : current));
   };
 
   const endDrag = () => {
+    if (!draggingRef.current) return;
     draggingRef.current = false;
-    if (!drag) return;
-    const { from, over, align } = drag;
-    const samePlace = from.row === over.row && from.index === over.index;
-    const wasAlign = rows[from.row]?.[from.index]?.align;
-    const realigned = wasAlign !== undefined && wasAlign !== align;
-    if (!samePlace || realigned) setSettling(true);
+    heldRef.current = null;
+    dragInfoRef.current = null;
+    const current = drag;
     setDrag(null);
-    if (samePlace && !realigned) return;
-    setRows(prev => {
-      const withAlign = prev.map((r, ri) =>
-        ri === from.row ? r.map((print, i) => (i === from.index ? { ...print, align } : print)) : r
-      );
-      return samePlace ? withAlign : movePrintTo(withAlign, from, over);
-    });
+    if (!current) return;
+
+    const samePlace = current.from.row === current.over.row && current.from.index === current.over.index;
+    const wasAlign = safeRows[current.from.row]?.[current.from.index]?.align;
+    if (samePlace && wasAlign === current.align) return;
+
+    // The wall is ALREADY showing this arrangement, so committing it is not a
+    // move: it is the preview becoming permanent, and nothing on screen shifts.
+    setRows(displayRows.map(row => [...row]));
+
     if (samePlace) {
-      setOrderMessage(align === 'centre' ? 'Print centred in its row.' : `Print snapped to the ${align} of its row.`);
+      setOrderMessage(current.align === 'centre' ? 'Print centred in its row.' : `Print snapped to the ${current.align} of its row.`);
       return;
     }
-    setOrderMessage(
-      over.row === -1 ? 'Print moved to a new row above.'
-      : over.row >= rows.length ? 'Print moved to a new row below.'
-      : `Print moved to row ${over.row + 1}, position ${over.index + 1}.`
-    );
-  };
-
-  /**
-   * How far a print that is not being dragged must slide to make room.
-   *
-   * Only prints in the row being dropped into move, and only sideways: a
-   * vertical reflow of whole bands while dragging reads as the wall jumping
-   * about, which is the opposite of what this is for.
-   */
-  const shiftFor = (row: number, index: number) => {
-    if (!drag) return 0;
-    const { from, over, step } = drag;
-    if (row === from.row && index === from.index) return 0;
-    if (over.row !== row) {
-      // Leaving this row: everything after the gap closes up.
-      if (row === from.row && index > from.index) return -step;
-      return 0;
-    }
-    if (row === from.row) {
-      if (from.index < over.index && index > from.index && index <= over.index) return -step;
-      if (from.index > over.index && index >= over.index && index < from.index) return step;
-      return 0;
-    }
-    // Arriving from another row: make a hole at the insertion point.
-    return index >= over.index ? step : 0;
+    const landedRow = displayRows.findIndex(row => row.some(print => print.id === current.id));
+    const landedIndex = displayRows[landedRow]?.findIndex(print => print.id === current.id) ?? 0;
+    setOrderMessage(`Print moved to row ${landedRow + 1}, position ${landedIndex + 1}.`);
   };
 
   const widest = Math.max(result.totalWidth, safeWallWidth);
@@ -358,8 +411,12 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
 
       <fieldset className="mt-6">
         <legend className="text-sm font-medium text-neutral-800">Your prints</legend>
-        <p className="mt-1 text-xs text-neutral-600">{printCount} of {MAX_PRINTS} across {safeRows.length} {safeRows.length === 1 ? 'row' : 'rows'}. Drag them on the wall below, or move them here.</p>
-        {rows.map((row, rowIndex) => (
+        <p className="mt-1 text-xs text-neutral-600">{printCount} of {MAX_PRINTS} across {displayRows.length} {displayRows.length === 1 ? 'row' : 'rows'}. Drag them on the wall below, or move them here.</p>
+        {/* The preview rows, not the committed ones. This list sits ABOVE the
+            wall, so if it only gained a row on release it grew by a row's
+            height at that moment and shoved the whole wall down - a drop that
+            moved everything, which is the one thing this must never do. */}
+        {displayRows.map((row, rowIndex) => (
           <div key={rowIndex} className="mt-3">
             <p className="text-xs uppercase tracking-wide text-neutral-500">Row {rowIndex + 1}</p>
             <ul className="mt-1 flex flex-wrap gap-3">
@@ -367,7 +424,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
                 const tallestInRow = result.rowHeights[rowIndex] ?? 0;
                 const canAlign = PRINT_SIZES[print.size].height < tallestInRow;
                 return (
-                <li key={index} className="flex items-end gap-2 rounded-md border border-neutral-200 bg-neutral-50 p-2">
+                <li key={print.id} className="flex items-end gap-2 rounded-md border border-neutral-200 bg-neutral-50 p-2">
                   <label className="text-xs font-medium text-neutral-700" htmlFor={`${id}-print-${rowIndex}-${index}`}>
                     Print {index + 1}
                     <select id={`${id}-print-${rowIndex}-${index}`} value={print.size} onChange={event => setSizeAt(rowIndex, index, event.currentTarget.value as PrintSizeKey)} className="mt-1 block min-h-11 rounded-md border border-neutral-300 bg-white px-2 text-sm text-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900">
@@ -441,51 +498,43 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
             className="mx-auto flex flex-col items-center justify-center border-x border-b border-neutral-300 py-3"
             style={{ width: `${Math.min(100, (safeWallWidth / widest) * 100)}%`, gap: `${Math.max(3, safeGap * 0.6)}px`, minHeight: '150px' }}
           >
-            {safeRows.map((row, rowIndex) => (
-              <div key={rowIndex} className="flex items-center justify-center" style={{ gap: `${Math.max(2, safeGap * 0.55)}px`, height: (result.rowHeights[rowIndex] ?? 70) === 70 ? '62px' : '46px' }}>
+            {displayRows.map((row, rowIndex) => (
+              <div
+                key={rowIndex}
+                data-wall-row=""
+                className="flex items-center justify-center"
+                style={{ gap: `${Math.max(2, safeGap * 0.55)}px`, height: (result.rowHeights[rowIndex] ?? 70) === 70 ? '62px' : '46px' }}
+              >
                 {row.map((wallPrint, index) => {
                   const print = PRINT_SIZES[wallPrint.size];
-                  const isDragging = drag?.from.row === rowIndex && drag?.from.index === index;
-                  const shift = shiftFor(rowIndex, index);
+                  const isHeld = drag?.id === wallPrint.id;
                   return (
                     <div
-                      key={index}
+                      key={wallPrint.id}
                       data-print=""
+                      data-print-id={wallPrint.id}
                       data-row={rowIndex}
                       data-index={index}
                       onPointerDown={event => {
                         if (event.button !== 0) return;
                         event.preventDefault();
-                        beginDrag(rowIndex, index, event.clientX, event.clientY, event.currentTarget, event.pointerId);
+                        beginDrag(rowIndex, index, wallPrint, event.clientX, event.clientY, event.currentTarget, event.pointerId);
                       }}
                       title={`Row ${rowIndex + 1}, print ${index + 1}, ${print.label}, ${wallPrint.align === 'centre' ? 'centred' : wallPrint.align + '-aligned'}. Drag to move.`}
-                      className={`border-2 bg-neutral-100 p-1 ${isDragging ? 'z-10 cursor-grabbing border-neutral-900 shadow-lg' : 'cursor-grab border-neutral-800'}`}
+                      // While held, this is the SLOT the print will land in,
+                      // not the print: it is drawn as an outline, and the
+                      // print itself is the copy under the pointer below.
+                      className={`p-1 ${isHeld ? 'border-2 border-dashed border-neutral-400 bg-neutral-50' : 'cursor-grab border-2 border-neutral-800 bg-neutral-100'}`}
                       style={{
                         aspectRatio: `${print.width} / ${print.height}`,
                         height: print.height === 70 ? '62px' : '46px',
                         // The row is as tall as its tallest print; a shorter
                         // one hangs at the top, centre or bottom of that band.
-                        // While dragging, show the place it will SNAP to
-                        // rather than following the finger, which is what
-                        // makes three positions feel like three positions.
-                        alignSelf: (isDragging ? (drag?.align ?? wallPrint.align) : wallPrint.align) === 'top'
-                          ? 'flex-start'
-                          : (isDragging ? (drag?.align ?? wallPrint.align) : wallPrint.align) === 'bottom'
-                            ? 'flex-end'
-                            : 'center',
-                        // The dragged print tracks the pointer with no
-                        // transition, or it would lag behind the finger.
-                        // Everything else eases, which is the whole feel.
-                        // Horizontal follows the pointer; vertical does not,
-                        // because vertically there are only three places to be.
-                        transform: isDragging
-                          ? `translateX(${drag?.dx ?? 0}px) scale(1.06)`
-                          : `translateX(${shift}px)`,
-                        transition: isDragging || settling ? 'none' : 'transform 180ms cubic-bezier(0.2, 0, 0, 1)',
+                        alignSelf: wallPrint.align === 'top' ? 'flex-start' : wallPrint.align === 'bottom' ? 'flex-end' : 'center',
                         touchAction: 'none',
                       }}
                     >
-                      <div className="h-full w-full border border-neutral-300" />
+                      {!isHeld && <div className="h-full w-full border border-neutral-300" />}
                     </div>
                   );
                 })}
@@ -493,6 +542,23 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
             ))}
           </div>
         </div>
+        {/* The print under the pointer. Pinned to the viewport rather than
+            laid out, so the reflowing wall cannot drag it about, and ignoring
+            pointer events so it never hit-tests itself. */}
+        {drag && (
+          <div
+            className="pointer-events-none fixed z-50 border-2 border-neutral-900 bg-neutral-100 p-1 shadow-lg"
+            style={{
+              left: `${drag.pointer.x - drag.grab.x}px`,
+              top: `${drag.pointer.y - drag.grab.y}px`,
+              width: `${drag.size.width}px`,
+              height: `${drag.size.height}px`,
+              transform: 'scale(1.06)',
+            }}
+          >
+            <div className="h-full w-full border border-neutral-300" />
+          </div>
+        )}
       </div>
 
       <h4 className="mt-6 text-lg font-medium text-neutral-900">Your arrangement</h4>
