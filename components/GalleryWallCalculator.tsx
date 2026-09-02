@@ -4,37 +4,44 @@ import { useEffect, useId, useRef, useState } from 'react';
 import { TrackedLink } from '@/components/TrackedLink';
 import { chromeAria } from '@/lib/i18n';
 import {
-  alignFromDrag,
-  alignmentOffset,
-  calculateGalleryWall,
   decodeArrangement,
-  encodeArrangement,
   EYE_LEVEL_CM,
   formatCentimetres,
-  layoutGalleryWall,
-  movePrintTo,
   PRESETS,
   PRINT_SIZES,
-  sizeCounts,
-  type PrintAlign,
   type PrintSizeKey,
-  type WallPrint,
-  type WallRow,
 } from '@/lib/gallery-wall-calculator';
+import {
+  bounds,
+  decodeFree,
+  encodeFree,
+  fromRows,
+  guidesFor,
+  isClear,
+  normalize,
+  placeGroup,
+  rectOf,
+  resolve,
+  type FreePrint,
+  type Rect,
+} from '@/lib/gallery-wall-free';
 
 /**
  * The gallery wall planner: an elevation drawing of your wall, to scale, with
  * the prints hanging on it and the measurements written on the drawing the
  * way an architect would write them.
  *
- * The wall is the interface. You drag prints about on it, tap one to change
- * its size, and add more from the ghost slots at the end of each row. There
- * is no form-then-preview split: the drawing is projected from the same
- * numbers the hanging plan prints, so what you see is what you will measure.
+ * The wall is the interface. Prints go wherever you put them - there are no
+ * rows - and what keeps the wall tidy is MAGNETISM: a print you drag clicks to
+ * its neighbours' edges and centres and to exactly one gap away from them,
+ * and is never allowed closer than the gap. Tap a print to change its size,
+ * add more from the slots beside the group. The drawing is projected from the
+ * same numbers the hanging plan prints, so what you see is what you measure.
  *
- * The one contract every interaction here keeps: NOTHING MOVES ON RELEASE.
- * While a print is dragged the wall renders the arrangement you will get, and
- * letting go commits that same value. lib/gallery-wall-drag.test.ts holds it.
+ * The contract every interaction keeps: releasing commits exactly the place
+ * the placeholder was showing. The one thing that may move on release is the
+ * whole group, gliding back to centre if the drag changed its extent - a
+ * deliberate, visible settle, not a rearrangement.
  */
 
 const DEFAULTS = { wallWidth: 240, wallHeight: '', gap: 6, centreHeight: EYE_LEVEL_CM };
@@ -42,33 +49,30 @@ const MAX_PRINTS = 12;
 /** The one curve everything on the wall moves with, so it all feels like one material. */
 const EASE = 'cubic-bezier(0.2, 0.8, 0.2, 1)';
 const REFLOW_MS = 260;
-const SETTLE_MS = 180;
 /** Pointer travel before a press becomes a drag rather than a tap. */
 const DRAG_THRESHOLD_PX = 5;
+/** How close, in centimetres, a print has to come to a snap line to take it. */
+const SNAP_RADIUS_CM = 10;
 /** A sofa for scale: a typical three-seater. */
 const SOFA = { width: 200, height: 85 };
-
-type Print = WallPrint & { id: string };
-type Position = { row: number; index: number };
+/** Stands in for the ceiling when no wall height is given. */
+const TYPICAL_CEILING = 260;
 
 /**
  * Ids for the first render come from POSITION, so the server and the client
- * hand out the same ones. A module-level counter does not: the server's copy
- * of this module has already numbered prints for other requests, and React
- * then finds "print-5" in the HTML where the client expects "print-0".
+ * hand out the same ones; a module counter the server had already advanced
+ * for other requests made React find "print-5" where the client had "print-0".
  * Prints made later, on the client only, use a per-instance counter.
  */
-const seededIds = (rows: readonly WallRow[]): Print[][] =>
-  rows.map((row, r) => row.map((print, i) => ({ ...print, id: `print-${r}-${i}` })));
-
-const ALIGNMENTS: { value: PrintAlign; label: string; glyph: string }[] = [
-  { value: 'top', label: 'Hang level with the top of the row', glyph: '⤒' },
-  { value: 'centre', label: 'Centre in the row', glyph: '↕' },
-  { value: 'bottom', label: 'Hang level with the bottom of the row', glyph: '⤓' },
-];
+const seeded = (prints: { size: PrintSizeKey; x: number; y: number }[]): FreePrint[] =>
+  prints.map((print, i) => ({ ...print, id: `print-${i}` }));
 
 const reducedMotion = () =>
   typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const sizeOf = (print: FreePrint) => ({ w: PRINT_SIZES[print.size].width, h: PRINT_SIZES[print.size].height });
+const round = (value: number) => Math.round(value * 2) / 2;
+const shortLabel = (size: PrintSizeKey) => PRINT_SIZES[size].label.split(',')[0];
 
 /**
  * `locale` follows LandingCrossLinks: the component carries its own prefix so
@@ -85,29 +89,32 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
   const [wallHeightInput, setWallHeightInput] = useState(DEFAULTS.wallHeight);
   const [gapInput, setGapInput] = useState(String(DEFAULTS.gap));
   const [centreInput, setCentreInput] = useState(String(DEFAULTS.centreHeight));
-  const [rows, setRows] = useState<Print[][]>(() => seededIds(PRESETS[2].rows));
-  const nextId = useRef(0);
-  const withIds = (source: readonly WallRow[]): Print[][] =>
-    source.map(row => row.map(print => ({ ...print, id: `print-c${nextId.current++}` })));
+  const [prints, setPrints] = useState<FreePrint[]>(() => seeded(fromRows(PRESETS[2].rows, DEFAULTS.gap)));
   const [showSofa, setShowSofa] = useState(true);
   const [selected, setSelected] = useState<string | null>(null);
   const [orderMessage, setOrderMessage] = useState('');
   const [copied, setCopied] = useState<'plan' | 'link' | null>(null);
   const [hydrated, setHydrated] = useState(false);
 
+  const nextId = useRef(0);
+  const fresh = (source: { size: PrintSizeKey; x: number; y: number }[]): FreePrint[] =>
+    source.map(print => ({ ...print, id: `print-c${nextId.current++}` }));
+
   /**
-   * A drag in flight. `from` and `over` are positions in the COMMITTED rows,
-   * which is what movePrintTo takes; the wall renders that move applied.
+   * A drag in flight. `rect` is where the held print WILL land, in group
+   * space, already snapped and already clear of everything; the wall renders
+   * it there as a placeholder, so releasing has nothing to decide.
    *
-   * The print you hold is drawn twice: a faded slot where it will land, and a
-   * copy pinned to the pointer. "Where will this go" and "what am I holding"
-   * are two questions, and one element cannot answer both.
+   * `offset` is where the group sat when the drag began, and is held for the
+   * whole gesture: the group re-centres itself around whatever it contains,
+   * and letting it do that under a moving pointer makes the pointer's own
+   * position shift with every move - a feedback loop, not a feel.
    */
   const [drag, setDrag] = useState<{
     id: string;
-    from: Position;
-    over: Position;
-    align: PrintAlign;
+    rect: Rect;
+    offset: { left: number; topFromFloor: number };
+    guides: { xs: number[]; ys: number[] };
     pointer: { x: number; y: number };
     grab: { x: number; y: number };
     size: { width: number; height: number };
@@ -117,23 +124,22 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
 
   const wallRef = useRef<HTMLDivElement | null>(null);
   /**
-   * A press that has not yet become a drag. Pointerdown records it; the first
+   * A press that has not yet become a drag. pointerdown records it; the first
    * move past DRAG_THRESHOLD_PX turns it into `drag`, and a release before
-   * that is a tap, which selects. Refs because pointerdown sets state
+   * that is a tap, which selects. A ref because pointerdown sets state
    * asynchronously and the first pointermove arrives before the state exists.
    */
   const pressRef = useRef<{
     id: string;
-    from: Position;
-    print: Print;
     start: { x: number; y: number };
     grab: { x: number; y: number };
+    grabCm: { x: number; y: number };
     size: { width: number; height: number };
-    cmPerPx: number;
-    pointerId: number;
+    rect: Rect;
+    offset: { left: number; topFromFloor: number };
     dragging: boolean;
   } | null>(null);
-  const overRef = useRef<Position>({ row: 0, index: 0 });
+  const lastRectRef = useRef<Rect | null>(null);
   const settleTimer = useRef<number | null>(null);
   const refocusRef = useRef<string | null>(null);
 
@@ -141,7 +147,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
   const wallHeight = wallHeightInput === '' ? undefined : Number(wallHeightInput);
   const gap = Number(gapInput);
   const centreHeight = Number(centreInput);
-  const printCount = rows.reduce((count, row) => count + row.length, 0);
+  const printCount = prints.length;
 
   const wallError = wallWidthInput === '' ? 'Enter your wall width.' : !(wallWidth > 0) ? 'Use a wall width greater than 0 cm.' : '';
   const heightError = wallHeightInput !== '' && !(wallHeight !== undefined && wallHeight > 0) ? 'Use a height greater than 0 cm, or leave it blank.' : '';
@@ -155,36 +161,24 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
   const safeWallHeight = heightError ? undefined : wallHeight;
 
   /**
-   * The arrangement as it will be when the drag is released: the move already
-   * applied, the alignment already set. THIS is what gets rendered and
-   * measured, so the drop cannot disagree with the preview.
+   * The arrangement as it will be when the drag is released: the held print
+   * already at its resolved place. THIS is what gets rendered and measured.
    */
-  const displayRows: readonly Print[][] = (() => {
-    // Once the drop has committed, `rows` IS the preview; applying the move
-    // again while the copy settles would move the print twice.
-    if (!drag || drag.settle) return rows;
-    const withAlign = rows.map((row, ri) =>
-      row.map((print, i) => (ri === drag.from.row && i === drag.from.index ? { ...print, align: drag.align } : print))
-    );
-    const samePlace = drag.from.row === drag.over.row && drag.from.index === drag.over.index;
-    return samePlace ? withAlign : movePrintTo(withAlign, drag.from, drag.over);
-  })();
+  const displayPrints: readonly FreePrint[] =
+    drag && !drag.settle ? prints.map(print => (print.id === drag.id ? { ...print, x: drag.rect.x, y: drag.rect.y } : print)) : prints;
 
-  const inputs = { wallWidth: safeWallWidth, wallHeight: safeWallHeight, rows: displayRows, gap: safeGap };
-  const result = calculateGalleryWall(inputs);
-  const layout = layoutGalleryWall(inputs, safeCentre);
+  const rects = displayPrints.map(rectOf);
+  const box = bounds(rects);
+  const offset = drag && !drag.settle ? drag.offset : placeGroup(box, safeWallWidth, safeCentre);
 
-  /**
-   * The drawing's extent, in centimetres. Floor at the bottom always: "from
-   * the floor" is the measurement anyone hanging a picture actually takes.
-   *
-   * Fixed by the WALL, never by what hangs on it. An earlier version grew the
-   * drawing to fit the group, which rescaled everything under the pointer the
-   * moment a drag made a new row - remapping the pointer to a different row,
-   * which undid the new row, which rescaled back. A typical ceiling stands in
-   * when no height is given; a group that overflows it does not fit a room.
-   */
-  const TYPICAL_CEILING = 260;
+  /** Every print with its real measurements: left edge from the wall's left, top edge from the floor. */
+  const placed = displayPrints.map((print, i) => ({
+    print,
+    rect: rects[i],
+    left: offset.left + rects[i].x,
+    topFromFloor: offset.topFromFloor - rects[i].y,
+  }));
+
   const drawWidth = safeWallWidth;
   const drawHeight = safeWallHeight ?? TYPICAL_CEILING;
   const x = (cm: number) => `${(cm / drawWidth) * 100}%`;
@@ -192,11 +186,23 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
   const w = (cm: number) => `${(cm / drawWidth) * 100}%`;
   const h = (cm: number) => `${(cm / drawHeight) * 100}%`;
 
-  const widestRow = result.rowWidths.length ? result.rowWidths.indexOf(result.totalWidth) : -1;
-  const groupLeft = widestRow >= 0 ? layout.rowLefts[widestRow] : drawWidth / 2;
-  const groupRight = groupLeft + result.totalWidth;
-  const tooTall = result.fitsHeight === false;
-  const tooWide = result.overflow > 0;
+  const groupLeft = box.minX + offset.left;
+  const groupRight = groupLeft + box.w;
+  const groupTop = offset.topFromFloor - box.minY;
+  const groupBottom = groupTop - box.h;
+  // What is DRAWN while dragging sits at the frozen offset, so its margins
+  // can be uneven or even negative. The figures and the verdict speak for
+  // where the group will be once it has re-centred, which is what matters.
+  const settled = placeGroup(box, safeWallWidth, safeCentre);
+  const marginLeft = groupLeft;
+  const marginRight = drawWidth - groupRight;
+  const settledMargin = settled.left;
+  const settledTop = settled.topFromFloor;
+  const settledBottom = settledTop - box.h;
+  const tooWide = box.w > drawWidth;
+  const tooTall = safeWallHeight !== undefined && box.h > safeWallHeight;
+  const gapStatus = safeGap < 5 ? 'tight' : safeGap > 8 ? 'wide' : 'recommended';
+  const transition = `all ${REFLOW_MS}ms ${EASE}`;
 
   /* ------------------------------------------------------------------ URL */
 
@@ -209,13 +215,17 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
     queueMicrotask(() => {
       if (cancelled) return;
       const match = /plan=([^&]+)/.exec(window.location.hash);
-      const plan = match ? decodeArrangement(decodeURIComponent(match[1])) : null;
+      const text = match ? decodeURIComponent(match[1]) : '';
+      const free = text ? decodeFree(text) : null;
+      // Plans saved by the row-based version still open.
+      const legacy = !free && text ? decodeArrangement(text) : null;
+      const plan = free ?? (legacy ? { ...legacy, prints: fromRows(legacy.rows, legacy.gap) } : null);
       if (plan) {
         setWallWidthInput(String(plan.wallWidth));
         setWallHeightInput(plan.wallHeight === undefined ? '' : String(plan.wallHeight));
         setGapInput(String(plan.gap));
         setCentreInput(String(plan.centreHeight));
-        setRows(withIds(plan.rows));
+        setPrints(seeded(normalize(plan.prints, p => ({ w: PRINT_SIZES[p.size].width, h: PRINT_SIZES[p.size].height }))));
       }
       setHydrated(true);
     });
@@ -224,10 +234,10 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
 
   useEffect(() => {
     if (!hydrated || !isValid || drag) return;
-    const encoded = encodeArrangement({ wallWidth, wallHeight, gap, centreHeight, rows });
+    const encoded = encodeFree({ wallWidth, wallHeight, gap, centreHeight, prints });
     const next = `#plan=${encodeURIComponent(encoded)}`;
     if (window.location.hash !== next) window.history.replaceState(null, '', next);
-  }, [hydrated, isValid, drag, wallWidth, wallHeight, gap, centreHeight, rows]);
+  }, [hydrated, isValid, drag, wallWidth, wallHeight, gap, centreHeight, prints]);
 
   useEffect(() => {
     if (!copied) return;
@@ -235,79 +245,91 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
     return () => window.clearTimeout(timer);
   }, [copied]);
 
-  // A keyboard move re-parents the print's node, which drops focus. Put it back.
   useEffect(() => {
     const target = refocusRef.current;
     if (!target) return;
     refocusRef.current = null;
     wallRef.current?.querySelector<HTMLElement>(`[data-print-id="${target}"]`)?.focus();
-  }, [rows]);
+  }, [prints]);
+
+  useEffect(() => () => { if (settleTimer.current) window.clearTimeout(settleTimer.current); }, []);
 
   /* ---------------------------------------------------------------- edits */
 
   const announce = (message: string) => setOrderMessage(message);
-
-  const updatePrint = (printId: string, patch: Partial<WallPrint>) =>
-    setRows(current => current.map(row => row.map(print => (print.id === printId ? { ...print, ...patch } : print))));
+  const commit = (next: FreePrint[]) => setPrints(normalize(next, sizeOf));
+  const othersOf = (printId: string, source: readonly FreePrint[] = prints) => source.filter(p => p.id !== printId).map(rectOf);
 
   const removePrint = (printId: string) => {
-    setRows(current => current.map(row => row.filter(print => print.id !== printId)).filter(row => row.length));
+    commit(prints.filter(print => print.id !== printId));
     if (selected === printId) setSelected(null);
     announce('Print removed.');
   };
 
-  const addPrint = (rowIndex: number, size: PrintSizeKey) => {
+  const setSize = (printId: string, size: PrintSizeKey) => {
+    const current = prints.find(print => print.id === printId);
+    if (!current || current.size === size) return;
+    const others = othersOf(printId);
+    const wanted = rectOf({ ...current, size });
+    // Grown into a neighbour? Slide to the nearest clear place; failing that,
+    // to the end of the group.
+    const clear = isClear(wanted, others, safeGap)
+      ? wanted
+      : resolve(wanted, others, safeGap, SNAP_RADIUS_CM, { ...wanted, x: box.w - box.minX + safeGap, y: 0 });
+    commit(prints.map(print => (print.id === printId ? { ...print, size, x: clear.x, y: clear.y } : print)));
+    announce(`Print is now ${shortLabel(size)}.`);
+  };
+
+  const addPrint = (where: 'beside' | 'below') => {
     if (printCount >= MAX_PRINTS) return;
-    const [print] = withIds([[{ size, align: 'centre' }]]).flat();
-    setRows(current => {
-      if (rowIndex >= current.length) return [...current, [print]];
-      return current.map((row, ri) => (ri === rowIndex ? [...row, print] : row));
-    });
+    const size: PrintSizeKey = prints.at(-1)?.size ?? '50x70';
+    const [print] = fresh([
+      printCount === 0
+        ? { size, x: 0, y: 0 }
+        : where === 'beside'
+          ? { size, x: box.minX + box.w + safeGap, y: box.minY }
+          : { size, x: box.minX + (box.w - PRINT_SIZES[size].width) / 2, y: box.minY + box.h + safeGap },
+    ]);
+    commit([...prints, print]);
     setSelected(print.id);
-    announce(rowIndex >= rows.length ? 'Print added in a new row.' : `Print added to row ${rowIndex + 1}.`);
+    announce(printCount === 0 ? 'First print added.' : where === 'beside' ? 'Print added beside the group.' : 'Print added below the group.');
   };
 
   const applyPreset = (key: string) => {
     const preset = PRESETS.find(entry => entry.key === key);
     if (!preset) return;
-    setRows(withIds(preset.rows));
+    setPrints(fresh(fromRows(preset.rows, safeGap)));
     setSelected(null);
     announce(`${preset.label} arrangement.`);
   };
 
-  const positionOf = (printId: string): Position | null => {
-    for (let row = 0; row < rows.length; row++) {
-      const index = rows[row].findIndex(print => print.id === printId);
-      if (index >= 0) return { row, index };
+  /** The keyboard path: a nudge, accepted only if it lands clear. */
+  const nudge = (printId: string, dx: number, dy: number) => {
+    const current = prints.find(print => print.id === printId);
+    if (!current) return;
+    const moved = { ...current, x: current.x + dx, y: current.y + dy };
+    if (!isClear(rectOf(moved), othersOf(printId), safeGap)) {
+      announce('That would put it closer than the gap to another print.');
+      return;
     }
-    return null;
-  };
-
-  /** The keyboard path: one move, announced, focus kept. */
-  const moveBy = (printId: string, to: Position) => {
-    const from = positionOf(printId);
-    if (!from) return;
-    const next = movePrintTo(rows, from, to);
-    setRows(next);
+    commit(prints.map(print => (print.id === printId ? moved : print)));
     refocusRef.current = printId;
-    const landedRow = next.findIndex(row => row.some(print => print.id === printId));
-    const landedIndex = next[landedRow]?.findIndex(print => print.id === printId) ?? 0;
-    announce(`Print moved to row ${landedRow + 1}, position ${landedIndex + 1}.`);
+    announce(`Print moved ${Math.abs(dx || dy)} cm ${dx > 0 ? 'right' : dx < 0 ? 'left' : dy > 0 ? 'down' : 'up'}.`);
   };
 
-  const onPrintKey = (event: React.KeyboardEvent, print: Print, position: Position) => {
-    const { row, index } = position;
+  const onPrintKey = (event: React.KeyboardEvent, print: FreePrint) => {
+    const step = event.shiftKey ? 10 : 1;
     const handlers: Record<string, () => void> = {
-      ArrowLeft: () => index > 0 && moveBy(print.id, { row, index: index - 1 }),
-      ArrowRight: () => index < rows[row].length - 1 && moveBy(print.id, { row, index: index + 1 }),
-      ArrowUp: () => moveBy(print.id, { row: row - 1, index: row > 0 ? Math.min(index, rows[row - 1].length) : 0 }),
-      ArrowDown: () => moveBy(print.id, { row: row + 1, index: row < rows.length - 1 ? Math.min(index, rows[row + 1].length) : 0 }),
+      ArrowLeft: () => nudge(print.id, -step, 0),
+      ArrowRight: () => nudge(print.id, step, 0),
+      ArrowUp: () => nudge(print.id, 0, -step),
+      ArrowDown: () => nudge(print.id, 0, step),
       Enter: () => setSelected(current => (current === print.id ? null : print.id)),
       ' ': () => setSelected(current => (current === print.id ? null : print.id)),
       Escape: () => setSelected(null),
       Delete: () => removePrint(print.id),
       Backspace: () => removePrint(print.id),
-      s: () => updatePrint(print.id, { size: print.size === '50x70' ? '50x50' : '50x70' }),
+      s: () => setSize(print.id, print.size === '50x70' ? '50x50' : '50x70'),
     };
     const handler = handlers[event.key];
     if (!handler) return;
@@ -317,7 +339,12 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
 
   /* ----------------------------------------------------------------- drag */
 
-  const onPrintPointerDown = (event: React.PointerEvent<HTMLElement>, print: Print, position: Position) => {
+  const pxPerCm = () => {
+    const rect = wallRef.current?.getBoundingClientRect();
+    return rect && rect.width > 0 ? rect.width / drawWidth : 1;
+  };
+
+  const onPrintPointerDown = (event: React.PointerEvent<HTMLElement>, print: FreePrint) => {
     if (event.button !== 0) return;
     if (drag && !drag.settle) return;
     // A press during the previous drop's settle takes over: the settle is a
@@ -328,19 +355,20 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
     }
     event.preventDefault();
     const rect = event.currentTarget.getBoundingClientRect();
+    const scale = pxPerCm();
     pressRef.current = {
       id: print.id,
-      from: position,
-      print,
       start: { x: event.clientX, y: event.clientY },
       grab: { x: event.clientX - rect.left, y: event.clientY - rect.top },
+      grabCm: { x: (event.clientX - rect.left) / scale, y: (event.clientY - rect.top) / scale },
       size: { width: rect.width, height: rect.height },
-      cmPerPx: rect.height > 0 ? PRINT_SIZES[print.size].height / rect.height : 1,
-      pointerId: event.pointerId,
+      rect: rectOf(print),
+      offset,
       dragging: false,
     };
-    // Captured on the WALL, not the print: a print that changes row is
-    // re-parented, and re-parenting a node silently drops its capture.
+    lastRectRef.current = rectOf(print);
+    // Captured on the WALL, not the print: the wall is there for the whole
+    // gesture, whatever happens to the print's node.
     wallRef.current?.setPointerCapture(event.pointerId);
   };
 
@@ -353,13 +381,12 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
     if (!press.dragging) {
       if (Math.hypot(clientX - press.start.x, clientY - press.start.y) < DRAG_THRESHOLD_PX) return;
       press.dragging = true;
-      overRef.current = press.from;
       setSelected(null);
       setDrag({
         id: press.id,
-        from: press.from,
-        over: press.from,
-        align: press.print.align,
+        rect: press.rect,
+        offset: press.offset,
+        guides: { xs: [], ys: [] },
         pointer: { x: clientX, y: clientY },
         grab: press.grab,
         size: press.size,
@@ -369,67 +396,24 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
     }
 
     /**
-     * Hit-test against the MODEL, projected through the wall's rect, not
-     * against the DOM. The other prints are mid-glide for a quarter of a
-     * second after every change, and reading their rects then makes the
-     * target flicker as a neighbour slides through the pointer. The model
-     * holds only resting positions, so the target is decided once per move.
+     * Pointer to group space through the wall's rect - the only measurement
+     * taken from the DOM. Then the model decides: snap, refuse overlap, slide
+     * round a neighbour if the pointer is over one, else stay where it was.
      */
     const wallRect = wall.getBoundingClientRect();
-    const toClientX = (cm: number) => wallRect.left + (cm / drawWidth) * wallRect.width;
-    const toClientY = (fromFloor: number) => wallRect.top + ((drawHeight - fromFloor) / drawHeight) * wallRect.height;
-
-    const bands = layout.rowTops.map((top, ri) => ({
-      top: toClientY(top),
-      bottom: toClientY(top - result.rowHeights[ri]),
-      slots: layout.prints
-        .filter(placed => placed.row === ri && displayRows[ri][placed.index].id !== press.id)
-        .map(placed => ({ id: displayRows[ri][placed.index].id, centre: toClientX(placed.left + placed.width / 2) })),
-    }));
-
-    let over: Position;
-    if (!bands.length) {
-      over = { row: 0, index: 0 };
-    } else {
-      const first = bands[0];
-      const last = bands[bands.length - 1];
-      // A third of the outer row clear of the group is how a print asks for a
-      // row of its own: far enough that a wobble cannot do it, near enough
-      // that you never wonder whether it is possible.
-      const above = Math.max(12, (first.bottom - first.top) * 0.35);
-      const below = Math.max(12, (last.bottom - last.top) * 0.35);
-      if (clientY < first.top - above) {
-        over = { row: -1, index: 0 };
-      } else if (clientY > last.bottom + below) {
-        over = { row: rows.length, index: 0 };
-      } else {
-        let nearest = 0;
-        let best = Infinity;
-        bands.forEach((band, i) => {
-          const distance = clientY < band.top ? band.top - clientY : clientY > band.bottom ? clientY - band.bottom : 0;
-          if (distance < best) {
-            best = distance;
-            nearest = i;
-          }
-        });
-        const band = bands[nearest];
-        const anchor = band.slots[0]?.id;
-        const committed = anchor ? rows.findIndex(row => row.some(print => print.id === anchor)) : -1;
-        // A band holding nothing but the held print exists only because this
-        // drag made it, so it says nothing new about the target.
-        over = committed < 0 ? overRef.current : { row: committed, index: band.slots.filter(slot => clientX > slot.centre).length };
-      }
-    }
-    overRef.current = over;
-
-    const self = rows[press.from.row]?.[press.from.index];
-    const align = !self
-      ? 'centre'
-      : over.row === press.from.row
-        ? alignFromDrag(self, result.rowHeights[press.from.row] ?? 0, (clientY - press.start.y) * press.cmPerPx)
-        : self.align;
-
-    setDrag(current => (current ? { ...current, over, align, pointer: { x: clientX, y: clientY } } : current));
+    const scale = wallRect.width / drawWidth;
+    const pointerCmX = (clientX - wallRect.left) / scale;
+    const pointerFromFloor = drawHeight - (clientY - wallRect.top) / scale;
+    const proposed: Rect = {
+      ...press.rect,
+      x: pointerCmX - press.offset.left - press.grabCm.x,
+      y: press.offset.topFromFloor - pointerFromFloor - press.grabCm.y,
+    };
+    const others = othersOf(press.id);
+    const rect = resolve(proposed, others, safeGap, SNAP_RADIUS_CM, lastRectRef.current ?? press.rect);
+    lastRectRef.current = rect;
+    const guides = guidesFor(rect, others);
+    setDrag(current => (current ? { ...current, rect, guides, pointer: { x: clientX, y: clientY } } : current));
   };
 
   const onWallPointerUp = () => {
@@ -443,48 +427,45 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
     }
     if (!drag) return;
 
-    // The wall is ALREADY showing this arrangement, so committing it is not a
-    // move: the preview becomes permanent and nothing on screen shifts.
-    setRows(displayRows.map(row => [...row]));
-
-    const samePlace = drag.from.row === drag.over.row && drag.from.index === drag.over.index;
-    const wasAlign = rows[drag.from.row]?.[drag.from.index]?.align;
-    if (samePlace && wasAlign !== drag.align) {
-      announce(drag.align === 'centre' ? 'Print centred in its row.' : `Print hung level with the ${drag.align} of its row.`);
-    } else if (!samePlace) {
-      const landedRow = displayRows.findIndex(row => row.some(print => print.id === drag.id));
-      const landedIndex = displayRows[landedRow]?.findIndex(print => print.id === drag.id) ?? 0;
-      announce(`Print moved to row ${landedRow + 1}, position ${landedIndex + 1}.`);
+    // The placeholder IS the result: commit exactly what it shows. The group
+    // then re-centres around its new extent, everything gliding together.
+    const next = normalize(displayPrints, sizeOf);
+    setPrints(next);
+    const moved = press.rect.x !== drag.rect.x || press.rect.y !== drag.rect.y;
+    if (moved) {
+      const landed = next.find(print => print.id === drag.id);
+      if (landed) announce(`Print moved to ${formatCentimetres(round(landed.x))} across, ${formatCentimetres(round(landed.y))} down the group.`);
     }
 
-    // The copy under the pointer glides into its slot before the slot takes
-    // over, so the drop reads as the print settling rather than blinking.
-    const slot = wallRef.current?.querySelector<HTMLElement>(`[data-print-id="${drag.id}"]`)?.getBoundingClientRect();
-    if (!slot || reducedMotion()) {
+    // The copy glides to where the print will be AFTER the re-centre, so the
+    // two arrive together and the drop reads as the print settling.
+    const wall = wallRef.current;
+    const landed = next.find(print => print.id === drag.id);
+    if (!wall || !landed || reducedMotion()) {
       setDrag(null);
       return;
     }
-    setDrag(current => (current ? { ...current, settle: { left: slot.left, top: slot.top } } : current));
+    const nextOffset = placeGroup(bounds(next.map(rectOf)), safeWallWidth, safeCentre);
+    const wallRect = wall.getBoundingClientRect();
+    const scale = wallRect.width / drawWidth;
+    const settle = {
+      left: wallRect.left + (nextOffset.left + landed.x) * scale,
+      top: wallRect.top + (drawHeight - (nextOffset.topFromFloor - landed.y)) * scale,
+    };
+    setDrag(current => (current ? { ...current, settle } : current));
     if (settleTimer.current) window.clearTimeout(settleTimer.current);
     // transitionend clears it; this is for a copy that had nowhere to travel.
-    settleTimer.current = window.setTimeout(() => setDrag(null), SETTLE_MS + 60);
+    settleTimer.current = window.setTimeout(() => setDrag(null), REFLOW_MS + 80);
   };
-
-  useEffect(() => () => { if (settleTimer.current) window.clearTimeout(settleTimer.current); }, []);
 
   /* --------------------------------------------------------------- derived */
 
-  const heldDisplayRow = drag ? displayRows.findIndex(row => row.some(print => print.id === drag.id)) : -1;
-  const selectedPlaced = selected
-    ? layout.prints.find(placed => displayRows[placed.row]?.[placed.index]?.id === selected) ?? null
-    : null;
-  const selectedPrint = selected ? displayRows.flat().find(print => print.id === selected) ?? null : null;
-  const selectedSlack = selectedPrint && selectedPlaced ? alignmentOffset(selectedPrint, result.rowHeights[selectedPlaced.row]).slack : 0;
+  const selectedEntry = selected ? placed.find(entry => entry.print.id === selected) ?? null : null;
 
-  const counts = sizeCounts(displayRows);
+  const counts = displayPrints.reduce<Partial<Record<PrintSizeKey, number>>>((acc, print) => ({ ...acc, [print.size]: (acc[print.size] ?? 0) + 1 }), {});
   const shoppingList = (Object.keys(PRINT_SIZES) as PrintSizeKey[])
     .filter(size => counts[size])
-    .map(size => `${counts[size]} × ${PRINT_SIZES[size].label.split(',')[0]}`)
+    .map(size => `${counts[size]} × ${shortLabel(size)}`)
     .join(' and ');
 
   const statusCopy = !isValid
@@ -492,38 +473,34 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
     : printCount === 0
       ? 'Add a print to begin.'
       : tooTall
-        ? `${formatCentimetres(result.heightOverflow)} too tall for the wall. Move a print into another row, or take one away.`
+        ? `${formatCentimetres(round(box.h - (safeWallHeight ?? 0)))} too tall for the wall. Move a print beside another, or take one away.`
         : tooWide
-          ? `${formatCentimetres(result.overflow)} too wide for the wall. Move a print into another row, or take one away.`
-          : result.fitStatus === 'exact'
+          ? `${formatCentimetres(round(box.w - drawWidth))} too wide for the wall. Move a print above or below another, or take one away.`
+          : settledMargin === 0
             ? 'Exactly the width of the wall, with nothing to spare. Give it some breathing room before you drill.'
-            : result.fitStatus === 'tight'
+            : settledMargin < safeGap
               ? 'It fits, but only just. Check switches, corners and furniture before you hang.'
-              : result.gapStatus === 'tight'
+              : gapStatus === 'tight'
                 ? 'It fits. The frames may feel cramped at this gap; 5 to 8 cm usually reads best.'
-                : result.gapStatus === 'wide'
+                : gapStatus === 'wide'
                   ? 'It fits. At this gap the frames may start to feel separate; 5 to 8 cm usually reads best.'
                   : 'That fits comfortably, with room around the group.';
 
   // The drawing is honest about a sofa: a group centred at eye level often
-  // hangs BEHIND one. Say so, with the number that fixes it, rather than
-  // leaving the reader to notice.
+  // hangs BEHIND one. Say so, with the number that fixes it, in one tap.
   const sofaClearance = SOFA.height + 20;
-  const sofaCentre = Math.ceil(safeCentre + (sofaClearance - layout.groupBottom));
-  const sofaAdvice = showSofa && printCount > 0 && isValid && layout.groupBottom < sofaClearance;
+  const sofaCentre = Math.ceil(safeCentre + (sofaClearance - settledBottom));
+  const sofaAdvice = showSofa && printCount > 0 && isValid && settledBottom < sofaClearance;
+
+  const inReadingOrder = [...placed].sort((a, b) => a.rect.y - b.rect.y || a.rect.x - b.rect.x);
 
   const planText = () => {
     const lines = [
       `Hanging plan — ${formatCentimetres(safeWallWidth)} wall, group centred ${formatCentimetres(safeCentre)} from the floor`,
       '',
     ];
-    displayRows.forEach((row, ri) => {
-      lines.push(`Row ${ri + 1}`);
-      row.forEach((print, i) => {
-        const placed = layout.prints.find(entry => entry.row === ri && entry.index === i);
-        if (!placed) return;
-        lines.push(`  Print ${i + 1}, ${PRINT_SIZES[print.size].label.split(',')[0]}: left edge ${formatCentimetres(round(placed.left))} from the left, top edge ${formatCentimetres(round(placed.topFromFloor))} from the floor`);
-      });
+    inReadingOrder.forEach((entry, i) => {
+      lines.push(`Print ${i + 1}, ${shortLabel(entry.print.size)}: left edge ${formatCentimetres(round(entry.left))} from the left, top edge ${formatCentimetres(round(entry.topFromFloor))} from the floor`);
     });
     lines.push('', 'Frames usually hang 3 to 5 cm below their hook. Check yours before marking.', window.location.href);
     return lines.join('\n');
@@ -537,8 +514,6 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
       setCopied(null);
     }
   };
-
-  const transition = `all ${REFLOW_MS}ms ${EASE}`;
 
   const numberField = (
     key: string,
@@ -570,6 +545,9 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
     </label>
   );
 
+  const addBeside = printCount > 0 && printCount < MAX_PRINTS && !drag && groupRight + safeGap + 50 <= drawWidth;
+  const addBelow = printCount < MAX_PRINTS && !drag;
+
   return (
     <section className="not-prose my-10 scroll-mt-20 border-y border-neutral-300 py-7" aria-labelledby={`${id}-title`}>
       <style>{`
@@ -581,14 +559,14 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
       <div className="mb-6 max-w-2xl">
         <h3 id={`${id}-title`} className="text-2xl font-medium text-neutral-900">Plan your wall</h3>
         <p className="mt-2 leading-relaxed text-neutral-700">
-          Your wall, to scale. Drag the prints where you want them, tap one to change its size, and read the hanging measurements straight off the drawing.
+          Your wall, to scale. Drag the prints wherever you like — they click to each other’s edges and to your gap — tap one to change its size, and read the hanging measurements straight off the drawing.
         </p>
       </div>
 
       <div className="grid grid-cols-2 gap-x-5 gap-y-4 sm:grid-cols-4">
-        {numberField('wall', 'Wall width', wallWidthInput, setWallWidthInput, 'Skirting to ceiling is not needed; just the width you can use.', wallError, { min: 1, max: 2000, step: 1 })}
+        {numberField('wall', 'Wall width', wallWidthInput, setWallWidthInput, 'Just the width you can use.', wallError, { min: 1, max: 2000, step: 1 })}
         {numberField('height', 'Wall height', wallHeightInput, setWallHeightInput, 'Optional. Adds the ceiling and checks the fit.', heightError, { min: 1, max: 1000, step: 1, placeholder: 'Optional' })}
-        {numberField('gap', 'Gap between frames', gapInput, setGapInput, '5 to 8 cm, between prints and between rows.', gapError, { min: 0, max: 30, step: 0.5 })}
+        {numberField('gap', 'Gap between frames', gapInput, setGapInput, '5 to 8 cm. Prints click to exactly this.', gapError, { min: 0, max: 30, step: 0.5 })}
         {numberField('centre', 'Centre of the group', centreInput, setCentreInput, `From the floor. ${EYE_LEVEL_CM} cm is gallery eye level.`, centreError, { min: 30, max: 400, step: 1 })}
       </div>
 
@@ -626,10 +604,9 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
             width: `min(100%, calc(62vh * ${drawWidth} / ${drawHeight}))`,
             minHeight: '260px',
             touchAction: 'none',
-            transition,
           }}
         >
-          {/* floor */}
+          {/* floor and ceiling */}
           <div className="pointer-events-none absolute inset-x-0 bottom-0 border-t border-neutral-400" />
           <span className="pointer-events-none absolute bottom-1 right-2 text-[10px] uppercase tracking-wide text-neutral-500">Floor</span>
           {safeWallHeight !== undefined && (
@@ -638,9 +615,9 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
 
           {/* eye level */}
           <div className="pointer-events-none absolute inset-x-0 border-t border-dashed border-neutral-300" style={{ top: y(EYE_LEVEL_CM), transition }} />
-          {(printCount === 0 || tooWide || result.sideMargin >= 22) && (
+          {(printCount === 0 || tooWide || marginRight >= 22) && (
             <span className="pointer-events-none absolute right-2 text-[10px] tabular-nums text-neutral-500" style={{ top: `calc(${y(EYE_LEVEL_CM)} + 3px)`, transition }}>
-              {result.sideMargin >= 50 || printCount === 0 ? `eye level · ${EYE_LEVEL_CM} cm` : 'eye level'}
+              {marginRight >= 50 || printCount === 0 ? `eye level · ${EYE_LEVEL_CM} cm` : 'eye level'}
             </span>
           )}
 
@@ -664,73 +641,67 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
             </svg>
           )}
 
-          {/* row bands: the drop targets, and a faint tint under the row a drag is heading for */}
-          {layout.rowTops.map((top, ri) => (
-            <div
-              key={ri}
-              data-wall-row=""
-              data-row={ri}
-              className={`pointer-events-none absolute inset-x-0 ${heldDisplayRow === ri ? 'bg-neutral-900/[0.04]' : 'bg-transparent'}`}
-              style={{ top: y(top), height: h(result.rowHeights[ri]), transition }}
-            />
+          {/* smart guides: the lines the held print has clicked to */}
+          {drag && !drag.settle && drag.guides.xs.map(gx => (
+            <div key={`gx-${gx}`} className="pointer-events-none absolute inset-y-0 border-l border-dashed border-neutral-900/40" style={{ left: x(offset.left + gx) }} />
+          ))}
+          {drag && !drag.settle && drag.guides.ys.map(gy => (
+            <div key={`gy-${gy}`} className="pointer-events-none absolute inset-x-0 border-t border-dashed border-neutral-900/40" style={{ top: y(offset.topFromFloor - gy) }} />
           ))}
 
           {/* Dimensions, laid out the way a plan lays them out: one dimension
-              string above the group (margin, width, margin), clear of the sofa
-              and the add-slots, the verticals on the left where nothing else lives. The group is
-              centred AT eye level, so anything placed at its mid-height on
-              the right lands on the eye-level label - learned the hard way. */}
+              string above the group (margin, width, margin), the verticals on
+              the left where nothing else lives. Each side margin carries its
+              own number, so an off-centre group during a drag shows as one. */}
           {printCount > 0 && !tooWide && (
             <>
-              <Dimension axis="x" from={0} to={groupLeft} at={layout.groupTop + 10} x={x} y={y} w={w} label={formatCentimetres(round(result.sideMargin))} transition={transition} />
-              <Dimension axis="x" from={groupLeft} to={groupRight} at={layout.groupTop + 10} x={x} y={y} w={w} label={formatCentimetres(round(result.totalWidth))} transition={transition} />
-              <Dimension axis="x" from={groupRight} to={drawWidth} at={layout.groupTop + 10} x={x} y={y} w={w} label={formatCentimetres(round(result.sideMargin))} transition={transition} />
+              {marginLeft > 0 && <Dimension axis="x" from={0} to={groupLeft} at={groupTop + 10} x={x} y={y} w={w} label={formatCentimetres(round(marginLeft))} transition={transition} />}
+              <Dimension axis="x" from={groupLeft} to={groupRight} at={groupTop + 10} x={x} y={y} w={w} label={formatCentimetres(round(box.w))} transition={transition} />
+              {marginRight > 0 && <Dimension axis="x" from={groupRight} to={drawWidth} at={groupTop + 10} x={x} y={y} w={w} label={formatCentimetres(round(marginRight))} transition={transition} />}
             </>
           )}
           {printCount > 0 && tooWide && (
-            <span className="pointer-events-none absolute left-1/2 -translate-x-1/2 rounded bg-destructive px-2 py-0.5 text-[11px] font-medium text-destructive-foreground" style={{ top: `calc(${y(layout.groupBottom)} + 8px)` }}>
-              {formatCentimetres(round(result.overflow))} too wide
+            <span className="pointer-events-none absolute left-1/2 -translate-x-1/2 rounded bg-destructive px-2 py-0.5 text-[11px] font-medium text-destructive-foreground" style={{ top: `calc(${y(groupBottom)} + 8px)` }}>
+              {formatCentimetres(round(box.w - drawWidth))} too wide
             </span>
           )}
-          {/* floor to the top edge: the measurement you actually take */}
           {printCount > 0 && !tooWide && groupLeft >= 12 && (
-            <Dimension axis="y" from={0} to={layout.groupTop} at={Math.min(8, groupLeft / 2)} x={x} y={y} h={h} label={`${formatCentimetres(round(layout.groupTop))} floor to top edge`} transition={transition} />
+            <Dimension axis="y" from={0} to={groupTop} at={Math.min(8, groupLeft / 2)} x={x} y={y} h={h} label={`${formatCentimetres(round(groupTop))} floor to top edge`} transition={transition} />
           )}
-          {/* group height, just left of the group */}
           {printCount > 0 && !tooWide && groupLeft >= 36 && (
-            <Dimension axis="y" from={layout.groupBottom} to={layout.groupTop} at={groupLeft - 8} x={x} y={y} h={h} label={formatCentimetres(round(result.totalHeight))} labelSide="left" transition={transition} className="hidden sm:flex" />
+            <Dimension axis="y" from={groupBottom} to={groupTop} at={groupLeft - 8} x={x} y={y} h={h} label={formatCentimetres(round(box.h))} labelSide="left" transition={transition} className="hidden sm:flex" />
           )}
 
           {/* the prints */}
-          {layout.prints.map(placed => {
-            const print = displayRows[placed.row][placed.index];
+          {placed.map(({ print, rect, left, topFromFloor }) => {
             const isHeld = drag?.id === print.id;
             const isSelected = selected === print.id;
-            const size = PRINT_SIZES[print.size];
             return (
               <div
                 key={print.id}
                 data-print-id={print.id}
-                data-row={placed.row}
-                data-index={placed.index}
                 data-size={print.size}
+                data-x={round(rect.x)}
+                data-y={round(rect.y)}
                 role="button"
                 tabIndex={0}
                 aria-pressed={isSelected}
-                aria-label={`Row ${placed.row + 1}, print ${placed.index + 1}, ${size.label}. Left edge ${formatCentimetres(round(placed.left))}, top edge ${formatCentimetres(round(placed.topFromFloor))} from the floor.`}
-                onPointerDown={event => onPrintPointerDown(event, print, { row: placed.row, index: placed.index })}
-                onKeyDown={event => onPrintKey(event, print, { row: placed.row, index: placed.index })}
+                aria-label={`${shortLabel(print.size)} print. Left edge ${formatCentimetres(round(left))}, top edge ${formatCentimetres(round(topFromFloor))} from the floor.`}
+                onPointerDown={event => onPrintPointerDown(event, print)}
+                onKeyDown={event => onPrintKey(event, print)}
                 className={`absolute box-border p-[3%] outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 ${
                   isHeld
                     ? 'border-2 border-dashed border-neutral-400 bg-white/40'
                     : `cursor-grab border-2 bg-white ${isSelected ? 'border-neutral-900 shadow-[0_0_0_3px_rgba(23,23,23,0.12)]' : 'border-neutral-800 hover:border-neutral-900 hover:shadow-md'}`
                 }`}
                 style={{
-                  left: x(placed.left),
-                  top: y(placed.topFromFloor),
-                  width: w(placed.width),
-                  height: h(placed.height),
-                  transition: `${transition}, box-shadow 120ms ease, border-color 120ms ease`,
+                  left: x(left),
+                  top: y(topFromFloor),
+                  width: w(rect.w),
+                  height: h(rect.h),
+                  // The held placeholder jumps between snap positions; that is
+                  // the point of a snap. Everything else glides.
+                  transition: isHeld ? 'none' : `${transition}, box-shadow 120ms ease, border-color 120ms ease`,
                   animation: 'gw-print-in 220ms both',
                 }}
               >
@@ -739,46 +710,39 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
             );
           })}
 
-          {/* add slots: one at the end of every row, one for a new row */}
-          {!drag && printCount < MAX_PRINTS && layout.rowTops.map((top, ri) => {
-            const lastPrint = displayRows[ri].at(-1);
-            const size = lastPrint ? PRINT_SIZES[lastPrint.size] : PRINT_SIZES['50x70'];
-            const left = layout.rowLefts[ri] + result.rowWidths[ri] + safeGap;
-            if (left + size.width > drawWidth) return null;
-            return (
-              <button
-                key={`add-${ri}`}
-                type="button"
-                onClick={() => addPrint(ri, lastPrint?.size ?? '50x70')}
-                aria-label={`Add a ${size.label} print to row ${ri + 1}`}
-                className="absolute flex items-center justify-center border border-dashed border-neutral-300 text-neutral-400 opacity-60 transition-[opacity,border-color,color] duration-150 hover:border-neutral-700 hover:text-neutral-800 hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-                style={{ left: x(left), top: y(top - (result.rowHeights[ri] - size.height) / 2), width: w(size.width), height: h(size.height), transition }}
-              >
-                <span aria-hidden="true" className="text-lg leading-none">+</span>
-              </button>
-            );
-          })}
-          {!drag && printCount < MAX_PRINTS && (
+          {/* add slots: beside the group, and below it */}
+          {addBeside && (
             <button
               type="button"
-              onClick={() => addPrint(displayRows.length, displayRows.at(-1)?.at(-1)?.size ?? '50x70')}
-              aria-label={printCount === 0 ? 'Add the first print' : 'Add a print in a new row below'}
-              className="absolute left-1/2 flex -translate-x-1/2 items-center gap-1 whitespace-nowrap rounded-full border border-dashed border-neutral-300 bg-[#f7f6f3] px-3 py-1 text-xs text-neutral-500 transition-colors duration-150 hover:border-neutral-700 hover:text-neutral-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-              style={{ top: printCount === 0 ? `calc(${y(EYE_LEVEL_CM)} - 14px)` : `calc(${y(layout.groupBottom)} + ${tooWide ? 36 : 16}px)`, transition }}
+              onClick={() => addPrint('beside')}
+              aria-label={aria.addBeside}
+              className="absolute flex items-center justify-center border border-dashed border-neutral-300 text-neutral-400 opacity-60 transition-[opacity,border-color,color] duration-150 hover:border-neutral-700 hover:text-neutral-800 hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+              style={{ left: x(groupRight + safeGap), top: y(groupTop), width: w(50), height: h(PRINT_SIZES[prints.at(-1)?.size ?? '50x70'].height), transition }}
             >
-              <span aria-hidden="true">+</span> {printCount === 0 ? 'Add a print' : 'New row'}
+              <span aria-hidden="true" className="text-lg leading-none">+</span>
+            </button>
+          )}
+          {addBelow && (
+            <button
+              type="button"
+              onClick={() => addPrint('below')}
+              aria-label={printCount === 0 ? aria.addFirst : aria.addBelow}
+              className="absolute left-1/2 flex -translate-x-1/2 items-center gap-1 whitespace-nowrap rounded-full border border-dashed border-neutral-300 bg-[#f7f6f3] px-3 py-1 text-xs text-neutral-500 transition-colors duration-150 hover:border-neutral-700 hover:text-neutral-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+              style={{ top: printCount === 0 ? `calc(${y(EYE_LEVEL_CM)} - 14px)` : `calc(${y(groupBottom)} + ${tooWide ? 36 : 16}px)`, transition }}
+            >
+              <span aria-hidden="true">+</span> {printCount === 0 ? 'Add a print' : 'Add below'}
             </button>
           )}
 
           {/* selection toolbar */}
-          {selectedPrint && selectedPlaced && !drag && (
+          {selectedEntry && !drag && (
             <div
               role="toolbar"
               aria-label={aria.selectedPrint}
               className="absolute z-20 flex -translate-x-1/2 items-center gap-1 rounded-lg border border-neutral-200 bg-white p-1 shadow-lg"
               style={{
-                left: x(selectedPlaced.left + selectedPlaced.width / 2),
-                top: `calc(${y(selectedPlaced.topFromFloor)} - 46px)`,
+                left: x(selectedEntry.left + selectedEntry.rect.w / 2),
+                top: `calc(${y(selectedEntry.topFromFloor)} - 46px)`,
                 animation: 'gw-pop-in 140ms both',
                 transition,
               }}
@@ -787,35 +751,17 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
                 <button
                   key={size}
                   type="button"
-                  aria-pressed={selectedPrint.size === size}
-                  onClick={() => updatePrint(selectedPrint.id, { size })}
-                  className={`min-h-8 rounded-md px-2 text-xs tabular-nums transition-colors ${selectedPrint.size === size ? 'bg-neutral-900 text-white' : 'text-neutral-700 hover:bg-neutral-100'}`}
+                  aria-pressed={selectedEntry.print.size === size}
+                  onClick={() => setSize(selectedEntry.print.id, size)}
+                  className={`min-h-8 rounded-md px-2 text-xs tabular-nums transition-colors ${selectedEntry.print.size === size ? 'bg-neutral-900 text-white' : 'text-neutral-700 hover:bg-neutral-100'}`}
                 >
-                  {PRINT_SIZES[size].label.split(',')[0]}
+                  {shortLabel(size)}
                 </button>
               ))}
-              {selectedSlack > 0 && (
-                <>
-                  <span className="mx-0.5 h-5 w-px bg-neutral-200" />
-                  {ALIGNMENTS.map(option => (
-                    <button
-                      key={option.value}
-                      type="button"
-                      aria-pressed={selectedPrint.align === option.value}
-                      aria-label={option.label}
-                      title={option.label}
-                      onClick={() => updatePrint(selectedPrint.id, { align: option.value })}
-                      className={`min-h-8 min-w-8 rounded-md text-sm transition-colors ${selectedPrint.align === option.value ? 'bg-neutral-900 text-white' : 'text-neutral-700 hover:bg-neutral-100'}`}
-                    >
-                      <span aria-hidden="true">{option.glyph}</span>
-                    </button>
-                  ))}
-                </>
-              )}
               <span className="mx-0.5 h-5 w-px bg-neutral-200" />
               <button
                 type="button"
-                onClick={() => removePrint(selectedPrint.id)}
+                onClick={() => removePrint(selectedEntry.print.id)}
                 aria-label={aria.removePrint}
                 title="Remove"
                 className="min-h-8 min-w-8 rounded-md text-sm text-neutral-700 transition-colors hover:bg-neutral-100 hover:text-destructive"
@@ -845,7 +791,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
               width: `${drag.size.width}px`,
               height: `${drag.size.height}px`,
               transform: drag.settle ? 'scale(1)' : 'scale(1.05)',
-              transition: drag.settle ? `left ${SETTLE_MS}ms ${EASE}, top ${SETTLE_MS}ms ${EASE}, transform ${SETTLE_MS}ms ${EASE}, box-shadow ${SETTLE_MS}ms ease` : 'transform 120ms ease',
+              transition: drag.settle ? `left ${REFLOW_MS}ms ${EASE}, top ${REFLOW_MS}ms ${EASE}, transform ${REFLOW_MS}ms ${EASE}, box-shadow ${REFLOW_MS}ms ease` : 'transform 120ms ease',
               boxShadow: drag.settle ? '0 0 0 rgba(0,0,0,0)' : undefined,
             }}
           >
@@ -854,16 +800,16 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
         )}
 
         <p className="mt-2 text-xs text-neutral-500">
-          Drag a print anywhere, including above or below the group for a new row. Tap one to change its size or take it away.
+          Drag a print anywhere. It clicks to the edges and centres of its neighbours, and to exactly one gap away. Tap one to change its size or take it away.
         </p>
       </div>
 
       {/* ------------------------------------------------------ figures */}
       <div className="mt-6 grid grid-cols-2 border-y border-neutral-300 sm:grid-cols-4 sm:divide-x sm:divide-neutral-300">
-        <Figure label="Group width" value={isValid && printCount ? formatCentimetres(round(result.totalWidth)) : '—'} />
-        <Figure label="Group height" value={isValid && printCount ? formatCentimetres(round(result.totalHeight)) : '—'} />
-        <Figure label="Space each side" value={!isValid || !printCount ? '—' : tooWide ? 'Does not fit' : formatCentimetres(round(result.sideMargin))} tone={tooWide ? 'bad' : undefined} />
-        <Figure label="Top edge from floor" value={isValid && printCount ? formatCentimetres(round(layout.groupTop)) : '—'} />
+        <Figure label="Group width" value={isValid && printCount ? formatCentimetres(round(box.w)) : '—'} />
+        <Figure label="Group height" value={isValid && printCount ? formatCentimetres(round(box.h)) : '—'} />
+        <Figure label="Space each side" value={!isValid || !printCount ? '—' : tooWide ? 'Does not fit' : formatCentimetres(round(settledMargin))} tone={tooWide ? 'bad' : undefined} />
+        <Figure label="Top edge from floor" value={isValid && printCount ? formatCentimetres(round(settledTop)) : '—'} />
       </div>
 
       <div className="mt-4 text-sm leading-relaxed text-neutral-800" role="status" aria-live="polite" aria-atomic="true">
@@ -883,7 +829,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
       {printCount > 0 && (
         <details className="mt-5 border-t border-neutral-300 pt-4">
           <summary className="cursor-pointer text-sm font-medium text-neutral-900">Hanging plan — where each frame goes</summary>
-          <p className="mt-2 text-xs text-neutral-600">Measure from the left edge of the wall and up from the floor. Frames usually hang 3 to 5 cm below their hook, so check yours before you mark.</p>
+          <p className="mt-2 text-xs text-neutral-600">Measure from the left edge of the wall and up from the floor. Frames usually hang 3 to 5 cm below their hook, so check yours before you mark. Prints are numbered top to bottom, left to right.</p>
           <div className="mt-3 overflow-x-auto">
             <table className="w-full text-left text-sm tabular-nums">
               <thead>
@@ -895,12 +841,12 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
                 </tr>
               </thead>
               <tbody className="text-neutral-800">
-                {layout.prints.map(placed => (
-                  <tr key={displayRows[placed.row][placed.index].id} className="border-t border-neutral-200">
-                    <td className="py-1.5 pr-3">Row {placed.row + 1}, print {placed.index + 1}</td>
-                    <td className="py-1.5 pr-3">{PRINT_SIZES[placed.size].label.split(',')[0]}</td>
-                    <td className="py-1.5 pr-3">{formatCentimetres(round(placed.left))}</td>
-                    <td className="py-1.5">{formatCentimetres(round(placed.topFromFloor))}</td>
+                {inReadingOrder.map((entry, i) => (
+                  <tr key={entry.print.id} className="border-t border-neutral-200">
+                    <td className="py-1.5 pr-3">Print {i + 1}</td>
+                    <td className="py-1.5 pr-3">{shortLabel(entry.print.size)}</td>
+                    <td className="py-1.5 pr-3">{formatCentimetres(round(entry.left))}</td>
+                    <td className="py-1.5">{formatCentimetres(round(entry.topFromFloor))}</td>
                   </tr>
                 ))}
               </tbody>
@@ -927,8 +873,6 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
     </section>
   );
 }
-
-const round = (value: number) => Math.round(value * 2) / 2;
 
 function Figure({ label, value, tone }: { label: string; value: string; tone?: 'bad' }) {
   return (
@@ -966,7 +910,7 @@ function Dimension({
   const tick = 'absolute bg-neutral-400';
   if (axis === 'x') {
     return (
-      <div className="pointer-events-none absolute flex items-center justify-center" style={{ left: x(lo), width: w?.(hi - lo), top: y(at), height: 0, transition }}>
+      <div className={`pointer-events-none absolute flex items-center justify-center ${className}`} style={{ left: x(lo), width: w?.(hi - lo), top: y(at), height: 0, transition }}>
         <div className="absolute inset-x-0 top-0 border-t border-neutral-400" />
         <div className={`${tick} left-0 h-2 w-px -translate-y-1/2`} />
         <div className={`${tick} right-0 h-2 w-px -translate-y-1/2`} />

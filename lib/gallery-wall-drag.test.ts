@@ -3,17 +3,16 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 /**
- * Dropping a print must not move anything.
+ * Dropping a print must commit exactly what the placeholder showed.
  *
  * The first version of this drag left the wall untouched while you dragged and
  * slid the other prints aside with transforms, then reordered for real on
- * release. That could only ever approximate the result: the true layout also
- * re-centres each row and can change a row's height, so releasing snapped the
- * wall into an arrangement different from the one under your finger. It was
- * reported as the drag being broken, twice, in different words.
+ * release. That could only ever approximate the result, so releasing snapped
+ * the wall into an arrangement different from the one under your finger. It
+ * was reported as the drag being broken, twice, in different words.
  *
  * The fix is structural rather than a tuned constant: the wall RENDERS the
- * previewed rows, and the drop commits exactly those. So the guard is
+ * previewed arrangement, and the drop commits exactly that. So the guard is
  * structural too. These read the source because the property lives in which
  * value gets rendered and committed, and a jsdom drag cannot see it - jsdom
  * has no layout, so every offset it reports is zero and a wall that reflowed
@@ -23,50 +22,53 @@ describe('gallery wall drag commits what it previews', () => {
   const source = readFileSync(join(process.cwd(), 'components/GalleryWallCalculator.tsx'), 'utf8');
   const between = (start: string, end: string) => source.slice(source.indexOf(start), source.indexOf(end));
 
-  it('commits the previewed rows on release, and nothing else', () => {
-    expect(source).toMatch(/setRows\(displayRows\.map\(row => \[\.\.\.row\]\)\)/);
-    // A second, independently computed move on release is the old bug: it can
-    // disagree with the preview, and did.
-    expect(between('const onWallPointerUp', 'useEffect(() => () =>')).not.toMatch(/movePrintTo/);
+  it('commits the previewed arrangement on release, and decides nothing else there', () => {
+    expect(source).toMatch(/const next = normalize\(displayPrints, sizeOf\);\s*setPrints\(next\);/);
+    // A second snap or resolve on release is the old bug in new clothes: it
+    // can disagree with the placeholder, and did.
+    const inUp = between('const onWallPointerUp', '/* --------------------------------------------------------------- derived */');
+    expect(inUp).not.toMatch(/\bresolve\(/);
+    expect(inUp).not.toMatch(/\bsnap\(/);
   });
 
-  it('measures and draws the wall from the previewed rows', () => {
+  it('measures and draws the wall from the previewed prints', () => {
     // The figures, the drawing and the hanging plan all project from one
-    // layout, and that layout is computed from displayRows. Nothing else on
-    // the page reads `rows` for geometry.
-    expect(source).toMatch(/rows: displayRows, gap: safeGap \}/);
-    expect(source).toMatch(/const layout = layoutGalleryWall\(inputs, safeCentre\)/);
-    expect(source).toMatch(/layout\.prints\.map\(placed =>/);
-    expect(source).not.toMatch(/layoutGalleryWall\(\{[^}]*rows: rows/);
+    // `placed` list, and that list comes from displayPrints.
+    expect(source).toMatch(/const rects = displayPrints\.map\(rectOf\)/);
+    expect(source).toMatch(/const placed = displayPrints\.map/);
+    expect(source).toMatch(/\{placed\.map\(\(\{ print, rect, left, topFromFloor \}\) =>/);
+    expect(source).not.toMatch(/prints\.map\(rectOf\)\.map/);
   });
 
   it('positions prints from the model rather than faking a reflow with transforms', () => {
-    // One measured "step" cannot express a row re-centring, which is what
-    // made the preview and the result disagree.
     expect(source).not.toMatch(/shiftFor/);
     expect(source).not.toMatch(/translateX\(\$\{shift\}px\)/);
-    expect(source).toMatch(/left: x\(placed\.left\)/);
-    expect(source).toMatch(/top: y\(placed\.topFromFloor\)/);
+    expect(source).toMatch(/left: x\(left\)/);
+    expect(source).toMatch(/top: y\(topFromFloor\)/);
   });
 
-  it('hit-tests the model, not the DOM, so a sliding neighbour cannot flip the target', () => {
+  it('holds the group offset for the whole drag', () => {
+    // The group re-centres around its contents. Letting it do so under a
+    // moving pointer shifts the pointer's own position every move: a loop.
+    expect(source).toMatch(/const offset = drag && !drag\.settle \? drag\.offset : placeGroup\(/);
     const inMove = between('const onWallPointerMove', 'const onWallPointerUp');
-    expect(inMove).toMatch(/layout\.rowTops\.map/);
-    expect(inMove).toMatch(/layout\.prints/);
-    // The only rect read is the wall's own, for projection.
+    expect(inMove).toMatch(/press\.offset\.left/);
+    expect(inMove).toMatch(/press\.offset\.topFromFloor/);
+  });
+
+  it('reads one rect from the DOM while dragging: the wall, for projection', () => {
+    const inMove = between('const onWallPointerMove', 'const onWallPointerUp');
     expect(inMove.match(/getBoundingClientRect\(\)/g)?.length).toBe(1);
     expect(inMove).toMatch(/wall\.getBoundingClientRect\(\)/);
+    expect(inMove).toMatch(/\bresolve\(proposed, others, safeGap, SNAP_RADIUS_CM/);
   });
 
   it('captures the pointer on the wall, not on the print', () => {
-    // A print that changes row is re-parented, and re-parenting a node drops
-    // its pointer capture - ending the drag at the moment it succeeded.
     expect(source).toMatch(/wallRef\.current\?\.setPointerCapture\(event\.pointerId\)/);
     expect(source).not.toMatch(/currentTarget\.setPointerCapture/);
   });
 
-  it('keeps every print identifiable across a reflow', () => {
-    // Row and index both change mid-gesture, so neither can identify a print.
+  it('keeps every print identifiable', () => {
     expect(source).toMatch(/data-print-id=\{print\.id\}/);
     expect(source).toMatch(/key=\{print\.id\}/);
   });

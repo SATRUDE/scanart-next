@@ -209,6 +209,9 @@ export interface ChromeAriaStrings {
     wall: string;
     selectedPrint: string;
     removePrint: string;
+    addBeside: string;
+    addBelow: string;
+    addFirst: string;
   };
 }
 
@@ -227,9 +230,12 @@ export const chromeAria: Record<Locale, ChromeAriaStrings> = {
     inspireStrip: 'Be inspired: see our prints in real rooms',
     languageAndCurrency: 'Language and currency',
     wallPlanner: {
-      wall: 'Your wall. Each print is a button: arrow keys move it, S changes its size, Delete removes it.',
+      wall: 'Your wall. Each print is a button: arrow keys nudge it by a centimetre, with Shift by ten; S changes its size; Delete removes it.',
       selectedPrint: 'Selected print',
       removePrint: 'Remove this print',
+      addBeside: 'Add a print beside the group',
+      addBelow: 'Add a print below the group',
+      addFirst: 'Add the first print',
     },
   },
   no: {
@@ -246,9 +252,12 @@ export const chromeAria: Record<Locale, ChromeAriaStrings> = {
     inspireStrip: 'La deg inspirere: se trykkene våre i ekte rom',
     languageAndCurrency: 'Språk og valuta',
     wallPlanner: {
-      wall: 'Veggen din. Hvert trykk er en knapp: piltastene flytter det, S endrer størrelsen, Delete fjerner det.',
+      wall: 'Veggen din. Hvert trykk er en knapp: piltastene flytter det én centimeter, med Shift ti; S endrer størrelsen; Delete fjerner det.',
       selectedPrint: 'Valgt trykk',
       removePrint: 'Fjern dette trykket',
+      addBeside: 'Legg til et trykk ved siden av gruppen',
+      addBelow: 'Legg til et trykk under gruppen',
+      addFirst: 'Legg til det første trykket',
     },
   },
 };
