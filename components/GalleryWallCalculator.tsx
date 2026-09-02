@@ -125,33 +125,13 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
 
       <fieldset className="mt-6">
         <legend className="text-sm font-medium text-neutral-800">Your prints, left to right</legend>
-        <p className="mt-1 text-xs text-neutral-600">{prints.length} of {MAX_PRINTS}. Each one can be a different size. Drag a print to reorder it, or use the arrows.</p>
+        <p className="mt-1 text-xs text-neutral-600">{prints.length} of {MAX_PRINTS}. Each one can be a different size. Drag the prints in the preview below to reorder them, or use the arrows here.</p>
         <ul className="mt-3 flex flex-wrap gap-3">
           {prints.map((size, index) => (
             <li
               key={index}
-              draggable
-              onDragStart={event => {
-                setDragIndex(index);
-                event.dataTransfer.effectAllowed = 'move';
-                // Firefox will not start a drag without payload.
-                event.dataTransfer.setData('text/plain', String(index));
-              }}
-              onDragEnter={() => setDropIndex(index)}
-              onDragOver={event => {
-                event.preventDefault();
-                event.dataTransfer.dropEffect = 'move';
-              }}
-              onDragEnd={endDrag}
-              onDrop={event => {
-                event.preventDefault();
-                const from = dragIndex ?? Number(event.dataTransfer.getData('text/plain'));
-                reorder(from, index);
-                endDrag();
-              }}
-              className={`flex items-end gap-2 rounded-md border bg-neutral-50 p-2 transition-colors ${dragIndex === index ? 'opacity-50' : ''} ${dropIndex === index && dragIndex !== null && dragIndex !== index ? 'border-neutral-900 bg-neutral-100' : 'border-neutral-200'}`}
+              className="flex items-end gap-2 rounded-md border border-neutral-200 bg-neutral-50 p-2"
             >
-              <span aria-hidden="true" className="cursor-grab select-none self-center px-1 text-neutral-400" title="Drag to reorder">⠿</span>
               <label className="text-xs font-medium text-neutral-700" htmlFor={`${id}-print-${index}`}>
                 Print {index + 1}
                 <select id={`${id}-print-${index}`} value={size} onChange={event => setPrintAt(index, event.currentTarget.value as PrintSizeKey)} className="mt-1 block min-h-11 rounded-md border border-neutral-300 bg-white px-2 text-sm text-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900">
@@ -182,14 +162,46 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
       </fieldset>
 
       <div className="mt-7">
-        <p className="mb-2 text-xs uppercase tracking-wide text-neutral-600">Wall preview</p>
+        <p className="mb-2 text-xs uppercase tracking-wide text-neutral-600">Wall preview <span className="normal-case tracking-normal text-neutral-500">— drag a print to move it</span></p>
+        {/* The preview is where the prints are actually arranged, so it is the
+            drag surface: you move the picture, not a form row. It stays
+            aria-hidden because it is a second representation of the same list
+            the fieldset above already announces, and the reorder it offers is
+            available there through labelled Move left / Move right buttons.
+            Nothing here is focusable, so nothing focusable is hidden. */}
         <div className="h-40 overflow-hidden border border-neutral-300 px-3 pb-4 pt-6 sm:h-[180px] sm:px-6" aria-hidden="true">
         <div className="mx-auto flex h-full max-w-full items-center justify-center overflow-hidden border-x border-b border-neutral-300" style={{ width: `${previewScale * 100}%` }}>
           <div className="flex max-w-full items-center justify-center" style={{ width: `${arrangementPercent}%`, gap: `${Math.max(2, safeGap * 0.55)}px` }}>
             {safePrints.map((key, index) => {
               const print = PRINT_SIZES[key];
+              const isDragging = dragIndex === index;
+              const isTarget = dropIndex === index && dragIndex !== null && dragIndex !== index;
               return (
-                <div key={index} className="shrink border-2 border-neutral-800 bg-neutral-100 p-1" style={{ aspectRatio: `${print.width} / ${print.height}`, width: `${(print.width / printsWidth) * 100}%`, maxWidth: print.height === 70 ? '54px' : '62px' }}>
+                <div
+                  key={index}
+                  draggable
+                  onDragStart={event => {
+                    setDragIndex(index);
+                    event.dataTransfer.effectAllowed = 'move';
+                    // Firefox refuses to start a drag with no payload.
+                    event.dataTransfer.setData('text/plain', String(index));
+                  }}
+                  onDragEnter={() => setDropIndex(index)}
+                  onDragOver={event => {
+                    event.preventDefault();
+                    event.dataTransfer.dropEffect = 'move';
+                  }}
+                  onDragEnd={endDrag}
+                  onDrop={event => {
+                    event.preventDefault();
+                    const from = dragIndex ?? Number(event.dataTransfer.getData('text/plain'));
+                    reorder(from, index);
+                    endDrag();
+                  }}
+                  title={`Print ${index + 1}, ${print.label}. Drag to reorder.`}
+                  className={`shrink cursor-grab border-2 bg-neutral-100 p-1 transition-all active:cursor-grabbing ${isDragging ? 'border-neutral-400 opacity-40' : 'border-neutral-800'} ${isTarget ? 'ring-2 ring-neutral-900 ring-offset-2' : ''}`}
+                  style={{ aspectRatio: `${print.width} / ${print.height}`, width: `${(print.width / printsWidth) * 100}%`, maxWidth: print.height === 70 ? '54px' : '62px' }}
+                >
                   <div className="h-full w-full border border-neutral-300" />
                 </div>
               );
