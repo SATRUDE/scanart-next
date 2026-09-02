@@ -5,6 +5,7 @@ import { TrackedLink } from '@/components/TrackedLink';
 import {
   calculateGalleryWall,
   formatCentimetres,
+  movePrint,
   PRINT_SIZES,
   type PrintSizeKey,
 } from '@/lib/gallery-wall-calculator';
@@ -30,6 +31,14 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
   const [wallWidthInput, setWallWidthInput] = useState(String(DEFAULTS.wallWidth));
   const [prints, setPrints] = useState<PrintSizeKey[]>(DEFAULT_PRINTS);
   const [gapInput, setGapInput] = useState(String(DEFAULTS.gap));
+  const [dragIndex, setDragIndex] = useState<number | null>(null);
+  const [dropIndex, setDropIndex] = useState<number | null>(null);
+  /**
+   * What just happened to the order, announced separately from the fit copy.
+   * A reorder is silent to a screen reader otherwise: the row rearranges and
+   * nothing says so.
+   */
+  const [orderMessage, setOrderMessage] = useState('');
 
   const wallWidth = Number(wallWidthInput);
   const gap = Number(gapInput);
@@ -49,6 +58,21 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
     setPrints(current => (current.length >= MAX_PRINTS ? current : [...current, current.at(-1) ?? '50x70']));
   const removePrintAt = (index: number) =>
     setPrints(current => current.filter((_, i) => i !== index));
+
+  const reorder = (from: number, to: number) => {
+    setPrints(current => {
+      const next = movePrint(current, from, to);
+      if (next !== current && to !== from && to >= 0 && to < current.length) {
+        setOrderMessage(`Print ${from + 1} moved to position ${to + 1} of ${current.length}.`);
+      }
+      return next;
+    });
+  };
+
+  const endDrag = () => {
+    setDragIndex(null);
+    setDropIndex(null);
+  };
 
   const previewScale = Math.min(1, safeWallWidth / Math.max(result.totalWidth, safeWallWidth));
   const arrangementPercent = Math.max(8, (result.totalWidth / Math.max(result.totalWidth, safeWallWidth)) * 100);
@@ -101,16 +125,50 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
 
       <fieldset className="mt-6">
         <legend className="text-sm font-medium text-neutral-800">Your prints, left to right</legend>
-        <p className="mt-1 text-xs text-neutral-600">{prints.length} of {MAX_PRINTS}. Each one can be a different size.</p>
+        <p className="mt-1 text-xs text-neutral-600">{prints.length} of {MAX_PRINTS}. Each one can be a different size. Drag a print to reorder it, or use the arrows.</p>
         <ul className="mt-3 flex flex-wrap gap-3">
           {prints.map((size, index) => (
-            <li key={index} className="flex items-end gap-2 rounded-md border border-neutral-200 bg-neutral-50 p-2">
+            <li
+              key={index}
+              draggable
+              onDragStart={event => {
+                setDragIndex(index);
+                event.dataTransfer.effectAllowed = 'move';
+                // Firefox will not start a drag without payload.
+                event.dataTransfer.setData('text/plain', String(index));
+              }}
+              onDragEnter={() => setDropIndex(index)}
+              onDragOver={event => {
+                event.preventDefault();
+                event.dataTransfer.dropEffect = 'move';
+              }}
+              onDragEnd={endDrag}
+              onDrop={event => {
+                event.preventDefault();
+                const from = dragIndex ?? Number(event.dataTransfer.getData('text/plain'));
+                reorder(from, index);
+                endDrag();
+              }}
+              className={`flex items-end gap-2 rounded-md border bg-neutral-50 p-2 transition-colors ${dragIndex === index ? 'opacity-50' : ''} ${dropIndex === index && dragIndex !== null && dragIndex !== index ? 'border-neutral-900 bg-neutral-100' : 'border-neutral-200'}`}
+            >
+              <span aria-hidden="true" className="cursor-grab select-none self-center px-1 text-neutral-400" title="Drag to reorder">⠿</span>
               <label className="text-xs font-medium text-neutral-700" htmlFor={`${id}-print-${index}`}>
                 Print {index + 1}
                 <select id={`${id}-print-${index}`} value={size} onChange={event => setPrintAt(index, event.currentTarget.value as PrintSizeKey)} className="mt-1 block min-h-11 rounded-md border border-neutral-300 bg-white px-2 text-sm text-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900">
                   {Object.entries(PRINT_SIZES).map(([value, option]) => <option key={value} value={value}>{option.label}</option>)}
                 </select>
               </label>
+              {/* Dragging alone would shut out anyone on a keyboard, and HTML5
+                  drag does not work on touch at all. These are the same
+                  reorder, reachable by tab or thumb - WCAG 2.1.1 and 2.5.7. */}
+              <span className="flex flex-col gap-0.5">
+                <button type="button" onClick={() => reorder(index, index - 1)} disabled={index === 0} className="min-h-5 rounded border border-neutral-300 px-1.5 text-xs leading-none text-neutral-700 transition-colors hover:border-neutral-900 disabled:cursor-not-allowed disabled:opacity-30 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring">
+                  <span aria-hidden="true">←</span><span className="sr-only">Move print {index + 1} left</span>
+                </button>
+                <button type="button" onClick={() => reorder(index, index + 1)} disabled={index === prints.length - 1} className="min-h-5 rounded border border-neutral-300 px-1.5 text-xs leading-none text-neutral-700 transition-colors hover:border-neutral-900 disabled:cursor-not-allowed disabled:opacity-30 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring">
+                  <span aria-hidden="true">→</span><span className="sr-only">Move print {index + 1} right</span>
+                </button>
+              </span>
               <button type="button" onClick={() => removePrintAt(index)} disabled={prints.length <= 1} className="min-h-11 rounded-md border border-neutral-300 px-2 text-xs text-neutral-700 transition-colors hover:border-neutral-900 disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring">
                 Remove<span className="sr-only"> print {index + 1}</span>
               </button>
@@ -150,6 +208,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
 
       <div className="mt-5 text-sm leading-relaxed text-neutral-800" role="status" aria-live="polite" aria-atomic="true">
         <p className="font-medium">{isValid ? liveCopy : 'Complete the fields above to see your arrangement.'}</p>
+        {orderMessage && <p className="mt-1 font-normal text-neutral-700">{orderMessage}</p>}
         {isValid && mixed && <p className="mt-1 font-normal text-neutral-700">With sizes mixed, hang them on a shared centre line rather than a shared top edge, or the row will look accidental.</p>}
       </div>
 

@@ -3,6 +3,7 @@ import {
   PRINT_SIZES,
   calculateGalleryWall,
   formatCentimetres,
+  movePrint,
   type PrintSizeKey,
 } from './gallery-wall-calculator';
 
@@ -101,5 +102,44 @@ describe('PRINT_SIZES', () => {
   it('describes each size in the units a person hangs prints in', () => {
     expect(PRINT_SIZES['50x70']).toMatchObject({ width: 50, height: 70 });
     expect(PRINT_SIZES['50x50']).toMatchObject({ width: 50, height: 50 });
+  });
+});
+
+describe('movePrint', () => {
+  const row: PrintSizeKey[] = ['50x70', '50x50', '50x70'];
+
+  it('moves a print later in the row', () => {
+    expect(movePrint(row, 0, 2)).toEqual(['50x50', '50x70', '50x70']);
+  });
+
+  it('moves a print earlier in the row', () => {
+    expect(movePrint(row, 2, 0)).toEqual(['50x70', '50x70', '50x50']);
+  });
+
+  it('shifts by one without swapping the ends', () => {
+    // A swap and a move differ as soon as there are three items, and the
+    // keyboard buttons move by one, so this is the case that matters.
+    expect(movePrint(['a', 'b', 'c'], 0, 1)).toEqual(['b', 'a', 'c']);
+    expect(movePrint(['a', 'b', 'c', 'd'], 0, 2)).toEqual(['b', 'c', 'a', 'd']);
+  });
+
+  it('never mutates the list it was given', () => {
+    const original: PrintSizeKey[] = ['50x70', '50x50'];
+    movePrint(original, 0, 1);
+    expect(original).toEqual(['50x70', '50x50']);
+  });
+
+  it('returns the row untouched for a drop that goes nowhere', () => {
+    // Dropping outside the row, or onto itself, is something a person does by
+    // accident constantly. It must be a no-op, not a throw.
+    for (const [from, to] of [[0, 0], [-1, 1], [1, -1], [0, 99], [99, 0], [1.5, 0]]) {
+      expect(movePrint(row, from, to)).toEqual(row);
+    }
+  });
+
+  it('leaves the arithmetic alone, which is why order is safe to change', () => {
+    const before = calculateGalleryWall({ wallWidth: 240, prints: row, gap: 6 });
+    const after = calculateGalleryWall({ wallWidth: 240, prints: movePrint(row, 0, 2), gap: 6 });
+    expect(after).toEqual(before);
   });
 });

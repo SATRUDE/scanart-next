@@ -70,3 +70,33 @@ export function calculateGalleryWall({
 export function formatCentimetres(value: number): string {
   return `${Number.isInteger(value) ? value : value.toFixed(1)} cm`;
 }
+
+/**
+ * Move one print to a new position, left to right.
+ *
+ * Reordering changes nothing the calculator computes - the widths sum the same
+ * whatever order they are in, and a test pins that - but the order IS the wall
+ * plan. Which print hangs where is the decision a person is actually making
+ * here, so it lives in the model rather than only in the DOM, and it is a pure
+ * function so the drag handlers and the keyboard buttons cannot drift apart.
+ *
+ * Out-of-range indices return the list untouched rather than throwing: a drop
+ * outside the row is a normal thing for a person to do, not an error.
+ */
+export function movePrint<T>(prints: readonly T[], from: number, to: number): T[] {
+  const next = [...prints];
+  if (
+    !Number.isInteger(from) ||
+    !Number.isInteger(to) ||
+    from < 0 ||
+    to < 0 ||
+    from >= next.length ||
+    to >= next.length ||
+    from === to
+  ) {
+    return next;
+  }
+  const [moved] = next.splice(from, 1);
+  next.splice(to, 0, moved);
+  return next;
+}
