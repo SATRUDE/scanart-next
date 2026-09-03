@@ -175,7 +175,9 @@ export function roomPolygons(input: RoomInput, proj: Projector): Poly[] {
     const bottom = top - p.h;
     const frame = quad(proj, 'frame', [c(p.left, bottom, 1), c(p.left + p.w, bottom, 1), c(p.left + p.w, top, 1), c(p.left, top, 1)]);
     if (frame) polys.push(frame);
-    const inset = Math.min(p.w, p.h) * 0.16;
+    // The mount as the frames we sell have it: narrow, about 7% of the width.
+    // Drawn wider, the image model rendered it wider - it follows the drawing.
+    const inset = p.w * 0.07;
     const mat = quad(proj, 'mat', [
       c(p.left + inset, bottom + inset, 1.2), c(p.left + p.w - inset, bottom + inset, 1.2),
       c(p.left + p.w - inset, top - inset, 1.2), c(p.left + inset, top - inset, 1.2),
