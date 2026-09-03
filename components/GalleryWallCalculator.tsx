@@ -3,7 +3,7 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import { Armchair, Check, ChevronDown, Download, LayoutGrid, Link2, Maximize2, Ruler, RotateCcw, Trash2, X } from 'lucide-react';
 import { GalleryWallRoomView, saveSvgAsPng } from '@/components/GalleryWallRoomView';
-import { DEFAULT_CAMERA, maxYaw, type Camera } from '@/lib/gallery-wall-room';
+import { DEFAULT_CAMERA, type Camera } from '@/lib/gallery-wall-room';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import * as SliderPrimitive from '@radix-ui/react-slider';
 import { Switch } from '@/components/ui/switch';
@@ -197,8 +197,6 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
   const safeGap = gapError ? DEFAULTS.gap : gap;
   const safeCentre = centreHeight;
   const safeWallHeight = wallHeight;
-  /** How far the camera may turn without leaving the room. */
-  const yawLimit = maxYaw(safeWallWidth, camera.distance);
   /** The sofa's own measurements, with the typical three-seater standing in for nonsense. */
   const sofaSize = {
     width: Number(sofaWidthInput) > 0 ? Number(sofaWidthInput) : SOFA.width,
@@ -881,8 +879,8 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
             <GalleryWallRoomView
               svgRef={roomSvgRef}
               label={aria.roomImage}
-              camera={{ ...camera, yaw: Math.max(-yawLimit, Math.min(yawLimit, camera.yaw)), targetHeight: safeCentre }}
-              onYaw={yaw => setCamera(current => ({ ...current, yaw: Math.max(-yawLimit, Math.min(yawLimit, yaw)) }))}
+              camera={{ ...camera, targetHeight: safeCentre }}
+              onYaw={yaw => setCamera(current => ({ ...current, yaw }))}
               input={{
                 wallWidth: drawWidth,
                 ceiling: drawHeight,
@@ -895,7 +893,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
             {/* The camera: turn by dragging the picture, or by these. */}
             <div className="absolute bottom-3 left-3 z-20 flex flex-wrap items-end gap-4 rounded-md border border-neutral-200 bg-white/95 px-3 py-2 text-[11px] text-neutral-700 shadow-sm" onPointerDown={event => event.stopPropagation()}>
               {([
-                ['Angle', 'yaw', -Math.floor(yawLimit), Math.floor(yawLimit), 1, '°'],
+                ['Angle', 'yaw', -70, 70, 1, '°'],
                 ['Camera height', 'height', 90, 220, 1, ' cm'],
                 ['Distance', 'distance', 150, 600, 5, ' cm'],
               ] as const).map(([label, key, min, max, step, unit]) => (
