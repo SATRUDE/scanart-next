@@ -84,13 +84,28 @@ const quad = (proj: Projector, kind: Poly['kind'], corners: Vec3[]): Poly | null
   return { kind, points: points as Vec2[], depth: corners.reduce((s, c) => s + proj.depth(c), 0) / corners.length };
 };
 
+/**
+ * A piece of furniture on the floor against the wall: where its left edge is
+ * along the wall, how far its back stands off the wall, and its size. Drawn
+ * as blocks - a sideboard is one box, a floor lamp a pole and a shade - which
+ * is all an image model needs to put the real thing in the right place.
+ */
+export interface FurnitureItem {
+  kind: 'sofa' | 'sideboard' | 'floor-lamp';
+  x: number;
+  z: number;
+  width: number;
+  height: number;
+  depth: number;
+}
+
 export interface RoomInput {
   wallWidth: number;
   /** Wall height when known, else the drawing's stand-in. */
   ceiling: number;
   /** Prints as rectangles on the wall: left edge, top edge from the floor, size. */
   prints: { left: number; topFromFloor: number; w: number; h: number }[];
-  sofa: { width: number; height: number; depth: number } | null;
+  furniture: FurnitureItem[];
   eyeLevel: number;
   /** How far the floor is drawn out from the wall. */
   floorDepth: number;
@@ -168,19 +183,33 @@ export function roomPolygons(input: RoomInput, proj: Projector): Poly[] {
     if (mat) polys.push(mat);
   }
 
-  // The sofa: a seat block and a back block, drawn as boxes, nearest faces last.
-  if (input.sofa) {
-    const { width, height, depth } = input.sofa;
-    const x0 = (W - width) / 2;
-    const x1 = x0 + width;
-    const z0 = 12;
-    const seat = box(proj, 'sofa', x0, x1, 0, Math.min(45, height * 0.55), z0, z0 + depth);
-    const back = box(proj, 'sofa', x0, x1, 0, height, z0, z0 + Math.min(28, depth * 0.3));
-    const arms = [
-      ...box(proj, 'sofa', x0, x0 + 18, 0, height * 0.75, z0, z0 + depth),
-      ...box(proj, 'sofa', x1 - 18, x1, 0, height * 0.75, z0, z0 + depth),
-    ];
-    polys.push(...[...seat, ...back, ...arms].sort((a, b) => b.depth - a.depth));
+  // Furniture, each piece as boxes, nearest faces last. The sofa is a seat, a
+  // back and two arms; a sideboard is one box; a floor lamp a pole and a shade.
+  for (const item of input.furniture) {
+    const x0 = item.x;
+    const x1 = item.x + item.width;
+    const z0 = item.z;
+    const z1 = item.z + item.depth;
+    let boxes: Poly[] = [];
+    if (item.kind === 'sofa') {
+      boxes = [
+        ...box(proj, 'sofa', x0, x1, 0, Math.min(45, item.height * 0.55), z0, z1),
+        ...box(proj, 'sofa', x0, x1, 0, item.height, z0, z0 + Math.min(28, item.depth * 0.3)),
+        ...box(proj, 'sofa', x0, x0 + 18, 0, item.height * 0.75, z0, z1),
+        ...box(proj, 'sofa', x1 - 18, x1, 0, item.height * 0.75, z0, z1),
+      ];
+    } else if (item.kind === 'sideboard') {
+      boxes = box(proj, 'sofa', x0, x1, 0, item.height, z0, z1);
+    } else {
+      const cx = (x0 + x1) / 2;
+      const cz = (z0 + z1) / 2;
+      const shade = Math.min(item.width, 40);
+      boxes = [
+        ...box(proj, 'sofa-edge', cx - 2, cx + 2, 0, item.height - shade, cz - 2, cz + 2),
+        ...box(proj, 'sofa', cx - shade / 2, cx + shade / 2, item.height - shade, item.height, cz - shade / 2, cz + shade / 2),
+      ];
+    }
+    polys.push(...boxes.sort((a, b) => b.depth - a.depth));
   }
 
   return polys;

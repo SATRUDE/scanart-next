@@ -216,6 +216,7 @@ export interface ChromeAriaStrings {
     heightMarker: string;
     startFrom: string;
     sofaSwitch: string;
+    removeFurniture: string;
     linesSwitch: string;
     copyLink: string;
     reset: string;
@@ -253,6 +254,7 @@ export const chromeAria: Record<Locale, ChromeAriaStrings> = {
       heightMarker: 'Height of the group above the floor. Drag, or use the arrow keys.',
       startFrom: 'Start from an arrangement',
       sofaSwitch: 'Show a sofa for scale',
+      removeFurniture: 'Remove this piece of furniture',
       linesSwitch: 'Show the measurement lines',
       copyLink: 'Copy a link to this wall',
       reset: 'Start again from the default wall',
@@ -288,6 +290,7 @@ export const chromeAria: Record<Locale, ChromeAriaStrings> = {
       heightMarker: 'Gruppens høyde over gulvet. Dra, eller bruk piltastene.',
       startFrom: 'Start fra et oppsett',
       sofaSwitch: 'Vis en sofa for skala',
+      removeFurniture: 'Fjern dette møbelet',
       linesSwitch: 'Vis målelinjene',
       copyLink: 'Kopier en lenke til denne veggen',
       reset: 'Begynn på nytt med standardveggen',

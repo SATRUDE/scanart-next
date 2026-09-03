@@ -2,6 +2,15 @@ import { describe, it, expect } from 'vitest';
 import { DEFAULT_CAMERA, makeProjector, roomPolygons } from './gallery-wall-room';
 
 describe('room projection', () => {
+  it('draws a sideboard as one box and a lamp as a pole and a shade', () => {
+    const proj = makeProjector(DEFAULT_CAMERA, 240, 1600, 1000);
+    const one = roomPolygons({ wallWidth: 240, ceiling: 250, eyeLevel: 145, floorDepth: 260, prints: [], furniture: [{ kind: 'sideboard', x: 10, z: 5, width: 152, height: 74, depth: 37 }] }, proj);
+    const lamp = roomPolygons({ wallWidth: 240, ceiling: 250, eyeLevel: 145, floorDepth: 260, prints: [], furniture: [{ kind: 'floor-lamp', x: 200, z: 10, width: 40, height: 130, depth: 40 }] }, proj);
+    expect(one.filter(p => p.kind === 'sofa').length).toBe(5);
+    expect(lamp.filter(p => p.kind === 'sofa-edge').length).toBe(5);
+    expect(lamp.filter(p => p.kind === 'sofa').length).toBe(5);
+  });
+
   const W = 240;
   it('puts a face-on view symmetric about the image centre', () => {
     const proj = makeProjector({ ...DEFAULT_CAMERA, yaw: 0, height: 140, targetHeight: 140 }, W, 1600, 1000);
@@ -30,7 +39,7 @@ describe('room projection', () => {
     const polys = roomPolygons({
       wallWidth: W, ceiling: 250, eyeLevel: 145, floorDepth: 260,
       prints: [{ left: 95, topFromFloor: 180, w: 50, h: 70 }],
-      sofa: { width: 200, height: 85, depth: 90 },
+      furniture: [{ kind: 'sofa', x: 20, z: 12, width: 200, height: 85, depth: 90 }],
     }, proj);
     const kinds = polys.map(p => p.kind);
     expect(kinds.indexOf('wall')).toBeLessThan(kinds.indexOf('frame'));
