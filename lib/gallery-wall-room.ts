@@ -149,17 +149,10 @@ export function roomPolygons(input: RoomInput, proj: Projector): Poly[] {
     if (g) polys.push(g);
   }
 
-  // The usable stretch of wall, where it differs from the room.
-  for (const x of [0, W]) {
-    if (x > L && x < R) {
-      const edge = quad(proj, 'grid', [c(x, 0, 0), c(x, H, 0)]);
-      if (edge) polys.push(edge);
-    }
-  }
-
-  // Eye level along the wall.
-  const eye = quad(proj, 'eye', [c(L, input.eyeLevel, 0), c(R, input.eyeLevel, 0)]);
-  if (eye) polys.push(eye);
+  // Nothing is drawn on the wall but the prints. A line marking where the
+  // usable stretch ended was read by the image model as a corner, and it
+  // built a pier there; a dashed eye-level line is one misreading away from
+  // a dado rail. The plan view carries those marks; the room does not.
 
   // Prints: a frame just off the wall, and a mat inset within it.
   for (const p of input.prints) {
