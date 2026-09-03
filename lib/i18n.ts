@@ -216,11 +216,17 @@ export interface ChromeAriaStrings {
     heightMarker: string;
     startFrom: string;
     sofaSwitch: string;
+    removeFurniture: string;
     linesSwitch: string;
     copyLink: string;
     reset: string;
     expand: string;
     collapse: string;
+    viewGroup: string;
+    viewPlan: string;
+    viewRoom: string;
+    saveImage: string;
+    roomImage: string;
   };
 }
 
@@ -248,11 +254,17 @@ export const chromeAria: Record<Locale, ChromeAriaStrings> = {
       heightMarker: 'Height of the group above the floor. Drag, or use the arrow keys.',
       startFrom: 'Start from an arrangement',
       sofaSwitch: 'Show a sofa for scale',
+      removeFurniture: 'Remove this piece of furniture',
       linesSwitch: 'Show the measurement lines',
       copyLink: 'Copy a link to this wall',
       reset: 'Start again from the default wall',
       expand: 'Fill the screen',
       collapse: 'Close full screen',
+      viewGroup: 'View',
+      viewPlan: 'Plan view: the wall face on, where you arrange the prints',
+      viewRoom: 'Room view: the wall from inside the room. Drag to turn.',
+      saveImage: 'Save the room view as an image',
+      roomImage: 'Your wall seen from inside the room. Drag left or right to turn the view.',
     },
   },
   no: {
@@ -278,11 +290,17 @@ export const chromeAria: Record<Locale, ChromeAriaStrings> = {
       heightMarker: 'Gruppens høyde over gulvet. Dra, eller bruk piltastene.',
       startFrom: 'Start fra et oppsett',
       sofaSwitch: 'Vis en sofa for skala',
+      removeFurniture: 'Fjern dette møbelet',
       linesSwitch: 'Vis målelinjene',
       copyLink: 'Kopier en lenke til denne veggen',
       reset: 'Begynn på nytt med standardveggen',
       expand: 'Fyll skjermen',
       collapse: 'Lukk fullskjerm',
+      viewGroup: 'Visning',
+      viewPlan: 'Planvisning: veggen rett forfra, der du ordner trykkene',
+      viewRoom: 'Romvisning: veggen sett fra rommet. Dra for å snu.',
+      saveImage: 'Lagre romvisningen som bilde',
+      roomImage: 'Veggen din sett fra rommet. Dra til venstre eller høyre for å snu.',
     },
   },
 };
