@@ -62,6 +62,7 @@ export function GalleryWallRoomView({
         return (
           <path
             key={i}
+            data-kind={poly.kind}
             d={poly.points.length > 2 ? `${d} Z` : d}
             fill={style.fill}
             stroke={style.stroke}
