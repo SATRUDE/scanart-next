@@ -1,7 +1,9 @@
 'use client';
 
 import { useEffect, useId, useRef, useState } from 'react';
-import { Check, ChevronDown, LayoutGrid, Link2, Maximize2, RotateCcw, Trash2, X } from 'lucide-react';
+import { Armchair, Check, ChevronDown, Download, LayoutGrid, Link2, Maximize2, Ruler, RotateCcw, Trash2, X } from 'lucide-react';
+import { GalleryWallRoomView, saveSvgAsPng } from '@/components/GalleryWallRoomView';
+import { DEFAULT_CAMERA, maxYaw, type Camera } from '@/lib/gallery-wall-room';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import * as SliderPrimitive from '@radix-ui/react-slider';
 import { Switch } from '@/components/ui/switch';
@@ -120,6 +122,14 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
   const [expanded, setExpanded] = useState(false);
   /** The arrangements dialog. */
   const [arrangementsOpen, setArrangementsOpen] = useState(false);
+  /**
+   * Plan: the wall face on, where the arranging happens. Room: the same wall
+   * through a camera you can turn, for seeing it from the sofa and for saving
+   * a picture of it. Arranging stays in the plan; the room is for looking.
+   */
+  const [view, setView] = useState<'plan' | 'room'>('plan');
+  const [camera, setCamera] = useState<Camera>(DEFAULT_CAMERA);
+  const roomSvgRef = useRef<SVGSVGElement | null>(null);
   const [sofaWidthInput, setSofaWidthInput] = useState(String(SOFA.width));
   const [sofaHeightInput, setSofaHeightInput] = useState(String(SOFA.height));
   const [selected, setSelected] = useState<string | null>(null);
@@ -187,6 +197,8 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
   const safeGap = gapError ? DEFAULTS.gap : gap;
   const safeCentre = centreHeight;
   const safeWallHeight = wallHeight;
+  /** How far the camera may turn without leaving the room. */
+  const yawLimit = maxYaw(safeWallWidth, camera.distance);
   /** The sofa's own measurements, with the typical three-seater standing in for nonsense. */
   const sofaSize = {
     width: Number(sofaWidthInput) > 0 ? Number(sofaWidthInput) : SOFA.width,
@@ -819,6 +831,26 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
                 <RotateCcw aria-hidden="true" className="size-4" />
               </button>
             </div>
+            {/* Plan or room. */}
+            <div role="group" aria-label={aria.viewGroup} className="flex h-9 items-stretch overflow-hidden rounded-md border border-neutral-300 bg-white text-neutral-700">
+              <button type="button" aria-pressed={view === 'plan'} aria-label={aria.viewPlan} title={aria.viewPlan} onClick={() => setView('plan')} className={`flex w-9 items-center justify-center outline-none transition-colors focus-visible:bg-neutral-100 ${view === 'plan' ? 'bg-neutral-900 text-white' : 'hover:bg-neutral-100 hover:text-neutral-900'}`}>
+                <Ruler aria-hidden="true" className="size-4" />
+              </button>
+              <button type="button" aria-pressed={view === 'room'} aria-label={aria.viewRoom} title={aria.viewRoom} onClick={() => { setSelected(null); setView('room'); }} className={`flex w-9 items-center justify-center border-l border-neutral-300 outline-none transition-colors focus-visible:bg-neutral-100 ${view === 'room' ? 'bg-neutral-900 text-white' : 'hover:bg-neutral-100 hover:text-neutral-900'}`}>
+                <Armchair aria-hidden="true" className="size-4" />
+              </button>
+            </div>
+            {view === 'room' && (
+              <button
+                type="button"
+                onClick={() => { if (roomSvgRef.current) void saveSvgAsPng(roomSvgRef.current, 'gallery-wall.png'); }}
+                aria-label={aria.saveImage}
+                title={aria.saveImage}
+                className="flex h-9 w-9 items-center justify-center rounded-md border border-neutral-300 bg-white text-neutral-700 outline-none transition-colors hover:bg-neutral-100 hover:text-neutral-900 focus-visible:bg-neutral-100"
+              >
+                <Download aria-hidden="true" className="size-4" />
+              </button>
+            )}
             {/* The whole screen, and the same button brings it back. */}
             <button
               type="button"
@@ -844,6 +876,50 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
           // around it; expanded, it takes whatever the screen has.
           style={{ height: expanded ? undefined : 'min(68vh, 75vw)', minHeight: expanded ? undefined : '300px', containerType: 'size' }}
         >
+        {view === 'room' && (
+          <>
+            <GalleryWallRoomView
+              svgRef={roomSvgRef}
+              label={aria.roomImage}
+              camera={{ ...camera, yaw: Math.max(-yawLimit, Math.min(yawLimit, camera.yaw)), targetHeight: safeCentre }}
+              onYaw={yaw => setCamera(current => ({ ...current, yaw: Math.max(-yawLimit, Math.min(yawLimit, yaw)) }))}
+              input={{
+                wallWidth: drawWidth,
+                ceiling: drawHeight,
+                eyeLevel: EYE_LEVEL_CM,
+                floorDepth: Math.max(120, Math.min(camera.distance * 0.85, 400)),
+                prints: placed.map(entry => ({ left: entry.left, topFromFloor: entry.topFromFloor, w: entry.rect.w, h: entry.rect.h })),
+                sofa: showSofa ? { width: sofaSize.width, height: sofaSize.height, depth: 90 } : null,
+              }}
+            />
+            {/* The camera: turn by dragging the picture, or by these. */}
+            <div className="absolute bottom-3 left-3 z-20 flex flex-wrap items-end gap-4 rounded-md border border-neutral-200 bg-white/95 px-3 py-2 text-[11px] text-neutral-700 shadow-sm" onPointerDown={event => event.stopPropagation()}>
+              {([
+                ['Angle', 'yaw', -Math.floor(yawLimit), Math.floor(yawLimit), 1, '°'],
+                ['Camera height', 'height', 90, 220, 1, ' cm'],
+                ['Distance', 'distance', 150, 600, 5, ' cm'],
+              ] as const).map(([label, key, min, max, step, unit]) => (
+                <label key={key} className="flex flex-col gap-1">
+                  <span className="flex justify-between gap-3 text-[10px] font-medium uppercase tracking-wide text-neutral-500">{label}<span className="tabular-nums normal-case tracking-normal text-neutral-400">{Math.round(camera[key])}{unit}</span></span>
+                  <SliderPrimitive.Root
+                    aria-label={label}
+                    min={min}
+                    max={max}
+                    step={step}
+                    value={[Math.max(min, Math.min(max, camera[key]))]}
+                    onValueChange={([next]) => setCamera(current => ({ ...current, [key]: next }))}
+                    className="relative flex h-3 w-28 touch-none select-none items-center"
+                  >
+                    <SliderPrimitive.Track className="relative h-1 grow overflow-hidden rounded-full bg-neutral-200">
+                      <SliderPrimitive.Range className="absolute h-full bg-neutral-900" />
+                    </SliderPrimitive.Track>
+                    <SliderPrimitive.Thumb className="block size-3 shrink-0 cursor-ew-resize rounded-full border border-neutral-900 bg-white shadow-sm ring-neutral-900/15 transition-[box-shadow] hover:ring-4 focus-visible:ring-4 focus-visible:outline-none" />
+                  </SliderPrimitive.Root>
+                </label>
+              ))}
+            </div>
+          </>
+        )}
         <div
           ref={wallRef}
           role="group"
@@ -860,7 +936,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
             if (selected && target.closest(`[data-print-id="${selected}"]`)) return;
             setSelected(null);
           }}
-          className="gw-wall relative h-full select-none border-x border-neutral-400 bg-[#f7f6f3]"
+          className={`gw-wall relative h-full select-none border-x border-neutral-400 bg-[#f7f6f3] ${view === 'room' ? 'hidden' : ''}`}
           style={{
             width: `min(100cqw, calc(100cqh * ${drawWidth} / ${drawHeight}))`,
             containerType: 'inline-size',
