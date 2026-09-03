@@ -1,9 +1,9 @@
 'use client';
 
 import { useEffect, useId, useRef, useState } from 'react';
-import { Armchair, Check, ChevronDown, Download, LayoutGrid, Link2, Maximize2, Ruler, RotateCcw, Trash2, X } from 'lucide-react';
+import { Armchair, Check, Download, LayoutGrid, Link2, Maximize2, Plus, Ruler, RotateCcw, Trash2, X } from 'lucide-react';
 import { GalleryWallRoomView, saveSvgAsPng } from '@/components/GalleryWallRoomView';
-import { DEFAULT_CAMERA, type Camera } from '@/lib/gallery-wall-room';
+import { DEFAULT_CAMERA, type Camera, type FurnitureItem } from '@/lib/gallery-wall-room';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import * as SliderPrimitive from '@radix-ui/react-slider';
 import { Switch } from '@/components/ui/switch';
@@ -61,8 +61,19 @@ const REFLOW_MS = 260;
 const DRAG_THRESHOLD_PX = 5;
 /** How close, in centimetres, a print has to come to a snap line to take it. */
 const SNAP_RADIUS_CM = 10;
-/** A sofa for scale: a typical three-seater. */
-const SOFA = { width: 200, height: 85 };
+/**
+ * Furniture that can stand against the wall, at real sizes. The sofa is a
+ * typical three-seater; the unit is a two-wide USM Haller; the lamp a floor
+ * lamp with a shade. Blocks in the drawing, so the image model puts the real
+ * thing where the block is.
+ */
+type Furniture = FurnitureItem & { id: string; label: string };
+const FURNITURE_PRESETS: { kind: FurnitureItem['kind']; label: string; width: number; height: number; depth: number }[] = [
+  { kind: 'sofa', label: 'Sofa', width: 200, height: 85, depth: 90 },
+  { kind: 'sideboard', label: 'Haller unit', width: 152, height: 74, depth: 37 },
+  { kind: 'floor-lamp', label: 'Floor lamp', width: 40, height: 130, depth: 40 },
+];
+const SOFA_CLEARANCE = 20;
 /** Stands in for the ceiling when no wall height is given. */
 const TYPICAL_CEILING = 250;
 /** Narrower or lower than this is not a wall this plans for; the field says so. */
@@ -114,8 +125,13 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
   const groupDragRef = useRef<{ startY: number; startCentre: number } | null>(null);
   /** One print, centred: a wall to start from, not an arrangement to undo. */
   const [prints, setPrints] = useState<FreePrint[]>(() => seeded([{ size: '50x70', x: 0, y: 0 }]));
-  const [showSofa, setShowSofa] = useState(true);
-  const [sofaOpen, setSofaOpen] = useState(false);
+  /** What stands on the floor. A sofa to begin with, centred under the wall. */
+  const [furniture, setFurniture] = useState<Furniture[]>([{ id: 'f-sofa', label: 'Sofa', kind: 'sofa', x: 20, z: 12, width: 200, height: 85, depth: 90 }]);
+  const [selectedFurniture, setSelectedFurniture] = useState<string | null>(null);
+  const [furnitureMenuOpen, setFurnitureMenuOpen] = useState(false);
+  const furnitureDragRef = useRef<{ id: string; startX: number; startItemX: number } | null>(null);
+  /** The piece sliding right now, so it does not ease behind the pointer. */
+  const [slidingFurniture, setSlidingFurniture] = useState<string | null>(null);
   /** The dimension lines. Off, the drawing is just the wall and the prints. */
   const [showLines, setShowLines] = useState(true);
   /** The instrument taking the whole screen. */
@@ -130,8 +146,6 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
   const [view, setView] = useState<'plan' | 'room'>('plan');
   const [camera, setCamera] = useState<Camera>(DEFAULT_CAMERA);
   const roomSvgRef = useRef<SVGSVGElement | null>(null);
-  const [sofaWidthInput, setSofaWidthInput] = useState(String(SOFA.width));
-  const [sofaHeightInput, setSofaHeightInput] = useState(String(SOFA.height));
   const [selected, setSelected] = useState<string | null>(null);
   const [orderMessage, setOrderMessage] = useState('');
   const [copied, setCopied] = useState(false);
@@ -197,11 +211,6 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
   const safeGap = gapError ? DEFAULTS.gap : gap;
   const safeCentre = centreHeight;
   const safeWallHeight = wallHeight;
-  /** The sofa's own measurements, with the typical three-seater standing in for nonsense. */
-  const sofaSize = {
-    width: Number(sofaWidthInput) > 0 ? Number(sofaWidthInput) : SOFA.width,
-    height: Number(sofaHeightInput) > 0 ? Number(sofaHeightInput) : SOFA.height,
-  };
 
   /**
    * The arrangement as it will be when the drag is released: the held print
@@ -380,8 +389,28 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
   /** Back to the one print you started with. The wall, gap and sofa are yours; they stay. */
   const reset = () => {
     setPrints(fresh([{ size: '50x70', x: 0, y: 0 }]));
+    setFurniture([{ id: 'f-sofa', label: 'Sofa', kind: 'sofa', x: 20, z: 12, width: 200, height: 85, depth: 90 }]);
     setSelected(null);
+    setSelectedFurniture(null);
     announce('Back to one print.');
+  };
+
+  /** Put a piece on the floor, to the right of whatever is there, clamped to the wall. */
+  const addFurniture = (kind: FurnitureItem['kind']) => {
+    const preset = FURNITURE_PRESETS.find(entry => entry.kind === kind);
+    if (!preset) return;
+    const rightmost = furniture.reduce((edge, item) => Math.max(edge, item.x + item.width), 0);
+    const x = Math.max(0, Math.min(safeWallWidth - preset.width, rightmost ? rightmost + 20 : (safeWallWidth - preset.width) / 2));
+    const item: Furniture = { id: `f-${nextId.current++}`, label: preset.label, kind, x, z: 12, width: preset.width, height: preset.height, depth: preset.depth };
+    setFurniture(current => [...current, item]);
+    setSelectedFurniture(item.id);
+    setFurnitureMenuOpen(false);
+    announce(`${preset.label} added.`);
+  };
+  const removeFurniture = (id: string) => {
+    setFurniture(current => current.filter(item => item.id !== id));
+    setSelectedFurniture(null);
+    announce('Removed.');
   };
 
   const applyPreset = (key: string) => {
@@ -430,7 +459,8 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
   /* ----------------------------------------------------------------- drag */
 
   /** Where the group's centre wants to click to: eye level, and clear of the sofa. */
-  const centreSnaps = (): number[] => [EYE_LEVEL_CM, ...(showSofa ? [sofaSize.height + 20 + box.h / 2] : [])];
+  const tallestUnderWall = furniture.reduce((tallest, item) => Math.max(tallest, item.height), 0);
+  const centreSnaps = (): number[] => [EYE_LEVEL_CM, ...(tallestUnderWall ? [tallestUnderWall + SOFA_CLEARANCE + box.h / 2] : [])];
 
   const moveCentreTo = (wanted: number, snapping: boolean) => {
     // Floor is a hard stop; the ceiling only when one has been given. With
@@ -500,6 +530,28 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
 
   const onWallPointerMove = (event: React.PointerEvent) => {
     const wall = wallRef.current;
+    const slide = furnitureDragRef.current;
+    if (slide && wall) {
+      const scale = wall.getBoundingClientRect().width / drawWidth;
+      const item = furniture.find(entry => entry.id === slide.id);
+      if (!item) return;
+      // Pieces do not overlap: slid into a neighbour, a piece stops beside it,
+      // on whichever side the pointer is nearer. If there is no room even
+      // there, it stays where it was.
+      const FURNITURE_GAP = 10;
+      const others = furniture.filter(entry => entry.id !== item.id);
+      const clash = (left: number) => others.some(other => left < other.x + other.width + FURNITURE_GAP && left + item.width + FURNITURE_GAP > other.x);
+      const clampToWall = (left: number) => Math.max(0, Math.min(drawWidth - item.width, left));
+      let x = clampToWall(slide.startItemX + (event.clientX - slide.startX) / scale);
+      for (const other of others) {
+        if (!(x < other.x + other.width + FURNITURE_GAP && x + item.width + FURNITURE_GAP > other.x)) continue;
+        x = x + item.width / 2 < other.x + other.width / 2 ? other.x - FURNITURE_GAP - item.width : other.x + other.width + FURNITURE_GAP;
+      }
+      x = clampToWall(x);
+      if (clash(x)) return;
+      setFurniture(current => current.map(entry => (entry.id === slide.id ? { ...entry, x: Math.round(x) } : entry)));
+      return;
+    }
     const group = groupDragRef.current;
     if (group && wall) {
       const scale = wall.getBoundingClientRect().width / drawWidth;
@@ -549,6 +601,11 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
   };
 
   const onWallPointerUp = () => {
+    if (furnitureDragRef.current) {
+      furnitureDragRef.current = null;
+      setSlidingFurniture(null);
+      return;
+    }
     // Letting go may grow the drawing to hold the group: that is a zoom.
     const growsDrawing = safeWallHeight === undefined && Math.ceil(committedTop + 20) > drawHeight;
     if (pressRef.current) {
@@ -869,7 +926,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
             slightly deeper tone: what is beyond your wall, not less of it.
             Container-query units give the wall its size with no measuring. */}
         <div
-          className={`relative flex w-full items-end justify-center overflow-hidden rounded-b border border-neutral-300 bg-[#ebeae6] ${expanded ? 'min-h-0 flex-1' : ''}`}
+          className={`relative flex w-full items-end justify-center overflow-hidden rounded-b border border-neutral-300 ${view === 'room' ? 'bg-white' : 'bg-[#ebeae6]'} ${expanded ? 'min-h-0 flex-1' : ''}`}
           // Docked, the frame leaves room for the toolbar above and the page
           // around it; expanded, it takes whatever the screen has.
           style={{ height: expanded ? undefined : 'min(68vh, 75vw)', minHeight: expanded ? undefined : '300px', containerType: 'size' }}
@@ -887,7 +944,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
                 eyeLevel: EYE_LEVEL_CM,
                 floorDepth: Math.max(120, Math.min(camera.distance * 0.85, 400)),
                 prints: placed.map(entry => ({ left: entry.left, topFromFloor: entry.topFromFloor, w: entry.rect.w, h: entry.rect.h })),
-                sofa: showSofa ? { width: sofaSize.width, height: sofaSize.height, depth: 90 } : null,
+                furniture: furniture.map(({ kind, x, z, width, height, depth }) => ({ kind, x, z, width, height, depth })),
               }}
             />
             {/* The camera: turn by dragging the picture, or by these. */}
@@ -933,6 +990,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
             if (target.closest('[role="toolbar"]')) return;
             if (selected && target.closest(`[data-print-id="${selected}"]`)) return;
             setSelected(null);
+            setSelectedFurniture(null);
           }}
           className={`gw-wall relative h-full select-none border-x border-neutral-400 bg-[#f7f6f3] ${view === 'room' ? 'hidden' : ''}`}
           style={{
@@ -943,27 +1001,27 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
         >
           {/* floor and ceiling */}
           <div className="pointer-events-none absolute inset-x-0 bottom-0 border-t border-neutral-400" />
-          {/* The sofa is part of the drawing, so its controls sit on the floor
-              beside where it stands: a switch for whether it is there, and its
-              name, which opens its measurements. */}
+          {/* Furniture is part of the drawing, so its control sits on the floor
+              where it stands: a menu of pieces at real sizes. Each piece slides
+              along the floor by hand; tap one for its bin. */}
           <div className="absolute bottom-2 left-2 z-20 flex items-center gap-2" onPointerDown={event => event.stopPropagation()}>
-            <div className="inline-flex h-8 items-center gap-2 rounded-md border border-neutral-300 bg-white/90 pl-2 text-[11px] text-neutral-700">
-              <Switch checked={showSofa} onCheckedChange={setShowSofa} aria-label={aria.sofaSwitch} className="data-[state=checked]:bg-neutral-900 data-[state=unchecked]:bg-neutral-300" />
-              <Popover open={sofaOpen} onOpenChange={setSofaOpen}>
-                <PopoverTrigger asChild>
-                  <button type="button" className="flex h-full items-center gap-1 border-l border-neutral-200 pl-2 pr-2 tabular-nums outline-none transition-colors hover:text-neutral-900 focus-visible:text-neutral-900">
-                    Sofa <span className="text-neutral-400">{sofaSize.width} × {sofaSize.height}</span>
-                    <ChevronDown aria-hidden="true" className={`size-3 text-neutral-400 transition-transform ${sofaOpen ? 'rotate-180' : ''}`} />
-                  </button>
-                </PopoverTrigger>
-                <PopoverContent side="top" align="start" sideOffset={8} className="w-auto p-3" onPointerDown={event => event.stopPropagation()}>
-                  <div className="flex items-end gap-3">
-                    {numberField('sofa-w', 'Sofa width', sofaWidthInput, setSofaWidthInput, 'Arm to arm.', '', { min: 60, max: 400, step: 1 }, { min: 120, max: 320, step: 1 })}
-                    {numberField('sofa-h', 'Sofa height', sofaHeightInput, setSofaHeightInput, 'Floor to the top of the back.', '', { min: 40, max: 150, step: 1 }, { min: 60, max: 110, step: 1 })}
-                  </div>
-                </PopoverContent>
-              </Popover>
-            </div>
+            <Popover open={furnitureMenuOpen} onOpenChange={setFurnitureMenuOpen}>
+              <PopoverTrigger asChild>
+                <button type="button" className="inline-flex h-8 items-center gap-1.5 rounded-md border border-neutral-300 bg-white/90 px-2 text-[11px] text-neutral-700 outline-none transition-colors hover:border-neutral-900 hover:text-neutral-900 focus-visible:border-neutral-900">
+                  <Plus aria-hidden="true" className="size-3.5" /> Furniture
+                </button>
+              </PopoverTrigger>
+              <PopoverContent side="top" align="start" sideOffset={8} className="w-auto p-2" onPointerDown={event => event.stopPropagation()}>
+                <div className="flex flex-col">
+                  {FURNITURE_PRESETS.map(preset => (
+                    <button key={preset.kind} type="button" onClick={() => addFurniture(preset.kind)} className="flex items-baseline justify-between gap-6 rounded px-2 py-1.5 text-left text-sm text-neutral-800 outline-none transition-colors hover:bg-neutral-100 focus-visible:bg-neutral-100">
+                      {preset.label}
+                      <span className="text-xs tabular-nums text-neutral-500">{preset.width} × {preset.height} cm</span>
+                    </button>
+                  ))}
+                </div>
+              </PopoverContent>
+            </Popover>
             {/* The measurements can be put away, leaving the wall and the prints. */}
             <label className="inline-flex h-8 cursor-pointer items-center gap-2 rounded-md border border-neutral-300 bg-white/90 px-2 text-[11px] text-neutral-700">
               <Switch checked={showLines} onCheckedChange={setShowLines} aria-label={aria.linesSwitch} className="data-[state=checked]:bg-neutral-900 data-[state=unchecked]:bg-neutral-300" />
@@ -979,25 +1037,78 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
             </span>
           )}
 
-          {/* sofa */}
-          {showSofa && (
-            <svg
-              aria-hidden="true"
-              viewBox="0 0 200 85"
-              preserveAspectRatio="none"
-              className="pointer-events-none absolute bottom-0 text-neutral-400/80"
-              style={{ left: x((drawWidth - sofaSize.width) / 2), width: w(sofaSize.width), height: h(sofaSize.height), transition, animation: 'gw-print-in 260ms both' }}
-            >
-              <g fill="currentColor" fillOpacity="0.07" stroke="currentColor" strokeWidth="1" vectorEffect="non-scaling-stroke">
-                <rect x="24" y="12" width="152" height="40" rx="8" />
-                <rect x="4" y="34" width="22" height="42" rx="7" />
-                <rect x="174" y="34" width="22" height="42" rx="7" />
-                <rect x="14" y="50" width="172" height="26" rx="4" />
-                <path d="M100 12 v40" strokeOpacity="0.5" />
-                <path d="M22 76 v9 M178 76 v9" />
-              </g>
-            </svg>
-          )}
+          {/* furniture on the floor: outlines at real size, sliding along the wall by hand */}
+          {furniture.map(item => {
+            const isSelected = selectedFurniture === item.id;
+            const shade = Math.min(item.width, 40);
+            return (
+              <div
+                key={item.id}
+                role="button"
+                tabIndex={0}
+                aria-label={`${item.label}, ${item.width} by ${item.height} cm, ${Math.round(item.x)} cm from the left. Drag to move along the wall.`}
+                onPointerDown={event => {
+                  if (event.button !== 0) return;
+                  event.stopPropagation();
+                  event.preventDefault();
+                  setSelected(null);
+                  setSelectedFurniture(item.id);
+                  furnitureDragRef.current = { id: item.id, startX: event.clientX, startItemX: item.x };
+                  setSlidingFurniture(item.id);
+                  wallRef.current?.setPointerCapture(event.pointerId);
+                }}
+                onKeyDown={event => {
+                  const step = event.shiftKey ? 10 : 1;
+                  const dx = event.key === 'ArrowLeft' ? -step : event.key === 'ArrowRight' ? step : 0;
+                  if (dx) { event.preventDefault(); setFurniture(current => current.map(entry => (entry.id === item.id ? { ...entry, x: Math.max(0, Math.min(drawWidth - entry.width, entry.x + dx)) } : entry))); }
+                  if (event.key === 'Delete' || event.key === 'Backspace') { event.preventDefault(); removeFurniture(item.id); }
+                }}
+                className={`absolute bottom-0 cursor-ew-resize text-neutral-400/80 outline-none focus-visible:text-neutral-700 ${isSelected ? 'text-neutral-600' : ''}`}
+                style={{ left: x(item.x), width: w(item.width), height: h(item.height), transition: slidingFurniture === item.id ? 'none' : transition, touchAction: 'none' }}
+              >
+                {item.kind === 'sofa' && (
+                  <svg aria-hidden="true" viewBox="0 0 200 85" preserveAspectRatio="none" className="h-full w-full">
+                    <g fill="currentColor" fillOpacity="0.07" stroke="currentColor" strokeWidth="1" vectorEffect="non-scaling-stroke">
+                      <rect x="24" y="12" width="152" height="40" rx="8" />
+                      <rect x="4" y="34" width="22" height="42" rx="7" />
+                      <rect x="174" y="34" width="22" height="42" rx="7" />
+                      <rect x="14" y="50" width="172" height="26" rx="4" />
+                      <path d="M100 12 v40" strokeOpacity="0.5" />
+                      <path d="M22 76 v9 M178 76 v9" />
+                    </g>
+                  </svg>
+                )}
+                {item.kind === 'sideboard' && (
+                  <svg aria-hidden="true" viewBox="0 0 152 74" preserveAspectRatio="none" className="h-full w-full">
+                    <g fill="currentColor" fillOpacity="0.07" stroke="currentColor" strokeWidth="1" vectorEffect="non-scaling-stroke">
+                      <rect x="1" y="1" width="150" height="66" />
+                      <path d="M76 1 v66 M1 34 h150 M8 67 v6 M144 67 v6" />
+                    </g>
+                  </svg>
+                )}
+                {item.kind === 'floor-lamp' && (
+                  <svg aria-hidden="true" viewBox={`0 0 ${item.width} ${item.height}`} preserveAspectRatio="none" className="h-full w-full">
+                    <g fill="currentColor" fillOpacity="0.07" stroke="currentColor" strokeWidth="1" vectorEffect="non-scaling-stroke">
+                      <rect x={(item.width - shade) / 2} y="0" width={shade} height={shade} />
+                      <path d={`M${item.width / 2} ${shade} V${item.height} M${item.width / 2 - 10} ${item.height} h20`} />
+                    </g>
+                  </svg>
+                )}
+                {isSelected && (
+                  <button
+                    type="button"
+                    aria-label={aria.removeFurniture}
+                    title={aria.removeFurniture}
+                    onPointerDown={event => event.stopPropagation()}
+                    onClick={() => removeFurniture(item.id)}
+                    className="absolute -top-9 left-1/2 flex size-8 -translate-x-1/2 items-center justify-center rounded-md border border-neutral-200 bg-white text-neutral-700 shadow-md transition-colors hover:text-destructive"
+                  >
+                    <Trash2 aria-hidden="true" className="size-4" />
+                  </button>
+                )}
+              </div>
+            );
+          })}
 
           {/* smart guides: the lines the held print has clicked to */}
           {drag && !drag.settle && drag.guides.xs.map(gx => (
