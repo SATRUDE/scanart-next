@@ -1,3 +1,4 @@
+import { feedAdditionalImages } from '@/lib/feed-images';
 import { getAllProducts } from '@/lib/products';
 import { getLowestProductPrices } from '@/lib/pricing';
 import { BASE_URL } from '@/lib/site';
@@ -26,12 +27,19 @@ export async function GET() {
     .map(p => {
       const price = getLowestProductPrices(p).GBP;
       if (!price) return null;
+      // g:image_link is the artwork on white, which is what Google asks a main
+      // product image to be. The room scene goes in as an additional image,
+      // which is what its guidance asks for and the picture that actually earns
+      // our image-search impressions.
+      const additionalImages = feedAdditionalImages(p)
+        .map(url => `\n      <g:additional_image_link>${esc(url)}</g:additional_image_link>`)
+        .join('');
       return `    <item>
       <g:id>${esc(p.slug)}</g:id>
       <g:title>${esc(`${p.name} by ${p.artist || p.brand}, Scandinavian Art Print`)}</g:title>
       <g:description>${esc(p.description || `${p.name} by ${p.artist || p.brand}.`)}</g:description>
       <g:link>${BASE_URL}/product/${esc(p.slug)}</g:link>
-      <g:image_link>${BASE_URL}${esc(p.image)}</g:image_link>
+      <g:image_link>${BASE_URL}${esc(p.image)}</g:image_link>${additionalImages}
       <g:price>${price.toFixed(2)} GBP</g:price>
       <g:availability>${p.inStock ? 'in_stock' : 'out_of_stock'}</g:availability>
       <g:condition>new</g:condition>
