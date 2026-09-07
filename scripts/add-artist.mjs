@@ -49,6 +49,17 @@ const TEMPLATE = path.join(ROOT, 'scripts', 'assets', 'frame-template.png');
 // the Figma group: artwork layer at (110.72, 112.57), 774.59 x 1106.30, in a
 // 996 x 1332 frame. The frame is a 5:7 portrait, the shop's 50 x 70 cm format.
 const ART_BOX = { left: 111, top: 113, width: 775, height: 1106 };
+// The oak frame's outer edge in the template, measured: x 92..902, so 811 px
+// wide in a 996 px canvas. The template itself is tight around the frame.
+const TEMPLATE_FRAME_WIDTH = 811;
+// How the finished shot sits on its canvas. Measured off the catalogue's
+// existing shots (hummer-og-vin, dancer, vinkveld: all 820 x 1024 with the
+// frame 481 px wide, centred), so a new print reads at the same size in the
+// grid as its neighbours. The first Hedvig Wallin shots used the template at
+// its own tight crop and looked a third larger than every print around them.
+// The canvas is 4:5 like theirs, at twice the pixels for sharper artwork.
+const CANVAS = { width: 1640, height: 2048, background: '#f3f3f3' };
+const FRAME_FRACTION = 481 / 820;
 const AVATAR_SIZE = 1100;
 const CATEGORIES = new Set(['Abstract', 'Botanical', 'Illustrations']);
 const SNIPPET_MAX = 155; // lib/meta-snippet.ts: the first sentence is the meta description
@@ -147,8 +158,27 @@ async function buildProductShot(artworkBuffer, outputPath) {
     .resize(ART_BOX.width, ART_BOX.height, { fit, background: '#ffffff', kernel: 'lanczos3' })
     .png()
     .toBuffer();
-  await sharp(TEMPLATE)
+  const framed = await sharp(TEMPLATE)
     .composite([{ input: art, left: ART_BOX.left, top: ART_BOX.top }])
+    .png()
+    .toBuffer();
+  // Scale the framed print so the frame takes the same share of the canvas as
+  // the rest of the catalogue, then centre it on the 4:5 canvas.
+  const scale = (CANVAS.width * FRAME_FRACTION) / TEMPLATE_FRAME_WIDTH;
+  const templateMeta = await sharp(TEMPLATE).metadata();
+  const scaledWidth = Math.round(templateMeta.width * scale);
+  const scaledHeight = Math.round(templateMeta.height * scale);
+  const left = Math.round((CANVAS.width - scaledWidth) / 2);
+  const top = Math.round((CANVAS.height - scaledHeight) / 2);
+  await sharp(framed)
+    .resize(scaledWidth, scaledHeight, { kernel: 'lanczos3' })
+    .extend({
+      top,
+      bottom: CANVAS.height - scaledHeight - top,
+      left,
+      right: CANVAS.width - scaledWidth - left,
+      background: CANVAS.background,
+    })
     .png({ compressionLevel: 9 })
     .toFile(outputPath);
 }
