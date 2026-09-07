@@ -12,6 +12,12 @@ import crypto from 'node:crypto';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { neon } from '@neondatabase/serverless';
+// The converter moved to lib/markdown-blocks.ts (2026-09) so the socialagent
+// preview route can also convert a draft's body, at request time, with the
+// exact same output. This script stays plain-`node`-runnable, so it reaches
+// that TypeScript module through a small transpile-on-the-fly shim rather
+// than importing the .ts file directly — see the shim for why.
+import { markdownToBlocks } from './markdown-blocks-shim.mjs';
 
 const url = process.env.ARTICLES_DATABASE_URL ?? process.env.DATABASE_URL;
 if (!url) {
@@ -25,75 +31,6 @@ if (!url) {
 
 const sql = neon(url);
 const OUT_DIR = path.join(process.cwd(), 'public', 'notion-data');
-
-// --- markdown -> Notion-shaped blocks -------------------------------------
-
-function segment(content, opts = {}) {
-  return {
-    type: 'text',
-    plain_text: content,
-    href: opts.href ?? null,
-    text: { content, link: opts.href ? { url: opts.href } : null },
-    annotations: {
-      bold: Boolean(opts.bold),
-      italic: Boolean(opts.italic),
-      code: Boolean(opts.code),
-      strikethrough: false,
-      underline: false,
-    },
-  };
-}
-
-const INLINE = /\[([^\]]+)\]\(([^)]+)\)|\*\*([^*]+)\*\*|\*([^*]+)\*|`([^`]+)`/g;
-
-// Inline markdown -> rich-text segments. Link text gets a nested pass so
-// [**bold**](url) keeps both the link and the bold.
-function inlineToSegments(text, inherited = {}) {
-  const segments = [];
-  let last = 0;
-  for (const m of text.matchAll(INLINE)) {
-    if (m.index > last) segments.push(segment(text.slice(last, m.index), inherited));
-    if (m[1] !== undefined) {
-      segments.push(...inlineToSegments(m[1], { ...inherited, href: m[2] }));
-    } else if (m[3] !== undefined) {
-      segments.push(segment(m[3], { ...inherited, bold: true }));
-    } else if (m[4] !== undefined) {
-      segments.push(segment(m[4], { ...inherited, italic: true }));
-    } else {
-      segments.push(segment(m[5], { ...inherited, code: true }));
-    }
-    last = m.index + m[0].length;
-  }
-  if (last < text.length) segments.push(segment(text.slice(last), inherited));
-  return segments.filter((s) => s.plain_text.length > 0);
-}
-
-function markdownToBlocks(markdown) {
-  const blocks = [];
-  let n = 0;
-  const push = (type, text) => {
-    blocks.push({
-      object: 'block',
-      id: `md-${++n}`,
-      type,
-      has_children: false,
-      [type]: type === 'divider' ? {} : { rich_text: inlineToSegments(text) },
-    });
-  };
-  for (const raw of (markdown ?? '').split(/\n/)) {
-    const line = raw.trimEnd();
-    if (!line.trim()) continue;
-    if (line.startsWith('### ')) push('heading_3', line.slice(4));
-    else if (line.startsWith('## ')) push('heading_2', line.slice(3));
-    else if (line.startsWith('# ')) push('heading_1', line.slice(2));
-    else if (line.startsWith('- ')) push('bulleted_list_item', line.slice(2));
-    else if (/^\d+\. /.test(line)) push('numbered_list_item', line.replace(/^\d+\. /, ''));
-    else if (line.startsWith('> ')) push('quote', line.slice(2));
-    else if (line === '---') push('divider', '');
-    else push('paragraph', line);
-  }
-  return blocks;
-}
 
 // --- sync ------------------------------------------------------------------
 
