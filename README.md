@@ -34,3 +34,24 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Adding an artist
+
+One command takes a new artist from their files to the catalogue:
+
+```bash
+npm run add-artist -- scripts/artists/<slug>.json
+```
+
+The manifest holds the artist (id, name, slug, location, bio, photo, and the
+Norwegian and editorial copy) and their prints (print file, category, sizes,
+price category, descriptions). `scripts/artists/hedvig-wallin.json` is the
+worked example. The script renders each print into the framed product shot,
+crops the avatar, and appends the artist and prints to `data/artists.ts`,
+`public/notion-data/products.json`, `lib/i18n/no.ts` and
+`lib/artist-editorial.ts`. It is safe to re-run. PDF input needs poppler
+(`brew install poppler`).
+
+It finishes by listing what still needs a person: the room scene for each
+print (required by the Merchant Center feed) and the landing-page sentences
+that count the artists.

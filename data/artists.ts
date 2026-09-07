@@ -40,6 +40,14 @@ export const artists: Artist[] = [
     bio: 'Sia Siamos is a half Greek, half Norwegian illustrator living in Bergen, with a soft spot for still life, food and everyday moments. She came to illustration from graphic design, drawn to the quiet details that say the most, and works digital or analogue as the subject asks.',
     image: '/images/artists/sia-siamos.png'
   },
+  {
+    id: '6',
+    name: 'Hedvig Wallin',
+    slug: 'hedvig-wallin',
+    location: 'Gothenburg, Sweden',
+    bio: 'Hedvig Wallin is an illustrator and graphic designer from Gothenburg, Sweden, who began illustrating children’s books at eighteen and still does, alongside editorial work, murals, logos, labels and posters. She draws on naive art for its childlike simplicity, mixing ink, pencil, soft pastel, watercolour and digital media into playful, detail-rich images with a wonky perspective, where something new turns up each time you look.',
+    image: '/images/artists/hedvig-wallin.png'
+  },
 ];
 
 export const getArtistById = (id: string) => {

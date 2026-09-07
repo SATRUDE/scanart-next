@@ -1,0 +1,101 @@
+{
+  "$comment": "Worked example for scripts/add-artist.mjs (npm run add-artist -- scripts/artists/hedvig-wallin.json). Input files are local to the machine that ran it, the WeTransfer of 3 Sep 2026; the copy here is the record.",
+  "artist": {
+    "id": "6",
+    "name": "Hedvig Wallin",
+    "slug": "hedvig-wallin",
+    "location": "Gothenburg, Sweden",
+    "locationNo": "Göteborg, Sverige",
+    "bio": "Hedvig Wallin is an illustrator and graphic designer from Gothenburg, Sweden, who began illustrating children’s books at eighteen and still does, alongside editorial work, murals, logos, labels and posters. She draws on naive art for its childlike simplicity, mixing ink, pencil, soft pastel, watercolour and digital media into playful, detail-rich images with a wonky perspective, where something new turns up each time you look.",
+    "bioNo": "Hedvig Wallin er illustratør og grafisk designer fra Göteborg i Sverige. Hun begynte å illustrere barnebøker som attenåring og gjør det fortsatt, ved siden av redaksjonell illustrasjon, veggmalerier, logoer, etiketter og plakater. Hun henter mye av inspirasjonen fra naivistisk kunst og dens barnlige enkelhet, og blander tusj, blyant, mykpastell, akvarell og digitale verktøy til lekne, detaljrike bilder med et skjevt perspektiv, der nye detaljer dukker opp hver gang du ser.",
+    "photo": "~/Downloads/wetransfer_hedvig-wallin-posters_2026-09-03_2047/hedvigwallin_kvadrat.jpg",
+    "editorial": {
+      "heading": "Look again, and again",
+      "para1": "Hedvig Wallin, an illustrator and graphic designer from Gothenburg, is the first Swedish artist in the gallery, and her four prints share a habit borrowed from naive art: keep the drawing simple, let the perspective go wonky, and pack in detail for the second look. Sunday Brunch lays a breakfast table in pastel, seen from above against green kitchen tiles. Rosa Blomster fills a vase with pinks and reds. Massa Äpplen lines up rows of small watercolour apples, no two alike. Small House Big Ocean drops the colour altogether: one house, one rock, and a sea drawn wave by wave in black ink.",
+      "para2": "Wallin belongs in the rooms people actually use. [Sunday Brunch](/product/sunday-brunch) and Massa Äpplen were made for a kitchen or dining wall, where they keep company with Sia Siamos's table scenes among our [botanical prints](/category/botanical). Rosa Blomster is soft enough for a bedroom. Small House Big Ocean is the quiet one, a line drawing that suits a child's room as well as a living room and hangs well next to anything with colour in it. All four are 50 x 70 cm, sold framed in wood, black or white, or unframed."
+    },
+    "editorialNo": {
+      "heading": "Se igjen, og igjen",
+      "para1": "Hedvig Wallin, illustratør og grafisk designer fra Göteborg, er den første svenske kunstneren i galleriet, og de fire trykkene hennes deler en vane lånt fra naivistisk kunst: hold tegningen enkel, la perspektivet bli skjevt, og fyll på med detaljer til det andre blikket. Sunday Brunch dekker et frokostbord i pastell, sett ovenfra mot grønne kjøkkenfliser. Rosa Blomster fyller en vase med rosa og rødt. Massa Äpplen stiller opp rekke på rekke med små akvarellepler, ikke to like. Small House Big Ocean dropper fargen helt: ett hus, én klippe, og et hav tegnet bølge for bølge i svart tusj.",
+      "para2": "Wallin hører hjemme i rommene folk faktisk bruker. [Sunday Brunch](/product/sunday-brunch) og Massa Äpplen er laget for en kjøkken- eller spisestuevegg, der de holder Sia Siamos’ bordscener med selskap blant de [botaniske trykkene](/no/category/botanical) våre. Rosa Blomster er myk nok for et soverom. Small House Big Ocean er det stille bildet, en strektegning som passer like godt på et barnerom som i en stue, og som henger fint ved siden av alt som har farge i seg. Alle fire er 50 x 70 cm, og selges med ramme i tre, svart eller hvit, eller uten ramme."
+    }
+  },
+  "prints": [
+    {
+      "name": "Sunday Brunch",
+      "slug": "sunday-brunch",
+      "file": "~/Downloads/wetransfer_hedvig-wallin-posters_2026-09-03_2047/HedvigWallin_poster_SundayBrunch_50x70.pdf",
+      "category": "Botanical",
+      "sizes": [
+        "50x70cm"
+      ],
+      "priceCategory": "Premium",
+      "description": "Sunday Brunch by Hedvig Wallin lays a breakfast table in pastel: yoghurt with berries, croissants, cucumber sandwiches and a cup of coffee on a blue cloth. Seen from above, the table curves against green kitchen tiles and a pink wall, with a jar of jam, a halved grapefruit and a bunch of cut flowers crowding the edges. Drawn in ink and watercolour with a deliberately wonky perspective, it has the loose, handmade warmth of a morning nobody is rushing, and the more you look, the more turns up on the table.",
+      "descriptionNo": "Sunday Brunch av Hedvig Wallin dekker et frokostbord i pastell: yoghurt med bær, croissanter, agurksmørbrød og en kopp kaffe på en blå duk. Sett ovenfra buer bordet seg mot grønne kjøkkenfliser og en rosa vegg, med et syltetøyglass, en delt grapefrukt og en bukett snittblomster som trenger seg på i kantene. Tegnet i tusj og akvarell med et bevisst skjevt perspektiv har det den løse, håndlagde varmen fra en morgen ingen har det travelt, og jo lenger du ser, jo mer dukker opp på bordet.",
+      "buyerDescriptionNo": "Et frokostbord i pastell sett ovenfra, med croissanter, bær og kaffe. Kjøp Sunday Brunch innrammet i tre, svart eller hvit, eller uten ramme.",
+      "recommended": [
+        "Rosa Blomster",
+        "Massa Äpplen",
+        "Small House Big Ocean",
+        "Morgenlevering"
+      ]
+    },
+    {
+      "name": "Rosa Blomster",
+      "slug": "rosa-blomster",
+      "file": "~/Downloads/wetransfer_hedvig-wallin-posters_2026-09-03_2047/HedvigWallin_poster_Rosa_blomster_50x70.pdf",
+      "category": "Botanical",
+      "sizes": [
+        "50x70cm"
+      ],
+      "priceCategory": "Premium",
+      "description": "Rosa Blomster by Hedvig Wallin fills a glass vase with a bouquet in pinks and reds, set against a wall of soft pink tiles. The title is Swedish for pink flowers, and that is the whole idea: dahlias, buds and striped leaves drawn in ink over watercolour, every petal its own careful shape, with the stems showing through the water. It is a simple way to bring real colour into a room, and it sits as happily in a bedroom as it does in a kitchen.",
+      "descriptionNo": "Rosa Blomster av Hedvig Wallin fyller en glassvase med en bukett i rosa og rødt, satt mot en vegg av myke rosa fliser. Tittelen er svensk for rosa blomster, og det er hele ideen: georginer, knopper og stripete blader tegnet i tusj over akvarell, hvert kronblad sin egen omhyggelige form, med stilkene synlige gjennom vannet. Det er en enkel måte å få ordentlig farge inn i et rom, og bildet trives like godt på et soverom som på et kjøkken.",
+      "buyerDescriptionNo": "En bukett i rosa og rødt i en glassvase, mot myke rosa fliser. Kjøp Rosa Blomster innrammet i tre, svart eller hvit, eller uten ramme.",
+      "recommended": [
+        "Sunday Brunch",
+        "Massa Äpplen",
+        "Small House Big Ocean",
+        "Trysilkaffe"
+      ]
+    },
+    {
+      "name": "Massa Äpplen",
+      "slug": "massa-applen",
+      "file": "~/Downloads/wetransfer_hedvig-wallin-posters_2026-09-03_2047/HedvigWallin_Massa_applen_poster_50x70.pdf",
+      "category": "Botanical",
+      "sizes": [
+        "50x70cm"
+      ],
+      "priceCategory": "Premium",
+      "description": "Massa Äpplen by Hedvig Wallin lines up row upon row of small watercolour apples in reds, greens and everything between, each finished with a stroke of ink. The title is Swedish for lots of apples, and the pleasure is in the repetition: no two are the same shape or colour, so a grid that reads as pattern from across the room becomes a hundred little portraits up close. Made for a kitchen or dining wall, where it hangs like a well-stocked fruit bowl.",
+      "descriptionNo": "Massa Äpplen av Hedvig Wallin stiller opp rekke på rekke med små akvarellepler i rødt, grønt og alt imellom, hvert av dem avsluttet med et tusjstrøk. Tittelen er svensk for masse epler, og gleden ligger i gjentakelsen: ikke to har samme form eller farge, så et rutenett som leses som mønster fra den andre siden av rommet, blir hundre små portretter på nært hold. Laget for en kjøkken- eller spisestuevegg, der det henger som en velfylt fruktskål.",
+      "buyerDescriptionNo": "Rekke på rekke med små akvarellepler, ikke to like. Kjøp Massa Äpplen innrammet i tre, svart eller hvit, eller uten ramme.",
+      "recommended": [
+        "Sunday Brunch",
+        "Rosa Blomster",
+        "Small House Big Ocean",
+        "Hyttefrokost"
+      ]
+    },
+    {
+      "name": "Small House Big Ocean",
+      "slug": "small-house-big-ocean",
+      "file": "~/Downloads/wetransfer_hedvig-wallin-posters_2026-09-03_2047/HedvigWallin_posters_smallhousebigocean_50x70.pdf",
+      "category": "Illustrations",
+      "sizes": [
+        "50x70cm"
+      ],
+      "priceCategory": "Premium",
+      "description": "Small House Big Ocean by Hedvig Wallin sets a little house on a rock in the middle of a sea of rolling waves, drawn entirely in black ink line. Every wave is built from patient parallel strokes, so a stormy subject ends up oddly calm, and the eye keeps returning to the one door and its handful of windows. It is a line drawing that suits a child’s room as well as a living room, and it hangs well beside anything with colour in it.",
+      "descriptionNo": "Small House Big Ocean av Hedvig Wallin setter et lite hus på en klippe midt i et hav av rullende bølger, tegnet utelukkende i svart tusjstrek. Hver bølge er bygget av tålmodige parallelle streker, så et stormfullt motiv ender opp underlig rolig, og blikket vender stadig tilbake til den ene døren og den håndfullen vinduer. Det er en strektegning som passer like godt på et barnerom som i en stue, og som henger fint ved siden av alt som har farge i seg.",
+      "buyerDescriptionNo": "Et lite hus på en klippe i et hav av tusjtegnede bølger. Kjøp Small House Big Ocean innrammet i tre, svart eller hvit, eller uten ramme.",
+      "recommended": [
+        "Sunday Brunch",
+        "Rosa Blomster",
+        "Massa Äpplen",
+        "Eltsjoen"
+      ]
+    }
+  ]
+}

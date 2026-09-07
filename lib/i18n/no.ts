@@ -817,6 +817,10 @@ export const no = {
       location: 'Bergen, Norge',
       bio: 'Sia Siamos er en halvt gresk, halvt norsk illustratør bosatt i Bergen, med sansen for stilleben, mat og hverdagsøyeblikk. Hun kom til illustrasjonen fra grafisk design, tiltrukket av de stille detaljene som sier mest, og arbeider digitalt eller analogt alt etter hva motivet ber om.',
     },
+    'hedvig-wallin': {
+      location: 'Göteborg, Sverige',
+      bio: 'Hedvig Wallin er illustratør og grafisk designer fra Göteborg i Sverige. Hun begynte å illustrere barnebøker som attenåring og gjør det fortsatt, ved siden av redaksjonell illustrasjon, veggmalerier, logoer, etiketter og plakater. Hun henter mye av inspirasjonen fra naivistisk kunst og dens barnlige enkelhet, og blander tusj, blyant, mykpastell, akvarell og digitale verktøy til lekne, detaljrike bilder med et skjevt perspektiv, der nye detaljer dukker opp hver gang du ser.',
+    },
   } as Record<string, ArtistCopy>,
 
   // Norwegian versions of lib/artist-editorial.ts, keyed by slug. para2 keeps
@@ -854,6 +858,13 @@ export const no = {
         'Athanasia Siamos, kjent som Sia, er en gresk-norsk illustratør bosatt i Bergen, og de fire trykkene hennes er alle varianter av den samme rause ideen: bordet med mennesker rundt. De er malt løst og djervt, og hvert av dem bærer en norsk tittel som sier nøyaktig hva det rommer. Hummer og Vin ser ned på en hummermiddag midt i skålen; Morgenlevering er et frokostbord som nettopp har kommet på plass; Hyttefrokost har roen fra en hytteferie; Vinkveld, det mest stemningsfulle av de fire, er en vinkveld der korken allerede er på avveie.',
       para2:
         'Siamos hører hjemme der maten skjer. En kjøkken- eller spisestuevegg er det opplagte hjemmet, spesielt for [Vinkveld](/product/vinkveld), men Morgenlevering er lys nok til å løfte en gang eller et soverom som fanger morgensolen. De fire scenene er malt som søsken, så et par fungerer nydelig: frokost på én vegg, vin på den andre, som dagens to ender. De ligger i den varmeste enden av de [botaniske trykkene](/no/category/botanical) våre, fulle av tomater, druer og snittblomster snarere enn blader og grener.',
+    },
+    'hedvig-wallin': {
+      heading: 'Se igjen, og igjen',
+      para1:
+        'Hedvig Wallin, illustratør og grafisk designer fra Göteborg, er den første svenske kunstneren i galleriet, og de fire trykkene hennes deler en vane lånt fra naivistisk kunst: hold tegningen enkel, la perspektivet bli skjevt, og fyll på med detaljer til det andre blikket. Sunday Brunch dekker et frokostbord i pastell, sett ovenfra mot grønne kjøkkenfliser. Rosa Blomster fyller en vase med rosa og rødt. Massa Äpplen stiller opp rekke på rekke med små akvarellepler, ikke to like. Small House Big Ocean dropper fargen helt: ett hus, én klippe, og et hav tegnet bølge for bølge i svart tusj.',
+      para2:
+        'Wallin hører hjemme i rommene folk faktisk bruker. [Sunday Brunch](/product/sunday-brunch) og Massa Äpplen er laget for en kjøkken- eller spisestuevegg, der de holder Sia Siamos’ bordscener med selskap blant de [botaniske trykkene](/no/category/botanical) våre. Rosa Blomster er myk nok for et soverom. Small House Big Ocean er det stille bildet, en strektegning som passer like godt på et barnerom som i en stue, og som henger fint ved siden av alt som har farge i seg. Alle fire er 50 x 70 cm, og selges med ramme i tre, svart eller hvit, eller uten ramme.',
     },
   } as Record<string, ArtistEditorialCopy>,
   inspire: {
@@ -1002,12 +1013,12 @@ export const no = {
   wallArt: {
     title: 'Kjøp skandinaviske kunsttrykk | Innrammede nordiske trykk',
     description:
-      'Kjøp skandinaviske kunsttrykk av fire uavhengige norske kunstnere. Seksten nordiske trykk, hvert med ramme i tre, svart eller hvit, eller uten ramme, laget på bestilling.',
+      'Kjøp skandinaviske kunsttrykk av fem uavhengige norske og svenske kunstnere. Tjue nordiske trykk, hvert med ramme i tre, svart eller hvit, eller uten ramme, laget på bestilling.',
     heading: 'Kjøp skandinaviske kunsttrykk',
     intro:
-      'Denne siden er hele galleriet: seksten skandinaviske kunsttrykk, hvert av dem av en kunstner som lever og arbeider i Norge, og hvert av dem solgt med eller uten ramme. Helene Brox maler nedskrelte, kremhvite figurer i Oslo og skjærer en svale ned til selve stupet av vingene. Ingunn Dybendal tegner folkeblomster og mønstret innsjølandskap i fargeblyant, Sia Siamos fyller bord med hummer, vin og hyttefrokost, og Simen Wahlqvist får plass til en hel vits i en håndfull streker. Fire hender, tre uttrykk, og ikke et fyllbilde blant dem.',
+      'Denne siden er hele galleriet: tjue skandinaviske kunsttrykk, hvert av dem av en kunstner som lever og arbeider i Norge eller Sverige, og hvert av dem solgt med eller uten ramme. Helene Brox maler nedskrelte, kremhvite figurer i Oslo og skjærer en svale ned til selve stupet av vingene. Ingunn Dybendal tegner folkeblomster og mønstret innsjølandskap i fargeblyant, Sia Siamos fyller bord med hummer, vin og hyttefrokost, Simen Wahlqvist får plass til en hel vits i en håndfull streker, og Hedvig Wallin dekker et frokostbord fra Göteborg i tusj og akvarell. Fem hender, fire uttrykk, og ikke et fyllbilde blant dem.',
     intro2:
-      'Å kjøpe skandinaviske kunsttrykk på nett betyr vanligvis å skrolle gjennom et marked med ti tusen plakater som aldri har vært i nærheten av en fjord. Dette er det motsatte. Et lite galleri, fire kunstnere vi jobber direkte med, og hvert trykk laget på bestilling framfor hentet fra et lager. Velg bildet først og rammen etterpå, og klarer du ikke å velge mellom to, er kvadratene til Wahlqvist og fugleparet til Brox laget for å henge sammen.',
+      'Å kjøpe skandinaviske kunsttrykk på nett betyr vanligvis å skrolle gjennom et marked med ti tusen plakater som aldri har vært i nærheten av en fjord. Dette er det motsatte. Et lite galleri, fem kunstnere vi jobber direkte med, og hvert trykk laget på bestilling framfor hentet fra et lager. Velg bildet først og rammen etterpå, og klarer du ikke å velge mellom to, er kvadratene til Wahlqvist og fugleparet til Brox laget for å henge sammen.',
     framedHeading: 'Med eller uten ramme',
     framedBody:
       'Hvert trykk her kommer med valget mellom tre rammer, tre, svart eller hvit, tilpasset trykket. Tre passer de varmere botaniske bildene og rom som allerede har tre i seg; svart skjerper de grafiske abstraktene og illustrasjonene; hvit forsvinner nesten mot en lys skandinavisk vegg og lar fargen snakke. Skal du henge flere sammen? Hold rammen lik gjennom hele gruppen, og veggen leses som én beslutning. Og har du en innrammer du stoler på, selges hvert bilde uten ramme også.',
@@ -1032,7 +1043,7 @@ export const no = {
       {
         question: 'Hvor kan jeg kjøpe skandinaviske kunsttrykk?',
         answer:
-          'Her, fra galleriet selv framfor et markedsplass. Vi jobber direkte med fire uavhengige kunstnere i Oslo og Bergen, og hvert trykk lages på bestilling når du kjøper det: velg størrelse og ramme på produktsiden, og det går i trykk for deg.',
+          'Her, fra galleriet selv framfor et markedsplass. Vi jobber direkte med fem uavhengige kunstnere i Oslo, Bergen og Göteborg, og hvert trykk lages på bestilling når du kjøper det: velg størrelse og ramme på produktsiden, og det går i trykk for deg.',
       },
       {
         question: 'Kan jeg kjøpe trykkene innrammet?',
@@ -1124,6 +1135,30 @@ export const no = {
     vinkveld: {
       description:
         'Vinkveld av Sia Siamos maler en vinkveld i tykke, blanke strøk: et glass rødvin, grønne oliven, mørke druer og kvisttomater mot rutede fliser. En flaske står i forgrunnen med korken allerede på avveie, og det sier deg hvor kvelden er på vei. Penselarbeidet er enig med tittelen, tykkere og mer stemningsfullt enn de andre bordscenene til Siamos, med de rutede flisene som løser seg opp i løse strøk bak. Ett for en kjøkken- eller spisestuevegg.',
+    },
+    'sunday-brunch': {
+      description:
+        'Sunday Brunch av Hedvig Wallin dekker et frokostbord i pastell: yoghurt med bær, croissanter, agurksmørbrød og en kopp kaffe på en blå duk. Sett ovenfra buer bordet seg mot grønne kjøkkenfliser og en rosa vegg, med et syltetøyglass, en delt grapefrukt og en bukett snittblomster som trenger seg på i kantene. Tegnet i tusj og akvarell med et bevisst skjevt perspektiv har det den løse, håndlagde varmen fra en morgen ingen har det travelt, og jo lenger du ser, jo mer dukker opp på bordet.',
+      buyerDescription:
+        'Et frokostbord i pastell sett ovenfra, med croissanter, bær og kaffe. Kjøp Sunday Brunch innrammet i tre, svart eller hvit, eller uten ramme.',
+    },
+    'rosa-blomster': {
+      description:
+        'Rosa Blomster av Hedvig Wallin fyller en glassvase med en bukett i rosa og rødt, satt mot en vegg av myke rosa fliser. Tittelen er svensk for rosa blomster, og det er hele ideen: georginer, knopper og stripete blader tegnet i tusj over akvarell, hvert kronblad sin egen omhyggelige form, med stilkene synlige gjennom vannet. Det er en enkel måte å få ordentlig farge inn i et rom, og bildet trives like godt på et soverom som på et kjøkken.',
+      buyerDescription:
+        'En bukett i rosa og rødt i en glassvase, mot myke rosa fliser. Kjøp Rosa Blomster innrammet i tre, svart eller hvit, eller uten ramme.',
+    },
+    'massa-applen': {
+      description:
+        'Massa Äpplen av Hedvig Wallin stiller opp rekke på rekke med små akvarellepler i rødt, grønt og alt imellom, hvert av dem avsluttet med et tusjstrøk. Tittelen er svensk for masse epler, og gleden ligger i gjentakelsen: ikke to har samme form eller farge, så et rutenett som leses som mønster fra den andre siden av rommet, blir hundre små portretter på nært hold. Laget for en kjøkken- eller spisestuevegg, der det henger som en velfylt fruktskål.',
+      buyerDescription:
+        'Rekke på rekke med små akvarellepler, ikke to like. Kjøp Massa Äpplen innrammet i tre, svart eller hvit, eller uten ramme.',
+    },
+    'small-house-big-ocean': {
+      description:
+        'Small House Big Ocean av Hedvig Wallin setter et lite hus på en klippe midt i et hav av rullende bølger, tegnet utelukkende i svart tusjstrek. Hver bølge er bygget av tålmodige parallelle streker, så et stormfullt motiv ender opp underlig rolig, og blikket vender stadig tilbake til den ene døren og den håndfullen vinduer. Det er en strektegning som passer like godt på et barnerom som i en stue, og som henger fint ved siden av alt som har farge i seg.',
+      buyerDescription:
+        'Et lite hus på en klippe i et hav av tusjtegnede bølger. Kjøp Small House Big Ocean innrammet i tre, svart eller hvit, eller uten ramme.',
     },
   } as Record<string, { description: string; buyerDescription?: string }>,
 
