@@ -42,7 +42,10 @@ import sharp from 'sharp';
 
 const ROOT = process.cwd();
 const TEMPLATE = path.join(ROOT, 'scripts', 'assets', 'frame-template.png');
-// Where the artwork sits inside the template, in template pixels. Taken from
+// Where the artwork sits inside the template, in template pixels. The template
+// is the Figma group cropped to its true 996 x 1331: the export was 997 x 1332
+// and the extra column and row were canvas background, a dark line down the
+// right of every product shot until Mark spotted it. Box position taken from
 // the Figma group: artwork layer at (110.72, 112.57), 774.59 x 1106.30, in a
 // 996 x 1332 frame. The frame is a 5:7 portrait, the shop's 50 x 70 cm format.
 const ART_BOX = { left: 111, top: 113, width: 775, height: 1106 };
