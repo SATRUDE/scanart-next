@@ -965,7 +965,6 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
                 <label key={key} className="flex flex-col gap-1">
                   <span className="flex justify-between gap-3 text-[10px] font-medium uppercase tracking-wide text-neutral-500">{label}<span className="tabular-nums normal-case tracking-normal text-neutral-400">{Math.round(camera[key])}{unit}</span></span>
                   <SliderPrimitive.Root
-                    aria-label={label}
                     min={min}
                     max={max}
                     step={step}
@@ -976,7 +975,14 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
                     <SliderPrimitive.Track className="relative h-1 grow overflow-hidden rounded-full bg-neutral-200">
                       <SliderPrimitive.Range className="absolute h-full bg-neutral-900" />
                     </SliderPrimitive.Track>
-                    <SliderPrimitive.Thumb className="block size-3 shrink-0 cursor-ew-resize rounded-full border border-neutral-900 bg-white shadow-sm ring-neutral-900/15 transition-[box-shadow] hover:ring-4 focus-visible:ring-4 focus-visible:outline-none" />
+                    {/* The name goes on the THUMB: Radix puts role="slider" there and
+                        does not forward a Root aria-label down to it, so a label on the
+                        Root is read by nothing. The visible label above is a sibling
+                        span rather than a <label for>, so it cannot supply it either. */}
+                    <SliderPrimitive.Thumb
+                      aria-label={label}
+                      className="block size-3 shrink-0 cursor-ew-resize rounded-full border border-neutral-900 bg-white shadow-sm ring-neutral-900/15 transition-[box-shadow] hover:ring-4 focus-visible:ring-4 focus-visible:outline-none"
+                    />
                   </SliderPrimitive.Root>
                 </label>
               ))}
