@@ -660,7 +660,6 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
       </span>
       {scrub && (
         <SliderPrimitive.Root
-          aria-label={`${label}, drag to adjust`}
           min={scrub.min}
           max={scrub.max}
           step={scrub.step}
@@ -671,7 +670,16 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
           <SliderPrimitive.Track className="relative h-1 grow overflow-hidden rounded-full bg-neutral-200">
             <SliderPrimitive.Range className="absolute h-full bg-neutral-900" />
           </SliderPrimitive.Track>
-          <SliderPrimitive.Thumb className="block size-3 shrink-0 cursor-ew-resize rounded-full border border-neutral-900 bg-white shadow-sm ring-neutral-900/15 transition-[box-shadow] hover:ring-4 focus-visible:ring-4 focus-visible:outline-none" />
+          {/* The name goes on the THUMB, not the Root. Radix renders role="slider"
+              and the aria-valuemin/max/now trio on the thumb, and does not forward a
+              Root aria-label down to it, so a label up there is read by nothing: all
+              three of these sliders announced as a bare "slider, 240" until this
+              moved. The visible 10px label above the field is a sibling span rather
+              than a <label for>, so it cannot supply the name either. */}
+          <SliderPrimitive.Thumb
+            aria-label={`${label}, drag to adjust`}
+            className="block size-3 shrink-0 cursor-ew-resize rounded-full border border-neutral-900 bg-white shadow-sm ring-neutral-900/15 transition-[box-shadow] hover:ring-4 focus-visible:ring-4 focus-visible:outline-none"
+          />
         </SliderPrimitive.Root>
       )}
       <span id={`${id}-${key}-help`} className="sr-only">{help}</span>
