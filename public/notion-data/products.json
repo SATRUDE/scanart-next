@@ -456,7 +456,7 @@
     "featured": false,
     "published": true,
     "image": "/images/products/sunday-brunch.png",
-    "secondaryImage": "",
+    "secondaryImage": "/images/products/sunday-brunch-room.avif",
     "availableSizes": [
       "50x70cm"
     ],
@@ -484,7 +484,7 @@
     "featured": false,
     "published": true,
     "image": "/images/products/rosa-blomster.png",
-    "secondaryImage": "",
+    "secondaryImage": "/images/products/rosa-blomster-room.avif",
     "availableSizes": [
       "50x70cm"
     ],
@@ -512,7 +512,7 @@
     "featured": false,
     "published": true,
     "image": "/images/products/massa-applen.png",
-    "secondaryImage": "",
+    "secondaryImage": "/images/products/massa-applen-room.avif",
     "availableSizes": [
       "50x70cm"
     ],
@@ -540,7 +540,7 @@
     "featured": false,
     "published": true,
     "image": "/images/products/small-house-big-ocean.png",
-    "secondaryImage": "",
+    "secondaryImage": "/images/products/small-house-big-ocean-room.avif",
     "availableSizes": [
       "50x70cm"
     ],

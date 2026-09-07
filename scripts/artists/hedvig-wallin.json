@@ -38,7 +38,8 @@
         "Massa Äpplen",
         "Small House Big Ocean",
         "Morgenlevering"
-      ]
+      ],
+      "secondaryImage": "/images/products/sunday-brunch-room.avif"
     },
     {
       "name": "Rosa Blomster",
@@ -57,7 +58,8 @@
         "Massa Äpplen",
         "Small House Big Ocean",
         "Trysilkaffe"
-      ]
+      ],
+      "secondaryImage": "/images/products/rosa-blomster-room.avif"
     },
     {
       "name": "Massa Äpplen",
@@ -76,7 +78,8 @@
         "Rosa Blomster",
         "Small House Big Ocean",
         "Hyttefrokost"
-      ]
+      ],
+      "secondaryImage": "/images/products/massa-applen-room.avif"
     },
     {
       "name": "Small House Big Ocean",
@@ -95,7 +98,8 @@
         "Rosa Blomster",
         "Massa Äpplen",
         "Eltsjoen"
-      ]
+      ],
+      "secondaryImage": "/images/products/small-house-big-ocean-room.avif"
     }
   ]
 }
