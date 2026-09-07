@@ -25,6 +25,7 @@ import { neon } from '@neondatabase/serverless';
 // that TypeScript module through a small transpile-on-the-fly shim rather
 // than importing the .ts file directly — see the shim for why.
 import { markdownToBlocks } from './markdown-blocks-shim.mjs';
+import { isPublished } from './lib/published.mjs';
 
 const url = process.env.ARTICLES_DATABASE_URL ?? process.env.DATABASE_URL;
 if (!url) {
@@ -51,7 +52,7 @@ const parse = (json, fallback) => {
 };
 
 const rows = await sql`SELECT * FROM "Article" ORDER BY "createdAt" DESC`;
-const publishedRows = rows.filter((r) => r.status === 'PUBLISHED');
+const publishedRows = rows.filter(isPublished);
 
 // Google Images credits the host that serves the file, and article heroes and
 // inspire scenes have been serving from the Blob store's domain, so the
@@ -91,7 +92,7 @@ const articles = publishedRows.map((r) => ({
   slug: r.slug ?? '',
   title: r.title,
   excerpt: r.excerpt ?? '',
-  published: r.status === 'PUBLISHED',
+  published: isPublished(r),
   featured: Boolean(r.featured),
   image: r.image ?? '',
   author: '',
