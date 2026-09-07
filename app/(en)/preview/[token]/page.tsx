@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { ArticleBody } from '@/components/ArticleBody';
+import { ReaderComments } from '@/components/ReaderComments';
 import { markdownToBlocks } from '@/lib/markdown-blocks';
 import { fetchPreviewArticle } from '@/lib/server/socialagent-preview';
 
@@ -50,6 +51,7 @@ export default async function PreviewPage({
         blocks={blocks}
         articleSlug={article.slug}
         heroImage="plain"
+        bodyOverride={<ReaderComments token={token} blocks={blocks} articleSlug={article.slug} />}
       />
     </div>
   );
