@@ -56,7 +56,11 @@ export default async function HomePage() {
     const products = await getProductsByArtist(artist.id);
     if (products.length > 0) artistsWithCounts.push({ ...artist, printCount: products.length });
   }
-  artistsWithCounts.sort((a, b) => b.printCount - a.printCount || a.name.localeCompare(b.name));
+  // Most prints first. Ties keep roster order (sort is stable), so the artist
+  // who has been with the gallery longer holds the slot: Mark's call on 7 Sep
+  // 2026 when Hedvig Wallin arrived with four prints and would otherwise have
+  // displaced Sia Siamos, whom he had just put on the homepage, on alphabet.
+  artistsWithCounts.sort((a, b) => b.printCount - a.printCount);
   const featuredArtists = artistsWithCounts.slice(0, 3);
 
   return (
