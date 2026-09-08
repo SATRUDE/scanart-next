@@ -17,6 +17,7 @@ import { NotionBlockRenderer } from '@/components/NotionBlockRenderer';
 import { PrintCard } from '@/components/PrintCard';
 import { BASE_URL, OG_IMAGE, SITE_NAME, OG_LOCALE, TWITTER_SITE } from '@/lib/site';
 import { getBrowseLinksForArticle } from '@/lib/article-browse';
+import { selectRelatedArticles } from '@/lib/related-articles';
 import { clipToLength } from '@/lib/meta-snippet';
 import { metaTitle } from '@/lib/meta-title';
 
@@ -91,10 +92,9 @@ export default async function ArticlePage({
     .map(artworkSlug => allProducts.find(p => p.slug === artworkSlug))
     .filter((p): p is NonNullable<typeof p> => Boolean(p));
   const allArticles = await getAllArticles();
-  const relatedSlugs = article.relatedArticles || [];
-  const relatedArticles = relatedSlugs.length > 0
-    ? allArticles.filter(a => relatedSlugs.includes(a.slug))
-    : allArticles.filter(a => a.id !== article.id).slice(0, 3);
+  // Curated list, then every article that names this one, then a same-category
+  // fill: see lib/related-articles.ts for why the block must point both ways.
+  const relatedArticles = selectRelatedArticles(article, allArticles);
 
   return (
     <div className="container mx-auto px-8 py-8">
