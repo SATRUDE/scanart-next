@@ -153,7 +153,10 @@ export const no = {
     heroTitle: 'Skandinavisk kunst til hjem over hele verden',
     heroSub:
       'Et nettgalleri som samarbeider direkte med skandinaviske kunstnere for å gjøre ekte nordiske kunsttrykk tilgjengelige for flere.',
-    heroImageAlt: 'Et innrammet skandinavisk kunsttrykk i et lyst, nordisk interiør',
+    // heroImageAlt lived here and described the hero as "et innrammet
+    // skandinavisk kunsttrykk" without naming it. The hero is a catalogue
+    // print, so its alt now comes from lib/about-hero, which names the work and
+    // its artist in bokmål from the same vocabulary the product pages use.
     heroCta: 'Utforsk samlingen',
     aboutHeading: 'Om Scandinavian Art',
     aboutPara1:
