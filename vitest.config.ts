@@ -52,8 +52,11 @@ export default defineConfig({
           environment: 'node',
           // config/ holds the money: prices, frame charges, shipping rates.
         // It was outside the runner, which is why a flat frame price that lost
-        // money on big sizes was never caught by a test.
-        include: ['lib/**/*.test.ts', 'app/api/**/*.test.ts', 'config/**/*.test.ts'],
+        // money on big sizes was never caught by a test. scripts/ is here for
+        // the same reason: sync-articles.mjs talks straight to Neon at import
+        // time and can't be run in a test, but the pure logic pulled out of
+        // it (scripts/lib/*.mjs) can be, and now is.
+        include: ['lib/**/*.test.ts', 'app/api/**/*.test.ts', 'config/**/*.test.ts', 'scripts/**/*.test.mjs'],
         },
         resolve: {
           alias: { '@': dirname },

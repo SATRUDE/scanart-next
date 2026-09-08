@@ -6,8 +6,9 @@
 // article categories are editorial (Guide/Styling/About), not shop taxonomy,
 // so a computed mapping would guess. Articles without a genuinely relevant
 // landing get no entry and no block. Anchors describe the destination page.
-// Slugs may reference articles that live only in Notion (the journal syncs at
-// prebuild, see scripts/sync-notion.mjs); unknown slugs simply never render.
+// Slugs may reference articles the journal doesn't currently publish (the
+// journal syncs at prebuild, see scripts/sync-articles.mjs); unknown slugs
+// simply never render.
 
 export interface BrowseLink {
   href: string;

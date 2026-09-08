@@ -13,7 +13,7 @@ import {
 } from '@/components/ui/breadcrumb';
 import { getAllArticles, getArticleBySlug, getArticleBlocks } from '@/lib/articles';
 import { getAllProducts } from '@/lib/products';
-import { NotionBlockRenderer } from '@/components/NotionBlockRenderer';
+import { ArticleBody } from '@/components/ArticleBody';
 import { PrintCard } from '@/components/PrintCard';
 import { BASE_URL, OG_IMAGE, SITE_NAME, OG_LOCALE, TWITTER_SITE } from '@/lib/site';
 import { getBrowseLinksForArticle } from '@/lib/article-browse';
@@ -114,34 +114,14 @@ export default async function ArticlePage({
         </BreadcrumbList>
       </Breadcrumb>
 
-      <article className="max-w-3xl mx-auto">
-        <header className="mb-8">
-          {article.category && (
-            <span className="text-sm text-muted-foreground uppercase tracking-wider">{article.category}</span>
-          )}
-          <h1 className="text-4xl text-neutral-900 mt-2 mb-4">{article.title}</h1>
-          {article.excerpt && (
-            <p className="text-lg text-muted-foreground leading-relaxed">{article.excerpt}</p>
-          )}
-        </header>
-
-        {article.image && (
-          <div className="relative aspect-[16/9] overflow-hidden bg-neutral-50 rounded mb-8">
-            <Image
-              src={article.image}
-              alt={article.title}
-              fill
-              sizes="(max-width: 768px) 100vw, 768px"
-              className="object-cover"
-              preload
-            />
-          </div>
-        )}
-
-        {blocks.length > 0 && (
-          <NotionBlockRenderer blocks={blocks} articleSlug={article.slug} />
-        )}
-
+      <ArticleBody
+        title={article.title}
+        category={article.category}
+        excerpt={article.excerpt}
+        image={article.image}
+        blocks={blocks}
+        articleSlug={article.slug}
+      >
         {browseLinks.length > 0 && (
           <footer className="mt-12 border-t pt-8">
             <p className="text-sm text-muted-foreground">
@@ -162,7 +142,7 @@ export default async function ArticlePage({
             </p>
           </footer>
         )}
-      </article>
+      </ArticleBody>
 
       {featuredPrints.length > 0 && (
         <div className="mt-16 max-w-3xl mx-auto">
