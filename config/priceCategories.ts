@@ -86,6 +86,28 @@ const compiledCategories: { [category: string]: PriceCategory } = {
     }
   },
 
+  // Entry pricing, added 2026-09-08 for Hedvig Wallin, whose own shop sells the
+  // same posters from 249 SEK: Mark set the shop's price at about 400 SEK for a
+  // 50x70, with the other currencies at the shop's usual ratios, rounded to a
+  // whole figure. Not yet a list on socialagent's Costs page, so this is the
+  // price until one is published there under the same name.
+  'Entry': {
+    '50x50cm': {
+      GBP: 25,
+      USD: 32,
+      NOK: 320,
+      DKK: 200,
+      SEK: 320
+    },
+    '50x70cm': {
+      GBP: 30,
+      USD: 40,
+      NOK: 400,
+      DKK: 250,
+      SEK: 400
+    }
+  },
+
   // High-end pricing for premium products (including the typo "Luxary")
   'Luxary': {
     'A3': {
