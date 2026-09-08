@@ -14,6 +14,7 @@ import {
   sitemapDate,
 } from '@/lib/sitemap-dates';
 import { productSitemapImages, siteImage } from '@/lib/product-sitemap-images';
+import { aboutHeroSitemapImages } from '@/lib/about-hero';
 
 // The date the Norwegian translations of the hand-dated static pages went
 // live; bump by hand when the Norwegian wording changes, as with the English
@@ -62,8 +63,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // leaving it out of the sitemap declared nothing while Google was free to
     // crawl it anyway. Dated by the page's own copy, like the other statics.
     { url: `${BASE_URL}/artists/apply`, lastModified: APPLY_PUBLISHED, priority: 0.5, changeFrequency: 'yearly', alternates: pairAlternates('/artists/apply') },
-    // static page; date is its publication, bumped by hand when the copy changes
-    { url: `${BASE_URL}/about`, lastModified: new Date('2026-07-10'), priority: 0.5, changeFrequency: 'yearly', alternates: pairAlternates('/about') },
+    // static page; date is its publication, bumped by hand when the copy changes.
+    // It is also the only static page that renders a catalogue print, and our
+    // second-biggest image-search surface, so it declares that picture the way
+    // the product and article entries declare theirs.
+    { url: `${BASE_URL}/about`, lastModified: new Date('2026-07-10'), priority: 0.5, changeFrequency: 'yearly', alternates: pairAlternates('/about'), ...aboutHeroSitemapImages(products) },
     { url: `${BASE_URL}/help`, lastModified: new Date('2026-07-12'), priority: 0.5, changeFrequency: 'monthly', alternates: pairAlternates('/help') },
     // legal pages; low priority, change rarely
     { url: `${BASE_URL}/privacy`, lastModified: new Date('2026-07-12'), priority: 0.3, changeFrequency: 'yearly', alternates: pairAlternates('/privacy') },
@@ -75,7 +79,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE_URL}/no`, lastModified: latestCatalogueDate([...productDates, ...articleDates]), priority: 1.0, changeFrequency: 'daily', alternates: pairAlternates('') },
     { url: `${BASE_URL}/no/artists`, lastModified: latestCatalogueDate(productDates), priority: 0.7, changeFrequency: 'weekly', alternates: pairAlternates('/artists') },
     { url: `${BASE_URL}/no/artists/apply`, lastModified: APPLY_PUBLISHED, priority: 0.5, changeFrequency: 'yearly', alternates: pairAlternates('/artists/apply') },
-    { url: `${BASE_URL}/no/about`, lastModified: NO_TRANSLATED, priority: 0.5, changeFrequency: 'yearly', alternates: pairAlternates('/about') },
+    // same hero picture as the English entry, exactly as the /no product
+    // entries repeat their English twin's images
+    { url: `${BASE_URL}/no/about`, lastModified: NO_TRANSLATED, priority: 0.5, changeFrequency: 'yearly', alternates: pairAlternates('/about'), ...aboutHeroSitemapImages(products) },
     { url: `${BASE_URL}/no/help`, lastModified: NO_TRANSLATED, priority: 0.5, changeFrequency: 'monthly', alternates: pairAlternates('/help') },
     { url: `${BASE_URL}/no/delivery`, lastModified: NO_TRANSLATED, priority: 0.3, changeFrequency: 'yearly', alternates: pairAlternates('/delivery') },
     // Phase 3, 2026-08-21: the shop itself. Dated by the same content that

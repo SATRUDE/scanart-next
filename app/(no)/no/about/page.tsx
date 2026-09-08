@@ -5,6 +5,8 @@ import { FullWidthImage } from '@/components/FullWidthImage';
 import { BASE_URL, socialCard } from '@/lib/site';
 import { hreflangPair } from '@/lib/i18n';
 import { no } from '@/lib/i18n/no';
+import { aboutHeroImage } from '@/lib/about-hero';
+import { getAllProducts } from '@/lib/products';
 
 // The Norwegian About page: app/about/page.tsx mirrored exactly (same
 // components, same classes), with the copy swapped for lib/i18n/no.ts.
@@ -20,7 +22,11 @@ export const metadata: Metadata = {
   ...socialCard({ title: t.meta.title, description: t.meta.description, path: '/no/about', ogLocale: 'nb_NO' }),
 };
 
-export default function NorwegianAboutPage() {
+export default async function NorwegianAboutPage() {
+  // Same catalogue print as the English hero, described in bokmål by the same
+  // shared vocabulary (see lib/about-hero and lib/product-image-alt).
+  const hero = aboutHeroImage(await getAllProducts(), 'no');
+
   return (
     <div className="min-h-screen">
       {/* Hero: full-bleed image darkened for legibility, left-pinned text.
@@ -30,8 +36,8 @@ export default function NorwegianAboutPage() {
           {/* full-bleed cover image; this project uses plain <img> (see FullWidthImage), not next/image */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/products/tree-top-peach-scene.avif"
-            alt={t.heroImageAlt}
+            src={hero.src}
+            alt={hero.alt}
             className="absolute inset-0 h-full w-full object-cover"
           />
           {/* mobile base + desktop left gradient keep white text legible on this light image */}

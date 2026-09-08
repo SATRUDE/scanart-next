@@ -4,6 +4,8 @@ import { QualityPromise } from '@/components/QualityPromise';
 import { FullWidthImage } from '@/components/FullWidthImage';
 import { BASE_URL, socialCard } from '@/lib/site';
 import { hreflangPair } from '@/lib/i18n';
+import { aboutHeroImage } from '@/lib/about-hero';
+import { getAllProducts } from '@/lib/products';
 
 const PAGE_TITLE = 'About';
 const PAGE_DESCRIPTION =
@@ -19,7 +21,11 @@ export const metadata: Metadata = {
   ...socialCard({ title: PAGE_TITLE, description: PAGE_DESCRIPTION, path: '/about' }),
 };
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  // The hero is a catalogue print, so its picture and its description both come
+  // from the catalogue rather than being written out here (see lib/about-hero).
+  const hero = aboutHeroImage(await getAllProducts());
+
   return (
     <div className="min-h-screen">
       {/* Hero: full-bleed image darkened for legibility, left-pinned text.
@@ -29,8 +35,8 @@ export default function AboutPage() {
           {/* full-bleed cover image; this project uses plain <img> (see FullWidthImage), not next/image */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/products/tree-top-peach-scene.avif"
-            alt="A framed Scandinavian art print in a light Nordic interior"
+            src={hero.src}
+            alt={hero.alt}
             className="absolute inset-0 h-full w-full object-cover"
           />
           {/* mobile base + desktop left gradient keep white text legible on this light image */}
