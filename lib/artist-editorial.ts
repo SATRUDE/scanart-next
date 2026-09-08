@@ -41,4 +41,11 @@ export const artistEditorial: Record<string, ArtistEditorial> = {
     para2:
       "Siamos belongs where food happens. A kitchen or dining wall is the obvious home, [Vinkveld](/product/vinkveld) especially, but Morgenlevering is bright enough to lift a hallway or a bedroom that catches the morning sun. The four scenes were painted as kin, so a pair works beautifully: breakfast on one wall, wine on the other, marking the day's two ends. They sit at the warmest edge of our [botanical prints](/category/botanical), full of tomatoes, grapes and cut flowers rather than leaves and branches.",
   },
+  'hedvig-wallin': {
+    heading: 'Look again, and again',
+    para1:
+      'Hedvig Wallin, an illustrator and graphic designer from Gothenburg, is the first Swedish artist in the gallery, and her four prints share a habit borrowed from naive art: keep the drawing simple, let the perspective go wonky, and pack in detail for the second look. Sunday Brunch lays a breakfast table in pastel, seen from above against green kitchen tiles. Rosa Blomster fills a vase with pinks and reds. Massa Äpplen lines up rows of small watercolour apples, no two alike. Small House Big Ocean drops the colour altogether: one house, one rock, and a sea drawn wave by wave in black ink.',
+    para2:
+      'Wallin belongs in the rooms people actually use. [Sunday Brunch](/product/sunday-brunch) and Massa Äpplen were made for a kitchen or dining wall, where they keep company with Sia Siamos\'s table scenes among our [botanical prints](/category/botanical). Rosa Blomster is soft enough for a bedroom. Small House Big Ocean is the quiet one, a line drawing that suits a child\'s room as well as a living room and hangs well next to anything with colour in it. All four are 50 x 70 cm, sold framed in wood, black or white, or unframed.',
+  },
 };

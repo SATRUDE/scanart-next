@@ -442,5 +442,117 @@
     ],
     "created_time": "2025-08-24T09:38:00.000Z",
     "last_edited_time": "2025-08-24T12:03:00.000Z"
+  },
+  {
+    "id": "526c2847-e96a-4608-ac08-0ccdfcfe830c",
+    "name": "Sunday Brunch",
+    "slug": "sunday-brunch",
+    "description": "Sunday Brunch by Hedvig Wallin lays a breakfast table in pastel: yoghurt with berries, croissants, cucumber sandwiches and a cup of coffee on a blue cloth. Seen from above, the table curves against green kitchen tiles and a pink wall, with a jar of jam, a halved grapefruit and a bunch of cut flowers crowding the edges. Drawn in ink and watercolour with a deliberately wonky perspective, it has the loose, handmade warmth of a morning nobody is rushing, and the more you look, the more turns up on the table.",
+    "category": "Botanical",
+    "artist": "Hedvig Wallin",
+    "artistId": "6",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/sunday-brunch.png",
+    "secondaryImage": "/images/products/sunday-brunch-room.avif",
+    "availableSizes": [
+      "50x70cm"
+    ],
+    "priceCategory": "Entry",
+    "productId": "21",
+    "recommendedProducts": [
+      "Rosa Blomster",
+      "Massa Äpplen",
+      "Small House Big Ocean",
+      "Morgenlevering"
+    ],
+    "created_time": "2026-09-07T08:10:12.942Z",
+    "last_edited_time": "2026-09-07T08:10:12.942Z"
+  },
+  {
+    "id": "a3e43f69-4888-4e65-8c09-334c75405a7d",
+    "name": "Rosa Blomster",
+    "slug": "rosa-blomster",
+    "description": "Rosa Blomster by Hedvig Wallin fills a glass vase with a bouquet in pinks and reds, set against a wall of soft pink tiles. The title is Swedish for pink flowers, and that is the whole idea: dahlias, buds and striped leaves drawn in ink over watercolour, every petal its own careful shape, with the stems showing through the water. It is a simple way to bring real colour into a room, and it sits as happily in a bedroom as it does in a kitchen.",
+    "category": "Botanical",
+    "artist": "Hedvig Wallin",
+    "artistId": "6",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/rosa-blomster.png",
+    "secondaryImage": "/images/products/rosa-blomster-room.avif",
+    "availableSizes": [
+      "50x70cm"
+    ],
+    "priceCategory": "Entry",
+    "productId": "22",
+    "recommendedProducts": [
+      "Sunday Brunch",
+      "Massa Äpplen",
+      "Small House Big Ocean",
+      "Trysilkaffe"
+    ],
+    "created_time": "2026-09-07T08:10:12.942Z",
+    "last_edited_time": "2026-09-07T08:10:12.942Z"
+  },
+  {
+    "id": "e5d01f50-d28e-42cb-9aa9-70a4f58bbc0f",
+    "name": "Massa Äpplen",
+    "slug": "massa-applen",
+    "description": "Massa Äpplen by Hedvig Wallin lines up row upon row of small watercolour apples in reds, greens and everything between, each finished with a stroke of ink. The title is Swedish for lots of apples, and the pleasure is in the repetition: no two are the same shape or colour, so a grid that reads as pattern from across the room becomes a hundred little portraits up close. Made for a kitchen or dining wall, where it hangs like a well-stocked fruit bowl.",
+    "category": "Botanical",
+    "artist": "Hedvig Wallin",
+    "artistId": "6",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/massa-applen.png",
+    "secondaryImage": "/images/products/massa-applen-room.avif",
+    "availableSizes": [
+      "50x70cm"
+    ],
+    "priceCategory": "Entry",
+    "productId": "23",
+    "recommendedProducts": [
+      "Sunday Brunch",
+      "Rosa Blomster",
+      "Small House Big Ocean",
+      "Hyttefrokost"
+    ],
+    "created_time": "2026-09-07T08:10:12.942Z",
+    "last_edited_time": "2026-09-07T08:10:12.942Z"
+  },
+  {
+    "id": "08d177eb-8d61-4f62-ae2a-a1b2cd595e32",
+    "name": "Small House Big Ocean",
+    "slug": "small-house-big-ocean",
+    "description": "Small House Big Ocean by Hedvig Wallin sets a little house on a rock in the middle of a sea of rolling waves, drawn entirely in black ink line. Every wave is built from patient parallel strokes, so a stormy subject ends up oddly calm, and the eye keeps returning to the one door and its handful of windows. It is a line drawing that suits a child’s room as well as a living room, and it hangs well beside anything with colour in it.",
+    "category": "Illustrations",
+    "artist": "Hedvig Wallin",
+    "artistId": "6",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/small-house-big-ocean.png",
+    "secondaryImage": "/images/products/small-house-big-ocean-room.avif",
+    "availableSizes": [
+      "50x70cm"
+    ],
+    "priceCategory": "Entry",
+    "productId": "24",
+    "recommendedProducts": [
+      "Sunday Brunch",
+      "Rosa Blomster",
+      "Massa Äpplen",
+      "Eltsjoen"
+    ],
+    "created_time": "2026-09-07T08:10:12.942Z",
+    "last_edited_time": "2026-09-07T08:10:12.942Z"
   }
 ]

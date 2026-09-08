@@ -8,14 +8,14 @@
 import type { WallArtLanding } from '@/lib/wall-art';
 
 export const nordicArtLanding: WallArtLanding = {
-  title: 'Nordic Art: Prints by Four Norwegian Artists',
+  title: 'Nordic Art: Prints by Five Norwegian and Swedish Artists',
   description:
-    'Nordic art by four artists working in Norway: folk pattern, table still lifes, pared-back figures and dry line drawings, from tradition to now.',
+    'Nordic art by five artists working in Norway and Sweden: folk pattern, table still lifes, pared-back figures, dry line drawings and naive watercolour.',
   heading: 'Nordic Art, from Folk Tradition to Now',
   intro:
-    "Nordic art has always run on two currents at once: the folk tradition of pattern and ornament, and a newer instinct to pare everything back until shape does the work. Both are alive in this gallery. Ingunn Dybendal draws folk flowers and a patterned lakeland petal by petal in coloured pencil. Helene Brox cuts figures and birds down to flat, confident silhouette. Sia Siamos paints the Nordic table mid-meal, and Simen Wahlqvist tells whole jokes in a handful of lines. Four artists, all living and working in Norway.",
+    "Nordic art has always run on two currents at once: the folk tradition of pattern and ornament, and a newer instinct to pare everything back until shape does the work. Both are alive in this gallery. Ingunn Dybendal draws folk flowers and a patterned lakeland petal by petal in coloured pencil. Helene Brox cuts figures and birds down to flat, confident silhouette. Sia Siamos paints the Nordic table mid-meal, Simen Wahlqvist tells whole jokes in a handful of lines, and Hedvig Wallin, the gallery's first Swede, draws a breakfast table with a naive artist's wonky perspective. Five artists, living and working in Norway and Sweden.",
   intro2:
-    "What makes artwork Nordic isn't the subject; there's no rule that says lakes and birches. It's a habit the region's artists share: take something ordinary, a mug of flowers, a breakfast table, a morning stretch, and give it real weight. The sixteen pieces here sit on a line between the two ends of that tradition. Some lean towards folk pattern, every bloom a separate invention worked in coloured pencil; others are as contemporary as a confession painted across a cobalt head. One honest note: Nordic covers five countries, and ours is currently a Norwegian catalogue. We'd rather be a small gallery that knows its sixteen pieces than a big one that's merely browsed them.",
+    "What makes artwork Nordic isn't the subject; there's no rule that says lakes and birches. It's a habit the region's artists share: take something ordinary, a mug of flowers, a breakfast table, a morning stretch, and give it real weight. The twenty pieces here sit on a line between the two ends of that tradition. Some lean towards folk pattern, every bloom a separate invention worked in coloured pencil; others are as contemporary as a confession painted across a cobalt head. One honest note: Nordic covers five countries, and ours currently reaches two of them, Norway and Sweden. We'd rather be a small gallery that knows its twenty pieces than a big one that's merely browsed them.",
   framedHeading: 'Made to order, framed or unframed',
   framedBody:
     "Each piece comes as a print, made to order when you buy it. Most are 50 x 70 cm; Simen Wahlqvist's square illustrations are 50 x 50 cm, and every product page lists the size for that piece. You can buy unframed, or framed in wood, black or white, sized to the print. Delivery is worldwide, with the cost shown at checkout.",
@@ -24,7 +24,7 @@ export const nordicArtLanding: WallArtLanding = {
     {
       question: 'What is Nordic art?',
       answer:
-        "Art from the five Nordic countries: Denmark, Norway, Sweden, Finland and Iceland. In practice the label covers everything from the old folk traditions of pattern and ornament to today's illustration and still life, held together by strong shape and an unembarrassed love of the domestic. Our own catalogue is honestly narrower than the label: all four artists we work with live and work in Norway, so what you'll find here is the Norwegian corner of the Nordic map.",
+        "Art from the five Nordic countries: Denmark, Norway, Sweden, Finland and Iceland. In practice the label covers everything from the old folk traditions of pattern and ornament to today's illustration and still life, held together by strong shape and an unembarrassed love of the domestic. Our own catalogue is honestly narrower than the label: the five artists we work with live and work in Norway and Sweden, so what you'll find here is the Scandinavian corner of the Nordic map.",
     },
     {
       question: 'What sizes do the prints come in, and can I have them framed?',
