@@ -87,24 +87,27 @@ const compiledCategories: { [category: string]: PriceCategory } = {
   },
 
   // Entry pricing, added 2026-09-08 for Hedvig Wallin, whose own shop sells the
-  // same posters from 249 SEK: Mark set the shop's price at about 400 SEK for a
-  // 50x70, with the other currencies at the shop's usual ratios, rounded to a
-  // whole figure. Not yet a list on socialagent's Costs page, so this is the
-  // price until one is published there under the same name.
+  // same posters from 249 SEK. Mark raised it to a round 500 kroner in both
+  // krone currencies on 2026-09-09; the rest follow the shop's own ratios from
+  // the Premium list (NOK 14.29 : GBP 1, USD 1.286 : GBP 1), and DKK 325 sits
+  // between what 500 NOK and 500 SEK are worth in kroner. The 50x50 row is
+  // three quarters of the 50x70, the same step Premium uses, and no print sits
+  // on it yet. Not a list on socialagent's Costs page, so this is the price
+  // until one is published there under the same name.
   'Entry': {
     '50x50cm': {
-      GBP: 25,
-      USD: 32,
-      NOK: 320,
-      DKK: 200,
-      SEK: 320
+      GBP: 28,
+      USD: 36,
+      NOK: 400,
+      DKK: 260,
+      SEK: 400
     },
     '50x70cm': {
-      GBP: 30,
-      USD: 40,
-      NOK: 400,
-      DKK: 250,
-      SEK: 400
+      GBP: 35,
+      USD: 45,
+      NOK: 500,
+      DKK: 325,
+      SEK: 500
     }
   },
 
