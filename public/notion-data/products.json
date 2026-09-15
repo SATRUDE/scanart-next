@@ -554,5 +554,117 @@
     ],
     "created_time": "2026-09-07T08:10:12.942Z",
     "last_edited_time": "2026-09-07T08:10:12.942Z"
+  },
+  {
+    "id": "71eaf345-a4a2-4e74-9e52-90105df4467c",
+    "name": "Cruise",
+    "slug": "cruise",
+    "description": "Cruise by Mikko Saarainen sails a liner through green waves, with a saluting captain, a girl whose plaits stream out behind her and a leaping fish. Orange birds wheel around the funnel, a boy in a woolly hat aims a yellow camera at the water, and every passenger has spotted something different. Drawn in a bold line and flat, faintly grainy colour in teal, orange and yellow, it has the cheerful overload of a holiday photograph where nobody is looking at the lens.",
+    "category": "Illustrations",
+    "artist": "Mikko Saarainen",
+    "artistId": "7",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/cruise.png",
+    "secondaryImage": "/images/products/cruise-room.avif",
+    "availableSizes": [
+      "50x50cm"
+    ],
+    "priceCategory": "Budget",
+    "productId": "25",
+    "recommendedProducts": [
+      "Family Trip",
+      "URF!",
+      "Journey",
+      "Slingshot"
+    ],
+    "created_time": "2026-09-15T08:36:46.634Z",
+    "last_edited_time": "2026-09-15T08:36:46.634Z"
+  },
+  {
+    "id": "0a0a298b-525e-4f8a-949a-23eb30ef6440",
+    "name": "Family Trip",
+    "slug": "family-trip",
+    "description": "Family Trip by Mikko Saarainen loads an orange car past the roofline: suitcases, a picnic basket, a rolled rug and a mouse on the roof rack. Inside, a yellow dog grins out of one window and a green cat hangs out of another, with four children and a driver in glasses squeezed in between, a bird on the aerial and exhaust puffing behind. Drawn in a bold black line over flat colour, it is the whole chaotic business of leaving on holiday in a single square.",
+    "category": "Illustrations",
+    "artist": "Mikko Saarainen",
+    "artistId": "7",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/family-trip.png",
+    "secondaryImage": "/images/products/family-trip-room.avif",
+    "availableSizes": [
+      "50x50cm"
+    ],
+    "priceCategory": "Budget",
+    "productId": "26",
+    "recommendedProducts": [
+      "Cruise",
+      "URF!",
+      "Journey",
+      "Half Man"
+    ],
+    "created_time": "2026-09-15T08:36:46.634Z",
+    "last_edited_time": "2026-09-15T08:36:46.634Z"
+  },
+  {
+    "id": "cf32c714-1e6a-457c-975d-c841a4cea60f",
+    "name": "Journey",
+    "slug": "journey",
+    "description": "Journey by Mikko Saarainen takes a red car over a stone bridge below snow-capped mountains, through autumn trees in orange and yellow. It is the quietest of his prints and the most graphic: big rolling clouds, flowering shrubs crowding the foreground, two birds up in the pines, and the arch of the bridge repeated in its own reflection. The muted palette and flat shapes owe something to the old railway travel posters, and it is calm enough to hold a wall on its own.",
+    "category": "Illustrations",
+    "artist": "Mikko Saarainen",
+    "artistId": "7",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/journey.png",
+    "secondaryImage": "/images/products/journey-room.avif",
+    "availableSizes": [
+      "50x70cm"
+    ],
+    "priceCategory": "Budget",
+    "productId": "27",
+    "recommendedProducts": [
+      "Cruise",
+      "Family Trip",
+      "URF!",
+      "Morgenstrekk"
+    ],
+    "created_time": "2026-09-15T08:36:46.634Z",
+    "last_edited_time": "2026-09-15T08:36:46.634Z"
+  },
+  {
+    "id": "27d8b635-7b9a-4dab-bf08-bae7c46c4a91",
+    "name": "URF!",
+    "slug": "urf",
+    "description": "URF! by Mikko Saarainen is a whole comic page in one print: a knight in blue armour losing an argument with a green dragon, across three panels. He is blasted off a wall in the first, swinging a sword at the dragon's tail in the second, and down to a fire extinguisher by the third, while another knight creeps through a ruin towards a red door. Autumn trees and grey castle stone fill every gap, and there is a joke in almost all of them.",
+    "category": "Illustrations",
+    "artist": "Mikko Saarainen",
+    "artistId": "7",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/urf.png",
+    "secondaryImage": "/images/products/urf-room.avif",
+    "availableSizes": [
+      "50x50cm"
+    ],
+    "priceCategory": "Budget",
+    "productId": "28",
+    "recommendedProducts": [
+      "Cruise",
+      "Family Trip",
+      "Journey",
+      "Eye Nose Eye"
+    ],
+    "created_time": "2026-09-15T08:36:46.634Z",
+    "last_edited_time": "2026-09-15T08:36:46.634Z"
   }
 ]

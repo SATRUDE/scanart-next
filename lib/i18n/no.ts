@@ -424,7 +424,7 @@ export const no = {
           },
           {
             q: 'Hvilke størrelser finnes?',
-            a: 'Størrelsene varierer fra verk til verk og vises på hver produktside. De fleste trykkene er 50x70 cm, og Simen Wahlqvists kvadratiske illustrasjoner er 50x50 cm.',
+            a: 'Størrelsene varierer fra verk til verk og vises på hver produktside. De fleste trykkene er 50x70 cm, og de kvadratiske illustrasjonene til Simen Wahlqvist og Mikko Saarainen er 50x50 cm.',
           },
           {
             q: 'Er dette originale kunstverk?',
@@ -499,25 +499,25 @@ export const no = {
     illustrations: {
       title: 'Illustrasjoner og morsomme plakater',
       description:
-        'Morsomme plakater og illustrasjonstrykk av Oslo-illustratøren Simen Wahlqvist: få streker, tørr humor, rene farger. Til kontoret, med eller uten ramme.',
+        'Nordiske illustrasjonstrykk av Simen Wahlqvist, Mikko Saarainen og Hedvig Wallin: tørr humor på få streker, og tegneseriesider fulle av detaljer.',
       heading: 'Illustrasjoner',
       intro:
-        'Er du på jakt etter morsomme plakater med litt mer strek i, er dette stedet: hvert illustrasjonstrykk her er laget av Simen Wahlqvist, en grafisk designer og illustratør fra Oslo som fanger et øyeblikk, ofte rett før det skjer, med så få streker som mulig. Regelen hans er enkel: får en tegning ham til å le, er den ferdig. Morgenstrekk fanger dagens aller første helkroppsstrekk, og de kvadratiske trykkene rundt bærer den samme tørre humoren i én eller to farger.',
+        'Illustrasjon betyr her tegninger med humor, og kategorien trekker i to retninger. Simen Wahlqvist i Oslo fanger et øyeblikk rett før det skjer, med så få streker som mulig; regelen hans er enkel: får en tegning ham til å le, er den ferdig. Mikko Saarainen i Lahti gjør det motsatte og fyller kvadratet til hver eneste krok har en spøk i seg, og ett av trykkene hans er en hel tegneserieside. Hedvig Wallins tusjhav ligger midt imellom. Morgenstrekk fanger dagens aller første helkroppsstrekk, og kvadratene rundt bærer sin egen humor.',
       intro2:
-        'Dette er den rene, karakterfulle enden av skandinavisk kunst, og et enkelt første trykk å kjøpe. Det passer i ganger, på hjemmekontor og i ethvert rom som er blitt litt for smakfullt og trenger én ting med glimt i øyet. Simen er en av de uavhengige norske kunstnerne bak galleriet, og trykkene hans lages på arkivbestandig papir av museumskvalitet.',
+        'Dette er den karakterfulle enden av nordisk kunst, og et enkelt første trykk å kjøpe. Det passer i ganger, på hjemmekontor, på barnerom og i ethvert rom som er blitt litt for smakfullt og trenger én ting med glimt i øyet. Alle tre er uavhengige kunstnere vi jobber direkte med, i Norge, Finland og Sverige, og hvert trykk lages på arkivbestandig papir av museumskvalitet.',
       stylingHeading: 'Slik bruker du illustrasjonstrykk',
       stylingBody:
-        'De fleste av disse trykkene er 50 x 50 cm, og det kvadratiske formatet er stillferdig nyttig: det sitter godt på en bildehylle, holder en smal vegg der et rektangel ville trengt seg på, og danner et ryddig par eller trio langs en gang. Morgenstrekk, i 50 x 70 cm, fungerer som ankeret i en gruppe med kvadratene rundt seg. Hold rammevalget likt gjennom et sett, alt i tre, alt i sort eller alt i hvitt, så leses miksen som tilsiktet.',
+        'Sju av disse ti trykkene er 50 x 50 cm, og det kvadratiske formatet er stillferdig nyttig: det sitter godt på en bildehylle, holder en smal vegg der et rektangel ville trengt seg på, og danner et ryddig par eller trio langs en gang. De tre i 50 x 70 cm, Morgenstrekk, Journey og Small House Big Ocean, fungerer som ankeret i en gruppe med kvadratene rundt seg. Hold rammevalget likt gjennom et sett, alt i tre, alt i sort eller alt i hvitt, så leses miksen som tilsiktet. Kvadratene til Saarainen er det høylytteste i kategorien, så gi dem en vegg som tåler det.',
       faqs: [
         {
           question: 'Hva gjør disse illustrasjonene skandinaviske?',
           answer:
-            'Økonomien. Nordisk illustrasjon foretrekker så få streker som nødvendig og ikke én mer, og lar luften og en begrenset palett gjøre tungløftet. Disse er tegnet i Oslo av en norsk illustratør, så merkelappen er bokstavelig så vel som stilistisk.',
+            'Delvis økonomien: nordisk illustrasjon foretrekker så få streker som nødvendig og ikke én mer, og lar luften og en begrenset palett gjøre tungløftet, som er hele metoden til Simen Wahlqvist. Mikko Saarainen er motstykket, og regionen rommer begge: Finland har en lang tradisjon for tegneserier og barnebøker som fyller siden i stedet. Disse er tegnet i Oslo, Lahti og Göteborg, så merkelappen er bokstavelig så vel som stilistisk.',
         },
         {
           question: 'Hvilke størrelser finnes illustrasjonstrykkene i?',
           answer:
-            'De fleste er kvadratiske 50 x 50 cm; Morgenstrekk er 50 x 70 cm. Kvadratene passer til hyller, ganger og grupperte vegger, mens det større verket kan holde en vegg alene.',
+            'Sju av de ti er kvadratiske 50 x 50 cm; Morgenstrekk, Journey og Small House Big Ocean er 50 x 70 cm. Kvadratene passer til hyller, ganger og grupperte vegger, mens de større verkene kan holde en vegg alene.',
         },
         {
           question: 'Kan jeg få et illustrasjonstrykk innrammet og levert til utlandet?',
@@ -768,13 +768,13 @@ export const no = {
     meta: {
       title: 'Kunstnere',
       description:
-        'Møt de skandinaviske kunstnerne bak samlingen, en liten gruppe illustratører og grafikere som arbeider i Norge og Sverige.',
+        'Møt kunstnerne bak samlingen, en liten gruppe illustratører og grafikere som arbeider i Norge, Sverige og Finland.',
     },
     heading: 'Kunstnere',
     /** {count} kunstnere */
     countLabel: 'kunstnere',
     intro:
-      'Møt de skandinaviske kunstnerne bak samlingen, en liten gruppe illustratører og grafikere som arbeider i Norge og Sverige.',
+      'Møt kunstnerne bak samlingen, en liten gruppe illustratører og grafikere som arbeider i Norge, Sverige og Finland.',
     jsonLdDescription: 'De skandinaviske og nordiske kunstnerne bak samlingen.',
     /** The way in to /no/artists/apply. The English hub has carried this band
      *  since the form was built; the Norwegian one had no link to it at all. */
@@ -821,6 +821,10 @@ export const no = {
       location: 'Göteborg, Sverige',
       bio: 'Hedvig Wallin er illustratør og grafisk designer fra Göteborg i Sverige. Hun begynte å illustrere barnebøker som attenåring og gjør det fortsatt, ved siden av redaksjonell illustrasjon, veggmalerier, logoer, etiketter og plakater. Hun henter mye av inspirasjonen fra naivistisk kunst og dens barnlige enkelhet, og blander tusj, blyant, mykpastell, akvarell og digitale verktøy til lekne, detaljrike bilder med et skjevt perspektiv, der nye detaljer dukker opp hver gang du ser.',
     },
+    'mikko-saarainen': {
+      location: 'Lahti, Finland',
+      bio: 'Mikko Saarainen er en prisbelønt illustratør, barnebokforfatter og tegneserieskaper fra Lahti i Finland. Bildene hans er morsomme, uttrykksfulle og fulle av detaljer: et cruiseskip der hver eneste passasjer har fått øye på noe forskjellig, en familiebil lastet langt over taket, en ridder som taper en diskusjon mot en drage. Han jobber med kraftig strek og flate, litt kornete farger, og lar detaljene fortsette helt ut i kantene, så tegningene blir lest like mye som sett.',
+    },
   } as Record<string, ArtistCopy>,
 
   // Norwegian versions of lib/artist-editorial.ts, keyed by slug. para2 keeps
@@ -865,6 +869,13 @@ export const no = {
         'Hedvig Wallin, illustratør og grafisk designer fra Göteborg, er den første svenske kunstneren i galleriet, og de fire trykkene hennes deler en vane lånt fra naivistisk kunst: hold tegningen enkel, la perspektivet bli skjevt, og fyll på med detaljer til det andre blikket. Sunday Brunch dekker et frokostbord i pastell, sett ovenfra mot grønne kjøkkenfliser. Rosa Blomster fyller en vase med rosa og rødt. Massa Äpplen stiller opp rekke på rekke med små akvarellepler, ikke to like. Small House Big Ocean dropper fargen helt: ett hus, én klippe, og et hav tegnet bølge for bølge i svart tusj.',
       para2:
         'Wallin hører hjemme i rommene folk faktisk bruker. [Sunday Brunch](/product/sunday-brunch) og Massa Äpplen er laget for en kjøkken- eller spisestuevegg, der de holder Sia Siamos’ bordscener med selskap blant de [botaniske trykkene](/no/category/botanical) våre. Rosa Blomster er myk nok for et soverom. Small House Big Ocean er det stille bildet, en strektegning som passer like godt på et barnerom som i en stue, og som henger fint ved siden av alt som har farge i seg. Alle fire er 50 x 70 cm, og selges med ramme i tre, svart eller hvit, eller uten ramme.',
+    },
+    'mikko-saarainen': {
+      heading: 'Alt skjer på én gang',
+      para1:
+        'Mikko Saarainen, illustratør, barnebokforfatter og tegneserieskaper fra Lahti, er den første finske kunstneren i galleriet, og alle de fire trykkene hans gir noe tilbake ved andre og tredje blikk. Cruise seiler et skip gjennom grønne bølger med en saluterende kaptein, en jente med flettene flagrende etter seg og en fisk som hopper klar av vannet. Family Trip laster en oransje bil langt over taket og fyller den med barn, en flirende hund, en katt og en mus. URF! er en hel tegneserieside i ett trykk, en ridder i blå rustning som taper en diskusjon mot en grønn drage. Journey er det stille bildet: en rød bil over en steinbro under fjell, i en dempet høstpalett.',
+      para2:
+        'Saarainen passer i rommene der ingen passer seg. Cruise, Family Trip og URF! er 50 x 50 cm, kvadratformatet som står godt på en bildehylle eller i en gruppe, og de henger fint på et barnerom, i en lekestue eller på et kjøkken ved siden av Simen Wahlqvists kvadrater blant [illustrasjonstrykkene](/no/category/illustrations) våre. [Journey](/no/product/journey) er bildet for stua eller gangen: 50 x 70 cm, roligere i fargen, og sterkt nok til å bære en vegg alene. Alle fire selges med ramme i tre, svart eller hvit, eller uten ramme.',
     },
   } as Record<string, ArtistEditorialCopy>,
   inspire: {
@@ -965,7 +976,7 @@ export const no = {
   apply: {
     h1: 'Vis oss arbeidet ditt',
     intro:
-      'Vi er et lite galleri: en håndfull illustratører og grafikere som arbeider i Norge og Sverige. Vi leser alt som kommer inn, og vi tar inn svært få.',
+      'Vi er et lite galleri: en håndfull illustratører og grafikere som arbeider i Norge, Sverige og Finland. Vi leser alt som kommer inn, og vi tar inn svært få.',
     intro2:
       'Lager du trykk og tror dine ville stått godt ved siden av det som alt er her, så fortell oss om dem. Det tar noen minutter, og et menneske leser hver enkelt.',
     onlyRoute: 'Søknader kommer bare gjennom dette skjemaet, så du behøver ikke sende e-post i tillegg.',
@@ -1013,12 +1024,12 @@ export const no = {
   wallArt: {
     title: 'Kjøp skandinaviske kunsttrykk | Innrammede nordiske trykk',
     description:
-      'Kjøp skandinaviske kunsttrykk av fem uavhengige norske og svenske kunstnere. Tjue nordiske trykk, hvert med ramme i tre, svart eller hvit, eller uten ramme, laget på bestilling.',
+      'Kjøp skandinaviske kunsttrykk av seks uavhengige kunstnere i Norge, Sverige og Finland. Tjuefire nordiske trykk, med eller uten ramme, laget på bestilling.',
     heading: 'Kjøp skandinaviske kunsttrykk',
     intro:
-      'Denne siden er hele galleriet: tjue skandinaviske kunsttrykk, hvert av dem av en kunstner som lever og arbeider i Norge eller Sverige, og hvert av dem solgt med eller uten ramme. Helene Brox maler nedskrelte, kremhvite figurer i Oslo og skjærer en svale ned til selve stupet av vingene. Ingunn Dybendal tegner folkeblomster og mønstret innsjølandskap i fargeblyant, Sia Siamos fyller bord med hummer, vin og hyttefrokost, Simen Wahlqvist får plass til en hel vits i en håndfull streker, og Hedvig Wallin dekker et frokostbord fra Göteborg i tusj og akvarell. Fem hender, fire uttrykk, og ikke et fyllbilde blant dem.',
+      'Denne siden er hele galleriet: tjuefire nordiske kunsttrykk, hvert av dem av en kunstner som lever og arbeider i Norge, Sverige eller Finland, og hvert av dem solgt med eller uten ramme. Helene Brox maler nedskrelte, kremhvite figurer i Oslo og skjærer en svale ned til selve stupet av vingene. Ingunn Dybendal tegner folkeblomster og mønstret innsjølandskap i fargeblyant, Sia Siamos fyller bord med hummer, vin og hyttefrokost, Simen Wahlqvist får plass til en hel vits i en håndfull streker, Hedvig Wallin dekker et frokostbord fra Göteborg i tusj og akvarell, og Mikko Saarainen fyller hver krok av en finsk tegneserieside. Seks hender, fem uttrykk, og ikke et fyllbilde blant dem.',
     intro2:
-      'Å kjøpe skandinaviske kunsttrykk på nett betyr vanligvis å skrolle gjennom et marked med ti tusen plakater som aldri har vært i nærheten av en fjord. Dette er det motsatte. Et lite galleri, fem kunstnere vi jobber direkte med, og hvert trykk laget på bestilling framfor hentet fra et lager. Velg bildet først og rammen etterpå, og klarer du ikke å velge mellom to, er kvadratene til Wahlqvist og fugleparet til Brox laget for å henge sammen.',
+      'Å kjøpe skandinaviske kunsttrykk på nett betyr vanligvis å skrolle gjennom et marked med ti tusen plakater som aldri har vært i nærheten av en fjord. Dette er det motsatte. Et lite galleri, seks kunstnere vi jobber direkte med, og hvert trykk laget på bestilling framfor hentet fra et lager. Velg bildet først og rammen etterpå, og klarer du ikke å velge mellom to, er kvadratene til Wahlqvist og fugleparet til Brox laget for å henge sammen.',
     framedHeading: 'Med eller uten ramme',
     framedBody:
       'Hvert trykk her kommer med valget mellom tre rammer, tre, svart eller hvit, tilpasset trykket. Tre passer de varmere botaniske bildene og rom som allerede har tre i seg; svart skjerper de grafiske abstraktene og illustrasjonene; hvit forsvinner nesten mot en lys skandinavisk vegg og lar fargen snakke. Skal du henge flere sammen? Hold rammen lik gjennom hele gruppen, og veggen leses som én beslutning. Og har du en innrammer du stoler på, selges hvert bilde uten ramme også.',
@@ -1043,7 +1054,7 @@ export const no = {
       {
         question: 'Hvor kan jeg kjøpe skandinaviske kunsttrykk?',
         answer:
-          'Her, fra galleriet selv framfor et markedsplass. Vi jobber direkte med fem uavhengige kunstnere i Oslo, Bergen og Göteborg, og hvert trykk lages på bestilling når du kjøper det: velg størrelse og ramme på produktsiden, og det går i trykk for deg.',
+          'Her, fra galleriet selv framfor et markedsplass. Vi jobber direkte med seks uavhengige kunstnere i Oslo, Bergen, Göteborg og Lahti, og hvert trykk lages på bestilling når du kjøper det: velg størrelse og ramme på produktsiden, og det går i trykk for deg.',
       },
       {
         question: 'Kan jeg kjøpe trykkene innrammet?',
@@ -1159,6 +1170,30 @@ export const no = {
         'Small House Big Ocean av Hedvig Wallin setter et lite hus på en klippe midt i et hav av rullende bølger, tegnet utelukkende i svart tusjstrek. Hver bølge er bygget av tålmodige parallelle streker, så et stormfullt motiv ender opp underlig rolig, og blikket vender stadig tilbake til den ene døren og den håndfullen vinduer. Det er en strektegning som passer like godt på et barnerom som i en stue, og som henger fint ved siden av alt som har farge i seg.',
       buyerDescription:
         'Et lite hus på en klippe i et hav av tusjtegnede bølger. Kjøp Small House Big Ocean innrammet i tre, svart eller hvit, eller uten ramme.',
+    },
+    cruise: {
+      description:
+        'Cruise av Mikko Saarainen seiler et skip gjennom grønne bølger, med saluterende kaptein, en jente med flagrende fletter og en fisk som hopper. Oransje fugler sirkler rundt skorsteinen, en gutt med lue sikter et gult kamera mot vannet, og hver eneste passasjer har fått øye på noe forskjellig. Tegnet med kraftig strek og flate, litt kornete farger i turkis, oransje og gult har det den muntre overfloden fra et feriebilde der ingen ser i kameraet.',
+      buyerDescription:
+        'Et tegneserieskip i grønne bølger, med kaptein, fugler og en fisk som hopper. Kjøp Cruise innrammet i tre, svart eller hvit, eller uten ramme.',
+    },
+    'family-trip': {
+      description:
+        'Family Trip av Mikko Saarainen laster en oransje bil langt over taket: kofferter, piknikkurv, en sammenrullet matte og en mus på takgrinden. Inni flirer en gul hund ut av det ene vinduet og en grønn katt henger ut av det andre, med fire barn og en sjåfør med briller klemt inn imellom, en fugl på antennen og eksos som pøser bak. Tegnet med kraftig svart strek over flate farger er det hele det kaotiske ved å dra på ferie, samlet i ett kvadrat.',
+      buyerDescription:
+        'En oransje bil lastet over taket, full av barn, hund og katt. Kjøp Family Trip innrammet i tre, svart eller hvit, eller uten ramme.',
+    },
+    journey: {
+      description:
+        'Journey av Mikko Saarainen tar en rød bil over en steinbro under snødekte fjell, gjennom høsttrær i oransje og gult. Det er det stilleste av trykkene hans og det mest grafiske: store, rullende skyer, blomstrende busker som trenger seg på i forgrunnen, to fugler oppe i furuene, og brobuen gjentatt i sitt eget speilbilde. Den dempede paletten og de flate formene skylder de gamle jernbaneplakatene noe, og bildet er rolig nok til å bære en vegg alene.',
+      buyerDescription:
+        'En rød bil over en steinbro, under fjell og høsttrær. Kjøp Journey innrammet i tre, svart eller hvit, eller uten ramme.',
+    },
+    urf: {
+      description:
+        'URF! av Mikko Saarainen er en hel tegneserieside i ett trykk: en ridder i blå rustning som taper en diskusjon mot en grønn drage, i tre ruter. Han blir blåst av en mur i den første, svinger sverdet mot dragehalen i den andre, og er nede på brannslukningsapparat i den tredje, mens en annen ridder sniker seg gjennom en ruin mot en rød dør. Høsttrær og grå borgstein fyller hver eneste luke, og det ligger en spøk i nesten alle sammen.',
+      buyerDescription:
+        'En tegneserieside i ett trykk: ridder mot grønn drage, i tre ruter. Kjøp URF! innrammet i tre, svart eller hvit, eller uten ramme.',
     },
   } as Record<string, { description: string; buyerDescription?: string }>,
 

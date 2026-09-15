@@ -7,7 +7,7 @@ import { BASE_URL, socialCard } from '@/lib/site';
 import { hreflangPair } from '@/lib/i18n';
 
 const PAGE_TITLE = 'Artists';
-const PAGE_DESCRIPTION = 'Meet the Scandinavian artists behind the collection, a small group of illustrators and printmakers working across Norway and Sweden.';
+const PAGE_DESCRIPTION = 'Meet the artists behind the collection, a small group of illustrators and printmakers working across Norway, Sweden and Finland.';
 
 export const metadata: Metadata = {
   title: PAGE_TITLE,
@@ -54,7 +54,7 @@ export default async function ArtistsPage() {
           <h1 className="text-3xl text-neutral-900 mb-2">Artists</h1>
           <p className="text-muted-foreground">{withCounts.length} artists</p>
           <p className="text-neutral-600 mt-2">
-            Meet the Scandinavian artists behind the collection, a small group of illustrators and printmakers working across Norway and Sweden.
+            Meet the artists behind the collection, a small group of illustrators and printmakers working across Norway, Sweden and Finland.
           </p>
         </div>
         <ArtistsList artists={withCounts} />

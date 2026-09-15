@@ -48,4 +48,11 @@ export const artistEditorial: Record<string, ArtistEditorial> = {
     para2:
       'Wallin belongs in the rooms people actually use. [Sunday Brunch](/product/sunday-brunch) and Massa Äpplen were made for a kitchen or dining wall, where they keep company with Sia Siamos\'s table scenes among our [botanical prints](/category/botanical). Rosa Blomster is soft enough for a bedroom. Small House Big Ocean is the quiet one, a line drawing that suits a child\'s room as well as a living room and hangs well next to anything with colour in it. All four are 50 x 70 cm, sold framed in wood, black or white, or unframed.',
   },
+  'mikko-saarainen': {
+    heading: 'Everything happening at once',
+    para1:
+      'Mikko Saarainen, an illustrator, children\'s author and comic artist from Lahti, is the first Finnish artist in the gallery, and his four prints all pay out on the second and third look. Cruise sails a liner through green waves with a saluting captain, a girl whose plaits stream out behind her and a fish leaping clear of the water. Family Trip loads an orange car past the roofline and fills it with children, a grinning dog, a cat and a mouse. URF! is a whole comic page in one print, a knight in blue armour losing an argument with a green dragon. Journey is the quiet one: a red car crossing a stone bridge under mountains, in a muted autumn palette.',
+    para2:
+      'Saarainen suits the rooms where nobody is being careful. Cruise, Family Trip and URF! are 50 x 50 cm, the square format that sits well on a picture shelf or in a group, and they hang happily in a child\'s room, a playroom or a kitchen next to Simen Wahlqvist\'s squares among our [illustration prints](/category/illustrations). [Journey](/product/journey) is the one for a living room or a hallway: 50 x 70 cm, calmer in colour, and able to hold a wall on its own. All four are sold framed in wood, black or white, or unframed.',
+  },
 };

@@ -184,7 +184,7 @@ export const MESSAGES: Record<'en' | 'no', ValidationMessages> = {
 export const COPY = {
   h1: 'Show us your work',
   intro:
-    'We are a small gallery: a handful of illustrators and printmakers working across Norway and Sweden. We read everything that comes in and we take on very few.',
+    'We are a small gallery: a handful of illustrators and printmakers working across Norway, Sweden and Finland. We read everything that comes in and we take on very few.',
   // Deliberately does NOT promise a reply. Whether we reply to every applicant
   // is still an open decision on Mark's desk, and a page is a bad place to
   // make a commitment nobody has agreed to.

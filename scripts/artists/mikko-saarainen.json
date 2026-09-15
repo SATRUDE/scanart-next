@@ -1,0 +1,105 @@
+{
+  "$comment": "Input for scripts/add-artist.mjs (npm run add-artist -- scripts/artists/mikko-saarainen.json). Input files are local to the machine that ran it, the WeTransfer of 14 Sep 2026; the copy here is the record. Three of the four prints are square, so this is the first manifest to use the 50 x 50 cm frame template.",
+  "artist": {
+    "id": "7",
+    "name": "Mikko Saarainen",
+    "slug": "mikko-saarainen",
+    "location": "Lahti, Finland",
+    "locationNo": "Lahti, Finland",
+    "bio": "Mikko Saarainen is an award-winning illustrator, children's author and comic artist from Lahti, Finland. His pictures are funny, expressive and packed with detail: a cruise ship where every passenger has spotted something different, a family car loaded past the roofline, a knight losing an argument with a dragon. He works in a bold line and flat, faintly grainy colour, and keeps the detail going right out to the edges, so the drawings get read as much as looked at.",
+    "bioNo": "Mikko Saarainen er en prisbelønt illustratør, barnebokforfatter og tegneserieskaper fra Lahti i Finland. Bildene hans er morsomme, uttrykksfulle og fulle av detaljer: et cruiseskip der hver eneste passasjer har fått øye på noe forskjellig, en familiebil lastet langt over taket, en ridder som taper en diskusjon mot en drage. Han jobber med kraftig strek og flate, litt kornete farger, og lar detaljene fortsette helt ut i kantene, så tegningene blir lest like mye som sett.",
+    "photo": "~/Downloads/wetransfer_prints-bio-and-picture_2026-09-14_0619/Selfportrait.jpg",
+    "editorial": {
+      "heading": "Everything happening at once",
+      "para1": "Mikko Saarainen, an illustrator, children's author and comic artist from Lahti, is the first Finnish artist in the gallery, and his four prints all pay out on the second and third look. Cruise sails a liner through green waves with a saluting captain, a girl whose plaits stream out behind her and a fish leaping clear of the water. Family Trip loads an orange car past the roofline and fills it with children, a grinning dog, a cat and a mouse. URF! is a whole comic page in one print, a knight in blue armour losing an argument with a green dragon. Journey is the quiet one: a red car crossing a stone bridge under mountains, in a muted autumn palette.",
+      "para2": "Saarainen suits the rooms where nobody is being careful. Cruise, Family Trip and URF! are 50 x 50 cm, the square format that sits well on a picture shelf or in a group, and they hang happily in a child's room, a playroom or a kitchen next to Simen Wahlqvist's squares among our [illustration prints](/category/illustrations). [Journey](/product/journey) is the one for a living room or a hallway: 50 x 70 cm, calmer in colour, and able to hold a wall on its own. All four are sold framed in wood, black or white, or unframed."
+    },
+    "editorialNo": {
+      "heading": "Alt skjer på én gang",
+      "para1": "Mikko Saarainen, illustratør, barnebokforfatter og tegneserieskaper fra Lahti, er den første finske kunstneren i galleriet, og alle de fire trykkene hans gir noe tilbake ved andre og tredje blikk. Cruise seiler et skip gjennom grønne bølger med en saluterende kaptein, en jente med flettene flagrende etter seg og en fisk som hopper klar av vannet. Family Trip laster en oransje bil langt over taket og fyller den med barn, en flirende hund, en katt og en mus. URF! er en hel tegneserieside i ett trykk, en ridder i blå rustning som taper en diskusjon mot en grønn drage. Journey er det stille bildet: en rød bil over en steinbro under fjell, i en dempet høstpalett.",
+      "para2": "Saarainen passer i rommene der ingen passer seg. Cruise, Family Trip og URF! er 50 x 50 cm, kvadratformatet som står godt på en bildehylle eller i en gruppe, og de henger fint på et barnerom, i en lekestue eller på et kjøkken ved siden av Simen Wahlqvists kvadrater blant [illustrasjonstrykkene](/no/category/illustrations) våre. [Journey](/no/product/journey) er bildet for stua eller gangen: 50 x 70 cm, roligere i fargen, og sterkt nok til å bære en vegg alene. Alle fire selges med ramme i tre, svart eller hvit, eller uten ramme."
+    }
+  },
+  "prints": [
+    {
+      "name": "Cruise",
+      "slug": "cruise",
+      "file": "~/Downloads/wetransfer_prints-bio-and-picture_2026-09-14_0619/Cruise.jpg",
+      "category": "Illustrations",
+      "sizes": [
+        "50x50cm"
+      ],
+      "priceCategory": "Budget",
+      "description": "Cruise by Mikko Saarainen sails a liner through green waves, with a saluting captain, a girl whose plaits stream out behind her and a leaping fish. Orange birds wheel around the funnel, a boy in a woolly hat aims a yellow camera at the water, and every passenger has spotted something different. Drawn in a bold line and flat, faintly grainy colour in teal, orange and yellow, it has the cheerful overload of a holiday photograph where nobody is looking at the lens.",
+      "descriptionNo": "Cruise av Mikko Saarainen seiler et skip gjennom grønne bølger, med saluterende kaptein, en jente med flagrende fletter og en fisk som hopper. Oransje fugler sirkler rundt skorsteinen, en gutt med lue sikter et gult kamera mot vannet, og hver eneste passasjer har fått øye på noe forskjellig. Tegnet med kraftig strek og flate, litt kornete farger i turkis, oransje og gult har det den muntre overfloden fra et feriebilde der ingen ser i kameraet.",
+      "buyerDescriptionNo": "Et tegneserieskip i grønne bølger, med kaptein, fugler og en fisk som hopper. Kjøp Cruise innrammet i tre, svart eller hvit, eller uten ramme.",
+      "recommended": [
+        "Family Trip",
+        "URF!",
+        "Journey",
+        "Slingshot"
+      ],
+      "secondaryImage": "/images/products/cruise-room.avif"
+    },
+    {
+      "name": "Family Trip",
+      "slug": "family-trip",
+      "file": "~/Downloads/wetransfer_prints-bio-and-picture_2026-09-14_0619/Family_Trip.jpg",
+      "category": "Illustrations",
+      "sizes": [
+        "50x50cm"
+      ],
+      "priceCategory": "Budget",
+      "description": "Family Trip by Mikko Saarainen loads an orange car past the roofline: suitcases, a picnic basket, a rolled rug and a mouse on the roof rack. Inside, a yellow dog grins out of one window and a green cat hangs out of another, with four children and a driver in glasses squeezed in between, a bird on the aerial and exhaust puffing behind. Drawn in a bold black line over flat colour, it is the whole chaotic business of leaving on holiday in a single square.",
+      "descriptionNo": "Family Trip av Mikko Saarainen laster en oransje bil langt over taket: kofferter, piknikkurv, en sammenrullet matte og en mus på takgrinden. Inni flirer en gul hund ut av det ene vinduet og en grønn katt henger ut av det andre, med fire barn og en sjåfør med briller klemt inn imellom, en fugl på antennen og eksos som pøser bak. Tegnet med kraftig svart strek over flate farger er det hele det kaotiske ved å dra på ferie, samlet i ett kvadrat.",
+      "buyerDescriptionNo": "En oransje bil lastet over taket, full av barn, hund og katt. Kjøp Family Trip innrammet i tre, svart eller hvit, eller uten ramme.",
+      "recommended": [
+        "Cruise",
+        "URF!",
+        "Journey",
+        "Half Man"
+      ],
+      "secondaryImage": "/images/products/family-trip-room.avif"
+    },
+    {
+      "name": "Journey",
+      "slug": "journey",
+      "file": "~/Downloads/wetransfer_prints-bio-and-picture_2026-09-14_0619/Journey.jpg",
+      "category": "Illustrations",
+      "sizes": [
+        "50x70cm"
+      ],
+      "priceCategory": "Budget",
+      "description": "Journey by Mikko Saarainen takes a red car over a stone bridge below snow-capped mountains, through autumn trees in orange and yellow. It is the quietest of his prints and the most graphic: big rolling clouds, flowering shrubs crowding the foreground, two birds up in the pines, and the arch of the bridge repeated in its own reflection. The muted palette and flat shapes owe something to the old railway travel posters, and it is calm enough to hold a wall on its own.",
+      "descriptionNo": "Journey av Mikko Saarainen tar en rød bil over en steinbro under snødekte fjell, gjennom høsttrær i oransje og gult. Det er det stilleste av trykkene hans og det mest grafiske: store, rullende skyer, blomstrende busker som trenger seg på i forgrunnen, to fugler oppe i furuene, og brobuen gjentatt i sitt eget speilbilde. Den dempede paletten og de flate formene skylder de gamle jernbaneplakatene noe, og bildet er rolig nok til å bære en vegg alene.",
+      "buyerDescriptionNo": "En rød bil over en steinbro, under fjell og høsttrær. Kjøp Journey innrammet i tre, svart eller hvit, eller uten ramme.",
+      "recommended": [
+        "Cruise",
+        "Family Trip",
+        "URF!",
+        "Morgenstrekk"
+      ],
+      "secondaryImage": "/images/products/journey-room.avif"
+    },
+    {
+      "name": "URF!",
+      "slug": "urf",
+      "file": "~/Downloads/wetransfer_prints-bio-and-picture_2026-09-14_0619/URF!.jpg",
+      "category": "Illustrations",
+      "sizes": [
+        "50x50cm"
+      ],
+      "priceCategory": "Budget",
+      "description": "URF! by Mikko Saarainen is a whole comic page in one print: a knight in blue armour losing an argument with a green dragon, across three panels. He is blasted off a wall in the first, swinging a sword at the dragon's tail in the second, and down to a fire extinguisher by the third, while another knight creeps through a ruin towards a red door. Autumn trees and grey castle stone fill every gap, and there is a joke in almost all of them.",
+      "descriptionNo": "URF! av Mikko Saarainen er en hel tegneserieside i ett trykk: en ridder i blå rustning som taper en diskusjon mot en grønn drage, i tre ruter. Han blir blåst av en mur i den første, svinger sverdet mot dragehalen i den andre, og er nede på brannslukningsapparat i den tredje, mens en annen ridder sniker seg gjennom en ruin mot en rød dør. Høsttrær og grå borgstein fyller hver eneste luke, og det ligger en spøk i nesten alle sammen.",
+      "buyerDescriptionNo": "En tegneserieside i ett trykk: ridder mot grønn drage, i tre ruter. Kjøp URF! innrammet i tre, svart eller hvit, eller uten ramme.",
+      "recommended": [
+        "Cruise",
+        "Family Trip",
+        "Journey",
+        "Eye Nose Eye"
+      ],
+      "secondaryImage": "/images/products/urf-room.avif"
+    }
+  ]
+}
