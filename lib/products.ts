@@ -58,7 +58,7 @@ function convertNotionProductToProduct(
   };
 }
 
-export async function getAllProducts(): Promise<Product[]> {
+async function getCatalogueProducts(): Promise<{ sourceId: string; product: Product }[]> {
   const filePath = path.join(process.cwd(), 'public', 'notion-data', 'products.json');
   try {
     const data = await fs.readFile(filePath, 'utf-8');
@@ -78,7 +78,10 @@ export async function getAllProducts(): Promise<Product[]> {
           `onto a live list before retiring it.`
       );
     }
-    return published.map(p => convertNotionProductToProduct(p, offered));
+    return published.map(p => ({
+      sourceId: p.id,
+      product: convertNotionProductToProduct(p, offered),
+    }));
   } catch (error) {
     // An unreadable catalogue is UNKNOWN, not empty, and the two used to be
     // indistinguishable downstream: every product surface renders empty and a
@@ -93,6 +96,34 @@ export async function getAllProducts(): Promise<Product[]> {
     );
     return [];
   }
+}
+
+export async function getAllProducts(): Promise<Product[]> {
+  return (await getCatalogueProducts()).map(({ product }) => product);
+}
+
+/** Resolve editorial selections without confusing source UUIDs with cart IDs. */
+export async function getProductsByArtworkIds(artworkIds: readonly string[]): Promise<Product[]> {
+  if (artworkIds.length === 0) return [];
+
+  const catalogue = await getCatalogueProducts();
+  const byArtworkId = new Map<string, Product>();
+  for (const { sourceId, product } of catalogue) {
+    // Older Article rows store the Notion page UUID; newer rows may use a slug.
+    // Product.id is a separate commerce identifier and must remain unchanged.
+    byArtworkId.set(sourceId, product);
+    byArtworkId.set(product.slug, product);
+  }
+
+  const selected: Product[] = [];
+  const seen = new Set<string>();
+  for (const artworkId of artworkIds) {
+    const product = byArtworkId.get(artworkId);
+    if (!product || seen.has(product.slug)) continue;
+    selected.push(product);
+    seen.add(product.slug);
+  }
+  return selected;
 }
 
 export async function getProductBySlug(slug: string): Promise<Product | null> {

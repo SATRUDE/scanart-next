@@ -12,7 +12,7 @@ import {
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
 import { getAllArticles, getArticleBySlug, getArticleBlocks } from '@/lib/articles';
-import { getAllProducts } from '@/lib/products';
+import { getProductsByArtworkIds } from '@/lib/products';
 import { ArticleBody } from '@/components/ArticleBody';
 import { PrintCard } from '@/components/PrintCard';
 import { BASE_URL, OG_IMAGE, SITE_NAME, OG_LOCALE, TWITTER_SITE } from '@/lib/site';
@@ -87,10 +87,7 @@ export default async function ArticlePage({
 
   const blocks = await getArticleBlocks(article.id);
   const browseLinks = getBrowseLinksForArticle(article.slug);
-  const allProducts = await getAllProducts();
-  const featuredPrints = (article.selectedArtworkIds || [])
-    .map(artworkSlug => allProducts.find(p => p.slug === artworkSlug))
-    .filter((p): p is NonNullable<typeof p> => Boolean(p));
+  const featuredPrints = await getProductsByArtworkIds(article.selectedArtworkIds || []);
   const allArticles = await getAllArticles();
   // Curated list, then every article that names this one, then a same-category
   // fill: see lib/related-articles.ts for why the block must point both ways.
