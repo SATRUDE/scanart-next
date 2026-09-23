@@ -113,6 +113,8 @@ export const no = {
     viewAllProducts: 'Se alle produkter',
     meetTheArtists: 'Møt kunstnerne',
     viewAllArtists: 'Se alle kunstnerne',
+    hedvigIntro: 'Utforsk de lekne trykkene til',
+    hedvigOutro: ', en illustratør fra Göteborg.',
     fromTheJournal: 'Fra journalen',
     readTheJournal: 'Les journalen',
     jsonLdDescription:
@@ -699,12 +701,12 @@ export const no = {
     kitchen: {
       title: 'Skandinavisk veggkunst til kjøkkenet',
       description:
-        'Veggkunst til kjøkkenet med skandinavisk karakter: fire mat- og bordstilleben av Bergensillustratøren Sia Siamos, med tips til hvordan du henger dem. Med eller uten ramme.',
+        'Veggkunst til kjøkkenet med skandinavisk karakter: seks mat- og bordmotiver av Sia Siamos og Hedvig Wallin, med tips til hvordan du henger dem. Med eller uten ramme.',
       heading: 'Skandinavisk veggkunst til kjøkkenet',
       intro:
-        'Fire trykk, og mellom seg en hel hummer, to karafler, en presskanne og flere tomater enn ett bord trenger. Alle fire er av Sia Siamos, en gresk og norsk illustratør bosatt i Bergen, som maler mat slik du faktisk møter den: midt i måltidet, med hender som strekker seg inn fra kanten og korken alt ute av flasken. På et kjøkken gjør de det et landskap ikke kan, nemlig å være enige med rommet. Hvert av dem kommer i én størrelse, 50 x 70 cm, med ramme i tre, svart eller hvitt, eller uten.',
+        'Seks trykk, og mellom seg en hel hummer, to karafler, en presskanne og flere tomater enn ett bord trenger. Fire er av Sia Siamos, en gresk og norsk illustratør bosatt i Bergen, som maler mat slik du faktisk møter den: midt i måltidet, med hender som strekker seg inn fra kanten og korken alt ute av flasken. Hedvig Wallin bidrar med en søndagsbrunsj i pastell i Sunday Brunch og rekker av akvarellepler i Massa Äpplen. På et kjøkken gjør de det et landskap ikke kan, nemlig å være enige med rommet. Hvert av dem kommer i én størrelse, 50 x 70 cm, med ramme i tre, svart eller hvitt, eller uten.',
       intro2:
-        'Kjøkken er hardere mot et trykk enn noe annet rom, og det er verdt å vite før du henger noe du er glad i der. Damp, matsprut og en vegg med ettermiddagssol treffer alle her, så hold verket unna arbeidssonen mellom platetopp og vask, og unna direkte lys hvis rommet tillater det. Alt annet slapper av: et kjøkken tåler mer farge enn en stue gjør, fordi det alt finnes farge der, fliser og panner og frukt og resten. Disse fire er malt høyt nok til å holde stand mot alt det.',
+        'Kjøkken er hardere mot et trykk enn noe annet rom, og det er verdt å vite før du henger noe du er glad i der. Damp, matsprut og en vegg med ettermiddagssol treffer alle her, så hold verket unna arbeidssonen mellom platetopp og vask, og unna direkte lys hvis rommet tillater det. Alt annet slapper av: et kjøkken tåler mer farge enn en stue gjør, fordi det alt finnes farge der, fliser og panner og frukt og resten. Disse trykkene har nok farge til å holde stand mot alt det.',
       stylingHeading: 'Ideer til veggkunst på kjøkkenet',
       stylingTips: [
         'Heng det der du spiser, ikke der du lager mat. Veggen bak kjøkkenbordet, en frokostkrok eller spiseenden av rommet tar et trykk langt bedre enn stretchen over benken, og det er veggen du faktisk sitter og ser på.',
@@ -717,7 +719,7 @@ export const no = {
         {
           question: 'Hvilken veggkunst fungerer på et kjøkken?',
           answer:
-            'Mat, hvis du vil ha det enkle svaret. En bordscene eller et stilleben hører hjemme på et kjøkken på en måte et portrett eller et landskap aldri helt gjør, og det tåler mer farge enn du ville hengt i et roligere rom. De fire trykkene her er nettopp det: en hummermiddag, en hyttefrokost, et morgenbord og en vinkveld, alle djerve nok til å konkurrere med fliser og åpne hyller.',
+            'Mat, hvis du vil ha det enkle svaret. En bordscene eller et stilleben hører hjemme på et kjøkken på en måte et portrett eller et landskap aldri helt gjør, og det tåler mer farge enn du ville hengt i et roligere rom. De seks trykkene her er nettopp det: en hummermiddag, en hyttefrokost, et morgenbord, en vinkveld, en søndagsbrunsj og rekker av epler, alle djerve nok til å konkurrere med fliser og åpne hyller.',
         },
         {
           question: 'Hvor bør jeg henge kunst på et lite kjøkken?',
@@ -727,7 +729,7 @@ export const no = {
         {
           question: 'Hvilken størrelse har kjøkkentrykkene, og kan jeg bestille dem med ramme?',
           answer:
-            'Alle fire kommer i én størrelse, 50 x 70 cm, som passer de fleste kjøkkenvegger uten at du trenger å måle opp. Velg uten ramme, eller ramme i tre, svart eller hvitt, på produktsiden før du legger det i kurven, der prisen for den størrelsen står. Trykkene lages på bestilling og sendes over hele verden med frakten oppgitt i kassen, og du har 14 dager fra levering på å ombestemme deg.',
+            'Alle seks kommer i én størrelse, 50 x 70 cm, som passer de fleste kjøkkenvegger uten at du trenger å måle opp. Velg uten ramme, eller ramme i tre, svart eller hvitt, på produktsiden før du legger det i kurven, der prisen for den størrelsen står. Trykkene lages på bestilling og sendes over hele verden med frakten oppgitt i kassen, og du har 14 dager fra levering på å ombestemme deg.',
         },
       ],
     },

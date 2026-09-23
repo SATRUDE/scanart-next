@@ -140,6 +140,18 @@ export default async function NorwegianHomePage() {
               </TrackedLink>
             </div>
             <ArtistsList artists={featuredArtists} locale="no" printLabels={{ one: no.shared.printOne, other: no.shared.printOther }} />
+            <p className="mt-6 text-neutral-600 leading-relaxed">
+              {no.home.hedvigIntro}{' '}
+              <TrackedLink
+                event="homepage-section-click"
+                eventData={{ section: 'hedvig-wallin', target: '/no/artist/hedvig-wallin', locale: 'no' }}
+                href="/no/artist/hedvig-wallin"
+                className="underline hover:text-neutral-900"
+              >
+                Hedvig Wallin
+              </TrackedLink>
+              {no.home.hedvigOutro}
+            </p>
           </div>
         </section>
       )}
