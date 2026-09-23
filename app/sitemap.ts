@@ -29,6 +29,9 @@ const NO_TRANSLATED_SHOP = new Date('2026-08-21');
 // hand when its copy changes, as with the other hand-dated static pages.
 const APPLY_PUBLISHED = new Date('2026-08-21');
 
+// Hedvig discovery links added to both homepages on this date.
+const HOME_REVISED = new Date('2026-09-23');
+
 // hreflang alternates for a translated EN/NO pair, attached to BOTH entries
 // of the pair so each URL declares the other (and English as the x-default).
 // `enPath` is '' for the homepage.
@@ -52,7 +55,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     .map(a => new Date(a.last_edited_time));
 
   return [
-    { url: BASE_URL, lastModified: latestCatalogueDate([...productDates, ...articleDates]), priority: 1.0, changeFrequency: 'daily', alternates: pairAlternates('') },
+    { url: BASE_URL, lastModified: latestCatalogueDate([...productDates, ...articleDates, HOME_REVISED]), priority: 1.0, changeFrequency: 'daily', alternates: pairAlternates('') },
     { url: `${BASE_URL}/products`, lastModified: latestCatalogueDate(productDates), priority: 0.9, changeFrequency: 'weekly', alternates: pairAlternates('/products') },
     { url: `${BASE_URL}/journal`, lastModified: latestSitemapDate(articleDates), priority: 0.8, changeFrequency: 'weekly', alternates: pairAlternates('/journal') },
     { url: `${BASE_URL}/inspire`, lastModified: new Date('2026-08-06'), priority: 0.7, changeFrequency: 'weekly', alternates: pairAlternates('/inspire') },
@@ -76,7 +79,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // the Norwegian tree (phase 1): the same stable pages under /no, dated by
     // the same content that dates their English twins; the hand-dated static
     // pages carry the translation date instead
-    { url: `${BASE_URL}/no`, lastModified: latestCatalogueDate([...productDates, ...articleDates]), priority: 1.0, changeFrequency: 'daily', alternates: pairAlternates('') },
+    { url: `${BASE_URL}/no`, lastModified: latestCatalogueDate([...productDates, ...articleDates, HOME_REVISED]), priority: 1.0, changeFrequency: 'daily', alternates: pairAlternates('') },
     { url: `${BASE_URL}/no/artists`, lastModified: latestCatalogueDate(productDates), priority: 0.7, changeFrequency: 'weekly', alternates: pairAlternates('/artists') },
     { url: `${BASE_URL}/no/artists/apply`, lastModified: APPLY_PUBLISHED, priority: 0.5, changeFrequency: 'yearly', alternates: pairAlternates('/artists/apply') },
     // same hero picture as the English entry, exactly as the /no product
@@ -156,6 +159,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           .map(p => productEdited[p.slug])
           .filter(Boolean)
           .map(d => new Date(d));
+        if (col.revisedAt) dates.push(new Date(col.revisedAt));
         const lastModified = latestCatalogueDate(dates);
         const noLastModified = latestNorwegianCatalogueDate(dates);
         const alternates = pairAlternates(`/collection/${col.slug}`);

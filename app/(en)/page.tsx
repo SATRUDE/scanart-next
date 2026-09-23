@@ -141,6 +141,18 @@ export default async function HomePage() {
               </TrackedLink>
             </div>
             <ArtistsList artists={featuredArtists} />
+            <p className="mt-6 text-neutral-600 leading-relaxed">
+              Explore the playful prints of{' '}
+              <TrackedLink
+                event="homepage-section-click"
+                eventData={{ section: 'hedvig-wallin', target: '/artist/hedvig-wallin' }}
+                href="/artist/hedvig-wallin"
+                className="underline hover:text-neutral-900"
+              >
+                Hedvig Wallin
+              </TrackedLink>
+              , an illustrator from Gothenburg.
+            </p>
           </div>
         </section>
       )}

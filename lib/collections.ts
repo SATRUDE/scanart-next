@@ -29,6 +29,8 @@ export interface Collection {
   intro2: string;
   /** Curated prints, in display order. Must match Product.slug exactly. */
   productSlugs: string[];
+  /** Date the curation or copy changed, shared by the EN/NO sitemap entries. */
+  revisedAt?: string;
   stylingHeading: string;
   stylingTips: string[];
   /** Optional illustrated version of the styling tips (label + tip + image). When
@@ -303,23 +305,26 @@ export const collections: Collection[] = [
   },
   {
     slug: 'kitchen',
+    revisedAt: '2026-09-23',
     chipLabel: 'Kitchen',
     axis: 'room',
     title:
       'Scandinavian Kitchen Wall Art',
     description:
-      'Kitchen wall art with Scandinavian character: four food and table still lifes by Bergen illustrator Sia Siamos, plus ideas for hanging them. Framed or unframed.',
+      'Kitchen wall art with Scandinavian character: six food and table prints by Sia Siamos and Hedvig Wallin, plus ideas for hanging them. Framed or unframed.',
     heading:
       'Scandinavian Wall Art for the Kitchen',
     intro:
-      'Four prints, and between them a whole lobster, two carafes, a cafetière and more tomatoes than one table needs. All four are by Sia Siamos, a Greek and Norwegian illustrator living in Bergen, who paints food the way you actually meet it: mid-meal, hands reaching in from the edges, the cork already out of the bottle. In a kitchen they do the thing a landscape can\'t, which is agree with the room. Each comes in one size, 50 x 70 cm, framed in wood, black or white, or unframed.',
+      'Six prints, and between them a whole lobster, two carafes, a cafetière and more tomatoes than one table needs. Four are by Sia Siamos, a Greek and Norwegian illustrator living in Bergen, who paints food the way you actually meet it: mid-meal, hands reaching in from the edges, the cork already out of the bottle. Hedvig Wallin adds a pastel Sunday Brunch and rows of watercolour apples in Massa Äpplen. In a kitchen they do the thing a landscape can\'t, which is agree with the room. Each comes in one size, 50 x 70 cm, framed in wood, black or white, or unframed.',
     intro2:
-      'Kitchens are harder on a print than any other room, and it\'s worth knowing that before you hang something you love in one. Steam, cooking splashes and a wall of afternoon sun all land here, so keep a piece off the working run between hob and sink and out of direct light if the room lets you. Everything else relaxes: a kitchen takes more colour than a living room does, because there\'s already colour in it, tiles and pans and fruit and the rest. These four are painted loud enough to hold their own against all that.',
+      'Kitchens are harder on a print than any other room, and it\'s worth knowing that before you hang something you love in one. Steam, cooking splashes and a wall of afternoon sun all land here, so keep a piece off the working run between hob and sink and out of direct light if the room lets you. Everything else relaxes: a kitchen takes more colour than a living room does, because there\'s already colour in it, tiles and pans and fruit and the rest. These prints carry enough colour to hold their own against all that.',
     productSlugs: [
       'hummer-og-vin',
       'hyttefrokost',
       'morgenlevering',
       'vinkveld',
+      'sunday-brunch',
+      'massa-applen',
     ],
     stylingHeading: 'Kitchen wall art ideas',
     stylingTips: [
@@ -334,7 +339,7 @@ export const collections: Collection[] = [
       {
         question: 'What wall art works in a kitchen?',
         answer:
-          'Food, if you want the easy answer. A table scene or a still life belongs in a kitchen in a way a portrait or a landscape never quite does, and it can carry more colour than you\'d hang in a quieter room. The four prints here are exactly that: a lobster dinner, a cabin breakfast, a morning table and a wine evening, all bold enough to compete with tiles and open shelving.',
+          'Food, if you want the easy answer. A table scene or a still life belongs in a kitchen in a way a portrait or a landscape never quite does, and it can carry more colour than you\'d hang in a quieter room. The six prints here are exactly that: a lobster dinner, a cabin breakfast, a morning table, a wine evening, a Sunday brunch and rows of apples, all bold enough to compete with tiles and open shelving.',
       },
       {
         question: 'Where should I hang art in a small kitchen?',
@@ -344,7 +349,7 @@ export const collections: Collection[] = [
       {
         question: 'What size are the kitchen prints, and can I order them framed?',
         answer:
-          'All four come in one size, 50 x 70 cm, which suits most kitchen walls without needing a measure-up. Choose unframed, or a wood, black or white frame, on the product page before adding to the basket, where the price for that size is shown. Prints are made to order and delivered worldwide with the cost shown at checkout, and you have 14 days from delivery to change your mind.',
+          'All six come in one size, 50 x 70 cm, which suits most kitchen walls without needing a measure-up. Choose unframed, or a wood, black or white frame, on the product page before adding to the basket, where the price for that size is shown. Prints are made to order and delivered worldwide with the cost shown at checkout, and you have 14 days from delivery to change your mind.',
       },
     ],
   },
