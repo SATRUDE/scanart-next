@@ -172,8 +172,7 @@ export default function GalleryWallPlannerPage() {
             <nav aria-label="Related guides" className="lg:col-span-2 flex flex-col gap-3 text-base">
               {[
                 ['/article/create-an-art-wall', 'How to create an art wall with multiple pieces'],
-                ['/article/how-to-frame-an-art-print', 'How to frame an art print, and the size trap to avoid'],
-                ['/article/complete-guide-choosing-print-sizes', 'The complete guide to choosing print sizes for your home'],
+                ['/article/complete-guide-choosing-print-sizes', 'Choosing print sizes and allowing for the frame'],
                 ['/article/how-to-style-scandinavian-wall-art-living-room', 'How to style Scandinavian wall art in your living room'],
                 ['/article/scandinavian-wall-decor-ideas', 'Scandinavian wall decor ideas: eight ways to dress a wall'],
               ].map(([href, label]) => (
