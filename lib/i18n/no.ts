@@ -836,7 +836,7 @@ export const no = {
       para1:
         'Helene Brox, kunstner og illustratør bosatt i Oslo, arbeider i djerve, flate former: figurer og fugler skåret ned til silhuett, malt med papirklippets selvsikkerhet og satt på én bunnfarge. Gjennom de fem trykkene hennes holder den samme disiplinen, enten stemningen er rolig eller høylytt. Swallow Dive bærer all bevegelsen sin i én koboltblå og én kremhvit; Dancer fanger en figur midt i steget, uten ansikt og uten gulv; Dragon løser et fabeldyr opp i bånd av farge mot sort. Selv IThinkIThink, det mest høylytte trykket i galleriet, bærer bekjennelsen sin i de samme djerve, utklippede formene.',
       para2:
-        'Hvilken Brox som passer i et rom, avhenger av hvor mye mot veggen har. Tree Top Peach og Swallow Dive er de milde; de faller til ro på et soverom eller i en lesekrok uten å forsvinne i det, og begge trives blant de roligere verkene i [soveromssamlingen](/no/collection/bedroom). [Dragon](/product/dragon) og IThinkIThink vil ha rommet der folk samles og prater. Alle fem deler det samme utklippsspråket, så to av dem henger naturlig sammen, ett rolig og ett høylytt, og paret leses som bevisst snarere enn matchet.',
+        'Hvilken Brox som passer i et rom, avhenger av hvor mye mot veggen har. Tree Top Peach og Swallow Dive er de milde; de faller til ro på et soverom eller i en lesekrok uten å forsvinne i det, og begge trives blant de roligere verkene i [soveromssamlingen](/no/collection/bedroom). [Dragon](/no/product/dragon) og IThinkIThink vil ha rommet der folk samles og prater. Alle fem deler det samme utklippsspråket, så to av dem henger naturlig sammen, ett rolig og ett høylytt, og paret leses som bevisst snarere enn matchet.',
     },
     'simen-wahlqvist': {
       heading: 'Så få streker som mulig',
@@ -850,21 +850,21 @@ export const no = {
       para1:
         'Ingunn Dybendal, kunstner og illustratør bosatt i Oslo, tegner med fargeblyant og en usedvanlig tålmodighet, og de to trykkene hennes er de tettest arbeidede verkene i galleriet. Eltsjoen gjør et nordisk innsjølandskap om til ornament: skyer strukket til bånd, skog gjort om til folkemotiver, vann som samler seg i bleke ringer rundt en bro. Trysilkaffe stapper et grønt krus med en umulig bukett, hver blomst sin egen oppfinnelse over en rutete duk. Begge står støtt i den nordiske folkekunsttradisjonen, mønster på mønster, bygget strøk for strøk snarere enn i store flater.',
       para2:
-        'Dette er verk som belønner nærhet. Heng [Eltsjoen](/product/eltsjoen) der du faktisk sitter, ved siden av en lesestol eller over et skrivebord, så fortsetter det å by på nye hjørner å oppdage; det hundrede blikket betaler seg like godt som det første. Trysilkaffe har den samme tettheten med mer skøyerstrek, og finner seg naturlig til rette på en kjøkken- eller gangvegg. Begge står godt sammen med de roligere verkene blant de [botaniske trykkene](/no/category/botanical) våre, der detaljrikdommen spiller mot enklere silhuetter i stedet for å konkurrere med dem.',
+        'Dette er verk som belønner nærhet. Heng [Eltsjoen](/no/product/eltsjoen) der du faktisk sitter, ved siden av en lesestol eller over et skrivebord, så fortsetter det å by på nye hjørner å oppdage; det hundrede blikket betaler seg like godt som det første. Trysilkaffe har den samme tettheten med mer skøyerstrek, og finner seg naturlig til rette på en kjøkken- eller gangvegg. Begge står godt sammen med de roligere verkene blant de [botaniske trykkene](/no/category/botanical) våre, der detaljrikdommen spiller mot enklere silhuetter i stedet for å konkurrere med dem.',
     },
     'sia-siamos': {
       heading: 'Trekk frem en stol',
       para1:
         'Athanasia Siamos, kjent som Sia, er en gresk-norsk illustratør bosatt i Bergen, og de fire trykkene hennes er alle varianter av den samme rause ideen: bordet med mennesker rundt. De er malt løst og djervt, og hvert av dem bærer en norsk tittel som sier nøyaktig hva det rommer. Hummer og Vin ser ned på en hummermiddag midt i skålen; Morgenlevering er et frokostbord som nettopp har kommet på plass; Hyttefrokost har roen fra en hytteferie; Vinkveld, det mest stemningsfulle av de fire, er en vinkveld der korken allerede er på avveie.',
       para2:
-        'Siamos hører hjemme der maten skjer. En kjøkken- eller spisestuevegg er det opplagte hjemmet, spesielt for [Vinkveld](/product/vinkveld), men Morgenlevering er lys nok til å løfte en gang eller et soverom som fanger morgensolen. De fire scenene er malt som søsken, så et par fungerer nydelig: frokost på én vegg, vin på den andre, som dagens to ender. De ligger i den varmeste enden av de [botaniske trykkene](/no/category/botanical) våre, fulle av tomater, druer og snittblomster snarere enn blader og grener.',
+        'Siamos hører hjemme der maten skjer. En kjøkken- eller spisestuevegg er det opplagte hjemmet, spesielt for [Vinkveld](/no/product/vinkveld), men Morgenlevering er lys nok til å løfte en gang eller et soverom som fanger morgensolen. De fire scenene er malt som søsken, så et par fungerer nydelig: frokost på én vegg, vin på den andre, som dagens to ender. De ligger i den varmeste enden av de [botaniske trykkene](/no/category/botanical) våre, fulle av tomater, druer og snittblomster snarere enn blader og grener.',
     },
     'hedvig-wallin': {
       heading: 'Se igjen, og igjen',
       para1:
         'Hedvig Wallin, illustratør og grafisk designer fra Göteborg, er den første svenske kunstneren i galleriet, og de fire trykkene hennes deler en vane lånt fra naivistisk kunst: hold tegningen enkel, la perspektivet bli skjevt, og fyll på med detaljer til det andre blikket. Sunday Brunch dekker et frokostbord i pastell, sett ovenfra mot grønne kjøkkenfliser. Rosa Blomster fyller en vase med rosa og rødt. Massa Äpplen stiller opp rekke på rekke med små akvarellepler, ikke to like. Small House Big Ocean dropper fargen helt: ett hus, én klippe, og et hav tegnet bølge for bølge i svart tusj.',
       para2:
-        'Wallin hører hjemme i rommene folk faktisk bruker. [Sunday Brunch](/product/sunday-brunch) og Massa Äpplen er laget for en kjøkken- eller spisestuevegg, der de holder Sia Siamos’ bordscener med selskap blant de [botaniske trykkene](/no/category/botanical) våre. Rosa Blomster er myk nok for et soverom. Small House Big Ocean er det stille bildet, en strektegning som passer like godt på et barnerom som i en stue, og som henger fint ved siden av alt som har farge i seg. Alle fire er 50 x 70 cm, og selges med ramme i tre, svart eller hvit, eller uten ramme.',
+        'Wallin hører hjemme i rommene folk faktisk bruker. [Sunday Brunch](/no/product/sunday-brunch) og [Massa Äpplen](/no/product/massa-applen) er laget for en kjøkken- eller spisestuevegg, der de holder Sia Siamos’ bordscener med selskap blant de [botaniske trykkene](/no/category/botanical) våre. [Rosa Blomster](/no/product/rosa-blomster) er myk nok for et soverom. [Small House Big Ocean](/no/product/small-house-big-ocean) er det stille bildet, en strektegning som passer like godt på et barnerom som i en stue, og som henger fint ved siden av alt som har farge i seg. Alle fire er 50 x 70 cm, og selges med ramme i tre, svart eller hvit, eller uten ramme.',
     },
   } as Record<string, ArtistEditorialCopy>,
   inspire: {
@@ -911,7 +911,7 @@ export const no = {
     meta: {
       title: 'Nordiske og skandinaviske kunsttrykk: en kuratert samling',
       description:
-        'En kuratert samling skandinaviske og nordiske kunsttrykk av uavhengige norske kunstnere. Innrammet eller uten ramme, med levering over hele verden.',
+        'En kuratert samling skandinaviske og nordiske kunsttrykk av uavhengige skandinaviske kunstnere. Innrammet eller uten ramme, med levering over hele verden.',
     },
   },
 
