@@ -31,14 +31,8 @@ import { chromeAria } from '@/lib/i18n';
  * - CURRENCY has five, independent of language, because someone in Oslo may
  *   well want to pay in pounds and that is their business.
  *
- * THE GAP IT DELIBERATELY EXPOSES. Products and articles have no Norwegian
- * version: 16 products and 18 articles, 34 of the site's 74 URLs, including
- * every page where someone buys. On those pages Norsk is shown as unavailable
- * with a reason and a route to the Norwegian home, rather than being hidden
- * (which would imply the site is English-only) or appearing to work (which
- * would be the old lie again). Making it work everywhere means translating the
- * product pages, which is the next real piece of work and worth doing because
- * Norway converts search at 6.59% against Britain's 1.67%.
+ * Browsing routes link to their existing translated twins. Untranslated
+ * editorial pages retain the explanation and route to the Norwegian home.
  */
 export const LanguagePicker: React.FC = () => {
   const { selectedCountry, setSelectedCountry } = useLanguage();
@@ -75,7 +69,7 @@ export const LanguagePicker: React.FC = () => {
       <PopoverContent align="end" className="w-64 p-0">
         <div className="border-b p-3">
           <p className="mb-2 text-xs font-medium uppercase tracking-wider text-muted-foreground">
-            Language
+            {locale === 'no' ? 'Språk' : 'Language'}
           </p>
           <ul className="space-y-0.5">
             {locales.map(o =>
@@ -117,7 +111,7 @@ export const LanguagePicker: React.FC = () => {
 
         <div className="p-3">
           <p className="mb-2 text-xs font-medium uppercase tracking-wider text-muted-foreground">
-            Currency
+            {locale === 'no' ? 'Valuta' : 'Currency'}
           </p>
           <ul className="space-y-0.5">
             {countries.map(c => (

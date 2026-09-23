@@ -9,10 +9,8 @@ import { enPathFor, isNoPath, noPathFor } from '@/lib/i18n';
  * twin is that it cannot be done here rather than a control that silently does
  * nothing.
  *
- * Products and articles have no Norwegian twin today: 16 products and 18
- * articles, none of them translated, which is 34 of the site's 74 URLs and
- * includes every page where someone buys something. That is why this returns a
- * reason rather than a boolean.
+ * Product pages now have Norwegian twins. Articles and the planner remain
+ * English only, and checkout is handled by separate payment-language work.
  */
 export type LocaleCode = 'en' | 'no';
 

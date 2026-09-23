@@ -190,14 +190,7 @@ describe('Norwegian dictionary', () => {
   it('maps a collection path to its Norwegian twin', () => {
     expect(noPathFor('/collection/living-room')).toBe('/no/collection/living-room');
     expect(noPathFor('/category/botanical')).toBe('/no/category/botanical');
-    // Articles have no twin and never have. Products DO have one now, and
-    // noPathFor still says otherwise: pinned deliberately rather than quietly
-    // corrected, because this function also decides which visitors proxy.ts
-    // 302s into Norwegian and what the header language control offers, so
-    // widening it changes what a buyer sees rather than only where a link
-    // points. That is Mark's call and it has its own ticket; the link guard
-    // above deliberately does not depend on this answer.
-    expect(noPathFor('/product/swallow-dive')).toBeNull();
+    expect(noPathFor('/product/swallow-dive')).toBe('/no/product/swallow-dive');
     expect(noPathFor('/article/what-is-scandinavian-art')).toBeNull();
   });
 });
@@ -260,39 +253,14 @@ describe('hreflang return links', () => {
 });
 
 // ---------------------------------------------------------------------------
-// Every Norwegian page needs noPathFor to know it exists.
-//
-// noPathFor is an ALLOWLIST, and it decides three things at once: which
-// visitors proxy.ts 302s into Norwegian, what the header language control
-// offers, and where a "Norsk" link points. A /no page missing from it is
-// therefore live and correct and completely unreachable from its English
-// twin, which is exactly how /artists/how-it-works shipped on 30 Aug: both
-// languages built, both deployed, and no route between them. I had removed a
-// hand-rolled language link on the reasoning that the header picker "already
-// finds the twin". It does, but only for paths on this list.
-//
-// So this walks the Norwegian tree and fails on any static page the function
-// cannot map. The gaps that exist today are named below with their reason,
-// which is the point: a NEW page cannot quietly join them.
+// Every browsing page under /no must be reachable from its English twin.
+// The redirect policy is separate, so a new translation cannot silently
+// widen first-visit redirects or disappear from the language switch.
 describe('noPathFor knows about every Norwegian page', () => {
   const APP_NO = join(process.cwd(), 'app', '(no)', 'no');
 
-  /**
-   * Known, deliberate gaps. Widening noPathFor changes what a BUYER sees (it
-   * moves the 302), not merely where a link points, so these are Mark's call
-   * and carry their own ticket. Named here so they stay visible rather than
-   * becoming the silent default.
-   */
-  const KNOWN_GAPS = new Set([
-    '/products',
-    '/checkout',
-    '/feedback',
-    '/inspire',
-    '/journal',
-    '/privacy',
-    '/terms',
-    '/scandinavian-wall-art',
-  ]);
+  // Mid-payment language changes remain separately scoped.
+  const KNOWN_GAPS = new Set(['/checkout']);
 
   /** English paths of every STATIC page under app/(no)/no. */
   const norwegianPages = (dir: string, prefix = ''): string[] =>

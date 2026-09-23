@@ -12,7 +12,7 @@
 // name was the only thing left of the old convention.
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { noPathFor } from '@/lib/i18n';
+import { noRedirectPathFor } from '@/lib/i18n';
 
 const SUPPORTED_COUNTRIES = ['GB', 'NO', 'US', 'DK', 'SE'];
 
@@ -70,7 +70,7 @@ export function proxy(request: NextRequest) {
   // offers English back.
   const alreadyOffered = request.cookies.get(LOCALE_SEEN);
   const isBot = BOT.test(request.headers.get('user-agent') || '');
-  const twin = noPathFor(pathname);
+  const twin = noRedirectPathFor(pathname);
 
   if (!alreadyOffered && !isBot && NORWEGIAN_BY_DEFAULT.includes(country) && twin) {
     const url = request.nextUrl.clone();

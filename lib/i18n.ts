@@ -16,22 +16,23 @@ export function isNoPath(pathname: string): boolean {
 }
 
 /**
- * The /no twin of an English path, where one exists, else null.
- * Category, artist and collection slugs are not validated here: the Norwegian
- * routes use the same generateStaticParams and data sources as the English
- * ones, so every English category/artist/collection page that renders has a
- * Norwegian twin by construction. Collections joined in phase 2 (2026-08-21).
+ * The Norwegian destination offered by navigation. Slugs share the same data
+ * in both trees. Checkout remains outside the switch until the separately
+ * scoped payment-language work; articles and the planner are English only.
+ * Automatic redirects have their own, deliberately narrower policy below.
  */
 export function noPathFor(pathname: string): string | null {
   if (pathname === '/') return '/no';
-  // Not covered by the pattern below: the two-segment pages under /artists.
-  // Without these the language control offers a Norwegian reader nothing at
-  // all on the English page, which is how /artists/how-it-works shipped on
-  // 30 Aug. The twin existed and was live; nothing on the English page could
-  // reach it, because this function is an allowlist and the route was not on
-  // it. lib/i18n-no.test.ts now fails if a /no page is ever missing from here.
-  if (pathname === '/artists/apply') return '/no/artists/apply';
-  if (pathname === '/artists/how-it-works') return '/no/artists/how-it-works';
+  if (pathname === '/artists/apply' || pathname === '/artists/how-it-works') return `/no${pathname}`;
+  if (/^\/(about|delivery|help|artists|products|inspire|journal|privacy|terms|scandinavian-wall-art|feedback)$/.test(pathname)) return `/no${pathname}`;
+  if (/^\/(category|artist|collection|product)\/[^/]+$/.test(pathname)) return `/no${pathname}`;
+  return null;
+}
+
+/** Existing first-visit redirect policy, separate from manual navigation. */
+export function noRedirectPathFor(pathname: string): string | null {
+  if (pathname === '/') return '/no';
+  if (pathname === '/artists/apply' || pathname === '/artists/how-it-works') return `/no${pathname}`;
   if (/^\/(about|delivery|help|artists)$/.test(pathname)) return `/no${pathname}`;
   if (/^\/(category|artist|collection)\/[^/]+$/.test(pathname)) return `/no${pathname}`;
   return null;
