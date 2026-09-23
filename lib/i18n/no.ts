@@ -24,6 +24,7 @@ import type { ApplyCopy } from '@/lib/artist-application';
 
 export const no = {
   shared: {
+    galleryWallPlanner: 'Planlegg en bildevegg med disse trykkene (verktøy på engelsk) →',
     readMore: 'Les mer',
     readLess: 'Les mindre',
     backToProducts: 'Tilbake til produktene',
