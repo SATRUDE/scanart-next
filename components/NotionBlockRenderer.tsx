@@ -147,9 +147,9 @@ export const NotionBlockRenderer: React.FC<NotionBlockRendererProps> = ({ blocks
         rendered.push(renderBlock(block));
       }
 
-      if (index === calculatorInsertionIndex) {
+      if (index === calculatorInsertionIndex && articleSlug) {
         flush();
-        rendered.push(<GalleryWallPlannerTeaser key="gallery-wall-planner-teaser" />);
+        rendered.push(<GalleryWallPlannerTeaser key="gallery-wall-planner-teaser" articleSlug={articleSlug} />);
       }
     });
     flush();

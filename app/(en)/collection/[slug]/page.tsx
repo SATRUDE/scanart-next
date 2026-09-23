@@ -7,6 +7,7 @@ import { collections, getCollectionBySlug } from '@/lib/collections';
 import { getAllProducts } from '@/lib/products';
 import { PrintCard } from '@/components/PrintCard';
 import { ReadMore } from '@/components/ReadMore';
+import { TrackedLink } from '@/components/TrackedLink';
 import { LandingCrossLinks } from '@/components/LandingCrossLinks';
 import { BASE_URL, socialCard } from '@/lib/site';
 import { hreflangPair } from '@/lib/i18n';
@@ -128,6 +129,18 @@ export default async function CollectionPage({
               <li key={i} className="text-muted-foreground leading-relaxed">{tip}</li>
             ))}
           </ul>
+        )}
+        {collection.slug === 'living-room' && (
+          <p className="mt-8 text-sm">
+            <TrackedLink
+              href="/gallery-wall-planner"
+              event="gallery-wall-planner-collection-click"
+              eventData={{ collection: collection.slug, locale: 'en' }}
+              className="font-medium text-neutral-900 hover:text-neutral-600 transition-colors"
+            >
+              Plan a gallery wall with these prints →
+            </TrackedLink>
+          </p>
         )}
         {collection.relatedArticleSlug && (
           <p className="mt-8 text-sm">
