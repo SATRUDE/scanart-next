@@ -152,7 +152,7 @@
     "featured": false,
     "published": true,
     "image": "/images/products/hummer-og-vin.png",
-    "secondaryImage": "/images/products/hummer-og-vin-room.avif",
+    "secondaryImage": "/images/products/hummer-og-vin-room-2026-09-23.avif",
     "availableSizes": [
       "50x70cm"
     ],
@@ -164,7 +164,7 @@
       "Vinkveld"
     ],
     "created_time": "2025-08-24T09:43:00.000Z",
-    "last_edited_time": "2025-08-24T11:38:00.000Z"
+    "last_edited_time": "2026-09-23T19:14:37.878Z"
   },
   {
     "id": "25933fb2-2b5f-806c-91e3-d6a543d98a98",
@@ -179,7 +179,7 @@
     "featured": false,
     "published": true,
     "image": "/images/products/Hyttefrokost.png",
-    "secondaryImage": "/images/products/hyttefrokost-room.avif",
+    "secondaryImage": "/images/products/hyttefrokost-room-2026-09-23.avif",
     "availableSizes": [
       "50x70cm"
     ],
@@ -191,7 +191,7 @@
       "Morgenlevering"
     ],
     "created_time": "2025-08-24T09:40:00.000Z",
-    "last_edited_time": "2025-08-24T12:03:00.000Z"
+    "last_edited_time": "2026-09-23T19:14:37.879Z"
   },
   {
     "id": "25833fb2-2b5f-807a-9f02-cd4bad77ab1a",
@@ -206,7 +206,7 @@
     "featured": false,
     "published": true,
     "image": "/images/products/i-think-i-think.png",
-    "secondaryImage": "/images/products/i-think-i-think-scene.avif",
+    "secondaryImage": "/images/products/ithinkithink-room-2026-09-23.avif",
     "availableSizes": [
       "50x70cm"
     ],
@@ -219,7 +219,7 @@
       "Tree Top Peach"
     ],
     "created_time": "2025-08-23T21:47:00.000Z",
-    "last_edited_time": "2025-08-24T11:38:00.000Z"
+    "last_edited_time": "2026-09-23T19:14:37.879Z"
   },
   {
     "id": "25833fb2-2b5f-8033-9e60-c29f291281f9",
@@ -345,7 +345,7 @@
     "featured": false,
     "published": true,
     "image": "/images/products/swallow-dive.png",
-    "secondaryImage": "/images/products/swallow-dive-scene.avif",
+    "secondaryImage": "/images/products/swallow-dive-room-2026-09-23.avif",
     "availableSizes": [
       "50x70cm"
     ],
@@ -358,7 +358,7 @@
       "Tree Top Peach"
     ],
     "created_time": "2025-08-23T21:48:00.000Z",
-    "last_edited_time": "2025-08-24T11:38:00.000Z"
+    "last_edited_time": "2026-09-23T19:14:37.879Z"
   },
   {
     "id": "25933fb2-2b5f-8097-a224-c99dde451eba",
@@ -456,7 +456,7 @@
     "featured": false,
     "published": true,
     "image": "/images/products/sunday-brunch.png",
-    "secondaryImage": "/images/products/sunday-brunch-room.avif",
+    "secondaryImage": "/images/products/sunday-brunch-room-2026-09-23.avif",
     "availableSizes": [
       "50x70cm"
     ],
@@ -469,7 +469,7 @@
       "Morgenlevering"
     ],
     "created_time": "2026-09-07T08:10:12.942Z",
-    "last_edited_time": "2026-09-07T08:10:12.942Z"
+    "last_edited_time": "2026-09-23T19:14:37.879Z"
   },
   {
     "id": "a3e43f69-4888-4e65-8c09-334c75405a7d",
@@ -484,7 +484,7 @@
     "featured": false,
     "published": true,
     "image": "/images/products/rosa-blomster.png",
-    "secondaryImage": "/images/products/rosa-blomster-room.avif",
+    "secondaryImage": "/images/products/rosa-blomster-room-2026-09-23.avif",
     "availableSizes": [
       "50x70cm"
     ],
@@ -497,7 +497,7 @@
       "Trysilkaffe"
     ],
     "created_time": "2026-09-07T08:10:12.942Z",
-    "last_edited_time": "2026-09-07T08:10:12.942Z"
+    "last_edited_time": "2026-09-23T19:14:37.879Z"
   },
   {
     "id": "e5d01f50-d28e-42cb-9aa9-70a4f58bbc0f",
@@ -512,7 +512,7 @@
     "featured": false,
     "published": true,
     "image": "/images/products/massa-applen.png",
-    "secondaryImage": "/images/products/massa-applen-room.avif",
+    "secondaryImage": "/images/products/massa-applen-room-2026-09-23.avif",
     "availableSizes": [
       "50x70cm"
     ],
@@ -525,7 +525,7 @@
       "Hyttefrokost"
     ],
     "created_time": "2026-09-07T08:10:12.942Z",
-    "last_edited_time": "2026-09-07T08:10:12.942Z"
+    "last_edited_time": "2026-09-23T19:14:37.879Z"
   },
   {
     "id": "08d177eb-8d61-4f62-ae2a-a1b2cd595e32",
@@ -540,7 +540,7 @@
     "featured": false,
     "published": true,
     "image": "/images/products/small-house-big-ocean.png",
-    "secondaryImage": "/images/products/small-house-big-ocean-room.avif",
+    "secondaryImage": "/images/products/small-house-big-ocean-room-2026-09-23.avif",
     "availableSizes": [
       "50x70cm"
     ],
@@ -553,6 +553,6 @@
       "Eltsjoen"
     ],
     "created_time": "2026-09-07T08:10:12.942Z",
-    "last_edited_time": "2026-09-07T08:10:12.942Z"
+    "last_edited_time": "2026-09-23T19:14:37.879Z"
   }
 ]
