@@ -15,8 +15,8 @@ export interface ArtistEditorial {
 export const artistEditorial: Record<string, ArtistEditorial> = {
   "ishtar-backlund-dakhil": {
     "heading": "Cities, plants and imagined worlds",
-    "para1": "Ishtar's images move between closely observed details and imagined worlds. Stockholm's towers and waterfront buildings share a collection with layered leaves, geometric landscapes and animals beneath star-filled skies. Small marks and shifting colours give you plenty to notice up close.",
-    "para2": "There's range here without losing her feel for colour. The fruit and vegetable illustration brings a busy gathering of greens, reds and yellows to a kitchen wall; the surfers use fewer shapes and stronger blocks of colour. Her darker scenes reward a quieter spot where you can spend time with their details."
+    "para1": "Ishtar's images move between closely observed details and imagined worlds. Stockholm's towers and waterfront buildings share a collection with layered leaves, geometric landscapes and a bird gliding above a valley. Small marks and shifting colours give you plenty to notice up close.",
+    "para2": "There's range here without losing her feel for colour. The fruit and vegetable illustration brings a busy gathering of greens, reds and yellows to a kitchen wall; the surfer uses fewer shapes and stronger blocks of colour. A creature hidden among blue leaves rewards a quieter spot where you can spend time with its details."
   },
   'helene-brox': {
     heading: 'Shape doing the talking',
