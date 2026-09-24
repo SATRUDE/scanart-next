@@ -18,6 +18,7 @@ import { PrintCard } from '@/components/PrintCard';
 import { getLowestProductPrices } from '@/lib/pricing';
 import { priceValidUntil } from '@/lib/price-validity';
 import { metaSnippet } from '@/lib/meta-snippet';
+import { productListingDetails } from '@/lib/product-listing-details';
 import { productImages } from '@/lib/product-image-alt';
 import { productImageLd } from '@/lib/licensable-image';
 import { FeedbackIntercept } from '@/components/FeedbackIntercept';
@@ -119,6 +120,7 @@ export default async function ProductPage({
   // Gallery images, each with alt text describing the work rather than its
   // place in the gallery; these are the images the image sitemap submits.
   const images = productImages(product);
+  const listingDetails = productListingDetails(product, 'en');
 
   // 14-day right to cancel; made to order, so nothing is sent back and the
   // refund is issued on request (data/help.ts, "Returns & refunds").
@@ -164,6 +166,10 @@ export default async function ProductPage({
             <p className="text-muted-foreground leading-relaxed">{product.description}</p>
           )}
 
+          {listingDetails && (
+            <p className="text-sm text-muted-foreground leading-relaxed">{listingDetails.summary}</p>
+          )}
+
           <ProductActions product={product} />
           <FeedbackIntercept placement="product" />
 
@@ -207,6 +213,7 @@ export default async function ProductPage({
             '@context': 'https://schema.org',
             '@type': 'Product',
             name: product.name,
+            ...(listingDetails ? { size: listingDetails.size, color: listingDetails.colour, material: listingDetails.material } : {}),
             description: product.description,
             // The print as an ImageObject carrying its licence metadata, plus
             // the scene shot as a plain URL. Absolute either way: schema.org

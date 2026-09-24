@@ -18,6 +18,7 @@ import { PrintCard } from '@/components/PrintCard';
 import { getLowestProductPrices } from '@/lib/pricing';
 import { priceValidUntil } from '@/lib/price-validity';
 import { metaSnippet } from '@/lib/meta-snippet';
+import { productListingDetails } from '@/lib/product-listing-details';
 import { productImages } from '@/lib/product-image-alt';
 import { productImageLd } from '@/lib/licensable-image';
 import { FeedbackIntercept } from '@/components/FeedbackIntercept';
@@ -98,6 +99,7 @@ export default async function NorwegianProductPage({
     : [];
 
   const images = productImages(product, 'no');
+  const listingDetails = productListingDetails(product, 'no');
   const description = no.productCopy[slug]?.description ?? product.description;
   const categoryLabel = no.shared.categoryLabels[product.category] ?? product.category;
 
@@ -145,6 +147,10 @@ export default async function NorwegianProductPage({
             <p className="text-muted-foreground leading-relaxed">{description}</p>
           )}
 
+          {listingDetails && (
+            <p className="text-sm text-muted-foreground leading-relaxed">{listingDetails.summary}</p>
+          )}
+
           <ProductActions product={product} strings={t.actions} />
           <FeedbackIntercept placement="product" />
 
@@ -189,6 +195,7 @@ export default async function NorwegianProductPage({
             '@context': 'https://schema.org',
             '@type': 'Product',
             name: product.name,
+            ...(listingDetails ? { size: listingDetails.size, color: listingDetails.colour, material: listingDetails.material } : {}),
             description,
             inLanguage: 'nb-NO',
             // Same licence metadata as the English twin, with the acquire link

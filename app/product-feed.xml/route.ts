@@ -1,6 +1,7 @@
 import { feedAdditionalImages } from '@/lib/feed-images';
 import { getAllProducts } from '@/lib/products';
 import { getLowestProductPrices } from '@/lib/pricing';
+import { productListingDetails } from '@/lib/product-listing-details';
 import { BASE_URL } from '@/lib/site';
 
 // Google Merchant Center product feed (RSS 2.0 + g: namespace) for free
@@ -27,6 +28,16 @@ export async function GET() {
     .map(p => {
       const price = getLowestProductPrices(p).GBP;
       if (!price) return null;
+      const detail = productListingDetails(p);
+      const title = detail?.title ?? `${p.name} by ${p.artist || p.brand}, Scandinavian Art Print`;
+      const description = [p.description || `${p.name} by ${p.artist || p.brand}.`, detail?.summary].filter(Boolean).join(' ');
+      const listingAttributes = detail ? `
+      <g:structured_title><g:digital_source_type>trained_algorithmic_media</g:digital_source_type><g:content>${esc(title)}</g:content></g:structured_title>
+      <g:structured_description><g:digital_source_type>trained_algorithmic_media</g:digital_source_type><g:content>${esc(description)}</g:content></g:structured_description>
+      <g:product_type>${esc(detail.productType)}</g:product_type>
+      <g:size>${esc(detail.size)}</g:size>
+      <g:color>${esc(detail.colour)}</g:color>
+      <g:material>${esc(detail.material)}</g:material>` : '';
       // g:image_link is the artwork on white, which is what Google asks a main
       // product image to be. The room scene goes in as an additional image,
       // which is what its guidance asks for and the picture that actually earns
@@ -36,8 +47,8 @@ export async function GET() {
         .join('');
       return `    <item>
       <g:id>${esc(p.slug)}</g:id>
-      <g:title>${esc(`${p.name} by ${p.artist || p.brand}, Scandinavian Art Print`)}</g:title>
-      <g:description>${esc(p.description || `${p.name} by ${p.artist || p.brand}.`)}</g:description>
+      <g:title>${esc(title)}</g:title>
+      <g:description>${esc(description)}</g:description>${listingAttributes}
       <g:link>${BASE_URL}/product/${esc(p.slug)}</g:link>
       <g:image_link>${BASE_URL}${esc(p.image)}</g:image_link>${additionalImages}
       <g:price>${price.toFixed(2)} GBP</g:price>
@@ -56,7 +67,7 @@ export async function GET() {
   <channel>
     <title>Scandinavian Art Gallery</title>
     <link>${BASE_URL}</link>
-    <description>Art prints by independent Norwegian artists, framed or unframed, delivered worldwide.</description>
+    <description>Art prints by independent Scandinavian artists, framed or unframed, delivered worldwide.</description>
 ${items}
   </channel>
 </rss>
