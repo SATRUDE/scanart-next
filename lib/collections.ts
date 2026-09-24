@@ -1,3 +1,4 @@
+import { shopScenes } from '@/lib/shop-scenes';
 // Collection landing pages are curated, cross-cutting selections of the catalogue
 // that own query families the category pages don't, e.g. "scandinavian living
 // room wall art". Unlike category pages, the selection is hand-picked:
@@ -141,8 +142,8 @@ export const collections: Collection[] = [
       {
         label: 'Tone',
         tip: 'Warm tones like Tree Top Peach soften a minimalist room, while a bold abstract lifts a calmer palette.',
-        image: '/images/collections/living-room-tone.jpg',
-        alt: 'A single bold red art print on a neutral Scandinavian living room wall',
+        image: shopScenes.dancer.image,
+        alt: shopScenes.dancer.alt,
       },
     ],
     relatedArticleSlug: 'how-to-style-scandinavian-wall-art-living-room',

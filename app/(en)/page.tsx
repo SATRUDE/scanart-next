@@ -1,3 +1,4 @@
+import { shopScenes } from '@/lib/shop-scenes';
 import type { Metadata } from 'next';
 import { TrackedLink } from '@/components/TrackedLink';
 import Image from 'next/image';
@@ -96,9 +97,9 @@ export default async function HomePage() {
             {[
               // Tile scenes are InspireScene shots that honestly contain a
               // print from their category (Stan's 16 Aug curation).
-              { name: 'Botanical', image: 'https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/inspire/inspire-01-1786005113826.jpg', alt: 'Hyttefrokost botanical print above a cane chair', desc: 'Discover nature-inspired pieces that bring organic beauty and tranquility to your space.' },
-              { name: 'Illustrations', image: 'https://m9gwpvkjxnjiqpwb.public.blob.vercel-storage.com/composed/_test_2026-07-20-1784579791165_2x_upscaled_1784629394218-png-1785928384524.png', alt: 'Mean Snothing illustration print on a tray table', desc: 'Playful, characterful, and full of charm, our illustration pieces blend Scandinavian wit with bold, contemporary style.' },
-              { name: 'Abstract', image: '/notion-data/heroes/inspire-scene-14-f0058a95.jpg', alt: 'Swallow Dive abstract print framed in oak, leaning against a sage green wall', desc: 'Explore contemporary abstract art that adds modern sophistication to your home.' },
+              { name: 'Botanical', image: shopScenes.hyttefrokost.image, alt: shopScenes.hyttefrokost.alt, desc: 'Discover nature-inspired pieces that bring organic beauty and tranquility to your space.' },
+              { name: 'Illustrations', image: shopScenes.slingshot.image, alt: shopScenes.slingshot.alt, desc: 'Playful, characterful, and full of charm, our illustration pieces blend Scandinavian wit with bold, contemporary style.' },
+              { name: 'Abstract', image: shopScenes['swallow-dive'].image, alt: shopScenes['swallow-dive'].alt, desc: 'Explore contemporary abstract art that adds modern sophistication to your home.' },
             ].map(cat => {
               const landing = getCategoryLandingByCategory(cat.name);
               return (
