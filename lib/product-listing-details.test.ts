@@ -48,9 +48,9 @@ describe('Merchant Center listing trial', () => {
     }
   });
 
-  it('keeps AI source metadata in the eight new Merchant Center room images', async () => {
+  it('keeps AI source metadata in all fifteen refreshed Merchant Center room images', async () => {
     const products = (await getAllProducts()).filter(p => p.secondaryImage?.includes('-2026-09-23.'));
-    expect(products).toHaveLength(8);
+    expect(products).toHaveLength(15);
     for (const product of products) {
       const path = join(process.cwd(), 'public', product.secondaryImage!.replace(/\.avif$/, '.webp'));
       const bytes = readFileSync(path);
