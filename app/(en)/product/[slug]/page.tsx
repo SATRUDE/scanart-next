@@ -12,7 +12,6 @@ import {
 import { getShopProducts as getAllProducts, getShopProductBySlug as getProductBySlug, getShopRecommendedProducts as getRecommendedProducts } from '@/lib/products';
 import { getArtistById } from '@/data/artists';
 import { ProductActions } from '@/components/ProductActions';
-import { ProductReviewNotice } from '@/components/ProductReviewNotice';
 import { ProductImageGalleryWrapper } from '@/components/ProductImageGalleryWrapper';
 import { ArtistSection } from '@/components/ArtistSection';
 import { PrintCard } from '@/components/PrintCard';
@@ -173,7 +172,6 @@ export default async function ProductPage({
           )}
 
           <ProductActions product={product} />
-          <ProductReviewNotice product={product} />
           <FeedbackIntercept placement="product" />
 
           {artist && <ArtistSection artist={artist} />}

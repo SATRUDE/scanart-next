@@ -840,8 +840,8 @@ export const no = {
   artistEditorial: {
     "ishtar-backlund-dakhil": {
       "heading": "Byer, planter og fantasiverdener",
-      "para1": "Ishtars bilder beveger seg mellom nøye observerte detaljer og fantasiverdener. Stockholms tårn og bygninger langs vannet står side om side med lag på lag av blader, geometriske landskap og dyr under stjernehimler. Små merker og fargenyanser gir mye å oppdage på nært hold.",
-      "para2": "Uttrykket varierer, men sansen for farger går igjen. Illustrasjonen av frukt og grønnsaker samler grønt, rødt og gult på kjøkkenveggen, mens surferne er tegnet med færre former og tydeligere fargeflater. De mørkere scenene passer et roligere sted der det er tid til å se detaljene."
+      "para1": "Ishtars bilder beveger seg mellom nøye observerte detaljer og fantasiverdener. Stockholms tårn og bygninger langs vannet står side om side med lag på lag av blader, geometriske landskap og en fugl som svever over en dal. Små merker og fargenyanser gir mye å oppdage på nært hold.",
+      "para2": "Uttrykket varierer, men sansen for farger går igjen. Illustrasjonen av frukt og grønnsaker samler grønt, rødt og gult på kjøkkenveggen, mens surferen er tegnet med færre former og tydeligere fargeflater. En skapning skjult blant blå blader passer et roligere sted der det er tid til å se detaljene."
     },
     'helene-brox': {
       heading: 'Formen får snakke',

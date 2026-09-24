@@ -4,8 +4,6 @@ import { Cart } from '@/components/Cart';
 import { Footer } from '@/components/Footer';
 import { ScrollDepth } from '@/components/ScrollDepth';
 import { getShopProducts as getAllProducts } from '@/lib/products';
-import { catalogueReviewEnabled } from '@/lib/server/catalogue-review';
-import Link from 'next/link';
 import { BASE_URL, SITE_NAME } from '@/lib/site';
 import Script from 'next/script';
 import './globals.css';
@@ -102,19 +100,6 @@ pintrk('page');`}
             {/* First-visit suggestion for Norwegian-speaking browsers; renders
                 nothing on /no pages, after dismissal, or for everyone else. */}
             <Header categories={categories} />
-            {catalogueReviewEnabled() && (
-              <aside className="border-b border-amber-200 bg-amber-50 px-8 py-4 text-sm" aria-label="Artist previews">
-                <div className="container mx-auto flex flex-wrap items-center gap-x-6 gap-y-2">
-                  <p className="font-medium">Artist previews · Not live</p>
-                  <Link className="underline underline-offset-4" href={`${lang === 'no' ? '/no' : ''}/artist/ishtar-backlund-dakhil`}>
-                    Review Ishtar’s 14 works
-                  </Link>
-                  <a className="underline underline-offset-4" href={`https://y-git-add-mikko-saarainen-mark-diffeys-projects.vercel.app${lang === 'no' ? '/no' : ''}/artist/mikko-saarainen`}>
-                    Review Mikko’s 4 works (separate preview)
-                  </a>
-                </div>
-              </aside>
-            )}
             <main>{children}</main>
             <Cart />
           </div>

@@ -122,8 +122,8 @@ export const PrintCard: React.FC<PrintCardProps> = ({
         <p className="text-sm text-neutral-900">
           {formatDisplayPrice(getLowestProductPrices(product)[activeCurrency], activeCurrency)}
         </p>
-        {!product.inStock && (
-          <p className="text-xs text-neutral-400 mt-1">{product.published === false ? (locale === 'no' ? 'Forhåndsvisning' : 'Preview') : outOfStockLabel}</p>
+        {!product.inStock && product.published !== false && (
+          <p className="text-xs text-neutral-400 mt-1">{outOfStockLabel}</p>
         )}
       </div>
     </div>
