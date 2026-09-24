@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import { categoryLandings, getCategoryLandingBySlug } from '@/lib/categories';
-import { getProductsByCategory } from '@/lib/products';
+import { getShopProductsByCategory as getProductsByCategory } from '@/lib/products';
 import { PrintCard } from '@/components/PrintCard';
 import { ReadMore } from '@/components/ReadMore';
 import { LandingCrossLinks } from '@/components/LandingCrossLinks';

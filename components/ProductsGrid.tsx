@@ -220,11 +220,11 @@ export const ProductsGrid: React.FC<ProductsGridProps> = ({
                   <span>&bull;</span>
                   <span>{t.categoryLabels?.[product.category] ?? product.category}</span>
                 </div>
-                <h2 className="text-sm text-neutral-900">{product.name}</h2>
+                <h2 className="text-sm text-neutral-900">{locale === 'no' ? product.nameNo || product.name : product.name}</h2>
                 <p className="text-sm text-neutral-900">
                   {formatPrice(getLowestProductPrices(product))}
                 </p>
-                {!product.inStock && <p className="text-xs text-neutral-400">{t.outOfStock}</p>}
+                {!product.inStock && <p className="text-xs text-neutral-400">{product.published === false ? (locale === 'no' ? 'Forhåndsvisning' : 'Preview') : t.outOfStock}</p>}
               </div>
             </Link>
           ))}

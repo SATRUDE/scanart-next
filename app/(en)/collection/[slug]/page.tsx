@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft } from 'lucide-react';
 import { collections, getCollectionBySlug } from '@/lib/collections';
-import { getAllProducts } from '@/lib/products';
+import { getShopProducts as getAllProducts } from '@/lib/products';
 import { PrintCard } from '@/components/PrintCard';
 import { ReadMore } from '@/components/ReadMore';
 import { TrackedLink } from '@/components/TrackedLink';

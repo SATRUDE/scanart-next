@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { TrackedLink } from '@/components/TrackedLink';
 import Image from 'next/image';
-import { getFeaturedProducts, getProductsByArtist } from '@/lib/products';
+import { getShopFeaturedProducts as getFeaturedProducts, getShopProductsByArtist as getProductsByArtist } from '@/lib/products';
 import { artists } from '@/data/artists';
 import { ArtistsList, ArtistWithCount } from '@/components/ArtistsList';
 import { HeroSection } from '@/components/HeroSection';

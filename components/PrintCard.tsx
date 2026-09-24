@@ -11,6 +11,10 @@ interface PrintCardProps {
   product: {
     id: string;
     name: string;
+    nameNo?: string;
+    published?: boolean;
+    imageAlt?: string;
+    imageAltNo?: string;
     prices: {
       [key: string]: {
         GBP: number;
@@ -73,8 +77,8 @@ export const PrintCard: React.FC<PrintCardProps> = ({
 
 
   return (
-    <div 
-      className={`group cursor-pointer ${className}`} 
+    <div
+      className={`group cursor-pointer ${className}`}
       onClick={onClick}
     >
       <div className="aspect-[3/4] overflow-hidden bg-neutral-50 mb-6">
@@ -96,6 +100,8 @@ export const PrintCard: React.FC<PrintCardProps> = ({
               artist: product.artistId ? getArtistById(product.artistId)?.name : undefined,
               brand: product.brand,
               category: product.category,
+              imageAlt: product.imageAlt,
+              imageAltNo: product.imageAltNo,
             },
             locale
           )}
@@ -111,15 +117,15 @@ export const PrintCard: React.FC<PrintCardProps> = ({
           <span>{categoryLabel ?? product.category}</span>
         </div>
         <h3 className="text-sm text-neutral-900 leading-relaxed">
-          {product.name}
+          {locale === 'no' ? product.nameNo || product.name : product.name}
         </h3>
         <p className="text-sm text-neutral-900">
           {formatDisplayPrice(getLowestProductPrices(product)[activeCurrency], activeCurrency)}
         </p>
         {!product.inStock && (
-          <p className="text-xs text-neutral-400 mt-1">{outOfStockLabel}</p>
+          <p className="text-xs text-neutral-400 mt-1">{product.published === false ? (locale === 'no' ? 'Forhåndsvisning' : 'Preview') : outOfStockLabel}</p>
         )}
       </div>
     </div>
   );
-}; 
+};

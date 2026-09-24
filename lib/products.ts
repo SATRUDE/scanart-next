@@ -2,6 +2,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import { Product } from '@/contexts/CartContext';
 import { priceCategories, offeredPriceCategories, type PriceCategory } from '@/config/priceCategories';
+import { catalogueReviewEnabled } from '@/lib/server/catalogue-review';
 
 interface NotionProduct {
   id: string;
@@ -21,22 +22,29 @@ interface NotionProduct {
   priceCategory: string;
   productId: string;
   recommendedProducts: string[];
+  review?: boolean;
+  reviewNotes?: string | string[];
+  nameNo?: string;
+  imageAlt?: string;
+  imageAltNo?: string;
+  orientation?: 'portrait' | 'landscape' | 'square';
 }
 
 function convertNotionProductToProduct(
   np: NotionProduct,
   categories: { [category: string]: PriceCategory } = priceCategories
 ): Product {
+  const availableSizes = np.availableSizes ?? [];
   const prices: { [key: string]: { GBP: number; NOK: number; USD: number; DKK: number; SEK: number } } = {};
   const categoryPrices = categories[np.priceCategory];
   if (categoryPrices) {
-    np.availableSizes.forEach(size => {
+    availableSizes.forEach(size => {
       if (categoryPrices[size]) prices[size] = categoryPrices[size] as { GBP: number; NOK: number; USD: number; DKK: number; SEK: number };
     });
   }
 
   const sizes: Record<string, boolean> = {};
-  np.availableSizes.forEach(size => { sizes[size] = true; });
+  availableSizes.forEach(size => { sizes[size] = true; });
 
   return {
     id: np.productId || np.id,
@@ -55,15 +63,20 @@ function convertNotionProductToProduct(
     featured: np.featured,
     sizes,
     recommendedProducts: np.recommendedProducts,
+    ...(np.published === false ? { reviewNotes: np.reviewNotes } : {}),
+    nameNo: np.nameNo,
+    imageAlt: np.imageAlt,
+    imageAltNo: np.imageAltNo,
+    orientation: np.orientation,
   };
 }
 
-async function getCatalogueProducts(): Promise<{ sourceId: string; product: Product }[]> {
+async function getCatalogueProducts(includeReview = false): Promise<{ sourceId: string; product: Product }[]> {
   const filePath = path.join(process.cwd(), 'public', 'notion-data', 'products.json');
   try {
     const data = await fs.readFile(filePath, 'utf-8');
     const notionProducts: NotionProduct[] = JSON.parse(data);
-    const published = notionProducts.filter(p => p.published);
+    const published = notionProducts.filter(p => p.published || (includeReview && p.review === true && p.published === false));
     // Retirements are applied here rather than in config/priceCategories.ts
     // because this is the only place that knows which lists the catalogue is
     // actually using, and a list still in use must not be taken away.
@@ -100,6 +113,32 @@ async function getCatalogueProducts(): Promise<{ sourceId: string; product: Prod
 
 export async function getAllProducts(): Promise<Product[]> {
   return (await getCatalogueProducts()).map(({ product }) => product);
+}
+
+/** Display-only catalogue. Orders, feeds and sitemap keep getAllProducts. */
+export async function getShopProducts(): Promise<Product[]> {
+  return (await getCatalogueProducts(catalogueReviewEnabled())).map(({ product }) => product);
+}
+
+export async function getShopProductBySlug(slug: string): Promise<Product | null> {
+  return (await getShopProducts()).find(product => product.slug === slug) ?? null;
+}
+
+export async function getShopProductsByArtist(artistId: string): Promise<Product[]> {
+  return (await getShopProducts()).filter(product => product.artistId === artistId);
+}
+
+export async function getShopProductsByCategory(category: string): Promise<Product[]> {
+  const products = await getShopProducts();
+  return category === 'All' ? products : products.filter(product => product.category === category);
+}
+
+export async function getShopFeaturedProducts(): Promise<Product[]> {
+  return (await getShopProducts()).filter(product => product.featured);
+}
+
+export async function getShopRecommendedProducts(names: string[]): Promise<Product[]> {
+  return (await getShopProducts()).filter(product => names.includes(product.name));
 }
 
 /** Resolve editorial selections without confusing source UUIDs with cart IDs. */

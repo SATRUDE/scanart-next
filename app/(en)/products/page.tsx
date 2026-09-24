@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { getAllProducts } from '@/lib/products';
+import { getShopProducts as getAllProducts } from '@/lib/products';
 import { ProductsGrid } from '@/components/ProductsGrid';
 import { BASE_URL, socialCard } from '@/lib/site';
 import { metaTitle } from '@/lib/meta-title';

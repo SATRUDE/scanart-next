@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getInspireScenes } from '@/lib/inspire';
-import { getAllProducts } from '@/lib/products';
+import { getShopProducts as getAllProducts } from '@/lib/products';
 import { BASE_URL, socialCard } from '@/lib/site';
 import { metaTitle } from '@/lib/meta-title';
 import { hreflangPair } from '@/lib/i18n';

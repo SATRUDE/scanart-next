@@ -76,6 +76,8 @@ const VOCABULARY: Record<AltLocale, AltVocabulary> = {
 
 export interface ProductImageAltSource {
   name: string;
+  imageAlt?: string;
+  imageAltNo?: string;
   /** The artist's name; falls back to `brand`, and both may be empty. */
   artist?: string;
   brand?: string;
@@ -98,6 +100,8 @@ export function printImageAlt(
   product: ProductImageAltSource,
   locale: AltLocale = 'en'
 ): string {
+  const supplied = locale === 'no' ? product.imageAltNo || product.imageAlt : product.imageAlt;
+  if (supplied) return supplied;
   const vocabulary = VOCABULARY[locale];
   const adjective = product.category ? vocabulary.adjectives[product.category] : undefined;
 

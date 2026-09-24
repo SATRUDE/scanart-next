@@ -5,7 +5,7 @@ import { FullWidthImage } from '@/components/FullWidthImage';
 import { BASE_URL, socialCard } from '@/lib/site';
 import { hreflangPair } from '@/lib/i18n';
 import { aboutHeroImage } from '@/lib/about-hero';
-import { getAllProducts } from '@/lib/products';
+import { getShopProducts as getAllProducts } from '@/lib/products';
 
 const PAGE_TITLE = 'About';
 const PAGE_DESCRIPTION =

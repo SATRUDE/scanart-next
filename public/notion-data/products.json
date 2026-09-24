@@ -554,5 +554,598 @@
     ],
     "created_time": "2026-09-07T08:10:12.942Z",
     "last_edited_time": "2026-09-23T19:14:37.879Z"
+  },
+  {
+    "id": "c25b69c4-5aeb-49c3-873b-b7a7c4477382",
+    "name": "Stockholm",
+    "nameNo": "Stockholm",
+    "slug": "stockholm",
+    "description": "Stockholm's rooftops, towers and waterfront gather in a colourful illustration by Ishtar Bäcklund Dakhil. Orange brick, yellow façades and green spires rise above two boats, with pale blue sky keeping the busy scene open. Look closer for rows of windows, flowering trees and the small architectural details that make the city feel lived in.",
+    "category": "Illustrations",
+    "artist": "Ishtar Bäcklund Dakhil",
+    "artistId": "8",
+    "brand": "",
+    "inStock": false,
+    "featured": false,
+    "published": false,
+    "review": true,
+    "image": "/images/products/stockholm.png",
+    "sourceImage": "/images/artworks/stockholm.avif",
+    "secondaryImage": "/images/products/stockholm-room.avif",
+    "availableSizes": [
+      "A2"
+    ],
+    "proposedSizes": [
+      "A2"
+    ],
+    "priceCategory": "Premium",
+    "productId": "29",
+    "recommendedProducts": [
+      "Frukt & Grönt",
+      "Bird Above the Valley",
+      "Moonlit Creatures",
+      "Desert Circles"
+    ],
+    "created_time": "2026-09-24T13:00:00.000Z",
+    "last_edited_time": "2026-09-24T16:31:48.758843+00:00",
+    "imageAlt": "Stockholm buildings with orange and yellow façades, green spires and two boats on the waterfront.",
+    "imageAltNo": "Bygninger i Stockholm med oransje og gule fasader, grønne spir og to båter langs vannet.",
+    "reviewNotes": [
+      "Proposed for review: 42 × 59.4 cm, portrait, using the shop’s existing Premium prices. Prices and format await approval.",
+      "Supplied master gives approximately 300 dpi at the proposed image size. A print proof remains part of launch preparation."
+    ],
+    "orientation": "portrait"
+  },
+  {
+    "id": "aa852d62-7aa0-47b8-988c-3e136881d758",
+    "name": "Frukt & Grönt",
+    "nameNo": "Frukt & Grönt",
+    "slug": "frukt-och-gront",
+    "description": "Fruit, vegetables and handwritten Swedish labels fill Frukt & Grönt by Ishtar Bäcklund Dakhil. A deep purple aubergine sits above pineapple, sweetcorn, leafy greens and bright red tomatoes, with roots and stems threading through the white spaces. It's a generous, detailed gathering of everyday ingredients, with something new to spot each time you pass.",
+    "category": "Botanical",
+    "artist": "Ishtar Bäcklund Dakhil",
+    "artistId": "8",
+    "brand": "",
+    "inStock": false,
+    "featured": false,
+    "published": false,
+    "review": true,
+    "image": "/images/products/frukt-och-gront.png",
+    "sourceImage": "/images/artworks/frukt-och-gront.avif",
+    "secondaryImage": "/images/products/frukt-och-gront-room.avif",
+    "availableSizes": [
+      "A2"
+    ],
+    "proposedSizes": [
+      "A2"
+    ],
+    "priceCategory": "Premium",
+    "productId": "30",
+    "recommendedProducts": [
+      "Stockholm",
+      "Bird Above the Valley",
+      "Moonlit Creatures",
+      "Desert Circles"
+    ],
+    "created_time": "2026-09-24T13:00:00.000Z",
+    "last_edited_time": "2026-09-24T16:31:48.759124+00:00",
+    "imageAlt": "Colourful fruit and vegetables with handwritten Swedish labels on white, including aubergine, pineapple, sweetcorn and beetroot.",
+    "imageAltNo": "Fargerike frukter og grønnsaker med håndskrevne svenske navn på hvitt, blant annet aubergine, ananas, mais og rødbete.",
+    "reviewNotes": [
+      "Proposed for review: 42 × 59.4 cm, portrait, using the shop’s existing Premium prices. Prices and format await approval.",
+      "Supplied master gives approximately 300 dpi at the proposed image size. A print proof remains part of launch preparation."
+    ],
+    "orientation": "portrait"
+  },
+  {
+    "id": "7198145f-a6dd-4aac-aae8-ad722bac4843",
+    "name": "Moonlit Creatures",
+    "nameNo": "Skapninger i måneskinn",
+    "slug": "ishtar-selection-01",
+    "description": "Horned creatures stand among pale, fan-shaped leaves beneath a starry sky in this illustration by Ishtar Bäcklund Dakhil. A blue figure looks out from the right, while dark mountain shapes and a thin crescent moon recede behind the animals. Soft greys and muted blues hold the scene together, giving its strange inhabitants a quiet presence.",
+    "category": "Illustrations",
+    "artist": "Ishtar Bäcklund Dakhil",
+    "artistId": "8",
+    "brand": "",
+    "inStock": false,
+    "featured": false,
+    "published": false,
+    "review": true,
+    "image": "/images/products/ishtar-selection-01.png",
+    "sourceImage": "/images/artworks/ishtar-selection-01.avif",
+    "secondaryImage": "/images/products/ishtar-selection-01-room.avif",
+    "availableSizes": [
+      "50x70cm"
+    ],
+    "proposedSizes": [
+      "50x70cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "31",
+    "recommendedProducts": [
+      "Creature Among Blue Leaves",
+      "Bedtime Flight",
+      "Kangaroos at Dusk",
+      "Stockholm"
+    ],
+    "created_time": "2026-09-24T13:00:00.000Z",
+    "last_edited_time": "2026-09-24T16:31:48.759130+00:00",
+    "imageAlt": "Two horned creatures among pale plants, with a blue human-faced figure, mountains and a crescent moon.",
+    "imageAltNo": "To hornede skapninger blant lyse planter, med en blå skikkelse med menneskeansikt, fjell og en månesigd.",
+    "reviewNotes": [
+      "Working descriptive title for review, not an artist-supplied title. Confirm the title and availability before launch.",
+      "Proposed for review: 70 × 50 cm, landscape, using the shop’s existing Premium prices. Prices and format await approval.",
+      "The whole artwork is fitted on the paper with white borders. No part of the original image is cropped or stretched.",
+      "Supplied master gives approximately 293 dpi at the proposed image size. A print proof remains part of launch preparation."
+    ],
+    "orientation": "landscape"
+  },
+  {
+    "id": "a94ca9a7-8763-4c6b-b05e-5be6a1013058",
+    "name": "Desert Circles",
+    "nameNo": "Ørkensirkler",
+    "slug": "ishtar-selection-02",
+    "description": "Overlapping white circles divide a desert landscape into curved fragments in this artwork by Ishtar Bäcklund Dakhil. Rust-coloured rocks, cacti and dusty pink hills repeat inside the pattern, interrupted by bright turquoise openings. The repeated shapes draw your eye towards the centre, while the scattered marks and uneven colour keep each section different.",
+    "category": "Abstract",
+    "artist": "Ishtar Bäcklund Dakhil",
+    "artistId": "8",
+    "brand": "",
+    "inStock": false,
+    "featured": false,
+    "published": false,
+    "review": true,
+    "image": "/images/products/ishtar-selection-02.png",
+    "sourceImage": "/images/artworks/ishtar-selection-02.avif",
+    "secondaryImage": "/images/products/ishtar-selection-02-room.avif",
+    "availableSizes": [
+      "50x50cm"
+    ],
+    "proposedSizes": [
+      "50x50cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "32",
+    "recommendedProducts": [
+      "Mountain Geometry",
+      "Tropical Geometry",
+      "Lilac Geometry",
+      "Stockholm"
+    ],
+    "created_time": "2026-09-24T13:00:00.000Z",
+    "last_edited_time": "2026-09-24T16:31:48.759135+00:00",
+    "imageAlt": "Overlapping white circles enclosing cacti, reddish rocks and pink hills against turquoise blue.",
+    "imageAltNo": "Overlappende hvite sirkler med kaktuser, rødlige klipper og rosa åser mot turkisblått.",
+    "reviewNotes": [
+      "Working descriptive title for review, not an artist-supplied title. Confirm the title and availability before launch.",
+      "Proposed for review: 50 × 50 cm, square, using the shop’s existing Premium prices. Prices and format await approval.",
+      "Supplied master gives approximately 178 dpi at the proposed image size. A print proof remains part of launch preparation."
+    ],
+    "orientation": "square"
+  },
+  {
+    "id": "963bd6d1-7fe0-4e13-9575-3bacb5b0250c",
+    "name": "Mountain Geometry",
+    "nameNo": "Fjellgeometri",
+    "slug": "ishtar-selection-03",
+    "description": "White triangles overlap above sharp mountain peaks in this geometric artwork by Ishtar Bäcklund Dakhil. Black, lilac and icy blue sections meet beneath a peach sky, with a violet circle floating to the left. The repeated lines make a dense central star, while mist crosses the slopes below and scattered dark marks interrupt the sky.",
+    "category": "Abstract",
+    "artist": "Ishtar Bäcklund Dakhil",
+    "artistId": "8",
+    "brand": "",
+    "inStock": false,
+    "featured": false,
+    "published": false,
+    "review": true,
+    "image": "/images/products/ishtar-selection-03.png",
+    "sourceImage": "/images/artworks/ishtar-selection-03.avif",
+    "secondaryImage": "/images/products/ishtar-selection-03-room.avif",
+    "availableSizes": [
+      "50x50cm"
+    ],
+    "proposedSizes": [
+      "50x50cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "33",
+    "recommendedProducts": [
+      "Desert Circles",
+      "Tropical Geometry",
+      "Lilac Geometry",
+      "Stockholm"
+    ],
+    "created_time": "2026-09-24T13:00:00.000Z",
+    "last_edited_time": "2026-09-24T16:31:48.759139+00:00",
+    "imageAlt": "White geometric triangles over black, lilac and blue mountains beneath a peach sky, with an album label at the top right.",
+    "imageAltNo": "Hvite geometriske trekanter over svarte, lilla og blå fjell under en ferskenfarget himmel, med en albumetikett øverst til høyre.",
+    "reviewNotes": [
+      "Working descriptive title for review, not an artist-supplied title.",
+      "Supplied artwork visibly includes a Hilma & The Sacred Quartet album label at top right. Retain it unchanged in review images. Confirm the intended print edition and permission to sell this version before launch; do not remove the label.",
+      "Proposed for review: 50 × 50 cm, square, using the shop’s existing Premium prices. Prices and format await approval.",
+      "Supplied master gives approximately 189 dpi at the proposed image size. A print proof remains part of launch preparation."
+    ],
+    "orientation": "square"
+  },
+  {
+    "id": "5c5a7c77-4bb0-418d-b9f0-45c6540bc8ee",
+    "name": "Tropical Geometry",
+    "nameNo": "Tropisk geometri",
+    "slug": "ishtar-selection-04",
+    "description": "Angular white lines cut across palms, flowers and red suns in this botanical artwork by Ishtar Bäcklund Dakhil. Blue-green fronds fill the picture, with peach-coloured sky appearing between the leaves and inside the geometric pattern. Small pink flowers soften the sharp divisions, bringing delicate detail to a composition built from strong shapes.",
+    "category": "Botanical",
+    "artist": "Ishtar Bäcklund Dakhil",
+    "artistId": "8",
+    "brand": "",
+    "inStock": false,
+    "featured": false,
+    "published": false,
+    "review": true,
+    "image": "/images/products/ishtar-selection-04.png",
+    "sourceImage": "/images/artworks/ishtar-selection-04.avif",
+    "secondaryImage": "/images/products/ishtar-selection-04-room.avif",
+    "availableSizes": [
+      "50x50cm"
+    ],
+    "proposedSizes": [
+      "50x50cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "34",
+    "recommendedProducts": [
+      "Desert Circles",
+      "Mountain Geometry",
+      "Lilac Geometry",
+      "Stockholm"
+    ],
+    "created_time": "2026-09-24T13:00:00.000Z",
+    "last_edited_time": "2026-09-24T16:31:48.759147+00:00",
+    "imageAlt": "Blue-green tropical leaves and pink flowers divided by white geometric lines, with red suns and an album label at top right.",
+    "imageAltNo": "Blågrønne tropiske blader og rosa blomster delt av hvite geometriske linjer, med røde solskiver og en albumetikett øverst til høyre.",
+    "reviewNotes": [
+      "Working descriptive title for review, not an artist-supplied title.",
+      "Supplied artwork visibly includes a Hilma & The Sacred Quartet album label at top right. Retain it unchanged in review images. Confirm the intended print edition and permission to sell this version before launch; do not remove the label.",
+      "Proposed for review: 50 × 50 cm, square, using the shop’s existing Premium prices. Prices and format await approval.",
+      "Supplied master gives approximately 189 dpi at the proposed image size. A print proof remains part of launch preparation."
+    ],
+    "orientation": "square"
+  },
+  {
+    "id": "5fa1f8d6-08f9-4f87-8d89-0e898724fb71",
+    "name": "Lilac Geometry",
+    "nameNo": "Syringeometri",
+    "slug": "ishtar-selection-05",
+    "description": "Lilac flowers, bees and pale circles surround a fine geometric star in this artwork by Ishtar Bäcklund Dakhil. Purple blossoms spill across the edges, with green leaves, yellow flowers and smaller plants gathering below. Repeating curves draw these garden details into a central pattern, set against a soft pink sky and muted blue ground.",
+    "category": "Botanical",
+    "artist": "Ishtar Bäcklund Dakhil",
+    "artistId": "8",
+    "brand": "",
+    "inStock": false,
+    "featured": false,
+    "published": false,
+    "review": true,
+    "image": "/images/products/ishtar-selection-05.png",
+    "sourceImage": "/images/artworks/ishtar-selection-05.avif",
+    "secondaryImage": "/images/products/ishtar-selection-05-room.avif",
+    "availableSizes": [
+      "50x70cm"
+    ],
+    "proposedSizes": [
+      "50x70cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "35",
+    "recommendedProducts": [
+      "Desert Circles",
+      "Mountain Geometry",
+      "Tropical Geometry",
+      "Stockholm"
+    ],
+    "created_time": "2026-09-24T13:00:00.000Z",
+    "last_edited_time": "2026-09-24T16:31:48.759151+00:00",
+    "imageAlt": "Purple lilac flowers and bees around a white geometric star and pale circles, with green leaves and yellow flowers.",
+    "imageAltNo": "Lilla syrinblomster og bier rundt en hvit geometrisk stjerne og lyse sirkler, med grønne blader og gule blomster.",
+    "reviewNotes": [
+      "Working descriptive title for review, not an artist-supplied title. Confirm the title and availability before launch.",
+      "Proposed for review: 50 × 70 cm, portrait, using the shop’s existing Premium prices. Prices and format await approval.",
+      "The whole artwork is fitted on the paper with white borders. No part of the original image is cropped or stretched.",
+      "Supplied master gives approximately 186 dpi at the proposed image size. A print proof remains part of launch preparation."
+    ],
+    "orientation": "portrait"
+  },
+  {
+    "id": "e03d6040-dbdf-47ea-9438-c4955fddb427",
+    "name": "Creature Among Blue Leaves",
+    "nameNo": "Skapning blant blå blader",
+    "slug": "ishtar-selection-06",
+    "description": "A pale horned creature peers through layers of blue leaves in this illustration by Ishtar Bäcklund Dakhil. Broad fans and pointed fronds fill the dark background, partly hiding its spotted face and curved horns. Small touches of ochre interrupt the cool palette, while the overlapping plants make the creature feel tucked inside its own world.",
+    "category": "Illustrations",
+    "artist": "Ishtar Bäcklund Dakhil",
+    "artistId": "8",
+    "brand": "",
+    "inStock": false,
+    "featured": false,
+    "published": false,
+    "review": true,
+    "image": "/images/products/ishtar-selection-06.png",
+    "sourceImage": "/images/artworks/ishtar-selection-06.avif",
+    "secondaryImage": "/images/products/ishtar-selection-06-room.avif",
+    "availableSizes": [
+      "50x70cm"
+    ],
+    "proposedSizes": [
+      "50x70cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "36",
+    "recommendedProducts": [
+      "Moonlit Creatures",
+      "Bedtime Flight",
+      "Kangaroos at Dusk",
+      "Stockholm"
+    ],
+    "created_time": "2026-09-24T13:00:00.000Z",
+    "last_edited_time": "2026-09-24T16:31:48.759155+00:00",
+    "imageAlt": "A pale spotted creature with curved horns partly hidden among blue and grey leaves on black.",
+    "imageAltNo": "En lys, flekkete skapning med buede horn, delvis skjult blant blå og grå blader på svart.",
+    "reviewNotes": [
+      "Working descriptive title for review, not an artist-supplied title. Confirm the title and availability before launch.",
+      "Proposed for review: 70 × 50 cm, landscape, using the shop’s existing Premium prices. Prices and format await approval.",
+      "Supplied master gives approximately 153 dpi at the proposed image size. A print proof remains part of launch preparation."
+    ],
+    "orientation": "landscape"
+  },
+  {
+    "id": "22708f52-1058-4d01-8d1e-f57a395a55a4",
+    "name": "Bedtime Flight",
+    "nameNo": "Flytur ved leggetid",
+    "slug": "ishtar-selection-07",
+    "description": "A sleeping child's bedroom opens onto a night-time forest in this illustration by Ishtar Bäcklund Dakhil. Toys and a train track lie beneath the bed, while red tree trunks frame distant mountains and figures riding a bird. The familiar room and imagined journey sit side by side, with little details to follow from floor to sky.",
+    "category": "Illustrations",
+    "artist": "Ishtar Bäcklund Dakhil",
+    "artistId": "8",
+    "brand": "",
+    "inStock": false,
+    "featured": false,
+    "published": false,
+    "review": true,
+    "image": "/images/products/ishtar-selection-07.png",
+    "sourceImage": "/images/artworks/ishtar-selection-07.avif",
+    "secondaryImage": "/images/products/ishtar-selection-07-room.avif",
+    "availableSizes": [
+      "50x70cm"
+    ],
+    "proposedSizes": [
+      "50x70cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "37",
+    "recommendedProducts": [
+      "Moonlit Creatures",
+      "Creature Among Blue Leaves",
+      "Kangaroos at Dusk",
+      "Stockholm"
+    ],
+    "created_time": "2026-09-24T13:00:00.000Z",
+    "last_edited_time": "2026-09-24T16:31:48.759159+00:00",
+    "imageAlt": "A child sleeping in a wooden bed, surrounded by toys and a forest landscape, with figures flying on a bird above.",
+    "imageAltNo": "Et barn som sover i en treseng, omgitt av leker og et skoglandskap, med skikkelser som flyr på en fugl ovenfor.",
+    "reviewNotes": [
+      "Working descriptive title for review, not an artist-supplied title. Confirm the title and availability before launch.",
+      "Proposed for review: 70 × 50 cm, landscape, using the shop’s existing Premium prices. Prices and format await approval.",
+      "The whole artwork is fitted on the paper with white borders. No part of the original image is cropped or stretched.",
+      "Supplied master gives approximately 180 dpi at the proposed image size. A print proof remains part of launch preparation."
+    ],
+    "orientation": "landscape"
+  },
+  {
+    "id": "88783006-f625-4ba2-b186-f5d8a2e1bdb8",
+    "name": "Bird Above the Valley",
+    "nameNo": "Fugl over dalen",
+    "slug": "ishtar-selection-08",
+    "description": "A white bird with a row of windows glides over a green valley in this illustration by Ishtar Bäcklund Dakhil. Its wings stretch across winding blue rivers, pink rock faces and thick vegetation. The pale shape stands out against the busy landscape below, bringing the lightness of flight to a scene full of colour and movement.",
+    "category": "Illustrations",
+    "artist": "Ishtar Bäcklund Dakhil",
+    "artistId": "8",
+    "brand": "",
+    "inStock": false,
+    "featured": false,
+    "published": false,
+    "review": true,
+    "image": "/images/products/ishtar-selection-08.png",
+    "sourceImage": "/images/artworks/ishtar-selection-08.avif",
+    "secondaryImage": "/images/products/ishtar-selection-08-room.avif",
+    "availableSizes": [
+      "A3"
+    ],
+    "proposedSizes": [
+      "A3"
+    ],
+    "priceCategory": "Premium",
+    "productId": "38",
+    "recommendedProducts": [
+      "Stockholm",
+      "Frukt & Grönt",
+      "Moonlit Creatures",
+      "Desert Circles"
+    ],
+    "created_time": "2026-09-24T13:00:00.000Z",
+    "last_edited_time": "2026-09-24T16:31:48.759164+00:00",
+    "imageAlt": "A large white bird with aircraft-like windows flying above green hills, pink cliffs and winding turquoise rivers.",
+    "imageAltNo": "En stor hvit fugl med flylignende vinduer som flyr over grønne åser, rosa klipper og buktende turkise elver.",
+    "reviewNotes": [
+      "Working descriptive title for review, not an artist-supplied title. Confirm the title and availability before launch.",
+      "Proposed for review: 29.7 × 42 cm, portrait, using the shop’s existing Premium prices. Prices and format await approval.",
+      "The whole artwork is fitted on the paper with white borders. No part of the original image is cropped or stretched.",
+      "Supplied master gives approximately 212 dpi at the proposed image size. A print proof remains part of launch preparation."
+    ],
+    "orientation": "portrait"
+  },
+  {
+    "id": "628d1598-1093-4028-8ab5-98a2a8774c87",
+    "name": "Kangaroos at Dusk",
+    "nameNo": "Kenguruer i skumringen",
+    "slug": "ishtar-selection-09",
+    "description": "Two kangaroos face one another between a starry sky and a glowing sunset in this artwork by Ishtar Bäcklund Dakhil. One merges with the dark sky, its body scattered with stars and constellations. The other is picked out in warm brown, against bands of pink and violet above a low red sun.",
+    "category": "Illustrations",
+    "artist": "Ishtar Bäcklund Dakhil",
+    "artistId": "8",
+    "brand": "",
+    "inStock": false,
+    "featured": false,
+    "published": false,
+    "review": true,
+    "image": "/images/products/ishtar-selection-09.png",
+    "sourceImage": "/images/artworks/ishtar-selection-09.avif",
+    "secondaryImage": "/images/products/ishtar-selection-09-room.avif",
+    "availableSizes": [
+      "50x70cm"
+    ],
+    "proposedSizes": [
+      "50x70cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "39",
+    "recommendedProducts": [
+      "Moonlit Creatures",
+      "Creature Among Blue Leaves",
+      "Bedtime Flight",
+      "Stockholm"
+    ],
+    "created_time": "2026-09-24T13:00:00.000Z",
+    "last_edited_time": "2026-09-24T16:31:48.759168+00:00",
+    "imageAlt": "Two kangaroos facing each other, one filled with stars against a dark sky and one brown against a pink sunset.",
+    "imageAltNo": "To kenguruer vendt mot hverandre, én fylt med stjerner mot en mørk himmel og én brun mot en rosa solnedgang.",
+    "reviewNotes": [
+      "Working descriptive title for review, not an artist-supplied title. Confirm the title and availability before launch.",
+      "Proposed for review: 70 × 50 cm, landscape, using the shop’s existing Premium prices. Prices and format await approval.",
+      "The whole artwork is fitted on the paper with white borders. No part of the original image is cropped or stretched.",
+      "Supplied master gives approximately 206 dpi at the proposed image size. A print proof remains part of launch preparation."
+    ],
+    "orientation": "landscape"
+  },
+  {
+    "id": "49efd63d-fdfc-4344-a732-fba39a879795",
+    "name": "Surfer with Orange Sun",
+    "nameNo": "Surfer med oransje sol",
+    "slug": "ishtar-surfer-01",
+    "description": "A surfer balances above a turquoise wave with a bright orange sun behind her in this illustration by Ishtar Bäcklund Dakhil. Outstretched arms and a bent knee give the figure a light, poised movement. Dark clothing makes a strong shape against the sun, while white foam breaks across the lower part of the picture.",
+    "category": "Illustrations",
+    "artist": "Ishtar Bäcklund Dakhil",
+    "artistId": "8",
+    "brand": "",
+    "inStock": false,
+    "featured": false,
+    "published": false,
+    "review": true,
+    "image": "/images/products/ishtar-surfer-01.png",
+    "sourceImage": "/images/artworks/ishtar-surfer-01.avif",
+    "secondaryImage": "/images/products/ishtar-surfer-01-room.avif",
+    "availableSizes": [
+      "A3"
+    ],
+    "proposedSizes": [
+      "A3"
+    ],
+    "priceCategory": "Premium",
+    "productId": "40",
+    "recommendedProducts": [
+      "Surfer with Golden Sun",
+      "Surfer Under the Stars",
+      "Stockholm",
+      "Frukt & Grönt"
+    ],
+    "created_time": "2026-09-24T13:00:00.000Z",
+    "last_edited_time": "2026-09-24T16:31:48.759172+00:00",
+    "imageAlt": "Surfer in a dark swimsuit balancing on a board above a turquoise wave, with a large orange sun behind.",
+    "imageAltNo": "Surfer i mørk badedrakt som balanserer på et brett over en turkis bølge, med en stor oransje sol bak.",
+    "reviewNotes": [
+      "Working descriptive title for review, not an artist-supplied title. Confirm the title and availability before launch.",
+      "Proposed for review: 29.7 × 42 cm, portrait, using the shop’s existing Premium prices. Prices and format await approval.",
+      "Extracted from PDF page 10. Current source gives about 100 dpi at A3; a larger individual master is required before sale."
+    ],
+    "orientation": "portrait"
+  },
+  {
+    "id": "08dd9fa0-417f-44d2-baf2-c09273c18aa4",
+    "name": "Surfer with Golden Sun",
+    "nameNo": "Surfer med gyllen sol",
+    "slug": "ishtar-surfer-02",
+    "description": "A long-haired surfer rides a pale blue wave beneath a golden sun in this illustration by Ishtar Bäcklund Dakhil. Her purple swimsuit stands out against the soft beige sky, with one arm lifted and the other reaching back. Pale foam and curved bands of water carry the movement across the bottom of the picture.",
+    "category": "Illustrations",
+    "artist": "Ishtar Bäcklund Dakhil",
+    "artistId": "8",
+    "brand": "",
+    "inStock": false,
+    "featured": false,
+    "published": false,
+    "review": true,
+    "image": "/images/products/ishtar-surfer-02.png",
+    "sourceImage": "/images/artworks/ishtar-surfer-02.avif",
+    "secondaryImage": "/images/products/ishtar-surfer-02-room.avif",
+    "availableSizes": [
+      "A3"
+    ],
+    "proposedSizes": [
+      "A3"
+    ],
+    "priceCategory": "Premium",
+    "productId": "41",
+    "recommendedProducts": [
+      "Surfer with Orange Sun",
+      "Surfer Under the Stars",
+      "Stockholm",
+      "Frukt & Grönt"
+    ],
+    "created_time": "2026-09-24T13:00:00.000Z",
+    "last_edited_time": "2026-09-24T16:31:48.759179+00:00",
+    "imageAlt": "Long-haired surfer in a purple swimsuit on a pale board, with blue waves and a golden sun against beige.",
+    "imageAltNo": "Langhåret surfer i lilla badedrakt på et lyst brett, med blå bølger og en gyllen sol mot beige.",
+    "reviewNotes": [
+      "Working descriptive title for review, not an artist-supplied title. Confirm the title and availability before launch.",
+      "Proposed for review: 29.7 × 42 cm, portrait, using the shop’s existing Premium prices. Prices and format await approval.",
+      "Extracted from PDF page 10. Current source gives about 100 dpi at A3; a larger individual master is required before sale."
+    ],
+    "orientation": "portrait"
+  },
+  {
+    "id": "3de810bc-865a-4e50-be36-d14e0a3cede9",
+    "name": "Surfer Under the Stars",
+    "nameNo": "Surfer under stjernene",
+    "slug": "ishtar-surfer-03",
+    "description": "A surfer crosses her feet on a pale board beneath three stars in this illustration by Ishtar Bäcklund Dakhil. Her blue swimsuit and curved pose stand against a deep teal sky, with one arm lifted overhead. White and lilac foam fill the foreground, keeping the picture simple while giving the water a lively edge.",
+    "category": "Illustrations",
+    "artist": "Ishtar Bäcklund Dakhil",
+    "artistId": "8",
+    "brand": "",
+    "inStock": false,
+    "featured": false,
+    "published": false,
+    "review": true,
+    "image": "/images/products/ishtar-surfer-03.png",
+    "sourceImage": "/images/artworks/ishtar-surfer-03.avif",
+    "secondaryImage": "/images/products/ishtar-surfer-03-room.avif",
+    "availableSizes": [
+      "A3"
+    ],
+    "proposedSizes": [
+      "A3"
+    ],
+    "priceCategory": "Premium",
+    "productId": "42",
+    "recommendedProducts": [
+      "Surfer with Orange Sun",
+      "Surfer with Golden Sun",
+      "Stockholm",
+      "Frukt & Grönt"
+    ],
+    "created_time": "2026-09-24T13:00:00.000Z",
+    "last_edited_time": "2026-09-24T16:31:48.759186+00:00",
+    "imageAlt": "Surfer in a blue swimsuit with crossed feet on a pale board, against a dark teal sky with three cream stars.",
+    "imageAltNo": "Surfer i blå badedrakt med kryssede føtter på et lyst brett, mot en mørk blågrønn himmel med tre kremfargede stjerner.",
+    "reviewNotes": [
+      "Working descriptive title for review, not an artist-supplied title. Confirm the title and availability before launch.",
+      "Proposed for review: 29.7 × 42 cm, portrait, using the shop’s existing Premium prices. Prices and format await approval.",
+      "Extracted from PDF page 10. Current source gives about 100 dpi at A3; a larger individual master is required before sale."
+    ],
+    "orientation": "portrait"
   }
 ]

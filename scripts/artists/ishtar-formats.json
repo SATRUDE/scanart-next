@@ -1,0 +1,128 @@
+{
+  "stockholm": {
+    "size": "A2",
+    "widthCm": 42,
+    "heightCm": 59.4,
+    "orientation": "portrait",
+    "priceCategory": "Premium",
+    "fit": "contain",
+    "background": "#ffffff"
+  },
+  "frukt-och-gront": {
+    "size": "A2",
+    "widthCm": 42,
+    "heightCm": 59.4,
+    "orientation": "portrait",
+    "priceCategory": "Premium",
+    "fit": "contain",
+    "background": "#ffffff"
+  },
+  "ishtar-selection-01": {
+    "size": "50x70cm",
+    "widthCm": 70,
+    "heightCm": 50,
+    "orientation": "landscape",
+    "priceCategory": "Premium",
+    "fit": "contain",
+    "background": "#ffffff"
+  },
+  "ishtar-selection-02": {
+    "size": "50x50cm",
+    "widthCm": 50,
+    "heightCm": 50,
+    "orientation": "square",
+    "priceCategory": "Premium",
+    "fit": "contain",
+    "background": "#ffffff"
+  },
+  "ishtar-selection-03": {
+    "size": "50x50cm",
+    "widthCm": 50,
+    "heightCm": 50,
+    "orientation": "square",
+    "priceCategory": "Premium",
+    "fit": "contain",
+    "background": "#ffffff"
+  },
+  "ishtar-selection-04": {
+    "size": "50x50cm",
+    "widthCm": 50,
+    "heightCm": 50,
+    "orientation": "square",
+    "priceCategory": "Premium",
+    "fit": "contain",
+    "background": "#ffffff"
+  },
+  "ishtar-selection-05": {
+    "size": "50x70cm",
+    "widthCm": 50,
+    "heightCm": 70,
+    "orientation": "portrait",
+    "priceCategory": "Premium",
+    "fit": "contain",
+    "background": "#ffffff"
+  },
+  "ishtar-selection-06": {
+    "size": "50x70cm",
+    "widthCm": 70,
+    "heightCm": 50,
+    "orientation": "landscape",
+    "priceCategory": "Premium",
+    "fit": "contain",
+    "background": "#ffffff"
+  },
+  "ishtar-selection-07": {
+    "size": "50x70cm",
+    "widthCm": 70,
+    "heightCm": 50,
+    "orientation": "landscape",
+    "priceCategory": "Premium",
+    "fit": "contain",
+    "background": "#ffffff"
+  },
+  "ishtar-selection-08": {
+    "size": "A3",
+    "widthCm": 29.7,
+    "heightCm": 42,
+    "orientation": "portrait",
+    "priceCategory": "Premium",
+    "fit": "contain",
+    "background": "#ffffff"
+  },
+  "ishtar-selection-09": {
+    "size": "50x70cm",
+    "widthCm": 70,
+    "heightCm": 50,
+    "orientation": "landscape",
+    "priceCategory": "Premium",
+    "fit": "contain",
+    "background": "#ffffff"
+  },
+  "ishtar-surfer-01": {
+    "size": "A3",
+    "widthCm": 29.7,
+    "heightCm": 42,
+    "orientation": "portrait",
+    "priceCategory": "Premium",
+    "fit": "contain",
+    "background": "#ffffff"
+  },
+  "ishtar-surfer-02": {
+    "size": "A3",
+    "widthCm": 29.7,
+    "heightCm": 42,
+    "orientation": "portrait",
+    "priceCategory": "Premium",
+    "fit": "contain",
+    "background": "#ffffff"
+  },
+  "ishtar-surfer-03": {
+    "size": "A3",
+    "widthCm": 29.7,
+    "heightCm": 42,
+    "orientation": "portrait",
+    "priceCategory": "Premium",
+    "fit": "contain",
+    "background": "#ffffff"
+  }
+}

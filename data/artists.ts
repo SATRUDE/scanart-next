@@ -5,9 +5,19 @@ export interface Artist {
   location: string;
   bio: string;
   image: string;
+  imageCredit?: string;
 }
 
 export const artists: Artist[] = [
+  {
+    "id": "8",
+    "name": "Ishtar Bäcklund Dakhil",
+    "slug": "ishtar-backlund-dakhil",
+    "location": "Sweden",
+    "bio": "Ishtar Bäcklund Dakhil is a Swedish artist working across illustration, murals and design. She spent five years travelling and competing internationally in downhill skateboarding before studying at Konstfack in Stockholm.",
+    "image": "/images/artists/ishtar-backlund-dakhil.png",
+    "imageCredit": "Sebastian Lundmark"
+  },
   {
     id: '1',
     name: 'Helene Brox',
@@ -63,4 +73,4 @@ export const getArtistInitials = (name: string) => {
   const first = parts[0]?.[0] ?? '';
   const last = parts.length > 1 ? parts[parts.length - 1][0] : '';
   return (first + last).toUpperCase();
-}; 
+};
