@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import { nordicArtLanding } from '@/lib/nordic-art';
-import { getAllProducts } from '@/lib/products';
+import { getShopProducts as getAllProducts } from '@/lib/products';
 import { artists } from '@/data/artists';
 import { PrintCard } from '@/components/PrintCard';
 import { ReadMore } from '@/components/ReadMore';

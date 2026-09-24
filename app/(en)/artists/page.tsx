@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { artists } from '@/data/artists';
-import { getProductsByArtist } from '@/lib/products';
+import { getShopProductsByArtist as getProductsByArtist } from '@/lib/products';
 import { ArtistsList, ArtistWithCount } from '@/components/ArtistsList';
 import { ArtistApplyBand } from '@/components/ArtistApplyBand';
 import { BASE_URL, socialCard } from '@/lib/site';

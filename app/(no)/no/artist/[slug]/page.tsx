@@ -12,7 +12,7 @@ import {
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
 import { artists, getArtistBySlug, getArtistInitials } from '@/data/artists';
-import { getProductsByArtist } from '@/lib/products';
+import { getShopProductsByArtist as getProductsByArtist } from '@/lib/products';
 import { PrintCard } from '@/components/PrintCard';
 import { ArtistsList, type ArtistWithCount } from '@/components/ArtistsList';
 import { BASE_URL, OG_IMAGE, SITE_NAME, TWITTER_SITE } from '@/lib/site';
@@ -167,6 +167,7 @@ export default async function NorwegianArtistPage({
             {bio && (
               <p className="text-muted-foreground leading-relaxed mt-4 max-w-3xl">{bio}</p>
             )}
+            {artist.image && artist.imageCredit && <p className="mt-3 text-xs text-muted-foreground">Portrait: {artist.imageCredit}</p>}
           </div>
         </div>
       </header>

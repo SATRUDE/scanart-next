@@ -64,8 +64,11 @@ export default async function CatalogueReviewPage({ params, searchParams }: Prop
     <div className="container mx-auto px-8 py-8" lang={locale}>
       <aside className="mb-8 rounded border border-amber-200 bg-amber-50 p-4 text-sm">
         <p className="font-medium">Preview · Not published</p>
-        <p className="mt-1">Review the artwork and copy. Prices and purchasing are unavailable here.</p>
+        <p className="mt-1">Review the artwork and copy. Full shop pages show proposed prices and frame options; purchasing stays disabled.</p>
         <nav aria-label="Review navigation" className="mt-3 flex flex-wrap gap-4 underline">
+          {product && <Link href={`${locale === 'no' ? '/no' : ''}/product/${product.slug}`}>Full product page with prices</Link>}
+          {artist && <Link href={`${locale === 'no' ? '/no' : ''}/artist/${artist.slug}`}>Full artist page</Link>}
+          {!artist && <Link href={locale === 'no' ? '/no/products' : '/products'}>Full shop with prices</Link>}
           <Link href={href()}>All review prints</Link>
           {artist
             ? <Link href={href(`/artist/${artist.slug}`)}>Artist profile</Link>
@@ -95,7 +98,7 @@ export default async function CatalogueReviewPage({ params, searchParams }: Prop
             </p>
             <p className="text-sm text-muted-foreground">
               {product.availableSizes?.length
-                ? `Confirmed sizes: ${product.availableSizes.join(', ')}`
+                ? `Proposed sizes: ${product.availableSizes.join(', ')}. Awaiting review.`
                 : product.proposedSizes?.length
                   ? `Proposed sizes: ${product.proposedSizes.join(', ')}. Awaiting confirmation.`
                   : 'Sizes awaiting confirmation.'}

@@ -12,7 +12,7 @@ import {
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
 import { artists, getArtistBySlug, getArtistInitials } from '@/data/artists';
-import { getProductsByArtist } from '@/lib/products';
+import { getShopProductsByArtist as getProductsByArtist } from '@/lib/products';
 import { PrintCard } from '@/components/PrintCard';
 import { ArtistsList, type ArtistWithCount } from '@/components/ArtistsList';
 import { artistEditorial } from '@/lib/artist-editorial';
@@ -152,6 +152,7 @@ export default async function ArtistPage({
             {artist.bio && (
               <p className="text-muted-foreground leading-relaxed mt-4 max-w-3xl">{artist.bio}</p>
             )}
+            {artist.image && artist.imageCredit && <p className="mt-3 text-xs text-muted-foreground">Portrait: {artist.imageCredit}</p>}
           </div>
         </div>
       </header>

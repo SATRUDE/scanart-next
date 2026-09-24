@@ -24,13 +24,14 @@ interface ProductActionsProps {
   product: Product;
   /** Localised labels; defaults to the English strings above. */
   strings?: ProductActionsStrings;
+  locale?: 'en' | 'no';
 }
 
 const SIZE_ORDER: Record<string, number> = {
   'A5': 1, 'A4': 2, 'A3': 3, '50x50cm': 4, 'A2': 5, '50x70cm': 6, 'A1': 7, 'A0': 8,
 };
 
-export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings }) => {
+export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings, locale = 'en' }) => {
   const t = strings ?? EN;
   const { addToCart } = useCart();
   const { formatPrice } = useLanguage();
@@ -60,6 +61,7 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings
   }, [availableSizes, selectedSize]);
 
   const handleAddToCart = () => {
+    if (product.published === false) return;
     if (product.sizes && !selectedSize) return;
     addToCart(product, quantity, selectedSize || undefined, selectedFrame);
     track('add-to-cart', {
@@ -90,7 +92,7 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings
 
   return (
     <div className="space-y-6">
-      <div className="text-2xl">{formatPrice(totalPrices)}</div>
+      <div className="text-2xl">{Object.values(currentPrices).every(price => price > 0) ? formatPrice(totalPrices) : 'Pricing awaiting review'}</div>
 
       {availableSizes.length > 0 && (
         <div>
@@ -107,7 +109,7 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings
                   selectedSize === size ? 'border-primary bg-primary text-primary-foreground' : 'border-border hover:border-primary'
                 }`}
               >
-                {size}
+                {product.orientation === 'landscape' && size === '50x70cm' ? '70 × 50 cm (landscape)' : size}
               </button>
             ))}
           </div>
@@ -146,7 +148,7 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings
 
       <Button
         onClick={handleAddToCart}
-        disabled={!hasAvailableSizes || (product.sizes && !selectedSize)}
+        disabled={product.published === false || !hasAvailableSizes || (product.sizes && !selectedSize)}
         className="w-full"
         size="lg"
         // Watched by FeedbackIntercept: the card refuses to render if it would
@@ -154,7 +156,7 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings
         data-primary-cta="add-to-cart"
       >
         <ShoppingBag className="h-4 w-4 mr-2" />
-        {!hasAvailableSizes ? t.soldOut : (product.sizes && !selectedSize) ? t.selectSize : t.addToCart}
+        {product.published === false ? (locale === 'no' ? 'Forhåndsvisning · Kan ikke kjøpes' : 'Preview only · Not available to buy') : !hasAvailableSizes ? t.soldOut : (product.sizes && !selectedSize) ? t.selectSize : t.addToCart}
       </Button>
     </div>
   );

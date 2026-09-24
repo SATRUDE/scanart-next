@@ -6,7 +6,7 @@ import { BASE_URL, socialCard } from '@/lib/site';
 import { hreflangPair } from '@/lib/i18n';
 import { no } from '@/lib/i18n/no';
 import { aboutHeroImage } from '@/lib/about-hero';
-import { getAllProducts } from '@/lib/products';
+import { getShopProducts as getAllProducts } from '@/lib/products';
 
 // The Norwegian About page: app/about/page.tsx mirrored exactly (same
 // components, same classes), with the copy swapped for lib/i18n/no.ts.

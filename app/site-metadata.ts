@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 
 import { BASE_URL } from '@/lib/site';
+import { catalogueReviewEnabled } from '@/lib/server/catalogue-review';
 
 // Lifted verbatim out of the former single root layout when the tree was split
 // into (en) and (no) route groups, so both roots keep serving exactly the tags
@@ -17,7 +18,7 @@ export const siteMetadata: Metadata = {
   description: 'Curated Scandinavian and Nordic art prints from independent artists. Shop framed or unframed wall art, delivered worldwide. Discover the collection.',
   keywords: ['Scandinavian art', 'Nordic art', 'Scandinavian wall art', 'Nordic prints', 'Scandinavian artists', 'art gallery', 'wall art', 'prints', 'artwork', 'Nordic design'],
   authors: [{ name: 'Scandinavian Art Gallery' }],
-  robots: 'index, follow',
+  robots: catalogueReviewEnabled() ? 'noindex, nofollow, noarchive' : 'index, follow',
   // NOTE: the RSS autodiscovery link is NOT declared here. Metadata objects are
   // merged *shallowly* down the segment tree, so a page that sets `alternates`
   // at all (every page in this app sets `alternates.canonical`) replaces the
@@ -48,4 +49,3 @@ export const siteMetadata: Metadata = {
     site: '@scandinavianart',
   },
 };
-

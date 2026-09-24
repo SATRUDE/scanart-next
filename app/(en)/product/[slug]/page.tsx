@@ -9,9 +9,10 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
-import { getAllProducts, getProductBySlug, getRecommendedProducts } from '@/lib/products';
+import { getShopProducts as getAllProducts, getShopProductBySlug as getProductBySlug, getShopRecommendedProducts as getRecommendedProducts } from '@/lib/products';
 import { getArtistById } from '@/data/artists';
 import { ProductActions } from '@/components/ProductActions';
+import { ProductReviewNotice } from '@/components/ProductReviewNotice';
 import { ProductImageGalleryWrapper } from '@/components/ProductImageGalleryWrapper';
 import { ArtistSection } from '@/components/ArtistSection';
 import { PrintCard } from '@/components/PrintCard';
@@ -74,6 +75,7 @@ export async function generateMetadata({
   return {
     title: { absolute: buyerTitle },
     description: buyerDescription,
+    ...(product.published === false ? { robots: { index: false, follow: false } } : {}),
     alternates: {
       canonical: `/product/${product.slug}`,
       languages: hreflangPair(`/product/${product.slug}`),
@@ -171,6 +173,7 @@ export default async function ProductPage({
           )}
 
           <ProductActions product={product} />
+          <ProductReviewNotice product={product} />
           <FeedbackIntercept placement="product" />
 
           {artist && <ArtistSection artist={artist} />}
@@ -195,6 +198,7 @@ export default async function ProductPage({
           name= rather than the property= that Open Graph needs, so these are
           rendered directly and React hoists them into <head>. Values mirror
           the Offer JSON-LD below (lowest price in GBP, the catalogue currency). */}
+      {product.published !== false && (<>
       <meta property="og:type" content="product" />
       <meta property="og:price:amount" content={String(getLowestProductPrices(product).GBP)} />
       <meta property="og:price:currency" content="GBP" />
@@ -247,6 +251,7 @@ export default async function ProductPage({
           }),
         }}
       />
+      </>)}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

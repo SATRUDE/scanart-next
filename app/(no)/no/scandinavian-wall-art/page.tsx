@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
-import { getAllProducts } from '@/lib/products';
+import { getShopProducts as getAllProducts } from '@/lib/products';
 import { PrintCard } from '@/components/PrintCard';
 import { ReadMore } from '@/components/ReadMore';
 import { LandingCrossLinks } from '@/components/LandingCrossLinks';

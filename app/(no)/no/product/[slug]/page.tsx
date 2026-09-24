@@ -9,9 +9,10 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
-import { getAllProducts, getProductBySlug, getRecommendedProducts } from '@/lib/products';
+import { getShopProducts as getAllProducts, getShopProductBySlug as getProductBySlug, getShopRecommendedProducts as getRecommendedProducts } from '@/lib/products';
 import { getArtistById } from '@/data/artists';
 import { ProductActions } from '@/components/ProductActions';
+import { ProductReviewNotice } from '@/components/ProductReviewNotice';
 import { ProductImageGalleryWrapper } from '@/components/ProductImageGalleryWrapper';
 import { ArtistSection } from '@/components/ArtistSection';
 import { PrintCard } from '@/components/PrintCard';
@@ -44,7 +45,8 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const product = await getProductBySlug(slug);
+  const source = await getProductBySlug(slug);
+  const product = source ? { ...source, name: source.nameNo || source.name } : null;
   if (!product) return {};
 
   const copy = no.productCopy[slug];
@@ -59,6 +61,7 @@ export async function generateMetadata({
   return {
     title: { absolute: buyerTitle },
     description: buyerDescription,
+    ...(product.published === false ? { robots: { index: false, follow: false } } : {}),
     alternates: {
       canonical: `/no/product/${slug}`,
       languages: hreflangPair(`/product/${slug}`),
@@ -87,7 +90,8 @@ export default async function NorwegianProductPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const product = await getProductBySlug(slug);
+  const source = await getProductBySlug(slug);
+  const product = source ? { ...source, name: source.nameNo || source.name } : null;
 
   if (!product) {
     notFound();
@@ -151,7 +155,8 @@ export default async function NorwegianProductPage({
             <p className="text-sm text-muted-foreground leading-relaxed">{listingDetails.summary}</p>
           )}
 
-          <ProductActions product={product} strings={t.actions} />
+          <ProductActions product={product} strings={t.actions} locale="no" />
+          <ProductReviewNotice product={product} locale="no" />
           <FeedbackIntercept placement="product" />
 
           {artist && (
@@ -177,6 +182,7 @@ export default async function NorwegianProductPage({
           Metadata API has no product og:type and its `other` field emits
           name= rather than property=. Values mirror the Offer JSON-LD below
           (lowest price in GBP, the catalogue currency). */}
+      {product.published !== false && (<>
       <meta property="og:type" content="product" />
       <meta property="og:price:amount" content={String(getLowestProductPrices(product).GBP)} />
       <meta property="og:price:currency" content="GBP" />
@@ -217,6 +223,7 @@ export default async function NorwegianProductPage({
           }),
         }}
       />
+      </>)}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
