@@ -156,7 +156,7 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings
         data-primary-cta="add-to-cart"
       >
         <ShoppingBag className="h-4 w-4 mr-2" />
-        {product.published === false ? (locale === 'no' ? 'Forhåndsvisning · Kan ikke kjøpes' : 'Preview only · Not available to buy') : !hasAvailableSizes ? t.soldOut : (product.sizes && !selectedSize) ? t.selectSize : t.addToCart}
+        {product.published === false ? (locale === 'no' ? 'Kommer snart' : 'Coming soon') : !hasAvailableSizes ? t.soldOut : (product.sizes && !selectedSize) ? t.selectSize : t.addToCart}
       </Button>
     </div>
   );
