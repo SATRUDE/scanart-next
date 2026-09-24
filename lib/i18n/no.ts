@@ -1025,12 +1025,12 @@ export const no = {
   wallArt: {
     title: 'Kjøp skandinaviske kunsttrykk | Innrammede nordiske trykk',
     description:
-      'Kjøp skandinaviske kunsttrykk av fem uavhengige norske og svenske kunstnere. Tjue nordiske trykk, hvert med ramme i tre, svart eller hvit, eller uten ramme, laget på bestilling.',
+      'Kjøp skandinaviske kunsttrykk av uavhengige norske og svenske kunstnere. Laget på bestilling, med ramme i tre, svart eller hvit, eller uten ramme.',
     heading: 'Kjøp skandinaviske kunsttrykk',
     intro:
-      'Denne siden er hele galleriet: tjue skandinaviske kunsttrykk, hvert av dem av en kunstner som lever og arbeider i Norge eller Sverige, og hvert av dem solgt med eller uten ramme. Helene Brox maler nedskrelte, kremhvite figurer i Oslo og skjærer en svale ned til selve stupet av vingene. Ingunn Dybendal tegner folkeblomster og mønstret innsjølandskap i fargeblyant, Sia Siamos fyller bord med hummer, vin og hyttefrokost, Simen Wahlqvist får plass til en hel vits i en håndfull streker, og Hedvig Wallin dekker et frokostbord fra Göteborg i tusj og akvarell. Fem hender, fire uttrykk, og ikke et fyllbilde blant dem.',
+      'Denne siden samler hele galleriet: skandinaviske kunsttrykk av norske og svenske kunstnere, med eller uten ramme. Blant kunstnerne her maler Helene Brox nedskrelte, kremhvite figurer i Oslo og skjærer en svale ned til selve stupet av vingene. Ingunn Dybendal tegner folkeblomster og mønstret innsjølandskap i fargeblyant, Sia Siamos fyller bord med hummer, vin og hyttefrokost, Simen Wahlqvist får plass til en hel vits i en håndfull streker, og Hedvig Wallin dekker et frokostbord fra Göteborg i tusj og akvarell.',
     intro2:
-      'Å kjøpe skandinaviske kunsttrykk på nett betyr vanligvis å skrolle gjennom et marked med ti tusen plakater som aldri har vært i nærheten av en fjord. Dette er det motsatte. Et lite galleri, fem kunstnere vi jobber direkte med, og hvert trykk laget på bestilling framfor hentet fra et lager. Velg bildet først og rammen etterpå, og klarer du ikke å velge mellom to, er kvadratene til Wahlqvist og fugleparet til Brox laget for å henge sammen.',
+      'Å kjøpe skandinaviske kunsttrykk på nett betyr vanligvis å skrolle gjennom et marked med ti tusen plakater som aldri har vært i nærheten av en fjord. Dette er det motsatte. Et lite galleri, kunstnere vi jobber direkte med, og hvert trykk laget på bestilling framfor hentet fra et lager. Velg bildet først og rammen etterpå, og klarer du ikke å velge mellom to, er kvadratene til Wahlqvist og fugleparet til Brox laget for å henge sammen.',
     framedHeading: 'Med eller uten ramme',
     framedBody:
       'Hvert trykk her kommer med valget mellom tre rammer, tre, svart eller hvit, tilpasset trykket. Tre passer de varmere botaniske bildene og rom som allerede har tre i seg; svart skjerper de grafiske abstraktene og illustrasjonene; hvit forsvinner nesten mot en lys skandinavisk vegg og lar fargen snakke. Skal du henge flere sammen? Hold rammen lik gjennom hele gruppen, og veggen leses som én beslutning. Og har du en innrammer du stoler på, selges hvert bilde uten ramme også.',
@@ -1055,7 +1055,7 @@ export const no = {
       {
         question: 'Hvor kan jeg kjøpe skandinaviske kunsttrykk?',
         answer:
-          'Her, fra galleriet selv framfor et markedsplass. Vi jobber direkte med fem uavhengige kunstnere i Oslo, Bergen og Göteborg, og hvert trykk lages på bestilling når du kjøper det: velg størrelse og ramme på produktsiden, og det går i trykk for deg.',
+          'Her, fra galleriet selv framfor en markedsplass. Vi jobber direkte med uavhengige norske og svenske kunstnere, og hvert trykk lages på bestilling når du kjøper det: velg størrelse og ramme på produktsiden, og det går i trykk for deg.',
       },
       {
         question: 'Kan jeg kjøpe trykkene innrammet?',
@@ -1065,7 +1065,7 @@ export const no = {
       {
         question: 'Hvilke størrelser kommer trykkene i?',
         answer:
-          'De fleste trykk er 50 x 70 cm, og de kvadratiske illustrasjonene til Simen Wahlqvist er 50 x 50 cm. Hver produktside lister størrelsene for det bildet; som en tommelfingerregel bærer de større formatene en sofa- eller sengevegg alene, mens de mindre står fint på en billedhylle eller i en gruppe.',
+          'Størrelsene varierer fra bilde til bilde. Hver produktside viser de tilgjengelige formatene; som en tommelfingerregel bærer de større formatene en sofa- eller sengevegg alene, mens de mindre står fint på en billedhylle eller i en gruppe.',
       },
       {
         question: 'Hva betyr det at trykkene lages på bestilling?',

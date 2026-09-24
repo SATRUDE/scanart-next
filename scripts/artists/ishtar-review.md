@@ -2,7 +2,7 @@
 
 Prepared 24 September 2026. Review only. Do not merge or publish until Mark has reviewed.
 
-The supplied download contains two standalone masters and twelve additional works in a ten-page PDF. The last PDF page contains three separate surfer illustrations. All fourteen have individual draft records, framed previews fitted to the proposed paper, unframed previews and English/Norwegian descriptions. All fourteen have room mockups in preparation for the full shop preview.
+The supplied download contains two standalone masters and twelve additional works in a ten-page PDF. The last PDF page contains three separate surfer illustrations. All fourteen have individual draft records, framed previews fitted to the proposed paper, unframed previews and English/Norwegian descriptions. All fourteen have room mockups in the full shop preview.
 
 ## Full shop preview
 

@@ -634,7 +634,7 @@
       "review": true,
       "image": "/images/products/ishtar-selection-01.png",
       "sourceImage": "/images/artworks/ishtar-selection-01.avif",
-      "secondaryImage": "",
+      "secondaryImage": "/images/products/ishtar-selection-01-room.avif",
       "availableSizes": [
         "50x70cm"
       ],
@@ -805,7 +805,7 @@
       "review": true,
       "image": "/images/products/ishtar-selection-05.png",
       "sourceImage": "/images/artworks/ishtar-selection-05.avif",
-      "secondaryImage": "",
+      "secondaryImage": "/images/products/ishtar-selection-05-room.avif",
       "availableSizes": [
         "50x70cm"
       ],
@@ -848,7 +848,7 @@
       "review": true,
       "image": "/images/products/ishtar-selection-06.png",
       "sourceImage": "/images/artworks/ishtar-selection-06.avif",
-      "secondaryImage": "",
+      "secondaryImage": "/images/products/ishtar-selection-06-room.avif",
       "availableSizes": [
         "50x70cm"
       ],
@@ -890,7 +890,7 @@
       "review": true,
       "image": "/images/products/ishtar-selection-07.png",
       "sourceImage": "/images/artworks/ishtar-selection-07.avif",
-      "secondaryImage": "",
+      "secondaryImage": "/images/products/ishtar-selection-07-room.avif",
       "availableSizes": [
         "50x70cm"
       ],
@@ -933,7 +933,7 @@
       "review": true,
       "image": "/images/products/ishtar-selection-08.png",
       "sourceImage": "/images/artworks/ishtar-selection-08.avif",
-      "secondaryImage": "",
+      "secondaryImage": "/images/products/ishtar-selection-08-room.avif",
       "availableSizes": [
         "A3"
       ],
@@ -976,7 +976,7 @@
       "review": true,
       "image": "/images/products/ishtar-selection-09.png",
       "sourceImage": "/images/artworks/ishtar-selection-09.avif",
-      "secondaryImage": "",
+      "secondaryImage": "/images/products/ishtar-selection-09-room.avif",
       "availableSizes": [
         "50x70cm"
       ],
@@ -1019,7 +1019,7 @@
       "review": true,
       "image": "/images/products/ishtar-surfer-01.png",
       "sourceImage": "/images/artworks/ishtar-surfer-01.avif",
-      "secondaryImage": "",
+      "secondaryImage": "/images/products/ishtar-surfer-01-room.avif",
       "availableSizes": [
         "A3"
       ],
@@ -1061,7 +1061,7 @@
       "review": true,
       "image": "/images/products/ishtar-surfer-02.png",
       "sourceImage": "/images/artworks/ishtar-surfer-02.avif",
-      "secondaryImage": "",
+      "secondaryImage": "/images/products/ishtar-surfer-02-room.avif",
       "availableSizes": [
         "A3"
       ],
@@ -1103,7 +1103,7 @@
       "review": true,
       "image": "/images/products/ishtar-surfer-03.png",
       "sourceImage": "/images/artworks/ishtar-surfer-03.avif",
-      "secondaryImage": "",
+      "secondaryImage": "/images/products/ishtar-surfer-03-room.avif",
       "availableSizes": [
         "A3"
       ],
