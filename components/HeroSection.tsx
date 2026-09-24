@@ -45,7 +45,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
   return (
     <div className="flex flex-col lg:flex-row bg-white">
-      <div className="lg:w-1/2 lg:sticky lg:top-0 lg:self-start min-h-screen flex flex-col justify-center p-8 lg:p-16">
+      <div className="lg:w-1/2 lg:sticky lg:top-0 lg:self-start lg:min-h-screen flex flex-col justify-center p-8 lg:p-16">
         <div className="max-w-lg space-y-8">
           <span className="inline-block px-3 py-1 text-xs font-medium bg-muted rounded-full">{strings.badge}</span>
           <div className="space-y-6">
