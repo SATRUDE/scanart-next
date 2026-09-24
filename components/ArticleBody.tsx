@@ -8,6 +8,7 @@ export interface ArticleBodyProps {
   category?: string;
   excerpt?: string;
   image?: string;
+  imageAlt?: string;
   blocks: NotionBlock[];
   articleSlug?: string;
   /** Replaces the default NotionBlockRenderer, e.g. the preview page's
@@ -40,6 +41,7 @@ export function ArticleBody({
   category,
   excerpt,
   image,
+  imageAlt,
   blocks,
   articleSlug,
   bodyOverride,
@@ -62,11 +64,12 @@ export function ArticleBody({
         <div className="relative aspect-[16/9] overflow-hidden bg-neutral-50 rounded mb-8">
           {heroImage === 'plain' ? (
             // eslint-disable-next-line @next/next/no-img-element -- a draft's hero can be on any host socialagent serves preview media from, which next/image would refuse without a matching remotePattern
-            <img src={image} alt={title} className="h-full w-full object-cover" />
+            <img src={image} alt={imageAlt || title} className="h-full w-full object-cover" style={image.includes('-room-') ? { objectPosition: 'center top' } : undefined} />
           ) : (
             <Image
               src={image}
-              alt={title}
+              alt={imageAlt || title}
+              style={image.includes('-room-') ? { objectPosition: 'center top' } : undefined}
               fill
               sizes="(max-width: 768px) 100vw, 768px"
               className="object-cover"

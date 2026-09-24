@@ -1,3 +1,4 @@
+import { shopScenes } from '@/lib/shop-scenes';
 import type { Metadata } from 'next';
 import { TrackedLink } from '@/components/TrackedLink';
 import Image from 'next/image';
@@ -94,16 +95,16 @@ export default async function NorwegianHomePage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {[
-              { name: 'Botanical', image: '/images/homepage/botanical.avif' },
-              { name: 'Illustrations', image: '/images/homepage/illustration.avif' },
-              { name: 'Abstract', image: '/images/homepage/abstract.avif' },
+              { name: 'Botanical', image: shopScenes.hyttefrokost.image, alt: 'Hyttefrokost av Sia Siamos innrammet i en spisestue' },
+              { name: 'Illustrations', image: shopScenes.slingshot.image, alt: 'Slingshot av Simen Wahlqvist innrammet over et tegnebord' },
+              { name: 'Abstract', image: shopScenes.dragon.image, alt: 'Dragon av Helene Brox innrammet på en blå spisestuevegg' },
             ].map(cat => {
               const landing = getCategoryLandingByCategory(cat.name);
               const tile = no.home.categoryTiles[cat.name];
               return (
               <TrackedLink key={cat.name} event="homepage-section-click" eventData={{ section: 'category-tile', target: cat.name, locale: 'no' }} href={landing ? `/no/category/${landing.slug}` : `/no/products?category=${cat.name}`} className="group cursor-pointer">
                 <div className="relative aspect-[4/5] overflow-hidden bg-neutral-50 rounded mb-4">
-                  <Image src={cat.image} alt={`Kategorien ${tile?.name ?? cat.name}`} fill sizes="(max-width: 1024px) 100vw, 33vw" className="object-cover transition-all duration-300 group-hover:scale-[1.02]" />
+                  <Image src={cat.image} alt={cat.alt || `Kategorien ${tile?.name ?? cat.name}`} fill sizes="(max-width: 1024px) 100vw, 33vw" className="object-cover transition-all duration-300 group-hover:scale-[1.02]" />
                 </div>
                 <h3 className="text-lg font-medium mb-2">{tile?.name ?? cat.name}</h3>
                 <p className="text-muted-foreground text-sm">{tile?.desc}</p>

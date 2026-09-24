@@ -1,5 +1,6 @@
 import fs from 'fs/promises';
 import path from 'path';
+import { articleSceneSlugs, shopScenes } from '@/lib/shop-scenes';
 
 export interface Article {
   id: string;
@@ -9,6 +10,7 @@ export interface Article {
   category: string;
   featured: boolean;
   image: string;
+  imageAlt?: string;
   author: string;
   tags: string[];
   relatedArticles: string[];
@@ -39,7 +41,10 @@ export async function getAllArticles(): Promise<Article[]> {
   try {
     const data = await fs.readFile(filePath, 'utf-8');
     const articles: Article[] = JSON.parse(data);
-    return articles.filter(a => a.published);
+    return articles.filter(a => a.published).map(a => {
+      const latest = shopScenes[articleSceneSlugs[a.slug]];
+      return latest ? { ...a, image: latest.image, imageAlt: latest.alt } : a;
+    });
   } catch {
     return [];
   }

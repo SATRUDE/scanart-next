@@ -33,7 +33,8 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
         <div className={`relative ${imageAspectClass} overflow-hidden bg-neutral-50 rounded mb-4`}>
           <Image
             src={article.image}
-            alt={article.title}
+            alt={article.imageAlt || article.title}
+            style={article.image.includes('-room-') ? { objectPosition: 'center top' } : undefined}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
             preload={priority}

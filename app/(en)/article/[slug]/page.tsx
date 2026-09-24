@@ -116,6 +116,7 @@ export default async function ArticlePage({
         category={article.category}
         excerpt={article.excerpt}
         image={article.image}
+        imageAlt={article.imageAlt}
         blocks={blocks}
         articleSlug={article.slug}
       >
@@ -164,7 +165,8 @@ export default async function ArticlePage({
                   <div className="relative aspect-[4/3] overflow-hidden bg-neutral-50 rounded mb-3">
                     <Image
                       src={ra.image}
-                      alt={ra.title}
+                      alt={ra.imageAlt || ra.title}
+                      style={ra.image.includes('-room-') ? { objectPosition: 'center top' } : undefined}
                       fill
                       sizes="(max-width: 768px) 100vw, 256px"
                       className="object-cover group-hover:scale-[1.02] transition-transform duration-300"
