@@ -53,7 +53,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const artist = getArtistBySlug(slug);
-  if (!artist) return {};
+  if (!artist || (await getProductsByArtist(artist.id)).length === 0) return {};
 
   // Both fields lead on the offer rather than on the biography. We rank on page
   // one for these artists' own names and took no clicks from it in August,

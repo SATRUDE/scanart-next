@@ -804,6 +804,10 @@ export const no = {
   // Norwegian versions of data/artists.ts bios and locations, keyed by slug.
   // Fall back to the English data for any artist missing here.
   artists: {
+    "ishtar-backlund-dakhil": {
+      "location": "Sverige",
+      "bio": "Ishtar Bäcklund Dakhil er en svensk kunstner som arbeider med illustrasjon, veggmaleri og design. Hun reiste i fem år og konkurrerte internasjonalt i downhill-skateboarding før hun studerte ved Konstfack i Stockholm."
+    },
     'helene-brox': {
       location: 'Oslo, Norge',
       bio: 'Helene Brox er illustratør, veggmaler og arbeider med håndtegnede bokstaver, bosatt i Oslo, og en av grunnleggerne av illustrasjonsbyrået Heiaklubben. Bokomslagene hennes fikk sølv og diplom i Årets vakreste bøker i 2016, og hun finner opp helt urealistiske, podede planter som hun selger som trykk.',
@@ -834,6 +838,11 @@ export const no = {
   // when this copy was written, which is exactly the kind of link that goes
   // stale silently when the tree grows.
   artistEditorial: {
+    "ishtar-backlund-dakhil": {
+      "heading": "Byer, planter og fantasiverdener",
+      "para1": "Ishtars bilder beveger seg mellom nøye observerte detaljer og fantasiverdener. Stockholms tårn og bygninger langs vannet står side om side med lag på lag av blader, geometriske landskap og dyr under stjernehimler. Små merker og fargenyanser gir mye å oppdage på nært hold.",
+      "para2": "Uttrykket varierer, men sansen for farger går igjen. Illustrasjonen av frukt og grønnsaker samler grønt, rødt og gult på kjøkkenveggen, mens surferne er tegnet med færre former og tydeligere fargeflater. De mørkere scenene passer et roligere sted der det er tid til å se detaljene."
+    },
     'helene-brox': {
       heading: 'Formen får snakke',
       para1:
@@ -1067,6 +1076,48 @@ export const no = {
   },
 
   productCopy: {
+    "stockholm": {
+      "description": "Stockholms tak, tårn og bygninger langs vannet samles i en fargerik illustrasjon av Ishtar Bäcklund Dakhil. Oransje murstein, gule fasader og grønne spir reiser seg over to båter, mens den lyseblå himmelen gir luft til det detaljerte motivet. Se nærmere etter vindusrekker, blomstrende trær og de små detaljene som gir byen liv."
+    },
+    "frukt-och-gront": {
+      "description": "Frukt, grønnsaker og håndskrevne svenske navn fyller Frukt & Grönt av Ishtar Bäcklund Dakhil. En dyp lilla aubergine ligger over ananas, mais, grønne blader og røde tomater, mens røtter og stilker slynger seg mellom motivene. Det er en rik samling av hverdagslige råvarer, med nye detaljer å oppdage hver gang du går forbi."
+    },
+    "ishtar-selection-01": {
+      "description": "Hornede skapninger står blant lyse, vifteformede blader under en stjernehimmel i denne illustrasjonen av Ishtar Bäcklund Dakhil. En blå skikkelse ser ut mot oss fra høyre, mens mørke fjellformer og en smal månesigd ligger bak dyrene. Myke gråtoner og dempet blått binder scenen sammen og gir de underlige skapningene en rolig tilstedeværelse."
+    },
+    "ishtar-selection-02": {
+      "description": "Overlappende hvite sirkler deler et ørkenlandskap i buede fragmenter i dette verket av Ishtar Bäcklund Dakhil. Rustrøde klipper, kaktuser og støvrosa åser gjentas i mønsteret, avbrutt av klare turkise felt. Formene trekker blikket mot midten, mens spredte merker og ujevne fargetoner gjør hver del forskjellig."
+    },
+    "ishtar-selection-03": {
+      "description": "Hvite trekanter overlapper over spisse fjelltopper i dette geometriske verket av Ishtar Bäcklund Dakhil. Svarte, lilla og isblå felt møtes under en ferskenfarget himmel, med en fiolett sirkel til venstre. De gjentatte linjene danner en tett stjerne i midten, mens tåke krysser fjellsidene og mørke merker bryter opp himmelen."
+    },
+    "ishtar-selection-04": {
+      "description": "Kantede hvite linjer krysser palmer, blomster og røde solskiver i dette botaniske verket av Ishtar Bäcklund Dakhil. Blågrønne blader fyller bildet, med ferskenfarget himmel mellom bladene og inne i det geometriske mønsteret. Små rosa blomster myker opp de skarpe inndelingene og gir fine detaljer til en komposisjon av tydelige former."
+    },
+    "ishtar-selection-05": {
+      "description": "Syrinblomster, bier og lyse sirkler omgir en fin geometrisk stjerne i dette verket av Ishtar Bäcklund Dakhil. Lilla blomsterklaser brer seg langs kantene, med grønne blader, gule blomster og mindre planter nederst. Gjentatte buer samler hagedetaljene i et mønster i midten, mot en myk rosa himmel og en dempet blå bakgrunn."
+    },
+    "ishtar-selection-06": {
+      "description": "En lys, hornet skapning titter frem gjennom lag av blå blader i denne illustrasjonen av Ishtar Bäcklund Dakhil. Brede vifter og spisse blader fyller den mørke bakgrunnen og skjuler deler av det flekkete ansiktet og de buede hornene. Små innslag av oker bryter den kjølige paletten, mens plantene lukker seg rundt skapningen."
+    },
+    "ishtar-selection-07": {
+      "description": "Soverommet til et sovende barn åpner seg mot en nattskog i denne illustrasjonen av Ishtar Bäcklund Dakhil. Leker og en togbane ligger under sengen, mens røde trestammer rammer inn fjerne fjell og skikkelser som rir på en fugl. Det kjente rommet og fantasireisen møtes, med små detaljer å følge fra gulvet til himmelen."
+    },
+    "ishtar-selection-08": {
+      "description": "En hvit fugl med en vindusrekke glir over en grønn dal i denne illustrasjonen av Ishtar Bäcklund Dakhil. Vingene strekker seg over buktende blå elver, rosa klippevegger og tett vegetasjon. Den lyse formen skiller seg ut mot det detaljerte landskapet under og gir en følelse av letthet i en scene full av farger og bevegelse."
+    },
+    "ishtar-selection-09": {
+      "description": "To kenguruer ser mot hverandre mellom en stjernehimmel og en glødende solnedgang i dette verket av Ishtar Bäcklund Dakhil. Den ene glir inn i den mørke himmelen, med stjerner og stjernebilder over kroppen. Den andre er tegnet i varme bruntoner, mot rosa og fiolette fargebånd over en lav, rød sol."
+    },
+    "ishtar-surfer-01": {
+      "description": "En surfer balanserer over en turkis bølge med en klar oransje sol bak seg i denne illustrasjonen av Ishtar Bäcklund Dakhil. Utstrakte armer og et bøyd kne gir figuren en lett, balansert bevegelse. Mørke klær danner en tydelig form mot solen, mens hvitt skum bryter over den nedre delen av bildet."
+    },
+    "ishtar-surfer-02": {
+      "description": "En langhåret surfer rir på en lyseblå bølge under en gyllen sol i denne illustrasjonen av Ishtar Bäcklund Dakhil. Den lilla badedrakten skiller seg ut mot den myke beige himmelen, med én arm løftet og den andre strakt bakover. Lyst skum og buede vannstriper fører bevegelsen gjennom den nedre delen av bildet."
+    },
+    "ishtar-surfer-03": {
+      "description": "En surfer krysser føttene på et lyst brett under tre stjerner i denne illustrasjonen av Ishtar Bäcklund Dakhil. Den blå badedrakten og den buede kroppen står mot en dyp blågrønn himmel, med én arm løftet over hodet. Hvitt og lilla skum fyller forgrunnen og gir vannet liv i et ellers enkelt motiv."
+    },
     dancer: {
       description:
         'Dancer av Helene Brox fanger en kremhvit figur midt i skrittet mot en himmelblå bakgrunn, med armer som bølger som silkebånd fanget i sin egen fart. Det finnes verken ansikt eller gulv, bare selve formen av bevegelse: én arm som krøller seg bakover mens den andre strekker seg høyt, malt med den løse selvtilliten til en papirutklipping. Den leses tydelig tvers over et rom, og den gir ekte bevegelse til et rolig ett.',

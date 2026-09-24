@@ -32,6 +32,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function NordicArtPage() {
   const products = await getAllProducts();
+  const publishedArtists = artists.filter(artist => products.some(product => product.artistId === artist.id));
 
   return (
     <div className="container mx-auto px-8 py-8">
@@ -69,10 +70,10 @@ export default async function NordicArtPage() {
         <p className="text-muted-foreground leading-relaxed mt-4 max-w-3xl">
           Every print here comes from one of the gallery&apos;s artists, each with their own page of
           work and background:{' '}
-          {artists.map((artist, i) => (
+          {publishedArtists.map((artist, i) => (
             <span key={artist.slug}>
               <Link href={`/artist/${artist.slug}`} className="underline hover:text-neutral-900">{artist.name}</Link>
-              {i < artists.length - 2 ? ', ' : i === artists.length - 2 ? ' and ' : '.'}
+              {i < publishedArtists.length - 2 ? ', ' : i === publishedArtists.length - 2 ? ' and ' : '.'}
             </span>
           ))}
         </p>

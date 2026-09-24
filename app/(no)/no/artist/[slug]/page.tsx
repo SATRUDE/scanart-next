@@ -59,7 +59,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const artist = getArtistBySlug(slug);
-  if (!artist) return {};
+  if (!artist || (await getProductsByArtist(artist.id)).length === 0) return {};
 
   const copy = no.artists[artist.slug];
   // Same shape as the English twin: the offer leads, the biography distinguishes.
