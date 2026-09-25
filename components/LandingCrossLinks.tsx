@@ -15,7 +15,7 @@ const DEFAULT_STRINGS: CrossLinksStrings = {
 
 interface LandingCrossLinksProps {
   /** The page it sits on, so it never links to itself. Omit on pages that are not landings. */
-  current?: { type: 'category' | 'collection' | 'wall-art' | 'nordic-art' | 'page'; slug: string };
+  current?: { type: 'category' | 'collection' | 'wall-art' | 'nordic-art' | 'products' | 'page'; slug: string };
   strings?: CrossLinksStrings;
   locale?: 'en' | 'no';
   /** Artists with published prints, for the second column. Without it the column is a single "Meet the artists" link. */
@@ -47,7 +47,7 @@ export function LandingCrossLinks({ current = { type: 'page', slug: '' }, string
       .map(c => ({ href: `${localePrefix}/collection/${c.slug}`, label: strings.collectionLabels[c.slug] ?? c.chipLabel })),
     ...(current.type !== 'nordic-art' && locale === 'en' ? [{ href: '/nordic-art', label: strings.nordicArt }] : []),
     ...(current.type !== 'wall-art' ? [{ href: `${localePrefix}/scandinavian-wall-art`, label: strings.wallArt }] : []),
-    { href: `${localePrefix}/products`, label: strings.allPrints },
+    ...(current.type !== 'products' ? [{ href: `${localePrefix}/products`, label: strings.allPrints }] : []),
   ];
   const artistLinks = artists?.length
     ? artists.map(a => ({ href: `${localePrefix}/artist/${a.slug}`, label: a.name }))

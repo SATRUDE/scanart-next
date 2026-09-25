@@ -102,7 +102,7 @@ export default async function NorwegianProductsPage() {
         </ContentBody>
       </ContentSection>
 
-      <LandingCrossLinks strings={no.crossLinks} locale="no" artists={artists} className="mt-section" />
+      <LandingCrossLinks current={{ type: 'products', slug: 'products' }} strings={no.crossLinks} locale="no" artists={artists} className="mt-section" />
 
       <script
         type="application/ld+json"

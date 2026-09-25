@@ -107,7 +107,7 @@ export default async function ProductsPage() {
         </ContentBody>
       </ContentSection>
 
-      <LandingCrossLinks artists={artists} className="mt-section" />
+      <LandingCrossLinks current={{ type: 'products', slug: 'products' }} artists={artists} className="mt-section" />
 
       <script
         type="application/ld+json"
