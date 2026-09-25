@@ -1,22 +1,19 @@
 import type { Metadata } from 'next';
 import { metaTitle } from '@/lib/meta-title';
 import { notFound } from 'next/navigation';
-import Link from 'next/link';
-import Image from 'next/image';
-import { ArrowLeft } from 'lucide-react';
 import { collections, getCollectionBySlug } from '@/lib/collections';
 import { getAllProducts } from '@/lib/products';
-import { PrintCard } from '@/components/PrintCard';
-import { ReadMore } from '@/components/ReadMore';
-import { TrackedLink } from '@/components/TrackedLink';
-import { LandingCrossLinks } from '@/components/LandingCrossLinks';
-import { BASE_URL, socialCard } from '@/lib/site';
+import { getPublishedArtists } from '@/lib/published-artists';
+import { LandingTemplate } from '@/components/v2/landing/LandingTemplate';
+import { CollectionStyling } from '@/components/v2/landing/CollectionStyling';
+import { collectionPageJsonLd, faqPageJsonLd, landingBreadcrumbJsonLd } from '@/lib/landing-jsonld';
+import { socialCard } from '@/lib/site';
 import { hreflangPair } from '@/lib/i18n';
 import { no } from '@/lib/i18n/no';
 
 // The Norwegian collection landing pages (phase 2, 2026-08-21):
-// app/collection/[slug]/page.tsx mirrored exactly (same params, same
-// components, same classes), with the copy swapped for lib/i18n/no.ts.
+// app/(en)/collection/[slug]/page.tsx mirrored exactly (same params, same
+// template), with the copy swapped for lib/i18n/no.ts.
 //
 // Only the COPY is translated. productSlugs, the styling-card images and the
 // related-article slug all still come from lib/collections.ts, so the curation
@@ -105,156 +102,49 @@ export default async function NorwegianCollectionPage({
     tip: copy.stylingCards?.[i]?.tip ?? card.tip,
     alt: copy.stylingCards?.[i]?.alt ?? card.alt,
   }));
+  const artists = await getPublishedArtists();
+  const path = `/no/collection/${slug}`;
+  const articleLabel = copy.relatedArticleLabel ?? collection.relatedArticleLabel;
 
   return (
-    <div className="container mx-auto px-8 py-8">
-      <Link href="/no/products" className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground mb-8">
-        <ArrowLeft className="h-4 w-4 mr-2" />
-        {no.shared.backToProducts}
-      </Link>
-
-      <header className="mb-16">
-        <h1 className="text-3xl text-neutral-900">{copy.heading}</h1>
-        <ReadMore className="mt-4 max-w-3xl" moreLabel={no.shared.readMore} lessLabel={no.shared.readLess}>
-          <p className="text-muted-foreground leading-relaxed">{copy.intro}</p>
-          <p className="text-muted-foreground leading-relaxed mt-4">{copy.intro2}</p>
-        </ReadMore>
-      </header>
-
-      <div className="mb-8">
-        <p className="text-muted-foreground">{products.length} {products.length === 1 ? no.shared.printOne : no.shared.printOther}</p>
-      </div>
-
-      {/* Section heading for the grid (sr-only): keeps the heading order h1 -> h2 -> card h3 */}
-      <h2 className="sr-only">{no.shared.printsSrHeading}</h2>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {products.map((product, index) => (
-          <Link key={product.id} href={`/no/product/${product.slug}`}>
-            {/* first desktop row is above the fold: preload it, lazy-load the rest */}
-            <PrintCard
-              product={product}
-              priority={index < 4}
-              categoryLabel={no.shared.categoryLabels[product.category]}
-              outOfStockLabel={no.shared.outOfStock}
-              locale="no"
-            />
-          </Link>
-        ))}
-      </div>
-
-      <section className="mt-16">
-        <h2 className="text-2xl text-neutral-900">{copy.stylingHeading}</h2>
-        {stylingCards ? (
-          <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
-            {stylingCards.map((card, i) => (
-              <div key={i}>
-                <div className="relative aspect-[4/3] overflow-hidden rounded bg-neutral-50 mb-4">
-                  <Image
-                    src={card.image}
-                    alt={card.alt}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover object-top"
-                  />
-                </div>
-                <p className="text-xs uppercase tracking-wider text-muted-foreground mb-2">{card.label}</p>
-                <p className="text-sm text-neutral-900 leading-relaxed">{card.tip}</p>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <ul className="mt-4 space-y-3 max-w-3xl">
-            {copy.stylingTips.map((tip, i) => (
-              <li key={i} className="text-muted-foreground leading-relaxed">{tip}</li>
-            ))}
-          </ul>
-        )}
-        {collection.slug === 'living-room' && (
-          <p className="mt-8 text-sm">
-            <TrackedLink
-              href="/gallery-wall-planner"
-              event="gallery-wall-planner-collection-click"
-              eventData={{ collection: collection.slug, locale: 'no' }}
-              className="font-medium text-neutral-900 hover:text-neutral-600 transition-colors"
-            >
-              {no.shared.galleryWallPlanner}
-            </TrackedLink>
-          </p>
-        )}
-        {collection.relatedArticleSlug && (
-          <p className="mt-8 text-sm">
-            <Link href={`/article/${collection.relatedArticleSlug}`} className="font-medium text-neutral-900 hover:text-neutral-600 transition-colors">
-              {no.shared.readMoreArticle}: {copy.relatedArticleLabel ?? collection.relatedArticleLabel} →
-            </Link>
-          </p>
-        )}
-      </section>
-
-      <section className="mt-16">
-        <h2 className="text-2xl text-neutral-900">{no.shared.commonQuestions}</h2>
-        <div className="mt-4 max-w-3xl space-y-6">
-          {copy.faqs.map(faq => (
-            <div key={faq.question}>
-              <h3 className="font-medium text-neutral-900">{faq.question}</h3>
-              <p className="text-muted-foreground leading-relaxed mt-1">{faq.answer}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <LandingCrossLinks current={{ type: 'collection', slug }} strings={no.crossLinks} locale="no" />
-
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'FAQPage',
-            inLanguage: 'no',
-            mainEntity: copy.faqs.map(faq => ({
-              '@type': 'Question',
-              name: faq.question,
-              acceptedAnswer: { '@type': 'Answer', text: faq.answer },
-            })),
-          }),
-        }}
+    <LandingTemplate
+      locale="no"
+      heading={copy.heading}
+      intro={[copy.intro, copy.intro2]}
+      breadcrumb={[{ label: no.shared.prints, href: '/no/products' }, { label: copy.heading }]}
+      products={products}
+      countLabel={`${products.length} ${products.length === 1 ? no.shared.printOne : no.shared.printOther}`}
+      fromLabel={no.shared.fromPrice}
+      printsHeading={no.shared.printsSrHeading}
+      outOfStockLabel={no.shared.outOfStock}
+      readMoreLabel={no.shared.readMore}
+      readLessLabel={no.shared.readLess}
+      faqHeading={no.shared.commonQuestions}
+      faqs={copy.faqs}
+      crossLinks={{ current: { type: 'collection', slug }, strings: no.crossLinks }}
+      artists={artists}
+      jsonLd={[
+        faqPageJsonLd(copy.faqs, 'no'),
+        // ItemList and breadcrumb now stay inside /no (docs/v2-seo.md, "Fixed
+        // along the way"): they pointed at /product and /products until V2.
+        collectionPageJsonLd({ name: copy.title, description: copy.description, path, locale: 'no', inLanguage: 'no', products }),
+        landingBreadcrumbJsonLd({ locale: 'no', homeName: no.shared.home, productsName: no.crossLinks.allPrints, name: copy.heading, path }),
+      ]}
+    >
+      <CollectionStyling
+        locale="no"
+        slug={collection.slug}
+        heading={copy.stylingHeading}
+        tips={copy.stylingTips}
+        cards={stylingCards}
+        // The arrow is the link's own now (TextLink), so the copy's trailing one goes.
+        plannerLabel={collection.slug === 'living-room' ? no.shared.galleryWallPlanner.replace(/\s*→$/, '') : undefined}
+        relatedArticle={
+          collection.relatedArticleSlug && articleLabel
+            ? { slug: collection.relatedArticleSlug, label: `${no.shared.readMoreArticle}: ${articleLabel}` }
+            : undefined
+        }
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'CollectionPage',
-            name: copy.title,
-            description: copy.description,
-            url: `${BASE_URL}/no/collection/${slug}`,
-            inLanguage: 'no',
-            mainEntity: {
-              '@type': 'ItemList',
-              itemListElement: products.map((p, i) => ({
-                '@type': 'ListItem',
-                position: i + 1,
-                url: `${BASE_URL}/product/${p.slug}`,
-                name: p.name,
-              })),
-            },
-          }),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'BreadcrumbList',
-            itemListElement: [
-              { '@type': 'ListItem', position: 1, name: no.shared.home, item: `${BASE_URL}/no` },
-              { '@type': 'ListItem', position: 2, name: no.crossLinks.allPrints, item: `${BASE_URL}/products` },
-              { '@type': 'ListItem', position: 3, name: copy.heading, item: `${BASE_URL}/no/collection/${slug}` },
-            ],
-          }),
-        }}
-      />
-    </div>
+    </LandingTemplate>
   );
 }
