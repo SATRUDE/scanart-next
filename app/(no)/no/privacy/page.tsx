@@ -51,7 +51,7 @@ const sections: LegalSection[] = [
     body: (
       <>
         <p>Vi samler bare inn det vi trenger for å drive butikken:</p>
-        <ul className="list-disc pl-5 space-y-1">
+        <ul>
           <li><strong>Ordredetaljer</strong>: navn, e-postadresse, leveringsadresse og varene du bestiller.</li>
           <li><strong>Betaling</strong>: betalinger behandles av Stripe. Kortopplysningene dine går direkte til Stripe; vi ser eller lagrer aldri hele kortnummeret ditt.</li>
           <li><strong>Bruk av nettstedet</strong>: personvernvennlig, aggregert statistikk via Umami, som ikke bruker informasjonskapsler og ikke bygger en profil av deg.</li>
@@ -65,7 +65,7 @@ const sections: LegalSection[] = [
     body: (
       <>
         <p>Vi bruker opplysningene dine på følgende rettslige grunnlag:</p>
-        <ul className="list-disc pl-5 space-y-1">
+        <ul>
           <li>For å behandle, produsere og levere bestillingen din og gi kundeservice: for å oppfylle avtalen med deg.</li>
           <li>For å føre regnskap og skatteopplysninger: for å oppfylle våre rettslige forpliktelser.</li>
           <li>For å forstå aggregert bruk av nettstedet og holde det i gang: våre berettigede interesser.</li>
@@ -89,7 +89,7 @@ const sections: LegalSection[] = [
     body: (
       <>
         <p>Vi deler opplysningene dine kun med leverandørene vi trenger for å oppfylle bestillingen din, og der loven krever det:</p>
-        <ul className="list-disc pl-5 space-y-1">
+        <ul>
           <li><strong>Stripe</strong>: for å ta imot betaling.</li>
           <li><strong>Gelato</strong> og deres leveringspartnere: for å trykke og sende bestillingen din.</li>
           <li><strong>Slack</strong>: ordredetaljene dine sendes til teamet vårt som et ordrevarsel.</li>
@@ -133,8 +133,8 @@ const sections: LegalSection[] = [
     body: (
       <p>
         Spørsmål om denne erklæringen? Send en e-post til {COMPANY.email}, eller se{' '}
-        <Link href="/no/terms" className="underline hover:text-neutral-900">vilkårene våre</Link> og{' '}
-        <Link href="/no/delivery" className="underline hover:text-neutral-900">levering og retur</Link>.
+        <Link href="/no/terms">vilkårene våre</Link> og{' '}
+        <Link href="/no/delivery">levering og retur</Link>.
       </p>
     ),
   },

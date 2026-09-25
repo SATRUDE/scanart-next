@@ -1,16 +1,19 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
-import { QualityPromise } from '@/components/QualityPromise';
-import { FullWidthImage } from '@/components/FullWidthImage';
 import { BASE_URL, socialCard } from '@/lib/site';
 import { hreflangPair } from '@/lib/i18n';
 import { no } from '@/lib/i18n/no';
-import { aboutHeroImage } from '@/lib/about-hero';
+import { noV2 } from '@/lib/i18n/no-v2-pages';
+import { ABOUT_HERO_SLUG, aboutHeroImage } from '@/lib/about-hero';
 import { getAllProducts } from '@/lib/products';
+import { getPublishedArtists } from '@/lib/published-artists';
+import { AboutBody } from '@/components/v2/about/AboutBody';
+import { ABOUT_WINDOW_POOLS, aboutPlaces, rosterCards } from '@/components/v2/about/about-data';
 
-// The Norwegian About page: app/about/page.tsx mirrored exactly (same
-// components, same classes), with the copy swapped for lib/i18n/no.ts.
+// The Norwegian About page: app/(en)/about/page.tsx mirrored exactly (same
+// AboutBody), with the copy swapped for lib/i18n/no.ts and every link kept
+// inside /no.
 const t = no.about;
+const v = noV2.about;
 
 export const metadata: Metadata = {
   title: t.meta.title,
@@ -23,91 +26,64 @@ export const metadata: Metadata = {
 };
 
 export default async function NorwegianAboutPage() {
-  // Same catalogue print as the English hero, described in bokmål by the same
+  const [products, artists] = await Promise.all([getAllProducts(), getPublishedArtists()]);
+  // Same catalogue print as the English page, described in bokmål by the same
   // shared vocabulary (see lib/about-hero and lib/product-image-alt).
-  const hero = aboutHeroImage(await getAllProducts(), 'no');
+  const hero = aboutHeroImage(products, 'no');
+  const heroPrint = products.find(p => p.slug === ABOUT_HERO_SLUG);
 
   return (
-    <div className="min-h-screen">
-      {/* Hero: full-bleed image darkened for legibility, left-pinned text.
-          Adapted from the SPN HeroFull pattern, rebuilt in SA's own tokens. */}
-      <section className="mx-auto max-w-[1680px] px-8 pt-8">
-        <div className="relative flex items-center overflow-hidden rounded min-h-[60vh] md:min-h-[70vh]">
-          {/* full-bleed cover image; this project uses plain <img> (see FullWidthImage), not next/image */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={hero.src}
-            alt={hero.alt}
-            className="absolute inset-0 h-full w-full object-cover"
-          />
-          {/* mobile base + desktop left gradient keep white text legible on this light image */}
-          <div className="absolute inset-0 bg-black/45 md:bg-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/45 to-transparent" />
-          {/* text constrained to the page container so it aligns with the nav and body content */}
-          <div className="relative w-full">
-            <div className="container mx-auto px-8">
-              <div className="max-w-lg py-16 text-white">
-                <h1 className="text-3xl md:text-4xl font-normal leading-tight tracking-tight">
-                  {t.heroTitle}
-                </h1>
-                <p className="mt-4 text-lg leading-relaxed text-white/90">
-                  {t.heroSub}
-                </p>
-                <Link
-                  href="/no/products"
-                  className="mt-8 inline-flex h-10 items-center justify-center rounded-md bg-white px-6 text-sm font-medium text-gray-900 hover:bg-white/90"
-                >
-                  {t.heroCta}
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16">
-        <div className="container mx-auto px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-16">
-            <div className="lg:col-span-1">
-              <h2 className="text-3xl text-neutral-900 mb-0">{t.aboutHeading}</h2>
-            </div>
-            <div className="lg:col-span-2">
-              <p className="text-lg text-neutral-600 leading-relaxed mb-4">
-                {t.aboutPara1}
-              </p>
-              <p className="text-lg text-neutral-600 leading-relaxed mb-4">
-                {t.aboutPara2}
-              </p>
-              <p className="text-lg text-neutral-600 leading-relaxed mb-4">
-                {t.aboutPara3}
-              </p>
-              <Link href="/no/products" className="inline-flex items-center justify-center rounded-md text-sm font-medium border border-gray-200 bg-background text-foreground hover:bg-gray-50 hover:text-gray-900 h-10 px-4 py-2">
-                {t.viewAllProducts}
-              </Link>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <div className="lg:col-span-1">
-              <h2 className="text-3xl text-neutral-900 mb-0">{t.artistsHeading}</h2>
-            </div>
-            <div className="lg:col-span-2">
-              <p className="text-lg text-neutral-600 leading-relaxed mb-4">
-                {t.artistsPara1}
-              </p>
-              <p className="text-lg text-neutral-600 leading-relaxed mb-4">
-                {t.artistsPara2}
-              </p>
-              <Link href="/no/journal" className="inline-flex items-center justify-center rounded-md text-sm font-medium border border-gray-200 bg-background text-foreground hover:bg-gray-50 hover:text-gray-900 h-10 px-4 py-2">
-                {t.readTheJournal}
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <QualityPromise strings={no.qualityPromise} />
-      <FullWidthImage locale="no" />
+    <>
+      <AboutBody
+        copy={{
+          locale: 'no',
+          // Reads exactly as t.heroTitle, "Skandinavisk kunst til hjem over
+          // hele verden": the print after the art, the home after "til hjem",
+          // nature before the world.
+          headline: ['Skandinavisk kunst', { window: 'prints' }, { br: true }, 'til hjem', { window: 'homes' }, 'over ', { br: true }, { window: 'nature' }, 'hele verden'],
+          pools: ABOUT_WINDOW_POOLS,
+          about: {
+            heading: t.aboutHeading,
+            paragraphs: [t.aboutPara1, t.aboutPara2, t.aboutPara3],
+            figure: {
+              src: hero.src,
+              alt: hero.alt,
+              caption: heroPrint ? `${heroPrint.name} ${v.by} ${heroPrint.artist}` : '',
+            },
+            cta: { label: t.heroCta, href: '/no/products' },
+            link: { label: v.viewAllPrints, href: '/no/products' },
+          },
+          howItWorks: v.howItWorks,
+          where: { heading: v.whereHeading, places: aboutPlaces(artists, v.cities) },
+          // The customer quote the Norwegian homepage carries (no.testimonials).
+          statement: {
+            quote: no.testimonials.quote,
+            attribution: `${no.testimonials.name}, ${no.testimonials.location}`,
+          },
+          artists: {
+            heading: t.artistsHeading,
+            paragraphs: [t.artistsPara1, t.artistsPara2],
+            link: { label: t.readTheJournal, href: '/no/journal' },
+          },
+          roster: {
+            heading: v.artistsHeading,
+            all: { label: v.allArtists, href: '/no/artists' },
+            cards: rosterCards(artists, {
+              statements: no.artistStatements,
+              bios: no.artists,
+              cityLabels: v.cities,
+              printCount: n => (n === 1 ? v.printOne : v.printOther.replace('{n}', String(n))),
+            }),
+            hrefPrefix: '/no',
+          },
+          cta: {
+            heading: v.cta.heading,
+            body: v.cta.body,
+            label: v.cta.button,
+            href: '/no/artists/apply',
+          },
+        }}
+      />
 
       <script
         type="application/ld+json"
@@ -132,6 +108,6 @@ export default async function NorwegianAboutPage() {
           }),
         }}
       />
-    </div>
+    </>
   );
 }

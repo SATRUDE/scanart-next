@@ -1,12 +1,13 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { helpGroups } from '@/data/help';
-import { HelpSections } from '@/components/HelpSections';
 import { socialCard } from '@/lib/site';
 import { hreflangPair } from '@/lib/i18n';
+import { Button, ContentSection, PageHeader, TextLink } from '@/components/v2/ui';
+import { HelpGroups, HelpJumpLinks } from '@/components/v2/help/HelpGroups';
 
 const PAGE_TITLE = 'Help';
 const PAGE_DESCRIPTION = 'Answers to common questions about ordering, delivery, returns and our prints at Scandinavian Art.';
+const EMAIL = 'hello@scandinavianart.co.uk';
 
 export const metadata: Metadata = {
   title: PAGE_TITLE,
@@ -15,6 +16,8 @@ export const metadata: Metadata = {
   ...socialCard({ title: PAGE_TITLE, description: PAGE_DESCRIPTION, path: '/help' }),
 };
 
+// The same data/help.ts groups render the page and this, so every question in
+// the JSON-LD is also on the page with its answer in the HTML.
 const faqJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
@@ -29,39 +32,35 @@ const faqJsonLd = {
 
 export default function HelpPage() {
   return (
-    <div className="py-8">
-      <div className="container mx-auto px-8 mb-16">
-        <div className="max-w-2xl">
-          <h1 className="text-3xl font-normal text-neutral-900">Help</h1>
-          <p className="text-lg text-neutral-600 leading-relaxed mt-2">
-            Everything you need to know about ordering, delivery and returns. If you can&apos;t find your answer here,
-            email us and we&apos;ll be glad to help.
-          </p>
-        </div>
+    <div className="page-x pb-section">
+      <PageHeader
+        title="Help"
+        lead={
+          <>
+            Answers to the questions we get most. Anything else, email{' '}
+            <a href={`mailto:${EMAIL}`} className="transition-colors hover:text-brand">{EMAIL}</a>.
+          </>
+        }
+      />
+      <HelpJumpLinks groups={helpGroups} />
+
+      <div className="mt-block desk:mt-24">
+        <HelpGroups groups={helpGroups} countLabel={n => (n === 1 ? '1 question' : `${n} questions`)} />
       </div>
 
-      <HelpSections />
-
-      <div className="container mx-auto px-8 pt-16">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 border-t pt-10">
-          <div className="lg:col-span-1">
-            <h2 className="text-2xl font-normal text-neutral-900">Still need help?</h2>
-          </div>
-          <div className="lg:col-span-2 space-y-3">
-            <p className="text-muted-foreground">
-              Email us at{' '}
-              <a href="mailto:hello@scandinavianart.co.uk" className="text-neutral-900 hover:text-neutral-600 transition-colors">hello@scandinavianart.co.uk</a>{' '}
-              and we&apos;ll be glad to help. You&apos;ll also find us on Instagram and Facebook.
-            </p>
-            <p className="text-sm text-neutral-900">
-              See also{' '}
-              <Link href="/delivery" className="hover:text-neutral-600 transition-colors">Delivery &amp; Returns</Link>{' · '}
-              <Link href="/terms" className="hover:text-neutral-600 transition-colors">Terms &amp; Conditions</Link>{' · '}
-              <Link href="/privacy" className="hover:text-neutral-600 transition-colors">Privacy Policy</Link>
-            </p>
-          </div>
-        </div>
-      </div>
+      <ContentSection
+        id="still-stuck"
+        className="mt-section"
+        title="Still stuck?"
+        intro={<p>Email {EMAIL}, with your order number if you have one.</p>}
+        footer={
+          <>
+            <Button href={`mailto:${EMAIL}`}>Email us</Button>
+            <TextLink href="/delivery" size="body" arrow={false}>Delivery and returns</TextLink>
+            <TextLink href="/terms" size="body" arrow={false}>Terms and conditions</TextLink>
+          </>
+        }
+      />
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
     </div>

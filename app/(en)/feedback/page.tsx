@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { COPY, Q1_ANSWERS, Q2_ANSWERS } from '@/lib/feedback';
 import { socialCard } from '@/lib/site';
 import { FeedbackPageForm } from '@/components/FeedbackPageForm';
+import { PageHeader } from '@/components/v2/ui';
 
 export const metadata: Metadata = {
   title: 'Tell us what you think',
@@ -29,12 +30,11 @@ export const metadata: Metadata = {
  */
 export default function FeedbackPage() {
   return (
-    <div className="container mx-auto max-w-2xl px-8 py-16">
-      <h1 className="text-3xl text-neutral-900">Tell us what you think</h1>
-      <p className="mt-4 max-w-prose text-muted-foreground leading-relaxed">
-        Three questions, none of them required. We are a small gallery and we read every answer, so
-        if something put you off buying we would genuinely rather know than guess.
-      </p>
+    <div className="page-x pb-section">
+      <PageHeader
+        title="Tell us what you think"
+        lead="Three questions, none of them required. We are a small gallery and we read every answer, so if something put you off buying we would genuinely rather know than guess."
+      />
       <FeedbackPageForm q1={COPY.q1} q2={COPY.q2} q3={COPY.q3} q1Answers={[...Q1_ANSWERS]} q2Answers={[...Q2_ANSWERS]} />
     </div>
   );

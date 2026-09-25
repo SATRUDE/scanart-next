@@ -1,16 +1,20 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import Image from 'next/image';
 import { getInspireScenes } from '@/lib/inspire';
-import { getAllProducts } from '@/lib/products';
-import { BASE_URL, socialCard } from '@/lib/site';
+import { socialCard } from '@/lib/site';
 import { metaTitle } from '@/lib/meta-title';
 import { hreflangPair } from '@/lib/i18n';
 import { no } from '@/lib/i18n/no';
+import { noV2 } from '@/lib/i18n/no-v2-pages';
+import { getPublishedArtists } from '@/lib/published-artists';
+import { PageHeader } from '@/components/v2/ui';
+import { LandingCrossLinks } from '@/components/LandingCrossLinks';
+import { InspireWall } from '@/components/v2/inspire/InspireWall';
+import { getInspireRooms, inspireGalleryJsonLd } from '@/components/v2/inspire/rooms';
 
-// The Norwegian Inspire wall: app/inspire/page.tsx mirrored exactly (same
-// components, same classes, same JSON-LD shape), with the copy swapped for
-// lib/i18n/no.ts and every link kept inside the /no tree.
+// The Norwegian Inspire wall: app/(en)/inspire/page.tsx mirrored exactly (same
+// components, same JSON-LD shape), with the copy swapped for lib/i18n/no.ts
+// and every link kept inside the /no tree.
 const t = no.inspire;
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -33,111 +37,35 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function NorwegianInspirePage() {
-  // Resolve each scene's slugs against the live catalogue; a scene whose
-  // every print has been retired drops out rather than dead-linking.
-  const [inspireScenes, all] = await Promise.all([getInspireScenes(), getAllProducts()]);
-  const bySlug = new Map(all.map(p => [p.slug, p]));
-  const scenes = inspireScenes
-    .map(scene => ({
-      ...scene,
-      products: scene.slugs
-        .map(s => bySlug.get(s))
-        .filter((p): p is NonNullable<typeof p> => Boolean(p)),
-    }))
-    .filter(scene => scene.products.length > 0);
+  const [rooms, artists] = await Promise.all([getInspireRooms('no'), getPublishedArtists()]);
 
   // Same gallery structured data as the English wall, pointed at the /no
   // product URLs so the Norwegian page references its own tree.
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'CollectionPage',
+  const jsonLd = inspireGalleryJsonLd({
+    rooms,
     name: t.jsonLdName,
-    url: `${BASE_URL}/no/inspire`,
+    galleryName: t.galleryName,
+    path: '/no/inspire',
+    productPrefix: '/no',
     inLanguage: 'nb-NO',
-    mainEntity: {
-      '@type': 'ImageGallery',
-      name: t.galleryName,
-      image: scenes.map(scene => ({
-        '@type': 'ImageObject',
-        contentUrl: scene.image,
-        description: scene.alt,
-        width: scene.width,
-        height: scene.height,
-        about: scene.products.map(p => `${BASE_URL}/no/product/${p.slug}`),
-      })),
-    },
-  };
+  });
 
   return (
-    <div className="container mx-auto px-8 py-8">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <header className="mb-16">
-        <h1 className="text-3xl text-neutral-900">{t.heading}</h1>
-        <p className="text-muted-foreground leading-relaxed mt-4 max-w-3xl">{t.intro}</p>
-      </header>
+    <div className="page-x pb-section">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <PageHeader title={t.heading} lead={noV2.inspire.lead} locale="no" />
 
       <h2 className="sr-only">{t.scenesSrHeading}</h2>
-      <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 [column-fill:balance]">
-        {scenes.map((scene, index) => (
-          <div key={scene.image} className="mb-6 break-inside-avoid">
-            <Link href={`/no/product/${scene.products[0].slug}`} className="group block">
-              <div className="overflow-hidden rounded bg-neutral-50">
-                {/* First scene is the LCP element at every width, as on the
-                    English wall: preload that one, leave the rest lazy. */}
-                <Image
-                  src={scene.image}
-                  alt={scene.alt}
-                  width={scene.width}
-                  height={scene.height}
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  preload={index === 0}
-                  className="w-full h-auto transition-transform duration-300 group-hover:scale-[1.02]"
-                />
-              </div>
-            </Link>
-            <p className="mt-2 text-sm text-muted-foreground">
-              {t.featuring}{' '}
-              {scene.products.map((p, i) => (
-                <span key={p.slug}>
-                  {i > 0 && ` ${t.and} `}
-                  <Link
-                    href={`/no/product/${p.slug}`}
-                    className="font-medium text-neutral-900 hover:text-neutral-600 transition-colors"
-                  >
-                    {p.name}
-                  </Link>
-                  {p.artist ? ` ${t.by} ${p.artist}` : ''}
-                </span>
-              ))}
-            </p>
-          </div>
-        ))}
-      </div>
+      <InspireWall rooms={rooms} strings={noV2.inspire.filter} locale="no" />
 
-      <section className="mt-16">
-        <p className="text-muted-foreground max-w-3xl leading-relaxed">
-          {t.roomsIntro}{' '}
-          <Link href="/no/collection/living-room" className="font-medium text-neutral-900 hover:text-neutral-600 transition-colors">
-            {t.livingRoom}
-          </Link>
-          ,{' '}
-          <Link href="/no/collection/bedroom" className="font-medium text-neutral-900 hover:text-neutral-600 transition-colors">
-            {t.bedroom}
-          </Link>{' '}
-          {t.and}{' '}
-          <Link href="/no/collection/home-office" className="font-medium text-neutral-900 hover:text-neutral-600 transition-colors">
-            {t.homeOffice}
-          </Link>{' '}
-          {t.roomsOutro}{' '}
-          <Link href="/no/products" className="font-medium text-neutral-900 hover:text-neutral-600 transition-colors">
-            {t.fullCollection}
-          </Link>
-          .
-        </p>
-      </section>
+      <p className="type-body tab:mt-block tab:max-w-[624px] [&_a]:text-text-accent [&_a]:transition-colors [&_a:hover]:text-ink">
+        {t.roomsIntro} <Link href="/no/collection/living-room">{t.livingRoom}</Link>,{' '}
+        <Link href="/no/collection/bedroom">{t.bedroom}</Link> {t.and}{' '}
+        <Link href="/no/collection/home-office">{t.homeOffice}</Link> {t.roomsOutro}{' '}
+        <Link href="/no/products">{t.fullCollection}</Link>.
+      </p>
+
+      <LandingCrossLinks className="mt-section" artists={artists} strings={no.crossLinks} locale="no" />
     </div>
   );
 }

@@ -80,7 +80,7 @@ const sections: LegalSection[] = [
     body: (
       <p>
         Vi sender over hele verden. Tidsrammer for produksjon og levering, og fraktkostnader, står på siden vår om{' '}
-        <Link href="/no/delivery" className="underline hover:text-neutral-900">levering og retur</Link>. For
+        <Link href="/no/delivery">levering og retur</Link>. For
         bestillinger utenfor {COMPANY.country} kan det påløpe importavgifter eller toll ved ankomst, og dette er
         kjøperens ansvar.
       </p>
@@ -92,7 +92,7 @@ const sections: LegalSection[] = [
       <p>
         Du har rett til å gå fra kjøpet innen 14 dager. Fordi varene lages på bestilling, behøver du ikke sende dem
         tilbake, vi utbetaler refusjon. Defekte, skadde, feilsendte eller tapte varer dekkes særskilt. Alle detaljer
-        står på siden vår om <Link href="/no/delivery" className="underline hover:text-neutral-900">levering og retur</Link>.
+        står på siden vår om <Link href="/no/delivery">levering og retur</Link>.
       </p>
     ),
   },

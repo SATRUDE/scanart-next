@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import Image from 'next/image';
 import { GalleryWallCalculator } from '@/components/GalleryWallCalculator';
-import { QualityPromise } from '@/components/QualityPromise';
-import { FullWidthImage } from '@/components/FullWidthImage';
+import { Button, ContentSection, LinkRow, ListItem, PageHeader, Question } from '@/components/v2/ui';
 import { BASE_URL, socialCard } from '@/lib/site';
 import { EYE_LEVEL_CM } from '@/lib/gallery-wall-calculator';
 
@@ -71,122 +70,89 @@ const FAQ = [
 
 export default function GalleryWallPlannerPage() {
   return (
-    <div className="min-h-screen">
-      {/* Hero, the About page's pattern: full-bleed image darkened for
-          legibility, text pinned left and aligned with the page container. */}
-      <section className="mx-auto max-w-[1680px] px-8 pt-8">
-        <div className="relative flex items-center overflow-hidden rounded min-h-[52vh] md:min-h-[60vh]">
-          {/* this project uses plain <img> (see FullWidthImage), not next/image */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/images/journal/gallery-wall-living-room.jpg"
-            alt="A gallery wall of framed prints above a sofa in a Scandinavian living room"
-            className="absolute inset-0 h-full w-full object-cover"
-            fetchPriority="high"
-            decoding="async"
-          />
-          <div className="absolute inset-0 bg-black/45 md:bg-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/45 to-transparent" />
-          <div className="relative w-full">
-            <div className="container mx-auto px-8">
-              <div className="max-w-lg py-16 text-white">
-                <h1 className="text-3xl md:text-4xl font-normal leading-tight tracking-tight">
-                  Plan your gallery wall, to scale
-                </h1>
-                <p className="mt-4 text-lg leading-relaxed text-white/90">
-                  Set your wall, drag the prints into place, and take the hanging measurements straight off the drawing. Then find the prints to fill it.
-                </p>
-                <a
-                  href="#planner"
-                  className="mt-8 inline-flex h-10 items-center justify-center rounded-md bg-white px-6 text-sm font-medium text-gray-900 hover:bg-white/90"
-                >
-                  Start planning
-                </a>
-              </div>
-            </div>
-          </div>
+    <div className="page-x pb-section">
+      {/* No V2 frame of its own: the template for those pages (docs/v2-seo.md),
+          Page header, the tool, then Content sections. */}
+      <PageHeader
+        title="Plan your gallery wall, to scale"
+        lead="Set your wall, drag the prints into place, and take the hanging measurements straight off the drawing. Then find the prints to fill it."
+      >
+        <div className="mt-2">
+          <Button href="#planner">Start planning</Button>
         </div>
-      </section>
+      </PageHeader>
+
+      {/* The page's hero picture, and its LCP: preloaded, not lazy. */}
+      <div className="relative mt-block aspect-square w-full overflow-hidden bg-image-bg tab:aspect-[2/1]">
+        <Image
+          src="/images/journal/gallery-wall-living-room.jpg"
+          alt="A gallery wall of framed prints above a sofa in a Scandinavian living room"
+          fill
+          preload
+          sizes="(max-width: 1440px) 100vw, 1280px"
+          className="object-cover object-top"
+        />
+      </div>
 
       {/* The planner is the page. */}
-      <section id="planner" className="scroll-mt-20 py-16">
-        <div className="container mx-auto px-8">
-          <GalleryWallCalculator />
-        </div>
+      <section id="planner" className="mt-section scroll-mt-20">
+        <GalleryWallCalculator />
       </section>
 
       {/* The words live below the tool, where a reader who wants them - and a
           search engine - will find them, and where they cannot slow down a
           hand that just wants to drag. */}
-      <section className="border-t border-neutral-200 py-16">
-        <div className="container mx-auto px-8">
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-            <div className="lg:col-span-1">
-              <h2 className="mb-0 text-3xl text-neutral-900">How to plan a gallery wall with it</h2>
-            </div>
-            <div className="lg:col-span-2">
-              <p className="mb-4 text-lg leading-relaxed text-neutral-600">
-                The drawing is your wall to scale, floor at the bottom, eye level marked. Drag a print anywhere and it clicks to its neighbours’ edges and centres, exactly one gap apart; hover beside any print to add another, tap one to change its size, and slide the whole group up or down by the marker at the right. Change the gap and the whole arrangement re-spaces itself.
-              </p>
-              <p className="mb-4 text-lg leading-relaxed text-neutral-600">
-                The measurements are written on the drawing the way a plan writes them: the group’s width and height, the space each side, the height of the top edge above the floor. Copy the plan and you get every frame’s left edge and top edge from the floor as text; copy the link and the wall comes back exactly as you left it. Frames usually hang 3 to 5 cm below their hook, so check yours before marking.
-              </p>
-              <Link href="/products" className="inline-flex h-10 items-center justify-center rounded-md border border-gray-200 bg-background px-4 py-2 text-sm font-medium text-foreground hover:bg-gray-50 hover:text-gray-900">
-                Find the prints for your wall
-              </Link>
-            </div>
-          </div>
+      <ContentSection
+        id="how-to-plan"
+        className="mt-section"
+        title="How to plan a gallery wall with it"
+        footer={<Button href="/products">Find the prints for your wall</Button>}
+      >
+        <p className="type-body tab:max-w-[624px]">
+          The drawing is your wall to scale, floor at the bottom, eye level marked. Drag a print anywhere and it clicks to its neighbours’ edges and centres, exactly one gap apart; hover beside any print to add another, tap one to change its size, and slide the whole group up or down by the marker at the right. Change the gap and the whole arrangement re-spaces itself.
+        </p>
+        <p className="type-body tab:max-w-[624px]">
+          The measurements are written on the drawing the way a plan writes them: the group’s width and height, the space each side, the height of the top edge above the floor. Copy the plan and you get every frame’s left edge and top edge from the floor as text; copy the link and the wall comes back exactly as you left it. Frames usually hang 3 to 5 cm below their hook, so check yours before marking.
+        </p>
+      </ContentSection>
 
-          <div className="mt-16 grid grid-cols-1 gap-6 lg:grid-cols-3">
-            <div className="lg:col-span-1">
-              <h2 className="mb-0 text-3xl text-neutral-900">Gallery wall spacing and height: three rules</h2>
-            </div>
-            <div className="lg:col-span-2 grid gap-8 sm:grid-cols-3">
-              {RULES.map(rule => (
-                <div key={rule.heading}>
-                  <h3 className="text-base font-medium text-neutral-900">{rule.heading}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-neutral-600">{rule.body}</p>
-                </div>
-              ))}
-            </div>
-          </div>
+      <ContentSection id="three-rules" className="mt-section" title="Gallery wall spacing and height: three rules">
+        <ol className="flex flex-col gap-group tab:max-w-[624px]">
+          {RULES.map((rule, i) => (
+            <ListItem key={rule.heading} type="number" number={String(i + 1).padStart(2, '0')}>
+              <h3 className="type-body">{rule.heading}</h3>
+              <p className="mt-1 type-small">{rule.body}</p>
+            </ListItem>
+          ))}
+        </ol>
+      </ContentSection>
 
-          <div className="mt-16 grid grid-cols-1 gap-6 lg:grid-cols-3">
-            <div className="lg:col-span-1">
-              <h2 className="mb-0 text-3xl text-neutral-900">Gallery wall questions</h2>
-            </div>
-            <dl className="lg:col-span-2 divide-y divide-neutral-200">
-              {FAQ.map(item => (
-                <div key={item.question} className="py-5 first:pt-0 last:pb-0">
-                  <dt className="text-base font-medium text-neutral-900">{item.question}</dt>
-                  <dd className="mt-2 text-base leading-relaxed text-neutral-600">{item.answer}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-
-          <div className="mt-16 grid grid-cols-1 gap-6 lg:grid-cols-3">
-            <div className="lg:col-span-1">
-              <h2 className="mb-0 text-3xl text-neutral-900">Keep reading</h2>
-            </div>
-            <nav aria-label="Related guides" className="lg:col-span-2 flex flex-col gap-3 text-base">
-              {[
-                ['/article/create-an-art-wall', 'How to create an art wall with multiple pieces'],
-                ['/article/complete-guide-choosing-print-sizes', 'Choosing print sizes and allowing for the frame'],
-                ['/article/how-to-style-scandinavian-wall-art-living-room', 'How to style Scandinavian wall art in your living room'],
-                ['/article/scandinavian-wall-decor-ideas', 'Scandinavian wall decor ideas: eight ways to dress a wall'],
-              ].map(([href, label]) => (
-                <Link key={href} href={href} className="text-neutral-800 underline decoration-neutral-300 underline-offset-4 transition-colors hover:text-neutral-900 hover:decoration-neutral-900">
-                  {label}
-                </Link>
-              ))}
-            </nav>
-          </div>
+      {/* Question rows are native <details>: every answer is in the served
+          HTML, matching the FAQPage below. */}
+      <ContentSection id="questions" className="mt-section" title="Gallery wall questions">
+        <div className="tab:max-w-[624px]">
+          {FAQ.map((item, i) => (
+            <Question key={item.question} question={item.question} open={i === 0} size="small" className="[&_summary]:items-center">
+              <p>{item.answer}</p>
+            </Question>
+          ))}
         </div>
-      </section>
+      </ContentSection>
 
-      <QualityPromise />
-      <FullWidthImage />
+      <ContentSection id="keep-reading" className="mt-section" title="Keep reading">
+        <nav aria-label="Related guides" className="tab:max-w-[624px]">
+          {[
+            ['/article/create-an-art-wall', 'How to create an art wall with multiple pieces'],
+            ['/article/complete-guide-choosing-print-sizes', 'Choosing print sizes and allowing for the frame'],
+            ['/article/how-to-style-scandinavian-wall-art-living-room', 'How to style Scandinavian wall art in your living room'],
+            ['/article/scandinavian-wall-decor-ideas', 'Scandinavian wall decor ideas: eight ways to dress a wall'],
+          ].map(([href, label]) => (
+            <LinkRow key={href} href={href} className="[&>span:first-child]:type-body">
+              {label}
+            </LinkRow>
+          ))}
+        </nav>
+      </ContentSection>
 
       <script
         type="application/ld+json"
