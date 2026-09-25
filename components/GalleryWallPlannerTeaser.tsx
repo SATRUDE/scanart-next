@@ -10,12 +10,14 @@ import { TrackedLink } from '@/components/TrackedLink';
  * planner: there is no Norwegian article route, and no Norwegian planner yet.
  */
 export function GalleryWallPlannerTeaser({ articleSlug }: { articleSlug: string }) {
+  // V2: a group under a rule, H3 and Body, one black button (layout.md
+  // rules 3, 6 and 10). The old eyebrow line above the heading is gone: V2
+  // has no kickers above headlines.
   return (
-    <aside className="not-prose my-10 flex flex-col gap-4 border-y border-neutral-300 py-7 sm:flex-row sm:items-center sm:justify-between">
-      <div className="max-w-md">
-        <p className="text-xs uppercase tracking-wide text-neutral-600">Try it on your own wall</p>
-        <h3 className="mt-1 text-2xl font-medium text-neutral-900">Plan your gallery wall, to scale</h3>
-        <p className="mt-2 leading-relaxed text-neutral-700">
+    <aside className="flex flex-col gap-group border-t border-ink pt-6">
+      <div className="flex flex-col gap-3">
+        <h3 className="type-h3">Plan your gallery wall, to scale</h3>
+        <p className="type-body">
           Set your wall, drag the prints into place, and read off where every hook goes.
         </p>
       </div>
@@ -23,9 +25,9 @@ export function GalleryWallPlannerTeaser({ articleSlug }: { articleSlug: string 
         event="gallery-wall-planner-teaser-click"
         eventData={{ article: articleSlug }}
         href="/gallery-wall-planner"
-        className="inline-flex h-11 shrink-0 items-center justify-center rounded-md bg-neutral-900 px-5 text-sm font-medium text-white transition-colors hover:bg-neutral-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+        className="inline-flex w-fit items-center justify-center gap-3 bg-ink px-6 py-4 type-label text-on-primary transition-colors hover:bg-primary-hover"
       >
-        Open the planner <span aria-hidden="true" className="ml-1">→</span>
+        Open the planner <span aria-hidden="true">→</span>
       </TrackedLink>
     </aside>
   );

@@ -38,8 +38,8 @@ export default async function PreviewPage({
   const blocks = markdownToBlocks(article.body);
 
   return (
-    <div className="container mx-auto px-8 py-8">
-      <div className="mx-auto mb-6 max-w-3xl text-xs uppercase tracking-wider text-muted-foreground">
+    <div className="page-x pb-section">
+      <div className="pt-6 type-caption">
         Preview · not published · expires {formatExpiry(article.expiresAt)}
       </div>
 

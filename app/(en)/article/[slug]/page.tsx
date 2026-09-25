@@ -1,25 +1,28 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import Link from 'next/link';
 import { TrackedLink } from '@/components/TrackedLink';
-import Image from 'next/image';
-import {
-  Breadcrumb,
-  BreadcrumbList,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from '@/components/ui/breadcrumb';
 import { getAllArticles, getArticleBySlug, getArticleBlocks } from '@/lib/articles';
-import { getProductsByArtworkIds } from '@/lib/products';
+import { getProductBySlug, getProductsByArtworkIds } from '@/lib/products';
+import { getArtistById } from '@/data/artists';
 import { ArticleBody } from '@/components/ArticleBody';
+import { ArticleCard } from '@/components/ArticleCard';
 import { PrintCard } from '@/components/PrintCard';
+import { LandingCrossLinks } from '@/components/LandingCrossLinks';
+import { Hairline, Meta, SectionHeader } from '@/components/v2/ui';
+import { ArticleBreadcrumb } from '@/components/v2/journal/ArticleBreadcrumb';
+import { ShareLinks } from '@/components/v2/journal/ShareLinks';
+import { ArticleArtists } from '@/components/v2/journal/ArticleArtists';
 import { BASE_URL, OG_IMAGE, SITE_NAME, OG_LOCALE, TWITTER_SITE } from '@/lib/site';
 import { getBrowseLinksForArticle } from '@/lib/article-browse';
 import { selectRelatedArticles } from '@/lib/related-articles';
 import { clipToLength } from '@/lib/meta-snippet';
 import { metaTitle } from '@/lib/meta-title';
+import { articleSceneSlugs } from '@/lib/shop-scenes';
+import { getPublishedArtists } from '@/lib/published-artists';
+import { articlePublishedAt, readingMinutes } from '@/lib/article-reading';
+
+/** Story tile ratios for "More from the journal", in the Figma order. */
+const MORE_RATIOS = ['tab:aspect-[4/5]', 'tab:aspect-[2/3]', 'tab:aspect-square'];
 
 export async function generateStaticParams() {
   const articles = await getAllArticles();
@@ -92,25 +95,20 @@ export default async function ArticlePage({
   // Curated list, then every article that names this one, then a same-category
   // fill: see lib/related-articles.ts for why the block must point both ways.
   const relatedArticles = selectRelatedArticles(article, allArticles);
+  const publishedArtists = await getPublishedArtists();
+  // The makers of the featured prints, in the order their prints appear.
+  const featuredArtistIds = [...new Set(featuredPrints.map(p => p.artistId).filter(Boolean))];
+  const articleArtists = featuredArtistIds.flatMap(id => publishedArtists.find(a => a.id === id) ?? []);
+  // Where the hero is one of the curated shop scenes, caption it with the
+  // print it shows (Figma: "Hyttefrokost — Sia Siamos"). Otherwise no caption:
+  // the image's alt already describes it, and a caption must not guess.
+  const heroProduct = articleSceneSlugs[article.slug] ? await getProductBySlug(articleSceneSlugs[article.slug]) : null;
+  const heroArtist = heroProduct?.artistId ? getArtistById(heroProduct.artistId)?.name : undefined;
+  const url = `${BASE_URL}/article/${article.slug}`;
+  const minutes = readingMinutes(blocks);
 
   return (
-    <div className="container mx-auto px-8 py-8">
-      <Breadcrumb className="mb-8">
-        <BreadcrumbList>
-          <BreadcrumbItem>
-            <BreadcrumbLink asChild><TrackedLink event="breadcrumb-click" eventData={{ level: 'home' }} href="/">Home</TrackedLink></BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbLink asChild><TrackedLink event="breadcrumb-click" eventData={{ level: 'journal' }} href="/journal">Journal</TrackedLink></BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbPage>{article.title}</BreadcrumbPage>
-          </BreadcrumbItem>
-        </BreadcrumbList>
-      </Breadcrumb>
-
+    <div className="page-x pb-section">
       <ArticleBody
         title={article.title}
         category={article.category}
@@ -119,66 +117,89 @@ export default async function ArticlePage({
         imageAlt={article.imageAlt}
         blocks={blocks}
         articleSlug={article.slug}
+        breadcrumb={
+          // Visible and linked, and the same three steps as the BreadcrumbList below.
+          <ArticleBreadcrumb title={article.title} />
+        }
+        meta={
+          <div className="flex flex-wrap items-center gap-x-[6px] gap-y-2 type-caption">
+            <Meta items={[`${minutes} min read`, featuredPrints.length > 0 ? `${featuredPrints.length} ${featuredPrints.length === 1 ? 'print' : 'prints'}` : null]} />
+            <span className="hidden items-center gap-[6px] tab:flex">
+              <Hairline />
+              <ShareLinks url={url} title={article.title} image={article.image ? new URL(article.image, BASE_URL).toString() : undefined} />
+            </span>
+          </div>
+        }
+        heroCaption={heroProduct ? <Meta items={[heroProduct.name, heroArtist]} /> : undefined}
       >
         {browseLinks.length > 0 && (
-          <footer className="mt-12 border-t pt-8">
-            <p className="text-sm text-muted-foreground">
-              Keep browsing:{' '}
-              {browseLinks.map((link, i) => (
-                <span key={link.href}>
-                  {i > 0 && ' · '}
+          <footer className="mt-12 flex flex-col gap-3 border-t border-ink pt-6 tab:mt-block">
+            <p className="type-small">Keep browsing:</p>
+            <ul className="flex flex-col gap-2">
+              {browseLinks.map(link => (
+                <li key={link.href}>
                   <TrackedLink
                     event="keep-browsing-click"
                     eventData={{ from: article.slug, to: link.href }}
                     href={link.href}
-                    className="underline underline-offset-2 hover:text-neutral-600 transition-colors"
+                    className="group/link inline-flex items-center type-body transition-colors hover:text-brand"
                   >
-                    {link.label}
+                    <span aria-hidden className="h-px w-0 bg-brand transition-[width,margin] duration-200 ease-out group-hover/link:mr-2 group-hover/link:w-3 motion-reduce:transition-none" />
+                    <span>{link.label}</span>
+                    <span aria-hidden className="ml-2">→</span>
                   </TrackedLink>
-                </span>
+                </li>
               ))}
-            </p>
+            </ul>
           </footer>
         )}
       </ArticleBody>
 
       {featuredPrints.length > 0 && (
-        <div className="mt-16 max-w-3xl mx-auto">
-          <h2 className="text-2xl text-neutral-900 mb-8">Prints featured in this piece</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-            {featuredPrints.map(print => (
-              <TrackedLink key={print.id} event="journal-to-product-click" eventData={{ article: article.slug, product: print.slug }} href={`/product/${print.slug}`}>
-                <PrintCard product={print} sizes="(max-width: 768px) 50vw, 33vw" />
-              </TrackedLink>
+        // Gallery, running off the right edge (Figma "The places, in rooms"):
+        // the prints at their own ratios, bottom edges shared, alternating 4-
+        // and 3-column widths so the row is never a uniform grid.
+        <section aria-labelledby="article-prints" className="mt-24 desk:mt-32">
+          <h2 id="article-prints" className="border-t border-ink pt-4 type-h3">Prints featured in this piece</h2>
+          <ul className="-mr-margin mt-group flex snap-x items-end gap-4 overflow-x-auto pr-margin pb-2 tab:gap-gutter">
+            {featuredPrints.map((print, i) => (
+              <li key={print.id} className={`shrink-0 snap-start ${i % 2 === 0 ? 'w-[240px] tab:w-[296px] desk:w-[405px]' : 'w-[240px] tab:w-[240px] desk:w-[296px]'}`}>
+                <TrackedLink event="journal-to-product-click" eventData={{ article: article.slug, product: print.slug }} href={`/product/${print.slug}`}>
+                  <PrintCard product={print} sizes="(max-width: 833px) 240px, 405px" />
+                </TrackedLink>
+              </li>
             ))}
+          </ul>
+        </section>
+      )}
+
+      {articleArtists.length > 0 && (
+        <div className="mt-24 page-grid desk:mt-32">
+          <div className="col-span-full tab:col-start-2 tab:col-span-6 desk:col-start-4 desk:col-span-6">
+            <ArticleArtists artists={articleArtists} articleSlug={article.slug} />
           </div>
         </div>
       )}
 
       {relatedArticles.length > 0 && (
-        <div className="mt-16 max-w-3xl mx-auto">
-          <h2 className="text-2xl text-neutral-900 mb-8">More Articles</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {relatedArticles.map(ra => (
-              <Link key={ra.id} href={`/article/${ra.slug}`} className="group">
-                {ra.image && (
-                  <div className="relative aspect-[4/3] overflow-hidden bg-neutral-50 rounded mb-3">
-                    <Image
-                      src={ra.image}
-                      alt={ra.imageAlt || ra.title}
-                      style={ra.image.includes('-room-') ? { objectPosition: 'center top' } : undefined}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 256px"
-                      className="object-cover group-hover:scale-[1.02] transition-transform duration-300"
-                    />
-                  </div>
-                )}
-                <h3 className="text-sm font-medium text-neutral-900 group-hover:text-neutral-600 transition-colors">{ra.title}</h3>
-              </Link>
+        <section aria-labelledby="article-more" className="mt-section">
+          <SectionHeader id="article-more" title="More from the journal" link={{ href: '/journal', label: 'All stories' }} />
+          {/* A row that scrolls sideways on mobile, three columns from tablet. */}
+          <ul className="-mr-margin mt-12 flex gap-4 overflow-x-auto pr-margin tab:mr-0 tab:mt-block tab:grid tab:grid-cols-3 tab:gap-x-gutter tab:gap-y-block tab:overflow-visible tab:pr-0">
+            {relatedArticles.map((ra, i) => (
+              <li key={ra.id} className="w-[260px] shrink-0 tab:w-auto">
+                <ArticleCard
+                  article={ra}
+                  imageAspectClass={`aspect-[4/5] ${MORE_RATIOS[i % 3]}`}
+                  sizes="(max-width: 833px) 260px, 33vw"
+                />
+              </li>
             ))}
-          </div>
-        </div>
+          </ul>
+        </section>
       )}
+
+      <LandingCrossLinks artists={publishedArtists} className="mt-section" />
 
       <script
         type="application/ld+json"
@@ -190,7 +211,9 @@ export default async function ArticlePage({
             description: article.excerpt,
             // schema.org requires absolute image URLs; omit the field when there is no image
             ...(article.image ? { image: new URL(article.image, BASE_URL).toString() } : {}),
-            datePublished: article.created_time,
+            // When it went live, not when the draft row was made: the same
+            // date the RSS feed gives (docs/v2-seo.md, fixed along the way).
+            datePublished: articlePublishedAt(article),
             ...(article.last_edited_time ? { dateModified: article.last_edited_time } : {}),
             // author is blank across the exported articles; the gallery is the
             // byline (Mark's call, 2026-07-09), a named writer becomes a Person

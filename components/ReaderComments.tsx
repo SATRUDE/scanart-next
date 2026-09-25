@@ -152,7 +152,7 @@ export function ReaderComments({
         const blockComments = comments.filter((c) => c.blockIndex === index);
         return (
           <div key={block.id} className="group/comment relative">
-            <NotionBlockRenderer blocks={[block]} articleSlug={articleSlug} />
+            <NotionBlockRenderer blocks={[block]} articleSlug={articleSlug} layout="column" />
 
             <button
               type="button"

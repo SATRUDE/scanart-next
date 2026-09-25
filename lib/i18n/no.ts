@@ -10,7 +10,6 @@
 // stay as they are in the catalogue.
 
 import type {
-  HeroStrings,
   QualityPromiseStrings,
   TestimonialsStrings,
   CrossLinksStrings,
@@ -21,6 +20,8 @@ import type {
   HelpGroupCopy,
 } from '@/lib/i18n';
 import type { ApplyCopy } from '@/lib/artist-application';
+import type { HomeStrings } from '@/lib/home';
+import type { ProductPageStrings, GalleryStrings } from '@/lib/product-page-copy';
 
 export const no = {
   shared: {
@@ -39,6 +40,10 @@ export const no = {
     readMoreArticle: 'Les mer',
     outOfStock: 'Utsolgt',
     home: 'Hjem',
+    /** The catalogue's step in the visible landing breadcrumb, as the nav says it. */
+    prints: 'Trykk',
+    /** Before the lowest price in a page header's meta line: "fra 577 kr". */
+    fromPrice: 'fra',
     artists: 'Kunstnere',
     viewAllArtists: 'Se alle kunstnerne',
     moreArtists: 'Flere kunstnere',
@@ -87,37 +92,63 @@ export const no = {
       description:
         'Kuraterte skandinaviske og nordiske kunsttrykk fra uavhengige kunstnere. Kjøp veggkunst med eller uten ramme, levert til hele verden. Utforsk samlingen.',
     },
-    hero: {
-      badge: 'Startet i Norge',
-      heading: 'Utforsk en kuratert samling av samtidskunst fra Skandinavia',
-      sub: 'Nøye utvalgt for å vise frem mangfoldet, dybden og skjønnheten i Norden',
-      cta: 'Se trykkene',
-    } satisfies HeroStrings,
-    exploreHeading: 'Utforsk kategoriene',
-    exploreIntro:
-      'Nøye utvalgte kunstverk fra talentfulle skandinaviske kunstnere, som bringer ekte nordisk minimalisme og tidløs design inn i hjemmet ditt.',
-    allCategories: 'Alle kategorier',
-    categoryTiles: {
-      Botanical: {
-        name: 'Botanisk',
-        desc: 'Oppdag naturinspirerte verk som gir rommet organisk skjønnhet og ro.',
+    /** The V2 homepage (lib/home.ts has the English and the shape). */
+    v2: {
+      // The H1, translated from the approved English one (docs/v2-seo.md item 2).
+      heading: 'Original skandinavisk kunst, trykket på bestilling.',
+      seePrints: 'Se trykkene',
+      meetArtists: 'Møt kunstnerne',
+      carouselLabel: 'Trykk i ekte rom',
+      newPrints: { heading: 'Nye trykk', link: 'Se alle trykk' },
+      wall: {
+        heading: 'Start med veggen din',
+        inspire: 'La deg inspirere',
+        wallLabel: 'Vegg',
+        printLabel: 'Trykk',
+        seePrint: 'Se trykket',
+        walls: { blue: 'Blå', yellow: 'Gul', peach: 'Fersken', green: 'Grønn', white: 'Hvit' },
+        wallsInSentence: { blue: 'blå', yellow: 'gul', peach: 'ferskenfarget', green: 'grønn', white: 'hvit' },
+        roomDescription: '{print} av {artist}, {size}, innrammet på en {wall} vegg på et hjemmekontor.',
+        stillAlt: 'Dancer av Helene Brox, 50 × 70 cm, innrammet på en ferskenfarget vegg over et skrivebord på et hjemmekontor',
       },
-      Illustrations: {
-        name: 'Illustrasjoner',
-        desc: 'Lekne, karakterfulle og fulle av sjarm. Illustrasjonene våre kombinerer skandinavisk humor med et friskt, moderne uttrykk.',
+      howItWorks: {
+        heading: 'Slik fungerer butikken',
+        wallArtBefore: 'Nøye utvalgt ',
+        wallArtLink: 'skandinavisk veggkunst',
+        wallArtAfter: ' fra talentfulle nordiske kunstnere, som bringer ekte nordisk minimalisme og tidløs design inn i hjemmet ditt.',
+        rows: [
+          { title: 'Valgt, ikke listet', body: 'Hver kunstner er valgt ut av oss. Ingen registrerer seg og laster opp; vi finner verkene først.' },
+          { title: 'Trykket på bestilling', body: 'Hvert trykk lages når du bestiller det, så ingenting blir liggende på lager og ingenting går til spille.' },
+          { title: 'Halvparten til kunstneren', body: 'Kunstnerne får halvparten av fortjenesten på kunstverket. Når du kjøper et trykk, betaler du personen som laget det.' },
+        ],
       },
-      Abstract: {
-        name: 'Abstrakt',
-        desc: 'Utforsk moderne abstrakt kunst som gir hjemmet et raffinert, samtidig preg.',
+      // The customer quote from testimonials below, its first sentence.
+      statement: {
+        quote: 'Jeg kjøpte et trykk til hjemmet mitt, og jeg kommer helt sikkert til å kjøpe flere.',
+        name: 'David Steel',
+        location: 'London, England',
       },
-    } as Record<string, { name: string; desc: string }>,
-    viewAllProducts: 'Se alle produkter',
-    meetTheArtists: 'Møt kunstnerne',
-    viewAllArtists: 'Se alle kunstnerne',
-    hedvigIntro: 'Utforsk de lekne trykkene til',
-    hedvigOutro: ', en illustratør fra Göteborg.',
-    fromTheJournal: 'Fra journalen',
-    readTheJournal: 'Les journalen',
+      artists: {
+        heading: 'Kunstnerne',
+        all: 'Alle kunstnerne',
+        printOne: 'trykk',
+        printOther: 'trykk',
+        lines: {
+          'helene-brox': 'Illustratør, bokstavkunstner og veggmaler, og en av grunnleggerne av byrået Heiaklubben.',
+          'simen-wahlqvist': 'Grafisk designer og illustratør som fanger øyeblikk med så få streker som mulig.',
+          'sia-siamos': 'Halvt gresk, halvt norsk: stilleben, mat og de stille detaljene i hverdagen.',
+          'ingunn-dybendal': 'Illustratør i kollektivet Heiaklubben, med arbeider fra en Google Doodle til en vegg på 360 kvadratmeter.',
+          'hedvig-wallin': 'Illustratør fra Göteborg som låner fra naivismen: enkle former, skjevt perspektiv, detaljer overalt.',
+        },
+      },
+      journal: { heading: 'Journal', all: 'Alle artikler' },
+      questions: { heading: 'Spørsmål', all: 'All hjelp og levering' },
+      apply: {
+        heading: 'Er du kunstner?',
+        body: 'Vi representerer et lite antall nordiske kunstnere. Fortell oss om arbeidet ditt, så tar vi kontakt hvis det passer.',
+        cta: 'Søk om å bli vurdert',
+      },
+    } satisfies HomeStrings,
     jsonLdDescription:
       'Et kuratert utvalg av utsøkt nordisk kunst og trykk fra talentfulle skandinaviske kunstnere.',
   },
@@ -799,7 +830,34 @@ export const no = {
     metaDescriptionPrefix: 'Kunsttrykk av',
     /** JSON-LD: "Kunsttrykk av {name}, {location}, hos Scandinavian Art Gallery." */
     jobTitle: 'Kunstner',
+    // V2 profile (Figma 199:1621): the hero line, "At a glance" and the map.
+    /** "5 trykk, fra 600 kr" */
+    from: 'fra',
+    allArtists: 'Alle kunstnere',
+    atAGlance: 'Kort fortalt',
+    factBasedIn: 'Bosted',
+    factFormats: 'Formater',
+    factInShop: 'I butikken',
+    factFraming: 'Innramming',
+    /** Joins the formats: "50 × 50 cm, og 50 × 70 cm for Morgenstrekk" */
+    and: 'og',
+    for: 'for',
+    framingPrefix: 'Uten ramme, eller',
+    /** "{by} Oslo, der Simen arbeider." */
+    mapWhere: 'der',
+    mapWorks: 'arbeider',
+    printsHeadingCount: 'trykk',
   },
+
+  /** One line per artist for the V2 Artist card; lib/artist-editorial.ts
+   *  artistSummary in Norwegian. Falls back to the bio's first sentence. */
+  artistSummary: {
+    'helene-brox': 'Illustratør, veggmaler og bokstavkunstner, og en av grunnleggerne av illustrasjonsbyrået Heiaklubben.',
+    'simen-wahlqvist': 'Grafisk designer og illustratør som fanger øyeblikk med så få streker som mulig.',
+    'ingunn-dybendal': 'Tette fargeblyanttegninger i den nordiske folkekunsttradisjonen.',
+    'sia-siamos': 'Halvt gresk, halvt norsk: stilleben, mat og de stille detaljene i hverdagen.',
+    'hedvig-wallin': 'Lekne trykk fra en illustratør i Göteborg.',
+  } as Record<string, string>,
 
   // Norwegian versions of data/artists.ts bios and locations, keyed by slug.
   // Fall back to the English data for any artist missing here.
@@ -825,6 +883,16 @@ export const no = {
       bio: 'Hedvig Wallin er illustratør og grafisk designer fra Göteborg i Sverige. Hun begynte å illustrere barnebøker som attenåring og gjør det fortsatt, ved siden av redaksjonell illustrasjon, veggmalerier, logoer, etiketter og plakater. Hun henter mye av inspirasjonen fra naivistisk kunst og dens barnlige enkelhet, og blander tusj, blyant, mykpastell, akvarell og digitale verktøy til lekne, detaljrike bilder med et skjevt perspektiv, der nye detaljer dukker opp hver gang du ser.',
     },
   } as Record<string, ArtistCopy>,
+
+  // The product page's artist statement (lib/artist-statements.ts), each
+  // taken from the Norwegian bio or editorial above, keyed by slug.
+  artistStatements: {
+    'simen-wahlqvist': 'Han prøver å fange øyeblikk, ofte før de skjer, med så få streker som mulig.',
+    'hedvig-wallin': 'Hold tegningen enkel, la perspektivet bli skjevt, og fyll på med detaljer til det andre blikket.',
+    'helene-brox': 'Figurer og fugler skåret ned til silhuett, malt med papirklippets selvsikkerhet.',
+    'ingunn-dybendal': 'More is more is more is more.',
+    'sia-siamos': 'Tiltrukket av de stille detaljene som sier mest.',
+  } as Record<string, string>,
 
   // Norwegian versions of lib/artist-editorial.ts, keyed by slug. para2 keeps
   // the same inline Markdown-link form; links point into the /no tree where a
@@ -924,11 +992,17 @@ export const no = {
       /** Phase 1 keeps the articles in English, so the index says so up front
        *  rather than letting a reader click through and be surprised. */
       intro: 'Artiklene er foreløpig på engelsk.',
-      allChip: 'Alle',
+      allChip: 'Alle artikler',
       /** "18 artikler". */
       articlesSuffix: 'artikler',
-      empty: 'Ingen artikler ennå. Kom tilbake snart!',
+      empty: 'Ingen artikler ennå. Kom tilbake snart.',
       booksSeriesHeading: 'Serien om nordiske bøker',
+      startHere: '(start her)',
+      moreToReadHeading: 'Mer å lese',
+      moreToReadIntro: 'Guider, bøker og utstillinger, nyeste først.',
+      readTheStory: 'Les artikkelen',
+      minRead: '{n} min lesing',
+      dateLocale: 'no' as const,
       categoryLabels: {
         About: 'Om oss',
         Design: 'Design',
@@ -1011,6 +1085,20 @@ export const no = {
       website: 'https://',
       instagram: '@navnetditt',
     },
+    // V2 (Figma Apply 221:4130 / 270:11159): the radio cards' explanations,
+    // the numbered sections' subtitle, the Form error and the fit check.
+    offeringHint: 'Velg det som ligger nærmest det du har i tankene.',
+    offeringDescriptions: {
+      Prints: 'Vi trykker arbeidet ditt på bestilling og selger det i butikken.',
+      Commission: 'Et verk til et sted, et merke eller et prosjekt.',
+      Unsure: 'Fortell oss om arbeidet ditt, så finner vi ut av resten.',
+    },
+    errorTitle: 'Søknaden din ble ikke sendt',
+    errorMarked: 'Feltene som trenger en titt, er merket over.',
+    sendFailedContactBefore: 'Vil den fortsatt ikke sendes, skriv til ',
+    sendFailedContactAfter: '.',
+    seeWhoWeShow: 'Før du skriver, se hvem vi allerede viser.',
+    meetTheArtists: 'Møt kunstnerne',
   } satisfies ApplyCopy,
 
   wallArt: {
@@ -1180,7 +1268,58 @@ export const no = {
         black: 'Svart',
         white: 'Hvit',
       },
+      // V2 assurance lines under Add to basket. {price} is the cheapest
+      // non-UK rate in config/shipping.ts, in the buyer's currency.
+      assurance: {
+        printed: 'Trykkes på bestilling på arkivbestandig papir, ferdig på 1–4 virkedager',
+        delivery: 'Levering i Storbritannia på 2–3 virkedager, resten av verden fra {price}',
+        returns: '14 dagers angrerett',
+      },
     },
+    /** The V2 page body (lib/product-page-copy.ts has the English). */
+    page: {
+      breadcrumbHome: 'Hjem',
+      breadcrumbPrints: 'Kunsttrykk',
+      readMore: 'Les mer',
+      readLess: 'Les mindre',
+      questions: {
+        details: 'Detaljer',
+        delivery: 'Levering og retur',
+        about: 'Om {name}',
+      },
+      detailsBody: '{sizes}, trykket på bestilling på arkivbestandig papir av museumskvalitet.',
+      detailsFrames:
+        'Velg det uten ramme, eller med ramme i tre, sort eller hvitt. Prisen på rammen avhenger av størrelsen og legges til prisen over.',
+      deliveryBody:
+        'Hvert trykk lages på bestilling, så beregn 1 til 4 virkedager til produksjon, pluss levering for din region: Storbritannia 2-3 virkedager; Norge, Danmark og Sverige 3-5; USA 5-7; resten av verden 7-14. Frakten beregnes i kassen.',
+      returnsBody:
+        'Du har 14 dager fra du mottar bestillingen til å ombestemme deg. Fordi trykkene lages på bestilling, trenger du ikke sende noe tilbake: send oss en e-post, så refunderer vi deg.',
+      deliveryLink: 'Alt om levering og retur',
+      aboutLink: 'Alle trykk av {name}',
+      facts: {
+        basedIn: 'Bor i',
+        sizes: 'Størrelser',
+        inTheShop: 'I butikken',
+        printsFromOne: '{count} trykk, fra',
+        printsFromOther: '{count} trykk, fra',
+      },
+      allPrintsOne: 'Trykket',
+      allPrintsOther: 'Alle {count} trykkene',
+      moreLikeThis: 'Flere trykk som dette',
+      allInCategory: 'Alle {label}',
+    } satisfies ProductPageStrings,
+    gallery: {
+      allImages: 'Alle {count} bildene',
+      imageCount: '{count} bilder',
+      close: 'Lukk',
+      previous: 'Forrige',
+      next: 'Neste',
+      captions: {
+        print: 'Trykket',
+        scene: 'Innrammet i et nordisk interiør',
+        video: 'Innrammet, mens lyset beveger seg',
+      },
+    } satisfies GalleryStrings,
     breadcrumbPrints: 'Kunsttrykk',
     youMayAlsoLike: 'Du vil kanskje også like',
     /** Meta title pattern: "<navn> av <kunstner> | Innrammet nordisk kunsttrykk" */
@@ -1211,7 +1350,7 @@ export const no = {
       apply: 'Bruk',
       percentOff: 'rabatt lagt til',
       subtotal: 'Delsum',
-      shipping: 'Frakt',
+      shipping: 'Levering',
       free: 'Gratis',
       discount: 'Rabatt',
       total: 'Totalt',
@@ -1220,11 +1359,57 @@ export const no = {
         'Betalingsopplysningene dine er kryptert og trygge. Vi lagrer aldri kortopplysningene dine.',
       shipsMostHeading: 'Dit vi sender mest',
       elsewhereHeading: 'Alle andre steder',
-      payNotice: 'Betalingen kan bruke opptil et minutt. Ikke oppdater siden.',
+      payNotice: 'Det kan ta opptil et minutt. La siden være åpen.',
       invalidCode: 'Ugyldig rabattkode',
       couldNotCheckCode: 'Fikk ikke sjekket koden, prøv igjen',
       orderTotalChanged: 'Ordresummen er endret, oppdater siden og prøv igjen',
       paymentFailed: 'Betalingen gikk ikke gjennom',
+      // V2 checkout and order confirmation. Delivery facts match
+      // app/(no)/no/delivery and config/shipping.ts.
+      v2: {
+        contactTitle: 'Kontakt',
+        contactNote: 'Stripe sender kvitteringen til denne adressen.',
+        deliveryTitle: 'Leveringsadresse',
+        paymentTitle: 'Betaling',
+        cardNote: 'Kortopplysningene går rett til Stripe. Vi ser dem aldri og lagrer dem aldri.',
+        loadingCard: 'Laster inn betalingsskjemaet …',
+        codePlaceholder: 'Kode',
+        remove: 'Fjern',
+        yourOrder: 'Bestillingen din',
+        showOrder: 'Vis bestillingen ({count})',
+        hideOrder: 'Skjul bestillingen',
+        printCount: '{n} trykk',
+        printCountOne: '1 trykk',
+        quantity: 'Antall {n}',
+        deliveryNote: 'Levert {from} til {to} virkedager etter at det er laget',
+        assuranceMade: 'Trykket på bestilling på arkivpapir, laget på 1 til 4 virkedager',
+        assuranceReturns: '14 dager til å ombestemme deg',
+        assuranceStripe: 'Trygg betaling med Stripe',
+        paymentFailedTitle: 'Betalingen gikk ikke gjennom',
+        paymentFailedHint: 'Ingenting er trukket. Sjekk kortopplysningene eller prøv et annet kort.',
+        contactHelp: 'Står du fast? Send en e-post til {email}, så hjelper vi deg.',
+        unavailableTitle: 'Betalingen er ikke tilgjengelig akkurat nå',
+        unavailableBody: 'Betalingsskjemaet fra Stripe ble ikke lastet inn. Prøv igjen om litt.',
+        testMode: 'Testmodus: hopp over betalingen',
+        frameLabels: {
+          'no-frame': 'uten ramme',
+          wood: 'treramme',
+          black: 'svart ramme',
+          white: 'hvit ramme',
+        },
+        thanks: 'Takk, {name}.',
+        thanksNoName: 'Takk.',
+        placed: 'Bestillingen er lagt inn. Stripe har sendt kvitteringen til {email}.',
+        nextHeading: 'Dette skjer nå',
+        steps: {
+          made: ['Laget på bestilling', 'Trykkene lages på arkivpapir, og rammes inn hvis du valgte ramme, på 1 til 4 virkedager.'],
+          sent: ['Sendt til deg', 'Leveringen tar {from} til {to} virkedager etter at det er laget.'],
+          sentNoEstimate: 'Leveringstiden begynner når bestillingen er sendt, og varierer med hvor den skal.',
+          decide: ['Fjorten dager til å bestemme deg', 'Hvis det ikke passer på veggen, har du 14 dager til å ombestemme deg.'],
+        },
+        keepBrowsing: 'Se flere trykk',
+        deliveringTo: 'Leveres til',
+      },
     },
     meta: {
       title: 'Kasse',

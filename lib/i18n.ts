@@ -221,6 +221,8 @@ export interface ChromeAriaStrings {
     nextImage: string;
     closeViewer: string;
   };
+  /** The product video's round control (Figma Video 257:3920), WCAG 2.2.2. */
+  video: { pause: string; play: string };
   /** The homepage strip of room scenes, which is one big link. */
   inspireStrip: string;
   /** Prefixed to ": Norsk, GBP". */
@@ -264,6 +266,7 @@ export const chromeAria: Record<Locale, ChromeAriaStrings> = {
       nextImage: 'Next image',
       closeViewer: 'Close image viewer',
     },
+    video: { pause: 'Pause video', play: 'Play video' },
     inspireStrip: 'Be inspired: see our prints in real rooms',
     languageAndCurrency: 'Language and currency',
     wallPlanner: {
@@ -301,6 +304,7 @@ export const chromeAria: Record<Locale, ChromeAriaStrings> = {
       nextImage: 'Neste bilde',
       closeViewer: 'Lukk bildevisning',
     },
+    video: { pause: 'Sett videoen på pause', play: 'Spill av videoen' },
     inspireStrip: 'La deg inspirere: se trykkene våre i ekte rom',
     languageAndCurrency: 'Språk og valuta',
     wallPlanner: {
@@ -325,6 +329,96 @@ export const chromeAria: Record<Locale, ChromeAriaStrings> = {
       saveImage: 'Lagre romvisningen som bilde',
       roomImage: 'Veggen din sett fra rommet. Dra til venstre eller høyre for å snu.',
     },
+  },
+};
+
+/**
+ * The search overlay (components/v2/SearchOverlay.tsx). A client component
+ * mounted by the Header on every page, so both languages live here beside the
+ * rest of the chrome. `{n}` and `{q}` are filled in by the component.
+ */
+export interface SearchStrings {
+  dialog: string;
+  placeholder: string;
+  placeholderShort: string;
+  submit: string;
+  clear: string;
+  close: string;
+  popular: string;
+  recent: string;
+  roomsHeading: string;
+  roomsLink: string;
+  prints: string;
+  artists: string;
+  stories: string;
+  allResults: string;
+  tabsLabel: string;
+  seeAll: string;
+  seeOnPrintsPage: string;
+  searching: string;
+  noResultsTitle: string;
+  noResultsBody: string;
+  tryHeading: string;
+  allPrints: string;
+  printCount: string;
+  printCountOne: string;
+  resultCount: string;
+}
+
+export const searchStrings: Record<Locale, SearchStrings> = {
+  en: {
+    dialog: 'Search',
+    placeholder: 'Search prints, artists and stories',
+    placeholderShort: 'Search prints and artists',
+    submit: 'Search',
+    clear: 'Clear',
+    close: 'Close',
+    popular: 'Popular searches',
+    recent: 'Recent',
+    roomsHeading: 'Or start from a room',
+    roomsLink: 'Prints in real rooms',
+    prints: 'Prints',
+    artists: 'Artists',
+    stories: 'Stories',
+    allResults: 'All results',
+    tabsLabel: 'Kinds of result',
+    seeAll: 'See all {n} results for “{q}”',
+    seeOnPrintsPage: 'See them on the Prints page',
+    searching: 'Searching',
+    noResultsTitle: 'Nothing for “{q}” yet',
+    noResultsBody: 'Check the spelling, try a shorter word, or search for an artist’s name.',
+    tryHeading: 'Try',
+    allPrints: 'All {n} prints',
+    printCount: '{n} prints',
+    printCountOne: '1 print',
+    resultCount: '{n} results',
+  },
+  no: {
+    dialog: 'Søk',
+    placeholder: 'Søk etter trykk, kunstnere og artikler',
+    placeholderShort: 'Søk etter trykk og kunstnere',
+    submit: 'Søk',
+    clear: 'Tøm',
+    close: 'Lukk',
+    popular: 'Populære søk',
+    recent: 'Nylige søk',
+    roomsHeading: 'Eller start fra et rom',
+    roomsLink: 'Trykk i ekte rom',
+    prints: 'Trykk',
+    artists: 'Kunstnere',
+    stories: 'Artikler',
+    allResults: 'Alle treff',
+    tabsLabel: 'Typer treff',
+    seeAll: 'Se alle {n} treff for «{q}»',
+    seeOnPrintsPage: 'Se dem på trykksiden',
+    searching: 'Søker',
+    noResultsTitle: 'Ingenting for «{q}» ennå',
+    noResultsBody: 'Sjekk stavemåten, prøv et kortere ord, eller søk etter navnet på en kunstner.',
+    tryHeading: 'Prøv',
+    allPrints: 'Alle {n} trykk',
+    printCount: '{n} trykk',
+    printCountOne: '1 trykk',
+    resultCount: '{n} treff',
   },
 };
 
@@ -521,6 +615,8 @@ export interface ProductActionsStrings {
   addToCart: string;
   /** Frame option id -> visible label. Falls back to the config's name. */
   frameLabels?: Record<string, string>;
+  /** V2 assurance lines under the button; {price} is filled from config/shipping.ts. */
+  assurance?: { printed: string; delivery: string; returns: string };
 }
 
 /** Labels on the checkout page. Strings only: the payment flow itself is
@@ -559,6 +655,42 @@ export interface CheckoutStrings {
   couldNotCheckCode: string;
   orderTotalChanged: string;
   paymentFailed: string;
+  /** V2 checkout (Figma: Checkout · desktop 276:4235 and friends). `{x}` is filled in by the component. */
+  v2: {
+    contactTitle: string;
+    contactNote: string;
+    deliveryTitle: string;
+    paymentTitle: string;
+    cardNote: string;
+    loadingCard: string;
+    codePlaceholder: string;
+    remove: string;
+    yourOrder: string;
+    showOrder: string;
+    hideOrder: string;
+    printCount: string;
+    printCountOne: string;
+    quantity: string;
+    deliveryNote: string;
+    assuranceMade: string;
+    assuranceReturns: string;
+    assuranceStripe: string;
+    paymentFailedTitle: string;
+    paymentFailedHint: string;
+    contactHelp: string;
+    unavailableTitle: string;
+    unavailableBody: string;
+    testMode: string;
+    /** Frame option id -> the words in an order line ("oak frame", "no frame"). */
+    frameLabels: Record<string, string>;
+    thanks: string;
+    thanksNoName: string;
+    placed: string;
+    nextHeading: string;
+    steps: { made: [string, string]; sent: [string, string]; sentNoEstimate: string; decide: [string, string] };
+    keepBrowsing: string;
+    deliveringTo: string;
+  };
 }
 
 /** Labels on the journal index. */
@@ -569,6 +701,91 @@ export interface JournalStrings {
   articlesSuffix: string;
   empty: string;
   booksSeriesHeading: string;
+  /** The pillar's note in the books-series hub: "(start here)". */
+  startHere: string;
   /** Article category -> visible label. Falls back to the raw value. */
   categoryLabels?: Record<string, string>;
+  /** The ruled list under the story tiles (Figma "More to read"). */
+  moreToReadHeading: string;
+  moreToReadIntro: string;
+  /** The featured story's closing link. */
+  readTheStory: string;
+  /** "{n} min read". */
+  minRead: string;
+  /** Language the story dates are written in. */
+  dateLocale: 'en' | 'no';
 }
+
+/**
+ * The basket panel (components/Cart.tsx, Figma Basket panel 242:4070). Here,
+ * beside the header and footer strings, because the panel is a client
+ * component mounted on every page in both trees, and lib/i18n/no.ts must not
+ * reach the browser. The delivery guide's prices are read from
+ * config/shipping.ts at render, in the buyer's currency, never typed here.
+ */
+export interface BasketStrings {
+  title: string;
+  /** "Basket ({count})" */
+  titleCount: string;
+  close: string;
+  remove: string;
+  /** Frame id -> how the line describes it: "wood frame", "unframed". */
+  frames: Record<string, string>;
+  subtotal: string;
+  delivery: string;
+  deliveryValue: string;
+  guidePrefix: string;
+  /** Shipping region code -> name in the guide line. */
+  regions: Record<string, string>;
+  and: string;
+  assurance: string[];
+  checkout: string;
+  continueShopping: string;
+  emptyHeading: string;
+  emptyBody: string;
+  seePrints: string;
+  startFromWall: string;
+}
+
+export const basketStrings: Record<Locale, BasketStrings> = {
+  en: {
+    title: 'Basket',
+    titleCount: 'Basket ({count})',
+    close: 'Close',
+    remove: 'Remove',
+    frames: { 'no-frame': 'unframed', wood: 'wood frame', black: 'black frame', white: 'white frame' },
+    subtotal: 'Subtotal',
+    delivery: 'Delivery',
+    deliveryValue: 'Calculated at checkout',
+    guidePrefix: 'As a guide:',
+    regions: { GB: 'UK', NO: 'Norway', DK: 'Denmark', SE: 'Sweden', US: 'United States', ELSEWHERE: 'rest of world' },
+    and: 'and',
+    assurance: ['Made to order, produced in 1 to 4 business days', '14 days to change your mind', 'Secure payment by Stripe'],
+    checkout: 'Checkout',
+    continueShopping: 'Continue shopping',
+    emptyHeading: 'Your basket is empty.',
+    emptyBody: 'Every print is made to order and delivered worldwide. Start with the collection, or see the prints in rooms like yours.',
+    seePrints: 'See the prints',
+    startFromWall: 'Start from your wall',
+  },
+  no: {
+    title: 'Handlekurv',
+    titleCount: 'Handlekurv ({count})',
+    close: 'Lukk',
+    remove: 'Fjern',
+    frames: { 'no-frame': 'uten ramme', wood: 'ramme i tre', black: 'sort ramme', white: 'hvit ramme' },
+    subtotal: 'Delsum',
+    delivery: 'Frakt',
+    deliveryValue: 'Beregnes i kassen',
+    guidePrefix: 'Som en pekepinn:',
+    regions: { GB: 'Storbritannia', NO: 'Norge', DK: 'Danmark', SE: 'Sverige', US: 'USA', ELSEWHERE: 'resten av verden' },
+    and: 'og',
+    assurance: ['Lages på bestilling, produseres på 1 til 4 virkedager', '14 dagers angrerett', 'Sikker betaling med Stripe'],
+    checkout: 'Til kassen',
+    continueShopping: 'Fortsett å handle',
+    emptyHeading: 'Handlekurven din er tom.',
+    emptyBody: 'Hvert trykk lages på bestilling og sendes til hele verden. Begynn med samlingen, eller se trykkene i rom som ligner ditt.',
+    seePrints: 'Se trykkene',
+    startFromWall: 'Begynn med veggen din',
+  },
+};
