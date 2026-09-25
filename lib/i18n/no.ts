@@ -985,6 +985,8 @@ export const no = {
       lead: 'Trykk av {artists} uavhengige kunstnere som bor og arbeider i {countries}. Hvert trykk lages på bestilling, med eller uten ramme, og sendes over hele verden.',
       countries: { Norway: 'Norge', Sweden: 'Sverige', Denmark: 'Danmark', Finland: 'Finland', Iceland: 'Island' } as Record<string, string>,
       and: 'og',
+      /** Counts up to ten are written out: "fem uavhengige kunstnere". */
+      numbers: ['ingen', 'én', 'to', 'tre', 'fire', 'fem', 'seks', 'sju', 'åtte', 'ni', 'ti'],
       contentHeading: 'Slik kjøper du et trykk',
       contentP1:
         'Hvert trykk lages på bestilling når du kjøper det, på arkivpapir av museumskvalitet, i stedet for å hentes fra en lagerhylle. De fleste er 50 x 70 cm, og de kvadratiske illustrasjonene er 50 x 50 cm. Hver produktside viser størrelsen og prisen før noe havner i handlekurven.',

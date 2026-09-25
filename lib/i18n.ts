@@ -396,7 +396,7 @@ export const searchStrings: Record<Locale, SearchStrings> = {
   no: {
     dialog: 'Søk',
     placeholder: 'Søk etter trykk, kunstnere og artikler',
-    placeholderShort: 'Søk etter trykk og kunstnere',
+    placeholderShort: 'Søk etter trykk',
     submit: 'Søk',
     clear: 'Tøm',
     close: 'Lukk',
@@ -598,6 +598,16 @@ export interface ProductsGridStrings {
   outOfStock: string;
   emptyHeading: string;
   emptyCta: string;
+  /** The grid's sr-only h2, so the card titles sit at h3 under it. */
+  printsSrHeading: string;
+  /** Filter bar refine controls: the first option doubles as the visible label. */
+  artistAll: string;
+  artistFilterLabel: string;
+  sizeAll: string;
+  sizeFilterLabel: string;
+  /** Visible before the sort control: "Sort: Name". */
+  sortPrefix: string;
+  clearSearch: string;
   /** Catalogue category value -> visible label. Falls back to the raw value. */
   categoryLabels?: Record<string, string>;
   /** Collection slug -> chip label. Falls back to the config's chipLabel. */

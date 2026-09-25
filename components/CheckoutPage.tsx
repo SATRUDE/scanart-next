@@ -1,21 +1,14 @@
 'use client';
 
-import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { ArrowLeft, CreditCard, Truck, Shield, AlertCircle, Mail } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Separator } from '@/components/ui/separator';
+import React, { useState, useSyncExternalStore } from 'react';
+import { Check } from 'lucide-react';
 import { useCart } from '@/contexts/CartContext';
 import { useLanguage } from '@/contexts/LanguageContext';
 import type { CheckoutStrings } from '@/lib/i18n';
-import { SmartImage } from '@/components/SmartImage';
 import { getProductPrice } from '@/lib/pricing';
 import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import stripePromise from '@/config/stripe';
-import { OrderComplete } from '@/components/OrderComplete';
+import { OrderComplete, type CompletedOrder } from '@/components/OrderComplete';
 import { getShippingRate } from '@/config/shipping';
 import {
   DESTINATIONS,
@@ -26,9 +19,34 @@ import {
 } from '@/lib/address';
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { Check, ChevronsUpDown } from 'lucide-react';
 import { getFrameName, getFramePrice } from '@/config/frame';
 import { track } from '@/lib/analytics';
+import { COMPANY } from '@/config/company';
+import { getArtistById } from '@/data/artists';
+import { sizeLabel } from '@/components/PrintCard';
+import { Button } from '@/components/v2/ui';
+import {
+  AssuranceLines,
+  FormError,
+  FormSection,
+  OrderLine,
+  OrderTotals,
+  TextField,
+  deliveryDays,
+  fill,
+} from '@/components/v2/checkout/parts';
+
+/*
+ * V2 checkout (Figma: Checkout · desktop 276:4235, Checkout · mobile 276:4391,
+ * Checkout · desktop · payment failed 279:4438; Order confirmed 279:4648 /
+ * 279:4761). This rebuild changes PRESENTATION ONLY. The payment flow is
+ * line for line what it was: PaymentIntent creation on the server, the
+ * CardElement, confirmCardPayment, the order-complete notification, discount
+ * validation, the shipping rate and currency maths, the country picker and
+ * address formats, analytics and error handling.
+ *
+ * The page stays noindex,follow with no canonical (app/(en)/checkout/page.tsx).
+ */
 
 const publishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
 
@@ -39,18 +57,28 @@ function orderReference(prefix: string): string {
   return `${prefix}-${Date.now()}`;
 }
 
-// Stripe Card Element styling
+// Stripe Card Element styling, matched to the Card field master (275:5721):
+// Body type (18/30), ink text, placeholders at 45%, the error colour for an
+// invalid card, and no box. The box and its 1 px bottom rule are drawn by
+// the wrapper below, so the element itself sits on the page like a Text field.
+// The iframe cannot see the page's self-hosted Hedvig face (next/font), so
+// it names the family and falls back to the system sans.
 const cardElementOptions = {
   style: {
     base: {
-      fontSize: '16px',
-      color: '#424770',
+      fontSize: '18px',
+      lineHeight: '30px',
+      fontFamily: '"Hedvig Letters Sans", system-ui, -apple-system, "Segoe UI", sans-serif',
+      fontWeight: '400',
+      color: '#000000',
+      iconColor: '#000000',
       '::placeholder': {
-        color: '#aab7c4',
+        color: 'rgba(0, 0, 0, 0.45)',
       },
     },
     invalid: {
-      color: '#9e2146',
+      color: '#c44039',
+      iconColor: '#c44039',
     },
   },
 };
@@ -59,42 +87,92 @@ const cardElementOptions = {
 const EN: CheckoutStrings = {
   heading: 'Checkout',
   subheading: 'Complete your purchase below',
-  cartEmpty: 'Your cart is empty',
-  continueShopping: 'Continue Shopping',
+  cartEmpty: 'Your basket is empty',
+  continueShopping: 'Continue shopping',
   email: 'Email',
-  firstName: 'First Name',
-  lastName: 'Last Name',
+  firstName: 'First name',
+  lastName: 'Last name',
   address: 'Address',
   country: 'Country',
   city: 'City',
   searchCountry: 'Search for your country',
   noCountry: 'No country by that name.',
-  cardDetails: 'Card Details',
-  processing: 'Processing...',
+  cardDetails: 'Card details',
+  processing: 'Processing',
   payPrefix: 'Pay',
-  orderSummary: 'Order Summary',
+  orderSummary: 'Order summary',
   discountPlaceholder: 'Discount code',
   apply: 'Apply',
   percentOff: 'off applied',
   subtotal: 'Subtotal',
-  shipping: 'Shipping',
+  shipping: 'Delivery',
   free: 'Free',
   discount: 'Discount',
   total: 'Total',
-  secureHeading: 'Secure Checkout',
+  secureHeading: 'Secure checkout',
   secureBody: 'Your payment information is encrypted and secure. We never store your credit card details.',
   shipsMostHeading: 'Where we ship most',
   elsewhereHeading: 'Everywhere else',
-  payNotice: 'Purchasing can take up to a minute to process. Please do not refresh.',
+  payNotice: 'It can take up to a minute. Please keep this page open.',
   invalidCode: 'Invalid discount code',
   couldNotCheckCode: 'Could not check the code, please try again',
   orderTotalChanged: 'Order total changed, please refresh and try again',
   paymentFailed: 'Payment failed',
+  // Delivery facts from config/shipping.ts and app/(en)/delivery.
+  v2: {
+    contactTitle: 'Contact',
+    contactNote: 'Stripe sends your receipt to this address.',
+    deliveryTitle: 'Delivery address',
+    paymentTitle: 'Payment',
+    cardNote: 'Your card details go straight to Stripe. We never see or store them.',
+    loadingCard: 'Loading the payment form …',
+    codePlaceholder: 'Code',
+    remove: 'Remove',
+    yourOrder: 'Your order',
+    showOrder: 'Show your order ({count})',
+    hideOrder: 'Hide your order',
+    printCount: '{n} prints',
+    printCountOne: '1 print',
+    quantity: 'Quantity {n}',
+    deliveryNote: 'Delivered {from} to {to} business days after it is made',
+    assuranceMade: 'Printed to order on archival paper, made in 1 to 4 working days',
+    assuranceReturns: '14 days to change your mind',
+    assuranceStripe: 'Secure payment by Stripe',
+    paymentFailedTitle: 'Your payment didn’t go through',
+    paymentFailedHint: 'Nothing has been charged. Check the card details or try another card.',
+    contactHelp: 'Still stuck? Email {email} and we will help.',
+    unavailableTitle: 'Payment isn’t available right now',
+    unavailableBody: 'The payment form from Stripe didn’t load. Please try again in a moment.',
+    testMode: 'Test mode: skip payment',
+    frameLabels: {
+      'no-frame': 'no frame',
+      wood: 'wood frame',
+      black: 'black frame',
+      white: 'white frame',
+    },
+    thanks: 'Thank you, {name}.',
+    thanksNoName: 'Thank you.',
+    placed: 'Your order is placed. Stripe has emailed your receipt to {email}.',
+    nextHeading: 'What happens next',
+    steps: {
+      made: { title: 'Made to order', body: 'Your prints are printed on archival paper, and framed if you chose a frame, in 1 to 4 working days.' },
+      sent: { title: 'Sent to you', body: 'Delivery takes {from} to {to} business days once it is made.' },
+      sentNoEstimate: 'Delivery time starts once it is sent, and depends on where it is going.',
+      decide: { title: 'Fourteen days to decide', body: 'If it isn’t right on the wall, you have 14 days to change your mind.' },
+    },
+    keepBrowsing: 'Keep browsing prints',
+    deliveringTo: 'Delivering to',
+  },
 };
+
+/** The English labels, for the story and any caller without a dictionary. */
+export const checkoutStringsEn = EN;
 
 const PaymentForm: React.FC<{
   total: number;
   currency: string;
+  /** The total as the page shows it (formatPrice), for the Pay button. */
+  totalLabel: string;
   t: CheckoutStrings;
   orderItems: { productId: string; size?: string; frame?: string; quantity: number }[];
   countryCode: string;
@@ -112,11 +190,14 @@ const PaymentForm: React.FC<{
   };
   onSuccess: () => void;
   onError: (error: string) => void;
-}> = ({ total, currency, t, orderItems, countryCode, discountCode, customer, onSuccess, onError }) => {
+}> = ({ total, currency, totalLabel, t, orderItems, countryCode, discountCode, customer, onSuccess, onError }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [isProcessing, setIsProcessing] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  // Stripe's own live message for the card field (incomplete number, expired
+  // date), shown under the field; the payment error goes in the Form error.
+  const [cardError, setCardError] = useState<string | null>(null);
 
   // Debug logging
   console.log('PaymentForm rendered:', { stripe: !!stripe, elements: !!elements, publishableKey });
@@ -192,48 +273,60 @@ const PaymentForm: React.FC<{
     }
   };
 
+  // id="checkout-form": the contact and address fields sit in their own
+  // sections above and join this form through their `form` attribute, so
+  // the browser checks every required field before handleSubmit runs.
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="space-y-4">
-        <div>
-          <Label htmlFor="card-element">{t.cardDetails}</Label>
-          <div className="mt-1 p-3 border border-gray-300 rounded-md">
+    <form id="checkout-form" onSubmit={handleSubmit} className="flex flex-col gap-block">
+      <div className="flex flex-col gap-group">
+        {/* Card field 275:5721: the Stripe element styled as a Text field. */}
+        <div className="flex flex-col gap-tight">
+          <label htmlFor="card-element" className="type-small">{t.cardDetails}</label>
+          <div className={`border-b pt-[6px] pb-[10px] ${cardError || error ? 'border-error' : 'border-ink'}`}>
             {stripe && elements ? (
               <CardElement
                 id="card-element"
                 options={cardElementOptions}
+                onChange={e => setCardError(e.error?.message ?? null)}
               />
             ) : (
-              <div className="text-red-600 text-sm">
-                Loading payment form...
-              </div>
+              <p className="type-body text-ink/45">{t.v2.loadingCard}</p>
             )}
           </div>
+          {(cardError || error) && <p className="type-small text-error">{cardError ?? error}</p>}
         </div>
-        
+        <p className="type-small">{t.v2.cardNote}</p>
+      </div>
+
+      <div className="flex flex-col gap-4">
+        {/* Form error 268:5258, fed by the real Stripe (or server) message. */}
         {error && (
-          <div className="text-red-600 text-sm">
-            {error}
+          <div className="mb-4">
+            <FormError
+              title={t.v2.paymentFailedTitle}
+              body={<>{error} {t.v2.paymentFailedHint}</>}
+              contact={fill(t.v2.contactHelp, { email: COMPANY.email })}
+            />
           </div>
         )}
-
-        <Button 
-          type="submit" 
-          className="w-full" 
+        <Button
+          type="submit"
+          className="self-start"
           disabled={!stripe || isProcessing}
           data-primary-cta="pay"
+          price={isProcessing ? undefined : totalLabel}
         >
-          {isProcessing ? t.processing : `${t.payPrefix} ${currency.toUpperCase()} ${total.toFixed(2)}`}
+          {isProcessing ? t.processing : t.payPrefix}
         </Button>
-        
-        <p className="text-xs text-muted-foreground text-center mt-2">{t.payNotice}</p>
+
+        <p className="type-small">{t.payNotice}</p>
       </div>
     </form>
   );
 };
 
 /**
- * Country picker for the shipping address.
+ * Country picker for the shipping address (Select field 275:5669).
  *
  * A searchable list rather than a dropdown, because there are 267 countries
  * and scrolling to Slovenia is not a checkout experience. The five with their
@@ -252,23 +345,22 @@ const CountryPicker: React.FC<{
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
-        <Button
+        <button
           id="country"
           type="button"
-          variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-full justify-between font-normal"
+          className="flex w-full items-center justify-between gap-4 border-b border-ink pt-[6px] pb-[10px] text-left type-body focus-visible:outline-none focus:border-b-2 focus:pb-[9px]"
         >
           {destinationName(value)}
-          <ChevronsUpDown className="h-4 w-4 opacity-50" />
-        </Button>
+          <span aria-hidden className="type-small">⌄</span>
+        </button>
       </PopoverTrigger>
-      <PopoverContent className="w-[--radix-popover-trigger-width] p-0" align="start">
-        <Command>
-          <CommandInput placeholder={t.searchCountry} />
+      <PopoverContent className="w-[--radix-popover-trigger-width] rounded-none border-ink p-0 shadow-none" align="start">
+        <Command className="rounded-none">
+          <CommandInput placeholder={t.searchCountry} className="type-body" />
           <CommandList>
-            <CommandEmpty>{t.noCountry}</CommandEmpty>
+            <CommandEmpty className="py-4 text-center type-small">{t.noCountry}</CommandEmpty>
             <CommandGroup heading={t.shipsMostHeading}>
               {priced.map(destination => (
                 <CountryOptionRow
@@ -311,26 +403,37 @@ const CountryOptionRow: React.FC<{
     // Searching by name AND code, so "DE" finds Germany as readily as typing it.
     value={`${destination.name} ${destination.code}`}
     onSelect={onSelect}
+    className="rounded-none type-body"
   >
     <Check className={`mr-2 h-4 w-4 ${selected ? 'opacity-100' : 'opacity-0'}`} />
     {destination.name}
   </CommandItem>
 );
 
+const subscribeNever = () => () => {};
+
 // Main Checkout Component
 // Discount codes are validated server-side (/api/validate-discount); this
 // public repository must never contain a working code.
 
-export const CheckoutPage: React.FC<{ strings?: CheckoutStrings }> = ({ strings }) => {
+export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' | 'no' }> = ({ strings, locale = 'en' }) => {
   const t = strings ?? EN;
-  const router = useRouter();
-  const onBack = () => router.push('/products');
+  const v = t.v2;
+  // Locale-aware: "Continue shopping" on the Norwegian checkout used to go
+  // to the English catalogue (router.push('/products')).
+  const productsHref = locale === 'no' ? '/no/products' : '/products';
   const { state, getTotalPriceInCurrency, clearCart } = useCart();
   const { formatPrice, selectedCountry } = useLanguage();
   const [orderComplete, setOrderComplete] = useState(false);
   const [discountCode, setDiscountCode] = useState('');
   const [appliedDiscount, setAppliedDiscount] = useState<{ code: string; percentage: number; description: string } | null>(null);
   const [discountError, setDiscountError] = useState<string | null>(null);
+  // Presentation only: the mobile "Show your order" bar, and the order as it
+  // was at the moment of payment, kept for the confirmation after the basket
+  // is cleared.
+  const [summaryOpen, setSummaryOpen] = useState(false);
+  const [completedOrder, setCompletedOrder] = useState<CompletedOrder | null>(null);
+  const hydrated = useSyncExternalStore(subscribeNever, () => true, () => false);
 
   // Debug log to verify component is loaded
 
@@ -394,6 +497,30 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings }> = ({ strings 
     setDiscountError(null);
   };
 
+  // One line's price, exactly as the order summary has always computed it.
+  const linePrice = (item: (typeof state.items)[number]) => formatPrice({
+    GBP: Math.round(((getProductPrice(item.product, item.size, 'GBP') + getFramePrice(item.frame || 'no-frame', item.size, 'GBP')) * item.quantity) * 100) / 100,
+    NOK: Math.round(((getProductPrice(item.product, item.size, 'NOK') + getFramePrice(item.frame || 'no-frame', item.size, 'NOK')) * item.quantity) * 100) / 100,
+    USD: Math.round(((getProductPrice(item.product, item.size, 'USD') + getFramePrice(item.frame || 'no-frame', item.size, 'USD')) * item.quantity) * 100) / 100,
+    DKK: Math.round(((getProductPrice(item.product, item.size, 'DKK') + getFramePrice(item.frame || 'no-frame', item.size, 'DKK')) * item.quantity) * 100) / 100,
+    SEK: Math.round(((getProductPrice(item.product, item.size, 'SEK') + getFramePrice(item.frame || 'no-frame', item.size, 'SEK')) * item.quantity) * 100) / 100
+  });
+
+  // Order line 275:5613 props for one basket item.
+  const orderLineProps = (item: (typeof state.items)[number]) => {
+    const frame = item.frame || 'no-frame';
+    const frameText = v.frameLabels[frame] ?? getFrameName(frame);
+    return {
+      image: item.product.image,
+      title: item.product.name,
+      price: linePrice(item),
+      artist: item.product.artist || item.product.brand || (item.product.artistId ? getArtistById(item.product.artistId)?.name : undefined),
+      detail: item.size ? `${sizeLabel(item.size)}, ${frameText}` : frameText,
+      quantity: fill(v.quantity, { n: item.quantity }),
+      size: item.size,
+    };
+  };
+
   const handlePaymentSuccess = async () => {
     try {
       // Prepare order data for Slack notification
@@ -414,20 +541,20 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings }> = ({ strings 
           size: item.size,
           frame: item.frame && item.frame !== 'no-frame' ? getFrameName(item.frame) : null,
           quantity: item.quantity,
-          price: formatPrice({ 
-            GBP: Math.round(((getProductPrice(item.product, item.size, 'GBP') + getFramePrice(item.frame || 'no-frame', item.size, 'GBP')) * item.quantity) * 100) / 100, 
-            NOK: Math.round(((getProductPrice(item.product, item.size, 'NOK') + getFramePrice(item.frame || 'no-frame', item.size, 'NOK')) * item.quantity) * 100) / 100, 
-            USD: Math.round(((getProductPrice(item.product, item.size, 'USD') + getFramePrice(item.frame || 'no-frame', item.size, 'USD')) * item.quantity) * 100) / 100, 
-            DKK: Math.round(((getProductPrice(item.product, item.size, 'DKK') + getFramePrice(item.frame || 'no-frame', item.size, 'DKK')) * item.quantity) * 100) / 100, 
-            SEK: Math.round(((getProductPrice(item.product, item.size, 'SEK') + getFramePrice(item.frame || 'no-frame', item.size, 'SEK')) * item.quantity) * 100) / 100 
+          price: formatPrice({
+            GBP: Math.round(((getProductPrice(item.product, item.size, 'GBP') + getFramePrice(item.frame || 'no-frame', item.size, 'GBP')) * item.quantity) * 100) / 100,
+            NOK: Math.round(((getProductPrice(item.product, item.size, 'NOK') + getFramePrice(item.frame || 'no-frame', item.size, 'NOK')) * item.quantity) * 100) / 100,
+            USD: Math.round(((getProductPrice(item.product, item.size, 'USD') + getFramePrice(item.frame || 'no-frame', item.size, 'USD')) * item.quantity) * 100) / 100,
+            DKK: Math.round(((getProductPrice(item.product, item.size, 'DKK') + getFramePrice(item.frame || 'no-frame', item.size, 'DKK')) * item.quantity) * 100) / 100,
+            SEK: Math.round(((getProductPrice(item.product, item.size, 'SEK') + getFramePrice(item.frame || 'no-frame', item.size, 'SEK')) * item.quantity) * 100) / 100
           }),
         })),
-        total: formatPrice({ 
-          GBP: total, 
-          NOK: total * 13.75, 
-          USD: total * 1.29, 
-          DKK: total * 8.75, 
-          SEK: total * 13.75 
+        total: formatPrice({
+          GBP: total,
+          NOK: total * 13.75,
+          USD: total * 1.29,
+          DKK: total * 8.75,
+          SEK: total * 13.75
         }),
         currency: selectedCountry.currency,
         discountCode: appliedDiscount?.code || null,
@@ -448,6 +575,7 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings }> = ({ strings 
       // Don't block the order completion if Slack notification fails
     }
 
+    setCompletedOrder(captureOrder());
     setOrderComplete(true);
     // Scroll to top of page for better UX
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -479,20 +607,20 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings }> = ({ strings 
           size: item.size,
           frame: item.frame && item.frame !== 'no-frame' ? getFrameName(item.frame) : null,
           quantity: item.quantity,
-          price: formatPrice({ 
-            GBP: Math.round(((getProductPrice(item.product, item.size, 'GBP') + getFramePrice(item.frame || 'no-frame', item.size, 'GBP')) * item.quantity) * 100) / 100, 
-            NOK: Math.round(((getProductPrice(item.product, item.size, 'NOK') + getFramePrice(item.frame || 'no-frame', item.size, 'NOK')) * item.quantity) * 100) / 100, 
-            USD: Math.round(((getProductPrice(item.product, item.size, 'USD') + getFramePrice(item.frame || 'no-frame', item.size, 'USD')) * item.quantity) * 100) / 100, 
-            DKK: Math.round(((getProductPrice(item.product, item.size, 'DKK') + getFramePrice(item.frame || 'no-frame', item.size, 'DKK')) * item.quantity) * 100) / 100, 
-            SEK: Math.round(((getProductPrice(item.product, item.size, 'SEK') + getFramePrice(item.frame || 'no-frame', item.size, 'SEK')) * item.quantity) * 100) / 100 
+          price: formatPrice({
+            GBP: Math.round(((getProductPrice(item.product, item.size, 'GBP') + getFramePrice(item.frame || 'no-frame', item.size, 'GBP')) * item.quantity) * 100) / 100,
+            NOK: Math.round(((getProductPrice(item.product, item.size, 'NOK') + getFramePrice(item.frame || 'no-frame', item.size, 'NOK')) * item.quantity) * 100) / 100,
+            USD: Math.round(((getProductPrice(item.product, item.size, 'USD') + getFramePrice(item.frame || 'no-frame', item.size, 'USD')) * item.quantity) * 100) / 100,
+            DKK: Math.round(((getProductPrice(item.product, item.size, 'DKK') + getFramePrice(item.frame || 'no-frame', item.size, 'DKK')) * item.quantity) * 100) / 100,
+            SEK: Math.round(((getProductPrice(item.product, item.size, 'SEK') + getFramePrice(item.frame || 'no-frame', item.size, 'SEK')) * item.quantity) * 100) / 100
           }),
         })),
-        total: formatPrice({ 
-          GBP: total, 
-          NOK: total * 13.75, 
-          USD: total * 1.29, 
-          DKK: total * 8.75, 
-          SEK: total * 13.75 
+        total: formatPrice({
+          GBP: total,
+          NOK: total * 13.75,
+          USD: total * 1.29,
+          DKK: total * 8.75,
+          SEK: total * 13.75
         }),
         currency: selectedCountry.currency,
         discountCode: appliedDiscount?.code || null,
@@ -532,20 +660,20 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings }> = ({ strings 
           size: item.size,
           frame: item.frame && item.frame !== 'no-frame' ? getFrameName(item.frame) : null,
           quantity: item.quantity,
-          price: formatPrice({ 
-            GBP: Math.round(((getProductPrice(item.product, item.size, 'GBP') + getFramePrice(item.frame || 'no-frame', item.size, 'GBP')) * item.quantity) * 100) / 100, 
-            NOK: Math.round(((getProductPrice(item.product, item.size, 'NOK') + getFramePrice(item.frame || 'no-frame', item.size, 'NOK')) * item.quantity) * 100) / 100, 
-            USD: Math.round(((getProductPrice(item.product, item.size, 'USD') + getFramePrice(item.frame || 'no-frame', item.size, 'USD')) * item.quantity) * 100) / 100, 
-            DKK: Math.round(((getProductPrice(item.product, item.size, 'DKK') + getFramePrice(item.frame || 'no-frame', item.size, 'DKK')) * item.quantity) * 100) / 100, 
-            SEK: Math.round(((getProductPrice(item.product, item.size, 'SEK') + getFramePrice(item.frame || 'no-frame', item.size, 'SEK')) * item.quantity) * 100) / 100 
+          price: formatPrice({
+            GBP: Math.round(((getProductPrice(item.product, item.size, 'GBP') + getFramePrice(item.frame || 'no-frame', item.size, 'GBP')) * item.quantity) * 100) / 100,
+            NOK: Math.round(((getProductPrice(item.product, item.size, 'NOK') + getFramePrice(item.frame || 'no-frame', item.size, 'NOK')) * item.quantity) * 100) / 100,
+            USD: Math.round(((getProductPrice(item.product, item.size, 'USD') + getFramePrice(item.frame || 'no-frame', item.size, 'USD')) * item.quantity) * 100) / 100,
+            DKK: Math.round(((getProductPrice(item.product, item.size, 'DKK') + getFramePrice(item.frame || 'no-frame', item.size, 'DKK')) * item.quantity) * 100) / 100,
+            SEK: Math.round(((getProductPrice(item.product, item.size, 'SEK') + getFramePrice(item.frame || 'no-frame', item.size, 'SEK')) * item.quantity) * 100) / 100
           }),
         })),
-        total: formatPrice({ 
-          GBP: total, 
-          NOK: total * 13.75, 
-          USD: total * 1.29, 
-          DKK: total * 8.75, 
-          SEK: total * 13.75 
+        total: formatPrice({
+          GBP: total,
+          NOK: total * 13.75,
+          USD: total * 1.29,
+          DKK: total * 8.75,
+          SEK: total * 13.75
         }),
         currency: selectedCountry.currency,
         discountCode: appliedDiscount?.code || null,
@@ -566,29 +694,40 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings }> = ({ strings 
       // Don't block the order completion if Slack notification fails
     }
 
+    setCompletedOrder(captureOrder());
     setOrderComplete(true);
     // Scroll to top of page for better UX
     window.scrollTo({ top: 0, behavior: 'smooth' });
     clearCart();
   };
 
-  if (state.items.length === 0 && !orderComplete) {
+  // The basket lives in localStorage, which the server cannot read, so the
+  // server always rendered the empty-basket state and the first client render
+  // (with items) failed hydration. Until hydrated, render only the heading
+  // both sides agree on.
+  if (!hydrated) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h2 className="text-2xl mb-4">{t.cartEmpty}</h2>
-          <Button onClick={onBack}>{t.continueShopping}</Button>
-        </div>
+      <div className="page-x pt-10 pb-section tab:pt-block">
+        <h1 className="type-h1">{t.heading}</h1>
       </div>
     );
   }
 
-  if (orderComplete) {
-    return <OrderComplete onContinueShopping={onBack} />;
+  if (state.items.length === 0 && !orderComplete) {
+    return (
+      <div className="page-x flex flex-col items-start gap-group pt-10 pb-section tab:pt-block">
+        <h1 className="type-h1">{t.cartEmpty}</h1>
+        <Button href={productsHref}>{t.continueShopping}</Button>
+      </div>
+    );
+  }
+
+  if (orderComplete && completedOrder) {
+    return <OrderComplete t={t} order={completedOrder} productsHref={productsHref} />;
   }
 
   const subtotal = getTotalPriceInCurrency(selectedCountry.currency);
-  
+
   // The form holds the real country code; the RATE is looked up by zone. Both
   // sides must agree: the server prices the same way, and if the displayed
   // total and the server's charge disagree the payment is refused, so getting
@@ -598,366 +737,296 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings }> = ({ strings 
   // How this destination writes an address: what the postal code is called,
   // and whether a region is a real thing there at all.
   const addressFormat = getAddressFormat(selectedCountryCode);
-  
+
     // Get shipping cost in user's selected currency
   const shipping: number = shippingRate ? shippingRate.costs[selectedCountry.currency] || 0 : 0;
-  
+
   // Calculate discount
-  const discountAmount = appliedDiscount 
-    ? Math.round((subtotal * appliedDiscount.percentage / 100) * 100) / 100 
+  const discountAmount = appliedDiscount
+    ? Math.round((subtotal * appliedDiscount.percentage / 100) * 100) / 100
     : 0;
-  
+
   const finalTax = 0; // No tax for any orders
   const finalShipping = shipping;
-  
+
   const total = Math.round((subtotal + finalShipping + finalTax - discountAmount) * 100) / 100; // Round to 2 decimal places
 
+  // Everything below is display: the same numbers as above, formatted the
+  // way the summary always formatted them.
+  const subtotalLabel = formatPrice({ GBP: subtotal, NOK: subtotal, USD: subtotal, DKK: subtotal, SEK: subtotal });
+  const shippingLabel = finalShipping === 0 ? t.free : formatPrice({
+    GBP: selectedCountry.currency === 'GBP' ? finalShipping : 0,
+    NOK: selectedCountry.currency === 'NOK' ? finalShipping : 0,
+    USD: selectedCountry.currency === 'USD' ? finalShipping : 0,
+    DKK: selectedCountry.currency === 'DKK' ? finalShipping : 0,
+    SEK: selectedCountry.currency === 'SEK' ? finalShipping : 0
+  });
+  const discountLabel = `−${formatPrice({ GBP: discountAmount, NOK: discountAmount, USD: discountAmount, DKK: discountAmount, SEK: discountAmount })}`;
+  const totalLabel = formatPrice({ GBP: total, NOK: total, USD: total, DKK: total, SEK: total });
+  const days = deliveryDays(shippingRate?.estimatedDays);
+  const printCount = state.items.reduce((n, item) => n + item.quantity, 0);
+  const printCountLabel = printCount === 1 ? v.printCountOne : fill(v.printCount, { n: printCount });
+  const totals = {
+    rows: [
+      { label: t.subtotal, value: subtotalLabel },
+      { label: t.shipping, value: shippingLabel },
+      ...(appliedDiscount ? [{ label: `${t.discount} (${appliedDiscount.percentage}%)`, value: discountLabel }] : []),
+    ],
+    note: days ? fill(v.deliveryNote, days) : undefined,
+    totalLabel: t.total,
+    total: totalLabel,
+  };
+
+  // The confirmation's copy of the order, taken just before clearCart().
+  function captureOrder(): CompletedOrder {
+    const region = formData.state ? ` ${formData.state}` : '';
+    return {
+      firstName: formData.firstName.trim(),
+      email: formData.email.trim(),
+      lines: state.items.map(orderLineProps),
+      totals,
+      address: [
+        `${formData.firstName} ${formData.lastName}`.trim(),
+        formData.address,
+        `${formData.city}${region} ${formData.zipCode}`.trim(),
+        destinationName(formData.country),
+      ].filter(Boolean).join(', '),
+      days,
+    };
+  }
+
+  // Joins a field to the payment form (id="checkout-form") so the browser
+  // validates it on Pay.
+  const joined = publishableKey ? { form: 'checkout-form' } : {};
+
   return (
-    <div className="min-h-screen py-8">
-      <div className="container mx-auto px-4 sm:px-6 max-w-6xl">
-        {/* Back Button */}
-        <Button variant="ghost" onClick={onBack} className="mb-6 -ml-4">
-          <ArrowLeft className="h-4 w-4 mr-2" />
-          Back to Cart
-        </Button>
+    <div>
+      {/* Mobile: the order folds into one bar under the checkout nav. */}
+      <button
+        type="button"
+        aria-expanded={summaryOpen}
+        aria-controls="checkout-order"
+        onClick={() => setSummaryOpen(open => !open)}
+        className="flex w-full items-center justify-between gap-4 bg-image-bg px-margin py-4 text-left type-small desk:hidden"
+      >
+        <span className="flex items-center gap-2">
+          {summaryOpen ? v.hideOrder : fill(v.showOrder, { count: printCountLabel })}
+          <span aria-hidden className={`inline-block transition-transform ${summaryOpen ? 'rotate-180' : ''}`}>⌄</span>
+        </span>
+        <span className="type-body">{totalLabel}</span>
+      </button>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Checkout Form */}
-          <div className="space-y-6 order-2 lg:order-1">
-            <div>
-              <h1 className="text-3xl tracking-tight mb-2">{t.heading}</h1>
-              <p className="text-muted-foreground">{t.subheading}</p>
-            </div>
+      <div className="page-x page-grid pt-10 pb-section tab:pt-block">
+        {/* Your order: the right column on desktop (6 + 4), folded under the
+            bar on mobile and tablet. */}
+        <aside
+          id="checkout-order"
+          aria-labelledby="checkout-order-heading"
+          className={`${summaryOpen ? 'block' : 'hidden'} col-span-full pb-12 desk:col-span-4 desk:col-start-9 desk:row-start-1 desk:block desk:pt-[118px] desk:pb-0`}
+        >
+          <div className="flex items-baseline justify-between gap-4 pb-2">
+            <h2 id="checkout-order-heading" className="type-h3">{v.yourOrder}</h2>
+            <p className="type-small">{printCountLabel}</p>
+          </div>
+          <ul>
+            {state.items.map(item => (
+              <OrderLine key={`${item.product.id}-${item.size || 'no-size'}-${item.frame || 'no-frame'}`} {...orderLineProps(item)} />
+            ))}
+          </ul>
 
-            <div className="space-y-6">
-              {/* Contact Information */}
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-lg flex items-center">
-                    <Mail className="h-5 w-5 mr-2" />
-                    Contact Information
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="email">{t.email}</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={(e) => handleInputChange('email', e.target.value)}
-                      required
-                    />
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Shipping Address */}
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-lg flex items-center">
-                    <Truck className="h-5 w-5 mr-2" />
-                    Shipping Address
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="firstName">{t.firstName}</Label>
-                      <Input
-                        id="firstName"
-                        value={formData.firstName}
-                        onChange={(e) => handleInputChange('firstName', e.target.value)}
-                        required
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="lastName">{t.lastName}</Label>
-                      <Input
-                        id="lastName"
-                        value={formData.lastName}
-                        onChange={(e) => handleInputChange('lastName', e.target.value)}
-                        required
-                      />
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="address">{t.address}</Label>
-                    <Input
-                      id="address"
-                      value={formData.address}
-                      onChange={(e) => handleInputChange('address', e.target.value)}
-                      required
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="country">{t.country}</Label>
-                    <CountryPicker
-                      t={t}
-                      value={formData.country}
-                      onChange={value => handleInputChange('country', value)}
-                    />
-                  </div>
-                  {/* Country sits above these because it decides what they
-                      are called and whether a region exists at all. */}
-                  <div
-                    className={`grid grid-cols-1 gap-4 ${
-                      addressFormat.hasRegion ? 'sm:grid-cols-3' : 'sm:grid-cols-2'
-                    }`}
-                  >
-                    <div className="space-y-2">
-                      <Label htmlFor="city">{t.city}</Label>
-                      <Input
-                        id="city"
-                        value={formData.city}
-                        onChange={(e) => handleInputChange('city', e.target.value)}
-                        required
-                      />
-                    </div>
-                    {addressFormat.hasRegion && (
-                      <div className="space-y-2">
-                        <Label htmlFor="state">{addressFormat.regionLabel}</Label>
-                        <Input
-                          id="state"
-                          value={formData.state}
-                          onChange={(e) => handleInputChange('state', e.target.value)}
-                          required
-                        />
-                      </div>
-                    )}
-                    <div className="space-y-2">
-                      <Label htmlFor="zipCode">{addressFormat.postalLabel}</Label>
-                      <Input
-                        id="zipCode"
-                        value={formData.zipCode}
-                        onChange={(e) => handleInputChange('zipCode', e.target.value)}
-                        placeholder={addressFormat.postalExample}
-                        required
-                      />
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Payment Information */}
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-lg flex items-center">
-                    <CreditCard className="h-5 w-5 mr-2" />
-                    Payment Information
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  {/* Payment form - always shown */}
-                  {publishableKey ? (
-                    <Elements stripe={stripePromise}>
-                      <PaymentForm
-                        total={total}
-                        currency={selectedCountry.currency}
-                        orderItems={state.items.map(item => ({
-                          productId: item.product.id,
-                          size: item.size,
-                          frame: item.frame,
-                          quantity: item.quantity,
-                        }))}
-                        countryCode={selectedCountryCode}
-                        t={t}
-                        customer={{
-                          email: formData.email,
-                          firstName: formData.firstName,
-                          lastName: formData.lastName,
-                          address: formData.address,
-                          city: formData.city,
-                          state: formData.state,
-                          zipCode: formData.zipCode,
-                        }}
-                        discountCode={appliedDiscount?.code}
-                        onSuccess={handlePaymentSuccess}
-                        onError={handlePaymentError}
-                      />
-                    </Elements>
-                  ) : (
-                    // Stripe failed to load
-                    <div className="space-y-4">
-                      <div className="p-4 bg-red-50 border border-red-200 rounded-md">
-                        <div className="flex items-center">
-                          <AlertCircle className="h-5 w-5 text-red-600 mr-2" />
-                          <div>
-                            <p className="text-sm font-medium text-red-800">
-                              Payment System Unavailable
-                            </p>
-                            <p className="text-xs text-red-600">
-                              Stripe payment system failed to load. Please check your configuration.
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                      <Button 
-                        type="button" 
-                        variant="outline" 
-                        onClick={handleTestMode}
-                        className="w-full"
-                      >
-                        🧪 Test Mode - Skip Payment
-                      </Button>
-                    </div>
-                  )}
-                  
-                  {/* Test Mode Button - Only show in development */}
-                  {process.env.NODE_ENV === 'development' && publishableKey && (
-                    <div className="mt-4 pt-4 border-t">
-                      <Button 
-                        type="button" 
-                        variant="outline" 
-                        onClick={handleTestMode}
-                        className="w-full text-sm"
-                      >
-                        🧪 Test Mode - Skip Payment
-                      </Button>
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
-            </div>
+          {/* Discount Code Section */}
+          <div className="flex flex-col gap-tight pt-6">
+            {appliedDiscount ? (
+              <div className="flex items-baseline justify-between gap-4">
+                <p className="type-small">
+                  {appliedDiscount.code}, {appliedDiscount.description}
+                  <br />
+                  {appliedDiscount.percentage}% {t.percentOff}
+                </p>
+                <Button variant="link" onClick={handleRemoveDiscount} className="type-body">{v.remove}</Button>
+              </div>
+            ) : (
+              <div className="flex items-end gap-6">
+                <TextField
+                  id="discount-code"
+                  label={t.discountPlaceholder}
+                  placeholder={v.codePlaceholder}
+                  value={discountCode}
+                  onChange={(e) => setDiscountCode(e.target.value)}
+                  onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); handleApplyDiscount(); } }}
+                  autoComplete="off"
+                  className="flex-1"
+                />
+                <Button variant="link" onClick={handleApplyDiscount} disabled={!discountCode.trim()} className="mb-2 type-body">
+                  {t.apply}
+                </Button>
+              </div>
+            )}
+            {discountError && <p role="alert" className="type-small text-error">{discountError}</p>}
           </div>
 
-          {/* Order Summary */}
-          <div className="space-y-6 order-1 lg:order-2">
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg">{t.orderSummary}</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                {state.items.map((item) => (
-                  <div key={`${item.product.id}-${item.size || 'no-size'}-${item.frame || 'no-frame'}`} className="flex gap-4">
-                    <div className="h-16 w-16 flex-shrink-0 overflow-hidden rounded-md border">
-                      {/* 64px box (h-16 w-16): without this hint SmartImage's
-                          '100vw' default makes the browser pick a full-viewport
-                          variant to fill a thumbnail. */}
-                      <SmartImage
-                        src={item.product.image}
-                        alt={item.product.name}
-                        className="h-full w-full object-cover"
-                        sizes="64px"
-                      />
-                    </div>
-                    <div className="flex-1 space-y-1">
-                      <h4 className="text-sm">{item.product.name}</h4>
-                      {item.size && (
-                        <p className="text-xs text-muted-foreground">
-                          Size: {item.size}
-                        </p>
-                      )}
-                      {item.frame && item.frame !== 'no-frame' && (
-                        <p className="text-xs text-muted-foreground">
-                          Frame: {getFrameName(item.frame)}
-                        </p>
-                      )}
-                      <p className="text-xs text-muted-foreground">Qty: {item.quantity}</p>
-                      <p className="text-sm">{formatPrice({ 
-                        GBP: Math.round(((getProductPrice(item.product, item.size, 'GBP') + getFramePrice(item.frame || 'no-frame', item.size, 'GBP')) * item.quantity) * 100) / 100, 
-                        NOK: Math.round(((getProductPrice(item.product, item.size, 'NOK') + getFramePrice(item.frame || 'no-frame', item.size, 'NOK')) * item.quantity) * 100) / 100, 
-                        USD: Math.round(((getProductPrice(item.product, item.size, 'USD') + getFramePrice(item.frame || 'no-frame', item.size, 'USD')) * item.quantity) * 100) / 100, 
-                        DKK: Math.round(((getProductPrice(item.product, item.size, 'DKK') + getFramePrice(item.frame || 'no-frame', item.size, 'DKK')) * item.quantity) * 100) / 100, 
-                        SEK: Math.round(((getProductPrice(item.product, item.size, 'SEK') + getFramePrice(item.frame || 'no-frame', item.size, 'SEK')) * item.quantity) * 100) / 100 
-                      })}</p>
-                    </div>
-                  </div>
-                ))}
+          <OrderTotals {...totals} />
+          <AssuranceLines lines={[v.assuranceMade, v.assuranceReturns, v.assuranceStripe]} />
+        </aside>
 
-                <Separator />
+        {/* Checkout Form */}
+        <div className="col-span-full flex flex-col gap-block desk:col-span-6 desk:row-start-1">
+          <h1 className="type-h1">{t.heading}</h1>
 
-                {/* Discount Code Section */}
-                <div className="space-y-3">
-                  <div className="flex gap-2">
-                    <Input
-                      placeholder={t.discountPlaceholder}
-                      value={discountCode}
-                      onChange={(e) => setDiscountCode(e.target.value)}
-                      className="flex-1"
-                    />
-                    <Button 
-                      type="button" 
-                      variant="outline" 
-                      onClick={handleApplyDiscount}
-                      disabled={!discountCode.trim()}
-                    >
-                      {t.apply}
-                    </Button>
-                  </div>
-                  
-                  {discountError && (
-                    <p className="text-sm text-red-600">{discountError}</p>
-                  )}
-                  
-                  {appliedDiscount && (
-                    <div className="flex items-center justify-between p-3 bg-green-50 border border-green-200 rounded-md">
-                      <div>
-                        <p className="text-sm font-medium text-green-800">
-                          {appliedDiscount.code} - {appliedDiscount.description}
-                        </p>
-                        <p className="text-xs text-green-600">
-                          {appliedDiscount.percentage}% off applied
-                        </p>
-                      </div>
-                      <Button 
-                        type="button" 
-                        variant="ghost" 
-                        size="sm"
-                        onClick={handleRemoveDiscount}
-                        className="text-green-600 hover:text-green-800"
-                      >
-                        Remove
-                      </Button>
-                    </div>
-                  )}
-                </div>
+          <FormSection id="checkout-contact" number="01" title={v.contactTitle} subtitle={v.contactNote}>
+            <TextField
+              id="email"
+              label={t.email}
+              type="email"
+              autoComplete="email"
+              placeholder="you@example.com"
+              value={formData.email}
+              onChange={(e) => handleInputChange('email', e.target.value)}
+              required
+              {...joined}
+            />
+          </FormSection>
 
-                <Separator />
+          <FormSection id="checkout-address" number="02" title={v.deliveryTitle}>
+            <div className="grid grid-cols-1 gap-group tab:grid-cols-2 tab:gap-x-8">
+              <TextField
+                id="firstName"
+                label={t.firstName}
+                autoComplete="given-name"
+                value={formData.firstName}
+                onChange={(e) => handleInputChange('firstName', e.target.value)}
+                required
+                {...joined}
+              />
+              <TextField
+                id="lastName"
+                label={t.lastName}
+                autoComplete="family-name"
+                value={formData.lastName}
+                onChange={(e) => handleInputChange('lastName', e.target.value)}
+                required
+                {...joined}
+              />
+            </div>
+            <TextField
+              id="address"
+              label={t.address}
+              autoComplete="street-address"
+              value={formData.address}
+              onChange={(e) => handleInputChange('address', e.target.value)}
+              required
+              {...joined}
+            />
+            <div className="flex flex-col gap-tight">
+              <label htmlFor="country" className="type-small">{t.country}</label>
+              <CountryPicker
+                t={t}
+                value={formData.country}
+                onChange={value => handleInputChange('country', value)}
+              />
+            </div>
+            {/* Country sits above these because it decides what they
+                are called and whether a region exists at all. */}
+            <div
+              className={`grid grid-cols-1 gap-group tab:gap-x-8 ${
+                addressFormat.hasRegion ? 'tab:grid-cols-3' : 'tab:grid-cols-2'
+              }`}
+            >
+              <TextField
+                id="city"
+                label={t.city}
+                autoComplete="address-level2"
+                value={formData.city}
+                onChange={(e) => handleInputChange('city', e.target.value)}
+                required
+                {...joined}
+              />
+              {addressFormat.hasRegion && (
+                <TextField
+                  id="state"
+                  label={addressFormat.regionLabel ?? ''}
+                  autoComplete="address-level1"
+                  value={formData.state}
+                  onChange={(e) => handleInputChange('state', e.target.value)}
+                  required
+                  {...joined}
+                />
+              )}
+              <TextField
+                id="zipCode"
+                label={addressFormat.postalLabel}
+                autoComplete="postal-code"
+                value={formData.zipCode}
+                onChange={(e) => handleInputChange('zipCode', e.target.value)}
+                placeholder={addressFormat.postalExample}
+                required
+                {...joined}
+              />
+            </div>
+          </FormSection>
 
-                <div className="space-y-2">
-                  <div className="flex justify-between text-sm">
-                    <span>{t.subtotal}</span>
-                    <span>{formatPrice({ GBP: subtotal, NOK: subtotal, USD: subtotal, DKK: subtotal, SEK: subtotal })}</span>
-                  </div>
-                  <div className="flex justify-between text-sm">
-                    <span>{t.shipping}</span>
-                    <span>{finalShipping === 0 ? t.free : formatPrice({ 
-                      GBP: selectedCountry.currency === 'GBP' ? finalShipping : 0,
-                      NOK: selectedCountry.currency === 'NOK' ? finalShipping : 0,
-                      USD: selectedCountry.currency === 'USD' ? finalShipping : 0,
-                      DKK: selectedCountry.currency === 'DKK' ? finalShipping : 0,
-                      SEK: selectedCountry.currency === 'SEK' ? finalShipping : 0
-                    })}</span>
-                  </div>
-                  {appliedDiscount && (
-                    <div className="flex justify-between text-sm text-green-600">
-                      <span>{t.discount} ({appliedDiscount.percentage}%)</span>
-                      <span>-{formatPrice({ GBP: discountAmount, NOK: discountAmount, USD: discountAmount, DKK: discountAmount, SEK: discountAmount })}</span>
-                    </div>
-                  )}
-                  <Separator />
-                  <div className="flex justify-between">
-                    <span>{t.total}</span>
-                    <span>{formatPrice({ GBP: total, NOK: total, USD: total, DKK: total, SEK: total })}</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+          <FormSection id="checkout-payment" number="03" title={v.paymentTitle}>
+            {/* Payment form - always shown */}
+            {publishableKey ? (
+              <Elements stripe={stripePromise}>
+                <PaymentForm
+                  total={total}
+                  currency={selectedCountry.currency}
+                  totalLabel={totalLabel}
+                  orderItems={state.items.map(item => ({
+                    productId: item.product.id,
+                    size: item.size,
+                    frame: item.frame,
+                    quantity: item.quantity,
+                  }))}
+                  countryCode={selectedCountryCode}
+                  t={t}
+                  customer={{
+                    email: formData.email,
+                    firstName: formData.firstName,
+                    lastName: formData.lastName,
+                    address: formData.address,
+                    city: formData.city,
+                    state: formData.state,
+                    zipCode: formData.zipCode,
+                  }}
+                  discountCode={appliedDiscount?.code}
+                  onSuccess={handlePaymentSuccess}
+                  onError={handlePaymentError}
+                />
+              </Elements>
+            ) : (
+              // Stripe failed to load
+              <div className="flex flex-col gap-group">
+                <FormError
+                  title={v.unavailableTitle}
+                  body={v.unavailableBody}
+                  contact={fill(v.contactHelp, { email: COMPANY.email })}
+                />
+                <Button
+                  type="button"
+                  variant="secondary"
+                  onClick={handleTestMode}
+                  className="self-start"
+                >
+                  {v.testMode}
+                </Button>
+              </div>
+            )}
 
-            {/* Security Notice */}
-            <Card>
-              <CardContent className="pt-6">
-                <div className="flex items-start space-x-3">
-                  <Shield className="h-5 w-5 mt-0.5 text-green-600" />
-                  <div>
-                    <h4 className="text-sm mb-1">{t.secureHeading}</h4>
-                    <p className="text-xs text-muted-foreground">{t.secureBody}</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+            {/* Test Mode Button - Only show in development */}
+            {process.env.NODE_ENV === 'development' && publishableKey && (
+              <div className="border-t border-line pt-4">
+                <Button
+                  type="button"
+                  variant="secondary"
+                  onClick={handleTestMode}
+                >
+                  {v.testMode}
+                </Button>
+              </div>
+            )}
+          </FormSection>
         </div>
       </div>
     </div>

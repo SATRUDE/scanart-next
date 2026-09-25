@@ -4,6 +4,7 @@ import { Cart } from '@/components/Cart';
 import { Footer } from '@/components/Footer';
 import { ScrollDepth } from '@/components/ScrollDepth';
 import { getAllProducts } from '@/lib/products';
+import { buildSearchIndex } from '@/lib/search-index';
 import { BASE_URL, SITE_NAME } from '@/lib/site';
 import Script from 'next/script';
 import { Hedvig_Letters_Sans, Hedvig_Letters_Serif } from 'next/font/google';
@@ -43,6 +44,10 @@ export async function SiteDocument({
 }) {
   const products = await getAllProducts();
   const categories = [...new Set(products.map(p => p.category))].sort();
+  // The search overlay searches on the client, over this small index in the
+  // page's language (prints, artists, stories). Built here, where the
+  // language is known, so the pages stay static.
+  const search = await buildSearchIndex(lang);
 
   return (
     <html lang={lang} className={`${serif.variable} ${sans.variable}`}>
@@ -104,7 +109,7 @@ pintrk('page');`}
           <div className="min-h-screen bg-bg">
             {/* First-visit suggestion for Norwegian-speaking browsers; renders
                 nothing on /no pages, after dismissal, or for everyone else. */}
-            <Header categories={categories} />
+            <Header categories={categories} search={search} />
             <main>{children}</main>
             <Cart />
           </div>
