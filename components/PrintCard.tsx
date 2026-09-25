@@ -6,6 +6,7 @@ import { SmartImage } from './SmartImage';
 import { getArtistById } from '@/data/artists';
 import { formatDisplayPrice, getLowestProductPrices } from '@/lib/pricing';
 import { printImageAlt, type AltLocale } from '@/lib/product-image-alt';
+import { warmImage } from '@/lib/warm-image';
 
 interface PrintCardProps {
   product: {
@@ -101,7 +102,8 @@ export const PrintCard: React.FC<PrintCardProps> = ({
             the landing templates, and outside next/image those pages served
             the full-size source PNGs (7.5 MB on /scandinavian-wall-art). */}
         <SmartImage
-          src={product.image}
+          // The warm-backdrop copy of the standard shot (lib/warm-image.ts).
+          src={warmImage(product.image)}
           // Descriptive for image search: the work, its maker, what it is, in
           // the page's language. One helper for the whole site.
           alt={printImageAlt(

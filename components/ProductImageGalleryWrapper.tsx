@@ -6,6 +6,7 @@ import * as Dialog from '@radix-ui/react-dialog';
 import { usePathname } from 'next/navigation';
 import { track } from '@/lib/analytics';
 import type { ProductImage } from '@/lib/product-image-alt';
+import { warmImage } from '@/lib/warm-image';
 import { chromeAria, isNoPath } from '@/lib/i18n';
 import { galleryEn, fill, type GalleryStrings } from '@/lib/product-page-copy';
 import type { ProductVideo as ProductVideoData } from '@/config/product-videos';
@@ -55,7 +56,9 @@ export const ProductImageGalleryWrapper: React.FC<ProductImageGalleryWrapperProp
 
   const media: Media[] = validImages.map((img, i) => ({
     kind: 'image' as const,
-    src: img.src,
+    // Shown with the warm backdrop (lib/warm-image.ts); the JSON-LD and the
+    // image sitemap keep declaring the original file.
+    src: warmImage(img.src),
     alt: img.alt,
     caption: i === 0 ? strings.captions.print : strings.captions.scene,
   }));
