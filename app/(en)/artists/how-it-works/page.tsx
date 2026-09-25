@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { LegalPage, LegalSection } from '@/components/LegalPage';
+import { HowItWorksBody } from '@/components/v2/artists/HowItWorksBody';
 import { ArtistApplyBand } from '@/components/ArtistApplyBand';
 import { COMPANY } from '@/config/company';
 import { BAND, INTRO, LAST_UPDATED, SECTIONS } from '@/lib/artist-how-it-works';
@@ -16,11 +16,10 @@ import { BAND, INTRO, LAST_UPDATED, SECTIONS } from '@/lib/artist-how-it-works';
  *    because a blocked page never gets read, so the noindex directive never
  *    gets obeyed, and a blocked-but-linked URL can still surface.
  *
- * No new design: this reuses the LegalPage template (Stan's Figma node 21:2)
- * that Privacy, Terms and Delivery already run on, and closes on the same
- * ArtistApplyBand as /artists. A plainly set page of text is the right answer
- * for something one person reads once, and reusing both keeps it off the
- * design sign-off gate entirely.
+ * No V2 frame: it takes the V2 template for undesigned pages (Page header +
+ * Content sections, components/v2/artists/HowItWorksBody.tsx) and closes on
+ * the same ArtistApplyBand as /artists. A plainly set page of text is the right
+ * answer for something one person reads once.
  *
  * Mark's steer, /peggy chat 30 Aug 2026: sell it a bit, and skip the detail.
  * So the copy leads with what an artist gains and leaves out the clauses that
@@ -33,45 +32,30 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-const sections: LegalSection[] = SECTIONS.map(section => ({
-  heading: section.heading,
-  body: (
-    <>
-      {section.body.map(paragraph => (
-        <p key={paragraph}>{paragraph}</p>
-      ))}
-    </>
-  ),
-}));
-
 export default function ArtistHowItWorksPage() {
   return (
-    <>
-      <LegalPage
-        title="How selling prints with us works"
-        lastUpdated={LAST_UPDATED}
-        intro={<p>{INTRO}</p>}
-        sections={sections}
+    <HowItWorksBody
+      locale="en"
+      title="How selling prints with us works"
+      breadcrumb={[{ label: 'Home', href: '/' }, { label: 'How selling prints with us works' }]}
+      lastUpdated={`Last updated: ${LAST_UPDATED}`}
+      intro={INTRO}
+      sections={SECTIONS}
+    >
+      <ArtistApplyBand
+        className="mt-section"
+        heading={BAND.heading}
+        body={
+          <p>
+            {BAND.bodyBefore}
+            <a href={`mailto:${COMPANY.email}`}>{COMPANY.email}</a>
+            {BAND.bodyAfter}
+          </p>
+        }
+        ctaLabel={BAND.cta}
+        href="/artists/apply"
+        source="how-it-works"
       />
-      <div className="container mx-auto px-4 sm:px-6 pb-16">
-        <div className="max-w-2xl mx-auto">
-          <ArtistApplyBand
-            heading={BAND.heading}
-            body={
-              <p>
-                {BAND.bodyBefore}
-                <a href={`mailto:${COMPANY.email}`} className="underline hover:text-neutral-900">
-                  {COMPANY.email}
-                </a>
-                {BAND.bodyAfter}
-              </p>
-            }
-            ctaLabel={BAND.cta}
-            href="/artists/apply"
-            source="how-it-works"
-          />
-        </div>
-      </div>
-    </>
+    </HowItWorksBody>
   );
 }

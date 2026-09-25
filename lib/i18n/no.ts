@@ -961,7 +961,7 @@ export const no = {
       searchPrefix: 'Søk',
       /** "16 trykk" - same word in singular and plural. */
       printsSuffix: 'trykk',
-      allChip: 'Alle',
+      allChip: 'Alle trykk',
       sortLabel: 'Sorter trykkene',
       sortName: 'Navn',
       sortPriceLow: 'Pris: lav til høy',
@@ -969,6 +969,30 @@ export const no = {
       outOfStock: 'Utsolgt',
       emptyHeading: 'Ingen trykk funnet',
       emptyCta: 'Se alle trykkene',
+      printsSrHeading: 'Trykk',
+      artistAll: 'Kunstner',
+      artistFilterLabel: 'Filtrer etter kunstner',
+      sizeAll: 'Størrelse',
+      sizeFilterLabel: 'Filtrer etter størrelse',
+      sortPrefix: 'Sorter:',
+      clearSearch: 'Tøm søket',
+    },
+    /** The V2 catalogue page's own copy. It deliberately does not repeat the
+     *  /nordic-art text (docs/v2-seo.md, item 4); /nordic-art is English only,
+     *  so the Norwegian page points at the wall-art landing instead. */
+    page: {
+      /** {artists} and {countries} are filled from data/artists.ts. */
+      lead: 'Trykk av {artists} uavhengige kunstnere som bor og arbeider i {countries}. Hvert trykk lages på bestilling, med eller uten ramme, og sendes over hele verden.',
+      countries: { Norway: 'Norge', Sweden: 'Sverige', Denmark: 'Danmark', Finland: 'Finland', Iceland: 'Island' } as Record<string, string>,
+      and: 'og',
+      contentHeading: 'Slik kjøper du et trykk',
+      contentP1:
+        'Hvert trykk lages på bestilling når du kjøper det, på arkivpapir av museumskvalitet, i stedet for å hentes fra en lagerhylle. De fleste er 50 x 70 cm, og de kvadratiske illustrasjonene er 50 x 50 cm. Hver produktside viser størrelsen og prisen før noe havner i handlekurven.',
+      contentP2:
+        'Velg trykket uten ramme, eller med ramme i tre, svart eller hvitt, tilpasset trykket. Vi sender over hele verden, og fraktkostnaden vises i kassen.',
+      contentP3Before: 'Vet du allerede hvilket rom trykket skal henge i? ',
+      contentP3Link: 'Skandinavisk veggkunst',
+      contentP3After: ' tar for seg hele galleriet, rom for rom.',
     },
     meta: {
       title: 'Nordiske og skandinaviske kunsttrykk: en kuratert samling',
@@ -1086,8 +1110,6 @@ export const no = {
     },
     errorTitle: 'Søknaden din ble ikke sendt',
     errorMarked: 'Feltene som trenger en titt, er merket over.',
-    sendFailedContactBefore: 'Vil den fortsatt ikke sendes, skriv til ',
-    sendFailedContactAfter: '.',
     seeWhoWeShow: 'Før du skriver, se hvem vi allerede viser.',
     meetTheArtists: 'Møt kunstnerne',
   } satisfies ApplyCopy,

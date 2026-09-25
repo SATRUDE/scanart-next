@@ -49,3 +49,11 @@ export const artistEditorial: Record<string, ArtistEditorial> = {
       'Wallin belongs in the rooms people actually use. [Sunday Brunch](/product/sunday-brunch) and [Massa Äpplen](/product/massa-applen) were made for a kitchen or dining wall, where they keep company with Sia Siamos\'s table scenes among our [botanical prints](/category/botanical). [Rosa Blomster](/product/rosa-blomster) is soft enough for a bedroom. [Small House Big Ocean](/product/small-house-big-ocean) is the quiet one, a line drawing that suits a child\'s room as well as a living room and hangs well next to anything with colour in it. All four are 50 x 70 cm, sold framed in wood, black or white, or unframed.',
   },
 };
+
+// The room scene the V2 profile hero opens on (Figma "Room · Slingshot",
+// "Room · Dancer"), as a lib/shop-scenes.ts key. Any artist not listed opens on
+// the first of their prints that has a scene, and on no image if none does.
+export const artistHeroScene: Record<string, string> = {
+  'simen-wahlqvist': 'slingshot',
+  'helene-brox': 'dancer',
+};

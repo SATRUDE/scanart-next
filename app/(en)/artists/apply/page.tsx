@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { ArtistApplyForm } from '@/components/ArtistApplyForm';
+import { ApplyLayout } from '@/components/v2/artists/ApplyLayout';
 import { COPY } from '@/lib/artist-application';
 import { socialCard } from '@/lib/site';
 import { hreflangPair } from '@/lib/i18n';
@@ -39,6 +39,10 @@ export const metadata: Metadata = {
  * 3. Word markers rather than asterisks, since most fields are required and an
  *    asterisk needs a legend.
  *
+ * V2 (Figma Apply 221:4130 / mobile 221:4271): intro on 4 columns, the form
+ * on 6 of the other 8. Layout lives in components/v2/artists/ApplyLayout.tsx,
+ * shared with the Norwegian twin.
+ *
  * The positioning is Mark's standing rule of 2026-08-05: curated expression of
  * interest, never open signup. Nothing here promises a place, and the copy
  * deliberately stops short of promising a reply, because whether we answer
@@ -47,30 +51,15 @@ export const metadata: Metadata = {
  */
 export default function ArtistApplyPage() {
   return (
-    <div className="container mx-auto px-8 py-16">
-      <nav aria-label="Breadcrumb" className="mb-10 text-sm text-muted-foreground">
-        <Link href="/artists" className="hover:text-foreground">
-          Artists
-        </Link>
-        <span className="mx-2" aria-hidden="true">
-          /
-        </span>
-        <span className="text-foreground">Show us your work</span>
-      </nav>
-
-      <div className="grid grid-cols-1 gap-12 lg:grid-cols-3 lg:gap-16">
-        <div className="lg:col-span-1">
-          <h1 className="text-3xl text-neutral-900">{COPY.h1}</h1>
-          <p className="mt-4 text-muted-foreground leading-relaxed">{COPY.intro}</p>
-          <p className="mt-4 text-muted-foreground leading-relaxed">{COPY.intro2}</p>
-
-          <p className="mt-6 text-sm text-muted-foreground">{COPY.onlyRoute}</p>
-        </div>
-
-        <div className="lg:col-span-2">
-          <ArtistApplyForm />
-        </div>
-      </div>
-    </div>
+    <ApplyLayout
+      locale="en"
+      breadcrumb={[{ label: 'Artists', href: '/artists' }, { label: COPY.h1 }]}
+      title={COPY.h1}
+      intro={[COPY.intro, COPY.intro2]}
+      onlyRoute={COPY.onlyRoute}
+      fitCheck={{ text: COPY.seeWhoWeShow, label: COPY.meetTheArtists, href: '/artists' }}
+    >
+      <ArtistApplyForm />
+    </ApplyLayout>
   );
 }

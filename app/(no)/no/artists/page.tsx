@@ -1,13 +1,15 @@
 import type { Metadata } from 'next';
 import { artists } from '@/data/artists';
 import { getProductsByArtist } from '@/lib/products';
-import { ArtistsList, ArtistWithCount } from '@/components/ArtistsList';
 import { ArtistApplyBand } from '@/components/ArtistApplyBand';
+import { PageHeader } from '@/components/v2/ui';
+import { ArtistCardList } from '@/components/v2/artists/ArtistCard';
+import { cityOf, portraitFor } from '@/components/v2/artists/artist-data';
 import { BASE_URL, socialCard } from '@/lib/site';
 import { hreflangPair } from '@/lib/i18n';
 import { no } from '@/lib/i18n/no';
 
-// The Norwegian artists hub: app/artists/page.tsx mirrored exactly, with bios
+// The Norwegian artists hub: app/(en)/artists/page.tsx mirrored exactly (V2), with bios
 // and locations swapped for the Norwegian copy in lib/i18n/no.ts.
 const t = no.artistsIndex;
 
@@ -25,7 +27,7 @@ export default async function NorwegianArtistsPage() {
   // Only artists with published prints get a detail page (see
   // app/no/artist/[slug]/generateStaticParams and app/sitemap.ts), so the hub
   // lists exactly those, ordered by how much work they have.
-  const withCounts: ArtistWithCount[] = [];
+  const withCounts: ((typeof artists)[number] & { printCount: number })[] = [];
   for (const artist of artists) {
     const products = await getProductsByArtist(artist.id);
     if (products.length > 0) {
@@ -57,31 +59,46 @@ export default async function NorwegianArtistsPage() {
     },
   };
 
-  return (
-    <div className="container mx-auto px-8 py-8">
-      <div className="max-w-3xl mx-auto">
-        <div className="mb-8">
-          <h1 className="text-3xl text-neutral-900 mb-2">{t.heading}</h1>
-          <p className="text-muted-foreground">{withCounts.length} {t.countLabel}</p>
-          <p className="text-neutral-600 mt-2">
-            {t.intro}
-          </p>
-        </div>
-        <ArtistsList artists={withCounts} locale="no" printLabels={{ one: no.shared.printOne, other: no.shared.printOther }} />
+  const totalPrints = withCounts.reduce((sum, a) => sum + a.printCount, 0);
+  const prints = (n: number) => `${n} ${n === 1 ? no.shared.printOne : no.shared.printOther}`;
+  const cards = withCounts.map(artist => {
+    const { src, initials } = portraitFor(artist);
+    return {
+      slug: artist.slug,
+      name: artist.name,
+      portrait: src,
+      initials,
+      about: artist.bio,
+      city: cityOf(artist.location),
+      prints: prints(artist.printCount),
+    };
+  });
 
-        {/* The twin of the band on app/(en)/artists/page.tsx. /no/artists/apply
-            has existed since the Norwegian tree landed, but nothing on the
-            Norwegian side linked to it, so the roster was a dead end and the
-            form was reachable only by typing the URL. */}
-        <ArtistApplyBand
-          heading={t.apply.heading}
-          body={<p>{t.apply.body}</p>}
-          ctaLabel={t.apply.cta}
-          href="/no/artists/apply"
-          source="artists-index"
-          locale="no"
-        />
+  return (
+    <div className="page-x pb-section">
+      <PageHeader
+        title={t.heading}
+        lead={<p>{t.intro}</p>}
+        meta={[`${withCounts.length} ${t.countLabel}`, prints(totalPrints)]}
+        locale="no"
+      />
+      <div className="mt-10 tab:mt-32">
+        <ArtistCardList artists={cards} hrefPrefix="/no" priorityCount={3} />
       </div>
+
+      {/* The twin of the band on app/(en)/artists/page.tsx. /no/artists/apply
+          has existed since the Norwegian tree landed, but nothing on the
+          Norwegian side linked to it, so the roster was a dead end and the
+          form was reachable only by typing the URL. */}
+      <ArtistApplyBand
+        className="mt-section"
+        heading={t.apply.heading}
+        body={<p>{t.apply.body}</p>}
+        ctaLabel={t.apply.cta}
+        href="/no/artists/apply"
+        source="artists-index"
+        locale="no"
+      />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
     </div>
   );
