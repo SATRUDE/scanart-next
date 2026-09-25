@@ -1,32 +1,23 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { TrackedLink } from '@/components/TrackedLink';
-import {
-  Breadcrumb,
-  BreadcrumbList,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from '@/components/ui/breadcrumb';
-import { getAllProducts, getProductBySlug, getRecommendedProducts } from '@/lib/products';
+import { getAllProducts, getProductBySlug, getRecommendedProducts, getProductsByArtist } from '@/lib/products';
 import { getArtistById } from '@/data/artists';
-import { ProductActions } from '@/components/ProductActions';
-import { ProductImageGalleryWrapper } from '@/components/ProductImageGalleryWrapper';
-import { ArtistSection } from '@/components/ArtistSection';
-import { PrintCard } from '@/components/PrintCard';
 import { getLowestProductPrices } from '@/lib/pricing';
 import { priceValidUntil } from '@/lib/price-validity';
 import { metaSnippet } from '@/lib/meta-snippet';
 import { productListingDetails } from '@/lib/product-listing-details';
 import { productImages } from '@/lib/product-image-alt';
 import { productImageLd } from '@/lib/licensable-image';
-import { FeedbackIntercept } from '@/components/FeedbackIntercept';
 import { BASE_URL, SITE_NAME, TWITTER_SITE } from '@/lib/site';
 import { hreflangPair } from '@/lib/i18n';
 import { no } from '@/lib/i18n/no';
+import { getCategoryLandingByCategory } from '@/lib/categories';
+import { getPublishedArtists } from '@/lib/published-artists';
+import { getProductVideo } from '@/config/product-videos';
+import { ProductView } from '@/components/v2/product/ProductView';
+import { artistFactsFor } from '@/components/v2/product/artist-facts';
 
-// The Norwegian product page: app/product/[slug]/page.tsx mirrored exactly,
+// The Norwegian product page: app/(en)/product/[slug]/page.tsx mirrored exactly,
 // with the catalogue copy taken from lib/i18n/no.ts and every link, canonical
 // and JSON-LD URL kept inside the /no tree. Prices, sizes, frames and the
 // cart are shared with the English page: nothing about the purchase changes,
@@ -113,65 +104,37 @@ export default async function NorwegianProductPage({
     returnFees: 'https://schema.org/FreeReturn',
   };
 
+  const landing = getCategoryLandingByCategory(product.category);
+  const artistProducts = artist ? await getProductsByArtist(artist.id) : [];
+  const exploreArtists = (await getPublishedArtists()).map(a => ({ slug: a.slug, name: a.name }));
+  const artistCopy = artist ? no.artists[artist.slug] : undefined;
+
   return (
-    <div className="container mx-auto px-8 py-8">
-      <Breadcrumb className="mb-8">
-        <BreadcrumbList>
-          <BreadcrumbItem>
-            <BreadcrumbLink asChild><TrackedLink event="breadcrumb-click" eventData={{ level: 'home' }} href="/no">{no.shared.home}</TrackedLink></BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbLink asChild><TrackedLink event="breadcrumb-click" eventData={{ level: 'products' }} href="/no/products">{t.breadcrumbPrints}</TrackedLink></BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbPage>{product.name}</BreadcrumbPage>
-          </BreadcrumbItem>
-        </BreadcrumbList>
-      </Breadcrumb>
-
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        <ProductImageGalleryWrapper images={images} productName={product.name} />
-
-        <div className="space-y-6">
-          <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <span>{product.artist || product.brand}</span>
-            <span>&bull;</span>
-            <span>{categoryLabel}</span>
-          </div>
-
-          <h1 className="text-3xl text-neutral-900">{product.name}</h1>
-
-          {description && (
-            <p className="text-muted-foreground leading-relaxed">{description}</p>
-          )}
-
-          {listingDetails && (
-            <p className="text-sm text-muted-foreground leading-relaxed">{listingDetails.summary}</p>
-          )}
-
-          <ProductActions product={product} strings={t.actions} />
-          <FeedbackIntercept placement="product" />
-
-          {artist && (
-            <ArtistSection artist={artist} locale="no" copy={no.artists[artist.slug]} />
-          )}
-        </div>
-      </div>
-
-      {recommended.length > 0 && (
-        <div className="mt-16">
-          <h2 className="text-2xl text-neutral-900 mb-8">{t.youMayAlsoLike}</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {recommended.map(rec => (
-              <TrackedLink key={rec.id} event="related-product-click" eventData={{ from: product.slug, to: rec.slug }} href={`/no/product/${rec.slug}`}>
-                <PrintCard product={rec} sizes="(max-width: 768px) 50vw, 25vw" outOfStockLabel={no.shared.outOfStock} locale="no" />
-              </TrackedLink>
-            ))}
-          </div>
-        </div>
-      )}
+    <>
+      <ProductView
+        locale="no"
+        product={product}
+        images={images}
+        video={getProductVideo(product.slug)}
+        description={description}
+        listingSummary={listingDetails?.summary}
+        categoryLabel={categoryLabel}
+        categoryLink={
+          landing
+            ? { href: `/no/category/${landing.slug}`, label: (no.crossLinks.categoryLabels as Record<string, string>)[landing.slug] ?? landing.heading }
+            : undefined
+        }
+        artist={artist ? { ...artist, location: artistCopy?.location ?? artist.location, bio: artistCopy?.bio ?? artist.bio } : null}
+        artistStatement={artist ? no.artistStatements[artist.slug] : undefined}
+        artistFacts={artistFactsFor(artistProducts)}
+        recommended={recommended}
+        exploreArtists={exploreArtists}
+        strings={t.page}
+        galleryStrings={t.gallery}
+        actionsStrings={t.actions}
+        crossLinksStrings={no.crossLinks}
+        outOfStockLabel={no.shared.outOfStock}
+      />
 
       {/* Product Open Graph tags, rendered directly because Next's typed
           Metadata API has no product og:type and its `other` field emits
@@ -231,6 +194,6 @@ export default async function NorwegianProductPage({
           }),
         }}
       />
-    </div>
+    </>
   );
 }

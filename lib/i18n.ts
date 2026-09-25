@@ -619,6 +619,8 @@ export interface ProductActionsStrings {
   assurance?: { printed: string; delivery: string; returns: string };
 }
 
+type Step = { title: string; body: string };
+
 /** Labels on the checkout page. Strings only: the payment flow itself is
  *  identical in both trees. */
 export interface CheckoutStrings {
@@ -687,7 +689,7 @@ export interface CheckoutStrings {
     thanksNoName: string;
     placed: string;
     nextHeading: string;
-    steps: { made: [string, string]; sent: [string, string]; sentNoEstimate: string; decide: [string, string] };
+    steps: { made: Step; sent: Step; sentNoEstimate: string; decide: Step };
     keepBrowsing: string;
     deliveringTo: string;
   };

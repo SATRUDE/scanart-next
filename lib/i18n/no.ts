@@ -1402,10 +1402,10 @@ export const no = {
         placed: 'Bestillingen er lagt inn. Stripe har sendt kvitteringen til {email}.',
         nextHeading: 'Dette skjer nå',
         steps: {
-          made: ['Laget på bestilling', 'Trykkene lages på arkivpapir, og rammes inn hvis du valgte ramme, på 1 til 4 virkedager.'],
-          sent: ['Sendt til deg', 'Leveringen tar {from} til {to} virkedager etter at det er laget.'],
+          made: { title: 'Laget på bestilling', body: 'Trykkene lages på arkivpapir, og rammes inn hvis du valgte ramme, på 1 til 4 virkedager.' },
+          sent: { title: 'Sendt til deg', body: 'Leveringen tar {from} til {to} virkedager etter at det er laget.' },
           sentNoEstimate: 'Leveringstiden begynner når bestillingen er sendt, og varierer med hvor den skal.',
-          decide: ['Fjorten dager til å bestemme deg', 'Hvis det ikke passer på veggen, har du 14 dager til å ombestemme deg.'],
+          decide: { title: 'Fjorten dager til å bestemme deg', body: 'Hvis det ikke passer på veggen, har du 14 dager til å ombestemme deg.' },
         },
         keepBrowsing: 'Se flere trykk',
         deliveringTo: 'Leveres til',

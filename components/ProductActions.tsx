@@ -1,24 +1,39 @@
 'use client';
 
-import React, { useState, useEffect, useMemo } from 'react';
-import { Plus, Minus, ShoppingBag } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import React, { useState, useEffect, useMemo, useId } from 'react';
 import type { ProductActionsStrings } from '@/lib/i18n';
+import { useCart, Product } from '@/contexts/CartContext';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { getProductPrices, formatDisplayPrice } from '@/lib/pricing';
+import { frameOptions, getFramePrice } from '@/config/frame';
+import { shippingRates } from '@/config/shipping';
+import { track } from '@/lib/analytics';
+import { Button, Hairline } from '@/components/v2/ui';
+import { sizeLabel } from '@/components/PrintCard';
 
-const EN: ProductActionsStrings = {
+const EN: ProductActionsStrings & { assurance: NonNullable<ProductActionsStrings['assurance']> } = {
   size: 'Size',
   frame: 'Frame',
   decreaseQuantity: 'Decrease quantity',
   increaseQuantity: 'Increase quantity',
-  soldOut: 'Sold Out',
-  selectSize: 'Select Size',
-  addToCart: 'Add to Cart',
+  soldOut: 'Sold out',
+  selectSize: 'Select a size',
+  addToCart: 'Add to basket',
+  frameLabels: {
+    'no-frame': 'None',
+    wood: 'Wood',
+    black: 'Black',
+    white: 'White',
+  },
+  // Facts from data/help.ts ("How long will my order take?", "Can I return my
+  // order?", "What are your prints made of?"). {price} is the cheapest rate
+  // outside the UK in config/shipping.ts, in the buyer's currency.
+  assurance: {
+    printed: 'Printed to order on archival paper, made in 1–4 working days',
+    delivery: 'UK delivery 2–3 working days, worldwide from {price}',
+    returns: '14 days to change your mind',
+  },
 };
-import { useCart, Product } from '@/contexts/CartContext';
-import { useLanguage } from '@/contexts/LanguageContext';
-import { getProductPrices } from '@/lib/pricing';
-import { frameOptions, getFramePrice } from '@/config/frame';
-import { track } from '@/lib/analytics';
 
 interface ProductActionsProps {
   product: Product;
@@ -30,14 +45,31 @@ const SIZE_ORDER: Record<string, number> = {
   'A5': 1, 'A4': 2, 'A3': 3, '50x50cm': 4, 'A2': 5, '50x70cm': 6, 'A1': 7, 'A0': 8,
 };
 
+/**
+ * The buying half of the V2 product panel (Figma 116:400): the Size and Frame
+ * option groups (241:3726), Add to basket with the total in the button, and
+ * the assurance lines (237:3729).
+ *
+ * The logic is the one this component has always had: sizes sorted and the
+ * first selected by default, frame prices by size from config/frame.ts, the
+ * total in the visitor's currency, and the add-to-cart / select-size /
+ * select-frame events. Two things changed with the design: the quantity
+ * stepper moved to the basket (Quantity 237:3701 lives on Basket item), so
+ * the button adds one; and adding opens the basket panel, which is the
+ * design's confirmation on a product page (the Toast is for surfaces where the
+ * panel does not open).
+ *
+ * Both groups are shown even with one option (the Option group rule), as
+ * native radio buttons so the choice is announced and arrow keys work.
+ */
 export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings }) => {
-  const t = strings ?? EN;
-  const { addToCart } = useCart();
-  const { formatPrice } = useLanguage();
-  const [quantity, setQuantity] = useState(1);
+  const t = { ...EN, ...strings, assurance: strings?.assurance ?? EN.assurance };
+  const { addToCart, state, toggleCart } = useCart();
+  const { formatPrice, selectedCountry } = useLanguage();
+  const quantity = 1;
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [selectedFrame, setSelectedFrame] = useState<string>('no-frame');
-
+  const groupId = useId();
 
   // Memoised because the array's identity feeds the useEffect below: a fresh
   // array every render would re-run the effect every render.
@@ -69,93 +101,122 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings
       size: selectedSize || undefined,
       frame: selectedFrame || undefined,
     });
+    if (!state.isOpen) toggleCart();
   };
 
   const currentPrices = getProductPrices(product, selectedSize || undefined);
-  const framePriceGBP = getFramePrice(selectedFrame, selectedSize || undefined, 'GBP');
-  const framePriceNOK = getFramePrice(selectedFrame, selectedSize || undefined, 'NOK');
-  const framePriceUSD = getFramePrice(selectedFrame, selectedSize || undefined, 'USD');
-  const framePriceDKK = getFramePrice(selectedFrame, selectedSize || undefined, 'DKK');
-  const framePriceSEK = getFramePrice(selectedFrame, selectedSize || undefined, 'SEK');
+  const framePrices = {
+    GBP: getFramePrice(selectedFrame, selectedSize || undefined, 'GBP'),
+    NOK: getFramePrice(selectedFrame, selectedSize || undefined, 'NOK'),
+    USD: getFramePrice(selectedFrame, selectedSize || undefined, 'USD'),
+    DKK: getFramePrice(selectedFrame, selectedSize || undefined, 'DKK'),
+    SEK: getFramePrice(selectedFrame, selectedSize || undefined, 'SEK'),
+  };
 
   const totalPrices = {
-    GBP: (currentPrices.GBP || 0) + framePriceGBP,
-    NOK: (currentPrices.NOK || 0) + framePriceNOK,
-    USD: (currentPrices.USD || 0) + framePriceUSD,
-    DKK: (currentPrices.DKK || 0) + framePriceDKK,
-    SEK: (currentPrices.SEK || 0) + framePriceSEK,
+    GBP: (currentPrices.GBP || 0) + framePrices.GBP,
+    NOK: (currentPrices.NOK || 0) + framePrices.NOK,
+    USD: (currentPrices.USD || 0) + framePrices.USD,
+    DKK: (currentPrices.DKK || 0) + framePrices.DKK,
+    SEK: (currentPrices.SEK || 0) + framePrices.SEK,
   };
 
   const hasAvailableSizes = availableSizes.length > 0;
+  const frameLabel = (id: string) => t.frameLabels?.[id] ?? frameOptions.find(f => f.id === id)?.name ?? id;
+
+  // "worldwide from £6.59": the cheapest delivery outside the UK, in the
+  // buyer's currency, straight from config/shipping.ts.
+  const currency = selectedCountry.currency;
+  const worldwideFrom = Math.min(...shippingRates.filter(r => r.countryCode !== 'GB').map(r => r.costs[currency]));
+  const deliveryLine = t.assurance.delivery.replace('{price}', formatDisplayPrice(worldwideFrom, currency));
+
+  const optionCls = 'peer sr-only';
+  const labelCls =
+    'flex cursor-pointer items-center gap-tight type-body tab:type-small opacity-55 transition-opacity hover:opacity-100 peer-checked:opacity-100 peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-focus';
 
   return (
-    <div className="space-y-6">
-      <div className="text-2xl">{formatPrice(totalPrices)}</div>
-
-      {availableSizes.length > 0 && (
-        <div>
-          <p className="text-sm text-muted-foreground mb-2">{t.size}</p>
-          <div className="flex flex-wrap gap-2">
-            {availableSizes.map(size => (
-              <button
-                key={size}
-                onClick={() => {
+    <div className="flex flex-col gap-group">
+      <fieldset className="flex flex-col gap-3 border-t border-ink pt-4 tab:border-line tab:pt-5">
+        <legend className="float-left w-full type-small tab:type-caption">{t.size}</legend>
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+          {availableSizes.map(size => (
+            <div key={size} className="relative">
+              <input
+                type="radio"
+                id={`${groupId}-size-${size}`}
+                name={`${groupId}-size`}
+                value={size}
+                checked={selectedSize === size}
+                onChange={() => {
                   setSelectedSize(size);
                   track('select-size', { productId: product.id, productName: product.name, size });
                 }}
-                className={`px-4 py-2 border rounded text-sm transition-colors ${
-                  selectedSize === size ? 'border-primary bg-primary text-primary-foreground' : 'border-border hover:border-primary'
-                }`}
-              >
-                {size}
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
-
-      <div>
-        <p className="text-sm text-muted-foreground mb-2">{t.frame}</p>
-        <div className="flex flex-wrap gap-2">
-          {frameOptions.map(frame => (
-            <button
-              key={frame.id}
-              onClick={() => {
-                setSelectedFrame(frame.id);
-                track('select-frame', { productId: product.id, productName: product.name, frame: frame.id });
-              }}
-              className={`px-4 py-2 border rounded text-sm transition-colors ${
-                selectedFrame === frame.id ? 'border-primary bg-primary text-primary-foreground' : 'border-border hover:border-primary'
-              }`}
-            >
-              {t.frameLabels?.[frame.id] ?? frame.name}
-            </button>
+                className={optionCls}
+              />
+              <label htmlFor={`${groupId}-size-${size}`} className={labelCls}>
+                {selectedSize === size && <Hairline />}
+                {sizeLabel(size)}
+              </label>
+            </div>
           ))}
         </div>
+      </fieldset>
+
+      <fieldset className="flex flex-col gap-3 border-t border-ink pt-4 tab:border-t-0 tab:pt-0">
+        <legend className="float-left flex w-full items-start justify-between type-small tab:type-caption">
+          <span>{t.frame}</span>
+          {selectedFrame !== 'no-frame' && (
+            <span>
+              {frameLabel(selectedFrame)} +{formatPrice(framePrices)}
+            </span>
+          )}
+        </legend>
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+          {frameOptions.map(frame => (
+            <div key={frame.id} className="relative">
+              <input
+                type="radio"
+                id={`${groupId}-frame-${frame.id}`}
+                name={`${groupId}-frame`}
+                value={frame.id}
+                checked={selectedFrame === frame.id}
+                onChange={() => {
+                  setSelectedFrame(frame.id);
+                  track('select-frame', { productId: product.id, productName: product.name, frame: frame.id });
+                }}
+                className={optionCls}
+              />
+              <label htmlFor={`${groupId}-frame-${frame.id}`} className={labelCls}>
+                {selectedFrame === frame.id && <Hairline />}
+                {frameLabel(frame.id)}
+              </label>
+            </div>
+          ))}
+        </div>
+      </fieldset>
+
+      <div className="p-[3px]">
+        <Button
+          onClick={handleAddToCart}
+          disabled={!hasAvailableSizes || (product.sizes && !selectedSize)}
+          fullWidth
+          price={hasAvailableSizes && selectedSize ? formatPrice(totalPrices) : undefined}
+          // Watched by FeedbackIntercept: the card refuses to render if it would
+          // cover this. Occlusion is the test, not co-presence.
+          data-primary-cta="add-to-cart"
+        >
+          {!hasAvailableSizes ? t.soldOut : (product.sizes && !selectedSize) ? t.selectSize : t.addToCart}
+        </Button>
       </div>
 
-      <div className="flex items-center space-x-3">
-        <Button size="icon" variant="outline" aria-label={t.decreaseQuantity} onClick={() => setQuantity(Math.max(1, quantity - 1))}>
-          <Minus className="h-4 w-4" />
-        </Button>
-        <span className="w-8 text-center">{quantity}</span>
-        <Button size="icon" variant="outline" aria-label={t.increaseQuantity} onClick={() => setQuantity(quantity + 1)}>
-          <Plus className="h-4 w-4" />
-        </Button>
-      </div>
-
-      <Button
-        onClick={handleAddToCart}
-        disabled={!hasAvailableSizes || (product.sizes && !selectedSize)}
-        className="w-full"
-        size="lg"
-        // Watched by FeedbackIntercept: the card refuses to render if it would
-        // cover this. Occlusion is the test, not co-presence.
-        data-primary-cta="add-to-cart"
-      >
-        <ShoppingBag className="h-4 w-4 mr-2" />
-        {!hasAvailableSizes ? t.soldOut : (product.sizes && !selectedSize) ? t.selectSize : t.addToCart}
-      </Button>
+      <ul className="flex flex-col gap-[6px] tab:gap-1">
+        {[t.assurance.printed, deliveryLine, t.assurance.returns].map(line => (
+          <li key={line} className="flex items-start gap-[10px] type-caption tab:items-center tab:gap-tight">
+            <Hairline className="mt-[9px] tab:mt-0" />
+            <span>{line}</span>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
