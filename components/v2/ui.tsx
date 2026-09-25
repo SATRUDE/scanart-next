@@ -149,7 +149,7 @@ export function PageHeader({
   return (
     <header className={`flex flex-col gap-4 tab:gap-6 pt-10 tab:pt-block ${className}`}>
       {breadcrumb && <Breadcrumb items={breadcrumb} locale={locale} />}
-      <h1 className={`type-display tab:max-w-[1061px] ${titleClassName}`}>{title}</h1>
+      <h1 className={`type-h1 tab:type-display tab:max-w-[1061px] ${titleClassName}`}>{title}</h1>
       {lead && <div className="type-body tab:type-lead tab:max-w-[624px]">{lead}</div>}
       {meta && meta.length > 0 && <Meta items={meta} className="type-small" />}
       {children}
