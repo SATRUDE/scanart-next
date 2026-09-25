@@ -53,7 +53,7 @@ function deliveryGuide(currency: Currency, regions: Record<string, string>, and:
  * All the cart logic is CartContext's, unchanged: items, quantity, remove,
  * totals in the buyer's currency. This file only draws it, and keeps the
  * funnel events it always fired (cart-open, remove-from-cart, checkout).
- * Checkout stays at /checkout.
+ * Checkout follows the page's language: /no/checkout from the Norwegian tree.
  */
 export const Cart: React.FC = () => {
   const { state, removeFromCart, updateQuantity, closeCart, getTotalPriceInCurrency, getTotalItems } = useCart();
@@ -87,8 +87,9 @@ export const Cart: React.FC = () => {
       currency,
     });
     closeCart();
-    // The checkout route stays /checkout for both trees, as before.
-    router.push('/checkout');
+    // Norwegian visitors check out in Norwegian: /no/checkout exists and is
+    // noindex like the English one.
+    router.push(locale === 'no' ? '/no/checkout' : '/checkout');
   };
 
   return (
