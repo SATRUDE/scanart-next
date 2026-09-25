@@ -6,7 +6,14 @@ import { ScrollDepth } from '@/components/ScrollDepth';
 import { getAllProducts } from '@/lib/products';
 import { BASE_URL, SITE_NAME } from '@/lib/site';
 import Script from 'next/script';
+import { Hedvig_Letters_Sans, Hedvig_Letters_Serif } from 'next/font/google';
 import './globals.css';
+
+// The brand's two faces, self-hosted by next/font so there is no request to
+// Google at runtime and no layout shift when they arrive. globals.css reads
+// them through these variables (--font-serif and --font-sans).
+const serif = Hedvig_Letters_Serif({ subsets: ['latin'], weight: '400', variable: '--font-hedvig-serif', display: 'swap' });
+const sans = Hedvig_Letters_Sans({ subsets: ['latin'], weight: '400', variable: '--font-hedvig-sans', display: 'swap' });
 
 /**
  * The document every page shares, with the language as a prop.
@@ -38,7 +45,7 @@ export async function SiteDocument({
   const categories = [...new Set(products.map(p => p.category))].sort();
 
   return (
-    <html lang={lang}>
+    <html lang={lang} className={`${serif.variable} ${sans.variable}`}>
       <head>
         {/* Journal RSS autodiscovery, so readers and aggregators can find
             /feed.xml from any page. Absolute href: some feed readers do not
@@ -50,8 +57,6 @@ export async function SiteDocument({
           title={`${SITE_NAME} Journal`}
           href={`${BASE_URL}/feed.xml`}
         />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <Script
           defer
           src="https://datamachine.vercel.app/script.js"
@@ -96,7 +101,7 @@ pintrk('page');`}
           />
         </noscript>
         <Providers>
-          <div className="min-h-screen bg-background">
+          <div className="min-h-screen bg-bg">
             {/* First-visit suggestion for Norwegian-speaking browsers; renders
                 nothing on /no pages, after dismissal, or for everyone else. */}
             <Header categories={categories} />

@@ -60,7 +60,7 @@ export const no = {
   },
 
   crossLinks: {
-    heading: 'Utforsk mer',
+    heading: 'Utforsk butikken',
     allPrints: 'Alle trykk',
     wallArt: 'Skandinavisk veggkunst',
     nordicArt: 'Nordisk kunst',

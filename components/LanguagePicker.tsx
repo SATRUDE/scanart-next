@@ -3,7 +3,6 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Globe } from 'lucide-react';
 import {
   Popover,
   PopoverContent,
@@ -56,19 +55,18 @@ export const LanguagePicker: React.FC = () => {
   return (
     <Popover>
       <PopoverTrigger
-        className="flex items-center gap-2 rounded px-2 py-1.5 text-sm hover:bg-muted/50"
+        className="flex items-center gap-[6px] type-small transition-opacity hover:opacity-60"
         aria-label={`${t.languageAndCurrency}: ${LOCALE_LABEL[locale]}, ${selectedCountry.currency}`}
         data-language="true"
       >
-        <Globe className="h-4 w-4" aria-hidden="true" />
-        <span>
-          {LOCALE_LABEL[locale]}
-          <span className="text-muted-foreground"> · {selectedCountry.currency}</span>
-        </span>
+        <span>{locale.toUpperCase()}</span>
+        <span aria-hidden className="hairline" />
+        <span>{selectedCountry.currency}</span>
+        <svg aria-hidden width="8" height="5" viewBox="0 0 8 5" fill="none" className="ml-[2px]"><path d="M.5.5 4 4 7.5.5" stroke="currentColor" /></svg>
       </PopoverTrigger>
-      <PopoverContent align="end" className="w-64 p-0">
+      <PopoverContent align="end" className="w-64 rounded-none border-line p-0 shadow-none">
         <div className="border-b p-3">
-          <p className="mb-2 text-xs font-medium uppercase tracking-wider text-muted-foreground">
+          <p className="mb-2 type-caption">
             {locale === 'no' ? 'Språk' : 'Language'}
           </p>
           <ul className="space-y-0.5">
@@ -77,7 +75,7 @@ export const LanguagePicker: React.FC = () => {
                 <li
                   key={o.code}
                   aria-current="true"
-                  className="rounded bg-secondary px-2 py-1.5 text-sm"
+                  className="bg-surface px-2 py-1.5 type-small"
                 >
                   {o.label}
                 </li>
@@ -86,13 +84,13 @@ export const LanguagePicker: React.FC = () => {
                   <Link
                     href={o.href}
                     onClick={() => track('language-change', { to: o.code, from: locale })}
-                    className="block rounded px-2 py-1.5 text-sm hover:bg-secondary"
+                    className="block px-2 py-1.5 type-small hover:bg-surface"
                   >
                     {o.label}
                   </Link>
                 </li>
               ) : (
-                <li key={o.code} className="px-2 py-1.5 text-sm text-muted-foreground">
+                <li key={o.code} className="px-2 py-1.5 type-small">
                   {o.label}
                   <span className="ml-1 text-xs">(not on this page yet)</span>
                 </li>
@@ -110,7 +108,7 @@ export const LanguagePicker: React.FC = () => {
         </div>
 
         <div className="p-3">
-          <p className="mb-2 text-xs font-medium uppercase tracking-wider text-muted-foreground">
+          <p className="mb-2 type-caption">
             {locale === 'no' ? 'Valuta' : 'Currency'}
           </p>
           <ul className="space-y-0.5">
@@ -120,8 +118,8 @@ export const LanguagePicker: React.FC = () => {
                   type="button"
                   onClick={() => chooseCurrency(c.code)}
                   aria-current={c.code === selectedCountry.code ? 'true' : undefined}
-                  className={`flex w-full items-center justify-between rounded px-2 py-1.5 text-left text-sm ${
-                    c.code === selectedCountry.code ? 'bg-secondary' : 'hover:bg-secondary'
+                  className={`flex w-full items-center justify-between px-2 py-1.5 text-left type-small ${
+                    c.code === selectedCountry.code ? 'bg-surface' : 'hover:bg-surface'
                   }`}
                 >
                   <span>{c.name}</span>

@@ -63,6 +63,12 @@ export function hreflangPair(enPath: string): Record<string, string> {
 // ---------------------------------------------------------------------------
 
 export interface HeaderStrings {
+  /** V2 nav text controls: Basket (n), Menu, Close. */
+  basket: string;
+  menu: string;
+  close: string;
+  /** V2 checkout header (Nav · checkout). */
+  checkout: { back: string; backShort: string; secure: string; secureShort: string };
   announcement: string;
   nav: {
     prints: string;
@@ -112,6 +118,10 @@ export interface FooterStrings {
   newsletter: string;
   shopAll: string;
   sendEmail: string;
+  /** V2 footer: the season selector (winter, spring, summer, autumn) and its label for screen readers. */
+  seasons: { winter: string; spring: string; summer: string; autumn: string; label: string };
+  /** V2 footer: heading of the crawlable "shop by" line. */
+  shopBy: string;
   privacy: string;
   terms: string;
   delivery: string;
@@ -122,6 +132,10 @@ export interface FooterStrings {
 // so English pages render identically.
 export const headerStrings: Record<Locale, HeaderStrings> = {
   en: {
+    basket: 'Basket',
+    menu: 'Menu',
+    close: 'Close',
+    checkout: { back: 'Back to basket', backShort: 'Basket', secure: 'Secure checkout', secureShort: 'Secure' },
     announcement: 'From Scandinavian Artists, delivered worldwide',
     nav: {
       prints: 'Prints',
@@ -147,6 +161,10 @@ export const headerStrings: Record<Locale, HeaderStrings> = {
     categoryLabels: {},
   },
   no: {
+    basket: 'Handlekurv',
+    menu: 'Meny',
+    close: 'Lukk',
+    checkout: { back: 'Tilbake til handlekurven', backShort: 'Kurv', secure: 'Sikker betaling', secureShort: 'Sikker' },
     announcement: 'Fra skandinaviske kunstnere, levert til hele verden',
     nav: {
       prints: 'Trykk',
@@ -190,6 +208,8 @@ export const headerStrings: Record<Locale, HeaderStrings> = {
  * name, the currency code), so these stay plain strings like the rest.
  */
 export interface ChromeAriaStrings {
+  /** V2 landmark labels: the header nav, the mobile menu, the footer nav and breadcrumbs. */
+  landmarks: { main: string; menu: string; footer: string; breadcrumb: string };
   cart: {
     /** Prefixed to the print's name: "Remove Dragon" / "Fjern Dragon". */
     removePrefix: string;
@@ -233,6 +253,7 @@ export interface ChromeAriaStrings {
 
 export const chromeAria: Record<Locale, ChromeAriaStrings> = {
   en: {
+    landmarks: { main: 'Main', menu: 'Menu', footer: 'Footer', breadcrumb: 'Breadcrumb' },
     cart: {
       removePrefix: 'Remove',
       decreaseQuantity: 'Decrease quantity',
@@ -269,6 +290,7 @@ export const chromeAria: Record<Locale, ChromeAriaStrings> = {
     },
   },
   no: {
+    landmarks: { main: 'Hovedmeny', menu: 'Meny', footer: 'Bunntekst', breadcrumb: 'Brødsmulesti' },
     cart: {
       removePrefix: 'Fjern',
       decreaseQuantity: 'Reduser antall',
@@ -322,6 +344,8 @@ export const footerStrings: Record<Locale, FooterStrings> = {
     newsletter: 'Newsletter',
     shopAll: 'Shop All',
     sendEmail: 'Send Email',
+    seasons: { winter: 'Winter', spring: 'Spring', summer: 'Summer', autumn: 'Autumn', label: 'Season shown in the footer' },
+    shopBy: 'Shop by',
     privacy: 'Privacy',
     terms: 'Terms',
     delivery: 'Delivery',
@@ -351,6 +375,8 @@ export const footerStrings: Record<Locale, FooterStrings> = {
     newsletter: 'Nyhetsbrev',
     shopAll: 'Alle trykk',
     sendEmail: 'Send e-post',
+    seasons: { winter: 'Vinter', spring: 'Vår', summer: 'Sommer', autumn: 'Høst', label: 'Årstiden som vises i bunnteksten' },
+    shopBy: 'Utforsk',
     privacy: 'Personvern',
     terms: 'Vilkår',
     delivery: 'Levering',
