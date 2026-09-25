@@ -9,11 +9,15 @@ import { LanguagePicker } from '@/components/LanguagePicker';
 import { SearchOverlay } from '@/components/v2/SearchOverlay';
 import { getCategoryLandingByCategory } from '@/lib/categories';
 import { chromeAria, headerStrings, isNoPath } from '@/lib/i18n';
+import type { SearchIndex } from '@/lib/site-search';
 
 interface HeaderProps {
   // Live catalogue categories, derived server-side in the root layout so the
   // nav never links to an empty category or misses a populated one
   categories: string[];
+  // The search overlay's small index (lib/search-index.ts), built by the same
+  // root layout in the page's language.
+  search?: SearchIndex;
 }
 
 /**
@@ -25,7 +29,7 @@ interface HeaderProps {
  * keeps doing its crawl job (docs/v2-seo.md). Search opens an overlay that
  * submits to the catalogue, as the previous header did.
  */
-export const Header: React.FC<HeaderProps> = ({ categories }) => {
+export const Header: React.FC<HeaderProps> = ({ categories, search }) => {
   const { getTotalItems, toggleCart } = useCart();
   const totalItems = getTotalItems();
   const pathname = usePathname();
@@ -98,7 +102,7 @@ export const Header: React.FC<HeaderProps> = ({ categories }) => {
           {/* Mobile: Menu · wordmark · Basket */}
           <button
             type="button"
-            className="type-small w-[72px] text-left tab:hidden"
+            className="type-small flex-1 basis-0 text-left tab:hidden"
             aria-label={t.aria.openMenu}
             aria-expanded={mobileMenuOpen}
             onClick={() => setMobileMenuOpen(true)}
@@ -106,7 +110,7 @@ export const Header: React.FC<HeaderProps> = ({ categories }) => {
             {t.menu}
           </button>
 
-          <nav aria-label={chromeAria[isNo ? 'no' : 'en'].landmarks.main} className="hidden tab:flex flex-1 gap-8 type-small">
+          <nav aria-label={chromeAria[isNo ? 'no' : 'en'].landmarks.main} className="hidden tab:flex flex-1 basis-0 gap-8 type-small">
             {nav.map(item => (
               <Link
                 key={item.key}
@@ -119,11 +123,11 @@ export const Header: React.FC<HeaderProps> = ({ categories }) => {
             ))}
           </nav>
 
-          <Link href={homeHref} className="flex-1 tab:flex-none text-center font-serif text-[22px] leading-[28px] tab:text-[34px] tab:leading-[42px] tab:tracking-[-0.01em] whitespace-nowrap">
+          <Link href={homeHref} className="flex-none px-3 text-center font-serif text-[22px] leading-[28px] tab:text-[34px] tab:leading-[42px] tab:tracking-[-0.01em] whitespace-nowrap">
             Scandinavian Art
           </Link>
 
-          <div className="flex tab:flex-1 items-center justify-end gap-8 type-small">
+          <div className="flex flex-1 basis-0 items-center justify-end gap-8 type-small">
             <button type="button" className="hidden tab:inline transition-opacity hover:opacity-60" onClick={() => setIsSearchOpen(true)}>
               {t.aria.search}
             </button>
@@ -134,7 +138,7 @@ export const Header: React.FC<HeaderProps> = ({ categories }) => {
               type="button"
               onClick={toggleCart}
               aria-label={`${t.aria.openCart}, ${totalItems}`}
-              className="w-[72px] tab:w-auto text-right transition-opacity hover:opacity-60 whitespace-nowrap"
+              className="text-right transition-opacity hover:opacity-60 whitespace-nowrap"
             >
               {basketLabel}
             </button>
@@ -142,7 +146,7 @@ export const Header: React.FC<HeaderProps> = ({ categories }) => {
         </div>
       </header>
 
-      <SearchOverlay open={isSearchOpen} onClose={() => setIsSearchOpen(false)} isNo={isNo} />
+      <SearchOverlay open={isSearchOpen} onClose={() => setIsSearchOpen(false)} isNo={isNo} index={search} />
 
       <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
         <SheetContent side="left" className="w-full max-w-none border-0 bg-bg p-0 sm:max-w-none">

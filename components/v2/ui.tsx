@@ -90,7 +90,9 @@ export function TextLink({
   const cls = `group/link inline-flex items-center gap-2 ${size === 'body' ? 'type-body' : 'type-small'} transition-colors hover:text-brand ${className}`;
   const inner = (
     <>
-      <span aria-hidden className="h-px w-0 bg-brand transition-[width] duration-200 ease-out group-hover/link:w-3" />
+      {/* The hairline grows in front on hover; at rest it takes no space, so
+          the link sits flush on its column (the negative margin cancels the gap). */}
+      <span aria-hidden className="-mr-2 h-px w-0 bg-brand transition-[width,margin] duration-200 ease-out group-hover/link:mr-0 group-hover/link:w-3" />
       <span>{children}</span>
       {arrow && <span aria-hidden>→</span>}
     </>
