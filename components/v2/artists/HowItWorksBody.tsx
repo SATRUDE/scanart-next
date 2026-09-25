@@ -32,7 +32,7 @@ export function HowItWorksBody({
   return (
     <div className="page-x pb-section">
       <PageHeader title={title} breadcrumb={breadcrumb} locale={locale} lead={<p>{intro}</p>} meta={[lastUpdated]} />
-      <div className="mt-section flex flex-col gap-block tab:gap-32">
+      <div className="mt-section flex flex-col gap-band tab:gap-32">
         {sections.map((section, i) => (
           <ContentSection key={section.heading} id={`part-${i + 1}`} title={section.heading}>
             <div className="flex flex-col gap-6 type-body tab:max-w-[624px]">

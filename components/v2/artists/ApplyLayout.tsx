@@ -25,7 +25,7 @@ export function ApplyLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="page-x page-grid gap-y-block pt-10 pb-section tab:pt-block">
+    <div className="page-x page-grid gap-y-band pt-10 pb-section tab:pt-band">
       <div className="col-span-full flex flex-col gap-group desk:col-span-4">
         <Breadcrumb items={breadcrumb} locale={locale} />
         <h1 className="type-h1">{title}</h1>

@@ -147,7 +147,7 @@ export function PageHeader({
   children?: React.ReactNode;
 }) {
   return (
-    <header className={`flex flex-col gap-4 tab:gap-6 pt-10 tab:pt-block ${className}`}>
+    <header className={`flex flex-col gap-4 tab:gap-6 pt-10 tab:pt-band ${className}`}>
       {breadcrumb && <Breadcrumb items={breadcrumb} locale={locale} />}
       <h1 className={`type-h1 tab:type-display tab:max-w-[1061px] ${titleClassName}`}>{title}</h1>
       {lead && <div className="type-body tab:type-lead tab:max-w-[624px]">{lead}</div>}
@@ -253,7 +253,7 @@ export function ContentSection({
       <div className="col-span-full border-t border-ink pt-4 tab:pt-6 desk:col-span-4">
         <Heading id={id} className="type-h2">{title}</Heading>
       </div>
-      <div className="col-span-full flex flex-col gap-10 tab:gap-block desk:col-span-8 desk:border-t desk:border-ink desk:pt-6">
+      <div className="col-span-full flex flex-col gap-10 tab:gap-band desk:col-span-8 desk:border-t desk:border-ink desk:pt-6">
         {intro && <div className="type-body tab:max-w-[624px] [&_p+p]:mt-6 [&_a]:text-text-accent">{intro}</div>}
         {children}
         {footer && <div className="flex flex-wrap items-center gap-8">{footer}</div>}

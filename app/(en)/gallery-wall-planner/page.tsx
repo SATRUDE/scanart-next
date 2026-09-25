@@ -83,7 +83,7 @@ export default function GalleryWallPlannerPage() {
       </PageHeader>
 
       {/* The page's hero picture, and its LCP: preloaded, not lazy. */}
-      <div className="relative mt-block aspect-square w-full overflow-hidden bg-image-bg tab:aspect-[2/1]">
+      <div className="relative mt-band aspect-square w-full overflow-hidden bg-image-bg tab:aspect-[2/1]">
         <Image
           src="/images/journal/gallery-wall-living-room.jpg"
           alt="A gallery wall of framed prints above a sofa in a Scandinavian living room"

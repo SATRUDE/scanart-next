@@ -66,7 +66,7 @@ export function HomePage({ locale, strings: t, data, help, artistLocations = {},
   return (
     <div className="pb-section">
       {/* Hero: the headline, its actions 32 below, then the row of rooms. */}
-      <section className="pt-10 tab:pt-block">
+      <section className="pt-10 tab:pt-band">
         <div className="page-x">
           <h1 className="type-display tab:max-w-[635px] desk:!text-[60px] desk:!leading-[80px]">{t.heading}</h1>
           <div className="mt-group flex items-center gap-group desk:mt-8">
@@ -78,7 +78,7 @@ export function HomePage({ locale, strings: t, data, help, artistLocations = {},
           role="region"
           aria-label={t.carouselLabel}
           tabIndex={0}
-          className="scrollbar-hide mt-10 overflow-x-auto overscroll-x-contain tab:mt-block"
+          className="scrollbar-hide mt-10 overflow-x-auto overscroll-x-contain tab:mt-band"
           style={BLEED_LEFT}
         >
           <ul className="flex w-max items-end gap-gutter pr-margin">
@@ -125,7 +125,7 @@ export function HomePage({ locale, strings: t, data, help, artistLocations = {},
       {/* New prints */}
       <section aria-labelledby="new-prints" className="page-x mt-section">
         <SectionHeader id="new-prints" title={t.newPrints.heading} link={{ href: `${p}/products`, label: t.newPrints.link }} />
-        <ul className="mt-6 grid grid-cols-1 items-start gap-x-gutter gap-y-10 tab:mt-block tab:grid-cols-3">
+        <ul className="mt-6 grid grid-cols-1 items-start gap-x-gutter gap-y-10 tab:mt-band tab:grid-cols-3">
           {data.newPrints.map(({ product }, i) => (
             <li key={product.slug}>
               <TrackedLink href={`${p}/product/${product.slug}`} event="homepage-section-click" eventData={ev('new-prints', product.slug)} className="group flex flex-col gap-tight">
@@ -160,7 +160,7 @@ export function HomePage({ locale, strings: t, data, help, artistLocations = {},
       {data.wallPrints.length > 0 && (
         <section aria-labelledby="start-from-your-wall" className="page-x mt-section">
           <SectionHeader id="start-from-your-wall" title={t.wall.heading} link={{ href: `${p}/inspire`, label: t.wall.inspire }} />
-          <div className="mt-6 tab:mt-block">
+          <div className="mt-6 tab:mt-band">
             <StartFromYourWall prints={data.wallPrints} strings={t.wall} locale={locale} />
           </div>
         </section>
@@ -185,7 +185,7 @@ export function HomePage({ locale, strings: t, data, help, artistLocations = {},
         </div>
         <ol className="col-span-full desk:col-span-8">
           {t.howItWorks.rows.map((row, i) => (
-            <li key={row.title} className="flex flex-col gap-2 border-t border-ink pt-4 pb-6 tab:grid tab:grid-cols-8 tab:gap-x-gutter tab:pt-6 tab:pb-block">
+            <li key={row.title} className="flex flex-col gap-2 border-t border-ink pt-4 pb-6 tab:grid tab:grid-cols-8 tab:gap-x-gutter tab:pt-6 tab:pb-band">
               <p aria-hidden className="type-h3 text-text-accent tab:col-span-1">{String(i + 1).padStart(2, '0')}</p>
               <h3 className="type-h3 tab:col-span-3">{row.title}</h3>
               <p className="type-body tab:col-span-4">{row.body}</p>
@@ -254,7 +254,7 @@ export function HomePage({ locale, strings: t, data, help, artistLocations = {},
       {data.articles.length > 0 && (
         <section aria-labelledby="journal" className="page-x mt-section">
           <SectionHeader id="journal" title={t.journal.heading} link={{ href: `${p}/journal`, label: t.journal.all }} />
-          <div className="-mx-margin mt-6 overflow-x-auto overscroll-x-contain scrollbar-hide tab:mx-0 tab:mt-block tab:overflow-visible">
+          <div className="-mx-margin mt-6 overflow-x-auto overscroll-x-contain scrollbar-hide tab:mx-0 tab:mt-band tab:overflow-visible">
             <ul className="flex w-max items-start gap-gutter px-margin tab:grid tab:w-full tab:grid-cols-3 tab:px-0">
               {data.articles.map((article, i) => (
                 <li key={article.id} className="w-[260px] tab:w-auto">
@@ -291,7 +291,7 @@ export function HomePage({ locale, strings: t, data, help, artistLocations = {},
         <div className="border-t border-ink pt-4 tab:pt-6 desk:col-span-4 desk:col-start-1 desk:row-start-1">
           <h2 id="questions" className="type-h2">{t.questions.heading}</h2>
         </div>
-        <div className="mt-6 border-b border-ink tab:mt-block desk:col-span-8 desk:col-start-5 desk:row-span-2 desk:row-start-1 desk:mt-0">
+        <div className="mt-6 border-b border-ink tab:mt-band desk:col-span-8 desk:col-start-5 desk:row-span-2 desk:row-start-1 desk:mt-0">
           {HOME_QUESTIONS.map(([g, j], i) => {
             const item = help[g]?.items[j];
             if (!item) return null;
@@ -305,7 +305,7 @@ export function HomePage({ locale, strings: t, data, help, artistLocations = {},
                     <span className="hidden group-open/q:inline">−</span>
                   </span>
                 </summary>
-                <div className="pb-6 type-body tab:max-w-[624px] desk:max-w-[624px] desk:pb-block desk:pl-[109px]">{item.a}</div>
+                <div className="pb-6 type-body tab:max-w-[624px] desk:max-w-[624px] desk:pb-band desk:pl-[109px]">{item.a}</div>
               </details>
             );
           })}

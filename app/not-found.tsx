@@ -54,7 +54,7 @@ export default async function NotFound() {
       {/* React hoists this into <head>; not-found has no metadata export. */}
       <title>Page not found | Scandinavian Art</title>
       <TrackNotFound />
-      <div className="page-x pt-6 pb-section tab:pt-block">
+      <div className="page-x pt-6 pb-section tab:pt-band">
         <FillTheFrame
           emptyFrame={{
             src: '/images/v2/not-found/empty-frame.webp',

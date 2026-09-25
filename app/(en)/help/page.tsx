@@ -44,7 +44,7 @@ export default function HelpPage() {
       />
       <HelpJumpLinks groups={helpGroups} />
 
-      <div className="mt-block desk:mt-24">
+      <div className="mt-band desk:mt-24">
         <HelpGroups groups={helpGroups} countLabel={n => (n === 1 ? '1 question' : `${n} questions`)} />
       </div>
 

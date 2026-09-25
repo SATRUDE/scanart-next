@@ -78,7 +78,7 @@ export function LandingTemplate({
         meta={[countLabel, <FromPrice key="from" prices={lowestPrices(products)} label={fromLabel} />]}
       />
 
-      <section aria-labelledby="prints-heading" className="mt-block">
+      <section aria-labelledby="prints-heading" className="mt-band">
         {/* sr-only, keeping the order h1 -> h2 -> card h3 */}
         <h2 id="prints-heading" className="sr-only-sa">{printsHeading}</h2>
         <PrintGrid products={products} locale={locale} outOfStockLabel={outOfStockLabel} />

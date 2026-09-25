@@ -38,7 +38,7 @@ export function PrintGrid({
   return (
     <div className={`flex flex-col gap-10 tab:flex-row tab:items-start tab:gap-gutter ${className}`}>
       {columns.map((column, c) => (
-        <div key={c} className="flex min-w-0 flex-1 flex-col gap-10 desk:gap-block">
+        <div key={c} className="flex min-w-0 flex-1 flex-col gap-10 desk:gap-band">
           {column.map(({ product, index }) => (
             <div key={product.id}>
               <Link href={`${prefix}/product/${product.slug}`} className="block">

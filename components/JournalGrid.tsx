@@ -97,7 +97,7 @@ export const JournalGrid: React.FC<JournalGridProps> = ({ articles, categories, 
       {/* Filter bar 241:3763 (Journal labels): Options under a rule, the
           selected one with the hairline before it, the rest at 55% ink. */}
       {categories.length > 0 && (
-        <div className="mt-4 flex flex-col gap-3 border-t border-ink pt-4 tab:mt-block tab:flex-row tab:items-center tab:justify-between tab:pt-6">
+        <div className="mt-4 flex flex-col gap-3 border-t border-ink pt-4 tab:mt-band tab:flex-row tab:items-center tab:justify-between tab:pt-6">
           <ul className="flex flex-wrap items-center gap-x-5 gap-y-2 tab:gap-x-6">
             {['All', ...categories].map(cat => {
               const selected = selectedCategory === cat;
@@ -133,7 +133,7 @@ export const JournalGrid: React.FC<JournalGridProps> = ({ articles, categories, 
         // which the next/image docs warn against.
         <Link
           href={`/article/${featured.slug}`}
-          className="group mt-8 page-grid gap-y-3 tab:mt-block"
+          className="group mt-8 page-grid gap-y-3 tab:mt-band"
         >
           {featured.image && (
             <div className="relative col-span-full aspect-square overflow-hidden bg-image-bg tab:col-span-4 desk:col-span-7 desk:aspect-[733/659]">
@@ -169,9 +169,9 @@ export const JournalGrid: React.FC<JournalGridProps> = ({ articles, categories, 
         // Stories · 3 columns, continuous: each tile 64 under the one above,
         // no row gaps. DOM order is reading order down each column, so the
         // single mobile column needs no reordering.
-        <div className="mt-10 flex flex-col gap-10 tab:mt-block tab:flex-row tab:gap-gutter">
+        <div className="mt-10 flex flex-col gap-10 tab:mt-band tab:flex-row tab:gap-gutter">
           {columns.map((column, c) => (
-            <div key={c} className="flex flex-1 flex-col gap-10 tab:min-w-0 tab:gap-block">
+            <div key={c} className="flex flex-1 flex-col gap-10 tab:min-w-0 tab:gap-band">
               {column.map((article, r) => (
                 <ArticleCard
                   key={article.id}
@@ -211,7 +211,7 @@ export const JournalGrid: React.FC<JournalGridProps> = ({ articles, categories, 
       )}
 
       {filteredArticles.length === 0 && (
-        <p className="mt-block type-body">{t.empty}</p>
+        <p className="mt-band type-body">{t.empty}</p>
       )}
     </>
   );

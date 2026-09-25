@@ -63,7 +63,7 @@ export function ArticleBody({
 }: ArticleBodyProps) {
   return (
     <article>
-      <header className="flex flex-col gap-4 pt-10 tab:gap-group tab:pt-block">
+      <header className="flex flex-col gap-4 pt-10 tab:gap-group tab:pt-band">
         {breadcrumb}
         {/* The category only where there is no breadcrumb to carry it (the preview). */}
         {!breadcrumb && category && <p className="type-caption">{category}</p>}
@@ -77,7 +77,7 @@ export function ArticleBody({
       </header>
 
       {image && (
-        <figure className="mt-8 flex flex-col gap-tight tab:mt-block">
+        <figure className="mt-8 flex flex-col gap-tight tab:mt-band">
           {/* Full bleed on mobile (out through the page margin), the 1280 frame at 2:1 from tablet. */}
           <div className="relative -mx-margin aspect-[4/5] overflow-hidden bg-image-bg tab:mx-0 tab:aspect-[2/1]">
             {heroImage === 'plain' ? (

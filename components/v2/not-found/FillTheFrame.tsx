@@ -75,7 +75,7 @@ export function FillTheFrame({
       <div className="col-span-full flex flex-col tab:col-span-4 desk:col-span-6">
         {message}
 
-        <section aria-labelledby="fill-the-frame" className="mt-10 tab:mt-block">
+        <section aria-labelledby="fill-the-frame" className="mt-10 tab:mt-band">
           <h2 id="fill-the-frame" className="type-h3">{heading}</h2>
           <ul className="mt-4 grid grid-cols-3 gap-3 tab:gap-group" onMouseLeave={() => setActive(null)}>
             {prints.map(p => {

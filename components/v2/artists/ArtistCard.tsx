@@ -68,7 +68,7 @@ export function ArtistCard({ artist, href, as: Heading = 'h2', priority = false 
  */
 export function ArtistCardList({ artists, hrefPrefix, as, priorityCount = 0 }: { artists: ArtistCardData[]; hrefPrefix: string; as?: 'h2' | 'h3'; priorityCount?: number }) {
   return (
-    <ul className="grid gap-y-0 tab:grid-cols-2 tab:gap-x-gutter tab:gap-y-block desk:grid-cols-3">
+    <ul className="grid gap-y-0 tab:grid-cols-2 tab:gap-x-gutter tab:gap-y-band desk:grid-cols-3">
       {artists.map((artist, i) => (
         <li key={artist.slug} className="border-t border-ink pt-4 first:border-t-0 first:pt-0 tab:pt-group tab:first:border-t tab:first:pt-group">
           <ArtistCard artist={artist} href={`${hrefPrefix}/artist/${artist.slug}`} as={as} priority={i < priorityCount} />

@@ -137,7 +137,7 @@ export function ArtistProfile(p: ArtistProfileProps) {
   return (
     <div className="page-x pb-section">
       {/* Hero · 5 + 7 */}
-      <section className="page-grid gap-y-6 pt-10 tab:pt-block">
+      <section className="page-grid gap-y-6 pt-10 tab:pt-band">
         <div className="col-span-full flex flex-col justify-between gap-group desk:col-span-5">
           <div className="flex flex-col gap-4 tab:gap-group">
             <Breadcrumb items={p.breadcrumb} locale={p.locale} />
@@ -167,7 +167,7 @@ export function ArtistProfile(p: ArtistProfileProps) {
       </section>
 
       {/* Prints by {name} */}
-      <section aria-labelledby="prints-by" className="mt-section flex flex-col gap-group tab:gap-block">
+      <section aria-labelledby="prints-by" className="mt-section flex flex-col gap-group tab:gap-band">
         <div className="flex items-baseline justify-between gap-6 border-t border-ink pt-4 tab:pt-6">
           <h2 id="prints-by" className="type-h2">{p.t.printsBy} {p.name}</h2>
           <p className="shrink-0 type-small">{p.printCount}</p>
@@ -177,7 +177,7 @@ export function ArtistProfile(p: ArtistProfileProps) {
             so they end close to one line. Mobile stacks the columns in turn. */}
         <div className="flex flex-col gap-10 tab:grid tab:grid-cols-3 tab:items-start tab:gap-x-gutter">
           {columns(p.products, 3).map((column, c) => (
-            <ul key={c} className="flex flex-col gap-10 tab:gap-block">
+            <ul key={c} className="flex flex-col gap-10 tab:gap-band">
               {column.map(({ product, index }) => (
                 <li key={product.id}>
                   <Link href={p.t.productHref(product.slug)} className="block">
@@ -229,7 +229,7 @@ export function ArtistProfile(p: ArtistProfileProps) {
 
       {/* More artists: the other artists with published prints. */}
       {p.more.length > 0 && (
-        <section aria-labelledby="more-artists" className="mt-section flex flex-col gap-group tab:gap-block">
+        <section aria-labelledby="more-artists" className="mt-section flex flex-col gap-group tab:gap-band">
           <SectionHeader id="more-artists" title={p.t.moreArtists} link={{ href: p.t.allArtistsHref, label: p.t.allArtists }} />
           <ArtistCardList artists={p.more} hrefPrefix={hrefPrefix} as="h3" />
         </section>

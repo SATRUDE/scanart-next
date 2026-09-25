@@ -74,7 +74,7 @@ export default async function ProductsPage() {
         meta={[`${products.length} prints`, <FromPrice key="from" prices={lowestPrices(products)} label="from" />]}
       />
 
-      <div className="mt-6 tab:mt-block desk:mt-[128px]">
+      <div className="mt-6 tab:mt-band desk:mt-[128px]">
         <PrintsListing products={products} categories={categories} />
       </div>
 

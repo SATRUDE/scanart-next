@@ -282,11 +282,11 @@ export function PrintsListing({
         </p>
       )}
 
-      <section aria-labelledby="prints-heading" className="mt-6 desk:mt-block">
+      <section aria-labelledby="prints-heading" className="mt-6 desk:mt-band">
         <h2 id="prints-heading" className="sr-only-sa">{t.printsSrHeading}</h2>
         <PrintGrid products={filteredProducts} locale={locale} outOfStockLabel={t.outOfStock} />
         {filteredProducts.length === 0 && (
-          <div className="flex flex-col items-start gap-4 py-block">
+          <div className="flex flex-col items-start gap-4 py-band">
             <p className="type-h3">{t.emptyHeading}</p>
             <Link href={`${p1}/products`} className="type-small transition-colors hover:text-brand">{t.emptyCta} →</Link>
           </div>

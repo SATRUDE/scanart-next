@@ -89,7 +89,7 @@ export function ProductView({
 
   return (
     <div className="page-x tab:pt-8">
-      <div className="page-grid gap-y-6 tab:gap-y-block">
+      <div className="page-grid gap-y-6 tab:gap-y-band">
         <div className="col-span-full desk:col-span-8">
           <ProductImageGalleryWrapper
             images={images}
@@ -211,7 +211,7 @@ export function ProductView({
           <SectionHeader id="more-prints" title={t.moreLikeThis} link={categoryLink ? { href: categoryLink.href, label: fill(t.allInCategory, { label: categoryLink.label.toLowerCase() }) } : undefined} />
           {/* Desktop: three columns, top edges aligned, each print at its own
               ratio. Mobile: one row that runs off the right edge. */}
-          <ul className="-mr-margin mt-block flex gap-3 overflow-x-auto scrollbar-hide tab:mr-0 tab:grid tab:grid-cols-2 tab:gap-x-gutter tab:gap-y-block tab:overflow-visible desk:grid-cols-3">
+          <ul className="-mr-margin mt-band flex gap-3 overflow-x-auto scrollbar-hide tab:mr-0 tab:grid tab:grid-cols-2 tab:gap-x-gutter tab:gap-y-band tab:overflow-visible desk:grid-cols-3">
             {recommended.map(rec => (
               <li key={rec.id} className="w-[240px] shrink-0 tab:w-auto">
                 <TrackedLink event="related-product-click" eventData={{ from: product.slug, to: rec.slug }} href={`${prefix}/product/${rec.slug}`}>

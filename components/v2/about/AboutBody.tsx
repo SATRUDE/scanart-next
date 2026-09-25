@@ -50,7 +50,7 @@ export function AboutBody({ copy }: { copy: AboutCopy }) {
     <div className="pb-section">
       {/* Hero: the title is the whole hero, set low on the first screen
           (layout.md: it fits the first screen at 1440 × 900). */}
-      <section className="page-x flex flex-col justify-end pt-[120px] pb-6 tab:min-h-[max(560px,calc(100svh-124px))] tab:pt-block tab:pb-24">
+      <section className="page-x flex flex-col justify-end pt-[120px] pb-6 tab:min-h-[max(560px,calc(100svh-124px))] tab:pt-band tab:pb-24">
         <HeadlineWithWindows parts={copy.headline} pools={copy.pools} className="tab:max-w-[1100px]" />
       </section>
 
@@ -127,7 +127,7 @@ function HowItWorks({ heading, rows }: { heading: string; rows: { title: string;
         {rows.map((row, i) => (
           <li
             key={row.title}
-            className="flex flex-col gap-2 border-t border-ink pt-3 pb-10 tab:pt-group tab:pb-block desk:grid desk:grid-cols-8 desk:gap-x-[var(--sa-gutter)]"
+            className="flex flex-col gap-2 border-t border-ink pt-3 pb-10 tab:pt-group tab:pb-band desk:grid desk:grid-cols-8 desk:gap-x-[var(--sa-gutter)]"
           >
             <p aria-hidden className="type-h3 text-text-accent desk:col-span-1">{String(i + 1).padStart(2, '0')}</p>
             <h3 className="type-h3 desk:col-span-3">{row.title}</h3>
@@ -168,7 +168,7 @@ function WhereTheArtistsWork({ heading, places }: { heading: string; places: Abo
           ))}
         </div>
       </div>
-      <ul className="col-span-full desk:col-span-4 desk:row-start-2 desk:mt-block">
+      <ul className="col-span-full desk:col-span-4 desk:row-start-2 desk:mt-band">
         {places.map(place => (
           <li key={place.label} className="flex gap-4 border-t border-ink py-[10px] tab:py-3 desk:flex-col desk:gap-0">
             <span className="w-[110px] shrink-0 type-body desk:w-auto">{place.label}</span>
@@ -214,7 +214,7 @@ function Roster({ heading, all, cards, hrefPrefix }: AboutCopy['roster']) {
             <Button variant="link" href={all.href}>{all.label}</Button>
           </div>
         </div>
-        <ul className="col-span-full mt-block flex gap-[var(--sa-gutter)] overflow-x-auto scrollbar-hide desk:col-span-8 desk:mt-0 desk:mr-[calc(-1*(var(--sa-margin)+max(0px,(100vw-1440px)/2)))] desk:pr-[var(--sa-margin)]">
+        <ul className="col-span-full mt-band flex gap-[var(--sa-gutter)] overflow-x-auto scrollbar-hide desk:col-span-8 desk:mt-0 desk:mr-[calc(-1*(var(--sa-margin)+max(0px,(100vw-1440px)/2)))] desk:pr-[var(--sa-margin)]">
           {cards.map(card => (
             <li key={card.slug} className="w-[405px] shrink-0 border-t border-ink pt-group">
               <ArtistCard artist={card} href={`${hrefPrefix}/artist/${card.slug}`} as="h3" />

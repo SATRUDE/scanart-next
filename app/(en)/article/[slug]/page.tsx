@@ -133,7 +133,7 @@ export default async function ArticlePage({
         heroCaption={heroProduct ? <Meta items={[heroProduct.name, heroArtist]} /> : undefined}
       >
         {browseLinks.length > 0 && (
-          <footer className="mt-12 flex flex-col gap-3 border-t border-ink pt-6 tab:mt-block">
+          <footer className="mt-12 flex flex-col gap-3 border-t border-ink pt-6 tab:mt-band">
             <p className="type-small">Keep browsing:</p>
             <ul className="flex flex-col gap-2">
               {browseLinks.map(link => (
@@ -185,7 +185,7 @@ export default async function ArticlePage({
         <section aria-labelledby="article-more" className="mt-section">
           <SectionHeader id="article-more" title="More from the journal" link={{ href: '/journal', label: 'All stories' }} />
           {/* A row that scrolls sideways on mobile, three columns from tablet. */}
-          <ul className="-mr-margin mt-12 flex gap-4 overflow-x-auto pr-margin tab:mr-0 tab:mt-block tab:grid tab:grid-cols-3 tab:gap-x-gutter tab:gap-y-block tab:overflow-visible tab:pr-0">
+          <ul className="-mr-margin mt-12 flex gap-4 overflow-x-auto pr-margin tab:mr-0 tab:mt-band tab:grid tab:grid-cols-3 tab:gap-x-gutter tab:gap-y-band tab:overflow-visible tab:pr-0">
             {relatedArticles.map((ra, i) => (
               <li key={ra.id} className="w-[260px] shrink-0 tab:w-auto">
                 <ArticleCard

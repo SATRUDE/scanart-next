@@ -198,7 +198,7 @@ export const ProductImageGalleryWrapper: React.FC<ProductImageGalleryWrapperProp
             </div>
 
             {view === 'grid' ? (
-              <ul className="page-x grid grid-cols-1 gap-x-gutter gap-y-8 pt-8 pb-block tab:grid-cols-2 tab:pt-block desk:grid-cols-3">
+              <ul className="page-x grid grid-cols-1 gap-x-gutter gap-y-8 pt-8 pb-band tab:grid-cols-2 tab:pt-band desk:grid-cols-3">
                 {media.map((m, i) => (
                   <li key={i}>
                     <button

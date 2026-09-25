@@ -19,7 +19,7 @@ You're rebuilding pages of the Scandinavian Art shop (scanart-next, Next.js 16, 
   - **Text styles:** one class per Figma text style: `type-display`, `type-h1`, `type-h2`, `type-h3`, `type-lead`, `type-body`, `type-small`, `type-label`, `type-caption`, `type-numeral`. Headings switch to the Mobile/* sizes below 834 px automatically.
   - **Breakpoints:** `tab:` (834) and `desk:` (1200). Mobile is the base.
   - **Colours:** `bg-bg`, `bg-surface`, `bg-image-bg` (#F7F1EC, behind every print), `text-ink`, `text-text-accent`, `bg-brand` (accent #B35D26), `border-line`, `border-ink`, `text-error`, `bg-scrim` and the season tints.
-  - **Spacing tiers:** `gap-tight` 8, `gap-group` 24, `py-block` 64/48, `mt-section` 192/128/96, `px-margin`.
+  - **Spacing tiers:** `gap-tight` 8, `gap-group` 24, `py-band` 64/48 (not `block`: that name breaks `inline-block`), `mt-section` 192/128/96, `px-margin`.
   - **Layout:** `page-x` (the 1440 frame with 80/48/20 margins) and `page-grid` (12/8/1 columns with the Figma gutters, so children use `col-span-*` at `desk:`).
   - **Hairline:** `hairline`, the 12 × 1 accent separator. It's never a dot.
 - **`components/v2/ui.tsx`**:

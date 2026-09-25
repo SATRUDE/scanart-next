@@ -251,7 +251,7 @@ function SearchPanel({ onClose, isNo, index }: { onClose: () => void; isNo: bool
         </button>
       </div>
 
-      <div className="page-x flex flex-col gap-10 pt-6 pb-block tab:gap-[56px] tab:pt-[56px]">
+      <div className="page-x flex flex-col gap-10 pt-6 pb-band tab:gap-[56px] tab:pt-[56px]">
         <div className="flex flex-col gap-6">
           <form action={index.productsHref} method="get" role="search" onSubmit={onSubmit}>
             <div className="group/field relative flex items-baseline justify-between gap-6 pb-3">
@@ -576,7 +576,7 @@ function Results({
       className="flex flex-col gap-[96px] pt-10 tab:pt-[40px] desk:gap-[128px]"
     >
       {show('prints') && results.prints.length > 0 && (
-        <section className="flex flex-col gap-block">
+        <section className="flex flex-col gap-band">
           <SectionHead
             title={t.prints}
             link={{ href: `${index.productsHref}?q=${encodeURIComponent(query)}`, label: t.seeOnPrintsPage }}
@@ -587,7 +587,7 @@ function Results({
               and tab order the same as the list. */}
           <ul className="columns-1 gap-x-8 tab:columns-2 desk:columns-3">
             {results.prints.map(print => (
-              <li key={print.id} className="mb-block break-inside-avoid">
+              <li key={print.id} className="mb-band break-inside-avoid">
                 <Link href={print.href} onClick={onNavigate} className="block">
                   <PrintCard product={print} locale={isNo ? 'no' : 'en'} sizes="(max-width: 833px) 100vw, (max-width: 1199px) 50vw, 405px" />
                 </Link>
@@ -598,7 +598,7 @@ function Results({
       )}
 
       {show('artists') && results.artists.length > 0 && (
-        <section className="flex flex-col gap-block">
+        <section className="flex flex-col gap-band">
           <SectionHead title={t.artists} onNavigate={onNavigate} />
           <ul className="page-grid gap-y-10">
             {results.artists.map(artist => (
@@ -611,9 +611,9 @@ function Results({
       )}
 
       {show('stories') && results.stories.length > 0 && (
-        <section className="flex flex-col gap-block">
+        <section className="flex flex-col gap-band">
           <SectionHead title={t.stories} onNavigate={onNavigate} />
-          <ul className="page-grid gap-y-block">
+          <ul className="page-grid gap-y-band">
             {results.stories.map(story => (
               <li key={story.slug} className="col-span-full tab:col-span-4">
                 <StoryResult story={story} onNavigate={onNavigate} />

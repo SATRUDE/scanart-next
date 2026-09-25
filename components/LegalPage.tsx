@@ -63,7 +63,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ title, lastUpdated, sectio
         )}
       </PageHeader>
 
-      <div className="mt-section flex flex-col gap-block tab:gap-32">
+      <div className="mt-section flex flex-col gap-band tab:gap-32">
         {sections.map((section, i) => (
           <ContentSection key={section.heading} id={section.id ?? `part-${i + 1}`} title={section.heading}>
             <ContentBody className="[&_p+ul]:mt-4 [&_ul+p]:mt-6 [&_a]:no-underline [&_strong]:font-normal [&_ul]:!gap-tight [&_ul]:!list-none [&_ul]:!pl-0 [&_li]:relative [&_li]:pl-8 [&_li]:before:absolute [&_li]:before:left-0 [&_li]:before:top-[15px] [&_li]:before:h-px [&_li]:before:w-3 [&_li]:before:bg-brand [&_li]:before:content-['']">

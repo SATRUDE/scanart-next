@@ -111,7 +111,7 @@ export function InspireWall({
 
   return (
     <>
-      <div className="flex flex-col gap-3 pt-8 tab:mt-block tab:gap-4 tab:border-t tab:border-ink tab:pt-group">
+      <div className="flex flex-col gap-3 pt-8 tab:mt-band tab:gap-4 tab:border-t tab:border-ink tab:pt-group">
         <div className="flex flex-col gap-3 tab:flex-row tab:items-center tab:gap-6">
           <p id={wallLabelId} className="type-caption tab:w-16 tab:shrink-0 tab:type-small">{strings.wall}</p>
           <div
@@ -167,7 +167,7 @@ export function InspireWall({
             <li
               key={r.image}
               hidden={!shown[index]}
-              className="mb-10 break-inside-avoid tab:mb-block"
+              className="mb-10 break-inside-avoid tab:mb-band"
             >
               <Link href={`${prefix}/product/${first.slug}`} className="group block">
                 <div

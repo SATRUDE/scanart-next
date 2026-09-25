@@ -277,7 +277,7 @@ const PaymentForm: React.FC<{
   // sections above and join this form through their `form` attribute, so
   // the browser checks every required field before handleSubmit runs.
   return (
-    <form id="checkout-form" onSubmit={handleSubmit} className="flex flex-col gap-block">
+    <form id="checkout-form" onSubmit={handleSubmit} className="flex flex-col gap-band">
       <div className="flex flex-col gap-group">
         {/* Card field 275:5721: the Stripe element styled as a Text field. */}
         <div className="flex flex-col gap-tight">
@@ -707,7 +707,7 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' |
   // both sides agree on.
   if (!hydrated) {
     return (
-      <div className="page-x pt-10 pb-section tab:pt-block">
+      <div className="page-x pt-10 pb-section tab:pt-band">
         <h1 className="type-h1">{t.heading}</h1>
       </div>
     );
@@ -715,7 +715,7 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' |
 
   if (state.items.length === 0 && !orderComplete) {
     return (
-      <div className="page-x flex flex-col items-start gap-group pt-10 pb-section tab:pt-block">
+      <div className="page-x flex flex-col items-start gap-group pt-10 pb-section tab:pt-band">
         <h1 className="type-h1">{t.cartEmpty}</h1>
         <Button href={productsHref}>{t.continueShopping}</Button>
       </div>
@@ -816,7 +816,7 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' |
         <span className="type-body">{totalLabel}</span>
       </button>
 
-      <div className="page-x page-grid pt-10 pb-section tab:pt-block">
+      <div className="page-x page-grid pt-10 pb-section tab:pt-band">
         {/* Your order: the right column on desktop (6 + 4), folded under the
             bar on mobile and tablet. */}
         <aside
@@ -870,7 +870,7 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' |
         </aside>
 
         {/* Checkout Form */}
-        <div className="col-span-full flex flex-col gap-block desk:col-span-6 desk:row-start-1">
+        <div className="col-span-full flex flex-col gap-band desk:col-span-6 desk:row-start-1">
           <h1 className="type-h1">{t.heading}</h1>
 
           <FormSection id="checkout-contact" number="01" title={v.contactTitle} subtitle={v.contactNote}>

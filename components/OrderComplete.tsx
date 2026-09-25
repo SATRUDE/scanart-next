@@ -33,8 +33,8 @@ export const OrderComplete: React.FC<{ t: CheckoutStrings; order: CompletedOrder
     v.steps.decide,
   ];
   return (
-    <div className="page-x page-grid gap-y-16 pt-10 pb-section tab:pt-block">
-      <div className="col-span-full flex flex-col gap-10 tab:gap-block desk:col-span-6">
+    <div className="page-x page-grid gap-y-16 pt-10 pb-section tab:pt-band">
+      <div className="col-span-full flex flex-col gap-10 tab:gap-band desk:col-span-6">
         <div className="flex flex-col gap-group">
           <h1 className="type-h1">{order.firstName ? fill(v.thanks, { name: order.firstName }) : v.thanksNoName}</h1>
           {order.email && <p className="type-lead">{fill(v.placed, { email: order.email })}</p>}

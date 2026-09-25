@@ -52,8 +52,8 @@ const BREAKOUT_TYPES = new Set(['image', 'quote']);
  */
 function spaceAbove(prev: string | null, type: string): string {
   if (prev === null) return '';
-  if (HEADING_TYPES.has(type)) return type === 'heading_3' ? 'mt-10 tab:mt-block' : 'mt-12 tab:mt-20 desk:mt-32';
-  if (BREAKOUT_TYPES.has(type) || BREAKOUT_TYPES.has(prev)) return 'mt-10 tab:mt-block desk:mt-24';
+  if (HEADING_TYPES.has(type)) return type === 'heading_3' ? 'mt-10 tab:mt-band' : 'mt-12 tab:mt-20 desk:mt-32';
+  if (BREAKOUT_TYPES.has(type) || BREAKOUT_TYPES.has(prev)) return 'mt-10 tab:mt-band desk:mt-24';
   return 'mt-6';
 }
 
@@ -148,7 +148,7 @@ export const NotionBlockRenderer: React.FC<NotionBlockRendererProps> = ({ blocks
       }
       case 'quote':
         // Pull quote: H1 on 9 columns under a rule (no rule on mobile).
-        return (<blockquote key={id} className={`${quoteColumn} ${space} type-h1 tab:border-t tab:border-ink tab:pt-block`}>{renderRichText(richTextOf(block, 'quote'), articleSlug)}</blockquote>);
+        return (<blockquote key={id} className={`${quoteColumn} ${space} type-h1 tab:border-t tab:border-ink tab:pt-band`}>{renderRichText(richTextOf(block, 'quote'), articleSlug)}</blockquote>);
       case 'divider':
         return <hr key={id} className={`${text} ${space} border-line`} />;
       case 'code':
@@ -196,7 +196,7 @@ export const NotionBlockRenderer: React.FC<NotionBlockRendererProps> = ({ blocks
       if (index === calculatorInsertionIndex && articleSlug) {
         flush();
         rendered.push(
-          <div key="gallery-wall-planner-teaser" className={`${text} mt-10 tab:mt-block`}>
+          <div key="gallery-wall-planner-teaser" className={`${text} mt-10 tab:mt-band`}>
             <GalleryWallPlannerTeaser articleSlug={articleSlug} />
           </div>
         );

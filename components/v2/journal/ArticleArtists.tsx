@@ -36,7 +36,7 @@ export function ArticleArtists({ artists, articleSlug, locale = 'en' }: { artist
               href={`${prefix}/artist/${artist.slug}`}
               event="article-artist-click"
               eventData={{ article: articleSlug, artist: artist.slug }}
-              className="group flex items-start gap-[14px] py-4 tab:gap-gutter tab:pt-6 tab:pb-block"
+              className="group flex items-start gap-[14px] py-4 tab:gap-gutter tab:pt-6 tab:pb-band"
             >
               <span className="relative block size-12 shrink-0 overflow-hidden bg-image-bg tab:size-14 desk:mr-[21px]">
                 {artist.image ? (

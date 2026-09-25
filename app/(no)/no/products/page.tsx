@@ -67,7 +67,7 @@ export default async function NorwegianProductsPage() {
         meta={[`${products.length} ${t.grid.printsSuffix}`, <FromPrice key="from" prices={lowestPrices(products)} label={no.shared.fromPrice} />]}
       />
 
-      <div className="mt-6 tab:mt-block desk:mt-[128px]">
+      <div className="mt-6 tab:mt-band desk:mt-[128px]">
         <PrintsListing
           products={products}
           categories={categories}

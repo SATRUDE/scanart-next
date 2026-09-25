@@ -52,7 +52,7 @@ export default function NorwegianHelpPage() {
       />
       <HelpJumpLinks groups={t.groups} />
 
-      <div className="mt-block desk:mt-24">
+      <div className="mt-band desk:mt-24">
         <HelpGroups groups={t.groups} countLabel={n => (n === 1 ? v.countOne : v.countOther.replace('{n}', String(n)))} />
       </div>
 

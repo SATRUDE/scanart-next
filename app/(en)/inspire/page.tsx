@@ -60,7 +60,7 @@ export default async function InspirePage() {
       <h2 className="sr-only">Styled scenes</h2>
       <InspireWall rooms={rooms} strings={inspireFilterStringsEn} />
 
-      <p className="type-body tab:mt-block tab:max-w-[624px] [&_a]:text-text-accent [&_a]:transition-colors [&_a:hover]:text-ink">
+      <p className="type-body tab:mt-band tab:max-w-[624px] [&_a]:text-text-accent [&_a]:transition-colors [&_a:hover]:text-ink">
         Looking for a particular room instead? <Link href="/collection/living-room">Living room</Link>,{' '}
         <Link href="/collection/bedroom">bedroom</Link> and <Link href="/collection/home-office">home office</Link> each
         have their own curated wall, or browse <Link href="/products">the full collection</Link>.

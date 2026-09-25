@@ -58,7 +58,7 @@ export default async function NorwegianInspirePage() {
       <h2 className="sr-only">{t.scenesSrHeading}</h2>
       <InspireWall rooms={rooms} strings={noV2.inspire.filter} locale="no" />
 
-      <p className="type-body tab:mt-block tab:max-w-[624px] [&_a]:text-text-accent [&_a]:transition-colors [&_a:hover]:text-ink">
+      <p className="type-body tab:mt-band tab:max-w-[624px] [&_a]:text-text-accent [&_a]:transition-colors [&_a:hover]:text-ink">
         {t.roomsIntro} <Link href="/no/collection/living-room">{t.livingRoom}</Link>,{' '}
         <Link href="/no/collection/bedroom">{t.bedroom}</Link> {t.and}{' '}
         <Link href="/no/collection/home-office">{t.homeOffice}</Link> {t.roomsOutro}{' '}

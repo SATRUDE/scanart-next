@@ -61,7 +61,7 @@ export function HelpGroups({
   countLabel: (n: number) => string;
 }) {
   return (
-    <div className="flex flex-col gap-block desk:gap-section">
+    <div className="flex flex-col gap-band desk:gap-section">
       {groups.map(group => {
         const id = groupId(group.category);
         return (

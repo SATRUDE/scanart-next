@@ -148,7 +148,7 @@ export function ArtistApplyForm({
   const words = { required: t.required, optional: t.optional };
 
   return (
-    <form onSubmit={submit} noValidate className="flex flex-col gap-block">
+    <form onSubmit={submit} noValidate className="flex flex-col gap-band">
       {/* 01 What are you asking for? The requirement is one of three, so the
           error sits on the fieldset rather than on any one card. */}
       <fieldset className="flex flex-col gap-group" aria-describedby={errors.offering ? 'offering-error' : undefined}>

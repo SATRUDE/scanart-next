@@ -68,7 +68,7 @@ export function FeedbackPageForm({
   };
 
   if (sent) {
-    return <p className="mt-block type-lead" role="status">{thanks}</p>;
+    return <p className="mt-band type-lead" role="status">{thanks}</p>;
   }
 
   const option = (value: string, selected: boolean, onClick: () => void) => (
@@ -85,7 +85,7 @@ export function FeedbackPageForm({
   );
 
   return (
-    <div className="mt-block flex flex-col gap-block tab:max-w-[624px]">
+    <div className="mt-band flex flex-col gap-band tab:max-w-[624px]">
       <fieldset className="flex flex-col gap-tight border-t border-ink pt-4 tab:pt-group">
         <legend className="float-left mb-tight w-full type-small">{q1}</legend>
         <div className="flex flex-wrap gap-x-8 gap-y-2">

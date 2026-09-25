@@ -144,10 +144,12 @@
   --color-summer: var(--sa-summer);
   --color-autumn: var(--sa-autumn);
 
-  /* Spacing tiers (mobile / tablet / desktop): p-tight, gap-group, py-block, mt-section */
+  /* Spacing tiers (mobile / tablet / desktop): p-tight, gap-group, py-band, mt-section.
+     The 64 px tier is 'band' in class names, not 'block': a spacing key named
+     block turns Tailwind's inline-block into inline-size: 64px. */
   --spacing-tight: var(--sa-tight);
   --spacing-group: var(--sa-group);
-  --spacing-block: var(--sa-block);
+  --spacing-band: var(--sa-block);
   --spacing-section: var(--sa-section);
   --spacing-margin: var(--sa-margin);
   --spacing-gutter: var(--sa-gutter);
