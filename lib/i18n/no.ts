@@ -849,15 +849,6 @@ export const no = {
     printsHeadingCount: 'trykk',
   },
 
-  /** One line per artist for the V2 Artist card; lib/artist-editorial.ts
-   *  artistSummary in Norwegian. Falls back to the bio's first sentence. */
-  artistSummary: {
-    'helene-brox': 'Illustratør, veggmaler og bokstavkunstner, og en av grunnleggerne av illustrasjonsbyrået Heiaklubben.',
-    'simen-wahlqvist': 'Grafisk designer og illustratør som fanger øyeblikk med så få streker som mulig.',
-    'ingunn-dybendal': 'Tette fargeblyanttegninger i den nordiske folkekunsttradisjonen.',
-    'sia-siamos': 'Halvt gresk, halvt norsk: stilleben, mat og de stille detaljene i hverdagen.',
-    'hedvig-wallin': 'Lekne trykk fra en illustratør i Göteborg.',
-  } as Record<string, string>,
 
   // Norwegian versions of data/artists.ts bios and locations, keyed by slug.
   // Fall back to the English data for any artist missing here.
