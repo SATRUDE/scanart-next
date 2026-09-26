@@ -98,11 +98,15 @@ export const Header: React.FC<HeaderProps> = ({ categories, search }) => {
       </div>
 
       <header className="sticky top-0 z-50 w-full bg-bg">
-        <div className="page-x flex h-[60px] tab:h-[88px] items-center">
-          {/* Mobile: Menu · wordmark · Basket */}
+        {/* Mobile and tablet: Menu · wordmark centred · Basket. Desktop adds the links, Search and the language control.
+            Wide desktop (Figma Homepage 12:139): the wordmark is deliberately
+            off centre, starting on column 7 of the 12-column grid, with Search,
+            the language and currency control and the basket right-aligned
+            after it. From 1320 up, where that half of the grid fits them. */}
+        <div className="page-x flex h-[60px] tab:h-[88px] items-center min-[1320px]:grid min-[1320px]:grid-cols-12 min-[1320px]:gap-x-[var(--sa-gutter)]">
           <button
             type="button"
-            className="type-small flex-1 basis-0 text-left tab:hidden"
+            className="type-small flex-1 basis-0 text-left desk:hidden"
             aria-label={t.aria.openMenu}
             aria-expanded={mobileMenuOpen}
             onClick={() => setMobileMenuOpen(true)}
@@ -110,7 +114,7 @@ export const Header: React.FC<HeaderProps> = ({ categories, search }) => {
             {t.menu}
           </button>
 
-          <nav aria-label={chromeAria[isNo ? 'no' : 'en'].landmarks.main} className="hidden tab:flex flex-1 basis-0 gap-8 type-small">
+          <nav aria-label={chromeAria[isNo ? 'no' : 'en'].landmarks.main} className="hidden desk:flex flex-1 basis-0 gap-8 type-small min-[1320px]:col-span-6">
             {nav.map(item => (
               <Link
                 key={item.key}
@@ -123,15 +127,16 @@ export const Header: React.FC<HeaderProps> = ({ categories, search }) => {
             ))}
           </nav>
 
-          <Link href={homeHref} className="flex-none px-3 text-center font-serif text-[22px] leading-[28px] tab:text-[34px] tab:leading-[42px] tab:tracking-[-0.01em] whitespace-nowrap">
+          <div className="contents min-[1320px]:col-span-6 min-[1320px]:flex min-[1320px]:items-center min-[1320px]:justify-between">
+          <Link href={homeHref} className="flex-none px-3 min-[1320px]:px-0 text-center font-serif text-[22px] leading-[28px] tab:text-[34px] tab:leading-[42px] tab:tracking-[-0.01em] whitespace-nowrap">
             Scandinavian Art
           </Link>
 
-          <div className="flex flex-1 basis-0 items-center justify-end gap-8 type-small">
-            <button type="button" className="hidden tab:inline transition-opacity hover:opacity-60" onClick={() => setIsSearchOpen(true)}>
+          <div className="flex flex-1 basis-0 items-center justify-end gap-8 type-small min-[1320px]:flex-none">
+            <button type="button" className="hidden desk:inline transition-opacity hover:opacity-60" onClick={() => setIsSearchOpen(true)}>
               {t.aria.search}
             </button>
-            <div className="hidden tab:inline-flex">
+            <div className="hidden desk:inline-flex">
               <LanguagePicker />
             </div>
             <button
@@ -142,6 +147,7 @@ export const Header: React.FC<HeaderProps> = ({ categories, search }) => {
             >
               {basketLabel}
             </button>
+          </div>
           </div>
         </div>
       </header>

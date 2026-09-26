@@ -114,7 +114,7 @@ export const Footer: React.FC<FooterProps> = ({ year = new Date().getFullYear() 
       style={{ backgroundColor: TINT[season] }}
     >
       <div className="page-x pt-band tab:pt-[96px]">
-        <div className="flex flex-col gap-10 tab:flex-row tab:items-start tab:justify-between pb-10 tab:pb-band">
+        <div className="flex flex-col gap-10 desk:flex-row desk:items-start desk:justify-between pb-10 tab:pb-band">
           <div role="group" aria-label={t.seasons.label} className="flex flex-col gap-1 tab:flex-row tab:items-center tab:gap-8">
             {SEASONS.map(s => (
               <button

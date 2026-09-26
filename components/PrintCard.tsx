@@ -22,6 +22,8 @@ interface PrintCardProps {
       };
     };
     image: string;
+    /** The room mockup, shown on hover where the device can hover. */
+    secondaryImage?: string;
     category: string;
     brand: string;
     artistId?: string;
@@ -97,7 +99,7 @@ export const PrintCard: React.FC<PrintCardProps> = ({
 
   return (
     <div className={`group flex flex-col gap-tight ${onClick ? 'cursor-pointer' : ''} ${className}`} onClick={onClick}>
-      <div className={`${tileAspect(size)} w-full overflow-hidden bg-image-bg`}>
+      <div className={`${tileAspect(size)} relative w-full overflow-hidden bg-image-bg`}>
         {/* SmartImage, not a raw <img>: this tile is the whole print grid on
             the landing templates, and outside next/image those pages served
             the full-size source PNGs (7.5 MB on /scandinavian-wall-art). */}
@@ -119,6 +121,16 @@ export const PrintCard: React.FC<PrintCardProps> = ({
           sizes={sizes}
           className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.015]"
         />
+        {/* The room mockup fades in on hover, on devices that hover (mouse and
+            trackpad); touch never sees it, so a tap goes straight to the print.
+            Lazy and decorative here: the product page carries the scene with
+            its descriptive alt, so this copy stays out of the accessibility
+            tree. */}
+        {product.secondaryImage && (
+          <div aria-hidden className="pointer-events-none absolute inset-0 hidden opacity-0 transition-opacity duration-500 ease-out [@media(hover:hover)]:block group-hover:opacity-100 group-focus-within:opacity-100">
+            <SmartImage src={product.secondaryImage} alt="" sizes={sizes} className="h-full w-full object-cover" />
+          </div>
+        )}
       </div>
       <div>
         <div className="flex items-start justify-between gap-4 type-body">
