@@ -11,7 +11,6 @@ import {
   WALLS,
   ROOMS,
   isRoom,
-  isWall,
   type InspireFilterStrings,
   type RoomId,
   type TileRatio,
@@ -66,11 +65,12 @@ export function InspireWall({
   strings: InspireFilterStrings;
   locale?: 'en' | 'no';
 }) {
-  const [wall, setWall] = useState<WallId | null>(null);
+  // Mark (2026-09-26): no wall-colour filter here; it didn't make sense on a
+  // gallery of rooms. Rooms still carry their wall colour in the caption, and
+  // an old ?wall= link simply shows every room.
   const [room, setRoom] = useState<RoomId | null>(null);
   const { selectedCountry } = useLanguage();
   const currency = selectedCountry.currency;
-  const wallLabelId = useId();
   const roomLabelId = useId();
   const prefix = locale === 'no' ? '/no' : '';
 
@@ -78,20 +78,16 @@ export function InspireWall({
   // HTML is the unfiltered wall.
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    const w = params.get('wall');
     const r = params.get('room');
     /* eslint-disable react-hooks/set-state-in-effect -- one-off sync from the URL after hydration; reading it during render would cause a server/client mismatch */
-    if (isWall(w)) setWall(w);
     if (isRoom(r)) setRoom(r);
     /* eslint-enable react-hooks/set-state-in-effect */
   }, []);
 
-  const choose = (nextWall: WallId | null, nextRoom: RoomId | null) => {
-    setWall(nextWall);
+  const choose = (nextRoom: RoomId | null) => {
     setRoom(nextRoom);
     const url = new URL(window.location.href);
-    if (nextWall) url.searchParams.set('wall', nextWall);
-    else url.searchParams.delete('wall');
+    url.searchParams.delete('wall');
     if (nextRoom) url.searchParams.set('room', nextRoom);
     else url.searchParams.delete('room');
     window.history.replaceState(window.history.state, '', url.pathname + url.search + url.hash);
@@ -100,12 +96,10 @@ export function InspireWall({
   const shown = useMemo(
     () =>
       rooms.map(r => {
-        if (!wall && !room) return true;
-        if (wall && r.wall !== wall) return false;
         if (room && r.room !== room) return false;
         return true;
       }),
-    [rooms, wall, room]
+    [rooms, room]
   );
   const count = shown.filter(Boolean).length;
   const usedRooms = ROOMS.filter(id => rooms.some(r => r.room === id));
@@ -114,34 +108,17 @@ export function InspireWall({
     <>
       <div className="flex flex-col gap-3 pt-8 tab:mt-band tab:gap-4 tab:border-t tab:border-ink tab:pt-group">
         <div className="flex flex-col gap-3 tab:flex-row tab:items-center tab:gap-6">
-          <p id={wallLabelId} className="type-caption tab:w-16 tab:shrink-0 tab:type-small">{strings.wall}</p>
-          <div
-            role="group"
-            aria-labelledby={wallLabelId}
-            className="-mx-margin flex gap-4 overflow-x-auto px-margin scrollbar-hide tab:mx-0 tab:flex-wrap tab:gap-6 tab:overflow-visible tab:px-0"
-          >
-            <FilterOption selected={!wall} onClick={() => choose(null, room)}>
-              {strings.all}
-            </FilterOption>
-            {WALLS.map(w => (
-              <FilterOption key={w.id} selected={wall === w.id} onClick={() => choose(w.id, room)} chip={w.chip}>
-                {strings.walls[w.id]}
-              </FilterOption>
-            ))}
-          </div>
-        </div>
-        <div className="flex flex-col gap-3 tab:flex-row tab:items-center tab:gap-6">
           <p id={roomLabelId} className="type-caption tab:w-16 tab:shrink-0 tab:type-small">{strings.room}</p>
           <div
             role="group"
             aria-labelledby={roomLabelId}
             className="-mx-margin flex gap-4 overflow-x-auto px-margin scrollbar-hide tab:mx-0 tab:flex-wrap tab:gap-6 tab:overflow-visible tab:px-0"
           >
-            <FilterOption selected={!room} onClick={() => choose(wall, null)}>
+            <FilterOption selected={!room} onClick={() => choose(null)}>
               {strings.allRooms}
             </FilterOption>
             {usedRooms.map(id => (
-              <FilterOption key={id} selected={room === id} onClick={() => choose(wall, id)}>
+              <FilterOption key={id} selected={room === id} onClick={() => choose(id)}>
                 {strings.rooms[id]}
               </FilterOption>
             ))}
@@ -155,7 +132,7 @@ export function InspireWall({
       {count === 0 && (
         <p className="mt-6 type-body tab:mt-12">
           {strings.empty}{' '}
-          <button type="button" onClick={() => choose(null, null)} className="text-text-accent transition-colors hover:text-ink">
+          <button type="button" onClick={() => choose(null)} className="text-text-accent transition-colors hover:text-ink">
             {strings.reset}
           </button>
         </p>
