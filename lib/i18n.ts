@@ -137,7 +137,7 @@ export const headerStrings: Record<Locale, HeaderStrings> = {
     basket: 'Basket',
     menu: 'Menu',
     close: 'Close',
-    checkout: { back: 'Back to basket', backShort: 'Basket', secure: 'Secure checkout', secureShort: 'Secure' },
+    checkout: { back: 'Continue shopping', backShort: 'Shop', secure: 'Secure checkout', secureShort: 'Secure' },
     announcement: 'From Scandinavian Artists, delivered worldwide',
     nav: {
       prints: 'Prints',
@@ -166,7 +166,7 @@ export const headerStrings: Record<Locale, HeaderStrings> = {
     basket: 'Handlekurv',
     menu: 'Meny',
     close: 'Lukk',
-    checkout: { back: 'Tilbake til handlekurven', backShort: 'Kurv', secure: 'Sikker betaling', secureShort: 'Sikker' },
+    checkout: { back: 'Fortsett å handle', backShort: 'Butikk', secure: 'Sikker betaling', secureShort: 'Sikker' },
     announcement: 'Fra skandinaviske kunstnere, levert til hele verden',
     nav: {
       prints: 'Trykk',

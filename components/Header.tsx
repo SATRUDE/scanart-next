@@ -98,11 +98,13 @@ export const Header: React.FC<HeaderProps> = ({ categories, search }) => {
     return (
       <header className="border-b border-line bg-bg">
         <div className="page-x flex h-[60px] tab:h-[88px] items-center justify-between">
-          <button type="button" onClick={toggleCart} className="type-label w-[90px] tab:w-[400px] text-left">
+          {/* Back to the shop, not the basket: the basket's own "Continue
+              shopping" only closes the panel, which left checkout a dead end. */}
+          <Link href={`${isNo ? '/no' : ''}/products`} className="type-label w-[90px] tab:w-[400px] text-left">
             <span aria-hidden>← </span>
             <span className="tab:hidden">{t.checkout.backShort}</span>
             <span className="hidden tab:inline">{t.checkout.back}</span>
-          </button>
+          </Link>
           <Link href={homeHref} className="type-h3 whitespace-nowrap">Scandinavian Art</Link>
           <p className="type-label w-[90px] tab:w-[400px] text-right">
             <span className="tab:hidden">{t.checkout.secureShort}</span>
