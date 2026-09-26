@@ -33,9 +33,9 @@ describe('Merchant Center listing trial', () => {
     const xml = await (await GET()).text();
     const items = xml.match(/<item>[\s\S]*?<\/item>/g)!;
     expect(items).toHaveLength(products.length);
-    // 24 published prints since Mikko Saarainen's four joined; the feed is
-    // published-only, so preview-only works never raise this count.
-    expect(items).toHaveLength(24);
+    // 31 published prints since Mikko Saarainen's four and Ishtar Bäcklund
+    // Dakhil's seven joined (2026-09-26). Update it when the catalogue changes.
+    expect(items).toHaveLength(31);
     expect(xml.match(/<g:product_type>/g)).toHaveLength(5);
     for (const product of products) {
       const item = items.find(item => item.includes(`<g:id>${product.slug}</g:id>`))!;

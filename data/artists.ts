@@ -5,6 +5,8 @@ export interface Artist {
   location: string;
   bio: string;
   image: string;
+  /** The photographer, where the artist's photo must be credited. */
+  imageCredit?: string;
 }
 
 export const artists: Artist[] = [
@@ -55,6 +57,16 @@ export const artists: Artist[] = [
     location: 'Lahti, Finland',
     bio: 'Mikko Saarainen is an award-winning illustrator, children\'s author and comic artist from Lahti, Finland. His pictures are funny, expressive and packed with detail: a cruise ship where every passenger has spotted something different, a family car loaded past the roofline, a knight losing an argument with a dragon. He works in a bold line and flat, faintly grainy colour, and keeps the detail going right out to the edges, so the drawings get read as much as looked at.',
     image: '/images/artists/mikko-saarainen.png'
+  },
+  {
+    id: '8',
+    name: 'Ishtar Bäcklund Dakhil',
+    slug: 'ishtar-backlund-dakhil',
+    location: 'Stockholm, Sweden',
+    bio: 'Ishtar Bäcklund Dakhil is a Swedish artist working across illustration, murals and design. She spent five years travelling and competing internationally in downhill skateboarding before studying at Konstfack in Stockholm.',
+    image: '/images/artists/ishtar-backlund-dakhil.png',
+    // Branch peggy/ishtar-artist-preview: the photo credit must be shown.
+    imageCredit: 'Sebastian Lundmark',
   },
 ];
 

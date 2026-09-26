@@ -23,4 +23,6 @@ export const artistStatements: Record<string, string> = {
   'sia-siamos': 'Drawn to the quiet details that say the most.',
   // data/artists.ts bio, its last sentence.
   'mikko-saarainen': 'He keeps the detail going right out to the edges, so the drawings get read as much as looked at.',
+  // lib/artist-editorial.ts para1.
+  'ishtar-backlund-dakhil': 'Her images move between closely observed details and imagined worlds.',
 };

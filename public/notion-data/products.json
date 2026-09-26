@@ -666,5 +666,201 @@
     ],
     "created_time": "2026-09-15T08:36:46.634Z",
     "last_edited_time": "2026-09-15T08:36:46.634Z"
+  },
+  {
+    "id": "c25b69c4-5aeb-49c3-873b-b7a7c4477382",
+    "name": "Stockholm",
+    "slug": "stockholm",
+    "description": "Stockholm's rooftops, towers and waterfront gather in a colourful illustration by Ishtar Bäcklund Dakhil. Orange brick, yellow façades and green spires rise above two boats, with pale blue sky keeping the busy scene open. Look closer for rows of windows, flowering trees and the small architectural details that make the city feel lived in.",
+    "category": "Illustrations",
+    "artist": "Ishtar Bäcklund Dakhil",
+    "artistId": "8",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/stockholm.png",
+    "secondaryImage": "/images/products/stockholm-room.avif",
+    "availableSizes": [
+      "A2"
+    ],
+    "priceCategory": "Premium",
+    "productId": "29",
+    "recommendedProducts": [
+      "Frukt & Grönt",
+      "Desert Circles",
+      "Lilac Geometry",
+      "Creature Among Blue Leaves"
+    ],
+    "created_time": "2026-09-24T13:00:00.000Z",
+    "last_edited_time": "2026-09-26T09:00:00.000Z"
+  },
+  {
+    "id": "aa852d62-7aa0-47b8-988c-3e136881d758",
+    "name": "Frukt & Grönt",
+    "slug": "frukt-och-gront",
+    "description": "Fruit, vegetables and handwritten Swedish labels fill Frukt & Grönt by Ishtar Bäcklund Dakhil. A deep purple aubergine sits above pineapple, sweetcorn, leafy greens and bright red tomatoes, with roots and stems threading through the white spaces. It's a generous, detailed gathering of everyday ingredients, with something new to spot each time you pass.",
+    "category": "Botanical",
+    "artist": "Ishtar Bäcklund Dakhil",
+    "artistId": "8",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/frukt-och-gront.png",
+    "secondaryImage": "/images/products/frukt-och-gront-room.avif",
+    "availableSizes": [
+      "A2"
+    ],
+    "priceCategory": "Premium",
+    "productId": "30",
+    "recommendedProducts": [
+      "Stockholm",
+      "Desert Circles",
+      "Lilac Geometry",
+      "Creature Among Blue Leaves"
+    ],
+    "created_time": "2026-09-24T13:00:00.000Z",
+    "last_edited_time": "2026-09-26T09:00:00.000Z"
+  },
+  {
+    "id": "a94ca9a7-8763-4c6b-b05e-5be6a1013058",
+    "name": "Desert Circles",
+    "slug": "desert-circles",
+    "description": "Overlapping white circles divide a desert landscape into curved fragments in this artwork by Ishtar Bäcklund Dakhil. Rust-coloured rocks, cacti and dusty pink hills repeat inside the pattern, interrupted by bright turquoise openings. The repeated shapes draw your eye towards the centre, while the scattered marks and uneven colour keep each section different.",
+    "category": "Abstract",
+    "artist": "Ishtar Bäcklund Dakhil",
+    "artistId": "8",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/desert-circles.png",
+    "secondaryImage": "/images/products/desert-circles-room.avif",
+    "availableSizes": [
+      "50x50cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "32",
+    "recommendedProducts": [
+      "Stockholm",
+      "Frukt & Grönt",
+      "Lilac Geometry",
+      "Creature Among Blue Leaves"
+    ],
+    "created_time": "2026-09-24T13:00:00.000Z",
+    "last_edited_time": "2026-09-26T09:00:00.000Z"
+  },
+  {
+    "id": "5fa1f8d6-08f9-4f87-8d89-0e898724fb71",
+    "name": "Lilac Geometry",
+    "slug": "lilac-geometry",
+    "description": "Lilac flowers, bees and pale circles surround a fine geometric star in this artwork by Ishtar Bäcklund Dakhil. Purple blossoms spill across the edges, with green leaves, yellow flowers and smaller plants gathering below. Repeating curves draw these garden details into a central pattern, set against a soft pink sky and muted blue ground.",
+    "category": "Botanical",
+    "artist": "Ishtar Bäcklund Dakhil",
+    "artistId": "8",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/lilac-geometry.png",
+    "secondaryImage": "/images/products/lilac-geometry-room.avif",
+    "availableSizes": [
+      "50x70cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "35",
+    "recommendedProducts": [
+      "Stockholm",
+      "Frukt & Grönt",
+      "Desert Circles",
+      "Creature Among Blue Leaves"
+    ],
+    "created_time": "2026-09-24T13:00:00.000Z",
+    "last_edited_time": "2026-09-26T09:00:00.000Z"
+  },
+  {
+    "id": "88783006-f625-4ba2-b186-f5d8a2e1bdb8",
+    "name": "Bird Above the Valley",
+    "slug": "bird-above-the-valley",
+    "description": "A white bird with a row of windows glides over a green valley in this illustration by Ishtar Bäcklund Dakhil. Its wings stretch across winding blue rivers, pink rock faces and thick vegetation. The pale shape stands out against the busy landscape below, bringing the lightness of flight to a scene full of colour and movement.",
+    "category": "Illustrations",
+    "artist": "Ishtar Bäcklund Dakhil",
+    "artistId": "8",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/bird-above-the-valley.png",
+    "secondaryImage": "/images/products/bird-above-the-valley-room.avif",
+    "availableSizes": [
+      "A3"
+    ],
+    "priceCategory": "Premium",
+    "productId": "38",
+    "recommendedProducts": [
+      "Stockholm",
+      "Frukt & Grönt",
+      "Desert Circles",
+      "Lilac Geometry"
+    ],
+    "created_time": "2026-09-24T13:00:00.000Z",
+    "last_edited_time": "2026-09-26T09:00:00.000Z"
+  },
+  {
+    "id": "e03d6040-dbdf-47ea-9438-c4955fddb427",
+    "name": "Creature Among Blue Leaves",
+    "slug": "creature-among-blue-leaves",
+    "description": "A pale horned creature peers through layers of blue leaves in this illustration by Ishtar Bäcklund Dakhil. Broad fans and pointed fronds fill the dark background, partly hiding its spotted face and curved horns. Small touches of ochre interrupt the cool palette, while the overlapping plants make the creature feel tucked inside its own world.",
+    "category": "Illustrations",
+    "artist": "Ishtar Bäcklund Dakhil",
+    "artistId": "8",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/creature-among-blue-leaves.png",
+    "secondaryImage": "/images/products/creature-among-blue-leaves-room.avif",
+    "availableSizes": [
+      "50x70cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "36",
+    "recommendedProducts": [
+      "Stockholm",
+      "Frukt & Grönt",
+      "Desert Circles",
+      "Lilac Geometry"
+    ],
+    "created_time": "2026-09-24T13:00:00.000Z",
+    "last_edited_time": "2026-09-26T09:00:00.000Z"
+  },
+  {
+    "id": "49efd63d-fdfc-4344-a732-fba39a879795",
+    "name": "Surfer with Orange Sun",
+    "slug": "surfer-with-orange-sun",
+    "description": "A surfer balances above a turquoise wave with a bright orange sun behind her in this illustration by Ishtar Bäcklund Dakhil. Outstretched arms and a bent knee give the figure a light, poised movement. Dark clothing makes a strong shape against the sun, while white foam breaks across the lower part of the picture.",
+    "category": "Illustrations",
+    "artist": "Ishtar Bäcklund Dakhil",
+    "artistId": "8",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/surfer-with-orange-sun.png",
+    "secondaryImage": "/images/products/surfer-with-orange-sun-room.avif",
+    "availableSizes": [
+      "A3"
+    ],
+    "priceCategory": "Premium",
+    "productId": "40",
+    "recommendedProducts": [
+      "Stockholm",
+      "Frukt & Grönt",
+      "Desert Circles",
+      "Lilac Geometry"
+    ],
+    "created_time": "2026-09-24T13:00:00.000Z",
+    "last_edited_time": "2026-09-26T09:00:00.000Z"
   }
 ]

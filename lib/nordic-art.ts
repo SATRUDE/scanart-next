@@ -8,28 +8,28 @@
 import type { WallArtLanding } from '@/lib/wall-art';
 
 export const nordicArtLanding: WallArtLanding = {
-  title: 'Nordic Art: Prints by Six Nordic Artists',
+  title: 'Nordic Art: Prints by Independent Nordic Artists',
   description:
-    'Nordic art by six artists working in Norway, Sweden and Finland: folk pattern, table still lifes, pared-back figures, dry line drawings and comic detail.',
+    'Nordic art by independent artists: folk pattern, table still lifes, pared-back figures, dry line drawings, comic detail and imagined worlds.',
   heading: 'Nordic Art, from Folk Tradition to Now',
   intro:
-    "Nordic art has always run on two currents at once: the folk tradition of pattern and ornament, and a newer instinct to pare everything back until shape does the work. Both are alive in this gallery. Ingunn Dybendal draws folk flowers and a patterned lakeland petal by petal in coloured pencil. Helene Brox cuts figures and birds down to flat, confident silhouette. Sia Siamos paints the Nordic table mid-meal, Simen Wahlqvist tells whole jokes in a handful of lines, Hedvig Wallin, the gallery's first Swede, draws a breakfast table with a naive artist's wonky perspective, and Mikko Saarainen, the first Finn, crowds a comic page until every corner is doing something. Six artists, living and working in Norway, Sweden and Finland.",
+    "Nordic art has always run on two currents at once: the folk tradition of pattern and ornament, and a newer instinct to pare everything back until shape does the work. Both are alive in this gallery. Ingunn Dybendal draws folk flowers and a patterned lakeland petal by petal in coloured pencil. Helene Brox cuts figures and birds down to flat, confident silhouette. Sia Siamos paints the Nordic table mid-meal, Simen Wahlqvist tells whole jokes in a handful of lines, Hedvig Wallin, the gallery's first Swede, draws a breakfast table with a naive artist's wonky perspective, Mikko Saarainen, the first Finn, crowds a comic page until every corner is doing something, and Ishtar Bäcklund Dakhil moves between Stockholm's waterfront and imagined worlds. All of them live and work in the Nordics.",
   intro2:
-    "What makes artwork Nordic isn't the subject; there's no rule that says lakes and birches. It's a habit the region's artists share: take something ordinary, a mug of flowers, a breakfast table, a morning stretch, and give it real weight. The twenty-four pieces here sit on a line between the two ends of that tradition. Some lean towards folk pattern, every bloom a separate invention worked in coloured pencil; others are as contemporary as a confession painted across a cobalt head. One honest note: Nordic covers five countries, and ours currently reaches three of them, Norway, Sweden and Finland. We'd rather be a small gallery that knows its twenty-four pieces than a big one that's merely browsed them.",
+    "What makes artwork Nordic isn't the subject; there's no rule that says lakes and birches. It's a habit the region's artists share: take something ordinary, a mug of flowers, a breakfast table, a morning stretch, and give it real weight. The pieces here sit on a line between the two ends of that tradition. Some lean towards folk pattern, every bloom a separate invention worked in coloured pencil; others are as contemporary as a confession painted across a cobalt head. One honest note: Nordic covers five countries, and our artists don't yet come from all of them. We'd rather be a small gallery that knows every piece it sells than a big one that's merely browsed them.",
   framedHeading: 'Made to order, framed or unframed',
   framedBody:
-    "Each piece comes as a print, made to order when you buy it. Most are 50 x 70 cm; the square illustrations by Simen Wahlqvist and Mikko Saarainen are 50 x 50 cm, and every product page lists the size for that piece. You can buy unframed, or framed in wood, black or white, sized to the print. Delivery is worldwide, with the cost shown at checkout.",
+    "Each piece comes as a print, made to order when you buy it. Most are 50 x 70 cm or 50 x 50 cm squares, and every product page lists the size for that piece. You can buy unframed, or framed in wood, black or white, sized to the print. Delivery is worldwide, with the cost shown at checkout.",
   stylingHeading: 'Hanging Nordic art at home',
   faqs: [
     {
       question: 'What is Nordic art?',
       answer:
-        "Art from the five Nordic countries: Denmark, Norway, Sweden, Finland and Iceland. In practice the label covers everything from the old folk traditions of pattern and ornament to today's illustration and still life, held together by strong shape and an unembarrassed love of the domestic. Our own catalogue is honestly narrower than the label: the six artists we work with live and work in Norway, Sweden and Finland, so what you'll find here is three of those five countries.",
+        "Art from the five Nordic countries: Denmark, Norway, Sweden, Finland and Iceland. In practice the label covers everything from the old folk traditions of pattern and ornament to today's illustration and still life, held together by strong shape and an unembarrassed love of the domestic. Our own catalogue is honestly narrower than the label: the artists we work with don't yet come from every one of those countries, so what you'll find here is part of the Nordic map rather than all of it.",
     },
     {
       question: 'What sizes do the prints come in, and can I have them framed?',
       answer:
-        "Two formats cover the catalogue: 50 x 70 cm for most pieces, and 50 x 50 cm for the square illustrations by Simen Wahlqvist and Mikko Saarainen, with the size listed on each product page. Every print can be bought unframed or framed in wood, black or white, sized to the print. Everything is made to order rather than held in stock, and delivered worldwide with the delivery cost shown at checkout.",
+        "Sizes vary by piece, mostly 50 x 70 cm and 50 x 50 cm squares, with the size listed on each product page. Every print can be bought unframed or framed in wood, black or white, sized to the print. Everything is made to order rather than held in stock, and delivered worldwide with the delivery cost shown at checkout.",
     },
     {
       question: 'How does Nordic art differ from Scandinavian style?',

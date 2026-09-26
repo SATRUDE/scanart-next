@@ -110,6 +110,7 @@ export const homeStrings: HomeStrings = {
       'ingunn-dybendal': 'Illustrator in the Heiaklubben collective, whose work runs from a Google Doodle to a 360 square metre wall.',
       'hedvig-wallin': 'Illustrator from Gothenburg who borrows from naive art: simple shapes, wonky perspective, detail everywhere.',
       'mikko-saarainen': 'Illustrator, children’s author and comic artist from Lahti: bold line, flat colour, detail right out to the edges.',
+      'ishtar-backlund-dakhil': 'Swedish artist working across illustration, murals and design, who studied at Konstfack in Stockholm.',
     },
   },
   journal: { heading: 'Journal', all: 'All stories' },

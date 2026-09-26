@@ -89,7 +89,7 @@ export const helpGroups: HelpGroup[] = [
       },
       {
         q: 'What sizes are available?',
-        a: "Sizes vary by artwork and are shown on each product page. Most prints are 50x70cm, and Simen Wahlqvist's square illustrations are 50x50cm.",
+        a: "Sizes vary by artwork and are shown on each product page. Most prints are 50x70cm or 50x50cm squares.",
       },
       {
         q: 'Are these original artworks?',

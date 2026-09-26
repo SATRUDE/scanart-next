@@ -61,6 +61,8 @@ export interface ArtistProfileProps {
   bio: string;
   location: string;
   portrait?: string;
+  /** The photographer, shown under the bio where the photo must be credited. */
+  portraitCredit?: string;
   initials: string;
   breadcrumb: { label: string; href?: string }[];
   products: Product[];
@@ -148,6 +150,9 @@ export function ArtistProfile(p: ArtistProfileProps) {
             </div>
             {line}
             {p.bio && <p className="type-body tab:max-w-[624px] desk:max-w-none">{p.bio}</p>}
+            {p.portraitCredit && (
+              <p className="type-caption">{p.locale === 'no' ? 'Portrett' : 'Portrait'}: {p.portraitCredit}</p>
+            )}
           </div>
           <div className="hidden desk:block">{portrait('large')}</div>
         </div>

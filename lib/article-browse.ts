@@ -72,7 +72,7 @@ const browseLinksByArticle: Record<string, BrowseLink[]> = {
     { href: '/products', label: 'browse the art prints' },
   ],
   'henie-onstad-in-focus': [
-    { href: '/artists', label: 'meet our Norwegian artists' },
+    { href: '/artists', label: 'meet our Nordic artists' },
     { href: '/products', label: 'the print collection' },
   ],
   // Books series: each instalment points at the closest fitting landing, plus
@@ -83,7 +83,7 @@ const browseLinksByArticle: Record<string, BrowseLink[]> = {
   ],
   'nordic-photography-books': [
     { href: '/products', label: 'browse the art prints' },
-    { href: '/artists', label: 'the Norwegian artists' },
+    { href: '/artists', label: 'the Nordic artists we represent' },
   ],
   'contemporary-nordic-art-books': [
     { href: '/category/abstract', label: 'abstract art prints' },

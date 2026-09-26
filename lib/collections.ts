@@ -56,22 +56,25 @@ export const collections: Collection[] = [
     // enforces, so Dragon joins as the animal half and the H1 widens to match
     // the chip. The title tag stays bird-led because that is where the demand is.
     slug: 'birds-and-animals',
+    revisedAt: '2026-09-26',
     chipLabel: 'Birds & Animals',
     axis: 'subject',
     title:
       'Scandinavian Bird Wall Art & Prints',
     description:
-      'Nordic bird and animal wall art by Norwegian artist Helene Brox: a diving cobalt swallow, peach branches hiding a flock, and a dragon in ribbons of colour.',
+      'Nordic bird and animal wall art by independent artists: a diving cobalt swallow, a flock hidden in peach branches, a dragon, and a bird above a valley.',
     heading:
       'Bird & Animal Wall Art from Nordic Artists',
     intro:
-      'Every creature here is a shape before it\'s a creature. Helene Brox works flat and unfussy: a cobalt swallow cut down to the plunge of its wings, dozens of small silhouettes hidden in a peach lattice of branches, and a dragon that coils across black in ribbons of white, red and pink. That\'s what makes an animal print sit well in a Scandinavian room, pattern and silhouette rather than field-guide detail. All three can be bought framed in wood, black or white, or unframed.',
+      'Every creature here is a shape before it\'s a creature. Helene Brox works flat and unfussy: a cobalt swallow cut down to the plunge of its wings, dozens of small silhouettes hidden in a peach lattice of branches, and a dragon that coils across black in ribbons of white, red and pink. Ishtar Bäcklund Dakhil, in Stockholm, sends a pale bird gliding over a green valley and half-hides a horned creature among blue leaves. That\'s what makes an animal print sit well in a Scandinavian room, pattern and silhouette rather than field-guide detail. Every print here can be bought framed in wood, black or white, or unframed.',
     intro2:
-      'Three prints, three quite different moods. Swallow Dive is only two colours, cobalt on cream, and it wants a wall to itself where the dive has somewhere to go. Tree Top Peach is the gentlest of the three, closer to a folk papercut than an illustration, and it rewards hanging where you actually sit. Dragon is the loud one, a beast glimpsed in fragments on a black ground, and it needs a wall that can hold its nerve. Choose on the ground colour rather than the creature: cobalt runs cool against white walls and pale wood, peach runs warm alongside wood and earthy textiles, and black will anchor a whole room. Get the background right and the rest looks after itself.',
+      'The moods differ more than the subjects. Swallow Dive is only two colours, cobalt on cream, and it wants a wall to itself where the dive has somewhere to go. Tree Top Peach is the gentlest of them, closer to a folk papercut than an illustration, and it rewards hanging where you actually sit. Dragon is the loud one, a beast glimpsed in fragments on a black ground, and it needs a wall that can hold its nerve. Choose on the ground colour rather than the creature: cobalt runs cool against white walls and pale wood, peach runs warm alongside wood and earthy textiles, and black will anchor a whole room. Get the background right and the rest looks after itself.',
     productSlugs: [
       'swallow-dive',
       'tree-top-peach',
       'dragon',
+      'bird-above-the-valley',
+      'creature-among-blue-leaves',
     ],
     stylingHeading: 'Styling bird and animal prints',
     stylingTips: [
@@ -86,22 +89,23 @@ export const collections: Collection[] = [
       {
         question: 'What makes an animal print feel Scandinavian?',
         answer:
-          'Flat colour and silhouette, mostly. Every print here treats the creature as a shape rather than a study: Swallow Dive carries a whole diving bird in two colours, Tree Top Peach is closer to a folk papercut than an illustration, and Dragon dissolves its beast into pure rhythm. Helene Brox is an independent artist working in Oslo, which is why these read as Nordic animal prints rather than anything out of the wildlife-plate tradition.',
+          'Flat colour and silhouette, mostly. Helene Brox treats the creature as a shape rather than a study: Swallow Dive carries a whole diving bird in two colours, Tree Top Peach is closer to a folk papercut than an illustration, and Dragon dissolves its beast into pure rhythm, while Ishtar Bäcklund Dakhil\'s bird crosses its valley as one pale shape. Both artists live and work in the Nordics, which is why these read as Nordic animal prints rather than anything out of the wildlife-plate tradition.',
       },
       {
         question: 'What sizes do these prints come in, and can I have them framed?',
         answer:
-          'All three come in one size, 50 x 70 cm. Sizes are listed on each product page, where you also choose unframed or a wood, black or white frame, with the price for the size you\'ve picked shown before you add it to the basket. Every print is made to order and delivered worldwide, with the cost shown at checkout.',
+          'Sizes are listed on each product page, where you also choose unframed or a wood, black or white frame, with the price for the size you\'ve picked shown before you add it to the basket. Every print is made to order and delivered worldwide, with the cost shown at checkout.',
       },
     ],
   },
   {
     slug: 'living-room',
+    revisedAt: '2026-09-26',
     chipLabel: 'Living Room',
     axis: 'room',
     title: 'Scandinavian Living Room Wall Art',
     description:
-      'Curated Scandinavian and Nordic wall art for the living room: warm, characterful prints from independent Norwegian artists. Framing options and worldwide delivery.',
+      'Curated Scandinavian and Nordic wall art for the living room: warm, characterful prints from independent Nordic artists. Framing options and worldwide delivery.',
     heading: 'Scandinavian Wall Art for the Living Room',
     // Ken's buyer-language rewrite (Studio row, 2026-08-13), written to
     // dovetail with intro2, which owns the morning-light idea.
@@ -119,6 +123,8 @@ export const collections: Collection[] = [
       'swallow-dive',
       'morgenstrekk',
       'slingshot',
+      'journey',
+      'stockholm',
     ],
     stylingHeading: 'Styling art in the living room',
     stylingTips: [
@@ -168,14 +174,15 @@ export const collections: Collection[] = [
   },
   {
     slug: 'bedroom',
+    revisedAt: '2026-09-26',
     chipLabel: 'Bedroom',
     axis: 'room',
     title: 'Scandinavian Bedroom Wall Art',
     description:
-      'Calm Scandinavian and Nordic wall art for the bedroom: restful botanicals and soft abstracts from independent Norwegian artists. Framing options and worldwide delivery.',
+      'Calm Scandinavian and Nordic wall art for the bedroom: restful botanicals and soft abstracts from independent Nordic artists. Framing options and worldwide delivery.',
     heading: 'Scandinavian Wall Art for the Bedroom',
     intro:
-      'The bedroom asks for calm, and these prints lean into it. Restful botanicals, soft landscapes and quiet abstracts in gentle palettes, chosen to help the room wind down rather than compete with it. Every piece is made to order and finished to museum standard, with sizes to suit the wall above a bed or a quiet reading corner.',
+      'The bedroom asks for calm, and these prints lean into it. Restful botanicals, soft landscapes and quiet abstracts in gentle palettes, chosen to help the room wind down rather than compete with it. Every piece is made to order on 200gsm uncoated paper, with sizes to suit the wall above a bed or a quiet reading corner.',
     intro2:
       'Unlike the rooms you show off, the bedroom is chosen for an audience of one, so trust what genuinely settles you rather than what looks right in a photograph. The best Scandinavian bedroom wall art is the piece you are happy to wake up to and the last thing you see at night, which usually means soft over striking. Keep the palette close to the walls and the bedlinen, and let the room stay low and restful.',
     productSlugs: [
@@ -188,6 +195,8 @@ export const collections: Collection[] = [
       'ithinkithink',
       'swallow-dive',
       'vinkveld',
+      'lilac-geometry',
+      'creature-among-blue-leaves',
     ],
     stylingHeading: 'Styling art in the bedroom',
     stylingTips: [
@@ -237,11 +246,12 @@ export const collections: Collection[] = [
   },
   {
     slug: 'home-office',
+    revisedAt: '2026-09-26',
     chipLabel: 'Home Office',
     axis: 'room',
     title: 'Scandinavian Home Office Wall Art',
     description:
-      'Scandinavian and Nordic wall art for the home office: characterful illustrations and bold abstracts from independent Norwegian artists. Framing options and worldwide delivery.',
+      'Scandinavian and Nordic wall art for the home office: characterful illustrations and bold abstracts from independent Nordic artists. Framing options and worldwide delivery.',
     heading: 'Scandinavian Wall Art for the Home Office',
     intro:
       'A good home office holds your interest without stealing your focus. These prints bring some personality to the desk wall: characterful, hand-drawn illustrations and bold abstracts with enough energy to carry a working day. All are printed to order on 200gsm uncoated paper, in sizes from a single desk print to a full wall behind you on calls.',
@@ -257,6 +267,9 @@ export const collections: Collection[] = [
       'dancer',
       'ithinkithink',
       'swallow-dive',
+      'urf',
+      'desert-circles',
+      'family-trip',
     ],
     stylingHeading: 'Styling art in the home office',
     stylingTips: [
@@ -306,17 +319,17 @@ export const collections: Collection[] = [
   },
   {
     slug: 'kitchen',
-    revisedAt: '2026-09-23',
+    revisedAt: '2026-09-26',
     chipLabel: 'Kitchen',
     axis: 'room',
     title:
       'Scandinavian Kitchen Wall Art',
     description:
-      'Kitchen wall art with Scandinavian character: six food and table prints by Sia Siamos and Hedvig Wallin, plus ideas for hanging them. Framed or unframed.',
+      'Kitchen wall art with Scandinavian character: food and table prints by independent Nordic artists, plus ideas for hanging them. Framed or unframed.',
     heading:
       'Scandinavian Wall Art for the Kitchen',
     intro:
-      'Six prints, and between them a whole lobster, two carafes, a cafetière and more tomatoes than one table needs. Four are by Sia Siamos, a Greek and Norwegian illustrator living in Bergen, who paints food the way you actually meet it: mid-meal, hands reaching in from the edges, the cork already out of the bottle. Hedvig Wallin adds a pastel Sunday Brunch and rows of watercolour apples in Massa Äpplen. In a kitchen they do the thing a landscape can\'t, which is agree with the room. Each comes in one size, 50 x 70 cm, framed in wood, black or white, or unframed.',
+      'Between them, a whole lobster, two carafes, a cafetière and more tomatoes than one table needs. Most are by Sia Siamos, a Greek and Norwegian illustrator living in Bergen, who paints food the way you actually meet it: mid-meal, hands reaching in from the edges, the cork already out of the bottle. Hedvig Wallin adds a pastel Sunday Brunch and rows of watercolour apples in Massa Äpplen, and Ishtar Bäcklund Dakhil\'s Frukt & Grönt lays out a page of fruit and vegetables with handwritten Swedish labels. In a kitchen they do the thing a landscape can\'t, which is agree with the room. Each is sold framed in wood, black or white, or unframed.',
     intro2:
       'Kitchens are harder on a print than any other room, and it\'s worth knowing that before you hang something you love in one. Steam, cooking splashes and a wall of afternoon sun all land here, so keep a piece off the working run between hob and sink and out of direct light if the room lets you. Everything else relaxes: a kitchen takes more colour than a living room does, because there\'s already colour in it, tiles and pans and fruit and the rest. These prints carry enough colour to hold their own against all that.',
     productSlugs: [
@@ -326,6 +339,7 @@ export const collections: Collection[] = [
       'vinkveld',
       'sunday-brunch',
       'massa-applen',
+      'frukt-och-gront',
     ],
     stylingHeading: 'Kitchen wall art ideas',
     stylingTips: [
@@ -340,7 +354,7 @@ export const collections: Collection[] = [
       {
         question: 'What wall art works in a kitchen?',
         answer:
-          'Food, if you want the easy answer. A table scene or a still life belongs in a kitchen in a way a portrait or a landscape never quite does, and it can carry more colour than you\'d hang in a quieter room. The six prints here are exactly that: a lobster dinner, a cabin breakfast, a morning table, a wine evening, a Sunday brunch and rows of apples, all bold enough to compete with tiles and open shelving.',
+          'Food, if you want the easy answer. A table scene or a still life belongs in a kitchen in a way a portrait or a landscape never quite does, and it can carry more colour than you\'d hang in a quieter room. The prints here are exactly that: a lobster dinner, a cabin breakfast, a morning table, a wine evening, a Sunday brunch, rows of apples and a page of fruit and vegetables, all bold enough to compete with tiles and open shelving.',
       },
       {
         question: 'Where should I hang art in a small kitchen?',
@@ -350,7 +364,7 @@ export const collections: Collection[] = [
       {
         question: 'What size are the kitchen prints, and can I order them framed?',
         answer:
-          'All six come in one size, 50 x 70 cm, which suits most kitchen walls without needing a measure-up. Choose unframed, or a wood, black or white frame, on the product page before adding to the basket, where the price for that size is shown. Prints are made to order and delivered worldwide with the cost shown at checkout, and you have 14 days from delivery to change your mind.',
+          'Most are 50 x 70 cm, which suits most kitchen walls without needing a measure-up, and each product page lists the size. Choose unframed, or a wood, black or white frame, on the product page before adding to the basket, where the price for that size is shown. Prints are made to order and delivered worldwide with the cost shown at checkout, and you have 14 days from delivery to change your mind.',
       },
     ],
   },
