@@ -163,7 +163,10 @@ export default async function ArticlePage({
         // and 3-column widths so the row is never a uniform grid.
         <section aria-labelledby="article-prints" className="mt-24 desk:mt-32">
           <h2 id="article-prints" className="border-t border-ink pt-4 type-h3">Prints featured in this piece</h2>
-          <ul className="-mr-margin mt-group flex snap-x items-end gap-4 overflow-x-auto pr-margin pb-2 tab:gap-gutter">
+          {/* Bleeds to the viewport's right edge at every width, including past
+              the 1440 frame on wide screens; the matching padding lets the last
+              print scroll back to the content edge. */}
+          <ul className="mt-group mr-[calc(50%-50vw)] flex snap-x items-end gap-4 overflow-x-auto pr-[calc(50vw-50%)] pb-2 tab:gap-gutter">
             {featuredPrints.map((print, i) => (
               <li key={print.id} className={`shrink-0 snap-start ${i % 2 === 0 ? 'w-[240px] tab:w-[296px] desk:w-[405px]' : 'w-[240px] tab:w-[240px] desk:w-[296px]'}`}>
                 <TrackedLink event="journal-to-product-click" eventData={{ article: article.slug, product: print.slug }} href={`/product/${print.slug}`}>

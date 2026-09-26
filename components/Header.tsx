@@ -50,7 +50,9 @@ export const Header: React.FC<HeaderProps> = ({ categories, search }) => {
   const categoryHrefPrefix = isNo ? '/no' : '';
 
   const currentPage = localPath === '/' ? 'home'
-    : localPath.startsWith('/products') ? 'products'
+    // Categories and collections are the same Prints page, filtered, so the
+    // nav keeps Prints marked there too.
+    : localPath.startsWith('/products') || localPath.startsWith('/category/') || localPath.startsWith('/collection/') ? 'products'
     : localPath.startsWith('/product/') ? 'product'
     : localPath.startsWith('/inspire') ? 'inspire'
     : localPath.startsWith('/journal') ? 'journal'
