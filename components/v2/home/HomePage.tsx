@@ -12,6 +12,9 @@ import type { HomeData, HomeStrings } from '@/lib/home';
 import { HOME_QUESTIONS } from '@/lib/home';
 import { Price } from './Price';
 import { StartFromYourWall } from './StartFromYourWall';
+import { HeroVideo, HeroVideoLayer } from './HeroVideo';
+import { getProductVideo } from '@/config/product-videos';
+import { chromeAria } from '@/lib/i18n';
 
 type Locale = 'en' | 'no';
 
@@ -61,6 +64,7 @@ function portraitFor(slug: string, image: string): string | null {
  */
 export function HomePage({ locale, strings: t, data, help, artistLocations = {}, crossLinks }: HomePageProps) {
   const p = locale === 'no' ? '/no' : '';
+  const heroVideoIndex = data.hero.findIndex(({ product }) => getProductVideo(product.slug));
   const ev = (section: string, target: string) => ({ section, target, ...(locale === 'no' ? { locale } : {}) });
 
   return (
@@ -82,15 +86,17 @@ export function HomePage({ locale, strings: t, data, help, artistLocations = {},
           style={BLEED_LEFT}
         >
           <ul className="flex w-max items-end gap-gutter pr-margin">
-            {data.hero.map(({ product }, i) => (
-              <li key={product.slug} className="flex flex-col gap-tight">
+            {data.hero.map(({ product }, i) => {
+              // One tile moves: the first hero print that has a light-motion clip.
+              const video = i === heroVideoIndex ? getProductVideo(product.slug) : undefined;
+              const card = (
                 <TrackedLink
                   href={`${p}/product/${product.slug}`}
                   event="homepage-section-click"
                   eventData={ev('hero', product.slug)}
                   className="group flex flex-col gap-tight"
                 >
-                  <div className={`${HERO_TILES[i % HERO_TILES.length]} overflow-hidden bg-image-bg`}>
+                  <div className={`${HERO_TILES[i % HERO_TILES.length]} relative overflow-hidden bg-image-bg`}>
                     {/* useSecondary: the room scene is what is on screen, so
                         the alt describes that rather than the bare print. */}
                     <SmartImage
@@ -102,6 +108,7 @@ export function HomePage({ locale, strings: t, data, help, artistLocations = {},
                       sizes="(max-width: 833px) 260px, (max-width: 1199px) 420px, 624px"
                       className="h-full w-full transition-transform duration-500 ease-out group-hover:scale-[1.015]"
                     />
+                    {video && <HeroVideoLayer video={video} />}
                   </div>
                   <div className="type-caption">
                     <p className="flex items-center gap-[6px] whitespace-nowrap">
@@ -116,8 +123,22 @@ export function HomePage({ locale, strings: t, data, help, artistLocations = {},
                     </p>
                   </div>
                 </TrackedLink>
-              </li>
-            ))}
+              );
+              return (
+                <li key={product.slug} className="flex flex-col gap-tight">
+                  {video ? (
+                    <HeroVideo
+                      tileClassName={HERO_TILES[i % HERO_TILES.length]}
+                      pauseLabel={chromeAria[locale].video.pause}
+                      playLabel={chromeAria[locale].video.play}
+                      productName={product.name}
+                    >
+                      {card}
+                    </HeroVideo>
+                  ) : card}
+                </li>
+              );
+            })}
           </ul>
         </div>
       </section>
