@@ -20,9 +20,10 @@ EMPTY = DIR / "empty-frame.webp"
 # The glass opening's corners (TL, TR, BR, BL) on the 1122 x 1402 image. The
 # frame hangs in slight perspective (its right side is nearer, so taller), so
 # the print is warped onto this quad rather than pasted as a rectangle. Found
-# by fitting a line to each edge of the neutral glass against the warm
-# moulding, then pushed 1 px outward so no glass shows at the lip.
-QUAD = [(611.0, 67.0), (933.0, 47.0), (938.0, 545.0), (613.0, 529.5)]
+# by fitting a line to each edge where the warm moulding begins (red minus
+# blue above 40), so the print tucks under the moulding's pale inner lip
+# and no glass shows beside it.
+QUAD = [(609.9, 65.8), (936.3, 45.3), (938.2, 545.9), (611.6, 530.2)]
 SS = 4  # supersampling for the quad's edge
 
 
