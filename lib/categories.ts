@@ -60,7 +60,7 @@ export const categoryLandings: CategoryLanding[] = [
     category: 'Abstract',
     title: 'Nordic Abstract Wall Art Prints',
     description:
-      'Nordic abstract wall art by independent artists: pared-back figures, bold bird silhouettes and geometric landscapes in confident colour. Framing options.',
+      'Nordic abstract wall art by independent artists: pared-back figures and bold bird silhouettes in confident colour. Framing options.',
     heading: 'Abstract Prints',
     // Ken's buyer-language rewrite (Studio row, 2026-08-13), trimmed when
     // Renate Thor's Birdie series left the catalogue (21 Aug). A print by a
@@ -96,7 +96,7 @@ export const categoryLandings: CategoryLanding[] = [
     category: 'Illustrations',
     title: 'Scandinavian Illustrations',
     description:
-      'Nordic illustration prints by independent artists: dry one-liners, comic pages packed with detail and imagined worlds. Framed or unframed.',
+      'Nordic illustration prints by independent artists: dry one-liners and comic pages packed with detail. Framed or unframed.',
     heading: 'Illustrations',
     // Ken's buyer-language rewrite (Studio row, 2026-08-13), rewritten again
     // on 2026-09-15 for the second and third illustrator in the category.

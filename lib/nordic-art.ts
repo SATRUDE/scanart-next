@@ -10,7 +10,7 @@ import type { WallArtLanding } from '@/lib/wall-art';
 export const nordicArtLanding: WallArtLanding = {
   title: 'Nordic Art: Prints by Independent Nordic Artists',
   description:
-    'Nordic art by independent artists: folk pattern, table still lifes, pared-back figures, dry line drawings, comic detail and imagined worlds.',
+    'Nordic art by independent artists: folk pattern, table still lifes, pared-back figures, dry line drawings and comic detail.',
   heading: 'Nordic Art, from Folk Tradition to Now',
   intro:
     "Nordic art has always run on two currents at once: the folk tradition of pattern and ornament, and a newer instinct to pare everything back until shape does the work. Both are alive in this gallery. Ingunn Dybendal draws folk flowers and a patterned lakeland petal by petal in coloured pencil. Helene Brox cuts figures and birds down to flat, confident silhouette. Sia Siamos paints the Nordic table mid-meal, Simen Wahlqvist tells whole jokes in a handful of lines, Hedvig Wallin, the gallery's first Swede, draws a breakfast table with a naive artist's wonky perspective, and Mikko Saarainen, the first Finn, crowds a comic page until every corner is doing something. All of them live and work in the Nordics.",

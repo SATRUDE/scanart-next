@@ -515,7 +515,7 @@ export const no = {
     abstract: {
       title: 'Abstrakte trykk og kunstplakater',
       description:
-        'Abstrakte trykk og kunstplakater fra nordiske kunstnere: rene silhuetter, djerve fuglemotiver og geometriske landskap. Med eller uten ramme.',
+        'Abstrakte trykk og kunstplakater fra nordiske kunstnere: rene silhuetter og djerve fuglemotiver. Med eller uten ramme.',
       heading: 'Abstrakte trykk',
       intro:
         'Leter du etter abstrakt kunst som plakat eller trykk, er dette den rolige, nordiske enden av sjangeren: former skrelles ned til bare den essensielle silhuetten står igjen, og én eller to flate farger gjør jobben til ti. Helene Brox maler løse, papirklippaktige figurer i kremhvitt på én fargeflate, og skjærer en stupende svale ned til selve vingekastet. Hvert trykk kan bestilles med eller uten ramme.',
@@ -545,7 +545,7 @@ export const no = {
     illustrations: {
       title: 'Illustrasjoner og morsomme plakater',
       description:
-        'Nordiske illustrasjonstrykk av uavhengige kunstnere: tørr humor på få streker, tegneseriesider fulle av detaljer og fantasiverdener.',
+        'Nordiske illustrasjonstrykk av uavhengige kunstnere: tørr humor på få streker og tegneseriesider fulle av detaljer.',
       heading: 'Illustrasjoner',
       intro:
         'Illustrasjon betyr her tegninger med humor, og kategorien trekker i to retninger. Simen Wahlqvist i Oslo fanger et øyeblikk rett før det skjer, med så få streker som mulig; regelen hans er enkel: får en tegning ham til å le, er den ferdig. Mikko Saarainen i Lahti gjør det motsatte og fyller kvadratet til hver eneste krok har en spøk i seg, og ett av trykkene hans er en hel tegneserieside. Hedvig Wallins tusjhav ligger midt imellom. Morgenstrekk fanger dagens aller første helkroppsstrekk, og kvadratene rundt bærer sin egen humor.',
