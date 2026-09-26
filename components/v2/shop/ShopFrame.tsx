@@ -13,6 +13,7 @@ import React, {
   useState,
 } from 'react';
 import Link from 'next/link';
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { track } from '@/lib/analytics';
 import { getCategoryLandingByCategory } from '@/lib/categories';
@@ -111,33 +112,62 @@ function Chevron() {
  * wide as what it shows, keyboard and screen reader get the real <select>, and
  * the platform picker opens on click. The focus ring follows the select.
  */
-function Refine({ id, label, prefix, value, options, onChange, reserve }: {
+/**
+ * Artist, Size and Sort: a quiet trigger ("Artist ⌄") that opens a panel in
+ * the language picker's style (square, 1 px line, no shadow, the chosen row
+ * on the surface grey), not the browser's own menu. Radix gives it the menu
+ * semantics: arrow keys, type-ahead, Escape, focus back on the trigger.
+ */
+function Refine({ id, label, prefix, heading, value, options, onChange, reserve }: {
   id: string;
   /** Accessible name when there is no visible prefix. */
   label: string;
   /** Visible before the value, which then names the control: "Sort: Name". */
   prefix?: string;
+  /** The panel's small heading, as the language picker has. */
+  heading: string;
   value: string;
-  options: { value: string; label: string }[];
+  /** `menuLabel` replaces the label inside the open panel ("All artists" for the trigger's "Artist"). */
+  options: { value: string; label: string; menuLabel?: string }[];
   onChange: (v: string) => void;
   /** Labels to hold room for, so the control keeps one width across pages whose defaults differ. */
   reserve?: string[];
 }) {
   const shown = options.find(o => o.value === value)?.label ?? options[0]?.label;
   const control = (
-    <span className="relative inline-flex items-center gap-[6px] type-small transition-colors hover:text-brand has-[select:focus-visible]:outline-2 has-[select:focus-visible]:outline-offset-2 has-[select:focus-visible]:outline-focus">
-      <label htmlFor={id} className={prefix ? '' : 'sr-only-sa'}>{prefix ?? label}</label>
-      <span aria-hidden>{shown}</span>
-      <Chevron />
-      <select
+    <DropdownMenu.Root modal={false}>
+      <DropdownMenu.Trigger
         id={id}
-        value={value}
-        onChange={e => onChange(e.target.value)}
-        className="absolute inset-0 h-full w-full cursor-pointer appearance-none opacity-0"
+        aria-label={prefix ? undefined : `${label}: ${shown}`}
+        className="group/refine inline-flex items-center gap-[6px] type-small transition-colors hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus data-[state=open]:text-brand"
       >
-        {options.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
-      </select>
-    </span>
+        {prefix && <span>{prefix}</span>}
+        <span>{shown}</span>
+        <span className="transition-transform duration-200 group-data-[state=open]/refine:rotate-180 motion-reduce:transition-none">
+          <Chevron />
+        </span>
+      </DropdownMenu.Trigger>
+      <DropdownMenu.Portal>
+        <DropdownMenu.Content
+          align="end"
+          sideOffset={10}
+          className="z-50 min-w-48 border border-line bg-bg p-3 text-ink outline-hidden data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[side=bottom]:slide-in-from-top-1 motion-reduce:animate-none"
+        >
+          <DropdownMenu.Label className="mb-2 type-caption">{heading}</DropdownMenu.Label>
+          <DropdownMenu.RadioGroup value={value} onValueChange={onChange} className="space-y-0.5">
+            {options.map(o => (
+              <DropdownMenu.RadioItem
+                key={o.value}
+                value={o.value}
+                className="block cursor-pointer px-2 py-1.5 type-small outline-hidden data-highlighted:bg-surface data-[state=checked]:bg-surface"
+              >
+                {o.menuLabel ?? o.label}
+              </DropdownMenu.RadioItem>
+            ))}
+          </DropdownMenu.RadioGroup>
+        </DropdownMenu.Content>
+      </DropdownMenu.Portal>
+    </DropdownMenu.Root>
   );
   if (!reserve) return control;
   // The control and invisible copies at the reserved labels share one grid
@@ -404,19 +434,22 @@ export function ShopFrame({
               label={t.artistFilterLabel}
               value={own.artist}
               onChange={v => setRefineField('artist', v)}
-              options={[{ value: '', label: t.artistAll }, ...route.artists.map(a => ({ value: a, label: a }))]}
+              heading={t.artistAll}
+              options={[{ value: '', label: t.artistAll, menuLabel: t.artistAny }, ...route.artists.map(a => ({ value: a, label: a }))]}
             />
             <Refine
               id="filter-size"
               label={t.sizeFilterLabel}
               value={own.size}
               onChange={v => setRefineField('size', v)}
-              options={[{ value: '', label: t.sizeAll }, ...route.sizes.map(s => ({ value: s, label: sizeLabel(s) }))]}
+              heading={t.sizeAll}
+              options={[{ value: '', label: t.sizeAll, menuLabel: t.sizeAny }, ...route.sizes.map(s => ({ value: s, label: sizeLabel(s) }))]}
             />
             <Refine
               id="sort-products"
               label={t.sortLabel}
               prefix={t.sortPrefix}
+              heading={t.sortPrefix.replace(/:$/, '')}
               // "Sort: Featured" on a landing and "Sort: Name" on /products
               // differ in width; without this, Artist and Size would shift
               // sideways on every click between them.

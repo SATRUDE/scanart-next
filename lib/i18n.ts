@@ -596,6 +596,9 @@ export interface ProductsGridStrings {
   printsSuffix: string;
   allChip: string;
   /** The Filter bar's overflow toggle: "More" shows the options that don't fit on one line, "Less" folds them away. */
+  /** In the open Artist and Size menus, the option that clears the filter. */
+  artistAny: string;
+  sizeAny: string;
   moreFilters: string;
   lessFilters: string;
   sortLabel: string;
