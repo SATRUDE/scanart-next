@@ -1,5 +1,5 @@
 import { getAllProducts } from '@/lib/products';
-import { getAllArticles } from '@/lib/articles';
+import { getAllArticles, getArticleBlocks } from '@/lib/articles';
 import { getPublishedArtists } from '@/lib/published-artists';
 import { categoryLandings } from '@/lib/categories';
 import { getCollectionBySlug } from '@/lib/collections';
@@ -57,15 +57,23 @@ export async function buildSearchIndex(lang: 'en' | 'no'): Promise<SearchIndex> 
     };
   });
 
-  const stories = articles.map(article => ({
-    slug: article.slug,
-    title: article.title,
-    category: article.category,
-    tags: article.tags ?? [],
-    image: article.image,
-    imageAlt: article.imageAlt ?? article.title,
-    href: `/article/${article.slug}`,
-  }));
+  // The published artists each story names in its own text (title, excerpt
+  // and body), by full name only, so "Sia" does not match "Siamese". The
+  // articles carry no artist field, so this reads what they actually say.
+  const bodies = await Promise.all(articles.map(article => getArticleBlocks(article.id)));
+  const stories = articles.map((article, i) => {
+    const text = `${article.title}\n${article.excerpt}\n${JSON.stringify(bodies[i])}`;
+    return {
+      slug: article.slug,
+      title: article.title,
+      category: article.category,
+      tags: article.tags ?? [],
+      image: article.image,
+      imageAlt: article.imageAlt ?? article.title,
+      href: `/article/${article.slug}`,
+      artists: artists.filter(a => text.includes(a.name)).map(a => a.name),
+    };
+  });
 
   // Popular searches are links to real, indexable pages (categories, a
   // collection, an artist), never to a search URL: that is where the value
@@ -81,5 +89,5 @@ export async function buildSearchIndex(lang: 'en' | 'no'): Promise<SearchIndex> 
   const featuredArtist = artistRows.find(a => a.slug === 'hedvig-wallin') ?? artistRows[0];
   if (featuredArtist) popular.push({ label: featuredArtist.name, href: featuredArtist.href });
 
-  return { prints, artists: artistRows, stories, popular, productsHref: `${p}/products`, inspireHref: `${p}/inspire` };
+  return { prints, artists: artistRows, stories, popular, productsHref: `${p}/products`, searchHref: `${p}/search`, inspireHref: `${p}/inspire` };
 }

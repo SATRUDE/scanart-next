@@ -38,6 +38,12 @@ export interface SearchStory {
   image: string;
   imageAlt: string;
   href: string;
+  /**
+   * Published artists the story names in its text (full names only), so a
+   * search for an artist finds the stories about them. Built on the server
+   * from the article itself; never guessed.
+   */
+  artists?: string[];
 }
 
 export interface SearchIndex {
@@ -45,10 +51,20 @@ export interface SearchIndex {
   artists: SearchArtist[];
   stories: SearchStory[];
   popular: { label: string; href: string }[];
-  /** Locale-prefixed /products, the catalogue the form submits to. */
+  /** Locale-prefixed /products, the catalogue (the Prints section links to its ?q=). */
   productsHref: string;
+  /** Locale-prefixed /search, the results page the form submits to. */
+  searchHref: string;
   inspireHref: string;
 }
+
+/** The results tabs, on the overlay and the search page (&tab= in the URL). */
+export type SearchTab = 'all' | 'prints' | 'artists' | 'stories';
+export const SEARCH_TABS: readonly SearchTab[] = ['all', 'prints', 'artists', 'stories'];
+
+/** Fills "{n} results for “{q}”" style templates from the search strings. */
+export const fill = (s: string, vars: Record<string, string | number>) =>
+  s.replace(/\{(\w+)\}/g, (_, k) => String(vars[k] ?? ''));
 
 export interface SearchResults {
   prints: SearchPrint[];
@@ -74,7 +90,9 @@ export function searchIndex(index: SearchIndex, query: string): SearchResults {
   // matches for /products?q=, so "See all" and the Prints page agree.
   const prints = index.prints.filter(p => has(p.name) || has(p.artist) || has(p.category));
   const artists = index.artists.filter(a => has(a.name));
-  const stories = index.stories.filter(s => has(s.title) || has(s.category) || s.tags.some(has));
+  // Stories also match on the artists they name, so "sim" finds the pieces
+  // that write about Simen Wahlqvist as well as his prints and his page.
+  const stories = index.stories.filter(s => has(s.title) || has(s.category) || s.tags.some(has) || (s.artists ?? []).some(has));
   return { prints, artists, stories, total: prints.length + artists.length + stories.length };
 }
 

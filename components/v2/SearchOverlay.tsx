@@ -3,27 +3,29 @@
 import React, { useEffect, useId, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { PrintCard } from '@/components/PrintCard';
 import { SmartImage } from '@/components/SmartImage';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { getArtistInitials } from '@/data/artists';
 import { searchStrings, type SearchStrings } from '@/lib/i18n';
 import { formatDisplayPrice, getLowestProductPrices } from '@/lib/pricing';
-import { highlight, searchIndex, type SearchArtist, type SearchIndex, type SearchPrint, type SearchResults, type SearchStory } from '@/lib/site-search';
+import { fill, highlight, searchIndex, type SearchIndex, type SearchPrint, type SearchResults, type SearchTab as Tab } from '@/lib/site-search';
 import { shouldTrackSiteSearch } from '@/lib/site-search-signal';
 import { track } from '@/lib/analytics';
-import { OPTION_PAD } from '@/components/v2/OptionTrack';
+import { NoResults, Results, ResultTabs } from '@/components/v2/search/SearchResultViews';
 
 /**
  * Full-screen search (Figma: Search overlay 242:4241, the Search frames on
  * Latest pages, and the motion notes in about-hero-motion.md).
  *
- * SEO (docs/v2-seo.md, item 8): a real GET form that submits to the
- * catalogue's own query URL, /products?q= (or /no/products?q=), exactly as the
- * previous header did. There is no search page and no new URL: the live
- * suggestions and the tabbed results are client state inside this dialog, and
- * nothing here is in the served HTML. The indexable value is in the links,
- * which go to real category, collection, artist, product and article pages.
+ * SEO (docs/v2-seo.md, item 8): a real GET form that submits to the search
+ * page, /search?q= (or /no/search?q=), which is noindex, follow and not in the
+ * sitemap. /products?q= still works for old links, and the Prints section
+ * links to it. The live suggestions and the tabbed results are client state
+ * inside this dialog, and nothing here is in the served HTML. The indexable
+ * value is in the links, which go to real category, collection, artist,
+ * product and article pages.
+ *
+ * The tabs, result sections and no results state are shared with the search
+ * page (components/v2/search/SearchResultViews.tsx), so the two agree.
  *
  * The data is the small index the root layout builds (lib/search-index.ts);
  * matching is on the client (lib/site-search.ts), with the same fields as the
@@ -57,16 +59,12 @@ export function SearchOverlay({
   return <SearchPanel onClose={onClose} isNo={isNo} index={index} />;
 }
 
-const EMPTY_INDEX: SearchIndex = { prints: [], artists: [], stories: [], popular: [], productsHref: '/products', inspireHref: '/inspire' };
+const EMPTY_INDEX: SearchIndex = { prints: [], artists: [], stories: [], popular: [], productsHref: '/products', searchHref: '/search', inspireHref: '/inspire' };
 
 const RECENT_KEY = 'scanart-recent-searches';
 const EASE = 'cubic-bezier(.2,.7,.2,1)';
 
-type Tab = 'all' | 'prints' | 'artists' | 'stories';
 type View = 'suggest' | 'results';
-
-const fill = (s: string, vars: Record<string, string | number>) =>
-  s.replace(/\{(\w+)\}/g, (_, k) => String(vars[k] ?? ''));
 
 function readRecent(): string[] {
   try {
@@ -219,14 +217,15 @@ function SearchPanel({ onClose, isNo, index }: { onClose: () => void; isNo: bool
     inputRef.current?.focus();
   };
 
-  // The form's own submission: the catalogue's query URL, a client navigation
-  // when JavaScript is running, a plain GET when it is not.
+  // The form's own submission: the search page, /search?q= (/no/search?q= on
+  // Norwegian pages), a client navigation when JavaScript is running, a plain
+  // GET when it is not.
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const query = q.trim();
     if (!query) return;
     saveRecent(query);
-    router.push(`${index.productsHref}?q=${encodeURIComponent(query)}`);
+    router.push(`${index.searchHref}?q=${encodeURIComponent(query)}`);
     requestClose();
   };
 
@@ -254,7 +253,7 @@ function SearchPanel({ onClose, isNo, index }: { onClose: () => void; isNo: bool
 
       <div className="page-x flex flex-col gap-10 pt-6 pb-band tab:gap-[56px] tab:pt-[56px]">
         <div className="flex flex-col gap-6">
-          <form action={index.productsHref} method="get" role="search" onSubmit={onSubmit}>
+          <form action={index.searchHref} method="get" role="search" onSubmit={onSubmit}>
             <div className="group/field relative flex items-baseline justify-between gap-6 pb-3">
               <label htmlFor={fieldId} className="sr-only-sa">{t.placeholder}</label>
               <input
@@ -466,63 +465,6 @@ function LiveSuggestions({
   );
 }
 
-function ResultTabs({
-  t,
-  id,
-  tab,
-  onTab,
-  results,
-  pending,
-}: {
-  t: SearchStrings;
-  id: string;
-  tab: Tab;
-  onTab: (tab: Tab) => void;
-  results: SearchResults;
-  pending: boolean;
-}) {
-  const tabs: { key: Tab; label: string; count: number }[] = [
-    { key: 'all', label: t.allResults, count: results.total },
-    { key: 'prints', label: t.prints, count: results.prints.length },
-    { key: 'artists', label: t.artists, count: results.artists.length },
-    { key: 'stories', label: t.stories, count: results.stories.length },
-  ];
-  const refs = useRef<(HTMLButtonElement | null)[]>([]);
-  const move = (from: number, step: number) => {
-    const next = (from + step + tabs.length) % tabs.length;
-    onTab(tabs[next].key);
-    refs.current[next]?.focus();
-  };
-  return (
-    <div role="tablist" aria-label={t.tabsLabel} className="flex flex-wrap items-center gap-x-6 gap-y-2 type-small">
-      {tabs.map((item, i) => {
-        const selected = item.key === tab;
-        return (
-          <button
-            key={item.key}
-            ref={el => { refs.current[i] = el; }}
-            type="button"
-            role="tab"
-            id={`${id}-tab-${item.key}`}
-            aria-selected={selected}
-            aria-controls={`${id}-panel`}
-            tabIndex={selected ? 0 : -1}
-            onClick={() => onTab(item.key)}
-            onKeyDown={e => {
-              if (e.key === 'ArrowRight') { e.preventDefault(); move(i, 1); }
-              if (e.key === 'ArrowLeft') { e.preventDefault(); move(i, -1); }
-            }}
-            className={`relative flex items-center ${OPTION_PAD} transition-opacity ${selected ? '' : 'opacity-60 hover:opacity-100'}`}
-          >
-            <span aria-hidden className="option-mark" />
-            <span>{item.label}{pending ? '' : ` (${item.count})`}</span>
-          </button>
-        );
-      })}
-    </div>
-  );
-}
-
 function Searching({ t }: { t: SearchStrings }) {
   return (
     <div className="flex flex-col gap-6 pt-6 tab:pt-10">
@@ -531,170 +473,6 @@ function Searching({ t }: { t: SearchStrings }) {
         {[0, 1, 2].map(i => (
           <div key={i} className={`col-span-full aspect-square bg-image-bg tab:col-span-4 ${i > 0 ? 'hidden tab:block' : ''}`} />
         ))}
-      </div>
-    </div>
-  );
-}
-
-function SectionHead({ title, link, onNavigate }: { title: string; link?: { href: string; label: string }; onNavigate: () => void }) {
-  return (
-    <div className="flex items-baseline justify-between gap-6 border-t border-ink pt-4 tab:pt-6">
-      <h2 className="type-h2">{title}</h2>
-      {link && (
-        <Link href={link.href} onClick={onNavigate} className="shrink-0 type-small transition-colors hover:text-brand">
-          {link.label}
-        </Link>
-      )}
-    </div>
-  );
-}
-
-function Results({
-  t,
-  id,
-  tab,
-  results,
-  index,
-  query,
-  isNo,
-  onNavigate,
-}: {
-  t: SearchStrings;
-  id: string;
-  tab: Tab;
-  results: SearchResults;
-  index: SearchIndex;
-  query: string;
-  isNo: boolean;
-  onNavigate: () => void;
-}) {
-  const show = (k: Tab) => (tab === 'all' || tab === k);
-  return (
-    <div
-      id={`${id}-panel`}
-      role="tabpanel"
-      aria-labelledby={`${id}-tab-${tab}`}
-      className="flex flex-col gap-[96px] pt-10 tab:pt-[40px] desk:gap-[128px]"
-    >
-      {show('prints') && results.prints.length > 0 && (
-        <section className="flex flex-col gap-band">
-          <SectionHead
-            title={t.prints}
-            link={{ href: `${index.productsHref}?q=${encodeURIComponent(query)}`, label: t.seeOnPrintsPage }}
-            onNavigate={onNavigate}
-          />
-          {/* One continuous list in columns, each tile 64 under the one
-              above (layout.md, rule 13); CSS columns keep the DOM, reading
-              and tab order the same as the list. */}
-          <ul className="columns-1 gap-x-8 tab:columns-2 desk:columns-3">
-            {results.prints.map(print => (
-              <li key={print.id} className="mb-band break-inside-avoid">
-                <Link href={print.href} onClick={onNavigate} className="block">
-                  <PrintCard product={print} locale={isNo ? 'no' : 'en'} sizes="(max-width: 833px) 100vw, (max-width: 1199px) 50vw, 405px" />
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
-
-      {show('artists') && results.artists.length > 0 && (
-        <section className="flex flex-col gap-band">
-          <SectionHead title={t.artists} onNavigate={onNavigate} />
-          <ul className="page-grid gap-y-10">
-            {results.artists.map(artist => (
-              <li key={artist.slug} className="col-span-full tab:col-span-4">
-                <ArtistResult t={t} artist={artist} onNavigate={onNavigate} />
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
-
-      {show('stories') && results.stories.length > 0 && (
-        <section className="flex flex-col gap-band">
-          <SectionHead title={t.stories} onNavigate={onNavigate} />
-          <ul className="page-grid gap-y-band">
-            {results.stories.map(story => (
-              <li key={story.slug} className="col-span-full tab:col-span-4">
-                <StoryResult story={story} onNavigate={onNavigate} />
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
-    </div>
-  );
-}
-
-/** Artist card 61:199: rule on top, portrait, name in H3, one line, city — prints at the foot. */
-function ArtistResult({ t, artist, onNavigate }: { t: SearchStrings; artist: SearchArtist; onNavigate: () => void }) {
-  return (
-    <Link href={artist.href} onClick={onNavigate} className="group flex h-full flex-col justify-between gap-group border-t border-ink pt-group tab:min-h-[380px]">
-      <span className="flex flex-col gap-group">
-        <span className="relative size-14 overflow-hidden bg-image-bg">
-          {artist.image ? (
-            <SmartImage src={artist.image} alt={artist.name} sizes="56px" className="h-full w-full" />
-          ) : (
-            <span aria-hidden className="flex h-full w-full items-center justify-center type-small">{getArtistInitials(artist.name)}</span>
-          )}
-        </span>
-        <span className="type-h3 transition-colors group-hover:text-brand">{artist.name}</span>
-        <span className="type-body">{artist.line}</span>
-      </span>
-      <span className="flex items-center gap-[6px] type-caption">
-        <span>{artist.city}</span>
-        <span aria-hidden className="hairline" />
-        <span>{artist.printCount === 1 ? t.printCountOne : fill(t.printCount, { n: artist.printCount })}</span>
-      </span>
-    </Link>
-  );
-}
-
-/** Story tile 45:131: image at 4:5, then the category in text-accent and the title. */
-function StoryResult({ story, onNavigate }: { story: SearchStory; onNavigate: () => void }) {
-  return (
-    <Link href={story.href} onClick={onNavigate} className="group flex flex-col gap-tight">
-      <span className="relative block aspect-[4/5] w-full overflow-hidden bg-image-bg">
-        <SmartImage src={story.image} alt={story.imageAlt} sizes="(max-width: 833px) 100vw, 405px" className="h-full w-full" />
-      </span>
-      <span className="flex flex-col gap-1">
-        <span className="type-caption text-text-accent">{story.category}</span>
-        <span className="type-body transition-colors group-hover:text-brand">{story.title}</span>
-      </span>
-    </Link>
-  );
-}
-
-function NoResults({ t, index, query, onNavigate }: { t: SearchStrings; index: SearchIndex; query: string; onNavigate: () => void }) {
-  const tries = [
-    ...index.popular.slice(0, 2),
-    ...index.popular.slice(-1),
-    { label: t.roomsLink, href: index.inspireHref },
-    { label: fill(t.allPrints, { n: index.prints.length }), href: index.productsHref },
-  ];
-  return (
-    <div className="page-grid gap-y-8 pt-2 tab:pt-10">
-      <div className="col-span-full flex flex-col gap-4 desk:col-span-6">
-        <h2 className="type-h2">{fill(t.noResultsTitle, { q: query })}</h2>
-        <p className="type-body">{t.noResultsBody}</p>
-      </div>
-      <div className="col-span-full flex flex-col desk:col-span-6 desk:border-t desk:border-ink desk:pt-4">
-        <h3 className="mb-3 hidden type-small tab:block">{t.tryHeading}</h3>
-        <ul>
-          {tries.map(item => (
-            <li key={item.href}>
-              <Link
-                href={item.href}
-                onClick={onNavigate}
-                className="flex items-baseline justify-between gap-4 border-b border-ink py-[14px] type-body transition-colors hover:text-brand tab:type-h3"
-              >
-                <span>{item.label}</span>
-                <span aria-hidden className="type-body">→</span>
-              </Link>
-            </li>
-          ))}
-        </ul>
       </div>
     </div>
   );

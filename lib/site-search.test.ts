@@ -11,6 +11,7 @@ const index: SearchIndex = {
   stories: [{ slug: 'illustrators', title: 'Scandinavian illustrators', category: 'Guide', tags: [], image: '', imageAlt: '', href: '/article/illustrators' }],
   popular: [],
   productsHref: '/products',
+  searchHref: '/search',
   inspireHref: '/inspire',
 };
 
@@ -28,6 +29,15 @@ describe('overlay search', () => {
     expect(r.prints).toHaveLength(1);
     expect(r.stories).toHaveLength(1);
     expect(r.total).toBe(2);
+  });
+
+  it('finds stories by the artists they name', () => {
+    const withMention: SearchIndex = {
+      ...index,
+      stories: [{ ...index.stories[0], slug: 'art-wall', title: 'Create an art wall', category: 'Home Decor', artists: ['Simen Wahlqvist'] }],
+    };
+    expect(searchIndex(withMention, 'sim').stories.map(s => s.slug)).toEqual(['art-wall']);
+    expect(searchIndex(withMention, 'helene').stories).toHaveLength(0);
   });
 
   it('treats an empty or blank query as no search', () => {

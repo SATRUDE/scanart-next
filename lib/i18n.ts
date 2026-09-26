@@ -24,7 +24,9 @@ export function isNoPath(pathname: string): boolean {
 export function noPathFor(pathname: string): string | null {
   if (pathname === '/') return '/no';
   if (pathname === '/artists/apply' || pathname === '/artists/how-it-works') return `/no${pathname}`;
-  if (/^\/(about|delivery|help|artists|products|inspire|journal|privacy|terms|credits|scandinavian-wall-art|feedback)$/.test(pathname)) return `/no${pathname}`;
+  // /search is noindex and carries no hreflang, but a visitor switching
+  // language there still wants the Norwegian search (the query is not carried).
+  if (/^\/(about|delivery|help|artists|products|inspire|journal|privacy|terms|credits|scandinavian-wall-art|feedback|search)$/.test(pathname)) return `/no${pathname}`;
   if (/^\/(category|artist|collection|product)\/[^/]+$/.test(pathname)) return `/no${pathname}`;
   return null;
 }
@@ -356,6 +358,8 @@ export interface SearchStrings {
   artists: string;
   stories: string;
   allResults: string;
+  /** The All tab's label on a phone. */
+  allShort: string;
   tabsLabel: string;
   seeAll: string;
   /** When there is exactly one result. */
@@ -369,6 +373,12 @@ export interface SearchStrings {
   printCount: string;
   printCountOne: string;
   resultCount: string;
+  /** Prints section link when the prints found are one artist's whole work. */
+  allPrintsBy: string;
+  /** The search page (/search): its H1 and title, with and without a query. */
+  pageTitle: string;
+  pageTitleFor: string;
+  pageDescription: string;
 }
 
 export const searchStrings: Record<Locale, SearchStrings> = {
@@ -387,6 +397,7 @@ export const searchStrings: Record<Locale, SearchStrings> = {
     artists: 'Artists',
     stories: 'Stories',
     allResults: 'All results',
+    allShort: 'All',
     tabsLabel: 'Kinds of result',
     seeAll: 'See all {n} results for “{q}”',
     seeAllOne: 'See the result for “{q}”',
@@ -399,6 +410,10 @@ export const searchStrings: Record<Locale, SearchStrings> = {
     printCount: '{n} prints',
     printCountOne: '1 print',
     resultCount: '{n} results',
+    allPrintsBy: 'All {n} prints by {name}',
+    pageTitle: 'Search',
+    pageTitleFor: 'Search results for “{q}”',
+    pageDescription: 'Search the prints, artists and stories at Scandinavian Art.',
   },
   no: {
     dialog: 'Søk',
@@ -415,6 +430,7 @@ export const searchStrings: Record<Locale, SearchStrings> = {
     artists: 'Kunstnere',
     stories: 'Artikler',
     allResults: 'Alle treff',
+    allShort: 'Alle',
     tabsLabel: 'Typer treff',
     seeAll: 'Se alle {n} treff for «{q}»',
     seeAllOne: 'Se treffet for «{q}»',
@@ -427,6 +443,10 @@ export const searchStrings: Record<Locale, SearchStrings> = {
     printCount: '{n} trykk',
     printCountOne: '1 trykk',
     resultCount: '{n} treff',
+    allPrintsBy: 'Alle {n} trykk av {name}',
+    pageTitle: 'Søk',
+    pageTitleFor: 'Søkeresultater for «{q}»',
+    pageDescription: 'Søk blant trykk, kunstnere og artikler hos Scandinavian Art.',
   },
 };
 
