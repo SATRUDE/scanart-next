@@ -16,7 +16,7 @@ The remaining steps before V2 goes live, and the follow-ups it leaves. The SEO g
   2. Restore its line in `lib/shop-scenes.ts`.
   3. Put the sentence back in her editorial in `lib/artist-editorial.ts` and `lib/i18n/no.ts`.
   4. Set the count in `lib/product-listing-details.test.ts` to 31.
-- [ ] Add the Stripe keys to the V2 preview, then run a test-card order end to end (receipt, Slack notice, /order-confirmed).
+- [x] Stripe test keys on the V2 preview (branch-scoped), test-card orders end to end: payment, Slack notice, /order-confirmed (2026-09-26).
 - [ ] A last review round on the preview.
 
 ## Launch day
