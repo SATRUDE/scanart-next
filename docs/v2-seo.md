@@ -184,3 +184,11 @@ Before launch, fetch every sitemap URL on the V2 preview as Googlebot and diff i
 The script lives in `scripts/seo-diff.mjs` (to write). No existing test renders a page's head or JSON-LD, so this diff is the only real guard.
 
 After launch, watch `/api/search` (web **and** image) and `/api/index-status` weekly for four weeks. A dip of a week or two while Google recrawls is normal. A lasting drop on one page type points at a checklist item.
+
+## Accepted differences (Mark's decisions, 2026-09-26)
+The sign-off diff against production will show these; each was decided on purpose, and the rest must stay clean.
+- **Footer "Les på norsk" / "Read in English" removed** (every page loses its one link to its twin). The language switcher does it for people; hreflang in the head and sitemap alternates still pair every page for search.
+- **No artist or print counts in copy.** Meta descriptions on the landings, /products and /nordic-art changed; the /nordic-art title is now "Nordic Art: Prints by Independent Nordic Artists".
+- **"More from the journal" shows three articles at most** (curated first, then articles that name this one, then same category). Articles lose some article-to-article links; every article is still linked from /journal.
+- **The visible product breadcrumb stops at Art Prints;** the BreadcrumbList JSON-LD keeps the product.
+- **The landings' visible breadcrumb is replaced by the Prints filter bar;** the BreadcrumbList JSON-LD is unchanged.
