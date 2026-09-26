@@ -192,3 +192,4 @@ The sign-off diff against production will show these; each was decided on purpos
 - **"More from the journal" shows three articles at most** (curated first, then articles that name this one, then same category). Articles lose some article-to-article links; every article is still linked from /journal.
 - **The visible product breadcrumb stops at Art Prints;** the BreadcrumbList JSON-LD keeps the product.
 - **The landings' visible breadcrumb is replaced by the Prints filter bar;** the BreadcrumbList JSON-LD is unchanged.
+- **/artists and /no/artists meta descriptions** say "from across the Nordics" / "fra hele Norden" instead of "working across Norway and Sweden" / "arbeider i Norge og Sverige": the old line stopped being true when Mikko Saarainen (Finland) and Ishtar Bäcklund Dakhil joined.
