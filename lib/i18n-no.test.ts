@@ -292,8 +292,10 @@ describe('hreflang return links', () => {
 describe('noPathFor knows about every Norwegian page', () => {
   const APP_NO = join(process.cwd(), 'app', '(no)', 'no');
 
-  // Mid-payment language changes remain separately scoped.
-  const KNOWN_GAPS = new Set(['/checkout']);
+  // Mid-payment language changes remain separately scoped. The order
+  // confirmation follows checkout: it shows the order just placed in this tab,
+  // in the language it was placed in, and is not a page to browse between.
+  const KNOWN_GAPS = new Set(['/checkout', '/order-confirmed']);
 
   /** English paths of every STATIC page under app/(no)/no. */
   const norwegianPages = (dir: string, prefix = ''): string[] =>
