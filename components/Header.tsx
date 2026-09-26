@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Sheet, SheetContent, SheetTitle, SheetDescription } from '@/components/ui/sheet';
@@ -35,6 +35,33 @@ export const Header: React.FC<HeaderProps> = ({ categories, search }) => {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+  // The nav steps out of the way while reading (scrolling down) and comes back
+  // the moment you scroll up. It always shows near the top of the page and
+  // while the menu or search is open.
+  const [hidden, setHidden] = useState(false);
+  useEffect(() => {
+    let last = window.scrollY;
+    let frame = 0;
+    const onScroll = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        const y = window.scrollY;
+        const delta = y - last;
+        if (y < 120) setHidden(false);
+        else if (delta > 6) setHidden(true);
+        else if (delta < -6) setHidden(false);
+        last = y;
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, []);
+  const navHidden = hidden && !mobileMenuOpen && !isSearchOpen;
 
   // The Header is mounted once in the root layout, which cannot know the
   // route, so the Norwegian tree is detected here: under /no the labels come
@@ -99,7 +126,11 @@ export const Header: React.FC<HeaderProps> = ({ categories, search }) => {
         <p className="page-x flex h-9 items-center justify-center type-small text-center">{t.announcement}</p>
       </div>
 
-      <header className="sticky top-0 z-50 w-full bg-bg">
+      <header
+        className={`sticky top-0 z-50 w-full bg-bg transition-transform duration-300 ease-[cubic-bezier(.2,.7,.2,1)] motion-reduce:transition-none ${navHidden ? '-translate-y-full' : 'translate-y-0'}`}
+        // Keyboard users never lose it: focus inside brings it back.
+        onFocus={() => setHidden(false)}
+      >
         {/* Mobile and tablet: Menu · wordmark centred · Basket. Desktop adds the links, Search and the language control.
             Wide desktop (Figma Homepage 12:139): the wordmark is deliberately
             off centre, starting on column 7 of the 12-column grid, with Search,
@@ -122,8 +153,12 @@ export const Header: React.FC<HeaderProps> = ({ categories, search }) => {
                 key={item.key}
                 href={item.href}
                 aria-current={item.current ? 'page' : undefined}
-                className="relative transition-opacity hover:opacity-60 aria-[current=page]:after:absolute aria-[current=page]:after:left-0 aria-[current=page]:after:-bottom-1 aria-[current=page]:after:h-px aria-[current=page]:after:w-3 aria-[current=page]:after:bg-brand"
+                className="relative transition-opacity hover:opacity-60"
               >
+                {/* The header stays mounted between pages, so when the page
+                    changes the old line shrinks away and the new one grows in
+                    (.nav-mark in globals.css), the same move as the options. */}
+                <span aria-hidden className="nav-mark" />
                 {item.label}
               </Link>
             ))}
