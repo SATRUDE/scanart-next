@@ -52,8 +52,16 @@ const FORMATS: Record<ShippingCountry, AddressFormat> = {
  * countries and only five have their own entry here. Anything unrecognised
  * gets the neutral form, never a crash and never an American one.
  */
-export function getAddressFormat(country: string): AddressFormat {
-  return FORMATS[country as ShippingCountry] ?? FORMATS.ELSEWHERE;
+export function getAddressFormat(country: string, locale: 'en' | 'no' = 'en'): AddressFormat {
+  const format = FORMATS[country as ShippingCountry] ?? FORMATS.ELSEWHERE;
+  if (locale === 'en') return format;
+  // The Norwegian checkout names every field in Norwegian, whatever the
+  // destination: the label follows the page, the example follows the country.
+  return {
+    ...format,
+    postalLabel: country === 'US' ? 'ZIP-kode' : 'Postnummer',
+    ...(format.regionLabel ? { regionLabel: 'Delstat' } : {}),
+  };
 }
 
 /**
@@ -89,8 +97,21 @@ export const DESTINATIONS: Destination[] = [
 ];
 
 /** The display name for a country code, for the order record and Slack. */
-export function destinationName(code: string): string {
-  return countryName(code) ?? code;
+// Norwegian country names come from the platform's own list (Intl), so there
+// is no second 267-row table to keep in step. A code it does not know (the
+// shop's few legacy ones, such as UK) keeps its English name.
+const NB_REGIONS = typeof Intl !== 'undefined' && 'DisplayNames' in Intl ? new Intl.DisplayNames(['nb'], { type: 'region' }) : null;
+
+/** A destination's name for the page's language. Orders sent to the team always use English. */
+export function destinationName(code: string, locale: 'en' | 'no' = 'en'): string {
+  const en = countryName(code) ?? code;
+  if (locale === 'en' || !NB_REGIONS) return en;
+  try {
+    const nb = NB_REGIONS.of(code);
+    return nb && nb !== code ? nb : en;
+  } catch {
+    return en;
+  }
 }
 
 /**

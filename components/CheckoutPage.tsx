@@ -339,10 +339,13 @@ const CountryPicker: React.FC<{
   value: string;
   onChange: (value: string) => void;
   t: CheckoutStrings;
-}> = ({ value, onChange, t }) => {
+  locale: 'en' | 'no';
+}> = ({ value, onChange, t, locale }) => {
   const [open, setOpen] = useState(false);
-  const priced = DESTINATIONS.filter(d => d.priced);
-  const rest = DESTINATIONS.filter(d => !d.priced);
+  // Names in the page's language; the long list re-sorted to match.
+  const named = DESTINATIONS.map(d => ({ ...d, name: destinationName(d.code, locale) }));
+  const priced = named.filter(d => d.priced);
+  const rest = named.filter(d => !d.priced).sort((a, b) => a.name.localeCompare(b.name, locale === 'no' ? 'nb' : 'en'));
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -354,7 +357,7 @@ const CountryPicker: React.FC<{
           aria-expanded={open}
           className="flex w-full items-center justify-between gap-4 border-b border-ink pt-[6px] pb-[10px] text-left type-body focus-visible:outline-none focus:border-b-2 focus:pb-[9px]"
         >
-          {destinationName(value)}
+          {destinationName(value, locale)}
           <span aria-hidden className="type-small">⌄</span>
         </button>
       </PopoverTrigger>
@@ -731,7 +734,7 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' |
   const shippingRate = getShippingRate(shippingZoneFor(selectedCountryCode));
   // How this destination writes an address: what the postal code is called,
   // and whether a region is a real thing there at all.
-  const addressFormat = getAddressFormat(selectedCountryCode);
+  const addressFormat = getAddressFormat(selectedCountryCode, locale);
 
     // Get shipping cost in user's selected currency
   const shipping: number = shippingRate ? shippingRate.costs[selectedCountry.currency] || 0 : 0;
@@ -796,7 +799,7 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' |
         `${formData.firstName} ${formData.lastName}`.trim(),
         formData.address,
         `${formData.city}${region} ${formData.zipCode}`.trim(),
-        destinationName(formData.country),
+        destinationName(formData.country, locale),
       ].filter(Boolean).join(', '),
       days,
     };
@@ -928,6 +931,7 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' |
               <label htmlFor="country" className="type-small">{t.country}</label>
               <CountryPicker
                 t={t}
+                locale={locale}
                 value={formData.country}
                 onChange={value => handleInputChange('country', value)}
               />
