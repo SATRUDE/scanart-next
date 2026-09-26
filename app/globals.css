@@ -394,7 +394,9 @@
  * option carries its own line, reserved space and all, so nothing moves: the
  * old choice's line shrinks back towards its word, then the new one grows out
  * from nothing (Mark, 2026-09-26). Used by the product Size and Frame radios
- * (input:checked + label) and the footer seasons (aria-pressed).
+ * (input:checked + label), the footer seasons, Inspire, journal and feedback
+ * options (aria-pressed), the shop filter links (aria-current, kept as real
+ * links for crawling) and the search result tabs (aria-selected).
  */
 .option-mark {
   position: absolute;
@@ -408,7 +410,10 @@
   transition: transform 180ms cubic-bezier(0.4, 0, 1, 1);
 }
 input:checked + label .option-mark,
-[aria-pressed='true'] > .option-mark {
+[aria-pressed='true'] > .option-mark,
+[aria-current='page'] > .option-mark,
+[aria-current='true'] > .option-mark,
+[aria-selected='true'] > .option-mark {
   transform: scaleX(1);
   transform-origin: left center;
   transition: transform 280ms cubic-bezier(0.2, 0.7, 0.2, 1) 160ms;
@@ -416,7 +421,10 @@ input:checked + label .option-mark,
 @media (prefers-reduced-motion: reduce) {
   .option-mark,
   input:checked + label .option-mark,
-  [aria-pressed='true'] > .option-mark {
+  [aria-pressed='true'] > .option-mark,
+  [aria-current='page'] > .option-mark,
+  [aria-current='true'] > .option-mark,
+  [aria-selected='true'] > .option-mark {
     transition: none;
   }
 }

@@ -12,6 +12,7 @@ import { formatDisplayPrice, getLowestProductPrices } from '@/lib/pricing';
 import { highlight, searchIndex, type SearchArtist, type SearchIndex, type SearchPrint, type SearchResults, type SearchStory } from '@/lib/site-search';
 import { shouldTrackSiteSearch } from '@/lib/site-search-signal';
 import { track } from '@/lib/analytics';
+import { OPTION_PAD } from '@/components/v2/OptionTrack';
 
 /**
  * Full-screen search (Figma: Search overlay 242:4241, the Search frames on
@@ -511,9 +512,9 @@ function ResultTabs({
               if (e.key === 'ArrowRight') { e.preventDefault(); move(i, 1); }
               if (e.key === 'ArrowLeft') { e.preventDefault(); move(i, -1); }
             }}
-            className={`flex items-center gap-2 transition-opacity ${selected ? '' : 'opacity-60 hover:opacity-100'}`}
+            className={`relative flex items-center ${OPTION_PAD} transition-opacity ${selected ? '' : 'opacity-60 hover:opacity-100'}`}
           >
-            {selected && <span aria-hidden className="hairline" />}
+            <span aria-hidden className="option-mark" />
             <span>{item.label}{pending ? '' : ` (${item.count})`}</span>
           </button>
         );

@@ -2,6 +2,7 @@
 
 import React, { useEffect, useId, useMemo, useState } from 'react';
 import Link from 'next/link';
+import { scenePosition } from '@/lib/scene-focus';
 import Image from 'next/image';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Hairline } from '@/components/v2/ui';
@@ -183,6 +184,7 @@ export function InspireWall({
                     fill
                     sizes="(max-width: 833px) 100vw, (max-width: 1199px) 50vw, 405px"
                     preload={index === 0}
+                    style={{ objectPosition: scenePosition(r.image) }}
                     className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.015]"
                   />
                 </div>
@@ -252,13 +254,14 @@ function FilterOption({
       type="button"
       aria-pressed={selected}
       onClick={onClick}
-      className={`group/opt flex shrink-0 items-center gap-tight whitespace-nowrap px-3 py-2 type-small tab:border-0 tab:p-0 ${
+      className={`group/opt relative flex shrink-0 items-center gap-tight whitespace-nowrap px-3 py-2 type-small tab:border-0 tab:p-0 tab:pl-5 ${
         selected ? 'border border-ink' : 'border-[0.5px] border-ink'
       }`}
     >
-      {/* `hidden tab:flex`, not tab:inline-block: with the spacing tier named
-          "block", Tailwind also reads `inline-block` as inline-size: 64px. */}
-      {selected && <Hairline className="hidden tab:flex" />}
+      {/* Desktop only: every option reserves the line's space (tab:pl-5) and
+          carries its own .option-mark, in front of the swatch, so the old line
+          shrinks away and the new one grows in without moving a word. */}
+      <span aria-hidden className="option-mark hidden tab:block" />
       {chip && (
         <span
           aria-hidden

@@ -1,7 +1,8 @@
 'use client';
 
 import { useId, useState } from 'react';
-import { Button, Hairline } from '@/components/v2/ui';
+import { Button } from '@/components/v2/ui';
+import { OPTION_PAD } from '@/components/v2/OptionTrack';
 import { track } from '@/lib/analytics';
 
 /**
@@ -77,9 +78,9 @@ export function FeedbackPageForm({
       type="button"
       onClick={onClick}
       aria-pressed={selected}
-      className="group/opt flex items-center gap-tight py-1 text-left type-body"
+      className={`group/opt relative flex items-center ${OPTION_PAD} py-1 text-left type-body`}
     >
-      {selected && <Hairline />}
+      <span aria-hidden className="option-mark" />
       <span className={selected ? '' : 'opacity-55 transition-opacity group-hover/opt:opacity-100'}>{answerLabels?.[value] ?? value}</span>
     </button>
   );

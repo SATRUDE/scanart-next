@@ -8,7 +8,8 @@ import Image from 'next/image';
 import type { JournalStrings } from '@/lib/i18n';
 import { Article } from '@/lib/articles';
 import { ArticleCard } from '@/components/ArticleCard';
-import { Hairline, Meta } from '@/components/v2/ui';
+import { Meta } from '@/components/v2/ui';
+import { OPTION_PAD } from '@/components/v2/OptionTrack';
 import { StoryRow } from '@/components/v2/journal/StoryRow';
 
 const EN: JournalStrings = {
@@ -110,9 +111,9 @@ export const JournalGrid: React.FC<JournalGridProps> = ({ articles, categories, 
                       setSelectedCategory(cat);
                       track('journal-filter-click', { category: cat });
                     }}
-                    className={`flex items-center gap-tight type-small transition-colors hover:text-brand ${selected ? '' : 'opacity-55 hover:opacity-100'}`}
+                    className={`relative flex items-center ${OPTION_PAD} type-small transition-colors hover:text-brand ${selected ? '' : 'opacity-55 hover:opacity-100'}`}
                   >
-                    {selected && <Hairline />}
+                    <span aria-hidden className="option-mark" />
                     <span>{cat === 'All' ? t.allChip : label(cat)}</span>
                   </button>
                 </li>

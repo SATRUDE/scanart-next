@@ -18,7 +18,7 @@ import { track } from '@/lib/analytics';
 import { getCategoryLandingByCategory } from '@/lib/categories';
 import { collections } from '@/lib/collections';
 import { sizeLabel } from '@/components/PrintCard';
-import { Hairline } from '@/components/v2/ui';
+import { OPTION_PAD } from '@/components/v2/OptionTrack';
 import type { ShopRoute } from '@/components/v2/shop/shop-routes';
 import type { ShopSort } from '@/components/v2/shop/shop-filters';
 import type { ProductsGridStrings } from '@/lib/i18n';
@@ -196,6 +196,18 @@ export function ShopFrame({
   const setRefineField = (field: 'artist' | 'size' | 'sort', value: string) =>
     setRefine({ ...own, [field]: value });
 
+  // The option clicked, shown as chosen from the click rather than when the
+  // new page arrives, so its hairline starts growing at once. Keyed by the
+  // page it was clicked on: once the URL changes (or Back is pressed) the
+  // real selection takes over again, with no effect to reset it.
+  const here = `${pathname}|${urlQuery.category}|${urlQuery.q}`;
+  const [clicked, setClicked] = useState<{ from: string; href: string } | null>(null);
+  const pendingHref = clicked?.from === here ? clicked.href : null;
+  const choose = (href: string) => (e: React.MouseEvent) => {
+    if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    setClicked({ from: here, href });
+  };
+
   // Hold the Filter bar where it was on screen across a filter click. Every
   // header is reserved the same height, so this normally finds nothing to
   // correct; it is the backstop for copy that outgrows the reservation. It
@@ -219,9 +231,12 @@ export function ShopFrame({
   if (!route) return <>{children}</>;
 
   const t = strings;
-  const optionCls = 'flex items-center gap-tight type-small transition-colors';
+  // Every option reserves the hairline's space and carries its own
+  // .option-mark, so the old line shrinks away and the new one grows in.
+  const optionCls = `relative flex items-center ${OPTION_PAD} type-small transition-colors`;
   const idle = `${optionCls} text-ink/55 hover:text-brand`;
-  const allSelected = isProducts && !query && category === 'All';
+  const allHref = `${p1}/products`;
+  const allSelected = pendingHref ? pendingHref === allHref : isProducts && !query && category === 'All';
 
   const options = [
     ...categories.map(cat => {
@@ -231,7 +246,7 @@ export function ShopFrame({
       // only if a category has no landing page yet.
       const href = landing ? `${p1}/category/${landing.slug}` : `${p1}/products?category=${encodeURIComponent(cat)}`;
       const selected = landing ? pathname === `${p1}/category/${landing.slug}` || (isProducts && category === cat) : isProducts && category === cat;
-      return { key: cat, href, label: t.categoryLabels?.[cat] ?? cat, selected, event: { type: 'category', value: cat } };
+      return { key: cat, href, label: t.categoryLabels?.[cat] ?? cat, selected: pendingHref ? pendingHref === href : selected, event: { type: 'category', value: cat } };
     }),
     // Curated collection landings (subjects, then rooms) alongside the
     // categories, so each has a crawlable internal link from every page here.
@@ -239,7 +254,7 @@ export function ShopFrame({
       key: col.slug,
       href: `${p1}/collection/${col.slug}`,
       label: t.collectionChips?.[col.slug] ?? col.chipLabel,
-      selected: pathname === `${p1}/collection/${col.slug}`,
+      selected: pendingHref ? pendingHref === `${p1}/collection/${col.slug}` : pathname === `${p1}/collection/${col.slug}`,
       event: { type: col.axis, value: col.slug },
     })),
   ];
@@ -270,13 +285,13 @@ export function ShopFrame({
           <ul className="flex flex-wrap items-center gap-x-5 gap-y-2 tab:gap-x-6">
             <li>
               <Link
-                href={`${p1}/products`}
+                href={allHref}
                 {...linkProps}
-                onClick={holdBar}
+                onClick={e => { holdBar(); choose(allHref)(e); }}
                 aria-current={allSelected ? 'page' : undefined}
                 className={allSelected ? optionCls : idle}
               >
-                {allSelected && <Hairline />}
+                <span aria-hidden className="option-mark" />
                 <span>{t.allChip}</span>
               </Link>
             </li>
@@ -285,11 +300,11 @@ export function ShopFrame({
                 <Link
                   href={o.href}
                   {...linkProps}
-                  onClick={() => { holdBar(); track('products-filter-click', o.event); }}
+                  onClick={e => { holdBar(); choose(o.href)(e); track('products-filter-click', o.event); }}
                   aria-current={o.selected ? 'page' : undefined}
                   className={o.selected ? optionCls : idle}
                 >
-                  {o.selected && <Hairline />}
+                  <span aria-hidden className="option-mark" />
                   <span>{o.label}</span>
                 </Link>
               </li>
