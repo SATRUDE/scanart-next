@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { categoryLandings } from '@/lib/categories';
@@ -41,6 +41,53 @@ function currentSeason(date = new Date()): Season {
 }
 
 const STORAGE_KEY = 'sa-footer-season';
+
+/**
+ * The season selector. The chosen season is marked the way the nav marks the
+ * current page: a 12 px accent line under the word, which slides to the new
+ * season (350 ms). The words never move, whichever is chosen.
+ */
+function SeasonPicker({ season, onChoose, labels }: { season: Season; onChoose: (s: Season) => void; labels: Record<Season, string> & { label: string } }) {
+  const group = useRef<HTMLDivElement>(null);
+  const buttons = useRef<Partial<Record<Season, HTMLButtonElement | null>>>({});
+  const [mark, setMark] = useState<{ x: number; y: number } | null>(null);
+
+  const measure = useCallback(() => {
+    const el = buttons.current[season];
+    if (!el) return;
+    setMark({ x: el.offsetLeft, y: el.offsetTop + el.offsetHeight + 2 });
+  }, [season]);
+
+  useLayoutEffect(measure, [measure]);
+  useEffect(() => {
+    if (!group.current || typeof ResizeObserver === 'undefined') return;
+    const ro = new ResizeObserver(measure);
+    ro.observe(group.current);
+    return () => ro.disconnect();
+  }, [measure]);
+
+  return (
+    <div ref={group} role="group" aria-label={labels.label} className="relative flex flex-col gap-1 tab:flex-row tab:items-center tab:gap-8">
+      {SEASONS.map(s => (
+        <button
+          key={s}
+          ref={el => { buttons.current[s] = el; }}
+          type="button"
+          aria-pressed={season === s}
+          onClick={() => onChoose(s)}
+          className="type-h3 text-left transition-opacity duration-200 hover:opacity-60 aria-pressed:hover:opacity-100"
+        >
+          {labels[s]}
+        </button>
+      ))}
+      <span
+        aria-hidden
+        className={`pointer-events-none absolute left-0 top-0 h-px w-3 bg-brand transition-[transform,opacity] duration-[350ms] ease-[cubic-bezier(.2,.7,.2,1)] ${mark ? 'opacity-100' : 'opacity-0'}`}
+        style={mark ? { transform: `translate(${mark.x}px, ${mark.y}px)` } : undefined}
+      />
+    </div>
+  );
+}
 
 export const Footer: React.FC<FooterProps> = ({ year = new Date().getFullYear() }) => {
   // The Footer is mounted once in the root layout, which cannot know the
@@ -83,6 +130,11 @@ export const Footer: React.FC<FooterProps> = ({ year = new Date().getFullYear() 
       setSeason(currentSeason());
     }
   }, []);
+  // Wordmark layers are mounted once a season has been shown, so the footage
+  // crossfades instead of snapping and unseen seasons cost nothing.
+  const [seen, setSeen] = useState<Set<Season>>(() => new Set([currentSeason()]));
+  useEffect(() => { setSeen(prev => (prev.has(season) ? prev : new Set(prev).add(season))); }, [season]);
+
   const choose = (s: Season) => {
     setSeason(s);
     track('footer-season', { season: s });
@@ -115,20 +167,7 @@ export const Footer: React.FC<FooterProps> = ({ year = new Date().getFullYear() 
     >
       <div className="page-x pt-band tab:pt-[96px]">
         <div className="flex flex-col gap-10 desk:flex-row desk:items-start desk:justify-between pb-10 tab:pb-band">
-          <div role="group" aria-label={t.seasons.label} className="flex flex-col gap-1 tab:flex-row tab:items-center tab:gap-8">
-            {SEASONS.map(s => (
-              <button
-                key={s}
-                type="button"
-                aria-pressed={season === s}
-                onClick={() => choose(s)}
-                className="type-h3 flex items-center gap-2 tab:gap-[10px] text-left cursor-pointer"
-              >
-                {season === s && <span aria-hidden className="hairline" />}
-                {t.seasons[s]}
-              </button>
-            ))}
-          </div>
+          <SeasonPicker season={season} onChoose={choose} labels={t.seasons} />
 
           <nav aria-label={chromeAria[isNo ? 'no' : 'en'].landmarks.footer} className="flex gap-10 tab:gap-16 type-small">
             <ul className="flex flex-col gap-[6px] tab:gap-1">
@@ -150,13 +189,16 @@ export const Footer: React.FC<FooterProps> = ({ year = new Date().getFullYear() 
             still for now; the looping video version is in
             brands/scandinavian-art/footer-motion.md. Decorative: the brand
             name is already the header's home link. */}
-        <div aria-hidden className="[container-type:inline-size] overflow-hidden">
-          <p
-            className="font-serif leading-none whitespace-nowrap text-transparent bg-clip-text bg-cover bg-center select-none text-[13.48cqw] tracking-[-0.03em] -ml-[0.01em] pb-[0.08em]"
-            style={{ backgroundImage: `url(/images/v2/seasons/${season}.webp)` }}
-          >
-            Scandinavian Art
-          </p>
+        <div aria-hidden className="relative [container-type:inline-size] overflow-hidden">
+          {SEASONS.filter(s => seen.has(s)).map((s, i) => (
+            <p
+              key={s}
+              className={`font-serif leading-none whitespace-nowrap text-transparent bg-clip-text bg-cover bg-center select-none text-[13.48cqw] tracking-[-0.03em] -ml-[0.01em] pb-[0.08em] transition-opacity duration-700 ease-out ${i === 0 ? 'relative' : 'absolute inset-0'} ${season === s ? 'opacity-100' : 'opacity-0'}`}
+              style={{ backgroundImage: `url(/images/v2/seasons/${s}.webp)` }}
+            >
+              Scandinavian Art
+            </p>
+          ))}
         </div>
 
         <div className="pt-10 tab:pt-[96px] flex flex-col gap-3 type-caption">
