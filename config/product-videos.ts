@@ -38,6 +38,27 @@ export const productVideos: Record<string, ProductVideo> = {
       no: 'Rosa Blomster av Hedvig Wallin innrammet over en sofa, med sollys som beveger seg over veggen',
     },
   },
+  'massa-applen': {
+    av1: '/video/massa-applen-rosa-blomster-afternoon.av1.mp4',
+    h264: '/video/massa-applen-rosa-blomster-afternoon.h264.mp4',
+    poster: '/video/massa-applen-rosa-blomster-afternoon.poster.jpg',
+    // Massa Äpplen is the left-hand print of the pair; keep it whole in the tall slot.
+    objectPosition: '38% 50%',
+    label: {
+      en: 'Massa Äpplen by Hedvig Wallin framed above a dining table, afternoon sunlight moving across the wall',
+      no: 'Massa Äpplen av Hedvig Wallin innrammet over et spisebord, med ettermiddagssol som beveger seg over veggen',
+    },
+  },
+  'small-house-big-ocean': {
+    av1: '/video/small-house-big-ocean-quiet.av1.mp4',
+    h264: '/video/small-house-big-ocean-quiet.h264.mp4',
+    poster: '/video/small-house-big-ocean-quiet.poster.jpg',
+    objectPosition: '40% 50%',
+    label: {
+      en: 'Small House Big Ocean by Hedvig Wallin framed above a bench, leaf shadows moving across the wall',
+      no: 'Small House Big Ocean av Hedvig Wallin innrammet over en benk, med bladskygger som beveger seg over veggen',
+    },
+  },
 };
 
 export function getProductVideo(slug: string): ProductVideo | undefined {
