@@ -44,7 +44,7 @@ export const noV2 = {
       rows: [
         { title: 'Valgt, ikke lagt ut', body: 'Hver kunstner er valgt av oss. Ingen melder seg på og laster opp selv.' },
         { title: 'Trykt på bestilling', body: 'Hvert trykk lages når du bestiller det, så ingenting ligger og venter på et lager.' },
-        { title: 'Mer enn halvparten til kunstneren', body: 'Etter trykk og frakt går mer enn halvparten av det som er igjen til kunstneren. Et kjøp betaler den som laget verket.' },
+        { title: 'Med eller uten ramme', body: 'Velg ramme i tre, svart eller hvit, eller bestill trykket alene.' },
       ],
     },
     whereHeading: 'Her jobber kunstnerne',

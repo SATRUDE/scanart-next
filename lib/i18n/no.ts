@@ -119,7 +119,7 @@ export const no = {
         rows: [
           { title: 'Valgt, ikke listet', body: 'Hver kunstner er valgt ut av oss. Ingen registrerer seg og laster opp; vi finner verkene først.' },
           { title: 'Trykket på bestilling', body: 'Hvert trykk lages når du bestiller det, så ingenting blir liggende på lager og ingenting går til spille.' },
-          { title: 'Halvparten til kunstneren', body: 'Kunstnerne får halvparten av fortjenesten på kunstverket. Når du kjøper et trykk, betaler du personen som laget det.' },
+          { title: 'Med eller uten ramme', body: 'Velg ramme i tre, svart eller hvit, eller bestill trykket alene.' },
         ],
       },
       // The customer quote from testimonials below, its first sentence.
@@ -158,7 +158,7 @@ export const no = {
     sub: 'Vi er stolte av å tilby kunst som holder høyeste standard.',
     features: [
       { title: 'Kuratert', desc: 'Vi håndplukker alle kunstnerne våre.' },
-      { title: 'Kvalitet', desc: 'Vi trykker kun på papir av museumskvalitet.' },
+      { title: 'Kvalitet', desc: 'Vi trykker på 200 g ubestrøket papir.' },
       { title: 'Hele verden', desc: 'Kan kjøpes fra hele verden.' },
       { title: 'Profesjonell innramming', desc: 'Profesjonell innramming tilgjengelig for alle trykk.' },
       {
@@ -202,7 +202,7 @@ export const no = {
     viewAllProducts: 'Se alle produkter',
     artistsHeading: 'Samarbeid med kunstnerne',
     artistsPara1:
-      'Vi samarbeider direkte med lokale kunstnere og lener oss på kunnskapen deres for å velge de mest ekte verkene, slik at samlingen holder seg frisk, variert og av høyeste kvalitet. Hvert trykk produseres på papir av museumskvalitet med førsteklasses trykkteknikker, og profesjonell innramming er tilgjengelig.',
+      'Vi samarbeider direkte med lokale kunstnere og lener oss på kunnskapen deres for å velge de mest ekte verkene, slik at samlingen holder seg frisk, variert og av høyeste kvalitet. Hvert trykk trykkes på 200 g ubestrøket papir, og profesjonell innramming er tilgjengelig.',
     artistsPara2:
       'Hvert kjøp støtter kunstneren bak verket direkte, og hjelper dem å få anerkjennelsen de fortjener og fortsette å skape. Når du velger Scandinavian Art, får du en bit av Skandinavia hjem til deg og støtter menneskene som lager den.',
     readTheJournal: 'Les journalen',
@@ -322,7 +322,7 @@ export const no = {
         heading: 'Slik lages trykkene',
         body: [
           'Det begynner med filene dine. Du sender dem én gang, vi tar vare på dem, og ingenting trykkes før noen bestiller. Vi sier nøyaktig hva vi trenger når vi kommer så langt.',
-          'Hver bestilling produseres så nært kunden som vi klarer, slik at arbeidet ikke reiser lenger enn det må. Det trykkes på arkivpapir av museumskvalitet, og kunstnerne som allerede er med oss har sett trykk av sitt eget arbeid og er fornøyde med det som kommer ut.',
+          'Hver bestilling produseres så nært kunden som vi klarer, slik at arbeidet ikke reiser lenger enn det må. Det trykkes på 200 g ubestrøket papir, og kunstnerne som allerede er med oss har sett trykk av sitt eget arbeid og er fornøyde med det som kommer ut.',
           'Kommer et trykk frem skadet eller med feil, er det vårt å ordne og vårt å betale for. Ombestemmer kunden seg innen 14 dager, dekker vi frakten på det også. Ingen av delene går ut over din andel.',
         ],
       },
@@ -454,7 +454,7 @@ export const no = {
         items: [
           {
             q: 'Hva er trykkene deres laget av?',
-            a: 'Trykkene våre lages på arkivbestandig papir av museumskvalitet, for rike farger og lang levetid.',
+            a: 'Trykkene våre lages på 200 g ubestrøket papir: en matt overflate, uten plakatglans.',
           },
           {
             q: 'Hvilke størrelser finnes?',
@@ -478,7 +478,7 @@ export const no = {
       intro:
         'Botaniske trykk er en av de enkleste veiene inn i kunsten for et hjem i skandinavisk stil, og her spenner de fra blomster til dekkede bord. Ingunn Dybendal tegner folkelige blomstermotiver og et mønstret nordisk landskap, Helene Brox fyller rammen med fugler blant grener i en myk papirklippstil, og Sia Siamos maler fargerike stilleben fra kjøkkenbordet. Hvert botanisk kunsttrykk lages på bestilling i 50x70 cm, med eller uten ramme.',
       intro2:
-        'Hvite vegger og lyst treverk er en palett som venter på nettopp denne typen varme, og en botanisk plakat gir rommet det uten at det tipper over i rot. Alle tre er uavhengige kunstnere som arbeider i Norge, og hvert verk i kategorien produseres i museumskvalitet.',
+        'Hvite vegger og lyst treverk er en palett som venter på nettopp denne typen varme, og en botanisk plakat gir rommet det uten at det tipper over i rot. Alle tre er uavhengige kunstnere som arbeider i Norge, og hvert verk i kategorien trykkes på bestilling.',
       stylingHeading: 'Slik bruker du botaniske trykk',
       stylingBody:
         'Kjøkken og spiseplasser er det naturlige hjemmet for Sia Siamos’ bordscener; heng en der du faktisk spiser, så gjør den nytte for seg hver dag. De mildere verkene, spesielt Tree Top Peach, passer på soverom og i lesekroker, mens det tette mønsteret i Eltsjoen belønner en vegg du passerer langsomt, en gang eller en trappeavsats. Alt her deler samme format på 50 x 70 cm, så par kommer lett: prøv en Dybendal ved siden av en Siamos og la fargene snakke sammen.',
@@ -538,7 +538,7 @@ export const no = {
       intro:
         'Er du på jakt etter morsomme plakater med litt mer strek i, er dette stedet: hvert illustrasjonstrykk her er laget av Simen Wahlqvist, en grafisk designer og illustratør fra Oslo som fanger et øyeblikk, ofte rett før det skjer, med så få streker som mulig. Regelen hans er enkel: får en tegning ham til å le, er den ferdig. Morgenstrekk fanger dagens aller første helkroppsstrekk, og de kvadratiske trykkene rundt bærer den samme tørre humoren i én eller to farger.',
       intro2:
-        'Dette er den rene, karakterfulle enden av skandinavisk kunst, og et enkelt første trykk å kjøpe. Det passer i ganger, på hjemmekontor og i ethvert rom som er blitt litt for smakfullt og trenger én ting med glimt i øyet. Simen er en av de uavhengige norske kunstnerne bak galleriet, og trykkene hans lages på arkivbestandig papir av museumskvalitet.',
+        'Dette er den rene, karakterfulle enden av skandinavisk kunst, og et enkelt første trykk å kjøpe. Det passer i ganger, på hjemmekontor og i ethvert rom som er blitt litt for smakfullt og trenger én ting med glimt i øyet. Simen er en av de uavhengige norske kunstnerne bak galleriet, og trykkene hans lages på 200 g ubestrøket papir.',
       stylingHeading: 'Slik bruker du illustrasjonstrykk',
       stylingBody:
         'De fleste av disse trykkene er 50 x 50 cm, og det kvadratiske formatet er stillferdig nyttig: det sitter godt på en bildehylle, holder en smal vegg der et rektangel ville trengt seg på, og danner et ryddig par eller trio langs en gang. Morgenstrekk, i 50 x 70 cm, fungerer som ankeret i en gruppe med kvadratene rundt seg. Hold rammevalget likt gjennom et sett, alt i tre, alt i sort eller alt i hvitt, så leses miksen som tilsiktet.',
@@ -567,12 +567,10 @@ export const no = {
   // card images and the related-article slugs all still come from there, so the
   // curation can never drift between the two languages.
   //
-  // Deliberately NOT translated: the English copy's "museum quality" and
-  // "museum-quality archival paper" claims (living room FAQ, bedroom intro,
-  // home office intro and FAQ). Those claims are already open to question on the
-  // board after the 200gsm uncoated decision, and minting fresh copies of a
-  // doubtful claim in a second language would only widen the problem. The
-  // Norwegian says made to order and leaves the paper out.
+  // The paper: the English copy used to claim "museum-quality archival paper",
+  // which stopped being true when Mark chose Gelato's 200gsm uncoated over the
+  // 250gsm archival on 2026-08-12 (printed in Norway, the archival is not).
+  // Both languages now name the real paper, 200gsm uncoated / 200 g ubestrøket.
   collections: {
     'living-room': {
       title: 'Skandinavisk veggkunst til stua',
@@ -989,7 +987,7 @@ export const no = {
       numbers: ['ingen', 'én', 'to', 'tre', 'fire', 'fem', 'seks', 'sju', 'åtte', 'ni', 'ti'],
       contentHeading: 'Slik kjøper du et trykk',
       contentP1:
-        'Hvert trykk lages på bestilling når du kjøper det, på arkivpapir av museumskvalitet, i stedet for å hentes fra en lagerhylle. De fleste er 50 x 70 cm, og de kvadratiske illustrasjonene er 50 x 50 cm. Hver produktside viser størrelsen og prisen før noe havner i handlekurven.',
+        'Hvert trykk lages på bestilling når du kjøper det, på 200 g ubestrøket papir, i stedet for å hentes fra en lagerhylle. De fleste er 50 x 70 cm, og de kvadratiske illustrasjonene er 50 x 50 cm. Hver produktside viser størrelsen og prisen før noe havner i handlekurven.',
       contentP2:
         'Velg trykket uten ramme, eller med ramme i tre, svart eller hvitt, tilpasset trykket. Vi sender over hele verden, og fraktkostnaden vises i kassen.',
       contentP3Before: 'Vet du allerede hvilket rom trykket skal henge i? ',
@@ -1286,7 +1284,7 @@ export const no = {
       // V2 assurance lines under Add to basket. {price} is the cheapest
       // non-UK rate in config/shipping.ts, in the buyer's currency.
       assurance: {
-        printed: 'Trykkes på bestilling på arkivbestandig papir, ferdig på 1–4 virkedager',
+        printed: 'Trykkes på bestilling på 200 g ubestrøket papir, ferdig på 1–4 virkedager',
         delivery: 'Levering i Storbritannia på 2–3 virkedager, resten av verden fra {price}',
         returns: '14 dagers angrerett',
       },
@@ -1302,7 +1300,7 @@ export const no = {
         delivery: 'Levering og retur',
         about: 'Om {name}',
       },
-      detailsBody: '{sizes}, trykket på bestilling på arkivbestandig papir av museumskvalitet.',
+      detailsBody: '{sizes}, trykket på bestilling på 200 g ubestrøket papir.',
       detailsFrames:
         'Velg det uten ramme, eller med ramme i tre, sort eller hvitt. Prisen på rammen avhenger av størrelsen og legges til prisen over.',
       deliveryBody:
@@ -1397,7 +1395,7 @@ export const no = {
         printCountOne: '1 trykk',
         quantity: 'Antall {n}',
         deliveryNote: 'Levert {from} til {to} virkedager etter at det er laget',
-        assuranceMade: 'Trykket på bestilling på arkivpapir, laget på 1 til 4 virkedager',
+        assuranceMade: 'Trykket på bestilling på 200 g ubestrøket papir, laget på 1 til 4 virkedager',
         assuranceReturns: '14 dager til å ombestemme deg',
         assuranceStripe: 'Trygg betaling med Stripe',
         paymentFailedTitle: 'Betalingen gikk ikke gjennom',
@@ -1417,7 +1415,7 @@ export const no = {
         placed: 'Bestillingen er lagt inn. Stripe har sendt kvitteringen til {email}.',
         nextHeading: 'Dette skjer nå',
         steps: {
-          made: { title: 'Laget på bestilling', body: 'Trykkene lages på arkivpapir, og rammes inn hvis du valgte ramme, på 1 til 4 virkedager.' },
+          made: { title: 'Laget på bestilling', body: 'Trykkene lages på 200 g ubestrøket papir, og rammes inn hvis du valgte ramme, på 1 til 4 virkedager.' },
           sent: { title: 'Sendt til deg', body: 'Leveringen tar {from} til {to} virkedager etter at det er laget.' },
           sentNoEstimate: 'Leveringstiden begynner når bestillingen er sendt, og varierer med hvor den skal.',
           decide: { title: 'Fjorten dager til å bestemme deg', body: 'Hvis det ikke passer på veggen, har du 14 dager til å ombestemme deg.' },

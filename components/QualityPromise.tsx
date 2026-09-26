@@ -8,7 +8,7 @@ const DEFAULT_STRINGS: QualityPromiseStrings = {
   sub: 'We take pride in offering artwork that meets the highest standards.',
   features: [
     { title: 'Curated', desc: 'We hand-pick all our artists.' },
-    { title: 'Quality', desc: 'We only print on museum quality paper.' },
+    { title: 'Quality', desc: 'We print on 200gsm uncoated paper.' },
     { title: 'Worldwide', desc: 'Available to buy worldwide.' },
     { title: 'Expert Framing', desc: 'Professional framing services available for all prints.' },
     { title: 'Authenticity', desc: 'Each piece is sourced directly from Scandinavian artists, supporting local talent and creative communities.' },

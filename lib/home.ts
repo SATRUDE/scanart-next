@@ -88,7 +88,8 @@ export const homeStrings: HomeStrings = {
     rows: [
       { title: 'Chosen, not listed', body: 'Every artist is selected by us. Nobody signs up and uploads; we find the work first.' },
       { title: 'Printed to order', body: 'Each print is made when you order it, so nothing sits in a warehouse and nothing goes to waste.' },
-      { title: 'Half to the artist', body: 'Artists take half of the profit on the artwork. Buying a print pays the person who made it.' },
+      // The artist's share is not on the public site (Mark, 2026-09-26).
+      { title: 'Framed or unframed', body: 'Choose a wood, black or white frame, or order the print on its own.' },
     ],
   },
   statement: {

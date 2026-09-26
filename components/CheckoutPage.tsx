@@ -135,7 +135,7 @@ const EN: CheckoutStrings = {
     printCountOne: '1 print',
     quantity: 'Quantity {n}',
     deliveryNote: 'Delivered {from} to {to} business days after it is made',
-    assuranceMade: 'Printed to order on archival paper, made in 1 to 4 working days',
+    assuranceMade: 'Printed to order on 200gsm uncoated paper, made in 1 to 4 working days',
     assuranceReturns: '14 days to change your mind',
     assuranceStripe: 'Secure payment by Stripe',
     paymentFailedTitle: 'Your payment didn’t go through',
@@ -155,7 +155,7 @@ const EN: CheckoutStrings = {
     placed: 'Your order is placed. Stripe has emailed your receipt to {email}.',
     nextHeading: 'What happens next',
     steps: {
-      made: { title: 'Made to order', body: 'Your prints are printed on archival paper, and framed if you chose a frame, in 1 to 4 working days.' },
+      made: { title: 'Made to order', body: 'Your prints are printed on 200gsm uncoated paper, and framed if you chose a frame, in 1 to 4 working days.' },
       sent: { title: 'Sent to you', body: 'Delivery takes {from} to {to} business days once it is made.' },
       sentNoEstimate: 'Delivery time starts once it is sent, and depends on where it is going.',
       decide: { title: 'Fourteen days to decide', body: 'If it isn’t right on the wall, you have 14 days to change your mind.' },

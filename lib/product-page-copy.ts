@@ -4,8 +4,9 @@
 //
 // Every fact here was checked against the site's own sources before it was
 // written: production and delivery times and the 14-day right to cancel from
-// data/help.ts, the frame choices from config/frame.ts, and "archival paper"
-// from the Help answer on materials. Anything priced is filled in at runtime
+// data/help.ts, the frame choices from config/frame.ts, and the paper (200gsm uncoated,
+// Gelato's 200-gsm-80lb-uncoated, Mark's choice of 2026-08-12) from the Help
+// answer on materials. Anything priced is filled in at runtime
 // from config/shipping.ts or the catalogue, in the buyer's currency, so none
 // of it is typed here.
 //
@@ -72,7 +73,7 @@ export const productPageEn: ProductPageStrings = {
     delivery: 'Delivery and returns',
     about: 'About {name}',
   },
-  detailsBody: '{sizes}, printed to order on museum-quality archival paper.',
+  detailsBody: '{sizes}, printed to order on 200gsm uncoated paper.',
   detailsFrames:
     'Choose it unframed, or in a wood, black or white frame. The frame price depends on the size and is added to the price above.',
   deliveryBody:

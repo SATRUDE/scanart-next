@@ -85,7 +85,7 @@ export const helpGroups: HelpGroup[] = [
     items: [
       {
         q: 'What are your prints made of?',
-        a: 'Our prints are made on museum-quality archival paper for rich colour and long life.',
+        a: 'Our prints are made on 200gsm uncoated paper: a matt finish, without the sheen of a poster.',
       },
       {
         q: 'What sizes are available?',

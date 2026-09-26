@@ -67,17 +67,14 @@ export default async function AboutPage() {
             heading: 'How the shop works',
             // Only what the site can stand behind: artists are chosen (the
             // apply page is a request to be considered, not a sign-up); prints
-            // are made to order (data/help.ts, /delivery); and the artist's
-            // share is 60% of what is left after printing and delivery (the
-            // Artist Agreement, lib/artist-how-it-works.ts), which the design's
-            // "half of the profit" understated.
+            // are made to order (data/help.ts, /delivery); and the frame
+            // choices (config/frame.ts). The artist's share is deliberately not
+            // on the public site (Mark, 2026-09-26): it is between us and the
+            // artists, and lives in the Artist Agreement and how-it-works.
             rows: [
               { title: 'Chosen, not listed', body: 'Every artist is selected by us. Nobody signs up and uploads; we choose the work first.' },
               { title: 'Printed to order', body: 'Each print is made when you order it, so nothing sits in a warehouse waiting.' },
-              {
-                title: 'More than half to the artist',
-                body: 'After printing and delivery, more than half of what is left goes to the artist. Buying a print pays the person who made it.',
-              },
+              { title: 'Framed or unframed', body: 'Choose a wood, black or white frame, or order the print on its own.' },
             ],
           },
           where: { heading: 'Where the artists work', places: aboutPlaces(artists) },
@@ -91,7 +88,7 @@ export default async function AboutPage() {
           artists: {
             heading: 'Working with artists',
             paragraphs: [
-              'We work directly with local artists, leveraging their expertise to select the most authentic pieces, so the collection stays fresh, diverse and of the highest quality. Every print is produced on museum-quality paper using premium printing techniques, with professional framing available.',
+              'We work directly with local artists, leveraging their expertise to select the most authentic pieces, so the collection stays fresh, diverse and of the highest quality. Every print is printed on 200gsm uncoated paper, with professional framing available.',
               'Every purchase directly supports the artist behind it, helping them gain the recognition they deserve and continue creating. By choosing Scandinavian Art, you put a piece of Scandinavia in your home and support the people who make it.',
             ],
             link: { label: 'Read the journal', href: '/journal' },

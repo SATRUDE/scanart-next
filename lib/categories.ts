@@ -100,7 +100,7 @@ export const categoryLandings: CategoryLanding[] = [
     intro:
       'Every illustration print here is the work of one artist: Simen Wahlqvist, an Oslo illustrator who catches a moment, usually just before it happens, in as few lines as possible. His rule is that a drawing is done when it makes him laugh, and it shows. If you’re after a Nordic art print that gets a second look from every guest, start here: each piece can be bought framed or unframed, and the black frame does the square prints a particular favour.',
     intro2:
-      'This is the clean-lined, characterful end of Scandinavian art, and an easy first print to buy. It suits hallways, home offices and any room that has come out a little too tasteful and needs one thing with a glint in its eye. Simen is one of the independent Norwegian artists behind the gallery, and his prints are made on archival, museum-level paper.',
+      'This is the clean-lined, characterful end of Scandinavian art, and an easy first print to buy. It suits hallways, home offices and any room that has come out a little too tasteful and needs one thing with a glint in its eye. Simen is one of the independent Norwegian artists behind the gallery, and his prints are made on 200gsm uncoated paper.',
     stylingHeading: 'Styling illustration prints',
     stylingBody:
       'Most of these prints are 50 x 50 cm, and the square format is quietly useful: it sits well on a picture shelf, holds a narrow wall a rectangle would crowd, and makes a tidy pair or trio along a hallway. Morgenstrekk, at 50 x 70 cm, works as the anchor of a group with the squares around it. Keep the frame choice consistent across a set, all wood, all black or all white, and the mix reads as intentional.',

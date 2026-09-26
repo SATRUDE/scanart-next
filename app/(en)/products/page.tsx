@@ -85,7 +85,7 @@ export default async function ProductsPage() {
         intro={
           <>
             <p>
-              Every print is made to order when you buy it, on museum-quality archival paper, rather than
+              Every print is made to order when you buy it, on 200gsm uncoated paper, rather than
               taken from a warehouse shelf. Most are 50 x 70 cm and the square illustrations are 50 x 50 cm.
               Each product page shows the size and the price for it before anything goes in your basket.
             </p>

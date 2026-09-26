@@ -162,7 +162,7 @@ export const collections: Collection[] = [
       {
         question: 'Can I order a living room print framed, and how is it delivered?',
         answer:
-          'Yes. Every print can be ordered unframed, or with a wood, black or white frame, chosen on the product page before you add it to the basket, where the price for the size you pick is shown. Prints are made to order on museum-quality archival paper and delivered worldwide, with the cost shown at checkout.',
+          'Yes. Every print can be ordered unframed, or with a wood, black or white frame, chosen on the product page before you add it to the basket, where the price for the size you pick is shown. Prints are made to order on 200gsm uncoated paper and delivered worldwide, with the cost shown at checkout.',
       },
     ],
   },
@@ -244,7 +244,7 @@ export const collections: Collection[] = [
       'Scandinavian and Nordic wall art for the home office: characterful illustrations and bold abstracts from independent Norwegian artists. Framing options and worldwide delivery.',
     heading: 'Scandinavian Wall Art for the Home Office',
     intro:
-      'A good home office holds your interest without stealing your focus. These prints bring some personality to the desk wall: characterful, hand-drawn illustrations and bold abstracts with enough energy to carry a working day. All are produced to museum quality, in sizes from a single desk print to a full wall behind you on calls.',
+      'A good home office holds your interest without stealing your focus. These prints bring some personality to the desk wall: characterful, hand-drawn illustrations and bold abstracts with enough energy to carry a working day. All are printed to order on 200gsm uncoated paper, in sizes from a single desk print to a full wall behind you on calls.',
     intro2:
       'The home office is often the one corner of the house you get to furnish entirely to your own taste, with no one else to please, so it is worth a piece with a bit of character. Good Scandinavian home office wall art earns its place by lifting the mood of the room without demanding attention, a wry illustration or a confident abstract that makes the desk feel less like a workstation. Pick colours that sit happily with your monitor and desk rather than fight them.',
     productSlugs: [
@@ -300,7 +300,7 @@ export const collections: Collection[] = [
       {
         question: 'Can I order an office print framed, and how quickly does it arrive?',
         answer:
-          'Yes. Choose unframed, or a wood, black or white frame, on the product page before adding to the basket, where the price for the size you pick is shown. Every print is made to order on museum-quality archival paper, typically 1 to 4 business days in production plus delivery to your region, with the cost shown at checkout.',
+          'Yes. Choose unframed, or a wood, black or white frame, on the product page before adding to the basket, where the price for the size you pick is shown. Every print is made to order on 200gsm uncoated paper, typically 1 to 4 business days in production plus delivery to your region, with the cost shown at checkout.',
       },
     ],
   },

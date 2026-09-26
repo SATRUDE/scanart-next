@@ -29,7 +29,7 @@ const EN: ProductActionsStrings & { assurance: NonNullable<ProductActionsStrings
   // order?", "What are your prints made of?"). {price} is the cheapest rate
   // outside the UK in config/shipping.ts, in the buyer's currency.
   assurance: {
-    printed: 'Printed to order on archival paper, made in 1–4 working days',
+    printed: 'Printed to order on 200gsm uncoated paper, made in 1–4 working days',
     delivery: 'UK delivery 2–3 working days, worldwide from {price}',
     returns: '14 days to change your mind',
   },
