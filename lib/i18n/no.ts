@@ -950,7 +950,7 @@ export const no = {
       para1:
         'Ishtars bilder beveger seg mellom nøye observerte detaljer og fantasiverdener. Stockholms tårn og bygninger langs vannet står side om side med lag på lag av blader, geometriske landskap og en fugl som svever over en dal. Små merker og fargenyanser gir mye å oppdage på nært hold.',
       para2:
-        'Uttrykket varierer, men sansen for farger går igjen. [Frukt & Grönt](/no/product/frukt-och-gront) samler grønt, rødt og gult på kjøkkenveggen, mens [Surfer with Orange Sun](/no/product/surfer-with-orange-sun) er tegnet med færre former og tydeligere fargeflater. [Creature Among Blue Leaves](/no/product/creature-among-blue-leaves) passer et roligere sted der det er tid til å se detaljene.',
+        'Uttrykket varierer, men sansen for farger går igjen. [Frukt & Grönt](/no/product/frukt-och-gront) samler grønt, rødt og gult på kjøkkenveggen, mens [Creature Among Blue Leaves](/no/product/creature-among-blue-leaves) passer et roligere sted der det er tid til å se detaljene.',
     },
   } as Record<string, ArtistEditorialCopy>,
   inspire: {

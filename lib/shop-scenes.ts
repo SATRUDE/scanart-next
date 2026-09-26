@@ -34,7 +34,7 @@ export const shopScenes: Record<string, ShopScene> = {
   'lilac-geometry': { image: '/images/products/lilac-geometry-room.avif', alt: 'Lilac Geometry by Ishtar Bäcklund Dakhil framed above a dining table with a vase of lilacs', width: 1122, height: 1402 },
   'bird-above-the-valley': { image: '/images/products/bird-above-the-valley-room.avif', alt: 'Bird Above the Valley by Ishtar Bäcklund Dakhil framed in a reading corner with an oak lounge chair', width: 1054, height: 1492 },
   'creature-among-blue-leaves': { image: '/images/products/creature-among-blue-leaves-room.avif', alt: 'Creature Among Blue Leaves by Ishtar Bäcklund Dakhil framed above a rattan sideboard', width: 1122, height: 1402 },
-  'surfer-with-orange-sun': { image: '/images/products/surfer-with-orange-sun-room.avif', alt: 'Surfer with Orange Sun by Ishtar Bäcklund Dakhil framed above a red chair in a blue room', width: 1122, height: 1402 },
+  // 'surfer-with-orange-sun' is off the site until Mark has confirmed the print with Ishtar (2026-09-26).
 };
 
 export const articleSceneSlugs: Record<string, string> = {

@@ -62,7 +62,7 @@ export const artistEditorial: Record<string, ArtistEditorial> = {
     para1:
       "Ishtar's images move between closely observed details and imagined worlds. Stockholm's towers and waterfront buildings share a collection with layered leaves, geometric landscapes and a bird gliding above a valley. Small marks and shifting colours give you plenty to notice up close.",
     para2:
-      "There's range here without losing her feel for colour. [Frukt & Grönt](/product/frukt-och-gront) brings a busy gathering of greens, reds and yellows to a kitchen wall; [Surfer with Orange Sun](/product/surfer-with-orange-sun) uses fewer shapes and stronger blocks of colour. [Creature Among Blue Leaves](/product/creature-among-blue-leaves) rewards a quieter spot where you can spend time with its details.",
+      "There's range here without losing her feel for colour. [Frukt & Grönt](/product/frukt-och-gront) brings a busy gathering of greens, reds and yellows to a kitchen wall, and [Creature Among Blue Leaves](/product/creature-among-blue-leaves) rewards a quieter spot where you can spend time with its details.",
   },
 };
 

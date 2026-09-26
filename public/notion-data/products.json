@@ -846,7 +846,7 @@
     "brand": "",
     "inStock": true,
     "featured": false,
-    "published": true,
+    "published": false,
     "image": "/images/products/surfer-with-orange-sun.png",
     "secondaryImage": "/images/products/surfer-with-orange-sun-room.avif",
     "availableSizes": [
