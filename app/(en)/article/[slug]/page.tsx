@@ -107,7 +107,8 @@ export default async function ArticlePage({
   // Where the hero is one of the curated shop scenes, caption it with the
   // print it shows (Figma: "Hyttefrokost — Sia Siamos"). Otherwise no caption:
   // the image's alt already describes it, and a caption must not guess.
-  const heroProduct = articleSceneSlugs[article.slug] ? await getProductBySlug(articleSceneSlugs[article.slug]) : null;
+  // A second scene of a print is keyed "<print>--<name>" (lib/shop-scenes.ts).
+  const heroProduct = articleSceneSlugs[article.slug] ? await getProductBySlug(articleSceneSlugs[article.slug].split('--')[0]) : null;
   const heroArtist = heroProduct?.artistId ? getArtistById(heroProduct.artistId)?.name : undefined;
   const url = `${BASE_URL}/article/${article.slug}`;
   const minutes = readingMinutes(blocks);

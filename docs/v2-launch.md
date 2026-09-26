@@ -3,7 +3,7 @@
 The remaining steps before V2 goes live, and the follow-ups it leaves. The SEO gate itself is in `docs/v2-seo.md`.
 
 ## Ishtar is held back
-Ishtar Bäcklund Dakhil launches later: her agreement isn't fully signed (2026-09-26). Branch `ishtar/preview` has the full site with her; restore from there once it is signed.
+Ishtar Bäcklund Dakhil launches later: her agreement is signed (2026-09-10), but Mark wants her approval of the prices and content first (2026-09-26). Branch `ishtar/preview` has the full site with her; restore from there once she has approved.
 
 What was removed on `mark/scandinavian-art-v2`:
 - **Her seven prints**, unpublished in `public/notion-data/products.json`: Stockholm, Frukt & Grönt, Desert Circles, Lilac Geometry, Bird Above the Valley, Creature Among Blue Leaves, Surfer with Orange Sun. That also takes down her artist page and drops her from the artist lists, search and the sitemap.

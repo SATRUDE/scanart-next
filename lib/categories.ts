@@ -64,7 +64,7 @@ export const categoryLandings: CategoryLanding[] = [
     heading: 'Abstract Prints',
     // Ken's buyer-language rewrite (Studio row, 2026-08-13), trimmed when
     // Renate Thor's Birdie series left the catalogue (21 Aug). A print by a
-    // new artist is held back until her agreement is signed; the version with
+    // new artist is held back until she has approved her prices and content; the version with
     // it is on branch ishtar/preview (docs/v2-launch.md).
     intro:
       'Nordic abstraction leans to clarity rather than chaos: forms pared back until only the essential shape is left, one or two flat colours doing the work of ten. Helene Brox paints her loose, cut-out figures in Oslo, and cuts a diving swallow down to the plunge of its wings. If you’re looking to buy Scandinavian abstract art prints with real presence, this is the confident end of the gallery, and you choose the frame on each product page: wood, black, white or none at all.',
