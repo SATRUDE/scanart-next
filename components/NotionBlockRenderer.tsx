@@ -3,6 +3,10 @@ import { OutboundLink } from '@/components/OutboundLink';
 import { GalleryWallPlannerTeaser } from '@/components/GalleryWallPlannerTeaser';
 import { galleryWallCalculatorInsertionIndex } from '@/lib/article-enhancements';
 import { ListItem } from '@/components/v2/ui';
+import { ArticlePrintFeature } from '@/components/v2/journal/ArticlePrintFeature';
+import { ArticleImageRow } from '@/components/v2/journal/ArticleImageRow';
+import type { PrintFeatureData } from '@/lib/article-prints';
+import type { ImageRowItem } from '@/lib/markdown-blocks';
 
 interface NotionBlock {
   id: string;
@@ -35,6 +39,8 @@ interface NotionBlockRendererProps {
    * render a block at a time inside their own column (ReaderComments).
    */
   layout?: 'grid' | 'column';
+  /** The page's language, for the print feature's link and button. English by default. */
+  locale?: 'en' | 'no';
 }
 
 /** The article's running-text column: after the 3-column rail on desktop. */
@@ -43,7 +49,7 @@ export const ARTICLE_TEXT_COLUMN = 'col-span-full tab:col-start-2 tab:col-span-6
 const ARTICLE_QUOTE_COLUMN = 'col-span-full tab:col-start-2 tab:col-span-7 desk:col-start-4 desk:col-span-9';
 
 const HEADING_TYPES = new Set(['heading_1', 'heading_2', 'heading_3']);
-const BREAKOUT_TYPES = new Set(['image', 'quote']);
+const BREAKOUT_TYPES = new Set(['image', 'quote', 'print_feature', 'image_row']);
 
 /**
  * The space above a block, from the four tiers (layout.md rule 2): a section
@@ -100,7 +106,7 @@ function richTextOf(block: NotionBlock, key: string): RichTextSegment[] | undefi
   return payload?.rich_text;
 }
 
-export const NotionBlockRenderer: React.FC<NotionBlockRendererProps> = ({ blocks, articleSlug, layout = 'grid' }) => {
+export const NotionBlockRenderer: React.FC<NotionBlockRendererProps> = ({ blocks, articleSlug, layout = 'grid', locale = 'en' }) => {
   const grid = layout === 'grid';
   const text = grid ? ARTICLE_TEXT_COLUMN : '';
   const quoteColumn = grid ? ARTICLE_QUOTE_COLUMN : '';
@@ -149,6 +155,20 @@ export const NotionBlockRenderer: React.FC<NotionBlockRendererProps> = ({ blocks
       case 'quote':
         // Pull quote: H1 on 9 columns under a rule (no rule on mobile).
         return (<blockquote key={id} className={`${quoteColumn} ${space} type-h1 tab:border-t tab:border-ink tab:pt-band`}>{renderRichText(richTextOf(block, 'quote'), articleSlug)}</blockquote>);
+      case 'print_feature': {
+        // `::print[slug]` (lib/markdown-blocks.ts), filled from the catalogue by
+        // lib/article-prints.ts. A block that was never resolved, or whose slug
+        // is unknown or unpublished, carries no product and renders nothing.
+        const product = (block.print_feature as { product?: PrintFeatureData } | undefined)?.product;
+        if (!product) return null;
+        return <ArticlePrintFeature key={id} print={product} locale={locale} className={`${text} ${space}`} />;
+      }
+      case 'image_row': {
+        // `::images` … `::`: runs from the text column off the right edge.
+        const images = (block.image_row as { images?: ImageRowItem[] } | undefined)?.images ?? [];
+        if (images.length === 0) return null;
+        return <ArticleImageRow key={id} images={images} offset={grid} className={`col-span-full ${space}`} />;
+      }
       case 'divider':
         return <hr key={id} className={`${text} ${space} border-line`} />;
       case 'code':

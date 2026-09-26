@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { TrackedLink } from '@/components/TrackedLink';
 import { getAllArticles, getArticleBySlug, getArticleBlocks } from '@/lib/articles';
 import { getProductBySlug, getProductsByArtworkIds } from '@/lib/products';
+import { resolvePrintFeatures } from '@/lib/article-prints';
 import { getArtistById } from '@/data/artists';
 import { ArticleBody } from '@/components/ArticleBody';
 import { ArticleCard } from '@/components/ArticleCard';
@@ -88,7 +89,9 @@ export default async function ArticlePage({
     notFound();
   }
 
-  const blocks = await getArticleBlocks(article.id);
+  // Any `::print[slug]` in the body is filled from the published catalogue at
+  // build, so the feature is static HTML like the rest of the article.
+  const blocks = await resolvePrintFeatures(await getArticleBlocks(article.id));
   const browseLinks = getBrowseLinksForArticle(article.slug);
   const featuredPrints = await getProductsByArtworkIds(article.selectedArtworkIds || []);
   const allArticles = await getAllArticles();

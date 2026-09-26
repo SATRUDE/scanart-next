@@ -1078,6 +1078,9 @@ export const no = {
     /** Phase 1 keeps the articles themselves in English, so the index says so
      *  rather than letting a reader click through and be surprised. */
     englishNote: 'Artiklene er på engelsk.',
+    /** The article body's modules (NotionBlockRenderer), for the day an
+     *  article is rendered under /no. */
+    article: { seePrint: 'Se trykket' },
   },
 
   /** Catalogue copy per print. The English catalogue descriptions carried
