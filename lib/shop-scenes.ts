@@ -27,11 +27,32 @@ export const shopScenes: Record<string, ShopScene> = {
   'family-trip': { image: '/images/products/family-trip-room.avif', alt: 'Family Trip by Mikko Saarainen framed in a hallway above a rattan sideboard', width: 848, height: 1264 },
   journey: { image: '/images/products/journey-room.avif', alt: 'Journey by Mikko Saarainen framed above a sofa in a living room', width: 848, height: 1264 },
   urf: { image: '/images/products/urf-room.avif', alt: 'URF! by Mikko Saarainen framed in a reading corner with a red chair', width: 848, height: 1264 },
+  // Codex's scenes of 2026-09-26, kept at their own file names (1122 × 1402).
+  vinkveld: { image: '/images/products/vinkveld-room-hallway-2026-09-26.avif', alt: 'Vinkveld by Sia Siamos framed above a bench in a green hallway with terracotta tiles', width: 1122, height: 1402 },
+  morgenstrekk: { image: '/images/products/morgenstrekk-room-02-2026-09-26.avif', alt: 'Morgenstrekk by Simen Wahlqvist framed above a bed in a blue bedroom', width: 1122, height: 1402 },
+  'half-man': { image: '/images/products/half-man-room-2026-09-26.avif', alt: 'Half Man by Simen Wahlqvist framed above an oak lounge chair in a peach reading corner', width: 1122, height: 1402 },
+  // A second scene of a print is keyed "<print>--<name>": articles can use it,
+  // and the article page reads the print from the part before "--".
+  'vinkveld--dining': { image: '/images/products/vinkveld-room-dining-2026-09-26.avif', alt: 'Vinkveld by Sia Siamos framed above a dining table against a peach wall', width: 1122, height: 1402 },
   // Ishtar Bäcklund Dakhil's seven rooms are held back with her prints until
-  // her agreement is signed; restore them from branch ishtar/preview.
+  // she has approved her prices and content (her agreement is signed);
+  // restore them from branch ishtar/preview.
 };
 
 export const articleSceneSlugs: Record<string, string> = {
+  // Articles that carried April/August generated rooms now open on the
+  // 2026-09-23/26 scenes (Mark, 2026-09-26): the same print where the old
+  // image showed one and no other article already uses it.
+  'modern-scandinavian-art': 'dragon',
+  'how-to-choose-wall-art-for-a-scandinavian-interior': 'eltsjoen',
+  'best-nordic-art-prints': 'tree-top-peach',
+  'nordic-craft-books-glass-ceramics-textiles': 'vinkveld',
+  'the-art-of-choosing-art-comprehensive-guide': 'vinkveld--dining',
+  'how-to-style-scandinavian-wall-art-living-room': 'small-house-big-ocean',
+  'an-interview-by-nordic-notes': 'trysilkaffe',
+  'who-are-scandinavian-art': 'sunday-brunch',
+  'norwegian-words-behind-the-prints': 'morgenstrekk',
+  'scandinavian-wall-decor-ideas': 'swallow-dive',
   'scandinavian-abstract-art': 'dancer',
   'nordic-botanical-prints': 'hummer-og-vin',
   'scandinavian-illustrators': 'eye-nose-eye',
