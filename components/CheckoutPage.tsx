@@ -372,13 +372,14 @@ const CountryPicker: React.FC<{
           type="button"
           role="combobox"
           aria-expanded={open}
+          aria-controls="country-options"
           className="flex w-full items-center justify-between gap-4 border-b border-ink pt-[6px] pb-[10px] text-left type-body focus-visible:outline-none focus:border-b-2 focus:pb-[9px]"
         >
           {destinationName(value, locale)}
           <span aria-hidden className="type-small">⌄</span>
         </button>
       </PopoverTrigger>
-      <PopoverContent className="w-[--radix-popover-trigger-width] rounded-none border-ink p-0 shadow-none" align="start">
+      <PopoverContent id="country-options" className="w-[--radix-popover-trigger-width] rounded-none border-ink p-0 shadow-none" align="start">
         <Command className="rounded-none">
           <CommandInput placeholder={t.searchCountry} className="type-body" />
           <CommandList>
