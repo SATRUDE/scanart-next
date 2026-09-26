@@ -1527,6 +1527,38 @@ export const no = {
       'Tre spørsmål, ingen av dem obligatoriske. Vi er et lite galleri og vi leser hvert svar, så hvis noe gjorde at du ikke kjøpte, vil vi mye heller vite det enn å gjette.',
   },
 
+  /** /no/credits: Norwegian copy for lib/credits.ts (titles, authors and
+   *  licence names stay as the sources give them). */
+  credits: {
+    meta: {
+      title: 'Kreditering',
+      description: 'Kreditering for filmklippene og fotografiene på Scandinavian Art som kommer fra Wikimedia Commons.',
+    },
+    intro:
+      'Filmen i ordmerket nederst på siden og noen av fotografiene på Om oss-siden kommer fra Wikimedia Commons, delt av dem som laget dem under Creative Commons-lisenser. Vi har bearbeidet hver av dem som angitt. Der lisensen er Del på samme vilkår, deler vi vår bearbeidede versjon under den samme lisensen.',
+    groups: { footer: 'Film i bunnteksten', photos: 'Fotografier på Om oss' },
+    notes: {
+      croppedLoopedToned: 'Beskåret, satt i sløyfe og fargetonet',
+      croppedToned: 'Beskåret og fargetonet',
+      croppedBlurredToned: 'Beskåret, gjort uskarp og fargetonet',
+    },
+    where: {
+      winter: 'Vinter, i ordmerket i bunnteksten',
+      spring: 'Vår, i ordmerket i bunnteksten',
+      summer: 'Sommer, i ordmerket i bunnteksten',
+      autumn: 'Høst, i ordmerket i bunnteksten',
+      moss: 'Mosen bak kundesitatet på Om oss og forsiden, og i overskriften på Om oss',
+      'forest-floor': 'Skogbunn, i overskriften på Om oss',
+      'sea-ripples': 'Krusninger i sjøen, i overskriften på Om oss',
+      lupins: 'Lupiner, i overskriften på Om oss',
+      spruce: 'Granskog, i overskriften på Om oss',
+    } as Record<string, string>,
+    by: 'av',
+    basedOn: 'bakgrunnsbilde av',
+    lastUpdated: '26. september 2026',
+    lastUpdatedLabel: 'Sist oppdatert:',
+  },
+
 };
 
 export type NoDictionary = typeof no;

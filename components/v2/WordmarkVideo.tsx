@@ -26,9 +26,10 @@ export type FooterSeason = 'winter' | 'spring' | 'summer' | 'autumn';
  * visitor has paused it (the still stays).
  *
  * Footage: 8 s seamless loops, toned into the same darker band as the stills
- * so the letters keep 3:1 on the tint. Test clips from Wikimedia Commons
- * (CC BY / CC BY-SA, see brands/scandinavian-art/seasons/footage-test); for
- * launch, replace with the ChatGPT loops.
+ * so the letters keep 3:1 on the tint. The clips are from Wikimedia Commons
+ * (CC BY / CC BY-SA, originals in brands/scandinavian-art/seasons/footage-test)
+ * and ship at launch (Mark, 2026-09-26), credited at /credits and /no/credits
+ * from lib/credits.ts. A new or replaced clip needs its entry there.
  */
 export function WordmarkVideo({
   season,

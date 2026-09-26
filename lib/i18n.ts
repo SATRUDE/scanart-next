@@ -24,7 +24,7 @@ export function isNoPath(pathname: string): boolean {
 export function noPathFor(pathname: string): string | null {
   if (pathname === '/') return '/no';
   if (pathname === '/artists/apply' || pathname === '/artists/how-it-works') return `/no${pathname}`;
-  if (/^\/(about|delivery|help|artists|products|inspire|journal|privacy|terms|scandinavian-wall-art|feedback)$/.test(pathname)) return `/no${pathname}`;
+  if (/^\/(about|delivery|help|artists|products|inspire|journal|privacy|terms|credits|scandinavian-wall-art|feedback)$/.test(pathname)) return `/no${pathname}`;
   if (/^\/(category|artist|collection|product)\/[^/]+$/.test(pathname)) return `/no${pathname}`;
   return null;
 }
@@ -126,6 +126,8 @@ export interface FooterStrings {
   motion: { pause: string; play: string };
   privacy: string;
   terms: string;
+  /** V2 footer: the attribution page for the Wikimedia Commons footage and photographs. */
+  credits: string;
   delivery: string;
 }
 
@@ -445,6 +447,7 @@ export const footerStrings: Record<Locale, FooterStrings> = {
     motion: { pause: 'Pause motion', play: 'Play motion' },
     privacy: 'Privacy',
     terms: 'Terms',
+    credits: 'Credits',
     delivery: 'Delivery',
   },
   no: {
@@ -477,6 +480,7 @@ export const footerStrings: Record<Locale, FooterStrings> = {
     motion: { pause: 'Stopp bevegelse', play: 'Start bevegelse' },
     privacy: 'Personvern',
     terms: 'Vilkår',
+    credits: 'Kreditering',
     delivery: 'Levering',
   },
 };

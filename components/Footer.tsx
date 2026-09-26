@@ -224,6 +224,9 @@ export const Footer: React.FC<FooterProps> = ({ year = new Date().getFullYear() 
             <Link href={deliveryHref} className={linkClass}>{t.delivery}</Link>
             <Link href={`${localeHrefPrefix}/privacy`} className={linkClass}>{t.privacy}</Link>
             <Link href={`${localeHrefPrefix}/terms`} className={linkClass}>{t.terms}</Link>
+            {/* Attribution for the Wikimedia Commons footage in the wordmark
+                above and the About photographs (lib/credits.ts). */}
+            <Link href={`${localeHrefPrefix}/credits`} className={linkClass}>{t.credits}</Link>
             {/* The intercept's permanent re-entry route: the corner card parks
                 itself for 60 days on dismissal and that is per-device, so
                 someone who said no and then hit the thing that annoyed them

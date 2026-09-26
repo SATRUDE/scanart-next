@@ -89,7 +89,8 @@ export function rosterCards(
 /**
  * The three windows' pools (brand file motion/about-windows, crops of the
  * shop's own room scenes and prints; nature from the brand file's texture and
- * nature test images). The first of each is the Figma state 1 snapshot and
+ * nature images, Wikimedia Commons photographs credited at /credits from
+ * lib/credits.ts). The first of each is the Figma state 1 snapshot and
  * the server-rendered one; the rest are shuffled per visit.
  */
 const w = (name: string) => `/images/v2/about/windows/${name}.webp`;
