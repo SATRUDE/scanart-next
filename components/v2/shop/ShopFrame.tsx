@@ -226,6 +226,36 @@ export function ShopFrame({
     if (Math.abs(delta) > 1) window.scrollBy(0, delta);
   }, [pathname]);
 
+  // The options stay on one line. Whatever doesn't fit folds behind "More",
+  // which opens the full, wrapping list. Every option is still in the HTML
+  // (the folded ones are display: none), so each landing keeps its crawlable
+  // link. Widths come from an invisible copy of the row that always shows
+  // every option, so folding never changes what is measured.
+  const listRef = useRef<HTMLUListElement>(null);
+  const measureRef = useRef<HTMLUListElement>(null);
+  const [widths, setWidths] = useState<{ avail: number; gap: number; items: number[]; more: number } | null>(null);
+  const [expanded, setExpanded] = useState(false);
+  useLayoutEffect(() => {
+    const list = listRef.current;
+    const measure = measureRef.current;
+    if (!list || !measure) return;
+    const read = () => {
+      const lis = [...measure.children] as HTMLElement[];
+      const more = lis.pop()!;
+      setWidths({
+        avail: list.clientWidth,
+        gap: parseFloat(getComputedStyle(measure).columnGap) || 0,
+        items: lis.map(li => li.getBoundingClientRect().width),
+        more: more.getBoundingClientRect().width,
+      });
+    };
+    read();
+    const ro = new ResizeObserver(read);
+    ro.observe(list);
+    ro.observe(measure);
+    return () => ro.disconnect();
+  }, [locale]);
+
   // A URL this frame has no entry for (an unknown slug on its way to the 404)
   // gets the page alone, without a Filter bar pointing at nothing.
   if (!route) return <>{children}</>;
@@ -259,6 +289,33 @@ export function ShopFrame({
     })),
   ];
 
+  // Which options show on the folded line: All and the chosen one always,
+  // then the rest in order while they fit beside the More button. Index 0 is All.
+  const selectedIndex = allSelected ? 0 : options.findIndex(o => o.selected) + 1;
+  const shown = new Set<number>(options.map((_, i) => i + 1).concat(0));
+  let folding = false;
+  if (widths && !expanded && widths.items.length === options.length + 1) {
+    const { avail, gap, items, more } = widths;
+    const total = items.reduce((a, w) => a + w, 0) + gap * (items.length - 1);
+    if (total > avail + 0.5) {
+      folding = true;
+      shown.clear();
+      const must = [0, ...(selectedIndex > 0 ? [selectedIndex] : [])];
+      let used = more + must.reduce((a, i) => a + items[i] + gap, 0);
+      must.forEach(i => shown.add(i));
+      for (let i = 1; i < items.length; i++) {
+        if (shown.has(i)) continue;
+        if (used + items[i] + gap > avail) break;
+        used += items[i] + gap;
+        shown.add(i);
+      }
+    }
+  } else if (widths && expanded) {
+    const { avail, gap, items } = widths;
+    folding = items.reduce((a, w) => a + w, 0) + gap * (items.length - 1) > avail + 0.5;
+  }
+  const hiddenCount = options.length + 1 - shown.size;
+
   const linkProps = { scroll: false, transitionTypes: [SHOP_TRANSITION] };
 
   return (
@@ -281,8 +338,12 @@ export function ShopFrame({
       </div>
 
       <div ref={barRef} className="mt-6 tab:mt-band desk:mt-[128px]">
-        <div className="flex flex-col gap-3 border-t border-ink pt-4 tab:pt-6 desk:flex-row desk:items-start desk:justify-between desk:gap-8">
-          <ul className="flex flex-wrap items-center gap-x-5 gap-y-2 tab:gap-x-6">
+        <div className="relative flex flex-col gap-3 border-t border-ink pt-4 tab:pt-6 desk:flex-row desk:items-start desk:justify-between desk:gap-8">
+          <ul
+            ref={listRef}
+            id="shop-filter-options"
+            className={`flex min-w-0 items-center desk:flex-1 gap-x-5 gap-y-2 tab:gap-x-6 ${expanded || !folding ? 'flex-wrap' : 'flex-nowrap overflow-hidden'}`}
+          >
             <li>
               <Link
                 href={allHref}
@@ -295,8 +356,8 @@ export function ShopFrame({
                 <span>{t.allChip}</span>
               </Link>
             </li>
-            {options.map(o => (
-              <li key={o.key}>
+            {options.map((o, i) => (
+              <li key={o.key} className={shown.has(i + 1) ? undefined : 'hidden'}>
                 <Link
                   href={o.href}
                   {...linkProps}
@@ -309,7 +370,33 @@ export function ShopFrame({
                 </Link>
               </li>
             ))}
+            {folding && (
+              <li>
+                <button
+                  type="button"
+                  aria-expanded={expanded}
+                  aria-controls="shop-filter-options"
+                  onClick={() => setExpanded(v => !v)}
+                  className={idle}
+                >
+                  <span>{expanded ? t.lessFilters : `${t.moreFilters} (${hiddenCount})`}</span>
+                </button>
+              </li>
+            )}
           </ul>
+          {/* The measuring copy: every option at its real size, never seen or read. */}
+          <div aria-hidden inert className="pointer-events-none invisible absolute inset-x-0 top-0 h-0 overflow-hidden">
+          <ul ref={measureRef} className="flex w-max items-center gap-x-5 tab:gap-x-6">
+            {[t.allChip, ...options.map(o => o.label)].map(label => (
+              <li key={label} className={optionCls}>
+                <span>{label}</span>
+              </li>
+            ))}
+            <li className={optionCls}>
+              <span>{`${t.moreFilters} (${options.length})`}</span>
+            </li>
+          </ul>
+          </div>
 
           <div className="flex shrink-0 flex-wrap items-center gap-6 tab:gap-8">
             <Refine

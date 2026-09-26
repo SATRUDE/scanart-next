@@ -7,6 +7,8 @@ const EN: ProductsGridStrings = {
   searchPrefix: 'Search',
   printsSuffix: 'prints',
   allChip: 'All prints',
+  moreFilters: 'More',
+  lessFilters: 'Less',
   sortLabel: 'Sort products',
   sortFeatured: 'Featured',
   sortName: 'Name',

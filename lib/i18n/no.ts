@@ -986,6 +986,8 @@ export const no = {
       /** "16 trykk" - same word in singular and plural. */
       printsSuffix: 'trykk',
       allChip: 'Alle trykk',
+      moreFilters: 'Mer',
+      lessFilters: 'Mindre',
       sortLabel: 'Sorter trykkene',
       sortFeatured: 'Anbefalt',
       sortName: 'Navn',

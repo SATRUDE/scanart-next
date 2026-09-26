@@ -595,6 +595,9 @@ export interface ProductsGridStrings {
   searchPrefix: string;
   printsSuffix: string;
   allChip: string;
+  /** The Filter bar's overflow toggle: "More" shows the options that don't fit on one line, "Less" folds them away. */
+  moreFilters: string;
+  lessFilters: string;
   sortLabel: string;
   /** The page's own order, the default on the curated landings: "Sort: Featured". */
   sortFeatured: string;
