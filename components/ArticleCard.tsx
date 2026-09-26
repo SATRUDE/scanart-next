@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { scenePosition } from '@/lib/scene-focus';
 import Image from 'next/image';
 import { Article } from '@/lib/articles';
 
@@ -55,7 +56,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
           <Image
             src={article.image}
             alt={article.imageAlt || article.title}
-            style={article.image.includes('-room-') ? { objectPosition: 'center top' } : undefined}
+            style={{ objectPosition: scenePosition(article.image) ?? (article.image.includes('-room-') ? 'center top' : undefined) }}
             fill
             sizes={sizes}
             preload={priority}

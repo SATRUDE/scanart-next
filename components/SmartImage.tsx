@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import { scenePosition } from '@/lib/scene-focus';
 
 interface SmartImageProps {
   src: string;
@@ -16,11 +17,13 @@ interface SmartImageProps {
   onError?: () => void;
   secondarySrc?: string;
   useSecondary?: boolean;
+  /** Overrides the crop. By default a room scene centres its print (lib/scene-focus.ts). */
+  objectPosition?: string;
 }
 
 export const SmartImage: React.FC<SmartImageProps> = ({
   src, alt, className = '', loading = 'lazy', priority = false, sizes = '100vw',
-  onLoad, onError, secondarySrc, useSecondary = false,
+  onLoad, onError, secondarySrc, useSecondary = false, objectPosition,
 }) => {
   const desiredSrc = useSecondary && secondarySrc ? secondarySrc : src;
   const [imageSrc, setImageSrc] = useState(desiredSrc);
@@ -73,6 +76,7 @@ export const SmartImage: React.FC<SmartImageProps> = ({
         {...(priority ? {} : { loading })}
         onLoad={handleLoad}
         onError={handleError}
+        style={{ objectPosition: objectPosition ?? scenePosition(imageSrc) }}
         className={`object-cover ${priority ? '' : isLoading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`}
       />
     </div>

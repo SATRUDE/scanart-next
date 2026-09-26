@@ -4,6 +4,7 @@ import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import Image from 'next/image';
 import { SmartImage } from './SmartImage';
+import { scenePosition } from '@/lib/scene-focus';
 import { getArtistById } from '@/data/artists';
 import { formatDisplayPrice, getLowestProductPrices } from '@/lib/pricing';
 import { printImageAlt, type AltLocale } from '@/lib/product-image-alt';
@@ -140,6 +141,8 @@ export const PrintCard: React.FC<PrintCardProps> = ({
               sizes={sizes}
               loading="lazy"
               fetchPriority="low"
+              // Keep the print in view in the crop (lib/scene-focus.ts).
+              style={{ objectPosition: scenePosition(product.secondaryImage) }}
               className="object-cover scale-[1.04] transition-transform duration-700 ease-[cubic-bezier(.2,.7,.2,1)] group-hover:scale-100 group-focus-within:scale-100"
             />
           </div>

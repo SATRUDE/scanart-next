@@ -50,6 +50,7 @@ You're rebuilding pages of the Scandinavian Art shop (scanart-next, Next.js 16, 
   - Use `SmartImage` / next/image for grids and cards, never a raw `<img>`.
   - Keep the preload rules and alt-text helpers from the contract.
   - No new generated images, ever. Crops and composites of existing files only; anything new is a ChatGPT prompt for Mark, written in your report.
+  - **The art is always in view (Mark, 2026-09-26).** Wherever a room scene is cropped, the whole print, frame included, stays in the tile. `SmartImage` does this on its own; a plain next/image showing a scene sets `style={{ objectPosition: scenePosition(src) }}` from `lib/scene-focus.ts`. A new or changed scene needs `python3 scripts/v2/scene_focus.py` (check the low-confidence ones by eye), and `lib/scene-focus.test.ts` fails until it has a focal point.
 - **Server components by default.** Client components only where there's real interaction. Keep pages statically renderable (don't read `headers()` / `cookies()` in pages).
 - **Motion.** Motion respects `prefers-reduced-motion`. Heavy things (WebGL, video) load lazily, below a server-rendered still image.
 - **Git.** Don't commit or push, and don't run `next build`: it clobbers the dev server's `.next`. The main session commits.

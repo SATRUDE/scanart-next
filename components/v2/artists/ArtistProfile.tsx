@@ -1,5 +1,6 @@
 import type React from 'react';
 import Link from 'next/link';
+import { scenePosition } from '@/lib/scene-focus';
 import Image from 'next/image';
 import { Breadcrumb, Hairline, SectionHeader, ContentSection, FactRow } from '@/components/v2/ui';
 import { PrintCard } from '@/components/PrintCard';
@@ -160,7 +161,7 @@ export function ArtistProfile(p: ArtistProfileProps) {
           <figure className="col-span-full -mx-margin flex flex-col gap-tight tab:mx-0 desk:col-span-7">
             <div className="relative h-[460px] w-full overflow-hidden bg-image-bg tab:h-[700px]">
               {/* The hero scene is the LCP candidate on a profile, so it is preloaded. */}
-              <Image src={p.hero.src} alt={p.hero.alt} fill priority sizes="(max-width: 1199px) 100vw, 733px" className="object-cover" />
+              <Image src={p.hero.src} alt={p.hero.alt} fill priority sizes="(max-width: 1199px) 100vw, 733px" style={{ objectPosition: scenePosition(p.hero.src) }} className="object-cover" />
             </div>
             <figcaption className="flex items-center gap-[6px] px-margin type-caption tab:px-0">
               <Link href={p.hero.href} className="transition-colors hover:text-brand">{p.hero.title}</Link>

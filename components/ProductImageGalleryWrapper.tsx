@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { scenePosition } from '@/lib/scene-focus';
 import Image from 'next/image';
 import * as Dialog from '@radix-ui/react-dialog';
 import { usePathname } from 'next/navigation';
@@ -135,6 +136,7 @@ export const ProductImageGalleryWrapper: React.FC<ProductImageGalleryWrapperProp
         // Only the print, and only in the page gallery: it is the LCP.
         preload={i === 0 && fit === 'cover'}
         sizes={sizes}
+        style={fit === 'cover' ? { objectPosition: scenePosition(m.src) } : undefined}
         className={fit === 'cover' ? 'object-cover' : 'object-contain'}
       />
     ) : null;
@@ -211,7 +213,7 @@ export const ProductImageGalleryWrapper: React.FC<ProductImageGalleryWrapperProp
                     >
                       <span className="relative block aspect-[392/380] w-full overflow-hidden bg-image-bg">
                         {m.kind === 'image' ? (
-                          <Image src={m.src} alt={m.alt} fill sizes="(max-width: 833px) 100vw, 400px" className="object-cover transition-transform duration-500 group-hover:scale-[1.015]" />
+                          <Image src={m.src} alt={m.alt} fill sizes="(max-width: 833px) 100vw, 400px" style={{ objectPosition: scenePosition(m.src) }} className="object-cover transition-transform duration-500 group-hover:scale-[1.015]" />
                         ) : video ? (
                           // The poster stands in for the clip in the overview.
                           <Image src={video.poster} alt={videoLabel ?? productName} fill sizes="(max-width: 833px) 100vw, 400px" className="object-cover" />

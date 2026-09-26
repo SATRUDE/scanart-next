@@ -152,7 +152,7 @@ const HERO_PICKS = ['rosa-blomster', 'massa-applen', 'dragon', 'dancer'];
 // rotation, while the product page keeps the clean print. Mark picks the
 // scene; add a slug here and drop the file in public/images/homepage.
 // vinkveld 2026-08-07, morgenlevering 2026-08-21.
-const HERO_SCENES: Record<string, string> = {
+export const HERO_SCENES: Record<string, string> = {
   vinkveld: '/images/homepage/vinkveld-scene.jpg',
   morgenlevering: '/images/homepage/morgenlevering-scene.jpg',
 };
