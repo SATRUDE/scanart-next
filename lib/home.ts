@@ -84,7 +84,7 @@ export const homeStrings: HomeStrings = {
     walls: { blue: 'Blue', yellow: 'Yellow', peach: 'Peach', green: 'Green', white: 'White' },
     wallsInSentence: { blue: 'blue', yellow: 'yellow', peach: 'peach', green: 'green', white: 'white' },
     roomDescription: '{print} by {artist}, {size}, framed on a {wall} wall in a home office.',
-    stillAlt: 'Dancer by Helene Brox, 50 × 70 cm, framed on a peach wall above a desk in a home office',
+    stillAlt: 'Hummer og Vin by Sia Siamos, 50 × 70 cm, framed on a green wall above a desk in a home office',
   },
   howItWorks: {
     heading: 'How the shop works',

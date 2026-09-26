@@ -109,7 +109,7 @@ export const no = {
         walls: { blue: 'Blå', yellow: 'Gul', peach: 'Fersken', green: 'Grønn', white: 'Hvit' },
         wallsInSentence: { blue: 'blå', yellow: 'gul', peach: 'ferskenfarget', green: 'grønn', white: 'hvit' },
         roomDescription: '{print} av {artist}, {size}, innrammet på en {wall} vegg på et hjemmekontor.',
-        stillAlt: 'Dancer av Helene Brox, 50 × 70 cm, innrammet på en ferskenfarget vegg over et skrivebord på et hjemmekontor',
+        stillAlt: 'Hummer og Vin av Sia Siamos, 50 × 70 cm, innrammet på en grønn vegg over et skrivebord på et hjemmekontor',
       },
       howItWorks: {
         heading: 'Slik fungerer butikken',

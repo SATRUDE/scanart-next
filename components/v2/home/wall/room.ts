@@ -24,8 +24,9 @@ export const WALLS: { id: WallId; hex: string }[] = [
   { id: 'white', hex: '#E6E0D8' },
 ];
 
-export const DEFAULT_WALL: WallId = 'peach';
-export const DEFAULT_PRINT = 'dancer';
+// Mark's pick (2026-09-26): the section opens on Hummer og Vin on the green wall.
+export const DEFAULT_WALL: WallId = 'green';
+export const DEFAULT_PRINT = 'hummer-og-vin';
 
 export interface WallSlot {
   size: string;
@@ -66,7 +67,9 @@ export const ROOM: WallRoom = {
   width: 1122,
   height: 1402,
   base: `${DIR}/base.jpg`,
-  still: `${DIR}/still-peach-dancer.jpg`,
+  // The top 1122 x 701 (views.desktop, the only crop shown), rendered by this
+  // WebGL renderer at 2x so the server image and the first canvas frame match.
+  still: `${DIR}/still-green-hummer-og-vin.jpg`,
   mask: `${DIR}/mask.png`,
   light: `${DIR}/light.png`,
   lightCss: `${DIR}/light-css.png`,
