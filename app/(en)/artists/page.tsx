@@ -9,7 +9,7 @@ import { BASE_URL, socialCard } from '@/lib/site';
 import { hreflangPair } from '@/lib/i18n';
 
 const PAGE_TITLE = 'Artists';
-const PAGE_DESCRIPTION = 'Meet the Scandinavian artists behind the collection, a small group of illustrators and printmakers working across Norway and Sweden.';
+const PAGE_DESCRIPTION = 'Meet the artists behind the collection, a small group of illustrators and printmakers working across Norway, Sweden and Finland.';
 
 export const metadata: Metadata = {
   title: PAGE_TITLE,
@@ -66,16 +66,16 @@ export default async function ArtistsPage() {
 
   // V2 (Figma Artists 143:241 desktop, 187:1915 mobile). The lead keeps the
   // page's own intro rather than the design's: the design says "seven
-  // illustrators in Norway, Sweden and Finland" and "half the profit", and the
-  // roster is five artists in Norway and Sweden on a 60% split
-  // (lib/artist-how-it-works.ts). The counts come from the data.
+  // illustrators in Norway, Sweden and Finland" and "half the profit"; the
+  // roster count comes from the data, and no artist share is stated on public
+  // pages. The lead names the countries the published roster covers.
   return (
     <div className="page-x pb-section">
       <PageHeader
         title="Artists"
         lead={
           <p>
-            Meet the Scandinavian artists behind the collection, a small group of illustrators and printmakers working across Norway and Sweden.
+            Meet the artists behind the collection, a small group of illustrators and printmakers working across Norway, Sweden and Finland.
           </p>
         }
         meta={[`${withCounts.length} artists`, prints(totalPrints)]}

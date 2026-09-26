@@ -4,8 +4,9 @@
 // Shared between app/category/[slug]/page.tsx and app/sitemap.ts so the two never drift.
 // Copy drafted by Ken (Studio board, 2026-07-21) and wired verbatim; artist and
 // size claims were checked against the live catalogue when written. The
-// illustrations intro leans on Simen being the sole illustrator, revisit it if
-// a second illustrator joins the catalogue.
+// illustrations copy used to lean on Simen being the sole illustrator; it was
+// rewritten on 2026-09-15 when Mikko Saarainen joined, which took the category
+// to ten prints by three artists. Recount if it changes again.
 
 export interface CategoryLanding {
   slug: string;
@@ -93,27 +94,27 @@ export const categoryLandings: CategoryLanding[] = [
     category: 'Illustrations',
     title: 'Scandinavian Illustrations',
     description:
-      'Characterful Scandinavian illustration prints by Oslo illustrator Simen Wahlqvist: few lines, dry wit, clean colour. Framing options and worldwide delivery.',
+      'Nordic illustration prints by Simen Wahlqvist, Mikko Saarainen and Hedvig Wallin: dry one-liners and comic pages packed with detail. Framed or unframed.',
     heading: 'Illustrations',
-    // Ken's buyer-language rewrite (Studio row, 2026-08-13). Keeps the
-    // sole-illustrator caveat: revisit if a second illustrator joins.
+    // Ken's buyer-language rewrite (Studio row, 2026-08-13), rewritten again
+    // on 2026-09-15 for the second and third illustrator in the category.
     intro:
-      'Every illustration print here is the work of one artist: Simen Wahlqvist, an Oslo illustrator who catches a moment, usually just before it happens, in as few lines as possible. His rule is that a drawing is done when it makes him laugh, and it shows. If you’re after a Nordic art print that gets a second look from every guest, start here: each piece can be bought framed or unframed, and the black frame does the square prints a particular favour.',
+      'Illustration here means drawings with a sense of humour, and the category pulls in two directions. Simen Wahlqvist, in Oslo, catches a moment just before it happens in as few lines as possible; his rule is that a drawing is done when it makes him laugh. Mikko Saarainen, in Lahti, works the opposite way, filling a square until every corner has a joke in it, and one of his prints is a whole comic page. Hedvig Wallin’s ink seascape sits between them. If you’re after a Nordic art print that gets a second look from every guest, start here: each piece can be bought framed or unframed, and the black frame does the square prints a particular favour.',
     intro2:
-      'This is the clean-lined, characterful end of Scandinavian art, and an easy first print to buy. It suits hallways, home offices and any room that has come out a little too tasteful and needs one thing with a glint in its eye. Simen is one of the independent Norwegian artists behind the gallery, and his prints are made on 200gsm uncoated paper.',
+      'This is the characterful end of Nordic art, and an easy first print to buy. It suits hallways, home offices, children’s rooms and any room that has come out a little too tasteful and needs one thing with a glint in its eye. All three are independent artists we work with directly, in Norway, Finland and Sweden, and every print is made on 200gsm uncoated paper.',
     stylingHeading: 'Styling illustration prints',
     stylingBody:
-      'Most of these prints are 50 x 50 cm, and the square format is quietly useful: it sits well on a picture shelf, holds a narrow wall a rectangle would crowd, and makes a tidy pair or trio along a hallway. Morgenstrekk, at 50 x 70 cm, works as the anchor of a group with the squares around it. Keep the frame choice consistent across a set, all wood, all black or all white, and the mix reads as intentional.',
+      'Seven of these ten prints are 50 x 50 cm, and the square format is quietly useful: it sits well on a picture shelf, holds a narrow wall a rectangle would crowd, and makes a tidy pair or trio along a hallway. The 50 x 70 pieces, Morgenstrekk, Journey and Small House Big Ocean, work as the anchor of a group with the squares around them. Keep the frame choice consistent across a set, all wood, all black or all white, and the mix reads as intentional. Saarainen’s squares are the loudest thing in the category, so give them a wall that can take it.',
     faqs: [
       {
         question: 'What makes these illustrations Scandinavian?',
         answer:
-          'The economy. Nordic illustration favours as few lines as necessary and no more, letting white space and a limited palette do the heavy lifting. These are drawn in Oslo by a Norwegian illustrator, so the label is literal as well as stylistic.',
+          'Partly the economy: Nordic illustration favours as few lines as necessary and no more, letting white space and a limited palette do the heavy lifting, which is Simen Wahlqvist’s whole method. Mikko Saarainen is the counter-example, and the region holds both: Finland has a long comic and children’s-book tradition that fills the page instead. These are drawn in Oslo, Lahti and Gothenburg, so the label is literal as well as stylistic.',
       },
       {
         question: 'What sizes do the illustration prints come in?',
         answer:
-          'Most are 50 x 50 cm square; Morgenstrekk is 50 x 70 cm. The squares suit shelves, hallways and grouped walls, while the larger piece can hold a wall on its own.',
+          'Seven of the ten are 50 x 50 cm square; Morgenstrekk, Journey and Small House Big Ocean are 50 x 70 cm. The squares suit shelves, hallways and grouped walls, while the larger pieces can hold a wall on their own.',
       },
       {
         question: 'Can I get an illustration print framed and delivered abroad?',

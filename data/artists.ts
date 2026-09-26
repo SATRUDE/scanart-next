@@ -48,6 +48,14 @@ export const artists: Artist[] = [
     bio: 'Hedvig Wallin is an illustrator and graphic designer from Gothenburg, Sweden, who began illustrating children’s books at eighteen and still does, alongside editorial work, murals, logos, labels and posters. She draws on naive art for its childlike simplicity, mixing ink, pencil, soft pastel, watercolour and digital media into playful, detail-rich images with a wonky perspective, where something new turns up each time you look.',
     image: '/images/artists/hedvig-wallin.png'
   },
+  {
+    id: '7',
+    name: 'Mikko Saarainen',
+    slug: 'mikko-saarainen',
+    location: 'Lahti, Finland',
+    bio: 'Mikko Saarainen is an award-winning illustrator, children\'s author and comic artist from Lahti, Finland. His pictures are funny, expressive and packed with detail: a cruise ship where every passenger has spotted something different, a family car loaded past the roofline, a knight losing an argument with a dragon. He works in a bold line and flat, faintly grainy colour, and keeps the detail going right out to the edges, so the drawings get read as much as looked at.',
+    image: '/images/artists/mikko-saarainen.png'
+  },
 ];
 
 export const getArtistById = (id: string) => {

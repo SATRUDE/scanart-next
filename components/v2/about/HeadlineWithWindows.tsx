@@ -135,17 +135,20 @@ function Window({ pool, width, delay, running }: { pool: string[]; width: string
   const next = order[(index + 1) % order.length];
   const layer = 'absolute inset-0 transition-transform duration-[600ms] ease-[cubic-bezier(.2,.7,.2,1)]';
 
+  // Served as they are (unoptimized): each crop is a native-resolution close-up
+  // of the original scene, encoded once at high quality. Through the image
+  // optimiser they were re-compressed a second time, which is what blurred them.
   return (
     <span
       aria-hidden
       className={`relative h-[0.95em] overflow-hidden bg-image-bg align-[-0.12em] [display:inline-block] ${width}`}
     >
       <span key={current} className={`${layer} ${rolling ? '-translate-y-full' : 'translate-y-0'}`}>
-        <Image src={current} alt="" fill sizes="240px" className="object-cover" loading="eager" />
+        <Image src={current} alt="" fill unoptimized className="object-cover" loading="eager" />
       </span>
       {order.length > 1 && (
         <span key={next} className={`${layer} ${rolling ? 'translate-y-0' : 'translate-y-full'}`}>
-          <Image src={next} alt="" fill sizes="240px" className="object-cover" loading="eager" />
+          <Image src={next} alt="" fill unoptimized className="object-cover" loading="eager" />
         </span>
       )}
     </span>

@@ -294,6 +294,16 @@
     color: inherit;
   }
 
+  /* Tailwind 4 leaves buttons on the default arrow; every control that does
+     something gets the pointer, as links do (Search, Basket, Menu, seasons…). */
+  button:not(:disabled),
+  [role='button']:not([aria-disabled='true']),
+  summary,
+  select,
+  label[for] {
+    cursor: pointer;
+  }
+
   :focus-visible {
     outline: 2px solid var(--sa-focus);
     outline-offset: 2px;
