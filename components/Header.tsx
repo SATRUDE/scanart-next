@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { OPTION_PAD } from '@/components/v2/OptionTrack';
 import { usePathname } from 'next/navigation';
 import { Sheet, SheetContent, SheetTitle, SheetDescription } from '@/components/ui/sheet';
 import { useCart } from '@/contexts/CartContext';
@@ -147,18 +148,18 @@ export const Header: React.FC<HeaderProps> = ({ categories, search }) => {
             {t.menu}
           </button>
 
-          <nav aria-label={chromeAria[isNo ? 'no' : 'en'].landmarks.main} className="hidden desk:flex flex-1 basis-0 gap-8 type-small min-[1320px]:col-span-6">
+          <nav aria-label={chromeAria[isNo ? 'no' : 'en'].landmarks.main} className="hidden desk:flex flex-1 basis-0 gap-6 type-small min-[1320px]:col-span-6">
             {nav.map(item => (
               <Link
                 key={item.key}
                 href={item.href}
                 aria-current={item.current ? 'page' : undefined}
-                className="relative transition-opacity hover:opacity-60"
+                className={`relative flex items-center ${OPTION_PAD} transition-opacity hover:opacity-60`}
               >
-                {/* The header stays mounted between pages, so when the page
-                    changes the old line shrinks away and the new one grows in
-                    (.nav-mark in globals.css), the same move as the options. */}
-                <span aria-hidden className="nav-mark" />
+                {/* The chosen page carries the filters' hairline in front of the
+                    word (.option-mark). The header stays mounted between pages,
+                    so the old line shrinks away and the new one grows in. */}
+                <span aria-hidden className="option-mark" />
                 {item.label}
               </Link>
             ))}
