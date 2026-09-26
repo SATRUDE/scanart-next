@@ -18,7 +18,7 @@ const NOTION_2025 = '2025-08-24T11:50:00.000Z';
 const NOTION_2025_LATER = '2025-08-28T07:42:00.000Z';
 const REAL_2026_EDIT = '2026-08-05T13:25:18.425Z';
 // An edit later than the catalogue floor, for the pass-through cases.
-const AFTER_CATALOGUE_REVISED = '2026-09-02T09:00:00.000Z';
+const AFTER_CATALOGUE_REVISED = '2026-10-02T09:00:00.000Z'; // after the V2 launch floor (2026-09-26)
 
 describe('sitemapDate', () => {
   it('floors a pre-launch source date at the site launch', () => {

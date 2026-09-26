@@ -55,7 +55,13 @@ export const SITE_LAUNCH = new Date('2026-04-14T00:00:00.000Z');
  * the day the buyer-language pass rewrote the product titles and intros and
  * Dragon moved onto the Premium price list.
  */
-export const CATALOGUE_REVISED = new Date('2026-08-13T00:00:00.000Z');
+/**
+ * The V2 redesign went live: every page's template changed, so every page's
+ * lastmod moves to at least this date (set by hand, never the build time).
+ */
+export const V2_LAUNCH = new Date('2026-09-26T00:00:00.000Z');
+
+export const CATALOGUE_REVISED = V2_LAUNCH;
 
 /**
  * When the Norwegian shop went live: the catalogue, the product pages, the
@@ -75,7 +81,8 @@ export const CATALOGUE_REVISED = new Date('2026-08-13T00:00:00.000Z');
  * the same terms as CATALOGUE_REVISED: a date moved to "now" on every build is
  * the stamp-everything pattern Google learns to discount.
  */
-export const NORWEGIAN_SHOP_LAUNCH = new Date('2026-08-21T00:00:00.000Z');
+// The Norwegian shop was re-templated and re-copied with V2.
+export const NORWEGIAN_SHOP_LAUNCH = V2_LAUNCH;
 
 /** A usable Date, or null for missing, unparseable or non-finite input. */
 function parse(value: string | Date | null | undefined): Date | null {

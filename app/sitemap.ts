@@ -11,26 +11,25 @@ import {
   latestNorwegianCatalogueDate,
   latestSitemapDate,
   norwegianCatalogueDate,
-  sitemapDate,
-} from '@/lib/sitemap-dates';
+  sitemapDate, V2_LAUNCH } from '@/lib/sitemap-dates';
 import { productSitemapImages, siteImage } from '@/lib/product-sitemap-images';
 import { aboutHeroSitemapImages } from '@/lib/about-hero';
 
 // The date the Norwegian translations of the hand-dated static pages went
 // live; bump by hand when the Norwegian wording changes, as with the English
 // dates below.
-const NO_TRANSLATED = new Date('2026-08-07');
+const NO_TRANSLATED = V2_LAUNCH;
 
 // The date the Norwegian shop (catalogue, product pages, Inspire, journal
 // index, legal) went live; bump by hand when that Norwegian wording changes.
-const NO_TRANSLATED_SHOP = new Date('2026-08-21');
+const NO_TRANSLATED_SHOP = V2_LAUNCH;
 
 // The date the artist application page went live in both languages; bump by
 // hand when its copy changes, as with the other hand-dated static pages.
-const APPLY_PUBLISHED = new Date('2026-08-21');
+const APPLY_PUBLISHED = V2_LAUNCH;
 
 // Hedvig discovery links added to both homepages on this date.
-const HOME_REVISED = new Date('2026-09-23');
+const HOME_REVISED = V2_LAUNCH;
 
 // hreflang alternates for a translated EN/NO pair, attached to BOTH entries
 // of the pair so each URL declares the other (and English as the x-default).
@@ -58,7 +57,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: BASE_URL, lastModified: latestCatalogueDate([...productDates, ...articleDates, HOME_REVISED]), priority: 1.0, changeFrequency: 'daily', alternates: pairAlternates('') },
     { url: `${BASE_URL}/products`, lastModified: latestCatalogueDate(productDates), priority: 0.9, changeFrequency: 'weekly', alternates: pairAlternates('/products') },
     { url: `${BASE_URL}/journal`, lastModified: latestSitemapDate(articleDates), priority: 0.8, changeFrequency: 'weekly', alternates: pairAlternates('/journal') },
-    { url: `${BASE_URL}/inspire`, lastModified: new Date('2026-08-06'), priority: 0.7, changeFrequency: 'weekly', alternates: pairAlternates('/inspire') },
+    { url: `${BASE_URL}/inspire`, lastModified: V2_LAUNCH, priority: 0.7, changeFrequency: 'weekly', alternates: pairAlternates('/inspire') },
     // artists hub; links every artist detail page, changes when the roster's prints do
     { url: `${BASE_URL}/artists`, lastModified: latestCatalogueDate(productDates), priority: 0.7, changeFrequency: 'weekly', alternates: pairAlternates('/artists') },
     // the inbound half of artist acquisition, and the only door an artist can
@@ -70,12 +69,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // It is also the only static page that renders a catalogue print, and our
     // second-biggest image-search surface, so it declares that picture the way
     // the product and article entries declare theirs.
-    { url: `${BASE_URL}/about`, lastModified: new Date('2026-07-10'), priority: 0.5, changeFrequency: 'yearly', alternates: pairAlternates('/about'), ...aboutHeroSitemapImages(products) },
-    { url: `${BASE_URL}/help`, lastModified: new Date('2026-07-12'), priority: 0.5, changeFrequency: 'monthly', alternates: pairAlternates('/help') },
+    { url: `${BASE_URL}/about`, lastModified: V2_LAUNCH, priority: 0.5, changeFrequency: 'yearly', alternates: pairAlternates('/about'), ...aboutHeroSitemapImages(products) },
+    { url: `${BASE_URL}/help`, lastModified: V2_LAUNCH, priority: 0.5, changeFrequency: 'monthly', alternates: pairAlternates('/help') },
     // legal pages; low priority, change rarely
-    { url: `${BASE_URL}/privacy`, lastModified: new Date('2026-07-12'), priority: 0.3, changeFrequency: 'yearly', alternates: pairAlternates('/privacy') },
-    { url: `${BASE_URL}/terms`, lastModified: new Date('2026-07-12'), priority: 0.3, changeFrequency: 'yearly', alternates: pairAlternates('/terms') },
-    { url: `${BASE_URL}/delivery`, lastModified: new Date('2026-07-12'), priority: 0.3, changeFrequency: 'yearly', alternates: pairAlternates('/delivery') },
+    { url: `${BASE_URL}/privacy`, lastModified: V2_LAUNCH, priority: 0.3, changeFrequency: 'yearly', alternates: pairAlternates('/privacy') },
+    { url: `${BASE_URL}/terms`, lastModified: V2_LAUNCH, priority: 0.3, changeFrequency: 'yearly', alternates: pairAlternates('/terms') },
+    { url: `${BASE_URL}/delivery`, lastModified: V2_LAUNCH, priority: 0.3, changeFrequency: 'yearly', alternates: pairAlternates('/delivery') },
     // the Norwegian tree (phase 1): the same stable pages under /no, dated by
     // the same content that dates their English twins; the hand-dated static
     // pages carry the translation date instead
@@ -107,7 +106,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // English-only for now: no /no sibling yet, so no alternates pair.
     { url: `${BASE_URL}/nordic-art`, lastModified: latestCatalogueDate(productDates), priority: 0.8, changeFrequency: 'weekly' },
     // The planner: a tool, not a catalogue page, so dated by its last change.
-    { url: `${BASE_URL}/gallery-wall-planner`, lastModified: new Date('2026-09-02'), priority: 0.7, changeFrequency: 'monthly' },
+    { url: `${BASE_URL}/gallery-wall-planner`, lastModified: V2_LAUNCH, priority: 0.7, changeFrequency: 'monthly' },
     // category landing pages exist only for categories with published work; a
     // category page changes when one of its prints does. Each has a Norwegian
     // twin under /no/category built from the same prints, but dated with the
