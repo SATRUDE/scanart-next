@@ -133,8 +133,9 @@ export const ProductImageGalleryWrapper: React.FC<ProductImageGalleryWrapperProp
         src={m.src}
         alt={m.alt}
         fill
-        // Only the print, and only in the page gallery: it is the LCP.
-        preload={i === 0 && fit === 'cover'}
+        // The first two, and only in the page gallery: the print is the LCP on
+        // a phone, the room beside it (the larger image) on desktop.
+        preload={i < 2 && fit === 'cover'}
         sizes={sizes}
         style={fit === 'cover' ? { objectPosition: scenePosition(m.src) } : undefined}
         className={fit === 'cover' ? 'object-cover' : 'object-contain'}

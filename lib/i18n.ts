@@ -358,6 +358,8 @@ export interface SearchStrings {
   allResults: string;
   tabsLabel: string;
   seeAll: string;
+  /** When there is exactly one result. */
+  seeAllOne: string;
   seeOnPrintsPage: string;
   searching: string;
   noResultsTitle: string;
@@ -387,6 +389,7 @@ export const searchStrings: Record<Locale, SearchStrings> = {
     allResults: 'All results',
     tabsLabel: 'Kinds of result',
     seeAll: 'See all {n} results for “{q}”',
+    seeAllOne: 'See the result for “{q}”',
     seeOnPrintsPage: 'See them on the Prints page',
     searching: 'Searching',
     noResultsTitle: 'Nothing for “{q}” yet',
@@ -414,6 +417,7 @@ export const searchStrings: Record<Locale, SearchStrings> = {
     allResults: 'Alle treff',
     tabsLabel: 'Typer treff',
     seeAll: 'Se alle {n} treff for «{q}»',
+    seeAllOne: 'Se treffet for «{q}»',
     seeOnPrintsPage: 'Se dem på trykksiden',
     searching: 'Søker',
     noResultsTitle: 'Ingenting for «{q}» ennå',

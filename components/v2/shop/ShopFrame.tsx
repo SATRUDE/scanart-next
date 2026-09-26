@@ -372,7 +372,7 @@ export function ShopFrame({
           <ul
             ref={listRef}
             id="shop-filter-options"
-            className={`flex min-w-0 items-center desk:flex-1 gap-x-5 gap-y-2 tab:gap-x-6 ${expanded || !folding ? 'flex-wrap' : 'flex-nowrap overflow-hidden'}`}
+            className={`flex min-w-0 items-center desk:flex-1 gap-x-5 gap-y-2 tab:gap-x-6 ${expanded || (widths && !folding) ? 'flex-wrap' : 'flex-nowrap overflow-hidden'}`}
           >
             <li>
               <Link

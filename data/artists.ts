@@ -23,7 +23,7 @@ export const artists: Artist[] = [
     name: 'Simen Wahlqvist',
     slug: 'simen-wahlqvist',
     location: 'Oslo, Norway',
-    bio: 'Simen Wahlqvist is a Norwegian graphic designer and illustrator based in Oslo. In his work he aims to capture moments, often before they happen, with as few lines as possible. If an illustration makes himself laugh, it means its done!',
+    bio: 'Simen Wahlqvist is a Norwegian graphic designer and illustrator based in Oslo. In his work he aims to capture moments, often before they happen, with as few lines as possible. If an illustration makes him laugh, it’s done.',
     image: '/images/artists/simen.png'
   },
   {

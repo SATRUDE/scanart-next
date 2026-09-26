@@ -35,7 +35,7 @@ const sections: LegalSection[] = [
     body: (
       <>
         <p>
-          Scandinavian Art er et nettgalleri som selger kunsttrykk, drevet fra {COMPANY.country}
+          Scandinavian Art er et nettgalleri som selger kunsttrykk, drevet fra {COMPANY.countryNo}
           {COMPANY.orgNr ? ` (org.nr ${COMPANY.orgNr})` : ''}. Vi er behandlingsansvarlig for personopplysningene
           som er beskrevet her.
         </p>
@@ -95,7 +95,7 @@ const sections: LegalSection[] = [
           <li><strong>Slack</strong>: ordredetaljene dine sendes til teamet vårt som et ordrevarsel.</li>
         </ul>
         <p>
-          Noen av disse leverandørene opererer utenfor {COMPANY.country} og EØS. Der opplysningene dine overføres til
+          Noen av disse leverandørene opererer utenfor {COMPANY.countryNo} og EØS. Der opplysningene dine overføres til
           utlandet, er de beskyttet av egnede garantier. Vi selger aldri personopplysningene dine.
         </p>
       </>

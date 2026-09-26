@@ -38,16 +38,19 @@ export function ProductReadMore({
       <div ref={ref} className={`${expanded ? '' : 'line-clamp-3'} [&_p+p]:mt-3`}>
         {children}
       </div>
-      {(overflows || expanded) && (
-        <button
-          type="button"
-          onClick={() => setExpanded(v => !v)}
-          aria-expanded={expanded}
-          className="type-caption transition-colors hover:text-brand"
-        >
-          {expanded ? lessLabel : moreLabel}
-        </button>
-      )}
+      {/* Always rendered, so its line is reserved in the server HTML and the
+          page never moves when the clamp is measured; hidden (and out of the
+          tab order and accessibility tree) when the text fits. */}
+      <button
+        type="button"
+        onClick={() => setExpanded(v => !v)}
+        aria-expanded={expanded}
+        aria-hidden={!(overflows || expanded)}
+        tabIndex={overflows || expanded ? 0 : -1}
+        className={`type-caption transition-colors hover:text-brand ${overflows || expanded ? '' : 'invisible'}`}
+      >
+        {expanded ? lessLabel : moreLabel}
+      </button>
     </div>
   );
 }

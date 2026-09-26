@@ -460,7 +460,7 @@ function LiveSuggestions({
         )}
       </div>
       <button type="button" onClick={onSeeAll} className="self-start pt-2 text-left type-body transition-colors hover:text-brand">
-        {fill(t.seeAll, { n: results.total, q: query.trim() })} <span aria-hidden>→</span>
+        {fill(results.total === 1 ? t.seeAllOne : t.seeAll, { n: results.total, q: query.trim() })} <span aria-hidden>→</span>
       </button>
     </div>
   );

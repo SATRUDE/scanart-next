@@ -104,7 +104,9 @@ export function HomePage({ locale, strings: t, data, help, artistLocations = {},
                       secondarySrc={product.secondaryImage}
                       useSecondary
                       alt={secondaryFirstImageAlt(product, locale)}
-                      priority={i === 0}
+                      // The first three tiles are on screen at every width (the third,
+                      // 624 px wide, is the desktop LCP), so all three preload.
+                      priority={i < 3}
                       sizes="(max-width: 833px) 260px, (max-width: 1199px) 420px, 624px"
                       className="h-full w-full transition-transform duration-500 ease-out group-hover:scale-[1.015]"
                     />

@@ -799,7 +799,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
       <div className="sr-only">
         <h3 id={`${id}-title`} className="type-h3">Plan your wall</h3>
         <p className="mt-2 leading-relaxed text-neutral-700">
-          Your wall, to scale. Drag the prints wherever you like — they click to each other’s edges and to your gap — tap one to change its size, and slide the whole group up or down by the marker at the right. Then read the hanging measurements straight off the drawing.
+          Your wall, to scale. Drag the prints wherever you like: they click to each other’s edges and to your gap. Tap one to change its size, and slide the whole group up or down by the marker at the right. Then read the hanging measurements straight off the drawing.
         </p>
       </div>
 

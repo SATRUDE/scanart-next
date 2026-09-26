@@ -859,7 +859,7 @@ export const no = {
     },
     'simen-wahlqvist': {
       location: 'Oslo, Norge',
-      bio: 'Simen Wahlqvist er en norsk grafisk designer og illustratør bosatt i Oslo. I arbeidet sitt prøver han å fange øyeblikk, ofte før de skjer, med så få streker som mulig. Får en illustrasjon ham selv til å le, er den ferdig!',
+      bio: 'Simen Wahlqvist er en norsk grafisk designer og illustratør bosatt i Oslo. I arbeidet sitt prøver han å fange øyeblikk, ofte før de skjer, med så få streker som mulig. Får en illustrasjon ham til å le, er den ferdig.',
     },
     'ingunn-dybendal': {
       location: 'Oslo, Norge',
