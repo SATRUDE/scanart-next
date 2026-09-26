@@ -4,7 +4,7 @@ import { categoryLandings, getCategoryLandingBySlug } from '@/lib/categories';
 import { getProductsByCategory } from '@/lib/products';
 import { getPublishedArtists } from '@/lib/published-artists';
 import { ContentSection, ContentBody } from '@/components/v2/ui';
-import { LandingTemplate } from '@/components/v2/landing/LandingTemplate';
+import { ShopLanding } from '@/components/v2/shop/ShopLanding';
 import { collectionPageJsonLd, faqPageJsonLd, landingBreadcrumbJsonLd } from '@/lib/landing-jsonld';
 import { socialCard } from '@/lib/site';
 import { hreflangPair } from '@/lib/i18n';
@@ -60,15 +60,12 @@ export default async function CategoryPage({
   const artists = await getPublishedArtists();
   const path = `/category/${category.slug}`;
 
+  // The header (H1 = category.heading, both intro paragraphs, the meta line)
+  // and the Filter bar come from the shop layout (components/v2/shop/shop-routes.tsx),
+  // so they stay put when a visitor moves between the shop's pages.
   return (
-    <LandingTemplate
-      heading={category.heading}
-      intro={[category.intro, category.intro2]}
-      breadcrumb={[{ label: 'Prints', href: '/products' }, { label: category.heading }]}
+    <ShopLanding
       products={products}
-      countLabel={`${products.length} ${products.length === 1 ? 'print' : 'prints'}`}
-      fromLabel="from"
-      printsHeading="Prints"
       faqHeading="Common questions"
       faqs={category.faqs}
       crossLinks={{ current: { type: 'category', slug: category.slug } }}
@@ -84,6 +81,6 @@ export default async function CategoryPage({
           <p>{category.stylingBody}</p>
         </ContentBody>
       </ContentSection>
-    </LandingTemplate>
+    </ShopLanding>
   );
 }

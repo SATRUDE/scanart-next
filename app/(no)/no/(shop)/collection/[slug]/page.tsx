@@ -4,7 +4,8 @@ import { notFound } from 'next/navigation';
 import { collections, getCollectionBySlug } from '@/lib/collections';
 import { getAllProducts } from '@/lib/products';
 import { getPublishedArtists } from '@/lib/published-artists';
-import { LandingTemplate } from '@/components/v2/landing/LandingTemplate';
+import { ShopLanding } from '@/components/v2/shop/ShopLanding';
+import { collectionProducts } from '@/components/v2/shop/shop-routes';
 import { CollectionStyling } from '@/components/v2/landing/CollectionStyling';
 import { collectionPageJsonLd, faqPageJsonLd, landingBreadcrumbJsonLd } from '@/lib/landing-jsonld';
 import { socialCard } from '@/lib/site';
@@ -12,7 +13,7 @@ import { hreflangPair } from '@/lib/i18n';
 import { no } from '@/lib/i18n/no';
 
 // The Norwegian collection landing pages (phase 2, 2026-08-21):
-// app/(en)/collection/[slug]/page.tsx mirrored exactly (same params, same
+// app/(en)/(shop)/collection/[slug]/page.tsx mirrored exactly (same params, same
 // template), with the copy swapped for lib/i18n/no.ts.
 //
 // Only the COPY is translated. productSlugs, the styling-card images and the
@@ -84,10 +85,7 @@ export default async function NorwegianCollectionPage({
   // Resolve the curated slug list to products, preserving the configured order
   // and silently dropping any slug that no longer exists in the catalogue.
   const all = await getAllProducts();
-  const bySlug = new Map(all.map(p => [p.slug, p]));
-  const products = collection.productSlugs
-    .map(s => bySlug.get(s))
-    .filter((p): p is NonNullable<typeof p> => Boolean(p));
+  const products = collectionProducts(collection, all);
 
   if (products.length === 0) {
     notFound();
@@ -106,19 +104,12 @@ export default async function NorwegianCollectionPage({
   const path = `/no/collection/${slug}`;
   const articleLabel = copy.relatedArticleLabel ?? collection.relatedArticleLabel;
 
+  // The header and the Filter bar come from the shop layout
+  // (app/(no)/no/(shop)/layout.tsx), in Norwegian, with the same fallback.
   return (
-    <LandingTemplate
+    <ShopLanding
       locale="no"
-      heading={copy.heading}
-      intro={[copy.intro, copy.intro2]}
-      breadcrumb={[{ label: no.shared.prints, href: '/no/products' }, { label: copy.heading }]}
       products={products}
-      countLabel={`${products.length} ${products.length === 1 ? no.shared.printOne : no.shared.printOther}`}
-      fromLabel={no.shared.fromPrice}
-      printsHeading={no.shared.printsSrHeading}
-      outOfStockLabel={no.shared.outOfStock}
-      readMoreLabel={no.shared.readMore}
-      readLessLabel={no.shared.readLess}
       faqHeading={no.shared.commonQuestions}
       faqs={copy.faqs}
       crossLinks={{ current: { type: 'collection', slug }, strings: no.crossLinks }}
@@ -145,6 +136,6 @@ export default async function NorwegianCollectionPage({
             : undefined
         }
       />
-    </LandingTemplate>
+    </ShopLanding>
   );
 }

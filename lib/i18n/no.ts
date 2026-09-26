@@ -987,6 +987,7 @@ export const no = {
       printsSuffix: 'trykk',
       allChip: 'Alle trykk',
       sortLabel: 'Sorter trykkene',
+      sortFeatured: 'Anbefalt',
       sortName: 'Navn',
       sortPriceLow: 'Pris: lav til høy',
       sortPriceHigh: 'Pris: høy til lav',

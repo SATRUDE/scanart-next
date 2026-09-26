@@ -3,7 +3,8 @@ import { notFound } from 'next/navigation';
 import { collections, getCollectionBySlug } from '@/lib/collections';
 import { getAllProducts } from '@/lib/products';
 import { getPublishedArtists } from '@/lib/published-artists';
-import { LandingTemplate } from '@/components/v2/landing/LandingTemplate';
+import { ShopLanding } from '@/components/v2/shop/ShopLanding';
+import { collectionProducts } from '@/components/v2/shop/shop-routes';
 import { CollectionStyling } from '@/components/v2/landing/CollectionStyling';
 import { collectionPageJsonLd, faqPageJsonLd, landingBreadcrumbJsonLd } from '@/lib/landing-jsonld';
 import { socialCard } from '@/lib/site';
@@ -61,10 +62,7 @@ export default async function CollectionPage({
   // Resolve the curated slug list to products, preserving the configured order
   // and silently dropping any slug that no longer exists in the catalogue.
   const all = await getAllProducts();
-  const bySlug = new Map(all.map(p => [p.slug, p]));
-  const products = collection.productSlugs
-    .map(s => bySlug.get(s))
-    .filter((p): p is NonNullable<typeof p> => Boolean(p));
+  const products = collectionProducts(collection, all);
 
   if (products.length === 0) {
     notFound();
@@ -72,15 +70,12 @@ export default async function CollectionPage({
   const artists = await getPublishedArtists();
   const path = `/collection/${collection.slug}`;
 
+  // The header (H1 = collection.heading, both intro paragraphs, the meta line)
+  // and the Filter bar come from the shop layout (components/v2/shop/shop-routes.tsx),
+  // so they stay put when a visitor moves between the shop's pages.
   return (
-    <LandingTemplate
-      heading={collection.heading}
-      intro={[collection.intro, collection.intro2]}
-      breadcrumb={[{ label: 'Prints', href: '/products' }, { label: collection.heading }]}
+    <ShopLanding
       products={products}
-      countLabel={`${products.length} ${products.length === 1 ? 'print' : 'prints'}`}
-      fromLabel="from"
-      printsHeading="Prints"
       faqHeading="Common questions"
       faqs={collection.faqs}
       crossLinks={{ current: { type: 'collection', slug: collection.slug } }}
@@ -104,6 +99,6 @@ export default async function CollectionPage({
             : undefined
         }
       />
-    </LandingTemplate>
+    </ShopLanding>
   );
 }

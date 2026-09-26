@@ -5,13 +5,13 @@ import { categoryLandings, getCategoryLandingBySlug } from '@/lib/categories';
 import { getProductsByCategory } from '@/lib/products';
 import { getPublishedArtists } from '@/lib/published-artists';
 import { ContentSection, ContentBody } from '@/components/v2/ui';
-import { LandingTemplate } from '@/components/v2/landing/LandingTemplate';
+import { ShopLanding } from '@/components/v2/shop/ShopLanding';
 import { collectionPageJsonLd, faqPageJsonLd, landingBreadcrumbJsonLd } from '@/lib/landing-jsonld';
 import { socialCard } from '@/lib/site';
 import { hreflangPair } from '@/lib/i18n';
 import { no } from '@/lib/i18n/no';
 
-// The Norwegian category landing pages: app/(en)/category/[slug]/page.tsx
+// The Norwegian category landing pages: app/(en)/(shop)/category/[slug]/page.tsx
 // mirrored exactly (same params, same template), with the copy swapped for
 // lib/i18n/no.ts. Falls back to the English landing copy for any category
 // added before its translation, so the EN/NO pair always exists together.
@@ -78,19 +78,12 @@ export default async function NorwegianCategoryPage({
   const artists = await getPublishedArtists();
   const path = `/no/category/${slug}`;
 
+  // The header and the Filter bar come from the shop layout
+  // (app/(no)/no/(shop)/layout.tsx), in Norwegian, with the same fallback.
   return (
-    <LandingTemplate
+    <ShopLanding
       locale="no"
-      heading={copy.heading}
-      intro={[copy.intro, copy.intro2]}
-      breadcrumb={[{ label: no.shared.prints, href: '/no/products' }, { label: copy.heading }]}
       products={products}
-      countLabel={`${products.length} ${products.length === 1 ? no.shared.printOne : no.shared.printOther}`}
-      fromLabel={no.shared.fromPrice}
-      printsHeading={no.shared.printsSrHeading}
-      outOfStockLabel={no.shared.outOfStock}
-      readMoreLabel={no.shared.readMore}
-      readLessLabel={no.shared.readLess}
       faqHeading={no.shared.commonQuestions}
       faqs={copy.faqs}
       crossLinks={{ current: { type: 'category', slug }, strings: no.crossLinks }}
@@ -108,6 +101,6 @@ export default async function NorwegianCategoryPage({
           <p>{copy.stylingBody}</p>
         </ContentBody>
       </ContentSection>
-    </LandingTemplate>
+    </ShopLanding>
   );
 }

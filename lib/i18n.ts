@@ -596,6 +596,8 @@ export interface ProductsGridStrings {
   printsSuffix: string;
   allChip: string;
   sortLabel: string;
+  /** The page's own order, the default on the curated landings: "Sort: Featured". */
+  sortFeatured: string;
   sortName: string;
   sortPriceLow: string;
   sortPriceHigh: string;
