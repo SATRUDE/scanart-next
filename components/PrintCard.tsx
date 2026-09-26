@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import Image from 'next/image';
 import { SmartImage } from './SmartImage';
 import { getArtistById } from '@/data/artists';
 import { formatDisplayPrice, getLowestProductPrices } from '@/lib/pricing';
@@ -119,7 +120,7 @@ export const PrintCard: React.FC<PrintCardProps> = ({
           )}
           priority={priority}
           sizes={sizes}
-          className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.015]"
+          className={`h-full w-full object-cover transition-transform duration-500 ease-out ${product.secondaryImage ? '' : 'group-hover:scale-[1.015]'}`}
         />
         {/* The room mockup fades in on hover, on devices that hover (mouse and
             trackpad); touch never sees it, so a tap goes straight to the print.
@@ -127,8 +128,20 @@ export const PrintCard: React.FC<PrintCardProps> = ({
             its descriptive alt, so this copy stays out of the accessibility
             tree. */}
         {product.secondaryImage && (
-          <div aria-hidden className="pointer-events-none absolute inset-0 hidden opacity-0 transition-opacity duration-500 ease-out [@media(hover:hover)]:block group-hover:opacity-100 group-focus-within:opacity-100">
-            <SmartImage src={product.secondaryImage} alt="" sizes={sizes} className="h-full w-full object-cover" />
+          <div aria-hidden className="pointer-events-none absolute inset-0 hidden overflow-hidden opacity-0 transition-opacity duration-[350ms] ease-out [@media(hover:hover)]:block group-hover:opacity-100 group-focus-within:opacity-100">
+            {/* Plain next/image, not SmartImage: SmartImage adds its own
+                fade-in on load, which made the mockup arrive a beat late. It
+                loads as the tile nears the viewport, so it is ready on hover,
+                and settles from a slight zoom while it fades in. */}
+            <Image
+              src={product.secondaryImage}
+              alt=""
+              fill
+              sizes={sizes}
+              loading="lazy"
+              fetchPriority="low"
+              className="object-cover scale-[1.04] transition-transform duration-700 ease-[cubic-bezier(.2,.7,.2,1)] group-hover:scale-100 group-focus-within:scale-100"
+            />
           </div>
         )}
       </div>
