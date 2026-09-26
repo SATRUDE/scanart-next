@@ -8,6 +8,7 @@ import { useCart } from '@/contexts/CartContext';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { basketStrings, chromeAria, isNoPath } from '@/lib/i18n';
 import { SmartImage } from '@/components/SmartImage';
+import { warmImage } from '@/lib/warm-image';
 import { getProductPrices, formatDisplayPrice, type Currency } from '@/lib/pricing';
 import { getFramePrice } from '@/config/frame';
 import { shippingRates } from '@/config/shipping';
@@ -139,7 +140,8 @@ export const Cart: React.FC = () => {
                             default makes the browser pick a full-viewport
                             variant to fill a thumbnail. */}
                         <SmartImage
-                          src={item.product.image}
+                          // The warm-backdrop shot, as on the prints grid (lib/warm-image.ts).
+                          src={warmImage(item.product.image)}
                           alt={printImageAlt({ name: item.product.name, artist: item.product.artist, brand: item.product.brand, category: item.product.category }, locale)}
                           className="h-full w-full"
                           sizes="96px"

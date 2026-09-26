@@ -1,5 +1,6 @@
 import React from 'react';
 import { SmartImage } from '@/components/SmartImage';
+import { warmImage } from '@/lib/warm-image';
 import { tileAspect } from '@/components/PrintCard';
 import { Hairline } from '@/components/v2/ui';
 
@@ -95,7 +96,7 @@ export function OrderLine({
       <span className={`relative w-16 shrink-0 overflow-hidden bg-image-bg ${tileAspect(size)}`}>
         {/* 64 px wide: without this hint SmartImage's '100vw' default makes
             the browser pick a full-viewport variant to fill a thumbnail. */}
-        <SmartImage src={image} alt="" sizes="64px" className="h-full w-full" />
+        <SmartImage src={warmImage(image)} alt="" sizes="64px" className="h-full w-full" />
       </span>
       <span className="flex min-w-0 flex-1 flex-col gap-[2px]">
         <span className="flex items-start justify-between gap-4 type-body">
