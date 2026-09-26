@@ -94,7 +94,9 @@ export default async function ArticlePage({
   const allArticles = await getAllArticles();
   // Curated list, then every article that names this one, then a same-category
   // fill: see lib/related-articles.ts for why the block must point both ways.
-  const relatedArticles = selectRelatedArticles(article, allArticles);
+  // V2 shows three at most (Mark, 2026-09-26), in that priority order; every
+  // article is still linked from the journal index.
+  const relatedArticles = selectRelatedArticles(article, allArticles, 3, 3).slice(0, 3);
   const publishedArtists = await getPublishedArtists();
   // The makers of the featured prints, in the order their prints appear.
   const featuredArtistIds = [...new Set(featuredPrints.map(p => p.artistId).filter(Boolean))];
