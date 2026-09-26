@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useSyncExternalStore } from 'react';
+import React, { useEffect, useState, useSyncExternalStore } from 'react';
 import { Check } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useCart } from '@/contexts/CartContext';
@@ -192,7 +192,9 @@ const PaymentForm: React.FC<{
   };
   onSuccess: () => void;
   onError: (error: string) => void;
-}> = ({ total, currency, totalLabel, t, orderItems, countryCode, discountCode, customer, onSuccess, onError }) => {
+  /** False until the server's price for this exact order has arrived (see useOrderQuote). */
+  priced: boolean;
+}> = ({ total, currency, totalLabel, t, orderItems, countryCode, discountCode, customer, onSuccess, onError, priced }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [isProcessing, setIsProcessing] = useState(false);
@@ -314,7 +316,7 @@ const PaymentForm: React.FC<{
         <Button
           type="submit"
           className="self-start"
-          disabled={!stripe || isProcessing}
+          disabled={!stripe || isProcessing || !priced}
           data-primary-cta="pay"
           price={isProcessing ? undefined : totalLabel}
         >
@@ -457,6 +459,34 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' |
     zipCode: '',
     country: defaultDestination(selectedCountry.code),
   });
+
+  // The price of this exact order from the server, the same function the
+  // payment is charged with (app/api/order-quote). The page shows its delivery
+  // and total, so what is on screen is what Stripe is asked to take. Keyed by
+  // everything that changes the price; a stale answer is never used.
+  const quoteItems = state.items.map(item => ({ productId: item.product.id, size: item.size, frame: item.frame, quantity: item.quantity }));
+  const quoteKey = JSON.stringify([quoteItems, selectedCountry.currency, formData.country, appliedDiscount?.code ?? null]);
+  const [quote, setQuote] = useState<{ key: string; shipping: number; discountAmount: number; amount: number } | null>(null);
+  useEffect(() => {
+    if (!quoteItems.length) return;
+    const controller = new AbortController();
+    const [items, currency, countryCode, code] = JSON.parse(quoteKey);
+    fetch('/api/order-quote', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ items, currency: currency.toLowerCase(), countryCode, discountCode: code ?? undefined }),
+      signal: controller.signal,
+    })
+      .then(r => (r.ok ? r.json() : null))
+      .then(q => {
+        if (q && typeof q.amount === 'number') setQuote({ key: quoteKey, shipping: q.shipping, discountAmount: q.discountAmount ?? 0, amount: q.amount });
+      })
+      .catch(() => { /* aborted, or offline: Pay stays disabled until a price arrives */ });
+    return () => controller.abort();
+    // quoteKey carries every input; quoteItems is derived from it
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [quoteKey]);
+  const serverQuote = quote?.key === quoteKey ? quote : null;
 
   const handleInputChange = (field: string, value: string) => {
     if (field === 'country') {
@@ -740,14 +770,20 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' |
   const shipping: number = shippingRate ? shippingRate.costs[selectedCountry.currency] || 0 : 0;
 
   // Calculate discount
-  const discountAmount = appliedDiscount
-    ? Math.round((subtotal * appliedDiscount.percentage / 100) * 100) / 100
-    : 0;
+  const discountAmount = serverQuote
+    ? serverQuote.discountAmount
+    : appliedDiscount
+      ? Math.round((subtotal * appliedDiscount.percentage / 100) * 100) / 100
+      : 0;
 
   const finalTax = 0; // No tax for any orders
-  const finalShipping = shipping;
+  // The server's delivery price once it has answered; the old table only
+  // until then (Pay is disabled meanwhile).
+  const finalShipping = serverQuote ? serverQuote.shipping : shipping;
 
-  const total = Math.round((subtotal + finalShipping + finalTax - discountAmount) * 100) / 100; // Round to 2 decimal places
+  const total = serverQuote
+    ? serverQuote.amount
+    : Math.round((subtotal + finalShipping + finalTax - discountAmount) * 100) / 100; // Round to 2 decimal places
 
   // Everything below is display: the same numbers as above, formatted the
   // way the summary always formatted them.
@@ -1004,6 +1040,7 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' |
                   discountCode={appliedDiscount?.code}
                   onSuccess={handlePaymentSuccess}
                   onError={handlePaymentError}
+                  priced={!!serverQuote}
                 />
               </Elements>
             ) : (
