@@ -16,6 +16,7 @@ import { artistStatements } from '@/lib/artist-statements';
 import { productPageEn } from '@/lib/product-page-copy';
 import { getProductVideo } from '@/config/product-videos';
 import { ProductView } from '@/components/v2/product/ProductView';
+import { getDeliveryGuide } from '@/lib/server/delivery-guide';
 import { artistFactsFor } from '@/components/v2/product/artist-facts';
 
 export async function generateStaticParams() {
@@ -129,9 +130,13 @@ export default async function ProductPage({
   const artistProducts = artist ? await getProductsByArtist(artist.id) : [];
   const exploreArtists = (await getPublishedArtists()).map(a => ({ slug: a.slug, name: a.name }));
 
+  // Delivery "from" prices, from the store checkout charges from.
+  const deliveryGuide = await getDeliveryGuide();
+
   return (
     <>
       <ProductView
+        deliveryGuide={deliveryGuide}
         locale="en"
         product={product}
         images={images}

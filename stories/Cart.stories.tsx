@@ -4,6 +4,7 @@ import { CartProvider } from '@/contexts/CartContext';
 import { LanguageProvider } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { useCart } from '@/contexts/CartContext';
+import { sampleDeliveryGuide } from './delivery-guide-sample';
 
 function CartWithToggle() {
   const { toggleCart, addToCart } = useCart();
@@ -23,7 +24,7 @@ function CartWithToggle() {
     <div className="p-8 space-x-4">
       <Button onClick={addSampleItem}>Add Item to Cart</Button>
       <Button variant="outline" onClick={toggleCart}>Open Cart</Button>
-      <Cart />
+      <Cart deliveryGuide={sampleDeliveryGuide} />
     </div>
   );
 }

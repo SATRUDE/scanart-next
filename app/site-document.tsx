@@ -5,6 +5,7 @@ import { Footer } from '@/components/Footer';
 import { ScrollDepth } from '@/components/ScrollDepth';
 import { getAllProducts } from '@/lib/products';
 import { buildSearchIndex } from '@/lib/search-index';
+import { getDeliveryGuide } from '@/lib/server/delivery-guide';
 import { BASE_URL, SITE_NAME } from '@/lib/site';
 import Script from 'next/script';
 import { Hedvig_Letters_Sans, Hedvig_Letters_Serif } from 'next/font/google';
@@ -48,6 +49,9 @@ export async function SiteDocument({
   // page's language (prints, artists, stories). Built here, where the
   // language is known, so the pages stay static.
   const search = await buildSearchIndex(lang);
+  // The basket panel's delivery guide, from the store checkout charges from.
+  // Read here for the same reason: the pages stay static.
+  const deliveryGuide = await getDeliveryGuide();
 
   return (
     <html lang={lang} className={`${serif.variable} ${sans.variable}`}>
@@ -111,7 +115,7 @@ pintrk('page');`}
                 nothing on /no pages, after dismissal, or for everyone else. */}
             <Header categories={categories} search={search} />
             <main>{children}</main>
-            <Cart />
+            <Cart deliveryGuide={deliveryGuide} />
           </div>
           {/* The copyright year is resolved here, in the server layout, so the
               footer never carries a hand-written year. It is fixed at build,

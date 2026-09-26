@@ -373,6 +373,14 @@ export const no = {
         'Svar på vanlige spørsmål om bestilling, levering, retur og trykkene våre hos Scandinavian Art.',
     },
     pageTitle: 'Hjelp',
+    /** "Hva koster frakten?" with the store's from-prices in kroner; the
+     *  static answer in groups is lead + close, true without them. */
+    deliveryCost: {
+      q: 'Hva koster frakten?',
+      lead: 'Frakten avhenger av hvor bestillingen skal, og av størrelse, ramme og antall trykk.',
+      guide: 'Som en pekepinn, i norske kroner, koster frakten for ett trykk uten ramme fra: {guide}. Med ramme koster det mer.',
+      close: 'I kassen ser du nøyaktig beløp, i valutaen du har valgt, før du betaler.',
+    },
     intro:
       'Alt du trenger å vite om bestilling, levering og retur. Finner du ikke svaret her, er det bare å sende oss en e-post, så hjelper vi deg gjerne.',
     stillNeedHelp: 'Trenger du fortsatt hjelp?',
@@ -416,9 +424,11 @@ export const no = {
             q: 'Hvor lang tid tar bestillingen min?',
             a: 'Hvert trykk lages på bestilling, så beregn 1 til 4 virkedager til produksjon, pluss levering for din region: Storbritannia 2-3 virkedager; Norge, Danmark og Sverige 3-5; USA 5-7; resten av verden 7-14.',
           },
+          // The from-prices are added where /no/help renders, from the store
+          // checkout charges from (help.deliveryCost, lib/server/delivery-guide.ts).
           {
             q: 'Hva koster frakten?',
-            a: 'Frakten vises i valutaen du har valgt i kassen. Som en pekepinn, i GBP: Storbritannia £5,99, Norge og Danmark £6,59, Sverige £7,33, USA £10,39, resten av verden £15,99.',
+            a: 'Frakten avhenger av hvor bestillingen skal, og av størrelse, ramme og antall trykk. I kassen ser du nøyaktig beløp, i valutaen du har valgt, før du betaler.',
           },
           {
             q: 'Må jeg betale toll eller importavgifter?',
@@ -1366,11 +1376,12 @@ export const no = {
         black: 'Svart',
         white: 'Hvit',
       },
-      // V2 assurance lines under Add to basket. {price} is the cheapest
-      // non-UK rate in config/shipping.ts, in the buyer's currency.
+      // V2 assurance lines under Add to basket. {price} is the store's
+      // cheapest delivery for an unframed print outside the UK, in the
+      // buyer's currency (lib/server/delivery-guide.ts).
       assurance: {
         printed: 'Trykkes på bestilling på 200 g ubestrøket papir, ferdig på 1–4 virkedager',
-        delivery: 'Levering i Storbritannia på 2–3 virkedager, resten av verden fra {price}',
+        delivery: 'Levering i Storbritannia på 2–3 virkedager, resten av verden fra {price} uten ramme',
         returns: '14 dagers angrerett',
       },
     },

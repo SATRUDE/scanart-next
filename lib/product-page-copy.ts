@@ -6,9 +6,9 @@
 // written: production and delivery times and the 14-day right to cancel from
 // data/help.ts, the frame choices from config/frame.ts, and the paper (200gsm uncoated,
 // Gelato's 200-gsm-80lb-uncoated, Mark's choice of 2026-08-12) from the Help
-// answer on materials. Anything priced is filled in at runtime
-// from config/shipping.ts or the catalogue, in the buyer's currency, so none
-// of it is typed here.
+// answer on materials. Anything priced is filled in at render, from the
+// delivery store (lib/server/delivery-guide.ts) or the catalogue, in the
+// buyer's currency, so none of it is typed here.
 //
 // Placeholders in braces ({count}, {name}, {price}, {label}) are replaced by
 // the component that renders the string.

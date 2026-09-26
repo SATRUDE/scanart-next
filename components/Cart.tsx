@@ -9,9 +9,9 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { basketStrings, chromeAria, isNoPath } from '@/lib/i18n';
 import { SmartImage } from '@/components/SmartImage';
 import { warmImage } from '@/lib/warm-image';
-import { getProductPrices, formatDisplayPrice, type Currency } from '@/lib/pricing';
+import { getProductPrices, formatDisplayPrice } from '@/lib/pricing';
 import { getFramePrice } from '@/config/frame';
-import { shippingRates } from '@/config/shipping';
+import { deliveryGuideLine, type DeliveryGuide } from '@/lib/delivery-guide';
 import { track } from '@/lib/analytics';
 import { printImageAlt } from '@/lib/product-image-alt';
 import { Button, Hairline } from '@/components/v2/ui';
@@ -20,29 +20,6 @@ import { Button, Hairline } from '@/components/v2/ui';
 function sizeLabel(size: string): string {
   const m = size.match(/^(\d+)x(\d+)cm$/i);
   return m ? `${m[1]} × ${m[2]} cm` : size;
-}
-
-/**
- * "As a guide: UK £5.99, Norway and Denmark £6.59, …": the real rates from
- * config/shipping.ts in the buyer's currency, with regions that cost the same
- * joined, so the guide can never disagree with what checkout charges.
- */
-function deliveryGuide(currency: Currency, regions: Record<string, string>, and: string): string {
-  const groups: { names: string[]; cost: number }[] = [];
-  for (const rate of shippingRates) {
-    const cost = rate.costs[currency];
-    const name = regions[rate.countryCode] ?? rate.countryName;
-    const same = groups.find(g => g.cost === cost && rate.countryCode !== 'ELSEWHERE');
-    if (same) same.names.push(name);
-    else groups.push({ names: [name], cost });
-  }
-  // Pence stay visible ("£5.99"): these are exact rates, not rounded prices.
-  const format = (cost: number) =>
-    currency === 'GBP' ? `£${cost.toFixed(2)}` : currency === 'USD' ? `$${cost.toFixed(2)}` : formatDisplayPrice(cost, currency);
-  return groups
-    .sort((a, b) => a.cost - b.cost)
-    .map(g => `${g.names.length > 1 ? `${g.names.slice(0, -1).join(', ')} ${and} ${g.names[g.names.length - 1]}` : g.names[0]} ${format(g.cost)}`)
-    .join(', ');
 }
 
 /**
@@ -55,8 +32,13 @@ function deliveryGuide(currency: Currency, regions: Record<string, string>, and:
  * totals in the buyer's currency. This file only draws it, and keeps the
  * funnel events it always fired (cart-open, remove-from-cart, checkout).
  * Checkout follows the page's language: /no/checkout from the Norwegian tree.
+ *
+ * The delivery guide under the subtotal is the store's own "from" prices
+ * (lib/server/delivery-guide.ts, via app/site-document.tsx), in the buyer's
+ * currency, so it can never disagree with what checkout charges. Checkout
+ * then shows the exact amount for the basket and address.
  */
-export const Cart: React.FC = () => {
+export const Cart: React.FC<{ deliveryGuide: DeliveryGuide }> = ({ deliveryGuide }) => {
   const { state, removeFromCart, updateQuantity, closeCart, getTotalPriceInCurrency, getTotalItems } = useCart();
   const { selectedCountry } = useLanguage();
   const locale = isNoPath(usePathname() || '/') ? 'no' : 'en';
@@ -206,7 +188,7 @@ export const Cart: React.FC = () => {
                   <p>{t.deliveryValue}</p>
                 </div>
                 <p className="type-caption">
-                  {t.guidePrefix} {deliveryGuide(currency, t.regions, t.and)}.
+                  {t.guidePrefix} {deliveryGuideLine(deliveryGuide, currency, t.regions, t.and, locale)}. {t.guideSuffix}
                 </p>
               </div>
 

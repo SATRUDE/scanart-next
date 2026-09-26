@@ -15,6 +15,7 @@ import { getCategoryLandingByCategory } from '@/lib/categories';
 import { getPublishedArtists } from '@/lib/published-artists';
 import { getProductVideo } from '@/config/product-videos';
 import { ProductView } from '@/components/v2/product/ProductView';
+import { getDeliveryGuide } from '@/lib/server/delivery-guide';
 import { artistFactsFor } from '@/components/v2/product/artist-facts';
 
 // The Norwegian product page: app/(en)/product/[slug]/page.tsx mirrored exactly,
@@ -109,9 +110,13 @@ export default async function NorwegianProductPage({
   const exploreArtists = (await getPublishedArtists()).map(a => ({ slug: a.slug, name: a.name }));
   const artistCopy = artist ? no.artists[artist.slug] : undefined;
 
+  // Delivery "from" prices, from the store checkout charges from.
+  const deliveryGuide = await getDeliveryGuide();
+
   return (
     <>
       <ProductView
+        deliveryGuide={deliveryGuide}
         locale="no"
         product={product}
         images={images}

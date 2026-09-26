@@ -645,7 +645,8 @@ export interface ProductActionsStrings {
   addToCart: string;
   /** Frame option id -> visible label. Falls back to the config's name. */
   frameLabels?: Record<string, string>;
-  /** V2 assurance lines under the button; {price} is filled from config/shipping.ts. */
+  /** V2 assurance lines under the button; {price} is the store's cheapest
+   *  delivery outside the UK (lib/server/delivery-guide.ts). */
   assurance?: { printed: string; delivery: string; returns: string };
 }
 
@@ -752,8 +753,8 @@ export interface JournalStrings {
  * The basket panel (components/Cart.tsx, Figma Basket panel 242:4070). Here,
  * beside the header and footer strings, because the panel is a client
  * component mounted on every page in both trees, and lib/i18n/no.ts must not
- * reach the browser. The delivery guide's prices are read from
- * config/shipping.ts at render, in the buyer's currency, never typed here.
+ * reach the browser. The delivery guide's prices come from the store at
+ * render (lib/server/delivery-guide.ts), in the buyer's currency, never typed here.
  */
 export interface BasketStrings {
   title: string;
@@ -767,6 +768,8 @@ export interface BasketStrings {
   delivery: string;
   deliveryValue: string;
   guidePrefix: string;
+  /** After the guide line: framed costs more, checkout has the exact amount. */
+  guideSuffix: string;
   /** Shipping region code -> name in the guide line. */
   regions: Record<string, string>;
   and: string;
@@ -789,7 +792,8 @@ export const basketStrings: Record<Locale, BasketStrings> = {
     subtotal: 'Subtotal',
     delivery: 'Delivery',
     deliveryValue: 'Calculated at checkout',
-    guidePrefix: 'As a guide:',
+    guidePrefix: 'As a guide, one unframed print from:',
+    guideSuffix: 'Framed costs more, and checkout shows the exact amount.',
     regions: { GB: 'UK', NO: 'Norway', DK: 'Denmark', SE: 'Sweden', US: 'United States', ELSEWHERE: 'rest of world' },
     and: 'and',
     assurance: ['Made to order, produced in 1 to 4 business days', '14 days to change your mind', 'Secure payment by Stripe'],
@@ -809,7 +813,8 @@ export const basketStrings: Record<Locale, BasketStrings> = {
     subtotal: 'Delsum',
     delivery: 'Frakt',
     deliveryValue: 'Beregnes i kassen',
-    guidePrefix: 'Som en pekepinn:',
+    guidePrefix: 'Som en pekepinn, ett trykk uten ramme fra:',
+    guideSuffix: 'Med ramme koster det mer, og i kassen ser du nøyaktig beløp.',
     regions: { GB: 'Storbritannia', NO: 'Norge', DK: 'Danmark', SE: 'Sverige', US: 'USA', ELSEWHERE: 'resten av verden' },
     and: 'og',
     assurance: ['Lages på bestilling, produseres på 1 til 4 virkedager', '14 dagers angrerett', 'Sikker betaling med Stripe'],

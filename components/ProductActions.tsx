@@ -4,9 +4,9 @@ import React, { useState, useEffect, useMemo, useId } from 'react';
 import type { ProductActionsStrings } from '@/lib/i18n';
 import { useCart, Product } from '@/contexts/CartContext';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { getProductPrices, formatDisplayPrice } from '@/lib/pricing';
+import { getProductPrices } from '@/lib/pricing';
 import { frameOptions, getFramePrice } from '@/config/frame';
-import { shippingRates } from '@/config/shipping';
+import { worldwideFrom, formatDeliveryPrice, type DeliveryGuide } from '@/lib/delivery-guide';
 import { track } from '@/lib/analytics';
 import { Button, Hairline } from '@/components/v2/ui';
 import { OPTION_PAD } from '@/components/v2/OptionTrack';
@@ -27,11 +27,13 @@ const EN: ProductActionsStrings & { assurance: NonNullable<ProductActionsStrings
     white: 'White',
   },
   // Facts from data/help.ts ("How long will my order take?", "Can I return my
-  // order?", "What are your prints made of?"). {price} is the cheapest rate
-  // outside the UK in config/shipping.ts, in the buyer's currency.
+  // order?", "What are your prints made of?"). {price} is the store's
+  // cheapest delivery for an unframed print outside the UK, in the buyer's
+  // currency (lib/server/delivery-guide.ts); the Delivery row says the exact
+  // amount is worked out at checkout.
   assurance: {
     printed: 'Printed to order on 200gsm uncoated paper, made in 1–4 working days',
-    delivery: 'UK delivery 2–3 working days, worldwide from {price}',
+    delivery: 'UK delivery 2–3 working days, worldwide from {price} unframed',
     returns: '14 days to change your mind',
   },
 };
@@ -40,6 +42,10 @@ interface ProductActionsProps {
   product: Product;
   /** Localised labels; defaults to the English strings above. */
   strings?: ProductActionsStrings;
+  /** The store's "from" delivery prices, computed where the page renders. */
+  deliveryGuide: DeliveryGuide;
+  /** The page's language, for how the price is written ("£4,50" in Norwegian). */
+  locale?: 'en' | 'no';
 }
 
 const SIZE_ORDER: Record<string, number> = {
@@ -63,7 +69,7 @@ const SIZE_ORDER: Record<string, number> = {
  * Both groups are shown even with one option (the Option group rule), as
  * native radio buttons so the choice is announced and arrow keys work.
  */
-export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings }) => {
+export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings, deliveryGuide, locale = 'en' }) => {
   const t = { ...EN, ...strings, assurance: strings?.assurance ?? EN.assurance };
   const { addToCart, state, toggleCart } = useCart();
   const { formatPrice, selectedCountry } = useLanguage();
@@ -125,11 +131,13 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings
   const hasAvailableSizes = availableSizes.length > 0;
   const frameLabel = (id: string) => t.frameLabels?.[id] ?? frameOptions.find(f => f.id === id)?.name ?? id;
 
-  // "worldwide from £6.59": the cheapest delivery outside the UK, in the
-  // buyer's currency, straight from config/shipping.ts.
+  // "worldwide from £4.50 unframed": the store's cheapest delivery outside
+  // the UK, in the buyer's currency, from the same prices checkout charges.
   const currency = selectedCountry.currency;
-  const worldwideFrom = Math.min(...shippingRates.filter(r => r.countryCode !== 'GB').map(r => r.costs[currency]));
-  const deliveryLine = t.assurance.delivery.replace('{price}', formatDisplayPrice(worldwideFrom, currency));
+  const deliveryLine = t.assurance.delivery.replace(
+    '{price}',
+    formatDeliveryPrice(worldwideFrom(deliveryGuide, currency), currency, locale),
+  );
 
   const optionCls = 'peer sr-only';
   // Each option carries its own hairline (.option-mark in globals.css): the old

@@ -1,6 +1,7 @@
 import React from 'react';
 import { TrackedLink } from '@/components/TrackedLink';
 import { ProductActions } from '@/components/ProductActions';
+import type { DeliveryGuide } from '@/lib/delivery-guide';
 import { ProductImageGalleryWrapper } from '@/components/ProductImageGalleryWrapper';
 import { PrintCard } from '@/components/PrintCard';
 import { sizeLabel } from '@/components/v2/product/artist-facts';
@@ -38,6 +39,8 @@ export interface ProductViewProps {
   strings: ProductPageStrings;
   galleryStrings?: GalleryStrings;
   actionsStrings?: ProductActionsStrings;
+  /** The store's "from" delivery prices (lib/server/delivery-guide.ts). */
+  deliveryGuide: DeliveryGuide;
   crossLinksStrings?: CrossLinksStrings;
   outOfStockLabel?: string;
 }
@@ -76,6 +79,7 @@ export function ProductView({
   strings: t,
   galleryStrings,
   actionsStrings,
+  deliveryGuide,
   crossLinksStrings,
   outOfStockLabel,
 }: ProductViewProps) {
@@ -146,7 +150,7 @@ export function ProductView({
             </ProductReadMore>
           )}
 
-          <ProductActions product={product} strings={actionsStrings} />
+          <ProductActions product={product} strings={actionsStrings} deliveryGuide={deliveryGuide} locale={locale} />
           <FeedbackIntercept placement="product" />
 
           <div className="flex flex-col">

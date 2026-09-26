@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
-import { helpGroups } from '@/data/help';
+import { DELIVERY_COST_Q, deliveryCostAnswer, helpGroups } from '@/data/help';
+import { basketStrings, hreflangPair } from '@/lib/i18n';
+import { deliveryGuideLine, withAnswer } from '@/lib/delivery-guide';
+import { getDeliveryGuide } from '@/lib/server/delivery-guide';
 import { socialCard } from '@/lib/site';
-import { hreflangPair } from '@/lib/i18n';
 import { Button, ContentSection, PageHeader, TextLink } from '@/components/v2/ui';
 import { HelpGroups, HelpJumpLinks } from '@/components/v2/help/HelpGroups';
 
@@ -16,21 +18,31 @@ export const metadata: Metadata = {
   ...socialCard({ title: PAGE_TITLE, description: PAGE_DESCRIPTION, path: '/help' }),
 };
 
-// The same data/help.ts groups render the page and this, so every question in
-// the JSON-LD is also on the page with its answer in the HTML.
-const faqJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: helpGroups.flatMap(group =>
-    group.items.map(item => ({
-      '@type': 'Question',
-      name: item.q,
-      acceptedAnswer: { '@type': 'Answer', text: item.a },
-    })),
-  ),
-};
+export default async function HelpPage() {
+  // The delivery-cost answer carries the store's from-prices in GBP (the
+  // prices checkout charges), resolved here so the page stays static.
+  const guide = await getDeliveryGuide();
+  const { regions, and } = basketStrings.en;
+  const groups = withAnswer(
+    helpGroups,
+    DELIVERY_COST_Q,
+    deliveryCostAnswer(deliveryGuideLine(guide, 'GBP', regions, and)),
+  );
 
-export default function HelpPage() {
+  // The same groups render the page and this, so every question in the
+  // JSON-LD is also on the page with its answer in the HTML.
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: groups.flatMap(group =>
+      group.items.map(item => ({
+        '@type': 'Question',
+        name: item.q,
+        acceptedAnswer: { '@type': 'Answer', text: item.a },
+      })),
+    ),
+  };
+
   return (
     <div className="page-x pb-section">
       <PageHeader
@@ -42,10 +54,10 @@ export default function HelpPage() {
           </>
         }
       />
-      <HelpJumpLinks groups={helpGroups} />
+      <HelpJumpLinks groups={groups} />
 
       <div className="mt-band desk:mt-24">
-        <HelpGroups groups={helpGroups} countLabel={n => (n === 1 ? '1 question' : `${n} questions`)} />
+        <HelpGroups groups={groups} countLabel={n => (n === 1 ? '1 question' : `${n} questions`)} />
       </div>
 
       <ContentSection

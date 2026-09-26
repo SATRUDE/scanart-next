@@ -2,10 +2,12 @@ import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { ProductActions } from '@/components/ProductActions';
 import { CartProvider } from '@/contexts/CartContext';
 import { LanguageProvider } from '@/contexts/LanguageContext';
+import { sampleDeliveryGuide } from './delivery-guide-sample';
 
 const meta: Meta<typeof ProductActions> = {
   title: 'Components/ProductActions',
   component: ProductActions,
+  args: { deliveryGuide: sampleDeliveryGuide },
   decorators: [
     (Story) => (
       <LanguageProvider>
