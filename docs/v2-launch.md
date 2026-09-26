@@ -20,6 +20,7 @@ The remaining steps before V2 goes live, and the follow-ups it leaves. The SEO g
 - [ ] A last review round on the preview.
 
 ## Launch day
+- [ ] Apply the full V2 body of `scandinavian-illustrators` from `docs/journal-v2-proposals/scandinavian-illustrators.md`. The interim fix went live on 2026-09-26 (Hedvig Wallin added; the "all by one artist" line gone). The full version adds Mikko and Ishtar, whose pages only exist once V2 is live. Leave out Ishtar's Surfer print while it is off the site.
 - [ ] Bump the sitemap dates for the re-templated pages:
   - `CATALOGUE_REVISED`, `HOME_REVISED`;
   - the English page dates in `app/sitemap.ts`;
