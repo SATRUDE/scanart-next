@@ -159,7 +159,8 @@ const HERO_PICKS = ['rosa-blomster', 'massa-applen', 'dragon', 'dancer'];
 // scene; add a slug here and drop the file in public/images/homepage.
 // vinkveld 2026-08-07, morgenlevering 2026-08-21.
 export const HERO_SCENES: Record<string, string> = {
-  vinkveld: '/images/homepage/vinkveld-scene.jpg',
+  // The hallway scene from Codex, 2026-09-26 (Mark's pick).
+  vinkveld: '/images/products/vinkveld-room-hallway-2026-09-26.avif',
   morgenlevering: '/images/homepage/morgenlevering-scene.jpg',
 };
 
