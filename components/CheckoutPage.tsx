@@ -66,6 +66,9 @@ function orderReference(prefix: string): string {
 // The iframe cannot see the page's self-hosted Hedvig face (next/font), so
 // it names the family and falls back to the system sans.
 const cardElementOptions = {
+  // The delivery address already asks for the postcode; Stripe's own box made
+  // buyers type it twice. It is passed to Stripe as billing_details instead.
+  hidePostalCode: true,
   style: {
     base: {
       fontSize: '18px',
@@ -257,6 +260,18 @@ const PaymentForm: React.FC<{
       const { error: paymentError } = await stripe.confirmCardPayment(clientSecret, {
         payment_method: {
           card: elements.getElement(CardElement)!,
+          // What the hidden postcode box used to collect, from the address form.
+          billing_details: {
+            name: [customer.firstName, customer.lastName].filter(Boolean).join(' ') || undefined,
+            email: customer.email || undefined,
+            address: {
+              line1: customer.address || undefined,
+              city: customer.city || undefined,
+              state: customer.state || undefined,
+              postal_code: customer.zipCode || undefined,
+              country: countryCode || undefined,
+            },
+          },
         },
       });
 
