@@ -9,7 +9,7 @@ import { frameOptions, getFramePrice } from '@/config/frame';
 import { shippingRates } from '@/config/shipping';
 import { track } from '@/lib/analytics';
 import { Button, Hairline } from '@/components/v2/ui';
-import { OptionTrack, OPTION_PAD } from '@/components/v2/OptionTrack';
+import { OPTION_PAD } from '@/components/v2/OptionTrack';
 import { sizeLabel } from '@/components/PrintCard';
 
 const EN: ProductActionsStrings & { assurance: NonNullable<ProductActionsStrings['assurance']> } = {
@@ -132,16 +132,16 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings
   const deliveryLine = t.assurance.delivery.replace('{price}', formatDisplayPrice(worldwideFrom, currency));
 
   const optionCls = 'peer sr-only';
-  // The hairline in front of the chosen option is drawn once by OptionTrack and
-  // glides between options; each label reserves its space, so nothing jumps.
+  // Each option carries its own hairline (.option-mark in globals.css): the old
+  // one shrinks away, the new one grows in, and the reserved space means nothing jumps.
   const labelCls =
-    `flex cursor-pointer items-center ${OPTION_PAD} type-body tab:type-small opacity-55 transition-opacity hover:opacity-100 peer-checked:opacity-100 peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-focus`;
+    `relative flex cursor-pointer items-center ${OPTION_PAD} type-body tab:type-small opacity-55 transition-opacity hover:opacity-100 peer-checked:opacity-100 peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-focus`;
 
   return (
     <div className="flex flex-col gap-group">
       <fieldset className="flex flex-col gap-3 border-t border-ink pt-4 tab:border-line tab:pt-5">
         <legend className="float-left w-full type-small tab:type-caption">{t.size}</legend>
-        <OptionTrack selected={selectedSize ?? ''} className="flex flex-wrap items-center gap-x-5 gap-y-2">
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
           {availableSizes.map(size => (
             <div key={size} className="relative">
               <input
@@ -157,11 +157,12 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings
                 className={optionCls}
               />
               <label htmlFor={`${groupId}-size-${size}`} data-option={size} className={labelCls}>
+                <span aria-hidden className="option-mark" />
                 {sizeLabel(size)}
               </label>
             </div>
           ))}
-        </OptionTrack>
+        </div>
       </fieldset>
 
       <fieldset className="flex flex-col gap-3 border-t border-ink pt-4 tab:border-t-0 tab:pt-0">
@@ -172,7 +173,7 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings
             <span>+{formatPrice(framePrices)}</span>
           )}
         </legend>
-        <OptionTrack selected={selectedFrame} className="flex flex-wrap items-center gap-x-5 gap-y-2">
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
           {frameOptions.map(frame => (
             <div key={frame.id} className="relative">
               <input
@@ -188,11 +189,12 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings
                 className={optionCls}
               />
               <label htmlFor={`${groupId}-frame-${frame.id}`} data-option={frame.id} className={labelCls}>
+                <span aria-hidden className="option-mark" />
                 {frameLabel(frame.id)}
               </label>
             </div>
           ))}
-        </OptionTrack>
+        </div>
       </fieldset>
 
       <div className="p-[3px]">

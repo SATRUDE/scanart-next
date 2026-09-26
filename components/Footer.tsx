@@ -2,7 +2,7 @@
 
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { WordmarkVideo } from '@/components/v2/WordmarkVideo';
-import { OptionTrack, OPTION_PAD } from '@/components/v2/OptionTrack';
+import { OPTION_PAD } from '@/components/v2/OptionTrack';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { categoryLandings } from '@/lib/categories';
@@ -46,13 +46,14 @@ const STORAGE_KEY = 'sa-footer-season';
 
 /**
  * The season selector, in the same style as the product options: the brand
- * hairline in front of the chosen season, gliding to a new choice, with every
- * season reserving its space so no word moves (components/v2/OptionTrack).
+ * hairline in front of the chosen season (.option-mark): the old line shrinks
+ * away and the new one grows in, with every season reserving its space so no
+ * word moves.
  */
 function SeasonPicker({ season, onChoose, labels }: { season: Season; onChoose: (s: Season) => void; labels: Record<Season, string> & { label: string } }) {
   return (
-    <OptionTrack selected={season} className="flex flex-col gap-1 tab:flex-row tab:items-center tab:gap-8">
-      <div role="group" aria-label={labels.label} className="contents">
+    <div role="group" aria-label={labels.label} className="flex flex-col gap-1 tab:flex-row tab:items-center tab:gap-8">
+      <>
         {SEASONS.map(s => (
           <button
             key={s}
@@ -60,13 +61,14 @@ function SeasonPicker({ season, onChoose, labels }: { season: Season; onChoose: 
             data-option={s}
             aria-pressed={season === s}
             onClick={() => onChoose(s)}
-            className={`type-h3 ${OPTION_PAD} text-left transition-opacity duration-200 hover:opacity-60 aria-pressed:hover:opacity-100`}
+            className={`relative type-h3 ${OPTION_PAD} text-left transition-opacity duration-200 hover:opacity-60 aria-pressed:hover:opacity-100`}
           >
+            <span aria-hidden className="option-mark" />
             {labels[s]}
           </button>
         ))}
-      </div>
-    </OptionTrack>
+      </>
+    </div>
   );
 }
 
