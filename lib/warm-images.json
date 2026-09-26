@@ -1,13 +1,16 @@
 {
   "/images/products/Hyttefrokost.png": "/images/products/warm/Hyttefrokost.webp",
   "/images/products/Morgenlevering.png": "/images/products/warm/Morgenlevering.webp",
+  "/images/products/cruise.png": "/images/products/warm/cruise.webp",
   "/images/products/dancer.png": "/images/products/warm/dancer.webp",
   "/images/products/dragon.png": "/images/products/warm/dragon.webp",
   "/images/products/eltsjoen.png": "/images/products/warm/eltsjoen.webp",
   "/images/products/eye-nose-eye.png": "/images/products/warm/eye-nose-eye.webp",
+  "/images/products/family-trip.png": "/images/products/warm/family-trip.webp",
   "/images/products/half-man.png": "/images/products/warm/half-man.webp",
   "/images/products/hummer-og-vin.png": "/images/products/warm/hummer-og-vin.webp",
   "/images/products/i-think-i-think.png": "/images/products/warm/i-think-i-think.webp",
+  "/images/products/journey.png": "/images/products/warm/journey.webp",
   "/images/products/massa-applen.png": "/images/products/warm/massa-applen.webp",
   "/images/products/mean-snothing.png": "/images/products/warm/mean-snothing.webp",
   "/images/products/morgenstrekk.png": "/images/products/warm/morgenstrekk.webp",
@@ -18,5 +21,6 @@
   "/images/products/swallow-dive.png": "/images/products/warm/swallow-dive.webp",
   "/images/products/tree-top-peach.png": "/images/products/warm/tree-top-peach.webp",
   "/images/products/trysilkaffe.png": "/images/products/warm/trysilkaffe.webp",
+  "/images/products/urf.png": "/images/products/warm/urf.webp",
   "/images/products/vinkveld.png": "/images/products/warm/vinkveld.webp"
 }

@@ -139,6 +139,7 @@ export const no = {
           'sia-siamos': 'Halvt gresk, halvt norsk: stilleben, mat og de stille detaljene i hverdagen.',
           'ingunn-dybendal': 'Illustratør i kollektivet Heiaklubben, med arbeider fra en Google Doodle til en vegg på 360 kvadratmeter.',
           'hedvig-wallin': 'Illustratør fra Göteborg som låner fra naivismen: enkle former, skjevt perspektiv, detaljer overalt.',
+          'mikko-saarainen': 'Illustratør, barnebokforfatter og tegneserieskaper fra Lahti: kraftig strek, flate farger, detaljer helt ut i kantene.',
         },
       },
       journal: { heading: 'Journal', all: 'Alle artikler' },
@@ -885,6 +886,7 @@ export const no = {
     'helene-brox': 'Figurer og fugler skåret ned til silhuett, malt med papirklippets selvsikkerhet.',
     'ingunn-dybendal': 'More is more is more is more.',
     'sia-siamos': 'Tiltrukket av de stille detaljene som sier mest.',
+    'mikko-saarainen': 'Han lar detaljene fortsette helt ut i kantene, så tegningene blir lest like mye som sett.',
   } as Record<string, string>,
 
   // Norwegian versions of lib/artist-editorial.ts, keyed by slug. para2 keeps

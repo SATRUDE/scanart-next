@@ -31,6 +31,7 @@ const TONED: Record<string, string> = {
   'simen-wahlqvist': '/images/artists/simen-wahlqvist-tone.webp',
   'sia-siamos': '/images/artists/sia-siamos-tone.webp',
   'hedvig-wallin': '/images/artists/hedvig-wallin-tone.webp',
+  'mikko-saarainen': '/images/artists/mikko-saarainen-tone.webp',
 };
 
 export function portraitFor(artist: Pick<Artist, 'slug' | 'image' | 'name'>): { src?: string; initials: string } {

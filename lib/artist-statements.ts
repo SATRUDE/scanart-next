@@ -21,4 +21,6 @@ export const artistStatements: Record<string, string> = {
   'ingunn-dybendal': 'More is more is more is more.',
   // data/artists.ts bio.
   'sia-siamos': 'Drawn to the quiet details that say the most.',
+  // data/artists.ts bio, its last sentence.
+  'mikko-saarainen': 'He keeps the detail going right out to the edges, so the drawings get read as much as looked at.',
 };

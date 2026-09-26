@@ -21,6 +21,12 @@ export const shopScenes: Record<string, ShopScene> = {
   'rosa-blomster': scene('rosa-blomster', 'Rosa Blomster by Hedvig Wallin framed in a reading corner'),
   'massa-applen': scene('massa-applen', 'Massa Äpplen by Hedvig Wallin framed above a dining table'),
   'small-house-big-ocean': scene('small-house-big-ocean', 'Small House Big Ocean by Hedvig Wallin framed in a reading corner'),
+  // Mikko Saarainen's rooms (branch add-mikko-saarainen), rendered with the
+  // art at its real size, so they keep their own file names and 848 × 1264.
+  cruise: { image: '/images/products/cruise-room.avif', alt: 'Cruise by Mikko Saarainen framed above a bed in a child’s bedroom', width: 848, height: 1264 },
+  'family-trip': { image: '/images/products/family-trip-room.avif', alt: 'Family Trip by Mikko Saarainen framed in a hallway above a rattan sideboard', width: 848, height: 1264 },
+  journey: { image: '/images/products/journey-room.avif', alt: 'Journey by Mikko Saarainen framed above a sofa in a living room', width: 848, height: 1264 },
+  urf: { image: '/images/products/urf-room.avif', alt: 'URF! by Mikko Saarainen framed in a reading corner with a red chair', width: 848, height: 1264 },
 };
 
 export const articleSceneSlugs: Record<string, string> = {
