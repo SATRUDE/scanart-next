@@ -1,5 +1,6 @@
 import type { Article } from '@/lib/articles';
 import { StoryRow } from '@/components/v2/journal/StoryRow';
+import type { ArticleLanguageNote } from '@/lib/article-language';
 import { articlePublishedAt, formatArticleDate } from '@/lib/article-reading';
 
 /** The pillar article, listed first and flagged as the place to start. */
@@ -30,6 +31,8 @@ interface JournalBooksSeriesProps {
   categoryLabels?: Record<string, string>;
   /** Language the dates are written in. */
   locale?: 'en' | 'no';
+  /** On /no: each row says the article is in English (lib/article-language.ts). */
+  languageNote?: ArticleLanguageNote;
 }
 
 /**
@@ -42,7 +45,7 @@ interface JournalBooksSeriesProps {
  * design language. Renders nothing if none of the series articles are in the
  * data.
  */
-export function JournalBooksSeries({ articles, heading, startHere = '(start here)', categoryLabels, locale = 'en' }: JournalBooksSeriesProps) {
+export function JournalBooksSeries({ articles, heading, startHere = '(start here)', categoryLabels, locale = 'en', languageNote }: JournalBooksSeriesProps) {
   const bySlug = new Map(articles.map(a => [a.slug, a]));
   const series = SERIES_SLUGS.flatMap(slug => bySlug.get(slug) ?? []);
 
@@ -62,6 +65,7 @@ export function JournalBooksSeries({ articles, heading, startHere = '(start here
             note={article.slug === PILLAR_SLUG ? startHere : undefined}
             category={article.category ? categoryLabels?.[article.category] ?? article.category : undefined}
             date={formatArticleDate(articlePublishedAt(article), locale)}
+            languageNote={languageNote}
             event="journal-books-series-click"
             eventData={{ to: `/article/${article.slug}` }}
           />

@@ -11,6 +11,7 @@ import { ArticleCard } from '@/components/ArticleCard';
 import { Meta } from '@/components/v2/ui';
 import { OPTION_PAD } from '@/components/v2/OptionTrack';
 import { StoryRow } from '@/components/v2/journal/StoryRow';
+import type { ArticleLanguageNote } from '@/lib/article-language';
 
 const EN: JournalStrings = {
   heading: 'Journal',
@@ -53,6 +54,8 @@ interface JournalGridProps {
   meta: Record<string, JournalStoryMeta>;
   /** Localised labels; defaults to the English strings above. */
   strings?: JournalStrings;
+  /** On /no: every card says the article is in English (lib/article-language.ts). */
+  languageNote?: ArticleLanguageNote;
 }
 
 /**
@@ -65,7 +68,7 @@ interface JournalGridProps {
  * the rows between them link all of them. The category filters are buttons
  * that only narrow what is shown after hydration.
  */
-export const JournalGrid: React.FC<JournalGridProps> = ({ articles, categories, meta, strings }) => {
+export const JournalGrid: React.FC<JournalGridProps> = ({ articles, categories, meta, strings, languageNote }) => {
   const t = strings ?? EN;
   const [selectedCategory, setSelectedCategory] = useState('All');
   const label = (cat: string) => t.categoryLabels?.[cat] ?? cat;
@@ -134,6 +137,7 @@ export const JournalGrid: React.FC<JournalGridProps> = ({ articles, categories, 
         // which the next/image docs warn against.
         <Link
           href={`/article/${featured.slug}`}
+          hrefLang={languageNote?.lang}
           className="group mt-8 page-grid gap-y-3 tab:mt-band"
         >
           {featured.image && (
@@ -150,9 +154,15 @@ export const JournalGrid: React.FC<JournalGridProps> = ({ articles, categories, 
             </div>
           )}
           <div className="col-span-full flex flex-col gap-3 tab:col-span-4 tab:gap-group tab:border-t tab:border-ink tab:pt-6 desk:col-span-5">
-            {featured.category && <p className="type-caption text-text-accent">{tileLabel(featured.category)}</p>}
-            <h2 className="type-h2 transition-colors group-hover:text-brand">{featured.title}</h2>
-            {featured.excerpt && <p className="type-body">{featured.excerpt}</p>}
+            {languageNote ? (
+              <p className="type-caption">
+                <Meta items={[featured.category ? <span className="text-text-accent">{tileLabel(featured.category)}</span> : null, languageNote.label]} />
+              </p>
+            ) : (
+              featured.category && <p className="type-caption text-text-accent">{tileLabel(featured.category)}</p>
+            )}
+            <h2 lang={languageNote?.lang} className="type-h2 transition-colors group-hover:text-brand">{featured.title}</h2>
+            {featured.excerpt && <p lang={languageNote?.lang} className="type-body">{featured.excerpt}</p>}
             {meta[featured.slug] && (
               <div className="hidden tab:block">
                 <Meta
@@ -180,6 +190,7 @@ export const JournalGrid: React.FC<JournalGridProps> = ({ articles, categories, 
                   titleAs="h2"
                   imageAspectClass={`aspect-[4/5] ${RATIOS[(r + c) % 3]}`}
                   categoryLabel={article.category ? tileLabel(article.category) : undefined}
+                  languageNote={languageNote}
                 />
               ))}
             </div>
@@ -203,6 +214,7 @@ export const JournalGrid: React.FC<JournalGridProps> = ({ articles, categories, 
                 category={article.category ? tileLabel(article.category) : undefined}
                 date={meta[article.slug]?.date}
                 excerpt={article.excerpt}
+                languageNote={languageNote}
                 event="journal-row-click"
                 eventData={{ to: `/article/${article.slug}` }}
               />

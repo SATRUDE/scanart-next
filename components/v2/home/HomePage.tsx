@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import Image from 'next/image';
-import { Button, Hairline, SectionHeader, TextLink } from '@/components/v2/ui';
+import { Button, Hairline, Meta, SectionHeader, TextLink } from '@/components/v2/ui';
 import { SmartImage } from '@/components/SmartImage';
 import { TrackedLink } from '@/components/TrackedLink';
 import { LandingCrossLinks } from '@/components/LandingCrossLinks';
@@ -281,7 +281,7 @@ export function HomePage({ locale, strings: t, data, help, artistLocations = {},
             <ul className="flex w-max items-start gap-gutter px-margin tab:grid tab:w-full tab:grid-cols-3 tab:px-0">
               {data.articles.map((article, i) => (
                 <li key={article.id} className="w-[260px] tab:w-auto">
-                  <TrackedLink href={`/article/${article.slug}`} event="homepage-section-click" eventData={ev('journal', article.slug)} className="group flex flex-col gap-tight">
+                  <TrackedLink href={`/article/${article.slug}`} hrefLang={t.journal.inEnglish ? 'en' : undefined} event="homepage-section-click" eventData={ev('journal', article.slug)} className="group flex flex-col gap-tight">
                     {article.image && (
                       <div className={`relative aspect-[4/5] w-full overflow-hidden bg-image-bg ${STORY_RATIOS[i % 3]}`}>
                         <Image
@@ -295,10 +295,20 @@ export function HomePage({ locale, strings: t, data, help, artistLocations = {},
                       </div>
                     )}
                     <div className="flex flex-col gap-1">
-                      {article.category && (
-                        <p className="type-caption text-text-accent">{t.journal.categoryLabels?.[article.category] ?? article.category}</p>
+                      {t.journal.inEnglish ? (
+                        // /no: the article is in English, and the card says so.
+                        <p className="type-caption">
+                          <Meta
+                            items={[
+                              article.category ? <span className="text-text-accent">{t.journal.categoryLabels?.[article.category] ?? article.category}</span> : null,
+                              t.journal.inEnglish,
+                            ]}
+                          />
+                        </p>
+                      ) : (
+                        article.category && <p className="type-caption text-text-accent">{t.journal.categoryLabels?.[article.category] ?? article.category}</p>
                       )}
-                      <h3 className="type-body transition-colors group-hover:text-brand">{article.title}</h3>
+                      <h3 lang={t.journal.inEnglish ? 'en' : undefined} className="type-body transition-colors group-hover:text-brand">{article.title}</h3>
                     </div>
                   </TrackedLink>
                 </li>

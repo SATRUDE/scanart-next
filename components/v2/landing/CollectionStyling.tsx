@@ -45,7 +45,7 @@ export function CollectionStyling({
             <span aria-hidden>→</span>
           </TrackedLink>
         )}
-        {relatedArticle && <TextLink href={`/article/${relatedArticle.slug}`}>{relatedArticle.label}</TextLink>}
+        {relatedArticle && <TextLink href={`/article/${relatedArticle.slug}`} hrefLang={locale === 'no' ? 'en' : undefined}>{relatedArticle.label}</TextLink>}
       </>
     ) : undefined;
 

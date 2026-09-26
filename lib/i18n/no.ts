@@ -143,7 +143,7 @@ export const no = {
           'ishtar-backlund-dakhil': 'Svensk kunstner som arbeider med illustrasjon, veggmaleri og design, utdannet ved Konstfack i Stockholm.',
         },
       },
-      journal: { heading: 'Journal', all: 'Alle artikler' },
+      journal: { heading: 'Journal', all: 'Alle artikler', inEnglish: 'På engelsk' },
       questions: { heading: 'Spørsmål', all: 'All hjelp og levering' },
       apply: {
         heading: 'Er du kunstner?',
@@ -1078,6 +1078,9 @@ export const no = {
     /** Phase 1 keeps the articles themselves in English, so the index says so
      *  rather than letting a reader click through and be surprised. */
     englishNote: 'Artiklene er på engelsk.',
+    /** The quiet label on a Norwegian journal card: the article it opens is
+     *  in English (a caption, next to the date and read time). */
+    inEnglish: 'På engelsk',
     /** The article body's modules (NotionBlockRenderer), for the day an
      *  article is rendered under /no. */
     article: { seePrint: 'Se trykket' },

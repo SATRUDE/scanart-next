@@ -58,7 +58,13 @@ export interface HomeStrings {
     /** One line about each artist's work, from their bio in data/artists.ts. */
     lines: Record<string, string>;
   };
-  journal: { heading: string; all: string; categoryLabels?: Record<string, string> };
+  journal: {
+    heading: string;
+    all: string;
+    categoryLabels?: Record<string, string>;
+    /** /no only: the cards open English articles, so each says so ("På engelsk"). */
+    inEnglish?: string;
+  };
   questions: { heading: string; all: string };
   apply: { heading: string; body: string; cta: string };
 }

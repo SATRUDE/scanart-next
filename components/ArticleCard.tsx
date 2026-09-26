@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { scenePosition } from '@/lib/scene-focus';
 import Image from 'next/image';
 import { Article } from '@/lib/articles';
+import type { ArticleLanguageNote } from '@/lib/article-language';
+import { Meta } from '@/components/v2/ui';
 
 interface ArticleCardProps {
   article: Article;
@@ -31,6 +33,8 @@ interface ArticleCardProps {
   /** Show the excerpt under the title. Off in the V2 tile; kept for callers that still want it. */
   showExcerpt?: boolean;
   className?: string;
+  /** On a Norwegian page: the article is in English (lib/article-language.ts). */
+  languageNote?: ArticleLanguageNote;
 }
 
 /**
@@ -47,10 +51,11 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
   categoryLabel,
   showExcerpt = false,
   className = '',
+  languageNote,
 }) => {
   const TitleTag = titleAs;
   return (
-    <Link href={`/article/${article.slug}`} className={`group flex flex-col gap-tight ${className}`}>
+    <Link href={`/article/${article.slug}`} hrefLang={languageNote?.lang} className={`group flex flex-col gap-tight ${className}`}>
       {article.image && (
         <div className={`relative ${imageAspectClass} w-full overflow-hidden bg-image-bg`}>
           <Image
@@ -65,9 +70,15 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
         </div>
       )}
       <div className="flex flex-col gap-1">
-        {article.category && <p className="type-caption text-text-accent">{categoryLabel ?? article.category}</p>}
-        <TitleTag className="type-body transition-colors group-hover:text-brand">{article.title}</TitleTag>
-        {showExcerpt && article.excerpt && <p className="type-small">{article.excerpt}</p>}
+        {languageNote ? (
+          <p className="type-caption">
+            <Meta items={[article.category ? <span className="text-text-accent">{categoryLabel ?? article.category}</span> : null, languageNote.label]} />
+          </p>
+        ) : (
+          article.category && <p className="type-caption text-text-accent">{categoryLabel ?? article.category}</p>
+        )}
+        <TitleTag lang={languageNote?.lang} className="type-body transition-colors group-hover:text-brand">{article.title}</TitleTag>
+        {showExcerpt && article.excerpt && <p lang={languageNote?.lang} className="type-small">{article.excerpt}</p>}
       </div>
     </Link>
   );

@@ -15,6 +15,8 @@ import { no } from '@/lib/i18n/no';
 // rather than to twins that do not exist, and the intro line says so up front
 // instead of letting a reader click through and be surprised.
 const t = no.journal;
+/** Every card on this page opens an English article, and says so. */
+const languageNote = { lang: 'en', label: t.inEnglish };
 
 export const metadata: Metadata = {
   title: t.meta.title,
@@ -74,7 +76,7 @@ export default async function NorwegianJournalPage() {
           </>
         }
       />
-      <JournalGrid articles={articles} categories={categories} meta={meta} strings={t.page} />
+      <JournalGrid articles={articles} categories={categories} meta={meta} strings={t.page} languageNote={languageNote} />
       <div className="mt-24 desk:mt-32">
         <JournalBooksSeries
           articles={articles}
@@ -82,6 +84,7 @@ export default async function NorwegianJournalPage() {
           startHere={t.page.startHere}
           categoryLabels={t.page.categoryLabels}
           locale="no"
+          languageNote={languageNote}
         />
       </div>
       <LandingCrossLinks artists={artists} locale="no" strings={no.crossLinks} className="mt-section" />
