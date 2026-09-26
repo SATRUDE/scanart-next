@@ -155,7 +155,13 @@ export const Header: React.FC<HeaderProps> = ({ categories, search }) => {
       <SearchOverlay open={isSearchOpen} onClose={() => setIsSearchOpen(false)} isNo={isNo} index={search} />
 
       <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
-        <SheetContent side="left" className="w-full max-w-none border-0 bg-bg p-0 sm:max-w-none">
+        <SheetContent
+          side="left"
+          // The menu in the brand orange with ink text (Mark, 2026-09-26): black on
+          // #B35D26 measures 4.5:1. The hairlines turn ink, since accent on accent
+          // disappears, and the sheet's own ✕ is hidden because "Close" is the control.
+          className="w-full max-w-none rounded-none border-0 bg-brand p-0 text-ink sm:max-w-none [&>button:last-child]:hidden [&_.hairline]:!bg-ink"
+        >
           <SheetTitle className="sr-only">{t.aria.navMenuTitle}</SheetTitle>
           <SheetDescription className="sr-only">{t.aria.navMenuDescription}</SheetDescription>
           <div className="flex h-full flex-col overflow-y-auto px-5 pb-8">
@@ -177,7 +183,7 @@ export const Header: React.FC<HeaderProps> = ({ categories, search }) => {
               ))}
               <Link href={helpHref} className="type-h2" onClick={() => setMobileMenuOpen(false)}>{t.nav.help}</Link>
             </nav>
-            <div className="mt-10 border-t border-line pt-6">
+            <div className="mt-10 border-t border-ink/30 pt-6">
               <p className="type-caption">{t.categoriesLabel}</p>
               <div className="mt-3 flex flex-col gap-2 type-body">
                 {categories.map(cat => {
@@ -195,7 +201,7 @@ export const Header: React.FC<HeaderProps> = ({ categories, search }) => {
                 <Link href={`${p1}/products`} onClick={() => setMobileMenuOpen(false)}>{t.nav.shopAll}</Link>
               </div>
             </div>
-            <div className="mt-10 border-t border-line pt-6">
+            <div className="mt-10 border-t border-ink/30 pt-6">
               <LanguagePicker />
             </div>
           </div>
