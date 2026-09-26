@@ -58,7 +58,7 @@ export function productListingDetails(product: ListingProduct, locale: 'en' | 'n
     material: 'Paper',
     productType: detail.productType,
     summary: locale === 'no'
-      ? `${detail.subjectNo}, ${displaySize}, på arkivbestandig papir. Farger: ${detail.colourNo}. Grunnprisen er uten ramme; ramme kan velges som tillegg.`
-      : `${detail.subject}, ${displaySize}, on archival paper. Colours: ${detail.colour.toLowerCase().replaceAll('/', ', ')}. Base price is unframed; optional framing available.`,
+      ? `${detail.subjectNo}, ${displaySize}, på 200 g ubestrøket papir. Farger: ${detail.colourNo}. Grunnprisen er uten ramme; ramme kan velges som tillegg.`
+      : `${detail.subject}, ${displaySize}, on 200gsm uncoated paper. Colours: ${detail.colour.toLowerCase().replaceAll('/', ', ')}. Base price is unframed; optional framing available.`,
   };
 }

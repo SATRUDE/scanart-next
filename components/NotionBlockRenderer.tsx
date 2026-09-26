@@ -2,6 +2,11 @@ import React from 'react';
 import { OutboundLink } from '@/components/OutboundLink';
 import { GalleryWallPlannerTeaser } from '@/components/GalleryWallPlannerTeaser';
 import { galleryWallCalculatorInsertionIndex } from '@/lib/article-enhancements';
+import { ListItem } from '@/components/v2/ui';
+import { ArticlePrintFeature } from '@/components/v2/journal/ArticlePrintFeature';
+import { ArticleImageRow } from '@/components/v2/journal/ArticleImageRow';
+import type { PrintFeatureData } from '@/lib/article-prints';
+import type { ImageRowItem } from '@/lib/markdown-blocks';
 
 interface NotionBlock {
   id: string;
@@ -27,6 +32,35 @@ interface NotionBlockRendererProps {
   /** The article these blocks belong to, so an outbound click can be attributed
    *  to the piece that sent it. Optional: a caller with no slug still renders. */
   articleSlug?: string;
+  /**
+   * 'grid' (default): the V2 article body, a page-grid where running text sits
+   * on columns 4-9 (after a 3-column rail) and a pull quote runs to 9 columns
+   * (Figma Article 75:220). 'column': one plain column, for callers that
+   * render a block at a time inside their own column (ReaderComments).
+   */
+  layout?: 'grid' | 'column';
+  /** The page's language, for the print feature's link and button. English by default. */
+  locale?: 'en' | 'no';
+}
+
+/** The article's running-text column: after the 3-column rail on desktop. */
+export const ARTICLE_TEXT_COLUMN = 'col-span-full tab:col-start-2 tab:col-span-6 desk:col-start-4 desk:col-span-6';
+/** The pull quote: 9 columns from the same line. */
+const ARTICLE_QUOTE_COLUMN = 'col-span-full tab:col-start-2 tab:col-span-7 desk:col-start-4 desk:col-span-9';
+
+const HEADING_TYPES = new Set(['heading_1', 'heading_2', 'heading_3']);
+const BREAKOUT_TYPES = new Set(['image', 'quote', 'print_feature', 'image_row']);
+
+/**
+ * The space above a block, from the four tiers (layout.md rule 2): a section
+ * heading opens with the section gap (48 / 80 / 128), a figure or pull quote
+ * sits a block away from the text either side, everything else is a group (24).
+ */
+function spaceAbove(prev: string | null, type: string): string {
+  if (prev === null) return '';
+  if (HEADING_TYPES.has(type)) return type === 'heading_3' ? 'mt-10 tab:mt-band' : 'mt-12 tab:mt-20 desk:mt-32';
+  if (BREAKOUT_TYPES.has(type) || BREAKOUT_TYPES.has(prev)) return 'mt-10 tab:mt-band desk:mt-24';
+  return 'mt-6';
 }
 
 // Render a Notion rich-text array, preserving inline links and formatting.
@@ -38,7 +72,7 @@ function renderRichText(richText?: RichTextSegment[], articleSlug?: string): Rea
     const annotations = seg.annotations || {};
     let node: React.ReactNode = seg.plain_text;
 
-    if (annotations.code) node = <code className="bg-gray-100 px-1 py-0.5 rounded text-[0.9em]">{node}</code>;
+    if (annotations.code) node = <code className="bg-surface px-1 py-0.5 text-[0.9em]">{node}</code>;
     if (annotations.bold) node = <strong>{node}</strong>;
     if (annotations.italic) node = <em>{node}</em>;
     if (annotations.strikethrough) node = <s>{node}</s>;
@@ -47,7 +81,8 @@ function renderRichText(richText?: RichTextSegment[], articleSlug?: string): Rea
     const href = seg.href || seg.text?.link?.url;
     if (href) {
       const isExternal = /^https?:\/\//i.test(href);
-      const className = 'underline underline-offset-2 hover:text-neutral-600 transition-colors';
+      // V2: links are never underlined; text-accent, ink on hover.
+      const className = 'text-text-accent transition-colors hover:text-ink';
       // External links go through OutboundLink so the click is recorded; the
       // rendered anchor, its classes and its rel/target are unchanged.
       node = isExternal ? (
@@ -71,49 +106,74 @@ function richTextOf(block: NotionBlock, key: string): RichTextSegment[] | undefi
   return payload?.rich_text;
 }
 
-export const NotionBlockRenderer: React.FC<NotionBlockRendererProps> = ({ blocks, articleSlug }) => {
-  const renderBlock = (block: NotionBlock) => {
+export const NotionBlockRenderer: React.FC<NotionBlockRendererProps> = ({ blocks, articleSlug, layout = 'grid', locale = 'en' }) => {
+  const grid = layout === 'grid';
+  const text = grid ? ARTICLE_TEXT_COLUMN : '';
+  const quoteColumn = grid ? ARTICLE_QUOTE_COLUMN : '';
+
+  const renderBlock = (block: NotionBlock, space: string, listIndex = 0) => {
     const { id, type } = block;
 
     switch (type) {
       // A body heading_1 renders as <h2>, not <h1>: the article template already
       // gives the page its single <h1> (the title), so an <h1> here is a duplicate.
-      // The classes are unchanged, so the heading looks exactly as it always has.
+      // It takes the same V2 style as heading_2 (the H3 text style, which is what
+      // the Figma article uses for its section heads under the Display title).
       // heading_2 and heading_3 keep their tags on purpose — most articles use
       // heading_2 for their sections, which is already correct under the page h1,
       // and demoting them would skip a level on every article with no heading_1.
       case 'heading_1':
-        return (<h2 key={id} className="text-3xl font-bold mb-6 mt-8">{renderRichText(richTextOf(block, 'heading_1'), articleSlug)}</h2>);
+        return (<h2 key={id} className={`${text} ${space} type-h3`}>{renderRichText(richTextOf(block, 'heading_1'), articleSlug)}</h2>);
       case 'heading_2':
-        return (<h2 key={id} className="text-2xl font-semibold mb-4 mt-6">{renderRichText(richTextOf(block, 'heading_2'), articleSlug)}</h2>);
+        return (<h2 key={id} className={`${text} ${space} type-h3`}>{renderRichText(richTextOf(block, 'heading_2'), articleSlug)}</h2>);
       case 'heading_3':
-        return (<h3 key={id} className="text-xl font-medium mb-3 mt-5">{renderRichText(richTextOf(block, 'heading_3'), articleSlug)}</h3>);
+        // A sub-head: the serif at the Mobile/H3 size on every screen, a step
+        // below the section head.
+        return (<h3 key={id} className={`${text} ${space} font-serif text-[22px] leading-[28px]`}>{renderRichText(richTextOf(block, 'heading_3'), articleSlug)}</h3>);
       case 'paragraph':
-        return (<p key={id} className="mb-4 leading-relaxed">{renderRichText(richTextOf(block, 'paragraph'), articleSlug)}</p>);
+        return (<p key={id} className={`${text} ${space} type-body`}>{renderRichText(richTextOf(block, 'paragraph'), articleSlug)}</p>);
       case 'bulleted_list_item':
-        return (<li key={id} className="mb-2 ml-4">{renderRichText(richTextOf(block, 'bulleted_list_item'), articleSlug)}</li>);
+        return (<ListItem key={id} type="bullet">{renderRichText(richTextOf(block, 'bulleted_list_item'), articleSlug)}</ListItem>);
       case 'numbered_list_item':
-        return (<li key={id} className="mb-2 ml-4">{renderRichText(richTextOf(block, 'numbered_list_item'), articleSlug)}</li>);
+        // Serif numerals in text-accent, 01, 02, 03 (layout.md rule 12).
+        return (<ListItem key={id} type="number" number={String(listIndex + 1).padStart(2, '0')}>{renderRichText(richTextOf(block, 'numbered_list_item'), articleSlug)}</ListItem>);
       case 'image': {
         const image = block.image as { file?: { url: string }; external?: { url: string }; caption?: RichTextSegment[] } | undefined;
         const imageUrl = image?.file?.url || image?.external?.url;
+        // Figure 258:3946: the image at its own ratio on the text column, the
+        // caption 8 below on its left edge.
         return (
-          <div key={id} className="my-6">
+          <figure key={id} className={`${text} ${space} flex flex-col gap-tight`}>
             {/* eslint-disable-next-line @next/next/no-img-element -- Notion serves images from arbitrary signed URLs that next/image would refuse without a domain allowlist */}
-            <img src={imageUrl} alt={image?.caption?.[0]?.plain_text || 'Article image'} className="w-full h-auto rounded-lg" />
+            <img src={imageUrl} alt={image?.caption?.[0]?.plain_text || 'Article image'} loading="lazy" className="h-auto w-full bg-image-bg" />
             {image?.caption && image.caption.length > 0 && (
-              <p className="text-sm text-gray-600 mt-2 text-center">{renderRichText(image.caption)}</p>
+              <figcaption className="type-caption">{renderRichText(image.caption)}</figcaption>
             )}
-          </div>
+          </figure>
         );
       }
       case 'quote':
-        return (<blockquote key={id} className="border-l-4 border-gray-300 pl-4 my-6 italic">{renderRichText(richTextOf(block, 'quote'), articleSlug)}</blockquote>);
+        // Pull quote: H1 on 9 columns under a rule (no rule on mobile).
+        return (<blockquote key={id} className={`${quoteColumn} ${space} type-h1 tab:border-t tab:border-ink tab:pt-band`}>{renderRichText(richTextOf(block, 'quote'), articleSlug)}</blockquote>);
+      case 'print_feature': {
+        // `::print[slug]` (lib/markdown-blocks.ts), filled from the catalogue by
+        // lib/article-prints.ts. A block that was never resolved, or whose slug
+        // is unknown or unpublished, carries no product and renders nothing.
+        const product = (block.print_feature as { product?: PrintFeatureData } | undefined)?.product;
+        if (!product) return null;
+        return <ArticlePrintFeature key={id} print={product} locale={locale} className={`${text} ${space}`} />;
+      }
+      case 'image_row': {
+        // `::images` … `::`: runs from the text column off the right edge.
+        const images = (block.image_row as { images?: ImageRowItem[] } | undefined)?.images ?? [];
+        if (images.length === 0) return null;
+        return <ArticleImageRow key={id} images={images} offset={grid} className={`col-span-full ${space}`} />;
+      }
       case 'divider':
-        return <hr key={id} className="my-8 border-gray-300" />;
+        return <hr key={id} className={`${text} ${space} border-line`} />;
       case 'code':
         // Code stays plain text (no inline links/formatting inside a code block)
-        return (<pre key={id} className="bg-gray-100 p-4 rounded-lg overflow-x-auto my-4"><code>{(richTextOf(block, 'code') || []).map((seg, i) => <span key={i}>{seg.plain_text}</span>)}</code></pre>);
+        return (<pre key={id} className={`${text} ${space} overflow-x-auto bg-surface p-4 type-small`}><code>{(richTextOf(block, 'code') || []).map((seg, i) => <span key={i}>{seg.plain_text}</span>)}</code></pre>);
       default:
         return null;
     }
@@ -123,11 +183,14 @@ export const NotionBlockRenderer: React.FC<NotionBlockRendererProps> = ({ blocks
     const rendered: React.ReactNode[] = [];
     let currentList: React.ReactNode[] = [];
     let listType: 'bulleted' | 'numbered' | null = null;
+    let listSpace = '';
+    let prev: string | null = null;
 
     const flush = () => {
       if (currentList.length > 0) {
-        if (listType === 'numbered') rendered.push(<ol key={`list-${rendered.length}`} className="mb-4">{currentList}</ol>);
-        else rendered.push(<ul key={`list-${rendered.length}`} className="mb-4">{currentList}</ul>);
+        const cls = `${text} ${listSpace} flex flex-col gap-4`;
+        if (listType === 'numbered') rendered.push(<ol key={`list-${rendered.length}`} className={cls}>{currentList}</ol>);
+        else rendered.push(<ul key={`list-${rendered.length}`} className={cls}>{currentList}</ul>);
         currentList = [];
         listType = null;
       }
@@ -136,25 +199,33 @@ export const NotionBlockRenderer: React.FC<NotionBlockRendererProps> = ({ blocks
     const calculatorInsertionIndex = galleryWallCalculatorInsertionIndex(blocks, articleSlug);
 
     blocks.forEach((block, index) => {
-      if (block.type === 'bulleted_list_item') {
-        if (listType !== 'bulleted') { flush(); listType = 'bulleted'; }
-        currentList.push(renderBlock(block));
-      } else if (block.type === 'numbered_list_item') {
-        if (listType !== 'numbered') { flush(); listType = 'numbered'; }
-        currentList.push(renderBlock(block));
+      if (block.type === 'bulleted_list_item' || block.type === 'numbered_list_item') {
+        const kind = block.type === 'bulleted_list_item' ? 'bulleted' : 'numbered';
+        if (listType !== kind) {
+          flush();
+          listType = kind;
+          listSpace = spaceAbove(prev, 'list');
+        }
+        currentList.push(renderBlock(block, '', currentList.length));
       } else {
         flush();
-        rendered.push(renderBlock(block));
+        rendered.push(renderBlock(block, spaceAbove(prev, block.type)));
       }
+      prev = block.type === 'bulleted_list_item' || block.type === 'numbered_list_item' ? 'list' : block.type;
 
       if (index === calculatorInsertionIndex && articleSlug) {
         flush();
-        rendered.push(<GalleryWallPlannerTeaser key="gallery-wall-planner-teaser" articleSlug={articleSlug} />);
+        rendered.push(
+          <div key="gallery-wall-planner-teaser" className={`${text} mt-10 tab:mt-band`}>
+            <GalleryWallPlannerTeaser articleSlug={articleSlug} />
+          </div>
+        );
+        prev = 'image';
       }
     });
     flush();
     return rendered;
   };
 
-  return <div className="prose prose-lg max-w-none">{renderBlocks()}</div>;
+  return <div className={grid ? 'page-grid' : 'flex flex-col'}>{renderBlocks()}</div>;
 };

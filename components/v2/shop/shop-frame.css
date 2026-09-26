@@ -1,0 +1,56 @@
+/*
+ * The shop frame (components/v2/shop/ShopFrame.tsx): /products and the
+ * category and collection landings, which should read as one page filtered.
+ */
+
+/*
+ * The page header's reserved height, so the Filter bar under it sits at the
+ * same place on every page in the frame and a filter click moves nothing.
+ * Measured on 26 Sep 2026 as the tallest header at each breakpoint (a two-line
+ * H1 plus the clamped intro and its Read more at desk; a three-line H1 on a
+ * 390 phone; the Norwegian room headings run to three lines at tab). Shorter
+ * headers leave the difference as air above the bar. A header that outgrows
+ * this (new copy, a 360 phone) is still caught: ShopFrame corrects the scroll
+ * by the difference, so the bar holds its place on screen either way.
+ */
+.shop-header {
+  min-height: 374px;
+}
+@media (min-width: 834px) {
+  .shop-header { min-height: 488px; }
+  .shop-header[data-locale='no'] { min-height: 522px; }
+}
+@media (min-width: 1200px) {
+  .shop-header,
+  .shop-header[data-locale='no'] { min-height: 442px; }
+}
+
+/*
+ * Crossfade on a filter click. React's <ViewTransition> tags the header and
+ * the grid with these classes only for navigations that carry the
+ * 'shop-filter' type, which only the Filter bar's links set. The rest of the
+ * page is the root snapshot, which the browser crossfades over the same span.
+ * The old view leaves a little faster than the new one arrives, so the two
+ * never sit at full strength on top of each other.
+ */
+::view-transition-old(.shop-fade-out) {
+  animation: 160ms ease-out both shop-fade-out;
+}
+::view-transition-new(.shop-fade-in) {
+  animation: 260ms ease-out both shop-fade-in;
+}
+@keyframes shop-fade-out {
+  to { opacity: 0; }
+}
+@keyframes shop-fade-in {
+  from { opacity: 0; }
+}
+
+/* No crossfade for reduced motion: the content swaps at once. */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}

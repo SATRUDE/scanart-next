@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
 import { wallArtLanding } from '@/lib/wall-art';
 import { getAllProducts } from '@/lib/products';
-import { PrintCard } from '@/components/PrintCard';
-import { ReadMore } from '@/components/ReadMore';
-import { LandingCrossLinks } from '@/components/LandingCrossLinks';
-import { BASE_URL, socialCard } from '@/lib/site';
+import { getPublishedArtists } from '@/lib/published-artists';
+import { ContentSection, ContentBody } from '@/components/v2/ui';
+import { LandingTemplate } from '@/components/v2/landing/LandingTemplate';
+import { collectionPageJsonLd, faqPageJsonLd, landingBreadcrumbJsonLd } from '@/lib/landing-jsonld';
+import { socialCard } from '@/lib/site';
 import { hreflangPair } from '@/lib/i18n';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -33,126 +33,55 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function ScandinavianWallArtPage() {
   const products = await getAllProducts();
+  const artists = await getPublishedArtists();
+  const path = '/scandinavian-wall-art';
 
   return (
-    <div className="container mx-auto px-8 py-8">
-      <Link href="/products" className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground mb-8">
-        <ArrowLeft className="h-4 w-4 mr-2" />
-        Back to products
-      </Link>
-
-      <header className="mb-16">
-        <h1 className="text-3xl text-neutral-900">{wallArtLanding.heading}</h1>
-        <ReadMore className="mt-4 max-w-3xl">
-          <p className="text-muted-foreground leading-relaxed">{wallArtLanding.intro}</p>
-          <p className="text-muted-foreground leading-relaxed mt-4">{wallArtLanding.intro2}</p>
-        </ReadMore>
-      </header>
-
-      <div className="mb-8">
-        <p className="text-muted-foreground">{products.length} {products.length === 1 ? 'print' : 'prints'}</p>
-      </div>
-
-      {/* Section heading for the grid (sr-only): keeps the heading order h1 -> h2 -> card h3 */}
-      <h2 className="sr-only">Prints</h2>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {products.map((product, index) => (
-          <Link key={product.id} href={`/product/${product.slug}`}>
-            {/* first desktop row is above the fold: preload it, lazy-load the rest */}
-            <PrintCard product={product} priority={index < 4} />
-          </Link>
-        ))}
-      </div>
-
+    <LandingTemplate
+      heading={wallArtLanding.heading}
+      intro={[wallArtLanding.intro, wallArtLanding.intro2]}
+      breadcrumb={[{ label: 'Prints', href: '/products' }, { label: wallArtLanding.heading }]}
+      products={products}
+      countLabel={`${products.length} ${products.length === 1 ? 'print' : 'prints'}`}
+      fromLabel="from"
+      printsHeading="Prints"
+      faqHeading="Common questions"
+      faqs={wallArtLanding.faqs}
+      crossLinks={{ current: { type: 'wall-art', slug: 'scandinavian-wall-art' } }}
+      artists={artists}
+      jsonLd={[
+        faqPageJsonLd(wallArtLanding.faqs),
+        collectionPageJsonLd({ name: wallArtLanding.title, description: wallArtLanding.description, path, locale: 'en', products }),
+        landingBreadcrumbJsonLd({ locale: 'en', homeName: 'Home', productsName: 'Art Prints', name: wallArtLanding.heading, path }),
+      ]}
+    >
       {/* The framing offer as its own section: it is the heart of the buying
           queries this page is aimed at, so it gets a heading rather than a
           clause (Ken's retarget, 2026-08-13). */}
-      <section className="mt-16">
-        <h2 className="text-2xl text-neutral-900">{wallArtLanding.framedHeading}</h2>
-        <p className="text-muted-foreground leading-relaxed mt-4 max-w-3xl">{wallArtLanding.framedBody}</p>
-      </section>
+      <ContentSection id="framed" title={wallArtLanding.framedHeading} className="mt-section">
+        <ContentBody>
+          <p>{wallArtLanding.framedBody}</p>
+        </ContentBody>
+      </ContentSection>
 
-      <section className="mt-16">
-        <h2 className="text-2xl text-neutral-900">{wallArtLanding.stylingHeading}</h2>
-        {/* Rendered as JSX rather than a config string so the room mentions can
-            carry real internal links to the collection landings. Copy by Ken. */}
-        <p className="text-muted-foreground leading-relaxed mt-4 max-w-3xl">
-          Where the print will hang decides which one to buy. In the living room, one confident piece
-          should anchor the sofa wall, and the{' '}
-          <Link href="/collection/living-room" className="underline hover:text-neutral-900">living room collection</Link>{' '}
-          gathers the prints with that kind of presence. The bedroom rewards the softer end of the
-          gallery, muted botanicals and quiet abstracts you&apos;re happy to wake up to, collected in the{' '}
-          <Link href="/collection/bedroom" className="underline hover:text-neutral-900">bedroom edit</Link>.
-          The home office suits the catalogue&apos;s dry wit, a Wahlqvist illustration hung in your eyeline
-          from the desk, and there&apos;s a{' '}
-          <Link href="/collection/home-office" className="underline hover:text-neutral-900">home office page</Link>{' '}
-          for exactly that. Wherever it hangs, centre the piece at roughly 145 to 150 cm from the floor.
-        </p>
-      </section>
-
-      <section className="mt-16">
-        <h2 className="text-2xl text-neutral-900">Common questions</h2>
-        <div className="mt-4 max-w-3xl space-y-6">
-          {wallArtLanding.faqs.map(faq => (
-            <div key={faq.question}>
-              <h3 className="font-medium text-neutral-900">{faq.question}</h3>
-              <p className="text-muted-foreground leading-relaxed mt-1">{faq.answer}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <LandingCrossLinks current={{ type: 'wall-art', slug: 'scandinavian-wall-art' }} />
-
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'FAQPage',
-            mainEntity: wallArtLanding.faqs.map(faq => ({
-              '@type': 'Question',
-              name: faq.question,
-              acceptedAnswer: { '@type': 'Answer', text: faq.answer },
-            })),
-          }),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'CollectionPage',
-            name: wallArtLanding.title,
-            description: wallArtLanding.description,
-            url: `${BASE_URL}/scandinavian-wall-art`,
-            mainEntity: {
-              '@type': 'ItemList',
-              itemListElement: products.map((p, i) => ({
-                '@type': 'ListItem',
-                position: i + 1,
-                url: `${BASE_URL}/product/${p.slug}`,
-                name: p.name,
-              })),
-            },
-          }),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'BreadcrumbList',
-            itemListElement: [
-              { '@type': 'ListItem', position: 1, name: 'Home', item: BASE_URL },
-              { '@type': 'ListItem', position: 2, name: 'Art Prints', item: `${BASE_URL}/products` },
-              { '@type': 'ListItem', position: 3, name: wallArtLanding.heading, item: `${BASE_URL}/scandinavian-wall-art` },
-            ],
-          }),
-        }}
-      />
-    </div>
+      <ContentSection id="room-by-room" title={wallArtLanding.stylingHeading} className="mt-section">
+        <ContentBody>
+          {/* Rendered as JSX rather than a config string so the room mentions can
+              carry real internal links to the collection landings. Copy by Ken. */}
+          <p>
+            Where the print will hang decides which one to buy. In the living room, one confident piece
+            should anchor the sofa wall, and the{' '}
+            <Link href="/collection/living-room" className="transition-colors hover:text-ink">living room collection</Link>{' '}
+            gathers the prints with that kind of presence. The bedroom rewards the softer end of the
+            gallery, muted botanicals and quiet abstracts you&apos;re happy to wake up to, collected in the{' '}
+            <Link href="/collection/bedroom" className="transition-colors hover:text-ink">bedroom edit</Link>.
+            The home office suits the catalogue&apos;s dry wit, a Wahlqvist illustration hung in your eyeline
+            from the desk, and there&apos;s a{' '}
+            <Link href="/collection/home-office" className="transition-colors hover:text-ink">home office page</Link>{' '}
+            for exactly that. Wherever it hangs, centre the piece at roughly 145 to 150 cm from the floor.
+          </p>
+        </ContentBody>
+      </ContentSection>
+    </LandingTemplate>
   );
 }

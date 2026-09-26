@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { ArticleBody } from '@/components/ArticleBody';
 import { ReaderComments } from '@/components/ReaderComments';
 import { markdownToBlocks } from '@/lib/markdown-blocks';
+import { resolvePrintFeatures } from '@/lib/article-prints';
 import { fetchPreviewArticle } from '@/lib/server/socialagent-preview';
 
 // Always current, never statically generated or cached: a preview link is
@@ -35,11 +36,12 @@ export default async function PreviewPage({
     notFound();
   }
 
-  const blocks = markdownToBlocks(article.body);
+  // `::print[slug]` blocks get their catalogue data here, as on the article page.
+  const blocks = await resolvePrintFeatures(markdownToBlocks(article.body));
 
   return (
-    <div className="container mx-auto px-8 py-8">
-      <div className="mx-auto mb-6 max-w-3xl text-xs uppercase tracking-wider text-muted-foreground">
+    <div className="page-x pb-section">
+      <div className="pt-6 type-caption">
         Preview · not published · expires {formatExpiry(article.expiresAt)}
       </div>
 

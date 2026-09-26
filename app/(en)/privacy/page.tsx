@@ -43,7 +43,7 @@ const sections: LegalSection[] = [
     body: (
       <>
         <p>We only collect what we need to run the shop:</p>
-        <ul className="list-disc pl-5 space-y-1">
+        <ul>
           <li><strong>Order details</strong>: your name, email address, delivery address and the items you order.</li>
           <li><strong>Payment</strong>: payments are processed by Stripe. Your card details go directly to Stripe; we never see or store your full card number.</li>
           <li><strong>Site usage</strong>: privacy-friendly, aggregate analytics via Umami, which does not use cookies and does not build a profile of you.</li>
@@ -57,7 +57,7 @@ const sections: LegalSection[] = [
     body: (
       <>
         <p>We use your data on the following legal bases:</p>
-        <ul className="list-disc pl-5 space-y-1">
+        <ul>
           <li>To process, produce and deliver your order and provide customer service: to perform our contract with you.</li>
           <li>To keep accounting and tax records: to meet our legal obligations.</li>
           <li>To understand aggregate site usage and keep the site working: our legitimate interests.</li>
@@ -80,7 +80,7 @@ const sections: LegalSection[] = [
     body: (
       <>
         <p>We share your data only with the providers we need to fulfil your order, and where the law requires:</p>
-        <ul className="list-disc pl-5 space-y-1">
+        <ul>
           <li><strong>Stripe</strong>: to take payment.</li>
           <li><strong>Gelato</strong> and its delivery partners: to print and ship your order.</li>
           <li><strong>Slack</strong>: your order details are sent to our team as an order notification.</li>
@@ -122,7 +122,7 @@ const sections: LegalSection[] = [
     heading: 'Contact',
     body: (
       <p>
-        Questions about this policy? Email {COMPANY.email}, or see our <Link href="/terms" className="underline hover:text-neutral-900">Terms &amp; Conditions</Link> and <Link href="/delivery" className="underline hover:text-neutral-900">Delivery &amp; Returns</Link>.
+        Questions about this policy? Email {COMPANY.email}, or see our <Link href="/terms">Terms &amp; Conditions</Link> and <Link href="/delivery">Delivery &amp; Returns</Link>.
       </p>
     ),
   },

@@ -1,0 +1,290 @@
+{
+  "/images/homepage/morgenlevering-scene.jpg": {
+    "x": 55.0,
+    "y": 31.0,
+    "w": 19.5,
+    "h": 24.5,
+    "score": "manual",
+    "ar": 0.6663
+  },
+  "/images/homepage/vinkveld-scene.jpg": {
+    "x": 50.3,
+    "y": 37.2,
+    "w": 31.0,
+    "h": 29.7,
+    "score": 0.447,
+    "ar": 0.675
+  },
+  "/images/products/Morgenlevering-scene.avif": {
+    "x": 55.0,
+    "y": 31.0,
+    "w": 19.5,
+    "h": 24.5,
+    "score": "manual",
+    "ar": 0.666
+  },
+  "/images/products/bird-above-the-valley-room.avif": {
+    "x": 41.1,
+    "y": 24.4,
+    "w": 21.0,
+    "h": 20.9,
+    "score": 0.942,
+    "ar": 0.7064
+  },
+  "/images/products/creature-among-blue-leaves-room.avif": {
+    "x": 56.2,
+    "y": 23.4,
+    "w": 27.1,
+    "h": 16.2,
+    "score": 0.773,
+    "ar": 0.8003
+  },
+  "/images/products/cruise-room.avif": {
+    "x": 38.8,
+    "y": 40.8,
+    "w": 17.9,
+    "h": 12.2,
+    "score": 0.744,
+    "ar": 0.6709
+  },
+  "/images/products/dancer-room-chatgpt-2026-09-23.avif": {
+    "x": 56.4,
+    "y": 20.6,
+    "w": 19.0,
+    "h": 21.5,
+    "score": 0.936,
+    "ar": 0.8003
+  },
+  "/images/products/desert-circles-room.avif": {
+    "x": 50.6,
+    "y": 23.5,
+    "w": 32.1,
+    "h": 26.0,
+    "score": 0.877,
+    "ar": 0.8003
+  },
+  "/images/products/dragon-room-chatgpt-2026-09-23.avif": {
+    "x": 66.1,
+    "y": 25.9,
+    "w": 24.0,
+    "h": 27.2,
+    "score": 0.67,
+    "ar": 0.8003
+  },
+  "/images/products/eltsjoen-room-chatgpt-2026-09-23.avif": {
+    "x": 46.6,
+    "y": 28.1,
+    "w": 24.0,
+    "h": 27.2,
+    "score": 0.744,
+    "ar": 0.8003
+  },
+  "/images/products/eye-nose-eye-room-chatgpt-2026-09-23.avif": {
+    "x": 44.8,
+    "y": 22.5,
+    "w": 25.0,
+    "h": 20.3,
+    "score": 0.874,
+    "ar": 0.8003
+  },
+  "/images/products/family-trip-room.avif": {
+    "x": 45.9,
+    "y": 34.7,
+    "w": 16.0,
+    "h": 10.9,
+    "score": 0.853,
+    "ar": 0.6709
+  },
+  "/images/products/frukt-och-gront-room.avif": {
+    "x": 55.6,
+    "y": 24.7,
+    "w": 25.0,
+    "h": 28.0,
+    "score": 0.701,
+    "ar": 0.8003
+  },
+  "/images/products/half-man-room-2026-09-26.avif": {
+    "x": 31.0,
+    "y": 20.7,
+    "w": 27.9,
+    "h": 22.7,
+    "score": 0.852,
+    "ar": 0.8003
+  },
+  "/images/products/half-man-room.avif": {
+    "x": 42.6,
+    "y": 37.4,
+    "w": 11.0,
+    "h": 10.5,
+    "score": 0.754,
+    "ar": 0.9344
+  },
+  "/images/products/hummer-og-vin-room-2026-09-23.avif": {
+    "x": 56.6,
+    "y": 20.2,
+    "w": 21.0,
+    "h": 23.8,
+    "score": 0.808,
+    "ar": 0.8003
+  },
+  "/images/products/hyttefrokost-room-2026-09-23.avif": {
+    "x": 34.3,
+    "y": 25.4,
+    "w": 21.0,
+    "h": 23.8,
+    "score": 0.631,
+    "ar": 0.8003
+  },
+  "/images/products/ithinkithink-room-2026-09-23.avif": {
+    "x": 36.9,
+    "y": 23.8,
+    "w": 22.1,
+    "h": 25.0,
+    "score": 0.534,
+    "ar": 0.8003
+  },
+  "/images/products/journey-room.avif": {
+    "x": 50.0,
+    "y": 38.6,
+    "w": 15.0,
+    "h": 14.3,
+    "score": 0.957,
+    "ar": 0.6709
+  },
+  "/images/products/lilac-geometry-room.avif": {
+    "x": 48.1,
+    "y": 25.0,
+    "w": 25.0,
+    "h": 27.7,
+    "score": 0.686,
+    "ar": 0.8003
+  },
+  "/images/products/massa-applen-room-2026-09-23.avif": {
+    "x": 68.5,
+    "y": 21.5,
+    "w": 22.9,
+    "h": 26.0,
+    "score": 0.449,
+    "ar": 0.8003
+  },
+  "/images/products/mean-snothing-room.avif": {
+    "x": 50.6,
+    "y": 50.8,
+    "w": 27.9,
+    "h": 23.2,
+    "score": 0.738,
+    "ar": 0.8203
+  },
+  "/images/products/morgenstrekk-room-02-2026-09-26.avif": {
+    "x": 50.1,
+    "y": 24.2,
+    "w": 16.0,
+    "h": 18.2,
+    "score": 0.958,
+    "ar": 0.8003
+  },
+  "/images/products/morgenstrekk-scene.avif": {
+    "x": 65.0,
+    "y": 45.8,
+    "w": 25.0,
+    "h": 35.4,
+    "score": 0.612,
+    "ar": 1.0
+  },
+  "/images/products/rosa-blomster-room-2026-09-23.avif": {
+    "x": 33.6,
+    "y": 19.8,
+    "w": 19.0,
+    "h": 21.5,
+    "score": 0.758,
+    "ar": 0.8003
+  },
+  "/images/products/slingshot-room-chatgpt-2026-09-23.avif": {
+    "x": 45.6,
+    "y": 22.7,
+    "w": 25.0,
+    "h": 20.3,
+    "score": 0.968,
+    "ar": 0.8003
+  },
+  "/images/products/small-house-big-ocean-room-2026-09-23.avif": {
+    "x": 61.7,
+    "y": 17.5,
+    "w": 17.9,
+    "h": 20.3,
+    "score": 0.381,
+    "ar": 0.8003
+  },
+  "/images/products/stockholm-room.avif": {
+    "x": 55.9,
+    "y": 41.3,
+    "w": 21.0,
+    "h": 23.7,
+    "score": 0.835,
+    "ar": 0.8003
+  },
+  "/images/products/sunday-brunch-room-2026-09-23.avif": {
+    "x": 64.1,
+    "y": 24.8,
+    "w": 24.0,
+    "h": 27.2,
+    "score": 0.676,
+    "ar": 0.8003
+  },
+  "/images/products/surfer-with-orange-sun-room.avif": {
+    "x": 57.0,
+    "y": 25.3,
+    "w": 16.0,
+    "h": 18.0,
+    "score": 0.919,
+    "ar": 0.8003
+  },
+  "/images/products/swallow-dive-room-2026-09-23.avif": {
+    "x": 36.1,
+    "y": 34.4,
+    "w": 26.0,
+    "h": 29.5,
+    "score": 0.311,
+    "ar": 0.8003
+  },
+  "/images/products/tree-top-peach-room-chatgpt-2026-09-23.avif": {
+    "x": 70.5,
+    "y": 20.0,
+    "w": 19.5,
+    "h": 23.0,
+    "score": "manual",
+    "ar": 0.8003
+  },
+  "/images/products/trysilkaffe-room-chatgpt-2026-09-23.avif": {
+    "x": 57.5,
+    "y": 24.3,
+    "w": 22.1,
+    "h": 25.0,
+    "score": 0.816,
+    "ar": 0.8003
+  },
+  "/images/products/urf-room.avif": {
+    "x": 53.0,
+    "y": 31.7,
+    "w": 21.0,
+    "h": 14.3,
+    "score": 0.688,
+    "ar": 0.6709
+  },
+  "/images/products/vinkveld-room-hallway-2026-09-26.avif": {
+    "x": 52.9,
+    "y": 28.5,
+    "w": 22.1,
+    "h": 25.0,
+    "score": 0.808,
+    "ar": 0.8003
+  },
+  "/images/products/vinkveld-scene.avif": {
+    "x": 69.6,
+    "y": 27.5,
+    "w": 15.0,
+    "h": 14.2,
+    "score": 0.841,
+    "ar": 0.6667
+  }
+}

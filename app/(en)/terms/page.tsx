@@ -71,7 +71,7 @@ const sections: LegalSection[] = [
     body: (
       <p>
         We ship worldwide. Production and delivery timescales, and shipping costs, are set out on our{' '}
-        <Link href="/delivery" className="underline hover:text-neutral-900">Delivery &amp; Returns</Link> page. For orders
+        <Link href="/delivery">Delivery &amp; Returns</Link> page. For orders
         outside {COMPANY.country}, import duties or taxes may apply on arrival and are the buyer&apos;s responsibility.
       </p>
     ),
@@ -82,7 +82,7 @@ const sections: LegalSection[] = [
       <p>
         You have the right to cancel your order within 14 days. Because items are made to order, you do not need to return
         them, we will issue a refund. Faulty, damaged, incorrect or lost items are covered separately. Full details are on
-        our <Link href="/delivery" className="underline hover:text-neutral-900">Delivery &amp; Returns</Link> page.
+        our <Link href="/delivery">Delivery &amp; Returns</Link> page.
       </p>
     ),
   },

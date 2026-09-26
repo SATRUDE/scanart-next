@@ -13,7 +13,7 @@
 //     withdrawal at any time, 30 days' notice, who carries returns, the
 //     marketing licence, and promotional prints paid at the same rate.
 //   - the live site's own published copy: made to order near the buyer, and
-//     museum-quality archival paper (data/help.ts, app/delivery). Sizes,
+//     200gsm uncoated paper (data/help.ts, app/delivery). Sizes,
 //     frame options and worldwide shipping were here too until Mark cut them
 //     on 30 Aug: they are buyer facts, and an artist deciding whether to join
 //     does not need the product spec.
@@ -114,7 +114,7 @@ export const SECTIONS: HowItWorksSection[] = [
     heading: 'How the prints are made',
     body: [
       "It starts with your files. You send them once, we keep them safe, and nothing is printed until somebody orders it. We'll tell you exactly what we need when we get that far.",
-      "Each order is then produced as close to the customer as we can get, so the work doesn't travel further than it has to. It's printed on museum-quality archival paper, and the artists already with us have checked prints of their own work and are happy with what comes off the press.",
+      "Each order is then produced as close to the customer as we can get, so the work doesn't travel further than it has to. It's printed on 200gsm uncoated paper, and the artists already with us have checked prints of their own work and are happy with what comes off the press.",
       "If a print turns up damaged or faulty, that's ours to fix and ours to pay for. If a customer simply changes their mind inside 14 days, we cover the delivery on that too. Neither comes off your share.",
     ],
   },

@@ -1,5 +1,19 @@
 import { Country } from '@/contexts/LanguageContext';
 
+// A FALLBACK, not a price list.
+//
+// Since 2026-08-12 the shop charges delivery from the socialagent store
+// (lib/server/shipping-rates.ts quoteDelivery: prices Mark set by hand first,
+// then Gelato's swept rates). The costs below are only what quoteDelivery
+// charges when the store cannot answer: no database URL, the database down,
+// or a destination with no rows. Since 2026-09-26 the basket panel, the
+// product page and the Help answer on delivery cost quote the store too
+// (lib/server/delivery-guide.ts), so nothing a buyer reads comes from these
+// numbers while the store is up. Do not copy them into copy.
+//
+// Still the source for: the six delivery zones (lib/address.ts) and the
+// delivery-day estimates (estimatedDays), which checkout and the order page show.
+
 export interface ShippingRate {
   countryCode: Country | 'ELSEWHERE';
   countryName: string;

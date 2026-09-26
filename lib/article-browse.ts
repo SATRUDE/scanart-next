@@ -36,10 +36,9 @@ const browseLinksByArticle: Record<string, BrowseLink[]> = {
   ],
   // A gallery wall is several prints at once, so the full catalogue is the
   // honest next step, with the living room as the usual setting. The piece also
-  // builds its worked example out of the bird prints (Swallow Dive as the
-  // anchor, then Birdie Blue, Pink and Brown, all four named in the body), and a
-  // set of colourways is exactly what a gallery wall wants, so the birds
-  // collection is a third genuine door rather than a generic one.
+  // builds its worked example out of bird prints, and a set of related prints
+  // is exactly what a gallery wall wants, so the birds collection is a third
+  // genuine door rather than a generic one.
   'create-an-art-wall': [
     { href: '/products', label: 'browse the full print collection' },
     { href: '/collection/living-room', label: 'living room wall art collection' },
@@ -65,14 +64,15 @@ const browseLinksByArticle: Record<string, BrowseLink[]> = {
     { href: '/artists', label: 'the gallery’s artists' },
     { href: '/products', label: 'our Scandinavian art prints' },
   ],
-  // Exhibitions strand (the Oslo scene): our artists are Oslo-based, so the
-  // artists hub and the shop are the relevant onward links.
+  // Exhibitions strand (the Oslo scene): the artists hub and the shop are the
+  // relevant onward links. Not every artist is in Oslo any more (Gothenburg,
+  // Lahti, Stockholm), so the label doesn't say they are.
   'art-in-oslo-july-2026': [
-    { href: '/artists', label: 'the Oslo-based artists we represent' },
+    { href: '/artists', label: 'the artists we represent' },
     { href: '/products', label: 'browse the art prints' },
   ],
   'henie-onstad-in-focus': [
-    { href: '/artists', label: 'meet our Norwegian artists' },
+    { href: '/artists', label: 'meet our Nordic artists' },
     { href: '/products', label: 'the print collection' },
   ],
   // Books series: each instalment points at the closest fitting landing, plus
@@ -83,7 +83,7 @@ const browseLinksByArticle: Record<string, BrowseLink[]> = {
   ],
   'nordic-photography-books': [
     { href: '/products', label: 'browse the art prints' },
-    { href: '/artists', label: 'the Norwegian artists' },
+    { href: '/artists', label: 'the Nordic artists we represent' },
   ],
   'contemporary-nordic-art-books': [
     { href: '/category/abstract', label: 'abstract art prints' },

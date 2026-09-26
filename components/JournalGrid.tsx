@@ -3,28 +3,78 @@
 import { track } from '@/lib/analytics';
 
 import React, { useState, useMemo, useEffect } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 import type { JournalStrings } from '@/lib/i18n';
 import { Article } from '@/lib/articles';
 import { ArticleCard } from '@/components/ArticleCard';
+import { Meta } from '@/components/v2/ui';
+import { OPTION_PAD } from '@/components/v2/OptionTrack';
+import { StoryRow } from '@/components/v2/journal/StoryRow';
+import type { ArticleLanguageNote } from '@/lib/article-language';
 
 const EN: JournalStrings = {
   heading: 'Journal',
-  allChip: 'All',
-  articlesSuffix: 'articles',
-  empty: 'No articles yet. Check back soon!',
+  allChip: 'All stories',
+  articlesSuffix: 'stories',
+  empty: 'No articles yet. Check back soon.',
   booksSeriesHeading: 'The Nordic books series',
+  startHere: '(start here)',
+  categoryLabels: { Guide: 'Guides' },
+  moreToReadHeading: 'More to read',
+  moreToReadIntro: 'Guides, books and exhibitions, newest first.',
+  readTheStory: 'Read the story',
+  minRead: '{n} min read',
+  dateLocale: 'en',
 };
+
+/** Stories shown as tiles under the featured one; the rest are ruled rows. */
+const TILE_COUNT = 9;
+
+/**
+ * Story tile ratios (layout.md rule 13): equal columns, each image at its own
+ * ratio, and every column holding one of each so all three end on one line.
+ * Tile i sits in column floor(i / 3), row i % 3, and takes ratio (row + col) % 3,
+ * which is the Figma frame's arrangement (2:3, 1:1, 4:5 down the first column).
+ * Mobile is one column of 4:5 tiles.
+ */
+const RATIOS = ['tab:aspect-[2/3]', 'tab:aspect-square', 'tab:aspect-[4/5]'];
+
+export interface JournalStoryMeta {
+  /** Formatted publish date, in the page's language. */
+  date: string;
+  /** Read time in whole minutes. */
+  minutes: number;
+}
 
 interface JournalGridProps {
   articles: Article[];
   categories: string[];
+  /** Per-article date and read time, keyed by slug (computed on the server). */
+  meta: Record<string, JournalStoryMeta>;
   /** Localised labels; defaults to the English strings above. */
   strings?: JournalStrings;
+  /** On /no: every card says the article is in English (lib/article-language.ts). */
+  languageNote?: ArticleLanguageNote;
 }
 
-export const JournalGrid: React.FC<JournalGridProps> = ({ articles, categories, strings }) => {
+/**
+ * The journal listing: Filter bar, the featured story (7 + 5), nine story
+ * tiles in three continuous columns, then "More to read" as ruled rows
+ * (Figma Journal 193:1240 / 194:1579).
+ *
+ * Every published article is in the served HTML as a crawlable link: the page
+ * is prerendered with the filter on "All", so the featured story, the tiles and
+ * the rows between them link all of them. The category filters are buttons
+ * that only narrow what is shown after hydration.
+ */
+export const JournalGrid: React.FC<JournalGridProps> = ({ articles, categories, meta, strings, languageNote }) => {
   const t = strings ?? EN;
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const label = (cat: string) => t.categoryLabels?.[cat] ?? cat;
+  // Tiles and rows show the category as the article names it ("Guide"); only
+  // the filter reads as a plural where the page's labels say so.
+  const tileLabel = (cat: string) => (t.dateLocale === 'no' ? label(cat) : cat);
 
   // Deep links (/journal?category=...) are applied after hydration rather than
   // via useSearchParams, which would opt the page out of static prerendering
@@ -40,51 +90,142 @@ export const JournalGrid: React.FC<JournalGridProps> = ({ articles, categories, 
     return articles.filter(a => a.category === selectedCategory);
   }, [articles, selectedCategory]);
 
-  return (
-    <div className="container mx-auto px-8 py-8">
-      <div className="mb-8">
-        <h1 className="text-3xl text-neutral-900 mb-2">{t.heading}</h1>
-        <p className="text-muted-foreground">
-          {filteredArticles.length} {t.articlesSuffix}
-        </p>
-        {t.intro && <p className="text-muted-foreground mt-2">{t.intro}</p>}
-      </div>
+  const [featured, ...others] = filteredArticles;
+  const tiles = others.slice(0, TILE_COUNT);
+  const rows = others.slice(TILE_COUNT);
+  const perColumn = Math.ceil(tiles.length / 3);
+  const columns = [0, 1, 2].map(c => tiles.slice(c * perColumn, (c + 1) * perColumn));
 
+  return (
+    <>
+      {/* Filter bar 241:3763 (Journal labels): Options under a rule, the
+          selected one with the hairline before it, the rest at 55% ink. */}
       {categories.length > 0 && (
-        <div className="flex flex-wrap gap-2 mb-8">
-          {['All', ...categories].map(cat => (
-            <button
-              key={cat}
-              onClick={() => {
-                setSelectedCategory(cat);
-                track('journal-filter-click', { category: cat });
-              }}
-              className={`px-4 py-2 rounded-full text-sm transition-colors ${
-                selectedCategory === cat ? 'bg-primary text-primary-foreground' : 'bg-muted text-neutral-700 hover:bg-muted/80'
-              }`}
-            >
-              {cat === 'All' ? t.allChip : t.categoryLabels?.[cat] ?? cat}
-            </button>
+        <div className="mt-4 flex flex-col gap-3 border-t border-ink pt-4 tab:mt-band tab:flex-row tab:items-center tab:justify-between tab:pt-6">
+          <ul className="flex flex-wrap items-center gap-x-5 gap-y-2 tab:gap-x-6">
+            {['All', ...categories].map(cat => {
+              const selected = selectedCategory === cat;
+              return (
+                <li key={cat}>
+                  <button
+                    type="button"
+                    aria-pressed={selected}
+                    onClick={() => {
+                      setSelectedCategory(cat);
+                      track('journal-filter-click', { category: cat });
+                    }}
+                    className={`relative flex items-center ${OPTION_PAD} type-small transition-colors hover:text-brand ${selected ? '' : 'opacity-55 hover:opacity-100'}`}
+                  >
+                    <span aria-hidden className="option-mark" />
+                    <span>{cat === 'All' ? t.allChip : label(cat)}</span>
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+          <p className="type-small" aria-live="polite">
+            {filteredArticles.length} {t.articlesSuffix}
+          </p>
+        </div>
+      )}
+
+      {featured && (
+        // Featured story · 7 + 5. Its image is the page's one preload: on
+        // mobile it is the first thing under the header, so it is the LCP
+        // element there, and the top-left image on wider screens. Preloading
+        // more than one would give the browser competing LCP candidates,
+        // which the next/image docs warn against.
+        <Link
+          href={`/article/${featured.slug}`}
+          hrefLang={languageNote?.lang}
+          className="group mt-8 page-grid gap-y-3 tab:mt-band"
+        >
+          {featured.image && (
+            <div className="relative col-span-full aspect-square overflow-hidden bg-image-bg tab:col-span-4 desk:col-span-7 desk:aspect-[733/659]">
+              <Image
+                src={featured.image}
+                alt={featured.imageAlt || featured.title}
+                style={featured.image.includes('-room-') ? { objectPosition: 'center top' } : undefined}
+                fill
+                sizes="(max-width: 833px) 100vw, 58vw"
+                preload
+                className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.015] motion-reduce:transition-none"
+              />
+            </div>
+          )}
+          <div className="col-span-full flex flex-col gap-3 tab:col-span-4 tab:gap-group tab:border-t tab:border-ink tab:pt-6 desk:col-span-5">
+            {languageNote ? (
+              <p className="type-caption">
+                <Meta items={[featured.category ? <span className="text-text-accent">{tileLabel(featured.category)}</span> : null, languageNote.label]} />
+              </p>
+            ) : (
+              featured.category && <p className="type-caption text-text-accent">{tileLabel(featured.category)}</p>
+            )}
+            <h2 lang={languageNote?.lang} className="type-h2 transition-colors group-hover:text-brand">{featured.title}</h2>
+            {featured.excerpt && <p lang={languageNote?.lang} className="type-body">{featured.excerpt}</p>}
+            {meta[featured.slug] && (
+              <div className="hidden tab:block">
+                <Meta
+                  className="type-caption"
+                  items={[meta[featured.slug].date, t.minRead.replace('{n}', String(meta[featured.slug].minutes))]}
+                />
+              </div>
+            )}
+            <span className="hidden type-body transition-colors group-hover:text-brand tab:block">{t.readTheStory}</span>
+          </div>
+        </Link>
+      )}
+
+      {tiles.length > 0 && (
+        // Stories · 3 columns, continuous: each tile 64 under the one above,
+        // no row gaps. DOM order is reading order down each column, so the
+        // single mobile column needs no reordering.
+        <div className="mt-10 flex flex-col gap-10 tab:mt-band tab:flex-row tab:gap-gutter">
+          {columns.map((column, c) => (
+            <div key={c} className="flex flex-1 flex-col gap-10 tab:min-w-0 tab:gap-band">
+              {column.map((article, r) => (
+                <ArticleCard
+                  key={article.id}
+                  article={article}
+                  titleAs="h2"
+                  imageAspectClass={`aspect-[4/5] ${RATIOS[(r + c) % 3]}`}
+                  categoryLabel={article.category ? tileLabel(article.category) : undefined}
+                  languageNote={languageNote}
+                />
+              ))}
+            </div>
           ))}
         </div>
       )}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {/* The first card only: the grid is one column on mobile, which is the
-            viewport Google measures, so card 0 is the LCP element there and the
-            top-left card on wider screens. Preloading more than one would give
-            the browser competing LCP candidates, which the next/image docs warn
-            against. */}
-        {filteredArticles.map((article, index) => (
-          <ArticleCard key={article.id} article={article} titleAs="h2" priority={index === 0} />
-        ))}
-      </div>
+      {rows.length > 0 && (
+        // Reading list · 4 + 8: the heading and intro on 4 columns, the rows on 8.
+        <section aria-labelledby="journal-more-to-read" className="mt-24 page-grid gap-y-0 desk:mt-32">
+          <div className="col-span-full flex flex-col gap-group border-t border-ink pt-4 tab:pt-6 desk:col-span-4">
+            <h2 id="journal-more-to-read" className="type-h2">{t.moreToReadHeading}</h2>
+            <p className="hidden type-body desk:block">{t.moreToReadIntro}</p>
+          </div>
+          <ul className="col-span-full desk:col-span-8">
+            {rows.map(article => (
+              <StoryRow
+                key={article.id}
+                href={`/article/${article.slug}`}
+                title={article.title}
+                category={article.category ? tileLabel(article.category) : undefined}
+                date={meta[article.slug]?.date}
+                excerpt={article.excerpt}
+                languageNote={languageNote}
+                event="journal-row-click"
+                eventData={{ to: `/article/${article.slug}` }}
+              />
+            ))}
+          </ul>
+        </section>
+      )}
 
       {filteredArticles.length === 0 && (
-        <div className="text-center py-16">
-          <p className="text-muted-foreground">{t.empty}</p>
-        </div>
+        <p className="mt-band type-body">{t.empty}</p>
       )}
-    </div>
+    </>
   );
 };

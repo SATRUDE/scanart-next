@@ -6,6 +6,22 @@ import { categoryLandings } from './categories';
 import { no } from './i18n/no';
 import { noPathFor } from './i18n';
 
+/**
+ * A route group folder, `(shop)`: it organises the tree and shares a layout
+ * without adding a URL segment (app/(en)/(shop) holds /products, /category and
+ * /collection). The derived guards below read routes from the folders, so they
+ * look through a group as if its children sat one level up; otherwise moving a
+ * page into a group would hide it from them.
+ */
+const isRouteGroup = (entry: string) => /^\(.+\)$/.test(entry);
+
+/** The directories that are URL segments directly under `dir`, looking through route groups. */
+const segmentDirs = (dir: string): string[] =>
+  readdirSync(dir).flatMap(entry => {
+    if (!statSync(join(dir, entry)).isDirectory()) return [];
+    return isRouteGroup(entry) ? segmentDirs(join(dir, entry)) : [entry];
+  });
+
 // The Norwegian pages fall back to the English copy when a translation is
 // missing, which keeps a page from 404ing but fails silently: a mistyped key or
 // a landing added without its translation ships an English page on a /no URL,
@@ -124,9 +140,7 @@ describe('Norwegian dictionary', () => {
   const firstSegment = (href: string) => href.split(/[?#]/)[0].split('/')[1] ?? '';
 
   /** The English route segments that now have a Norwegian page of their own. */
-  const translatedSegments = new Set(
-    readdirSync(APP_NO).filter(entry => statSync(join(APP_NO, entry)).isDirectory())
-  );
+  const translatedSegments = new Set(segmentDirs(APP_NO));
 
   const tsxFilesUnder = (dir: string): string[] =>
     readdirSync(dir).flatMap(entry => {
@@ -216,33 +230,52 @@ describe('hreflang return links', () => {
   const EN_ROOT = join(process.cwd(), 'app', '(en)');
   const NO_ROOT = join(process.cwd(), 'app', '(no)', 'no');
 
-  /** Route path of a page.tsx relative to its tree root: 'product/[slug]', '' for the root page. */
-  const routesUnder = (dir: string, prefix = ''): string[] =>
+  /**
+   * Every page.tsx under a tree root, as its URL route ('product/[slug]', ''
+   * for the root page) and its folder on disk, which differ when the page sits
+   * in a route group: /products is app/(en)/(shop)/products.
+   */
+  const pagesUnder = (dir: string, route = '', folder = ''): { route: string; folder: string }[] =>
     readdirSync(dir).flatMap(entry => {
       const full = join(dir, entry);
-      if (statSync(full).isDirectory()) return routesUnder(full, prefix ? `${prefix}/${entry}` : entry);
-      return entry === 'page.tsx' ? [prefix] : [];
+      if (statSync(full).isDirectory()) {
+        const nextFolder = folder ? `${folder}/${entry}` : entry;
+        if (isRouteGroup(entry)) return pagesUnder(full, route, nextFolder);
+        return pagesUnder(full, route ? `${route}/${entry}` : entry, nextFolder);
+      }
+      return entry === 'page.tsx' ? [{ route, folder }] : [];
     });
 
-  const declaresPair = (root: string, route: string) =>
-    readFileSync(join(root, route, 'page.tsx'), 'utf8').includes('hreflangPair(');
+  const declaresPair = (root: string, folder: string) =>
+    readFileSync(join(root, folder, 'page.tsx'), 'utf8').includes('hreflangPair(');
+
+  /** The English page for a route, wherever its folder sits. */
+  const enPages = new Map(pagesUnder(EN_ROOT).map(p => [p.route, p.folder]));
 
   it('gives every Norwegian page that declares a pair an English twin that declares one back', () => {
     const offenders: string[] = [];
-    for (const route of routesUnder(NO_ROOT)) {
-      if (!declaresPair(NO_ROOT, route)) continue;
-      try {
-        if (!declaresPair(EN_ROOT, route)) {
-          offenders.push(`/${route} declares hreflang under /no and app/(en)/${route}/page.tsx does not answer`);
-        }
-      } catch {
-        offenders.push(`/no/${route} has no English twin at app/(en)/${route}/page.tsx`);
+    for (const { route, folder } of pagesUnder(NO_ROOT)) {
+      if (!declaresPair(NO_ROOT, folder)) continue;
+      const enFolder = enPages.get(route);
+      if (enFolder === undefined) {
+        offenders.push(`/no/${route} has no English twin under app/(en)`);
+      } else if (!declaresPair(EN_ROOT, enFolder)) {
+        offenders.push(`/${route} declares hreflang under /no and app/(en)/${enFolder}/page.tsx does not answer`);
       }
     }
     expect(
       offenders,
       `Norwegian pages annotate an English twin that never links back, so Google discards the pair:\n${offenders.join('\n')}`
     ).toEqual([]);
+  });
+
+  // The guard above passes vacuously if it stops finding pages, so pin that it
+  // still sees the shop pages through their route group on both sides.
+  it('finds the pages inside route groups', () => {
+    for (const route of ['products', 'category/[slug]', 'collection/[slug]']) {
+      expect(enPages.get(route), `app/(en) ${route}`).toBe(`(shop)/${route}`);
+      expect(pagesUnder(NO_ROOT).some(p => p.route === route), `app/(no)/no ${route}`).toBe(true);
+    }
   });
 
   it('keeps the annotation off the pages that deliberately have none on either side', () => {
@@ -259,8 +292,10 @@ describe('hreflang return links', () => {
 describe('noPathFor knows about every Norwegian page', () => {
   const APP_NO = join(process.cwd(), 'app', '(no)', 'no');
 
-  // Mid-payment language changes remain separately scoped.
-  const KNOWN_GAPS = new Set(['/checkout']);
+  // Mid-payment language changes remain separately scoped. The order
+  // confirmation follows checkout: it shows the order just placed in this tab,
+  // in the language it was placed in, and is not a page to browse between.
+  const KNOWN_GAPS = new Set(['/checkout', '/order-confirmed']);
 
   /** English paths of every STATIC page under app/(no)/no. */
   const norwegianPages = (dir: string, prefix = ''): string[] =>
@@ -269,7 +304,7 @@ describe('noPathFor knows about every Norwegian page', () => {
       if (statSync(full).isDirectory()) {
         // Dynamic segments are covered by the pattern tests above.
         if (entry.startsWith('[')) return [];
-        return norwegianPages(full, `${prefix}/${entry}`);
+        return norwegianPages(full, isRouteGroup(entry) ? prefix : `${prefix}/${entry}`);
       }
       return entry === 'page.tsx' ? [prefix || '/'] : [];
     });

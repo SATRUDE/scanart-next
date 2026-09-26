@@ -11,6 +11,7 @@ interface ArtistApplyBandProps {
   /** Umami `artist-apply-click` payload, so we can tell which band converts. */
   source: string;
   locale?: 'no';
+  className?: string;
 }
 
 /**
@@ -23,28 +24,33 @@ interface ArtistApplyBandProps {
  * drifts, so it is a component now and all three render the same thing.
  *
  * Design notes carried over from the original, both still load-bearing:
- * a flat muted band rather than a bordered card, because SA is flat by default
- * and a tint avoids leaning on the weak border token; and NO promise of a
- * reply. Stan's first copy said "we will reply either way"; that came out
+ * no card (V2 groups with space and a 1 px rule, never a box); and NO promise
+ * of a reply. Stan's first copy said "we will reply either way"; that came out
  * because whether we answer every applicant is still an open decision, and
  * /artists/apply deliberately stops short of the same promise. The two must
  * not disagree, so if Mark ever decides yes, it goes back in every place.
  */
-export function ArtistApplyBand({ heading, body, ctaLabel, href, source, locale }: ArtistApplyBandProps) {
+export function ArtistApplyBand({ heading, body, ctaLabel, href, source, locale, className = '' }: ArtistApplyBandProps) {
+  // V2 (Figma CTA 12:132, "Are you an artist?" on Artists · desktop 143:241):
+  // no box, a rule on top, the headline on 6 columns and the body with its one
+  // Primary button on the next 5. Mobile stacks them under the rule. Still a
+  // TrackedLink, so artist-apply-click keeps telling us which band converts.
   return (
-    <section aria-labelledby="artist-apply" className="mt-16 rounded-xl bg-muted/30 p-6">
-      <h2 id="artist-apply" className="text-lg font-medium mb-2">
+    <section aria-labelledby="artist-apply" className={`page-grid gap-y-6 border-t border-ink pt-4 tab:pt-6 ${className}`}>
+      <h2 id="artist-apply" className="col-span-full type-h2 tab:type-h1 desk:col-span-6">
         {heading}
       </h2>
-      <div className="text-neutral-600">{body}</div>
-      <TrackedLink
-        event="artist-apply-click"
-        eventData={locale ? { source, locale } : { source }}
-        href={href}
-        className="mt-4 inline-block underline underline-offset-2 hover:text-neutral-900"
-      >
-        {ctaLabel}
-      </TrackedLink>
+      <div className="col-span-full flex flex-col items-start gap-group desk:col-span-5">
+        <div className="type-body [&_a]:text-text-accent [&_a:hover]:text-brand">{body}</div>
+        <TrackedLink
+          event="artist-apply-click"
+          eventData={locale ? { source, locale } : { source }}
+          href={href}
+          className="inline-flex items-center justify-center bg-ink px-6 py-4 type-label whitespace-nowrap text-on-primary transition-colors hover:bg-primary-hover"
+        >
+          {ctaLabel}
+        </TrackedLink>
+      </div>
     </section>
   );
 }

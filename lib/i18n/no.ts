@@ -10,7 +10,6 @@
 // stay as they are in the catalogue.
 
 import type {
-  HeroStrings,
   QualityPromiseStrings,
   TestimonialsStrings,
   CrossLinksStrings,
@@ -21,6 +20,8 @@ import type {
   HelpGroupCopy,
 } from '@/lib/i18n';
 import type { ApplyCopy } from '@/lib/artist-application';
+import type { HomeStrings } from '@/lib/home';
+import type { ProductPageStrings, GalleryStrings } from '@/lib/product-page-copy';
 
 export const no = {
   shared: {
@@ -39,6 +40,10 @@ export const no = {
     readMoreArticle: 'Les mer',
     outOfStock: 'Utsolgt',
     home: 'Hjem',
+    /** The catalogue's step in the visible landing breadcrumb, as the nav says it. */
+    prints: 'Trykk',
+    /** Before the lowest price in a page header's meta line: "fra 577 kr". */
+    fromPrice: 'fra',
     artists: 'Kunstnere',
     viewAllArtists: 'Se alle kunstnerne',
     moreArtists: 'Flere kunstnere',
@@ -60,7 +65,7 @@ export const no = {
   },
 
   crossLinks: {
-    heading: 'Utforsk mer',
+    heading: 'Utforsk butikken',
     allPrints: 'Alle trykk',
     wallArt: 'Skandinavisk veggkunst',
     nordicArt: 'Nordisk kunst',
@@ -87,37 +92,65 @@ export const no = {
       description:
         'Kuraterte skandinaviske og nordiske kunsttrykk fra uavhengige kunstnere. Kjøp veggkunst med eller uten ramme, levert til hele verden. Utforsk samlingen.',
     },
-    hero: {
-      badge: 'Startet i Norge',
-      heading: 'Utforsk en kuratert samling av samtidskunst fra Skandinavia',
-      sub: 'Nøye utvalgt for å vise frem mangfoldet, dybden og skjønnheten i Norden',
-      cta: 'Se trykkene',
-    } satisfies HeroStrings,
-    exploreHeading: 'Utforsk kategoriene',
-    exploreIntro:
-      'Nøye utvalgte kunstverk fra talentfulle skandinaviske kunstnere, som bringer ekte nordisk minimalisme og tidløs design inn i hjemmet ditt.',
-    allCategories: 'Alle kategorier',
-    categoryTiles: {
-      Botanical: {
-        name: 'Botanisk',
-        desc: 'Oppdag naturinspirerte verk som gir rommet organisk skjønnhet og ro.',
+    /** The V2 homepage (lib/home.ts has the English and the shape). */
+    v2: {
+      // The H1, translated from the approved English one (docs/v2-seo.md item 2).
+      heading: 'Original skandinavisk kunst, trykket på bestilling.',
+      seePrints: 'Se trykkene',
+      meetArtists: 'Møt kunstnerne',
+      carouselLabel: 'Trykk i ekte rom',
+      newPrints: { heading: 'Nye trykk', link: 'Se alle trykk' },
+      wall: {
+        heading: 'Start med veggen din',
+        inspire: 'La deg inspirere',
+        wallLabel: 'Vegg',
+        printLabel: 'Trykk',
+        seePrint: 'Se trykket',
+        walls: { blue: 'Blå', yellow: 'Gul', peach: 'Fersken', green: 'Grønn', white: 'Hvit' },
+        wallsInSentence: { blue: 'blå', yellow: 'gul', peach: 'ferskenfarget', green: 'grønn', white: 'hvit' },
+        roomDescription: '{print} av {artist}, {size}, innrammet på en {wall} vegg på et hjemmekontor.',
+        stillAlt: 'Hummer og Vin av Sia Siamos, 50 × 70 cm, innrammet på en grønn vegg over et skrivebord på et hjemmekontor',
       },
-      Illustrations: {
-        name: 'Illustrasjoner',
-        desc: 'Lekne, karakterfulle og fulle av sjarm. Illustrasjonene våre kombinerer skandinavisk humor med et friskt, moderne uttrykk.',
+      howItWorks: {
+        heading: 'Slik fungerer butikken',
+        wallArtBefore: 'Nøye utvalgt ',
+        wallArtLink: 'skandinavisk veggkunst',
+        wallArtAfter: ' fra talentfulle nordiske kunstnere, som bringer ekte nordisk minimalisme og tidløs design inn i hjemmet ditt.',
+        rows: [
+          { title: 'Valgt, ikke listet', body: 'Hver kunstner er valgt ut av oss. Ingen registrerer seg og laster opp; vi finner verkene først.' },
+          { title: 'Trykket på bestilling', body: 'Hvert trykk lages når du bestiller det, så ingenting blir liggende på lager og ingenting går til spille.' },
+          { title: 'Med eller uten ramme', body: 'Velg ramme i tre, svart eller hvit, eller bestill trykket alene.' },
+        ],
       },
-      Abstract: {
-        name: 'Abstrakt',
-        desc: 'Utforsk moderne abstrakt kunst som gir hjemmet et raffinert, samtidig preg.',
+      // The customer quote from testimonials below, its first sentence.
+      statement: {
+        quote: 'Jeg kjøpte et trykk til hjemmet mitt, og jeg kommer helt sikkert til å kjøpe flere.',
+        name: 'David Steel',
+        location: 'London, England',
       },
-    } as Record<string, { name: string; desc: string }>,
-    viewAllProducts: 'Se alle produkter',
-    meetTheArtists: 'Møt kunstnerne',
-    viewAllArtists: 'Se alle kunstnerne',
-    hedvigIntro: 'Utforsk de lekne trykkene til',
-    hedvigOutro: ', en illustratør fra Göteborg.',
-    fromTheJournal: 'Fra journalen',
-    readTheJournal: 'Les journalen',
+      artists: {
+        heading: 'Kunstnerne',
+        all: 'Alle kunstnerne',
+        printOne: 'trykk',
+        printOther: 'trykk',
+        lines: {
+          'helene-brox': 'Illustratør, bokstavkunstner og veggmaler, og en av grunnleggerne av byrået Heiaklubben.',
+          'simen-wahlqvist': 'Grafisk designer og illustratør som fanger øyeblikk med så få streker som mulig.',
+          'sia-siamos': 'Halvt gresk, halvt norsk: stilleben, mat og de stille detaljene i hverdagen.',
+          'ingunn-dybendal': 'Illustratør i kollektivet Heiaklubben, med arbeider fra en Google Doodle til en vegg på 360 kvadratmeter.',
+          'hedvig-wallin': 'Illustratør fra Göteborg som låner fra naivismen: enkle former, skjevt perspektiv, detaljer overalt.',
+          'mikko-saarainen': 'Illustratør, barnebokforfatter og tegneserieskaper fra Lahti: kraftig strek, flate farger, detaljer helt ut i kantene.',
+          'ishtar-backlund-dakhil': 'Svensk kunstner som arbeider med illustrasjon, veggmaleri og design, utdannet ved Konstfack i Stockholm.',
+        },
+      },
+      journal: { heading: 'Journal', all: 'Alle artikler', inEnglish: 'På engelsk' },
+      questions: { heading: 'Spørsmål', all: 'All hjelp og levering' },
+      apply: {
+        heading: 'Er du kunstner?',
+        body: 'Vi representerer et lite antall nordiske kunstnere. Fortell oss om arbeidet ditt, så tar vi kontakt hvis det passer.',
+        cta: 'Søk om å bli vurdert',
+      },
+    } satisfies HomeStrings,
     jsonLdDescription:
       'Et kuratert utvalg av utsøkt nordisk kunst og trykk fra talentfulle skandinaviske kunstnere.',
   },
@@ -127,7 +160,7 @@ export const no = {
     sub: 'Vi er stolte av å tilby kunst som holder høyeste standard.',
     features: [
       { title: 'Kuratert', desc: 'Vi håndplukker alle kunstnerne våre.' },
-      { title: 'Kvalitet', desc: 'Vi trykker kun på papir av museumskvalitet.' },
+      { title: 'Kvalitet', desc: 'Vi trykker på 200 g ubestrøket papir.' },
       { title: 'Hele verden', desc: 'Kan kjøpes fra hele verden.' },
       { title: 'Profesjonell innramming', desc: 'Profesjonell innramming tilgjengelig for alle trykk.' },
       {
@@ -171,7 +204,7 @@ export const no = {
     viewAllProducts: 'Se alle produkter',
     artistsHeading: 'Samarbeid med kunstnerne',
     artistsPara1:
-      'Vi samarbeider direkte med lokale kunstnere og lener oss på kunnskapen deres for å velge de mest ekte verkene, slik at samlingen holder seg frisk, variert og av høyeste kvalitet. Hvert trykk produseres på papir av museumskvalitet med førsteklasses trykkteknikker, og profesjonell innramming er tilgjengelig.',
+      'Vi samarbeider direkte med lokale kunstnere og lener oss på kunnskapen deres for å velge de mest ekte verkene, slik at samlingen holder seg frisk, variert og av høyeste kvalitet. Hvert trykk trykkes på 200 g ubestrøket papir, og profesjonell innramming er tilgjengelig.',
     artistsPara2:
       'Hvert kjøp støtter kunstneren bak verket direkte, og hjelper dem å få anerkjennelsen de fortjener og fortsette å skape. Når du velger Scandinavian Art, får du en bit av Skandinavia hjem til deg og støtter menneskene som lager den.',
     readTheJournal: 'Les journalen',
@@ -291,7 +324,7 @@ export const no = {
         heading: 'Slik lages trykkene',
         body: [
           'Det begynner med filene dine. Du sender dem én gang, vi tar vare på dem, og ingenting trykkes før noen bestiller. Vi sier nøyaktig hva vi trenger når vi kommer så langt.',
-          'Hver bestilling produseres så nært kunden som vi klarer, slik at arbeidet ikke reiser lenger enn det må. Det trykkes på arkivpapir av museumskvalitet, og kunstnerne som allerede er med oss har sett trykk av sitt eget arbeid og er fornøyde med det som kommer ut.',
+          'Hver bestilling produseres så nært kunden som vi klarer, slik at arbeidet ikke reiser lenger enn det må. Det trykkes på 200 g ubestrøket papir, og kunstnerne som allerede er med oss har sett trykk av sitt eget arbeid og er fornøyde med det som kommer ut.',
           'Kommer et trykk frem skadet eller med feil, er det vårt å ordne og vårt å betale for. Ombestemmer kunden seg innen 14 dager, dekker vi frakten på det også. Ingen av delene går ut over din andel.',
         ],
       },
@@ -340,6 +373,14 @@ export const no = {
         'Svar på vanlige spørsmål om bestilling, levering, retur og trykkene våre hos Scandinavian Art.',
     },
     pageTitle: 'Hjelp',
+    /** "Hva koster frakten?" with the store's from-prices in kroner; the
+     *  static answer in groups is lead + close, true without them. */
+    deliveryCost: {
+      q: 'Hva koster frakten?',
+      lead: 'Frakten avhenger av hvor bestillingen skal, og av størrelse, ramme og antall trykk.',
+      guide: 'Som en pekepinn, i norske kroner, koster frakten for ett trykk uten ramme fra: {guide}. Med ramme koster det mer.',
+      close: 'I kassen ser du nøyaktig beløp, i valutaen du har valgt, før du betaler.',
+    },
     intro:
       'Alt du trenger å vite om bestilling, levering og retur. Finner du ikke svaret her, er det bare å sende oss en e-post, så hjelper vi deg gjerne.',
     stillNeedHelp: 'Trenger du fortsatt hjelp?',
@@ -383,9 +424,11 @@ export const no = {
             q: 'Hvor lang tid tar bestillingen min?',
             a: 'Hvert trykk lages på bestilling, så beregn 1 til 4 virkedager til produksjon, pluss levering for din region: Storbritannia 2-3 virkedager; Norge, Danmark og Sverige 3-5; USA 5-7; resten av verden 7-14.',
           },
+          // The from-prices are added where /no/help renders, from the store
+          // checkout charges from (help.deliveryCost, lib/server/delivery-guide.ts).
           {
             q: 'Hva koster frakten?',
-            a: 'Frakten vises i valutaen du har valgt i kassen. Som en pekepinn, i GBP: Storbritannia £5,99, Norge og Danmark £6,59, Sverige £7,33, USA £10,39, resten av verden £15,99.',
+            a: 'Frakten avhenger av hvor bestillingen skal, og av størrelse, ramme og antall trykk. I kassen ser du nøyaktig beløp, i valutaen du har valgt, før du betaler.',
           },
           {
             q: 'Må jeg betale toll eller importavgifter?',
@@ -423,11 +466,11 @@ export const no = {
         items: [
           {
             q: 'Hva er trykkene deres laget av?',
-            a: 'Trykkene våre lages på arkivbestandig papir av museumskvalitet, for rike farger og lang levetid.',
+            a: 'Trykkene våre lages på 200 g ubestrøket papir: en matt overflate, uten plakatglans.',
           },
           {
             q: 'Hvilke størrelser finnes?',
-            a: 'Størrelsene varierer fra verk til verk og vises på hver produktside. De fleste trykkene er 50x70 cm, og Simen Wahlqvists kvadratiske illustrasjoner er 50x50 cm.',
+            a: 'Størrelsene varierer fra verk til verk og vises på hver produktside. De fleste trykkene er 50x70 cm eller kvadratiske 50x50 cm.',
           },
           {
             q: 'Er dette originale kunstverk?',
@@ -442,15 +485,15 @@ export const no = {
     botanical: {
       title: 'Botaniske trykk og kunstplakater',
       description:
-        'Botaniske trykk og kunstplakater fra norske kunstnere: blomstermotiver, nordiske landskap og fargerike stilleben. Alle i 50x70 cm, med eller uten ramme.',
+        'Botaniske trykk og kunstplakater fra nordiske kunstnere: blomstermotiver, nordiske landskap og fargerike stilleben. Med eller uten ramme.',
       heading: 'Botaniske trykk',
       intro:
-        'Botaniske trykk er en av de enkleste veiene inn i kunsten for et hjem i skandinavisk stil, og her spenner de fra blomster til dekkede bord. Ingunn Dybendal tegner folkelige blomstermotiver og et mønstret nordisk landskap, Helene Brox fyller rammen med fugler blant grener i en myk papirklippstil, og Sia Siamos maler fargerike stilleben fra kjøkkenbordet. Hvert botanisk kunsttrykk lages på bestilling i 50x70 cm, med eller uten ramme.',
+        'Botaniske trykk er en av de enkleste veiene inn i kunsten for et hjem i skandinavisk stil, og her spenner de fra blomster til dekkede bord. Ingunn Dybendal tegner folkelige blomstermotiver og et mønstret nordisk landskap, Helene Brox fyller rammen med fugler blant grener i en myk papirklippstil, og Sia Siamos maler fargerike stilleben fra kjøkkenbordet. Fra Sverige maler Hedvig Wallin rader av akvarellepler. Hvert botanisk kunsttrykk lages på bestilling, med eller uten ramme.',
       intro2:
-        'Hvite vegger og lyst treverk er en palett som venter på nettopp denne typen varme, og en botanisk plakat gir rommet det uten at det tipper over i rot. Alle tre er uavhengige kunstnere som arbeider i Norge, og hvert verk i kategorien produseres i museumskvalitet.',
+        'Hvite vegger og lyst treverk er en palett som venter på nettopp denne typen varme, og en botanisk plakat gir rommet det uten at det tipper over i rot. Dette er uavhengige kunstnere vi jobber direkte med, og hvert verk i kategorien trykkes på bestilling på 200 g ubestrøket papir.',
       stylingHeading: 'Slik bruker du botaniske trykk',
       stylingBody:
-        'Kjøkken og spiseplasser er det naturlige hjemmet for Sia Siamos’ bordscener; heng en der du faktisk spiser, så gjør den nytte for seg hver dag. De mildere verkene, spesielt Tree Top Peach, passer på soverom og i lesekroker, mens det tette mønsteret i Eltsjoen belønner en vegg du passerer langsomt, en gang eller en trappeavsats. Alt her deler samme format på 50 x 70 cm, så par kommer lett: prøv en Dybendal ved siden av en Siamos og la fargene snakke sammen.',
+        'Kjøkken og spiseplasser er det naturlige hjemmet for Sia Siamos’ bordscener; heng en der du faktisk spiser, så gjør den nytte for seg hver dag. De mildere verkene, spesielt Tree Top Peach, passer på soverom og i lesekroker, mens det tette mønsteret i Eltsjoen belønner en vegg du passerer langsomt, en gang eller en trappeavsats. De fleste verkene her deler formatet 50 x 70 cm, så par kommer lett: prøv en Dybendal ved siden av en Siamos og la fargene snakke sammen.',
       faqs: [
         {
           question: 'Er botaniske trykk bare blomster?',
@@ -460,7 +503,7 @@ export const no = {
         {
           question: 'Hvilken størrelse har de botaniske trykkene?',
           answer:
-            'Alle trykk i denne kategorien er 50 x 70 cm, en tilgivende størrelse som fungerer alene over en kommode, eller i par over en sofa eller et spisebord. Sentrer verkene i øyehøyde, omtrent 145 til 150 cm fra gulvet.',
+            'De fleste trykkene i denne kategorien er 50 x 70 cm, en tilgivende størrelse som fungerer alene over en kommode, eller i par over en sofa eller et spisebord, og hver produktside viser størrelsen. Sentrer verkene i øyehøyde, omtrent 145 til 150 cm fra gulvet.',
         },
         {
           question: 'Kan jeg bestille et botanisk trykk med ramme?',
@@ -472,20 +515,20 @@ export const no = {
     abstract: {
       title: 'Abstrakte trykk og kunstplakater',
       description:
-        'Abstrakte trykk og kunstplakater fra norske kunstnere: rene silhuetter og djerve fuglemotiver i flate farger. I 50 x 70 cm, med eller uten ramme.',
+        'Abstrakte trykk og kunstplakater fra nordiske kunstnere: rene silhuetter og djerve fuglemotiver. Med eller uten ramme.',
       heading: 'Abstrakte trykk',
       intro:
-        'Leter du etter abstrakt kunst som plakat eller trykk, er dette den rolige, nordiske enden av sjangeren: former skrelles ned til bare den essensielle silhuetten står igjen, og én eller to flate farger gjør jobben til ti. Helene Brox maler løse, papirklippaktige figurer i kremhvitt på én fargeflate, og skjærer en stupende svale ned til selve vingekastet. Hun er en uavhengig norsk kunstner, og hvert trykk kan bestilles med eller uten ramme, i 50 x 70 cm.',
+        'Leter du etter abstrakt kunst som plakat eller trykk, er dette den rolige, nordiske enden av sjangeren: former skrelles ned til bare den essensielle silhuetten står igjen, og én eller to flate farger gjør jobben til ti. Helene Brox maler løse, papirklippaktige figurer i kremhvitt på én fargeflate, og skjærer en stupende svale ned til selve vingekastet. Hvert trykk kan bestilles med eller uten ramme.',
       intro2:
         'Abstrakt veggkunst av dette slaget passer i stuer og soverom som allerede nærmer seg ro. Hvis rommet ditt heller mot det minimalistiske, lyst treverk, rolige tekstiler, rikelig med lys, gir et abstrakt trykk øyet ett trygt sted å lande uten å rope over rommet. Og fordi komposisjonene er enkle, leses de like godt fra andre siden av rommet som på nært hold.',
       stylingHeading: 'Slik bruker du abstrakte trykk',
       stylingBody:
-        'Ett stort abstrakt verk kan bære en vegg alene; heng det med midten av verket omtrent 145 til 150 cm fra gulvet. Disse fire deler samme flatfargespråk, så to av dem side om side leses som én bevisst gest snarere enn to trykk uten sammenheng. Velg et trykk der bunnfargen speiler noe som allerede finnes i rommet, en pute, et teppe, en rad bokrygger, så faller veggen på plass.',
+        'Ett stort abstrakt verk kan bære en vegg alene; heng det med midten av verket omtrent 145 til 150 cm fra gulvet. Verkene til Helene Brox deler samme flatfargespråk, så to av dem side om side leses som én bevisst gest snarere enn to trykk uten sammenheng. Velg et trykk der bunnfargen speiler noe som allerede finnes i rommet, en pute, et teppe, en rad bokrygger, så faller veggen på plass.',
       faqs: [
         {
           question: 'Hva gjør abstrakt kunst skandinavisk?',
           answer:
-            'Mest av alt tilbakeholdenhet. Der mye abstrakt kunst legger på tekstur og store gester, forenkler den nordiske retningen: flate farger, rene silhuetter, og former som kan spores tilbake til naturen, fugler, kropper, vann. Hvert abstrakte trykk her er laget av en uavhengig norsk kunstner.',
+            'Mest av alt tilbakeholdenhet. Der mye abstrakt kunst legger på tekstur og store gester, forenkler den nordiske retningen: flate farger, rene silhuetter, og former som kan spores tilbake til naturen, fugler, kropper, vann. Hvert abstrakte trykk her er laget av en uavhengig kunstner som lever og arbeider i Norden.',
         },
         {
           question: 'Hvilke størrelser finnes de abstrakte trykkene i?',
@@ -502,25 +545,25 @@ export const no = {
     illustrations: {
       title: 'Illustrasjoner og morsomme plakater',
       description:
-        'Morsomme plakater og illustrasjonstrykk av Oslo-illustratøren Simen Wahlqvist: få streker, tørr humor, rene farger. Til kontoret, med eller uten ramme.',
+        'Nordiske illustrasjonstrykk av uavhengige kunstnere: tørr humor på få streker og tegneseriesider fulle av detaljer.',
       heading: 'Illustrasjoner',
       intro:
-        'Er du på jakt etter morsomme plakater med litt mer strek i, er dette stedet: hvert illustrasjonstrykk her er laget av Simen Wahlqvist, en grafisk designer og illustratør fra Oslo som fanger et øyeblikk, ofte rett før det skjer, med så få streker som mulig. Regelen hans er enkel: får en tegning ham til å le, er den ferdig. Morgenstrekk fanger dagens aller første helkroppsstrekk, og de kvadratiske trykkene rundt bærer den samme tørre humoren i én eller to farger.',
+        'Illustrasjon betyr her tegninger med humor, og kategorien trekker i to retninger. Simen Wahlqvist i Oslo fanger et øyeblikk rett før det skjer, med så få streker som mulig; regelen hans er enkel: får en tegning ham til å le, er den ferdig. Mikko Saarainen i Lahti gjør det motsatte og fyller kvadratet til hver eneste krok har en spøk i seg, og ett av trykkene hans er en hel tegneserieside. Hedvig Wallins tusjhav ligger midt imellom. Morgenstrekk fanger dagens aller første helkroppsstrekk, og kvadratene rundt bærer sin egen humor.',
       intro2:
-        'Dette er den rene, karakterfulle enden av skandinavisk kunst, og et enkelt første trykk å kjøpe. Det passer i ganger, på hjemmekontor og i ethvert rom som er blitt litt for smakfullt og trenger én ting med glimt i øyet. Simen er en av de uavhengige norske kunstnerne bak galleriet, og trykkene hans lages på arkivbestandig papir av museumskvalitet.',
+        'Dette er den karakterfulle enden av nordisk kunst, og et enkelt første trykk å kjøpe. Det passer i ganger, på hjemmekontor, på barnerom og i ethvert rom som er blitt litt for smakfullt og trenger én ting med glimt i øyet. Dette er uavhengige kunstnere vi jobber direkte med, fra hele Norden, og hvert trykk lages på 200 g ubestrøket papir.',
       stylingHeading: 'Slik bruker du illustrasjonstrykk',
       stylingBody:
-        'De fleste av disse trykkene er 50 x 50 cm, og det kvadratiske formatet er stillferdig nyttig: det sitter godt på en bildehylle, holder en smal vegg der et rektangel ville trengt seg på, og danner et ryddig par eller trio langs en gang. Morgenstrekk, i 50 x 70 cm, fungerer som ankeret i en gruppe med kvadratene rundt seg. Hold rammevalget likt gjennom et sett, alt i tre, alt i sort eller alt i hvitt, så leses miksen som tilsiktet.',
+        'Mange av disse trykkene er 50 x 50 cm, og det kvadratiske formatet er stillferdig nyttig: det sitter godt på en bildehylle, holder en smal vegg der et rektangel ville trengt seg på, og danner et ryddig par eller trio langs en gang. De større verkene, blant dem Morgenstrekk og Journey, fungerer som ankeret i en gruppe med kvadratene rundt seg. Hold rammevalget likt gjennom et sett, alt i tre, alt i sort eller alt i hvitt, så leses miksen som tilsiktet. Kvadratene til Saarainen er det høylytteste i kategorien, så gi dem en vegg som tåler det.',
       faqs: [
         {
           question: 'Hva gjør disse illustrasjonene skandinaviske?',
           answer:
-            'Økonomien. Nordisk illustrasjon foretrekker så få streker som nødvendig og ikke én mer, og lar luften og en begrenset palett gjøre tungløftet. Disse er tegnet i Oslo av en norsk illustratør, så merkelappen er bokstavelig så vel som stilistisk.',
+            'Delvis økonomien: nordisk illustrasjon foretrekker så få streker som nødvendig og ikke én mer, og lar luften og en begrenset palett gjøre tungløftet, som er hele metoden til Simen Wahlqvist. Mikko Saarainen er motstykket, og regionen rommer begge: Finland har en lang tradisjon for tegneserier og barnebøker som fyller siden i stedet. Disse er tegnet av kunstnere som lever og arbeider i Norden, så merkelappen er bokstavelig så vel som stilistisk.',
         },
         {
           question: 'Hvilke størrelser finnes illustrasjonstrykkene i?',
           answer:
-            'De fleste er kvadratiske 50 x 50 cm; Morgenstrekk er 50 x 70 cm. Kvadratene passer til hyller, ganger og grupperte vegger, mens det større verket kan holde en vegg alene.',
+            'Mange er kvadratiske 50 x 50 cm, og resten kommer i større formater; hver produktside viser størrelsen. Kvadratene passer til hyller, ganger og grupperte vegger, mens de større verkene kan holde en vegg alene.',
         },
         {
           question: 'Kan jeg få et illustrasjonstrykk innrammet og levert til utlandet?',
@@ -536,17 +579,15 @@ export const no = {
   // card images and the related-article slugs all still come from there, so the
   // curation can never drift between the two languages.
   //
-  // Deliberately NOT translated: the English copy's "museum quality" and
-  // "museum-quality archival paper" claims (living room FAQ, bedroom intro,
-  // home office intro and FAQ). Those claims are already open to question on the
-  // board after the 200gsm uncoated decision, and minting fresh copies of a
-  // doubtful claim in a second language would only widen the problem. The
-  // Norwegian says made to order and leaves the paper out.
+  // The paper: the English copy used to claim "museum-quality archival paper",
+  // which stopped being true when Mark chose Gelato's 200gsm uncoated over the
+  // 250gsm archival on 2026-08-12 (printed in Norway, the archival is not).
+  // Both languages now name the real paper, 200gsm uncoated / 200 g ubestrøket.
   collections: {
     'living-room': {
       title: 'Skandinavisk veggkunst til stua',
       description:
-        'Utvalgt skandinavisk og nordisk veggkunst til stua: varme trykk med karakter fra uavhengige norske kunstnere. Velg med eller uten ramme, sendes over hele verden.',
+        'Utvalgt skandinavisk og nordisk veggkunst til stua: varme trykk med karakter fra uavhengige nordiske kunstnere. Velg med eller uten ramme, sendes over hele verden.',
       heading: 'Skandinavisk veggkunst til stua',
       intro:
         'Stueveggen er den gjestene faktisk ser på, så den fortjener et trykk du har valgt med vilje, ikke en plakat som fulgte med rammen. Dette utvalget samler den skandinaviske veggkunsten vår som har nok nærvær for en stue: Sia Siamos sine varme bordscener, Ingunn Dybendals mønstrede innsjølandskap og Helene Brox sine djerve, kremhvite figurer, blant andre. Hvert verk lages på bestilling og kan kjøpes med ramme i tre, svart eller hvitt, eller helt uten.',
@@ -598,7 +639,7 @@ export const no = {
     bedroom: {
       title: 'Skandinavisk veggkunst til soverommet',
       description:
-        'Rolig skandinavisk og nordisk veggkunst til soverommet: dempede botaniske motiv og myke abstrakte verk fra uavhengige norske kunstnere. Med eller uten ramme, sendes over hele verden.',
+        'Rolig skandinavisk og nordisk veggkunst til soverommet: dempede botaniske motiv og myke abstrakte verk fra uavhengige nordiske kunstnere. Med eller uten ramme, sendes over hele verden.',
       heading: 'Skandinavisk veggkunst til soverommet',
       intro:
         'Soverommet ber om ro, og disse trykkene lener seg inn i den. Dempede botaniske motiv, myke landskap og stille abstrakte verk i varsomme paletter, valgt for å hjelpe rommet med å roe ned framfor å konkurrere med det. Hvert verk lages på bestilling, i størrelser som passer veggen over en seng eller en stille lesekrok.',
@@ -650,7 +691,7 @@ export const no = {
     'home-office': {
       title: 'Skandinavisk veggkunst til hjemmekontoret',
       description:
-        'Skandinavisk og nordisk veggkunst til hjemmekontoret: illustrasjoner med karakter og djerve abstrakte verk fra uavhengige norske kunstnere. Med eller uten ramme, sendes over hele verden.',
+        'Skandinavisk og nordisk veggkunst til hjemmekontoret: illustrasjoner med karakter og djerve abstrakte verk fra uavhengige nordiske kunstnere. Med eller uten ramme, sendes over hele verden.',
       heading: 'Skandinavisk veggkunst til hjemmekontoret',
       intro:
         'Et godt hjemmekontor holder interessen din uten å stjele fokuset. Disse trykkene gir litt personlighet til veggen bak skrivebordet: håndtegnede illustrasjoner med karakter og djerve abstrakte verk med nok energi til å bære en arbeidsdag. Alle lages på bestilling, i størrelser fra ett enkelt trykk over pulten til en hel vegg bak deg på møter.',
@@ -702,10 +743,10 @@ export const no = {
     kitchen: {
       title: 'Skandinavisk veggkunst til kjøkkenet',
       description:
-        'Veggkunst til kjøkkenet med skandinavisk karakter: seks mat- og bordmotiver av Sia Siamos og Hedvig Wallin, med tips til hvordan du henger dem. Med eller uten ramme.',
+        'Veggkunst til kjøkkenet med skandinavisk karakter: mat- og bordmotiver av uavhengige nordiske kunstnere, med tips til hvordan du henger dem. Med eller uten ramme.',
       heading: 'Skandinavisk veggkunst til kjøkkenet',
       intro:
-        'Seks trykk, og mellom seg en hel hummer, to karafler, en presskanne og flere tomater enn ett bord trenger. Fire er av Sia Siamos, en gresk og norsk illustratør bosatt i Bergen, som maler mat slik du faktisk møter den: midt i måltidet, med hender som strekker seg inn fra kanten og korken alt ute av flasken. Hedvig Wallin bidrar med en søndagsbrunsj i pastell i Sunday Brunch og rekker av akvarellepler i Massa Äpplen. På et kjøkken gjør de det et landskap ikke kan, nemlig å være enige med rommet. Hvert av dem kommer i én størrelse, 50 x 70 cm, med ramme i tre, svart eller hvitt, eller uten.',
+        'Til sammen en hel hummer, to karafler, en presskanne og flere tomater enn ett bord trenger. De fleste er av Sia Siamos, en gresk og norsk illustratør bosatt i Bergen, som maler mat slik du faktisk møter den: midt i måltidet, med hender som strekker seg inn fra kanten og korken alt ute av flasken. Hedvig Wallin bidrar med en søndagsbrunsj i pastell i Sunday Brunch og rekker av akvarellepler i Massa Äpplen. På et kjøkken gjør de det et landskap ikke kan, nemlig å være enige med rommet. Hvert av dem selges med ramme i tre, svart eller hvitt, eller uten.',
       intro2:
         'Kjøkken er hardere mot et trykk enn noe annet rom, og det er verdt å vite før du henger noe du er glad i der. Damp, matsprut og en vegg med ettermiddagssol treffer alle her, så hold verket unna arbeidssonen mellom platetopp og vask, og unna direkte lys hvis rommet tillater det. Alt annet slapper av: et kjøkken tåler mer farge enn en stue gjør, fordi det alt finnes farge der, fliser og panner og frukt og resten. Disse trykkene har nok farge til å holde stand mot alt det.',
       stylingHeading: 'Ideer til veggkunst på kjøkkenet',
@@ -720,7 +761,7 @@ export const no = {
         {
           question: 'Hvilken veggkunst fungerer på et kjøkken?',
           answer:
-            'Mat, hvis du vil ha det enkle svaret. En bordscene eller et stilleben hører hjemme på et kjøkken på en måte et portrett eller et landskap aldri helt gjør, og det tåler mer farge enn du ville hengt i et roligere rom. De seks trykkene her er nettopp det: en hummermiddag, en hyttefrokost, et morgenbord, en vinkveld, en søndagsbrunsj og rekker av epler, alle djerve nok til å konkurrere med fliser og åpne hyller.',
+            'Mat, hvis du vil ha det enkle svaret. En bordscene eller et stilleben hører hjemme på et kjøkken på en måte et portrett eller et landskap aldri helt gjør, og det tåler mer farge enn du ville hengt i et roligere rom. Trykkene her er nettopp det: en hummermiddag, en hyttefrokost, et morgenbord, en vinkveld, en søndagsbrunsj og rekker av epler, alle djerve nok til å konkurrere med fliser og åpne hyller.',
         },
         {
           question: 'Hvor bør jeg henge kunst på et lite kjøkken?',
@@ -730,7 +771,7 @@ export const no = {
         {
           question: 'Hvilken størrelse har kjøkkentrykkene, og kan jeg bestille dem med ramme?',
           answer:
-            'Alle seks kommer i én størrelse, 50 x 70 cm, som passer de fleste kjøkkenvegger uten at du trenger å måle opp. Velg uten ramme, eller ramme i tre, svart eller hvitt, på produktsiden før du legger det i kurven, der prisen for den størrelsen står. Trykkene lages på bestilling og sendes over hele verden med frakten oppgitt i kassen, og du har 14 dager fra levering på å ombestemme deg.',
+            'De fleste er 50 x 70 cm, som passer de fleste kjøkkenvegger uten at du trenger å måle opp, og hver produktside viser størrelsen. Velg uten ramme, eller ramme i tre, svart eller hvitt, på produktsiden før du legger det i kurven, der prisen for den størrelsen står. Trykkene lages på bestilling og sendes over hele verden med frakten oppgitt i kassen, og du har 14 dager fra levering på å ombestemme deg.',
         },
       ],
     },
@@ -738,12 +779,12 @@ export const no = {
     'birds-and-animals': {
       title: 'Skandinavisk fuglekunst og dyretrykk',
       description:
-        'Nordisk fugle- og dyrekunst av den norske kunstneren Helene Brox: en stupende koboltblå svale, ferskenfargede grener som skjuler en flokk, og en drage i fargebånd.',
+        'Nordisk fugle- og dyrekunst av uavhengige kunstnere: en stupende koboltblå svale, en flokk skjult i ferskenfargede grener og en drage.',
       heading: 'Fugle- og dyrekunst fra nordiske kunstnere',
       intro:
-        'Hvert vesen her er en form før det er et vesen. Helene Brox arbeider flatt og uten dill: en koboltblå svale skåret ned til selve vingekastet, dusinvis av små silhuetter skjult i et ferskenfarget gitter av grener, og en drage som slynger seg over sort i bånd av hvitt, rødt og rosa. Det er dette som gjør at et dyretrykk sitter godt i et skandinavisk rom, mønster og silhuett framfor detaljer fra en feltguide. Alle tre kan kjøpes med ramme i tre, svart eller hvitt, eller uten.',
+        'Hvert vesen her er en form før det er et vesen. Helene Brox arbeider flatt og uten dill: en koboltblå svale skåret ned til selve vingekastet, dusinvis av små silhuetter skjult i et ferskenfarget gitter av grener, og en drage som slynger seg over sort i bånd av hvitt, rødt og rosa. Det er dette som gjør at et dyretrykk sitter godt i et skandinavisk rom, mønster og silhuett framfor detaljer fra en feltguide. Hvert trykk her kan kjøpes med ramme i tre, svart eller hvitt, eller uten.',
       intro2:
-        'Tre trykk, tre nokså ulike stemninger. Swallow Dive er bare to farger, kobolt på kremhvitt, og den vil ha en vegg for seg selv der stupet har et sted å gå. Tree Top Peach er den mildeste av de tre, nærmere en folkelig papirklipp enn en illustrasjon, og den belønner å bli hengt der du faktisk sitter. Dragon er den høylytte, et fabeldyr sett i glimt på sort bunn, og den trenger en vegg som holder nervene i sjakk. Velg på bunnfargen framfor vesenet: kobolt går kjølig mot hvite vegger og lyst tre, fersken går varmt sammen med tre og jordnære tekstiler, og sort forankrer et helt rom. Få bakgrunnen riktig, så ordner resten seg selv.',
+        'Stemningene skiller seg mer enn motivene. Swallow Dive er bare to farger, kobolt på kremhvitt, og den vil ha en vegg for seg selv der stupet har et sted å gå. Tree Top Peach er den mildeste av dem, nærmere en folkelig papirklipp enn en illustrasjon, og den belønner å bli hengt der du faktisk sitter. Dragon er den høylytte, et fabeldyr sett i glimt på sort bunn, og den trenger en vegg som holder nervene i sjakk. Velg på bunnfargen framfor vesenet: kobolt går kjølig mot hvite vegger og lyst tre, fersken går varmt sammen med tre og jordnære tekstiler, og sort forankrer et helt rom. Få bakgrunnen riktig, så ordner resten seg selv.',
       stylingHeading: 'Slik henger du fugle- og dyretrykk',
       stylingTips: [
         'Ett enkelt dyretrykk gjør seg best med en vegg for seg selv. Sentrer det i øyehøyde, omtrent 145 til 150 cm over gulvet, og la plassen på hver side stå tom; bevegelsen i disse trykkene trenger et sted å gå.',
@@ -756,12 +797,12 @@ export const no = {
         {
           question: 'Hva gjør at et dyretrykk føles skandinavisk?',
           answer:
-            'Flat farge og silhuett, stort sett. Hvert trykk her behandler vesenet som en form framfor en studie: Swallow Dive bærer en hel stupende fugl i to farger, Tree Top Peach er nærmere en folkelig papirklipp enn en illustrasjon, og Dragon løser fabeldyret opp i ren rytme. Helene Brox er en uavhengig kunstner som arbeider i Oslo, og det er derfor disse leses som nordiske dyretrykk framfor noe fra tradisjonen med zoologiske plansjer.',
+            'Flat farge og silhuett, stort sett. Helene Brox behandler vesenet som en form framfor en studie: Swallow Dive bærer en hel stupende fugl i to farger, Tree Top Peach er nærmere en folkelig papirklipp enn en illustrasjon, og Dragon løser fabeldyret opp i ren rytme. Hun lever og arbeider i Norden, og det er derfor disse leses som nordiske dyretrykk framfor noe fra tradisjonen med zoologiske plansjer.',
         },
         {
           question: 'Hvilke størrelser kommer disse trykkene i, og kan jeg få dem med ramme?',
           answer:
-            'Alle tre kommer i én størrelse, 50 x 70 cm. Størrelsene står på hver produktside, der du også velger uten ramme eller ramme i tre, svart eller hvitt, med prisen for størrelsen du har valgt oppgitt før du legger det i kurven. Hvert trykk lages på bestilling og sendes over hele verden, med frakten oppgitt i kassen.',
+            'Størrelsene står på hver produktside, der du også velger uten ramme eller ramme i tre, svart eller hvitt, med prisen for størrelsen du har valgt oppgitt før du legger det i kurven. Hvert trykk lages på bestilling og sendes over hele verden, med frakten oppgitt i kassen.',
         },
       ],
     },
@@ -771,13 +812,13 @@ export const no = {
     meta: {
       title: 'Kunstnere',
       description:
-        'Møt de skandinaviske kunstnerne bak samlingen, en liten gruppe illustratører og grafikere som arbeider i Norge og Sverige.',
+        'Møt kunstnerne bak samlingen, en liten gruppe illustratører og grafikere fra hele Norden.',
     },
     heading: 'Kunstnere',
     /** {count} kunstnere */
     countLabel: 'kunstnere',
     intro:
-      'Møt de skandinaviske kunstnerne bak samlingen, en liten gruppe illustratører og grafikere som arbeider i Norge og Sverige.',
+      'Møt kunstnerne bak samlingen, en liten gruppe illustratører og grafikere fra hele Norden.',
     jsonLdDescription: 'De skandinaviske og nordiske kunstnerne bak samlingen.',
     /** The way in to /no/artists/apply. The English hub has carried this band
      *  since the form was built; the Norwegian one had no link to it at all. */
@@ -799,7 +840,25 @@ export const no = {
     metaDescriptionPrefix: 'Kunsttrykk av',
     /** JSON-LD: "Kunsttrykk av {name}, {location}, hos Scandinavian Art Gallery." */
     jobTitle: 'Kunstner',
+    // V2 profile (Figma 199:1621): the hero line, "At a glance" and the map.
+    /** "5 trykk, fra 600 kr" */
+    from: 'fra',
+    allArtists: 'Alle kunstnere',
+    atAGlance: 'Kort fortalt',
+    factBasedIn: 'Bosted',
+    factFormats: 'Formater',
+    factInShop: 'I butikken',
+    factFraming: 'Innramming',
+    /** Joins the formats: "50 × 50 cm, og 50 × 70 cm for Morgenstrekk" */
+    and: 'og',
+    for: 'for',
+    framingPrefix: 'Uten ramme, eller',
+    /** "{by} Oslo, der Simen arbeider." */
+    mapWhere: 'der',
+    mapWorks: 'arbeider',
+    printsHeadingCount: 'trykk',
   },
+
 
   // Norwegian versions of data/artists.ts bios and locations, keyed by slug.
   // Fall back to the English data for any artist missing here.
@@ -810,7 +869,7 @@ export const no = {
     },
     'simen-wahlqvist': {
       location: 'Oslo, Norge',
-      bio: 'Simen Wahlqvist er en norsk grafisk designer og illustratør bosatt i Oslo. I arbeidet sitt prøver han å fange øyeblikk, ofte før de skjer, med så få streker som mulig. Får en illustrasjon ham selv til å le, er den ferdig!',
+      bio: 'Simen Wahlqvist er en norsk grafisk designer og illustratør bosatt i Oslo. I arbeidet sitt prøver han å fange øyeblikk, ofte før de skjer, med så få streker som mulig. Får en illustrasjon ham til å le, er den ferdig.',
     },
     'ingunn-dybendal': {
       location: 'Oslo, Norge',
@@ -824,7 +883,27 @@ export const no = {
       location: 'Göteborg, Sverige',
       bio: 'Hedvig Wallin er illustratør og grafisk designer fra Göteborg i Sverige. Hun begynte å illustrere barnebøker som attenåring og gjør det fortsatt, ved siden av redaksjonell illustrasjon, veggmalerier, logoer, etiketter og plakater. Hun henter mye av inspirasjonen fra naivistisk kunst og dens barnlige enkelhet, og blander tusj, blyant, mykpastell, akvarell og digitale verktøy til lekne, detaljrike bilder med et skjevt perspektiv, der nye detaljer dukker opp hver gang du ser.',
     },
+    'mikko-saarainen': {
+      location: 'Lahti, Finland',
+      bio: 'Mikko Saarainen er en prisbelønt illustratør, barnebokforfatter og tegneserieskaper fra Lahti i Finland. Bildene hans er morsomme, uttrykksfulle og fulle av detaljer: et cruiseskip der hver eneste passasjer har fått øye på noe forskjellig, en familiebil lastet langt over taket, en ridder som taper en diskusjon mot en drage. Han jobber med kraftig strek og flate, litt kornete farger, og lar detaljene fortsette helt ut i kantene, så tegningene blir lest like mye som sett.',
+    },
+    'ishtar-backlund-dakhil': {
+      location: 'Stockholm, Sverige',
+      bio: 'Ishtar Bäcklund Dakhil er en svensk kunstner som arbeider med illustrasjon, veggmaleri og design. Hun reiste i fem år og konkurrerte internasjonalt i downhill-skateboarding før hun studerte ved Konstfack i Stockholm.',
+    },
   } as Record<string, ArtistCopy>,
+
+  // The product page's artist statement (lib/artist-statements.ts), each
+  // taken from the Norwegian bio or editorial above, keyed by slug.
+  artistStatements: {
+    'simen-wahlqvist': 'Han prøver å fange øyeblikk, ofte før de skjer, med så få streker som mulig.',
+    'hedvig-wallin': 'Hold tegningen enkel, la perspektivet bli skjevt, og fyll på med detaljer til det andre blikket.',
+    'helene-brox': 'Figurer og fugler skåret ned til silhuett, malt med papirklippets selvsikkerhet.',
+    'ingunn-dybendal': 'More is more is more is more.',
+    'sia-siamos': 'Tiltrukket av de stille detaljene som sier mest.',
+    'mikko-saarainen': 'Han lar detaljene fortsette helt ut i kantene, så tegningene blir lest like mye som sett.',
+    'ishtar-backlund-dakhil': 'Bildene hennes beveger seg mellom nøye observerte detaljer og fantasiverdener.',
+  } as Record<string, string>,
 
   // Norwegian versions of lib/artist-editorial.ts, keyed by slug. para2 keeps
   // the same inline Markdown-link form; links point into the /no tree where a
@@ -837,37 +916,51 @@ export const no = {
     'helene-brox': {
       heading: 'Formen får snakke',
       para1:
-        'Helene Brox, kunstner og illustratør bosatt i Oslo, arbeider i djerve, flate former: figurer og fugler skåret ned til silhuett, malt med papirklippets selvsikkerhet og satt på én bunnfarge. Gjennom de fem trykkene hennes holder den samme disiplinen, enten stemningen er rolig eller høylytt. Swallow Dive bærer all bevegelsen sin i én koboltblå og én kremhvit; Dancer fanger en figur midt i steget, uten ansikt og uten gulv; Dragon løser et fabeldyr opp i bånd av farge mot sort. Selv IThinkIThink, det mest høylytte trykket i galleriet, bærer bekjennelsen sin i de samme djerve, utklippede formene.',
+        'Helene Brox, kunstner og illustratør bosatt i Oslo, arbeider i djerve, flate former: figurer og fugler skåret ned til silhuett, malt med papirklippets selvsikkerhet og satt på én bunnfarge. Gjennom trykkene hennes holder den samme disiplinen, enten stemningen er rolig eller høylytt. Swallow Dive bærer all bevegelsen sin i én koboltblå og én kremhvit; Dancer fanger en figur midt i steget, uten ansikt og uten gulv; Dragon løser et fabeldyr opp i bånd av farge mot sort. Selv IThinkIThink, det mest høylytte trykket i galleriet, bærer bekjennelsen sin i de samme djerve, utklippede formene.',
       para2:
-        'Hvilken Brox som passer i et rom, avhenger av hvor mye mot veggen har. Tree Top Peach og Swallow Dive er de milde; de faller til ro på et soverom eller i en lesekrok uten å forsvinne i det, og begge trives blant de roligere verkene i [soveromssamlingen](/no/collection/bedroom). [Dragon](/no/product/dragon) og IThinkIThink vil ha rommet der folk samles og prater. Alle fem deler det samme utklippsspråket, så to av dem henger naturlig sammen, ett rolig og ett høylytt, og paret leses som bevisst snarere enn matchet.',
+        'Hvilken Brox som passer i et rom, avhenger av hvor mye mot veggen har. Tree Top Peach og Swallow Dive er de milde; de faller til ro på et soverom eller i en lesekrok uten å forsvinne i det, og begge trives blant de roligere verkene i [soveromssamlingen](/no/collection/bedroom). [Dragon](/no/product/dragon) og IThinkIThink vil ha rommet der folk samles og prater. Alle deler det samme utklippsspråket, så to av dem henger naturlig sammen, ett rolig og ett høylytt, og paret leses som bevisst snarere enn matchet.',
     },
     'simen-wahlqvist': {
       heading: 'Så få streker som mulig',
       para1:
-        'Simen Wahlqvist er en norsk grafisk designer og illustratør bosatt i Oslo, og regelen hans er enkel: fang øyeblikket, ofte rett før det skjer, med så få streker som mulig. Får en tegning ham til å le, er den ferdig. Den testen forklarer alle de fem trykkene hans her. Slingshot lader en tilfreds figur inn i et fredstegn gjort om til sprettert; Mean Snothing gir en mann en Newton-pendel til øyne; Half Man deler en figur rent i to. Hvert av dem er en håndfull streker og to eller tre flate farger, der tegningen bærer hele vitsen.',
+        'Simen Wahlqvist er en norsk grafisk designer og illustratør bosatt i Oslo, og regelen hans er enkel: fang øyeblikket, ofte rett før det skjer, med så få streker som mulig. Får en tegning ham til å le, er den ferdig. Den testen forklarer hvert eneste av trykkene hans her. Slingshot lader en tilfreds figur inn i et fredstegn gjort om til sprettert; Mean Snothing gir en mann en Newton-pendel til øyne; Half Man deler en figur rent i to. Hvert av dem er en håndfull streker og to eller tre flate farger, der tegningen bærer hele vitsen.',
       para2:
         'Tørr humor viser seg å være utmerket selskap ved et skrivebord. Wahlqvists kvadratiske trykk passer naturlig på [hjemmekontoret](/no/collection/home-office), der Mean Snothing gjør seg fortjent til veggplassen bedre enn noen motivasjonsplakat, og Slingshot beholder et ordentlig glimt i øyet. Morgenstrekk, det mildeste verket hans, passer på et soverom eller i gangen du passerer på vei ut. Er det den sparsomme, vittige streken som treffer deg, er det arbeidet hans som bærer [illustrasjonene](/no/category/illustrations) våre, og to av disse henger sammen som ruter fra samme tegneseriestripe.',
     },
     'ingunn-dybendal': {
       heading: 'Mønster hele veien ned',
       para1:
-        'Ingunn Dybendal, kunstner og illustratør bosatt i Oslo, tegner med fargeblyant og en usedvanlig tålmodighet, og de to trykkene hennes er de tettest arbeidede verkene i galleriet. Eltsjoen gjør et nordisk innsjølandskap om til ornament: skyer strukket til bånd, skog gjort om til folkemotiver, vann som samler seg i bleke ringer rundt en bro. Trysilkaffe stapper et grønt krus med en umulig bukett, hver blomst sin egen oppfinnelse over en rutete duk. Begge står støtt i den nordiske folkekunsttradisjonen, mønster på mønster, bygget strøk for strøk snarere enn i store flater.',
+        'Ingunn Dybendal, kunstner og illustratør bosatt i Oslo, tegner med fargeblyant og en usedvanlig tålmodighet, og trykkene hennes er de tettest arbeidede verkene i galleriet. Eltsjoen gjør et nordisk innsjølandskap om til ornament: skyer strukket til bånd, skog gjort om til folkemotiver, vann som samler seg i bleke ringer rundt en bro. Trysilkaffe stapper et grønt krus med en umulig bukett, hver blomst sin egen oppfinnelse over en rutete duk. Begge står støtt i den nordiske folkekunsttradisjonen, mønster på mønster, bygget strøk for strøk snarere enn i store flater.',
       para2:
         'Dette er verk som belønner nærhet. Heng [Eltsjoen](/no/product/eltsjoen) der du faktisk sitter, ved siden av en lesestol eller over et skrivebord, så fortsetter det å by på nye hjørner å oppdage; det hundrede blikket betaler seg like godt som det første. Trysilkaffe har den samme tettheten med mer skøyerstrek, og finner seg naturlig til rette på en kjøkken- eller gangvegg. Begge står godt sammen med de roligere verkene blant de [botaniske trykkene](/no/category/botanical) våre, der detaljrikdommen spiller mot enklere silhuetter i stedet for å konkurrere med dem.',
     },
     'sia-siamos': {
       heading: 'Trekk frem en stol',
       para1:
-        'Athanasia Siamos, kjent som Sia, er en gresk-norsk illustratør bosatt i Bergen, og de fire trykkene hennes er alle varianter av den samme rause ideen: bordet med mennesker rundt. De er malt løst og djervt, og hvert av dem bærer en norsk tittel som sier nøyaktig hva det rommer. Hummer og Vin ser ned på en hummermiddag midt i skålen; Morgenlevering er et frokostbord som nettopp har kommet på plass; Hyttefrokost har roen fra en hytteferie; Vinkveld, det mest stemningsfulle av de fire, er en vinkveld der korken allerede er på avveie.',
+        'Athanasia Siamos, kjent som Sia, er en gresk-norsk illustratør bosatt i Bergen, og trykkene hennes er alle varianter av den samme rause ideen: bordet med mennesker rundt. De er malt løst og djervt, og hvert av dem bærer en norsk tittel som sier nøyaktig hva det rommer. Hummer og Vin ser ned på en hummermiddag midt i skålen; Morgenlevering er et frokostbord som nettopp har kommet på plass; Hyttefrokost har roen fra en hytteferie; Vinkveld, det mest stemningsfulle av dem, er en vinkveld der korken allerede er på avveie.',
       para2:
-        'Siamos hører hjemme der maten skjer. En kjøkken- eller spisestuevegg er det opplagte hjemmet, spesielt for [Vinkveld](/no/product/vinkveld), men Morgenlevering er lys nok til å løfte en gang eller et soverom som fanger morgensolen. De fire scenene er malt som søsken, så et par fungerer nydelig: frokost på én vegg, vin på den andre, som dagens to ender. De ligger i den varmeste enden av de [botaniske trykkene](/no/category/botanical) våre, fulle av tomater, druer og snittblomster snarere enn blader og grener.',
+        'Siamos hører hjemme der maten skjer. En kjøkken- eller spisestuevegg er det opplagte hjemmet, spesielt for [Vinkveld](/no/product/vinkveld), men Morgenlevering er lys nok til å løfte en gang eller et soverom som fanger morgensolen. Scenene er malt som søsken, så et par fungerer nydelig: frokost på én vegg, vin på den andre, som dagens to ender. De ligger i den varmeste enden av de [botaniske trykkene](/no/category/botanical) våre, fulle av tomater, druer og snittblomster snarere enn blader og grener.',
     },
     'hedvig-wallin': {
       heading: 'Se igjen, og igjen',
       para1:
-        'Hedvig Wallin, illustratør og grafisk designer fra Göteborg, er den første svenske kunstneren i galleriet, og de fire trykkene hennes deler en vane lånt fra naivistisk kunst: hold tegningen enkel, la perspektivet bli skjevt, og fyll på med detaljer til det andre blikket. Sunday Brunch dekker et frokostbord i pastell, sett ovenfra mot grønne kjøkkenfliser. Rosa Blomster fyller en vase med rosa og rødt. Massa Äpplen stiller opp rekke på rekke med små akvarellepler, ikke to like. Small House Big Ocean dropper fargen helt: ett hus, én klippe, og et hav tegnet bølge for bølge i svart tusj.',
+        'Hedvig Wallin, illustratør og grafisk designer fra Göteborg, er den første svenske kunstneren i galleriet, og trykkene hennes deler en vane lånt fra naivistisk kunst: hold tegningen enkel, la perspektivet bli skjevt, og fyll på med detaljer til det andre blikket. Sunday Brunch dekker et frokostbord i pastell, sett ovenfra mot grønne kjøkkenfliser. Rosa Blomster fyller en vase med rosa og rødt. Massa Äpplen stiller opp rekke på rekke med små akvarellepler, ikke to like. Small House Big Ocean dropper fargen helt: ett hus, én klippe, og et hav tegnet bølge for bølge i svart tusj.',
       para2:
-        'Wallin hører hjemme i rommene folk faktisk bruker. [Sunday Brunch](/no/product/sunday-brunch) og [Massa Äpplen](/no/product/massa-applen) er laget for en kjøkken- eller spisestuevegg, der de holder Sia Siamos’ bordscener med selskap blant de [botaniske trykkene](/no/category/botanical) våre. [Rosa Blomster](/no/product/rosa-blomster) er myk nok for et soverom. [Small House Big Ocean](/no/product/small-house-big-ocean) er det stille bildet, en strektegning som passer like godt på et barnerom som i en stue, og som henger fint ved siden av alt som har farge i seg. Alle fire er 50 x 70 cm, og selges med ramme i tre, svart eller hvit, eller uten ramme.',
+        'Wallin hører hjemme i rommene folk faktisk bruker. [Sunday Brunch](/no/product/sunday-brunch) og [Massa Äpplen](/no/product/massa-applen) er laget for en kjøkken- eller spisestuevegg, der de holder Sia Siamos’ bordscener med selskap blant de [botaniske trykkene](/no/category/botanical) våre. [Rosa Blomster](/no/product/rosa-blomster) er myk nok for et soverom. [Small House Big Ocean](/no/product/small-house-big-ocean) er det stille bildet, en strektegning som passer like godt på et barnerom som i en stue, og som henger fint ved siden av alt som har farge i seg. Alle er 50 x 70 cm, og selges med ramme i tre, svart eller hvit, eller uten ramme.',
+    },
+    'mikko-saarainen': {
+      heading: 'Alt skjer på én gang',
+      para1:
+        'Mikko Saarainen, illustratør, barnebokforfatter og tegneserieskaper fra Lahti, er den første finske kunstneren i galleriet, og alle trykkene hans gir noe tilbake ved andre og tredje blikk. Cruise seiler et skip gjennom grønne bølger med en saluterende kaptein, en jente med flettene flagrende etter seg og en fisk som hopper klar av vannet. Family Trip laster en oransje bil langt over taket og fyller den med barn, en flirende hund, en katt og en mus. URF! er en hel tegneserieside i ett trykk, en ridder i blå rustning som taper en diskusjon mot en grønn drage. Journey er det stille bildet: en rød bil over en steinbro under fjell, i en dempet høstpalett.',
+      para2:
+        'Saarainen passer i rommene der ingen passer seg. Cruise, Family Trip og URF! er 50 x 50 cm, kvadratformatet som står godt på en bildehylle eller i en gruppe, og de henger fint på et barnerom, i en lekestue eller på et kjøkken ved siden av Simen Wahlqvists kvadrater blant [illustrasjonstrykkene](/no/category/illustrations) våre. [Journey](/no/product/journey) er bildet for stua eller gangen: 50 x 70 cm, roligere i fargen, og sterkt nok til å bære en vegg alene. Hvert av dem selges med ramme i tre, svart eller hvit, eller uten ramme.',
+    },
+    'ishtar-backlund-dakhil': {
+      heading: 'Byer, planter og fantasiverdener',
+      para1:
+        'Ishtars bilder beveger seg mellom nøye observerte detaljer og fantasiverdener. Stockholms tårn og bygninger langs vannet står side om side med lag på lag av blader, geometriske landskap og en fugl som svever over en dal. Små merker og fargenyanser gir mye å oppdage på nært hold.',
+      para2:
+        'Uttrykket varierer, men sansen for farger går igjen. [Frukt & Grönt](/no/product/frukt-och-gront) samler grønt, rødt og gult på kjøkkenveggen, mens [Creature Among Blue Leaves](/no/product/creature-among-blue-leaves) passer et roligere sted der det er tid til å se detaljene.',
     },
   } as Record<string, ArtistEditorialCopy>,
   inspire: {
@@ -902,19 +995,52 @@ export const no = {
       searchPrefix: 'Søk',
       /** "16 trykk" - same word in singular and plural. */
       printsSuffix: 'trykk',
-      allChip: 'Alle',
+      allChip: 'Alle trykk',
+      artistAny: 'Alle kunstnere',
+      sizeAny: 'Alle størrelser',
+      moreFilters: 'Mer',
+      lessFilters: 'Mindre',
       sortLabel: 'Sorter trykkene',
+      sortFeatured: 'Anbefalt',
       sortName: 'Navn',
       sortPriceLow: 'Pris: lav til høy',
       sortPriceHigh: 'Pris: høy til lav',
       outOfStock: 'Utsolgt',
       emptyHeading: 'Ingen trykk funnet',
       emptyCta: 'Se alle trykkene',
+      printsSrHeading: 'Trykk',
+      artistAll: 'Kunstner',
+      artistFilterLabel: 'Filtrer etter kunstner',
+      sizeAll: 'Størrelse',
+      sizeFilterLabel: 'Filtrer etter størrelse',
+      sortPrefix: 'Sorter:',
+      clearSearch: 'Tøm søket',
+    },
+    /** The V2 catalogue page's own copy. It deliberately does not repeat the
+     *  /nordic-art text (docs/v2-seo.md, item 4); /nordic-art is English only,
+     *  so the Norwegian page points at the wall-art landing instead. */
+    page: {
+      /** Fixed: no artist count or country list, so it never goes stale. */
+      lead: 'Trykk av uavhengige kunstnere fra hele Norden. Hvert trykk lages på bestilling, med eller uten ramme, og sendes over hele verden.',
+      // Left for the committed /no/products page, which still fills {artists}
+      // and {countries} (now absent from the lead, so it is a no-op). Remove
+      // these three once the shop layout (components/v2/shop) lands.
+      countries: { Norway: 'Norge', Sweden: 'Sverige', Denmark: 'Danmark', Finland: 'Finland', Iceland: 'Island' } as Record<string, string>,
+      and: 'og',
+      numbers: ['ingen', 'én', 'to', 'tre', 'fire', 'fem', 'seks', 'sju', 'åtte', 'ni', 'ti'],
+      contentHeading: 'Slik kjøper du et trykk',
+      contentP1:
+        'Hvert trykk lages på bestilling når du kjøper det, på 200 g ubestrøket papir, i stedet for å hentes fra en lagerhylle. De fleste er 50 x 70 cm, og de kvadratiske illustrasjonene er 50 x 50 cm. Hver produktside viser størrelsen og prisen før noe havner i handlekurven.',
+      contentP2:
+        'Velg trykket uten ramme, eller med ramme i tre, svart eller hvitt, tilpasset trykket. Vi sender over hele verden, og fraktkostnaden vises i kassen.',
+      contentP3Before: 'Vet du allerede hvilket rom trykket skal henge i? ',
+      contentP3Link: 'Skandinavisk veggkunst',
+      contentP3After: ' tar for seg hele galleriet, rom for rom.',
     },
     meta: {
       title: 'Nordiske og skandinaviske kunsttrykk: en kuratert samling',
       description:
-        'En kuratert samling skandinaviske og nordiske kunsttrykk av uavhengige skandinaviske kunstnere. Innrammet eller uten ramme, med levering over hele verden.',
+        'En kuratert samling skandinaviske og nordiske kunsttrykk av uavhengige nordiske kunstnere. Innrammet eller uten ramme, med levering over hele verden.',
     },
   },
 
@@ -924,11 +1050,17 @@ export const no = {
       /** Phase 1 keeps the articles in English, so the index says so up front
        *  rather than letting a reader click through and be surprised. */
       intro: 'Artiklene er foreløpig på engelsk.',
-      allChip: 'Alle',
+      allChip: 'Alle artikler',
       /** "18 artikler". */
       articlesSuffix: 'artikler',
-      empty: 'Ingen artikler ennå. Kom tilbake snart!',
+      empty: 'Ingen artikler ennå. Kom tilbake snart.',
       booksSeriesHeading: 'Serien om nordiske bøker',
+      startHere: '(start her)',
+      moreToReadHeading: 'Mer å lese',
+      moreToReadIntro: 'Guider, bøker og utstillinger, nyeste først.',
+      readTheStory: 'Les artikkelen',
+      minRead: '{n} min lesing',
+      dateLocale: 'no' as const,
       categoryLabels: {
         About: 'Om oss',
         Design: 'Design',
@@ -946,6 +1078,12 @@ export const no = {
     /** Phase 1 keeps the articles themselves in English, so the index says so
      *  rather than letting a reader click through and be surprised. */
     englishNote: 'Artiklene er på engelsk.',
+    /** The quiet label on a Norwegian journal card: the article it opens is
+     *  in English (a caption, next to the date and read time). */
+    inEnglish: 'På engelsk',
+    /** The article body's modules (NotionBlockRenderer), for the day an
+     *  article is rendered under /no. */
+    article: { seePrint: 'Se trykket' },
   },
 
   /** Catalogue copy per print. The English catalogue descriptions carried
@@ -968,7 +1106,7 @@ export const no = {
   apply: {
     h1: 'Vis oss arbeidet ditt',
     intro:
-      'Vi er et lite galleri: en håndfull illustratører og grafikere som arbeider i Norge og Sverige. Vi leser alt som kommer inn, og vi tar inn svært få.',
+      'Vi er et lite galleri: en liten gruppe illustratører og grafikere fra hele Norden. Vi leser alt som kommer inn, og vi tar inn svært få.',
     intro2:
       'Lager du trykk og tror dine ville stått godt ved siden av det som alt er her, så fortell oss om dem. Det tar noen minutter, og et menneske leser hver enkelt.',
     onlyRoute: 'Søknader kommer bare gjennom dette skjemaet, så du behøver ikke sende e-post i tillegg.',
@@ -1011,17 +1149,29 @@ export const no = {
       website: 'https://',
       instagram: '@navnetditt',
     },
+    // V2 (Figma Apply 221:4130 / 270:11159): the radio cards' explanations,
+    // the numbered sections' subtitle, the Form error and the fit check.
+    offeringHint: 'Velg det som ligger nærmest det du har i tankene.',
+    offeringDescriptions: {
+      Prints: 'Vi trykker arbeidet ditt på bestilling og selger det i butikken.',
+      Commission: 'Et verk til et sted, et merke eller et prosjekt.',
+      Unsure: 'Fortell oss om arbeidet ditt, så finner vi ut av resten.',
+    },
+    errorTitle: 'Søknaden din ble ikke sendt',
+    errorMarked: 'Feltene som trenger en titt, er merket over.',
+    seeWhoWeShow: 'Før du skriver, se hvem vi allerede viser.',
+    meetTheArtists: 'Møt kunstnerne',
   } satisfies ApplyCopy,
 
   wallArt: {
     title: 'Kjøp skandinaviske kunsttrykk | Innrammede nordiske trykk',
     description:
-      'Kjøp skandinaviske kunsttrykk av fem uavhengige norske og svenske kunstnere. Tjue nordiske trykk, hvert med ramme i tre, svart eller hvit, eller uten ramme, laget på bestilling.',
+      'Kjøp skandinaviske kunsttrykk av uavhengige kunstnere fra hele Norden: med ramme i tre, svart eller hvit, eller uten ramme, laget på bestilling.',
     heading: 'Kjøp skandinaviske kunsttrykk',
     intro:
-      'Denne siden er hele galleriet: tjue skandinaviske kunsttrykk, hvert av dem av en kunstner som lever og arbeider i Norge eller Sverige, og hvert av dem solgt med eller uten ramme. Helene Brox maler nedskrelte, kremhvite figurer i Oslo og skjærer en svale ned til selve stupet av vingene. Ingunn Dybendal tegner folkeblomster og mønstret innsjølandskap i fargeblyant, Sia Siamos fyller bord med hummer, vin og hyttefrokost, Simen Wahlqvist får plass til en hel vits i en håndfull streker, og Hedvig Wallin dekker et frokostbord fra Göteborg i tusj og akvarell. Fem hender, fire uttrykk, og ikke et fyllbilde blant dem.',
+      'Denne siden er hele galleriet: nordiske kunsttrykk, hvert av dem av en uavhengig kunstner som lever og arbeider i Norden, og hvert av dem solgt med eller uten ramme. Helene Brox maler nedskrelte, kremhvite figurer i Oslo og skjærer en svale ned til selve stupet av vingene. Ingunn Dybendal tegner folkeblomster og mønstret innsjølandskap i fargeblyant, Sia Siamos fyller bord med hummer, vin og hyttefrokost, Simen Wahlqvist får plass til en hel vits i en håndfull streker, Hedvig Wallin dekker et frokostbord fra Göteborg i tusj og akvarell, og Mikko Saarainen fyller hver krok av en finsk tegneserieside. Ikke et fyllbilde blant dem.',
     intro2:
-      'Å kjøpe skandinaviske kunsttrykk på nett betyr vanligvis å skrolle gjennom et marked med ti tusen plakater som aldri har vært i nærheten av en fjord. Dette er det motsatte. Et lite galleri, fem kunstnere vi jobber direkte med, og hvert trykk laget på bestilling framfor hentet fra et lager. Velg bildet først og rammen etterpå, og klarer du ikke å velge mellom to, er kvadratene til Wahlqvist og fugleparet til Brox laget for å henge sammen.',
+      'Å kjøpe skandinaviske kunsttrykk på nett betyr vanligvis å skrolle gjennom et marked med ti tusen plakater som aldri har vært i nærheten av en fjord. Dette er det motsatte. Et lite galleri, kunstnere vi jobber direkte med, og hvert trykk laget på bestilling framfor hentet fra et lager. Velg bildet først og rammen etterpå, og klarer du ikke å velge mellom to, er kvadratene til Wahlqvist og fugleparet til Brox laget for å henge sammen.',
     framedHeading: 'Med eller uten ramme',
     framedBody:
       'Hvert trykk her kommer med valget mellom tre rammer, tre, svart eller hvit, tilpasset trykket. Tre passer de varmere botaniske bildene og rom som allerede har tre i seg; svart skjerper de grafiske abstraktene og illustrasjonene; hvit forsvinner nesten mot en lys skandinavisk vegg og lar fargen snakke. Skal du henge flere sammen? Hold rammen lik gjennom hele gruppen, og veggen leses som én beslutning. Og har du en innrammer du stoler på, selges hvert bilde uten ramme også.',
@@ -1046,7 +1196,7 @@ export const no = {
       {
         question: 'Hvor kan jeg kjøpe skandinaviske kunsttrykk?',
         answer:
-          'Her, fra galleriet selv framfor et markedsplass. Vi jobber direkte med fem uavhengige kunstnere i Oslo, Bergen og Göteborg, og hvert trykk lages på bestilling når du kjøper det: velg størrelse og ramme på produktsiden, og det går i trykk for deg.',
+          'Her, fra galleriet selv framfor et markedsplass. Vi jobber direkte med uavhengige kunstnere fra hele Norden, og hvert trykk lages på bestilling når du kjøper det: velg størrelse og ramme på produktsiden, og det går i trykk for deg.',
       },
       {
         question: 'Kan jeg kjøpe trykkene innrammet?',
@@ -1056,7 +1206,7 @@ export const no = {
       {
         question: 'Hvilke størrelser kommer trykkene i?',
         answer:
-          'De fleste trykk er 50 x 70 cm, og de kvadratiske illustrasjonene til Simen Wahlqvist er 50 x 50 cm. Hver produktside lister størrelsene for det bildet; som en tommelfingerregel bærer de større formatene en sofa- eller sengevegg alene, mens de mindre står fint på en billedhylle eller i en gruppe.',
+          'De fleste trykk er 50 x 70 cm eller kvadratiske 50 x 50 cm. Hver produktside lister størrelsene for det bildet; som en tommelfingerregel bærer de større formatene en sofa- eller sengevegg alene, mens de mindre står fint på en billedhylle eller i en gruppe.',
       },
       {
         question: 'Hva betyr det at trykkene lages på bestilling?',
@@ -1163,6 +1313,58 @@ export const no = {
       buyerDescription:
         'Et lite hus på en klippe i et hav av tusjtegnede bølger. Kjøp Small House Big Ocean innrammet i tre, svart eller hvit, eller uten ramme.',
     },
+    cruise: {
+      description:
+        'Cruise av Mikko Saarainen seiler et skip gjennom grønne bølger, med saluterende kaptein, en jente med flagrende fletter og en fisk som hopper. Oransje fugler sirkler rundt skorsteinen, en gutt med lue sikter et gult kamera mot vannet, og hver eneste passasjer har fått øye på noe forskjellig. Tegnet med kraftig strek og flate, litt kornete farger i turkis, oransje og gult har det den muntre overfloden fra et feriebilde der ingen ser i kameraet.',
+      buyerDescription:
+        'Et tegneserieskip i grønne bølger, med kaptein, fugler og en fisk som hopper. Kjøp Cruise innrammet i tre, svart eller hvit, eller uten ramme.',
+    },
+    'family-trip': {
+      description:
+        'Family Trip av Mikko Saarainen laster en oransje bil langt over taket: kofferter, piknikkurv, en sammenrullet matte og en mus på takgrinden. Inni flirer en gul hund ut av det ene vinduet og en grønn katt henger ut av det andre, med fire barn og en sjåfør med briller klemt inn imellom, en fugl på antennen og eksos som pøser bak. Tegnet med kraftig svart strek over flate farger er det hele det kaotiske ved å dra på ferie, samlet i ett kvadrat.',
+      buyerDescription:
+        'En oransje bil lastet over taket, full av barn, hund og katt. Kjøp Family Trip innrammet i tre, svart eller hvit, eller uten ramme.',
+    },
+    journey: {
+      description:
+        'Journey av Mikko Saarainen tar en rød bil over en steinbro under snødekte fjell, gjennom høsttrær i oransje og gult. Det er det stilleste av trykkene hans og det mest grafiske: store, rullende skyer, blomstrende busker som trenger seg på i forgrunnen, to fugler oppe i furuene, og brobuen gjentatt i sitt eget speilbilde. Den dempede paletten og de flate formene skylder de gamle jernbaneplakatene noe, og bildet er rolig nok til å bære en vegg alene.',
+      buyerDescription:
+        'En rød bil over en steinbro, under fjell og høsttrær. Kjøp Journey innrammet i tre, svart eller hvit, eller uten ramme.',
+    },
+    urf: {
+      description:
+        'URF! av Mikko Saarainen er en hel tegneserieside i ett trykk: en ridder i blå rustning som taper en diskusjon mot en grønn drage, i tre ruter. Han blir blåst av en mur i den første, svinger sverdet mot dragehalen i den andre, og er nede på brannslukningsapparat i den tredje, mens en annen ridder sniker seg gjennom en ruin mot en rød dør. Høsttrær og grå borgstein fyller hver eneste luke, og det ligger en spøk i nesten alle sammen.',
+      buyerDescription:
+        'En tegneserieside i ett trykk: ridder mot grønn drage, i tre ruter. Kjøp URF! innrammet i tre, svart eller hvit, eller uten ramme.',
+    },
+    'stockholm': {
+      description:
+        "Stockholms tak, tårn og bygninger langs vannet samles i en fargerik illustrasjon av Ishtar Bäcklund Dakhil. Oransje murstein, gule fasader og grønne spir reiser seg over to båter, mens den lyseblå himmelen gir luft til det detaljerte motivet. Se nærmere etter vindusrekker, blomstrende trær og de små detaljene som gir byen liv.",
+    },
+    'frukt-och-gront': {
+      description:
+        "Frukt, grønnsaker og håndskrevne svenske navn fyller Frukt & Grönt av Ishtar Bäcklund Dakhil. En dyp lilla aubergine ligger over ananas, mais, grønne blader og røde tomater, mens røtter og stilker slynger seg mellom motivene. Det er en rik samling av hverdagslige råvarer, med nye detaljer å oppdage hver gang du går forbi.",
+    },
+    'desert-circles': {
+      description:
+        "Overlappende hvite sirkler deler et ørkenlandskap i buede fragmenter i dette verket av Ishtar Bäcklund Dakhil. Rustrøde klipper, kaktuser og støvrosa åser gjentas i mønsteret, avbrutt av klare turkise felt. Formene trekker blikket mot midten, mens spredte merker og ujevne fargetoner gjør hver del forskjellig.",
+    },
+    'lilac-geometry': {
+      description:
+        "Syrinblomster, bier og lyse sirkler omgir en fin geometrisk stjerne i dette verket av Ishtar Bäcklund Dakhil. Lilla blomsterklaser brer seg langs kantene, med grønne blader, gule blomster og mindre planter nederst. Gjentatte buer samler hagedetaljene i et mønster i midten, mot en myk rosa himmel og en dempet blå bakgrunn.",
+    },
+    'bird-above-the-valley': {
+      description:
+        "En hvit fugl med en vindusrekke glir over en grønn dal i denne illustrasjonen av Ishtar Bäcklund Dakhil. Vingene strekker seg over buktende blå elver, rosa klippevegger og tett vegetasjon. Den lyse formen skiller seg ut mot det detaljerte landskapet under og gir en følelse av letthet i en scene full av farger og bevegelse.",
+    },
+    'creature-among-blue-leaves': {
+      description:
+        "En lys, hornet skapning titter frem gjennom lag av blå blader i denne illustrasjonen av Ishtar Bäcklund Dakhil. Brede vifter og spisse blader fyller den mørke bakgrunnen og skjuler deler av det flekkete ansiktet og de buede hornene. Små innslag av oker bryter den kjølige paletten, mens plantene lukker seg rundt skapningen.",
+    },
+    'surfer-with-orange-sun': {
+      description:
+        "En surfer balanserer over en turkis bølge med en klar oransje sol bak seg i denne illustrasjonen av Ishtar Bäcklund Dakhil. Utstrakte armer og et bøyd kne gir figuren en lett, balansert bevegelse. Mørke klær danner en tydelig form mot solen, mens hvitt skum bryter over den nedre delen av bildet.",
+    },
   } as Record<string, { description: string; buyerDescription?: string }>,
 
   productPage: {
@@ -1180,7 +1382,59 @@ export const no = {
         black: 'Svart',
         white: 'Hvit',
       },
+      // V2 assurance lines under Add to basket. {price} is the store's
+      // cheapest delivery for an unframed print outside the UK, in the
+      // buyer's currency (lib/server/delivery-guide.ts).
+      assurance: {
+        printed: 'Trykkes på bestilling på 200 g ubestrøket papir, ferdig på 1–4 virkedager',
+        delivery: 'Levering i Storbritannia på 2–3 virkedager, resten av verden fra {price} uten ramme',
+        returns: '14 dagers angrerett',
+      },
     },
+    /** The V2 page body (lib/product-page-copy.ts has the English). */
+    page: {
+      breadcrumbHome: 'Hjem',
+      breadcrumbPrints: 'Kunsttrykk',
+      readMore: 'Les mer',
+      readLess: 'Les mindre',
+      questions: {
+        details: 'Detaljer',
+        delivery: 'Levering og retur',
+        about: 'Om {name}',
+      },
+      detailsBody: '{sizes}, trykket på bestilling på 200 g ubestrøket papir.',
+      detailsFrames:
+        'Velg det uten ramme, eller med ramme i tre, sort eller hvitt. Prisen på rammen avhenger av størrelsen og legges til prisen over.',
+      deliveryBody:
+        'Hvert trykk lages på bestilling, så beregn 1 til 4 virkedager til produksjon, pluss levering for din region: Storbritannia 2-3 virkedager; Norge, Danmark og Sverige 3-5; USA 5-7; resten av verden 7-14. Frakten beregnes i kassen.',
+      returnsBody:
+        'Du har 14 dager fra du mottar bestillingen til å ombestemme deg. Fordi trykkene lages på bestilling, trenger du ikke sende noe tilbake: send oss en e-post, så refunderer vi deg.',
+      deliveryLink: 'Alt om levering og retur',
+      aboutLink: 'Alle trykk av {name}',
+      facts: {
+        basedIn: 'Bor i',
+        sizes: 'Størrelser',
+        inTheShop: 'I butikken',
+        printsFromOne: '{count} trykk, fra',
+        printsFromOther: '{count} trykk, fra',
+      },
+      allPrintsOne: 'Trykket',
+      allPrintsOther: 'Alle {count} trykkene',
+      moreLikeThis: 'Flere trykk som dette',
+      allInCategory: 'Alle {label}',
+    } satisfies ProductPageStrings,
+    gallery: {
+      allImages: 'Alle {count} bildene',
+      imageCount: '{count} bilder',
+      close: 'Lukk',
+      previous: 'Forrige',
+      next: 'Neste',
+      captions: {
+        print: 'Trykket',
+        scene: 'Innrammet i et nordisk interiør',
+        video: 'Innrammet, mens lyset beveger seg',
+      },
+    } satisfies GalleryStrings,
     breadcrumbPrints: 'Kunsttrykk',
     youMayAlsoLike: 'Du vil kanskje også like',
     /** Meta title pattern: "<navn> av <kunstner> | Innrammet nordisk kunsttrykk" */
@@ -1211,7 +1465,7 @@ export const no = {
       apply: 'Bruk',
       percentOff: 'rabatt lagt til',
       subtotal: 'Delsum',
-      shipping: 'Frakt',
+      shipping: 'Levering',
       free: 'Gratis',
       discount: 'Rabatt',
       total: 'Totalt',
@@ -1220,11 +1474,57 @@ export const no = {
         'Betalingsopplysningene dine er kryptert og trygge. Vi lagrer aldri kortopplysningene dine.',
       shipsMostHeading: 'Dit vi sender mest',
       elsewhereHeading: 'Alle andre steder',
-      payNotice: 'Betalingen kan bruke opptil et minutt. Ikke oppdater siden.',
+      payNotice: 'Det kan ta opptil et minutt. La siden være åpen.',
       invalidCode: 'Ugyldig rabattkode',
       couldNotCheckCode: 'Fikk ikke sjekket koden, prøv igjen',
       orderTotalChanged: 'Ordresummen er endret, oppdater siden og prøv igjen',
       paymentFailed: 'Betalingen gikk ikke gjennom',
+      // V2 checkout and order confirmation. Delivery facts match
+      // app/(no)/no/delivery and config/shipping.ts.
+      v2: {
+        contactTitle: 'Kontakt',
+        contactNote: 'Stripe sender kvitteringen til denne adressen.',
+        deliveryTitle: 'Leveringsadresse',
+        paymentTitle: 'Betaling',
+        cardNote: 'Kortopplysningene går rett til Stripe. Vi ser dem aldri og lagrer dem aldri.',
+        loadingCard: 'Laster inn betalingsskjemaet …',
+        codePlaceholder: 'Kode',
+        remove: 'Fjern',
+        yourOrder: 'Bestillingen din',
+        showOrder: 'Vis bestillingen ({count})',
+        hideOrder: 'Skjul bestillingen',
+        printCount: '{n} trykk',
+        printCountOne: '1 trykk',
+        quantity: 'Antall {n}',
+        deliveryNote: 'Levert {from} til {to} virkedager etter at det er laget',
+        assuranceMade: 'Trykket på bestilling på 200 g ubestrøket papir, laget på 1 til 4 virkedager',
+        assuranceReturns: '14 dager til å ombestemme deg',
+        assuranceStripe: 'Trygg betaling med Stripe',
+        paymentFailedTitle: 'Betalingen gikk ikke gjennom',
+        paymentFailedHint: 'Ingenting er trukket. Sjekk kortopplysningene eller prøv et annet kort.',
+        contactHelp: 'Står du fast? Send en e-post til {email}, så hjelper vi deg.',
+        unavailableTitle: 'Betalingen er ikke tilgjengelig akkurat nå',
+        unavailableBody: 'Betalingsskjemaet fra Stripe ble ikke lastet inn. Prøv igjen om litt.',
+        testMode: 'Testmodus: hopp over betalingen',
+        frameLabels: {
+          'no-frame': 'uten ramme',
+          wood: 'treramme',
+          black: 'svart ramme',
+          white: 'hvit ramme',
+        },
+        thanks: 'Takk, {name}.',
+        thanksNoName: 'Takk.',
+        placed: 'Bestillingen er lagt inn. Stripe har sendt kvitteringen til {email}.',
+        nextHeading: 'Dette skjer nå',
+        steps: {
+          made: { title: 'Laget på bestilling', body: 'Trykkene lages på 200 g ubestrøket papir, og rammes inn hvis du valgte ramme, på 1 til 4 virkedager.' },
+          sent: { title: 'Sendt til deg', body: 'Leveringen tar {from} til {to} virkedager etter at det er laget.' },
+          sentNoEstimate: 'Leveringstiden begynner når bestillingen er sendt, og varierer med hvor den skal.',
+          decide: { title: 'Fjorten dager til å bestemme deg', body: 'Hvis det ikke passer på veggen, har du 14 dager til å ombestemme deg.' },
+        },
+        keepBrowsing: 'Se flere trykk',
+        deliveringTo: 'Leveres til',
+      },
     },
     meta: {
       title: 'Kasse',
@@ -1242,6 +1542,38 @@ export const no = {
     heading: 'Si hva du mener',
     intro:
       'Tre spørsmål, ingen av dem obligatoriske. Vi er et lite galleri og vi leser hvert svar, så hvis noe gjorde at du ikke kjøpte, vil vi mye heller vite det enn å gjette.',
+  },
+
+  /** /no/credits: Norwegian copy for lib/credits.ts (titles, authors and
+   *  licence names stay as the sources give them). */
+  credits: {
+    meta: {
+      title: 'Kreditering',
+      description: 'Kreditering for filmklippene og fotografiene på Scandinavian Art som kommer fra Wikimedia Commons.',
+    },
+    intro:
+      'Filmen i ordmerket nederst på siden og noen av fotografiene på Om oss-siden kommer fra Wikimedia Commons, delt av dem som laget dem under Creative Commons-lisenser. Vi har bearbeidet hver av dem som angitt. Der lisensen er Del på samme vilkår, deler vi vår bearbeidede versjon under den samme lisensen.',
+    groups: { footer: 'Film i bunnteksten', photos: 'Fotografier på Om oss' },
+    notes: {
+      croppedLoopedToned: 'Beskåret, satt i sløyfe og fargetonet',
+      croppedToned: 'Beskåret og fargetonet',
+      croppedBlurredToned: 'Beskåret, gjort uskarp og fargetonet',
+    },
+    where: {
+      winter: 'Vinter, i ordmerket i bunnteksten',
+      spring: 'Vår, i ordmerket i bunnteksten',
+      summer: 'Sommer, i ordmerket i bunnteksten',
+      autumn: 'Høst, i ordmerket i bunnteksten',
+      moss: 'Mosen bak kundesitatet på Om oss og forsiden, og i overskriften på Om oss',
+      'forest-floor': 'Skogbunn, i overskriften på Om oss',
+      'sea-ripples': 'Krusninger i sjøen, i overskriften på Om oss',
+      lupins: 'Lupiner, i overskriften på Om oss',
+      spruce: 'Granskog, i overskriften på Om oss',
+    } as Record<string, string>,
+    by: 'av',
+    basedOn: 'bakgrunnsbilde av',
+    lastUpdated: '26. september 2026',
+    lastUpdatedLabel: 'Sist oppdatert:',
   },
 
 };

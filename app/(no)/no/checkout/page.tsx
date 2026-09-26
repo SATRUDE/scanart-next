@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 export default function NorwegianCheckout() {
   return (
     <>
-      <CheckoutPage strings={t.page} />
+      <CheckoutPage strings={t.page} locale="no" />
       {/* Never a modal here, and never a card on a small screen: see the
           suppression list in lib/feedback.ts and the note on the component. */}
       <FeedbackIntercept placement="checkout" />

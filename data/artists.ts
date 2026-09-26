@@ -5,6 +5,8 @@ export interface Artist {
   location: string;
   bio: string;
   image: string;
+  /** The photographer, where the artist's photo must be credited. */
+  imageCredit?: string;
 }
 
 export const artists: Artist[] = [
@@ -21,7 +23,7 @@ export const artists: Artist[] = [
     name: 'Simen Wahlqvist',
     slug: 'simen-wahlqvist',
     location: 'Oslo, Norway',
-    bio: 'Simen Wahlqvist is a Norwegian graphic designer and illustrator based in Oslo. In his work he aims to capture moments, often before they happen, with as few lines as possible. If an illustration makes himself laugh, it means its done!',
+    bio: 'Simen Wahlqvist is a Norwegian graphic designer and illustrator based in Oslo. In his work he aims to capture moments, often before they happen, with as few lines as possible. If an illustration makes him laugh, it’s done.',
     image: '/images/artists/simen.png'
   },
   {
@@ -47,6 +49,24 @@ export const artists: Artist[] = [
     location: 'Gothenburg, Sweden',
     bio: 'Hedvig Wallin is an illustrator and graphic designer from Gothenburg, Sweden, who began illustrating children’s books at eighteen and still does, alongside editorial work, murals, logos, labels and posters. She draws on naive art for its childlike simplicity, mixing ink, pencil, soft pastel, watercolour and digital media into playful, detail-rich images with a wonky perspective, where something new turns up each time you look.',
     image: '/images/artists/hedvig-wallin.png'
+  },
+  {
+    id: '7',
+    name: 'Mikko Saarainen',
+    slug: 'mikko-saarainen',
+    location: 'Lahti, Finland',
+    bio: 'Mikko Saarainen is an award-winning illustrator, children\'s author and comic artist from Lahti, Finland. His pictures are funny, expressive and packed with detail: a cruise ship where every passenger has spotted something different, a family car loaded past the roofline, a knight losing an argument with a dragon. He works in a bold line and flat, faintly grainy colour, and keeps the detail going right out to the edges, so the drawings get read as much as looked at.',
+    image: '/images/artists/mikko-saarainen.png'
+  },
+  {
+    id: '8',
+    name: 'Ishtar Bäcklund Dakhil',
+    slug: 'ishtar-backlund-dakhil',
+    location: 'Stockholm, Sweden',
+    bio: 'Ishtar Bäcklund Dakhil is a Swedish artist working across illustration, murals and design. She spent five years travelling and competing internationally in downhill skateboarding before studying at Konstfack in Stockholm.',
+    image: '/images/artists/ishtar-backlund-dakhil.png',
+    // Branch peggy/ishtar-artist-preview: the photo credit must be shown.
+    imageCredit: 'Sebastian Lundmark',
   },
 ];
 

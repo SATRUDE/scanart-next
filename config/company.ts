@@ -9,6 +9,8 @@ interface Company {
   name: string;
   email: string;
   country: string;
+  /** The same country in Norwegian, for the /no legal pages. */
+  countryNo: string;
   orgNr: string;
   address: string;
 }
@@ -17,6 +19,7 @@ export const COMPANY: Company = {
   name: 'Scandinavian Art',
   email: 'hello@scandinavianart.co.uk',
   country: 'Norway',
+  countryNo: 'Norge',
   orgNr: '',
   address: '',
 };

@@ -124,7 +124,7 @@
     "featured": false,
     "published": true,
     "image": "/images/products/half-man.png",
-    "secondaryImage": "/images/products/half-man-room.avif",
+    "secondaryImage": "/images/products/half-man-room-2026-09-26.avif",
     "availableSizes": [
       "50x50cm"
     ],
@@ -289,7 +289,7 @@
     "featured": false,
     "published": true,
     "image": "/images/products/morgenstrekk.png",
-    "secondaryImage": "/images/products/morgenstrekk-scene.avif",
+    "secondaryImage": "/images/products/morgenstrekk-room-02-2026-09-26.avif",
     "availableSizes": [
       "50x70cm"
     ],
@@ -429,7 +429,7 @@
     "featured": true,
     "published": true,
     "image": "/images/products/vinkveld.png",
-    "secondaryImage": "/images/products/vinkveld-scene.avif",
+    "secondaryImage": "/images/products/vinkveld-room-hallway-2026-09-26.avif",
     "availableSizes": [
       "50x70cm"
     ],
@@ -554,5 +554,313 @@
     ],
     "created_time": "2026-09-07T08:10:12.942Z",
     "last_edited_time": "2026-09-23T19:14:37.879Z"
+  },
+  {
+    "id": "71eaf345-a4a2-4e74-9e52-90105df4467c",
+    "name": "Cruise",
+    "slug": "cruise",
+    "description": "Cruise by Mikko Saarainen sails a liner through green waves, with a saluting captain, a girl whose plaits stream out behind her and a leaping fish. Orange birds wheel around the funnel, a boy in a woolly hat aims a yellow camera at the water, and every passenger has spotted something different. Drawn in a bold line and flat, faintly grainy colour in teal, orange and yellow, it has the cheerful overload of a holiday photograph where nobody is looking at the lens.",
+    "category": "Illustrations",
+    "artist": "Mikko Saarainen",
+    "artistId": "7",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/cruise.png",
+    "secondaryImage": "/images/products/cruise-room.avif",
+    "availableSizes": [
+      "50x50cm"
+    ],
+    "priceCategory": "Budget",
+    "productId": "25",
+    "recommendedProducts": [
+      "Family Trip",
+      "URF!",
+      "Journey",
+      "Slingshot"
+    ],
+    "created_time": "2026-09-15T08:36:46.634Z",
+    "last_edited_time": "2026-09-15T08:36:46.634Z"
+  },
+  {
+    "id": "0a0a298b-525e-4f8a-949a-23eb30ef6440",
+    "name": "Family Trip",
+    "slug": "family-trip",
+    "description": "Family Trip by Mikko Saarainen loads an orange car past the roofline: suitcases, a picnic basket, a rolled rug and a mouse on the roof rack. Inside, a yellow dog grins out of one window and a green cat hangs out of another, with four children and a driver in glasses squeezed in between, a bird on the aerial and exhaust puffing behind. Drawn in a bold black line over flat colour, it is the whole chaotic business of leaving on holiday in a single square.",
+    "category": "Illustrations",
+    "artist": "Mikko Saarainen",
+    "artistId": "7",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/family-trip.png",
+    "secondaryImage": "/images/products/family-trip-room.avif",
+    "availableSizes": [
+      "50x50cm"
+    ],
+    "priceCategory": "Budget",
+    "productId": "26",
+    "recommendedProducts": [
+      "Cruise",
+      "URF!",
+      "Journey",
+      "Half Man"
+    ],
+    "created_time": "2026-09-15T08:36:46.634Z",
+    "last_edited_time": "2026-09-15T08:36:46.634Z"
+  },
+  {
+    "id": "cf32c714-1e6a-457c-975d-c841a4cea60f",
+    "name": "Journey",
+    "slug": "journey",
+    "description": "Journey by Mikko Saarainen takes a red car over a stone bridge below snow-capped mountains, through autumn trees in orange and yellow. It is the quietest of his prints and the most graphic: big rolling clouds, flowering shrubs crowding the foreground, two birds up in the pines, and the arch of the bridge repeated in its own reflection. The muted palette and flat shapes owe something to the old railway travel posters, and it is calm enough to hold a wall on its own.",
+    "category": "Illustrations",
+    "artist": "Mikko Saarainen",
+    "artistId": "7",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/journey.png",
+    "secondaryImage": "/images/products/journey-room.avif",
+    "availableSizes": [
+      "50x70cm"
+    ],
+    "priceCategory": "Budget",
+    "productId": "27",
+    "recommendedProducts": [
+      "Cruise",
+      "Family Trip",
+      "URF!",
+      "Morgenstrekk"
+    ],
+    "created_time": "2026-09-15T08:36:46.634Z",
+    "last_edited_time": "2026-09-15T08:36:46.634Z"
+  },
+  {
+    "id": "27d8b635-7b9a-4dab-bf08-bae7c46c4a91",
+    "name": "URF!",
+    "slug": "urf",
+    "description": "URF! by Mikko Saarainen is a whole comic page in one print: a knight in blue armour losing an argument with a green dragon, across three panels. He is blasted off a wall in the first, swinging a sword at the dragon's tail in the second, and down to a fire extinguisher by the third, while another knight creeps through a ruin towards a red door. Autumn trees and grey castle stone fill every gap, and there is a joke in almost all of them.",
+    "category": "Illustrations",
+    "artist": "Mikko Saarainen",
+    "artistId": "7",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/urf.png",
+    "secondaryImage": "/images/products/urf-room.avif",
+    "availableSizes": [
+      "50x50cm"
+    ],
+    "priceCategory": "Budget",
+    "productId": "28",
+    "recommendedProducts": [
+      "Cruise",
+      "Family Trip",
+      "Journey",
+      "Eye Nose Eye"
+    ],
+    "created_time": "2026-09-15T08:36:46.634Z",
+    "last_edited_time": "2026-09-15T08:36:46.634Z"
+  },
+  {
+    "id": "c25b69c4-5aeb-49c3-873b-b7a7c4477382",
+    "name": "Stockholm",
+    "slug": "stockholm",
+    "description": "Stockholm's rooftops, towers and waterfront gather in a colourful illustration by Ishtar Bäcklund Dakhil. Orange brick, yellow façades and green spires rise above two boats, with pale blue sky keeping the busy scene open. Look closer for rows of windows, flowering trees and the small architectural details that make the city feel lived in.",
+    "category": "Illustrations",
+    "artist": "Ishtar Bäcklund Dakhil",
+    "artistId": "8",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": false,
+    "image": "/images/products/stockholm.png",
+    "secondaryImage": "/images/products/stockholm-room.avif",
+    "availableSizes": [
+      "A2"
+    ],
+    "priceCategory": "Premium",
+    "productId": "29",
+    "recommendedProducts": [
+      "Frukt & Grönt",
+      "Desert Circles",
+      "Lilac Geometry",
+      "Creature Among Blue Leaves"
+    ],
+    "created_time": "2026-09-24T13:00:00.000Z",
+    "last_edited_time": "2026-09-26T09:00:00.000Z"
+  },
+  {
+    "id": "aa852d62-7aa0-47b8-988c-3e136881d758",
+    "name": "Frukt & Grönt",
+    "slug": "frukt-och-gront",
+    "description": "Fruit, vegetables and handwritten Swedish labels fill Frukt & Grönt by Ishtar Bäcklund Dakhil. A deep purple aubergine sits above pineapple, sweetcorn, leafy greens and bright red tomatoes, with roots and stems threading through the white spaces. It's a generous, detailed gathering of everyday ingredients, with something new to spot each time you pass.",
+    "category": "Botanical",
+    "artist": "Ishtar Bäcklund Dakhil",
+    "artistId": "8",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": false,
+    "image": "/images/products/frukt-och-gront.png",
+    "secondaryImage": "/images/products/frukt-och-gront-room.avif",
+    "availableSizes": [
+      "A2"
+    ],
+    "priceCategory": "Premium",
+    "productId": "30",
+    "recommendedProducts": [
+      "Stockholm",
+      "Desert Circles",
+      "Lilac Geometry",
+      "Creature Among Blue Leaves"
+    ],
+    "created_time": "2026-09-24T13:00:00.000Z",
+    "last_edited_time": "2026-09-26T09:00:00.000Z"
+  },
+  {
+    "id": "a94ca9a7-8763-4c6b-b05e-5be6a1013058",
+    "name": "Desert Circles",
+    "slug": "desert-circles",
+    "description": "Overlapping white circles divide a desert landscape into curved fragments in this artwork by Ishtar Bäcklund Dakhil. Rust-coloured rocks, cacti and dusty pink hills repeat inside the pattern, interrupted by bright turquoise openings. The repeated shapes draw your eye towards the centre, while the scattered marks and uneven colour keep each section different.",
+    "category": "Abstract",
+    "artist": "Ishtar Bäcklund Dakhil",
+    "artistId": "8",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": false,
+    "image": "/images/products/desert-circles.png",
+    "secondaryImage": "/images/products/desert-circles-room.avif",
+    "availableSizes": [
+      "50x50cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "32",
+    "recommendedProducts": [
+      "Stockholm",
+      "Frukt & Grönt",
+      "Lilac Geometry",
+      "Creature Among Blue Leaves"
+    ],
+    "created_time": "2026-09-24T13:00:00.000Z",
+    "last_edited_time": "2026-09-26T09:00:00.000Z"
+  },
+  {
+    "id": "5fa1f8d6-08f9-4f87-8d89-0e898724fb71",
+    "name": "Lilac Geometry",
+    "slug": "lilac-geometry",
+    "description": "Lilac flowers, bees and pale circles surround a fine geometric star in this artwork by Ishtar Bäcklund Dakhil. Purple blossoms spill across the edges, with green leaves, yellow flowers and smaller plants gathering below. Repeating curves draw these garden details into a central pattern, set against a soft pink sky and muted blue ground.",
+    "category": "Botanical",
+    "artist": "Ishtar Bäcklund Dakhil",
+    "artistId": "8",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": false,
+    "image": "/images/products/lilac-geometry.png",
+    "secondaryImage": "/images/products/lilac-geometry-room.avif",
+    "availableSizes": [
+      "50x70cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "35",
+    "recommendedProducts": [
+      "Stockholm",
+      "Frukt & Grönt",
+      "Desert Circles",
+      "Creature Among Blue Leaves"
+    ],
+    "created_time": "2026-09-24T13:00:00.000Z",
+    "last_edited_time": "2026-09-26T09:00:00.000Z"
+  },
+  {
+    "id": "88783006-f625-4ba2-b186-f5d8a2e1bdb8",
+    "name": "Bird Above the Valley",
+    "slug": "bird-above-the-valley",
+    "description": "A white bird with a row of windows glides over a green valley in this illustration by Ishtar Bäcklund Dakhil. Its wings stretch across winding blue rivers, pink rock faces and thick vegetation. The pale shape stands out against the busy landscape below, bringing the lightness of flight to a scene full of colour and movement.",
+    "category": "Illustrations",
+    "artist": "Ishtar Bäcklund Dakhil",
+    "artistId": "8",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": false,
+    "image": "/images/products/bird-above-the-valley.png",
+    "secondaryImage": "/images/products/bird-above-the-valley-room.avif",
+    "availableSizes": [
+      "A3"
+    ],
+    "priceCategory": "Premium",
+    "productId": "38",
+    "recommendedProducts": [
+      "Stockholm",
+      "Frukt & Grönt",
+      "Desert Circles",
+      "Lilac Geometry"
+    ],
+    "created_time": "2026-09-24T13:00:00.000Z",
+    "last_edited_time": "2026-09-26T09:00:00.000Z"
+  },
+  {
+    "id": "e03d6040-dbdf-47ea-9438-c4955fddb427",
+    "name": "Creature Among Blue Leaves",
+    "slug": "creature-among-blue-leaves",
+    "description": "A pale horned creature peers through layers of blue leaves in this illustration by Ishtar Bäcklund Dakhil. Broad fans and pointed fronds fill the dark background, partly hiding its spotted face and curved horns. Small touches of ochre interrupt the cool palette, while the overlapping plants make the creature feel tucked inside its own world.",
+    "category": "Illustrations",
+    "artist": "Ishtar Bäcklund Dakhil",
+    "artistId": "8",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": false,
+    "image": "/images/products/creature-among-blue-leaves.png",
+    "secondaryImage": "/images/products/creature-among-blue-leaves-room.avif",
+    "availableSizes": [
+      "50x70cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "36",
+    "recommendedProducts": [
+      "Stockholm",
+      "Frukt & Grönt",
+      "Desert Circles",
+      "Lilac Geometry"
+    ],
+    "created_time": "2026-09-24T13:00:00.000Z",
+    "last_edited_time": "2026-09-26T09:00:00.000Z"
+  },
+  {
+    "id": "49efd63d-fdfc-4344-a732-fba39a879795",
+    "name": "Surfer with Orange Sun",
+    "slug": "surfer-with-orange-sun",
+    "description": "A surfer balances above a turquoise wave with a bright orange sun behind her in this illustration by Ishtar Bäcklund Dakhil. Outstretched arms and a bent knee give the figure a light, poised movement. Dark clothing makes a strong shape against the sun, while white foam breaks across the lower part of the picture.",
+    "category": "Illustrations",
+    "artist": "Ishtar Bäcklund Dakhil",
+    "artistId": "8",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": false,
+    "image": "/images/products/surfer-with-orange-sun.png",
+    "secondaryImage": "/images/products/surfer-with-orange-sun-room.avif",
+    "availableSizes": [
+      "A3"
+    ],
+    "priceCategory": "Premium",
+    "productId": "40",
+    "recommendedProducts": [
+      "Stockholm",
+      "Frukt & Grönt",
+      "Desert Circles",
+      "Lilac Geometry"
+    ],
+    "created_time": "2026-09-24T13:00:00.000Z",
+    "last_edited_time": "2026-09-26T09:00:00.000Z"
   }
 ]

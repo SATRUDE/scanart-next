@@ -3,82 +3,78 @@ import { categoryLandings } from '@/lib/categories';
 import { collections } from '@/lib/collections';
 import type { CrossLinksStrings } from '@/lib/i18n';
 
-// English defaults so existing callers render identically with no props.
 const DEFAULT_STRINGS: CrossLinksStrings = {
-  heading: 'Explore more',
+  heading: 'Explore the shop',
   allPrints: 'All prints',
-  wallArt: 'Scandinavian Wall Art',
-  nordicArt: 'Nordic Art',
+  wallArt: 'Scandinavian wall art',
+  nordicArt: 'Nordic art',
   meetTheArtists: 'Meet the artists',
   categoryLabels: {},
   collectionLabels: {},
 };
 
 interface LandingCrossLinksProps {
-  /** The landing this block sits on, so it never links back to itself. */
-  current: { type: 'category' | 'collection' | 'wall-art' | 'nordic-art'; slug: string };
-  /** Localised labels; default to the English strings/config labels. */
+  /** The page it sits on, so it never links to itself. Omit on pages that are not landings. */
+  current?: { type: 'category' | 'collection' | 'wall-art' | 'nordic-art' | 'products' | 'page'; slug: string };
   strings?: CrossLinksStrings;
-  /**
-   * 'no' points category, collection and artists-hub links into the /no tree,
-   * where Norwegian pages exist. /products and the wall-art landing stay on
-   * their English routes, which are still the only versions of those two.
-   * Collections joined the /no tree in phase 2 (2026-08-21); before that they
-   * were linked in English from the Norwegian pages, which leaked the tree
-   * straight back out to English and is the fault this fixes.
-   */
   locale?: 'en' | 'no';
+  /** Artists with published prints, for the second column. Without it the column is a single "Meet the artists" link. */
+  artists?: { slug: string; name: string }[];
+  className?: string;
 }
 
 /**
- * Shared "Explore more" cross-link block for the category and collection landing
- * pages. Both families draw search impressions but rank poorly, and before this
- * they barely linked to one another (category pages had no onward nav at all;
- * collection pages hardcoded /products + two categories + /artists), so link
- * equity and crawl paths did not flow between the doors-in we have built.
+ * Explore the shop (Figma 241:3800): the closing link block above the footer
+ * on listing, product, journal and profile pages. Categories, collections and
+ * the two guides in one column, every artist in the other, in the serif.
  *
- * Driven by the same categoryLandings/collections config the footer and sitemap
- * use, so the link set never drifts and picks up any new landing automatically.
- * The current page is filtered out so a page never self-links. Faithful to the
- * existing collection-page nav style (a flat wrap of small text links); no new
- * design language and no copy to write, labels come from the config.
+ * It is also the landing pages' cross-linking (was "Explore more"), which is
+ * how every category, collection and guide page links to the rest: it never
+ * links to the page it is on, and /nordic-art stays off the Norwegian pages
+ * because that page has no twin (docs/v2-seo.md).
  */
-export function LandingCrossLinks({ current, strings = DEFAULT_STRINGS, locale = 'en' }: LandingCrossLinksProps) {
+export function LandingCrossLinks({ current = { type: 'page', slug: '' }, strings = DEFAULT_STRINGS, locale = 'en', artists, className = '' }: LandingCrossLinksProps) {
   const localePrefix = locale === 'no' ? '/no' : '';
   const artistsHref = locale === 'no' ? '/no/artists' : '/artists';
-  const categoryLinks = categoryLandings
-    .filter(c => !(current.type === 'category' && c.slug === current.slug))
-    .map(c => ({
-      href: `${localePrefix}/category/${c.slug}`,
-      label: strings.categoryLabels[c.slug] ?? c.heading,
-    }));
+  const from = `${current.type}/${current.slug}`;
 
-  const collectionLinks = collections
-    .filter(c => !(current.type === 'collection' && c.slug === current.slug))
-    .map(c => ({
-      href: `${localePrefix}/collection/${c.slug}`,
-      label: strings.collectionLabels[c.slug] ?? c.chipLabel,
-    }));
+  const shopLinks = [
+    ...categoryLandings
+      .filter(c => !(current.type === 'category' && c.slug === current.slug))
+      .map(c => ({ href: `${localePrefix}/category/${c.slug}`, label: strings.categoryLabels[c.slug] ?? c.category })),
+    ...collections
+      .filter(c => !(current.type === 'collection' && c.slug === current.slug))
+      .map(c => ({ href: `${localePrefix}/collection/${c.slug}`, label: strings.collectionLabels[c.slug] ?? c.chipLabel })),
+    ...(current.type !== 'nordic-art' && locale === 'en' ? [{ href: '/nordic-art', label: strings.nordicArt }] : []),
+    ...(current.type !== 'wall-art' ? [{ href: `${localePrefix}/scandinavian-wall-art`, label: strings.wallArt }] : []),
+    ...(current.type !== 'products' ? [{ href: `${localePrefix}/products`, label: strings.allPrints }] : []),
+  ];
+  const artistLinks = artists?.length
+    ? artists.map(a => ({ href: `${localePrefix}/artist/${a.slug}`, label: a.name }))
+    : [{ href: artistsHref, label: strings.meetTheArtists }];
+
+  const linkCls = 'transition-colors hover:text-brand';
 
   return (
-    <section className="mt-16">
-      <h2 className="text-2xl text-neutral-900">{strings.heading}</h2>
-      <nav className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground">
-        <TrackedLink event="explore-more-click" eventData={{ from: `${current.type}/${current.slug}`, to: `${localePrefix}/products` }} href={`${localePrefix}/products`} className="hover:text-foreground">{strings.allPrints}</TrackedLink>
-        {categoryLinks.map(l => (
-          <TrackedLink key={l.href} event="explore-more-click" eventData={{ from: `${current.type}/${current.slug}`, to: l.href }} href={l.href} className="hover:text-foreground">{l.label}</TrackedLink>
-        ))}
-        {collectionLinks.map(l => (
-          <TrackedLink key={l.href} event="explore-more-click" eventData={{ from: `${current.type}/${current.slug}`, to: l.href }} href={l.href} className="hover:text-foreground">{l.label}</TrackedLink>
-        ))}
-        {current.type !== 'wall-art' && (
-          <TrackedLink event="explore-more-click" eventData={{ from: `${current.type}/${current.slug}`, to: `${localePrefix}/scandinavian-wall-art` }} href={`${localePrefix}/scandinavian-wall-art`} className="hover:text-foreground">{strings.wallArt}</TrackedLink>
-        )}
-        {/* English-only page for now, so the link stays off the /no variants. */}
-        {current.type !== 'nordic-art' && locale === 'en' && (
-          <TrackedLink event="explore-more-click" eventData={{ from: `${current.type}/${current.slug}`, to: '/nordic-art' }} href="/nordic-art" className="hover:text-foreground">{strings.nordicArt}</TrackedLink>
-        )}
-        <TrackedLink event="explore-more-click" eventData={{ from: `${current.type}/${current.slug}`, to: artistsHref }} href={artistsHref} className="hover:text-foreground">{strings.meetTheArtists}</TrackedLink>
+    <section aria-labelledby="explore-the-shop" className={`page-grid gap-y-6 ${className}`}>
+      <div className="col-span-full border-t border-ink pt-4 tab:pt-6 desk:col-span-4">
+        <h2 id="explore-the-shop" className="type-h2">{strings.heading}</h2>
+      </div>
+      <nav aria-label={strings.heading} className="col-span-full grid gap-4 tab:grid-cols-2 tab:gap-x-8 desk:col-span-8 desk:border-t desk:border-ink desk:pt-6">
+        <ul className="flex flex-col gap-1 tab:gap-2 type-h3">
+          {shopLinks.map(l => (
+            <li key={l.href}>
+              <TrackedLink event="explore-more-click" eventData={{ from, to: l.href }} href={l.href} className={linkCls}>{l.label}</TrackedLink>
+            </li>
+          ))}
+        </ul>
+        <ul className="flex flex-col gap-1 tab:gap-2 type-h3">
+          {artistLinks.map(l => (
+            <li key={l.href}>
+              <TrackedLink event="explore-more-click" eventData={{ from, to: l.href }} href={l.href} className={linkCls}>{l.label}</TrackedLink>
+            </li>
+          ))}
+        </ul>
       </nav>
     </section>
   );

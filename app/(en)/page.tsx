@@ -1,20 +1,12 @@
-import { shopScenes } from '@/lib/shop-scenes';
 import type { Metadata } from 'next';
-import { TrackedLink } from '@/components/TrackedLink';
-import Image from 'next/image';
-import { getFeaturedProducts, getProductsByArtist } from '@/lib/products';
-import { artists } from '@/data/artists';
-import { ArtistsList, ArtistWithCount } from '@/components/ArtistsList';
-import { HeroSection } from '@/components/HeroSection';
-import { QualityPromise } from '@/components/QualityPromise';
-import { Testimonials } from '@/components/Testimonials';
-import { FullWidthImage } from '@/components/FullWidthImage';
-import { getCategoryLandingByCategory } from '@/lib/categories';
 import { BASE_URL } from '@/lib/site';
-import { getAllArticles } from '@/lib/articles';
-import { ArticleCard } from '@/components/ArticleCard';
 import { hreflangPair } from '@/lib/i18n';
+import { getHomeData, homeStrings } from '@/lib/home';
+import { helpGroups } from '@/data/help';
+import { HomePage } from '@/components/v2/home/HomePage';
 
+// Title and description come from siteMetadata (the default title and
+// description), unchanged for V2 (docs/v2-seo.md item 2).
 export const metadata: Metadata = {
   alternates: {
     canonical: '/',
@@ -22,167 +14,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function HomePage() {
-  const featuredProducts = await getFeaturedProducts();
-  // Hero-only override: these prints show their styled room scene in the hero
-  // rotation, while the product page keeps the clean print. Mark picks the
-  // scene; add a slug here and drop the file in public/images/homepage.
-  // vinkveld 2026-08-07, morgenlevering 2026-08-21.
-  const heroScenes: Record<string, string> = {
-    vinkveld: '/images/homepage/vinkveld-scene.jpg',
-    morgenlevering: '/images/homepage/morgenlevering-scene.jpg',
-  };
-  // The scene goes in `secondaryImage`, which is the slot the hero displays
-  // (its SmartImage is passed `useSecondary`). It used to go in both slots, so
-  // the print and the scene were the same file and nothing downstream could
-  // tell them apart: the alt text came out describing a bare print over a photo
-  // of a styled room, and an image error fell back to the file that had just
-  // failed. Keeping the print in `image` fixes both and shows the same picture.
-  const heroProducts = featuredProducts.map(p =>
-    heroScenes[p.slug] ? { ...p, secondaryImage: heroScenes[p.slug] } : p
-  );
-  // Featured articles first (the Featured checkbox in Notion curates this
-  // teaser), newest fill the remaining slots. Keeps a stable homepage link to
-  // the pages we want search to treat as canonical for their topic, e.g. the
-  // books pillar, which the homepage was cannibalising in search results.
-  const allArticles = await getAllArticles();
-  const latestArticles = [
-    ...allArticles.filter(a => a.featured),
-    ...allArticles.filter(a => !a.featured),
-  ].slice(0, 3);
-
-  // Artists with published work, most-published first, for the homepage teaser
-  const artistsWithCounts: ArtistWithCount[] = [];
-  for (const artist of artists) {
-    const products = await getProductsByArtist(artist.id);
-    if (products.length > 0) artistsWithCounts.push({ ...artist, printCount: products.length });
-  }
-  // Most prints first. Ties keep roster order (sort is stable), so the artist
-  // who has been with the gallery longer holds the slot: Mark's call on 7 Sep
-  // 2026 when Hedvig Wallin arrived with four prints and would otherwise have
-  // displaced Sia Siamos, whom he had just put on the homepage, on alphabet.
-  artistsWithCounts.sort((a, b) => b.printCount - a.printCount);
-  const featuredArtists = artistsWithCounts.slice(0, 3);
+export default async function Home() {
+  // Hero, New prints, the wall's prints, artists and the journal teaser all
+  // come from lib/home.ts, which the Norwegian homepage reads too.
+  const data = await getHomeData('');
 
   return (
-    <div className="min-h-screen">
-      <HeroSection products={heroProducts} />
-
-      <section className="py-16 bg-muted/30">
-        <div className="container mx-auto px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-16">
-            <div className="lg:col-span-1">
-              <h2 className="text-3xl text-neutral-900 mb-0">Explore categories</h2>
-            </div>
-            <div className="lg:col-span-2">
-              <p className="text-lg text-neutral-600 leading-relaxed mb-4">
-                Carefully curated{' '}
-                <TrackedLink
-                  event="homepage-section-click"
-                  eventData={{ section: 'explore-categories-copy', target: '/scandinavian-wall-art' }}
-                  href="/scandinavian-wall-art"
-                  className="underline underline-offset-2 hover:text-neutral-900"
-                >
-                  Scandinavian wall art
-                </TrackedLink>{' '}
-                from talented Nordic artists, bringing authentic minimalism and truly timeless design into your home.
-              </p>
-              <TrackedLink event="homepage-section-click" eventData={{ section: 'explore-categories', target: '/products' }} href="/products" className="inline-flex items-center justify-center rounded-md text-sm font-medium border border-gray-200 bg-background text-foreground hover:bg-gray-50 hover:text-gray-900 h-10 px-4 py-2">
-                All categories
-              </TrackedLink>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {[
-              // Tile scenes are InspireScene shots that honestly contain a
-              // print from their category (Stan's 16 Aug curation).
-              { name: 'Botanical', image: shopScenes.hyttefrokost.image, alt: shopScenes.hyttefrokost.alt, desc: 'Discover nature-inspired pieces that bring organic beauty and tranquility to your space.' },
-              { name: 'Illustrations', image: shopScenes.slingshot.image, alt: shopScenes.slingshot.alt, desc: 'Playful, characterful, and full of charm, our illustration pieces blend Scandinavian wit with bold, contemporary style.' },
-              { name: 'Abstract', image: shopScenes['swallow-dive'].image, alt: shopScenes['swallow-dive'].alt, desc: 'Explore contemporary abstract art that adds modern sophistication to your home.' },
-            ].map(cat => {
-              const landing = getCategoryLandingByCategory(cat.name);
-              return (
-              <TrackedLink key={cat.name} event="homepage-section-click" eventData={{ section: 'category-tile', target: cat.name }} href={landing ? `/category/${landing.slug}` : `/products?category=${cat.name}`} className="group cursor-pointer">
-                <div className="relative aspect-[4/5] overflow-hidden bg-neutral-50 rounded mb-4">
-                  <Image src={cat.image} alt={cat.alt} fill sizes="(max-width: 1024px) 100vw, 33vw" className="object-cover transition-all duration-300 group-hover:scale-[1.02]" />
-                </div>
-                <h3 className="text-lg font-medium mb-2">{cat.name}</h3>
-                <p className="text-muted-foreground text-sm">{cat.desc}</p>
-              </TrackedLink>
-              );
-            })}
-          </div>
-
-          <div className="text-center mt-12">
-            <TrackedLink event="homepage-section-click" eventData={{ section: 'view-all-products', target: '/products' }} href="/products" className="inline-flex items-center justify-center rounded-md text-sm font-medium border border-gray-200 bg-background text-foreground hover:bg-gray-50 hover:text-gray-900 h-10 px-4 py-2">
-              View all products
-            </TrackedLink>
-          </div>
-        </div>
-      </section>
-
-      <QualityPromise />
-      <Testimonials />
-      <FullWidthImage />
-
-      {/* Meet the artists: homepage door-in to the /artists hub and artist pages */}
-      {featuredArtists.length > 0 && (
-        <section className="container mx-auto px-8 py-16">
-          <div className="max-w-3xl mx-auto">
-            <div className="flex items-center justify-between gap-6 mb-8">
-              <h2 className="text-3xl font-normal text-neutral-900">Meet the artists</h2>
-              <TrackedLink
-                event="homepage-section-click"
-                eventData={{ section: 'meet-the-artists', target: '/artists' }}
-                href="/artists"
-                className="text-sm font-medium text-neutral-900 hover:text-neutral-600 transition-colors whitespace-nowrap"
-              >
-                View all artists →
-              </TrackedLink>
-            </div>
-            <ArtistsList artists={featuredArtists} />
-            <p className="mt-6 text-neutral-600 leading-relaxed">
-              Explore the playful prints of{' '}
-              <TrackedLink
-                event="homepage-section-click"
-                eventData={{ section: 'hedvig-wallin', target: '/artist/hedvig-wallin' }}
-                href="/artist/hedvig-wallin"
-                className="underline hover:text-neutral-900"
-              >
-                Hedvig Wallin
-              </TrackedLink>
-              , an illustrator from Gothenburg.
-            </p>
-          </div>
-        </section>
-      )}
-
-      {/* From the journal: the homepage's first internal link into the journal/content pages */}
-      {latestArticles.length > 0 && (
-        <section className="container mx-auto px-8 py-16">
-          <div className="flex items-center justify-between gap-6 mb-8">
-            <h2 className="text-3xl font-normal text-neutral-900">From the journal</h2>
-            <TrackedLink
-              event="homepage-section-click"
-              eventData={{ section: 'from-the-journal', target: '/journal' }}
-              href="/journal"
-              className="text-sm font-medium text-neutral-900 hover:text-neutral-600 transition-colors whitespace-nowrap"
-            >
-              Read the journal →
-            </TrackedLink>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {latestArticles.map((article, i) => (
-              <ArticleCard
-                key={article.id}
-                article={article}
-                imageAspectClass={i === 2 ? 'aspect-[16/9]' : 'aspect-[4/3]'}
-              />
-            ))}
-          </div>
-        </section>
-      )}
+    <>
+      <HomePage locale="en" strings={homeStrings} data={data} help={helpGroups} />
 
       <script
         type="application/ld+json"
@@ -207,6 +46,6 @@ export default async function HomePage() {
           }),
         }}
       />
-    </div>
+    </>
   );
 }

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { markdownToBlocks } from '@/lib/markdown-blocks';
+import { markdownToBlocks, parseRowImage } from '@/lib/markdown-blocks';
 
 function richText(block: { [key: string]: unknown }, type: string) {
   return (block[type] as { rich_text: { plain_text: string }[] }).rich_text;
@@ -96,5 +96,85 @@ describe('markdownToBlocks', () => {
   it('returns an empty array for empty or undefined markdown', () => {
     expect(markdownToBlocks('')).toEqual([]);
     expect(markdownToBlocks(undefined as unknown as string)).toEqual([]);
+  });
+
+  describe('::print[slug], the print feature', () => {
+    it('becomes a print_feature block carrying the slug', () => {
+      const blocks = markdownToBlocks('Before.\n\n::print[hummer-og-vin]\n\nAfter.');
+      expect(blocks.map((b) => b.type)).toEqual(['paragraph', 'print_feature', 'paragraph']);
+      expect(blocks[1].print_feature).toEqual({ slug: 'hummer-og-vin' });
+    });
+
+    it('tolerates surrounding spaces and lower-cases the slug', () => {
+      const blocks = markdownToBlocks('  ::print[Hummer-og-Vin]  ');
+      expect(blocks[0].print_feature).toEqual({ slug: 'hummer-og-vin' });
+    });
+
+    it('leaves a malformed line as a plain paragraph, never a half-built block', () => {
+      for (const line of ['::print[]', '::print[two words]', '::print hummer-og-vin', 'See ::print[hummer-og-vin] here']) {
+        const blocks = markdownToBlocks(line);
+        expect(blocks.map((b) => b.type)).toEqual(['paragraph']);
+      }
+    });
+  });
+
+  describe('::images … ::, the image row', () => {
+    const row = [
+      '::images',
+      '![A kitchen counter with Sunday Brunch framed above it](/images/a.avif "Sunday Brunch | Hedvig Wallin")',
+      '',
+      '![A dining table under Massa Äpplen](https://example.com/b.jpg)',
+      '::',
+    ].join('\n');
+
+    it('collects the image lines into one image_row block with alt and caption parts', () => {
+      const blocks = markdownToBlocks(`Intro.\n\n${row}\n\nAfter.`);
+      expect(blocks.map((b) => b.type)).toEqual(['paragraph', 'image_row', 'paragraph']);
+      expect(blocks[1].image_row).toEqual({
+        images: [
+          { url: '/images/a.avif', alt: 'A kitchen counter with Sunday Brunch framed above it', caption: ['Sunday Brunch', 'Hedvig Wallin'] },
+          { url: 'https://example.com/b.jpg', alt: 'A dining table under Massa Äpplen', caption: [] },
+        ],
+      });
+    });
+
+    it('drops an image with no alt text rather than show it unlabelled', () => {
+      const blocks = markdownToBlocks('::images\n![](/images/a.avif "Caption")\n![Alt](/images/b.avif)\n::');
+      expect((blocks[0].image_row as { images: { url: string }[] }).images.map((i) => i.url)).toEqual(['/images/b.avif']);
+    });
+
+    it('renders nothing for a row with no usable images', () => {
+      expect(markdownToBlocks('::images\n![](/images/a.avif)\n::')).toEqual([]);
+    });
+
+    it('ends a row whose closing :: was forgotten at the next text line', () => {
+      const blocks = markdownToBlocks('::images\n![Alt](/images/a.avif)\nThe next paragraph.');
+      expect(blocks.map((b) => b.type)).toEqual(['image_row', 'paragraph']);
+    });
+
+    it('closes a row left open at the end of the body', () => {
+      const blocks = markdownToBlocks('::images\n![Alt](/images/a.avif)');
+      expect(blocks.map((b) => b.type)).toEqual(['image_row']);
+    });
+
+    it('ignores a stray closing line outside a row', () => {
+      expect(markdownToBlocks('One.\n::\nTwo.').map((b) => b.type)).toEqual(['paragraph', 'paragraph']);
+    });
+
+    it('keeps a standalone image line outside a row as the single image it always was', () => {
+      const blocks = markdownToBlocks('![A gallery wall](https://example.com/hero.jpg)');
+      expect(blocks.map((b) => b.type)).toEqual(['image']);
+    });
+  });
+
+  describe('parseRowImage', () => {
+    it('reads alt, url and a single-part caption', () => {
+      expect(parseRowImage('![Alt](/x.avif "Just a caption")')).toEqual({ url: '/x.avif', alt: 'Alt', caption: ['Just a caption'] });
+    });
+
+    it('rejects a line that is not an image, or has blank alt text', () => {
+      expect(parseRowImage('Not an image')).toBeNull();
+      expect(parseRowImage('![   ](/x.avif)')).toBeNull();
+    });
   });
 });

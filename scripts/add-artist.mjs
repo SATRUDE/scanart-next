@@ -9,8 +9,12 @@
 //
 //   1. Renders each print file (PDF or image) to the framed product shot the
 //      catalogue uses: the artwork, trimmed to its TrimBox, composited into
-//      scripts/assets/frame-template.png (the oak frame from the SA Figma
-//      file, page "Images", Group 83). Output: public/images/products/<slug>.png
+//      the oak frame from the SA Figma file, page "Images", Group 83, in
+//      whichever of the two shapes the shop sells matches the artwork —
+//      scripts/assets/frame-template.png for 50 x 70 cm,
+//      scripts/assets/frame-template-square.png for 50 x 50 cm. It refuses if
+//      that is not the size the manifest sells the print in.
+//      Output: public/images/products/<slug>.png
 //   2. Crops the artist's photo square for the avatar and Person JSON-LD.
 //      Output: public/images/artists/<slug>.png
 //   3. Appends the artist to data/artists.ts and each print to
@@ -41,14 +45,34 @@ import path from 'node:path';
 import sharp from 'sharp';
 
 const ROOT = process.cwd();
-const TEMPLATE = path.join(ROOT, 'scripts', 'assets', 'frame-template.png');
-// Where the artwork sits inside the template, in template pixels. The template
-// is the Figma group cropped to its true 996 x 1331: the export was 997 x 1332
-// and the extra column and row were canvas background, a dark line down the
-// right of every product shot until Mark spotted it. Box position taken from
-// the Figma group: artwork layer at (110.72, 112.57), 774.59 x 1106.30, in a
-// 996 x 1332 frame. The frame is a 5:7 portrait, the shop's 50 x 70 cm format.
-const ART_BOX = { left: 111, top: 113, width: 775, height: 1106 };
+// The oak frame in the two shapes the shop sells, portrait first.
+//
+// frame-template.png is the Figma group (page "Images", Group 83) cropped to
+// its true 996 x 1331: the export was 997 x 1332 and the extra column and row
+// were canvas background, a dark line down the right of every product shot
+// until Mark spotted it. Box position taken from the Figma group: artwork
+// layer at (110.72, 112.57), 774.59 x 1106.30, in a 996 x 1332 frame. That is
+// a 5:7 portrait, the shop's 50 x 70 cm format.
+//
+// frame-template-square.png is the same frame for the 50 x 50 cm format,
+// which the catalogue has sold since Simen Wahlqvist's four square prints.
+// It is the portrait template with 331 rows spliced out of the middle of the
+// side rails, so the artwork box becomes 775 x 775 and every other measurement
+// — moulding width, corner mitres, outer frame width — is unchanged. Splicing
+// rather than scaling keeps the wood grain at the same scale as the top and
+// bottom rails, which is why the join does not read at output size.
+const FRAMES = [
+  {
+    size: '50x70cm',
+    template: path.join(ROOT, 'scripts', 'assets', 'frame-template.png'),
+    artBox: { left: 111, top: 113, width: 775, height: 1106 },
+  },
+  {
+    size: '50x50cm',
+    template: path.join(ROOT, 'scripts', 'assets', 'frame-template-square.png'),
+    artBox: { left: 111, top: 113, width: 775, height: 775 },
+  },
+];
 // The oak frame's outer edge in the template, measured: x 92..902, so 811 px
 // wide in a 996 px canvas. The template itself is tight around the frame.
 const TEMPLATE_FRAME_WIDTH = 811;
@@ -89,9 +113,20 @@ function ts(value) {
   return `'${String(value).replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/\n/g, '\\n')}'`;
 }
 
-/** The first sentence of a description, the way lib/meta-snippet.ts reads it. */
+/**
+ * The first sentence of a description, the way lib/meta-snippet.ts reads it.
+ *
+ * It must be the same rule, or the check below measures a string the site
+ * never emits. metaSnippet() ends a sentence at a full stop followed by a
+ * space, and deliberately at nothing else: a general splitter would break on
+ * abbreviations. This used to split on ! and ? as well, which meant a print
+ * whose title ends in one — URF! is the first — was measured as a 4-character
+ * snippet and waved through, while the site would have emitted the whole
+ * 156-character sentence.
+ */
 function firstSentence(text) {
-  return text.split(/(?<=[.!?])\s/)[0];
+  const normalised = text.replace(/\s+/g, ' ').trim();
+  return normalised.includes('. ') ? `${normalised.split('. ')[0]}.` : normalised;
 }
 
 function resolveInput(file, manifestDir) {
@@ -143,19 +178,37 @@ function renderArtwork(file, workDir) {
   return sharp(rendered).extract({ left, top, width, height }).png().toBuffer();
 }
 
-async function buildProductShot(artworkBuffer, outputPath) {
-  const meta = await sharp(artworkBuffer).metadata();
+/**
+ * The frame that matches the artwork's shape, and a complaint if that is not
+ * the frame the manifest is selling it in. Getting this wrong is not cosmetic:
+ * the picture would show a 50 x 70 frame on a print the customer buys at
+ * 50 x 50, or squash the drawing to fit.
+ */
+function frameFor(meta, sizes, printName) {
   const artRatio = meta.width / meta.height;
-  const boxRatio = ART_BOX.width / ART_BOX.height;
-  // The template is a 5:7 frame. A print of another shape is placed whole on a
-  // white sheet inside it rather than cropped, and flagged, because the frame
-  // in the picture would then be the wrong frame for that print.
-  const fit = Math.abs(artRatio - boxRatio) / boxRatio > 0.03 ? 'contain' : 'fill';
-  if (fit === 'contain') {
-    console.warn(`  ! artwork is ${meta.width}x${meta.height} (${artRatio.toFixed(3)}), not 5:7; placed uncropped on white. Check the result.`);
+  const distance = (frame) => Math.abs(artRatio - frame.artBox.width / frame.artBox.height);
+  const frame = [...FRAMES].sort((a, b) => distance(a) - distance(b))[0];
+  const off = distance(frame) / (frame.artBox.width / frame.artBox.height);
+  if (off > 0.03) {
+    fail(
+      `print "${printName}": artwork is ${meta.width}x${meta.height} (ratio ${artRatio.toFixed(3)}), ` +
+        `which is not ${FRAMES.map((f) => f.size).join(' or ')}. Crop it, or add a frame template for its shape.`
+    );
   }
+  if (!sizes.includes(frame.size)) {
+    fail(
+      `print "${printName}": the artwork is ${frame.size} shaped but the manifest sells it as ${sizes.join(', ')}. ` +
+        'The product shot would show the wrong frame.'
+    );
+  }
+  return frame;
+}
+
+async function buildProductShot(artworkBuffer, outputPath, sizes, printName) {
+  const meta = await sharp(artworkBuffer).metadata();
+  const { template: TEMPLATE, artBox: ART_BOX } = frameFor(meta, sizes, printName);
   const art = await sharp(artworkBuffer)
-    .resize(ART_BOX.width, ART_BOX.height, { fit, background: '#ffffff', kernel: 'lanczos3' })
+    .resize(ART_BOX.width, ART_BOX.height, { fit: 'fill', kernel: 'lanczos3' })
     .png()
     .toBuffer();
   const framed = await sharp(TEMPLATE)
@@ -163,7 +216,9 @@ async function buildProductShot(artworkBuffer, outputPath) {
     .png()
     .toBuffer();
   // Scale the framed print so the frame takes the same share of the canvas as
-  // the rest of the catalogue, then centre it on the 4:5 canvas.
+  // the rest of the catalogue, then centre it on the 4:5 canvas. Both templates
+  // have the same outer frame width, so a square print and a portrait one land
+  // the same width in the grid, exactly as Simen Wahlqvist's squares do today.
   const scale = (CANVAS.width * FRAME_FRACTION) / TEMPLATE_FRAME_WIDTH;
   const templateMeta = await sharp(TEMPLATE).metadata();
   const scaledWidth = Math.round(templateMeta.width * scale);
@@ -201,6 +256,11 @@ function editOnce(filePath, anchor, replacement) {
   fs.writeFileSync(filePath, source.replace(anchor, replacement));
 }
 
+/** The sizes a print sells in. One reader, so the product shot and the listing cannot disagree. */
+function sizesOf(print) {
+  return print.sizes ?? ['50x70cm'];
+}
+
 function fileHas(filePath, needle) {
   return fs.readFileSync(filePath, 'utf8').includes(needle);
 }
@@ -208,6 +268,14 @@ function fileHas(filePath, needle) {
 function priceCategoryNames() {
   const source = fs.readFileSync(FILES.priceCategories, 'utf8');
   return new Set([...source.matchAll(/^\s{2}'?([A-Za-z]+)'?:\s*\{/gm)].map((m) => m[1]));
+}
+
+/** The sizes a price category actually prices, so a print cannot be sold in one it does not. */
+function pricedSizes(category) {
+  const source = fs.readFileSync(FILES.priceCategories, 'utf8');
+  const block = source.match(new RegExp(`^  '?${category}'?:\\s*\\{([\\s\\S]*?)^  \\},`, 'm'));
+  if (!block) return null;
+  return new Set([...block[1].matchAll(/^\s{4}'([^']+)':\s*\{/gm)].map((m) => m[1]));
 }
 
 async function main() {
@@ -236,6 +304,12 @@ async function main() {
     if (!CATEGORIES.has(print.category)) fail(`print "${print.name}": category must be one of ${[...CATEGORIES].join(', ')}.`);
     const priceCategory = print.priceCategory ?? 'Premium';
     if (!knownPriceCategories.has(priceCategory)) fail(`print "${print.name}": unknown priceCategory "${priceCategory}" (config/priceCategories.ts).`);
+    const priced = pricedSizes(priceCategory);
+    for (const size of sizesOf(print)) {
+      if (priced && !priced.has(size)) {
+        fail(`print "${print.name}": priceCategory "${priceCategory}" has no price for ${size} (config/priceCategories.ts prices ${[...priced].join(', ')}).`);
+      }
+    }
     const opener = firstSentence(print.description);
     if (opener.length > SNIPPET_MAX) {
       fail(`print "${print.name}": the first sentence of the description is ${opener.length} characters; it becomes the meta description, so keep it under ${SNIPPET_MAX}.`);
@@ -263,7 +337,7 @@ async function main() {
   for (const print of prints) {
     const out = path.join(ROOT, 'public', 'images', 'products', `${print.slug}.png`);
     const artwork = await renderArtwork(resolveInput(print.file, manifestDir), workDir);
-    await buildProductShot(artwork, out);
+    await buildProductShot(artwork, out, sizesOf(print), print.name);
     console.log(`  ✓ ${path.relative(ROOT, out)}`);
   }
 
@@ -311,7 +385,7 @@ async function main() {
       image: `/images/products/${print.slug}.png`,
       // The room scene. Made separately; see the note at the end of the run.
       secondaryImage: print.secondaryImage ?? '',
-      availableSizes: print.sizes ?? ['50x70cm'],
+      availableSizes: sizesOf(print),
       priceCategory: print.priceCategory ?? 'Premium',
       productId: String(nextProductId++),
       recommendedProducts: print.recommended ?? [],

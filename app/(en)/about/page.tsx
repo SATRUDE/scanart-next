@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
-import { QualityPromise } from '@/components/QualityPromise';
-import { FullWidthImage } from '@/components/FullWidthImage';
 import { BASE_URL, socialCard } from '@/lib/site';
 import { hreflangPair } from '@/lib/i18n';
-import { aboutHeroImage } from '@/lib/about-hero';
+import { ABOUT_HERO_SLUG, aboutHeroImage } from '@/lib/about-hero';
 import { getAllProducts } from '@/lib/products';
+import { getPublishedArtists } from '@/lib/published-artists';
+import { AboutBody } from '@/components/v2/about/AboutBody';
+import { ABOUT_WINDOW_POOLS, aboutPlaces, rosterCards } from '@/components/v2/about/about-data';
 
 const PAGE_TITLE = 'About';
 const PAGE_DESCRIPTION =
@@ -22,91 +22,91 @@ export const metadata: Metadata = {
 };
 
 export default async function AboutPage() {
-  // The hero is a catalogue print, so its picture and its description both come
-  // from the catalogue rather than being written out here (see lib/about-hero).
-  const hero = aboutHeroImage(await getAllProducts());
+  const [products, artists] = await Promise.all([getAllProducts(), getPublishedArtists()]);
+  // The catalogue picture, and its description, both come from the catalogue
+  // rather than being written out here (see lib/about-hero).
+  const hero = aboutHeroImage(products);
+  const heroPrint = products.find(p => p.slug === ABOUT_HERO_SLUG);
 
   return (
-    <div className="min-h-screen">
-      {/* Hero: full-bleed image darkened for legibility, left-pinned text.
-          Adapted from the SPN HeroFull pattern, rebuilt in SA's own tokens. */}
-      <section className="mx-auto max-w-[1680px] px-8 pt-8">
-        <div className="relative flex items-center overflow-hidden rounded min-h-[60vh] md:min-h-[70vh]">
-          {/* full-bleed cover image; this project uses plain <img> (see FullWidthImage), not next/image */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={hero.src}
-            alt={hero.alt}
-            className="absolute inset-0 h-full w-full object-cover"
-          />
-          {/* mobile base + desktop left gradient keep white text legible on this light image */}
-          <div className="absolute inset-0 bg-black/45 md:bg-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/45 to-transparent" />
-          {/* text constrained to the page container so it aligns with the nav and body content */}
-          <div className="relative w-full">
-            <div className="container mx-auto px-8">
-              <div className="max-w-lg py-16 text-white">
-                <h1 className="text-3xl md:text-4xl font-normal leading-tight tracking-tight">
-                  Bringing Scandinavian art into homes around the world
-                </h1>
-                <p className="mt-4 text-lg leading-relaxed text-white/90">
-                  An online gallery working directly with Scandinavian artists to bring authentic Nordic prints to a wider audience.
-                </p>
-                <Link
-                  href="/products"
-                  className="mt-8 inline-flex h-10 items-center justify-center rounded-md bg-white px-6 text-sm font-medium text-gray-900 hover:bg-white/90"
-                >
-                  Explore the collection
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16">
-        <div className="container mx-auto px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-16">
-            <div className="lg:col-span-1">
-              <h2 className="text-3xl text-neutral-900 mb-0">About Scandinavian Art</h2>
-            </div>
-            <div className="lg:col-span-2">
-              <p className="text-lg text-neutral-600 leading-relaxed mb-4">
-                Scandinavian Art exists to bring the distinct Scandinavian aesthetic into homes around the world, while giving the artists behind it the chance to reach a wider audience.
-              </p>
-              <p className="text-lg text-neutral-600 leading-relaxed mb-4">
-                The idea came from a conversation with a friend, an artist living in Oslo. We realised how little Scandinavian artwork reached the rest of the world, and set out to create a place where these talented artists could showcase their work to a broader audience.
-              </p>
-              <p className="text-lg text-neutral-600 leading-relaxed mb-4">
-                At its core, Scandinavian design celebrates natural materials, clean lines and the concept of lagom, having just the right amount. The prints we curate carry that spirit: serene, purposeful and timeless.
-              </p>
-              <Link href="/products" className="inline-flex items-center justify-center rounded-md text-sm font-medium border border-gray-200 bg-background text-foreground hover:bg-gray-50 hover:text-gray-900 h-10 px-4 py-2">
-                View all products
-              </Link>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <div className="lg:col-span-1">
-              <h2 className="text-3xl text-neutral-900 mb-0">Working with artists</h2>
-            </div>
-            <div className="lg:col-span-2">
-              <p className="text-lg text-neutral-600 leading-relaxed mb-4">
-                We work directly with local artists, leveraging their expertise to select the most authentic pieces, so the collection stays fresh, diverse and of the highest quality. Every print is produced on museum-quality paper using premium printing techniques, with professional framing available.
-              </p>
-              <p className="text-lg text-neutral-600 leading-relaxed mb-4">
-                Every purchase directly supports the artist behind it, helping them gain the recognition they deserve and continue creating. By choosing Scandinavian Art, you put a piece of Scandinavia in your home and support the people who make it.
-              </p>
-              <Link href="/journal" className="inline-flex items-center justify-center rounded-md text-sm font-medium border border-gray-200 bg-background text-foreground hover:bg-gray-50 hover:text-gray-900 h-10 px-4 py-2">
-                Read the journal
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <QualityPromise />
-      <FullWidthImage />
+    <>
+      <AboutBody
+        copy={{
+          locale: 'en',
+          // The H1 reads exactly "Bringing Scandinavian art into homes around
+          // the world"; the windows between the words are decoration.
+          headline: [
+            'Bringing',
+            { window: 'prints' },
+            'Scandinavian art ',
+            { br: true },
+            'into homes',
+            { window: 'homes' },
+            'around ',
+            { br: true },
+            { window: 'nature' },
+            'the world',
+          ],
+          pools: ABOUT_WINDOW_POOLS,
+          about: {
+            heading: 'About Scandinavian Art',
+            paragraphs: [
+              'Scandinavian Art exists to bring the distinct Scandinavian aesthetic into homes around the world, while giving the artists behind it the chance to reach a wider audience.',
+              'The idea came from a conversation with a friend, an artist living in Oslo. We realised how little Scandinavian artwork reached the rest of the world, and set out to create a place where these talented artists could showcase their work to a broader audience.',
+              'At its core, Scandinavian design celebrates natural materials, clean lines and the concept of lagom, having just the right amount. The prints we curate carry that spirit: serene, purposeful and timeless.',
+            ],
+            figure: {
+              src: hero.src,
+              alt: hero.alt,
+              caption: heroPrint ? `${heroPrint.name} by ${heroPrint.artist}` : '',
+            },
+            cta: { label: 'Explore the collection', href: '/products' },
+            link: { label: 'View all prints', href: '/products' },
+          },
+          howItWorks: {
+            heading: 'How the shop works',
+            // Only what the site can stand behind: artists are chosen (the
+            // apply page is a request to be considered, not a sign-up); prints
+            // are made to order (data/help.ts, /delivery); and the frame
+            // choices (config/frame.ts). The artist's share is deliberately not
+            // on the public site (Mark, 2026-09-26): it is between us and the
+            // artists, and lives in the Artist Agreement and how-it-works.
+            rows: [
+              { title: 'Chosen, not listed', body: 'Every artist is selected by us. Nobody signs up and uploads; we choose the work first.' },
+              { title: 'Printed to order', body: 'Each print is made when you order it, so nothing sits in a warehouse waiting.' },
+              { title: 'Framed or unframed', body: 'Choose a wood, black or white frame, or order the print on its own.' },
+            ],
+          },
+          where: { heading: 'Where the artists work', places: aboutPlaces(artists) },
+          // The customer quote the homepage carries (components/Testimonials.tsx),
+          // not the design's placeholder: no invented reviews.
+          statement: {
+            quote:
+              'I bought a print for my home, and I will definitely buy more in the future. Thank you for making my apartment more beautiful with your art!',
+            attribution: 'David Steel, London, England',
+          },
+          artists: {
+            heading: 'Working with artists',
+            paragraphs: [
+              'We work directly with local artists, leveraging their expertise to select the most authentic pieces, so the collection stays fresh, diverse and of the highest quality. Every print is printed on 200gsm uncoated paper, with professional framing available.',
+              'Every purchase directly supports the artist behind it, helping them gain the recognition they deserve and continue creating. By choosing Scandinavian Art, you put a piece of Scandinavia in your home and support the people who make it.',
+            ],
+            link: { label: 'Read the journal', href: '/journal' },
+          },
+          roster: {
+            heading: 'The artists',
+            all: { label: 'All artists', href: '/artists' },
+            cards: rosterCards(artists, { printCount: n => (n === 1 ? '1 print' : `${n} prints`) }),
+            hrefPrefix: '',
+          },
+          cta: {
+            heading: 'Are you an artist?',
+            body: 'We are a small gallery and take on very few, but a person reads everything that comes in. Tell us about your work.',
+            label: 'Ask to be considered',
+            href: '/artists/apply',
+          },
+        }}
+      />
 
       <script
         type="application/ld+json"
@@ -130,6 +130,6 @@ export default async function AboutPage() {
           }),
         }}
       />
-    </div>
+    </>
   );
 }

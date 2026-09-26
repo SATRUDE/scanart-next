@@ -24,7 +24,9 @@ export function isNoPath(pathname: string): boolean {
 export function noPathFor(pathname: string): string | null {
   if (pathname === '/') return '/no';
   if (pathname === '/artists/apply' || pathname === '/artists/how-it-works') return `/no${pathname}`;
-  if (/^\/(about|delivery|help|artists|products|inspire|journal|privacy|terms|scandinavian-wall-art|feedback)$/.test(pathname)) return `/no${pathname}`;
+  // /search is noindex and carries no hreflang, but a visitor switching
+  // language there still wants the Norwegian search (the query is not carried).
+  if (/^\/(about|delivery|help|artists|products|inspire|journal|privacy|terms|credits|scandinavian-wall-art|feedback|search)$/.test(pathname)) return `/no${pathname}`;
   if (/^\/(category|artist|collection|product)\/[^/]+$/.test(pathname)) return `/no${pathname}`;
   return null;
 }
@@ -63,6 +65,12 @@ export function hreflangPair(enPath: string): Record<string, string> {
 // ---------------------------------------------------------------------------
 
 export interface HeaderStrings {
+  /** V2 nav text controls: Basket (n), Menu, Close. */
+  basket: string;
+  menu: string;
+  close: string;
+  /** V2 checkout header (Nav · checkout). */
+  checkout: { back: string; backShort: string; secure: string; secureShort: string };
   announcement: string;
   nav: {
     prints: string;
@@ -112,8 +120,16 @@ export interface FooterStrings {
   newsletter: string;
   shopAll: string;
   sendEmail: string;
+  /** V2 footer: the season selector (winter, spring, summer, autumn) and its label for screen readers. */
+  seasons: { winter: string; spring: string; summer: string; autumn: string; label: string };
+  /** V2 footer: heading of the crawlable "shop by" line. */
+  shopBy: string;
+  /** V2 footer: the control that stops and restarts the wordmark footage (WCAG 2.2.2). */
+  motion: { pause: string; play: string };
   privacy: string;
   terms: string;
+  /** V2 footer: the attribution page for the Wikimedia Commons footage and photographs. */
+  credits: string;
   delivery: string;
 }
 
@@ -122,6 +138,10 @@ export interface FooterStrings {
 // so English pages render identically.
 export const headerStrings: Record<Locale, HeaderStrings> = {
   en: {
+    basket: 'Basket',
+    menu: 'Menu',
+    close: 'Close',
+    checkout: { back: 'Continue shopping', backShort: 'Shop', secure: 'Secure checkout', secureShort: 'Secure' },
     announcement: 'From Scandinavian Artists, delivered worldwide',
     nav: {
       prints: 'Prints',
@@ -147,6 +167,10 @@ export const headerStrings: Record<Locale, HeaderStrings> = {
     categoryLabels: {},
   },
   no: {
+    basket: 'Handlekurv',
+    menu: 'Meny',
+    close: 'Lukk',
+    checkout: { back: 'Fortsett å handle', backShort: 'Butikk', secure: 'Sikker betaling', secureShort: 'Sikker' },
     announcement: 'Fra skandinaviske kunstnere, levert til hele verden',
     nav: {
       prints: 'Trykk',
@@ -190,6 +214,8 @@ export const headerStrings: Record<Locale, HeaderStrings> = {
  * name, the currency code), so these stay plain strings like the rest.
  */
 export interface ChromeAriaStrings {
+  /** V2 landmark labels: the header nav, the mobile menu, the footer nav and breadcrumbs. */
+  landmarks: { main: string; menu: string; footer: string; breadcrumb: string };
   cart: {
     /** Prefixed to the print's name: "Remove Dragon" / "Fjern Dragon". */
     removePrefix: string;
@@ -201,6 +227,8 @@ export interface ChromeAriaStrings {
     nextImage: string;
     closeViewer: string;
   };
+  /** The product video's round control (Figma Video 257:3920), WCAG 2.2.2. */
+  video: { pause: string; play: string };
   /** The homepage strip of room scenes, which is one big link. */
   inspireStrip: string;
   /** Prefixed to ": Norsk, GBP". */
@@ -233,6 +261,7 @@ export interface ChromeAriaStrings {
 
 export const chromeAria: Record<Locale, ChromeAriaStrings> = {
   en: {
+    landmarks: { main: 'Main', menu: 'Menu', footer: 'Footer', breadcrumb: 'Breadcrumb' },
     cart: {
       removePrefix: 'Remove',
       decreaseQuantity: 'Decrease quantity',
@@ -243,6 +272,7 @@ export const chromeAria: Record<Locale, ChromeAriaStrings> = {
       nextImage: 'Next image',
       closeViewer: 'Close image viewer',
     },
+    video: { pause: 'Pause video', play: 'Play video' },
     inspireStrip: 'Be inspired: see our prints in real rooms',
     languageAndCurrency: 'Language and currency',
     wallPlanner: {
@@ -269,6 +299,7 @@ export const chromeAria: Record<Locale, ChromeAriaStrings> = {
     },
   },
   no: {
+    landmarks: { main: 'Hovedmeny', menu: 'Meny', footer: 'Bunntekst', breadcrumb: 'Brødsmulesti' },
     cart: {
       removePrefix: 'Fjern',
       decreaseQuantity: 'Reduser antall',
@@ -279,6 +310,7 @@ export const chromeAria: Record<Locale, ChromeAriaStrings> = {
       nextImage: 'Neste bilde',
       closeViewer: 'Lukk bildevisning',
     },
+    video: { pause: 'Sett videoen på pause', play: 'Spill av videoen' },
     inspireStrip: 'La deg inspirere: se trykkene våre i ekte rom',
     languageAndCurrency: 'Språk og valuta',
     wallPlanner: {
@@ -306,6 +338,118 @@ export const chromeAria: Record<Locale, ChromeAriaStrings> = {
   },
 };
 
+/**
+ * The search overlay (components/v2/SearchOverlay.tsx). A client component
+ * mounted by the Header on every page, so both languages live here beside the
+ * rest of the chrome. `{n}` and `{q}` are filled in by the component.
+ */
+export interface SearchStrings {
+  dialog: string;
+  placeholder: string;
+  placeholderShort: string;
+  submit: string;
+  clear: string;
+  close: string;
+  popular: string;
+  recent: string;
+  roomsHeading: string;
+  roomsLink: string;
+  prints: string;
+  artists: string;
+  stories: string;
+  allResults: string;
+  /** The All tab's label on a phone. */
+  allShort: string;
+  tabsLabel: string;
+  seeAll: string;
+  /** When there is exactly one result. */
+  seeAllOne: string;
+  seeOnPrintsPage: string;
+  searching: string;
+  noResultsTitle: string;
+  noResultsBody: string;
+  tryHeading: string;
+  allPrints: string;
+  printCount: string;
+  printCountOne: string;
+  resultCount: string;
+  /** Prints section link when the prints found are one artist's whole work. */
+  allPrintsBy: string;
+  /** The search page (/search): its H1 and title, with and without a query. */
+  pageTitle: string;
+  pageTitleFor: string;
+  pageDescription: string;
+}
+
+export const searchStrings: Record<Locale, SearchStrings> = {
+  en: {
+    dialog: 'Search',
+    placeholder: 'Search prints, artists and stories',
+    placeholderShort: 'Search prints and artists',
+    submit: 'Search',
+    clear: 'Clear',
+    close: 'Close',
+    popular: 'Popular searches',
+    recent: 'Recent',
+    roomsHeading: 'Or start from a room',
+    roomsLink: 'Prints in real rooms',
+    prints: 'Prints',
+    artists: 'Artists',
+    stories: 'Stories',
+    allResults: 'All results',
+    allShort: 'All',
+    tabsLabel: 'Kinds of result',
+    seeAll: 'See all {n} results for “{q}”',
+    seeAllOne: 'See the result for “{q}”',
+    seeOnPrintsPage: 'See them on the Prints page',
+    searching: 'Searching',
+    noResultsTitle: 'Nothing for “{q}” yet',
+    noResultsBody: 'Check the spelling, try a shorter word, or search for an artist’s name.',
+    tryHeading: 'Try',
+    allPrints: 'All {n} prints',
+    printCount: '{n} prints',
+    printCountOne: '1 print',
+    resultCount: '{n} results',
+    allPrintsBy: 'All {n} prints by {name}',
+    pageTitle: 'Search',
+    pageTitleFor: 'Search results for “{q}”',
+    pageDescription: 'Search the prints, artists and stories at Scandinavian Art.',
+  },
+  no: {
+    dialog: 'Søk',
+    placeholder: 'Søk etter trykk, kunstnere og artikler',
+    placeholderShort: 'Søk etter trykk',
+    submit: 'Søk',
+    clear: 'Tøm',
+    close: 'Lukk',
+    popular: 'Populære søk',
+    recent: 'Nylige søk',
+    roomsHeading: 'Eller start fra et rom',
+    roomsLink: 'Trykk i ekte rom',
+    prints: 'Trykk',
+    artists: 'Kunstnere',
+    stories: 'Artikler',
+    allResults: 'Alle treff',
+    allShort: 'Alle',
+    tabsLabel: 'Typer treff',
+    seeAll: 'Se alle {n} treff for «{q}»',
+    seeAllOne: 'Se treffet for «{q}»',
+    seeOnPrintsPage: 'Se dem på trykksiden',
+    searching: 'Søker',
+    noResultsTitle: 'Ingenting for «{q}» ennå',
+    noResultsBody: 'Sjekk stavemåten, prøv et kortere ord, eller søk etter navnet på en kunstner.',
+    tryHeading: 'Prøv',
+    allPrints: 'Alle {n} trykk',
+    printCount: '{n} trykk',
+    printCountOne: '1 trykk',
+    resultCount: '{n} treff',
+    allPrintsBy: 'Alle {n} trykk av {name}',
+    pageTitle: 'Søk',
+    pageTitleFor: 'Søkeresultater for «{q}»',
+    pageDescription: 'Søk blant trykk, kunstnere og artikler hos Scandinavian Art.',
+  },
+};
+
 export const footerStrings: Record<Locale, FooterStrings> = {
   en: {
     tagline: 'A Scandinavian art gallery, where we curate an exquisite selection of artworks.',
@@ -322,8 +466,12 @@ export const footerStrings: Record<Locale, FooterStrings> = {
     newsletter: 'Newsletter',
     shopAll: 'Shop All',
     sendEmail: 'Send Email',
+    seasons: { winter: 'Winter', spring: 'Spring', summer: 'Summer', autumn: 'Autumn', label: 'Season shown in the footer' },
+    shopBy: 'Shop by',
+    motion: { pause: 'Pause motion', play: 'Play motion' },
     privacy: 'Privacy',
     terms: 'Terms',
+    credits: 'Credits',
     delivery: 'Delivery',
   },
   no: {
@@ -351,8 +499,12 @@ export const footerStrings: Record<Locale, FooterStrings> = {
     newsletter: 'Nyhetsbrev',
     shopAll: 'Alle trykk',
     sendEmail: 'Send e-post',
+    seasons: { winter: 'Vinter', spring: 'Vår', summer: 'Sommer', autumn: 'Høst', label: 'Årstiden som vises i bunnteksten' },
+    shopBy: 'Utforsk',
+    motion: { pause: 'Stopp bevegelse', play: 'Start bevegelse' },
     privacy: 'Personvern',
     terms: 'Vilkår',
+    credits: 'Kreditering',
     delivery: 'Levering',
   },
 };
@@ -471,13 +623,31 @@ export interface ProductsGridStrings {
   searchPrefix: string;
   printsSuffix: string;
   allChip: string;
+  /** The Filter bar's overflow toggle: "More" shows the options that don't fit on one line, "Less" folds them away. */
+  /** In the open Artist and Size menus, the option that clears the filter. */
+  artistAny: string;
+  sizeAny: string;
+  moreFilters: string;
+  lessFilters: string;
   sortLabel: string;
+  /** The page's own order, the default on the curated landings: "Sort: Featured". */
+  sortFeatured: string;
   sortName: string;
   sortPriceLow: string;
   sortPriceHigh: string;
   outOfStock: string;
   emptyHeading: string;
   emptyCta: string;
+  /** The grid's sr-only h2, so the card titles sit at h3 under it. */
+  printsSrHeading: string;
+  /** Filter bar refine controls: the first option doubles as the visible label. */
+  artistAll: string;
+  artistFilterLabel: string;
+  sizeAll: string;
+  sizeFilterLabel: string;
+  /** Visible before the sort control: "Sort: Name". */
+  sortPrefix: string;
+  clearSearch: string;
   /** Catalogue category value -> visible label. Falls back to the raw value. */
   categoryLabels?: Record<string, string>;
   /** Collection slug -> chip label. Falls back to the config's chipLabel. */
@@ -495,7 +665,12 @@ export interface ProductActionsStrings {
   addToCart: string;
   /** Frame option id -> visible label. Falls back to the config's name. */
   frameLabels?: Record<string, string>;
+  /** V2 assurance lines under the button; {price} is the store's cheapest
+   *  delivery outside the UK (lib/server/delivery-guide.ts). */
+  assurance?: { printed: string; delivery: string; returns: string };
 }
+
+type Step = { title: string; body: string };
 
 /** Labels on the checkout page. Strings only: the payment flow itself is
  *  identical in both trees. */
@@ -533,6 +708,42 @@ export interface CheckoutStrings {
   couldNotCheckCode: string;
   orderTotalChanged: string;
   paymentFailed: string;
+  /** V2 checkout (Figma: Checkout · desktop 276:4235 and friends). `{x}` is filled in by the component. */
+  v2: {
+    contactTitle: string;
+    contactNote: string;
+    deliveryTitle: string;
+    paymentTitle: string;
+    cardNote: string;
+    loadingCard: string;
+    codePlaceholder: string;
+    remove: string;
+    yourOrder: string;
+    showOrder: string;
+    hideOrder: string;
+    printCount: string;
+    printCountOne: string;
+    quantity: string;
+    deliveryNote: string;
+    assuranceMade: string;
+    assuranceReturns: string;
+    assuranceStripe: string;
+    paymentFailedTitle: string;
+    paymentFailedHint: string;
+    contactHelp: string;
+    unavailableTitle: string;
+    unavailableBody: string;
+    testMode: string;
+    /** Frame option id -> the words in an order line ("oak frame", "no frame"). */
+    frameLabels: Record<string, string>;
+    thanks: string;
+    thanksNoName: string;
+    placed: string;
+    nextHeading: string;
+    steps: { made: Step; sent: Step; sentNoEstimate: string; decide: Step };
+    keepBrowsing: string;
+    deliveringTo: string;
+  };
 }
 
 /** Labels on the journal index. */
@@ -543,6 +754,95 @@ export interface JournalStrings {
   articlesSuffix: string;
   empty: string;
   booksSeriesHeading: string;
+  /** The pillar's note in the books-series hub: "(start here)". */
+  startHere: string;
   /** Article category -> visible label. Falls back to the raw value. */
   categoryLabels?: Record<string, string>;
+  /** The ruled list under the story tiles (Figma "More to read"). */
+  moreToReadHeading: string;
+  moreToReadIntro: string;
+  /** The featured story's closing link. */
+  readTheStory: string;
+  /** "{n} min read". */
+  minRead: string;
+  /** Language the story dates are written in. */
+  dateLocale: 'en' | 'no';
 }
+
+/**
+ * The basket panel (components/Cart.tsx, Figma Basket panel 242:4070). Here,
+ * beside the header and footer strings, because the panel is a client
+ * component mounted on every page in both trees, and lib/i18n/no.ts must not
+ * reach the browser. The delivery guide's prices come from the store at
+ * render (lib/server/delivery-guide.ts), in the buyer's currency, never typed here.
+ */
+export interface BasketStrings {
+  title: string;
+  /** "Basket ({count})" */
+  titleCount: string;
+  close: string;
+  remove: string;
+  /** Frame id -> how the line describes it: "wood frame", "unframed". */
+  frames: Record<string, string>;
+  subtotal: string;
+  delivery: string;
+  deliveryValue: string;
+  guidePrefix: string;
+  /** After the guide line: framed costs more, checkout has the exact amount. */
+  guideSuffix: string;
+  /** Shipping region code -> name in the guide line. */
+  regions: Record<string, string>;
+  and: string;
+  assurance: string[];
+  checkout: string;
+  continueShopping: string;
+  emptyHeading: string;
+  emptyBody: string;
+  seePrints: string;
+  startFromWall: string;
+}
+
+export const basketStrings: Record<Locale, BasketStrings> = {
+  en: {
+    title: 'Basket',
+    titleCount: 'Basket ({count})',
+    close: 'Close',
+    remove: 'Remove',
+    frames: { 'no-frame': 'unframed', wood: 'wood frame', black: 'black frame', white: 'white frame' },
+    subtotal: 'Subtotal',
+    delivery: 'Delivery',
+    deliveryValue: 'Calculated at checkout',
+    guidePrefix: 'As a guide, one unframed print from:',
+    guideSuffix: 'Framed costs more, and checkout shows the exact amount.',
+    regions: { GB: 'UK', NO: 'Norway', DK: 'Denmark', SE: 'Sweden', US: 'United States', ELSEWHERE: 'rest of world' },
+    and: 'and',
+    assurance: ['Made to order, produced in 1 to 4 business days', '14 days to change your mind', 'Secure payment by Stripe'],
+    checkout: 'Checkout',
+    continueShopping: 'Continue shopping',
+    emptyHeading: 'Your basket is empty.',
+    emptyBody: 'Every print is made to order and delivered worldwide. Start with the collection, or see the prints in rooms like yours.',
+    seePrints: 'See the prints',
+    startFromWall: 'Start from your wall',
+  },
+  no: {
+    title: 'Handlekurv',
+    titleCount: 'Handlekurv ({count})',
+    close: 'Lukk',
+    remove: 'Fjern',
+    frames: { 'no-frame': 'uten ramme', wood: 'ramme i tre', black: 'sort ramme', white: 'hvit ramme' },
+    subtotal: 'Delsum',
+    delivery: 'Frakt',
+    deliveryValue: 'Beregnes i kassen',
+    guidePrefix: 'Som en pekepinn, ett trykk uten ramme fra:',
+    guideSuffix: 'Med ramme koster det mer, og i kassen ser du nøyaktig beløp.',
+    regions: { GB: 'Storbritannia', NO: 'Norge', DK: 'Danmark', SE: 'Sverige', US: 'USA', ELSEWHERE: 'resten av verden' },
+    and: 'og',
+    assurance: ['Lages på bestilling, produseres på 1 til 4 virkedager', '14 dagers angrerett', 'Sikker betaling med Stripe'],
+    checkout: 'Til kassen',
+    continueShopping: 'Fortsett å handle',
+    emptyHeading: 'Handlekurven din er tom.',
+    emptyBody: 'Hvert trykk lages på bestilling og sendes til hele verden. Begynn med samlingen, eller se trykkene i rom som ligner ditt.',
+    seePrints: 'Se trykkene',
+    startFromWall: 'Begynn med veggen din',
+  },
+};

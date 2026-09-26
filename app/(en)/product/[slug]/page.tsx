@@ -1,29 +1,23 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { TrackedLink } from '@/components/TrackedLink';
-import {
-  Breadcrumb,
-  BreadcrumbList,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from '@/components/ui/breadcrumb';
-import { getAllProducts, getProductBySlug, getRecommendedProducts } from '@/lib/products';
+import { getAllProducts, getProductBySlug, getRecommendedProducts, getProductsByArtist } from '@/lib/products';
 import { getArtistById } from '@/data/artists';
-import { ProductActions } from '@/components/ProductActions';
-import { ProductImageGalleryWrapper } from '@/components/ProductImageGalleryWrapper';
-import { ArtistSection } from '@/components/ArtistSection';
-import { PrintCard } from '@/components/PrintCard';
 import { getLowestProductPrices } from '@/lib/pricing';
 import { priceValidUntil } from '@/lib/price-validity';
 import { metaSnippet } from '@/lib/meta-snippet';
 import { productListingDetails } from '@/lib/product-listing-details';
 import { productImages } from '@/lib/product-image-alt';
 import { productImageLd } from '@/lib/licensable-image';
-import { FeedbackIntercept } from '@/components/FeedbackIntercept';
 import { BASE_URL, SITE_NAME, OG_LOCALE, TWITTER_SITE } from '@/lib/site';
 import { hreflangPair } from '@/lib/i18n';
+import { getCategoryLandingByCategory } from '@/lib/categories';
+import { getPublishedArtists } from '@/lib/published-artists';
+import { artistStatements } from '@/lib/artist-statements';
+import { productPageEn } from '@/lib/product-page-copy';
+import { getProductVideo } from '@/config/product-videos';
+import { ProductView } from '@/components/v2/product/ProductView';
+import { getDeliveryGuide } from '@/lib/server/delivery-guide';
+import { artistFactsFor } from '@/components/v2/product/artist-facts';
 
 export async function generateStaticParams() {
   const products = await getAllProducts();
@@ -132,63 +126,32 @@ export default async function ProductPage({
     returnFees: 'https://schema.org/FreeReturn',
   };
 
+  const landing = getCategoryLandingByCategory(product.category);
+  const artistProducts = artist ? await getProductsByArtist(artist.id) : [];
+  const exploreArtists = (await getPublishedArtists()).map(a => ({ slug: a.slug, name: a.name }));
+
+  // Delivery "from" prices, from the store checkout charges from.
+  const deliveryGuide = await getDeliveryGuide();
+
   return (
-    <div className="container mx-auto px-8 py-8">
-      <Breadcrumb className="mb-8">
-        <BreadcrumbList>
-          <BreadcrumbItem>
-            <BreadcrumbLink asChild><TrackedLink event="breadcrumb-click" eventData={{ level: 'home' }} href="/">Home</TrackedLink></BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbLink asChild><TrackedLink event="breadcrumb-click" eventData={{ level: 'products' }} href="/products">Art Prints</TrackedLink></BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbPage>{product.name}</BreadcrumbPage>
-          </BreadcrumbItem>
-        </BreadcrumbList>
-      </Breadcrumb>
-
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        <ProductImageGalleryWrapper images={images} productName={product.name} />
-
-        <div className="space-y-6">
-          <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <span>{product.artist || product.brand}</span>
-            <span>&bull;</span>
-            <span>{product.category}</span>
-          </div>
-
-          <h1 className="text-3xl text-neutral-900">{product.name}</h1>
-
-          {product.description && (
-            <p className="text-muted-foreground leading-relaxed">{product.description}</p>
-          )}
-
-          {listingDetails && (
-            <p className="text-sm text-muted-foreground leading-relaxed">{listingDetails.summary}</p>
-          )}
-
-          <ProductActions product={product} />
-          <FeedbackIntercept placement="product" />
-
-          {artist && <ArtistSection artist={artist} />}
-        </div>
-      </div>
-
-      {recommended.length > 0 && (
-        <div className="mt-16">
-          <h2 className="text-2xl text-neutral-900 mb-8">You may also like</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {recommended.map(rec => (
-              <TrackedLink key={rec.id} event="related-product-click" eventData={{ from: product.slug, to: rec.slug }} href={`/product/${rec.slug}`}>
-                <PrintCard product={rec} sizes="(max-width: 768px) 50vw, 25vw" />
-              </TrackedLink>
-            ))}
-          </div>
-        </div>
-      )}
+    <>
+      <ProductView
+        deliveryGuide={deliveryGuide}
+        locale="en"
+        product={product}
+        images={images}
+        video={getProductVideo(product.slug)}
+        description={product.description}
+        listingSummary={listingDetails?.summary}
+        categoryLabel={product.category}
+        categoryLink={landing ? { href: `/category/${landing.slug}`, label: landing.heading } : undefined}
+        artist={artist ?? null}
+        artistStatement={artist ? artistStatements[artist.slug] : undefined}
+        artistFacts={artistFactsFor(artistProducts)}
+        recommended={recommended}
+        exploreArtists={exploreArtists}
+        strings={productPageEn}
+      />
 
       {/* Product Open Graph tags for rich pins and link unfurls. Next's typed
           Metadata API has no product og:type and its `other` field emits
@@ -261,6 +224,6 @@ export default async function ProductPage({
           }),
         }}
       />
-    </div>
+    </>
   );
 }

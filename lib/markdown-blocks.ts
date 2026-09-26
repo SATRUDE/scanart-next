@@ -95,6 +95,45 @@ function inlineToSegments(text: string, inherited: SegmentOptions = {}): RichTex
 
 const IMAGE_LINE = /^!\[([^\]]*)\]\(([^)]+)\)$/;
 
+// The two journal modules markdown has no word for (Figma Article 194:5979).
+// Both are written as lines that read as plain text anywhere this converter
+// is not the one doing the reading (socialagent's editor, a feed, a diff), so
+// an unsupported renderer shows a stray line, never broken HTML.
+//
+//   ::print[hummer-og-vin]           the Print feature, by product slug
+//
+//   ::images                         an image row, running off the right edge
+//   ![Alt text](/images/a.jpg "Sunday Brunch | Hedvig Wallin")
+//   ![Alt text](https://…/b.jpg)
+//   ::
+//
+// Alt text is required in a row: a line with an empty alt is dropped. The
+// optional "title" is the caption; a " | " in it becomes the brand hairline.
+const PRINT_LINE = /^::print\[([a-z0-9][a-z0-9-]*)\]$/i;
+const ROW_OPEN = '::images';
+const ROW_CLOSE = '::';
+const ROW_IMAGE_LINE = /^!\[([^\]]*)\]\((\S+?)(?:\s+"([^"]*)")?\)$/;
+
+export interface ImageRowItem {
+  url: string;
+  alt: string;
+  /** Caption parts, shown with the hairline between them; empty for none. */
+  caption: string[];
+}
+
+/** One image line inside an `::images` row, or null if it is not one Ken may use. */
+export function parseRowImage(line: string): ImageRowItem | null {
+  const m = ROW_IMAGE_LINE.exec(line.trim());
+  if (!m) return null;
+  const alt = m[1].trim();
+  if (!alt) return null;
+  const caption = (m[3] ?? '')
+    .split(' | ')
+    .map((part) => part.trim())
+    .filter(Boolean);
+  return { url: m[2], alt, caption };
+}
+
 /**
  * Convert a markdown body into the Notion-shaped block array
  * `NotionBlockRenderer` and `lib/articles.ts#getArticleBlocks` already
@@ -131,9 +170,46 @@ export function markdownToBlocks(markdown: string): NotionBlock[] {
     });
   };
 
+  const pushBlock = (type: string, payload: Record<string, unknown>) => {
+    blocks.push({ object: 'block', id: `md-${++n}`, type, has_children: false, [type]: payload });
+  };
+
+  // The image row being collected, from its `::images` line to its `::`.
+  let row: ImageRowItem[] | null = null;
+  const closeRow = () => {
+    if (row && row.length > 0) pushBlock('image_row', { images: row });
+    row = null;
+  };
+
   for (const raw of stripNotes(markdown ?? '').split(/\n/)) {
     const line = raw.trimEnd();
     if (!line.trim()) continue;
+    if (row) {
+      const trimmed = line.trim();
+      if (trimmed === ROW_CLOSE) {
+        closeRow();
+        continue;
+      }
+      if (ROW_IMAGE_LINE.test(trimmed)) {
+        // A line without alt text is left out rather than shown unlabelled.
+        const item = parseRowImage(trimmed);
+        if (item) row.push(item);
+        continue;
+      }
+      // Anything else ends a row whose `::` was forgotten, and is read as usual.
+      closeRow();
+    }
+    if (line.trim() === ROW_OPEN) {
+      row = [];
+      continue;
+    }
+    // A stray closing line on its own says nothing to a reader.
+    if (line.trim() === ROW_CLOSE) continue;
+    const print = PRINT_LINE.exec(line.trim());
+    if (print) {
+      pushBlock('print_feature', { slug: print[1].toLowerCase() });
+      continue;
+    }
     const image = IMAGE_LINE.exec(line);
     if (image) pushImage(image[1], image[2]);
     else if (line.startsWith('### ')) push('heading_3', line.slice(4));
@@ -145,5 +221,6 @@ export function markdownToBlocks(markdown: string): NotionBlock[] {
     else if (line === '---') push('divider', '');
     else push('paragraph', line);
   }
+  closeRow();
   return blocks;
 }

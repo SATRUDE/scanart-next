@@ -1,40 +1,27 @@
-import type React from 'react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import Link from 'next/link';
-import Image from 'next/image';
-import {
-  Breadcrumb,
-  BreadcrumbList,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from '@/components/ui/breadcrumb';
-import { artists, getArtistBySlug, getArtistInitials } from '@/data/artists';
+import { artists, getArtistBySlug } from '@/data/artists';
 import { getProductsByArtist } from '@/lib/products';
-import { PrintCard } from '@/components/PrintCard';
-import { ArtistsList, type ArtistWithCount } from '@/components/ArtistsList';
+import { getPublishedArtists } from '@/lib/published-artists';
 import { artistEditorial } from '@/lib/artist-editorial';
 import { BASE_URL, OG_IMAGE, SITE_NAME, OG_LOCALE, TWITTER_SITE } from '@/lib/site';
 import { hreflangPair } from '@/lib/i18n';
 import { artistMetaDescription, artistMetaTitle } from '@/lib/artist-meta';
+import { ArtistProfile } from '@/components/v2/artists/ArtistProfile';
+import { hasCity } from '@/components/v2/artists/ArtistMap';
+import {
+  cityOf,
+  firstName,
+  formatsLine,
+  framingLine,
+  heroSceneFor,
+  lowestPrices,
+  portraitFor,
+  scenePhrase,
+  sizeLabel,
+} from '@/components/v2/artists/artist-data';
 
-// Ken's editorial paragraphs carry inline links in Markdown form
-// ([text](/path)); render them as real <Link>s, everything else as text.
-function renderInlineLinks(text: string): React.ReactNode[] {
-  return text.split(/(\[[^\]]+\]\([^)]+\))/g).map((part, i) => {
-    const match = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
-    if (match) {
-      return (
-        <Link key={i} href={match[2]} className="underline hover:text-neutral-900">
-          {match[1]}
-        </Link>
-      );
-    }
-    return part;
-  });
-}
+const prints = (n: number) => `${n} ${n === 1 ? 'print' : 'prints'}`;
 
 export async function generateStaticParams() {
   // only artists with published work get a page
@@ -107,99 +94,83 @@ export default async function ArtistPage({
   }
 
   const editorial = artistEditorial[artist.slug];
+  const published = await getPublishedArtists();
 
   // The other artists with published prints, in data order, for the
-  // More-artists section (Stan's direction: the /artists row list reused).
-  const otherArtists: ArtistWithCount[] = [];
-  for (const other of artists) {
-    if (other.id === artist.id) continue;
-    const otherProducts = await getProductsByArtist(other.id);
-    if (otherProducts.length > 0) otherArtists.push({ ...other, printCount: otherProducts.length });
-  }
+  // More-artists section (the /artists cards reused).
+  const more = artists.flatMap(other => {
+    const pub = published.find(a => a.id === other.id);
+    if (!pub || pub.id === artist.id) return [];
+    const { src, initials } = portraitFor(pub);
+    return [{
+      slug: pub.slug,
+      name: pub.name,
+      portrait: src,
+      initials,
+      about: pub.bio,
+      city: cityOf(pub.location),
+      prints: prints(pub.printCount),
+    }];
+  });
+
+  const lowest = lowestPrices(products);
+  const hero = heroSceneFor(artist.slug, products);
+  const city = cityOf(artist.location);
+  const words = { and: 'and', for: 'for' };
+  const facts = [
+    { label: 'Based in', value: artist.location },
+    { label: 'Formats', value: formatsLine(products, words) },
+    { label: 'In the shop', value: prints(products.length) },
+    { label: 'Framing', value: framingLine('Unframed, or', 'or') },
+  ].filter(f => f.value);
+  const portrait = portraitFor(artist);
 
   return (
-    <div className="container mx-auto px-8 py-8">
-      <Breadcrumb className="mb-8">
-        <BreadcrumbList>
-          <BreadcrumbItem>
-            <BreadcrumbLink asChild><Link href="/">Home</Link></BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbLink asChild><Link href="/artists">Artists</Link></BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbPage>{artist.name}</BreadcrumbPage>
-          </BreadcrumbItem>
-        </BreadcrumbList>
-      </Breadcrumb>
-
-      <header className="mb-16">
-        <div className="flex items-start gap-6">
-          {artist.image ? (
-            <div className="h-20 w-20 rounded-full overflow-hidden flex-shrink-0">
-              <Image src={artist.image} alt={artist.name} width={80} height={80} className="w-full h-full object-cover" />
-            </div>
-          ) : (
-            <div aria-hidden="true" className="h-20 w-20 rounded-full bg-muted flex items-center justify-center flex-shrink-0">
-              <span className="text-xl font-medium text-muted-foreground">{getArtistInitials(artist.name)}</span>
-            </div>
-          )}
-          <div>
-            <h1 className="text-3xl text-neutral-900">{artist.name}</h1>
-            {artist.location && <p className="text-sm text-muted-foreground mt-1">{artist.location}</p>}
-            {artist.bio && (
-              <p className="text-muted-foreground leading-relaxed mt-4 max-w-3xl">{artist.bio}</p>
-            )}
-          </div>
-        </div>
-      </header>
-
-      <div className="mb-8">
-        <h2 className="text-2xl text-neutral-900 mb-2">Prints by {artist.name}</h2>
-        <p className="text-muted-foreground">{products.length} {products.length === 1 ? 'print' : 'prints'}</p>
-      </div>
-
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {products.map((product, index) => (
-          <Link key={product.id} href={`/product/${product.slug}`}>
-            {/* first desktop row is above the fold: preload it, lazy-load the rest */}
-            <PrintCard product={product} priority={index < 4} />
-          </Link>
-        ))}
-      </div>
-
-      {/* About the work: the About page's editorial split reused (Stan's
-          direction, SA Figma 219:162), copy by Ken wired verbatim from
-          lib/artist-editorial.ts. */}
-      {editorial && (
-        <section className="mt-16 lg:mt-24">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <div className="lg:col-span-1">
-              <h2 className="text-2xl text-neutral-900 mb-0">{editorial.heading}</h2>
-            </div>
-            <div className="lg:col-span-2">
-              <p className="text-lg text-neutral-600 leading-relaxed mb-4">{renderInlineLinks(editorial.para1)}</p>
-              <p className="text-lg text-neutral-600 leading-relaxed">{renderInlineLinks(editorial.para2)}</p>
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* More artists: the /artists row treatment reused so the roster reads
-          identically site-wide; page-one landers flow into the rest of it. */}
-      {otherArtists.length > 0 && (
-        <section className="mt-16 lg:mt-24 border-t pt-12 lg:pt-16">
-          <div className="flex items-center justify-between gap-6 mb-2">
-            <h2 className="text-2xl text-neutral-900">More artists</h2>
-            <Link href="/artists" className="text-sm font-medium text-neutral-900 hover:text-neutral-600 transition-colors whitespace-nowrap">
-              View all artists →
-            </Link>
-          </div>
-          <ArtistsList artists={otherArtists} />
-        </section>
-      )}
+    <>
+      <ArtistProfile
+        locale="en"
+        slug={artist.slug}
+        name={artist.name}
+        bio={artist.bio}
+        location={artist.location}
+        portrait={portrait.src}
+        portraitCredit={artist.imageCredit}
+        initials={portrait.initials}
+        breadcrumb={[
+          { label: 'Home', href: '/' },
+          { label: 'Artists', href: '/artists' },
+          { label: artist.name },
+        ]}
+        products={products}
+        printCount={prints(products.length)}
+        lowest={lowest}
+        hero={
+          hero
+            ? {
+                src: hero.scene.image,
+                // shopScenes alt: the scene as written for image search.
+                alt: hero.scene.alt,
+                href: `/product/${hero.product.slug}`,
+                title: hero.product.name,
+                note: scenePhrase(hero.scene.alt) ?? sizeLabel(Object.keys(hero.product.prices)[0] ?? ''),
+              }
+            : null
+        }
+        editorial={editorial}
+        facts={facts}
+        map={hasCity(city) ? { city, label: city, caption: `${city}, where ${firstName(artist.name)} works.` } : null}
+        more={more}
+        explore={published.filter(a => a.id !== artist.id).map(a => ({ slug: a.slug, name: a.name }))}
+        t={{
+          printsBy: 'Prints by',
+          from: 'from',
+          atAGlance: 'At a glance',
+          moreArtists: 'More artists',
+          allArtists: 'All artists',
+          allArtistsHref: '/artists',
+          productHref: slug => `/product/${slug}`,
+        }}
+      />
 
       <script
         type="application/ld+json"
@@ -257,6 +228,6 @@ export default async function ArtistPage({
           }),
         }}
       />
-    </div>
+    </>
   );
 }

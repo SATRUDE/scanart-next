@@ -1,46 +1,33 @@
-import type React from 'react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import Link from 'next/link';
-import Image from 'next/image';
-import {
-  Breadcrumb,
-  BreadcrumbList,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from '@/components/ui/breadcrumb';
-import { artists, getArtistBySlug, getArtistInitials } from '@/data/artists';
+import { artists, getArtistBySlug } from '@/data/artists';
 import { getProductsByArtist } from '@/lib/products';
-import { PrintCard } from '@/components/PrintCard';
-import { ArtistsList, type ArtistWithCount } from '@/components/ArtistsList';
+import { getPublishedArtists } from '@/lib/published-artists';
 import { BASE_URL, OG_IMAGE, SITE_NAME, TWITTER_SITE } from '@/lib/site';
 import { hreflangPair } from '@/lib/i18n';
 import { artistMetaDescription, artistMetaTitle } from '@/lib/artist-meta';
+import { sceneImageAlt } from '@/lib/product-image-alt';
 import { no } from '@/lib/i18n/no';
+import { ArtistProfile } from '@/components/v2/artists/ArtistProfile';
+import { hasCity } from '@/components/v2/artists/ArtistMap';
+import {
+  cityOf,
+  firstName,
+  formatsLine,
+  framingLine,
+  heroSceneFor,
+  lowestPrices,
+  portraitFor,
+  sizeLabel,
+} from '@/components/v2/artists/artist-data';
 
-// The Norwegian artist pages: app/artist/[slug]/page.tsx mirrored exactly
-// (same params, same components, same classes), with bios, locations and the
-// editorial copy swapped for lib/i18n/no.ts. Any artist missing a translation
+// The Norwegian artist pages: app/(en)/artist/[slug]/page.tsx mirrored exactly
+// (same params, same V2 ArtistProfile), with bios, locations, the editorial
+// and every label swapped for lib/i18n/no.ts. Any artist missing a translation
 // falls back to the English data, so the EN/NO pair always exists together.
 
-// Ken's editorial paragraphs carry inline links in Markdown form
-// ([text](/path)); render them as real <Link>s, everything else as text.
-// Same helper as the English page.
-function renderInlineLinks(text: string): React.ReactNode[] {
-  return text.split(/(\[[^\]]+\]\([^)]+\))/g).map((part, i) => {
-    const match = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
-    if (match) {
-      return (
-        <Link key={i} href={match[2]} className="underline hover:text-neutral-900">
-          {match[1]}
-        </Link>
-      );
-    }
-    return part;
-  });
-}
+const t = no.artistPage;
+const prints = (n: number) => `${n} ${n === 1 ? no.shared.printOne : no.shared.printOther}`;
 
 export async function generateStaticParams() {
   // only artists with published work get a page; same set as the English tree
@@ -115,111 +102,88 @@ export default async function NorwegianArtistPage({
   const bio = copy?.bio || artist.bio;
   const location = copy?.location || artist.location;
   const editorial = no.artistEditorial[artist.slug];
+  const published = await getPublishedArtists();
 
   // The other artists with published prints, in data order, for the
-  // More-artists section; bios and locations in Norwegian.
-  const otherArtists: ArtistWithCount[] = [];
-  for (const other of artists) {
-    if (other.id === artist.id) continue;
-    const otherProducts = await getProductsByArtist(other.id);
-    if (otherProducts.length > 0) {
-      const otherCopy = no.artists[other.slug];
-      otherArtists.push({
-        ...other,
-        ...(otherCopy ? { bio: otherCopy.bio, location: otherCopy.location } : {}),
-        printCount: otherProducts.length,
-      });
-    }
-  }
+  // More-artists section; summaries and cities in Norwegian.
+  const more = artists.flatMap(other => {
+    const pub = published.find(a => a.id === other.id);
+    if (!pub || pub.id === artist.id) return [];
+    const otherCopy = no.artists[pub.slug];
+    const { src, initials } = portraitFor(pub);
+    return [{
+      slug: pub.slug,
+      name: pub.name,
+      portrait: src,
+      initials,
+      about: otherCopy?.bio || pub.bio,
+      city: cityOf(otherCopy?.location || pub.location),
+      prints: prints(pub.printCount),
+    }];
+  });
+
+  const lowest = lowestPrices(products);
+  const hero = heroSceneFor(artist.slug, products);
+  // The marker is looked up by the English city; the label is the Norwegian one.
+  const mapCity = cityOf(artist.location);
+  const cityLabel = cityOf(location);
+  const facts = [
+    { label: t.factBasedIn, value: location },
+    { label: t.factFormats, value: formatsLine(products, { and: t.and, for: t.for }) },
+    { label: t.factInShop, value: prints(products.length) },
+    { label: t.factFraming, value: framingLine(t.framingPrefix, t.and, no.productPage.actions.frameLabels) },
+  ].filter(f => f.value);
+  const portrait = portraitFor(artist);
 
   return (
-    <div className="container mx-auto px-8 py-8">
-      <Breadcrumb className="mb-8">
-        <BreadcrumbList>
-          <BreadcrumbItem>
-            <BreadcrumbLink asChild><Link href="/no">{no.artistPage.breadcrumbHome}</Link></BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbLink asChild><Link href="/no/artists">{no.artistPage.breadcrumbArtists}</Link></BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbPage>{artist.name}</BreadcrumbPage>
-          </BreadcrumbItem>
-        </BreadcrumbList>
-      </Breadcrumb>
-
-      <header className="mb-16">
-        <div className="flex items-start gap-6">
-          {artist.image ? (
-            <div className="h-20 w-20 rounded-full overflow-hidden flex-shrink-0">
-              <Image src={artist.image} alt={artist.name} width={80} height={80} className="w-full h-full object-cover" />
-            </div>
-          ) : (
-            <div aria-hidden="true" className="h-20 w-20 rounded-full bg-muted flex items-center justify-center flex-shrink-0">
-              <span className="text-xl font-medium text-muted-foreground">{getArtistInitials(artist.name)}</span>
-            </div>
-          )}
-          <div>
-            <h1 className="text-3xl text-neutral-900">{artist.name}</h1>
-            {location && <p className="text-sm text-muted-foreground mt-1">{location}</p>}
-            {bio && (
-              <p className="text-muted-foreground leading-relaxed mt-4 max-w-3xl">{bio}</p>
-            )}
-          </div>
-        </div>
-      </header>
-
-      <div className="mb-8">
-        <h2 className="text-2xl text-neutral-900 mb-2">{no.artistPage.printsBy} {artist.name}</h2>
-        <p className="text-muted-foreground">{products.length} {products.length === 1 ? no.shared.printOne : no.shared.printOther}</p>
-      </div>
-
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {products.map((product, index) => (
-          <Link key={product.id} href={`/no/product/${product.slug}`}>
-            {/* first desktop row is above the fold: preload it, lazy-load the rest */}
-            <PrintCard
-              product={product}
-              priority={index < 4}
-              categoryLabel={no.shared.categoryLabels[product.category]}
-              outOfStockLabel={no.shared.outOfStock}
-              locale="no"
-            />
-          </Link>
-        ))}
-      </div>
-
-      {/* About the work: the About page's editorial split reused, copy from
-          the Norwegian dictionary (lib/i18n/no.ts). */}
-      {editorial && (
-        <section className="mt-16 lg:mt-24">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <div className="lg:col-span-1">
-              <h2 className="text-2xl text-neutral-900 mb-0">{editorial.heading}</h2>
-            </div>
-            <div className="lg:col-span-2">
-              <p className="text-lg text-neutral-600 leading-relaxed mb-4">{renderInlineLinks(editorial.para1)}</p>
-              <p className="text-lg text-neutral-600 leading-relaxed">{renderInlineLinks(editorial.para2)}</p>
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* More artists: the /no/artists row treatment reused so the roster
-          reads identically site-wide. */}
-      {otherArtists.length > 0 && (
-        <section className="mt-16 lg:mt-24 border-t pt-12 lg:pt-16">
-          <div className="flex items-center justify-between gap-6 mb-2">
-            <h2 className="text-2xl text-neutral-900">{no.artistPage.moreArtists}</h2>
-            <Link href="/no/artists" className="text-sm font-medium text-neutral-900 hover:text-neutral-600 transition-colors whitespace-nowrap">
-              {no.artistPage.viewAllArtists} →
-            </Link>
-          </div>
-          <ArtistsList artists={otherArtists} locale="no" printLabels={{ one: no.shared.printOne, other: no.shared.printOther }} />
-        </section>
-      )}
+    <>
+      <ArtistProfile
+        locale="no"
+        slug={artist.slug}
+        name={artist.name}
+        bio={bio}
+        location={location}
+        portrait={portrait.src}
+        portraitCredit={artist.imageCredit}
+        initials={portrait.initials}
+        breadcrumb={[
+          { label: t.breadcrumbHome, href: '/no' },
+          { label: t.breadcrumbArtists, href: '/no/artists' },
+          { label: artist.name },
+        ]}
+        products={products}
+        printCount={prints(products.length)}
+        lowest={lowest}
+        hero={
+          hero
+            ? {
+                src: hero.scene.image,
+                // The scene alt in the page's language (lib/product-image-alt.ts).
+                alt: sceneImageAlt({ name: hero.product.name, artist: artist.name, brand: hero.product.brand, category: hero.product.category }, 'no'),
+                href: `/no/product/${hero.product.slug}`,
+                title: hero.product.name,
+                note: sizeLabel(Object.keys(hero.product.prices)[0] ?? ''),
+              }
+            : null
+        }
+        editorial={editorial}
+        facts={facts}
+        map={hasCity(mapCity) ? { city: mapCity, label: cityLabel, caption: `${cityLabel}, ${t.mapWhere} ${firstName(artist.name)} ${t.mapWorks}.` } : null}
+        more={more}
+        explore={published.filter(a => a.id !== artist.id).map(a => ({ slug: a.slug, name: a.name }))}
+        t={{
+          printsBy: t.printsBy,
+          from: t.from,
+          atAGlance: t.atAGlance,
+          moreArtists: t.moreArtists,
+          allArtists: t.allArtists,
+          allArtistsHref: '/no/artists',
+          productHref: slug => `/no/product/${slug}`,
+          categoryLabels: no.shared.categoryLabels,
+          outOfStock: no.shared.outOfStock,
+          crossLinks: no.crossLinks,
+        }}
+      />
 
       <script
         type="application/ld+json"
@@ -237,7 +201,9 @@ export default async function NorwegianArtistPage({
         }}
       />
       {/* The prints on this page as a machine-readable list, matching the
-          shape the English artist pages emit. */}
+          shape the English artist pages emit. The item URLs are the /no
+          product pages this list links to (they pointed at the English ones
+          until V2; docs/v2-seo.md "Fixed along the way"). */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -253,7 +219,7 @@ export default async function NorwegianArtistPage({
               itemListElement: products.map((p, i) => ({
                 '@type': 'ListItem',
                 position: i + 1,
-                url: `${BASE_URL}/product/${p.slug}`,
+                url: `${BASE_URL}/no/product/${p.slug}`,
                 name: p.name,
               })),
             },
@@ -274,6 +240,6 @@ export default async function NorwegianArtistPage({
           }),
         }}
       />
-    </div>
+    </>
   );
 }

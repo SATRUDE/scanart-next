@@ -1,72 +1,73 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { useRouter, usePathname } from 'next/navigation';
-import { ShoppingBag, Search, Menu, X, Globe } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from '@/components/ui/sheet';
+import { OPTION_PAD } from '@/components/v2/OptionTrack';
+import { usePathname } from 'next/navigation';
+import { Sheet, SheetContent, SheetTitle, SheetDescription } from '@/components/ui/sheet';
 import { useCart } from '@/contexts/CartContext';
 import { LanguagePicker } from '@/components/LanguagePicker';
+import { SearchOverlay } from '@/components/v2/SearchOverlay';
 import { getCategoryLandingByCategory } from '@/lib/categories';
-import { headerStrings, isNoPath } from '@/lib/i18n';
+import { chromeAria, headerStrings, isNoPath } from '@/lib/i18n';
+import type { SearchIndex } from '@/lib/site-search';
 
 interface HeaderProps {
   // Live catalogue categories, derived server-side in the root layout so the
   // nav never links to an empty category or misses a populated one
   categories: string[];
+  // The search overlay's small index (lib/search-index.ts), built by the same
+  // root layout in the page's language.
+  search?: SearchIndex;
 }
 
-export const Header: React.FC<HeaderProps> = ({ categories }) => {
+/**
+ * V2 header (Figma: Announcement 21:78, Nav 12:92, Nav · mobile 183:1244,
+ * Nav · checkout 275:5612). Links on the left, the wordmark centred, then
+ * Search, the language and currency control and the basket.
+ *
+ * Every top-level destination is a real link in the served HTML, so the nav
+ * keeps doing its crawl job (docs/v2-seo.md). Search opens an overlay that
+ * submits to the catalogue, as the previous header did.
+ */
+export const Header: React.FC<HeaderProps> = ({ categories, search }) => {
   const { getTotalItems, toggleCart } = useCart();
   const totalItems = getTotalItems();
-  const router = useRouter();
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [localSearchQuery, setLocalSearchQuery] = useState('');
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [menuOpenedBySearch, setMenuOpenedBySearch] = useState(false);
-  const mobileSearchRef = React.useRef<HTMLInputElement>(null);
 
-  React.useEffect(() => {
-    if (mobileMenuOpen && mobileSearchRef.current && !menuOpenedBySearch) {
-      mobileSearchRef.current.blur();
-      const timer = setTimeout(() => mobileSearchRef.current?.blur(), 50);
-      const timer2 = setTimeout(() => mobileSearchRef.current?.blur(), 100);
-      const timer3 = setTimeout(() => mobileSearchRef.current?.blur(), 200);
-      return () => { clearTimeout(timer); clearTimeout(timer2); clearTimeout(timer3); };
-    }
-  }, [mobileMenuOpen, menuOpenedBySearch]);
-
-  const handleSearch = (query: string) => {
-    setLocalSearchQuery(query);
-    if (query.trim()) {
-      // Search from a Norwegian page lands on the Norwegian catalogue.
-      // isNoPath rather than the p1 below, which is declared further down.
-      const prefix = isNoPath(pathname) ? '/no' : '';
-      router.push(`${prefix}/products?q=${encodeURIComponent(query)}`);
-      setMobileMenuOpen(false);
-      setIsSearchOpen(false);
-    }
-  };
-
-  const handleSearchSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (localSearchQuery.trim()) {
-      handleSearch(localSearchQuery);
-    }
-  };
+  // The nav steps out of the way while reading (scrolling down) and comes back
+  // the moment you scroll up. It always shows near the top of the page and
+  // while the menu or search is open.
+  const [hidden, setHidden] = useState(false);
+  useEffect(() => {
+    let last = window.scrollY;
+    let frame = 0;
+    const onScroll = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        const y = window.scrollY;
+        const delta = y - last;
+        if (y < 120) setHidden(false);
+        else if (delta > 6) setHidden(true);
+        else if (delta < -6) setHidden(false);
+        last = y;
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, []);
+  const navHidden = hidden && !mobileMenuOpen && !isSearchOpen;
 
   // The Header is mounted once in the root layout, which cannot know the
   // route, so the Norwegian tree is detected here: under /no the labels come
-  // from the Norwegian chrome strings and nav links stay inside /no where a
-  // Norwegian page exists (home, artists, about, help, categories). English
-  // pages take the English branch and render exactly as before.
+  // from the Norwegian chrome strings and nav links stay inside /no.
   const isNo = isNoPath(pathname);
-  // Before the Norwegian shop existed these three had no twin, so they were
-  // hardcoded to the English routes. They have twins now, so the nav stays in
-  // whichever tree the visitor is in.
   const p1 = isNo ? '/no' : '';
   const t = headerStrings[isNo ? 'no' : 'en'];
   const localPath = isNo ? (pathname === '/no' ? '/' : pathname.slice('/no'.length)) : pathname;
@@ -77,208 +78,175 @@ export const Header: React.FC<HeaderProps> = ({ categories }) => {
   const categoryHrefPrefix = isNo ? '/no' : '';
 
   const currentPage = localPath === '/' ? 'home'
-    : localPath.startsWith('/products') ? 'products'
+    // Categories and collections are the same Prints page, filtered, so the
+    // nav keeps Prints marked there too.
+    : localPath.startsWith('/products') || localPath.startsWith('/category/') || localPath.startsWith('/collection/') ? 'products'
     : localPath.startsWith('/product/') ? 'product'
     : localPath.startsWith('/inspire') ? 'inspire'
     : localPath.startsWith('/journal') ? 'journal'
     : localPath.startsWith('/article/') ? 'article'
-    : localPath.startsWith('/artists') ? 'artists'
+    : localPath.startsWith('/artist') ? 'artists'
     : localPath.startsWith('/checkout') ? 'checkout'
     : localPath.startsWith('/about') ? 'about'
-    : 'home';
+    : 'other';
+
+  const basketLabel = `${t.basket} (${totalItems})`;
+
+  // Checkout drops the full nav so nothing pulls away from paying
+  // (Nav · checkout 275:5612); the footer stays.
+  if (currentPage === 'checkout') {
+    return (
+      <header className="border-b border-line bg-bg">
+        <div className="page-x flex h-[60px] tab:h-[88px] items-center justify-between">
+          {/* Back to the shop, not the basket: the basket's own "Continue
+              shopping" only closes the panel, which left checkout a dead end. */}
+          <Link href={`${isNo ? '/no' : ''}/products`} className="type-label w-[90px] tab:w-[400px] text-left">
+            <span aria-hidden>← </span>
+            <span className="tab:hidden">{t.checkout.backShort}</span>
+            <span className="hidden tab:inline">{t.checkout.back}</span>
+          </Link>
+          <Link href={homeHref} className="type-h3 whitespace-nowrap">Scandinavian Art</Link>
+          <p className="type-label w-[90px] tab:w-[400px] text-right">
+            <span className="tab:hidden">{t.checkout.secureShort}</span>
+            <span className="hidden tab:inline">{t.checkout.secure}</span>
+          </p>
+        </div>
+      </header>
+    );
+  }
+
+  const nav = [
+    { href: `${p1}/products`, label: t.nav.prints, key: 'products', current: currentPage === 'products' || currentPage === 'product' },
+    { href: `${p1}/inspire`, label: t.nav.inspire, key: 'inspire', current: currentPage === 'inspire' },
+    { href: `${p1}/journal`, label: t.nav.journal, key: 'journal', current: currentPage === 'journal' || currentPage === 'article' },
+    { href: artistsHref, label: t.nav.artists, key: 'artists', current: currentPage === 'artists' },
+    { href: aboutHref, label: t.nav.about, key: 'about', current: currentPage === 'about' },
+  ];
 
   return (
     <>
-      {/* Announcement bar: red-600 (#d4183d) from the DS foundation red ramp. */}
-      <div className="bg-[#d4183d] text-white py-2">
-        <div className="container mx-auto px-4 flex items-center justify-center gap-2">
-          <Globe className="h-4 w-4" />
-          <span className="text-sm">{t.announcement}</span>
-        </div>
+      <div className="bg-brand text-on-primary">
+        <p className="page-x flex h-9 items-center justify-center type-small text-center">{t.announcement}</p>
       </div>
 
-      <header className="sticky top-0 z-50 w-full border-b bg-white/80 backdrop-blur-sm">
-      <div className="container mx-auto px-4 sm:px-6">
-        <div className="relative flex h-16 items-center justify-between">
-          <div className={`flex items-center ${isSearchOpen ? 'hidden md:hidden' : ''}`}>
-            <Link href={homeHref} className="md:hidden text-xl tracking-wide font-medium transition-opacity hover:opacity-60">
-              SCANDINAVIAN ART
-            </Link>
-            <Link
-              href={`${p1}/products`}
-              className={`hidden md:block transition-opacity hover:opacity-60 ${
-                currentPage === 'products' ? 'opacity-100' : 'opacity-60'
-              }`}
-            >
-              {t.nav.prints}
-            </Link>
-            <Link
-              href={`${p1}/inspire`}
-              className={`hidden md:block transition-opacity hover:opacity-60 ml-6 ${
-                currentPage === 'inspire' ? 'opacity-100' : 'opacity-60'
-              }`}
-            >
-              {t.nav.inspire}
-            </Link>
-            <Link
-              href={`${p1}/journal`}
-              className={`hidden md:block transition-opacity hover:opacity-60 ml-6 ${
-                currentPage === 'journal' ? 'opacity-100' : 'opacity-60'
-              }`}
-            >
-              {t.nav.journal}
-            </Link>
-            <Link
-              href={artistsHref}
-              className={`hidden md:block transition-opacity hover:opacity-60 ml-6 ${
-                currentPage === 'artists' ? 'opacity-100' : 'opacity-60'
-              }`}
-            >
-              {t.nav.artists}
-            </Link>
-            <Link
-              href={aboutHref}
-              className={`hidden md:block transition-opacity hover:opacity-60 ml-6 ${
-                currentPage === 'about' ? 'opacity-100' : 'opacity-60'
-              }`}
-            >
-              {t.nav.about}
-            </Link>
-          </div>
+      <header
+        className={`sticky top-0 z-50 w-full bg-bg transition-transform duration-300 ease-[cubic-bezier(.2,.7,.2,1)] motion-reduce:transition-none ${navHidden ? '-translate-y-full' : 'translate-y-0'}`}
+        // Keyboard users never lose it: focus inside brings it back.
+        onFocus={() => setHidden(false)}
+      >
+        {/* Mobile and tablet: Menu · wordmark centred · Basket. Desktop adds the links, Search and the language control.
+            Wide desktop (Figma Homepage 12:139): the wordmark is deliberately
+            off centre, starting on column 7 of the 12-column grid, with Search,
+            the language and currency control and the basket right-aligned
+            after it. From 1320 up, where that half of the grid fits them. */}
+        <div className="page-x flex h-[60px] tab:h-[88px] items-center min-[1320px]:grid min-[1320px]:grid-cols-12 min-[1320px]:gap-x-[var(--sa-gutter)]">
+          <button
+            type="button"
+            className="type-small flex-1 basis-0 text-left desk:hidden"
+            aria-label={t.aria.openMenu}
+            aria-expanded={mobileMenuOpen}
+            onClick={() => setMobileMenuOpen(true)}
+          >
+            {t.menu}
+          </button>
 
-          <div className={`absolute left-1/2 transform -translate-x-1/2 hidden md:flex items-center ${isSearchOpen ? 'md:hidden' : ''}`}>
-            <Link href={homeHref} className="text-xl tracking-wide font-medium transition-opacity hover:opacity-60">
-              SCANDINAVIAN ART
-            </Link>
-          </div>
-
-          {!isSearchOpen && (
-            <div className="flex items-center space-x-4">
-              <Button variant="ghost" size="icon" aria-label={t.aria.search} className="hidden md:inline-flex" onClick={() => setIsSearchOpen(true)}>
-                <Search className="h-4 w-4" />
-              </Button>
-
-              <Button variant="ghost" size="icon" aria-label={t.aria.search} className="md:hidden"
-                onClick={() => {
-                  setMenuOpenedBySearch(true);
-                  setMobileMenuOpen(true);
-                  setTimeout(() => {
-                    if (mobileSearchRef.current) {
-                      mobileSearchRef.current.tabIndex = 0;
-                      mobileSearchRef.current.focus();
-                    }
-                  }, 100);
-                }}
+          <nav aria-label={chromeAria[isNo ? 'no' : 'en'].landmarks.main} className="hidden desk:flex flex-1 basis-0 gap-6 type-small min-[1320px]:col-span-6">
+            {nav.map(item => (
+              <Link
+                key={item.key}
+                href={item.href}
+                aria-current={item.current ? 'page' : undefined}
+                className={`relative flex items-center ${OPTION_PAD} transition-opacity hover:opacity-60`}
               >
-                <Search className="h-4 w-4" />
-              </Button>
+                {/* The chosen page carries the filters' hairline in front of the
+                    word (.option-mark). The header stays mounted between pages,
+                    so the old line shrinks away and the new one grows in. */}
+                <span aria-hidden className="option-mark" />
+                {item.label}
+              </Link>
+            ))}
+          </nav>
 
-              <div className="hidden md:inline-flex">
-                <LanguagePicker />
-              </div>
+          <div className="contents min-[1320px]:col-span-6 min-[1320px]:flex min-[1320px]:items-center min-[1320px]:justify-between">
+          <Link href={homeHref} className="flex-none px-3 min-[1320px]:px-0 text-center font-serif text-[22px] leading-[28px] tab:text-[34px] tab:leading-[42px] tab:tracking-[-0.01em] whitespace-nowrap">
+            Scandinavian Art
+          </Link>
 
-              <Button variant="ghost" size="icon" aria-label={t.aria.openCart} onClick={toggleCart} className="relative">
-                <ShoppingBag className="h-4 w-4" />
-                {totalItems > 0 && (
-                  <span className="absolute -top-1 -right-1 h-4 w-4 rounded-full bg-primary text-xs text-primary-foreground flex items-center justify-center">
-                    {totalItems}
-                  </span>
-                )}
-              </Button>
-
-              <Button variant="ghost" size="icon" aria-label={t.aria.openMenu} onClick={() => { setMenuOpenedBySearch(false); setMobileMenuOpen(true); }} className="md:hidden">
-                <Menu className="h-4 w-4" />
-              </Button>
+          <div className="flex flex-1 basis-0 items-center justify-end gap-8 type-small min-[1320px]:flex-none">
+            <button type="button" className="hidden desk:inline transition-opacity hover:opacity-60" onClick={() => setIsSearchOpen(true)}>
+              {t.aria.search}
+            </button>
+            <div className="hidden desk:inline-flex">
+              <LanguagePicker />
             </div>
-          )}
-
-          {isSearchOpen && (
-            <div className="hidden md:flex absolute inset-0 bg-background items-center px-4 sm:px-6">
-              <form onSubmit={handleSearchSubmit} className="w-full flex items-center">
-                <Input
-                  type="text"
-                  placeholder={t.searchPlaceholder}
-                  value={localSearchQuery}
-                  onChange={(e) => setLocalSearchQuery(e.target.value)}
-                  className="flex-1 text-lg border-none border-b border-border bg-transparent focus:ring-0 focus:border-b-foreground focus-visible:ring-0 rounded-none px-0 pb-2"
-                  autoFocus
-                  data-search="true"
-                />
-                <Button variant="ghost" size="icon" aria-label={t.aria.closeSearch} type="button" onClick={() => { setIsSearchOpen(false); setLocalSearchQuery(''); }} className="ml-4">
-                  <X className="h-4 w-4" />
-                </Button>
-              </form>
-            </div>
-          )}
+            <button
+              type="button"
+              onClick={toggleCart}
+              aria-label={`${t.aria.openCart}, ${totalItems}`}
+              className="text-right transition-opacity hover:opacity-60 whitespace-nowrap"
+            >
+              {basketLabel}
+            </button>
+          </div>
+          </div>
         </div>
-      </div>
+      </header>
+
+      <SearchOverlay open={isSearchOpen} onClose={() => setIsSearchOpen(false)} isNo={isNo} index={search} />
 
       <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
-        <SheetTrigger asChild>
-          <Button variant="ghost" size="icon" aria-label={t.aria.openMenu} className="md:hidden sr-only">
-            <Menu className="h-4 w-4" />
-          </Button>
-        </SheetTrigger>
-        <SheetContent side="right" className="w-[300px] sm:w-[350px]">
+        <SheetContent
+          side="left"
+          // The menu in the brand orange with ink text (Mark, 2026-09-26): black on
+          // #B35D26 measures 4.5:1. The hairlines turn ink, since accent on accent
+          // disappears, and the sheet's own ✕ is hidden because "Close" is the control.
+          className="w-full max-w-none rounded-none border-0 bg-brand p-0 text-ink sm:max-w-none [&>button:last-child]:hidden [&_.hairline]:!bg-ink"
+        >
           <SheetTitle className="sr-only">{t.aria.navMenuTitle}</SheetTitle>
           <SheetDescription className="sr-only">{t.aria.navMenuDescription}</SheetDescription>
-          <div className="flex flex-col h-full">
-            <div className="py-[21px] px-[14px] border-b border-border/30" />
-            <div className="py-[21px] px-[14px]">
-              <form onSubmit={handleSearchSubmit}>
-                <div className="relative">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-                  <Input
-                    ref={mobileSearchRef}
-                    type="text"
-                    placeholder={t.searchPlaceholder}
-                    value={localSearchQuery}
-                    onChange={(e) => setLocalSearchQuery(e.target.value)}
-                    className="pl-10 mobile-search-input"
-                    data-search="true"
-                    autoFocus={false}
-                    tabIndex={mobileMenuOpen && !menuOpenedBySearch ? -1 : 0}
-                    onClick={() => { if (mobileSearchRef.current) { mobileSearchRef.current.tabIndex = 0; mobileSearchRef.current.focus(); } }}
-                  />
-                </div>
-              </form>
+          <div className="flex h-full flex-col overflow-y-auto px-5 pb-8">
+            <div className="flex h-[60px] items-center justify-between">
+              <button type="button" className="type-small" onClick={() => setMobileMenuOpen(false)}>{t.close}</button>
+              <Link href={homeHref} onClick={() => setMobileMenuOpen(false)} className="font-serif text-[22px] leading-[28px]">Scandinavian Art</Link>
+              <span className="w-[42px]" />
             </div>
-            <nav className="flex flex-col space-y-6 text-[14px] text-left py-[0px] font-normal mt-[0px] mr-[0px] mb-[21px] ml-[0px]">
-              <div className="pt-4 border-t">
-                <p className="text-sm text-muted-foreground mb-4 px-[14px] py-[0px]">{t.categoriesLabel}</p>
-                <div className="flex flex-col space-y-3 px-[14px] py-[0px]">
-                  {categories.map((cat) => {
-                    const landing = getCategoryLandingByCategory(cat);
-                    return (
-                    <Link key={cat} href={landing ? `${categoryHrefPrefix}/category/${landing.slug}` : `/products?category=${cat}`} className="text-left transition-opacity hover:opacity-60" onClick={() => setMobileMenuOpen(false)}>
+            <button
+              type="button"
+              className="mt-6 border-b border-ink pb-3 text-left type-lead text-ink-muted"
+              onClick={() => { setMobileMenuOpen(false); setIsSearchOpen(true); }}
+            >
+              {t.searchPlaceholder}
+            </button>
+            <nav aria-label={chromeAria[isNo ? 'no' : 'en'].landmarks.menu} className="mt-10 flex flex-col gap-3">
+              {nav.map(item => (
+                <Link key={item.key} href={item.href} className="type-h2" onClick={() => setMobileMenuOpen(false)}>{item.label}</Link>
+              ))}
+              <Link href={helpHref} className="type-h2" onClick={() => setMobileMenuOpen(false)}>{t.nav.help}</Link>
+            </nav>
+            <div className="mt-10 border-t border-ink/30 pt-6">
+              <p className="type-caption">{t.categoriesLabel}</p>
+              <div className="mt-3 flex flex-col gap-2 type-body">
+                {categories.map(cat => {
+                  const landing = getCategoryLandingByCategory(cat);
+                  return (
+                    <Link
+                      key={cat}
+                      href={landing ? `${categoryHrefPrefix}/category/${landing.slug}` : `${p1}/products?category=${cat}`}
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
                       {t.categoryLabels[cat] ?? cat}
                     </Link>
-                    );
-                  })}
-                </div>
+                  );
+                })}
+                <Link href={`${p1}/products`} onClick={() => setMobileMenuOpen(false)}>{t.nav.shopAll}</Link>
               </div>
-              <div className="pt-4 border-t">
-                <p className="text-sm text-muted-foreground mb-4 px-[14px] py-[0px]">{t.moreLabel}</p>
-                <div className="flex flex-col space-y-3 px-[14px] py-[0px]">
-                  <Link href={`${p1}/products`} className="text-left transition-opacity hover:opacity-60" onClick={() => setMobileMenuOpen(false)}>{t.nav.shopAll}</Link>
-                  <Link href={`${p1}/inspire`} className="text-left transition-opacity hover:opacity-60" onClick={() => setMobileMenuOpen(false)}>{t.nav.inspire}</Link>
-                  <Link href={`${p1}/journal`} className="text-left transition-opacity hover:opacity-60" onClick={() => setMobileMenuOpen(false)}>{t.nav.journal}</Link>
-                  <Link href={artistsHref} className="text-left transition-opacity hover:opacity-60" onClick={() => setMobileMenuOpen(false)}>{t.nav.artists}</Link>
-                  <Link href={aboutHref} className="text-left transition-opacity hover:opacity-60" onClick={() => setMobileMenuOpen(false)}>{t.nav.about}</Link>
-                  <Link href={helpHref} className="text-left transition-opacity hover:opacity-60" onClick={() => setMobileMenuOpen(false)}>{t.nav.help}</Link>
-                  <a href="mailto:hello@scandinavianart.co.uk" className="text-left transition-opacity hover:opacity-60">{t.sendEmail}</a>
-                  <a href="https://www.instagram.com/helloscandinavianart/" target="_blank" rel="noopener noreferrer" className="text-left transition-opacity hover:opacity-60">Instagram</a>
-                  <a href="https://www.facebook.com/people/Scandinavian-Art/61563171855842/" target="_blank" rel="noopener noreferrer" className="text-left transition-opacity hover:opacity-60">Facebook</a>
-                </div>
-              </div>
-              <div className="pt-[14px] border-t pr-[14px] pb-[0px] pl-[14px]">
-                <LanguagePicker />
-              </div>
-            </nav>
+            </div>
+            <div className="mt-10 border-t border-ink/30 pt-6">
+              <LanguagePicker />
+            </div>
           </div>
         </SheetContent>
       </Sheet>
-    </header>
     </>
   );
 };

@@ -709,7 +709,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
     scrub?: { min: number; max: number; step: number }
   ) => (
     <label className="group/field relative flex flex-col gap-1" htmlFor={`${id}-${key}`}>
-      <span className="text-[10px] font-medium uppercase tracking-wide text-neutral-500">{label}</span>
+      <span className="type-caption text-ink">{label}</span>
       <span className="relative">
         <input
           id={`${id}-${key}`}
@@ -720,7 +720,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
           aria-invalid={Boolean(error)}
           aria-describedby={`${id}-${key}-help${error ? ` ${id}-${key}-error` : ''}`}
           onChange={event => onChange(event.currentTarget.value)}
-          className="gw-field h-9 w-[5.75rem] rounded-md border border-neutral-300 pl-2.5 pr-8 text-sm tabular-nums text-neutral-900 transition-colors hover:border-neutral-400 focus-visible:border-neutral-900 focus-visible:outline-none aria-invalid:border-destructive"
+          className="gw-field h-9 w-[5.75rem] border border-neutral-300 pl-2.5 pr-8 text-sm tabular-nums text-ink transition-colors hover:border-neutral-400 focus-visible:border-ink focus-visible:outline-none aria-invalid:border-destructive"
           {...extra}
         />
         <span aria-hidden="true" className="pointer-events-none absolute inset-y-0 right-2.5 flex items-center text-xs text-neutral-400">cm</span>
@@ -745,7 +745,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
               than a <label for>, so it cannot supply the name either. */}
           <SliderPrimitive.Thumb
             aria-label={`${label}, drag to adjust`}
-            className="block size-3 shrink-0 cursor-ew-resize rounded-full border border-neutral-900 bg-white shadow-sm ring-neutral-900/15 transition-[box-shadow] hover:ring-4 focus-visible:ring-4 focus-visible:outline-none"
+            className="block size-3 shrink-0 cursor-ew-resize rounded-full border border-ink bg-white shadow-sm ring-neutral-900/15 transition-[box-shadow] hover:ring-4 focus-visible:ring-4 focus-visible:outline-none"
           />
         </SliderPrimitive.Root>
       )}
@@ -797,9 +797,9 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
 
       {/* The page's hero has already said what this is; the heading is for the outline. */}
       <div className="sr-only">
-        <h3 id={`${id}-title`} className="text-2xl font-medium text-neutral-900">Plan your wall</h3>
+        <h3 id={`${id}-title`} className="type-h3">Plan your wall</h3>
         <p className="mt-2 leading-relaxed text-neutral-700">
-          Your wall, to scale. Drag the prints wherever you like — they click to each other’s edges and to your gap — tap one to change its size, and slide the whole group up or down by the marker at the right. Then read the hanging measurements straight off the drawing.
+          Your wall, to scale. Drag the prints wherever you like: they click to each other’s edges and to your gap. Tap one to change its size, and slide the whole group up or down by the marker at the right. Then read the hanging measurements straight off the drawing.
         </p>
       </div>
 
@@ -815,7 +815,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
             the screen less the header - a wall you have to scroll to see the
             bottom of cannot be dragged across in one movement. */}
         <div className={`mx-auto w-full ${expanded ? 'flex min-h-0 flex-1 flex-col' : ''}`}>
-          <div className="flex flex-wrap items-end gap-x-3 gap-y-3 rounded-t border border-b-0 border-neutral-300 bg-white px-4 py-3">
+          <div className="flex flex-wrap items-end gap-x-3 gap-y-3 border border-b-0 border-neutral-300 bg-white px-4 py-3">
             {numberField('wall', 'Wall width', wallWidthInput, next => {
               setWallWidthInput(next);
               const n = Number(next);
@@ -857,15 +857,15 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
                 to pull about. */}
             <Dialog open={arrangementsOpen} onOpenChange={setArrangementsOpen}>
               <DialogTrigger asChild>
-                <button type="button" className="flex h-9 items-center gap-2 rounded-md border border-neutral-300 bg-white px-3 text-sm text-neutral-800 outline-none transition-colors hover:border-neutral-400 hover:text-neutral-900 focus-visible:border-neutral-900 sm:ml-auto">
+                <button type="button" className="flex h-9 items-center gap-2 border border-neutral-300 bg-white px-3 text-sm text-neutral-800 outline-none transition-colors hover:border-neutral-400 hover:text-ink focus-visible:border-ink sm:ml-auto">
                   <LayoutGrid aria-hidden="true" className="size-4 text-neutral-500" />
                   Arrangements
                 </button>
               </DialogTrigger>
               <DialogContent className="gap-8 p-8 sm:max-w-3xl sm:p-10">
                 <DialogHeader className="gap-3">
-                  <DialogTitle className="text-2xl font-medium tracking-tight text-neutral-900">Start with an arrangement</DialogTitle>
-                  <DialogDescription className="text-base leading-relaxed text-neutral-600">Pick one and make it yours: every print can still be moved, resized or taken away.</DialogDescription>
+                  <DialogTitle className="type-h3">Start with an arrangement</DialogTitle>
+                  <DialogDescription className="type-body">Pick one and make it yours: every print can still be moved, resized or taken away.</DialogDescription>
                 </DialogHeader>
                 <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                   {PRESETS.map(preset => (
@@ -873,11 +873,11 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
                       key={preset.key}
                       type="button"
                       onClick={() => applyPreset(preset.key)}
-                      className="flex flex-col gap-4 rounded-xl border border-neutral-200 bg-white p-5 text-left outline-none transition-[border-color,box-shadow] hover:border-neutral-900 hover:shadow-lg focus-visible:border-neutral-900 focus-visible:shadow-lg"
+                      className="flex flex-col gap-4 border border-neutral-200 bg-white p-5 text-left outline-none transition-[border-color,box-shadow] hover:border-ink hover:shadow-lg focus-visible:border-ink focus-visible:shadow-lg"
                     >
                       <ArrangementThumb rows={preset.rows} />
                       <span className="flex flex-col gap-1.5 px-1">
-                        <span className="text-base font-medium text-neutral-900">{preset.label}</span>
+                        <span className="type-body">{preset.label}</span>
                         <span className="text-sm leading-relaxed text-neutral-600">{preset.description}</span>
                       </span>
                     </button>
@@ -886,20 +886,20 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
               </DialogContent>
             </Dialog>
             {/* The wall leaves as a link - the URL carries it - and comes back the same. */}
-            <div className="flex h-9 items-stretch overflow-hidden rounded-md border border-neutral-300 bg-white text-neutral-700">
-              <button type="button" onClick={copyLink} aria-label={aria.copyLink} title={aria.copyLink} className="flex w-9 items-center justify-center outline-none transition-colors hover:bg-neutral-100 hover:text-neutral-900 focus-visible:bg-neutral-100">
+            <div className="flex h-9 items-stretch overflow-hidden border border-neutral-300 bg-white text-neutral-700">
+              <button type="button" onClick={copyLink} aria-label={aria.copyLink} title={aria.copyLink} className="flex w-9 items-center justify-center outline-none transition-colors hover:bg-neutral-100 hover:text-ink focus-visible:bg-neutral-100">
                 {copied ? <Check aria-hidden="true" className="size-4" /> : <Link2 aria-hidden="true" className="size-4" />}
               </button>
-              <button type="button" onClick={reset} aria-label={aria.reset} title={aria.reset} className="flex w-9 items-center justify-center border-l border-neutral-300 outline-none transition-colors hover:bg-neutral-100 hover:text-neutral-900 focus-visible:bg-neutral-100">
+              <button type="button" onClick={reset} aria-label={aria.reset} title={aria.reset} className="flex w-9 items-center justify-center border-l border-neutral-300 outline-none transition-colors hover:bg-neutral-100 hover:text-ink focus-visible:bg-neutral-100">
                 <RotateCcw aria-hidden="true" className="size-4" />
               </button>
             </div>
             {/* Plan or room. */}
-            <div role="group" aria-label={aria.viewGroup} className="flex h-9 items-stretch overflow-hidden rounded-md border border-neutral-300 bg-white text-neutral-700">
-              <button type="button" aria-pressed={view === 'plan'} aria-label={aria.viewPlan} title={aria.viewPlan} onClick={() => setView('plan')} className={`flex w-9 items-center justify-center outline-none transition-colors focus-visible:bg-neutral-100 ${view === 'plan' ? 'bg-neutral-900 text-white' : 'hover:bg-neutral-100 hover:text-neutral-900'}`}>
+            <div role="group" aria-label={aria.viewGroup} className="flex h-9 items-stretch overflow-hidden border border-neutral-300 bg-white text-neutral-700">
+              <button type="button" aria-pressed={view === 'plan'} aria-label={aria.viewPlan} title={aria.viewPlan} onClick={() => setView('plan')} className={`flex w-9 items-center justify-center outline-none transition-colors focus-visible:bg-neutral-100 ${view === 'plan' ? 'bg-ink text-on-primary' : 'hover:bg-neutral-100 hover:text-ink'}`}>
                 <Ruler aria-hidden="true" className="size-4" />
               </button>
-              <button type="button" aria-pressed={view === 'room'} aria-label={aria.viewRoom} title={aria.viewRoom} onClick={() => { setSelected(null); setView('room'); }} className={`flex w-9 items-center justify-center border-l border-neutral-300 outline-none transition-colors focus-visible:bg-neutral-100 ${view === 'room' ? 'bg-neutral-900 text-white' : 'hover:bg-neutral-100 hover:text-neutral-900'}`}>
+              <button type="button" aria-pressed={view === 'room'} aria-label={aria.viewRoom} title={aria.viewRoom} onClick={() => { setSelected(null); setView('room'); }} className={`flex w-9 items-center justify-center border-l border-neutral-300 outline-none transition-colors focus-visible:bg-neutral-100 ${view === 'room' ? 'bg-ink text-on-primary' : 'hover:bg-neutral-100 hover:text-ink'}`}>
                 <Armchair aria-hidden="true" className="size-4" />
               </button>
             </div>
@@ -909,7 +909,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
                 onClick={() => { if (roomSvgRef.current) void saveSvgAsPng(roomSvgRef.current, 'gallery-wall.png'); }}
                 aria-label={aria.saveImage}
                 title={aria.saveImage}
-                className="flex h-9 w-9 items-center justify-center rounded-md border border-neutral-300 bg-white text-neutral-700 outline-none transition-colors hover:bg-neutral-100 hover:text-neutral-900 focus-visible:bg-neutral-100"
+                className="flex h-9 w-9 items-center justify-center border border-neutral-300 bg-white text-neutral-700 outline-none transition-colors hover:bg-neutral-100 hover:text-ink focus-visible:bg-neutral-100"
               >
                 <Download aria-hidden="true" className="size-4" />
               </button>
@@ -921,7 +921,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
               aria-pressed={expanded}
               aria-label={expanded ? aria.collapse : aria.expand}
               title={expanded ? aria.collapse : aria.expand}
-              className="flex h-9 w-9 items-center justify-center rounded-md border border-neutral-300 bg-white text-neutral-700 outline-none transition-colors hover:bg-neutral-100 hover:text-neutral-900 focus-visible:bg-neutral-100"
+              className="flex h-9 w-9 items-center justify-center border border-neutral-300 bg-white text-neutral-700 outline-none transition-colors hover:bg-neutral-100 hover:text-ink focus-visible:bg-neutral-100"
             >
               {expanded ? <X aria-hidden="true" className="size-4" /> : <Maximize2 aria-hidden="true" className="size-4" />}
             </button>
@@ -934,7 +934,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
             slightly deeper tone: what is beyond your wall, not less of it.
             Container-query units give the wall its size with no measuring. */}
         <div
-          className={`relative flex w-full items-end justify-center overflow-hidden rounded-b border border-neutral-300 ${view === 'room' ? 'bg-white' : 'bg-[#ebeae6]'} ${expanded ? 'min-h-0 flex-1' : ''}`}
+          className={`relative flex w-full items-end justify-center overflow-hidden border border-neutral-300 ${view === 'room' ? 'bg-white' : 'bg-[#ebeae6]'} ${expanded ? 'min-h-0 flex-1' : ''}`}
           // Docked, the frame leaves room for the toolbar above and the page
           // around it; expanded, it takes whatever the screen has.
           style={{ height: expanded ? undefined : 'min(68vh, 75vw)', minHeight: expanded ? undefined : '300px', containerType: 'size' }}
@@ -956,14 +956,14 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
               }}
             />
             {/* The camera: turn by dragging the picture, or by these. */}
-            <div className="absolute bottom-3 left-3 z-20 flex flex-wrap items-end gap-4 rounded-md border border-neutral-200 bg-white/95 px-3 py-2 text-[11px] text-neutral-700 shadow-sm" onPointerDown={event => event.stopPropagation()}>
+            <div className="absolute bottom-3 left-3 z-20 flex flex-wrap items-end gap-4 border border-neutral-200 bg-white/95 px-3 py-2 text-[11px] text-neutral-700 shadow-sm" onPointerDown={event => event.stopPropagation()}>
               {([
                 ['Angle', 'yaw', -70, 70, 1, '°'],
                 ['Camera height', 'height', 90, 220, 1, ' cm'],
                 ['Distance', 'distance', 150, 600, 5, ' cm'],
               ] as const).map(([label, key, min, max, step, unit]) => (
                 <label key={key} className="flex flex-col gap-1">
-                  <span className="flex justify-between gap-3 text-[10px] font-medium uppercase tracking-wide text-neutral-500">{label}<span className="tabular-nums normal-case tracking-normal text-neutral-400">{Math.round(camera[key])}{unit}</span></span>
+                  <span className="flex justify-between gap-3 type-caption text-ink">{label}<span className="tabular-nums normal-case tracking-normal text-neutral-400">{Math.round(camera[key])}{unit}</span></span>
                   <SliderPrimitive.Root
                     min={min}
                     max={max}
@@ -981,7 +981,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
                         span rather than a <label for>, so it cannot supply it either. */}
                     <SliderPrimitive.Thumb
                       aria-label={label}
-                      className="block size-3 shrink-0 cursor-ew-resize rounded-full border border-neutral-900 bg-white shadow-sm ring-neutral-900/15 transition-[box-shadow] hover:ring-4 focus-visible:ring-4 focus-visible:outline-none"
+                      className="block size-3 shrink-0 cursor-ew-resize rounded-full border border-ink bg-white shadow-sm ring-neutral-900/15 transition-[box-shadow] hover:ring-4 focus-visible:ring-4 focus-visible:outline-none"
                     />
                   </SliderPrimitive.Root>
                 </label>
@@ -1006,7 +1006,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
             setSelected(null);
             setSelectedFurniture(null);
           }}
-          className={`gw-wall relative h-full select-none border-x border-neutral-400 bg-[#f7f6f3] ${view === 'room' ? 'hidden' : ''}`}
+          className={`gw-wall relative h-full select-none border-x border-neutral-400 bg-image-bg ${view === 'room' ? 'hidden' : ''}`}
           style={{
             width: `min(100cqw, calc(100cqh * ${drawWidth} / ${drawHeight}))`,
             containerType: 'inline-size',
@@ -1021,14 +1021,14 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
           <div className="absolute bottom-2 left-2 z-20 flex items-center gap-2" onPointerDown={event => event.stopPropagation()}>
             <Popover open={furnitureMenuOpen} onOpenChange={setFurnitureMenuOpen}>
               <PopoverTrigger asChild>
-                <button type="button" className="inline-flex h-8 items-center gap-1.5 rounded-md border border-neutral-300 bg-white/90 px-2 text-[11px] text-neutral-700 outline-none transition-colors hover:border-neutral-900 hover:text-neutral-900 focus-visible:border-neutral-900">
+                <button type="button" className="inline-flex h-8 items-center gap-1.5 border border-neutral-300 bg-white/90 px-2 text-[11px] text-neutral-700 outline-none transition-colors hover:border-ink hover:text-ink focus-visible:border-ink">
                   <Plus aria-hidden="true" className="size-3.5" /> Furniture
                 </button>
               </PopoverTrigger>
               <PopoverContent side="top" align="start" sideOffset={8} className="w-auto p-2" onPointerDown={event => event.stopPropagation()}>
                 <div className="flex flex-col">
                   {FURNITURE_PRESETS.map(preset => (
-                    <button key={preset.kind} type="button" onClick={() => addFurniture(preset.kind)} className="flex items-baseline justify-between gap-6 rounded px-2 py-1.5 text-left text-sm text-neutral-800 outline-none transition-colors hover:bg-neutral-100 focus-visible:bg-neutral-100">
+                    <button key={preset.kind} type="button" onClick={() => addFurniture(preset.kind)} className="flex items-baseline justify-between gap-6 px-2 py-1.5 text-left text-sm text-neutral-800 outline-none transition-colors hover:bg-neutral-100 focus-visible:bg-neutral-100">
                       {preset.label}
                       <span className="text-xs tabular-nums text-neutral-500">{preset.width} × {preset.height} cm</span>
                     </button>
@@ -1037,7 +1037,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
               </PopoverContent>
             </Popover>
             {/* The measurements can be put away, leaving the wall and the prints. */}
-            <label className="inline-flex h-8 cursor-pointer items-center gap-2 rounded-md border border-neutral-300 bg-white/90 px-2 text-[11px] text-neutral-700">
+            <label className="inline-flex h-8 cursor-pointer items-center gap-2 border border-neutral-300 bg-white/90 px-2 text-[11px] text-neutral-700">
               <Switch checked={showLines} onCheckedChange={setShowLines} aria-label={aria.linesSwitch} className="data-[state=checked]:bg-neutral-900 data-[state=unchecked]:bg-neutral-300" />
               Lines
             </label>
@@ -1046,7 +1046,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
           {/* eye level */}
           {showLines && <div className="pointer-events-none absolute inset-x-0 border-t border-dashed border-neutral-300" style={{ top: y(EYE_LEVEL_CM), transition }} />}
           {showLines && safeCentre !== EYE_LEVEL_CM && (
-            <span className="pointer-events-none absolute right-2 bg-[#f7f6f3] px-1 text-[10px] tabular-nums text-neutral-500" style={{ top: `calc(${y(EYE_LEVEL_CM)} + 3px)`, transition }}>
+            <span className="pointer-events-none absolute right-2 bg-image-bg px-1 text-[10px] tabular-nums text-neutral-500" style={{ top: `calc(${y(EYE_LEVEL_CM)} + 3px)`, transition }}>
               eye level · {EYE_LEVEL_CM} cm
             </span>
           )}
@@ -1115,7 +1115,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
                     title={aria.removeFurniture}
                     onPointerDown={event => event.stopPropagation()}
                     onClick={() => removeFurniture(item.id)}
-                    className="absolute -top-9 left-1/2 flex size-8 -translate-x-1/2 items-center justify-center rounded-md border border-neutral-200 bg-white text-neutral-700 shadow-md transition-colors hover:text-destructive"
+                    className="absolute -top-9 left-1/2 flex size-8 -translate-x-1/2 items-center justify-center border border-neutral-200 bg-white text-neutral-700 shadow-md transition-colors hover:text-error"
                   >
                     <Trash2 aria-hidden="true" className="size-4" />
                   </button>
@@ -1126,10 +1126,10 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
 
           {/* smart guides: the lines the held print has clicked to */}
           {drag && !drag.settle && drag.guides.xs.map(gx => (
-            <div key={`gx-${gx}`} className="pointer-events-none absolute inset-y-0 border-l border-dashed border-neutral-900/40" style={{ left: x(offset.left + gx) }} />
+            <div key={`gx-${gx}`} className="pointer-events-none absolute inset-y-0 border-l border-dashed border-ink/40" style={{ left: x(offset.left + gx) }} />
           ))}
           {drag && !drag.settle && drag.guides.ys.map(gy => (
-            <div key={`gy-${gy}`} className="pointer-events-none absolute inset-x-0 border-t border-dashed border-neutral-900/40" style={{ top: y(offset.topFromFloor - gy) }} />
+            <div key={`gy-${gy}`} className="pointer-events-none absolute inset-x-0 border-t border-dashed border-ink/40" style={{ top: y(offset.topFromFloor - gy) }} />
           ))}
 
           {/* Dimensions, laid out the way a plan lays them out: one dimension
@@ -1144,7 +1144,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
             </>
           )}
           {printCount > 0 && tooWide && (
-            <span className="pointer-events-none absolute left-1/2 -translate-x-1/2 rounded bg-destructive px-2 py-0.5 text-[11px] font-medium text-destructive-foreground" style={{ top: `calc(${y(groupBottom)} + 8px)` }}>
+            <span className="pointer-events-none absolute left-1/2 -translate-x-1/2 bg-error px-2 py-0.5 text-[11px] text-destructive-foreground" style={{ top: `calc(${y(groupBottom)} + 8px)` }}>
               {formatCentimetres(round(box.w - drawWidth))} too wide
             </span>
           )}
@@ -1175,7 +1175,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
                 className={`absolute box-border p-[3%] outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2 ${
                   isHeld
                     ? 'border-2 border-dashed border-neutral-400 bg-white/40'
-                    : `cursor-grab border-2 bg-white ${isSelected ? 'border-neutral-900 shadow-[0_0_0_3px_rgba(23,23,23,0.12)]' : 'border-neutral-800 hover:border-neutral-900 hover:shadow-md'}`
+                    : `cursor-grab border-2 bg-white ${isSelected ? 'border-ink shadow-[0_0_0_3px_rgba(23,23,23,0.12)]' : 'border-neutral-800 hover:border-ink hover:shadow-md'}`
                 }`}
                 style={{
                   left: x(left),
@@ -1218,7 +1218,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
               type="button"
               onClick={() => addPrintAt('50x70', { x: 0, y: 0 }, 'First print added.')}
               aria-label={aria.addFirst}
-              className="absolute left-1/2 flex -translate-x-1/2 items-center gap-1 whitespace-nowrap rounded-full border border-dashed border-neutral-300 bg-[#f7f6f3] px-3 py-1 text-xs text-neutral-500 transition-colors duration-150 hover:border-neutral-700 hover:text-neutral-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+              className="absolute left-1/2 flex -translate-x-1/2 items-center gap-1 whitespace-nowrap border border-dashed border-neutral-300 bg-image-bg px-3 py-1 text-xs text-neutral-500 transition-colors duration-150 hover:border-neutral-700 hover:text-neutral-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
               style={{ top: `calc(${y(EYE_LEVEL_CM)} - 14px)` }}
             >
               <span aria-hidden="true">+</span> Add a print
@@ -1232,7 +1232,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
             <>
               {groupDragging && (
                 <>
-                  <div className="pointer-events-none absolute inset-x-0 border-t border-dashed border-neutral-900/40" style={{ top: y(safeCentre) }} />
+                  <div className="pointer-events-none absolute inset-x-0 border-t border-dashed border-ink/40" style={{ top: y(safeCentre) }} />
                   <Dimension axis="y" from={0} to={groupBottom} at={drawWidth - 3} x={x} y={y} h={h} label={`${formatCentimetres(Math.round(groupBottom))} to floor`} labelSide="left" transition="none" />
                   {safeWallHeight !== undefined && groupTop < safeWallHeight && (
                     <Dimension axis="y" from={groupTop} to={safeWallHeight} at={drawWidth - 3} x={x} y={y} h={h} label={`${formatCentimetres(Math.round(safeWallHeight - groupTop))} to ceiling`} labelSide="left" transition="none" />
@@ -1253,12 +1253,12 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
                 // A fixed width and whole numbers, so the tab never changes
                 // shape while it moves; sitting on eye level is shown by weight,
                 // not by more words.
-                className={`absolute right-0 z-20 flex min-w-[4.75rem] -translate-y-1/2 cursor-ns-resize items-center justify-end gap-1 rounded-l-md border border-r-0 bg-white py-1 pl-2 pr-2.5 text-[11px] tabular-nums shadow-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring ${
+                className={`absolute right-0 z-20 flex min-w-[4.75rem] -translate-y-1/2 cursor-ns-resize items-center justify-end gap-1 border border-r-0 bg-white py-1 pl-2 pr-2.5 text-[11px] tabular-nums shadow-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring ${
                   safeCentre === EYE_LEVEL_CM
-                    ? 'border-neutral-900 font-medium text-neutral-900'
+                    ? 'border-ink text-ink'
                     : groupDragging
-                      ? 'border-neutral-900 text-neutral-900'
-                      : 'border-neutral-300 text-neutral-700 hover:border-neutral-900 hover:text-neutral-900'
+                      ? 'border-ink text-ink'
+                      : 'border-neutral-300 text-neutral-700 hover:border-ink hover:text-ink'
                 }`}
                 style={{ top: y(safeCentre), transition }}
               >
@@ -1273,7 +1273,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
             <div
               role="toolbar"
               aria-label={aria.selectedPrint}
-              className="absolute z-20 flex -translate-x-1/2 items-center gap-1 rounded-lg border border-neutral-200 bg-white p-1 shadow-lg"
+              className="absolute z-20 flex -translate-x-1/2 items-center gap-1 border border-neutral-200 bg-white p-1 shadow-lg"
               // Kept inside the drawing: above the print when there is room,
               // over its top edge when there is not, and never off the sides.
               style={{
@@ -1289,7 +1289,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
                   type="button"
                   aria-pressed={selectedEntry.print.size === size}
                   onClick={() => setSize(selectedEntry.print.id, size)}
-                  className={`min-h-8 rounded-md px-2 text-xs tabular-nums transition-colors ${selectedEntry.print.size === size ? 'bg-neutral-900 text-white' : 'text-neutral-700 hover:bg-neutral-100'}`}
+                  className={`min-h-8 px-2 text-xs tabular-nums transition-colors ${selectedEntry.print.size === size ? 'bg-ink text-on-primary' : 'text-neutral-700 hover:bg-neutral-100'}`}
                 >
                   {shortLabel(size)}
                 </button>
@@ -1300,7 +1300,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
                 onClick={() => removePrint(selectedEntry.print.id)}
                 aria-label={aria.removePrint}
                 title="Remove"
-                className="flex min-h-8 min-w-8 items-center justify-center rounded-md text-neutral-700 transition-colors hover:bg-neutral-100 hover:text-destructive"
+                className="flex min-h-8 min-w-8 items-center justify-center text-neutral-700 transition-colors hover:bg-neutral-100 hover:text-error"
               >
                 <Trash2 aria-hidden="true" className="size-4" />
               </button>
@@ -1319,7 +1319,7 @@ export function GalleryWallCalculator({ locale = 'en' }: { locale?: 'en' | 'no' 
               if (settleTimer.current) window.clearTimeout(settleTimer.current);
               setDrag(null);
             }}
-            className="pointer-events-none fixed z-50 box-border border-2 border-neutral-900 bg-white shadow-xl"
+            className="pointer-events-none fixed z-50 box-border border-2 border-ink bg-white shadow-xl"
             style={{
               // In pixels: a percentage on a fixed element resolves against
               // the viewport, not the copy, and drew the mount as a sliver.
@@ -1356,7 +1356,7 @@ function ArrangementThumb({ rows }: { rows: readonly WallRow[] }) {
     <svg
       aria-hidden="true"
       viewBox={`${-pad} ${-pad} ${box.w + pad * 2} ${box.h + pad * 2}`}
-      className="h-40 w-full rounded-lg bg-[#f7f6f3] text-neutral-800"
+      className="h-40 w-full bg-image-bg text-neutral-800"
       preserveAspectRatio="xMidYMid meet"
     >
       {prints.map((print, i) => {
@@ -1403,7 +1403,7 @@ function Dimension({
         <div className="absolute inset-x-0 top-0 border-t border-neutral-400" />
         <div className={`${tick} left-0 h-2 w-px -translate-y-1/2`} />
         <div className={`${tick} right-0 h-2 w-px -translate-y-1/2`} />
-        <span className="relative -top-[9px] bg-[#f7f6f3] px-1 text-[10px] tabular-nums text-neutral-600 sm:text-[11px]">{label}</span>
+        <span className="relative -top-[9px] bg-image-bg px-1 text-[10px] tabular-nums text-neutral-600 sm:text-[11px]">{label}</span>
       </div>
     );
   }

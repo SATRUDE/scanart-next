@@ -49,6 +49,12 @@ const RETIRED_PRODUCT_SLUGS = [
 ];
 
 const nextConfig: NextConfig = {
+  experimental: {
+    // Two root layouts ((en) and (no)) leave no single layout to wrap an
+    // unmatched URL's 404, so app/global-not-found.tsx renders its own
+    // document (see the note on components/v2/not-found/NotFoundBody.tsx).
+    globalNotFound: true,
+  },
   images: {
     // Serve AVIF (then WebP) from the optimizer; both far smaller than the source.
     formats: ['image/avif', 'image/webp'],

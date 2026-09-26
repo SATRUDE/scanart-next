@@ -1,7 +1,11 @@
 import type { Metadata } from 'next';
-import { getAllArticles } from '@/lib/articles';
-import { JournalGrid } from '@/components/JournalGrid';
+import { getAllArticles, getArticleBlocks } from '@/lib/articles';
+import { JournalGrid, type JournalStoryMeta } from '@/components/JournalGrid';
 import { JournalBooksSeries } from '@/components/JournalBooksSeries';
+import { LandingCrossLinks } from '@/components/LandingCrossLinks';
+import { PageHeader } from '@/components/v2/ui';
+import { getPublishedArtists } from '@/lib/published-artists';
+import { articlePublishedAt, formatArticleDate, readingMinutes } from '@/lib/article-reading';
 import { BASE_URL, socialCard } from '@/lib/site';
 import { hreflangPair } from '@/lib/i18n';
 import { no } from '@/lib/i18n/no';
@@ -11,6 +15,8 @@ import { no } from '@/lib/i18n/no';
 // rather than to twins that do not exist, and the intro line says so up front
 // instead of letting a reader click through and be surprised.
 const t = no.journal;
+/** Every card on this page opens an English article, and says so. */
+const languageNote = { lang: 'en', label: t.inEnglish };
 
 export const metadata: Metadata = {
   title: t.meta.title,
@@ -30,6 +36,14 @@ export const metadata: Metadata = {
 export default async function NorwegianJournalPage() {
   const articles = await getAllArticles();
   const categories = [...new Set(articles.map(a => a.category).filter(Boolean))].sort();
+  const artists = await getPublishedArtists();
+  const meta: Record<string, JournalStoryMeta> = {};
+  for (const article of articles) {
+    meta[article.slug] = {
+      date: formatArticleDate(articlePublishedAt(article), 'no'),
+      minutes: readingMinutes(await getArticleBlocks(article.id)),
+    };
+  }
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -51,12 +65,30 @@ export default async function NorwegianJournalPage() {
   };
 
   return (
-    <>
-      <JournalGrid articles={articles} categories={categories} strings={t.page} />
-      <div className="container mx-auto px-8 pb-16">
-        <JournalBooksSeries articles={articles} heading={t.page.booksSeriesHeading} />
+    <div className="page-x pb-section">
+      <PageHeader
+        title={t.page.heading}
+        locale="no"
+        lead={
+          <>
+            <p>{t.meta.description}</p>
+            <p>{t.page.intro}</p>
+          </>
+        }
+      />
+      <JournalGrid articles={articles} categories={categories} meta={meta} strings={t.page} languageNote={languageNote} />
+      <div className="mt-24 desk:mt-32">
+        <JournalBooksSeries
+          articles={articles}
+          heading={t.page.booksSeriesHeading}
+          startHere={t.page.startHere}
+          categoryLabels={t.page.categoryLabels}
+          locale="no"
+          languageNote={languageNote}
+        />
       </div>
+      <LandingCrossLinks artists={artists} locale="no" strings={no.crossLinks} className="mt-section" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-    </>
+    </div>
   );
 }

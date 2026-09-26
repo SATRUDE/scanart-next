@@ -11,6 +11,25 @@ export interface HelpGroup {
   items: HelpItem[];
 }
 
+export const DELIVERY_COST_Q = 'How much does delivery cost?';
+
+/**
+ * The answer to "How much does delivery cost?".
+ *
+ * Until 2026-09-26 it carried a price table typed from config/shipping.ts,
+ * which checkout had stopped charging from on 2026-08-12 and which was wrong
+ * for almost every destination. Now the prices are the store's own
+ * (lib/server/delivery-guide.ts), passed in as the formatted guide line when
+ * the page renders, and the Help page's FAQPage JSON-LD uses the same string.
+ */
+export function deliveryCostAnswer(guideLine?: string): string {
+  const lead = 'Delivery depends on where your order is going and on the size, frame and number of prints.';
+  const close = 'Checkout shows the exact amount, in your selected currency, before you pay.';
+  return guideLine
+    ? `${lead} As a guide, in GBP, delivery for one unframed print starts from: ${guideLine}. A frame costs more. ${close}`
+    : `${lead} ${close}`;
+}
+
 export const helpGroups: HelpGroup[] = [
   {
     category: 'Orders & payment',
@@ -45,10 +64,10 @@ export const helpGroups: HelpGroup[] = [
         q: 'How long will my order take?',
         a: 'Each print is made to order, so allow 1 to 4 business days for production, plus delivery for your region: United Kingdom 2-3 business days; Norway, Denmark and Sweden 3-5; United States 5-7; rest of world 7-14.',
       },
-      {
-        q: 'How much does delivery cost?',
-        a: 'Delivery is shown in your selected currency at checkout. As a guide, in GBP: UK £5.99, Norway and Denmark £6.59, Sweden £7.33, United States £10.39, rest of world £15.99.',
-      },
+      // The from-prices are added where the Help page renders, from the
+      // store checkout charges from (deliveryCostAnswer below). This static
+      // answer, true without them, is what any other reader of this list gets.
+      { q: DELIVERY_COST_Q, a: deliveryCostAnswer() },
       {
         q: 'Will I pay customs or import duties?',
         a: "Orders within Norway have nothing extra to pay. For orders delivered elsewhere, import duties, customs charges or local taxes may apply on arrival and are the buyer's responsibility.",
@@ -85,11 +104,11 @@ export const helpGroups: HelpGroup[] = [
     items: [
       {
         q: 'What are your prints made of?',
-        a: 'Our prints are made on museum-quality archival paper for rich colour and long life.',
+        a: 'Our prints are made on 200gsm uncoated paper: a matt finish, without the sheen of a poster.',
       },
       {
         q: 'What sizes are available?',
-        a: "Sizes vary by artwork and are shown on each product page. Most prints are 50x70cm, and Simen Wahlqvist's square illustrations are 50x50cm.",
+        a: "Sizes vary by artwork and are shown on each product page. Most prints are 50x70cm or 50x50cm squares.",
       },
       {
         q: 'Are these original artworks?',

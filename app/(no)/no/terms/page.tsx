@@ -36,7 +36,7 @@ const sections: LegalSection[] = [
     heading: 'Om oss og disse vilkårene',
     body: (
       <p>
-        Scandinavian Art er et nettgalleri for kunsttrykk, drevet fra {COMPANY.country}
+        Scandinavian Art er et nettgalleri for kunsttrykk, drevet fra {COMPANY.countryNo}
         {COMPANY.orgNr ? ` (org.nr ${COMPANY.orgNr})` : ''}, og kan kontaktes på {COMPANY.email}. Disse vilkårene
         gjelder for din bruk av dette nettstedet og for kjøp du gjør. Ved å legge inn en bestilling godtar du dem.
       </p>
@@ -80,8 +80,8 @@ const sections: LegalSection[] = [
     body: (
       <p>
         Vi sender over hele verden. Tidsrammer for produksjon og levering, og fraktkostnader, står på siden vår om{' '}
-        <Link href="/no/delivery" className="underline hover:text-neutral-900">levering og retur</Link>. For
-        bestillinger utenfor {COMPANY.country} kan det påløpe importavgifter eller toll ved ankomst, og dette er
+        <Link href="/no/delivery">levering og retur</Link>. For
+        bestillinger utenfor {COMPANY.countryNo} kan det påløpe importavgifter eller toll ved ankomst, og dette er
         kjøperens ansvar.
       </p>
     ),
@@ -92,7 +92,7 @@ const sections: LegalSection[] = [
       <p>
         Du har rett til å gå fra kjøpet innen 14 dager. Fordi varene lages på bestilling, behøver du ikke sende dem
         tilbake, vi utbetaler refusjon. Defekte, skadde, feilsendte eller tapte varer dekkes særskilt. Alle detaljer
-        står på siden vår om <Link href="/no/delivery" className="underline hover:text-neutral-900">levering og retur</Link>.
+        står på siden vår om <Link href="/no/delivery">levering og retur</Link>.
       </p>
     ),
   },
@@ -129,7 +129,7 @@ const sections: LegalSection[] = [
     heading: 'Lovvalg',
     body: (
       <p>
-        Disse vilkårene reguleres av lovgivningen i {COMPANY.country}. Dette fratar deg ikke de ufravikelige
+        Disse vilkårene reguleres av lovgivningen i {COMPANY.countryNo}. Dette fratar deg ikke de ufravikelige
         forbrukervernreglene i landet du bor i.
       </p>
     ),

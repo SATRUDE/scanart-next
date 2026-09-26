@@ -125,6 +125,16 @@ export type ApplyCopy = {
   fieldPlaceholders: {
     basedIn: string; styleNote: string; whyFit: string; email: string; website: string; instagram: string;
   };
+  /** V2 (Figma Apply 221:4130): section 01's subtitle and a line under each
+   *  radio card. None of the three promises a reply (see intro2). */
+  offeringHint: string;
+  offeringDescriptions: Record<Offering, string>;
+  /** Form error (Figma 268:5258), above the submit button. */
+  errorTitle: string;
+  errorMarked: string;
+  /** The intro column's fit check: read who we show before you write. */
+  seeWhoWeShow: string;
+  meetTheArtists: string;
 };
 
 /** Validation wording, so the Norwegian form can report in Norwegian while
@@ -184,7 +194,7 @@ export const MESSAGES: Record<'en' | 'no', ValidationMessages> = {
 export const COPY = {
   h1: 'Show us your work',
   intro:
-    'We are a small gallery: a handful of illustrators and printmakers working across Norway and Sweden. We read everything that comes in and we take on very few.',
+    'We are a small gallery: a small group of illustrators and printmakers from across the Nordics. We read everything that comes in and we take on very few.',
   // Deliberately does NOT promise a reply. Whether we reply to every applicant
   // is still an open decision on Mark's desk, and a page is a bad place to
   // make a commitment nobody has agreed to.
@@ -210,4 +220,22 @@ export const COPY = {
     'A person will read it. If it is a fit we will be in touch; if it is not, that is not a verdict on the work, just on what this small gallery can carry.',
   errorSummary: 'There is a little more to fill in.',
   sendFailed: 'Something went wrong sending that. Please try again in a moment.',
+  // V2 copy, from the Apply frames. The Unsure line is the design's with its
+  // "we will suggest" taken out: that is a reply, and a reply is not promised.
+  offeringHint: 'Choose the one closest to what you have in mind.',
+  offeringDescriptions: {
+    Prints: 'We print your work to order and sell it in the shop.',
+    Commission: 'A piece for a place, a brand or a project.',
+    Unsure: 'Tell us about your work and we will work out the rest.',
+  },
+  errorTitle: 'Your application wasn\u2019t sent',
+  errorMarked: 'The fields that need a look are marked above.',
+  // Only shown when a send FAILS. An emailed application never reaches the
+  // review queue (see the apply page), so this is the fallback for a broken
+  // form, never an alternative route.
+  // Back on the page in V2 (Figma 221:4159). It was taken out on 2026-08-21
+  // (see onlyRoute); the V2 design puts it back below the intro, as one quiet
+  // link rather than a section, so it is kept. Mark to confirm.
+  seeWhoWeShow: 'Before you write, see who we already show.',
+  meetTheArtists: 'Meet the artists',
 } as const;
