@@ -194,15 +194,16 @@ export function Question({
   className = '',
 }: Cls & { question: React.ReactNode; children: React.ReactNode; open?: boolean; size?: 'large' | 'small'; as?: 'h2' | 'h3' | 'h4' }) {
   return (
-    <details open={open} className={`group/q border-b border-ink ${size === 'large' ? 'py-[14px] tab:py-[18px]' : 'py-[14px]'} ${className}`}>
+    <details open={open} className={`sa-q group/q border-b border-ink ${size === 'large' ? 'py-[14px] tab:py-[18px]' : 'py-[14px]'} ${className}`}>
       <summary className="flex cursor-pointer list-none items-start justify-between gap-4 [&::-webkit-details-marker]:hidden">
         <Heading className={size === 'large' ? 'type-body tab:type-h3' : 'type-body'}>{question}</Heading>
-        <span aria-hidden className={size === 'large' ? 'type-body tab:type-h3' : 'type-body'}>
-          <span className="group-open/q:hidden">+</span>
-          <span className="hidden group-open/q:inline">−</span>
+        {/* + turns into − by collapsing its vertical stroke. */}
+        <span aria-hidden className={`relative mt-[0.55em] block shrink-0 ${size === 'large' ? 'size-3 tab:size-4' : 'size-3'}`}>
+          <span className="absolute left-0 top-1/2 h-px w-full -translate-y-1/2 bg-current" />
+          <span className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-current transition-transform duration-300 ease-[cubic-bezier(.2,.7,.2,1)] group-open/q:scale-y-0" />
         </span>
       </summary>
-      <div className="mt-3 type-body tab:max-w-[624px] [&_a]:text-text-accent [&_p+p]:mt-6">{children}</div>
+      <div className="pt-3 type-body tab:max-w-[624px] [&_a]:text-text-accent [&_p+p]:mt-6">{children}</div>
     </details>
   );
 }

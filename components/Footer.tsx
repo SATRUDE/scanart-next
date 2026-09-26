@@ -1,12 +1,14 @@
 'use client';
 
-import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { WordmarkVideo } from '@/components/v2/WordmarkVideo';
+import { OptionTrack, OPTION_PAD } from '@/components/v2/OptionTrack';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { categoryLandings } from '@/lib/categories';
 import { collections } from '@/lib/collections';
 import { track } from '@/lib/analytics';
-import { chromeAria, enPathFor, footerStrings, isNoPath, noPathFor } from '@/lib/i18n';
+import { chromeAria, footerStrings, isNoPath } from '@/lib/i18n';
 
 interface FooterProps {
   /**
@@ -43,49 +45,28 @@ function currentSeason(date = new Date()): Season {
 const STORAGE_KEY = 'sa-footer-season';
 
 /**
- * The season selector. The chosen season is marked the way the nav marks the
- * current page: a 12 px accent line under the word, which slides to the new
- * season (350 ms). The words never move, whichever is chosen.
+ * The season selector, in the same style as the product options: the brand
+ * hairline in front of the chosen season, gliding to a new choice, with every
+ * season reserving its space so no word moves (components/v2/OptionTrack).
  */
 function SeasonPicker({ season, onChoose, labels }: { season: Season; onChoose: (s: Season) => void; labels: Record<Season, string> & { label: string } }) {
-  const group = useRef<HTMLDivElement>(null);
-  const buttons = useRef<Partial<Record<Season, HTMLButtonElement | null>>>({});
-  const [mark, setMark] = useState<{ x: number; y: number } | null>(null);
-
-  const measure = useCallback(() => {
-    const el = buttons.current[season];
-    if (!el) return;
-    setMark({ x: el.offsetLeft, y: el.offsetTop + el.offsetHeight + 2 });
-  }, [season]);
-
-  useLayoutEffect(measure, [measure]);
-  useEffect(() => {
-    if (!group.current || typeof ResizeObserver === 'undefined') return;
-    const ro = new ResizeObserver(measure);
-    ro.observe(group.current);
-    return () => ro.disconnect();
-  }, [measure]);
-
   return (
-    <div ref={group} role="group" aria-label={labels.label} className="relative flex flex-col gap-1 tab:flex-row tab:items-center tab:gap-8">
-      {SEASONS.map(s => (
-        <button
-          key={s}
-          ref={el => { buttons.current[s] = el; }}
-          type="button"
-          aria-pressed={season === s}
-          onClick={() => onChoose(s)}
-          className="type-h3 text-left transition-opacity duration-200 hover:opacity-60 aria-pressed:hover:opacity-100"
-        >
-          {labels[s]}
-        </button>
-      ))}
-      <span
-        aria-hidden
-        className={`pointer-events-none absolute left-0 top-0 h-px w-3 bg-brand transition-[transform,opacity] duration-[350ms] ease-[cubic-bezier(.2,.7,.2,1)] ${mark ? 'opacity-100' : 'opacity-0'}`}
-        style={mark ? { transform: `translate(${mark.x}px, ${mark.y}px)` } : undefined}
-      />
-    </div>
+    <OptionTrack selected={season} className="flex flex-col gap-1 tab:flex-row tab:items-center tab:gap-8">
+      <div role="group" aria-label={labels.label} className="contents">
+        {SEASONS.map(s => (
+          <button
+            key={s}
+            type="button"
+            data-option={s}
+            aria-pressed={season === s}
+            onClick={() => onChoose(s)}
+            className={`type-h3 ${OPTION_PAD} text-left transition-opacity duration-200 hover:opacity-60 aria-pressed:hover:opacity-100`}
+          >
+            {labels[s]}
+          </button>
+        ))}
+      </div>
+    </OptionTrack>
   );
 }
 
@@ -114,9 +95,10 @@ export const Footer: React.FC<FooterProps> = ({ year = new Date().getFullYear() 
   const artistsHref = isNo ? '/no/artists' : '/artists';
   const helpHref = isNo ? '/no/help' : '/help';
   const deliveryHref = isNo ? '/no/delivery' : '/delivery';
-  // Crawlable EN/NO pairing (the SEO fix): on an English page with a Norwegian
-  // twin, link to it; on a Norwegian page, link back to the English original.
-  const langSwitchHref = isNo ? enPathFor(pathname) : noPathFor(pathname);
+  // The visible "Les på norsk" / "Read in English" link was removed on Mark's
+  // call (2026-09-26): the language switcher does that job for people. For
+  // search, every EN/NO pair still declares the other through hreflang in the
+  // head and alternates in the sitemap, which is Google's own mechanism.
 
   // The season is chosen by the visitor and remembered on this device. The
   // static HTML carries the season at build time; the effect corrects it to
@@ -134,6 +116,30 @@ export const Footer: React.FC<FooterProps> = ({ year = new Date().getFullYear() 
   // crossfades instead of snapping and unseen seasons cost nothing.
   const [seen, setSeen] = useState<Set<Season>>(() => new Set([currentSeason()]));
   useEffect(() => { setSeen(prev => (prev.has(season) ? prev : new Set(prev).add(season))); }, [season]);
+
+  // The footage in the wordmark (WordmarkVideo): the still shows until the
+  // video is drawing, and the visitor can stop the motion (remembered).
+  const wordmarkText = useRef<HTMLParagraphElement>(null);
+  const [videoReady, setVideoReady] = useState(false);
+  const onVideoReady = useCallback((ready: boolean) => setVideoReady(ready), []);
+  const [motionOff, setMotionOff] = useState(false);
+  useEffect(() => {
+    try {
+      setMotionOff(window.localStorage.getItem('sa-footer-motion') === 'off');
+    } catch {
+      // Storage blocked: motion stays on by default.
+    }
+  }, []);
+  const toggleMotion = () => {
+    const next = !motionOff;
+    setMotionOff(next);
+    track('footer-motion', { on: !next });
+    try {
+      window.localStorage.setItem('sa-footer-motion', next ? 'off' : 'on');
+    } catch {
+      // Not remembered, which is fine.
+    }
+  };
 
   const choose = (s: Season) => {
     setSeason(s);
@@ -193,12 +199,16 @@ export const Footer: React.FC<FooterProps> = ({ year = new Date().getFullYear() 
           {SEASONS.filter(s => seen.has(s)).map((s, i) => (
             <p
               key={s}
-              className={`font-serif leading-none whitespace-nowrap text-transparent bg-clip-text bg-cover bg-center select-none text-[13.48cqw] tracking-[-0.03em] -ml-[0.01em] pb-[0.08em] transition-opacity duration-700 ease-out ${i === 0 ? 'relative' : 'absolute inset-0'} ${season === s ? 'opacity-100' : 'opacity-0'}`}
+              ref={i === 0 ? wordmarkText : undefined}
+              className={`font-serif leading-none whitespace-nowrap text-transparent bg-clip-text bg-cover bg-center select-none text-[13.48cqw] tracking-[-0.03em] -ml-[0.01em] pb-[0.08em] transition-opacity duration-700 ease-out ${i === 0 ? 'relative' : 'absolute inset-0'} ${season === s && !videoReady ? 'opacity-100' : 'opacity-0'}`}
               style={{ backgroundImage: `url(/images/v2/seasons/${s}.webp)` }}
             >
               Scandinavian Art
             </p>
           ))}
+          <div className={`transition-opacity duration-700 ease-out ${videoReady ? 'opacity-100' : 'opacity-0'}`}>
+            <WordmarkVideo season={season} textRef={wordmarkText} paused={motionOff} onReady={onVideoReady} />
+          </div>
         </div>
 
         <div className="pt-10 tab:pt-[96px] flex flex-col gap-3 type-caption">
@@ -227,11 +237,9 @@ export const Footer: React.FC<FooterProps> = ({ year = new Date().getFullYear() 
         <div className="flex items-center justify-between pt-6 pb-6 tab:pb-8 type-caption">
           <p>&copy; {year} Scandinavian Art</p>
           <div className="flex items-center gap-4">
-            {langSwitchHref && (
-              <Link href={langSwitchHref} lang={isNo ? 'en' : 'no'} className={linkClass}>
-                {isNo ? 'Read in English' : 'Les på norsk'}
-              </Link>
-            )}
+            <button type="button" onClick={toggleMotion} aria-pressed={motionOff} className="transition-opacity hover:opacity-60 motion-reduce:hidden">
+              {motionOff ? t.motion.play : t.motion.pause}
+            </button>
             <span className="flex items-center gap-[6px]">
               {isNo ? 'NO' : 'EN'} <span aria-hidden className="hairline" /> GBP
             </span>

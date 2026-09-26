@@ -122,6 +122,8 @@ export interface FooterStrings {
   seasons: { winter: string; spring: string; summer: string; autumn: string; label: string };
   /** V2 footer: heading of the crawlable "shop by" line. */
   shopBy: string;
+  /** V2 footer: the control that stops and restarts the wordmark footage (WCAG 2.2.2). */
+  motion: { pause: string; play: string };
   privacy: string;
   terms: string;
   delivery: string;
@@ -440,6 +442,7 @@ export const footerStrings: Record<Locale, FooterStrings> = {
     sendEmail: 'Send Email',
     seasons: { winter: 'Winter', spring: 'Spring', summer: 'Summer', autumn: 'Autumn', label: 'Season shown in the footer' },
     shopBy: 'Shop by',
+    motion: { pause: 'Pause motion', play: 'Play motion' },
     privacy: 'Privacy',
     terms: 'Terms',
     delivery: 'Delivery',
@@ -471,6 +474,7 @@ export const footerStrings: Record<Locale, FooterStrings> = {
     sendEmail: 'Send e-post',
     seasons: { winter: 'Vinter', spring: 'Vår', summer: 'Sommer', autumn: 'Høst', label: 'Årstiden som vises i bunnteksten' },
     shopBy: 'Utforsk',
+    motion: { pause: 'Stopp bevegelse', play: 'Start bevegelse' },
     privacy: 'Personvern',
     terms: 'Vilkår',
     delivery: 'Levering',
