@@ -21,6 +21,8 @@ const args = process.argv.slice(2);
 const only = args.includes('--only') ? args[args.indexOf('--only') + 1] : null;
 const jsonOut = args.includes('--json') ? args[args.indexOf('--json') + 1] : null;
 const CONCURRENCY = Number(process.env.CONCURRENCY || 4);
+// For a protected preview: the auth cookie from a Vercel share link, sent to the candidate only.
+const CANDIDATE_COOKIE = process.env.CANDIDATE_COOKIE || '';
 
 const decode = s => s
   .replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#x27;|&#39;/g, "'")
@@ -30,7 +32,9 @@ const text = html => decode(html.replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ').
 async function get(url) {
   for (let i = 0; i < 3; i++) {
     try {
-      const res = await fetch(url, { headers: { 'user-agent': UA, 'accept-language': 'en-GB' }, redirect: 'manual' });
+      const headers = { 'user-agent': UA, 'accept-language': 'en-GB' };
+      if (CANDIDATE_COOKIE && url.startsWith(CAND)) headers.cookie = CANDIDATE_COOKIE;
+      const res = await fetch(url, { headers, redirect: 'manual' });
       const body = res.status >= 300 && res.status < 400 ? '' : await res.text();
       return { status: res.status, location: res.headers.get('location'), body };
     } catch (e) {
