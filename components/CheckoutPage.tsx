@@ -2,6 +2,7 @@
 
 import React, { useState, useSyncExternalStore } from 'react';
 import { Check } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import { useCart } from '@/contexts/CartContext';
 import { useLanguage } from '@/contexts/LanguageContext';
 import type { CheckoutStrings } from '@/lib/i18n';
@@ -9,6 +10,7 @@ import { getProductPrice } from '@/lib/pricing';
 import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import stripePromise from '@/config/stripe';
 import { OrderComplete, type CompletedOrder } from '@/components/OrderComplete';
+import { saveCompletedOrder } from '@/lib/completed-order';
 import { getShippingRate } from '@/config/shipping';
 import {
   DESTINATIONS,
@@ -418,6 +420,7 @@ const subscribeNever = () => () => {};
 
 export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' | 'no' }> = ({ strings, locale = 'en' }) => {
   const t = strings ?? EN;
+  const router = useRouter();
   const v = t.v2;
   // Locale-aware: "Continue shopping" on the Norwegian checkout used to go
   // to the English catalogue (router.push('/products')).
@@ -575,11 +578,7 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' |
       // Don't block the order completion if Slack notification fails
     }
 
-    setCompletedOrder(captureOrder());
-    setOrderComplete(true);
-    // Scroll to top of page for better UX
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    clearCart();
+    finishOrder(captureOrder());
   };
 
   // The form shows its own error beside the card field, which is where the
@@ -694,11 +693,7 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' |
       // Don't block the order completion if Slack notification fails
     }
 
-    setCompletedOrder(captureOrder());
-    setOrderComplete(true);
-    // Scroll to top of page for better UX
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    clearCart();
+    finishOrder(captureOrder());
   };
 
   // The basket lives in localStorage, which the server cannot read, so the
@@ -776,6 +771,18 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' |
     totalLabel: t.total,
     total: totalLabel,
   };
+
+  // The confirmation is its own page (/order-confirmed) so it carries the full
+  // header and footer, and survives a refresh. The order travels in
+  // sessionStorage; where that is blocked, it shows here in place instead.
+  function finishOrder(order: CompletedOrder) {
+    setCompletedOrder(order);
+    setOrderComplete(true);
+    const saved = saveCompletedOrder(order);
+    clearCart();
+    if (saved) router.replace(locale === 'no' ? '/no/order-confirmed' : '/order-confirmed');
+    else window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
   // The confirmation's copy of the order, taken just before clearCart().
   function captureOrder(): CompletedOrder {
