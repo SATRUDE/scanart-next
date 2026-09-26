@@ -107,7 +107,9 @@ export function ProductView({
               items={[
                 { label: t.breadcrumbHome, href: prefix || '/' },
                 { label: t.breadcrumbPrints, href: `${prefix}/products` },
-                { label: product.name },
+                // The print's name is the H1 right below, so the visible trail
+                // stops at its parent (Mark, 2026-09-26). The BreadcrumbList
+                // JSON-LD keeps all three steps.
               ]}
             />
             <div className="flex flex-col gap-1">

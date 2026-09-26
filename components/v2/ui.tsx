@@ -111,10 +111,10 @@ export function Breadcrumb({ items, locale = 'en', className = '' }: Cls & { ite
         {items.map((item, i) => (
           <li key={i} className="flex items-center gap-[6px]">
             {i > 0 && <Hairline />}
-            {item.href && i < items.length - 1 ? (
+            {item.href ? (
               <Link href={item.href} className="transition-colors hover:text-brand">{item.label}</Link>
             ) : (
-              <span aria-current={i === items.length - 1 ? 'page' : undefined}>{item.label}</span>
+              <span aria-current="page">{item.label}</span>
             )}
           </li>
         ))}
