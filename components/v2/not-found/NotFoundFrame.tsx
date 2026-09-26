@@ -141,7 +141,7 @@ export function NotFoundFrame({ t, prints, productsHref, artistsHref }: {
         <p className="mt-6 type-body tab:type-lead">{t.body}</p>
         <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4 tab:mt-band">
           <Button href={productsHref}>{t.allPrints}</Button>
-          <TextLink href={artistsHref} size="body">{t.artists}</TextLink>
+          <TextLink href={artistsHref} size="body" arrow={false}>{t.artists}</TextLink>
         </div>
       </div>
     </div>
