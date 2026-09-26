@@ -678,7 +678,7 @@
     "brand": "",
     "inStock": true,
     "featured": false,
-    "published": true,
+    "published": false,
     "image": "/images/products/stockholm.png",
     "secondaryImage": "/images/products/stockholm-room.avif",
     "availableSizes": [
@@ -706,7 +706,7 @@
     "brand": "",
     "inStock": true,
     "featured": false,
-    "published": true,
+    "published": false,
     "image": "/images/products/frukt-och-gront.png",
     "secondaryImage": "/images/products/frukt-och-gront-room.avif",
     "availableSizes": [
@@ -734,7 +734,7 @@
     "brand": "",
     "inStock": true,
     "featured": false,
-    "published": true,
+    "published": false,
     "image": "/images/products/desert-circles.png",
     "secondaryImage": "/images/products/desert-circles-room.avif",
     "availableSizes": [
@@ -762,7 +762,7 @@
     "brand": "",
     "inStock": true,
     "featured": false,
-    "published": true,
+    "published": false,
     "image": "/images/products/lilac-geometry.png",
     "secondaryImage": "/images/products/lilac-geometry-room.avif",
     "availableSizes": [
@@ -790,7 +790,7 @@
     "brand": "",
     "inStock": true,
     "featured": false,
-    "published": true,
+    "published": false,
     "image": "/images/products/bird-above-the-valley.png",
     "secondaryImage": "/images/products/bird-above-the-valley-room.avif",
     "availableSizes": [
@@ -818,7 +818,7 @@
     "brand": "",
     "inStock": true,
     "featured": false,
-    "published": true,
+    "published": false,
     "image": "/images/products/creature-among-blue-leaves.png",
     "secondaryImage": "/images/products/creature-among-blue-leaves-room.avif",
     "availableSizes": [

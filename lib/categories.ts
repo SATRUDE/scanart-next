@@ -31,7 +31,7 @@ export const categoryLandings: CategoryLanding[] = [
     heading: 'Botanical Prints',
     // Ken's buyer-language rewrite (Studio row, 2026-08-13).
     intro:
-      'Botanical, in this gallery’s hands, means the natural world as Nordic artists actually live with it. Ingunn Dybendal draws folk flowers and a patterned lakeland in coloured pencil, Helene Brox threads dozens of birds through a soft papercut lattice, and Sia Siamos paints the outdoors arriving at the table: lobster and wine, cabin breakfasts, ripe tomatoes against green tiles. From Sweden, Hedvig Wallin paints rows of watercolour apples and Ishtar Bäcklund Dakhil draws lilacs and a page of fruit and vegetables with handwritten Swedish labels. Every botanical print here is made to order and sold framed, wood, black or white, or unframed if you’d rather choose your own.',
+      'Botanical, in this gallery’s hands, means the natural world as Nordic artists actually live with it. Ingunn Dybendal draws folk flowers and a patterned lakeland in coloured pencil, Helene Brox threads dozens of birds through a soft papercut lattice, and Sia Siamos paints the outdoors arriving at the table: lobster and wine, cabin breakfasts, ripe tomatoes against green tiles. From Sweden, Hedvig Wallin paints rows of watercolour apples. Every botanical print here is made to order and sold framed, wood, black or white, or unframed if you’d rather choose your own.',
     intro2:
       'That range makes botanical prints one of the easiest ways into art for a Scandinavian-style home. White walls and pale wood are a palette waiting for exactly this kind of warmth, and a botanical piece supplies it without tipping the room into clutter. They are independent artists we work with directly, and every piece in the category is printed to order on 200gsm uncoated paper.',
     stylingHeading: 'Styling botanical prints',
@@ -63,10 +63,11 @@ export const categoryLandings: CategoryLanding[] = [
       'Nordic abstract wall art by independent artists: pared-back figures, bold bird silhouettes and geometric landscapes in confident colour. Framing options.',
     heading: 'Abstract Prints',
     // Ken's buyer-language rewrite (Studio row, 2026-08-13), trimmed when
-    // Renate Thor's Birdie series left the catalogue (21 Aug); Ishtar
-    // Bäcklund Dakhil's Desert Circles joined on 2026-09-26.
+    // Renate Thor's Birdie series left the catalogue (21 Aug). A print by a
+    // new artist is held back until her agreement is signed; the version with
+    // it is on branch ishtar/preview (docs/v2-launch.md).
     intro:
-      'Nordic abstraction leans to clarity rather than chaos: forms pared back until only the essential shape is left, one or two flat colours doing the work of ten. Helene Brox paints her loose, cut-out figures in Oslo, and cuts a diving swallow down to the plunge of its wings; Ishtar Bäcklund Dakhil, in Stockholm, breaks a desert landscape into overlapping circles. If you’re looking to buy Scandinavian abstract art prints with real presence, this is the confident end of the gallery, and you choose the frame on each product page: wood, black, white or none at all.',
+      'Nordic abstraction leans to clarity rather than chaos: forms pared back until only the essential shape is left, one or two flat colours doing the work of ten. Helene Brox paints her loose, cut-out figures in Oslo, and cuts a diving swallow down to the plunge of its wings. If you’re looking to buy Scandinavian abstract art prints with real presence, this is the confident end of the gallery, and you choose the frame on each product page: wood, black, white or none at all.',
     intro2:
       'Modern Scandinavian wall art of this kind suits rooms that are already close to calm. If your space leans minimalist, pale wood, quiet textiles, plenty of light, an abstract print gives the eye one confident place to land without shouting over the room. And because the compositions are simple, they read from across the room as well as they do up close.',
     stylingHeading: 'Styling abstract prints',
@@ -81,7 +82,7 @@ export const categoryLandings: CategoryLanding[] = [
       {
         question: 'What sizes do the abstract prints come in?',
         answer:
-          'Helene Brox’s pieces are all printed at 50 x 70 cm, which is a generous single-print size, and Desert Circles is a 50 x 50 cm square. As a rule of thumb, 50 x 70 cm holds a sofa or bed wall on its own, and a pair of them fills a wider wall without needing a third.',
+          'Helene Brox’s pieces are all printed at 50 x 70 cm, which is a generous single-print size. As a rule of thumb, 50 x 70 cm holds a sofa or bed wall on its own, and a pair of them fills a wider wall without needing a third.',
       },
       {
         question: 'Can I buy abstract prints framed?',
@@ -100,7 +101,7 @@ export const categoryLandings: CategoryLanding[] = [
     // Ken's buyer-language rewrite (Studio row, 2026-08-13), rewritten again
     // on 2026-09-15 for the second and third illustrator in the category.
     intro:
-      'Illustration here means drawings with a sense of humour, and the category pulls in two directions. Simen Wahlqvist, in Oslo, catches a moment just before it happens in as few lines as possible; his rule is that a drawing is done when it makes him laugh. Mikko Saarainen, in Lahti, works the opposite way, filling a square until every corner has a joke in it, and one of his prints is a whole comic page. Hedvig Wallin’s ink seascape sits between them, and Ishtar Bäcklund Dakhil, in Stockholm, adds her city, a surfer and creatures from imagined worlds. If you’re after a Nordic art print that gets a second look from every guest, start here: each piece can be bought framed or unframed, and the black frame does the square prints a particular favour.',
+      'Illustration here means drawings with a sense of humour, and the category pulls in two directions. Simen Wahlqvist, in Oslo, catches a moment just before it happens in as few lines as possible; his rule is that a drawing is done when it makes him laugh. Mikko Saarainen, in Lahti, works the opposite way, filling a square until every corner has a joke in it, and one of his prints is a whole comic page. Hedvig Wallin’s ink seascape sits between them. If you’re after a Nordic art print that gets a second look from every guest, start here: each piece can be bought framed or unframed, and the black frame does the square prints a particular favour.',
     intro2:
       'This is the characterful end of Nordic art, and an easy first print to buy. It suits hallways, home offices, children’s rooms and any room that has come out a little too tasteful and needs one thing with a glint in its eye. They are independent artists we work with directly, from across the Nordics, and every print is made on 200gsm uncoated paper.',
     stylingHeading: 'Styling illustration prints',

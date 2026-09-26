@@ -488,7 +488,7 @@ export const no = {
         'Botaniske trykk og kunstplakater fra nordiske kunstnere: blomstermotiver, nordiske landskap og fargerike stilleben. Med eller uten ramme.',
       heading: 'Botaniske trykk',
       intro:
-        'Botaniske trykk er en av de enkleste veiene inn i kunsten for et hjem i skandinavisk stil, og her spenner de fra blomster til dekkede bord. Ingunn Dybendal tegner folkelige blomstermotiver og et mønstret nordisk landskap, Helene Brox fyller rammen med fugler blant grener i en myk papirklippstil, og Sia Siamos maler fargerike stilleben fra kjøkkenbordet. Fra Sverige maler Hedvig Wallin rader av akvarellepler, og Ishtar Bäcklund Dakhil tegner syriner og en side med frukt og grønnsaker med håndskrevne svenske navn. Hvert botanisk kunsttrykk lages på bestilling, med eller uten ramme.',
+        'Botaniske trykk er en av de enkleste veiene inn i kunsten for et hjem i skandinavisk stil, og her spenner de fra blomster til dekkede bord. Ingunn Dybendal tegner folkelige blomstermotiver og et mønstret nordisk landskap, Helene Brox fyller rammen med fugler blant grener i en myk papirklippstil, og Sia Siamos maler fargerike stilleben fra kjøkkenbordet. Fra Sverige maler Hedvig Wallin rader av akvarellepler. Hvert botanisk kunsttrykk lages på bestilling, med eller uten ramme.',
       intro2:
         'Hvite vegger og lyst treverk er en palett som venter på nettopp denne typen varme, og en botanisk plakat gir rommet det uten at det tipper over i rot. Dette er uavhengige kunstnere vi jobber direkte med, og hvert verk i kategorien trykkes på bestilling på 200 g ubestrøket papir.',
       stylingHeading: 'Slik bruker du botaniske trykk',
@@ -518,7 +518,7 @@ export const no = {
         'Abstrakte trykk og kunstplakater fra nordiske kunstnere: rene silhuetter, djerve fuglemotiver og geometriske landskap. Med eller uten ramme.',
       heading: 'Abstrakte trykk',
       intro:
-        'Leter du etter abstrakt kunst som plakat eller trykk, er dette den rolige, nordiske enden av sjangeren: former skrelles ned til bare den essensielle silhuetten står igjen, og én eller to flate farger gjør jobben til ti. Helene Brox maler løse, papirklippaktige figurer i kremhvitt på én fargeflate, og skjærer en stupende svale ned til selve vingekastet. Ishtar Bäcklund Dakhil i Stockholm deler et ørkenlandskap i overlappende sirkler. Hvert trykk kan bestilles med eller uten ramme.',
+        'Leter du etter abstrakt kunst som plakat eller trykk, er dette den rolige, nordiske enden av sjangeren: former skrelles ned til bare den essensielle silhuetten står igjen, og én eller to flate farger gjør jobben til ti. Helene Brox maler løse, papirklippaktige figurer i kremhvitt på én fargeflate, og skjærer en stupende svale ned til selve vingekastet. Hvert trykk kan bestilles med eller uten ramme.',
       intro2:
         'Abstrakt veggkunst av dette slaget passer i stuer og soverom som allerede nærmer seg ro. Hvis rommet ditt heller mot det minimalistiske, lyst treverk, rolige tekstiler, rikelig med lys, gir et abstrakt trykk øyet ett trygt sted å lande uten å rope over rommet. Og fordi komposisjonene er enkle, leses de like godt fra andre siden av rommet som på nært hold.',
       stylingHeading: 'Slik bruker du abstrakte trykk',
@@ -533,7 +533,7 @@ export const no = {
         {
           question: 'Hvilke størrelser finnes de abstrakte trykkene i?',
           answer:
-            'Helene Brox’ verk trykkes alle i 50 x 70 cm, som er et romslig format for ett enkelt trykk, og Desert Circles er et kvadrat på 50 x 50 cm. Som en tommelfingerregel bærer 50 x 70 cm en sofa- eller sengevegg alene, og to av dem fyller en bredere vegg uten at du trenger et tredje.',
+            'Helene Brox’ verk trykkes alle i 50 x 70 cm, som er et romslig format for ett enkelt trykk. Som en tommelfingerregel bærer 50 x 70 cm en sofa- eller sengevegg alene, og to av dem fyller en bredere vegg uten at du trenger et tredje.',
         },
         {
           question: 'Kan jeg kjøpe abstrakte trykk med ramme?',
@@ -548,7 +548,7 @@ export const no = {
         'Nordiske illustrasjonstrykk av uavhengige kunstnere: tørr humor på få streker, tegneseriesider fulle av detaljer og fantasiverdener.',
       heading: 'Illustrasjoner',
       intro:
-        'Illustrasjon betyr her tegninger med humor, og kategorien trekker i to retninger. Simen Wahlqvist i Oslo fanger et øyeblikk rett før det skjer, med så få streker som mulig; regelen hans er enkel: får en tegning ham til å le, er den ferdig. Mikko Saarainen i Lahti gjør det motsatte og fyller kvadratet til hver eneste krok har en spøk i seg, og ett av trykkene hans er en hel tegneserieside. Hedvig Wallins tusjhav ligger midt imellom, og Ishtar Bäcklund Dakhil i Stockholm bidrar med byen sin, en surfer og skapninger fra fantasiverdener. Morgenstrekk fanger dagens aller første helkroppsstrekk, og kvadratene rundt bærer sin egen humor.',
+        'Illustrasjon betyr her tegninger med humor, og kategorien trekker i to retninger. Simen Wahlqvist i Oslo fanger et øyeblikk rett før det skjer, med så få streker som mulig; regelen hans er enkel: får en tegning ham til å le, er den ferdig. Mikko Saarainen i Lahti gjør det motsatte og fyller kvadratet til hver eneste krok har en spøk i seg, og ett av trykkene hans er en hel tegneserieside. Hedvig Wallins tusjhav ligger midt imellom. Morgenstrekk fanger dagens aller første helkroppsstrekk, og kvadratene rundt bærer sin egen humor.',
       intro2:
         'Dette er den karakterfulle enden av nordisk kunst, og et enkelt første trykk å kjøpe. Det passer i ganger, på hjemmekontor, på barnerom og i ethvert rom som er blitt litt for smakfullt og trenger én ting med glimt i øyet. Dette er uavhengige kunstnere vi jobber direkte med, fra hele Norden, og hvert trykk lages på 200 g ubestrøket papir.',
       stylingHeading: 'Slik bruker du illustrasjonstrykk',
@@ -746,7 +746,7 @@ export const no = {
         'Veggkunst til kjøkkenet med skandinavisk karakter: mat- og bordmotiver av uavhengige nordiske kunstnere, med tips til hvordan du henger dem. Med eller uten ramme.',
       heading: 'Skandinavisk veggkunst til kjøkkenet',
       intro:
-        'Til sammen en hel hummer, to karafler, en presskanne og flere tomater enn ett bord trenger. De fleste er av Sia Siamos, en gresk og norsk illustratør bosatt i Bergen, som maler mat slik du faktisk møter den: midt i måltidet, med hender som strekker seg inn fra kanten og korken alt ute av flasken. Hedvig Wallin bidrar med en søndagsbrunsj i pastell i Sunday Brunch og rekker av akvarellepler i Massa Äpplen, og Frukt & Grönt av Ishtar Bäcklund Dakhil legger fram en side med frukt og grønnsaker med håndskrevne svenske navn. På et kjøkken gjør de det et landskap ikke kan, nemlig å være enige med rommet. Hvert av dem selges med ramme i tre, svart eller hvitt, eller uten.',
+        'Til sammen en hel hummer, to karafler, en presskanne og flere tomater enn ett bord trenger. De fleste er av Sia Siamos, en gresk og norsk illustratør bosatt i Bergen, som maler mat slik du faktisk møter den: midt i måltidet, med hender som strekker seg inn fra kanten og korken alt ute av flasken. Hedvig Wallin bidrar med en søndagsbrunsj i pastell i Sunday Brunch og rekker av akvarellepler i Massa Äpplen. På et kjøkken gjør de det et landskap ikke kan, nemlig å være enige med rommet. Hvert av dem selges med ramme i tre, svart eller hvitt, eller uten.',
       intro2:
         'Kjøkken er hardere mot et trykk enn noe annet rom, og det er verdt å vite før du henger noe du er glad i der. Damp, matsprut og en vegg med ettermiddagssol treffer alle her, så hold verket unna arbeidssonen mellom platetopp og vask, og unna direkte lys hvis rommet tillater det. Alt annet slapper av: et kjøkken tåler mer farge enn en stue gjør, fordi det alt finnes farge der, fliser og panner og frukt og resten. Disse trykkene har nok farge til å holde stand mot alt det.',
       stylingHeading: 'Ideer til veggkunst på kjøkkenet',
@@ -761,7 +761,7 @@ export const no = {
         {
           question: 'Hvilken veggkunst fungerer på et kjøkken?',
           answer:
-            'Mat, hvis du vil ha det enkle svaret. En bordscene eller et stilleben hører hjemme på et kjøkken på en måte et portrett eller et landskap aldri helt gjør, og det tåler mer farge enn du ville hengt i et roligere rom. Trykkene her er nettopp det: en hummermiddag, en hyttefrokost, et morgenbord, en vinkveld, en søndagsbrunsj, rekker av epler og en side med frukt og grønnsaker, alle djerve nok til å konkurrere med fliser og åpne hyller.',
+            'Mat, hvis du vil ha det enkle svaret. En bordscene eller et stilleben hører hjemme på et kjøkken på en måte et portrett eller et landskap aldri helt gjør, og det tåler mer farge enn du ville hengt i et roligere rom. Trykkene her er nettopp det: en hummermiddag, en hyttefrokost, et morgenbord, en vinkveld, en søndagsbrunsj og rekker av epler, alle djerve nok til å konkurrere med fliser og åpne hyller.',
         },
         {
           question: 'Hvor bør jeg henge kunst på et lite kjøkken?',
@@ -779,10 +779,10 @@ export const no = {
     'birds-and-animals': {
       title: 'Skandinavisk fuglekunst og dyretrykk',
       description:
-        'Nordisk fugle- og dyrekunst av uavhengige kunstnere: en stupende koboltblå svale, en flokk skjult i ferskenfargede grener, en drage og en fugl over en dal.',
+        'Nordisk fugle- og dyrekunst av uavhengige kunstnere: en stupende koboltblå svale, en flokk skjult i ferskenfargede grener og en drage.',
       heading: 'Fugle- og dyrekunst fra nordiske kunstnere',
       intro:
-        'Hvert vesen her er en form før det er et vesen. Helene Brox arbeider flatt og uten dill: en koboltblå svale skåret ned til selve vingekastet, dusinvis av små silhuetter skjult i et ferskenfarget gitter av grener, og en drage som slynger seg over sort i bånd av hvitt, rødt og rosa. Ishtar Bäcklund Dakhil i Stockholm sender en lys fugl over en grønn dal og halvveis skjuler en hornet skapning blant blå blader. Det er dette som gjør at et dyretrykk sitter godt i et skandinavisk rom, mønster og silhuett framfor detaljer fra en feltguide. Hvert trykk her kan kjøpes med ramme i tre, svart eller hvitt, eller uten.',
+        'Hvert vesen her er en form før det er et vesen. Helene Brox arbeider flatt og uten dill: en koboltblå svale skåret ned til selve vingekastet, dusinvis av små silhuetter skjult i et ferskenfarget gitter av grener, og en drage som slynger seg over sort i bånd av hvitt, rødt og rosa. Det er dette som gjør at et dyretrykk sitter godt i et skandinavisk rom, mønster og silhuett framfor detaljer fra en feltguide. Hvert trykk her kan kjøpes med ramme i tre, svart eller hvitt, eller uten.',
       intro2:
         'Stemningene skiller seg mer enn motivene. Swallow Dive er bare to farger, kobolt på kremhvitt, og den vil ha en vegg for seg selv der stupet har et sted å gå. Tree Top Peach er den mildeste av dem, nærmere en folkelig papirklipp enn en illustrasjon, og den belønner å bli hengt der du faktisk sitter. Dragon er den høylytte, et fabeldyr sett i glimt på sort bunn, og den trenger en vegg som holder nervene i sjakk. Velg på bunnfargen framfor vesenet: kobolt går kjølig mot hvite vegger og lyst tre, fersken går varmt sammen med tre og jordnære tekstiler, og sort forankrer et helt rom. Få bakgrunnen riktig, så ordner resten seg selv.',
       stylingHeading: 'Slik henger du fugle- og dyretrykk',
@@ -797,7 +797,7 @@ export const no = {
         {
           question: 'Hva gjør at et dyretrykk føles skandinavisk?',
           answer:
-            'Flat farge og silhuett, stort sett. Helene Brox behandler vesenet som en form framfor en studie: Swallow Dive bærer en hel stupende fugl i to farger, Tree Top Peach er nærmere en folkelig papirklipp enn en illustrasjon, og Dragon løser fabeldyret opp i ren rytme, mens fuglen til Ishtar Bäcklund Dakhil krysser dalen som én lys form. Begge kunstnerne lever og arbeider i Norden, og det er derfor disse leses som nordiske dyretrykk framfor noe fra tradisjonen med zoologiske plansjer.',
+            'Flat farge og silhuett, stort sett. Helene Brox behandler vesenet som en form framfor en studie: Swallow Dive bærer en hel stupende fugl i to farger, Tree Top Peach er nærmere en folkelig papirklipp enn en illustrasjon, og Dragon løser fabeldyret opp i ren rytme. Hun lever og arbeider i Norden, og det er derfor disse leses som nordiske dyretrykk framfor noe fra tradisjonen med zoologiske plansjer.',
         },
         {
           question: 'Hvilke størrelser kommer disse trykkene i, og kan jeg få dem med ramme?',
@@ -1169,7 +1169,7 @@ export const no = {
       'Kjøp skandinaviske kunsttrykk av uavhengige kunstnere fra hele Norden: med ramme i tre, svart eller hvit, eller uten ramme, laget på bestilling.',
     heading: 'Kjøp skandinaviske kunsttrykk',
     intro:
-      'Denne siden er hele galleriet: nordiske kunsttrykk, hvert av dem av en uavhengig kunstner som lever og arbeider i Norden, og hvert av dem solgt med eller uten ramme. Helene Brox maler nedskrelte, kremhvite figurer i Oslo og skjærer en svale ned til selve stupet av vingene. Ingunn Dybendal tegner folkeblomster og mønstret innsjølandskap i fargeblyant, Sia Siamos fyller bord med hummer, vin og hyttefrokost, Simen Wahlqvist får plass til en hel vits i en håndfull streker, Hedvig Wallin dekker et frokostbord fra Göteborg i tusj og akvarell, Mikko Saarainen fyller hver krok av en finsk tegneserieside, og Ishtar Bäcklund Dakhil beveger seg mellom Stockholms havnefront og fantasiverdener. Ikke et fyllbilde blant dem.',
+      'Denne siden er hele galleriet: nordiske kunsttrykk, hvert av dem av en uavhengig kunstner som lever og arbeider i Norden, og hvert av dem solgt med eller uten ramme. Helene Brox maler nedskrelte, kremhvite figurer i Oslo og skjærer en svale ned til selve stupet av vingene. Ingunn Dybendal tegner folkeblomster og mønstret innsjølandskap i fargeblyant, Sia Siamos fyller bord med hummer, vin og hyttefrokost, Simen Wahlqvist får plass til en hel vits i en håndfull streker, Hedvig Wallin dekker et frokostbord fra Göteborg i tusj og akvarell, og Mikko Saarainen fyller hver krok av en finsk tegneserieside. Ikke et fyllbilde blant dem.',
     intro2:
       'Å kjøpe skandinaviske kunsttrykk på nett betyr vanligvis å skrolle gjennom et marked med ti tusen plakater som aldri har vært i nærheten av en fjord. Dette er det motsatte. Et lite galleri, kunstnere vi jobber direkte med, og hvert trykk laget på bestilling framfor hentet fra et lager. Velg bildet først og rammen etterpå, og klarer du ikke å velge mellom to, er kvadratene til Wahlqvist og fugleparet til Brox laget for å henge sammen.',
     framedHeading: 'Med eller uten ramme',

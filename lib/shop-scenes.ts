@@ -27,14 +27,8 @@ export const shopScenes: Record<string, ShopScene> = {
   'family-trip': { image: '/images/products/family-trip-room.avif', alt: 'Family Trip by Mikko Saarainen framed in a hallway above a rattan sideboard', width: 848, height: 1264 },
   journey: { image: '/images/products/journey-room.avif', alt: 'Journey by Mikko Saarainen framed above a sofa in a living room', width: 848, height: 1264 },
   urf: { image: '/images/products/urf-room.avif', alt: 'URF! by Mikko Saarainen framed in a reading corner with a red chair', width: 848, height: 1264 },
-  // Ishtar Bäcklund Dakhil's rooms (branch peggy/ishtar-artist-preview).
-  stockholm: { image: '/images/products/stockholm-room.avif', alt: 'Stockholm by Ishtar Bäcklund Dakhil framed on a low black bench against a peach wall', width: 1122, height: 1402 },
-  'frukt-och-gront': { image: '/images/products/frukt-och-gront-room.avif', alt: 'Frukt & Grönt by Ishtar Bäcklund Dakhil framed above a dining table in a blue kitchen', width: 1122, height: 1402 },
-  'desert-circles': { image: '/images/products/desert-circles-room.avif', alt: 'Desert Circles by Ishtar Bäcklund Dakhil framed above a desk in a peach study', width: 1122, height: 1402 },
-  'lilac-geometry': { image: '/images/products/lilac-geometry-room.avif', alt: 'Lilac Geometry by Ishtar Bäcklund Dakhil framed above a dining table with a vase of lilacs', width: 1122, height: 1402 },
-  'bird-above-the-valley': { image: '/images/products/bird-above-the-valley-room.avif', alt: 'Bird Above the Valley by Ishtar Bäcklund Dakhil framed in a reading corner with an oak lounge chair', width: 1054, height: 1492 },
-  'creature-among-blue-leaves': { image: '/images/products/creature-among-blue-leaves-room.avif', alt: 'Creature Among Blue Leaves by Ishtar Bäcklund Dakhil framed above a rattan sideboard', width: 1122, height: 1402 },
-  // 'surfer-with-orange-sun' is off the site until Mark has confirmed the print with Ishtar (2026-09-26).
+  // Ishtar Bäcklund Dakhil's seven rooms are held back with her prints until
+  // her agreement is signed; restore them from branch ishtar/preview.
 };
 
 export const articleSceneSlugs: Record<string, string> = {

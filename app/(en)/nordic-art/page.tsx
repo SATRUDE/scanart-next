@@ -34,6 +34,9 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function NordicArtPage() {
   const products = await getAllProducts();
   const published = await getPublishedArtists();
+  // Roster order, but only artists with a published print: an artist whose
+  // prints are all held back has no page, so a link here would 404.
+  const listed = artists.filter(a => published.some(p => p.slug === a.slug));
   const path = '/nordic-art';
 
   return (
@@ -63,10 +66,10 @@ export default async function NordicArtPage() {
           <p>
             Every print here comes from one of the gallery&apos;s artists, each with their own page of
             work and background:{' '}
-            {artists.map((artist, i) => (
+            {listed.map((artist, i) => (
               <span key={artist.slug}>
                 <Link href={`/artist/${artist.slug}`} className="transition-colors hover:text-ink">{artist.name}</Link>
-                {i < artists.length - 2 ? ', ' : i === artists.length - 2 ? ' and ' : '.'}
+                {i < listed.length - 2 ? ', ' : i === listed.length - 2 ? ' and ' : '.'}
               </span>
             ))}
           </p>

@@ -62,19 +62,17 @@ export const collections: Collection[] = [
     title:
       'Scandinavian Bird Wall Art & Prints',
     description:
-      'Nordic bird and animal wall art by independent artists: a diving cobalt swallow, a flock hidden in peach branches, a dragon, and a bird above a valley.',
+      'Nordic bird and animal wall art by independent artists: a diving cobalt swallow, a flock hidden in peach branches and a dragon.',
     heading:
       'Bird & Animal Wall Art from Nordic Artists',
     intro:
-      'Every creature here is a shape before it\'s a creature. Helene Brox works flat and unfussy: a cobalt swallow cut down to the plunge of its wings, dozens of small silhouettes hidden in a peach lattice of branches, and a dragon that coils across black in ribbons of white, red and pink. Ishtar Bäcklund Dakhil, in Stockholm, sends a pale bird gliding over a green valley and half-hides a horned creature among blue leaves. That\'s what makes an animal print sit well in a Scandinavian room, pattern and silhouette rather than field-guide detail. Every print here can be bought framed in wood, black or white, or unframed.',
+      'Every creature here is a shape before it\'s a creature. Helene Brox works flat and unfussy: a cobalt swallow cut down to the plunge of its wings, dozens of small silhouettes hidden in a peach lattice of branches, and a dragon that coils across black in ribbons of white, red and pink. That\'s what makes an animal print sit well in a Scandinavian room, pattern and silhouette rather than field-guide detail. Every print here can be bought framed in wood, black or white, or unframed.',
     intro2:
       'The moods differ more than the subjects. Swallow Dive is only two colours, cobalt on cream, and it wants a wall to itself where the dive has somewhere to go. Tree Top Peach is the gentlest of them, closer to a folk papercut than an illustration, and it rewards hanging where you actually sit. Dragon is the loud one, a beast glimpsed in fragments on a black ground, and it needs a wall that can hold its nerve. Choose on the ground colour rather than the creature: cobalt runs cool against white walls and pale wood, peach runs warm alongside wood and earthy textiles, and black will anchor a whole room. Get the background right and the rest looks after itself.',
     productSlugs: [
       'swallow-dive',
       'tree-top-peach',
       'dragon',
-      'bird-above-the-valley',
-      'creature-among-blue-leaves',
     ],
     stylingHeading: 'Styling bird and animal prints',
     stylingTips: [
@@ -89,7 +87,7 @@ export const collections: Collection[] = [
       {
         question: 'What makes an animal print feel Scandinavian?',
         answer:
-          'Flat colour and silhouette, mostly. Helene Brox treats the creature as a shape rather than a study: Swallow Dive carries a whole diving bird in two colours, Tree Top Peach is closer to a folk papercut than an illustration, and Dragon dissolves its beast into pure rhythm, while Ishtar Bäcklund Dakhil\'s bird crosses its valley as one pale shape. Both artists live and work in the Nordics, which is why these read as Nordic animal prints rather than anything out of the wildlife-plate tradition.',
+          'Flat colour and silhouette, mostly. Helene Brox treats the creature as a shape rather than a study: Swallow Dive carries a whole diving bird in two colours, Tree Top Peach is closer to a folk papercut than an illustration, and Dragon dissolves its beast into pure rhythm. She lives and works in the Nordics, which is why these read as Nordic animal prints rather than anything out of the wildlife-plate tradition.',
       },
       {
         question: 'What sizes do these prints come in, and can I have them framed?',
@@ -124,7 +122,6 @@ export const collections: Collection[] = [
       'morgenstrekk',
       'slingshot',
       'journey',
-      'stockholm',
     ],
     stylingHeading: 'Styling art in the living room',
     stylingTips: [
@@ -195,8 +192,6 @@ export const collections: Collection[] = [
       'ithinkithink',
       'swallow-dive',
       'vinkveld',
-      'lilac-geometry',
-      'creature-among-blue-leaves',
     ],
     stylingHeading: 'Styling art in the bedroom',
     stylingTips: [
@@ -268,7 +263,6 @@ export const collections: Collection[] = [
       'ithinkithink',
       'swallow-dive',
       'urf',
-      'desert-circles',
       'family-trip',
     ],
     stylingHeading: 'Styling art in the home office',
@@ -329,7 +323,7 @@ export const collections: Collection[] = [
     heading:
       'Scandinavian Wall Art for the Kitchen',
     intro:
-      'Between them, a whole lobster, two carafes, a cafetière and more tomatoes than one table needs. Most are by Sia Siamos, a Greek and Norwegian illustrator living in Bergen, who paints food the way you actually meet it: mid-meal, hands reaching in from the edges, the cork already out of the bottle. Hedvig Wallin adds a pastel Sunday Brunch and rows of watercolour apples in Massa Äpplen, and Ishtar Bäcklund Dakhil\'s Frukt & Grönt lays out a page of fruit and vegetables with handwritten Swedish labels. In a kitchen they do the thing a landscape can\'t, which is agree with the room. Each is sold framed in wood, black or white, or unframed.',
+      'Between them, a whole lobster, two carafes, a cafetière and more tomatoes than one table needs. Most are by Sia Siamos, a Greek and Norwegian illustrator living in Bergen, who paints food the way you actually meet it: mid-meal, hands reaching in from the edges, the cork already out of the bottle. Hedvig Wallin adds a pastel Sunday Brunch and rows of watercolour apples in Massa Äpplen. In a kitchen they do the thing a landscape can\'t, which is agree with the room. Each is sold framed in wood, black or white, or unframed.',
     intro2:
       'Kitchens are harder on a print than any other room, and it\'s worth knowing that before you hang something you love in one. Steam, cooking splashes and a wall of afternoon sun all land here, so keep a piece off the working run between hob and sink and out of direct light if the room lets you. Everything else relaxes: a kitchen takes more colour than a living room does, because there\'s already colour in it, tiles and pans and fruit and the rest. These prints carry enough colour to hold their own against all that.',
     productSlugs: [
@@ -339,7 +333,6 @@ export const collections: Collection[] = [
       'vinkveld',
       'sunday-brunch',
       'massa-applen',
-      'frukt-och-gront',
     ],
     stylingHeading: 'Kitchen wall art ideas',
     stylingTips: [
@@ -354,7 +347,7 @@ export const collections: Collection[] = [
       {
         question: 'What wall art works in a kitchen?',
         answer:
-          'Food, if you want the easy answer. A table scene or a still life belongs in a kitchen in a way a portrait or a landscape never quite does, and it can carry more colour than you\'d hang in a quieter room. The prints here are exactly that: a lobster dinner, a cabin breakfast, a morning table, a wine evening, a Sunday brunch, rows of apples and a page of fruit and vegetables, all bold enough to compete with tiles and open shelving.',
+          'Food, if you want the easy answer. A table scene or a still life belongs in a kitchen in a way a portrait or a landscape never quite does, and it can carry more colour than you\'d hang in a quieter room. The prints here are exactly that: a lobster dinner, a cabin breakfast, a morning table, a wine evening, a Sunday brunch and rows of apples, all bold enough to compete with tiles and open shelving.',
       },
       {
         question: 'Where should I hang art in a small kitchen?',
