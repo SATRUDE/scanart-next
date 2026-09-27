@@ -17,6 +17,7 @@ import { BASE_URL, OG_IMAGE, SITE_NAME, OG_LOCALE, TWITTER_SITE } from '@/lib/si
 import { getBrowseLinksForArticle } from '@/lib/article-browse';
 import { selectRelatedArticles } from '@/lib/related-articles';
 import { clipToLength } from '@/lib/meta-snippet';
+import { ARTICLE_META_DESCRIPTIONS } from '@/lib/article-meta';
 import { metaTitle } from '@/lib/meta-title';
 import { articleSceneSlugs } from '@/lib/shop-scenes';
 import { getPublishedArtists } from '@/lib/published-artists';
@@ -50,7 +51,7 @@ export async function generateMetadata({
   // Excerpts are teasers rather than stand-alone opening sentences, so they get
   // the plain clip and not metaSnippet's first-sentence rule, which would have
   // cut two of them to under 65 characters.
-  const description = clipToLength(article.excerpt);
+  const description = ARTICLE_META_DESCRIPTIONS[article.slug] ?? clipToLength(article.excerpt);
 
   return {
     title,

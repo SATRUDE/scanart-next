@@ -8,7 +8,8 @@ import { Button, ContentSection, PageHeader, TextLink } from '@/components/v2/ui
 import { HelpGroups, HelpJumpLinks } from '@/components/v2/help/HelpGroups';
 
 const PAGE_TITLE = 'Help';
-const PAGE_DESCRIPTION = 'Answers to common questions about ordering, delivery, returns and our prints at Scandinavian Art.';
+const PAGE_DESCRIPTION =
+  'Answers to common questions about ordering, payment, framing, delivery, returns and our prints at Scandinavian Art, with an email address for anything else.';
 const EMAIL = 'hello@scandinavianart.co.uk';
 
 export const metadata: Metadata = {
