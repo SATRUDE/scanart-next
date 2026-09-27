@@ -10,7 +10,8 @@ import { BASE_URL, socialCard } from '@/lib/site';
 import { hreflangPair } from '@/lib/i18n';
 
 const PAGE_TITLE = 'Journal';
-const PAGE_DESCRIPTION = 'Read about Scandinavian art, Nordic design, and the artists behind our curated collection.';
+const PAGE_DESCRIPTION =
+  'Scandinavian art, Nordic design and the artists behind our curated collection, with guides to choosing and styling prints, Nordic art books and art in Oslo.';
 
 export const metadata: Metadata = {
   title: PAGE_TITLE,

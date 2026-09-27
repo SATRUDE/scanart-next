@@ -7,7 +7,8 @@ import { shopScenes } from '@/lib/shop-scenes';
 import { DeliveryBody } from '@/components/v2/delivery/DeliveryBody';
 
 const PAGE_TITLE = 'Delivery & Returns';
-const PAGE_DESCRIPTION = 'How Scandinavian Art prints are made, shipped worldwide, and our returns and refunds policy.';
+const PAGE_DESCRIPTION =
+  'How Scandinavian Art prints are made to order, typically dispatched within 1 to 4 business days and shipped worldwide, plus our returns and refunds policy.';
 
 export const metadata: Metadata = {
   title: PAGE_TITLE,

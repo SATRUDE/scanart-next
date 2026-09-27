@@ -6,7 +6,8 @@ import { socialCard } from '@/lib/site';
 import { hreflangPair } from '@/lib/i18n';
 
 const PAGE_TITLE = 'Terms & Conditions';
-const PAGE_DESCRIPTION = 'The terms on which Scandinavian Art sells art prints and you use this site.';
+const PAGE_DESCRIPTION =
+  'Scandinavian Art\'s terms for buying art prints and using this site: orders and prices, payment, delivery, cancellations, returns and your statutory rights.';
 
 export const metadata: Metadata = {
   title: PAGE_TITLE,

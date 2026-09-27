@@ -6,7 +6,8 @@ import { socialCard } from '@/lib/site';
 import { hreflangPair } from '@/lib/i18n';
 
 const PAGE_TITLE = 'Privacy Policy';
-const PAGE_DESCRIPTION = 'How Scandinavian Art collects, uses and protects your personal data.';
+const PAGE_DESCRIPTION =
+  'How Scandinavian Art collects, uses and protects your personal data, who we share it with to fulfil your order, how long we keep it and your rights.';
 
 export const metadata: Metadata = {
   title: PAGE_TITLE,
