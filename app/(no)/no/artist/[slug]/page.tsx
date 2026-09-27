@@ -148,8 +148,8 @@ export default async function NorwegianArtistPage({
         initials={portrait.initials}
         breadcrumb={[
           { label: t.breadcrumbHome, href: '/no' },
+          // Stops at Kunstnere: the name is the H1 right below; JSON-LD keeps it.
           { label: t.breadcrumbArtists, href: '/no/artists' },
-          { label: artist.name },
         ]}
         products={products}
         printCount={prints(products.length)}

@@ -138,8 +138,9 @@ export default async function ArtistPage({
         initials={portrait.initials}
         breadcrumb={[
           { label: 'Home', href: '/' },
+          // Stops at Artists: the artist's name is the H1 right below
+          // (Mark, 2026-09-27). The BreadcrumbList JSON-LD keeps it.
           { label: 'Artists', href: '/artists' },
-          { label: artist.name },
         ]}
         products={products}
         printCount={prints(products.length)}

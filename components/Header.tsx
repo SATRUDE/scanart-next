@@ -205,7 +205,10 @@ export const Header: React.FC<HeaderProps> = ({ categories, search }) => {
           <SheetTitle className="sr-only">{t.aria.navMenuTitle}</SheetTitle>
           <SheetDescription className="sr-only">{t.aria.navMenuDescription}</SheetDescription>
           <div className="flex h-full flex-col overflow-y-auto px-5 pb-8">
-            <div className="flex h-[60px] items-center justify-between">
+            {/* The announcement bar's height, then the header row's, so Close
+                and the wordmark sit exactly where Menu and the wordmark were. */}
+            <div aria-hidden className="h-9 shrink-0" />
+            <div className="flex h-[60px] shrink-0 items-center justify-between tab:h-[88px]">
               <button type="button" className="type-small" onClick={() => setMobileMenuOpen(false)}>{t.close}</button>
               <Link href={homeHref} onClick={() => setMobileMenuOpen(false)} className="font-serif text-[22px] leading-[28px]">Scandinavian Art</Link>
               <span className="w-[42px]" />
