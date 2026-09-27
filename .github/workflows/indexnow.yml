@@ -1,0 +1,48 @@
+# After each successful Production deploy, send IndexNow the pages whose
+# sitemap lastmod is newer than the previous Production deploy: the products,
+# artists and journal articles that were added or changed. Free, one request.
+# Runs on public-repo GitHub Actions, nothing on Vercel.
+name: IndexNow
+
+on:
+  deployment_status:
+  workflow_dispatch:
+    inputs:
+      urls:
+        description: 'Space-separated URLs to submit by hand'
+        required: true
+
+permissions:
+  deployments: read
+  contents: read
+
+jobs:
+  notify:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.deployment_status.state == 'success' &&
+       github.event.deployment.environment == 'Production')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Submit by hand
+        if: github.event_name == 'workflow_dispatch'
+        run: node scripts/indexnow.mjs ${{ github.event.inputs.urls }}
+      - name: Submit what changed since the previous Production deploy
+        if: github.event_name == 'deployment_status'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CURRENT: ${{ github.event.deployment.id }}
+        run: |
+          # The newest earlier Production deployment; its creation time is the cut-off.
+          SINCE=$(gh api "repos/${{ github.repository }}/deployments?environment=Production&per_page=10" \
+            --jq "[.[] | select(.id != ${CURRENT})][0].created_at")
+          if [ -z "$SINCE" ] || [ "$SINCE" = "null" ]; then
+            echo "No earlier Production deployment found; nothing sent."
+            exit 0
+          fi
+          echo "Changes since $SINCE"
+          node scripts/indexnow.mjs --since "$SINCE"
