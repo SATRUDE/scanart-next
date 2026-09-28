@@ -379,6 +379,18 @@
         "sha256": "6550260849f7557e446784cb94d7160f8994384bbc0b6672ffe06c0b04c979b0"
       },
       "verification": "PASS"
+    },
+    {
+      "slug": "ethan-cook-flat-works-peach-green-check-170x240",
+      "id": "fcaf536d-bbe1-4d9e-9036-1736e8661133",
+      "action": "created via Social Agent API",
+      "sourceUrl": "https://www.nordicnest.no/merkevarer/hay/ethan-cook-flat-works-teppe-170-x-240-cm/?variantId=510780-01",
+      "expectedImageSha256": "95f1373901f2408c0a202b091b0dd32a92f5bb7f7d47e3c9d5e0a59158ec1d54",
+      "verification": {
+        "isActive": true,
+        "imageCount": 1,
+        "hasImage": true
+      }
     }
   ],
   "pilots": [
@@ -547,21 +559,21 @@
     {
       "slug": "winter-yard-night",
       "key": "winter",
-      "test": 3,
-      "file": "exec-c59d9d28-dfda-4ada-a794-40546db1124c.png",
-      "alt": "Winter Yard, Night by Markus Naarttijärvi framed above a cream reading chair beside a blue trolley in a sage green room",
+      "test": 2,
+      "file": "exec-3a56dc31-7958-4e12-bca2-fbd3ba737f9c.png",
+      "alt": "Winter Yard, Night by Markus Naarttijärvi framed above a cream reading chair on a blue, green and cream checked rug beside a blue trolley in a sage green room",
       "box": [
         432,
         128,
-        691,
-        478
+        690,
+        476
       ],
-      "source": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-winter-yard-night-fresh-products-test-03.png",
-      "sourceSha256": "be6744924434bd763a196ad464cbe370bd68c412ccde7d4f910a88ecac238e90",
+      "source": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-winter-yard-night-colourful-rug-test-02.png",
+      "sourceSha256": "c1e345252a1dc987c9d90777da2a1a520cf34113a6a1e01a98e99a92192d7329",
       "width": 1122,
       "height": 1402,
-      "image": "/images/products/winter-yard-night-room-fresh-03-2026-09-28.avif",
-      "webp": "/images/products/winter-yard-night-room-fresh-03-2026-09-28.webp",
+      "image": "/images/products/winter-yard-night-room-colourful-rug-02-2026-09-28.avif",
+      "webp": "/images/products/winter-yard-night-room-colourful-rug-02-2026-09-28.webp",
       "status": "Preview review only, not approved for publication",
       "surface": "Built-in ChatGPT image generation",
       "verifiedModel": null,
@@ -735,7 +747,39 @@
           "path": "/Users/markdiffey/socialagent/.local-products/21474df7-2085-49f3-8177-2268c321ce84/000-82f57be4-7e4d-4c44-8cd7-405fa8d7599b.jpg",
           "referenceOrder": 7
         }
-      ]
+      ],
+      "previousSelection": {
+        "test": 3,
+        "file": "exec-c59d9d28-dfda-4ada-a794-40546db1124c.png",
+        "alt": "Winter Yard, Night by Markus Naarttijärvi framed above a cream reading chair beside a blue trolley in a sage green room",
+        "box": [
+          432,
+          128,
+          691,
+          478
+        ],
+        "source": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-winter-yard-night-fresh-products-test-03.png",
+        "sourceSha256": "be6744924434bd763a196ad464cbe370bd68c412ccde7d4f910a88ecac238e90",
+        "image": "/images/products/winter-yard-night-room-fresh-03-2026-09-28.avif",
+        "webp": "/images/products/winter-yard-night-room-fresh-03-2026-09-28.webp"
+      },
+      "rugRevision": {
+        "status": "Preview review only, not approved for publication",
+        "generationSurface": "Built-in ChatGPT image editing",
+        "verifiedModel": null,
+        "sourceExperiment": "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-winter-colourful-rug-2026-09-28/approved-source-test-02.md",
+        "originalGeneratorPath": "/Users/markdiffey/.codex/generated_images/01a0e8a5-ef19-7ae2-b1ad-3c0a9bee00c2/exec-3a56dc31-7958-4e12-bca2-fbd3ba737f9c.png",
+        "prompt": "Edit the FIRST reference image, the accepted Winter Yard Night reading-chair photograph. Make ONE furnishing change only: add the exact HAY Ethan Cook Flat Works rug, Peach Green Check, 170 x 240 cm, using the SECOND reference as visual authority. The THIRD reference is the original Markus Naarttijärvi Winter Yard Night photograph already framed on the wall; its buildings, streetlamp, snow, trees, night sky, photographic detail and aspect ratio must remain faithful. Preserve the existing image's camera angle/crop, olive wall, left window, concrete floor, glazed thin oak frame, white mount and currently depicted 50 x 70 cm paper size, cream textured armchair, grey throw, open book, blue trolley, burgundy lamp, books, daylight and shadows. Do not change or add any other object.\n\nPlace the flatwoven rectangular rug realistically on the concrete floor under the chair with both front legs resting comfortably on it, enough textile visible ahead of the chair. Its back edge lies near the skirting, its left edge may extend beyond the image edge. Critically, its right edge stops visibly LEFT of the blue trolley: both trolley wheels and trolley base must remain entirely on exposed concrete, separated by at least a small concrete gap from the rug edge. The 170 cm short side is generously wider than the chair but not wall-to-wall; 240 cm runs front-to-back in correct floor perspective. Reproduce the rug product reference: a bold but restrained grid of large deep royal/navy blue, dark forest green and warm off-white colour blocks, with exact simple block placement and a thin handwoven wool/cotton kilim surface. No pink, yellow, circles, tufted pile or invented motif. Preserve natural texture and subdued room daylight. The rug edges lie flat; correct occlusion at chair legs, light pile compression and contact shadow, no floating or curled corners.\n\nThis is a focused lower-floor photographic edit. The artwork, its glass reflection from the left window, oak frame depth, frame shadow and nearby wall illumination must remain mutually coherent and unchanged. No isolated glare stripe, no altered print, no pasted artwork effect, no chair/trolley redesign, no text or watermark.",
+        "referencePathsOrdered": [
+          "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-winter-yard-night-fresh-products-test-03.png",
+          "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-winter-colourful-rug-2026-09-28/hay-ethan-cook-flat-works-peach-green-check-170x240.jpg",
+          "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-winter-colourful-rug-2026-09-28/art-reference-preview.jpg"
+        ],
+        "rugProductId": "fcaf536d-bbe1-4d9e-9036-1736e8661133",
+        "rugSourceUrl": "https://www.nordicnest.no/merkevarer/hay/ethan-cook-flat-works-teppe-170-x-240-cm/?variantId=510780-01",
+        "rugReferenceSha256": "95f1373901f2408c0a202b091b0dd32a92f5bb7f7d47e3c9d5e0a59158ec1d54",
+        "qa": "Rug pattern matches the inspected product; both trolley wheels remain on bare concrete. Framed art and furniture remain recognisable; generated artwork detail requires Mark review."
+      }
     },
     {
       "slug": "swan-on-still-water",
