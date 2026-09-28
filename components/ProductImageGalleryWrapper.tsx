@@ -28,12 +28,10 @@ interface ProductImageGalleryWrapperProps {
   videoLabel?: string;
   /** Localised gallery and lightbox copy; defaults to English. */
   strings?: GalleryStrings;
-  /** Shown only while the matching room image occupies the visible gallery slot. */
-  roomSizeCaption?: { src: string; text: string };
 }
 
 type Media =
-  | { kind: 'image'; src: string; originalSrc: string; alt: string; caption: string }
+  | { kind: 'image'; src: string; alt: string; caption: string }
   | { kind: 'video'; caption: string };
 
 /**
@@ -53,7 +51,6 @@ export const ProductImageGalleryWrapper: React.FC<ProductImageGalleryWrapperProp
   video,
   videoLabel,
   strings = galleryEn,
-  roomSizeCaption,
 }) => {
   const aria = chromeAria[isNoPath(usePathname() || '/') ? 'no' : 'en'];
   const validImages = images.filter(img => img.src && img.src.trim() !== '');
@@ -63,14 +60,10 @@ export const ProductImageGalleryWrapper: React.FC<ProductImageGalleryWrapperProp
     // Shown with the warm backdrop (lib/warm-image.ts); the JSON-LD and the
     // image sitemap keep declaring the original file.
     src: warmImage(img.src),
-    originalSrc: img.src,
     alt: img.alt,
     caption: i === 0 ? strings.captions.print : strings.captions.scene,
   }));
   if (video) media.splice(Math.min(1, media.length), 0, { kind: 'video', caption: strings.captions.video });
-  const roomIndex = roomSizeCaption
-    ? media.findIndex(m => m.kind === 'image' && m.originalSrc === roomSizeCaption.src)
-    : -1;
 
   const [open, setOpen] = useState(false);
   const [view, setView] = useState<'grid' | 'single'>('single');
@@ -191,12 +184,6 @@ export const ProductImageGalleryWrapper: React.FC<ProductImageGalleryWrapperProp
         <p className="pt-2 type-caption tab:hidden" aria-hidden>
           {slide + 1} / {count}
         </p>
-      )}
-      {roomSizeCaption && roomIndex >= 0 && (
-        <>
-          {slide === roomIndex && <p className="pt-2 type-caption tab:hidden">{roomSizeCaption.text}</p>}
-          {roomIndex === 1 && <p className="hidden pt-2 type-caption tab:block">{roomSizeCaption.text}</p>}
-        </>
       )}
 
       <Dialog.Root open={open} onOpenChange={setOpen}>
