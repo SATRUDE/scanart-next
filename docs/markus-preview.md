@@ -108,3 +108,12 @@ Mark explicitly authorised precise geometry edits after generation repeatedly re
 Six selected room revisions came from built-in generation. For Willows, Pines, Current and Foam, and Morning Cabin, a continuous geometric correction of the existing generated framed object restores the paper, artwork and12mm oak proportions together. It carries the existing glass/reflections and frame shadow; no original artwork was pasted into a room. Physical paper45×60cm uses a42×56cm image and1.5cm side/2cm top-bottom border, rotated for landscape. Pixels beyond the local frame/shadow edit region are unchanged. Original print masters remain untouched.
 
 The room renders remain illustrative photographs, with small generative variation and perspective; they are not manufacturing proofs. Full source paths, hashes, physical dimensions, corner coordinates, prompts and review notes are in `markus-all-frame-corrections-review.json`.
+
+
+## Whole-room clean rebuild — 28 September 2026
+
+Mark rejected accumulated texture damage across all ten rooms, not only the Pines example. All ten selected room assets now start from original artwork and clean catalogue references. Whole-room checks cover textile weave, furniture edges, material surfaces, reflection/light coherence, artwork composition and frame scale. Five rooms received one precise local frame correction using the previously approved method; Sun also had one targeted generation edit on its fresh base. No old damaged room was used as a starting reference.
+
+The new AVIF/WebP assets are versioned `room-clean-rebuild` and retain synthetic-media metadata. Selection paths, hashes, available prompts, reference records, geometry and remaining illustrative limitations are in `scripts/artists/markus-clean-room-rebuild-review.json`. Exact earlier generation prompts for Swan, Path, Road and Sun were not recoverable; this is recorded rather than reconstructed.
+
+Both product-gallery size captions were removed in `9f8c92b`. Offered sizes, primary product images, all retail print/frame prices and unpublished/review/coming-soon guards remain unchanged. These are preview candidates for Mark's review.
