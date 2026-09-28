@@ -116,4 +116,6 @@ Mark rejected accumulated texture damage across all ten rooms, not only the Pine
 
 The new AVIF/WebP assets are versioned `room-clean-rebuild` and retain synthetic-media metadata. Selection paths, hashes, available prompts, reference records, geometry and remaining illustrative limitations are in `scripts/artists/markus-clean-room-rebuild-review.json`. Exact earlier generation prompts for Swan, Path, Road and Sun were not recoverable; this is recorded rather than reconstructed.
 
+Path Through the Trees then received a fresh composition pass after review of the ten-room preview. The replacement is versioned with a `-v2` suffix and uses one centred reading chair, a usable side table and a cropped low bookcase. Its prompt and references are recorded in `scripts/artists/path-through-the-trees-clean-composition-review.json`; the previous candidate remains recoverable.
+
 Both product-gallery size captions were removed in `9f8c92b`. Offered sizes, primary product images, all retail print/frame prices and unpublished/review/coming-soon guards remain unchanged. These are preview candidates for Mark's review.
