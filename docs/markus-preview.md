@@ -31,7 +31,7 @@ Artist path: `/artist/markus-naarttijarvi`. The Norwegian routes work through th
 
 ## Images and source records
 
-Mark rejected the first ten room scenes for repetition and insufficient styling. They remain in this preview pending review of replacement pilots; they are not approved images. The three new pilots (Through the Willows, Winter Yard Night and Swan on Still Water) stay outside the repository in `~/Desktop/ScanArt Image Tests/`, with prompts, active catalogue records, references, measurements and self-review under `Experiment files/markus-pilot-2026-09-28/`. They are not wired into the page. Mark reviews the pilot before any replacement.
+Mark rejected the first ten room scenes for repetition and insufficient styling. They remain in this preview pending review of replacement pilots; they are not approved images. The three new pilots (Through the Willows, Winter Yard Night and Swan on Still Water) stay outside the repository in `~/Desktop/ScanArt Image Tests/`, with prompts, active catalogue records, references, measurements and self-review under `Experiment files/markus-pilot-2026-09-28/`. Earlier pilots were kept outside the page for review. Mark subsequently asked for the new furniture pilots on the test link; the current selection is documented below.
 
 Print masters remain in `~/Desktop/Markus-Naarttijarvi-photos/Print exports/`. Only web derivatives are committed. The studio shots preserve the actual photographs; generated rooms are display mockups and require visual approval, not print proofs.
 
@@ -49,3 +49,13 @@ The empty space Mark reported on the product page was a separate gap from the ar
 - Norwegian: “Langsiktige fotoprosjekter fra Nord-Sverige utforsker ensomhet, utholdenhet og tidens gang.”
 
 All ten product pages inherit this through the shared artist slug. No layout or commercial data changed. Checked locally with `CATALOGUE_PREVIEW=1`: English and Norwegian desktop at 1440 px, Norwegian mobile at 390 px, all HTTP 200 with the statement visible, no horizontal overflow and no browser errors. Typecheck passed and all 16 existing Norwegian translation tests passed. Screenshots and browser evidence are retained in the Desktop image-test experiment folder. This remains preview copy for review, not a production launch.
+
+## Fresh furniture pilot selection, 28 September
+
+At Mark's request, three revised scenes now appear on the test link for in-place review: Through the Willows (fresh-products test 02), Winter Yard, Night (test 03, including the wall-light correction), and Swan on Still Water (test 02). The other seven scenes are unchanged and still await replacement after the pilot direction is settled. This is permission to show the pilots in the preview, not approval to publish them or launch the artist.
+
+The six new Nordic Nest catalogue references are the Audo Copenhagen Brasilia chair; &Tradition In Between SK3 table, SK1 chair and Caret MF1 lamp; and Muuto Enfold low sideboard and Ridge vase. Peggy added and verified all six in Social Agent, including exact source-image hashes. The scenes use those with selected existing catalogue accessories and floors, rather than reproducing Ishtar's furniture arrangements. Exact prompts, reference order, catalogue records, source hashes and chosen outputs are in `scripts/artists/markus-fresh-room-pilots.json`. The original first-round provenance remains in `markus-room-scenes.json`.
+
+Winter's wall now visibly receives the left-window light, following Mark's feedback that the glass reflection looked separately lit. The new scenes are naturally generated artwork-in-room images, not artwork composites. They remain interpretative mockups for visual review: small details and proportions can differ from the real photographs. No generated scene is a print master. Original source artwork and studio images are unchanged.
+
+Exports retain native 1122 x 1402 dimensions, AVIF quality 70 and WebP quality 88, with trained-algorithmic-media source metadata. New filenames avoid stale cached scenes. Catalogue secondary images, curated scene entries, descriptive scene alt text and manually inspected crop focus all point to this selection. Typecheck and all 47 existing tests across scene focus, shop scenes, image alt text, review gating and Norwegian translations pass. All ten prints remain unpublished, out of stock and review-only.

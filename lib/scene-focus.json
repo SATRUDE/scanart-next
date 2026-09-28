@@ -374,5 +374,29 @@
     "h": 25.5,
     "score": 0.974,
     "ar": 0.8003
+  },
+  "/images/products/through-the-willows-room-fresh-02-2026-09-28.avif": {
+    "x": 59.4,
+    "y": 22.57,
+    "w": 22.73,
+    "h": 26.32,
+    "score": "manual",
+    "ar": 0.8003
+  },
+  "/images/products/winter-yard-night-room-fresh-03-2026-09-28.avif": {
+    "x": 50.04,
+    "y": 21.61,
+    "w": 23.08,
+    "h": 24.96,
+    "score": "manual",
+    "ar": 0.8003
+  },
+  "/images/products/swan-on-still-water-room-fresh-02-2026-09-28.avif": {
+    "x": 48.84,
+    "y": 28.25,
+    "w": 34.58,
+    "h": 22.25,
+    "score": "manual",
+    "ar": 0.8003
   }
 }
