@@ -1,5 +1,6 @@
 import { TrackedLink } from '@/components/TrackedLink';
-import { categoryLandings } from '@/lib/categories';
+import { availableCategoryLandings } from '@/lib/categories';
+import { getShopProducts } from '@/lib/products';
 import { collections } from '@/lib/collections';
 import type { CrossLinksStrings } from '@/lib/i18n';
 
@@ -33,13 +34,14 @@ interface LandingCrossLinksProps {
  * links to the page it is on, and /nordic-art stays off the Norwegian pages
  * because that page has no twin (docs/v2-seo.md).
  */
-export function LandingCrossLinks({ current = { type: 'page', slug: '' }, strings = DEFAULT_STRINGS, locale = 'en', artists, className = '' }: LandingCrossLinksProps) {
+export async function LandingCrossLinks({ current = { type: 'page', slug: '' }, strings = DEFAULT_STRINGS, locale = 'en', artists, className = '' }: LandingCrossLinksProps) {
   const localePrefix = locale === 'no' ? '/no' : '';
   const artistsHref = locale === 'no' ? '/no/artists' : '/artists';
   const from = `${current.type}/${current.slug}`;
 
+  const categories = availableCategoryLandings(await getShopProducts());
   const shopLinks = [
-    ...categoryLandings
+    ...categories
       .filter(c => !(current.type === 'category' && c.slug === current.slug))
       .map(c => ({ href: `${localePrefix}/category/${c.slug}`, label: strings.categoryLabels[c.slug] ?? c.category })),
     ...collections

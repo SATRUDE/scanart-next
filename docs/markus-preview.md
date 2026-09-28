@@ -59,3 +59,12 @@ The six new Nordic Nest catalogue references are the Audo Copenhagen Brasilia ch
 Winter's wall now visibly receives the left-window light, following Mark's feedback that the glass reflection looked separately lit. The new scenes are naturally generated artwork-in-room images, not artwork composites. They remain interpretative mockups for visual review: small details and proportions can differ from the real photographs. No generated scene is a print master. Original source artwork and studio images are unchanged.
 
 Exports retain native 1122 x 1402 dimensions, AVIF quality 70 and WebP quality 88, with trained-algorithmic-media source metadata. New filenames avoid stale cached scenes. Catalogue secondary images, curated scene entries, descriptive scene alt text and manually inspected crop focus all point to this selection. Typecheck and all 47 existing tests across scene focus, shop scenes, image alt text, review gating and Norwegian translations pass. All ten prints remain unpublished, out of stock and review-only.
+
+
+## Photography category preview, 28 September 2026
+
+Added `/category/photography` and `/no/category/photography` using the existing category layout. The Norwegian labels use Fotografi and the page heading is Fotokunst. All ten review prints are available on these preview category pages. Product links, footer and Explore links follow the same visible catalogue; production hides the empty category while Markus remains unpublished.
+
+Norwegian category queries (fotografi, fotokunst) match in the shared grid/overlay matching logic. The actual search index remains published-only, including on preview; this change does not expose draft prints through global search. Artist importer accepts Photography for future manifests.
+
+Validation: 36 focused tests, changed-file ESLint, TypeScript and a production-mode Next build passed. Browser checks at 1440px and 390px found ten prints on both category pages, correct language labels, no overflow or page errors. Production-mode checks returned 404 for the empty category and unpublished Markus product, no Photography links from either shop language, and no draft entries in sitemap/product feed. Original artwork, publication flags and checkout guards are unchanged.
