@@ -15,6 +15,7 @@ import type { Artist } from '@/data/artists';
 import type { ProductImage } from '@/lib/product-image-alt';
 import type { ProductVideo } from '@/config/product-videos';
 import { getLowestProductPrices, type CurrencyPrices } from '@/lib/pricing';
+import { displayedScenePaperSize } from '@/lib/shop-scenes';
 import type { CrossLinksStrings, ProductActionsStrings } from '@/lib/i18n';
 import { fill, type GalleryStrings, type ProductPageStrings } from '@/lib/product-page-copy';
 
@@ -90,6 +91,17 @@ export function ProductView({
     .filter(([, available]) => available)
     .map(([size]) => sizeLabel(size));
   const deliveryHref = `${prefix}/delivery`;
+  const roomSize = displayedScenePaperSize(product.slug, images[1]?.src, product.sizes);
+  const roomSizeCaption = roomSize && {
+    src: images[1].src,
+    text: roomSize.sameFormat
+      ? locale === 'no'
+        ? `Interiørbilde: innrammet trykk på ${roomSize.depicted.widthCm} × ${roomSize.depicted.heightCm} cm.`
+        : `Room image: ${roomSize.depicted.widthCm} × ${roomSize.depicted.heightCm} cm print, shown framed.`
+      : locale === 'no'
+        ? `Interiørbildet viser det tidligere formatet ${roomSize.depicted.widthCm} × ${roomSize.depicted.heightCm} cm. Trykket er nå ${roomSize.current.widthCm} × ${roomSize.current.heightCm} cm.`
+        : `Room image shows the previous ${roomSize.depicted.widthCm} × ${roomSize.depicted.heightCm} cm format. The print is now ${roomSize.current.widthCm} × ${roomSize.current.heightCm} cm.`,
+  };
 
   return (
     <div className="page-x tab:pt-8">
@@ -101,6 +113,7 @@ export function ProductView({
             video={video}
             videoLabel={video?.label[locale]}
             strings={galleryStrings}
+            roomSizeCaption={roomSizeCaption}
           />
         </div>
 

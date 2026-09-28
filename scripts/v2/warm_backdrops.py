@@ -13,6 +13,7 @@ and lib/warm-images.json, the list V2's image helper reads.
 
     python3 scripts/v2/warm_backdrops.py            # all products
     python3 scripts/v2/warm_backdrops.py dancer     # one, for a quick look
+    python3 scripts/v2/warm_backdrops.py --files new-product-shot.png
 
 Deterministic and repeatable; no image is generated. Run it again when a new
 product image arrives.
@@ -64,22 +65,28 @@ def warm(path: Path, out: Path):
 
 
 def main():
-    products = json.loads((ROOT / "public/notion-data/products.json").read_text())
-    only = set(sys.argv[1:])
+    args = sys.argv[1:]
+    if args[:1] == ["--files"]:
+        # Fresh previews can be warmed before the catalogue points at them.
+        files = [SRC / Path(name).name for name in args[1:]]
+        if not files:
+            raise ValueError("--files needs at least one PNG filename")
+    else:
+        products = json.loads((ROOT / "public/notion-data/products.json").read_text())
+        only = set(args)
+        files = [ROOT / "public" / p["image"].lstrip("/") for p in products
+                 if p.get("image") and (not only or p["slug"] in only)]
     manifest_path = ROOT / "lib/warm-images.json"
     manifest = json.loads(manifest_path.read_text()) if manifest_path.exists() else {}
     OUT.mkdir(parents=True, exist_ok=True)
-    for p in products:
-        src = p.get("image") or ""
-        if only and p["slug"] not in only:
-            continue
-        f = ROOT / "public" / src.lstrip("/")
+    for f in files:
         if not f.exists() or f.suffix.lower() != ".png":
             continue
         out = OUT / (f.stem + ".webp")
         box = warm(f, out)
+        src = "/" + str(f.relative_to(ROOT / "public"))
         manifest[src] = "/" + str(out.relative_to(ROOT / "public"))
-        print(p["slug"], "frame", box, "->", out.name)
+        print(f.stem, "frame", box, "->", out.name)
     manifest_path.write_text(json.dumps(dict(sorted(manifest.items())), indent=2) + "\n")
 
 

@@ -9,71 +9,142 @@
     "agreementSigned": "2026-09-28",
     "image": ""
   },
-  "status": "Unpublished preview. Titles, descriptions, paper formats, borders and proofs await Mark and Markus's confirmation.",
+  "status": "Unpublished review. Mark approved smaller native-ratio formats on 28 September 2026, retaining all existing Premium50x70 print and frame retail prices. Seven photographs45x60cm; Swan, Path and Sheep40x50cm; rotate landscape. Gelato200gsm uncoated and natural/black/white frames verified for GB/NO. Room-size edits still under review; do not publish.",
   "priceCategory": "Premium",
   "availableSizes": [
-    "50x70cm"
+    "45x60cm",
+    "40x50cm"
   ],
   "prints": [
     {
       "number": 1,
       "slug": "through-the-willows",
       "title": "Through the Willows",
-      "description": "A river glows gold beneath a screen of willow and oak leaves, with a single bird cutting across the haze. Soft, warm light and a quiet, waiting stillness."
+      "description": "A river glows gold beneath a screen of willow and oak leaves, with a single bird cutting across the haze. Soft, warm light and a quiet, waiting stillness.",
+      "sizes": [
+        "45x60cm"
+      ],
+      "paperSizeCm": {
+        "width": 45,
+        "height": 60
+      }
     },
     {
       "number": 2,
       "slug": "pines-under-starlight",
       "title": "Pines Under Starlight",
-      "description": "Snow-laden pines stand still beneath a clear, star-scattered sky. A hushed, cold-clear winter night, lit by nothing but the moon."
+      "description": "Snow-laden pines stand still beneath a clear, star-scattered sky. A hushed, cold-clear winter night, lit by nothing but the moon.",
+      "sizes": [
+        "45x60cm"
+      ],
+      "paperSizeCm": {
+        "width": 45,
+        "height": 60
+      }
     },
     {
       "number": 3,
       "slug": "winter-yard-night",
       "title": "Winter Yard, Night",
-      "description": "A lit window and a lone streetlamp cut through a dark, snow-heavy night in a quiet yard. Falling snow catches the light; everything else stays in shadow."
+      "description": "A lit window and a lone streetlamp cut through a dark, snow-heavy night in a quiet yard. Falling snow catches the light; everything else stays in shadow.",
+      "sizes": [
+        "45x60cm"
+      ],
+      "paperSizeCm": {
+        "width": 45,
+        "height": 60
+      }
     },
     {
       "number": 4,
       "slug": "current-and-foam",
       "title": "Current and Foam",
-      "description": "Pale ridges of ice or foam swirl across dark water, closer to a painting than a photograph. An abstract, almost weightless study in movement and cold."
+      "description": "Pale ridges of ice or foam swirl across dark water, closer to a painting than a photograph. An abstract, almost weightless study in movement and cold.",
+      "sizes": [
+        "45x60cm"
+      ],
+      "paperSizeCm": {
+        "width": 45,
+        "height": 60
+      }
     },
     {
       "number": 5,
       "slug": "the-road-at-sunset",
       "title": "The Road at Sunset",
-      "description": "Three cyclists ride a curving road into low evening sun, forest and hills fading into the haze beyond. A warm, quiet end to the day, caught mid-journey."
+      "description": "Three cyclists ride a curving road into low evening sun, forest and hills fading into the haze beyond. A warm, quiet end to the day, caught mid-journey.",
+      "sizes": [
+        "45x60cm"
+      ],
+      "paperSizeCm": {
+        "width": 45,
+        "height": 60
+      }
     },
     {
       "number": 6,
       "slug": "sun-over-the-forest",
       "title": "Sun Over the Forest",
-      "description": "A huge, hazy sun hangs low over a dark line of trees, the sky burning orange around it. Simple, elemental, and quietly dramatic."
+      "description": "A huge, hazy sun hangs low over a dark line of trees, the sky burning orange around it. Simple, elemental, and quietly dramatic.",
+      "sizes": [
+        "45x60cm"
+      ],
+      "paperSizeCm": {
+        "width": 60,
+        "height": 45
+      }
     },
     {
       "number": 7,
       "slug": "swan-on-still-water",
       "title": "Swan on Still Water",
-      "description": "A lone swan drifts across a misty lake at first light, reeds standing dark in the foreground. Calm, hushed, and completely still."
+      "description": "A lone swan drifts across a misty lake at first light, reeds standing dark in the foreground. Calm, hushed, and completely still.",
+      "sizes": [
+        "40x50cm"
+      ],
+      "paperSizeCm": {
+        "width": 50,
+        "height": 40
+      }
     },
     {
       "number": 8,
       "slug": "morning-cabin-room",
       "title": "Morning, Cabin Room",
-      "description": "Soft light falls through lace curtains onto a simple bed, with greenery pressing close against the window. A quiet, unmade corner of a wooden cabin."
+      "description": "Soft light falls through lace curtains onto a simple bed, with greenery pressing close against the window. A quiet, unmade corner of a wooden cabin.",
+      "sizes": [
+        "45x60cm"
+      ],
+      "paperSizeCm": {
+        "width": 60,
+        "height": 45
+      }
     },
     {
       "number": 9,
       "slug": "path-through-the-trees",
       "title": "Path Through the Trees",
-      "description": "A wooden boardwalk winds through dense, shadowed forest towards a bright clearing ahead. The kind of path that pulls you on to see what's next."
+      "description": "A wooden boardwalk winds through dense, shadowed forest towards a bright clearing ahead. The kind of path that pulls you on to see what's next.",
+      "sizes": [
+        "40x50cm"
+      ],
+      "paperSizeCm": {
+        "width": 50,
+        "height": 40
+      }
     },
     {
       "number": 10,
       "slug": "sheep-on-the-track",
       "title": "Sheep on the Track",
-      "description": "A small flock of dark sheep stands watching on a muddy track between hedgerows, a green pasture opening beyond them. Damp, overcast, and entirely rural."
+      "description": "A small flock of dark sheep stands watching on a muddy track between hedgerows, a green pasture opening beyond them. Damp, overcast, and entirely rural.",
+      "sizes": [
+        "40x50cm"
+      ],
+      "paperSizeCm": {
+        "width": 40,
+        "height": 50
+      }
     }
   ],
   "terms": {

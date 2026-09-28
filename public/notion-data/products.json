@@ -876,11 +876,11 @@
     "featured": false,
     "published": false,
     "review": true,
-    "image": "/images/products/through-the-willows.png",
+    "image": "/images/products/through-the-willows-paper-45x60-2026-09-28.png",
     "secondaryImage": "/images/products/through-the-willows-room-fresh-03-2026-09-28.avif",
     "sourceImage": "/images/artworks/through-the-willows.avif",
     "availableSizes": [
-      "50x70cm"
+      "45x60cm"
     ],
     "priceCategory": "Premium",
     "productId": "43",
@@ -907,11 +907,11 @@
     "featured": false,
     "published": false,
     "review": true,
-    "image": "/images/products/pines-under-starlight.png",
+    "image": "/images/products/pines-under-starlight-paper-45x60-2026-09-28.png",
     "secondaryImage": "/images/products/pines-under-starlight-room-fresh-03-2026-09-28.avif",
     "sourceImage": "/images/artworks/pines-under-starlight.avif",
     "availableSizes": [
-      "50x70cm"
+      "45x60cm"
     ],
     "priceCategory": "Premium",
     "productId": "44",
@@ -938,11 +938,11 @@
     "featured": false,
     "published": false,
     "review": true,
-    "image": "/images/products/winter-yard-night.png",
+    "image": "/images/products/winter-yard-night-paper-45x60-2026-09-28.png",
     "secondaryImage": "/images/products/winter-yard-night-room-colourful-rug-02-2026-09-28.avif",
     "sourceImage": "/images/artworks/winter-yard-night.avif",
     "availableSizes": [
-      "50x70cm"
+      "45x60cm"
     ],
     "priceCategory": "Premium",
     "productId": "45",
@@ -969,11 +969,11 @@
     "featured": false,
     "published": false,
     "review": true,
-    "image": "/images/products/current-and-foam.png",
+    "image": "/images/products/current-and-foam-paper-45x60-2026-09-28.png",
     "secondaryImage": "/images/products/current-and-foam-room-fresh-02-2026-09-28.avif",
     "sourceImage": "/images/artworks/current-and-foam.avif",
     "availableSizes": [
-      "50x70cm"
+      "45x60cm"
     ],
     "priceCategory": "Premium",
     "productId": "46",
@@ -1000,11 +1000,11 @@
     "featured": false,
     "published": false,
     "review": true,
-    "image": "/images/products/the-road-at-sunset.png",
-    "secondaryImage": "/images/products/the-road-at-sunset-room-fresh-02-2026-09-28.avif",
+    "image": "/images/products/the-road-at-sunset-paper-45x60-2026-09-28.png",
+    "secondaryImage": "/images/products/the-road-at-sunset-room-size-45x60-2026-09-28.avif",
     "sourceImage": "/images/artworks/the-road-at-sunset.avif",
     "availableSizes": [
-      "50x70cm"
+      "45x60cm"
     ],
     "priceCategory": "Premium",
     "productId": "47",
@@ -1031,11 +1031,11 @@
     "featured": false,
     "published": false,
     "review": true,
-    "image": "/images/products/sun-over-the-forest.png",
-    "secondaryImage": "/images/products/sun-over-the-forest-room-fresh-01-2026-09-28.avif",
+    "image": "/images/products/sun-over-the-forest-paper-45x60-2026-09-28.png",
+    "secondaryImage": "/images/products/sun-over-the-forest-room-size-60x45-2026-09-28.avif",
     "sourceImage": "/images/artworks/sun-over-the-forest.avif",
     "availableSizes": [
-      "50x70cm"
+      "45x60cm"
     ],
     "priceCategory": "Premium",
     "productId": "48",
@@ -1062,11 +1062,11 @@
     "featured": false,
     "published": false,
     "review": true,
-    "image": "/images/products/swan-on-still-water.png",
+    "image": "/images/products/swan-on-still-water-paper-40x50-2026-09-28.png",
     "secondaryImage": "/images/products/swan-on-still-water-room-fresh-02-2026-09-28.avif",
     "sourceImage": "/images/artworks/swan-on-still-water.avif",
     "availableSizes": [
-      "50x70cm"
+      "40x50cm"
     ],
     "priceCategory": "Premium",
     "productId": "49",
@@ -1093,11 +1093,11 @@
     "featured": false,
     "published": false,
     "review": true,
-    "image": "/images/products/morning-cabin-room.png",
+    "image": "/images/products/morning-cabin-room-paper-45x60-2026-09-28.png",
     "secondaryImage": "/images/products/morning-cabin-room-room-fresh-02-2026-09-28.avif",
     "sourceImage": "/images/artworks/morning-cabin-room.avif",
     "availableSizes": [
-      "50x70cm"
+      "45x60cm"
     ],
     "priceCategory": "Premium",
     "productId": "50",
@@ -1124,11 +1124,11 @@
     "featured": false,
     "published": false,
     "review": true,
-    "image": "/images/products/path-through-the-trees.png",
+    "image": "/images/products/path-through-the-trees-paper-40x50-2026-09-28.png",
     "secondaryImage": "/images/products/path-through-the-trees-room-final-review-01-2026-09-28.avif",
     "sourceImage": "/images/artworks/path-through-the-trees.avif",
     "availableSizes": [
-      "50x70cm"
+      "40x50cm"
     ],
     "priceCategory": "Premium",
     "productId": "51",
@@ -1155,11 +1155,11 @@
     "featured": false,
     "published": false,
     "review": true,
-    "image": "/images/products/sheep-on-the-track.png",
+    "image": "/images/products/sheep-on-the-track-paper-40x50-2026-09-28.png",
     "secondaryImage": "/images/products/sheep-on-the-track-room-final-review-05-2026-09-28.avif",
     "sourceImage": "/images/artworks/sheep-on-the-track.avif",
     "availableSizes": [
-      "50x70cm"
+      "40x50cm"
     ],
     "priceCategory": "Premium",
     "productId": "52",

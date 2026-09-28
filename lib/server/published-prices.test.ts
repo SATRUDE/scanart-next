@@ -41,6 +41,14 @@ describe('published prices', () => {
       }
     }
   });
+
+  it('keeps both natural-ratio Premium sizes at the effective 50 × 70 retail price', () => {
+    for (const currency of ['GBP', 'USD', 'NOK', 'DKK', 'SEK'] as const) {
+      for (const size of ['40x50cm', '45x60cm'] as const) {
+        expect(priceCategories.Premium[size][currency]).toBe(priceCategories.Premium['50x70cm'][currency]);
+      }
+    }
+  });
 });
 
 describe('retiring a price list', () => {
