@@ -39,6 +39,14 @@
     "score": 0.773,
     "ar": 0.8003
   },
+  "/images/products/cruise-room-test25-2026-09-28.avif": {
+    "x": 51.4,
+    "y": 22.1,
+    "w": 24.0,
+    "h": 20.1,
+    "score": "manual",
+    "ar": 0.8003
+  },
   "/images/products/cruise-room.avif": {
     "x": 38.8,
     "y": 40.8,
@@ -95,6 +103,14 @@
     "score": 0.874,
     "ar": 0.8003
   },
+  "/images/products/family-trip-room-test47-2026-09-28.avif": {
+    "x": 47.5,
+    "y": 18.9,
+    "w": 23.7,
+    "h": 20.7,
+    "score": "manual",
+    "ar": 0.8003
+  },
   "/images/products/family-trip-room.avif": {
     "x": 45.9,
     "y": 34.7,
@@ -149,6 +165,14 @@
     "w": 22.1,
     "h": 25.0,
     "score": 0.534,
+    "ar": 0.8003
+  },
+  "/images/products/journey-room-test29-2026-09-28.avif": {
+    "x": 70.2,
+    "y": 23.1,
+    "w": 20.3,
+    "h": 27.1,
+    "score": "manual",
     "ar": 0.8003
   },
   "/images/products/journey-room.avif": {

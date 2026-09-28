@@ -568,7 +568,7 @@
     "featured": false,
     "published": true,
     "image": "/images/products/cruise.png",
-    "secondaryImage": "/images/products/cruise-room.avif",
+    "secondaryImage": "/images/products/cruise-room-test25-2026-09-28.avif",
     "availableSizes": [
       "50x50cm"
     ],
@@ -596,7 +596,7 @@
     "featured": false,
     "published": true,
     "image": "/images/products/family-trip.png",
-    "secondaryImage": "/images/products/family-trip-room.avif",
+    "secondaryImage": "/images/products/family-trip-room-test47-2026-09-28.avif",
     "availableSizes": [
       "50x50cm"
     ],
@@ -624,7 +624,7 @@
     "featured": false,
     "published": true,
     "image": "/images/products/journey.png",
-    "secondaryImage": "/images/products/journey-room.avif",
+    "secondaryImage": "/images/products/journey-room-test29-2026-09-28.avif",
     "availableSizes": [
       "50x70cm"
     ],

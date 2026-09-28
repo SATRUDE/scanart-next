@@ -21,11 +21,10 @@ export const shopScenes: Record<string, ShopScene> = {
   'rosa-blomster': scene('rosa-blomster', 'Rosa Blomster by Hedvig Wallin framed in a reading corner'),
   'massa-applen': scene('massa-applen', 'Massa Äpplen by Hedvig Wallin framed above a dining table'),
   'small-house-big-ocean': scene('small-house-big-ocean', 'Small House Big Ocean by Hedvig Wallin framed in a reading corner'),
-  // Mikko Saarainen's rooms (branch add-mikko-saarainen), rendered with the
-  // art at its real size, so they keep their own file names and 848 × 1264.
-  cruise: { image: '/images/products/cruise-room.avif', alt: 'Cruise by Mikko Saarainen framed above a bed in a child’s bedroom', width: 848, height: 1264 },
-  'family-trip': { image: '/images/products/family-trip-room.avif', alt: 'Family Trip by Mikko Saarainen framed in a hallway above a rattan sideboard', width: 848, height: 1264 },
-  journey: { image: '/images/products/journey-room.avif', alt: 'Journey by Mikko Saarainen framed above a sofa in a living room', width: 848, height: 1264 },
+  // Mark-selected 2026-09-23 room tests. URF! still awaits his review.
+  cruise: { image: '/images/products/cruise-room-test25-2026-09-28.avif', alt: 'Cruise by Mikko Saarainen framed above a yellow drawing table in a child’s room', width: 1122, height: 1402 },
+  'family-trip': { image: '/images/products/family-trip-room-test47-2026-09-28.avif', alt: 'Family Trip by Mikko Saarainen framed above a bookcase in a child’s drawing room', width: 1122, height: 1402 },
+  journey: { image: '/images/products/journey-room-test29-2026-09-28.avif', alt: 'Journey by Mikko Saarainen framed above a bed with blue wave bedding', width: 1122, height: 1402 },
   urf: { image: '/images/products/urf-room.avif', alt: 'URF! by Mikko Saarainen framed in a reading corner with a red chair', width: 848, height: 1264 },
   // Codex's scenes of 2026-09-26, kept at their own file names (1122 × 1402).
   vinkveld: { image: '/images/products/vinkveld-room-hallway-2026-09-26.avif', alt: 'Vinkveld by Sia Siamos framed above a bench in a green hallway with terracotta tiles', width: 1122, height: 1402 },
