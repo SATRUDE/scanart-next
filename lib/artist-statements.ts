@@ -25,4 +25,7 @@ export const artistStatements: Record<string, string> = {
   'mikko-saarainen': 'He keeps the detail going right out to the edges, so the drawings get read as much as looked at.',
   // lib/artist-editorial.ts para1.
   'ishtar-backlund-dakhil': 'Her images move between closely observed details and imagined worlds.',
+  // Markus's own About page, checked 28 September 2026:
+  // https://www.naarttijarvi.com/about. Editorial summary, not a quotation.
+  'markus-naarttijarvi': 'Long-term photographs of northern Sweden, exploring solitude, perseverance and the passage of time.',
 };

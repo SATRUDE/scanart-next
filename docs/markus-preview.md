@@ -40,3 +40,12 @@ Ten new rooms were generated with the built-in ChatGPT tool. The tool does not e
 The floor reference is active Social Agent Oak wood flooring `c3d7387d-0981-4e8f-8ab0-68d85e4030f3`, checked on 28 September. Furniture references are the 235cm Bergsdal sofa, 120cm Oblique bench and 63cm Chisel chair. Scene 1 was revised to remove an extra table and empty bowl; scene 7 was revised to reduce the frame size. The generated photographs retain the recognisable source compositions, with minor generative detail, border and furnishing differences to assess before publication. No artwork was composited into a finished room. The exports carry IPTC AI-source metadata; the original photographs are not marked as generated. Most renders are 1122x1402; Morning, Cabin Room is 1080x1457 and retains its native aspect ratio.
 
 Social Agent's shared Product table was not changed: this revision's build syncs Article rows only and reads products from the committed JSON. It must be reconciled deliberately at publication if it is still used operationally. No fulfilment upload or live sale activation is part of this preview.
+
+## Product-page statement, 28 September follow-up
+
+The empty space Mark reported on the product page was a separate gap from the artist-page map and framing rows above. Markus had no entry in the shared artist statement map, leaving only the narrow biography column. Added an editorial summary, grounded in his own About page and presented without quotation marks, to the English map and Norwegian translation:
+
+- English: “Long-term photographs of northern Sweden, exploring solitude, perseverance and the passage of time.”
+- Norwegian: “Langsiktige fotoprosjekter fra Nord-Sverige utforsker ensomhet, utholdenhet og tidens gang.”
+
+All ten product pages inherit this through the shared artist slug. No layout or commercial data changed. Checked locally with `CATALOGUE_PREVIEW=1`: English and Norwegian desktop at 1440 px, Norwegian mobile at 390 px, all HTTP 200 with the statement visible, no horizontal overflow and no browser errors. Typecheck passed and all 16 existing Norwegian translation tests passed. Screenshots and browser evidence are retained in the Desktop image-test experiment folder. This remains preview copy for review, not a production launch.
