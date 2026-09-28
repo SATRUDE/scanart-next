@@ -100,3 +100,11 @@ All ten primary framed product images and warm derivatives were exported from un
 Room edits are only selected after visual proportion, physical scale and lighting review. Where an older room remains, EN/NO captions explicitly identify its previous paper size and the current listing size. Image generation was blocked for Pines, Winter and Path; these are incomplete room replacements, not completed edits.
 
 Selected smaller room previews: The Road at Sunset and Sun Over the Forest. The other eight retain previous rooms with explicit previous/current captions. Five generated candidates were rejected for proportions or changed composition, and three were blocked before generation. Full prompts and review decisions are in `markus-smaller-room-review.json`. The room batch remains incomplete.
+
+## All ten room frames corrected
+
+Mark explicitly authorised precise geometry edits after generation repeatedly retained narrow frames. All ten room scenes now depict each product’s offered format, rotated for landscape. New versioned assets replace the previous-format images, so the gallery captions identify the current size. Prices and publication/stock guards are unchanged.
+
+Six selected room revisions came from built-in generation. For Willows, Pines, Current and Foam, and Morning Cabin, a continuous geometric correction of the existing generated framed object restores the paper, artwork and12mm oak proportions together. It carries the existing glass/reflections and frame shadow; no original artwork was pasted into a room. Physical paper45×60cm uses a42×56cm image and1.5cm side/2cm top-bottom border, rotated for landscape. Pixels beyond the local frame/shadow edit region are unchanged. Original print masters remain untouched.
+
+The room renders remain illustrative photographs, with small generative variation and perspective; they are not manufacturing proofs. Full source paths, hashes, physical dimensions, corner coordinates, prompts and review notes are in `markus-all-frame-corrections-review.json`.
