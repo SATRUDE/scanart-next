@@ -4,7 +4,11 @@ Prepared on 28 September 2026. Branch: `codex/markus-naarttijarvi-preview`. All 
 
 ## Copy and commercial decisions
 
-The two-sentence bio is grounded in [Markus's own About page](https://www.naarttijarvi.com/about), checked on 28 September 2026. His agreement was signed on that date, as supplied by Mark. No approved portrait was supplied, so the page uses initials. Umeå has no existing map coordinate in this site's map, so its normal fallback omits the map.
+The two-sentence bio is grounded in [Markus's own About page](https://www.naarttijarvi.com/about), checked on 28 September 2026. His agreement was signed on that date, as supplied by Mark. No approved portrait was supplied, so the page uses initials.
+
+Umeå now renders on the artist map in both languages. Its SVG position, `[487.2, 468.8]`, uses the brand map's documented equirectangular projection: `x = (lon - 3.5) * cos(62°) * scale`, `y = (71.4 - lat) * scale`. A least-squares scale of 61.9225 reproduces the five existing city markers within 0.2 px; Umeå uses 63.83° N, 20.26° E. Desktop screenshots confirm the marker near Sweden's coast across from Kvarken.
+
+The reported missing framing row is not a Markus data gap: both routes already derive it from the shared `config/frame.ts` options. Rendered English and Norwegian pages show four rows, including “Framing — Unframed, or wood, black or white” and “Innramming — Uten ramme, eller tre, svart og hvit”. No artist-specific frame override is needed.
 
 Ken's supplied titles and descriptions are retained verbatim in the manifest and product JSON. They need Mark and Markus's confirmation. In particular, the photograph for The Road at Sunset appears to show more than three cyclists; the supplied description says three. Confirm the moonlight claim in Pines Under Starlight and the cabin description against Markus's account too.
 
@@ -26,6 +30,8 @@ Proposed paper format is 50x70cm, rotated to 70x50cm for photos 6 to 9. The orig
 Artist path: `/artist/markus-naarttijarvi`. The Norwegian routes work through the same preview reader; the supplied English descriptions remain the fallback pending approved translations.
 
 ## Images and source records
+
+Mark rejected the first ten room scenes for repetition and insufficient styling. They remain in this preview pending review of replacement pilots; they are not approved images. The three new pilots (Through the Willows, Winter Yard Night and Swan on Still Water) stay outside the repository in `~/Desktop/ScanArt Image Tests/`, with prompts, active catalogue records, references, measurements and self-review under `Experiment files/markus-pilot-2026-09-28/`. They are not wired into the page. Mark reviews the pilot before any replacement.
 
 Print masters remain in `~/Desktop/Markus-Naarttijarvi-photos/Print exports/`. Only web derivatives are committed. The studio shots preserve the actual photographs; generated rooms are display mockups and require visual approval, not print proofs.
 
