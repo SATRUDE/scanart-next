@@ -1,5 +1,14 @@
 import type { ReactNode } from 'react';
 import Image from 'next/image';
+import { scenePosition } from '@/lib/scene-focus';
+
+// Room scenes crop hard in the 2:1 hero, so aim at the print itself when
+// lib/scene-focus.json knows where it sits; otherwise keep the old guess.
+const heroPosition = (src: string, fallback: string) => {
+  const known = scenePosition(src);
+  if (known) return { objectPosition: known };
+  return src.includes('-room-') ? { objectPosition: fallback } : undefined;
+};
 import { NotionBlockRenderer, ARTICLE_TEXT_COLUMN } from '@/components/NotionBlockRenderer';
 import type { NotionBlock } from '@/lib/articles';
 
@@ -82,13 +91,13 @@ export function ArticleBody({
           <div className="relative -mx-margin aspect-[4/5] overflow-hidden bg-image-bg tab:mx-0 tab:aspect-[2/1]">
             {heroImage === 'plain' ? (
               // eslint-disable-next-line @next/next/no-img-element -- a draft's hero can be on any host socialagent serves preview media from, which next/image would refuse without a matching remotePattern
-              <img src={image} alt={imageAlt || title} className="h-full w-full object-cover" style={image.includes('-room-') ? { objectPosition: 'center top' } : undefined} />
+              <img src={image} alt={imageAlt || title} className="h-full w-full object-cover" style={heroPosition(image, 'center top')} />
             ) : (
               // The article's LCP element, so it is preloaded (docs/v2-seo.md).
               <Image
                 src={image}
                 alt={imageAlt || title}
-                style={image.includes('-room-') ? { objectPosition: 'center 30%' } : undefined}
+                style={heroPosition(image, 'center 30%')}
                 fill
                 sizes="(max-width: 1439px) 100vw, 1280px"
                 className="object-cover"
