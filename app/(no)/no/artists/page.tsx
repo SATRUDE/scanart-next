@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { artists } from '@/data/artists';
-import { getProductsByArtist } from '@/lib/products';
+import { getShopProductsByArtist as getProductsByArtist } from '@/lib/products';
 import { ArtistApplyBand } from '@/components/ArtistApplyBand';
 import { PageHeader } from '@/components/v2/ui';
 import { ArtistCardList } from '@/components/v2/artists/ArtistCard';

@@ -68,6 +68,15 @@ export const artists: Artist[] = [
     // Branch peggy/ishtar-artist-preview: the photo credit must be shown.
     imageCredit: 'Sebastian Lundmark',
   },
+  {
+    id: '9',
+    name: 'Markus Naarttijärvi',
+    slug: 'markus-naarttijarvi',
+    location: 'Umeå, Sweden',
+    // Verified 28 September 2026: https://www.naarttijarvi.com/about
+    bio: 'Markus Naarttijärvi is a documentary photographer based in Umeå, Sweden. His long-term projects follow industry, nature and culture in northern Sweden, exploring solitude, perseverance and the passage of time.',
+    image: '', // Initials until Markus supplies an approved portrait.
+  },
 ];
 
 export const getArtistById = (id: string) => {

@@ -1,0 +1,102 @@
+[
+  {
+    "number": 1,
+    "source": "/Users/markdiffey/.codex/generated_images/01a0e749-0057-7ec2-94cd-237fcdfc8ea4/exec-33aa4e76-b793-4a74-bdc7-d6f4c4550156.png",
+    "prompt": "Create one new photorealistic Scandinavian interior photograph, portrait 4:5. Reference 1 is the exact photographic artwork Through the Willows, preserve ALL of its composition and colours: gold river beneath dark overhanging leaves with a tiny bird high in the sky. Do not reinterpret, crop, retouch or invent any part of this artwork. Render it within the frame during generation. Reference 2 is FLOOR MATERIAL ONLY, use its pale straight wooden boards, ignore its furniture and artwork. Reference 3 is the 235cm wide cream Bergsdal sofa to use. Calm inhabited living room with simple warm off-white walls, this sofa square against the wall, a folded reading book on its seat, one window left casting soft natural daylight, quiet shadows and realistic texture, no showroom gloss. One SMALL 50x70cm portrait print in a thin natural oak frame above the sofa, frame width approximately 54cm versus sofa 235cm, just under a quarter its width. Preserve the photograph's 3:4 ratio using a narrow white border within the 5:7 sheet, never stretch it. Standing frontal camera, no wide-angle distortion. Frame fully visible around upper-middle of image, ample breathing room for crops. No other art, no people in room, no text or logos. Subtle edge glazing and contact shadow, no reflection covering the image.",
+    "retryPrompt": "Remove the foreground coffee table, empty bowl, extra table books and rug. Reveal the same existing straight timber flooring beneath. Preserve the sofa, window, light, and the framed photographic print completely unchanged in size, position, colour, composition and every detail. Keep the book on sofa and the throw. Do not change or recreate the artwork. Same 4:5 composition.",
+    "originalSource": "/Users/markdiffey/.codex/generated_images/01a0e749-0057-7ec2-94cd-237fcdfc8ea4/exec-eefc5a12-9dff-4a41-bde9-ec914d2c4fe1.png",
+    "surface": "Built-in ChatGPT image generation",
+    "model": "unverified",
+    "floorCatalogueId": "c3d7387d-0981-4e8f-8ab0-68d85e4030f3"
+  },
+  {
+    "number": 2,
+    "source": "/Users/markdiffey/.codex/generated_images/01a0e749-0057-7ec2-94cd-237fcdfc8ea4/exec-1b061391-8cb9-4eff-a1d0-d6da241a18d8.png",
+    "prompt": "Create one new photorealistic Scandinavian room scene, 4:5 portrait. Image 1 is the authoritative photographic artwork, to be rendered faithfully inside one frame DURING generation, never altered or reinterpreted. Snow covered pines under a deep blue star-filled sky, same trees, stars, proportions, snow and colour. Image 2 is only the floor material: use its pale straight wooden boards, ignore its dining furniture and art. Image 3 is the ONLY furniture reference. Quiet pale blue entrance hall. Black Oblique bench, 120cm wide and only 33cm high, sits square below the print with a folded scarf and a book on its end. Framed print 54cm wide is 45% of bench width. Gentle cool daylight from right, subtle warm floor bounce. Straight-on standing camera. Print sheet is 50x70cm portrait in a narrow natural oak frame. Preserve image 1's full 3:4 composition within the sheet using a slim white border, no cropping or stretching. Put the whole frame in upper-middle with generous space around for crops. Natural exposure, soft contact shadows, realistic glazing limited to an edge, subdued interior midtones, fine physical textures. No CGI, no people in room, no extra art, no text, no logos, no empty vases or bowls, no invented tables.",
+    "retryPrompt": null,
+    "originalSource": "/Users/markdiffey/.codex/generated_images/01a0e749-0057-7ec2-94cd-237fcdfc8ea4/exec-1b061391-8cb9-4eff-a1d0-d6da241a18d8.png",
+    "surface": "Built-in ChatGPT image generation",
+    "model": "unverified",
+    "floorCatalogueId": "c3d7387d-0981-4e8f-8ab0-68d85e4030f3"
+  },
+  {
+    "number": 3,
+    "source": "/Users/markdiffey/.codex/generated_images/01a0e749-0057-7ec2-94cd-237fcdfc8ea4/exec-8acbd34e-86d8-43a9-99d4-5942b1306d1f.png",
+    "prompt": "Create one new photorealistic Scandinavian room scene, 4:5 portrait. Image 1 is the authoritative photographic artwork, to be rendered faithfully inside one frame DURING generation, never altered or reinterpreted. Dark snowy industrial yard, corrugated buildings on the left, orange window, bright streetlamp on right scattering snow, trees in the background. Image 2 is only the floor material: use its pale straight wooden boards, ignore its dining furniture and art. Image 3 is the ONLY furniture reference. Quiet reading corner with the supplied 63cm-wide pale wooden Chisel lounge chair beside the wall, a current book on its seat. Warm grey painted walls, soft winter daylight from left. 54cm-wide framed print is a little narrower than the chair. Standing slightly oblique camera, see a doorway at the far edge. No other furniture. Print sheet is 50x70cm portrait in a narrow natural oak frame. Preserve image 1's full 3:4 composition within the sheet using a slim white border, no cropping or stretching. Put the whole frame in upper-middle with generous space around for crops. Natural exposure, soft contact shadows, realistic glazing limited to an edge, subdued interior midtones, fine physical textures. No CGI, no people in room, no extra art, no text, no logos, no empty vases or bowls, no invented tables.",
+    "retryPrompt": null,
+    "originalSource": "/Users/markdiffey/.codex/generated_images/01a0e749-0057-7ec2-94cd-237fcdfc8ea4/exec-8acbd34e-86d8-43a9-99d4-5942b1306d1f.png",
+    "surface": "Built-in ChatGPT image generation",
+    "model": "unverified",
+    "floorCatalogueId": "c3d7387d-0981-4e8f-8ab0-68d85e4030f3"
+  },
+  {
+    "number": 4,
+    "source": "/Users/markdiffey/.codex/generated_images/01a0e749-0057-7ec2-94cd-237fcdfc8ea4/exec-8d550710-a668-4995-87a0-a8cea0ae4a4c.png",
+    "prompt": "Create one new photorealistic Scandinavian room scene, 4:5 portrait. Image 1 is the authoritative photographic artwork, to be rendered faithfully inside one frame DURING generation, never altered or reinterpreted. Blue-black abstract water with precise pale flowing foam or ice patterns and scattered white flecks; reproduce every swirl and tonal relationship. Image 2 is only the floor material: use its pale straight wooden boards, ignore its dining furniture and art. Image 3 is the ONLY furniture reference. Calm hallway in a Scandinavian home, neutral pale grey walls, black 120cm-wide Oblique bench 33cm high with two books on one end. 54cm-wide framed print is 45% of bench width. Gentle afternoon natural side light, standing frontal view, doorframe at the far left edge. No additional furniture. Print sheet is 50x70cm portrait in a narrow natural oak frame. Preserve image 1's full 3:4 composition within the sheet using a slim white border, no cropping or stretching. Put the whole frame in upper-middle with generous space around for crops. Natural exposure, soft contact shadows, realistic glazing limited to an edge, subdued interior midtones, fine physical textures. No CGI, no people in room, no extra art, no text, no logos, no empty vases or bowls, no invented tables.",
+    "retryPrompt": null,
+    "originalSource": "/Users/markdiffey/.codex/generated_images/01a0e749-0057-7ec2-94cd-237fcdfc8ea4/exec-8d550710-a668-4995-87a0-a8cea0ae4a4c.png",
+    "surface": "Built-in ChatGPT image generation",
+    "model": "unverified",
+    "floorCatalogueId": "c3d7387d-0981-4e8f-8ab0-68d85e4030f3"
+  },
+  {
+    "number": 5,
+    "source": "/Users/markdiffey/.codex/generated_images/01a0e749-0057-7ec2-94cd-237fcdfc8ea4/exec-e7db3c31-80e8-48a8-9871-fbe17194891e.png",
+    "prompt": "Create a NEW photorealistic Scandinavian interior, portrait 4:5 output. First image is the AUTHORITATIVE ARTWORK. Exact photograph of a sweeping newly built road, several cyclists on its right carriageway, layered dark forest and golden cloudy sky. Reproduce it faithfully within the frame during generation, preserving every object, proportions, full composition and original colours. Never generate a replacement photograph or change its contents. Image 2 is FLOOR MATERIAL ONLY: pale straight boards, no furniture or art from that reference. Image 3 is the only furniture to use. Muted warm stone walls in an entrance hall, black 120cm-wide low Oblique bench below the frame with a canvas bag and a paperback. Print is 50cm wide x70cm high plus thin frame, 54cm framed width versus 120cm bench, approximately 45%. Standing slightly oblique camera, afternoon window light at right. One thin natural oak portrait frame, full original photograph fitted within a white 50x70cm sheet rotated appropriately. Use white margins rather than crop or stretch. Entire frame unobstructed around upper-middle, generous wall around it for cropping. Calm natural side light, accurate contact shadows, real wooden grain and fabric, understated exposure, subtle edge glazing without obscuring art. No people in room, other art, text, logos, CGI or empty decorative containers.",
+    "retryPrompt": null,
+    "originalSource": "/Users/markdiffey/.codex/generated_images/01a0e749-0057-7ec2-94cd-237fcdfc8ea4/exec-e7db3c31-80e8-48a8-9871-fbe17194891e.png",
+    "surface": "Built-in ChatGPT image generation",
+    "model": "unverified",
+    "floorCatalogueId": "c3d7387d-0981-4e8f-8ab0-68d85e4030f3"
+  },
+  {
+    "number": 6,
+    "source": "/Users/markdiffey/.codex/generated_images/01a0e749-0057-7ec2-94cd-237fcdfc8ea4/exec-edfd8d90-e01c-48a6-b3df-244fac069b67.png",
+    "prompt": "Create a NEW photorealistic Scandinavian interior, portrait 4:5 output. First image is the AUTHORITATIVE ARTWORK. Exact landscape photo of a huge white sun crossed by thin orange clouds above layers of dark pine forest, warm orange sky. Reproduce it faithfully within the frame during generation, preserving every object, proportions, full composition and original colours. Never generate a replacement photograph or change its contents. Image 2 is FLOOR MATERIAL ONLY: pale straight boards, no furniture or art from that reference. Image 3 is the only furniture to use. Soft cream walls in a living room, 235cm-wide cream Bergsdal sofa beneath the print. Print is 70cm wide x50cm high, approximately 74cm including frame versus 235cm sofa, just under a third its width. Standing frontal view, soft daylight from right. One book on sofa, no table, no bowls, no extra furniture. One thin natural oak landscape frame, full original photograph fitted within a white 50x70cm sheet rotated appropriately. Use white margins rather than crop or stretch. Entire frame unobstructed around upper-middle, generous wall around it for cropping. Calm natural side light, accurate contact shadows, real wooden grain and fabric, understated exposure, subtle edge glazing without obscuring art. No people in room, other art, text, logos, CGI or empty decorative containers.",
+    "retryPrompt": null,
+    "originalSource": "/Users/markdiffey/.codex/generated_images/01a0e749-0057-7ec2-94cd-237fcdfc8ea4/exec-edfd8d90-e01c-48a6-b3df-244fac069b67.png",
+    "surface": "Built-in ChatGPT image generation",
+    "model": "unverified",
+    "floorCatalogueId": "c3d7387d-0981-4e8f-8ab0-68d85e4030f3"
+  },
+  {
+    "number": 7,
+    "source": "/Users/markdiffey/.codex/generated_images/01a0e749-0057-7ec2-94cd-237fcdfc8ea4/exec-32346a99-5455-47f1-a0d3-060e6ed13db2.png",
+    "prompt": "Create a NEW photorealistic Scandinavian interior, portrait 4:5 output. First image is the AUTHORITATIVE ARTWORK. Exact horizontal photo: one small white swan near centre of misty still lake, dark reeds foreground and green forest behind, soft pink-grey haze. Do not enlarge the swan. Reproduce it faithfully within the frame during generation, preserving every object, proportions, full composition and original colours. Never generate a replacement photograph or change its contents. Image 2 is FLOOR MATERIAL ONLY: pale straight boards, no furniture or art from that reference. Image 3 is the only furniture to use. Soft pale grey-green walls in a reading room with cream 235cm-wide Bergsdal sofa square to wall. Print is 70cm wide x50cm high, approximately 74cm framed width versus sofa 235cm, less than one third. One closed book on sofa, pale curtain partly visible to left, no tables or bowls. Standing viewpoint slightly from right, diffused morning daylight. One thin natural oak landscape frame, full original photograph fitted within a white 50x70cm sheet rotated appropriately. Use white margins rather than crop or stretch. Entire frame unobstructed around upper-middle, generous wall around it for cropping. Calm natural side light, accurate contact shadows, real wooden grain and fabric, understated exposure, subtle edge glazing without obscuring art. No people in room, other art, text, logos, CGI or empty decorative containers.",
+    "retryPrompt": "Correct ONLY the physical scale of the framed photo: reduce its width and height by exactly 28%, keeping its centre at the same location on the wall. It must represent a 70x50cm landscape print, approximately 74cm wide framed, above this 235cm-wide sofa. Keep the entire swan photograph unchanged, exact same composition, original colours, tiny swan size relative to lake, same margins and frame. Do not crop the photograph. Keep all room geometry, sofa, floor, book, lighting and camera completely unchanged. Same 4:5 portrait composition.",
+    "originalSource": "/Users/markdiffey/.codex/generated_images/01a0e749-0057-7ec2-94cd-237fcdfc8ea4/exec-f80a18e6-6b32-494b-b8f1-4d444658f54c.png",
+    "surface": "Built-in ChatGPT image generation",
+    "model": "unverified",
+    "floorCatalogueId": "c3d7387d-0981-4e8f-8ab0-68d85e4030f3"
+  },
+  {
+    "number": 8,
+    "source": "/Users/markdiffey/.codex/generated_images/01a0e749-0057-7ec2-94cd-237fcdfc8ea4/exec-5b81396b-5b07-43f9-b88f-5613adeb3b5a.png",
+    "prompt": "Create one NEW photorealistic Scandinavian home room photograph in 4:5 portrait output. Image 1 is AUTHORITATIVE photographic artwork. Exact landscape photograph of a cabin interior with lace-curtained window on left, simple blue-covered bed along lower part, and foliage reflections across right wall. Keep the unusual foliage reflections exactly, they are part of the photo, do not replace them with a generic cabin. Preserve the whole original photo with exact composition and colours, no changes to its content. Render within the frame during generation. Image 2 gives ONLY FLOOR MATERIAL, pale straight timber boards; ignore its furniture and art. Image 3 is ONLY furniture reference. Calm living room with a warm grey wall and cream 235cm-wide Bergsdal sofa square to it. Frame width 74cm is less than a third of sofa width. One paperback on seat, soft overcast daylight from a window left, slight oblique standing viewpoint. No tables, bowls or invented furniture. One 50x70cm print sheet in a thin natural oak frame, landscape orientation, with full original photograph fitted without cropping or stretching; white margins accommodate its native ratio. Entire frame visible near upper-middle with space around for crop safety. Physical photographic light, coherent contact shadows, fine materials, subdued midtones, very subtle edge glass reflections. No CGI, people in room, extra art, labels, text, logos, empty containers.",
+    "retryPrompt": null,
+    "originalSource": "/Users/markdiffey/.codex/generated_images/01a0e749-0057-7ec2-94cd-237fcdfc8ea4/exec-5b81396b-5b07-43f9-b88f-5613adeb3b5a.png",
+    "surface": "Built-in ChatGPT image generation",
+    "model": "unverified",
+    "floorCatalogueId": "c3d7387d-0981-4e8f-8ab0-68d85e4030f3"
+  },
+  {
+    "number": 9,
+    "source": "/Users/markdiffey/.codex/generated_images/01a0e749-0057-7ec2-94cd-237fcdfc8ea4/exec-7a7ba89d-5e88-4c5a-b152-41008f202d15.png",
+    "prompt": "Create one NEW photorealistic Scandinavian home room photograph in 4:5 portrait output. Image 1 is AUTHORITATIVE photographic artwork. Exact horizontal photograph of dense dark green woodland and a narrow winding timber boardwalk leading from bottom centre towards a bright clearing, precise trees, grass and path. Preserve the whole original photo with exact composition and colours, no changes to its content. Render within the frame during generation. Image 2 gives ONLY FLOOR MATERIAL, pale straight timber boards; ignore its furniture and art. Image 3 is ONLY furniture reference. Quiet hallway with soft ivory walls and 120cm-wide black Oblique bench below. Frame width 74cm is 62% of bench width. A folded scarf and book on bench, gentle window light from left, camera frontal at standing height, narrow glimpse into adjoining room. No extra furniture. One 50x70cm print sheet in a thin natural oak frame, landscape orientation, with full original photograph fitted without cropping or stretching; white margins accommodate its native ratio. Entire frame visible near upper-middle with space around for crop safety. Physical photographic light, coherent contact shadows, fine materials, subdued midtones, very subtle edge glass reflections. No CGI, people in room, extra art, labels, text, logos, empty containers.",
+    "retryPrompt": null,
+    "originalSource": "/Users/markdiffey/.codex/generated_images/01a0e749-0057-7ec2-94cd-237fcdfc8ea4/exec-7a7ba89d-5e88-4c5a-b152-41008f202d15.png",
+    "surface": "Built-in ChatGPT image generation",
+    "model": "unverified",
+    "floorCatalogueId": "c3d7387d-0981-4e8f-8ab0-68d85e4030f3"
+  },
+  {
+    "number": 10,
+    "source": "/Users/markdiffey/.codex/generated_images/01a0e749-0057-7ec2-94cd-237fcdfc8ea4/exec-2d301ff8-22a1-47b1-83a0-412d0cecaeb9.png",
+    "prompt": "Create one NEW photorealistic Scandinavian home room photograph in 4:5 portrait output. Image 1 is AUTHORITATIVE photographic artwork. Exact portrait photograph of several dark sheep on a wet grassy track, green tree canopy surrounding a brighter clearing, puddles in foreground, one pale sheep further back on left. Preserve all animals, their positions, proportions, colour and foliage. Preserve the whole original photo with exact composition and colours, no changes to its content. Render within the frame during generation. Image 2 gives ONLY FLOOR MATERIAL, pale straight timber boards; ignore its furniture and art. Image 3 is ONLY furniture reference. Quiet reading corner with softly muted sage wall, pale wooden Chisel lounge chair width 63cm next to the print. Frame width 54cm is a little less than chair width. Current book on chair, window at right, diffused daylight, softly shadowed floor. Standing frontal viewpoint, no other furniture. One 50x70cm print sheet in a thin natural oak frame, portrait orientation, with full original photograph fitted without cropping or stretching; white margins accommodate its native ratio. Entire frame visible near upper-middle with space around for crop safety. Physical photographic light, coherent contact shadows, fine materials, subdued midtones, very subtle edge glass reflections. No CGI, people in room, extra art, labels, text, logos, empty containers.",
+    "retryPrompt": null,
+    "originalSource": "/Users/markdiffey/.codex/generated_images/01a0e749-0057-7ec2-94cd-237fcdfc8ea4/exec-2d301ff8-22a1-47b1-83a0-412d0cecaeb9.png",
+    "surface": "Built-in ChatGPT image generation",
+    "model": "unverified",
+    "floorCatalogueId": "c3d7387d-0981-4e8f-8ab0-68d85e4030f3"
+  }
+]

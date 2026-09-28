@@ -891,6 +891,10 @@ export const no = {
       location: 'Stockholm, Sverige',
       bio: 'Ishtar Bäcklund Dakhil er en svensk kunstner som arbeider med illustrasjon, veggmaleri og design. Hun reiste i fem år og konkurrerte internasjonalt i downhill-skateboarding før hun studerte ved Konstfack i Stockholm.',
     },
+    'markus-naarttijarvi': {
+      location: 'Umeå, Sverige',
+      bio: 'Markus Naarttijärvi er dokumentarfotograf med base i Umeå i Sverige. De langsiktige prosjektene hans følger industri, natur og kultur i Nord-Sverige, med temaer som ensomhet, utholdenhet og tidens gang.',
+    },
   } as Record<string, ArtistCopy>,
 
   // The product page's artist statement (lib/artist-statements.ts), each

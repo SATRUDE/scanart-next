@@ -48,6 +48,7 @@ const VOCABULARY: Record<AltLocale, AltVocabulary> = {
       Abstract: 'abstract',
       Botanical: 'botanical',
       Illustrations: 'illustrated',
+      Photography: 'photographic',
     },
     describe: adjective => {
       const description = adjective
@@ -65,6 +66,7 @@ const VOCABULARY: Record<AltLocale, AltVocabulary> = {
       Abstract: 'abstrakt',
       Botanical: 'botanisk',
       Illustrations: 'illustrert',
+      Photography: 'fotografisk',
     },
     describe: adjective =>
       adjective ? `et ${adjective} skandinavisk kunsttrykk` : 'et skandinavisk kunsttrykk',

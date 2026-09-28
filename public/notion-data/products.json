@@ -862,5 +862,315 @@
     ],
     "created_time": "2026-09-24T13:00:00.000Z",
     "last_edited_time": "2026-09-26T09:00:00.000Z"
+  },
+  {
+    "id": "71cbf29f-29ce-59af-b78b-6dbe1b785f5d",
+    "name": "Through the Willows",
+    "slug": "through-the-willows",
+    "description": "A river glows gold beneath a screen of willow and oak leaves, with a single bird cutting across the haze. Soft, warm light and a quiet, waiting stillness.",
+    "category": "Photography",
+    "artist": "Markus Naarttijärvi",
+    "artistId": "9",
+    "brand": "",
+    "inStock": false,
+    "featured": false,
+    "published": false,
+    "review": true,
+    "image": "/images/products/through-the-willows.png",
+    "secondaryImage": "/images/products/through-the-willows-room-2026-09-28.avif",
+    "sourceImage": "/images/artworks/through-the-willows.avif",
+    "availableSizes": [
+      "50x70cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "43",
+    "recommendedProducts": [
+      "Pines Under Starlight",
+      "Winter Yard, Night",
+      "Current and Foam",
+      "The Road at Sunset"
+    ],
+    "orientation": "portrait",
+    "created_time": "2026-09-28T09:00:00.000Z",
+    "last_edited_time": "2026-09-28T09:00:00.000Z"
+  },
+  {
+    "id": "6d0903b6-ec66-5a65-9eba-29da564da7f9",
+    "name": "Pines Under Starlight",
+    "slug": "pines-under-starlight",
+    "description": "Snow-laden pines stand still beneath a clear, star-scattered sky. A hushed, cold-clear winter night, lit by nothing but the moon.",
+    "category": "Photography",
+    "artist": "Markus Naarttijärvi",
+    "artistId": "9",
+    "brand": "",
+    "inStock": false,
+    "featured": false,
+    "published": false,
+    "review": true,
+    "image": "/images/products/pines-under-starlight.png",
+    "secondaryImage": "/images/products/pines-under-starlight-room-2026-09-28.avif",
+    "sourceImage": "/images/artworks/pines-under-starlight.avif",
+    "availableSizes": [
+      "50x70cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "44",
+    "recommendedProducts": [
+      "Through the Willows",
+      "Winter Yard, Night",
+      "Current and Foam",
+      "The Road at Sunset"
+    ],
+    "orientation": "portrait",
+    "created_time": "2026-09-28T09:00:00.000Z",
+    "last_edited_time": "2026-09-28T09:00:00.000Z"
+  },
+  {
+    "id": "c5956741-86b7-5022-a7f4-fd001c49c1d1",
+    "name": "Winter Yard, Night",
+    "slug": "winter-yard-night",
+    "description": "A lit window and a lone streetlamp cut through a dark, snow-heavy night in a quiet yard. Falling snow catches the light; everything else stays in shadow.",
+    "category": "Photography",
+    "artist": "Markus Naarttijärvi",
+    "artistId": "9",
+    "brand": "",
+    "inStock": false,
+    "featured": false,
+    "published": false,
+    "review": true,
+    "image": "/images/products/winter-yard-night.png",
+    "secondaryImage": "/images/products/winter-yard-night-room-2026-09-28.avif",
+    "sourceImage": "/images/artworks/winter-yard-night.avif",
+    "availableSizes": [
+      "50x70cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "45",
+    "recommendedProducts": [
+      "Through the Willows",
+      "Pines Under Starlight",
+      "Current and Foam",
+      "The Road at Sunset"
+    ],
+    "orientation": "portrait",
+    "created_time": "2026-09-28T09:00:00.000Z",
+    "last_edited_time": "2026-09-28T09:00:00.000Z"
+  },
+  {
+    "id": "6253f0d7-2a37-524f-9f84-3fd7de70e4d1",
+    "name": "Current and Foam",
+    "slug": "current-and-foam",
+    "description": "Pale ridges of ice or foam swirl across dark water, closer to a painting than a photograph. An abstract, almost weightless study in movement and cold.",
+    "category": "Photography",
+    "artist": "Markus Naarttijärvi",
+    "artistId": "9",
+    "brand": "",
+    "inStock": false,
+    "featured": false,
+    "published": false,
+    "review": true,
+    "image": "/images/products/current-and-foam.png",
+    "secondaryImage": "/images/products/current-and-foam-room-2026-09-28.avif",
+    "sourceImage": "/images/artworks/current-and-foam.avif",
+    "availableSizes": [
+      "50x70cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "46",
+    "recommendedProducts": [
+      "Through the Willows",
+      "Pines Under Starlight",
+      "Winter Yard, Night",
+      "The Road at Sunset"
+    ],
+    "orientation": "portrait",
+    "created_time": "2026-09-28T09:00:00.000Z",
+    "last_edited_time": "2026-09-28T09:00:00.000Z"
+  },
+  {
+    "id": "6042da5e-4912-5462-9e1e-39b0191654a0",
+    "name": "The Road at Sunset",
+    "slug": "the-road-at-sunset",
+    "description": "Three cyclists ride a curving road into low evening sun, forest and hills fading into the haze beyond. A warm, quiet end to the day, caught mid-journey.",
+    "category": "Photography",
+    "artist": "Markus Naarttijärvi",
+    "artistId": "9",
+    "brand": "",
+    "inStock": false,
+    "featured": false,
+    "published": false,
+    "review": true,
+    "image": "/images/products/the-road-at-sunset.png",
+    "secondaryImage": "/images/products/the-road-at-sunset-room-2026-09-28.avif",
+    "sourceImage": "/images/artworks/the-road-at-sunset.avif",
+    "availableSizes": [
+      "50x70cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "47",
+    "recommendedProducts": [
+      "Through the Willows",
+      "Pines Under Starlight",
+      "Winter Yard, Night",
+      "Current and Foam"
+    ],
+    "orientation": "portrait",
+    "created_time": "2026-09-28T09:00:00.000Z",
+    "last_edited_time": "2026-09-28T09:00:00.000Z"
+  },
+  {
+    "id": "7e0ceaa6-69cd-5440-92f5-78f74a21ac37",
+    "name": "Sun Over the Forest",
+    "slug": "sun-over-the-forest",
+    "description": "A huge, hazy sun hangs low over a dark line of trees, the sky burning orange around it. Simple, elemental, and quietly dramatic.",
+    "category": "Photography",
+    "artist": "Markus Naarttijärvi",
+    "artistId": "9",
+    "brand": "",
+    "inStock": false,
+    "featured": false,
+    "published": false,
+    "review": true,
+    "image": "/images/products/sun-over-the-forest.png",
+    "secondaryImage": "/images/products/sun-over-the-forest-room-2026-09-28.avif",
+    "sourceImage": "/images/artworks/sun-over-the-forest.avif",
+    "availableSizes": [
+      "50x70cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "48",
+    "recommendedProducts": [
+      "Through the Willows",
+      "Pines Under Starlight",
+      "Winter Yard, Night",
+      "Current and Foam"
+    ],
+    "orientation": "landscape",
+    "created_time": "2026-09-28T09:00:00.000Z",
+    "last_edited_time": "2026-09-28T09:00:00.000Z"
+  },
+  {
+    "id": "71b0dd41-46c3-523b-bcd3-a56bf848b3e5",
+    "name": "Swan on Still Water",
+    "slug": "swan-on-still-water",
+    "description": "A lone swan drifts across a misty lake at first light, reeds standing dark in the foreground. Calm, hushed, and completely still.",
+    "category": "Photography",
+    "artist": "Markus Naarttijärvi",
+    "artistId": "9",
+    "brand": "",
+    "inStock": false,
+    "featured": false,
+    "published": false,
+    "review": true,
+    "image": "/images/products/swan-on-still-water.png",
+    "secondaryImage": "/images/products/swan-on-still-water-room-2026-09-28.avif",
+    "sourceImage": "/images/artworks/swan-on-still-water.avif",
+    "availableSizes": [
+      "50x70cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "49",
+    "recommendedProducts": [
+      "Through the Willows",
+      "Pines Under Starlight",
+      "Winter Yard, Night",
+      "Current and Foam"
+    ],
+    "orientation": "landscape",
+    "created_time": "2026-09-28T09:00:00.000Z",
+    "last_edited_time": "2026-09-28T09:00:00.000Z"
+  },
+  {
+    "id": "bf2acf69-fa3a-536c-b921-f638ef78063b",
+    "name": "Morning, Cabin Room",
+    "slug": "morning-cabin-room",
+    "description": "Soft light falls through lace curtains onto a simple bed, with greenery pressing close against the window. A quiet, unmade corner of a wooden cabin.",
+    "category": "Photography",
+    "artist": "Markus Naarttijärvi",
+    "artistId": "9",
+    "brand": "",
+    "inStock": false,
+    "featured": false,
+    "published": false,
+    "review": true,
+    "image": "/images/products/morning-cabin-room.png",
+    "secondaryImage": "/images/products/morning-cabin-room-room-2026-09-28.avif",
+    "sourceImage": "/images/artworks/morning-cabin-room.avif",
+    "availableSizes": [
+      "50x70cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "50",
+    "recommendedProducts": [
+      "Through the Willows",
+      "Pines Under Starlight",
+      "Winter Yard, Night",
+      "Current and Foam"
+    ],
+    "orientation": "landscape",
+    "created_time": "2026-09-28T09:00:00.000Z",
+    "last_edited_time": "2026-09-28T09:00:00.000Z"
+  },
+  {
+    "id": "40bea107-e5ec-5b32-b235-33c83160ee16",
+    "name": "Path Through the Trees",
+    "slug": "path-through-the-trees",
+    "description": "A wooden boardwalk winds through dense, shadowed forest towards a bright clearing ahead. The kind of path that pulls you on to see what's next.",
+    "category": "Photography",
+    "artist": "Markus Naarttijärvi",
+    "artistId": "9",
+    "brand": "",
+    "inStock": false,
+    "featured": false,
+    "published": false,
+    "review": true,
+    "image": "/images/products/path-through-the-trees.png",
+    "secondaryImage": "/images/products/path-through-the-trees-room-2026-09-28.avif",
+    "sourceImage": "/images/artworks/path-through-the-trees.avif",
+    "availableSizes": [
+      "50x70cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "51",
+    "recommendedProducts": [
+      "Through the Willows",
+      "Pines Under Starlight",
+      "Winter Yard, Night",
+      "Current and Foam"
+    ],
+    "orientation": "landscape",
+    "created_time": "2026-09-28T09:00:00.000Z",
+    "last_edited_time": "2026-09-28T09:00:00.000Z"
+  },
+  {
+    "id": "b86a2c64-4e04-55b3-9f80-92a7f71c96d3",
+    "name": "Sheep on the Track",
+    "slug": "sheep-on-the-track",
+    "description": "A small flock of dark sheep stands watching on a muddy track between hedgerows, a green pasture opening beyond them. Damp, overcast, and entirely rural.",
+    "category": "Photography",
+    "artist": "Markus Naarttijärvi",
+    "artistId": "9",
+    "brand": "",
+    "inStock": false,
+    "featured": false,
+    "published": false,
+    "review": true,
+    "image": "/images/products/sheep-on-the-track.png",
+    "secondaryImage": "/images/products/sheep-on-the-track-room-2026-09-28.avif",
+    "sourceImage": "/images/artworks/sheep-on-the-track.avif",
+    "availableSizes": [
+      "50x70cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "52",
+    "recommendedProducts": [
+      "Through the Willows",
+      "Pines Under Starlight",
+      "Winter Yard, Night",
+      "Current and Foam"
+    ],
+    "orientation": "portrait",
+    "created_time": "2026-09-28T09:00:00.000Z",
+    "last_edited_time": "2026-09-28T09:00:00.000Z"
   }
 ]

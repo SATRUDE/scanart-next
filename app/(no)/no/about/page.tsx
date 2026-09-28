@@ -4,8 +4,8 @@ import { hreflangPair } from '@/lib/i18n';
 import { no } from '@/lib/i18n/no';
 import { noV2 } from '@/lib/i18n/no-v2-pages';
 import { ABOUT_HERO_SLUG, aboutHeroImage } from '@/lib/about-hero';
-import { getAllProducts } from '@/lib/products';
-import { getPublishedArtists } from '@/lib/published-artists';
+import { getShopProducts as getAllProducts } from '@/lib/products';
+import { getShopArtists as getPublishedArtists } from '@/lib/published-artists';
 import { AboutBody } from '@/components/v2/about/AboutBody';
 import { ABOUT_WINDOW_POOLS, aboutPlaces, rosterCards } from '@/components/v2/about/about-data';
 

@@ -13,6 +13,11 @@ export interface ArtistEditorial {
 }
 
 export const artistEditorial: Record<string, ArtistEditorial> = {
+  'markus-naarttijarvi': {
+    heading: 'Light, water and quiet places',
+    para1: 'A river seen through leaves, pines under a starry sky and a swan on misty water. These photographs move between open landscapes and quieter details, from a low sun over the forest to light falling through a cabin window.',
+    para2: 'The collection brings together ten photographs by Markus Naarttijärvi. Each is shown in full, with a white border where the photograph and paper have different proportions.',
+  },
   'helene-brox': {
     heading: 'Shape doing the talking',
     para1:

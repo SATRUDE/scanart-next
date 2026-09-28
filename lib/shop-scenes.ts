@@ -34,6 +34,17 @@ export const shopScenes: Record<string, ShopScene> = {
   // A second scene of a print is keyed "<print>--<name>": articles can use it,
   // and the article page reads the print from the part before "--".
   'vinkveld--dining': { image: '/images/products/vinkveld-room-dining-2026-09-26.avif', alt: 'Vinkveld by Sia Siamos framed above a dining table against a peach wall', width: 1122, height: 1402 },
+  // Markus previews: the unpublished products gate these scenes from live display.
+  'through-the-willows': { image: '/images/products/through-the-willows-room-2026-09-28.avif', alt: 'Through the Willows by Markus Naarttijärvi framed above a cream sofa in a naturally lit living room', width: 1122, height: 1402 },
+  'pines-under-starlight': { image: '/images/products/pines-under-starlight-room-2026-09-28.avif', alt: 'Pines Under Starlight by Markus Naarttijärvi framed above a black bench in a pale blue hallway', width: 1122, height: 1402 },
+  'winter-yard-night': { image: '/images/products/winter-yard-night-room-2026-09-28.avif', alt: 'Winter Yard, Night by Markus Naarttijärvi framed above a wooden chair in a quiet reading corner', width: 1122, height: 1402 },
+  'current-and-foam': { image: '/images/products/current-and-foam-room-2026-09-28.avif', alt: 'Current and Foam by Markus Naarttijärvi framed above a black bench in a grey hallway', width: 1122, height: 1402 },
+  'the-road-at-sunset': { image: '/images/products/the-road-at-sunset-room-2026-09-28.avif', alt: 'The Road at Sunset by Markus Naarttijärvi framed above a black bench in a sunlit entrance hall', width: 1122, height: 1402 },
+  'sun-over-the-forest': { image: '/images/products/sun-over-the-forest-room-2026-09-28.avif', alt: 'Sun Over the Forest by Markus Naarttijärvi framed above a cream sofa in a sunlit living room', width: 1122, height: 1402 },
+  'swan-on-still-water': { image: '/images/products/swan-on-still-water-room-2026-09-28.avif', alt: 'Swan on Still Water by Markus Naarttijärvi framed above a cream sofa in a pale green reading room', width: 1122, height: 1402 },
+  'morning-cabin-room': { image: '/images/products/morning-cabin-room-room-2026-09-28.avif', alt: 'Morning, Cabin Room by Markus Naarttijärvi framed above a cream sofa in a quiet living room', width: 1080, height: 1457 },
+  'path-through-the-trees': { image: '/images/products/path-through-the-trees-room-2026-09-28.avif', alt: 'Path Through the Trees by Markus Naarttijärvi framed above a black bench in a naturally lit hallway', width: 1122, height: 1402 },
+  'sheep-on-the-track': { image: '/images/products/sheep-on-the-track-room-2026-09-28.avif', alt: 'Sheep on the Track by Markus Naarttijärvi framed above a wooden chair against a sage wall', width: 1122, height: 1402 },
   // Ishtar Bäcklund Dakhil's seven rooms are held back with her prints until
   // she has approved her prices and content (her agreement is signed);
   // restore them from branch ishtar/preview.
