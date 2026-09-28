@@ -462,5 +462,21 @@
     "h": 22.8,
     "score": "manual",
     "ar": 0.8003
+  },
+  "/images/products/path-through-the-trees-room-final-review-01-2026-09-28.avif": {
+    "x": 43.54,
+    "y": 20.65,
+    "w": 33.87,
+    "h": 21.68,
+    "ar": 0.8002853067047075,
+    "score": "manual"
+  },
+  "/images/products/sheep-on-the-track-room-final-review-05-2026-09-28.avif": {
+    "x": 52.81,
+    "y": 35.2,
+    "w": 45.19,
+    "h": 46.15,
+    "ar": 0.8002853067047075,
+    "score": "manual"
   }
 }
