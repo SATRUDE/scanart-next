@@ -398,5 +398,61 @@
     "h": 22.25,
     "score": "manual",
     "ar": 0.8003
+  },
+  "/images/products/through-the-willows-room-fresh-03-2026-09-28.avif": {
+    "x": 59.35,
+    "y": 22.35,
+    "w": 22.7,
+    "h": 26.1,
+    "score": "manual",
+    "ar": 0.8003
+  },
+  "/images/products/pines-under-starlight-room-fresh-03-2026-09-28.avif": {
+    "x": 55.95,
+    "y": 21.85,
+    "w": 20.1,
+    "h": 22.5,
+    "score": "manual",
+    "ar": 0.8003
+  },
+  "/images/products/current-and-foam-room-fresh-02-2026-09-28.avif": {
+    "x": 53.2,
+    "y": 21.75,
+    "w": 23.8,
+    "h": 26.3,
+    "score": "manual",
+    "ar": 0.8003
+  },
+  "/images/products/the-road-at-sunset-room-fresh-02-2026-09-28.avif": {
+    "x": 38.55,
+    "y": 19.35,
+    "w": 22.3,
+    "h": 24.5,
+    "score": "manual",
+    "ar": 0.8003
+  },
+  "/images/products/sun-over-the-forest-room-fresh-01-2026-09-28.avif": {
+    "x": 59.15,
+    "y": 18.7,
+    "w": 32.5,
+    "h": 18.8,
+    "score": "manual",
+    "ar": 0.8003
+  },
+  "/images/products/path-through-the-trees-room-fresh-02-2026-09-28.avif": {
+    "x": 37.8,
+    "y": 19,
+    "w": 21.4,
+    "h": 13.2,
+    "score": "manual",
+    "ar": 0.8003
+  },
+  "/images/products/morning-cabin-room-room-fresh-02-2026-09-28.avif": {
+    "x": 35.25,
+    "y": 18.5,
+    "w": 36.1,
+    "h": 22.8,
+    "score": "manual",
+    "ar": 0.8003
   }
 }

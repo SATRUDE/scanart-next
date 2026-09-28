@@ -77,7 +77,7 @@ describe('photography category visibility and search', () => {
     const products = await getShopProducts();
     // Exercise matching with available photographs without publishing anything.
     const index: SearchIndex = {
-      prints: products.map(p => ({ ...p, href: `/no/product/${p.slug}` })),
+      prints: products.map(p => ({ ...p, artist: p.artist || p.brand || '', href: `/no/product/${p.slug}` })),
       artists: [], stories: [], popular: [],
       productsHref: '/no/products', searchHref: '/no/search', inspireHref: '/no/inspire',
     };
