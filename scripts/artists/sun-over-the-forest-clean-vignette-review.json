@@ -1,0 +1,18 @@
+{
+  "date": "2026-09-28",
+  "slug": "sun-over-the-forest",
+  "method": "Fresh built-in image generation from the unchanged 60 x 45 cm print reference, original artwork reference and clean catalogue board. The previous room render was not used as a generation reference and the artwork was rendered inside the room.",
+  "model": "built-in image generator; model identifier unverified",
+  "output": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-sun-over-the-forest-clean-vignette-test-01.png",
+  "previewAssets": [
+    "/images/products/sun-over-the-forest-room-clean-rebuild-60x45-2026-09-28-v2.avif",
+    "/images/products/sun-over-the-forest-room-clean-rebuild-60x45-2026-09-28-v2.webp"
+  ],
+  "references": [
+    "public/images/products/sun-over-the-forest-paper-45x60-2026-09-28.png",
+    "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-remaining-seven-2026-09-28/sun-over-the-forest-reference.png",
+    "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-remaining-seven-2026-09-28/sun-over-the-forest-board.png"
+  ],
+  "compositionChange": "A closer living-room vignette brings the landscape print, sofa upholstery and coffee-table activity into one readable frame while preserving the verified physical format.",
+  "review": "Accepted as a cleaner vignette for preview review. Frame and artwork remain landscape 60 x 45 cm with narrow white borders. Room is illustrative, not a manufacturing proof."
+}

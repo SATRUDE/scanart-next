@@ -118,4 +118,6 @@ The new AVIF/WebP assets are versioned `room-clean-rebuild` and retain synthetic
 
 Path Through the Trees then received a fresh composition pass after review of the ten-room preview. The replacement is versioned with a `-v2` suffix and uses one centred reading chair, a usable side table and a cropped low bookcase. Its prompt and references are recorded in `scripts/artists/path-through-the-trees-clean-composition-review.json`; the previous candidate remains recoverable.
 
+Sun Over the Forest then received a fresh close vignette after the landscape print felt too small in the wider room. The `-v2` replacement keeps the 60 x 45 cm format and brings the sofa, print and coffee-table activity into one tighter composition. Its prompt and references are recorded in `scripts/artists/sun-over-the-forest-clean-vignette-review.json`; the previous candidate remains recoverable.
+
 Both product-gallery size captions were removed in `9f8c92b`. Offered sizes, primary product images, all retail print/frame prices and unpublished/review/coming-soon guards remain unchanged. These are preview candidates for Mark's review.
