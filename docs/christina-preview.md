@@ -51,7 +51,7 @@ Each PDF is one page, 1440 x 2006.88 pt (50.8 x 70.8 cm), holding a single 6000 
 
 **Size offered: 50 × 70 cm only.** It is the only offered format with her 5:7 proportions, and her files are prepared for it. A2 and A1 are 1:√2, so selling either would mean a crop or a new file from her. A different size can be added later if she supplies a file for it.
 
-**Price: the Budget list**, as Mark chose on 29 September, the band Mikko's prints use. The existing effective values are unchanged. Unframed 50 × 70 cm is GBP 45, USD 58, NOK 700, DKK 395, SEK 617. The frame add-on is per size, not per band: +GBP 39, USD 59, NOK 600, DKK 445, SEK 560. That makes framed GBP 84, USD 117, NOK 1300, DKK 840, SEK 1177. No price configuration changed. The standard split is unchanged: 60% to the artist and 40% to the gallery, after printing and delivery costs. One note: the Entry list (Hedvig, GBP 35 / NOK 500) is cheaper than Budget, and SEK 617 is the one unrounded Budget figure.
+**Price: the Entry list** (Hedvig's), as Mark chose on 29 September; it replaced Budget earlier the same day. The existing values are unchanged; Entry has no published overlay. Unframed 50 × 70 cm is GBP 35, USD 45, NOK 500, DKK 325, SEK 500. The frame add-on is per size, not per band: +GBP 39, USD 59, NOK 600, DKK 445, SEK 560. That makes framed GBP 74, USD 104, NOK 1100, DKK 770, SEK 1060. No price configuration changed. The standard split is unchanged: 60% to the artist and 40% to the gallery, after printing and delivery costs.
 
 ## Room scenes: pilot prepared, not generated
 

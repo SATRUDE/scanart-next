@@ -41,14 +41,14 @@ describe('Christina Hägerfors preview', () => {
     ], 'GBP', 'GB')).rejects.toThrow('Unknown product');
   });
 
-  it('lists each print at the Budget 50 x 70 cm price with the manifest copy and its images', async () => {
+  it('lists each print at the Entry 50 x 70 cm price with the manifest copy and its images', async () => {
     vi.stubEnv('VERCEL_ENV', 'preview');
     for (const print of manifest.prints) {
       const product = await getShopProductBySlug(print.slug);
       expect(product?.name).toBe(print.name);
       expect(product?.description).toBe(print.description);
       expect(Object.keys(product!.prices)).toEqual(['50x70cm']);
-      expect(product?.prices['50x70cm'].GBP).toBe(45);
+      expect(product?.prices['50x70cm'].GBP).toBe(35);
       expect(existsSync(`public${product!.image}`), product!.image).toBe(true);
       const warm = warmImage(product!.image);
       expect(warm).not.toBe(product!.image);
