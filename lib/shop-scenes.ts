@@ -38,9 +38,9 @@ export const shopScenes: Record<string, ShopScene> = {
   // The art inside each frame is her original file relit with the room's light;
   // 50 x 70 cm frames measured against the furniture. Records: docs/christina-preview.md.
   'mushroom-picking': { image: '/images/products/mushroom-picking-room-kitchen-2026-09-29-v3.avif', alt: 'Mushroom Picking by Christina Hägerfors framed above the worktop in a wooden kitchen with oak cabinets and a pale blue wall', width: 1122, height: 1402 },
-  'big-whale': { image: '/images/products/big-whale-room-2026-09-29-v2.avif', alt: 'Big Whale by Christina Hägerfors framed above a child’s bed in a peach bedroom, with a round wool rug and slippers', width: 1122, height: 1402 },
-  'polar-bear-castle': { image: '/images/products/polar-bear-castle-room-2026-09-29-v2.avif', alt: 'Polar Bear Castle by Christina Hägerfors framed above a low shelf beside a sheepskin reading chair in a green room', width: 1121, height: 1403 },
-  'funny-mermaid': { image: '/images/products/funny-mermaid-room-2026-09-29-v2.avif', alt: 'Funny Mermaid by Christina Hägerfors framed above an oak bench with towels in a pale blue tiled bathroom', width: 1122, height: 1402 },
+  'big-whale': { image: '/images/products/big-whale-room-2026-09-29-v3.avif', alt: 'Big Whale by Christina Hägerfors framed above a child’s bed in a peach bedroom, with a round wool rug and slippers', width: 1122, height: 1402 },
+  'polar-bear-castle': { image: '/images/products/polar-bear-castle-room-2026-09-29-v3.avif', alt: 'Polar Bear Castle by Christina Hägerfors framed above a low shelf beside a sheepskin reading chair in a green room', width: 1121, height: 1403 },
+  'funny-mermaid': { image: '/images/products/funny-mermaid-room-2026-09-29-v3.avif', alt: 'Funny Mermaid by Christina Hägerfors framed above an oak bench with towels in a pale blue tiled bathroom', width: 1122, height: 1402 },
   // Ishtar Bäcklund Dakhil's seven rooms are held back with her prints until
   // she has approved her prices and content (her agreement is signed);
   // restore them from branch ishtar/preview.
