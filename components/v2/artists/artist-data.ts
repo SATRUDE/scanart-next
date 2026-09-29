@@ -110,8 +110,3 @@ export function heroSceneFor<P extends ProductLike>(slug: string, products: P[])
   return null;
 }
 
-/** "in a child's drawing corner", from the scene's English alt, for the hero caption. */
-export function scenePhrase(alt: string): string | null {
-  const m = alt.match(/ framed (in|above|on) (.+)$/);
-  return m ? `${m[1]} ${m[2]}` : null;
-}
