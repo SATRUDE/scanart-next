@@ -72,4 +72,6 @@ export const artistEditorial: Record<string, ArtistEditorial> = {
 export const artistHeroScene: Record<string, string> = {
   'simen-wahlqvist': 'slingshot',
   'helene-brox': 'dancer',
+  // Mark, 29 Sep: the child's bedroom scene leads Christina's page.
+  'christina-hagerfors': 'big-whale',
 };
