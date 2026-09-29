@@ -1,0 +1,18 @@
+{
+  "date": "2026-09-29",
+  "slug": "sheep-on-the-track",
+  "method": "Fresh built-in image generation from the unchanged 40 x 50 cm print reference, original artwork reference and clean catalogue board. The previous children's-room render was not used as a generation reference and the artwork was rendered inside the room.",
+  "model": "built-in image generator; model identifier unverified",
+  "output": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-sheep-on-the-track-kitchen-test-01.png",
+  "previewAssets": [
+    "/images/products/sheep-on-the-track-room-clean-rebuild-40x50-2026-09-28-v2.avif",
+    "/images/products/sheep-on-the-track-room-clean-rebuild-40x50-2026-09-28-v2.webp"
+  ],
+  "references": [
+    "public/images/products/sheep-on-the-track-paper-40x50-2026-09-28.png",
+    "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-remaining-seven-2026-09-28/sheep-on-the-track-reference.png",
+    "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-remaining-seven-2026-09-28/sheep-on-the-track-board-lean.png"
+  ],
+  "compositionChange": "The child-height drawing desk has been replaced with an adult Scandinavian breakfast kitchen: oak dining table, fruit, coffee, ceramics, open shelving and a sideboard.",
+  "review": "Accepted as a cleaner kitchen composition for preview review. Frame and artwork remain portrait 40 x 50 cm with narrow white borders. Room is illustrative, not a manufacturing proof."
+}

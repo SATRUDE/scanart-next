@@ -120,4 +120,6 @@ Path Through the Trees then received a fresh composition pass after review of th
 
 Sun Over the Forest then received a fresh close vignette after the landscape print felt too small in the wider room. The `-v2` replacement keeps the 60 x 45 cm format and brings the sofa, print and coffee-table activity into one tighter composition. Its prompt and references are recorded in `scripts/artists/sun-over-the-forest-clean-vignette-review.json`; the previous candidate remains recoverable.
 
+Sheep on the Track then received a fresh kitchen composition after the child-height drawing desk made the scene feel like a kids' room. The `-v2` replacement keeps the 40 x 50 cm format and uses an adult breakfast table, fruit, coffee, ceramics and kitchen shelving. Its prompt and references are recorded in `scripts/artists/sheep-on-the-track-kitchen-review.json`; the previous candidate remains recoverable.
+
 Both product-gallery size captions were removed in `9f8c92b`. Offered sizes, primary product images, all retail print/frame prices and unpublished/review/coming-soon guards remain unchanged. These are preview candidates for Mark's review.
