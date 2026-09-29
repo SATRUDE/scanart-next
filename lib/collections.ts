@@ -124,6 +124,7 @@ export const collections: Collection[] = [
       'morgenstrekk',
       'slingshot',
       'journey',
+      'stockholm',
     ],
     stylingHeading: 'Styling art in the living room',
     stylingTips: [
@@ -267,6 +268,7 @@ export const collections: Collection[] = [
       'ithinkithink',
       'swallow-dive',
       'urf',
+      'desert-circles',
       'family-trip',
     ],
     stylingHeading: 'Styling art in the home office',
@@ -327,7 +329,7 @@ export const collections: Collection[] = [
     heading:
       'Scandinavian Wall Art for the Kitchen',
     intro:
-      'Between them, a whole lobster, two carafes, a cafetière and more tomatoes than one table needs. Most are by Sia Siamos, a Greek and Norwegian illustrator living in Bergen, who paints food the way you actually meet it: mid-meal, hands reaching in from the edges, the cork already out of the bottle. Hedvig Wallin adds a pastel Sunday Brunch and rows of watercolour apples in Massa Äpplen. In a kitchen they do the thing a landscape can\'t, which is agree with the room. Each is sold framed in wood, black or white, or unframed.',
+      'Between them, a whole lobster, two carafes, a cafetière and more tomatoes than one table needs. Most are by Sia Siamos, a Greek and Norwegian illustrator living in Bergen, who paints food the way you actually meet it: mid-meal, hands reaching in from the edges, the cork already out of the bottle. Hedvig Wallin adds a pastel Sunday Brunch and rows of watercolour apples in Massa Äpplen, and Ishtar Bäcklund Dakhil\'s Frukt & Grönt lays out a page of fruit and vegetables with handwritten Swedish labels. In a kitchen they do the thing a landscape can\'t, which is agree with the room. Each is sold framed in wood, black or white, or unframed.',
     intro2:
       'Kitchens are harder on a print than any other room, and it\'s worth knowing that before you hang something you love in one. Steam, cooking splashes and a wall of afternoon sun all land here, so keep a piece off the working run between hob and sink and out of direct light if the room lets you. Everything else relaxes: a kitchen takes more colour than a living room does, because there\'s already colour in it, tiles and pans and fruit and the rest. These prints carry enough colour to hold their own against all that.',
     productSlugs: [
@@ -337,6 +339,7 @@ export const collections: Collection[] = [
       'vinkveld',
       'sunday-brunch',
       'massa-applen',
+      'frukt-och-gront',
     ],
     stylingHeading: 'Kitchen wall art ideas',
     stylingTips: [
@@ -351,7 +354,7 @@ export const collections: Collection[] = [
       {
         question: 'What wall art works in a kitchen?',
         answer:
-          'Food, if you want the easy answer. A table scene or a still life belongs in a kitchen in a way a portrait or a landscape never quite does, and it can carry more colour than you\'d hang in a quieter room. The prints here are exactly that: a lobster dinner, a cabin breakfast, a morning table, a wine evening, a Sunday brunch and rows of apples, all bold enough to compete with tiles and open shelving.',
+          'Food, if you want the easy answer. A table scene or a still life belongs in a kitchen in a way a portrait or a landscape never quite does, and it can carry more colour than you\'d hang in a quieter room. The prints here are exactly that: a lobster dinner, a cabin breakfast, a morning table, a wine evening, a Sunday brunch, rows of apples and a page of fruit and vegetables, all bold enough to compete with tiles and open shelving.',
       },
       {
         question: 'Where should I hang art in a small kitchen?',
