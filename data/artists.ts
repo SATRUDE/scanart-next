@@ -68,6 +68,14 @@ export const artists: Artist[] = [
     // Branch peggy/ishtar-artist-preview: the photo credit must be shown.
     imageCredit: 'Sebastian Lundmark',
   },
+  {
+    id: '10',
+    name: 'Christina Hägerfors',
+    slug: 'christina-hagerfors',
+    location: 'Cerons, France',
+    bio: 'Christina Hägerfors is an illustrator based in Cerons, France, who has worked in illustration since her BA (Hons) at London College of Communication. She is inspired by colour, old prints and book covers, and hopes her pictures carry a kind of nostalgia. Her clients include The Guardian, The New York Times, The Observer and Time Out.',
+    image: ''
+  },
 ];
 
 export const getArtistById = (id: string) => {

@@ -25,4 +25,7 @@ export const artistStatements: Record<string, string> = {
   'mikko-saarainen': 'He keeps the detail going right out to the edges, so the drawings get read as much as looked at.',
   // lib/artist-editorial.ts para1.
   'ishtar-backlund-dakhil': 'Her images move between closely observed details and imagined worlds.',
+  // data/artists.ts bio, from her own Illustratörcentrum profile ("Hoppas att
+  // mina bilder har en sorts nostalgi över sig").
+  'christina-hagerfors': 'She hopes her pictures carry a kind of nostalgia.',
 };

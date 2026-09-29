@@ -55,6 +55,7 @@ type CartAction =
 const cartReducer = (state: CartState, action: CartAction): CartState => {
   switch (action.type) {
     case 'ADD_TO_CART': {
+      if (action.product.published === false) return state;
       const existingItem = state.items.find(
         item => item.product.id === action.product.id && item.size === action.size && item.frame === action.frame
       );
@@ -145,7 +146,7 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 function loadCartFromStorage() {
   try {
     const data = localStorage.getItem('scanart-cart');
-    if (data) return JSON.parse(data);
+    if (data) return (JSON.parse(data) as CartItem[]).filter(item => item.product.published !== false);
   } catch { /* ignore */ }
   return [];
 }

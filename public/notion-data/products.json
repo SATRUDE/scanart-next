@@ -862,5 +862,117 @@
     ],
     "created_time": "2026-09-24T13:00:00.000Z",
     "last_edited_time": "2026-09-26T09:00:00.000Z"
+  },
+  {
+    "id": "b4a9337f-1a54-4035-ada5-1dc2b2a0790b",
+    "name": "Big Whale",
+    "slug": "big-whale",
+    "description": "Placeholder description, to be written with Christina. The working title comes from her file name, big_whale_50x70.pdf.",
+    "category": "Illustrations",
+    "artist": "Christina Hägerfors",
+    "artistId": "10",
+    "brand": "",
+    "inStock": false,
+    "featured": false,
+    "published": false,
+    "review": true,
+    "image": "/images/products/big-whale.png",
+    "secondaryImage": "",
+    "availableSizes": [
+      "50x70cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "53",
+    "recommendedProducts": [
+      "Funny Mermaid",
+      "Mushroom Picking",
+      "Polar Bear Castle"
+    ],
+    "created_time": "2026-09-29T15:37:36.674Z",
+    "last_edited_time": "2026-09-29T15:37:36.674Z"
+  },
+  {
+    "id": "a79ef63a-c67d-48be-918a-aed9486cf065",
+    "name": "Funny Mermaid",
+    "slug": "funny-mermaid",
+    "description": "Placeholder description, to be written with Christina. The working title comes from her file name, funny_mermaid_50x70.pdf.",
+    "category": "Illustrations",
+    "artist": "Christina Hägerfors",
+    "artistId": "10",
+    "brand": "",
+    "inStock": false,
+    "featured": false,
+    "published": false,
+    "review": true,
+    "image": "/images/products/funny-mermaid.png",
+    "secondaryImage": "",
+    "availableSizes": [
+      "50x70cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "54",
+    "recommendedProducts": [
+      "Big Whale",
+      "Mushroom Picking",
+      "Polar Bear Castle"
+    ],
+    "created_time": "2026-09-29T15:37:36.674Z",
+    "last_edited_time": "2026-09-29T15:37:36.674Z"
+  },
+  {
+    "id": "8d9b8b46-79ae-4b98-8dcb-bd311f5738be",
+    "name": "Mushroom Picking",
+    "slug": "mushroom-picking",
+    "description": "Placeholder description, to be written with Christina. The working title comes from her file name, mushroom_picking_50x70.pdf.",
+    "category": "Illustrations",
+    "artist": "Christina Hägerfors",
+    "artistId": "10",
+    "brand": "",
+    "inStock": false,
+    "featured": false,
+    "published": false,
+    "review": true,
+    "image": "/images/products/mushroom-picking.png",
+    "secondaryImage": "",
+    "availableSizes": [
+      "50x70cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "55",
+    "recommendedProducts": [
+      "Big Whale",
+      "Funny Mermaid",
+      "Polar Bear Castle"
+    ],
+    "created_time": "2026-09-29T15:37:36.674Z",
+    "last_edited_time": "2026-09-29T15:37:36.674Z"
+  },
+  {
+    "id": "81566021-504b-4720-bc38-409d04a5228c",
+    "name": "Polar Bear Castle",
+    "slug": "polar-bear-castle",
+    "description": "Placeholder description, to be written with Christina. The working title comes from her file name, polar_bear_castle_50x70.pdf.",
+    "category": "Illustrations",
+    "artist": "Christina Hägerfors",
+    "artistId": "10",
+    "brand": "",
+    "inStock": false,
+    "featured": false,
+    "published": false,
+    "review": true,
+    "image": "/images/products/polar-bear-castle.png",
+    "secondaryImage": "",
+    "availableSizes": [
+      "50x70cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "56",
+    "recommendedProducts": [
+      "Big Whale",
+      "Funny Mermaid",
+      "Mushroom Picking"
+    ],
+    "created_time": "2026-09-29T15:37:36.674Z",
+    "last_edited_time": "2026-09-29T15:37:36.674Z"
   }
 ]

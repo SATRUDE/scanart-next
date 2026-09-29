@@ -891,6 +891,10 @@ export const no = {
       location: 'Stockholm, Sverige',
       bio: 'Ishtar Bäcklund Dakhil er en svensk kunstner som arbeider med illustrasjon, veggmaleri og design. Hun reiste i fem år og konkurrerte internasjonalt i downhill-skateboarding før hun studerte ved Konstfack i Stockholm.',
     },
+    'christina-hagerfors': {
+      location: 'Cerons, Frankrike',
+      bio: 'Christina Hägerfors er illustratør med base i Cerons i Frankrike, og har jobbet som illustratør siden hun tok en BA (Hons) ved London College of Communication. Hun henter inspirasjon fra farger, gamle trykk og bokomslag, og håper bildene hennes har et slags nostalgisk preg. Blant kundene hennes er The Guardian, The New York Times, The Observer og Time Out.',
+    },
   } as Record<string, ArtistCopy>,
 
   // The product page's artist statement (lib/artist-statements.ts), each
@@ -903,6 +907,7 @@ export const no = {
     'sia-siamos': 'Tiltrukket av de stille detaljene som sier mest.',
     'mikko-saarainen': 'Han lar detaljene fortsette helt ut i kantene, så tegningene blir lest like mye som sett.',
     'ishtar-backlund-dakhil': 'Bildene hennes beveger seg mellom nøye observerte detaljer og fantasiverdener.',
+    'christina-hagerfors': 'Hun håper bildene hennes har et slags nostalgisk preg.',
   } as Record<string, string>,
 
   // Norwegian versions of lib/artist-editorial.ts, keyed by slug. para2 keeps
@@ -1364,6 +1369,22 @@ export const no = {
     'surfer-with-orange-sun': {
       description:
         "En surfer balanserer over en turkis bølge med en klar oransje sol bak seg i denne illustrasjonen av Ishtar Bäcklund Dakhil. Utstrakte armer og et bøyd kne gir figuren en lett, balansert bevegelse. Mørke klær danner en tydelig form mot solen, mens hvitt skum bryter over den nedre delen av bildet.",
+    },
+    'big-whale': {
+      description:
+        'Plassholder for beskrivelsen, som skrives sammen med Christina. Arbeidstittelen kommer fra filnavnet hennes, big_whale_50x70.pdf.',
+    },
+    'funny-mermaid': {
+      description:
+        'Plassholder for beskrivelsen, som skrives sammen med Christina. Arbeidstittelen kommer fra filnavnet hennes, funny_mermaid_50x70.pdf.',
+    },
+    'mushroom-picking': {
+      description:
+        'Plassholder for beskrivelsen, som skrives sammen med Christina. Arbeidstittelen kommer fra filnavnet hennes, mushroom_picking_50x70.pdf.',
+    },
+    'polar-bear-castle': {
+      description:
+        'Plassholder for beskrivelsen, som skrives sammen med Christina. Arbeidstittelen kommer fra filnavnet hennes, polar_bear_castle_50x70.pdf.',
     },
   } as Record<string, { description: string; buyerDescription?: string }>,
 

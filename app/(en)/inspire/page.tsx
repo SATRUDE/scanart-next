@@ -5,7 +5,7 @@ import { socialCard } from '@/lib/site';
 import { metaTitle } from '@/lib/meta-title';
 import { hreflangPair } from '@/lib/i18n';
 import { inspireFilterStringsEn } from '@/lib/inspire-walls';
-import { getPublishedArtists } from '@/lib/published-artists';
+import { getShopArtists as getPublishedArtists } from '@/lib/published-artists';
 import { PageHeader } from '@/components/v2/ui';
 import { LandingCrossLinks } from '@/components/LandingCrossLinks';
 import { InspireWall } from '@/components/v2/inspire/InspireWall';

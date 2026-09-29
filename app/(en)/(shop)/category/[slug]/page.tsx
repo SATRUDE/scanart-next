@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { categoryLandings, getCategoryLandingBySlug } from '@/lib/categories';
-import { getProductsByCategory } from '@/lib/products';
-import { getPublishedArtists } from '@/lib/published-artists';
+import { getShopProductsByCategory as getProductsByCategory } from '@/lib/products';
+import { getShopArtists as getPublishedArtists } from '@/lib/published-artists';
 import { ContentSection, ContentBody } from '@/components/v2/ui';
 import { ShopLanding } from '@/components/v2/shop/ShopLanding';
 import { collectionPageJsonLd, faqPageJsonLd, landingBreadcrumbJsonLd } from '@/lib/landing-jsonld';

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getAllProducts, getProductBySlug, getRecommendedProducts, getProductsByArtist } from '@/lib/products';
+import { getShopProducts as getAllProducts, getShopProductBySlug as getProductBySlug, getShopRecommendedProducts as getRecommendedProducts, getShopProductsByArtist as getProductsByArtist } from '@/lib/products';
 import { getArtistById } from '@/data/artists';
 import { getLowestProductPrices } from '@/lib/pricing';
 import { priceValidUntil } from '@/lib/price-validity';
@@ -11,7 +11,7 @@ import { productImageLd } from '@/lib/licensable-image';
 import { BASE_URL, SITE_NAME, OG_LOCALE, TWITTER_SITE } from '@/lib/site';
 import { hreflangPair } from '@/lib/i18n';
 import { getCategoryLandingByCategory } from '@/lib/categories';
-import { getPublishedArtists } from '@/lib/published-artists';
+import { getShopArtists as getPublishedArtists } from '@/lib/published-artists';
 import { artistStatements } from '@/lib/artist-statements';
 import { productPageEn } from '@/lib/product-page-copy';
 import { getProductVideo } from '@/config/product-videos';

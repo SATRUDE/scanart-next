@@ -1,4 +1,4 @@
-import { getAllProducts } from '@/lib/products';
+import { getShopProducts as getAllProducts } from '@/lib/products';
 import { ShopFrame } from '@/components/v2/shop/ShopFrame';
 import { shopRoutes } from '@/components/v2/shop/shop-routes';
 import { shopStrings } from '@/components/v2/shop/shop-strings';

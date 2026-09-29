@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { artists, getArtistBySlug } from '@/data/artists';
-import { getProductsByArtist } from '@/lib/products';
-import { getPublishedArtists } from '@/lib/published-artists';
+import { getShopProductsByArtist as getProductsByArtist } from '@/lib/products';
+import { getShopArtists as getPublishedArtists } from '@/lib/published-artists';
 import { BASE_URL, OG_IMAGE, SITE_NAME, TWITTER_SITE } from '@/lib/site';
 import { hreflangPair } from '@/lib/i18n';
 import { artistMetaDescription, artistMetaTitle } from '@/lib/artist-meta';

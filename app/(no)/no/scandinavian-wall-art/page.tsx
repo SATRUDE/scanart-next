@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { getAllProducts } from '@/lib/products';
-import { getPublishedArtists } from '@/lib/published-artists';
+import { getShopProducts as getAllProducts } from '@/lib/products';
+import { getShopArtists as getPublishedArtists } from '@/lib/published-artists';
 import { ContentSection, ContentBody } from '@/components/v2/ui';
 import { LandingTemplate } from '@/components/v2/landing/LandingTemplate';
 import { collectionPageJsonLd, faqPageJsonLd, landingBreadcrumbJsonLd } from '@/lib/landing-jsonld';
