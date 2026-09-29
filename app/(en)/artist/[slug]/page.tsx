@@ -159,7 +159,7 @@ export default async function ArtistPage({
         }
         editorial={editorial}
         facts={facts}
-        map={hasCity(city) ? { city, label: city, caption: `${city}, where ${firstName(artist.name)} works.` } : null}
+        map={hasCity(city) ? { city, label: city, caption: artist.hideMapCaption ? '' : `${city}, where ${firstName(artist.name)} works.` } : null}
         more={more}
         explore={published.filter(a => a.id !== artist.id).map(a => ({ slug: a.slug, name: a.name }))}
         t={{

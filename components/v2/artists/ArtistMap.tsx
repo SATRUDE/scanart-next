@@ -56,7 +56,7 @@ export function ArtistMap({ city, label, caption }: { city: string; label: strin
           </div>
         </div>
       </div>
-      <figcaption className="type-caption">{caption}</figcaption>
+      {caption && <figcaption className="type-caption">{caption}</figcaption>}
     </figure>
   );
 }

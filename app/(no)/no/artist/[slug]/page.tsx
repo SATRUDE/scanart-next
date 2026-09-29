@@ -168,7 +168,7 @@ export default async function NorwegianArtistPage({
         }
         editorial={editorial}
         facts={facts}
-        map={hasCity(mapCity) ? { city: mapCity, label: cityLabel, caption: `${cityLabel}, ${t.mapWhere} ${firstName(artist.name)} ${t.mapWorks}.` } : null}
+        map={hasCity(mapCity) ? { city: mapCity, label: cityLabel, caption: artist.hideMapCaption ? '' : `${cityLabel}, ${t.mapWhere} ${firstName(artist.name)} ${t.mapWorks}.` } : null}
         more={more}
         explore={published.filter(a => a.id !== artist.id).map(a => ({ slug: a.slug, name: a.name }))}
         t={{

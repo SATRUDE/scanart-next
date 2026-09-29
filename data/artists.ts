@@ -7,6 +7,9 @@ export interface Artist {
   image: string;
   /** The photographer, where the artist's photo must be credited. */
   imageCredit?: string;
+  /** Hide the "<city>, where <name> works" line under the map, keeping the map
+   *  and pin. For a stand-in city the sentence would be untrue. */
+  hideMapCaption?: boolean;
 }
 
 export const artists: Artist[] = [
@@ -73,6 +76,7 @@ export const artists: Artist[] = [
     name: 'Christina Hägerfors',
     slug: 'christina-hagerfors',
     location: 'Stockholm, Sweden', // Placeholder until Christina confirms her Swedish home town (Mark, 29 Sep); she lives in Cérons, France.
+    hideMapCaption: true, // Mark, 29 Sep: she does not work in Stockholm.
     bio: 'Christina Hägerfors is an illustrator originally from Sweden and now based in France, who has worked in illustration since her BA (Hons) at London College of Communication. She is inspired by colour, old prints and book covers, and hopes her pictures carry a kind of nostalgia. Her clients include The Guardian, The New York Times, The Observer and Time Out.',
     image: ''
   },
