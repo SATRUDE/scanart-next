@@ -62,17 +62,19 @@ export const collections: Collection[] = [
     title:
       'Scandinavian Bird Wall Art & Prints',
     description:
-      'Nordic bird and animal wall art by independent artists: a diving cobalt swallow, a flock hidden in peach branches and a dragon.',
+      'Nordic bird and animal wall art by independent artists: a diving cobalt swallow, a flock hidden in peach branches, a dragon, and an aeroplane over a valley that can pass for a bird.',
     heading:
       'Bird & Animal Wall Art from Nordic Artists',
     intro:
-      'Every creature here is a shape before it\'s a creature. Helene Brox works flat and unfussy: a cobalt swallow cut down to the plunge of its wings, dozens of small silhouettes hidden in a peach lattice of branches, and a dragon that coils across black in ribbons of white, red and pink. That\'s what makes an animal print sit well in a Scandinavian room, pattern and silhouette rather than field-guide detail. Every print here can be bought framed in wood, black or white, or unframed.',
+      'Every creature here is a shape before it\'s a creature. Helene Brox works flat and unfussy: a cobalt swallow cut down to the plunge of its wings, dozens of small silhouettes hidden in a peach lattice of branches, and a dragon that coils across black in ribbons of white, red and pink. Ishtar Bäcklund Dakhil, in Stockholm, sends a pale aeroplane, which can also pass for a bird, gliding over a green valley and half-hides a horned creature among blue leaves. That\'s what makes an animal print sit well in a Scandinavian room, pattern and silhouette rather than field-guide detail. Every print here can be bought framed in wood, black or white, or unframed.',
     intro2:
       'The moods differ more than the subjects. Swallow Dive is only two colours, cobalt on cream, and it wants a wall to itself where the dive has somewhere to go. Tree Top Peach is the gentlest of them, closer to a folk papercut than an illustration, and it rewards hanging where you actually sit. Dragon is the loud one, a beast glimpsed in fragments on a black ground, and it needs a wall that can hold its nerve. Choose on the ground colour rather than the creature: cobalt runs cool against white walls and pale wood, peach runs warm alongside wood and earthy textiles, and black will anchor a whole room. Get the background right and the rest looks after itself.',
     productSlugs: [
       'swallow-dive',
       'tree-top-peach',
       'dragon',
+      'flight-over-the-valley',
+      'creature-among-blue-leaves',
     ],
     stylingHeading: 'Styling bird and animal prints',
     stylingTips: [
@@ -87,7 +89,7 @@ export const collections: Collection[] = [
       {
         question: 'What makes an animal print feel Scandinavian?',
         answer:
-          'Flat colour and silhouette, mostly. Helene Brox treats the creature as a shape rather than a study: Swallow Dive carries a whole diving bird in two colours, Tree Top Peach is closer to a folk papercut than an illustration, and Dragon dissolves its beast into pure rhythm. She lives and works in the Nordics, which is why these read as Nordic animal prints rather than anything out of the wildlife-plate tradition.',
+          'Flat colour and silhouette, mostly. Helene Brox treats the creature as a shape rather than a study: Swallow Dive carries a whole diving bird in two colours, Tree Top Peach is closer to a folk papercut than an illustration, and Dragon dissolves its beast into pure rhythm, while Ishtar Bäcklund Dakhil\'s aeroplane crosses its valley as one pale shape. Both artists live and work in the Nordics, which is why these read as Nordic animal prints rather than anything out of the wildlife-plate tradition.',
       },
       {
         question: 'What sizes do these prints come in, and can I have them framed?',
@@ -192,6 +194,8 @@ export const collections: Collection[] = [
       'ithinkithink',
       'swallow-dive',
       'vinkveld',
+      'month-of-may',
+      'creature-among-blue-leaves',
     ],
     stylingHeading: 'Styling art in the bedroom',
     stylingTips: [

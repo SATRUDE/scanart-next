@@ -33,9 +33,14 @@ export const shopScenes: Record<string, ShopScene> = {
   // A second scene of a print is keyed "<print>--<name>": articles can use it,
   // and the article page reads the print from the part before "--".
   'vinkveld--dining': { image: '/images/products/vinkveld-room-dining-2026-09-26.avif', alt: 'Vinkveld by Sia Siamos framed above a dining table against a peach wall', width: 1122, height: 1402 },
-  // Ishtar Bäcklund Dakhil's seven rooms are held back with her prints until
-  // she has approved her prices and content (her agreement is signed);
-  // restore them from branch ishtar/preview.
+  // Ishtar Bäcklund Dakhil's rooms (branch peggy/ishtar-artist-preview).
+  stockholm: { image: '/images/products/stockholm-room.avif', alt: 'Stockholm by Ishtar Bäcklund Dakhil framed on a low black bench against a peach wall', width: 1122, height: 1402 },
+  'frukt-och-gront': { image: '/images/products/frukt-och-gront-room.avif', alt: 'Frukt & Grönt by Ishtar Bäcklund Dakhil framed above a dining table in a blue kitchen', width: 1122, height: 1402 },
+  'desert-circles': { image: '/images/products/desert-circles-room.avif', alt: 'Desert Circles by Ishtar Bäcklund Dakhil framed above a desk in a peach study', width: 1122, height: 1402 },
+  'month-of-may': { image: '/images/products/month-of-may-room.avif', alt: 'Month of May by Ishtar Bäcklund Dakhil framed above a dining table with a vase of lilacs', width: 1122, height: 1402 },
+  'flight-over-the-valley': { image: '/images/products/flight-over-the-valley-room.avif', alt: 'Flight Over the Valley by Ishtar Bäcklund Dakhil framed in a reading corner with an oak lounge chair', width: 1054, height: 1492 },
+  'creature-among-blue-leaves': { image: '/images/products/creature-among-blue-leaves-room.avif', alt: 'Creature Among Blue Leaves by Ishtar Bäcklund Dakhil framed above a rattan sideboard', width: 1122, height: 1402 },
+  // 'surfer-with-orange-sun' is off the site until Mark has confirmed the print with Ishtar (2026-09-26).
 };
 
 export const articleSceneSlugs: Record<string, string> = {

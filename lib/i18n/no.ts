@@ -779,10 +779,10 @@ export const no = {
     'birds-and-animals': {
       title: 'Skandinavisk fuglekunst og dyretrykk',
       description:
-        'Nordisk fugle- og dyrekunst av uavhengige kunstnere: en stupende koboltblå svale, en flokk skjult i ferskenfargede grener og en drage.',
+        'Nordisk fugle- og dyrekunst av uavhengige kunstnere: en stupende koboltblå svale, en flokk skjult i ferskenfargede grener, en drage og et fly over en dal som også kan leses som en fugl.',
       heading: 'Fugle- og dyrekunst fra nordiske kunstnere',
       intro:
-        'Hvert vesen her er en form før det er et vesen. Helene Brox arbeider flatt og uten dill: en koboltblå svale skåret ned til selve vingekastet, dusinvis av små silhuetter skjult i et ferskenfarget gitter av grener, og en drage som slynger seg over sort i bånd av hvitt, rødt og rosa. Det er dette som gjør at et dyretrykk sitter godt i et skandinavisk rom, mønster og silhuett framfor detaljer fra en feltguide. Hvert trykk her kan kjøpes med ramme i tre, svart eller hvitt, eller uten.',
+        'Hvert vesen her er en form før det er et vesen. Helene Brox arbeider flatt og uten dill: en koboltblå svale skåret ned til selve vingekastet, dusinvis av små silhuetter skjult i et ferskenfarget gitter av grener, og en drage som slynger seg over sort i bånd av hvitt, rødt og rosa. Ishtar Bäcklund Dakhil i Stockholm sender et lyst fly, som også kan leses som en fugl, over en grønn dal og halvveis skjuler en hornet skapning blant blå blader. Det er dette som gjør at et dyretrykk sitter godt i et skandinavisk rom, mønster og silhuett framfor detaljer fra en feltguide. Hvert trykk her kan kjøpes med ramme i tre, svart eller hvitt, eller uten.',
       intro2:
         'Stemningene skiller seg mer enn motivene. Swallow Dive er bare to farger, kobolt på kremhvitt, og den vil ha en vegg for seg selv der stupet har et sted å gå. Tree Top Peach er den mildeste av dem, nærmere en folkelig papirklipp enn en illustrasjon, og den belønner å bli hengt der du faktisk sitter. Dragon er den høylytte, et fabeldyr sett i glimt på sort bunn, og den trenger en vegg som holder nervene i sjakk. Velg på bunnfargen framfor vesenet: kobolt går kjølig mot hvite vegger og lyst tre, fersken går varmt sammen med tre og jordnære tekstiler, og sort forankrer et helt rom. Få bakgrunnen riktig, så ordner resten seg selv.',
       stylingHeading: 'Slik henger du fugle- og dyretrykk',
@@ -797,7 +797,7 @@ export const no = {
         {
           question: 'Hva gjør at et dyretrykk føles skandinavisk?',
           answer:
-            'Flat farge og silhuett, stort sett. Helene Brox behandler vesenet som en form framfor en studie: Swallow Dive bærer en hel stupende fugl i to farger, Tree Top Peach er nærmere en folkelig papirklipp enn en illustrasjon, og Dragon løser fabeldyret opp i ren rytme. Hun lever og arbeider i Norden, og det er derfor disse leses som nordiske dyretrykk framfor noe fra tradisjonen med zoologiske plansjer.',
+            'Flat farge og silhuett, stort sett. Helene Brox behandler vesenet som en form framfor en studie: Swallow Dive bærer en hel stupende fugl i to farger, Tree Top Peach er nærmere en folkelig papirklipp enn en illustrasjon, og Dragon løser fabeldyret opp i ren rytme, mens flyet til Ishtar Bäcklund Dakhil krysser dalen som én lys form. Begge kunstnerne lever og arbeider i Norden, og det er derfor disse leses som nordiske dyretrykk framfor noe fra tradisjonen med zoologiske plansjer.',
         },
         {
           question: 'Hvilke størrelser kommer disse trykkene i, og kan jeg få dem med ramme?',
@@ -889,7 +889,7 @@ export const no = {
     },
     'ishtar-backlund-dakhil': {
       location: 'Stockholm, Sverige',
-      bio: 'Ishtar Bäcklund Dakhil er en svensk kunstner som arbeider med illustrasjon, veggmaleri og design. Hun reiste i fem år og konkurrerte internasjonalt i downhill-skateboarding før hun studerte ved Konstfack i Stockholm.',
+      bio: 'Ishtar Bäcklund Dakhil er en svensk illustratør og visuell kunstner med en MFA i visuell kommunikasjon fra Konstfack. Bildebøkene hennes er utgitt av Natur och Kultur og Seven Stories Press, og har fått en BolognaRagazzi Award og utmerkelsen Best Book fra New York Public Library. Hun leder workshops over hele verden der personlige historier uttrykkes gjennom visuell og fortellende formidling og vokser til kollektivt skapte kunstverk.',
     },
   } as Record<string, ArtistCopy>,
 
@@ -958,7 +958,7 @@ export const no = {
     'ishtar-backlund-dakhil': {
       heading: 'Byer, planter og fantasiverdener',
       para1:
-        'Ishtars bilder beveger seg mellom nøye observerte detaljer og fantasiverdener. Stockholms tårn og bygninger langs vannet står side om side med lag på lag av blader, geometriske landskap og en fugl som svever over en dal. Små merker og fargenyanser gir mye å oppdage på nært hold.',
+        'Ishtars bilder beveger seg mellom nøye observerte detaljer og fantasiverdener. Stockholms tårn og bygninger langs vannet står side om side med lag på lag av blader, geometriske landskap og et fly som svever over en dal og kan leses som en fugl. Små merker og fargenyanser gir mye å oppdage på nært hold.',
       para2:
         'Uttrykket varierer, men sansen for farger går igjen. [Frukt & Grönt](/no/product/frukt-och-gront) samler grønt, rødt og gult på kjøkkenveggen, mens [Creature Among Blue Leaves](/no/product/creature-among-blue-leaves) passer et roligere sted der det er tid til å se detaljene.',
     },
@@ -1349,13 +1349,13 @@ export const no = {
       description:
         "Overlappende hvite sirkler deler et ørkenlandskap i buede fragmenter i dette verket av Ishtar Bäcklund Dakhil. Rustrøde klipper, kaktuser og støvrosa åser gjentas i mønsteret, avbrutt av klare turkise felt. Formene trekker blikket mot midten, mens spredte merker og ujevne fargetoner gjør hver del forskjellig.",
     },
-    'lilac-geometry': {
+    'month-of-may': {
       description:
-        "Syrinblomster, bier og lyse sirkler omgir en fin geometrisk stjerne i dette verket av Ishtar Bäcklund Dakhil. Lilla blomsterklaser brer seg langs kantene, med grønne blader, gule blomster og mindre planter nederst. Gjentatte buer samler hagedetaljene i et mønster i midten, mot en myk rosa himmel og en dempet blå bakgrunn.",
+        "Syrinblomster, bier og lyse sirkler omgir en fin geometrisk stjerne i Month of May, et verk av Ishtar Bäcklund Dakhil. Lilla blomsterklaser brer seg langs kantene, med grønne blader, gule blomster og mindre planter nederst. Gjentatte buer samler hagedetaljene i et mønster i midten, mot en myk rosa himmel og en dempet blå bakgrunn.",
     },
-    'bird-above-the-valley': {
+    'flight-over-the-valley': {
       description:
-        "En hvit fugl med en vindusrekke glir over en grønn dal i denne illustrasjonen av Ishtar Bäcklund Dakhil. Vingene strekker seg over buktende blå elver, rosa klippevegger og tett vegetasjon. Den lyse formen skiller seg ut mot det detaljerte landskapet under og gir en følelse av letthet i en scene full av farger og bevegelse.",
+        "Et lyst fly med en rekke vinduer glir over en grønn dal i denne illustrasjonen av Ishtar Bäcklund Dakhil, et oppslag fra barneboken hennes. Vingene strekker seg over buktende blå elver, rosa klippevegger og tett vegetasjon. Den hvite formen skiller seg ut mot det detaljerte landskapet under, og kan også leses som en fugl på vingene.",
     },
     'creature-among-blue-leaves': {
       description:
