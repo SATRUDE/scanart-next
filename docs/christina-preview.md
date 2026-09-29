@@ -19,7 +19,8 @@ Nothing about her is invented. The sources are:
 
 - **Gallery inbox**, thread "Re: Information on joining Scandinavian Art", read-only, 22 August to 29 September. Her emails give her choice of works and her file handling, but no titles, descriptions, prices, bio or photo. On 11 September she offered the whale, the mermaid ("has a nice idea behind it, but it could be updated and refined"), the polar bears ("a personal favourite of mine") and a recent mushroom illustration. The duck and boat, oyster and seagull were also agreed that week. The sardine postcard is an exclusive. On 29 September she sent these four and said two more will follow after changes.
 - **Her Illustratörcentrum profile** (https://illustratorcentrum.se/kreator/christina_hagerfors/, read on 29 September), written by her in Swedish. The bio paraphrases it closely in English and Norwegian: working as an illustrator since her BA (Hons) at London College of Communication, inspired by colour, old prints and book covers, hoping her pictures carry a kind of nostalgia. The clients named are from the same profile's client list. The product-page statement ("She hopes her pictures carry a kind of nostalgia.") comes from her sentence "Hoppas att mina bilder har en sorts nostalgi över sig".
-- **Her application of 30 August** (Social Agent `ArtistApplication`): "Cerons, France" as her location, used exactly as she spelled it.
+- **Her application of 30 August** (Social Agent `ArtistApplication`): she lives in "Cerons, France", as she spelled it.
+- **East End Prints** (https://eastendprints.co.uk/categories/artists/artists-a-f/christina-hagerfors.html): "Originally from Sweden". The bio now reads "originally from Sweden and now based in France".
 - **Social Agent store**, SELECT only. She has a signed agreement (7 September), an application, an outreach record and a scouting record, but no Product rows. This is her first catalogue entry anywhere.
 
 ## Placeholders on the preview
@@ -28,16 +29,21 @@ Nothing about her is invented. The sources are:
 - **Descriptions** are marked placeholders in both languages ("Placeholder description, to be written with Christina", and "Plassholder for beskrivelsen" in Norwegian). They are also the meta descriptions until they are replaced. The preview is noindex.
 - **Portrait**: none, so the page shows her initials.
 - **"About the work" editorial**: left out, so the section does not render.
+- **Location: Stockholm, Sweden is a stand-in** (Mark, 29 September). No source names her Swedish home town, so Mark asked for Stockholm for now. The map pin, the "Based in" row, the location line and the map caption all come from the one `location` field (`cityOf(location)`), so the label matches the pin. The map caption reads "Stockholm, where Christina works", which is not true: she lives in France. Correct it once she replies. Stockholm is an existing map city, so no coordinates were added. The data and Norwegian copy carry a placeholder comment.
 - **Room scenes**: none. Pages show the plain framed product shot, the way the catalogue renders any print without a scene.
 
 ## Questions for Christina
 
-1. Final titles for the four works. Should the mermaid be "Funny Mermaid" or "Fishing Mermaid", and the polar bears "Polar Bear Castle" or "Winter Castle"?
+1. Final titles for the four works. Her Illustratörcentrum profile titles the polar bear piece "Isbjörnarnas vinterslott" ("The polar bears' winter castle"), which is likely the real title; it is not renamed yet. Should the mermaid be "Funny Mermaid" or "Fishing Mermaid"?
 2. A few lines about each print, in her words, for the product pages.
-3. Is the bio, drawn from her Illustratörcentrum profile, accurate and how she wants to be introduced? Is Cerons (Cérons?), France, where she wants to be listed? May we name those clients?
+3. Is the bio, drawn from her Illustratörcentrum profile, accurate and how she wants to be introduced? Where in Sweden is she from? The map shows Stockholm until she says. May we name those clients?
 4. A portrait photo she approves, with the photographer's name if it needs a credit.
 5. Colour: she wrote that the files are sRGB, but all four PDFs hold CMYK images. Big Whale and Funny Mermaid are tagged U.S. Web Coated (SWOP) v2. Mushroom Picking and Polar Bear Castle are untagged CMYK. The printer asks for sRGB, or GRACoL 2006 when exporting CMYK. Could she re-export in sRGB?
-6. The two remaining posters: which works (the duck and boat, oyster or seagull?), and when.
+6. The two remaining posters: which works (the duck and boat, oyster or seagull?), and when. East End Prints already sells a Seagull by her.
+
+## East End Prints
+
+Checked on 29 September. None of the four preview works is sold there. The search, the artist page and the direct product URLs for the four slugs (404) all agree. The artist category page lists Apero and Sausage Dog. A site search for her name finds 11 more of her prints: Cat and Mouse, Dog and Butterfly, Ice Cream, Kitten, Pyramid of Cats, Rainy Walk, Sausage, Seagull, Sommelier, Three Tigers and Wine And Cheese. Seagull matters if it is one of her two remaining posters.
 
 ## Print files, sizes and prices
 
@@ -45,9 +51,7 @@ Each PDF is one page, 1440 x 2006.88 pt (50.8 x 70.8 cm), holding a single 6000 
 
 **Size offered: 50 × 70 cm only.** It is the only offered format with her 5:7 proportions, and her files are prepared for it. A2 and A1 are 1:√2, so selling either would mean a crop or a new file from her. A different size can be added later if she supplies a file for it.
 
-**Price: the Premium list**, the gallery's standard for 50 × 70 cm, which Ishtar and Markus also use. Unframed is GBP 56, NOK 800, USD 72, DKK 500, SEK 800. A wood, black or white frame adds GBP 39, NOK 600, USD 59, DKK 445, SEK 560. No price configuration changed. The standard split is unchanged: 60% to the artist and 40% to the gallery, after printing and delivery costs.
-
-For Mark: Mikko's children's illustrations are on the Budget list (50 × 70 cm at GBP 45 / NOK 700), and Hedvig's are on Entry because her own shop anchored the price. Christina gave no price and runs no shop we know of. Premium is my proposal. Budget is the alternative if you see her work alongside Mikko's.
+**Price: the Budget list**, as Mark chose on 29 September, the band Mikko's prints use. The existing effective values are unchanged. Unframed 50 × 70 cm is GBP 45, USD 58, NOK 700, DKK 395, SEK 617. The frame add-on is per size, not per band: +GBP 39, USD 59, NOK 600, DKK 445, SEK 560. That makes framed GBP 84, USD 117, NOK 1300, DKK 840, SEK 1177. No price configuration changed. The standard split is unchanged: 60% to the artist and 40% to the gallery, after printing and delivery costs. One note: the Entry list (Hedvig, GBP 35 / NOK 500) is cheaper than Budget, and SEK 617 is the one unrounded Budget figure.
 
 ## Room scenes: pilot prepared, not generated
 
@@ -95,6 +99,7 @@ If both branches merge, two things need attention:
 
 ## Before publication (not now)
 
+- Replace the Stockholm stand-in with her real town (and a map point if it is not an existing city).
 - `lib/nordic-art.ts` says all the gallery's artists "live and work in the Nordics". That stops being true once someone based in France is published.
 - Replace the placeholders.
 - Get approved room scenes. `lib/feed-images.test.ts` needs one per published print.

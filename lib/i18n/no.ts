@@ -892,8 +892,8 @@ export const no = {
       bio: 'Ishtar Bäcklund Dakhil er en svensk kunstner som arbeider med illustrasjon, veggmaleri og design. Hun reiste i fem år og konkurrerte internasjonalt i downhill-skateboarding før hun studerte ved Konstfack i Stockholm.',
     },
     'christina-hagerfors': {
-      location: 'Cerons, Frankrike',
-      bio: 'Christina Hägerfors er illustratør med base i Cerons i Frankrike, og har jobbet som illustratør siden hun tok en BA (Hons) ved London College of Communication. Hun henter inspirasjon fra farger, gamle trykk og bokomslag, og håper bildene hennes har et slags nostalgisk preg. Blant kundene hennes er The Guardian, The New York Times, The Observer og Time Out.',
+      location: 'Stockholm, Sverige', // Plassholder, se data/artists.ts.
+      bio: 'Christina Hägerfors er illustratør fra Sverige, nå bosatt i Frankrike, og har jobbet som illustratør siden hun tok en BA (Hons) ved London College of Communication. Hun henter inspirasjon fra farger, gamle trykk og bokomslag, og håper bildene hennes har et slags nostalgisk preg. Blant kundene hennes er The Guardian, The New York Times, The Observer og Time Out.',
     },
   } as Record<string, ArtistCopy>,
 

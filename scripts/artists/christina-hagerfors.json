@@ -1,15 +1,15 @@
 {
-  "$comment": "Input for scripts/add-artist.mjs (npm run add-artist -- scripts/artists/christina-hagerfors.json). Unpublished preview, 29 Sep 2026, branch peggy/christina-hagerfors-preview. The print masters are her four PDFs from the WeTransfer of 29 Sep 2026, kept outside Git in ~/Desktop/ScanArt Image Tests/Christina Hägerfors/. Each is 6000 x 8362 px at 300 ppi: 50 x 70 cm plus 4 mm bleed on every side, with the TrimBox left at the full page, hence bleedMm. Titles are working titles from her own file names; descriptions are marked placeholders until she supplies her words. The bio is from her own Illustratörcentrum profile (https://illustratorcentrum.se/kreator/christina_hagerfors/, read 29 Sep 2026) and her 30 Aug application (location). To add her two remaining posters: append two entries to prints (next productId 57 and 58, a fresh id), put the PDFs beside the others and re-run; existing slugs are skipped. docs/christina-preview.md has the open questions.",
+  "$comment": "Input for scripts/add-artist.mjs (npm run add-artist -- scripts/artists/christina-hagerfors.json). Unpublished preview, 29 Sep 2026, branch peggy/christina-hagerfors-preview. The print masters are her four PDFs from the WeTransfer of 29 Sep 2026, kept outside Git in ~/Desktop/ScanArt Image Tests/Christina Hägerfors/. Each is 6000 x 8362 px at 300 ppi: 50 x 70 cm plus 4 mm bleed on every side, with the TrimBox left at the full page, hence bleedMm. Titles are working titles from her own file names; descriptions are marked placeholders until she supplies her words. The bio is from her own Illustratörcentrum profile (https://illustratorcentrum.se/kreator/christina_hagerfors/, read 29 Sep 2026) and her 30 Aug application (location). To add her two remaining posters: append two entries to prints (next productId 57 and 58, a fresh id), put the PDFs beside the others and re-run; existing slugs are skipped. docs/christina-preview.md has the open questions. Location: Mark asked on 29 Sep for her to be pinned at Stockholm, Sweden as a placeholder until she confirms where in Sweden she is from; she lives in Cérons, France (application) and is 'originally from Sweden' (https://eastendprints.co.uk/categories/artists/artists-a-f/christina-hagerfors.html). Polar Bear Castle: her Illustratörcentrum profile titles it 'Isbjörnarnas vinterslott', the likely real title; not renamed until she confirms.",
   "review": true,
   "bleedMm": 4,
   "artist": {
     "id": "10",
     "name": "Christina Hägerfors",
     "slug": "christina-hagerfors",
-    "location": "Cerons, France",
-    "locationNo": "Cerons, Frankrike",
-    "bio": "Christina Hägerfors is an illustrator based in Cerons, France, who has worked in illustration since her BA (Hons) at London College of Communication. She is inspired by colour, old prints and book covers, and hopes her pictures carry a kind of nostalgia. Her clients include The Guardian, The New York Times, The Observer and Time Out.",
-    "bioNo": "Christina Hägerfors er illustratør med base i Cerons i Frankrike, og har jobbet som illustratør siden hun tok en BA (Hons) ved London College of Communication. Hun henter inspirasjon fra farger, gamle trykk og bokomslag, og håper bildene hennes har et slags nostalgisk preg. Blant kundene hennes er The Guardian, The New York Times, The Observer og Time Out."
+    "location": "Stockholm, Sweden",
+    "locationNo": "Stockholm, Sverige",
+    "bio": "Christina Hägerfors is an illustrator originally from Sweden and now based in France, who has worked in illustration since her BA (Hons) at London College of Communication. She is inspired by colour, old prints and book covers, and hopes her pictures carry a kind of nostalgia. Her clients include The Guardian, The New York Times, The Observer and Time Out.",
+    "bioNo": "Christina Hägerfors er illustratør fra Sverige, nå bosatt i Frankrike, og har jobbet som illustratør siden hun tok en BA (Hons) ved London College of Communication. Hun henter inspirasjon fra farger, gamle trykk og bokomslag, og håper bildene hennes har et slags nostalgisk preg. Blant kundene hennes er The Guardian, The New York Times, The Observer og Time Out."
   },
   "prints": [
     {
@@ -19,11 +19,17 @@
       "slug": "big-whale",
       "file": "~/Desktop/ScanArt Image Tests/Christina Hägerfors/big_whale_50x70.pdf",
       "category": "Illustrations",
-      "sizes": ["50x70cm"],
-      "priceCategory": "Premium",
+      "sizes": [
+        "50x70cm"
+      ],
+      "priceCategory": "Budget",
       "description": "Placeholder description, to be written with Christina. The working title comes from her file name, big_whale_50x70.pdf.",
       "descriptionNo": "Plassholder for beskrivelsen, som skrives sammen med Christina. Arbeidstittelen kommer fra filnavnet hennes, big_whale_50x70.pdf.",
-      "recommended": ["Funny Mermaid", "Mushroom Picking", "Polar Bear Castle"]
+      "recommended": [
+        "Funny Mermaid",
+        "Mushroom Picking",
+        "Polar Bear Castle"
+      ]
     },
     {
       "id": "a79ef63a-c67d-48be-918a-aed9486cf065",
@@ -32,11 +38,17 @@
       "slug": "funny-mermaid",
       "file": "~/Desktop/ScanArt Image Tests/Christina Hägerfors/funny_mermaid_50x70.pdf",
       "category": "Illustrations",
-      "sizes": ["50x70cm"],
-      "priceCategory": "Premium",
+      "sizes": [
+        "50x70cm"
+      ],
+      "priceCategory": "Budget",
       "description": "Placeholder description, to be written with Christina. The working title comes from her file name, funny_mermaid_50x70.pdf.",
       "descriptionNo": "Plassholder for beskrivelsen, som skrives sammen med Christina. Arbeidstittelen kommer fra filnavnet hennes, funny_mermaid_50x70.pdf.",
-      "recommended": ["Big Whale", "Mushroom Picking", "Polar Bear Castle"]
+      "recommended": [
+        "Big Whale",
+        "Mushroom Picking",
+        "Polar Bear Castle"
+      ]
     },
     {
       "id": "8d9b8b46-79ae-4b98-8dcb-bd311f5738be",
@@ -45,11 +57,17 @@
       "slug": "mushroom-picking",
       "file": "~/Desktop/ScanArt Image Tests/Christina Hägerfors/mushroom_picking_50x70.pdf",
       "category": "Illustrations",
-      "sizes": ["50x70cm"],
-      "priceCategory": "Premium",
+      "sizes": [
+        "50x70cm"
+      ],
+      "priceCategory": "Budget",
       "description": "Placeholder description, to be written with Christina. The working title comes from her file name, mushroom_picking_50x70.pdf.",
       "descriptionNo": "Plassholder for beskrivelsen, som skrives sammen med Christina. Arbeidstittelen kommer fra filnavnet hennes, mushroom_picking_50x70.pdf.",
-      "recommended": ["Big Whale", "Funny Mermaid", "Polar Bear Castle"]
+      "recommended": [
+        "Big Whale",
+        "Funny Mermaid",
+        "Polar Bear Castle"
+      ]
     },
     {
       "id": "81566021-504b-4720-bc38-409d04a5228c",
@@ -58,11 +76,17 @@
       "slug": "polar-bear-castle",
       "file": "~/Desktop/ScanArt Image Tests/Christina Hägerfors/polar_bear_castle_50x70.pdf",
       "category": "Illustrations",
-      "sizes": ["50x70cm"],
-      "priceCategory": "Premium",
+      "sizes": [
+        "50x70cm"
+      ],
+      "priceCategory": "Budget",
       "description": "Placeholder description, to be written with Christina. The working title comes from her file name, polar_bear_castle_50x70.pdf.",
       "descriptionNo": "Plassholder for beskrivelsen, som skrives sammen med Christina. Arbeidstittelen kommer fra filnavnet hennes, polar_bear_castle_50x70.pdf.",
-      "recommended": ["Big Whale", "Funny Mermaid", "Mushroom Picking"]
+      "recommended": [
+        "Big Whale",
+        "Funny Mermaid",
+        "Mushroom Picking"
+      ]
     }
   ]
 }
