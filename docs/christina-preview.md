@@ -124,3 +124,10 @@ The branch alias for commit `b5a67de` is `https://y-git-peggy-christina-hagerfor
 - All ten carry noindex, show Coming soon / Kommer snart and the marked placeholders, are priced from £56, and have no add-to-basket button.
 - The product images and warm images load.
 - Neither `/sitemap.xml` nor `/product-feed.xml` mentions her.
+
+## Follow-up check, commit `1450936`
+
+Deployment `dpl_4yTmAw29CGnkMWC32TQoiBRtYU1P`, READY, checked in a browser through a new share link.
+
+- **At a glance** (EN and NO): "Based in: Stockholm, Sweden" / "Bosted: Stockholm, Sverige", with the map rendered to the right and her pin at Stockholm. The caption reads "Stockholm, where Christina works." / "Stockholm, der Christina arbeider."
+- **Prices** on all four product pages, unframed and with a wood frame: GBP £45 / £84, USD $58 / $117, NOK 700 / 1300 kr, DKK 395 / 840 kr, SEK 617 / 1177 kr. The button still reads Coming soon.
