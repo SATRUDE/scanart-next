@@ -59,7 +59,7 @@ All four prints have room scenes on the preview (29 September 2026). They were m
 
 | Print | Scene | Size | Focus score |
 | --- | --- | --- | --- |
-| Mushroom Picking | kitchen bench nook after foraging | 1122 x 1402 | 0.93 |
+| Mushroom Picking | wooden kitchen, oak cabinets, overcast light (replaced the bench-nook kitchen on 29 Sep) | 1122 x 1402 | 0.85 |
 | Big Whale | child's bedroom (the room Mark approved in the pilot) | 1122 x 1402 | 0.95 |
 | Polar Bear Castle | winter reading corner, redone with a rug and accessories | 1060 x 1325 | 0.96 |
 | Funny Mermaid | coastal bathroom | 1060 x 1325 | 0.96 |
