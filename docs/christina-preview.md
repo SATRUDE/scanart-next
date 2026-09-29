@@ -110,3 +110,12 @@ If both branches merge, two things need attention:
 - `npm test -- --project unit`: 58 files, 546 tests passed, including the four new preview tests.
 - `VERCEL_ENV=preview npm run build`: succeeded.
 - Locally, with the preview build served: the artist page and all four product pages returned 200 in English and Norwegian. All were noindex, showed Coming soon and the placeholders, and priced from £56. There was no horizontal overflow at 1440 px or 390 px, and no page errors.
+
+## Deployed preview check
+
+The branch alias for commit `b5a67de` is `https://y-git-peggy-christina-hagerfors-preview-mark-diffeys-projects.vercel.app` (Vercel project `y`, deployment `dpl_9ybzTURk9ZcMJQpGviayM52b2Ww6`, READY). I checked it on 29 September through a Vercel share link, which expires after 23 hours; the token is not recorded here.
+
+- The artist page and all four product pages returned 200 in English and Norwegian.
+- All ten carry noindex, show Coming soon / Kommer snart and the marked placeholders, are priced from £56, and have no add-to-basket button.
+- The product images and warm images load.
+- Neither `/sitemap.xml` nor `/product-feed.xml` mentions her.
