@@ -17,8 +17,6 @@ import {
   heroSceneFor,
   lowestPrices,
   portraitFor,
-  scenePhrase,
-  sizeLabel,
 } from '@/components/v2/artists/artist-data';
 
 const prints = (n: number) => `${n} ${n === 1 ? 'print' : 'prints'}`;
@@ -153,7 +151,6 @@ export default async function ArtistPage({
                 alt: hero.scene.alt,
                 href: `/product/${hero.product.slug}`,
                 title: hero.product.name,
-                note: scenePhrase(hero.scene.alt) ?? sizeLabel(Object.keys(hero.product.prices)[0] ?? ''),
               }
             : null
         }

@@ -18,7 +18,6 @@ import {
   heroSceneFor,
   lowestPrices,
   portraitFor,
-  sizeLabel,
 } from '@/components/v2/artists/artist-data';
 
 // The Norwegian artist pages: app/(en)/artist/[slug]/page.tsx mirrored exactly
@@ -162,7 +161,6 @@ export default async function NorwegianArtistPage({
                 alt: sceneImageAlt({ name: hero.product.name, artist: artist.name, brand: hero.product.brand, category: hero.product.category }, 'no'),
                 href: `/no/product/${hero.product.slug}`,
                 title: hero.product.name,
-                note: sizeLabel(Object.keys(hero.product.prices)[0] ?? ''),
               }
             : null
         }
