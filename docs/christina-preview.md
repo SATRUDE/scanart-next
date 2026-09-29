@@ -30,7 +30,7 @@ Nothing about her is invented. The sources are:
 - **Portrait**: none, so the page shows her initials.
 - **"About the work" editorial**: left out, so the section does not render.
 - **Location: Stockholm, Sweden is a stand-in** (Mark, 29 September). No source names her Swedish home town, so Mark asked for Stockholm for now. The map pin, the "Based in" row, the location line and the map caption all come from the one `location` field (`cityOf(location)`), so the label matches the pin. The generated map caption ("Stockholm, where Christina works") would be untrue, so `hideMapCaption: true` on her record hides it, on her page only (Mark, 29 September). Remove the flag once her real town is in. Stockholm is an existing map city, so no coordinates were added. The data and Norwegian copy carry a placeholder comment.
-- **Room scenes**: none. Pages show the plain framed product shot, the way the catalogue renders any print without a scene.
+- **Room scenes**: four preview scenes, awaiting Mark's approval (see Room scenes below).
 
 ## Questions for Christina
 
@@ -53,22 +53,22 @@ Each PDF is one page, 1440 x 2006.88 pt (50.8 x 70.8 cm), holding a single 6000 
 
 **Price: the Entry list** (Hedvig's), as Mark chose on 29 September; it replaced Budget earlier the same day. The existing values are unchanged; Entry has no published overlay. Unframed 50 × 70 cm is GBP 35, USD 45, NOK 500, DKK 325, SEK 500. The frame add-on is per size, not per band: +GBP 39, USD 59, NOK 600, DKK 445, SEK 560. That makes framed GBP 74, USD 104, NOK 1100, DKK 770, SEK 1060. No price configuration changed. The standard split is unchanged: 60% to the artist and 40% to the gallery, after printing and delivery costs.
 
-## Room scenes: pilot prepared, not generated
+## Room scenes
 
-New images may come only from Mark's ChatGPT subscription. This session had no working ChatGPT route: the `codex` on the PATH is a Superset stub with no binary behind it. So nothing was generated, and no other generator was used.
+All four prints have room scenes on the preview (29 September 2026). They were made by Megan through Mark's ChatGPT subscription, using the ChatGPT-bundled Codex CLI and its built-in image generation. The model identifier is not exposed and is recorded as unverified. No API or other generator was used.
 
-Following `platform/skills/generate-image` (SKILL.md and all five references), the three-scene pilot is ready to run:
+| Print | Scene | Size | Focus score |
+| --- | --- | --- | --- |
+| Mushroom Picking | kitchen bench nook after foraging | 1122 x 1402 | 0.93 |
+| Big Whale | child's bedroom (the room Mark approved in the pilot) | 1122 x 1402 | 0.95 |
+| Polar Bear Castle | winter reading corner, redone with a rug and accessories | 1060 x 1325 | 0.96 |
+| Funny Mermaid | coastal bathroom | 1060 x 1325 | 0.96 |
 
-- Mushroom Picking in a kitchen after foraging. This is the dense, dark fidelity case.
-- Big Whale in a child's bedroom, with a side-on bed as the scale anchor.
-- Polar Bear Castle in a winter reading corner.
-
-Each prompt covers the scale line, viewpoint, catalogue floor and wall colour, glass, frame and wall lighting, and an artwork description. The references are active Social Agent catalogue items, with IDs and source hashes, chosen to avoid Markus's and Mikko's furniture sets.
-
-- Prompts and review checklist: `scripts/artists/christina-room-pilots.json`.
-- Pack: `~/Desktop/ScanArt Image Tests/Experiment files/christina-pilot-2026-09-29/`. It holds the artwork exports with the bleed removed, the catalogue references and labelled floor and wall boards.
-
-No full set is to be made until Mark has judged the pilot.
+- Every depicted frame measures as the offered 50 x 70 cm (52.4 x 72.4 cm with 12 mm oak) against named furniture. Polar Bear Castle reads about 8% large, within the measurement tolerance.
+- The art inside each frame is Christina's original file, relit with the generated room's light, veil and glass reflection. Mark rejected the generator's slight redraw of her art.
+- Files are AVIF q70 with a WebP q88 twin. Both carry IPTC `trainedAlgorithmicMedia` metadata.
+- Prompts, products with source links, measurements, fidelity scores and before/after crops are in `~/Desktop/ScanArt Image Tests/Christina Hägerfors/room-pilot-2026-09-29/review.md`. The working files are in `Experiment files/christina-pilot-2026-09-29/`.
+- The scenes are preview-only, like her prints. Mark's approval of the scenes is still pending.
 
 ## Adding her two remaining posters
 
@@ -102,7 +102,7 @@ If both branches merge, two things need attention:
 - Replace the Stockholm stand-in with her real town (and a map point if it is not an existing city).
 - `lib/nordic-art.ts` says all the gallery's artists "live and work in the Nordics". That stops being true once someone based in France is published.
 - Replace the placeholders.
-- Get approved room scenes. `lib/feed-images.test.ts` needs one per published print.
+- Mark's approval of the four room scenes (on the preview since 29 September). `lib/feed-images.test.ts` needs one per published print.
 - Settle the colour question and the print proofs.
 - Reconcile Social Agent's Product table if it is still used operationally.
 - Her signed agreement PDF never archived: the Agreement row records a Vercel Blob private-access failure, which is already ticketed.

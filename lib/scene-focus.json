@@ -23,6 +23,14 @@
     "score": "manual",
     "ar": 0.666
   },
+  "/images/products/big-whale-room-2026-09-29.avif": {
+    "x": 43.2,
+    "y": 26.6,
+    "w": 14.0,
+    "h": 15.8,
+    "score": 0.952,
+    "ar": 0.8003
+  },
   "/images/products/bird-above-the-valley-room.avif": {
     "x": 41.1,
     "y": 24.4,
@@ -102,6 +110,14 @@
     "h": 28.0,
     "score": 0.701,
     "ar": 0.8003
+  },
+  "/images/products/funny-mermaid-room-2026-09-29.avif": {
+    "x": 55.2,
+    "y": 29.5,
+    "w": 17.1,
+    "h": 19.3,
+    "score": 0.962,
+    "ar": 0.8
   },
   "/images/products/half-man-room-2026-09-26.avif": {
     "x": 31.0,
@@ -190,6 +206,22 @@
     "h": 35.4,
     "score": 0.612,
     "ar": 1.0
+  },
+  "/images/products/mushroom-picking-room-2026-09-29.avif": {
+    "x": 45.7,
+    "y": 26.1,
+    "w": 14.0,
+    "h": 15.8,
+    "score": 0.93,
+    "ar": 0.8003
+  },
+  "/images/products/polar-bear-castle-room-2026-09-29.avif": {
+    "x": 67.6,
+    "y": 22.6,
+    "w": 21.0,
+    "h": 23.8,
+    "score": 0.955,
+    "ar": 0.8
   },
   "/images/products/rosa-blomster-room-2026-09-23.avif": {
     "x": 33.6,
