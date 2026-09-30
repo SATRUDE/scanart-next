@@ -23,7 +23,18 @@ Nothing about her is invented. The sources are:
 - **East End Prints** (https://eastendprints.co.uk/categories/artists/artists-a-f/christina-hagerfors.html): "Originally from Sweden". The bio now reads "originally from Sweden and now based in France".
 - **Social Agent store**, SELECT only. She has a signed agreement (7 September), an application, an outreach record and a scouting record, but no Product rows. This is her first catalogue entry anywhere.
 
-## Placeholders on the preview
+## Christina's answers, 30 September
+
+Her email of 30 September (same thread) settled most of the open questions. Applied on this branch:
+
+- **Location: Karlstad, Sweden** (EN) / Karlstad, Sverige (NO). Karlstad is not in the brand file's map/cities.json, so its point (290.7, 744.3) was fitted from the five listed cities, which the map projection matches to 0.1 px. `hideMapCaption` stays: she is from Karlstad but works in France.
+- **Titles** confirmed as they are: Big Whale, Funny Mermaid, Mushroom Picking, Polar Bear Castle.
+- **Descriptions** in both languages, built on the lines she wrote about each piece (her words quoted, the rest describes what is in the picture). They replace the placeholders.
+- **Bio**: she said it looks great; unchanged.
+- **Portrait**: her photo (jag.jpg, a close selfie), square-cropped to 1100 px, and the brown-toned 400 px WebP made to the brand recipe (brand file artists/christina-tone.png). No photographer credit given; it reads as a self-portrait.
+- **Colour**: she re-sent Polar Bear Castle by WeTransfer. It is byte-identical to the 29 September file and still holds a 4-channel CMYK image, so it is not fixed yet. She will send the rest once this one is right.
+
+## Placeholders on the preview (29 September, now mostly resolved)
 
 - **Titles** are working titles taken from her own file names. Two differ from what she called the works on 11 September: `fishingmermaid.jpg` and `bearwintercastle_small.jpg`.
 - **Descriptions** are marked placeholders in both languages ("Placeholder description, to be written with Christina", and "Plassholder for beskrivelsen" in Norwegian). They are also the meta descriptions until they are replaced. The preview is noindex.

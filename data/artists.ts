@@ -75,10 +75,10 @@ export const artists: Artist[] = [
     id: '10',
     name: 'Christina Hägerfors',
     slug: 'christina-hagerfors',
-    location: 'Stockholm, Sweden', // Placeholder until Christina confirms her Swedish home town (Mark, 29 Sep); she lives in Cérons, France.
-    hideMapCaption: true, // Mark, 29 Sep: she does not work in Stockholm.
+    location: 'Karlstad, Sweden', // Her home town (Christina, 30 Sep); she lives in Cérons, France.
+    hideMapCaption: true, // She is from Karlstad but works in France, so "where Christina works" would be untrue.
     bio: 'Christina Hägerfors is an illustrator originally from Sweden and now based in France, who has worked in illustration since her BA (Hons) at London College of Communication. She is inspired by colour, old prints and book covers, and hopes her pictures carry a kind of nostalgia. Her clients include The Guardian, The New York Times, The Observer and Time Out.',
-    image: ''
+    image: '/images/artists/christina-hagerfors.png'
   },
 ];
 

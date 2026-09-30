@@ -892,7 +892,7 @@ export const no = {
       bio: 'Ishtar Bäcklund Dakhil er en svensk kunstner som arbeider med illustrasjon, veggmaleri og design. Hun reiste i fem år og konkurrerte internasjonalt i downhill-skateboarding før hun studerte ved Konstfack i Stockholm.',
     },
     'christina-hagerfors': {
-      location: 'Stockholm, Sverige', // Plassholder, se data/artists.ts.
+      location: 'Karlstad, Sverige',
       bio: 'Christina Hägerfors er illustratør fra Sverige, nå bosatt i Frankrike, og har jobbet som illustratør siden hun tok en BA (Hons) ved London College of Communication. Hun henter inspirasjon fra farger, gamle trykk og bokomslag, og håper bildene hennes har et slags nostalgisk preg. Blant kundene hennes er The Guardian, The New York Times, The Observer og Time Out.',
     },
   } as Record<string, ArtistCopy>,
@@ -1372,19 +1372,19 @@ export const no = {
     },
     'big-whale': {
       description:
-        'Plassholder for beskrivelsen, som skrives sammen med Christina. Arbeidstittelen kommer fra filnavnet hennes, big_whale_50x70.pdf.',
+        'Big Whale av Christina Hägerfors deler havet i to: et lite dampskip og måkene øverst, og under det lyse hodet til en hval som stiger opp fra dypet. Halen til en annen skimtes i mørket. «Jeg har alltid vært redd for store ting i vannet», sier Christina, «og jeg ble tiltrukket av tanken på å forestille meg hva som kan skjule seg under overflaten.» Hun likte også komposisjonen med den store hvalen og den lille båten.',
     },
     'funny-mermaid': {
       description:
-        'Plassholder for beskrivelsen, som skrives sammen med Christina. Arbeidstittelen kommer fra filnavnet hennes, funny_mermaid_50x70.pdf.',
+        'Funny Mermaid av Christina Hägerfors plasserer en havfrue rett under vannflaten, der hun strekker seg opp mot duppen til en fisker på en brygge. Bak bryggen står et rødt naust. Over vannet er det en ferje, måker og en stor gul sol, under vannet fisk og rastermønster, i en palett holdt til blågrønt, gult, oransje og krem. «Jeg har hatt sans for havfruer og maritime motiver så lenge jeg kan huske», sier Christina. Her ville hun ha et retropreg og enkle farger.',
     },
     'mushroom-picking': {
       description:
-        'Plassholder for beskrivelsen, som skrives sammen med Christina. Arbeidstittelen kommer fra filnavnet hennes, mushroom_picking_50x70.pdf.',
+        'Mushroom Picking av Christina Hägerfors sender en soppsanker i rød jakke løpende gjennom en høstskog, med kurv i hånden og en liten grå hund ved siden av. Rundt omkring er den mørke skogbunnen full av fluesopp, kantareller, bær, en hare, en rødstrupe på en stubbe, en meitemark og en maur. «Jeg ville lage en skog full av detaljer og moro, og for meg er en høstskog det beste», sier Christina. «Jeg elsker å plukke sopp, og jeg gjør det ikke ofte nok.»',
     },
     'polar-bear-castle': {
       description:
-        'Plassholder for beskrivelsen, som skrives sammen med Christina. Arbeidstittelen kommer fra filnavnet hennes, polar_bear_castle_50x70.pdf.',
+        'Polar Bear Castle av Christina Hägerfors bygger et slott av is under en stjerneklar vinterhimmel, med tre isbjørner foran, to av dem med krone. Pingviner står på avsatsene. «Jeg liker virkelig å lage vinterillustrasjoner», sier Christina, «og jeg liker å tegne bjørner. De har en stor, slapp kropp som er veldig fin å tegne.» Hun ville lage en julescene som føltes litt annerledes.',
     },
   } as Record<string, { description: string; buyerDescription?: string }>,
 

@@ -20,6 +20,7 @@ const CITIES: Record<string, [number, number]> = {
   Oslo: [210.8, 711.4],
   Gothenburg: [246.2, 847.7],
   Stockholm: [423.5, 747.4],
+  Karlstad: [290.7, 744.3], // Not in the brand file: fitted from the five above (59.38 N, 13.50 E), which the map's projection matches to 0.1 px.
   Lahti: [644.2, 645.2],
 };
 const ZOOM = 1.6;
