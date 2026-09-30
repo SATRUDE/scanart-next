@@ -142,3 +142,9 @@ Deployment `dpl_4yTmAw29CGnkMWC32TQoiBRtYU1P`, READY, checked in a browser throu
 
 - **At a glance** (EN and NO): "Based in: Stockholm, Sweden" / "Bosted: Stockholm, Sverige", with the map rendered to the right and her pin at Stockholm. The caption reads "Stockholm, where Christina works." / "Stockholm, der Christina arbeider."
 - **Prices** on all four product pages, unframed and with a wood frame: GBP £45 / £84, USD $58 / $117, NOK 700 / 1300 kr, DKK 395 / 840 kr, SEK 617 / 1177 kr. The button still reads Coming soon.
+
+## Update, 30 September afternoon
+
+- **Portrait replaced** with the wider photo she sent at 13:12 (IMG_20200113_120344524.jpg, 2448 x 3264): square crop of the top 2448 px rows from y 150, so head and shoulders show. Colour PNG 1100 px and brown-toned 400 px WebP, same recipe as before. The photo carries GPS metadata; the site copies are re-encoded without it.
+- **Print files**: her 13:28 WeTransfer (big_whale, funny_mermaid, mushroom_picking, polar_bear_castle, 659 MB) is the same four prints re-exported, not the two new ones. Each is still 4-channel CMYK with an embedded U.S. Web Coated (SWOP) v2 profile, 6000 x 8362 px at 300 ppi (50.8 x 70.8 cm, 4 mm bleed), and renders within a few levels of the 29 September files. Mark's call of 30 September: the files are fine as they are, so the preview images are unchanged.
+- **Still to come**: the last two posters (titles and her lines for them).
