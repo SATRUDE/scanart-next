@@ -140,7 +140,7 @@ export const no = {
           'ingunn-dybendal': 'Illustratør i kollektivet Heiaklubben, med arbeider fra en Google Doodle til en vegg på 360 kvadratmeter.',
           'hedvig-wallin': 'Illustratør fra Göteborg som låner fra naivismen: enkle former, skjevt perspektiv, detaljer overalt.',
           'mikko-saarainen': 'Illustratør, barnebokforfatter og tegneserieskaper fra Lahti: kraftig strek, flate farger, detaljer helt ut i kantene.',
-          'ishtar-backlund-dakhil': 'Svensk kunstner som arbeider med illustrasjon, veggmaleri og design, utdannet ved Konstfack i Stockholm.',
+          'ishtar-backlund-dakhil': 'Svensk illustratør og visuell kunstner som maler for hånd, utdannet ved Konstfack i Stockholm.',
         },
       },
       journal: { heading: 'Journal', all: 'Alle artikler', inEnglish: 'På engelsk' },
