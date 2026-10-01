@@ -958,7 +958,7 @@ export const no = {
     'ishtar-backlund-dakhil': {
       heading: 'Byer, planter og fantasiverdener',
       para1:
-        'Ishtars bilder beveger seg mellom nøye observerte detaljer og fantasiverdener. Stockholms tårn og bygninger langs vannet står side om side med lag på lag av blader, geometriske landskap og et fly som svever over en dal og kan leses som en fugl. Små merker og fargenyanser gir mye å oppdage på nært hold.',
+        'Ishtars bilder beveger seg mellom nøye observerte detaljer og fantasiverdener. Stockholms tårn og bygninger langs vannet står side om side med lag på lag av blader, geometriske landskap og et fly som svever over en dal og kan leses som en fugl. Små merker og fargenyanser gir mye å oppdage på nært hold. Alt Ishtar lager er håndmalt, med akvarell, naturlige pigmenter og blandingsteknikk.',
       para2:
         'Uttrykket varierer, men sansen for farger går igjen. [Frukt & Grönt](/no/product/frukt-och-gront) samler grønt, rødt og gult på kjøkkenveggen, mens [Surfer with Orange Sun](/no/product/surfer-with-orange-sun) er tegnet med færre former og tydeligere fargeflater. [Creature Among Blue Leaves](/no/product/creature-among-blue-leaves) passer et roligere sted der det er tid til å se detaljene.',
     },
