@@ -1,9 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import type { Product } from '@/contexts/CartContext';
-import { getAllProducts, getFeaturedProducts } from '@/lib/products';
+import { getShopProducts as getAllProducts, getShopFeaturedProducts as getFeaturedProducts } from '@/lib/products';
 import { getAllArticles, type Article } from '@/lib/articles';
-import { getPublishedArtists, type PublishedArtist } from '@/lib/published-artists';
+import { getShopArtists as getPublishedArtists, type PublishedArtist } from '@/lib/published-artists';
 import { getProductPrices } from '@/lib/pricing';
 import { shopScenes } from '@/lib/shop-scenes';
 import { ROOM, wallArtPath, wallChipPath, type WallPrint, type WallId } from '@/components/v2/home/wall/room';

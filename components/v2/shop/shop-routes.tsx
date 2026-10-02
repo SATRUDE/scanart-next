@@ -1,5 +1,5 @@
 import React from 'react';
-import { getAllProducts } from '@/lib/products';
+import { getShopProducts as getAllProducts } from '@/lib/products';
 import { categoryLandings } from '@/lib/categories';
 import { collections, type Collection } from '@/lib/collections';
 import { PageHeader } from '@/components/v2/ui';

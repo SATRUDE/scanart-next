@@ -99,6 +99,7 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings
   }, [availableSizes, selectedSize]);
 
   const handleAddToCart = () => {
+    if (product.published === false) return;
     if (product.sizes && !selectedSize) return;
     addToCart(product, quantity, selectedSize || undefined, selectedFrame);
     track('add-to-cart', {
@@ -208,14 +209,14 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings
       <div className="p-[3px]">
         <Button
           onClick={handleAddToCart}
-          disabled={!hasAvailableSizes || (product.sizes && !selectedSize)}
+          disabled={product.published === false || !hasAvailableSizes || (product.sizes && !selectedSize)}
           fullWidth
           price={hasAvailableSizes && selectedSize ? formatPrice(totalPrices) : undefined}
           // Watched by FeedbackIntercept: the card refuses to render if it would
           // cover this. Occlusion is the test, not co-presence.
           data-primary-cta="add-to-cart"
         >
-          {!hasAvailableSizes ? t.soldOut : (product.sizes && !selectedSize) ? t.selectSize : t.addToCart}
+          {product.published === false ? (locale === 'no' ? 'Kommer snart' : 'Coming soon') : !hasAvailableSizes ? t.soldOut : (product.sizes && !selectedSize) ? t.selectSize : t.addToCart}
         </Button>
       </div>
 

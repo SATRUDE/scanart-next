@@ -76,7 +76,7 @@ def locate(scene_path: Path, art: Image.Image):
 def scenes_in_use():
     """(scene src, product slug) for every room scene the shop shows."""
     products = json.loads((PUB / "notion-data/products.json").read_text())
-    by_slug = {p["slug"]: p for p in products if p.get("published")}
+    by_slug = {p["slug"]: p for p in products if p.get("published") or p.get("review")}
     pairs = set()
     for slug, p in by_slug.items():
         if p.get("secondaryImage"):

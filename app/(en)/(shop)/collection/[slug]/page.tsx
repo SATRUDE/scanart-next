@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { collections, getCollectionBySlug } from '@/lib/collections';
-import { getAllProducts } from '@/lib/products';
-import { getPublishedArtists } from '@/lib/published-artists';
+import { getShopProducts as getAllProducts } from '@/lib/products';
+import { getShopArtists as getPublishedArtists } from '@/lib/published-artists';
 import { ShopLanding } from '@/components/v2/shop/ShopLanding';
 import { collectionProducts } from '@/components/v2/shop/shop-routes';
 import { CollectionStyling } from '@/components/v2/landing/CollectionStyling';

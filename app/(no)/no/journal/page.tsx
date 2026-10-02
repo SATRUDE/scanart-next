@@ -4,7 +4,7 @@ import { JournalGrid, type JournalStoryMeta } from '@/components/JournalGrid';
 import { JournalBooksSeries } from '@/components/JournalBooksSeries';
 import { LandingCrossLinks } from '@/components/LandingCrossLinks';
 import { PageHeader } from '@/components/v2/ui';
-import { getPublishedArtists } from '@/lib/published-artists';
+import { getShopArtists as getPublishedArtists } from '@/lib/published-artists';
 import { articlePublishedAt, formatArticleDate, readingMinutes } from '@/lib/article-reading';
 import { BASE_URL, socialCard } from '@/lib/site';
 import { hreflangPair } from '@/lib/i18n';
