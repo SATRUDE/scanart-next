@@ -44,7 +44,7 @@ export const shopScenes: Record<string, ShopScene> = {
   // A second scene of a print is keyed "<print>--<name>": articles can use it,
   // and the article page reads the print from the part before "--".
   'vinkveld--dining': { image: '/images/products/vinkveld-room-dining-2026-09-26.avif', alt: 'Vinkveld by Sia Siamos framed above a dining table against a peach wall', width: 1122, height: 1402 },
-  // Markus previews: the unpublished products gate these scenes from live display.
+  // Markus Naarttijärvi's rooms.
   'through-the-willows': { image: '/images/products/through-the-willows-room-clean-rebuild-45x60-2026-09-28.avif', alt: 'Through the Willows above a black dining table with coffee, flowers, a cream rug and beige curtain.', width: 1122, height: 1402, depictedPaperSize: { catalogSize: '45x60cm', widthCm: 45, heightCm: 60 } },
   'pines-under-starlight': { image: '/images/products/pines-under-starlight-room-clean-rebuild-45x60-2026-09-28.avif', alt: 'Pines Under Starlight above a pine bed with green striped bedding, burgundy bedside stool, white lamp and pale woven rug.', width: 1121, height: 1403, depictedPaperSize: { catalogSize: '45x60cm', widthCm: 45, heightCm: 60 } },
   'boathouses-in-winter': { image: '/images/products/winter-yard-night-room-clean-rebuild-45x60-2026-09-28.avif', alt: 'Boathouses in winter above a cream reading chair and peach, navy and green checked rug beside a blue trolley in a sage green room.', width: 1122, height: 1402, depictedPaperSize: { catalogSize: '45x60cm', widthCm: 45, heightCm: 60 } },
@@ -55,9 +55,14 @@ export const shopScenes: Record<string, ShopScene> = {
   'morning-cabin-room': { image: '/images/products/morning-cabin-room-room-clean-rebuild-60x45-2026-09-28.avif', alt: 'Morning Cabin Room in a slim oak frame hangs above a checked table set for breakfast in a sunlit Scandinavian dining room.', width: 1122, height: 1402, depictedPaperSize: { catalogSize: '45x60cm', widthCm: 60, heightCm: 45 } },
   'path-through-the-trees': { image: '/images/products/path-through-the-trees-room-clean-rebuild-50x40-2026-09-28-v2.avif', alt: 'Path Through the Trees in a slim oak frame above a centred oak lounge chair and reading table, with a cropped bookcase and woven rug in a blue-green room.', width: 1122, height: 1402, depictedPaperSize: { catalogSize: '40x50cm', widthCm: 50, heightCm: 40 } },
   'sheep-on-the-track': { image: '/images/products/sheep-on-the-track-room-clean-rebuild-40x50-2026-09-28-v2.avif', alt: 'Sheep on the Track in a slim oak frame above a Scandinavian breakfast table with pears, coffee, ceramics and open shelving beside a kitchen window.', width: 1122, height: 1402, depictedPaperSize: { catalogSize: '40x50cm', widthCm: 40, heightCm: 50 } },
-  // Ishtar Bäcklund Dakhil's seven rooms are held back with her prints until
-  // she has approved her prices and content (her agreement is signed);
-  // restore them from branch ishtar/preview.
+  // Ishtar Bäcklund Dakhil's rooms (branch peggy/ishtar-artist-preview).
+  stockholm: { image: '/images/products/stockholm-room.avif', alt: 'Stockholm by Ishtar Bäcklund Dakhil framed on a low black bench against a peach wall', width: 1122, height: 1402 },
+  'frukt-och-gront': { image: '/images/products/frukt-och-gront-room.avif', alt: 'Frukt & Grönt by Ishtar Bäcklund Dakhil framed above a dining table in a blue kitchen', width: 1122, height: 1402 },
+  'desert-circles': { image: '/images/products/desert-circles-room.avif', alt: 'Desert Circles by Ishtar Bäcklund Dakhil framed above a desk in a peach study', width: 1122, height: 1402 },
+  'month-of-may': { image: '/images/products/month-of-may-room.avif', alt: 'Month of May by Ishtar Bäcklund Dakhil framed above a dining table with a vase of lilacs', width: 1122, height: 1402 },
+  'flight-over-the-valley': { image: '/images/products/flight-over-the-valley-room.avif', alt: 'Flight Over the Valley by Ishtar Bäcklund Dakhil framed in a reading corner with an oak lounge chair', width: 1054, height: 1492 },
+  'creature-among-blue-leaves': { image: '/images/products/creature-among-blue-leaves-room.avif', alt: 'Creature Among Blue Leaves by Ishtar Bäcklund Dakhil framed above a rattan sideboard', width: 1122, height: 1402 },
+  'surfer-with-orange-sun': { image: '/images/products/surfer-with-orange-sun-room.avif', alt: 'Surfer with Orange Sun by Ishtar Bäcklund Dakhil framed above a red chair in a blue room', width: 1122, height: 1402 },
 };
 
 /** Only label a room image when it is this scene and its current size is known. */

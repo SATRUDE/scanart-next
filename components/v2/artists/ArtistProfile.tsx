@@ -70,7 +70,7 @@ export interface ArtistProfileProps {
   /** "5 prints" */
   printCount: string;
   lowest: CurrencyPrices | null;
-  hero: { src: string; alt: string; href: string; title: string; note: string } | null;
+  hero: { src: string; alt: string; href: string; title: string } | null;
   editorial?: { heading: string; para1: string; para2: string };
   facts: { label: string; value: React.ReactNode }[];
   map: { city: string; label: string; caption: string } | null;
@@ -163,10 +163,9 @@ export function ArtistProfile(p: ArtistProfileProps) {
               {/* The hero scene is the LCP candidate on a profile, so it is preloaded. */}
               <Image src={p.hero.src} alt={p.hero.alt} fill priority sizes="(max-width: 1199px) 100vw, 733px" style={{ objectPosition: scenePosition(p.hero.src) }} className="object-cover" />
             </div>
-            <figcaption className="flex items-center gap-[6px] px-margin type-caption tab:px-0">
+            {/* Just the print's name (Mark, 29 Sep 2026): no separator or room description. */}
+            <figcaption className="px-margin type-caption tab:px-0">
               <Link href={p.hero.href} className="transition-colors hover:text-brand">{p.hero.title}</Link>
-              <Hairline />
-              <span>{p.hero.note}</span>
             </figcaption>
           </figure>
         )}

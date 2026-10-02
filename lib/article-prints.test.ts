@@ -17,9 +17,11 @@ describe('resolvePrintFeatures', () => {
     expect(Object.values(product.prices)[0].GBP).toBeGreaterThan(0);
   });
 
-  it('drops an unknown slug and an unpublished one, keeping the text around them', async () => {
+  // Every print in the catalogue is published now (Ishtar's Surfer with Orange
+  // Sun was the last one held back), so the second slug is a retired one.
+  it('drops an unknown slug and a retired one, keeping the text around them', async () => {
     const blocks = await resolvePrintFeatures(
-      markdownToBlocks('One.\n::print[no-such-print]\n::print[surfer-with-orange-sun]\nTwo.')
+      markdownToBlocks('One.\n::print[no-such-print]\n::print[retired-print]\nTwo.')
     );
     expect(blocks.map((b) => b.type)).toEqual(['paragraph', 'paragraph']);
   });

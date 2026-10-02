@@ -10,7 +10,7 @@ Third-highest click earner. 850 words now, 986 proposed. Title, excerpt, all H2s
 1. **"Where our own prints sit", rewritten (fact fix).** Out: "are all by one artist, and they're the economy argument in five pictures" (untrue, and a print count). In: "come from several hands now, and between them they carry most of the habits above". The Wahlqvist sentences are kept word for word. Then one new paragraph links each new illustrator to one of the four habits the piece has just listed:
    - **Hedvig Wallin, pattern:** Small House Big Ocean, the whole sea built from parallel ink strokes.
    - **Mikko Saarainen, humour:** URF!, a knight losing an argument with a dragon.
-   - **Ishtar Bäcklund Dakhil, nature and creatures:** Bird Above the Valley and Creature Among Blue Leaves.
+   - **Ishtar Bäcklund Dakhil, nature and creatures:** Flight Over the Valley and Creature Among Blue Leaves.
 
    Every claim comes from `data/artists.ts` or the product descriptions in `products.json`: Gothenburg, "illustrating children's books at eighteen", Lahti, "children's author and comic artist", Konstfack. There are no counts and nothing about influences.
 2. **Pull quote, after the opening.** "It was the medium that gave the region its shared pictures." That's the thesis the whole piece argues. It's lifted in place from paragraph two, not repeated.
@@ -23,7 +23,7 @@ Third-highest click earner. 850 words now, 986 proposed. Title, excerpt, all H2s
 The block shows four Wahlqvist prints, but the section now names three other artists.
 
 - Current: morgenstrekk, mean-snothing, eye-nose-eye, slingshot (as UUIDs)
-- Proposed at V2: `["eye-nose-eye","morgenstrekk","mean-snothing","small-house-big-ocean","urf","bird-above-the-valley","creature-among-blue-leaves","slingshot"]`
+- Proposed at V2: `["eye-nose-eye","morgenstrekk","mean-snothing","small-house-big-ocean","urf","flight-over-the-valley","creature-among-blue-leaves","slingshot"]`
 - Interim, before V2: `["eye-nose-eye","morgenstrekk","mean-snothing","small-house-big-ocean","slingshot"]`
 
 This also fills "The artists in this article" with all four illustrators, instead of Wahlqvist alone.
@@ -78,7 +78,7 @@ Picture books are where the reputation sits now. Øyvind Torseter, who draws in 
 
 Our [illustration prints](/category/illustrations) come from several hands now, and between them they carry most of the habits above. [Simen Wahlqvist](/artist/simen-wahlqvist) is the economy argument. He's an Oslo graphic designer and illustrator who tries to catch a moment, often just before it happens, in as few lines as possible, and reckons a drawing is finished when it makes him laugh. [Eye Nose Eye](/product/eye-nose-eye) draws a face as a Venn diagram. [Morgenstrekk](/product/morgenstrekk) has a man stretching for the sun with a charging cable still plugged into the skirting board. [Mean Snothing](/product/mean-snothing) gives a man a Newton's cradle for eyes and lets him keep a straight face about it.
 
-[Hedvig Wallin](/artist/hedvig-wallin), from Gothenburg, has illustrated children's books since she was eighteen, and [Small House Big Ocean](/product/small-house-big-ocean) is pattern doing the work: a little house on a rock, and a whole sea built from patient parallel strokes of ink. [Mikko Saarainen](/artist/mikko-saarainen), a children's author and comic artist from Lahti in Finland, brings the humour. [URF!](/product/urf) is a whole comic page in one print, a knight losing an argument with a dragon across three panels, with a joke in almost every gap. And [Ishtar Bäcklund Dakhil](/artist/ishtar-backlund-dakhil), a Swedish artist who studied at Konstfack in Stockholm, is all nature and creatures: a white bird gliding over a green valley in [Bird Above the Valley](/product/bird-above-the-valley), a horned creature peering out of blue leaves in [Creature Among Blue Leaves](/product/creature-among-blue-leaves).
+[Hedvig Wallin](/artist/hedvig-wallin), from Gothenburg, has illustrated children's books since she was eighteen, and [Small House Big Ocean](/product/small-house-big-ocean) is pattern doing the work: a little house on a rock, and a whole sea built from patient parallel strokes of ink. [Mikko Saarainen](/artist/mikko-saarainen), a children's author and comic artist from Lahti in Finland, brings the humour. [URF!](/product/urf) is a whole comic page in one print, a knight losing an argument with a dragon across three panels, with a joke in almost every gap. And [Ishtar Bäcklund Dakhil](/artist/ishtar-backlund-dakhil), a Swedish artist who studied at Konstfack in Stockholm, is all nature and creatures: a pale aeroplane gliding over a green valley in [Flight Over the Valley](/product/flight-over-the-valley), a horned creature peering out of blue leaves in [Creature Among Blue Leaves](/product/creature-among-blue-leaves).
 
 The tradition's other habits turn up elsewhere in the gallery. Helene Brox packs [Swallow Dive](/product/swallow-dive) so tightly with diving birds that it reads as pattern before it reads as birds. Ingunn Dybendal draws [Eltsjoen](/product/eltsjoen) and [Trysilkaffe](/product/trysilkaffe) in coloured pencil, turning a lake and a mug of flowers into folk motif. Sia Siamos, an illustrator in Bergen, paints [tables mid-meal](/category/botanical).
 

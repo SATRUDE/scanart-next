@@ -2,33 +2,8 @@
 
 The remaining steps before V2 goes live, and the follow-ups it leaves. The SEO gate itself is in `docs/v2-seo.md`.
 
-## Ishtar is held back
-Ishtar Bäcklund Dakhil launches later: her agreement is signed (2026-09-10), but Mark wants her approval of the prices and content first (2026-09-26). Branch `ishtar/preview` has the full site with her; restore from there once she has approved.
-
-What was removed on `mark/scandinavian-art-v2`:
-- **Her seven prints**, unpublished in `public/notion-data/products.json`: Stockholm, Frukt & Grönt, Desert Circles, Lilac Geometry, Bird Above the Valley, Creature Among Blue Leaves, Surfer with Orange Sun. That also takes down her artist page and drops her from the artist lists, search and the sitemap.
-- **Her clauses in the landing copy**, English and Norwegian (`lib/categories.ts`, `lib/collections.ts`, `lib/wall-art.ts`, `lib/nordic-art.ts`, `lib/i18n/no.ts`): the abstract, botanical and illustrations intros, the abstract size FAQ, the birds-and-animals intro, FAQ and meta description, the kitchen intro and FAQ, the wall-art and nordic-art artist sentences.
-- **Her prints in the collection picks** (birds and animals, living room, bedroom, home office, kitchen) and her room scenes in `lib/shop-scenes.ts`.
-- **The count** in `lib/product-listing-details.test.ts`: 24 (30 on `ishtar/preview`).
-
-Left in place, because nothing renders them without her prints: her entry in `data/artists.ts`, her editorial, statement, homepage line and Norwegian bio and print descriptions.
-
-The /nordic-art artist list now only names artists with a published print, so it follows the catalogue by itself.
-
 ## For Mark
-- [ ] **Email Ishtar about Surfer with Orange Sun.** The print is off the site (unpublished in `public/notion-data/products.json`, 2026-09-26) until we have:
-  - its master file;
-  - the title as she wants it;
-  - prices;
-  - confirmation that A2 and A3 can be fulfilled.
-
-  Ask too whether Stockholm is right for her map pin: the shop data only says Sweden.
-
-  To bring it back (once Ishtar herself is restored from `ishtar/preview`, see above):
-  1. Set `published: true`.
-  2. Restore its line in `lib/shop-scenes.ts`.
-  3. Put the sentence back in her editorial in `lib/artist-editorial.ts` and `lib/i18n/no.ts`.
-  4. Set the count in `lib/product-listing-details.test.ts` to 31.
+- [x] Ishtar Bäcklund Dakhil and her seven prints, Surfer with Orange Sun included, go live (2026-09-29, Mark's go-ahead; master for the surfer is her `surf1.jpg`). Still open: whether Stockholm is right for her map pin, since the shop data only says Sweden.
 - [x] Stripe test keys on the V2 preview (branch-scoped), test-card orders end to end: payment, Slack notice, /order-confirmed (2026-09-26).
 - [ ] A last review round on the preview.
 
