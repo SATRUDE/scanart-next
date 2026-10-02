@@ -197,6 +197,7 @@ export const headerStrings: Record<Locale, HeaderStrings> = {
       Botanical: 'Botanisk',
       Abstract: 'Abstrakt',
       Illustrations: 'Illustrasjoner',
+      Photography: 'Fotografi',
     },
   },
 };
@@ -480,6 +481,7 @@ export const footerStrings: Record<Locale, FooterStrings> = {
       botanical: 'Botanisk',
       abstract: 'Abstrakt',
       illustrations: 'Illustrasjoner',
+      photography: 'Fotografi',
     },
     collectionLabels: {
       'living-room': 'Stue',

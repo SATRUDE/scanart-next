@@ -862,5 +862,160 @@
     ],
     "created_time": "2026-09-24T13:00:00.000Z",
     "last_edited_time": "2026-09-26T09:00:00.000Z"
+  },
+  {
+    "id": "53829e5f-6356-59cc-b554-c6413d8af58c",
+    "name": "In to the woods II",
+    "slug": "in-to-the-woods-ii",
+    "description": "In to the woods II, a photograph by Patrik Wennerlund, Borås, Sweden. Placeholder line: Patrik has not yet supplied a description.",
+    "category": "Photography",
+    "artist": "Patrik Wennerlund",
+    "artistId": "10",
+    "brand": "",
+    "inStock": false,
+    "featured": false,
+    "published": false,
+    "review": true,
+    "image": "/images/products/in-to-the-woods-ii-paper-40x60-2026-10-02.png",
+    "secondaryImage": "",
+    "sourceImage": "/images/artworks/in-to-the-woods-ii.avif",
+    "availableSizes": [
+      "40x60cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "41",
+    "recommendedProducts": [
+      "Storm",
+      "Tjurpannan Båthus",
+      "Wake up",
+      "Moody 19 - The Crow"
+    ],
+    "orientation": "landscape",
+    "created_time": "2026-10-02T12:00:00.000Z",
+    "last_edited_time": "2026-10-02T12:00:00.000Z"
+  },
+  {
+    "id": "6433de07-c02a-5481-b5a7-a6c928ec29f7",
+    "name": "Storm",
+    "slug": "storm",
+    "description": "Storm, a photograph by Patrik Wennerlund, Borås, Sweden. Placeholder line: Patrik has not yet supplied a description.",
+    "category": "Photography",
+    "artist": "Patrik Wennerlund",
+    "artistId": "10",
+    "brand": "",
+    "inStock": false,
+    "featured": false,
+    "published": false,
+    "review": true,
+    "image": "/images/products/storm-paper-40x60-2026-10-02.png",
+    "secondaryImage": "",
+    "sourceImage": "/images/artworks/storm.avif",
+    "availableSizes": [
+      "40x60cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "42",
+    "recommendedProducts": [
+      "In to the woods II",
+      "Tjurpannan Båthus",
+      "Wake up",
+      "Moody 19 - The Crow"
+    ],
+    "orientation": "portrait",
+    "created_time": "2026-10-02T12:00:00.000Z",
+    "last_edited_time": "2026-10-02T12:00:00.000Z"
+  },
+  {
+    "id": "d2d7f217-7a21-5b9f-b9c3-b2dfba5f7575",
+    "name": "Tjurpannan Båthus",
+    "slug": "tjurpannan-bathus",
+    "description": "Tjurpannan Båthus, a photograph by Patrik Wennerlund, Borås, Sweden. Placeholder line: Patrik has not yet supplied a description.",
+    "category": "Photography",
+    "artist": "Patrik Wennerlund",
+    "artistId": "10",
+    "brand": "",
+    "inStock": false,
+    "featured": false,
+    "published": false,
+    "review": true,
+    "image": "/images/products/tjurpannan-bathus-paper-40x50-2026-10-02.png",
+    "secondaryImage": "",
+    "sourceImage": "/images/artworks/tjurpannan-bathus.avif",
+    "availableSizes": [
+      "40x50cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "43",
+    "recommendedProducts": [
+      "In to the woods II",
+      "Storm",
+      "Wake up",
+      "Moody 19 - The Crow"
+    ],
+    "orientation": "portrait",
+    "created_time": "2026-10-02T12:00:00.000Z",
+    "last_edited_time": "2026-10-02T12:00:00.000Z"
+  },
+  {
+    "id": "6d391da9-a7a3-5316-993f-172160a22fc4",
+    "name": "Wake up",
+    "slug": "wake-up",
+    "description": "Wake up, a photograph by Patrik Wennerlund, Borås, Sweden. Placeholder line: Patrik has not yet supplied a description.",
+    "category": "Photography",
+    "artist": "Patrik Wennerlund",
+    "artistId": "10",
+    "brand": "",
+    "inStock": false,
+    "featured": false,
+    "published": false,
+    "review": true,
+    "image": "/images/products/wake-up-paper-40x60-2026-10-02.png",
+    "secondaryImage": "",
+    "sourceImage": "/images/artworks/wake-up.avif",
+    "availableSizes": [
+      "40x60cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "44",
+    "recommendedProducts": [
+      "In to the woods II",
+      "Storm",
+      "Tjurpannan Båthus",
+      "Moody 19 - The Crow"
+    ],
+    "orientation": "landscape",
+    "created_time": "2026-10-02T12:00:00.000Z",
+    "last_edited_time": "2026-10-02T12:00:00.000Z"
+  },
+  {
+    "id": "da4e0170-b48c-5fe1-8dbb-b0ab29d9e92a",
+    "name": "Moody 19 - The Crow",
+    "slug": "moody-19-the-crow",
+    "description": "Moody 19 - The Crow, a photograph by Patrik Wennerlund, Borås, Sweden. Placeholder line: Patrik has not yet supplied a description.",
+    "category": "Photography",
+    "artist": "Patrik Wennerlund",
+    "artistId": "10",
+    "brand": "",
+    "inStock": false,
+    "featured": false,
+    "published": false,
+    "review": true,
+    "image": "/images/products/moody-19-the-crow-paper-45x60-2026-10-02.png",
+    "secondaryImage": "",
+    "sourceImage": "/images/artworks/moody-19-the-crow.avif",
+    "availableSizes": [
+      "45x60cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "45",
+    "recommendedProducts": [
+      "In to the woods II",
+      "Storm",
+      "Tjurpannan Båthus",
+      "Wake up"
+    ],
+    "orientation": "landscape",
+    "created_time": "2026-10-02T12:00:00.000Z",
+    "last_edited_time": "2026-10-02T12:00:00.000Z"
   }
 ]

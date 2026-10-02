@@ -144,6 +144,7 @@ export default async function NorwegianArtistPage({
         location={location}
         portrait={portrait.src}
         portraitCredit={artist.imageCredit}
+        originalsUrl={artist.originalsUrl}
         initials={portrait.initials}
         breadcrumb={[
           { label: t.breadcrumbHome, href: '/no' },

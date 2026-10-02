@@ -27,10 +27,10 @@
 
 import { PUBLISHED_FRAMES, isUsable } from './generated-prices';
 
-export type FrameSize = 'A3' | 'A2' | '50x50cm' | '50x70cm' | 'A1';
+export type FrameSize = 'A3' | 'A2' | '40x50cm' | '40x60cm' | '50x50cm' | '45x60cm' | '50x70cm' | 'A1';
 
-/** Every size the catalogue sells, largest last. */
-export const FRAME_SIZES: FrameSize[] = ['A3', 'A2', '50x50cm', '50x70cm', 'A1'];
+/** Every size the catalogue sells, ordered by frame supplement, dearest last. */
+export const FRAME_SIZES: FrameSize[] = ['A3', 'A2', '50x50cm', '40x50cm', '40x60cm', '45x60cm', '50x70cm', 'A1'];
 
 export interface CurrencyPrices {
   GBP: number;
@@ -50,7 +50,10 @@ export interface FrameOption {
 const NO_CHARGE: Record<FrameSize, CurrencyPrices> = {
   A3: { GBP: 0, USD: 0, NOK: 0, DKK: 0, SEK: 0 },
   A2: { GBP: 0, USD: 0, NOK: 0, DKK: 0, SEK: 0 },
+  '40x50cm': { GBP: 0, USD: 0, NOK: 0, DKK: 0, SEK: 0 },
+  '40x60cm': { GBP: 0, USD: 0, NOK: 0, DKK: 0, SEK: 0 },
   '50x50cm': { GBP: 0, USD: 0, NOK: 0, DKK: 0, SEK: 0 },
+  '45x60cm': { GBP: 0, USD: 0, NOK: 0, DKK: 0, SEK: 0 },
   '50x70cm': { GBP: 0, USD: 0, NOK: 0, DKK: 0, SEK: 0 },
   A1: { GBP: 0, USD: 0, NOK: 0, DKK: 0, SEK: 0 },
 };
@@ -66,7 +69,12 @@ const NO_CHARGE: Record<FrameSize, CurrencyPrices> = {
 const COMPILED_FRAMED_PRICES: Record<FrameSize, CurrencyPrices> = {
   A3: { GBP: 18, USD: 32, NOK: 265, DKK: 210, SEK: 265 },
   A2: { GBP: 29, USD: 51, NOK: 420, DKK: 315, SEK: 410 },
+  // Mark approved the existing 50 × 70 supplement for these smaller formats.
+  '40x50cm': { GBP: 39, USD: 59, NOK: 600, DKK: 445, SEK: 560 },
+  // Proposed for Patrik Wennerlund's 3:2 photographs: the same supplement.
+  '40x60cm': { GBP: 39, USD: 59, NOK: 600, DKK: 445, SEK: 560 },
   '50x50cm': { GBP: 32, USD: 51, NOK: 475, DKK: 350, SEK: 455 },
+  '45x60cm': { GBP: 39, USD: 59, NOK: 600, DKK: 445, SEK: 560 },
   '50x70cm': { GBP: 39, USD: 59, NOK: 600, DKK: 445, SEK: 560 },
   A1: { GBP: 55, USD: 82, NOK: 735, DKK: 575, SEK: 735 },
 };
@@ -81,6 +89,11 @@ const FRAMED_PRICES: Record<FrameSize, CurrencyPrices> = (() => {
   for (const size of FRAME_SIZES) {
     const published = PUBLISHED_FRAMES?.[size];
     if (isUsable(published)) merged[size] = { ...published };
+  }
+  // Preserve the current effective 50 × 70 supplement, including its
+  // published overlay, until a complete price is published for either size.
+  for (const size of ['40x50cm', '40x60cm', '45x60cm'] as const) {
+    if (!isUsable(PUBLISHED_FRAMES?.[size])) merged[size] = { ...merged['50x70cm'] };
   }
   return merged;
 })();

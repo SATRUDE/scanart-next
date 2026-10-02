@@ -17,6 +17,8 @@ interface FooterProps {
    * the default only covers isolated renders such as Storybook.
    */
   year?: number;
+  /** Category slugs with visible products, supplied by the server document. */
+  categorySlugs?: string[];
 }
 
 type Season = 'winter' | 'spring' | 'summer' | 'autumn';
@@ -72,7 +74,7 @@ function SeasonPicker({ season, onChoose, labels }: { season: Season; onChoose: 
   );
 }
 
-export const Footer: React.FC<FooterProps> = ({ year = new Date().getFullYear() }) => {
+export const Footer: React.FC<FooterProps> = ({ year = new Date().getFullYear(), categorySlugs = [] }) => {
   // The Footer is mounted once in the root layout, which cannot know the
   // route, so the Norwegian tree is detected here: under /no the labels come
   // from the Norwegian chrome strings, and every link stays inside /no.
@@ -157,7 +159,7 @@ export const Footer: React.FC<FooterProps> = ({ year = new Date().getFullYear() 
   // keeps the footer to two short stacks; these links carry the internal
   // linking the old footer did (docs/v2-seo.md), set quietly in caption type.
   const shopLinks = [
-    ...categoryLandings.map(category => ({ href: `${localeHrefPrefix}/category/${category.slug}`, label: t.categoryLabels[category.slug] ?? category.category })),
+    ...categoryLandings.filter(category => categorySlugs.includes(category.slug)).map(category => ({ href: `${localeHrefPrefix}/category/${category.slug}`, label: t.categoryLabels[category.slug] ?? category.category })),
     ...collections.map(collection => ({ href: `${localeHrefPrefix}/collection/${collection.slug}`, label: t.collectionLabels[collection.slug] ?? collection.chipLabel })),
     { href: `${localeHrefPrefix}/scandinavian-wall-art`, label: t.wallArt },
     // English only: /nordic-art has no Norwegian twin, so the link is guarded

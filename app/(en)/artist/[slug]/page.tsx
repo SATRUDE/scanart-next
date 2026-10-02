@@ -133,6 +133,7 @@ export default async function ArtistPage({
         location={artist.location}
         portrait={portrait.src}
         portraitCredit={artist.imageCredit}
+        originalsUrl={artist.originalsUrl}
         initials={portrait.initials}
         breadcrumb={[
           { label: 'Home', href: '/' },

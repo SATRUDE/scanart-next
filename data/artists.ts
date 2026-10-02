@@ -7,6 +7,8 @@ export interface Artist {
   image: string;
   /** The photographer, where the artist's photo must be credited. */
   imageCredit?: string;
+  /** The artist's own shop for signed or limited originals (Mark, 29 Sep 2026). */
+  originalsUrl?: string;
 }
 
 export const artists: Artist[] = [
@@ -67,6 +69,18 @@ export const artists: Artist[] = [
     image: '/images/artists/ishtar-backlund-dakhil.png',
     // Branch peggy/ishtar-artist-preview: the photo credit must be shown.
     imageCredit: 'Sebastian Lundmark',
+  },
+  {
+    id: '10',
+    name: 'Patrik Wennerlund',
+    slug: 'patrik-wennerlund',
+    location: 'Borås, Sweden',
+    // Patrik's own words, from his email of 2 October 2026, lightly corrected
+    // (he invited corrections): "photo" to "photography", "expose" to "hang".
+    bio: 'I\'m an Art Director/Photographer, owner of PWM AB / PWMFoto. I\'ve worked in advertising and marketing for most of my life. Photography and images have always played a very central role in my work, both as a client and image creator in all possible contexts within advertising, editorial and other communication. In 2011, I bought my first real system camera to try something new. Travel and photography proved an unbeatable combination for my photographic venture. On my many journeys I capture objects, nature, buildings and beings and transform them into alluring artworks. The overall objective is to create images that I myself would like to hang on the wall. My work has also been exhibited several times.',
+    image: '', // Initials until Patrik supplies a portrait.
+    // Signed and limited editions (Mark, 29 Sep 2026); pwmfoto.com is his main site.
+    originalsUrl: 'https://www.pwmfotoshop.com',
   },
 ];
 

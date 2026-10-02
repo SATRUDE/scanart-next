@@ -1,3 +1,5 @@
+import { matchesCategoryQuery } from '@/lib/category-search';
+
 /**
  * Client-side search over the overlay's index (built by lib/search-index.ts on
  * the server). Pure functions, no I/O, so the Header's bundle stays free of
@@ -88,7 +90,7 @@ export function searchIndex(index: SearchIndex, query: string): SearchResults {
   const has = (s: string) => normalise(s).includes(q);
   // Prints match on name, artist and category: the fields ProductsGrid
   // matches for /products?q=, so "See all" and the Prints page agree.
-  const prints = index.prints.filter(p => has(p.name) || has(p.artist) || has(p.category));
+  const prints = index.prints.filter(p => has(p.name) || has(p.artist) || matchesCategoryQuery(p.category, q));
   const artists = index.artists.filter(a => has(a.name));
   // Stories also match on the artists they name, so "sim" finds the pieces
   // that write about Simen Wahlqvist as well as his prints and his page.

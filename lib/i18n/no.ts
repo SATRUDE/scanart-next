@@ -52,6 +52,7 @@ export const no = {
       Botanical: 'Botanisk',
       Abstract: 'Abstrakt',
       Illustrations: 'Illustrasjoner',
+      Photography: 'Fotografi',
     } as Record<string, string>,
     /** Collection slug -> short chip label for the catalogue filter row.
      *  The landing pages have their own longer headings under collections. */
@@ -74,6 +75,7 @@ export const no = {
       botanical: 'Botaniske trykk',
       abstract: 'Abstrakte trykk',
       illustrations: 'Illustrasjoner',
+      photography: 'Fotografi',
     },
     // The English chipLabels translated. Rooms read as the plain room name in
     // Norwegian; "Birds & Animals" needs the "og" rather than an ampersand.
@@ -482,6 +484,29 @@ export const no = {
   },
 
   categories: {
+    photography: {
+      title: 'Fotokunst fra Norden',
+      description: 'Fotografiske kunsttrykk fra uavhengige nordiske fotografer. Utforsk landskap, hverdagslige steder og stille øyeblikk fra Norden.',
+      heading: 'Fotokunst',
+      intro: 'En snødekt gårdsplass etter mørkets frembrudd, en sti mellom trærne, det siste lyset over en vei i nord. Disse fotografiene retter blikket mot steder og øyeblikk det er lett å gå forbi. Utforsk fotografiske kunsttrykk fra uavhengige fotografer som arbeider i Norden.',
+      intro2: 'Se nærmere på lyset, teksturene og de små detaljene, og velg et fotografi du vil bruke tid på. Hver produktside presenterer verket og viser tilgjengelig størrelse og rammealternativer.',
+      stylingHeading: 'Fotografier i hjemmet',
+      stylingBody: 'Gi et detaljrikt fotografi en plass der du kan se det på nært hold, ved en god stol eller på en vegg du passerer hver dag. Et rolig landskap kan passe fint sammen med bøker og tekstiler. Vil du henge to fotografier sammen, kan du se etter en felles farge eller et beslektet lys. La det være nok luft mellom rammene til at hvert bilde får stå for seg.',
+      faqs: [
+        {
+          question: 'Hva slags fotografier finnes i samlingen?',
+          answer: 'Samlingen rommer fotografier av nordiske landskap, natur og hverdagslige steder. Her finner du både åpne utsyn og nære studier av lys og tekstur. På fotografens side kan du lese om prosjektene bak bildene.',
+        },
+        {
+          question: 'Hvilken størrelse har fotografiene?',
+          answer: 'Tilgjengelig størrelse står på hver produktside. Sjekk målene der før du velger ramme eller planlegger å henge flere trykk sammen.',
+        },
+        {
+          question: 'Hvordan velger jeg ramme til et fotografi?',
+          answer: 'Se fotografiet i sammenheng med fargene og materialene du allerede har i rommet. En enkel ramme gir bildet plass. Hver produktside viser hvilke rammealternativer som er tilgjengelige for verket.',
+        },
+      ],
+    },
     botanical: {
       title: 'Botaniske trykk og kunstplakater',
       description:
