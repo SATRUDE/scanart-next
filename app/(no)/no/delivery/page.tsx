@@ -5,7 +5,7 @@ import { hreflangPair } from '@/lib/i18n';
 import { no } from '@/lib/i18n/no';
 import { noV2 } from '@/lib/i18n/no-v2-pages';
 import { shopScenes } from '@/lib/shop-scenes';
-import { getProductBySlug } from '@/lib/products';
+import { getShopProductBySlug as getProductBySlug } from '@/lib/products';
 import { sceneImageAlt } from '@/lib/product-image-alt';
 import { DeliveryBody } from '@/components/v2/delivery/DeliveryBody';
 

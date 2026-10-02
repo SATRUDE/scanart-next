@@ -85,7 +85,7 @@ const TEMPLATE_FRAME_WIDTH = 811;
 const CANVAS = { width: 1640, height: 2048, background: '#f3f3f3' };
 const FRAME_FRACTION = 481 / 820;
 const AVATAR_SIZE = 1100;
-const CATEGORIES = new Set(['Abstract', 'Botanical', 'Illustrations']);
+const CATEGORIES = new Set(['Abstract', 'Botanical', 'Illustrations', 'Photography']);
 const SNIPPET_MAX = 155; // lib/meta-snippet.ts: the first sentence is the meta description
 
 const FILES = {

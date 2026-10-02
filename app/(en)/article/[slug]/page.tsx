@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { TrackedLink } from '@/components/TrackedLink';
 import { getAllArticles, getArticleBySlug, getArticleBlocks } from '@/lib/articles';
-import { getProductBySlug, getProductsByArtworkIds } from '@/lib/products';
+import { getShopProductBySlug as getProductBySlug, getProductsByArtworkIds } from '@/lib/products';
 import { resolvePrintFeatures } from '@/lib/article-prints';
 import { getArtistById } from '@/data/artists';
 import { ArticleBody } from '@/components/ArticleBody';
@@ -20,7 +20,7 @@ import { clipToLength } from '@/lib/meta-snippet';
 import { ARTICLE_META_DESCRIPTIONS } from '@/lib/article-meta';
 import { metaTitle } from '@/lib/meta-title';
 import { articleSceneSlugs } from '@/lib/shop-scenes';
-import { getPublishedArtists } from '@/lib/published-artists';
+import { getShopArtists as getPublishedArtists } from '@/lib/published-artists';
 import { articlePublishedAt, readingMinutes } from '@/lib/article-reading';
 
 /** Story tile ratios for "More from the journal", in the Figma order. */

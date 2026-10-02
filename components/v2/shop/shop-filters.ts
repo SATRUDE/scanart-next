@@ -1,3 +1,4 @@
+import { matchesCategoryQuery } from '@/lib/category-search';
 import { getArtistById } from '@/data/artists';
 import { getLowestProductPrices } from '@/lib/pricing';
 import type { Product } from '@/contexts/CartContext';
@@ -34,7 +35,7 @@ export function refineProducts(
 ) {
   let filtered = products;
   if (query) {
-    const q = query.toLowerCase();
+    const q = query.toLowerCase().trim();
     // Match the artist through the same `artist || brand` fallback the rest of
     // the codebase uses (product page, product feed, HeroSection): `brand` is
     // empty on every product in the exported catalogue, so matching it alone
@@ -43,7 +44,7 @@ export function refineProducts(
     filtered = filtered.filter(p =>
       p.name.toLowerCase().includes(q) ||
       (p.artist || p.brand).toLowerCase().includes(q) ||
-      p.category.toLowerCase().includes(q)
+      matchesCategoryQuery(p.category, q)
     );
   } else if (category !== 'All') {
     filtered = filtered.filter(p => p.category === category);

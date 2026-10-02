@@ -1,0 +1,1011 @@
+{
+  "date": "2026-09-28",
+  "status": "All ten corrected room previews integrated and verified; ready for preview deployment.",
+  "request": "Mark clarified fix all Markus mockups, not Sheep alone.",
+  "ready": [
+    {
+      "slug": "sheep-on-the-track",
+      "initial": {
+        "prompt": "Edit the FIRST image, keeping the camera, room, desk, books, plant, window, peach wall and lighting exactly as they are. Replace only its large framed print with the smaller framed product shown in the SECOND image. The second image is the correct product shape: portrait 40 by 50cm paper, thin 12mm oak frame, outer42.4 by52.4cm, narrow proportional white border. Use that frame shape and full photograph, NOT the first image's broad mount. At1122x1402 output, the new outer frame should measure approximately505px wide by624px high, centered at(594,503), outercorners(342,191),(847,191),(847,815),(342,815). Near frontal rectangle with true4:5 paper ratio; do not make it skinny. Keep artwork true4:5, uncropped and unstretched; preserve every original sheep (8), their sizes/positions, both puddled wheel ruts and the entire tree canopy from the product reference. Regenerate the frame naturally in the room with subtle glazing reflection from actual left window and coherent frame shadow, no flat sticker effect. Reveal peach wall around smaller frame. Photographic DSLR material realism. Room furniture and viewpoint must not move or resize. No text or labels. One edited room image.",
+        "refs": [
+          "/var/folders/f3/rs4qjk6n47n2p7wl4_9ljpch0000gn/T/codex-clipboard-xHgmvk.png",
+          "/private/tmp/claude-501/-Users-markdiffey--superset-worktrees-markdiffey-co-uk-plant-substance/3c9e9cf5-2eff-4b9e-9fd1-d57305723aa5/scratchpad/markus-preview/public/images/products/sheep-on-the-track-paper-40x50-2026-09-28.png"
+        ]
+      },
+      "correction": "One small geometry correction to this image only. Keep the room, photo content, camera, frame centre and height exactly the same. The framed print is slightly too skinny. Widen its entire oak frame and white paper4percent symmetrically left/right. Widen the photograph's boundary from450pixels to471pixels while keeping its589pixelheight, using the unchanged photograph composition in its true4:5 aspect rather than cropping. New artwork corners approximately350,196 /821,196 /821,785 /350,785. Paper true40cmwide50cmhigh; thin12mmoak outer42.4by52.4cm. Preserve narrowwhiteborder proportional1.2cmsides1.5cmtop. Keep exactly8sheep and every tree/puddle detail. All outside wall/desk/window/books/plant unchanged. Glazing light and contactshadow coherent with existing leftwindow.",
+      "final": {
+        "prompt": "Use exact product from image1 in the interior from image2. Recreate image2 with just one correction: its frame/photo is too elongated vertically. Keep frame width and centre, but make entire frame, paper and picture SIX PERCENT SHORTER vertically. Restore original product proportions from image1, no stretching the photo. It is a40wide50highcm portrait paper in thin oak, outer42.4wide52.4high. Paper and photo bothratio4:5. About515pxwide637pxhighouter in1122x1402roomcanvas, small narrowwhiteborders. The photograph must keep all8sheep with exact originalpositions inimage1, complete treecanopy/sky and both wettrackruts, notzoom/crop. Otherwise recreate image2 room exactly, including desk,books,water,window,plant,peachwall,cameraview. Natural leftwindowlight consistent glassreflections/shadows, notpastein. Do not elongate the rectangle.",
+        "refs": [
+          "/private/tmp/claude-501/-Users-markdiffey--superset-worktrees-markdiffey-co-uk-plant-substance/3c9e9cf5-2eff-4b9e-9fd1-d57305723aa5/scratchpad/markus-preview/public/images/products/sheep-on-the-track-paper-40x50-2026-09-28.png",
+          "/Users/markdiffey/.codex/generated_images/01a0e7a7-58ff-7643-a0a4-20dc6d47481a/exec-a897cbe0-882d-4d92-9928-0677f94ac5d5.png"
+        ]
+      },
+      "selected": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-sheep-size-40x50-final-03.png",
+      "paper": [
+        40,
+        50
+      ],
+      "outerBox": [
+        338,
+        176,
+        838,
+        803
+      ],
+      "artBox": [
+        368,
+        204,
+        808,
+        772
+      ],
+      "notes": "Paper opening approximately472x599 (0.788 vs0.8); near frontal, small perspective. Outer approx500x627 compared original627x847, close to planned reduction. Narrow proportional borders; full canopy, eight sheep including occluded flock members, wet ruts retained. Fine generated details remain illustrative."
+    },
+    {
+      "slug": "swan-on-still-water",
+      "prompt": "Edit FIRST reference room, keep its camera/furniture/styling/light exactly unchanged. Replace only the hanging frame with the product in SECOND reference. Secondreference is the authoritative frame and photograph shape: landscape50cmwide40cmhighpaper,5:4,thin12mmoak outer52.4x42.4cm, narrowwhitepaperborders1.5cmleft/right1.2cmtop/bottom. Complete uncropped photograph exactly as supplied; no stretching,noredrawingcomposition. At1122x1402 outputtarget outer frame351pixelswide by284high, centre542,397. Full swan scene fromref2, never move swan or reeds. Make the framed product smaller than ref1, reveal wall around it. Preserve accurate5:4 paper and artworkratio, slight existing perspective only. Glazing reflects actual window subtly, consistent with wall sunlight, frame highlights/contactshadow and curtains. Naturally integrated photorealisticDSLR interior, no text, dimensions or labels.",
+      "refs": [
+        "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-swan-on-still-water-fresh-products-test-02.png",
+        "/private/tmp/claude-501/-Users-markdiffey--superset-worktrees-markdiffey-co-uk-plant-substance/3c9e9cf5-2eff-4b9e-9fd1-d57305723aa5/scratchpad/markus-preview/public/images/products/swan-on-still-water-paper-40x50-2026-09-28.png"
+      ],
+      "selected": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-swan-size-50x40-final-03.png",
+      "paper": [
+        50,
+        40
+      ],
+      "outerBox": [
+        369,
+        247,
+        703,
+        524
+      ],
+      "artBox": [
+        392,
+        270,
+        680,
+        504
+      ],
+      "notes": "Mild perspective: artapprox288x234 ratio1.23 vs1.25. Oak thin/narrowwhiteborder; whole swan/forest/reeds retained, rightwindow coherentglazing."
+    },
+    {
+      "slug": "path-through-the-trees",
+      "prompt": "Edit FIRST reference room, keep its camera/furniture/styling/light exactly unchanged. Replace only the hanging frame with the product in SECOND reference. Secondreference is the authoritative frame and photograph shape: landscape50cmwide40cmhighpaper,5:4,thin12mmoak outer52.4x42.4cm, narrowwhitepaperborders1.5cmleft/right1.2cmtop/bottom. Complete uncropped photograph exactly as supplied; no stretching,noredrawingcomposition. At1122x1402 outputtarget outerframe351pixelswide by284high, centre483,289. Preserve the full original winding boardwalk through forest fromref2. Make the framed product smaller than ref1, reveal wall around it. Preserve accurate5:4 paper and artworkratio, slight existing perspective only. Glazing reflects actual window subtly, consistent with wall sunlight, frame highlights/contactshadow and curtains. Naturally integrated photorealisticDSLR interior, no text, dimensions or labels.",
+      "refs": [
+        "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-path-through-the-trees-new-scene-current-70x50-test-01.png",
+        "/private/tmp/claude-501/-Users-markdiffey--superset-worktrees-markdiffey-co-uk-plant-substance/3c9e9cf5-2eff-4b9e-9fd1-d57305723aa5/scratchpad/markus-preview/public/images/products/path-through-the-trees-paper-40x50-2026-09-28.png"
+      ],
+      "selected": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-path-size-50x40-final-03.png",
+      "paper": [
+        50,
+        40
+      ],
+      "outerBox": [
+        321,
+        161,
+        652,
+        434
+      ],
+      "artBox": [
+        342,
+        184,
+        632,
+        414
+      ],
+      "notes": "Slightperspective; artworkapprox290x230 ratio1.26 vs1.25; wholeboardwalk canopyretained. Correct small50x40frame againstunchanged38cmDLMtable. Rightwindow light/reflection plausible."
+    },
+    {
+      "slug": "winter-yard-night",
+      "selected": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-winter-yard-night-size-45x60-2026-09-28-test-03.png",
+      "paper": [
+        45,
+        60
+      ],
+      "artBox": [
+        430,
+        108,
+        675,
+        445
+      ],
+      "outerBox": [
+        407,
+        86,
+        694,
+        465
+      ],
+      "notes": "Approx outerframe286x378 against47.4x62.4 ratio.760. Frame reductionclose2.7percentwidth1.3percentheight. Art245x337.727 against.75 roughly3percent variation. Narrow borders,coherentleftwindowlight and oldrug/roomretained. Illustrativemockup,originalprintmasterunchanged.",
+      "generation": {
+        "slug": "winter-yard-night",
+        "roomReference": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-winter-yard-night-colourful-rug-test-02.png",
+        "productReference": "winter-yard-night-paper-45x60-2026-09-28.png",
+        "runs": [
+          {
+            "output": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-winter-yard-night-size-45x60-2026-09-28-test-01.png",
+            "prompt": "Edit the first interior photograph. Keep its chair, blue trolley, lamp, book, patterned rug, wall sunlight, window, floor and camera unchanged. Replace only the framed wall print with the smaller framed product shown in the second image, integrated at the same wall position. Its paper is 45 × 60 cm and its thin oak outer frame is 47.4 × 62.4 cm, 90.5% of the existing frame width and 86.2% of its height. In this 1122 × 1402 room image the existing outer frame is roughly x399–724, y80–524; target about x415–709, y111–494. Keep the full artwork in its natural 3:4 ratio and proportional white border. Match the room's existing glazing reflection and frame shadow."
+          },
+          {
+            "output": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-winter-yard-night-size-45x60-2026-09-28-test-02.png",
+            "prompt": "Make one precise correction to the first room photo: widen its existing framed print by about 7% and heighten it by about 4%, keeping the frame centred and leaving the rest of the room identical. Target outer oak frame x405–699, y86–469 in the 1122×1402 image: 294×383 pixels, width/height 0.768, matching the exact 45×60 cm framed product in image 2. Target inner photograph approximately 245×327 pixels, exactly 3:4 with balanced white borders. Preserve the complete artwork and its appearance from image 2. Do not alter the chair, blanket, book, blue trolley, lamp, rug, window, sunlight, wall or floor. Keep natural glass reflection and contact shadow."
+          },
+          {
+            "output": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-winter-yard-night-size-45x60-2026-09-28-test-03.png",
+            "prompt": "Refine ONLY the white border and photograph inside the existing oak frame in image 1. The oak frame's current outer rectangle is good; keep its position and size exactly. The winter photograph inside is slightly too narrow. Make the white paper border about 6 pixels thinner on each side and about 4 pixels thinner at top and bottom so the visible photograph becomes about 252×338 pixels, approximately a natural 3:4 rectangle. Use image 2 to keep the full winter-yard photo intact, with no cropping or stretching. Keep glass reflections and the entire room absolutely unchanged."
+          }
+        ],
+        "imageDimensionsPx": [
+          1122,
+          1402
+        ],
+        "targetFramePx": [
+          294,
+          383
+        ],
+        "bestObserved": "test03 outer frame approx 286x378, ratio .757 versus physical .760, close size and aspect. Inner art approx 245x337, ratio .727 versus source .750; approximately 3.1% deviation. Room and glazing preserved. Full winter scene recognizable.",
+        "qaVerdict": "reviewable with inner aspect caveat"
+      }
+    },
+    {
+      "slug": "the-road-at-sunset",
+      "selected": "/Users/markdiffey/.codex/generated_images/01a0e901-41ec-7e90-a156-7c200d6df8b2/exec-06a6ffa4-e024-40eb-bc00-a664db32d532.png",
+      "paper": [
+        45,
+        60
+      ],
+      "artBox": [
+        317,
+        114,
+        554,
+        430
+      ],
+      "refs": [
+        "/tmp/the-road-at-sunset-room-size-45x60-2026-09-28.png",
+        "/private/tmp/claude-501/-Users-markdiffey--superset-worktrees-markdiffey-co-uk-plant-substance/3c9e9cf5-2eff-4b9e-9fd1-d57305723aa5/scratchpad/markus-preview/public/images/products/the-road-at-sunset-paper-45x60-2026-09-28.png"
+      ],
+      "prompt": "Edit image 1, the existing room mockup, using image 2 as the exact current product print reference. Change only the framed print; preserve the room, furniture, light, camera, frame location and approximate physical size. Oak portrait 45 × 60 cm paper, approximately 12 mm frame, outer 47.4 × 62.4 cm. Full uncropped road photograph from image 2 must retain its composition, cyclists, sky, trees and road markings, without stretching or redraw. Current white border is too broad; enlarge the photograph approximately 6% within the paper. Target artwork 42 × 56 cm, white paper border 1.5 cm left/right and 2 cm top/bottom, artwork occupying 93.3% of paper width and height. Preserve plausible perspective, paper edges, shadows and frame thickness. No text or watermark.",
+      "promptProvenance": "Reconstructed from original invocation context; exact first-call bytes were lost during conversation compaction.",
+      "QA": "Canvas 1122×1402. Estimated outer frame x297–577 y82–453; paper x306–566 y100–443; artwork x317–554 y114–430, about 237×316 px, aspect 0.750 vs target 0.750. Artwork fills about 91–93% of paper width and 92–93% height depending on perspective/edge estimates; near 93.3% target. Full road composition retained visually. Generated fine image detail remains illustrative."
+    },
+    {
+      "slug": "sun-over-the-forest",
+      "selected": "/Users/markdiffey/.codex/generated_images/01a0e901-41ec-7e90-a156-7c200d6df8b2/exec-17c803a5-1893-4050-98bb-0f232291564d.png",
+      "paper": [
+        60,
+        45
+      ],
+      "artBox": [
+        481,
+        119,
+        835,
+        380
+      ],
+      "refs": [
+        "/Users/markdiffey/.codex/generated_images/01a0e901-41ec-7e90-a156-7c200d6df8b2/exec-b2e4a6eb-17c6-4682-9d71-011b64d1fe5a.png",
+        "/private/tmp/claude-501/-Users-markdiffey--superset-worktrees-markdiffey-co-uk-plant-substance/3c9e9cf5-2eff-4b9e-9fd1-d57305723aa5/scratchpad/markus-preview/public/images/products/sun-over-the-forest-paper-45x60-2026-09-28.png"
+      ],
+      "prompt": "Make one small shape correction to image 1, preserving its beautiful room, camera, sofa, table, sunlight, print content and oak material. The framed print currently appears too tall/narrow for its intended landscape 60 × 45 cm paper. Widen the entire frame, paper and photograph symmetrically left and right about 6%, keeping their height, centre position and wall placement unchanged. At 1122 × 1402 canvas, target outer oak-frame corners approximately (450,94) to (878,418), giving width about 428 px and height 324 px, outer ratio 62.4:47.4. Inside, target white paper corners approximately (462,107) to (866,408), width 404 and height 301, ratio 60:45. Inside that, the original exact image 2 photograph should be approximately (476,117) to (852,399), width 376 and height 282, ratio 56:42. Thus paper and photograph are both 4:3 landscape, with narrow white borders of about 2 cm at left/right and 1.5 cm top/bottom. Do not simply horizontally stretch the artwork: restore the full original sun, treeline, clouds and their positions from image 2 at natural aspect. Keep the oak border slim about 12 mm, realistic glass/window reflections and frame shadow. The rest of image 1 must stay visually unchanged. No text.",
+      "initialRefs": [
+        "/tmp/sun-over-the-forest-room-size-60x45-2026-09-28.png",
+        "/private/tmp/claude-501/-Users-markdiffey--superset-worktrees-markdiffey-co-uk-plant-substance/3c9e9cf5-2eff-4b9e-9fd1-d57305723aa5/scratchpad/markus-preview/public/images/products/sun-over-the-forest-paper-45x60-2026-09-28.png"
+      ],
+      "initialPrompt": "Edit image 1, the existing Scandinavian living-room mockup, using image 2 as the exact current product print reference. Change only the framed print within image 1. Keep the entire room, furniture, wall, lighting, camera view, and the print's outer location and approximate physical size unchanged. The oak frame is a landscape 60 × 45 cm paper print with a slim approximately 12 mm natural-oak frame. Its bright sun-over-forest photograph must retain the exact composition, sun shape and position, trees and colors of image 2; do not crop, stretch, redraw, or reinterpret it. The current white paper border around the photo in image 1 is too broad. Adjust the image inside the paper so that the landscape paper has proportional white borders of 2 cm on the left and right and 1.5 cm on top and bottom, with the photograph measuring 56 × 42 cm and occupying about 93.3% of paper width and height. Preserve plausible perspective, paper edges, shadows and frame thickness. No text or watermark.",
+      "QA": "Canvas 1122×1402. Estimated outer x457–860 y98–404, 403×306 px, aspect 1.317 vs target 1.316. Paper x468–847 y111–392, aspect approximately 1.35 vs target 1.333. Artwork x481–835 y119–380, 354×261 px, aspect 1.356 vs target 1.333 (~1.7% wide); art fills about 93–94% of paper. Full sun/treeline composition retained visually. Second pass selected because first pass had a tall/narrow outer frame; image generation ultimately adjusted height, rather than width, to achieve target ratio."
+    }
+  ],
+  "remaining": [],
+  "failedBatches": [
+    {
+      "date": "2026-09-28",
+      "surface": "built-in image_gen subscription route",
+      "model": "unverified",
+      "target": "45x60 cm paper, 12 mm oak, outer 47.4x62.4 cm; native 3:4 full artwork and unchanged accepted room",
+      "productReferenceRoot": "/private/tmp/claude-501/-Users-markdiffey--superset-worktrees-markdiffey-co-uk-plant-substance/3c9e9cf5-2eff-4b9e-9fd1-d57305723aa5/scratchpad/markus-preview/public/images/products/",
+      "items": [
+        {
+          "slug": "pines-under-starlight",
+          "roomReference": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-pines-under-starlight-fresh-products-test-03.png",
+          "productReference": "pines-under-starlight-paper-45x60-2026-09-28.png",
+          "runs": [
+            {
+              "output": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-pines-under-starlight-size-45x60-2026-09-28-test-01.png",
+              "prompt": "Edit the first interior photograph. Keep its bedroom, furniture, light and camera unchanged. Replace only the wall frame with the accurately proportioned smaller framed product shown in the second image, integrated into the wall at the existing frame centre. The paper is 45 × 60 cm and the outside of its thin oak frame is 47.4 × 62.4 cm. Make the visible frame 90.5% as wide and 86.2% as high as the original room frame. Preserve the second image's complete photograph and balanced white border without cropping or stretching. Match the room's window reflection, blue wall, and soft frame shadow."
+            },
+            {
+              "output": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-pines-under-starlight-size-45x60-2026-09-28-test-02.png",
+              "prompt": "Correct only the framed print on the wall of the first room image, using the second framed product image as the exact guide to shape and print composition. The first edit made it slightly too narrow. Increase the entire outer frame to approximately 250 pixels wide and 342 pixels high in this 1122×1402 image, centred at approximately (631,302), with bounding box about x506–756, y131–473. Make its interior photographic image a true 3:4 rectangle, approximately 211 pixels wide by 281 pixels high, with balanced white margins; retain all snowy trees, sky and ground from reference 2. The oak rails stay thin and the window reflection stays natural. Keep every part of the bedroom outside the frame unchanged."
+            },
+            {
+              "output": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-pines-under-starlight-size-45x60-2026-09-28-test-03.png",
+              "prompt": "Refine only the wall print in the first bedroom photo. The room is correct and must stay unchanged. The existing oak frame is too small and narrow. Increase its outside rectangle from about 222×325 pixels to about 250×342 pixels around the same centre, approximately 13% wider and 5% taller. Keep thin oak rails and make the visible snowy forest photo inside a full 3:4 rectangle, about 211×281 pixels, with proportionate narrow white paper border as shown in reference image 2. The complete reference art, starry sky, pine trees and snowy ground must stay visible. Preserve the blue wall, bedding, window, furniture, lamp, rug, book, slippers and light exactly."
+            }
+          ],
+          "imageDimensionsPx": [
+            1122,
+            1402
+          ],
+          "targetFramePx": [
+            250,
+            342
+          ],
+          "bestObserved": "test02 approx 222x323 frame, too small/narrow; test03 approx 232x330, still undersized, inner art approx 191x287 ratio .665 versus .75. Not acceptable as 45x60 artwork presentation.",
+          "qaVerdict": "reject"
+        },
+        {
+          "slug": "winter-yard-night",
+          "roomReference": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-winter-yard-night-colourful-rug-test-02.png",
+          "productReference": "winter-yard-night-paper-45x60-2026-09-28.png",
+          "runs": [
+            {
+              "output": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-winter-yard-night-size-45x60-2026-09-28-test-01.png",
+              "prompt": "Edit the first interior photograph. Keep its chair, blue trolley, lamp, book, patterned rug, wall sunlight, window, floor and camera unchanged. Replace only the framed wall print with the smaller framed product shown in the second image, integrated at the same wall position. Its paper is 45 × 60 cm and its thin oak outer frame is 47.4 × 62.4 cm, 90.5% of the existing frame width and 86.2% of its height. In this 1122 × 1402 room image the existing outer frame is roughly x399–724, y80–524; target about x415–709, y111–494. Keep the full artwork in its natural 3:4 ratio and proportional white border. Match the room's existing glazing reflection and frame shadow."
+            },
+            {
+              "output": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-winter-yard-night-size-45x60-2026-09-28-test-02.png",
+              "prompt": "Make one precise correction to the first room photo: widen its existing framed print by about 7% and heighten it by about 4%, keeping the frame centred and leaving the rest of the room identical. Target outer oak frame x405–699, y86–469 in the 1122×1402 image: 294×383 pixels, width/height 0.768, matching the exact 45×60 cm framed product in image 2. Target inner photograph approximately 245×327 pixels, exactly 3:4 with balanced white borders. Preserve the complete artwork and its appearance from image 2. Do not alter the chair, blanket, book, blue trolley, lamp, rug, window, sunlight, wall or floor. Keep natural glass reflection and contact shadow."
+            },
+            {
+              "output": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-winter-yard-night-size-45x60-2026-09-28-test-03.png",
+              "prompt": "Refine ONLY the white border and photograph inside the existing oak frame in image 1. The oak frame's current outer rectangle is good; keep its position and size exactly. The winter photograph inside is slightly too narrow. Make the white paper border about 6 pixels thinner on each side and about 4 pixels thinner at top and bottom so the visible photograph becomes about 252×338 pixels, approximately a natural 3:4 rectangle. Use image 2 to keep the full winter-yard photo intact, with no cropping or stretching. Keep glass reflections and the entire room absolutely unchanged."
+            }
+          ],
+          "imageDimensionsPx": [
+            1122,
+            1402
+          ],
+          "targetFramePx": [
+            294,
+            383
+          ],
+          "bestObserved": "test03 outer frame approx 286x378, ratio .757 versus physical .760, close size and aspect. Inner art approx 245x337, ratio .727 versus source .750; approximately 3.1% deviation. Room and glazing preserved. Full winter scene recognizable.",
+          "qaVerdict": "reviewable with inner aspect caveat"
+        },
+        {
+          "slug": "through-the-willows",
+          "roomReference": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-through-the-willows-fresh-products-test-03.png",
+          "productReference": "through-the-willows-paper-45x60-2026-09-28.png",
+          "runs": [
+            {
+              "output": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-through-the-willows-size-45x60-2026-09-28-test-03.png",
+              "prompt": "Edit the first dining room photograph, preserving all furniture, flowers, book, coffee cups, rug, window, sunlight, wall, floor and camera exactly. Replace only the wall frame with the accurately proportioned smaller framed product from the second image. The paper is 45 × 60 cm; the thin oak frame outside is 47.4 × 62.4 cm. The new frame should be 90.5% as wide and 86.2% as high as the existing frame, with the same centre. In this 1122 × 1402 image, the original frame spans about x507–831, y79–546; aim for x522–815, y111–514. Preserve the full 3:4 artwork and balanced white border of reference 2, without cropping or stretching. Match the existing glazing reflection and wall shadow."
+            },
+            {
+              "output": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-through-the-willows-size-45x60-2026-09-28-test-04.png",
+              "prompt": "Correct only the framed print in the first room photograph. Keep the current thin oak outer frame about 293×403 pixels and keep all room content exactly unchanged. The photo inside is too narrow and the white margins too broad. Use the second product reference to show the complete original artwork at natural 3:4 width-to-height ratio. Make the inner photograph approximately 245 pixels wide and 327 pixels high, expanding horizontally within the existing frame and retaining the full scene, with proportional white paper border. Do not change the frame size or position, wall, daylight, table, chairs, flowers, cups, book, rug, window or floor."
+            }
+          ],
+          "imageDimensionsPx": [
+            1122,
+            1402
+          ],
+          "targetFramePx": [
+            293,
+            403
+          ],
+          "bestObserved": "test04 outer frame approx 292x403, but art approx 226x330 ratio .685 versus native .750; broad side borders make print conspicuously skinny. Room remains intact.",
+          "qaVerdict": "reject"
+        }
+      ]
+    },
+    {
+      "date": "2026-09-28",
+      "surface": "built-in image_gen",
+      "model": "unverified",
+      "result": "No geometrically acceptable candidate after three controlled attempts for each artwork. All outputs are rejected examples; retain previously accepted room until faithful resize can be achieved.",
+      "images": [
+        {
+          "slug": "current-and-foam",
+          "acceptedRoom": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-current-and-foam-fresh-products-test-02.png",
+          "primaryProduct": "/private/tmp/claude-501/-Users-markdiffey--superset-worktrees-markdiffey-co-uk-plant-substance/3c9e9cf5-2eff-4b9e-9fd1-d57305723aa5/scratchpad/markus-preview/public/images/products/current-and-foam-paper-45x60-2026-09-28.png",
+          "paperCm": [
+            45,
+            60
+          ],
+          "outerFrameCm": [
+            47.4,
+            62.4
+          ],
+          "sourceRoomFrameBBoxApprox": [
+            435,
+            80,
+            765,
+            530
+          ],
+          "targetFrameBBoxApprox": [
+            449,
+            111,
+            748,
+            499
+          ],
+          "rejectedExamples": [
+            {
+              "path": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-current-and-foam-product-reference-size-test-02-rejected.png",
+              "generatedPath": "/Users/markdiffey/.codex/generated_images/01a0e90c-f512-77e3-b694-46940ffe165a/exec-6107b2f1-6cee-4189-8801-40611e44904a.png",
+              "orderedReferences": [
+                "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-current-and-foam-fresh-products-test-02.png",
+                "/private/tmp/claude-501/-Users-markdiffey--superset-worktrees-markdiffey-co-uk-plant-substance/3c9e9cf5-2eff-4b9e-9fd1-d57305723aa5/scratchpad/markus-preview/public/images/products/current-and-foam-paper-45x60-2026-09-28.png"
+              ],
+              "outerFrameBBoxApprox": [
+                469,
+                100,
+                731,
+                481
+              ],
+              "artBoxApprox": [
+                490,
+                130,
+                705,
+                455
+              ],
+              "artRatioApprox": 0.662,
+              "prompt": "Use case: precise-object-edit. Scandinavian Art room mockup. Reference 1 is the accepted office room to edit. Reference 2 is the EXACT PRIMARY PRODUCT, authoritative for the complete uncropped original photograph, thin natural oak frame, white border, and 3:4 ARTWORK aspect. The product photo is a visual guide, not a flat panel to paste. Change ONLY the wall-hung frame in room 1 to portray a 45×60cm portrait paper with 47.4×62.4cm outer frame. Target bounds in 1122×1402 room are approximately x449–748,y111–499 (width 299,height 388); nearly frontal, same center as existing frame, with coherent left-window reflection and contact shadow. The artwork visible within white paper MUST have width:height 3:4 (0.750), not squeezed narrower; retain ALL edges, exact blue-black swirling water and white flecks from reference 2. The frame, paper border and art have matching natural perspective and correctly proportioned inset. Keep room 1 unchanged beyond frame: same desk, chair, lamp, glass, notebook, books, curtain/window, wall, rug, light, camera and crop. Reveal wall behind old frame edges. No new decor, no text. Generate the frame/art naturally integrated with the room, no manual compositing."
+            },
+            {
+              "generatedPath": "/Users/markdiffey/.codex/generated_images/01a0e90c-f512-77e3-b694-46940ffe165a/exec-1f88909a-7160-4f8b-839a-6a41e5b2c8f8.png",
+              "orderedReferences": [
+                "/Users/markdiffey/.codex/generated_images/01a0e90c-f512-77e3-b694-46940ffe165a/exec-6107b2f1-6cee-4189-8801-40611e44904a.png",
+                "/private/tmp/claude-501/-Users-markdiffey--superset-worktrees-markdiffey-co-uk-plant-substance/3c9e9cf5-2eff-4b9e-9fd1-d57305723aa5/scratchpad/markus-preview/public/images/products/current-and-foam-paper-45x60-2026-09-28.png"
+              ],
+              "qa": "Targeted width correction had negligible visible effect; still narrow.",
+              "prompt": "Precise geometry correction to the room in reference 1. Reference 2 is the authoritative product geometry and exact full photo. The previous generation made the entire oak frame and image much too NARROW. Correct ONLY the framed print: keep its current centre at x600,y290 and near-current height 380 pixels, but make the outer frame 14% WIDER (from x469–731 to target x449–749). Do not enlarge its height. Its target outer width:height is 47.4:62.4 = 0.760, visible ~300:390. The artwork opening inside paper MUST be 3:4, about 240 pixels wide ×320 pixels high, not the current narrow ~215×325. Rebuild the framed photograph to match reference 2's full image and evenly proportioned white border, no crop and no horizontal/vertical stretch. Keep all furniture, window, curtain, lamp, desk, chair, book, water glass, rug, sunlight and camera of reference 1 unchanged. Coherent glazing and wall shadow. No new objects, no text."
+            },
+            {
+              "generatedPath": "/Users/markdiffey/.codex/generated_images/01a0e90c-f512-77e3-b694-46940ffe165a/exec-a41cea5e-74f5-48e5-9264-602df824ac18.png",
+              "orderedReferences": [
+                "/private/tmp/claude-501/-Users-markdiffey--superset-worktrees-markdiffey-co-uk-plant-substance/3c9e9cf5-2eff-4b9e-9fd1-d57305723aa5/scratchpad/markus-preview/public/images/products/current-and-foam-paper-45x60-2026-09-28.png",
+                "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-current-and-foam-fresh-products-test-02.png"
+              ],
+              "qa": "Frame width close to requested, but retained roughly old height. Inner art more visibly narrow.",
+              "prompt": "Create a precise edit of IMAGE 2 (the accepted office room); keep its room and camera unchanged. IMAGE 1 is the authoritative physical framed product to reproduce naturally within that room. Take the exact proportions and complete photograph from image 1: portrait outer wood frame W:H=0.760; inner printed photo W:H=0.750. Hang it at the existing picture centre above desk, 47.4×62.4 cm outer, approximately 299×390 pixels in the 1122×1402 composition. Do not use the taller/narrower proportions of the old wall picture. Include proportional white border and thin oak moulding. All edges of the blue-black marbled water photo remain visible, with natural subdued glass reflection and frame shadow. Keep every other part of image 2 exactly: room, desk, chair, lamp, books, notebook, glass, wall, left curtain/window, rug, sunlight and crop. Change only framed picture and newly exposed wall; no other changes."
+            }
+          ],
+          "qa": "Reject. Required native art ratio 0.750; best product-reference output about 0.662, about 12% too narrow. Slight perspective of nearly frontal wall cannot explain discrepancy."
+        },
+        {
+          "slug": "morning-cabin-room",
+          "acceptedRoom": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-morning-cabin-room-fresh-products-test-02.png",
+          "primaryProduct": "/private/tmp/claude-501/-Users-markdiffey--superset-worktrees-markdiffey-co-uk-plant-substance/3c9e9cf5-2eff-4b9e-9fd1-d57305723aa5/scratchpad/markus-preview/public/images/products/morning-cabin-room-paper-45x60-2026-09-28.png",
+          "paperCm": [
+            60,
+            45
+          ],
+          "outerFrameCm": [
+            62.4,
+            47.4
+          ],
+          "sourceRoomFrameBBoxApprox": [
+            157,
+            63,
+            624,
+            462
+          ],
+          "targetFrameBBoxApprox": [
+            189,
+            82,
+            592,
+            443
+          ],
+          "rejectedExamples": [
+            {
+              "generatedPath": "/Users/markdiffey/.codex/generated_images/01a0e90c-f512-77e3-b694-46940ffe165a/exec-830d3ee8-35e6-407a-87a6-d10e4563ebf8.png",
+              "orderedReferences": [
+                "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-morning-cabin-room-fresh-products-test-02.png",
+                "/private/tmp/claude-501/-Users-markdiffey--superset-worktrees-markdiffey-co-uk-plant-substance/3c9e9cf5-2eff-4b9e-9fd1-d57305723aa5/scratchpad/markus-preview/public/images/products/morning-cabin-room-paper-45x60-2026-09-28.png"
+              ],
+              "qa": "Frame remained essentially old size and art too narrow.",
+              "prompt": "Use case: precise-object-edit. Input 1 is the accepted breakfast-room scene, the edit target. Input 2 is the exact primary product showing the FULL original cabin photograph, correct white border and thin oak frame; use it as the authority for all print details and proportions. Replace ONLY the wall-hung picture in the upper-left of room 1 with a 60×45 cm landscape paper in a 62.4×47.4 cm oak outer frame. Target outer bounds x189–592,y82–443 within 1122×1402 room; width:height about 1.316. The art opening inside paper must be native 4:3 ratio, not narrow: approximately 360px wide ×270px high at this scale. Show every edge of photo 2, including dark left cabin wall, central window and curtains, green foliage at right, the full blue bed and floor below. White border 2cm on left/right,1.5cm top/bottom, thin 1.2cm oak moulding. Maintain photographically coherent glazing/reflection and contact shadow. Keep room furniture, black table, breakfast, two blue mugs, red cloth, birch chairs, window and curtains, wall paint, parquet, sun patches, camera and crop exactly as input 1. No additions. Do not composite product PNG flat into room; naturally render the physical frame/paper/photo as part of one photograph."
+            },
+            {
+              "generatedPath": "/Users/markdiffey/.codex/generated_images/01a0e90c-f512-77e3-b694-46940ffe165a/exec-3c249ded-f7d5-44e2-922c-8fef549e910d.png",
+              "orderedReferences": [
+                "/Users/markdiffey/.codex/generated_images/01a0e90c-f512-77e3-b694-46940ffe165a/exec-830d3ee8-35e6-407a-87a6-d10e4563ebf8.png",
+                "/private/tmp/claude-501/-Users-markdiffey--superset-worktrees-markdiffey-co-uk-plant-substance/3c9e9cf5-2eff-4b9e-9fd1-d57305723aa5/scratchpad/markus-preview/public/images/products/morning-cabin-room-paper-45x60-2026-09-28.png"
+              ],
+              "qa": "Frame shrank, but art became about 1.20 vs required 1.333.",
+              "prompt": "Precisely edit the breakfast room in reference 1. Reference 2 is authoritative for the correctly shaped framed product. Previous edit failed to reduce the print: its current wall frame is approximately x158–623,y62–463. Change ONLY the framed picture to target x189–592,y82–443, around the same centre, an unmistakable 13.8% reduction in width and 9.5% reduction in height. Show newly exposed ochre wall around all four edges. Rebuild frame, glass, white paper border, and full uncropped cabin art as one naturally photographed object. Match reference 2's physical dimensions: outer 62.4×47.4 cm, paper60×45cm, art 4:3 (width:height1.333), oak1.2cm moulding, white border 2cm horizontal/1.5cm vertical. Do not squeeze or crop the cabin photo. Keep table/chairs/breakfast/window/curtain/wall/light/floor/camera identical to reference1. No other scene changes."
+            },
+            {
+              "path": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-morning-cabin-room-product-reference-size-test-02-rejected.png",
+              "generatedPath": "/Users/markdiffey/.codex/generated_images/01a0e90c-f512-77e3-b694-46940ffe165a/exec-358f4dbe-b92b-4e9d-90bb-2b354b21d605.png",
+              "orderedReferences": [
+                "/private/tmp/claude-501/-Users-markdiffey--superset-worktrees-markdiffey-co-uk-plant-substance/3c9e9cf5-2eff-4b9e-9fd1-d57305723aa5/scratchpad/markus-preview/public/images/products/morning-cabin-room-paper-45x60-2026-09-28.png",
+                "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-morning-cabin-room-fresh-products-test-02.png"
+              ],
+              "outerFrameBBoxApprox": [
+                190,
+                70,
+                585,
+                401
+              ],
+              "artBoxApprox": [
+                221,
+                99,
+                561,
+                373
+              ],
+              "artRatioApprox": 1.241,
+              "prompt": "Reference 2 is the breakfast-room photograph to edit and must remain the same. Reference 1 is the authoritative framed product: its oak exterior width:height is 62.4:47.4 =1.316, and its uncropped cabin PHOTO width:height is exactly 4:3=1.333. In reference 2 replace ONLY existing wall picture with that naturally photographed physical framed product, centred in its present location above breakfast table but smaller: outer bbox approximately x189–592,y82–443 in the 1122×1402 room. Distinctly reduce frame width from current 467px to ~403px and height from ~399px to ~361px; preserve all four edges of reference1 artwork and its even white margins. Avoid narrowing photo or frame to old 1.2-ish ratio. Keep EVERY other pixel of reference2 room/crop/lighting/furniture/food/curtain/window/floor unchanged. Coherent glazing/reflection and wall shadow. No extra objects or text."
+            }
+          ],
+          "qa": "Reject. Required native art ratio 1.333; best product-reference output about 1.241, about 7% too narrow. Nearly frontal frame cannot explain discrepancy."
+        }
+      ]
+    }
+  ],
+  "authorisation": "Mark explicitly approved precise geometry edits: yeah do what you need to do.",
+  "geometryCorrections": [
+    {
+      "slug": "through-the-willows",
+      "file": "Markus-through-the-willows-size-45x60-2026-09-28-test-04.png",
+      "paper": [
+        45,
+        60
+      ],
+      "outer": [
+        [
+          522,
+          98
+        ],
+        [
+          814,
+          78
+        ],
+        [
+          814,
+          483
+        ],
+        [
+          523,
+          477
+        ]
+      ],
+      "paperQuad": [
+        [
+          533,
+          107
+        ],
+        [
+          802,
+          90
+        ],
+        [
+          802,
+          473
+        ],
+        [
+          533,
+          468
+        ]
+      ],
+      "art": [
+        [
+          554,
+          129
+        ],
+        [
+          781,
+          117
+        ],
+        [
+          779,
+          449
+        ],
+        [
+          554,
+          447
+        ]
+      ],
+      "target": [
+        [
+          521,
+          97
+        ],
+        [
+          815,
+          82
+        ],
+        [
+          815,
+          479
+        ],
+        [
+          521,
+          476
+        ]
+      ],
+      "selected": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-through-the-willows-frame-geometry-final.png",
+      "source": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-through-the-willows-size-45x60-2026-09-28-test-04.png",
+      "sourceSha256": "3d48bdebe496f4832e74d824c550a4ee6eea9c55d5e4f6fd52e63ccbb3c2ba73",
+      "targetPaperQuad": [
+        [
+          528.1137084960938,
+          103.93389129638672
+        ],
+        [
+          807.2128295898438,
+          90.02275085449219
+        ],
+        [
+          807.2128295898438,
+          471.2950744628906
+        ],
+        [
+          528.1137084960938,
+          468.7757568359375
+        ]
+      ],
+      "targetArtQuad": [
+        [
+          537.0289306640625,
+          115.66841888427734
+        ],
+        [
+          797.505126953125,
+          103.19664001464844
+        ],
+        [
+          797.505126953125,
+          458.5174255371094
+        ],
+        [
+          537.0289306640625,
+          456.6773376464844
+        ]
+      ],
+      "artBox": [
+        537.0289306640625,
+        103.19664001464844,
+        797.505126953125,
+        458.5174255371094
+      ],
+      "method": "Continuous inverse image mapping of original generated frame, paper, photograph and glazing; shadow and small adjoining wall region follow; no replacement/source-art composite.",
+      "outsideEditRegionUnchanged": true,
+      "editRegionConvention": "Closed pixel-coordinate bounds; displacement fades to zero at boundary; Willows flowers below y489 untouched.",
+      "editRegion": [
+        480.0,
+        37.0,
+        856.0,
+        524.0
+      ],
+      "physicalOuterCm": [
+        47.4,
+        62.4
+      ],
+      "physicalArtworkCm": [
+        42.0,
+        56
+      ]
+    },
+    {
+      "slug": "pines-under-starlight",
+      "file": "Markus-pines-under-starlight-size-45x60-2026-09-28-test-03.png",
+      "paper": [
+        45,
+        60
+      ],
+      "outer": [
+        [
+          507,
+          139
+        ],
+        [
+          738,
+          121
+        ],
+        [
+          737,
+          450
+        ],
+        [
+          506,
+          448
+        ]
+      ],
+      "paperQuad": [
+        [
+          515,
+          147
+        ],
+        [
+          727,
+          131
+        ],
+        [
+          727,
+          442
+        ],
+        [
+          515,
+          442
+        ]
+      ],
+      "art": [
+        [
+          525,
+          157
+        ],
+        [
+          716,
+          143
+        ],
+        [
+          716,
+          430
+        ],
+        [
+          525,
+          430
+        ]
+      ],
+      "target": [
+        [
+          498,
+          133
+        ],
+        [
+          747,
+          117
+        ],
+        [
+          747,
+          451
+        ],
+        [
+          498,
+          451
+        ]
+      ],
+      "selected": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-pines-under-starlight-frame-geometry-final.png",
+      "source": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-pines-under-starlight-size-45x60-2026-09-28-test-03.png",
+      "sourceSha256": "0d52ef31605d101a7925c9747300c419e99fed331ff5c380e27756da429cd20a",
+      "targetPaperQuad": [
+        [
+          504.00909423828125,
+          138.73667907714844
+        ],
+        [
+          740.387451171875,
+          123.83980560302734
+        ],
+        [
+          740.387451171875,
+          444.5850830078125
+        ],
+        [
+          504.00909423828125,
+          444.877197265625
+        ]
+      ],
+      "targetArtQuad": [
+        [
+          511.5410461425781,
+          148.48220825195312
+        ],
+        [
+          732.1453857421875,
+          135.0337677001953
+        ],
+        [
+          732.1453857421875,
+          433.9207458496094
+        ],
+        [
+          511.5410461425781,
+          434.6476745605469
+        ]
+      ],
+      "artBox": [
+        511.5410461425781,
+        135.0337677001953,
+        732.1453857421875,
+        434.6476745605469
+      ],
+      "method": "Continuous inverse image mapping of original generated frame, paper, photograph and glazing; shadow and small adjoining wall region follow; no replacement/source-art composite.",
+      "outsideEditRegionUnchanged": true,
+      "editRegionConvention": "Closed pixel-coordinate bounds; displacement fades to zero at boundary; Willows flowers below y489 untouched.",
+      "editRegion": [
+        457.0,
+        76.0,
+        788.0,
+        492.0
+      ],
+      "physicalOuterCm": [
+        47.4,
+        62.4
+      ],
+      "physicalArtworkCm": [
+        42.0,
+        56
+      ]
+    },
+    {
+      "slug": "current-and-foam",
+      "file": "Markus-current-and-foam-product-reference-size-test-02-rejected.png",
+      "paper": [
+        45,
+        60
+      ],
+      "outer": [
+        [
+          469,
+          120
+        ],
+        [
+          731,
+          99
+        ],
+        [
+          731,
+          483
+        ],
+        [
+          468,
+          477
+        ]
+      ],
+      "paperQuad": [
+        [
+          477,
+          127
+        ],
+        [
+          723,
+          109
+        ],
+        [
+          722,
+          476
+        ],
+        [
+          477,
+          469
+        ]
+      ],
+      "art": [
+        [
+          491,
+          144
+        ],
+        [
+          705,
+          128
+        ],
+        [
+          705,
+          456
+        ],
+        [
+          491,
+          450
+        ]
+      ],
+      "target": [
+        [
+          449,
+          105
+        ],
+        [
+          748,
+          85
+        ],
+        [
+          748,
+          492
+        ],
+        [
+          449,
+          486
+        ]
+      ],
+      "selected": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-current-and-foam-frame-geometry-final.png",
+      "source": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-current-and-foam-product-reference-size-test-02-rejected.png",
+      "sourceSha256": "60f1bf4a49658ca896d234ab085b8d23ee7219e83e33ce32fb9cd06dc5bfef7e",
+      "targetPaperQuad": [
+        [
+          456.0975341796875,
+          111.86404418945312
+        ],
+        [
+          739.927734375,
+          93.3533706665039
+        ],
+        [
+          739.927734375,
+          484.02459716796875
+        ],
+        [
+          456.0975341796875,
+          478.8036193847656
+        ]
+      ],
+      "targetArtQuad": [
+        [
+          465.0018615722656,
+          123.53945922851562
+        ],
+        [
+          729.8765258789062,
+          107.00325012207031
+        ],
+        [
+          729.8765258789062,
+          470.8453369140625
+        ],
+        [
+          465.0018615722656,
+          466.7112731933594
+        ]
+      ],
+      "artBox": [
+        465.0018615722656,
+        107.00325012207031,
+        729.8765258789062,
+        470.8453369140625
+      ],
+      "method": "Continuous inverse image mapping of original generated frame, paper, photograph and glazing; shadow and small adjoining wall region follow; no replacement/source-art composite.",
+      "outsideEditRegionUnchanged": true,
+      "editRegionConvention": "Closed pixel-coordinate bounds; displacement fades to zero at boundary; Willows flowers below y489 untouched.",
+      "editRegion": [
+        408.0,
+        44.0,
+        789.0,
+        533.0
+      ],
+      "physicalOuterCm": [
+        47.4,
+        62.4
+      ],
+      "physicalArtworkCm": [
+        42.0,
+        56
+      ]
+    },
+    {
+      "slug": "morning-cabin-room",
+      "file": "Markus-morning-cabin-room-product-reference-size-test-02-rejected.png",
+      "paper": [
+        60,
+        45
+      ],
+      "outer": [
+        [
+          190,
+          70
+        ],
+        [
+          585,
+          89
+        ],
+        [
+          584,
+          387
+        ],
+        [
+          192,
+          403
+        ]
+      ],
+      "paperQuad": [
+        [
+          204,
+          82
+        ],
+        [
+          575,
+          98
+        ],
+        [
+          574,
+          379
+        ],
+        [
+          205,
+          391
+        ]
+      ],
+      "art": [
+        [
+          223,
+          99
+        ],
+        [
+          561,
+          113
+        ],
+        [
+          560,
+          364
+        ],
+        [
+          224,
+          373
+        ]
+      ],
+      "target": [
+        [
+          180,
+          70
+        ],
+        [
+          596,
+          89
+        ],
+        [
+          596,
+          387
+        ],
+        [
+          180,
+          403
+        ]
+      ],
+      "selected": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-morning-cabin-room-frame-geometry-final.png",
+      "source": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-morning-cabin-room-product-reference-size-test-02-rejected.png",
+      "sourceSha256": "bbad9ec721b583181ac57ecb5916e3b543e9913adfdb9c46b1a45fad7224ae38",
+      "targetPaperQuad": [
+        [
+          188.91944885253906,
+          78.81876373291016
+        ],
+        [
+          588.8263549804688,
+          96.23194122314453
+        ],
+        [
+          588.8263549804688,
+          379.71630859375
+        ],
+        [
+          188.91944885253906,
+          394.24554443359375
+        ]
+      ],
+      "targetArtQuad": [
+        [
+          203.69619750976562,
+          89.93707275390625
+        ],
+        [
+          576.805419921875,
+          105.18999481201172
+        ],
+        [
+          576.805419921875,
+          370.67156982421875
+        ],
+        [
+          203.69619750976562,
+          383.23382568359375
+        ]
+      ],
+      "artBox": [
+        203.69619750976562,
+        89.93707275390625,
+        576.805419921875,
+        383.23382568359375
+      ],
+      "method": "Continuous inverse image mapping of original generated frame, paper, photograph and glazing; shadow and small adjoining wall region follow; no replacement/source-art composite.",
+      "outsideEditRegionUnchanged": true,
+      "editRegionConvention": "Closed pixel-coordinate bounds; displacement fades to zero at boundary; Willows flowers below y489 untouched.",
+      "editRegion": [
+        139.0,
+        29.0,
+        637.0,
+        444.0
+      ],
+      "physicalOuterCm": [
+        62.4,
+        47.4
+      ],
+      "physicalArtworkCm": [
+        56,
+        42.0
+      ]
+    }
+  ],
+  "independentVisualReview": "All four geometry corrections inspected full-size and enlarged: no visible seams/broken rails. Soft identity boundary added after pixel audit; Willows flower cluster retained unchanged below y489.",
+  "verification": {
+    "focusedTests": "31 passing across five files",
+    "types": "tsc --noEmit passed",
+    "lint": "shop-scenes implementation and tests passed",
+    "browser": "40/40 product, EN/NO, desktop/mobile combinations passed on localhost:3031; offered size, unchanged price, review guards, visible current-size caption and both gallery images verified.",
+    "staleCaptions": "Zero previous-size captions across 20 EN/NO product pages.",
+    "assetAudit": "All 20 primary and room assets decode; all ten offered sizes, primary paths, source artwork, prices and publication/stock guards unchanged versus c79c0a3.",
+    "geometry": "Four corrected PNGs preserve pixels outside their closed edit regions, with identity taper at boundaries and Willows flowers unchanged below y489."
+  }
+}

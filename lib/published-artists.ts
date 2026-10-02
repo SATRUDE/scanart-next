@@ -1,5 +1,5 @@
 import { artists, type Artist } from '@/data/artists';
-import { getProductsByArtist } from '@/lib/products';
+import { getProductsByArtist, getShopProductsByArtist } from '@/lib/products';
 
 export type PublishedArtist = Artist & { printCount: number };
 
@@ -12,6 +12,16 @@ export async function getPublishedArtists(): Promise<PublishedArtist[]> {
   const out: PublishedArtist[] = [];
   for (const artist of artists) {
     const products = await getProductsByArtist(artist.id);
+    if (products.length > 0) out.push({ ...artist, printCount: products.length });
+  }
+  return out.sort((a, b) => b.printCount - a.printCount);
+}
+
+/** Artist navigation for the display-only preview catalogue. */
+export async function getShopArtists(): Promise<PublishedArtist[]> {
+  const out: PublishedArtist[] = [];
+  for (const artist of artists) {
+    const products = await getShopProductsByArtist(artist.id);
     if (products.length > 0) out.push({ ...artist, printCount: products.length });
   }
   return out.sort((a, b) => b.printCount - a.printCount);

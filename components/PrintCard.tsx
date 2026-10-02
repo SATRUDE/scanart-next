@@ -30,6 +30,7 @@ interface PrintCardProps {
     brand: string;
     artistId?: string;
     inStock: boolean;
+    published?: boolean;
   };
   currency?: 'GBP' | 'NOK' | 'USD' | 'DKK' | 'SEK';
   onClick?: () => void;
@@ -162,7 +163,9 @@ export const PrintCard: React.FC<PrintCardProps> = ({
             </>
           )}
         </p>
-        {!product.inStock && <p className="mt-1 type-caption">{outOfStockLabel}</p>}
+        {product.published === false
+          ? <p className="mt-1 type-caption">{locale === 'no' ? 'Kommer snart' : 'Coming soon'}</p>
+          : !product.inStock && <p className="mt-1 type-caption">{outOfStockLabel}</p>}
       </div>
     </div>
   );

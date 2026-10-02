@@ -124,6 +124,31 @@ export const categoryLandings: CategoryLanding[] = [
       },
     ],
   },
+  {
+    slug: 'photography',
+    category: 'Photography',
+    title: 'Nordic Photography Prints',
+    description: 'Photographic art prints by independent Nordic photographers. Explore landscapes, everyday places and quiet moments from the Nordics.',
+    heading: 'Photography Prints',
+    intro: 'A snow-covered yard after dark, a path through the trees, the last light over a northern road. These photographs draw attention to places and moments that are easy to pass by. Explore photographic prints by independent photographers working in the Nordics.',
+    intro2: 'Look closely at the light, textures and small details, then choose a photograph you want to spend time with. Each print page introduces the work and shows its available size and framing options.',
+    stylingHeading: 'Living with photographic prints',
+    stylingBody: 'Give a detailed photograph room to be seen up close, beside a favourite chair or on a wall you pass every day. A quiet landscape can sit comfortably among books and textiles. For a pair, look for a shared colour or quality of light, and leave enough space between the frames for each image to hold its own.',
+    faqs: [
+      {
+        question: 'What kinds of photographs are in the collection?',
+        answer: 'The collection brings together photographs of Nordic landscapes, nature and everyday places. The work ranges from open views to close observations of light and texture. Visit the photographer’s page to learn about the projects behind the pictures.',
+      },
+      {
+        question: 'What size are the photographic prints?',
+        answer: 'The available size is shown on each print page. Check the dimensions there before choosing a frame or planning a group of prints.',
+      },
+      {
+        question: 'How do I choose a frame for a photograph?',
+        answer: 'Consider the photograph alongside the colours and materials already in your room. A simple frame gives the image space to speak. Each print page shows the framing options available for that work.',
+      },
+    ],
+  },
 ];
 
 export function getCategoryLandingBySlug(slug: string): CategoryLanding | undefined {
@@ -134,4 +159,10 @@ export function getCategoryLandingBySlug(slug: string): CategoryLanding | undefi
 // homepage, nav and products filter all link to /category/<slug> consistently.
 export function getCategoryLandingByCategory(category: string): CategoryLanding | undefined {
   return categoryLandings.find(c => c.category === category);
+}
+
+/** Only link to landings that have products in the caller’s visible catalogue. */
+export function availableCategoryLandings(products: readonly { category: string }[]): CategoryLanding[] {
+  const categories = new Set(products.map(product => product.category));
+  return categoryLandings.filter(landing => categories.has(landing.category));
 }

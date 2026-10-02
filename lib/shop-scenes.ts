@@ -1,6 +1,17 @@
 // Curated ChatGPT scenes live outside the synced CMS snapshots so each build
 // preserves the latest selection. Original artwork images remain untouched.
-export interface ShopScene { image: string; alt: string; width: number; height: number }
+export interface DepictedPaperSize {
+  /** Catalogue size key, independent of how the paper is oriented in the room. */
+  catalogSize: string;
+  widthCm: number;
+  heightCm: number;
+}
+export interface DisplayedSceneSize {
+  depicted: DepictedPaperSize;
+  current: { widthCm: number; heightCm: number };
+  sameFormat: boolean;
+}
+export interface ShopScene { image: string; alt: string; width: number; height: number; depictedPaperSize?: DepictedPaperSize }
 const scene = (slug: string, alt: string, fresh = false): ShopScene => ({
   image: `/images/products/${slug}-room-${fresh ? 'chatgpt-' : ''}2026-09-23.avif`,
   alt, width: 1122, height: 1402,
@@ -33,6 +44,17 @@ export const shopScenes: Record<string, ShopScene> = {
   // A second scene of a print is keyed "<print>--<name>": articles can use it,
   // and the article page reads the print from the part before "--".
   'vinkveld--dining': { image: '/images/products/vinkveld-room-dining-2026-09-26.avif', alt: 'Vinkveld by Sia Siamos framed above a dining table against a peach wall', width: 1122, height: 1402 },
+  // Markus Naarttijärvi's rooms.
+  'through-the-willows': { image: '/images/products/through-the-willows-room-clean-rebuild-45x60-2026-09-28.avif', alt: 'Through the Willows above a black dining table with coffee, flowers, a cream rug and beige curtain.', width: 1122, height: 1402, depictedPaperSize: { catalogSize: '45x60cm', widthCm: 45, heightCm: 60 } },
+  'pines-under-starlight': { image: '/images/products/pines-under-starlight-room-clean-rebuild-45x60-2026-09-28.avif', alt: 'Pines Under Starlight above a pine bed with green striped bedding, burgundy bedside stool, white lamp and pale woven rug.', width: 1121, height: 1403, depictedPaperSize: { catalogSize: '45x60cm', widthCm: 45, heightCm: 60 } },
+  'boathouses-in-winter': { image: '/images/products/winter-yard-night-room-clean-rebuild-45x60-2026-09-28.avif', alt: 'Boathouses in winter above a cream reading chair and peach, navy and green checked rug beside a blue trolley in a sage green room.', width: 1122, height: 1402, depictedPaperSize: { catalogSize: '45x60cm', widthCm: 45, heightCm: 60 } },
+  'frozen-currents': { image: '/images/products/current-and-foam-room-clean-rebuild-45x60-2026-09-28.avif', alt: 'Frozen currents in a slim oak frame hangs above an olive modular desk and black chair in a softly lit Scandinavian workspace.', width: 1122, height: 1402, depictedPaperSize: { catalogSize: '45x60cm', widthCm: 45, heightCm: 60 } },
+  'the-road-at-sunset': { image: '/images/products/the-road-at-sunset-room-clean-rebuild-45x60-2026-09-28.avif', alt: 'The Road at Sunset in a slim oak frame hangs above a sage Enfold sideboard beside a coat stand in a sunlit tiled entry.', width: 1122, height: 1402, depictedPaperSize: { catalogSize: '45x60cm', widthCm: 45, heightCm: 60 } },
+  'sun-over-the-forest': { image: '/images/products/sun-over-the-forest-room-clean-rebuild-60x45-2026-09-28-v2.avif', alt: 'Sun Over the Forest in a slim oak frame above an olive modular sofa and cropped oak coffee table in a warm peach living-room vignette.', width: 1122, height: 1402, depictedPaperSize: { catalogSize: '45x60cm', widthCm: 60, heightCm: 45 } },
+  'swan-on-still-water': { image: '/images/products/swan-on-still-water-room-clean-rebuild-50x40-2026-09-28.avif', alt: 'Front view of the bedroom with green striped bedding and the swan print', width: 1122, height: 1402, depictedPaperSize: { catalogSize: '40x50cm', widthCm: 50, heightCm: 40 } },
+  'morning-cabin-room': { image: '/images/products/morning-cabin-room-room-clean-rebuild-60x45-2026-09-28.avif', alt: 'Morning Cabin Room in a slim oak frame hangs above a checked table set for breakfast in a sunlit Scandinavian dining room.', width: 1122, height: 1402, depictedPaperSize: { catalogSize: '45x60cm', widthCm: 60, heightCm: 45 } },
+  'path-through-the-trees': { image: '/images/products/path-through-the-trees-room-clean-rebuild-50x40-2026-09-28-v2.avif', alt: 'Path Through the Trees in a slim oak frame above a centred oak lounge chair and reading table, with a cropped bookcase and woven rug in a blue-green room.', width: 1122, height: 1402, depictedPaperSize: { catalogSize: '40x50cm', widthCm: 50, heightCm: 40 } },
+  'sheep-on-the-track': { image: '/images/products/sheep-on-the-track-room-clean-rebuild-40x50-2026-09-28-v2.avif', alt: 'Sheep on the Track in a slim oak frame above a Scandinavian breakfast table with pears, coffee, ceramics and open shelving beside a kitchen window.', width: 1122, height: 1402, depictedPaperSize: { catalogSize: '40x50cm', widthCm: 40, heightCm: 50 } },
   // Ishtar Bäcklund Dakhil's rooms (branch peggy/ishtar-artist-preview).
   stockholm: { image: '/images/products/stockholm-room.avif', alt: 'Stockholm by Ishtar Bäcklund Dakhil framed on a low black bench against a peach wall', width: 1122, height: 1402 },
   'frukt-och-gront': { image: '/images/products/frukt-och-gront-room.avif', alt: 'Frukt & Grönt by Ishtar Bäcklund Dakhil framed above a dining table in a blue kitchen', width: 1122, height: 1402 },
@@ -42,6 +64,34 @@ export const shopScenes: Record<string, ShopScene> = {
   'creature-among-blue-leaves': { image: '/images/products/creature-among-blue-leaves-room.avif', alt: 'Creature Among Blue Leaves by Ishtar Bäcklund Dakhil framed above a rattan sideboard', width: 1122, height: 1402 },
   'surfer-with-orange-sun': { image: '/images/products/surfer-with-orange-sun-room.avif', alt: 'Surfer with Orange Sun by Ishtar Bäcklund Dakhil framed above a red chair in a blue room', width: 1122, height: 1402 },
 };
+
+/** Only label a room image when it is this scene and its current size is known. */
+export function displayedScenePaperSize(
+  slug: string,
+  roomImageSrc: string | undefined,
+  offeredSizes: Record<string, boolean> | undefined
+): DisplayedSceneSize | undefined {
+  const scene = shopScenes[slug];
+  const depicted = scene?.depictedPaperSize;
+  if (scene?.image !== roomImageSrc || !depicted) return undefined;
+  const offered = Object.entries(offeredSizes ?? {}).filter(([, available]) => available).map(([size]) => size);
+  if (offered.includes(depicted.catalogSize)) {
+    return { depicted, current: { widthCm: depicted.widthCm, heightCm: depicted.heightCm }, sameFormat: true };
+  }
+  // With several different offered sizes, a room photo cannot identify which
+  // current option it illustrates. The Markus previews each offer one size.
+  if (offered.length !== 1) return undefined;
+  const dimensions = offered[0].match(/^(\d+)x(\d+)cm$/);
+  if (!dimensions) return undefined;
+  const short = Math.min(Number(dimensions[1]), Number(dimensions[2]));
+  const long = Math.max(Number(dimensions[1]), Number(dimensions[2]));
+  const landscape = depicted.widthCm > depicted.heightCm;
+  return {
+    depicted,
+    current: { widthCm: landscape ? long : short, heightCm: landscape ? short : long },
+    sameFormat: false,
+  };
+}
 
 export const articleSceneSlugs: Record<string, string> = {
   // Articles that carried April/August generated rooms now open on the

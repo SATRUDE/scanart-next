@@ -3,8 +3,9 @@ import { Header } from '@/components/Header';
 import { Cart } from '@/components/Cart';
 import { Footer } from '@/components/Footer';
 import { ScrollDepth } from '@/components/ScrollDepth';
-import { getAllProducts } from '@/lib/products';
+import { getShopProducts as getAllProducts } from '@/lib/products';
 import { buildSearchIndex } from '@/lib/search-index';
+import { availableCategoryLandings } from '@/lib/categories';
 import { getDeliveryGuide } from '@/lib/server/delivery-guide';
 import { BASE_URL, SITE_NAME } from '@/lib/site';
 import Script from 'next/script';
@@ -122,7 +123,7 @@ pintrk('page');`}
               which is what every page of a statically rendered site can offer;
               the site redeploys several times a week, so the only window where
               it can lag is a new year with no deploy in it. */}
-          <Footer year={new Date().getFullYear()} />
+          <Footer year={new Date().getFullYear()} categorySlugs={availableCategoryLandings(products).map(category => category.slug)} />
           <ScrollDepth />
         </Providers>
       </body>

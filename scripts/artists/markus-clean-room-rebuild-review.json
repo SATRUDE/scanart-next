@@ -1,0 +1,1736 @@
+{
+  "date": "2026-09-28",
+  "status": "All ten fresh room candidates integrated for unpublished preview review.",
+  "reason": "Mark rejected accumulated regeneration damage across all ten rooms, especially textiles and furniture.",
+  "method": "Fresh room bases from original artwork and clean catalogue/product references. Five selections use one local continuous frame geometry correction under prior explicit approval; Sun also has one fresh-base generative size edit. No previous damaged room used as starting input. Artwork generated inside the scene, not pasted afterward.",
+  "limitations": "Illustrative room photographs, not manufacturing proofs. Modest artwork/product reinterpretation and perspective variation remain. Exact generation prompts unavailable for Swan, Path, Road and Sun; recorded honestly in provenance.",
+  "generationSurface": "Built-in imagegen; model identifier unverified",
+  "commerce": "Existing smaller sizes and all effective retail print/frame prices unchanged; published=false, review=true, inStock=false.",
+  "caption": "Removed from both product-gallery implementations in commit 9f8c92b.",
+  "selections": [
+    {
+      "slug": "winter-yard-night",
+      "generationSurface": "built-in imagegen",
+      "model": "unverified",
+      "args": {
+        "referenced_image_paths": [
+          "/private/tmp/claude-501/-Users-markdiffey--superset-worktrees-markdiffey-co-uk-plant-substance/3c9e9cf5-2eff-4b9e-9fd1-d57305723aa5/scratchpad/markus-preview/public/images/products/winter-yard-night-paper-45x60-2026-09-28.png",
+          "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-pilot-2026-09-28/winter-yard-night-reference.png",
+          "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-fresh-products-2026-09-28/winter-references.png",
+          "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-winter-colourful-rug-2026-09-28/hay-ethan-cook-flat-works-peach-green-check-170x240.jpg"
+        ],
+        "prompt": "Generate a completely new4:5 portrait DSLR interior photograph from clean references. Ref1 exact framedprint,ref2 original photograph,ref3 individualcatalogueproducts/materials,ref4 exactrug. Not an edit of any earlier room. Integrate print during creation.\nA comfortable Scandinavian reading corner with supplied96cmwide AudoBrasilia oak/beige-boucle armchair near a leftwindow, suppliedblue RotateSC73 metal trolley at reachable rightside, burgundyCaret22cmhighlamp switched off on its top, books in lowercompartment, greyKlippan woolthrow loosely overonearm, anopenbook onseat. SuppliedEthanCook170x240flatweave rug with large peach/navy/green colourblocks underchair, exactsimpletwo-rowfour-column arrangement fromref4, right trolley wheels onconcreteoutsideedge. Greenpaintwall andconcretefloor materialfromboard, trim atfloor.\nThe EXACT ref1 framedproduct hangs abovechair near itswall. Paper45cmwide60high3:4, photograph42x56, narrow proportionalwhiteborder1.5cmsides2cmtopbottom,12mmoak outer47.4x62.4cmratio0.760. Its outerwidth is LESS THAN HALF the96cmchair width, allowingchairisclosertocamera. Camera nearlyfrontal soframewidth/height stays0.760, no skinny50x70shape. At1122pxcanvas plan chair about650pxwide,frame290pxwide382pxhigh, abovebackrest, plentywall. Full original coldnight yardphotograph: largebarnleft,smallerbuildingcentralleft,warmdoorlight,singlebrightstreetlight rightofcentre with slantingwire,snowforeground,treebackground. Allsourceedges maintained; no inventedmoon/newbuilding. Its internalstreetlight doesnotlightroom.\nOne leftwindowsoftneutraldaylight naturally brightensleftsurfaces/darkensright, limitedsunpatch onfloor if plausible. Glazingreflection subtle andgeometricallyconsistent withwindow/camera, roomlight onpaper,framecontactshadow; no decorativewhitebar or artificialwallpatch. Standing camera145cm,50mmequivalent,f8,lowISO, lightlydevelopedRAW. Clear fineboucleloops notembossedpatterns, softwoolfibres andnaturalfringe notmeltedwaves, matteflatwovenrug,legiblefurniturejoinery/contacts,metalcleansmooth, moderatecontrast. Preserveinhabitedasymmetry andmaterialtexture, no CGI/plastic/no sharpeninghalos/noextra furniture/no text/logos."
+      },
+      "source": "/Users/markdiffey/.codex/generated_images/01a0e7a7-58ff-7643-a0a4-20dc6d47481a/exec-4bf365b0-418a-495a-a16f-3d4529a8ac57.png",
+      "output": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-winter-yard-night-clean-rebuild-test-01.png",
+      "paper": [
+        45,
+        60
+      ],
+      "artBox": [
+        421,
+        100,
+        661,
+        417
+      ],
+      "qa": "Fresh resolved boucle/wool, intact chair/trolley, coloured rug retained. Outer frame about278x362 (~.768 vs .760); art240x317 (~.757 vs .750). Frame width43% of nearer96cm chair, plausible wall perspective. Minor catalogue drift: lamp appears somewhat oversized, added small dish/vase. Candidate for review, not manufacturing proof.",
+      "selected": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-winter-yard-night-clean-rebuild-test-01.png",
+      "sha256": "eb6d418050ca20f9313dd59f41c550c66aa01506a8f5eb96e19daa3eaac404c4",
+      "sceneAlt": "Winter Yard, Night above a cream reading chair and peach, navy and green checked rug beside a blue trolley in a sage green room.",
+      "previewAsset": "/images/products/winter-yard-night-room-clean-rebuild-45x60-2026-09-28.avif",
+      "pixelSize": [
+        1122,
+        1402
+      ]
+    },
+    {
+      "slug": "through-the-willows",
+      "generationSurface": "built-in imagegen",
+      "model": "unverified",
+      "args": {
+        "referenced_image_paths": [
+          "/private/tmp/claude-501/-Users-markdiffey--superset-worktrees-markdiffey-co-uk-plant-substance/3c9e9cf5-2eff-4b9e-9fd1-d57305723aa5/scratchpad/markus-preview/public/images/products/through-the-willows-paper-45x60-2026-09-28.png",
+          "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-pilot-2026-09-28/through-the-willows-reference.png",
+          "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-fresh-products-2026-09-28/willows-references.png",
+          "/Users/markdiffey/socialagent/.local-products/bd037b76-76cb-4b61-8e74-5961bf650288/001-ba5a42db-b53a-446f-9e1d-c7eaef6d7760.png",
+          "/Users/markdiffey/socialagent/.local-products/dd3b6873-dbf4-41a1-a8b1-0c2f6257e94f/000-51e8ad8f-33a0-4829-9b0c-ae73481c65bb.png"
+        ],
+        "prompt": "Create a NEW4:5 portrait editorial DSLR photograph of a lived-in Scandinavian diningcorner. Reference1 exactframedproduct,2 originalphotograph,3 individualcatalogue furniture/materialsamples,4 creamfleckedflatweaveHAYCrayonrug,5 smallclearAaltovase. Do NOT use a previousroomrender. Render artwork physically withinframe fromstart.\nOn softly yellowwall above a black90cmdiameter SK3rounddiningtable hangsref1,portrait45wide60highcmpaper,12mmoak outer47.4x62.4cmratio0.760. Narrowwhiteborders1.5cmsides2cmtopbottom,photograph42x56cm native3:4. Exact productshape. Framewidth onwall slightlyLESS THAN HALF table's90cmdiameter because table isnearercamera. Plan table top~670pxwide and frame~290pxwide382pxhigh at1122canvas, avoiding a skinnyframe. Whole goldenlakeshorephoto,willowbranchesleft,darkoverhangingcanopyright/top,singlebird inopensky,distantshore/riverbottom. Allsourceedgesretained,no crop/stretch/recomposition.\nTwo blackSK1chairs fromboard, recognizableopenback curvedarms, onepartlycropped. BlackFlowcupsandsaucerswithcoffee atreachableplaces, openbook ontable, smallclearwavyAaltovase withwater andfewlooseflowers onsparetableedge, belowframewithoutcoveringart. CreamCrayonrug170x240 underbothchairs/table withfinecolourflecks notbiggeometricpattern. Natural oakplankfloor fromboard,simplewhiteskirting,narrowbeigecurtain atleftwindow. Materialswatches onlyguidefloor/wall, do notinherit theirfurniture. Clearusablechairs/table, noadditionalstorageorart.\nStanding150cmcamera50mmequivalent, slightlyobliquetable butnearlyfrontalwall, straightverticals. Oneleftwindowneutraldaylight withmodestlocalsunlightpatch onfloor/wall physicallyreachable; softfalloff todarkerright. Restrainedplausiblecurtain/windowreflection in glass, framecastscontactshadow matchinglight, whitemarginslitlikeroom notscreen. Finewoodgrain, matteblackfinish, recognisable chairjoinery, realsofttextileweave, vesselglasswithrefraction, naturalsmallflowers. No crunchy embossedtextures, meltededges, paintedwater, duplicatedleaves, blownHDR or plasticyCGI. Preserve quietwall, inhabitedasymmetry. No labels/text/logos."
+      },
+      "source": "/Users/markdiffey/.codex/generated_images/01a0e7a7-58ff-7643-a0a4-20dc6d47481a/exec-bdf58bda-f2c9-4d0f-bb84-4c1fe3510390.png",
+      "output": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-through-the-willows-clean-rebuild-test-01.png",
+      "paper": [
+        45,
+        60
+      ],
+      "artBox": [
+        445,
+        96,
+        732,
+        490
+      ],
+      "qa": "Fresh clean table/chair joinery, cups/book/flowers, rug/curtain coherent. Outer336x445=.755 vs .760; art287x394=.728 vs .750 (~3%variation). Picture narrower than nearer90cm table, perspective plausible though table partly cropped. Rug texture/flecks coarser than catalogue, vase shape simplified. Candidate, not manufacturing proof.",
+      "selected": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-through-the-willows-clean-rebuild-test-01.png",
+      "sha256": "7dfaa305e636b8ec1f97ebfa67a6330614e789da96841c2b8bc143be3e6921d2",
+      "sceneAlt": "Through the Willows above a black dining table with coffee, flowers, a cream rug and beige curtain.",
+      "previewAsset": "/images/products/through-the-willows-room-clean-rebuild-45x60-2026-09-28.avif",
+      "pixelSize": [
+        1122,
+        1402
+      ]
+    },
+    {
+      "slug": "pines-under-starlight",
+      "source": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-pines-fresh-rebuild-test-04.png",
+      "selected": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-pines-fresh-rebuild-final.png",
+      "sourceSha256": "07b6d1933d23373261f5f4ba1639990a532bb94b5004b5d1352109865b981132",
+      "sourceOuterQuad": [
+        [
+          350,
+          248
+        ],
+        [
+          571,
+          248
+        ],
+        [
+          571,
+          553
+        ],
+        [
+          350,
+          553
+        ]
+      ],
+      "sourcePaperQuad": [
+        [
+          357,
+          255
+        ],
+        [
+          564,
+          255
+        ],
+        [
+          564,
+          547
+        ],
+        [
+          357,
+          547
+        ]
+      ],
+      "sourceArtQuad": [
+        [
+          365,
+          264
+        ],
+        [
+          556,
+          264
+        ],
+        [
+          556,
+          538
+        ],
+        [
+          365,
+          538
+        ]
+      ],
+      "targetOuterQuad": [
+        [
+          350,
+          255
+        ],
+        [
+          571,
+          255
+        ],
+        [
+          571,
+          545
+        ],
+        [
+          350,
+          545
+        ]
+      ],
+      "targetPaperQuad": [
+        [
+          355.5949401855469,
+          260.5769348144531
+        ],
+        [
+          565.4050903320312,
+          260.5769348144531
+        ],
+        [
+          565.4050903320312,
+          539.423095703125
+        ],
+        [
+          355.5949401855469,
+          539.423095703125
+        ]
+      ],
+      "targetArtQuad": [
+        [
+          362.5885925292969,
+          269.8717956542969
+        ],
+        [
+          558.411376953125,
+          269.8717956542969
+        ],
+        [
+          558.411376953125,
+          530.128173828125
+        ],
+        [
+          362.5885925292969,
+          530.128173828125
+        ]
+      ],
+      "artBox": [
+        362.5885925292969,
+        269.8717956542969,
+        558.411376953125,
+        530.128173828125
+      ],
+      "paper": [
+        45,
+        60
+      ],
+      "physicalOuterCm": [
+        47.4,
+        62.4
+      ],
+      "physicalArtworkCm": [
+        42,
+        56
+      ],
+      "editRegion": [
+        309.0,
+        207.0,
+        612.0,
+        594.0
+      ],
+      "outsideEditRegionUnchanged": true,
+      "method": "Continuous inverse image mapping of the original fresh generated whole frame, white paper, photograph and glazing with adjoining wall/shadow displacement fading to zero at ROI edge. No source-art paste or new generation.",
+      "script": "/tmp/correct-pines-fresh04-frame.py",
+      "generation": {
+        "args": {
+          "referenced_image_paths": [
+            "/private/tmp/claude-501/-Users-markdiffey--superset-worktrees-markdiffey-co-uk-plant-substance/3c9e9cf5-2eff-4b9e-9fd1-d57305723aa5/scratchpad/markus-preview/public/images/products/pines-under-starlight-paper-45x60-2026-09-28.png",
+            "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-remaining-seven-2026-09-28/pines-under-starlight-reference.png",
+            "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-remaining-seven-2026-09-28/pines-under-starlight-catalogue-board.jpg"
+          ],
+          "prompt": "Create a NEW Scandinavian bedroom photograph from scratch, portrait 4:5; do not reference or recreate any previous generated room. Reference 1 is the exact current framed product and the authority for its geometry; reference 2 is the complete original snowy-pine art; reference 3 is a board of individual real product/material examples, not a room to copy. Generate the art naturally inside the room photograph, under the same light and glass reflections, never paste it afterward.\n\nComposition: step back to show a full 205 cm pine single bed in SIDE VIEW across the room, including both end posts and the entire long wooden side rail. Its long side runs nearly horizontally from about x=285 to x=1090 on a 1122-pixel-wide portrait canvas, parallel and square to the pale-blue wall. The pillow is at the LEFT end. Set the real burgundy flecked Normann Bit stool by that pillow, fully inside the picture around x=115–260, carrying the real white-bowl stone-base Kizu lamp, also fully visible. Let a left window and beige curtain enter only at the left edge. A green narrow-striped cotton duvet naturally covers the bed, with matching pillow and an open book near the pillow. A pale-grey textured wool rug lies partly under the bed, with slippers in the walkway. Pine floorboards and white skirting; no extra artworks or unrelated furniture.\n\nHang the small framed Pines print over the LEFT pillow, around x=350–550, leaving calm wall around it. Its actual portrait paper is 45 cm wide and 60 cm tall, outer frame 47.4 × 62.4 cm with 12 mm oak rails. Near frontal view: visible OUTER frame width approximately 205–215 pixels and height approximately 270–282 pixels, ratio exactly 0.760; white paper ratio exactly 0.750; inner photograph 42 × 56 cm, ratio exactly 0.750. Do NOT draw a tall skinny rectangle. The frame width is 23% of the BED's 205 cm visible length, 1.32 times the fully visible 36 cm stool width, and 1.90 times the fully visible 25 cm lamp-bowl width, allowing for slight foreground perspective. White border 1.5 cm each side and 2 cm top/bottom, narrow and proportional. Preserve the entire source art: many stars, blue-black sky, high snow-covered pines to left and right, shorter central pine, snow foreground; no moon, crop, stretch or shifted tree silhouettes.\n\nEditorial real-interior atmosphere. Level standing camera about 150 cm, moderate lens, physically coherent side window daylight from the left with darker sheltered undersides and gentle shadow away from window. Fine distinct cotton stripe weave, wool rug loops, pine grain and glossy-flecked solid stool; coherent subdued glazing/reflection in the frame. No over-sharpened textile ripples, plastic smoothing, CGI or uniformly bright HDR. Slightly lived-in, believable photographic scale and material quality. No text, labels or logos."
+        },
+        "source": "/Users/markdiffey/.codex/generated_images/01a0e901-41ec-7e90-a156-7c200d6df8b2/exec-4c29127d-9636-430d-9cc0-d4413f23ff6c.png",
+        "saved": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-pines-fresh-rebuild-test-04.png",
+        "model": "unverified",
+        "qa": "Fresh from three clean references. Outer frame ~220x303 px ratio .726 vs target .760; art ~192x274 ratio .701 vs target .750 (~6.5% narrow). Physical scale by Bit stool top ~164 px => frame/stool1.34 target1.32; Kizu bowl ~110 px => frame/bowl2.0 target1.90. Bed extends right edge slightly so full bed not proven. Stool/Kizu fully visible. Fabrics somewhat artificially crisp. Hold, no integration."
+      },
+      "sha256": "eef60b90afc66f512109923fcb4674a09a6dfa7ca00375aa9753c0f33cdc674b",
+      "sceneAlt": "Pines Under Starlight above a pine bed with green striped bedding, burgundy bedside stool, white lamp and pale woven rug.",
+      "previewAsset": "/images/products/pines-under-starlight-room-clean-rebuild-45x60-2026-09-28.avif",
+      "pixelSize": [
+        1121,
+        1403
+      ]
+    },
+    {
+      "slug": "swan-on-still-water",
+      "selected": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-swan-on-still-water-fresh-rebuild-geometry-test-01.png",
+      "sha256": "b3597fd49e6c6bf803ffd81f738aaf8088b2e4525b07ca738f55fc92dff18b3e",
+      "pixelSize": [
+        1122,
+        1402
+      ],
+      "paperCm": [
+        50,
+        40
+      ],
+      "outerCm": [
+        52.4,
+        42.4
+      ],
+      "artBox": [
+        334.0038146972656,
+        221.16981506347656,
+        629.9961547851562,
+        458.8301696777344
+      ],
+      "sceneAlt": "Front view of the bedroom with green striped bedding and the swan print",
+      "source": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-swan-on-still-water-fresh-rebuild-50x40-test-02-rejected.png",
+      "references": [
+        "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-remakes-2026-09-28/swan-on-still-water-original.jpg",
+        "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-remakes-2026-09-28/swan-catalogue-board.png",
+        "/private/tmp/claude-501/-Users-markdiffey--superset-worktrees-markdiffey-co-uk-plant-substance/3c9e9cf5-2eff-4b9e-9fd1-d57305723aa5/scratchpad/markus-preview/public/images/products/swan-on-still-water-paper-40x50-2026-09-28.png"
+      ],
+      "promptKey": "earlier",
+      "promptRecord": "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-fresh-rebuild-2026-09-28/provenance-qa.json",
+      "geometryRecord": "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-fresh-rebuild-2026-09-28/geometry-records.json",
+      "qa": "Whole room clean. One continuous whole-frame warp to 52.4×42.4 cm outer and 47×37.6 cm artwork; no apparent seam. Source art composition, lone swan, mist, forest and reeds preserved. No artwork paste.",
+      "paper": [
+        50,
+        40
+      ],
+      "previewAsset": "/images/products/swan-on-still-water-room-clean-rebuild-50x40-2026-09-28.avif"
+    },
+    {
+      "slug": "path-through-the-trees",
+      "selected": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-path-through-the-trees-fresh-rebuild-geometry-test-01.png",
+      "sha256": "becabbe62937f11ed835724f32ee213e3d1e56272cc286b1ba68d60837ae30aa",
+      "pixelSize": [
+        1122,
+        1402
+      ],
+      "paperCm": [
+        50,
+        40
+      ],
+      "outerCm": [
+        52.4,
+        42.4
+      ],
+      "artBox": [
+        283.5610656738281,
+        185.867919921875,
+        554.4389038085938,
+        403.132080078125
+      ],
+      "sceneAlt": "Reading corner with oak lounge chair, bookshelves and blue-green wall",
+      "source": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-path-through-the-trees-fresh-rebuild-50x40-test-02.png",
+      "references": [
+        "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-remaining-seven-2026-09-28/path-through-the-trees-reference.png",
+        "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-remaining-seven-2026-09-28/path-through-the-trees-board.png",
+        "/private/tmp/claude-501/-Users-markdiffey--superset-worktrees-markdiffey-co-uk-plant-substance/3c9e9cf5-2eff-4b9e-9fd1-d57305723aa5/scratchpad/markus-preview/public/images/products/path-through-the-trees-paper-40x50-2026-09-28.png"
+      ],
+      "promptKey": "earlier",
+      "promptRecord": "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-fresh-rebuild-2026-09-28/provenance-qa.json",
+      "geometryRecord": "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-fresh-rebuild-2026-09-28/geometry-records.json",
+      "qa": "Whole room clean. One continuous whole-frame warp to 52.4×42.4 cm outer and 47×37.6 cm artwork; no apparent seam. Original winding wet boardwalk and forest maintained. White DLM table is empty; styling caveat.",
+      "paper": [
+        50,
+        40
+      ],
+      "previewAsset": "/images/products/path-through-the-trees-room-clean-rebuild-50x40-2026-09-28.avif"
+    },
+    {
+      "slug": "sheep-on-the-track",
+      "selected": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-sheep-on-the-track-fresh-rebuild-40x50-test-04.png",
+      "sha256": "401ff12141653e88226bd488c21816c1c385b2bb7f5141a929d3e8ca89289c25",
+      "pixelSize": [
+        1122,
+        1402
+      ],
+      "paperCm": [
+        40,
+        50
+      ],
+      "outerCm": [
+        42.4,
+        52.4
+      ],
+      "artBox": [
+        329,
+        127,
+        798,
+        721
+      ],
+      "sceneAlt": "Close view of the Little Architect drawing desk, ash chair and sheep print",
+      "source": "/Users/markdiffey/.codex/generated_images/01a0e900-1b5e-7a80-baaa-23ad9e78bb5d/exec-a663e6b4-e40e-4e7b-a6c1-f335b6af4545.png",
+      "references": [
+        "/private/tmp/claude-501/-Users-markdiffey--superset-worktrees-markdiffey-co-uk-plant-substance/3c9e9cf5-2eff-4b9e-9fd1-d57305723aa5/scratchpad/markus-preview/public/images/products/sheep-on-the-track-paper-40x50-2026-09-28.png",
+        "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-remaining-seven-2026-09-28/sheep-on-the-track-reference.png",
+        "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-remaining-seven-2026-09-28/sheep-on-the-track-board-lean.png"
+      ],
+      "promptKey": "sheep_test04",
+      "promptRecord": "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-fresh-rebuild-2026-09-28/provenance-qa.json",
+      "geometryRecord": null,
+      "qa": "Selected. Close desk view gives ~469×594 art pixels. All eight sheep visible individually in same relative arrangement; canopy and wet twin track retained. Outer frame ~556×681 ratio .816 against physical .809 (<1%). Art ~469×594 ratio .790 against .800 (~1.3%). Room textile/wood/light and furniture coherent. No geometry edit.",
+      "paper": [
+        40,
+        50
+      ],
+      "previewAsset": "/images/products/sheep-on-the-track-room-clean-rebuild-40x50-2026-09-28.avif"
+    },
+    {
+      "slug": "current-and-foam",
+      "fileNumber": 4,
+      "selected": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-current-and-foam-fresh-rebuild-test-02.png",
+      "nativeGeneration": "/Users/markdiffey/.codex/generated_images/01a0e90c-f512-77e3-b694-46940ffe165a/exec-dfab9efc-0837-4ee0-ab43-6a4aa3b4ae25.png",
+      "paperCm": [
+        45,
+        60
+      ],
+      "outerCm": [
+        47.4,
+        62.4
+      ],
+      "artCm": [
+        42,
+        56
+      ],
+      "outerQuadPx": [
+        [
+          426,
+          171
+        ],
+        [
+          692,
+          170
+        ],
+        [
+          692,
+          516
+        ],
+        [
+          426,
+          516
+        ]
+      ],
+      "artBoxPx": [
+        443,
+        188,
+        677,
+        500
+      ],
+      "references": [
+        "current-and-foam-paper-45x60-2026-09-28.png",
+        "Naarttijärvi-scandinavianart-4.jpg",
+        "current-and-foam-catalogue-board.jpg"
+      ],
+      "productIds": [
+        "ef51897f-52ed-4e8f-a034-a1a1ed7a1491",
+        "6f52497a-6a2f-4ac6-8ead-ea7cdc199a1e",
+        "8ceea884-662a-4a68-94c8-8bc2fabb30d2",
+        "4edff980-2dd0-4a84-a35f-f444d72fa4ce",
+        "21474df7-2085-49f3-8177-2268c321ce84",
+        "bd037b76-76cb-4b61-8e74-5961bf650288"
+      ],
+      "prompt": "Create a NEW photorealistic Scandinavian editorial interior photograph from scratch, vertical 4:5 room view. Reference 1 is the exact framed Current and Foam print: preserve the complete photograph without crop, with its correct 3:4 image shape, modest white paper margin and very slim 12 mm natural oak frame. Reference 2 is the original source artwork for visual identity, and reference 3 is a clean labelled catalogue board for furniture and materials. Do not imitate or reuse any old room render. Install the framed print at true physical scale: paper 45 cm wide × 60 cm high, oak outside 47.4 × 62.4 cm. Place it centered above a USM steel desk of verified width 115 cm; the outside frame should appear about 41% of the desk width on the same wall plane, not a giant feature poster. Preserve a believable 47.4:62.4 outside frame ratio and 3:4 artwork ratio, with narrow white borders. Include the referenced black HAY Rey chair and white Muuto Leaf table lamp, pale Chi wall, concrete floor, neutral Crayon rug. Calm sparse workspace, broad soft north window light from left, clean architectural lines, camera straight-on at standing eye level. High-end real interior photography with continuous fine wall/floor/furniture material texture, detailed natural shadows; no abstract surfaces, pasted artwork, stretched print, extra frames, text or logos.",
+      "sceneAlt": "Current and Foam in a slim oak frame hangs above an olive modular desk and black chair in a softly lit Scandinavian workspace.",
+      "qa": "Accepted. Clean full-room texture, complete art, native 3:4 art box about 234×312 px, exterior about 266×346 px. Frame width about 36% of visible desk width; slight camera and depth uncertainty.",
+      "paper": [
+        45,
+        60
+      ],
+      "artBox": [
+        443,
+        188,
+        677,
+        500
+      ],
+      "sha256": "6580a4c02f5b709e2e0df336efc90e60ff2477651df9586a690f6b95b9aa08e1",
+      "previewAsset": "/images/products/current-and-foam-room-clean-rebuild-45x60-2026-09-28.avif",
+      "pixelSize": [
+        1122,
+        1402
+      ]
+    },
+    {
+      "slug": "the-road-at-sunset",
+      "fileNumber": 5,
+      "selected": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-the-road-at-sunset-fresh-rebuild-geometry-test-03.png",
+      "nativeGeneration": "/Users/markdiffey/.codex/generated_images/01a0e90c-f512-77e3-b694-46940ffe165a/exec-c27abc57-2626-4e2e-acb2-31fa0b30836c.png",
+      "paperCm": [
+        45,
+        60
+      ],
+      "outerCm": [
+        47.4,
+        62.4
+      ],
+      "artCm": [
+        42,
+        56
+      ],
+      "outerQuadPx": [
+        [
+          426,
+          219
+        ],
+        [
+          672,
+          208
+        ],
+        [
+          672,
+          535
+        ],
+        [
+          426,
+          535
+        ]
+      ],
+      "artBoxPx": [
+        440,
+        225,
+        658,
+        519
+      ],
+      "geometryRecord": "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-remaining-seven-2026-09-28/road-fresh-geometry-records-test-03.json",
+      "references": [
+        "the-road-at-sunset-paper-45x60-2026-09-28.png",
+        "Naarttijärvi-scandinavianart-5.jpg",
+        "the-road-at-sunset-catalogue-board.jpg"
+      ],
+      "productIds": [
+        "17f72504-fbc7-4ecb-a729-6e8a3354ca71",
+        "3029577f-0fd9-45af-bc64-75291bd40dd5",
+        "4dd73ec9-7e50-44b3-a18b-a812b7b69df6",
+        "0ca68e7a-7020-418e-b4c3-77fe0a90d00f",
+        "e4473149-b539-49e3-841e-5d33d69f11b6",
+        "d5e1559e-5b52-45cf-8864-f16347bea80d"
+      ],
+      "prompt": null,
+      "promptNote": "Exact fresh-generation prompt was not retained in the session record. It specified the three clean references in order, 45×60 paper and 47.4×62.4 cm outside, narrow 12 mm oak, 3:4 uncropped art, size comparison to the 124.4 cm Enfold sideboard, and a new Scandinavian entry room from scratch.",
+      "sceneAlt": "The Road at Sunset in a slim oak frame hangs above a sage Enfold sideboard beside a coat stand in a sunlit tiled entry.",
+      "qa": "Accepted. Clean wall, coat stand, cabinet, rug and tile textures at full size. Local continuous frame geometry correction only; all pixels outside recorded edit region identical to fresh source. Perspective-adjusted art about 218×289 px, close to 3:4. Frame about 35% of visible sideboard width.",
+      "paper": [
+        45,
+        60
+      ],
+      "artBox": [
+        440,
+        225,
+        658,
+        519
+      ],
+      "sha256": "e25ad83e3b9bad06cae784e10d4ca1dae4356645e0acbe34686816d67dbaa361",
+      "previewAsset": "/images/products/the-road-at-sunset-room-clean-rebuild-45x60-2026-09-28.avif",
+      "pixelSize": [
+        1122,
+        1402
+      ]
+    },
+    {
+      "slug": "sun-over-the-forest",
+      "fileNumber": 6,
+      "selected": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-sun-over-the-forest-fresh-rebuild-geometry-test-02.png",
+      "nativeGeneration": "/Users/markdiffey/.codex/generated_images/01a0e90c-f512-77e3-b694-46940ffe165a/exec-5f6f309d-0913-43ac-b2b4-02349990f064.png",
+      "paperCm": [
+        60,
+        45
+      ],
+      "outerCm": [
+        62.4,
+        47.4
+      ],
+      "artCm": [
+        56,
+        42
+      ],
+      "outerQuadPx": [
+        [
+          525,
+          199
+        ],
+        [
+          787,
+          184
+        ],
+        [
+          788,
+          381
+        ],
+        [
+          525,
+          381
+        ]
+      ],
+      "artBoxPx": [
+        537,
+        196,
+        773,
+        371
+      ],
+      "geometryRecord": "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-remaining-seven-2026-09-28/four-fresh-geometry-records.json",
+      "references": [
+        "Naarttijärvi-scandinavianart-6.jpg",
+        "sun-over-the-forest-board.png"
+      ],
+      "productIds": [
+        "5d7a6a6c-adf5-4885-b69a-131a72a8f8c7",
+        "81c8757c-c932-41b0-a8f8-8918ad723264",
+        "bd037b76-76cb-4b61-8e74-5961bf650288",
+        "1d09566d-b848-4da5-bc8a-c968a716cc7f",
+        "a5ff73e8-5b21-4298-843d-d7cdb961f659",
+        "9087b12c-9476-4dab-b04d-104328416be5",
+        "5a53096f-ad8c-419f-983a-59d5f6f9e455",
+        "c3d7387d-0981-4e8f-8ab0-68d85e4030f3",
+        "1a8f321c-9517-4fb5-85a7-eb7a6cdd4dea"
+      ],
+      "prompt": null,
+      "promptNote": "Exact first-generation and one targeted size-edit prompts were not retained in the session record. References were original art and clean catalogue board for new room; targeted edit used the generated first room plus original art to shrink frame; no old room render. One subsequent deterministic local correction handled frame geometry.",
+      "sceneAlt": "Sun Over the Forest in a slim oak frame hangs above an olive sofa in a warm Scandinavian living room with a patterned rug.",
+      "qa": "Accepted by root after full-size review. Crisp sofa, wood, wall, rug and light; small frame at plausible physical scale. Local geometry operation left all pixels outside ROI identical to fresh size-edit source. Some generative reinterpretation of fine artwork texture remains; product primary retains exact original art.",
+      "paper": [
+        60,
+        45
+      ],
+      "artBox": [
+        537,
+        196,
+        773,
+        371
+      ],
+      "sha256": "62ba7b48ac9354119bc6a2fae496de875e621eb8ff24be74b352e298e99b95b2",
+      "previewAsset": "/images/products/sun-over-the-forest-room-clean-rebuild-60x45-2026-09-28.avif",
+      "pixelSize": [
+        1122,
+        1402
+      ]
+    },
+    {
+      "slug": "morning-cabin-room",
+      "fileNumber": 8,
+      "selected": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-morning-cabin-room-fresh-rebuild-test-02.png",
+      "nativeGeneration": "/Users/markdiffey/.codex/generated_images/01a0e90c-f512-77e3-b694-46940ffe165a/exec-646d7400-8089-42ec-9d88-bb301bca8711.png",
+      "paperCm": [
+        60,
+        45
+      ],
+      "outerCm": [
+        62.4,
+        47.4
+      ],
+      "artCm": [
+        56,
+        42
+      ],
+      "outerQuadPx": [
+        [
+          475,
+          274
+        ],
+        [
+          789,
+          273
+        ],
+        [
+          789,
+          515
+        ],
+        [
+          475,
+          515
+        ]
+      ],
+      "artBoxPx": [
+        491,
+        292,
+        773,
+        500
+      ],
+      "references": [
+        "morning-cabin-room-paper-45x60-2026-09-28.png",
+        "Naarttijärvi-scandinavianart-8.jpg",
+        "morning-cabin-room-board.png"
+      ],
+      "productIds": [
+        "b1e1be79-852c-4a38-998b-5b4f7043c8ac",
+        "4fd6d263-83dc-4c6a-b970-fe076115967d",
+        "d3de4b5b-25c3-4548-9078-3f0674585a1b",
+        "a98cf296-7d46-46ea-843c-f2c8b769a859",
+        "99cbc043-8637-4101-a377-8cbc30bb3946",
+        "5d1333b6-ddbc-456a-86da-fd42bbc31d1f",
+        "942b5c48-e6e5-4e9a-8279-931f9a53081f",
+        "fc134d8a-a69b-4970-a866-4840bfd95378"
+      ],
+      "prompt": "Create a NEW photorealistic Scandinavian editorial dining-room photograph from scratch, vertical 4:5 room view. Reference 1 is the exact framed Morning Cabin Room print: preserve the complete original photograph without crop or stretch, with its correct 4:3 landscape image shape, modest white paper margin and very slim 12 mm natural oak frame. Reference 2 is the original source artwork for visual identity, and reference 3 is a clean labelled catalogue board for furniture and materials. Do not imitate or reuse any old room render. Install the landscape framed print at true physical scale: paper 60 cm wide × 45 cm high, oak outside 62.4 × 47.4 cm. It hangs centered above the long wall side of an Artek dining table of verified length 182 cm; on that same wall plane the frame outside width should read about one third the table length. Preserve believable 62.4:47.4 outside frame ratio and 4:3 artwork ratio, with narrow white borders. Include the reference Artek chairs, blue-and-white checked tablecloth, blue ceramic cups, white plates, pale beige curtain, warm pale yellow wall and herringbone oak floor. Quiet lived-in Nordic breakfast room; side window with soft clear morning daylight; camera slightly oblique but art seen nearly straight-on; generous negative wall area around small print. High-end real interior photography with continuous fine wall, curtain, textile and wood texture, physically plausible shadows. No oversized artwork, elongated print, extra frames, text, logos, collage or fake flat backgrounds.",
+      "sceneAlt": "Morning Cabin Room in a slim oak frame hangs above a checked table set for breakfast in a sunlit Scandinavian dining room.",
+      "qa": "Accepted. Clean room, checked textile, light, and uncropped artwork; art about 282×208 px, 1.356 vs 1.333, within roughly 2% allowing perspective. Exterior about 314×242 px, 1.298 vs 1.316. Frame may read slightly large against visible table from oblique camera.",
+      "paper": [
+        60,
+        45
+      ],
+      "artBox": [
+        491,
+        292,
+        773,
+        500
+      ],
+      "sha256": "7a3ed8f4e69c05ed3127f2a794ea124d2b4fcebf557c8f028cbe4308bb8cf8e3",
+      "previewAsset": "/images/products/morning-cabin-room-room-clean-rebuild-60x45-2026-09-28.avif",
+      "pixelSize": [
+        1122,
+        1402
+      ]
+    }
+  ],
+  "supportingRecords": {
+    "threeProvenance": {
+      "date": "2026-09-28",
+      "method": "Fresh built-in imagegen from product, source artwork and catalogue boards, never earlier room render; selected Swan and Path then one measured continuous inverse warp of whole framed object only.",
+      "references": {
+        "swan": [
+          "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-remakes-2026-09-28/swan-on-still-water-original.jpg",
+          "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-remakes-2026-09-28/swan-catalogue-board.png",
+          "/private/tmp/claude-501/-Users-markdiffey--superset-worktrees-markdiffey-co-uk-plant-substance/3c9e9cf5-2eff-4b9e-9fd1-d57305723aa5/scratchpad/markus-preview/public/images/products/swan-on-still-water-paper-40x50-2026-09-28.png"
+        ],
+        "path": [
+          "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-remaining-seven-2026-09-28/path-through-the-trees-reference.png",
+          "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-remaining-seven-2026-09-28/path-through-the-trees-board.png",
+          "/private/tmp/claude-501/-Users-markdiffey--superset-worktrees-markdiffey-co-uk-plant-substance/3c9e9cf5-2eff-4b9e-9fd1-d57305723aa5/scratchpad/markus-preview/public/images/products/path-through-the-trees-paper-40x50-2026-09-28.png"
+        ],
+        "sheep": [
+          "/private/tmp/claude-501/-Users-markdiffey--superset-worktrees-markdiffey-co-uk-plant-substance/3c9e9cf5-2eff-4b9e-9fd1-d57305723aa5/scratchpad/markus-preview/public/images/products/sheep-on-the-track-paper-40x50-2026-09-28.png",
+          "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-remaining-seven-2026-09-28/sheep-on-the-track-reference.png",
+          "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-remaining-seven-2026-09-28/sheep-on-the-track-board-lean.png"
+        ]
+      },
+      "prompts": {
+        "sheep_test03": "Create one entirely NEW, photorealistic premium Scandinavian art-shop room photograph. This is a fresh room generation, not an edit of any prior rendered room. Three references: image 1 is the exact finished framed product and governs the print geometry, narrow white border, thin natural-oak frame and original artwork; image 2 is the full-resolution artwork and governs every photographic detail inside the frame; image 3 is a product/material board and governs only the named furniture and materials, not its pictured rooms. Place the image-1 print as a real glass-fronted wall object in a calm child's drawing/study corner. The real paper is precisely 40 cm wide by 50 cm high, portrait 4:5. The natural oak moulding is 12 mm each side, so the visible outside frame is about 42.4 by 52.4 cm, width:height 0.809. Paper and artwork must NOT become a skinny portrait. Keep the art's uncropped 4:5 photograph with proportional narrow white margin (about 1.5 cm each side and 1.875 cm at top and bottom, leaving 37 by 46.25 cm artwork). The photo is the original scene under a dense, near-black leafy tree arch opening onto a clearing, with a damp two-rut track and puddles leading forward. Preserve the EXACT sheep group from reference 2: eight sheep as visible, including the small pale sheep in the distant left clearing, the light sheep near the left foreground, the large dark one near the centre foreground, the dark one standing at right, and the clustered dark animals behind. Maintain their relative positions and scale. Do not simplify to a generic flock, invent sheep, alter the track, remove foliage, crop, stretch or recolour the art. Room: left-side wall of soft off-white Chi limewash, honest honey oak plank floor, large ivory looped-wool rug with individually visible yarn loops. Under and beside the framed print, the exact Ferm Living Little Architect yellow table and ash child's chair from board. One restrained set of pencils and paper on the table; natural rattan apple basket on the floor. Natural window daylight from off camera right, contact shadows, subtle wall and glazing reflections. Straight architectural walls, table/chair legs structurally sound and square, rug texture not melted. Quiet high-end editorial interior photograph, 35 mm lens at child-height-to-mid-height with enough wall and floor visible to judge physical scale. No people, no other wall art, no text, no floating objects, no decorative sheep toy. Crucially: the framed object's outer rectangle must remain 42.4:52.4 and the inner photographed image 4:5 in the finished room view.",
+        "earlier": "Exact earlier tool-call prompts were not retained in filesystem; their reference order, concepts and output paths are recorded in this file.",
+        "sheep_test04": "Create a NEW photorealistic close editorial interior photograph of a child's drawing desk, as a fresh image generation. Never use any earlier rendered room. Reference image 1 is the exact framed wall product; reference 2 is the original source artwork; reference 3 supplies the exact named furniture/material pieces only. The hero is the actual framed print from image 1, large in the photograph, occupying approximately 500 pixels width and 620 pixels height on a 1122×1402 output. The framed print is physical 40×50 cm paper, portrait 4:5, with 12 mm natural oak rails, so its OUTER dimensions are exactly 42.4 cm wide by 52.4 cm high, outer ratio 0.809. Its inner original photograph stays 4:5 without crop, stretch or recomposition; use a narrow proportional white border about 1.5 cm horizontally and 1.875 cm vertically. Put this framed print flat on the wall above the exact mustard-yellow Ferm Living Little Architect child's table, with a small part of the ash child's chair visible from the right and the natural woven rattan apple basket partly visible at bottom left. Camera is substantially closer than a full-room shot, nearly straight-on, so the print has enough resolved pixels for artwork fidelity. Desk may crop at sides or bottom naturally, but framed print is fully shown. Keep room sparse, tactile and honest: off-white softly textured wall, honey oak plank floor glimpse, natural daylight from window off camera right, pencil pot and one sheet of drawing paper. Do not add other wall art, toy sheep, people or text. \nArt fidelity is the top priority. The photograph INSIDE the frame must match reference 2 as closely as possible. It has a nearly black leafy canopy arch over a pale clearing, a green damp TWO-RUT track with visible puddle reflections, dark foliage at both sides and bottom, and EXACTLY EIGHT separate sheep in the original relative locations: a small distant pale sheep at rear far left; the light sheep on the left foreground track; a large dark sheep in the centre-right foreground; a dark sheep standing at right side; and four more dark/mottled sheep in the middle cluster between those. Preserve the eight bodies individually, their spacing and orientation as seen in reference 2. Do not turn them into blotches, remove one, change species, or invent extra sheep. Do not brighten or stylise the dark woodland. Keep thin oak frame corners square, white border straight and evenly proportioned, wall shadow and glass reflection subtle. Real wood grain, crisp furniture joinery, no melted surfaces."
+      },
+      "candidates": {
+        "swan": {
+          "path": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-swan-on-still-water-fresh-rebuild-geometry-test-01.png",
+          "source": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-swan-on-still-water-fresh-rebuild-50x40-test-02-rejected.png",
+          "qa": "Whole room clean. One continuous whole-frame warp to 52.4×42.4 cm outer and 47×37.6 cm artwork; no apparent seam. Source art composition, lone swan, mist, forest and reeds preserved. No artwork paste.",
+          "sceneAlt": "Front view of the bedroom with green striped bedding and the swan print"
+        },
+        "path": {
+          "path": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-path-through-the-trees-fresh-rebuild-geometry-test-01.png",
+          "source": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-path-through-the-trees-fresh-rebuild-50x40-test-02.png",
+          "qa": "Whole room clean. One continuous whole-frame warp to 52.4×42.4 cm outer and 47×37.6 cm artwork; no apparent seam. Original winding wet boardwalk and forest maintained. White DLM table is empty; styling caveat.",
+          "sceneAlt": "Reading corner with oak lounge chair, bookshelves and blue-green wall"
+        },
+        "sheep": {
+          "path": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-sheep-on-the-track-fresh-rebuild-40x50-test-04.png",
+          "source": "/Users/markdiffey/.codex/generated_images/01a0e900-1b5e-7a80-baaa-23ad9e78bb5d/exec-a663e6b4-e40e-4e7b-a6c1-f335b6af4545.png",
+          "qa": "Selected. Close desk view gives ~469×594 art pixels. All eight sheep visible individually in same relative arrangement; canopy and wet twin track retained. Outer frame ~556×681 ratio .816 against physical .809 (<1%). Art ~469×594 ratio .790 against .800 (~1.3%). Room textile/wood/light and furniture coherent. No geometry edit.",
+          "sceneAlt": "Close view of the Little Architect drawing desk, ash chair and sheep print"
+        }
+      },
+      "geometryRecord": "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-fresh-rebuild-2026-09-28/geometry-records.json",
+      "geometryScript": "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-fresh-rebuild-2026-09-28/correct_swan_path.py"
+    },
+    "threeGeometry": [
+      {
+        "slug": "swan-on-still-water",
+        "file": "Markus-swan-on-still-water-fresh-rebuild-50x40-test-02-rejected.png",
+        "paper": [
+          50,
+          40
+        ],
+        "outer": [
+          [
+            303,
+            206
+          ],
+          [
+            661,
+            206
+          ],
+          [
+            661,
+            474
+          ],
+          [
+            303,
+            474
+          ]
+        ],
+        "paperQuad": [
+          [
+            310,
+            213
+          ],
+          [
+            653,
+            213
+          ],
+          [
+            653,
+            466
+          ],
+          [
+            310,
+            466
+          ]
+        ],
+        "art": [
+          [
+            319,
+            222
+          ],
+          [
+            646,
+            222
+          ],
+          [
+            646,
+            458
+          ],
+          [
+            319,
+            458
+          ]
+        ],
+        "target": [
+          [
+            317,
+            206
+          ],
+          [
+            647,
+            206
+          ],
+          [
+            647,
+            474
+          ],
+          [
+            317,
+            474
+          ]
+        ],
+        "selected": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-swan-on-still-water-fresh-rebuild-geometry-test-01.png",
+        "source": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-swan-on-still-water-fresh-rebuild-50x40-test-02-rejected.png",
+        "sourceSha256": "9cb9e2d421790baea0c030e537a953855a4a065a626ce9795a873feefd2d3ffa",
+        "targetPaperQuad": [
+          [
+            324.5572509765625,
+            213.58489990234375
+          ],
+          [
+            639.4427490234375,
+            213.58489990234375
+          ],
+          [
+            639.4427490234375,
+            466.41510009765625
+          ],
+          [
+            324.5572509765625,
+            466.41510009765625
+          ]
+        ],
+        "targetArtQuad": [
+          [
+            334.0038146972656,
+            221.16981506347656
+          ],
+          [
+            629.9961547851562,
+            221.16981506347656
+          ],
+          [
+            629.9961547851562,
+            458.8301696777344
+          ],
+          [
+            334.0038146972656,
+            458.8301696777344
+          ]
+        ],
+        "artBox": [
+          334.0038146972656,
+          221.16981506347656,
+          629.9961547851562,
+          458.8301696777344
+        ],
+        "method": "Continuous inverse image mapping of original generated frame, paper, photograph and glazing; shadow and small adjoining wall region follow; no replacement/source-art composite.",
+        "outsideEditRegionUnchanged": true,
+        "editRegionConvention": "Closed pixel-coordinate bounds; displacement fades to zero within final six pixels at edit boundary.",
+        "editRegion": [
+          262.0,
+          165.0,
+          702.0,
+          515.0
+        ],
+        "physicalOuterCm": [
+          52.4,
+          42.4
+        ],
+        "physicalArtworkCm": [
+          47.0,
+          37.6
+        ]
+      },
+      {
+        "slug": "path-through-the-trees",
+        "file": "Markus-path-through-the-trees-fresh-rebuild-50x40-test-02.png",
+        "paper": [
+          50,
+          40
+        ],
+        "outer": [
+          [
+            262,
+            172
+          ],
+          [
+            576,
+            172
+          ],
+          [
+            576,
+            417
+          ],
+          [
+            262,
+            417
+          ]
+        ],
+        "paperQuad": [
+          [
+            268,
+            179
+          ],
+          [
+            569,
+            179
+          ],
+          [
+            569,
+            410
+          ],
+          [
+            268,
+            410
+          ]
+        ],
+        "art": [
+          [
+            278,
+            189
+          ],
+          [
+            558,
+            189
+          ],
+          [
+            558,
+            400
+          ],
+          [
+            278,
+            400
+          ]
+        ],
+        "target": [
+          [
+            268,
+            172
+          ],
+          [
+            570,
+            172
+          ],
+          [
+            570,
+            417
+          ],
+          [
+            268,
+            417
+          ]
+        ],
+        "selected": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-path-through-the-trees-fresh-rebuild-geometry-test-01.png",
+        "source": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-path-through-the-trees-fresh-rebuild-50x40-test-02.png",
+        "sourceSha256": "f5b7862cba3602585a06bb6c68e2922b07aa8173d435aa9022bee3cdc14725ce",
+        "targetPaperQuad": [
+          [
+            274.916015625,
+            178.9339599609375
+          ],
+          [
+            563.083984375,
+            178.9339599609375
+          ],
+          [
+            563.083984375,
+            410.0660400390625
+          ],
+          [
+            274.916015625,
+            410.0660400390625
+          ]
+        ],
+        "targetArtQuad": [
+          [
+            283.5610656738281,
+            185.867919921875
+          ],
+          [
+            554.4389038085938,
+            185.867919921875
+          ],
+          [
+            554.4389038085938,
+            403.132080078125
+          ],
+          [
+            283.5610656738281,
+            403.132080078125
+          ]
+        ],
+        "artBox": [
+          283.5610656738281,
+          185.867919921875,
+          554.4389038085938,
+          403.132080078125
+        ],
+        "method": "Continuous inverse image mapping of original generated frame, paper, photograph and glazing; shadow and small adjoining wall region follow; no replacement/source-art composite.",
+        "outsideEditRegionUnchanged": true,
+        "editRegionConvention": "Closed pixel-coordinate bounds; displacement fades to zero within final six pixels at edit boundary.",
+        "editRegion": [
+          221.0,
+          131.0,
+          617.0,
+          458.0
+        ],
+        "physicalOuterCm": [
+          52.4,
+          42.4
+        ],
+        "physicalArtworkCm": [
+          47.0,
+          37.6
+        ]
+      }
+    ],
+    "roadGeometry": [
+      {
+        "slug": "the-road-at-sunset",
+        "file": "Markus-the-road-at-sunset-fresh-rebuild-test-02.png",
+        "paper": [
+          45,
+          60
+        ],
+        "outer": [
+          [
+            433,
+            219
+          ],
+          [
+            664,
+            208
+          ],
+          [
+            665,
+            535
+          ],
+          [
+            433,
+            535
+          ]
+        ],
+        "paperQuad": [
+          [
+            439,
+            225
+          ],
+          [
+            658,
+            216
+          ],
+          [
+            658,
+            528
+          ],
+          [
+            440,
+            527
+          ]
+        ],
+        "art": [
+          [
+            449,
+            238
+          ],
+          [
+            647,
+            229
+          ],
+          [
+            647,
+            514
+          ],
+          [
+            449,
+            514
+          ]
+        ],
+        "target": [
+          [
+            426,
+            219
+          ],
+          [
+            672,
+            208
+          ],
+          [
+            672,
+            535
+          ],
+          [
+            426,
+            535
+          ]
+        ],
+        "source": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-the-road-at-sunset-fresh-rebuild-test-02.png",
+        "sourceSha256": "bb20cd95b091a825d8cc4f9d7586f3488f60257118cb1f2661ce962b0084cc67",
+        "output": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-the-road-at-sunset-fresh-rebuild-geometry-test-03.png",
+        "dimensions": [
+          1122,
+          1402
+        ],
+        "targetPaperQuad": [
+          [
+            432.0234680175781,
+            224.81275939941406
+          ],
+          [
+            665.56103515625,
+            214.5708465576172
+          ],
+          [
+            665.56103515625,
+            528.7171020507812
+          ],
+          [
+            432.0234680175781,
+            528.9179077148438
+          ]
+        ],
+        "targetArtQuad": [
+          [
+            439.5672912597656,
+            234.62957763671875
+          ],
+          [
+            657.5282592773438,
+            225.38316345214844
+          ],
+          [
+            657.5282592773438,
+            518.2639770507812
+          ],
+          [
+            439.5672912597656,
+            518.7637329101562
+          ]
+        ],
+        "targetArtBox": [
+          439.5672912597656,
+          225.38316345214844,
+          657.5282592773438,
+          518.7637329101562
+        ],
+        "physicalOuterCm": [
+          47.4,
+          62.4
+        ],
+        "physicalArtCm": [
+          42.0,
+          56
+        ],
+        "editRegion": [
+          385.0,
+          167.0,
+          713.0,
+          576.0
+        ],
+        "outsideEditRegionUnchanged": true,
+        "method": "Continuous local inverse mapping of original generated artwork, paper, oak, glazing, shadow and adjacent wall; no source-photo paste."
+      }
+    ],
+    "sunGeometry": [
+      {
+        "slug": "current-and-foam",
+        "file": "Markus-current-and-foam-fresh-rebuild-test-01.png",
+        "paper": [
+          45,
+          60
+        ],
+        "outer": [
+          [
+            491,
+            129
+          ],
+          [
+            822,
+            100
+          ],
+          [
+            822,
+            575
+          ],
+          [
+            491,
+            574
+          ]
+        ],
+        "paperQuad": [
+          [
+            500,
+            136
+          ],
+          [
+            813,
+            109
+          ],
+          [
+            813,
+            565
+          ],
+          [
+            500,
+            565
+          ]
+        ],
+        "art": [
+          [
+            522,
+            160
+          ],
+          [
+            787,
+            139
+          ],
+          [
+            787,
+            540
+          ],
+          [
+            522,
+            539
+          ]
+        ],
+        "target": [
+          [
+            491,
+            129
+          ],
+          [
+            822,
+            100
+          ],
+          [
+            822,
+            535
+          ],
+          [
+            491,
+            554
+          ]
+        ],
+        "source": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-current-and-foam-fresh-rebuild-test-01.png",
+        "sourceSha256": "4544ce44ed9d6d53c948e1a123019e621db4f05222df6df34cc2cf38cf6a87ec",
+        "output": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-current-and-foam-fresh-rebuild-geometry-test-02.png",
+        "dimensions": [
+          1122,
+          1402
+        ],
+        "targetPaperQuad": [
+          [
+            499.1918640136719,
+            136.46011352539062
+          ],
+          [
+            813.4281616210938,
+            109.11141204833984
+          ],
+          [
+            813.4281616210938,
+            527.1316528320312
+          ],
+          [
+            499.1918640136719,
+            545.3519287109375
+          ]
+        ],
+        "targetArtQuad": [
+          [
+            509.4451599121094,
+            149.20741271972656
+          ],
+          [
+            802.727783203125,
+            123.96633911132812
+          ],
+          [
+            802.727783203125,
+            513.8284301757812
+          ],
+          [
+            509.4451599121094,
+            531.1177368164062
+          ]
+        ],
+        "targetArtBox": [
+          509.4451599121094,
+          123.96633911132812,
+          802.727783203125,
+          531.1177368164062
+        ],
+        "physicalOuterCm": [
+          47.4,
+          62.4
+        ],
+        "physicalArtCm": [
+          42.0,
+          56
+        ],
+        "editRegion": [
+          450.0,
+          59.0,
+          863.0,
+          616.0
+        ],
+        "outsideEditRegionUnchanged": true,
+        "method": "Continuous local inverse mapping of original generated artwork, paper, oak, glazing, shadow and adjacent wall; no source-photo paste."
+      },
+      {
+        "slug": "the-road-at-sunset",
+        "file": "Markus-the-road-at-sunset-fresh-rebuild-test-01.png",
+        "paper": [
+          45,
+          60
+        ],
+        "outer": [
+          [
+            375,
+            119
+          ],
+          [
+            702,
+            100
+          ],
+          [
+            703,
+            590
+          ],
+          [
+            375,
+            588
+          ]
+        ],
+        "paperQuad": [
+          [
+            383,
+            126
+          ],
+          [
+            695,
+            108
+          ],
+          [
+            695,
+            581
+          ],
+          [
+            384,
+            581
+          ]
+        ],
+        "art": [
+          [
+            400,
+            151
+          ],
+          [
+            676,
+            133
+          ],
+          [
+            676,
+            556
+          ],
+          [
+            400,
+            553
+          ]
+        ],
+        "target": [
+          [
+            424,
+            190
+          ],
+          [
+            654,
+            180
+          ],
+          [
+            654,
+            483
+          ],
+          [
+            424,
+            493
+          ]
+        ],
+        "source": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-the-road-at-sunset-fresh-rebuild-test-01.png",
+        "sourceSha256": "535980af2292f6fe2fa6957065685b322f47668455d51a565cb01ca3d7cca936",
+        "output": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-the-road-at-sunset-fresh-rebuild-geometry-test-02.png",
+        "dimensions": [
+          1122,
+          1402
+        ],
+        "targetPaperQuad": [
+          [
+            429.8227844238281,
+            195.57376098632812
+          ],
+          [
+            648.1771850585938,
+            186.08009338378906
+          ],
+          [
+            648.1771850585938,
+            477.4262390136719
+          ],
+          [
+            429.8227844238281,
+            486.919921875
+          ]
+        ],
+        "targetArtQuad": [
+          [
+            437.10125732421875,
+            204.96884155273438
+          ],
+          [
+            640.8987426757812,
+            196.1080780029297
+          ],
+          [
+            640.8987426757812,
+            468.0311584472656
+          ],
+          [
+            437.10125732421875,
+            476.89190673828125
+          ]
+        ],
+        "targetArtBox": [
+          437.10125732421875,
+          196.1080780029297,
+          640.8987426757812,
+          476.89190673828125
+        ],
+        "physicalOuterCm": [
+          47.4,
+          62.4
+        ],
+        "physicalArtCm": [
+          42.0,
+          56
+        ],
+        "editRegion": [
+          334.0,
+          59.0,
+          744.0,
+          631.0
+        ],
+        "outsideEditRegionUnchanged": true,
+        "method": "Continuous local inverse mapping of original generated artwork, paper, oak, glazing, shadow and adjacent wall; no source-photo paste."
+      },
+      {
+        "slug": "sun-over-the-forest",
+        "file": "Markus-sun-over-the-forest-fresh-rebuild-size-test-02.png",
+        "paper": [
+          60,
+          45
+        ],
+        "outer": [
+          [
+            525,
+            199
+          ],
+          [
+            787,
+            184
+          ],
+          [
+            788,
+            381
+          ],
+          [
+            525,
+            381
+          ]
+        ],
+        "paperQuad": [
+          [
+            531,
+            205
+          ],
+          [
+            781,
+            191
+          ],
+          [
+            781,
+            375
+          ],
+          [
+            532,
+            375
+          ]
+        ],
+        "art": [
+          [
+            544,
+            216
+          ],
+          [
+            767,
+            202
+          ],
+          [
+            767,
+            361
+          ],
+          [
+            544,
+            361
+          ]
+        ],
+        "target": [
+          [
+            525,
+            199
+          ],
+          [
+            787,
+            184
+          ],
+          [
+            788,
+            381
+          ],
+          [
+            525,
+            381
+          ]
+        ],
+        "source": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-sun-over-the-forest-fresh-rebuild-size-test-02.png",
+        "sourceSha256": "22afa0ac21f66c08d472fcb569c60d3c4ecb540264d9933fd0d313dd7a791480",
+        "output": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-sun-over-the-forest-fresh-rebuild-geometry-test-02.png",
+        "dimensions": [
+          1122,
+          1402
+        ],
+        "targetPaperQuad": [
+          [
+            529.6620483398438,
+            203.33163452148438
+          ],
+          [
+            781.57958984375,
+            189.27276611328125
+          ],
+          [
+            782.5077514648438,
+            376.0020446777344
+          ],
+          [
+            529.6776733398438,
+            376.3697814941406
+          ]
+        ],
+        "targetArtQuad": [
+          [
+            537.4640502929688,
+            208.65966796875
+          ],
+          [
+            772.5713500976562,
+            195.9635009765625
+          ],
+          [
+            773.4049072265625,
+            369.7856750488281
+          ],
+          [
+            537.5031127929688,
+            370.55755615234375
+          ]
+        ],
+        "targetArtBox": [
+          537.4640502929688,
+          195.9635009765625,
+          773.4049072265625,
+          370.55755615234375
+        ],
+        "physicalOuterCm": [
+          62.4,
+          47.4
+        ],
+        "physicalArtCm": [
+          56,
+          42.0
+        ],
+        "editRegion": [
+          484.0,
+          143.0,
+          829.0,
+          422.0
+        ],
+        "outsideEditRegionUnchanged": true,
+        "method": "Continuous local inverse mapping of original generated artwork, paper, oak, glazing, shadow and adjacent wall; no source-photo paste."
+      },
+      {
+        "slug": "morning-cabin-room",
+        "file": "Markus-morning-cabin-room-fresh-rebuild-test-01.png",
+        "paper": [
+          60,
+          45
+        ],
+        "outer": [
+          [
+            113,
+            88
+          ],
+          [
+            618,
+            114
+          ],
+          [
+            618,
+            507
+          ],
+          [
+            113,
+            548
+          ]
+        ],
+        "paperQuad": [
+          [
+            127,
+            99
+          ],
+          [
+            605,
+            124
+          ],
+          [
+            605,
+            497
+          ],
+          [
+            127,
+            535
+          ]
+        ],
+        "art": [
+          [
+            154,
+            131
+          ],
+          [
+            587,
+            150
+          ],
+          [
+            587,
+            478
+          ],
+          [
+            154,
+            505
+          ]
+        ],
+        "target": [
+          [
+            196,
+            175
+          ],
+          [
+            536,
+            184
+          ],
+          [
+            536,
+            430
+          ],
+          [
+            196,
+            433
+          ]
+        ],
+        "source": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-morning-cabin-room-fresh-rebuild-test-01.png",
+        "sourceSha256": "5e02ba83b678053078fd55883c89dc10a8cdd8e270a33a498825e3c94eb7df6f",
+        "output": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-morning-cabin-room-fresh-rebuild-geometry-test-02.png",
+        "dimensions": [
+          1122,
+          1402
+        ],
+        "targetPaperQuad": [
+          [
+            202.85098266601562,
+            181.70687866210938
+          ],
+          [
+            529.7600708007812,
+            190.06825256347656
+          ],
+          [
+            529.7600708007812,
+            423.8216247558594
+          ],
+          [
+            202.85098266601562,
+            426.4140319824219
+          ]
+        ],
+        "targetArtQuad": [
+          [
+            214.2407989501953,
+            190.1423797607422
+          ],
+          [
+            519.3353271484375,
+            197.60504150390625
+          ],
+          [
+            519.3353271484375,
+            416.10089111328125
+          ],
+          [
+            214.2407989501953,
+            418.17950439453125
+          ]
+        ],
+        "targetArtBox": [
+          214.2407989501953,
+          190.1423797607422,
+          519.3353271484375,
+          418.17950439453125
+        ],
+        "physicalOuterCm": [
+          62.4,
+          47.4
+        ],
+        "physicalArtCm": [
+          56,
+          42.0
+        ],
+        "editRegion": [
+          72.0,
+          47.0,
+          659.0,
+          589.0
+        ],
+        "outsideEditRegionUnchanged": true,
+        "method": "Continuous local inverse mapping of original generated artwork, paper, oak, glazing, shadow and adjacent wall; no source-photo paste."
+      }
+    ]
+  },
+  "validation": {
+    "focusedTests": "30 passed; 9 scene/focus tests repeated after native-dimension metadata fix",
+    "assets": "All 20 AVIF/WebP outputs decoded at native dimensions with trainedAlgorithmicMedia XMP",
+    "commerce": "Compared all product records against HEAD: only ten secondaryImage paths changed; all prices, sizes, masters and review guards identical."
+  }
+}

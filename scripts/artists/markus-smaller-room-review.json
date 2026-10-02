@@ -1,0 +1,361 @@
+{
+  "date": "2026-09-28",
+  "authorisation": "Mark: keep prices same but sizes smaller; edit room and other imagery; preview only.",
+  "surface": "Built-in image generation, model unverified",
+  "selected": [
+    "the-road-at-sunset",
+    "sun-over-the-forest"
+  ],
+  "retainedPreviousSize": [
+    "through-the-willows",
+    "pines-under-starlight",
+    "winter-yard-night",
+    "current-and-foam",
+    "swan-on-still-water",
+    "morning-cabin-room",
+    "path-through-the-trees",
+    "sheep-on-the-track"
+  ],
+  "review": "Road and Sun selected as illustrative size approximations. Current, Cabin, Willows, Swan and Sheep rejected for about5–8percent aspect distortion or changed composition; Pines/Winter/Path tool moderation blocks. Originals remain print masters; no post-generation composites. All retained rooms labelled previous-format in preview.",
+  "batches": {
+    "a": {
+      "date": "2026-09-28",
+      "surface": "built-in image_gen subscription route",
+      "model": "unverified",
+      "request": "Change only existing framed prints from 50x70 cm to 45x60 cm paper in 12 mm natural oak; outer 47.4x62.4 cm. Preserve room and full native 3:4 artwork.",
+      "items": [
+        {
+          "slug": "through-the-willows",
+          "references": [
+            "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-through-the-willows-fresh-products-test-03.png",
+            "/Users/markdiffey/Desktop/Markus-Naarttijarvi-photos/Print exports/Naarttijärvi-scandinavianart-1.jpg"
+          ],
+          "prompts": [
+            "Use case: precise-object-edit. Image 1 is the exact existing room photograph to edit. Image 2 is the authoritative original artwork identity reference. Change ONLY the framed print on the wall. Keep every pixel of the rest of the room as close as possible to image 1: the yellow wall, sunlight patches, window and curtain, black table and both chairs, cups, book, flowers and vase, rug, flooring, camera viewpoint and crop. The currently depicted frame is a 50×70 cm paper print with 12 mm thin natural oak moulding, outer dimensions about 52.4×72.4 cm. Replace it in the same centre position with a realistically smaller 45×60 cm paper print in the same 12 mm natural oak moulding, outer dimensions 47.4×62.4 cm. Relative to image 1, reduce visible outside frame WIDTH to 90.5% and HEIGHT to 86.2%; reveal the newly exposed yellow wall around it with matching light and texture. Keep the oak frame thin. Preserve the full original Through the Willows photograph from image 2 within the print, native 3:4 aspect, no crop, no stretch or redrawn motifs. If a white border remains, make the image area 42×56 cm with approximately 1.5 cm white side borders and 2 cm top/bottom borders, so the image itself stays 3:4. Integrate paper and restrained glass reflections with the same left-window sunlight and physically consistent contact shadow. Do not paste a flat image panel. No other room changes, no new objects, no text.",
+            "Use case: precise-object-edit. Image 1 is the first size edit, image 2 the accepted source room, image 3 the authoritative original artwork. Correct ONLY the wall print in image 1: it is now too small. Keep its centre at approximately x657,y300 in the 1122×1402 portrait image. Its outer oak frame currently spans approximately x528–785,y124–475 (257×351 px). Enlarge the frame to x522–815,y99–502, approximately 293×403 px, a precise 14% wider and 15% taller than image 1's frame. This equals the intended 45×60 cm paper and 47.4×62.4 cm outside thin oak frame, compared with image 2's original 50×70 cm frame. Keep the rest of image 1 room EXACTLY, including its wall sunlight, table, chairs, book, flowers, cups, rug, window, curtain, floor, light, shadows, camera and crop. The entire image 3 artwork must be visible within the frame, native 3:4 aspect with no crop or stretch. If a white paper border remains, use image area 42×56 cm, 1.5 cm side and 2 cm top/bottom white borders. Keep oak moulding 12 mm thin, coherent glazing reflection and wall contact shadow. No other changes, no text."
+          ],
+          "outputs": [
+            "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-through-the-willows-size-45x60-2026-09-28-test-01.png",
+            "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-through-the-willows-size-45x60-2026-09-28-test-02.png"
+          ],
+          "dimensionsPx": [
+            1122,
+            1402
+          ],
+          "bboxEstimatesPx": {
+            "sourceFrame": [
+              507,
+              79,
+              831,
+              546
+            ],
+            "test01Frame": [
+              528,
+              124,
+              785,
+              475
+            ],
+            "test02Frame": [
+              523,
+              80,
+              815,
+              483
+            ],
+            "test02Art": [
+              556,
+              123,
+              777,
+              445
+            ]
+          },
+          "qa": "Test01 frame undersized. Test02 outer frame about 292x403 px, close to target 293x403; room objects and lighting broadly retained. Inner art about 221x322 px, ratio 0.69 versus native 0.75, so the artwork shape remains a review concern. Image-generation geometry is approximate; not approved for publication."
+        },
+        {
+          "slug": "pines-under-starlight",
+          "references": [
+            "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-pines-under-starlight-fresh-products-test-03.png",
+            "/Users/markdiffey/Desktop/Markus-Naarttijarvi-photos/Print exports/Naarttijärvi-scandinavianart-2.jpg"
+          ],
+          "prompts": [
+            "Use case: precise-object-edit. Image 1 is the exact accepted room photograph to edit; image 2 is the authoritative original Pines Under Starlight artwork. Edit ONLY the framed print above the bed. The existing outer oak frame spans approximately x493–769,y104–501 in the 1122×1402 image (276×397 px). At the same centre, resize it to x506–756,y132–474, an outside frame about 250×342 px. This corresponds to changing a 50×70 cm paper print in 12 mm thin natural oak moulding (outer 52.4×72.4 cm) to 45×60 cm paper in the same moulding (outer 47.4×62.4 cm): exactly 90.5% prior visible width and 86.2% prior visible height. Fill the newly exposed blue wall with continuous paint/light/shadow texture. Preserve the full original starry night, snow-covered pines and snowy ground from image 2, its native 3:4 aspect, no crop, stretch or invented trees. If retaining white paper border, image area is 42×56 cm with 1.5 cm side and 2 cm top/bottom border. Keep the same physically subtle left-window reflection on glazing and realistic oak frame edge/shadow. Do not alter ANYTHING else in image 1: blue wall, left window and curtains, green striped duvet and pillows, bed, book, rug, slippers, red side table and white lamp, wooden floor, camera crop, lighting. No new objects or text.",
+            "Use case: precise-object-edit. Resize only the framed landscape photograph of snowy pine trees on the bedroom wall in image 1. Image 2 supplies the exact photograph within that frame. Keep the frame centred in its current place and reduce its outer width to 90.5% and height to 86.2%, representing a 45 × 60 cm portrait print with thin natural oak frame. In this 1122 × 1402 room image, the old frame is about x493–769, y104–501; aim for x506–756, y132–474. Keep the complete 3:4 artwork from image 2 inside the smaller frame, with proportional white paper margins. Match the existing wall colour, daylight reflection and wall shadow. Preserve the rest of the room exactly: bedding, window, curtains, lamp, furniture, rug, slippers, flooring, lighting, and camera."
+          ],
+          "result": "No image produced: image_gen moderation_blocked twice before rendering.",
+          "requestIds": [
+            "0b3c4fe7-6ad4-4c92-b7ab-c9295cf4b30b",
+            "504b599b-f7ea-468c-bedb-1195b1914d1d"
+          ]
+        },
+        {
+          "slug": "winter-yard-night",
+          "references": [
+            "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-winter-yard-night-colourful-rug-test-02.png",
+            "/Users/markdiffey/Desktop/Markus-Naarttijarvi-photos/Print exports/Naarttijärvi-scandinavianart-3.jpg"
+          ],
+          "prompts": [
+            "Use case: precise-object-edit. Image 1 is the accepted reading corner room photograph to edit; image 2 is the authoritative original Winter Yard Night artwork. Resize ONLY the framed print above the chair. In the 1122×1402 room image the old outer oak frame is approximately x399–724,y80–524 (325×444 px). The replacement must stay at the same centre but measure approximately x415–709,y111–494 (294×383 px), 90.5% of old width and 86.2% of old height. This depicts 45×60 cm paper in the same thin 12 mm natural oak frame, outer dimensions 47.4×62.4 cm, replacing 50×70 cm paper. Extend the newly exposed green wall naturally. Keep the entire source image 2 within the frame, 3:4 native aspect, no crop or stretch: dark winter sky, snowy outbuildings, two lights, pine silhouettes, snowfall and snow road. If white paper borders remain, image area 42×56 cm, side margins 1.5 cm and top/bottom margins 2 cm. Oak, subtle left-window glazing reflections and wall shadow must match the existing room. Preserve everything else in image 1 precisely: colourful block rug, cream reading chair, grey throw and open book, vivid blue wheeled side table, burgundy lamp, books, green walls, bright window, floor, sunlight shapes, camera framing. No new objects or text.",
+            "Use case: precise-object-edit. Image 1 is the room to retain, image 2 the framed photograph identity reference. Make only the oak wall frame slightly smaller to show a 45 × 60 cm print. Keep its centre fixed. Its current outer bounds are roughly x399–724 and y80–524 in a 1122 × 1402 image; target roughly x415–709 and y111–494. Show the complete original photograph at its natural 3:4 ratio, with proportional white paper borders and matching glass reflection. Continue the green wall into the freed space. Keep the chair, throw, book, blue side table, red lamp, colourful rug, floor, window, daylight and all other room details unchanged."
+          ],
+          "result": "No image produced: image_gen moderation_blocked twice before rendering.",
+          "requestIds": [
+            "6119cf53-9b62-4d46-b404-b6c20f9ca936",
+            "94122cb2-d3f9-4f39-93f7-6ae18ec3be95"
+          ]
+        }
+      ]
+    },
+    "b": {
+      "date": "2026-09-28",
+      "surface": "built-in image_gen",
+      "model": "unverified",
+      "note": "Room images only. These are generated natural edits, not manually composited print files. Frame bounds are visual estimates in 1122×1402 output pixels. Evaluate artwork identity and physical size before publishing.",
+      "images": [
+        {
+          "slug": "current-and-foam",
+          "originalArtwork": "/Users/markdiffey/Desktop/Markus-Naarttijarvi-photos/Print exports/Naarttijärvi-scandinavianart-4.jpg",
+          "acceptedRoom": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-current-and-foam-fresh-products-test-02.png",
+          "firstOutput": "/Users/markdiffey/.codex/generated_images/01a0e90c-f512-77e3-b694-46940ffe165a/exec-8d557eee-6aef-4d3a-91d3-b187459977c4.png",
+          "finalOutput": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-current-and-foam-size-45x60-test-01.png",
+          "generatedFinalSource": "/Users/markdiffey/.codex/generated_images/01a0e90c-f512-77e3-b694-46940ffe165a/exec-fa289130-4e5e-45b5-aac4-056643ab6654.png",
+          "orderedReferencesFirst": [
+            "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-current-and-foam-fresh-products-test-02.png",
+            "/Users/markdiffey/Desktop/Markus-Naarttijarvi-photos/Print exports/Naarttijärvi-scandinavianart-4.jpg"
+          ],
+          "orderedReferencesCorrection": [
+            "/Users/markdiffey/.codex/generated_images/01a0e90c-f512-77e3-b694-46940ffe165a/exec-8d557eee-6aef-4d3a-91d3-b187459977c4.png",
+            "/Users/markdiffey/Desktop/Markus-Naarttijarvi-photos/Print exports/Naarttijärvi-scandinavianart-4.jpg"
+          ],
+          "paperCm": [
+            45,
+            60
+          ],
+          "outerFrameCm": [
+            47.4,
+            62.4
+          ],
+          "dimensionsPx": [
+            1122,
+            1402
+          ],
+          "sourceFrameBBox": [
+            435,
+            80,
+            765,
+            530
+          ],
+          "targetFrameBBox": [
+            449,
+            111,
+            748,
+            499
+          ],
+          "finalFrameBBoxApprox": [
+            454,
+            89,
+            728,
+            475
+          ],
+          "qa": "Original blue-black marbled-water artwork recognizable with full-edge composition; room styling retained; frame width appears about 8% under target, height near target. Slight vertical centre shift. Check before publishing.",
+          "promptFirst": "Use case: precise-object-edit. Asset: Scandinavian Art room product photograph. Image 1 is the ACCEPTED ROOM and the edit target; image 2 is the AUTHORITY for the artwork inside its frame. Change only the wall-hung framed print. It is now 45 cm wide × 60 cm high paper in a thin natural oak frame, outer dimensions 47.4 × 62.4 cm. In this exact room/camera view, make the entire frame about 90.5% of its current width and 86.2% of its current height, about the same centre point on the wall. Shrink frame, white paper border, artwork, glazing, and contact shadow together as one naturally photographed object; reveal believable wall around the former edges. Keep a proportionate white margin, around 1.5 cm each side and 2 cm above and below the complete 3:4 artwork. Preserve the original photo's full edges, pattern and blue-black marbled water/foam with scattered white flecks; do not crop, stretch, redraw or replace it. Keep the same desk, black chair, table lamp, water glass, open notebook, books, left window and curtain, rug, floor, wall colour, sun patches, lighting, perspective, and 1122×1402 composition pixel-for-pixel as far as possible. Maintain coherent window reflection across the art glass and same frame shadow. No new furniture, decor, text or graphic overlay. Render print/frame/art naturally as part of the room, never paste artwork afterward.",
+          "promptCorrection": "Use case: precise-object-edit. The supplied room image is the previous size edit. Correct ONLY the framed print size and position: it was made too small and moved upward. Enlarge the whole oak-framed paper/art/glazing/shadow by approximately 14% in width and 11% in height, and lower its centre approximately 23 pixels, so outer frame bounds in the 1122×1402 composition are approximately x=449–748, y=111–499. This represents a 45×60 cm portrait paper with a slim oak outer frame 47.4×62.4 cm. Keep the full uncropped 3:4 water/foam artwork matching reference image 2 and proportional white border. Keep every other scene pixel, objects, furniture, lighting, shadow, crop, and camera position as in input 1. Natural photograph; coherent glazing and contact shadow. Do not add or remove anything."
+        },
+        {
+          "slug": "the-road-at-sunset",
+          "originalArtwork": "/Users/markdiffey/Desktop/Markus-Naarttijarvi-photos/Print exports/Naarttijärvi-scandinavianart-5.jpg",
+          "acceptedRoom": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-the-road-at-sunset-fresh-products-test-02.png",
+          "firstOutput": "/Users/markdiffey/.codex/generated_images/01a0e90c-f512-77e3-b694-46940ffe165a/exec-18266e1c-53b1-471f-bba9-ec5dc0e0903a.png",
+          "finalOutput": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-the-road-at-sunset-size-45x60-test-01.png",
+          "generatedFinalSource": "/Users/markdiffey/.codex/generated_images/01a0e90c-f512-77e3-b694-46940ffe165a/exec-ba9a626d-1c0f-4652-bc98-f15ebd8b5cfc.png",
+          "orderedReferencesFirst": [
+            "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-the-road-at-sunset-fresh-products-test-02.png",
+            "/Users/markdiffey/Desktop/Markus-Naarttijarvi-photos/Print exports/Naarttijärvi-scandinavianart-5.jpg"
+          ],
+          "orderedReferencesCorrection": [
+            "/Users/markdiffey/.codex/generated_images/01a0e90c-f512-77e3-b694-46940ffe165a/exec-18266e1c-53b1-471f-bba9-ec5dc0e0903a.png",
+            "/Users/markdiffey/Desktop/Markus-Naarttijarvi-photos/Print exports/Naarttijärvi-scandinavianart-5.jpg"
+          ],
+          "paperCm": [
+            45,
+            60
+          ],
+          "outerFrameCm": [
+            47.4,
+            62.4
+          ],
+          "dimensionsPx": [
+            1122,
+            1402
+          ],
+          "sourceFrameBBox": [
+            285,
+            69,
+            585,
+            474
+          ],
+          "targetFrameBBox": [
+            299,
+            97,
+            571,
+            446
+          ],
+          "finalFrameBBoxApprox": [
+            300,
+            85,
+            578,
+            450
+          ],
+          "qa": "Close to target frame size; original winding road, forest and cloudy sunset recognizable. Tiny cyclists less distinct than original print. Accepted room preserved.",
+          "promptFirst": "Use case: precise-object-edit. Asset: Scandinavian Art room mockup. Image 1 is the accepted room EDIT TARGET. Image 2 is the authoritative original artwork. Change only the oak-framed picture above the cabinet to 45×60 cm portrait paper, thin oak outer frame 47.4×62.4 cm. In the existing 1122×1402 image, current outer frame is approximately x=285–585, y=69–474. New outer frame should be approximately x=299–571, y=97–446, same wall centre; 90.5% current width and 86.2% current height. The entire frame, white paper margin, 3:4 full artwork, glass and frame shadow shrink together, with newly visible peach wall around old edges. Keep white border proportional (roughly 1.5 cm sides, 2 cm top/bottom). Preserve every edge of the original road-at-sunset photo: elevated curving empty dual carriageway, five tiny cyclists near center, forest, hazy hills, cloudy pale glowing sky; no crop/stretch, changed road shape, or invented people. Preserve exact room scene, camera crop, peach wall, left doorway and sunlight, green ribbed cabinet, bowl, books, coat stand with coat and tote, bench, boots, terracotta floor, rug and all lighting and shadows. Keep photoreal glass reflection consistent with the left daylight. No new or removed furniture/decor, no text. Render the framed print naturally as part of photograph, never pasted afterward.",
+          "promptCorrection": "Use case precise-object-edit. Input 1 is the room to revise. Correct ONLY framed artwork; previous edit made it too small. Its present outer oak bounds are about x320–559, y99–419 in 1122×1402 image. Enlarge framed object width about 13% and height about 9%, shifting centre LEFT 9 pixels and DOWN 13 pixels, to target outer frame x299–571,y97–446. This is the 47.4×62.4cm oak exterior around 45×60cm portrait paper. Preserve full 3:4 source photo in input 2 within proportional white border. Road bends into distance, forest, low sun and cloudy sky, preserve cyclists in centre as tiny dark figures. Keep entire original room and all its furnishings, floor, lighting and camera exactly as input 1; only framed art and newly covered wall pixels may change. Physically integrated glass reflection and frame shadow. No other changes."
+        },
+        {
+          "slug": "sun-over-the-forest",
+          "originalArtwork": "/Users/markdiffey/Desktop/Markus-Naarttijarvi-photos/Print exports/Naarttijärvi-scandinavianart-6.jpg",
+          "acceptedRoom": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-sun-over-the-forest-fresh-products-test-01.png",
+          "firstOutput": "/Users/markdiffey/.codex/generated_images/01a0e90c-f512-77e3-b694-46940ffe165a/exec-8bde00bb-1ebf-4f86-8e37-50e56609988b.png",
+          "finalOutput": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-sun-over-the-forest-size-60x45-test-01.png",
+          "discardedCorrectionOutput": "/Users/markdiffey/.codex/generated_images/01a0e90c-f512-77e3-b694-46940ffe165a/exec-b8e6ea21-be63-4d97-804a-ad14a7cbd10d.png",
+          "orderedReferencesFirst": [
+            "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-sun-over-the-forest-fresh-products-test-01.png",
+            "/Users/markdiffey/Desktop/Markus-Naarttijarvi-photos/Print exports/Naarttijärvi-scandinavianart-6.jpg"
+          ],
+          "orderedReferencesCorrection": [
+            "/Users/markdiffey/.codex/generated_images/01a0e90c-f512-77e3-b694-46940ffe165a/exec-8bde00bb-1ebf-4f86-8e37-50e56609988b.png",
+            "/Users/markdiffey/Desktop/Markus-Naarttijarvi-photos/Print exports/Naarttijärvi-scandinavianart-6.jpg"
+          ],
+          "paperCm": [
+            60,
+            45
+          ],
+          "outerFrameCm": [
+            62.4,
+            47.4
+          ],
+          "dimensionsPx": [
+            1122,
+            1402
+          ],
+          "sourceFrameBBox": [
+            451,
+            91,
+            885,
+            429
+          ],
+          "targetFrameBBox": [
+            481,
+            107,
+            855,
+            413
+          ],
+          "finalFrameBBoxApprox": [
+            463,
+            94,
+            864,
+            418
+          ],
+          "qa": "Final selected first edit: preserves sunset and furniture, but frame approx 7% wider and 6% taller than target. Targeted correction overshrank it, so first edit retained. Review size before publishing.",
+          "promptFirst": "Use case: precise-object-edit. Scandinavian Art room image. Input 1 is the accepted ROOM edit target; input 2 is the authoritative original artwork. Change only framed picture above the green sofa. The print is now 60 cm wide × 45 cm high landscape paper in thin natural oak outer frame 62.4×47.4 cm. In 1122×1402 image, original outer frame is about x451–885,y91–429. Target outer frame x481–855,y107–413, around same centre; 86.2% original width and 90.5% height. Resize oak frame, proportional white paper border (2 cm left/right, 1.5 cm top/bottom), full uncropped 4:3 artwork, natural glass reflection and wall shadow together. The art is orange sunset over dark forest, large pale round sun with thin clouds crossing it, full source photo edges preserved. Keep original sofa, striped throw, pink cushion, coffee table, carafe, glasses, book, rug, left window/plant/curtain, warm painted wall, floor, sunlight, shadows, camera and crop unchanged. Fill the newly visible wall around frame edges. No extra decor, no text. Render art physically in frame, naturally lit, never flat pasted composite.",
+          "promptCorrection": "Use case precise-object-edit. Input 1 is the room edit target, input 2 original artwork authority. Correct ONLY size of oak-framed artwork over sofa. Its outer frame in 1122×1402 image is currently approximately x463–864, y94–418; reduce the ENTIRE frame/paper/art/glass/shadow by 7% in width and 5.5% in height around same centre, target bounds x481–855,y107–413. Preserve full orange sun-over-forest 4:3 source art and proportional white border. Keep wall, furniture, plant, sofa, textiles, table objects, rug, flooring, window, sun and shadows, camera/crop precisely unchanged. Reveal painted wall behind the shrunken frame, natural frame shadow and subtle window reflection. No other changes."
+        },
+        {
+          "slug": "morning-cabin-room",
+          "originalArtwork": "/Users/markdiffey/Desktop/Markus-Naarttijarvi-photos/Print exports/Naarttijärvi-scandinavianart-8.jpg",
+          "acceptedRoom": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-morning-cabin-room-fresh-products-test-02.png",
+          "firstOutput": "/Users/markdiffey/.codex/generated_images/01a0e90c-f512-77e3-b694-46940ffe165a/exec-e0d9442f-f9d5-4cfc-916a-a168c591ea7e.png",
+          "finalOutput": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-morning-cabin-room-size-60x45-test-01.png",
+          "generatedFinalSource": "/Users/markdiffey/.codex/generated_images/01a0e90c-f512-77e3-b694-46940ffe165a/exec-535c52fd-a268-4c26-a06c-9a7367fe6554.png",
+          "orderedReferencesFirst": [
+            "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-morning-cabin-room-fresh-products-test-02.png",
+            "/Users/markdiffey/Desktop/Markus-Naarttijarvi-photos/Print exports/Naarttijärvi-scandinavianart-8.jpg"
+          ],
+          "orderedReferencesCorrection": [
+            "/Users/markdiffey/.codex/generated_images/01a0e90c-f512-77e3-b694-46940ffe165a/exec-e0d9442f-f9d5-4cfc-916a-a168c591ea7e.png",
+            "/Users/markdiffey/Desktop/Markus-Naarttijarvi-photos/Print exports/Naarttijärvi-scandinavianart-8.jpg"
+          ],
+          "paperCm": [
+            60,
+            45
+          ],
+          "outerFrameCm": [
+            62.4,
+            47.4
+          ],
+          "dimensionsPx": [
+            1122,
+            1402
+          ],
+          "sourceFrameBBox": [
+            157,
+            63,
+            624,
+            462
+          ],
+          "targetFrameBBox": [
+            189,
+            82,
+            592,
+            443
+          ],
+          "finalFrameBBoxApprox": [
+            181,
+            83,
+            581,
+            429
+          ],
+          "qa": "Frame close to target width and within roughly 4% target height, with slight upper-left shift. Source cabin image recognizable and breakfast room retained.",
+          "promptFirst": "Use case: precise-object-edit. Scandinavian Art room mockup. Input 1 is accepted breakfast-room photograph edit target; input 2 is the authoritative original artwork. Change ONLY oak-framed print on upper left wall to 60×45 cm landscape paper, thin oak frame outer size 62.4×47.4 cm. In 1122×1402 room source, outer frame is about x157–624,y63–462. New frame target x189–592,y82–443, same centre: width 86.2% and height 90.5%. Shrink full framed object including white border (2 cm on left/right, 1.5cm top/bottom), complete uncropped 4:3 original cabin photo, glass reflections and frame shadow, exposing same ochre wall. Artwork must preserve original dark cabin room: central paned window with tied curtains, green leaves on right, blue covered bed with striped cushions and folded towel; do not crop/change proportions, brightening or redraw. Preserve ALL breakfast room scene: window/right curtain, black table, birch chairs, red plaid cloth, fruit bowl, two mugs, breakfast plates, sun patches, parquet floor, colour, camera, 1122×1402 crop. No other furniture/decor changes, no text. Keep print naturally photographed behind subtle glass with light and contact shadow consistent with room; no pasted insert.",
+          "promptCorrection": "Use case precise-object-edit. Input 1 breakfast room edit target, input 2 original cabin artwork authority. Correct ONLY the framed photo geometry: frame currently about x184–579, y99–413 in 1122×1402 image. It is too short vertically and slightly too high. Keep width almost unchanged; increase entire frame/paper/art/glass/shadow HEIGHT by 14%, and shift its centre DOWN about 8 pixels. Aim x189–592,y82–443. This represents natural oak 62.4×47.4cm exterior around 60×45cm landscape paper, with full UNCROPPED 4:3 source artwork. Do not distort photo or just stretch the interior image: rebuild framed print naturally with correct proportions. Maintain proportional white margin, wood moulding, glazing reflection and wall shadow. Preserve everything else in breakfast room exactly: tablescape, table/chairs, cloth, floor, window, light, wall, camera crop. No new items or other changes."
+        }
+      ]
+    },
+    "c": [
+      {
+        "key": "swan",
+        "prompt": "Edit reference1 only: preserve this accepted photographic interior, its exact camera framing, furniture, room surfaces, accessories and lighting. Change only the hanging framed print to the smaller physical product size. Landscape paper 50cm wide x40cm high. Natural oak 12mm rails gives outer52.4x42.4cm. In the original1122x1402 room frame spans x300..785 y205..589. Reduce to outer width351px,height309px centred at542,397 approximately x367..718 y242..551, preserving perspective. Full original swan photograph from reference2, landscape5:4 image ratio, no cropping or stretching. White paper borders1.5cm left/right,1.2cm top/bottom, image47x37.6cm. Keep full misty forest, swan, reed foreground. Keep original camera and room dimensions absolutely unchanged; reveal wall where larger old frame was. Render photograph naturally behind glass with very subtle window reflection consistent with actual window direction and room wall illumination, physically consistent frame contact shadow. DSLR interior realism, no stylisation, no lettering/dimensions, no watermark. Do not merely scale the whole input or crop the room. Reference2 is the original artwork to preserve. Save one portrait room image.",
+        "refs": [
+          "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-swan-on-still-water-fresh-products-test-02.png",
+          "/Users/markdiffey/Desktop/Markus-Naarttijarvi-photos/Print exports/Naarttijärvi-scandinavianart-7.jpg"
+        ],
+        "initialOutput": "Generated images are saved to /Users/markdiffey/.codex/generated_images/01a0e7a7-58ff-7643-a0a4-20dc6d47481a as /Users/markdiffey/.codex/generated_images/01a0e7a7-58ff-7643-a0a4-20dc6d47481a/exec-10d43034-f15d-4a29-a625-2b66f55d8a0f.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+        "correction": {
+          "prompt": "Make one precise correction to reference1, preserving every other aspect of the room. Widen only the hanging oak frame and paper by9%, holding current height and centre. Paper50cmwide40cmhigh ratio5:4, outer thin12mmoak frame52.4×42.4cm. Full swan photo from reference2 native5:4, no stretch/crop; proportional white borders1.5cmleft/right1.2cmtop/bottom. Correct mild perspective. Preserve exact small swan, mist, shoreline forest and foreground reeds. Keep room furniture, camera, light unchanged, reflection consistent with right window.",
+          "refs": [
+            "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-swan-size-50x40-test-01.png",
+            "/Users/markdiffey/Desktop/Markus-Naarttijarvi-photos/Print exports/Naarttijärvi-scandinavianart-7.jpg"
+          ],
+          "output": "Generated images are saved to /Users/markdiffey/.codex/generated_images/01a0e7a7-58ff-7643-a0a4-20dc6d47481a as /Users/markdiffey/.codex/generated_images/01a0e7a7-58ff-7643-a0a4-20dc6d47481a/exec-150014a2-1f30-4b6d-bf2e-609b334f5877.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+        },
+        "error": null
+      },
+      {
+        "key": "path",
+        "prompt": "Edit reference1 only: preserve this accepted photographic interior, its exact camera framing, furniture, room surfaces, accessories and lighting. Change only the hanging framed print to the smaller physical product size. Landscape paper50cm wide x40cm high, outer natural oak frame52.4x42.4cm with12mm rails. Current frame484x360px: reduce to351x291px about centre483,289 (x308..659,y144..435), preserving mild perspective. Full original photo landscape5:4, no stretching/cropping. White paper border1.5cmleft/right1.2cmtop/bottom. Artwork47x37.6cm. Preserve wet S-curving wooden boardwalk through dark green trees to light opening from reference2 exactly. Preserve right window light, chair/table sofa proportions and all furnishings. Keep original camera and room dimensions absolutely unchanged; reveal wall where larger old frame was. Render photograph naturally behind glass with very subtle window reflection consistent with actual window direction and room wall illumination, physically consistent frame contact shadow. DSLR interior realism, no stylisation, no lettering/dimensions, no watermark. Do not merely scale the whole input or crop the room. Reference2 is the original artwork to preserve. Save one portrait room image.",
+        "refs": [
+          "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-path-through-the-trees-new-scene-current-70x50-test-01.png",
+          "/Users/markdiffey/Desktop/Markus-Naarttijarvi-photos/Print exports/Naarttijärvi-scandinavianart-9.jpg"
+        ],
+        "initialOutput": null,
+        "correction": null,
+        "error": "image generation failed: http 400 Bad Request: Some(\"{\\n  \\\"error\\\": {\\n    \\\"message\\\": \\\"Your request was rejected by the safety system. If you believe this is an error, contact us at help.openai.com and include the request ID 0a766764-c658-4246-8675-95d26e3b605a.\\\",\\n    \\\"type\\\": \\\"image_generation_user_error\\\",\\n    \\\"param\\\": null,\\n    \\\"code\\\": \\\"moderation_blocked\\\"\\n  }\\n}\")"
+      },
+      {
+        "key": "sheep",
+        "prompt": "Edit reference1 only: preserve this accepted photographic interior, its exact camera framing, furniture, room surfaces, accessories and lighting. Change only the hanging framed print to the smaller physical product size. Portrait paper40cm wide x50cm high; thin natural oak12mm rails, outer42.4x52.4cm. Current outer frame x280..907 y80..927: replace with smaller outer x342..847 y197..809 (505x612px), same centre595,503. Inner paper true4:5 ratio. Preserve full original4:5 photograph without stretching/cropping. Border1.2cmleft/right1.5cmtop/bottom, art37.6x47cm. Exact EIGHT sheep: one white far-back-left, seven dark/grey including two partly occluded behind middle cluster, foremost black right, grey front-left. Both reflective wet track ruts, tree arch, sky opening. Do not omit/add animals. Preserve desk, window, plant, books and chair. Keep original camera and room dimensions absolutely unchanged; reveal wall where larger old frame was. Render photograph naturally behind glass with very subtle window reflection consistent with actual window direction and room wall illumination, physically consistent frame contact shadow. DSLR interior realism, no stylisation, no lettering/dimensions, no watermark. Do not merely scale the whole input or crop the room. Reference2 is the original artwork to preserve. Save one portrait room image.",
+        "refs": [
+          "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-sheep-on-the-track-current-50x70-close-test-05-final-preview.png",
+          "/Users/markdiffey/Desktop/Markus-Naarttijarvi-photos/Print exports/Naarttijärvi-scandinavianart-10.jpg"
+        ],
+        "initialOutput": "Generated images are saved to /Users/markdiffey/.codex/generated_images/01a0e7a7-58ff-7643-a0a4-20dc6d47481a as /Users/markdiffey/.codex/generated_images/01a0e7a7-58ff-7643-a0a4-20dc6d47481a/exec-f72f4da0-8dab-466c-a5da-3a3b166b6382.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+        "correction": {
+          "prompt": "Make one precise correction to reference1, leaving every other part of this room exactly unchanged. The framed print is too narrow: widen only the frame and its paper about11%, holding its current height and centre. Portrait paper must be40wide×50high (4:5), oak frame outer42.4×52.4cm. Full photo from reference2 has native4:5 ratio: reproduce its entire uncropped composition, exactly8sheep including partly occluded ones, both wet track ruts and tree canopy, without stretching. White paper border1.2cmleft/right1.5cmtop/bottom; not broad bars. Maintain physically coherent existing leftwindow light/reflection and shadow. No camera/room/furniture/colour changes.",
+          "refs": [
+            "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-sheep-size-40x50-test-01.png",
+            "/Users/markdiffey/Desktop/Markus-Naarttijarvi-photos/Print exports/Naarttijärvi-scandinavianart-10.jpg"
+          ],
+          "output": "Generated images are saved to /Users/markdiffey/.codex/generated_images/01a0e7a7-58ff-7643-a0a4-20dc6d47481a as /Users/markdiffey/.codex/generated_images/01a0e7a7-58ff-7643-a0a4-20dc6d47481a/exec-086ca7c0-2e73-47ce-9e28-84b676e08f42.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+        },
+        "error": null
+      }
+    ]
+  }
+}

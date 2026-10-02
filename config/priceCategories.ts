@@ -171,6 +171,14 @@ export const priceCategories: { [category: string]: PriceCategory } = (() => {
       if (isUsable(prices)) merged[category][size] = { ...prices };
     }
   }
+  // Markus's natural-ratio formats use the current effective Premium 50 × 70
+  // retail price in every market, as approved, until their own rows are
+  // published. Copy after overlays so a published 50 × 70 change is respected.
+  for (const size of ['40x50cm', '45x60cm'] as const) {
+    if (!isUsable(PUBLISHED_ARTWORK?.Premium?.[size])) {
+      merged.Premium[size] = { ...merged.Premium['50x70cm'] };
+    }
+  }
   return merged;
 })();
 

@@ -6,7 +6,7 @@ import { metaTitle } from '@/lib/meta-title';
 import { hreflangPair } from '@/lib/i18n';
 import { no } from '@/lib/i18n/no';
 import { noV2 } from '@/lib/i18n/no-v2-pages';
-import { getPublishedArtists } from '@/lib/published-artists';
+import { getShopArtists as getPublishedArtists } from '@/lib/published-artists';
 import { PageHeader } from '@/components/v2/ui';
 import { LandingCrossLinks } from '@/components/LandingCrossLinks';
 import { InspireWall } from '@/components/v2/inspire/InspireWall';

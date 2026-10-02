@@ -1,0 +1,18 @@
+{
+  "date": "2026-09-28",
+  "slug": "path-through-the-trees",
+  "method": "Fresh built-in image generation from the unchanged 50 x 40 cm print reference, original artwork reference and clean catalogue board. The previous room render was not used as a generation reference and the artwork was rendered inside the room.",
+  "model": "built-in image generator; model identifier unverified",
+  "output": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-path-through-the-trees-clean-composition-test-01.png",
+  "previewAssets": [
+    "/images/products/path-through-the-trees-room-clean-rebuild-50x40-2026-09-28-v2.avif",
+    "/images/products/path-through-the-trees-room-clean-rebuild-50x40-2026-09-28-v2.webp"
+  ],
+  "references": [
+    "public/images/products/path-through-the-trees-paper-40x50-2026-09-28.png",
+    "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-remaining-seven-2026-09-28/path-through-the-trees-reference.png",
+    "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-remaining-seven-2026-09-28/path-through-the-trees-board.png"
+  ],
+  "compositionChange": "One centred oak lounge chair now anchors the print, with a usable side table and lamp beside it; a low cropped bookcase supports the reading activity without dominating the wall.",
+  "review": "Accepted as a cleaner composition for preview review. Frame and artwork remain landscape 50 x 40 cm with narrow white borders. Room is illustrative, not a manufacturing proof."
+}
