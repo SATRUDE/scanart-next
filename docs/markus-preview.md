@@ -4,6 +4,8 @@ Prepared on 28 September 2026. Branch: `codex/markus-naarttijarvi-preview`. All 
 
 ## Copy and commercial decisions
 
+Title changes, 2 October 2026, from Markus's reply and Mark's choice: Winter Yard, Night is now "Boathouses in winter" and Current and Foam is now "Frozen currents" (the photograph shows currents frozen in ice under snow). Slugs follow the titles; the old slugs were never public. Image file names keep their original stems because they are not shown to visitors. Norwegian pages show catalogue print names unchanged, so the Norwegian forms (Frosne strømmer, Båthus om vinteren) are not used anywhere yet.
+
 The two-sentence bio is grounded in [Markus's own About page](https://www.naarttijarvi.com/about), checked on 28 September 2026. His agreement was signed on that date, as supplied by Mark. No approved portrait was supplied, so the page uses initials.
 
 Umeå now renders on the artist map in both languages. Its SVG position, `[487.2, 468.8]`, uses the brand map's documented equirectangular projection: `x = (lon - 3.5) * cos(62°) * scale`, `y = (71.4 - lat) * scale`. A least-squares scale of 61.9225 reproduces the five existing city markers within 0.2 px; Umeå uses 63.83° N, 20.26° E. Desktop screenshots confirm the marker near Sweden's coast across from Kvarken.
@@ -18,8 +20,8 @@ Proposed paper format is 50x70cm, rotated to 70x50cm for photos 6 to 9. The orig
 | --- | --- | --- |
 | 1 | Through the Willows | `/product/through-the-willows` |
 | 2 | Pines Under Starlight | `/product/pines-under-starlight` |
-| 3 | Winter Yard, Night | `/product/winter-yard-night` |
-| 4 | Current and Foam | `/product/current-and-foam` |
+| 3 | Boathouses in winter (was Winter Yard, Night) | `/product/boathouses-in-winter` |
+| 4 | Frozen currents (was Current and Foam) | `/product/frozen-currents` |
 | 5 | The Road at Sunset | `/product/the-road-at-sunset` |
 | 6 | Sun Over the Forest | `/product/sun-over-the-forest` |
 | 7 | Swan on Still Water | `/product/swan-on-still-water` |

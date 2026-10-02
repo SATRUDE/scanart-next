@@ -886,8 +886,8 @@
     "productId": "43",
     "recommendedProducts": [
       "Pines Under Starlight",
-      "Winter Yard, Night",
-      "Current and Foam",
+      "Boathouses in winter",
+      "Frozen currents",
       "The Road at Sunset"
     ],
     "orientation": "portrait",
@@ -917,8 +917,8 @@
     "productId": "44",
     "recommendedProducts": [
       "Through the Willows",
-      "Winter Yard, Night",
-      "Current and Foam",
+      "Boathouses in winter",
+      "Frozen currents",
       "The Road at Sunset"
     ],
     "orientation": "portrait",
@@ -927,9 +927,9 @@
   },
   {
     "id": "c5956741-86b7-5022-a7f4-fd001c49c1d1",
-    "name": "Winter Yard, Night",
-    "slug": "winter-yard-night",
-    "description": "A lit window and a lone streetlamp cut through a dark, snow-heavy night in a quiet yard. Falling snow catches the light; everything else stays in shadow.",
+    "name": "Boathouses in winter",
+    "slug": "boathouses-in-winter",
+    "description": "A lit window and a lone streetlamp cut through a dark, snow-heavy night beside the boathouses. Falling snow catches the light; everything else stays in shadow.",
     "category": "Photography",
     "artist": "Markus Naarttijärvi",
     "artistId": "9",
@@ -949,7 +949,7 @@
     "recommendedProducts": [
       "Through the Willows",
       "Pines Under Starlight",
-      "Current and Foam",
+      "Frozen currents",
       "The Road at Sunset"
     ],
     "orientation": "portrait",
@@ -958,9 +958,9 @@
   },
   {
     "id": "6253f0d7-2a37-524f-9f84-3fd7de70e4d1",
-    "name": "Current and Foam",
-    "slug": "current-and-foam",
-    "description": "Pale ridges of ice or foam swirl across dark water, closer to a painting than a photograph. An abstract, almost weightless study in movement and cold.",
+    "name": "Frozen currents",
+    "slug": "frozen-currents",
+    "description": "Pale ridges of ice swirl across dark water, dusted with fresh snow, closer to a painting than a photograph. An abstract, almost weightless study in movement and cold.",
     "category": "Photography",
     "artist": "Markus Naarttijärvi",
     "artistId": "9",
@@ -980,7 +980,7 @@
     "recommendedProducts": [
       "Through the Willows",
       "Pines Under Starlight",
-      "Winter Yard, Night",
+      "Boathouses in winter",
       "The Road at Sunset"
     ],
     "orientation": "portrait",
@@ -1011,8 +1011,8 @@
     "recommendedProducts": [
       "Through the Willows",
       "Pines Under Starlight",
-      "Winter Yard, Night",
-      "Current and Foam"
+      "Boathouses in winter",
+      "Frozen currents"
     ],
     "orientation": "portrait",
     "created_time": "2026-09-28T09:00:00.000Z",
@@ -1042,8 +1042,8 @@
     "recommendedProducts": [
       "Through the Willows",
       "Pines Under Starlight",
-      "Winter Yard, Night",
-      "Current and Foam"
+      "Boathouses in winter",
+      "Frozen currents"
     ],
     "orientation": "landscape",
     "created_time": "2026-09-28T09:00:00.000Z",
@@ -1073,8 +1073,8 @@
     "recommendedProducts": [
       "Through the Willows",
       "Pines Under Starlight",
-      "Winter Yard, Night",
-      "Current and Foam"
+      "Boathouses in winter",
+      "Frozen currents"
     ],
     "orientation": "landscape",
     "created_time": "2026-09-28T09:00:00.000Z",
@@ -1104,8 +1104,8 @@
     "recommendedProducts": [
       "Through the Willows",
       "Pines Under Starlight",
-      "Winter Yard, Night",
-      "Current and Foam"
+      "Boathouses in winter",
+      "Frozen currents"
     ],
     "orientation": "landscape",
     "created_time": "2026-09-28T09:00:00.000Z",
@@ -1135,8 +1135,8 @@
     "recommendedProducts": [
       "Through the Willows",
       "Pines Under Starlight",
-      "Winter Yard, Night",
-      "Current and Foam"
+      "Boathouses in winter",
+      "Frozen currents"
     ],
     "orientation": "landscape",
     "created_time": "2026-09-28T09:00:00.000Z",
@@ -1166,8 +1166,8 @@
     "recommendedProducts": [
       "Through the Willows",
       "Pines Under Starlight",
-      "Winter Yard, Night",
-      "Current and Foam"
+      "Boathouses in winter",
+      "Frozen currents"
     ],
     "orientation": "portrait",
     "created_time": "2026-09-28T09:00:00.000Z",
