@@ -140,7 +140,7 @@ export const no = {
           'ingunn-dybendal': 'Illustratør i kollektivet Heiaklubben, med arbeider fra en Google Doodle til en vegg på 360 kvadratmeter.',
           'hedvig-wallin': 'Illustratør fra Göteborg som låner fra naivismen: enkle former, skjevt perspektiv, detaljer overalt.',
           'mikko-saarainen': 'Illustratør, barnebokforfatter og tegneserieskaper fra Lahti: kraftig strek, flate farger, detaljer helt ut i kantene.',
-          'ishtar-backlund-dakhil': 'Svensk kunstner som arbeider med illustrasjon, veggmaleri og design, utdannet ved Konstfack i Stockholm.',
+          'ishtar-backlund-dakhil': 'Svensk illustratør og visuell kunstner som maler for hånd, utdannet ved Konstfack i Stockholm.',
         },
       },
       journal: { heading: 'Journal', all: 'Alle artikler', inEnglish: 'På engelsk' },
@@ -958,7 +958,7 @@ export const no = {
     'ishtar-backlund-dakhil': {
       heading: 'Byer, planter og fantasiverdener',
       para1:
-        'Ishtars bilder beveger seg mellom nøye observerte detaljer og fantasiverdener. Stockholms tårn og bygninger langs vannet står side om side med lag på lag av blader, geometriske landskap og et fly som svever over en dal og kan leses som en fugl. Små merker og fargenyanser gir mye å oppdage på nært hold.',
+        'Ishtars bilder beveger seg mellom nøye observerte detaljer og fantasiverdener. Stockholms tårn og bygninger langs vannet står side om side med lag på lag av blader, geometriske landskap og et fly som svever over en dal og kan leses som en fugl. Små merker og fargenyanser gir mye å oppdage på nært hold. Alt Ishtar lager er håndmalt, med akvarell, naturlige pigmenter og blandingsteknikk.',
       para2:
         'Uttrykket varierer, men sansen for farger går igjen. [Frukt & Grönt](/no/product/frukt-och-gront) samler grønt, rødt og gult på kjøkkenveggen, mens [Surfer with Orange Sun](/no/product/surfer-with-orange-sun) er tegnet med færre former og tydeligere fargeflater. [Creature Among Blue Leaves](/no/product/creature-among-blue-leaves) passer et roligere sted der det er tid til å se detaljene.',
     },
