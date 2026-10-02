@@ -1,6 +1,6 @@
 # Markus Naarttijärvi preview
 
-Prepared on 28 September 2026. Branch: `codex/markus-naarttijarvi-preview`. All ten products remain unpublished, out of stock and marked for display-only review. Nothing is merged to main.
+Prepared on 28 September 2026. Branch: `codex/markus-naarttijarvi-preview`. Published on 2 October 2026 at Mark's instruction: all ten products are live (`published: true`, in stock). The Road at Sunset now says "a small group of cyclists" (the photograph shows more than three) and Pines Under Starlight no longer claims moonlight only; both pending Markus's confirmation. The notes below are the preview history.
 
 ## Copy and commercial decisions
 
