@@ -75,7 +75,8 @@ export const artists: Artist[] = [
     location: 'Umeå, Sweden',
     // Verified 28 September 2026: https://www.naarttijarvi.com/about
     bio: 'Markus Naarttijärvi is a documentary photographer based in Umeå, Sweden. His long-term projects follow industry, nature and culture in northern Sweden, exploring solitude, perseverance and the passage of time.',
-    image: '', // Initials until Markus supplies an approved portrait.
+    // Portrait supplied by Markus 2 Oct 2026. No photographer credit given, so none shown.
+    image: '/images/artists/markus-naarttijarvi.png',
   },
 ];
 
