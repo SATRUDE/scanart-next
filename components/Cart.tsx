@@ -211,10 +211,10 @@ export const Cart: React.FC<{ deliveryGuide: DeliveryGuide }> = ({ deliveryGuide
                     text equivalent of the line (which is hidden from assistive
                     technology), and this region is live so a change of quantity
                     or a removal is announced; over the threshold it announces
-                    that delivery is free instead. */}
-                <div role="status" className={free ? undefined : 'flex flex-col gap-[10px] overflow-clip pt-[14px] pb-4'}>
+                    that delivery is free instead ("Delivery: Free"). */}
+                <div role="status" className={free ? 'sr-only' : 'flex flex-col gap-[10px] overflow-clip pt-[14px] pb-4'}>
                   {free ? (
-                    <p className="sr-only">{freeNote}</p>
+                    <p>{`${t.delivery}: ${t.freeValue}`}</p>
                   ) : (
                     <>
                       <p className="type-small">{awayText}</p>
