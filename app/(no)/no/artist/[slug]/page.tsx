@@ -161,6 +161,7 @@ export default async function NorwegianArtistPage({
                 alt: sceneImageAlt({ name: hero.product.name, artist: artist.name, brand: hero.product.brand, category: hero.product.category }, 'no'),
                 href: `/no/product/${hero.product.slug}`,
                 title: hero.product.name,
+                productSlug: hero.product.slug,
               }
             : null
         }
