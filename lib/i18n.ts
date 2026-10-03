@@ -669,7 +669,7 @@ export interface ProductActionsStrings {
   frameLabels?: Record<string, string>;
   /** V2 assurance lines under the button; {price} is the store's cheapest
    *  delivery outside the UK (lib/server/delivery-guide.ts). */
-  assurance?: { printed: string; delivery: string; returns: string };
+  assurance?: { free: string; printed: string; delivery: string; returns: string };
 }
 
 type Step = { title: string; body: string };
@@ -796,6 +796,10 @@ export interface BasketStrings {
   regions: Record<string, string>;
   and: string;
   assurance: string[];
+  /** Free delivery (config/free-delivery.ts). {amount} is written in the visitor's currency. */
+  freeAway: string;
+  freeValue: string;
+  freeNote: string;
   checkout: string;
   continueShopping: string;
   emptyHeading: string;
@@ -819,6 +823,9 @@ export const basketStrings: Record<Locale, BasketStrings> = {
     regions: { GB: 'UK', NO: 'Norway', DK: 'Denmark', SE: 'Sweden', US: 'United States', ELSEWHERE: 'rest of world' },
     and: 'and',
     assurance: ['Made to order, produced in 1 to 4 business days', '14 days to change your mind', 'Secure payment by Stripe'],
+    freeAway: "You\u2019re {amount} away from free delivery",
+    freeValue: 'Free',
+    freeNote: 'Orders of {amount} or more have free delivery.',
     checkout: 'Checkout',
     continueShopping: 'Continue shopping',
     emptyHeading: 'Your basket is empty.',
@@ -840,6 +847,9 @@ export const basketStrings: Record<Locale, BasketStrings> = {
     regions: { GB: 'Storbritannia', NO: 'Norge', DK: 'Danmark', SE: 'Sverige', US: 'USA', ELSEWHERE: 'resten av verden' },
     and: 'og',
     assurance: ['Lages på bestilling, produseres på 1 til 4 virkedager', '14 dagers angrerett', 'Sikker betaling med Stripe'],
+    freeAway: 'Du er {amount} unna fri frakt',
+    freeValue: 'Gratis',
+    freeNote: 'Bestillinger fra {amount} har fri frakt.',
     checkout: 'Til kassen',
     continueShopping: 'Fortsett å handle',
     emptyHeading: 'Handlekurven din er tom.',
