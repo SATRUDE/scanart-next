@@ -23,14 +23,6 @@
     "score": "manual",
     "ar": 0.666
   },
-  "/images/products/flight-over-the-valley-room.avif": {
-    "x": 41.1,
-    "y": 24.4,
-    "w": 21.0,
-    "h": 20.9,
-    "score": 0.942,
-    "ar": 0.7064
-  },
   "/images/products/creature-among-blue-leaves-room.avif": {
     "x": 56.2,
     "y": 23.4,
@@ -111,6 +103,14 @@
     "score": 0.853,
     "ar": 0.6709
   },
+  "/images/products/flight-over-the-valley-room.avif": {
+    "x": 41.1,
+    "y": 24.4,
+    "w": 21.0,
+    "h": 20.9,
+    "score": 0.942,
+    "ar": 0.7064
+  },
   "/images/products/frukt-och-gront-room.avif": {
     "x": 55.6,
     "y": 24.7,
@@ -151,6 +151,14 @@
     "score": 0.631,
     "ar": 0.8003
   },
+  "/images/products/in-to-the-woods-ii-room-final-2026-10-02.avif": {
+    "x": 66.6,
+    "y": 24.8,
+    "w": 29.0,
+    "h": 16.0,
+    "score": 0.934,
+    "ar": 0.8003
+  },
   "/images/products/ithinkithink-room-2026-09-23.avif": {
     "x": 36.9,
     "y": 23.8,
@@ -175,14 +183,6 @@
     "score": 0.957,
     "ar": 0.6709
   },
-  "/images/products/month-of-may-room.avif": {
-    "x": 48.1,
-    "y": 25.0,
-    "w": 25.0,
-    "h": 27.7,
-    "score": 0.686,
-    "ar": 0.8003
-  },
   "/images/products/massa-applen-room-2026-09-23.avif": {
     "x": 68.5,
     "y": 21.5,
@@ -198,6 +198,22 @@
     "h": 23.2,
     "score": 0.738,
     "ar": 0.8203
+  },
+  "/images/products/month-of-may-room.avif": {
+    "x": 48.1,
+    "y": 25.0,
+    "w": 25.0,
+    "h": 27.7,
+    "score": 0.686,
+    "ar": 0.8003
+  },
+  "/images/products/moody-19-the-crow-room-final-2026-10-02.avif": {
+    "x": 45.2,
+    "y": 21.8,
+    "w": 25.0,
+    "h": 15.3,
+    "score": 0.985,
+    "ar": 0.8003
   },
   "/images/products/morgenstrekk-room-02-2026-09-26.avif": {
     "x": 50.1,
@@ -247,6 +263,14 @@
     "score": 0.835,
     "ar": 0.8003
   },
+  "/images/products/storm-vignette-pilot-2026-10-02.avif": {
+    "x": 49.4,
+    "y": 39.9,
+    "w": 27.9,
+    "h": 33.2,
+    "score": 0.927,
+    "ar": 0.8003
+  },
   "/images/products/sunday-brunch-room-2026-09-23.avif": {
     "x": 64.1,
     "y": 24.8,
@@ -269,6 +293,14 @@
     "w": 26.0,
     "h": 29.5,
     "score": 0.311,
+    "ar": 0.8003
+  },
+  "/images/products/tjurpannan-bathus-vignette-pilot-2026-10-02.avif": {
+    "x": 47.3,
+    "y": 26.0,
+    "w": 30.0,
+    "h": 30.0,
+    "score": 0.929,
     "ar": 0.8003
   },
   "/images/products/tree-top-peach-room-chatgpt-2026-09-23.avif": {
@@ -318,5 +350,13 @@
     "h": 14.2,
     "score": 0.841,
     "ar": 0.6667
+  },
+  "/images/products/wake-up-room-final-2026-10-02.avif": {
+    "x": 59.0,
+    "y": 21.4,
+    "w": 25.0,
+    "h": 13.8,
+    "score": 0.928,
+    "ar": 0.8003
   }
 }
