@@ -12,6 +12,7 @@ import stripePromise from '@/config/stripe';
 import { OrderComplete, type CompletedOrder } from '@/components/OrderComplete';
 import { saveCompletedOrder } from '@/lib/completed-order';
 import { getShippingRate } from '@/config/shipping';
+import { qualifiesForFreeDelivery } from '@/config/free-delivery';
 import {
   DESTINATIONS,
   defaultDestination,
@@ -795,7 +796,14 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' |
   const finalTax = 0; // No tax for any orders
   // The server's delivery price once it has answered; the old table only
   // until then (Pay is disabled meanwhile).
-  const finalShipping = serverQuote ? serverQuote.shipping : shipping;
+  // Free delivery (config/free-delivery.ts) applies to the stand-in too, on
+  // the subtotal after discount, so the figure does not flash a charge the
+  // server will not make.
+  const finalShipping = serverQuote
+    ? serverQuote.shipping
+    : qualifiesForFreeDelivery(Math.round((subtotal - discountAmount) * 100) / 100, selectedCountry.currency)
+      ? 0
+      : shipping;
 
   const total = serverQuote
     ? serverQuote.amount

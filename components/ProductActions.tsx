@@ -7,6 +7,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { getProductPrices } from '@/lib/pricing';
 import { frameOptions, getFramePrice } from '@/config/frame';
 import { worldwideFrom, formatDeliveryPrice, type DeliveryGuide } from '@/lib/delivery-guide';
+import { FREE_DELIVERY_THRESHOLD, formatFreeDeliveryAmount } from '@/config/free-delivery';
 import { track } from '@/lib/analytics';
 import { Button, Hairline } from '@/components/v2/ui';
 import { OPTION_PAD } from '@/components/v2/OptionTrack';
@@ -32,6 +33,7 @@ const EN: ProductActionsStrings & { assurance: NonNullable<ProductActionsStrings
   // currency (lib/server/delivery-guide.ts); the Delivery row says the exact
   // amount is worked out at checkout.
   assurance: {
+    free: 'Free delivery on orders of {amount} or more',
     printed: 'Printed to order on 200gsm uncoated paper, made in 1–4 working days',
     delivery: 'UK delivery 2–3 working days, worldwide from {price} unframed',
     returns: '14 days to change your mind',
@@ -140,6 +142,13 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings
     formatDeliveryPrice(worldwideFrom(deliveryGuide, currency), currency, locale),
   );
 
+  // "Free delivery on orders of £100 or more": the first line, from the one
+  // threshold table (config/free-delivery.ts), in the buyer's currency.
+  const freeLine = t.assurance.free.replace(
+    '{amount}',
+    formatFreeDeliveryAmount(FREE_DELIVERY_THRESHOLD[currency], currency),
+  );
+
   const optionCls = 'peer sr-only';
   // Each option carries its own hairline (.option-mark in globals.css): the old
   // one shrinks away, the new one grows in, and the reserved space means nothing jumps.
@@ -221,7 +230,7 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings
       </div>
 
       <ul className="flex flex-col gap-[6px] tab:gap-1">
-        {[t.assurance.printed, deliveryLine, t.assurance.returns].map(line => (
+        {[freeLine, t.assurance.printed, deliveryLine, t.assurance.returns].map(line => (
           <li key={line} className="flex items-start gap-[10px] type-caption tab:items-center tab:gap-tight">
             <Hairline className="mt-[9px] tab:mt-0" />
             <span>{line}</span>

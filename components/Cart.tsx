@@ -12,6 +12,13 @@ import { warmImage } from '@/lib/warm-image';
 import { getProductPrices, formatDisplayPrice } from '@/lib/pricing';
 import { getFramePrice } from '@/config/frame';
 import { deliveryGuideLine, type DeliveryGuide } from '@/lib/delivery-guide';
+import {
+  FREE_DELIVERY_THRESHOLD,
+  amountToFreeDelivery,
+  formatFreeDeliveryAmount,
+  freeDeliveryProgress,
+  qualifiesForFreeDelivery,
+} from '@/config/free-delivery';
 import { track } from '@/lib/analytics';
 import { printImageAlt } from '@/lib/product-image-alt';
 import { Button, Hairline } from '@/components/v2/ui';
@@ -62,6 +69,11 @@ export const Cart: React.FC<{ deliveryGuide: DeliveryGuide }> = ({ deliveryGuide
   }, [state.isOpen]);
 
   const subtotal = getTotalPriceInCurrency(currency);
+  // Free delivery (config/free-delivery.ts), judged on the basket subtotal:
+  // the same number and rule the server charges with.
+  const free = qualifiesForFreeDelivery(subtotal, currency);
+  const awayText = t.freeAway.replace('{amount}', formatFreeDeliveryAmount(amountToFreeDelivery(subtotal, currency), currency));
+  const freeNote = t.freeNote.replace('{amount}', formatFreeDeliveryAmount(FREE_DELIVERY_THRESHOLD[currency], currency));
 
   const handleCheckout = () => {
     track('checkout', {
@@ -185,11 +197,36 @@ export const Cart: React.FC<{ deliveryGuide: DeliveryGuide }> = ({ deliveryGuide
                 </div>
                 <div className="flex items-start justify-between gap-4 type-small">
                   <p>{t.delivery}</p>
-                  <p>{t.deliveryValue}</p>
+                  <p>{free ? t.freeValue : t.deliveryValue}</p>
                 </div>
-                <p className="type-caption">
-                  {t.guidePrefix} {deliveryGuideLine(deliveryGuide, currency, t.regions, t.and, locale)}. {t.guideSuffix}
-                </p>
+                {free ? (
+                  <p className="type-caption">{freeNote}</p>
+                ) : (
+                  <p className="type-caption">
+                    {t.guidePrefix} {deliveryGuideLine(deliveryGuide, currency, t.regions, t.and, locale)}. {t.guideSuffix}
+                  </p>
+                )}
+                {/* Free delivery 492:921: under the threshold, how far off it is,
+                    with a 3px line that fills towards it. The sentence is the
+                    text equivalent of the line (which is hidden from assistive
+                    technology), and this region is live so a change of quantity
+                    or a removal is announced; over the threshold it announces
+                    that delivery is free instead ("Delivery: Free"). */}
+                <div role="status" className={free ? 'sr-only' : 'flex flex-col gap-[10px] overflow-clip pt-[14px] pb-4'}>
+                  {free ? (
+                    <p>{`${t.delivery}: ${t.freeValue}`}</p>
+                  ) : (
+                    <>
+                      <p className="type-small">{awayText}</p>
+                      <div aria-hidden className="h-[3px] w-full overflow-clip bg-surface-strong">
+                        <div
+                          className="h-[3px] bg-brand transition-[width] duration-300 motion-reduce:transition-none"
+                          style={{ width: `${Math.round(freeDeliveryProgress(subtotal, currency) * 10000) / 100}%` }}
+                        />
+                      </div>
+                    </>
+                  )}
+                </div>
               </div>
 
               <ul className="flex flex-col gap-[6px]">

@@ -3,6 +3,7 @@ import { getProductPrice } from '@/lib/pricing';
 import { getFramePrice } from '@/config/frame';
 import { lookupDiscountCode, type DiscountLookup } from '@/lib/server/discounts';
 import type { MetadataItem } from '@/lib/server/order-metadata';
+import { qualifiesForFreeDelivery } from '@/config/free-delivery';
 import { quoteDelivery, type DeliveryItem, type DeliveryQuote } from '@/lib/server/shipping-rates';
 
 // Server-side order maths: the single source of truth for what an order
@@ -27,12 +28,14 @@ export interface OrderItemInput {
   quantity: number;
 }
 
+export type ShippingSource = DeliveryQuote['source'] | 'free-delivery';
+
 export interface ComputedOrder {
   amount: number;
   subtotal: number;
   shipping: number;
   /** Where the delivery figure came from, for the order record. */
-  shippingSource: DeliveryQuote['source'];
+  shippingSource: ShippingSource;
   discount: { code: string; percentage: number } | null;
   discountAmount: number;
   /** The priced lines, ready to be recorded onto the PaymentIntent. */
@@ -88,18 +91,30 @@ export async function computeOrderAmount(
   }
   subtotal = Math.round(subtotal * 100) / 100;
 
-  // Delivery comes from Gelato's own prices, swept into the socialagent store,
-  // or whatever Mark has set by hand for that country. It falls back to
-  // config/shipping.ts when the store cannot answer, which is why that table
-  // still exists: it is a safety net now, not a price list.
-  const delivery = await deliver(countryCode, currency, resolved);
-  const shipping = delivery.amount;
-
   const discount = discountCode ? await lookup(discountCode) : null;
   const discountAmount = discount
     ? Math.round(((subtotal * discount.percentage) / 100) * 100) / 100
     : 0;
 
+  // Free delivery (config/free-delivery.ts): the goods total after any
+  // discount, before delivery, at or above the threshold in the order's
+  // currency ships free to every destination. Decided first so a qualifying
+  // order does not even ask the store for a quote.
+  let shipping: number;
+  let shippingSource: ShippingSource;
+  if (qualifiesForFreeDelivery(Math.round((subtotal - discountAmount) * 100) / 100, currency)) {
+    shipping = 0;
+    shippingSource = 'free-delivery';
+  } else {
+    // Delivery comes from Gelato's own prices, swept into the socialagent
+    // store, or whatever Mark has set by hand for that country. It falls back
+    // to config/shipping.ts when the store cannot answer, which is why that
+    // table still exists: it is a safety net now, not a price list.
+    const delivery = await deliver(countryCode, currency, resolved);
+    shipping = delivery.amount;
+    shippingSource = delivery.source;
+  }
+
   const amount = Math.round((subtotal + shipping - discountAmount) * 100) / 100;
-  return { amount, subtotal, shipping, shippingSource: delivery.source, discount, discountAmount, items: resolved };
+  return { amount, subtotal, shipping, shippingSource, discount, discountAmount, items: resolved };
 }
