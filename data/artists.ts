@@ -78,7 +78,8 @@ export const artists: Artist[] = [
     // Patrik's own words, from his email of 2 October 2026, lightly corrected
     // (he invited corrections): "photo" to "photography", "expose" to "hang".
     bio: 'I\'m an Art Director/Photographer, owner of PWM AB / PWMFoto. I\'ve worked in advertising and marketing for most of my life. Photography and images have always played a very central role in my work, both as a client and image creator in all possible contexts within advertising, editorial and other communication. In 2011, I bought my first real system camera to try something new. Travel and photography proved an unbeatable combination for my photographic venture. On my many journeys I capture objects, nature, buildings and beings and transform them into alluring artworks. The overall objective is to create images that I myself would like to hang on the wall. My work has also been exhibited several times.',
-    image: '', // Initials until Patrik supplies a portrait.
+    // Portrait supplied by Patrik 4 Oct 2026. No photographer credit given, so none shown.
+    image: '/images/artists/patrik-wennerlund.jpg',
     // Signed and limited editions (Mark, 29 Sep 2026); pwmfoto.com is his main site.
     originalsUrl: 'https://www.pwmfotoshop.com',
   },

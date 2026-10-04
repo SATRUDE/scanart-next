@@ -8,7 +8,7 @@
     "website": "https://www.pwmfoto.com",
     "originalsShop": "https://www.pwmfotoshop.com",
     "bioSource": "Patrik's email of 2 October 2026 (light corrections, as he invited)",
-    "image": ""
+    "image": "/images/artists/patrik-wennerlund.jpg"
   },
   "status": "Unpublished review preview. Nothing merged or published. Sizes are proposals for Mark, set per artwork from native ratio and resolution; retail print and frame prices copy the existing Premium 50x70 band as for Markus (not yet approved for 40x60cm).",
   "priceCategory": "Premium",
@@ -19,9 +19,7 @@
   ],
   "noTextOnPrints": true,
   "missingFromPatrik": [
-    "Per-piece descriptions (preview uses a neutral line)",
-    "Portrait photograph (initials shown)",
-    "Approved Norwegian translation of bio",
+        "Approved Norwegian translation of bio",
     "Confirmation that Tjurpannan Båthus (C045) is the fifth picked work: it is in the transfer"
   ],
   "prints": [
