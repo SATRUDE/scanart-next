@@ -24,6 +24,8 @@ const CITIES: Record<string, [number, number]> = {
   // y = (71.4 - lat) * scale. Scale 61.9225 reproduces the five original
   // markers within 0.2 px. Umeå: 63.83° N, 20.26° E (near the east coast).
   Umeå: [487.2, 468.8],
+  // Copenhagen: 55.68° N, 12.57° E, same projection.
+  Copenhagen: [263.6, 973.7],
   Lahti: [644.2, 645.2],
 };
 const ZOOM = 1.6;

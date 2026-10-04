@@ -1162,5 +1162,127 @@
     "orientation": "portrait",
     "created_time": "2026-09-28T09:00:00.000Z",
     "last_edited_time": "2026-09-28T09:00:00.000Z"
+  },
+  {
+    "id": "ca03082f-7da5-51b2-86b4-52de766311c4",
+    "name": "Fitting in",
+    "slug": "fitting-in",
+    "description": "A piece that reflects on gender, the body and the relationship between individual human experience and the public expectation to fit into a certain frame. Drawn in a bold black line, a figure in a dress is built from a tangle of bodies, set on a field of pink.",
+    "category": "Illustrations",
+    "artist": "Emma Iben",
+    "artistId": "11",
+    "brand": "",
+    "inStock": false,
+    "featured": false,
+    "published": false,
+    "review": true,
+    "image": "/images/products/fitting-in-paper-a-ratio-2026-10-04.png",
+    "sourceImage": "/images/artworks/fitting-in.avif",
+    "availableSizes": [
+      "A3",
+      "A2",
+      "A1"
+    ],
+    "priceCategory": "Premium",
+    "productId": "53",
+    "recommendedProducts": [
+      "Precautions",
+      "Pressure",
+      "Good conversation"
+    ],
+    "orientation": "portrait",
+    "created_time": "2026-10-04T16:00:00.000Z",
+    "last_edited_time": "2026-10-04T16:00:00.000Z"
+  },
+  {
+    "id": "bde7fbd6-1820-578f-bad6-c2bb42c5d190",
+    "name": "Precautions",
+    "slug": "precautions",
+    "description": "An illustration that invites you to question both the innocence of a guinea pig and the precautions taken around it. A small guinea pig sits inside a spiked collar, drawn in fine blue hatching on white.",
+    "category": "Illustrations",
+    "artist": "Emma Iben",
+    "artistId": "11",
+    "brand": "",
+    "inStock": false,
+    "featured": false,
+    "published": false,
+    "review": true,
+    "image": "/images/products/precautions-paper-a3-landscape-2026-10-04.png",
+    "sourceImage": "/images/artworks/precautions.avif",
+    "availableSizes": [
+      "A3"
+    ],
+    "priceCategory": "Premium",
+    "productId": "54",
+    "recommendedProducts": [
+      "Fitting in",
+      "Pressure",
+      "Good conversation"
+    ],
+    "orientation": "landscape",
+    "created_time": "2026-10-04T16:00:00.000Z",
+    "last_edited_time": "2026-10-04T16:00:00.000Z"
+  },
+  {
+    "id": "65887b86-ed63-5211-b768-8a1ffb95b927",
+    "name": "Pressure",
+    "slug": "pressure",
+    "description": "An illustration of a person with a very big clothes peg on their head, or a visual representation of a psychological experience. Drawn in a clean black line on white.",
+    "category": "Illustrations",
+    "artist": "Emma Iben",
+    "artistId": "11",
+    "brand": "",
+    "inStock": false,
+    "featured": false,
+    "published": false,
+    "review": true,
+    "image": "/images/products/pressure-paper-a-ratio-2026-10-04.png",
+    "sourceImage": "/images/artworks/pressure.avif",
+    "availableSizes": [
+      "A3",
+      "A2",
+      "A1"
+    ],
+    "priceCategory": "Premium",
+    "productId": "55",
+    "recommendedProducts": [
+      "Fitting in",
+      "Precautions",
+      "Good conversation"
+    ],
+    "orientation": "portrait",
+    "created_time": "2026-10-04T16:00:00.000Z",
+    "last_edited_time": "2026-10-04T16:00:00.000Z"
+  },
+  {
+    "id": "aabcc3a7-d942-544f-a591-82fd671a6488",
+    "name": "Good conversation",
+    "slug": "good-conversation",
+    "description": "A take on what unconstructive communication feels like. Two strained faces, each running inside a wheel of its own, are stacked into a figure of eight on a bright yellow ground.",
+    "category": "Illustrations",
+    "artist": "Emma Iben",
+    "artistId": "11",
+    "brand": "",
+    "inStock": false,
+    "featured": false,
+    "published": false,
+    "review": true,
+    "image": "/images/products/good-conversation-paper-a-ratio-2026-10-04.png",
+    "sourceImage": "/images/artworks/good-conversation.avif",
+    "availableSizes": [
+      "A3",
+      "A2",
+      "A1"
+    ],
+    "priceCategory": "Premium",
+    "productId": "56",
+    "recommendedProducts": [
+      "Fitting in",
+      "Precautions",
+      "Pressure"
+    ],
+    "orientation": "portrait",
+    "created_time": "2026-10-04T16:00:00.000Z",
+    "last_edited_time": "2026-10-04T16:00:00.000Z"
   }
 ]

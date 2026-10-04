@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-04",
+  "ticket": "T-0099",
+  "artist": "Emma Iben",
+  "sources": {
+    "email": "Emma Iben, Sun 4 Oct 2026 16:03 (agreement signed on SignWell 29 Sep)",
+    "wetransfer": "https://we.tl/t-7JTLP8P2FUPusmqo (downloaded 4 Oct; masters in ~/Desktop/Emma-Iben-files/, inventory-sha256.json beside them)",
+    "application": "socialagent ArtistApplication, row 297a0eb5-7ac6-426d-9777-07b7d4168192, 31 Aug 2026 (text on T-0099)",
+    "portfolio": "https://www.emmaiben.dk/"
+  },
+  "works": [
+    { "slug": "fitting-in", "title": "Fitting in", "year": 2023, "master": "Fitting in - A5-A1 PNGs/Print_A3.png (A1 7016x9933 exists but the A1, A2 and A4 exports have uneven side bands)", "px": [3508, 4961], "profile": "none embedded, treated as sRGB", "sizes": ["A3", "A2", "A1"], "margin_added": 0 },
+    { "slug": "precautions", "title": "Precautions", "year": 2025, "master": "Precautions.png", "px": [2354, 1836], "profile": "Display P3, converted to sRGB for the shop images", "sizes": ["A3"], "margin_added": "3.33% (white ground anyway)", "note": "Only 168 ppi at A3 landscape with the border, about 119 ppi at A2. Ask Emma for a larger file for more sizes." },
+    { "slug": "pressure", "title": "Pressure", "year": 2023, "master": "Pressure_A1.png (her vectorised version, rendered at A1)", "px": [7016, 9933], "profile": "none embedded, treated as sRGB", "sizes": ["A3", "A2", "A1"], "margin_added": 0 },
+    { "slug": "good-conversation", "title": "Good conversation", "year": 2021, "master": "Good_conversation_large.png (her vectorised version)", "px": [10865, 15383], "profile": "none embedded, treated as sRGB", "sizes": ["A3", "A2", "A1"], "margin_added": "3.33% (full-bleed yellow, so the shop's narrow white border)" }
+  ],
+  "portrait": { "source": "Foto_EmmaIben.jpg 1047x1530, sRGB", "toned": "python3 scripts/tone-artist-portrait.py public/images/artists/emma-iben.jpg emma-iben --crop 0,30,1047", "credit": "none given, none shown" },
+  "room_scenes": "None yet. Room scenes and vignettes need Megan and Mark's approval first; secondaryImage is left out, so the gallery shows the framed product image only."
+}

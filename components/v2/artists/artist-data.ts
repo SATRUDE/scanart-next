@@ -34,6 +34,7 @@ const TONED: Record<string, string> = {
   'mikko-saarainen': '/images/artists/mikko-saarainen-tone.webp',
   'ishtar-backlund-dakhil': '/images/artists/ishtar-backlund-dakhil-tone.webp',
   'markus-naarttijarvi': '/images/artists/markus-naarttijarvi-tone.webp',
+  'emma-iben': '/images/artists/emma-iben-tone.webp',
 };
 
 export function portraitFor(artist: Pick<Artist, 'slug' | 'image' | 'name'>): { src?: string; initials: string } {

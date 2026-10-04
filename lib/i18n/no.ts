@@ -920,6 +920,11 @@ export const no = {
       location: 'Umeå, Sverige',
       bio: 'Markus Naarttijärvi er dokumentarfotograf med base i Umeå i Sverige. De langsiktige prosjektene hans følger industri, natur og kultur i Nord-Sverige, med temaer som ensomhet, utholdenhet og tidens gang.',
     },
+    // Norwegian translation by Peggy, 4 Oct 2026, awaiting Mark's approval.
+    'emma-iben': {
+      location: 'København, Danmark',
+      bio: 'Emma Iben er illustratør, grafisk designer og motion designer med base i København i Danmark. Hun lager visuelt materiale til albumcovere, plakater, tatoveringer, undervisningsressurser, fiktive kortfilmer og public service-TV, både profesjonelt og for moro skyld. Tegningene hennes er melodramatiske og humoristiske og formidler følelsesmessige opplevelser gjennom gjentakende motiver: vanskelige kropper, unormale størrelser og floker.',
+    },
   } as Record<string, ArtistCopy>,
 
   // The product page's artist statement (lib/artist-statements.ts), each
@@ -933,6 +938,7 @@ export const no = {
     'mikko-saarainen': 'Han lar detaljene fortsette helt ut i kantene, så tegningene blir lest like mye som sett.',
     'ishtar-backlund-dakhil': 'Bildene hennes beveger seg mellom nøye observerte detaljer og fantasiverdener.',
     'markus-naarttijarvi': 'Langsiktige fotoprosjekter fra Nord-Sverige utforsker ensomhet, utholdenhet og tidens gang.',
+    'emma-iben': 'Melodramatiske, humoristiske tegninger som formidler følelsesmessige opplevelser.',
   } as Record<string, string>,
 
   // Norwegian versions of lib/artist-editorial.ts, keyed by slug. para2 keeps
@@ -1247,6 +1253,23 @@ export const no = {
   },
 
   productCopy: {
+    // Emma Iben, Norwegian translation by Peggy 4 Oct 2026, awaiting approval.
+    'fitting-in': {
+      description:
+        'Et verk som reflekterer over kjønn, kropp og forholdet mellom individuell menneskelig erfaring og det offentlige presset om å passe inn i en bestemt ramme. Tegnet med kraftig svart strek: en figur i kjole, bygget av en floke av kropper, mot et felt av rosa.',
+    },
+    'precautions': {
+      description:
+        'En illustrasjon som får deg til å stille spørsmål ved både marsvinets uskyld og forholdsreglene som tas rundt det. Et lite marsvin sitter inni et piggbesatt halsbånd, tegnet i fin blå skravur på hvitt.',
+    },
+    'pressure': {
+      description:
+        'En illustrasjon av en person med en veldig stor klesklype på hodet, eller en visuell fremstilling av en psykologisk opplevelse. Tegnet med ren svart strek på hvitt.',
+    },
+    'good-conversation': {
+      description:
+        'Et bidrag om hvordan ukonstruktiv kommunikasjon føles. To anstrengte ansikter, hver av dem løpende inni sitt eget hjul, er stablet til et åttetall mot en klar gul bakgrunn.',
+    },
     dancer: {
       description:
         'Dancer av Helene Brox fanger en kremhvit figur midt i skrittet mot en himmelblå bakgrunn, med armer som bølger som silkebånd fanget i sin egen fart. Det finnes verken ansikt eller gulv, bare selve formen av bevegelse: én arm som krøller seg bakover mens den andre strekker seg høyt, malt med den løse selvtilliten til en papirutklipping. Den leses tydelig tvers over et rom, og den gir ekte bevegelse til et rolig ett.',
