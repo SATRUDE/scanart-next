@@ -77,4 +77,5 @@ export const artistEditorial: Record<string, ArtistEditorial> = {
 export const artistHeroScene: Record<string, string> = {
   'simen-wahlqvist': 'slingshot',
   'helene-brox': 'dancer',
+  'emma-iben': 'pressure',
 };
