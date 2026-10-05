@@ -69,6 +69,15 @@ export const artistEditorial: Record<string, ArtistEditorial> = {
     para2:
       "There's range here without losing her feel for colour. [Frukt & Grönt](/product/frukt-och-gront) brings a busy gathering of greens, reds and yellows to a kitchen wall; [Surfer with Orange Sun](/product/surfer-with-orange-sun) uses fewer shapes and stronger blocks of colour. [Creature Among Blue Leaves](/product/creature-among-blue-leaves) rewards a quieter spot where you can spend time with its details.",
   },
+  // Emma Iben (branch codex/emma-iben-preview, 5 October 2026, T-0099). Peggy's summary,
+  // grounded in her bio and the four catalogue descriptions only; awaiting Mark's approval.
+  'emma-iben': {
+    heading: 'Tangles, tricky bodies and a dry smile',
+    para1:
+      "Emma Iben's drawings are melodramatic and humorous, and they convey emotional experiences through recurring motifs of tricky bodies, abnormal sizes and tangles. In [Fitting in](/product/fitting-in), a figure in a dress is built from a tangle of bodies on a field of pink; in [Pressure](/product/pressure), a person wears a very big clothes peg on their head.",
+    para2:
+      "The collection brings together four illustrations by Emma Iben. [Precautions](/product/precautions) asks about the innocence of a guinea pig in a spiked collar, and [Good conversation](/product/good-conversation) takes on what unconstructive communication feels like, with two strained faces stacked into a figure of eight on a bright yellow ground.",
+  },
 };
 
 // The room scene the V2 profile hero opens on (Figma "Room · Slingshot",

@@ -998,6 +998,14 @@ export const no = {
       para2:
         'Uttrykket varierer, men sansen for farger går igjen. [Frukt & Grönt](/no/product/frukt-och-gront) samler grønt, rødt og gult på kjøkkenveggen, mens [Surfer with Orange Sun](/no/product/surfer-with-orange-sun) er tegnet med færre former og tydeligere fargeflater. [Creature Among Blue Leaves](/no/product/creature-among-blue-leaves) passer et roligere sted der det er tid til å se detaljene.',
     },
+    // Norwegian translation by Peggy, 5 Oct 2026, awaiting Mark's approval.
+    'emma-iben': {
+      heading: 'Floker, vanskelige kropper og et tørt smil',
+      para1:
+        'Emma Ibens tegninger er melodramatiske og humoristiske, og de formidler følelsesmessige opplevelser gjennom gjentakende motiver som vanskelige kropper, unormale størrelser og floker. I [Fitting in](/no/product/fitting-in) er en figur i kjole bygget av en floke av kropper mot et felt av rosa; i [Pressure](/no/product/pressure) har en person en veldig stor klesklype på hodet.',
+      para2:
+        'Samlingen består av fire illustrasjoner av Emma Iben. [Precautions](/no/product/precautions) får deg til å stille spørsmål ved uskylden til et marsvin i et piggete halsbånd, og [Good conversation](/no/product/good-conversation) tar for seg hvordan ukonstruktiv kommunikasjon føles, med to anstrengte ansikter stablet til en åtter på en klar gul bunn.',
+    },
   } as Record<string, ArtistEditorialCopy>,
   inspire: {
     meta: {
