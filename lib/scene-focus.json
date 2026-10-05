@@ -902,5 +902,29 @@
     "h": 35,
     "score": "manual",
     "ar": 0.8002853067047075
+  },
+  "/images/products/fitting-in-vignette-2026-10-05.avif": {
+    "x": 55.7,
+    "y": 34.8,
+    "w": 35.0,
+    "h": 40.0,
+    "score": "manual",
+    "ar": 0.8003
+  },
+  "/images/products/precautions-vignette-2026-10-05.avif": {
+    "x": 50.6,
+    "y": 52.4,
+    "w": 32.9,
+    "h": 19.2,
+    "score": 0.89,
+    "ar": 0.8003
+  },
+  "/images/products/pressure-vignette-2026-10-05.avif": {
+    "x": 50.4,
+    "y": 31.8,
+    "w": 30.0,
+    "h": 33.7,
+    "score": 0.947,
+    "ar": 0.8003
   }
 }
