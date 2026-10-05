@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { ContentSection, ContentBody, ListItem, TextLink } from '@/components/v2/ui';
 import { TrackedLink } from '@/components/TrackedLink';
+import { ArticleLinks } from '@/components/v2/landing/ArticleLinks';
 
 /**
  * A collection landing's styling section and its extras (docs/v2-seo.md,
@@ -18,6 +19,7 @@ export function CollectionStyling({
   cards,
   plannerLabel,
   relatedArticle,
+  moreArticles,
 }: {
   locale: 'en' | 'no';
   slug: string;
@@ -28,9 +30,11 @@ export function CollectionStyling({
   plannerLabel?: string;
   /** Articles are the one untranslated route: /no links out to the English article on purpose. */
   relatedArticle?: { slug: string; label: string };
+  /** Further journal articles that fit this room (lib/journal-links.ts), linked after the related article. */
+  moreArticles?: { slug: string; label: string }[];
 }) {
   const footer =
-    plannerLabel || relatedArticle ? (
+    plannerLabel || relatedArticle || moreArticles?.length ? (
       <>
         {plannerLabel && (
           <TrackedLink
@@ -46,6 +50,7 @@ export function CollectionStyling({
           </TrackedLink>
         )}
         {relatedArticle && <TextLink href={`/article/${relatedArticle.slug}`} hrefLang={locale === 'no' ? 'en' : undefined}>{relatedArticle.label}</TextLink>}
+        {moreArticles && <ArticleLinks links={moreArticles} locale={locale} />}
       </>
     ) : undefined;
 

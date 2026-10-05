@@ -6,6 +6,7 @@ import { getShopArtists as getPublishedArtists } from '@/lib/published-artists';
 import { ShopLanding } from '@/components/v2/shop/ShopLanding';
 import { collectionProducts } from '@/components/v2/shop/shop-routes';
 import { CollectionStyling } from '@/components/v2/landing/CollectionStyling';
+import { collectionJournalLinks, journalLinksFor } from '@/lib/journal-links';
 import { collectionPageJsonLd, faqPageJsonLd, landingBreadcrumbJsonLd } from '@/lib/landing-jsonld';
 import { socialCard } from '@/lib/site';
 import { hreflangPair } from '@/lib/i18n';
@@ -98,6 +99,7 @@ export default async function CollectionPage({
             ? { slug: collection.relatedArticleSlug, label: `Read more: ${collection.relatedArticleLabel}` }
             : undefined
         }
+        moreArticles={journalLinksFor(collectionJournalLinks[collection.slug], 'en')}
       />
     </ShopLanding>
   );
