@@ -4,6 +4,8 @@ import { categoryLandings, getCategoryLandingBySlug } from '@/lib/categories';
 import { getShopProductsByCategory as getProductsByCategory } from '@/lib/products';
 import { getShopArtists as getPublishedArtists } from '@/lib/published-artists';
 import { ContentSection, ContentBody } from '@/components/v2/ui';
+import { ArticleLinks } from '@/components/v2/landing/ArticleLinks';
+import { categoryJournalLinks, journalLinksFor } from '@/lib/journal-links';
 import { ShopLanding } from '@/components/v2/shop/ShopLanding';
 import { collectionPageJsonLd, faqPageJsonLd, landingBreadcrumbJsonLd } from '@/lib/landing-jsonld';
 import { socialCard } from '@/lib/site';
@@ -76,7 +78,12 @@ export default async function CategoryPage({
         landingBreadcrumbJsonLd({ locale: 'en', homeName: 'Home', productsName: 'Art Prints', name: category.heading, path }),
       ]}
     >
-      <ContentSection id="styling" title={category.stylingHeading} className="mt-section">
+      <ContentSection
+        id="styling"
+        title={category.stylingHeading}
+        className="mt-section"
+        footer={categoryJournalLinks[category.slug] ? <ArticleLinks links={journalLinksFor(categoryJournalLinks[category.slug], 'en')} locale="en" /> : undefined}
+      >
         <ContentBody>
           <p>{category.stylingBody}</p>
         </ContentBody>
