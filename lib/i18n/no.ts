@@ -1456,6 +1456,7 @@ export const no = {
       // cheapest delivery for an unframed print outside the UK, in the
       // buyer's currency (lib/server/delivery-guide.ts).
       assurance: {
+        free: 'Fri frakt på bestillinger fra {amount}',
         printed: 'Trykkes på bestilling på 200 g ubestrøket papir, ferdig på 1–4 virkedager',
         delivery: 'Levering i Storbritannia på 2–3 virkedager, resten av verden fra {price} uten ramme',
         returns: '14 dagers angrerett',

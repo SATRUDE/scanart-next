@@ -164,3 +164,13 @@ describe('defaultDestination', () => {
     }
   });
 });
+
+describe('countries we do not deliver to', () => {
+  // Mark, 2026-10-03: Cuba and North Korea are off the list.
+  it('refuses Cuba and North Korea', () => {
+    for (const code of ['CU', 'KP']) {
+      expect(isDeliverable(code), code).toBe(false);
+      expect(ALL_COUNTRIES.some(c => c.code === code), code).toBe(false);
+    }
+  });
+});
