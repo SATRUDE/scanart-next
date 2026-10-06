@@ -1395,6 +1395,46 @@ export const no = {
       description:
         "En surfer balanserer over en turkis bølge med en klar oransje sol bak seg i denne illustrasjonen av Ishtar Bäcklund Dakhil. Utstrakte armer og et bøyd kne gir figuren en lett, balansert bevegelse. Mørke klær danner en tydelig form mot solen, mens hvitt skum bryter over den nedre delen av bildet. Et trykk av Ishtars håndmalte original.",
     },
+    'through-the-willows': {
+      description:
+        'Through the Willows av Markus Naarttijärvi er et fotografi av en elv som gløder gyllen under et slør av pile- og eikeløv. En enkelt fugl krysser disen over vannet, og mørke greiner rammer inn lyset på begge sider. Nesten hele bildet står i varme gulltoner, så bladene står som mørk blonde mot gløden, og stillheten er myk og ventende. Et trykk i stående format.',
+    },
+    'pines-under-starlight': {
+      description:
+        'Pines Under Starlight av Markus Naarttijärvi er et nattfotografi av snølastede furutrær under en klar himmel full av stjerner. Hele bildet ligger i dypt blått, med lys snø i forgrunnen og trærne mørke mot himmelen. Stjernene er svake og spredt over hele himmelen, ikke samlet ett sted. Ingenting beveger seg: en dempet, kald og klar vinternatt, holdt helt stille. Et trykk i stående format.',
+    },
+    'boathouses-in-winter': {
+      description:
+        'Boathouses in winter av Markus Naarttijärvi fanger et opplyst vindu og en ensom gatelykt i en mørk, snøtung natt ved naustene. Fallende snø lyser opp der lyset treffer den, og svake spor krysser snøen foran byggene. Alt utenfor lyset blir liggende i skygge, så de få varme punktene gjør hele jobben. Et trykk i stående format.',
+    },
+    'frozen-currents': {
+      description:
+        'Frozen currents av Markus Naarttijärvi er et nærbilde av bleke isrygger som virvler over mørkt vann, dekket av et tynt lag nysnø. Det finnes ingen horisont og ingenting som viser størrelsen, så bildet ligner mer på et abstrakt maleri enn et landskap. Blågrått og hvitt mot nesten svart, en studie i bevegelse og kulde. Et trykk i stående format.',
+    },
+    'the-road-at-sunset': {
+      description:
+        'The Road at Sunset av Markus Naarttijärvi følger en liten gruppe syklister rundt en svingete vei mot lav kveldssol. Skog og åser fortoner seg i disen bakenfor, og veimerkingene leder blikket rundt svingen. Sett ovenfra er syklistene små mot den brede veien: en varm, stille avslutning på dagen, fanget midt på reisen. Et trykk i stående format.',
+    },
+    'sun-over-the-forest': {
+      description:
+        'Sun Over the Forest av Markus Naarttijärvi viser en enorm, disig sol som henger lavt over en mørk rekke med trær. Himmelen brenner oransje rundt den, med tynne skybånd som krysser skiven. Trelinjen er en flat silhuett, så bildet består av ingenting annet enn sol, himmel og skog, uten bakke i bildet, bare det mørke trebåndet og gløden over. Et trykk i liggende format, enkelt og elementært.',
+    },
+    'swan-on-still-water': {
+      description:
+        'Swan on Still Water av Markus Naarttijärvi viser en ensom svane som glir over en disig innsjø ved første lys. Mørkt siv står i forgrunnen, og skog hever seg i myk dis bak. Dis ligger lavt over vannet og myker linjen mellom innsjøen og trærne. Vannet ligger nesten speilblankt, og den lille hvite fuglen er det eneste lyse punktet i bildet. Et trykk i liggende format, rolig og dempet.',
+    },
+    'morning-cabin-room': {
+      description:
+        'Morning, Cabin Room av Markus Naarttijärvi viser mykt lys som faller gjennom blondegardiner over en enkel seng i en trehytte. Et høyt vindu åpner mot grønt løv, sengen har et mørkeblått sengeteppe og stripete puter, og det grønne presser seg tett inn mot rommet. Det er et uoppredd, helt vanlig hjørne, fanget i stillheten tidlig om morgenen. Et trykk i liggende format.',
+    },
+    'path-through-the-trees': {
+      description:
+        'Path Through the Trees av Markus Naarttijärvi følger en gangbro av planker som slynger seg gjennom tett, mørk skog mot en lys glenne. Slanke stammer presser seg inn fra begge sider, og plankene fanger litt blekt lys der de svinger bort. Lyset i enden drar blikket med seg: den typen sti som får deg til å lure på hva som kommer etterpå. Et trykk i liggende format.',
+    },
+    'sheep-on-the-track': {
+      description:
+        'Sheep on the Track av Markus Naarttijärvi viser en liten flokk mørke sauer på en gjørmete kjerrevei mellom hekker, med blikket rett mot kameraet. Det står vann i hjulsporene, trær buer seg over, og en grønn beitemark åpner seg bak dem. Lyset er fuktig og overskyet, og hele scenen er gjennomført landlig. Et trykk i stående format, med et lite glimt i øyet.',
+    },
   } as Record<string, { description: string; buyerDescription?: string }>,
 
   productPage: {
