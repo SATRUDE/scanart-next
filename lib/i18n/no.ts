@@ -992,6 +992,13 @@ export const no = {
       para2:
         'Uttrykket varierer, men sansen for farger går igjen. [Frukt & Grönt](/no/product/frukt-och-gront) samler grønt, rødt og gult på kjøkkenveggen, mens [Surfer with Orange Sun](/no/product/surfer-with-orange-sun) er tegnet med færre former og tydeligere fargeflater. [Creature Among Blue Leaves](/no/product/creature-among-blue-leaves) passer et roligere sted der det er tid til å se detaljene.',
     },
+    'markus-naarttijarvi': {
+      heading: 'Lys, vann og stille steder',
+      para1:
+        'En elv sett gjennom løv, furuer under en stjernehimmel og en svane på disig vann. Fotografiene beveger seg mellom åpne landskap og stillere detaljer, fra en lav sol over skogen til lys som faller inn gjennom et hyttevindu.',
+      para2:
+        'Samlingen består av ti fotografier av Markus Naarttijärvi. Hvert bilde vises i sin helhet, med hvit kant der fotografiet og papiret har ulike proporsjoner.',
+    },
   } as Record<string, ArtistEditorialCopy>,
   inspire: {
     meta: {
