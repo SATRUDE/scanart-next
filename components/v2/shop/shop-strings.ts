@@ -3,7 +3,7 @@ import type { ProductsGridStrings } from '@/lib/i18n';
 
 /** The Filter bar and grid labels in English. The Norwegian set is lib/i18n/no.ts's products.grid. */
 const EN: ProductsGridStrings = {
-  heading: 'Nordic & Scandinavian Art Prints',
+  heading: 'All prints',
   searchPrefix: 'Search',
   printsSuffix: 'prints',
   allChip: 'All prints',
