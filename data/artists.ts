@@ -85,13 +85,13 @@ export const artists: Artist[] = [
     name: 'Patrik Wennerlund',
     slug: 'patrik-wennerlund',
     location: 'Borås, Sweden',
-    // Patrik's own words, from his email of 2 October 2026, lightly corrected
-    // (he invited corrections): "photo" to "photography", "expose" to "hang".
-    bio: 'I\'m an Art Director/Photographer, owner of PWM AB / PWMFoto. I\'ve worked in advertising and marketing for most of my life. Photography and images have always played a very central role in my work, both as a client and image creator in all possible contexts within advertising, editorial and other communication. In 2011, I bought my first real system camera to try something new. Travel and photography proved an unbeatable combination for my photographic venture. On my many journeys I capture objects, nature, buildings and beings and transform them into alluring artworks. The overall objective is to create images that I myself would like to hang on the wall. My work has also been exhibited several times.',
+    // Patrik's own words from his email of 2 October 2026, lightly edited into the
+    // third person (Mark, 6 Oct 2026); no facts added.
+    bio: 'Patrik Wennerlund is an art director and photographer, and the owner of PWM AB / PWMFoto. He has worked in advertising and marketing for most of his life, and photography has always played a central role in his work, both as a client and as an image maker across advertising, editorial and other communication. In 2011 he bought his first real system camera to try something new, and travel and photography proved an unbeatable combination. On his many journeys he captures objects, nature, buildings and beings, and transforms them into alluring artworks. His aim is to create images he would like to hang on his own wall. His work has been exhibited several times.',
     // Portrait supplied by Patrik 4 Oct 2026. No photographer credit given, so none shown.
     image: '/images/artists/patrik-wennerlund.jpg',
-    // Signed and limited editions (Mark, 29 Sep 2026); pwmfoto.com is his main site.
-    originalsUrl: 'https://www.pwmfotoshop.com',
+    // Signed and limited editions (Mark, 29 Sep 2026); Mark, 6 Oct 2026: link www.pwmfoto.com.
+    originalsUrl: 'https://www.pwmfoto.com',
   },
 ];
 
