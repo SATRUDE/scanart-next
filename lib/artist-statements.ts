@@ -28,6 +28,6 @@ export const artistStatements: Record<string, string> = {
   // Markus's own About page, checked 28 September 2026:
   // https://www.naarttijarvi.com/about. Editorial summary, not a quotation.
   'markus-naarttijarvi': 'Long-term photographs of northern Sweden, exploring solitude, perseverance and the passage of time.',
-  // data/artists.ts bio, its aim sentence.
-  'patrik-wennerlund': 'His aim is to create images he would like to hang on his own wall.',
+  // Mark approved this line for Patrik, 6 Oct 2026; the mist and storms are his own Moody and Storm.
+  'patrik-wennerlund': 'His photographs find quiet drama in mist, storms and Sweden\'s west coast.',
 };

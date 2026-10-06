@@ -937,7 +937,7 @@ export const no = {
     'mikko-saarainen': 'Han lar detaljene fortsette helt ut i kantene, så tegningene blir lest like mye som sett.',
     'ishtar-backlund-dakhil': 'Bildene hennes beveger seg mellom nøye observerte detaljer og fantasiverdener.',
     'markus-naarttijarvi': 'Langsiktige fotoprosjekter fra Nord-Sverige utforsker ensomhet, utholdenhet og tidens gang.',
-    'patrik-wennerlund': 'Målet er å lage bilder han selv ville hengt på sin egen vegg.',
+    'patrik-wennerlund': 'Fotografiene hans finner stille dramatikk i tåke, storm og den svenske vestkysten.',
   } as Record<string, string>,
 
   // Norwegian versions of lib/artist-editorial.ts, keyed by slug. para2 keeps
