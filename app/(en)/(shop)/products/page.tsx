@@ -10,9 +10,9 @@ import { socialCard } from '@/lib/site';
 import { metaTitle } from '@/lib/meta-title';
 import { hreflangPair } from '@/lib/i18n';
 
-const PAGE_TITLE = 'Nordic & Scandinavian Art Prints: A Curated Collection';
+const PAGE_TITLE = 'All Prints: Browse the Collection by Artist and Size';
 const PAGE_DESCRIPTION =
-  'A curated collection of Scandinavian and Nordic art prints by independent Nordic artists. Framed or unframed, with worldwide delivery.';
+  'Browse every print in the gallery by artist, size and subject. Made to order by independent Nordic artists, framed or unframed, with worldwide delivery.';
 
 export const metadata: Metadata = {
   // 54 characters of its own, so the layout's brand suffix pushed the rendered
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 // ShopFrame, which is what useSearchParams wants: only that leaf is
 // client-rendered, and the grid prerenders into the static HTML.
 //
-// The page header (the H1 "Nordic & Scandinavian Art Prints", the lead and the
+// The page header (the H1 "All prints", the lead and the
 // meta line) and the Filter bar are rendered by the shop layout,
 // app/(en)/(shop)/layout.tsx, so they stay put when a visitor moves between
 // this page and a category or collection (components/v2/shop/shop-routes.tsx).
@@ -43,7 +43,7 @@ export default async function ProductsPage() {
   const products = await getAllProducts();
   const artists = await getPublishedArtists();
 
-  // Structured data for the core "art prints" landing: CollectionPage plus an
+  // Structured data for the browse-everything page: CollectionPage plus an
   // ItemList enumerating the full catalogue, matching the sibling listing pages
   // (/collection, /artists, /journal). Rendered here in the server component so
   // it lands in the served HTML even though the grid itself is a client component.
@@ -85,7 +85,7 @@ export default async function ProductsPage() {
             If you want the background first,{' '}
             <Link href="/nordic-art" className="transition-colors hover:text-ink">Nordic art, from folk tradition to now</Link>{' '}
             is the story of the traditions these artists draw on. If you already know the room,{' '}
-            <Link href="/scandinavian-wall-art" className="transition-colors hover:text-ink">Scandinavian wall art</Link>{' '}
+            <Link href="/scandinavian-wall-art" className="transition-colors hover:text-ink">Scandinavian wall art and Nordic art prints</Link>{' '}
             takes the whole gallery room by room.
           </p>
         </ContentBody>

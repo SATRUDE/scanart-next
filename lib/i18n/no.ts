@@ -90,7 +90,7 @@ export const no = {
 
   home: {
     meta: {
-      title: 'Scandinavian Art Gallery | Innrammede nordiske kunsttrykk',
+      title: 'Scandinavian Art Gallery | Trykk av nordiske kunstnere',
       description:
         'Kuraterte skandinaviske og nordiske kunsttrykk fra uavhengige kunstnere. Kjøp veggkunst med eller uten ramme, levert til hele verden. Utforsk samlingen.',
     },
@@ -1021,7 +1021,7 @@ export const no = {
 
   products: {
     grid: {
-      heading: 'Nordiske og skandinaviske kunsttrykk',
+      heading: 'Alle trykk',
       searchPrefix: 'Søk',
       /** "16 trykk" - same word in singular and plural. */
       printsSuffix: 'trykk',
@@ -1064,13 +1064,13 @@ export const no = {
       contentP2:
         'Velg trykket uten ramme, eller med ramme i tre, svart eller hvitt, tilpasset trykket. Vi sender over hele verden, og fraktkostnaden vises i kassen.',
       contentP3Before: 'Vet du allerede hvilket rom trykket skal henge i? ',
-      contentP3Link: 'Skandinavisk veggkunst',
+      contentP3Link: 'Skandinavisk veggkunst og nordiske kunsttrykk',
       contentP3After: ' tar for seg hele galleriet, rom for rom.',
     },
     meta: {
-      title: 'Nordiske og skandinaviske kunsttrykk: en kuratert samling',
+      title: 'Alle trykk: bla gjennom samlingen etter kunstner og størrelse',
       description:
-        'En kuratert samling skandinaviske og nordiske kunsttrykk av uavhengige nordiske kunstnere. Innrammet eller uten ramme, med levering over hele verden.',
+        'Bla gjennom alle trykkene i galleriet etter kunstner, størrelse og motiv. Laget på bestilling av uavhengige nordiske kunstnere, med eller uten ramme, med levering over hele verden.',
     },
   },
 
@@ -1194,12 +1194,12 @@ export const no = {
   } satisfies ApplyCopy,
 
   wallArt: {
-    title: 'Kjøp skandinaviske kunsttrykk | Innrammede nordiske trykk',
+    title: 'Skandinavisk veggkunst | Innrammede nordiske kunsttrykk',
     description:
-      'Kjøp skandinaviske kunsttrykk av uavhengige kunstnere fra hele Norden: med ramme i tre, svart eller hvit, eller uten ramme, laget på bestilling.',
-    heading: 'Kjøp skandinaviske kunsttrykk',
+      'Kjøp skandinavisk veggkunst og nordiske kunsttrykk av uavhengige kunstnere fra hele Norden: med ramme i tre, svart eller hvit, eller uten ramme, laget på bestilling.',
+    heading: 'Skandinavisk veggkunst og nordiske kunsttrykk',
     intro:
-      'Denne siden er hele galleriet: nordiske kunsttrykk, hvert av dem av en uavhengig kunstner som lever og arbeider i Norden, og hvert av dem solgt med eller uten ramme. Helene Brox maler nedskrelte, kremhvite figurer i Oslo og skjærer en svale ned til selve stupet av vingene. Ingunn Dybendal tegner folkeblomster og mønstret innsjølandskap i fargeblyant, Sia Siamos fyller bord med hummer, vin og hyttefrokost, Simen Wahlqvist får plass til en hel vits i en håndfull streker, Hedvig Wallin dekker et frokostbord fra Göteborg i tusj og akvarell, Mikko Saarainen fyller hver krok av en finsk tegneserieside, og Ishtar Bäcklund Dakhil beveger seg mellom Stockholms havnefront og fantasiverdener. Ikke et fyllbilde blant dem.',
+      'Denne siden er hele galleriet av skandinavisk veggkunst: nordiske kunsttrykk, hvert av dem av en uavhengig kunstner som lever og arbeider i Norden, og hvert av dem solgt med eller uten ramme. Helene Brox maler nedskrelte, kremhvite figurer i Oslo og skjærer en svale ned til selve stupet av vingene. Ingunn Dybendal tegner folkeblomster og mønstret innsjølandskap i fargeblyant, Sia Siamos fyller bord med hummer, vin og hyttefrokost, Simen Wahlqvist får plass til en hel vits i en håndfull streker, Hedvig Wallin dekker et frokostbord fra Göteborg i tusj og akvarell, Mikko Saarainen fyller hver krok av en finsk tegneserieside, og Ishtar Bäcklund Dakhil beveger seg mellom Stockholms havnefront og fantasiverdener. Ikke et fyllbilde blant dem.',
     intro2:
       'Å kjøpe skandinaviske kunsttrykk på nett betyr vanligvis å skrolle gjennom et marked med ti tusen plakater som aldri har vært i nærheten av en fjord. Dette er det motsatte. Et lite galleri, kunstnere vi jobber direkte med, og hvert trykk laget på bestilling framfor hentet fra et lager. Velg bildet først og rammen etterpå, og klarer du ikke å velge mellom to, er kvadratene til Wahlqvist og fugleparet til Brox laget for å henge sammen.',
     framedHeading: 'Med eller uten ramme',

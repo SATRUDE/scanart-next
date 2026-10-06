@@ -43,8 +43,8 @@ export function collectionProducts(collection: Collection, all: Product[]) {
     .filter((p): p is NonNullable<typeof p> => Boolean(p));
 }
 
-/** The /products H1, unchanged from before V2 (the Figma frame says "Prints"). */
-export const PRODUCTS_HEADING = 'Nordic & Scandinavian Art Prints';
+/** The /products H1: the browse page. "Scandinavian wall art" and "Nordic art prints" belong to /scandinavian-wall-art. */
+export const PRODUCTS_HEADING = 'All prints';
 
 export async function shopRoutes(locale: 'en' | 'no'): Promise<Record<string, ShopRoute>> {
   const isNo = locale === 'no';
