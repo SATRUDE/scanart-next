@@ -4,21 +4,7 @@ import { cityOf, portraitFor } from '@/components/v2/artists/artist-data';
 import type { ArtistCardData } from '@/components/v2/artists/ArtistCard';
 import type { AboutPlace } from './AboutBody';
 import type { WindowPool } from './HeadlineWithWindows';
-
-/**
- * Marker positions on /images/map/nordics.svg (843 × 1053), from the brand
- * file's map/cities.json. A city not listed here is still in the list of
- * places, just without a marker.
- */
-const MAP = { W: 843, H: 1053 };
-const CITIES: Record<string, [number, number]> = {
-  Oslo: [210.8, 711.4],
-  Bergen: [52.9, 681.7],
-  Gothenburg: [246.2, 847.7],
-  Stockholm: [423.5, 747.4],
-  Lahti: [644.2, 645.2],
-};
-const CITY_ORDER = Object.keys(CITIES);
+import { MAP_SIZE, PINNED_CITIES, labelSides, pinFor, type CityPin } from '@/lib/artist-cities';
 
 /** The bio's first sentence, for a card with no one-line statement. */
 function firstSentence(text: string): string {
@@ -37,22 +23,29 @@ export function aboutPlaces(artists: PublishedArtist[], cityLabels: Record<strin
     if (!city) continue;
     byCity.set(city, [...(byCity.get(city) ?? []), artist.name]);
   }
+  const pins: Record<string, CityPin> = {};
+  for (const city of byCity.keys()) {
+    const pin = pinFor(city);
+    if (pin) pins[city] = pin;
+  }
+  const sides = labelSides(pins);
   return [...byCity.entries()]
     .sort((a, b) => b[1].length - a[1].length || rank(a[0]) - rank(b[0]))
     .map(([city, names]) => {
-      const point = CITIES[city];
+      const point = pins[city];
       return {
         label: cityLabels[city] ?? city,
-        x: point ? (point[0] / MAP.W) * 100 : null,
-        y: point ? (point[1] / MAP.H) * 100 : null,
+        x: point ? (point.x / MAP_SIZE.W) * 100 : null,
+        y: point ? (point.y / MAP_SIZE.H) * 100 : null,
+        side: sides[city] ?? 'right',
         artists: names,
       };
     });
 }
 
 function rank(city: string): number {
-  const i = CITY_ORDER.indexOf(city);
-  return i === -1 ? CITY_ORDER.length : i;
+  const i = PINNED_CITIES.indexOf(city);
+  return i === -1 ? PINNED_CITIES.length : i;
 }
 
 /**

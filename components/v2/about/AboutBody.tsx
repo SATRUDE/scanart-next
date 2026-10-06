@@ -10,6 +10,8 @@ export interface AboutPlace {
   /** Marker position, as a percentage of the map's width and height; null when the city is not on the map. */
   x: number | null;
   y: number | null;
+  /** Which side of the pin the label runs, so close neighbours (Gothenburg, Borås) do not overlap. */
+  side?: 'left' | 'right';
   artists: string[];
 }
 
@@ -158,8 +160,8 @@ function WhereTheArtistsWork({ heading, places }: { heading: string; places: Abo
           {places.filter(place => place.x !== null).map(place => (
             <span
               key={place.label}
-              className="absolute flex -translate-y-1/2 items-center gap-[4px] tab:gap-[6px]"
-              style={{ left: `calc(${place.x}% - 1.5px)`, top: `${place.y}%` }}
+              className={`absolute flex -translate-y-1/2 items-center gap-[4px] tab:gap-[6px] ${place.side === 'left' ? '-translate-x-full flex-row-reverse' : ''}`}
+              style={{ left: place.side === 'left' ? `calc(${place.x}% + 5px)` : `calc(${place.x}% - 1.5px)`, top: `${place.y}%` }}
             >
               <span className="size-[3px] shrink-0 rounded-full bg-ink tab:size-[7px]" />
               <span className="h-px w-[5px] shrink-0 bg-brand tab:w-3" />
