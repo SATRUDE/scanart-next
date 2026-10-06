@@ -152,6 +152,7 @@ export default async function ArtistPage({
                 alt: hero.scene.alt,
                 href: `/product/${hero.product.slug}`,
                 title: hero.product.name,
+                productSlug: hero.product.slug,
               }
             : null
         }

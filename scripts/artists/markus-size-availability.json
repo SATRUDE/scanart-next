@@ -1,0 +1,327 @@
+{
+  "recordedAt": "2026-09-28T17:24:19.731159+00:00",
+  "source": "Gelato v4 orders:quote read-only responses using curl",
+  "note": "Read-only availability checks. No orders. Pricing held at existing Premium50x70 by Mark instruction.",
+  "variants": [
+    {
+      "size": "A3",
+      "kind": "unframed",
+      "country": "GB",
+      "currency": "GBP",
+      "productUid": "flat_a3_200-gsm-80lb-uncoated_4-0_ver",
+      "httpStatus": 200
+    },
+    {
+      "size": "A3",
+      "kind": "unframed",
+      "country": "NO",
+      "currency": "NOK",
+      "productUid": "flat_a3_200-gsm-80lb-uncoated_4-0_ver",
+      "httpStatus": 200
+    },
+    {
+      "size": "A3",
+      "kind": "natural-wood-frame",
+      "country": "GB",
+      "currency": "GBP",
+      "productUid": "framed_poster_a3_natural-wood_wood_w12xt22-mm_plexiglass_a3_200-gsm-80lb-uncoated_4-0_ver",
+      "httpStatus": 200
+    },
+    {
+      "size": "A3",
+      "kind": "natural-wood-frame",
+      "country": "NO",
+      "currency": "NOK",
+      "productUid": "framed_poster_a3_natural-wood_wood_w12xt22-mm_plexiglass_a3_200-gsm-80lb-uncoated_4-0_ver",
+      "httpStatus": 200
+    },
+    {
+      "size": "A3",
+      "kind": "black-frame",
+      "country": "GB",
+      "currency": "GBP",
+      "productUid": "framed_poster_a3_black_wood_w12xt22-mm_plexiglass_a3_200-gsm-80lb-uncoated_4-0_ver",
+      "httpStatus": 200
+    },
+    {
+      "size": "A3",
+      "kind": "black-frame",
+      "country": "NO",
+      "currency": "NOK",
+      "productUid": "framed_poster_a3_black_wood_w12xt22-mm_plexiglass_a3_200-gsm-80lb-uncoated_4-0_ver",
+      "httpStatus": 200
+    },
+    {
+      "size": "A3",
+      "kind": "white-frame",
+      "country": "GB",
+      "currency": "GBP",
+      "productUid": "framed_poster_a3_white_wood_w12xt22-mm_plexiglass_a3_200-gsm-80lb-uncoated_4-0_ver",
+      "httpStatus": 200
+    },
+    {
+      "size": "A3",
+      "kind": "white-frame",
+      "country": "NO",
+      "currency": "NOK",
+      "productUid": "framed_poster_a3_white_wood_w12xt22-mm_plexiglass_a3_200-gsm-80lb-uncoated_4-0_ver",
+      "httpStatus": 200
+    },
+    {
+      "size": "A2",
+      "kind": "unframed",
+      "country": "GB",
+      "currency": "GBP",
+      "productUid": "flat_a2_200-gsm-80lb-uncoated_4-0_ver",
+      "httpStatus": 200
+    },
+    {
+      "size": "A2",
+      "kind": "unframed",
+      "country": "NO",
+      "currency": "NOK",
+      "productUid": "flat_a2_200-gsm-80lb-uncoated_4-0_ver",
+      "httpStatus": 200
+    },
+    {
+      "size": "A2",
+      "kind": "natural-wood-frame",
+      "country": "GB",
+      "currency": "GBP",
+      "productUid": "framed_poster_a2_natural-wood_wood_w12xt22-mm_plexiglass_a2_200-gsm-80lb-uncoated_4-0_ver",
+      "httpStatus": 200
+    },
+    {
+      "size": "A2",
+      "kind": "natural-wood-frame",
+      "country": "NO",
+      "currency": "NOK",
+      "productUid": "framed_poster_a2_natural-wood_wood_w12xt22-mm_plexiglass_a2_200-gsm-80lb-uncoated_4-0_ver",
+      "httpStatus": 200
+    },
+    {
+      "size": "A2",
+      "kind": "black-frame",
+      "country": "GB",
+      "currency": "GBP",
+      "productUid": "framed_poster_a2_black_wood_w12xt22-mm_plexiglass_a2_200-gsm-80lb-uncoated_4-0_ver",
+      "httpStatus": 200
+    },
+    {
+      "size": "A2",
+      "kind": "black-frame",
+      "country": "NO",
+      "currency": "NOK",
+      "productUid": "framed_poster_a2_black_wood_w12xt22-mm_plexiglass_a2_200-gsm-80lb-uncoated_4-0_ver",
+      "httpStatus": 200
+    },
+    {
+      "size": "A2",
+      "kind": "white-frame",
+      "country": "GB",
+      "currency": "GBP",
+      "productUid": "framed_poster_a2_white_wood_w12xt22-mm_plexiglass_a2_200-gsm-80lb-uncoated_4-0_ver",
+      "httpStatus": 200
+    },
+    {
+      "size": "A2",
+      "kind": "white-frame",
+      "country": "NO",
+      "currency": "NOK",
+      "productUid": "framed_poster_a2_white_wood_w12xt22-mm_plexiglass_a2_200-gsm-80lb-uncoated_4-0_ver",
+      "httpStatus": 200
+    },
+    {
+      "size": "30x40",
+      "kind": "unframed",
+      "country": "GB",
+      "currency": "GBP",
+      "productUid": "flat_300x400-mm-12x16-inch_200-gsm-80lb-uncoated_4-0_ver",
+      "httpStatus": 200
+    },
+    {
+      "size": "30x40",
+      "kind": "unframed",
+      "country": "NO",
+      "currency": "NOK",
+      "productUid": "flat_300x400-mm-12x16-inch_200-gsm-80lb-uncoated_4-0_ver",
+      "httpStatus": 200
+    },
+    {
+      "size": "30x40",
+      "kind": "natural-wood-frame",
+      "country": "GB",
+      "currency": "GBP",
+      "productUid": "framed_poster_300x400-mm-12x16-inch_natural-wood_wood_w12xt22-mm_plexiglass_300x400-mm-12x16-inch_200-gsm-80lb-uncoated_4-0_ver",
+      "httpStatus": 200
+    },
+    {
+      "size": "30x40",
+      "kind": "natural-wood-frame",
+      "country": "NO",
+      "currency": "NOK",
+      "productUid": "framed_poster_300x400-mm-12x16-inch_natural-wood_wood_w12xt22-mm_plexiglass_300x400-mm-12x16-inch_200-gsm-80lb-uncoated_4-0_ver",
+      "httpStatus": 200
+    },
+    {
+      "size": "40x50",
+      "kind": "unframed",
+      "country": "GB",
+      "currency": "GBP",
+      "productUid": "flat_400x500-mm-16x20-inch_200-gsm-80lb-uncoated_4-0_ver",
+      "httpStatus": 200
+    },
+    {
+      "size": "40x50",
+      "kind": "unframed",
+      "country": "NO",
+      "currency": "NOK",
+      "productUid": "flat_400x500-mm-16x20-inch_200-gsm-80lb-uncoated_4-0_ver",
+      "httpStatus": 200
+    },
+    {
+      "size": "40x50",
+      "kind": "natural-wood-frame",
+      "country": "GB",
+      "currency": "GBP",
+      "productUid": "framed_poster_400x500-mm-16x20-inch_natural-wood_wood_w12xt22-mm_plexiglass_400x500-mm-16x20-inch_200-gsm-80lb-uncoated_4-0_ver",
+      "httpStatus": 200
+    },
+    {
+      "size": "40x50",
+      "kind": "natural-wood-frame",
+      "country": "NO",
+      "currency": "NOK",
+      "productUid": "framed_poster_400x500-mm-16x20-inch_natural-wood_wood_w12xt22-mm_plexiglass_400x500-mm-16x20-inch_200-gsm-80lb-uncoated_4-0_ver",
+      "httpStatus": 200
+    },
+    {
+      "size": "45x60",
+      "kind": "unframed",
+      "country": "GB",
+      "currency": "GBP",
+      "productUid": "flat_450x600-mm-18x24-inch_200-gsm-80lb-uncoated_4-0_ver",
+      "httpStatus": 200
+    },
+    {
+      "size": "45x60",
+      "kind": "unframed",
+      "country": "NO",
+      "currency": "NOK",
+      "productUid": "flat_450x600-mm-18x24-inch_200-gsm-80lb-uncoated_4-0_ver",
+      "httpStatus": 200
+    },
+    {
+      "size": "45x60",
+      "kind": "natural-wood-frame",
+      "country": "GB",
+      "currency": "GBP",
+      "productUid": "framed_poster_450x600-mm-18x24-inch_natural-wood_wood_w12xt22-mm_plexiglass_450x600-mm-18x24-inch_200-gsm-80lb-uncoated_4-0_ver",
+      "httpStatus": 200
+    },
+    {
+      "size": "45x60",
+      "kind": "natural-wood-frame",
+      "country": "NO",
+      "currency": "NOK",
+      "productUid": "framed_poster_450x600-mm-18x24-inch_natural-wood_wood_w12xt22-mm_plexiglass_450x600-mm-18x24-inch_200-gsm-80lb-uncoated_4-0_ver",
+      "httpStatus": 200
+    },
+    {
+      "size": "50x70",
+      "kind": "unframed",
+      "country": "GB",
+      "currency": "GBP",
+      "productUid": "flat_500x700-mm-20x28-inch_200-gsm-80lb-uncoated_4-0_ver",
+      "httpStatus": 200
+    },
+    {
+      "size": "50x70",
+      "kind": "unframed",
+      "country": "NO",
+      "currency": "NOK",
+      "productUid": "flat_500x700-mm-20x28-inch_200-gsm-80lb-uncoated_4-0_ver",
+      "httpStatus": 200
+    },
+    {
+      "size": "50x70",
+      "kind": "natural-wood-frame",
+      "country": "GB",
+      "currency": "GBP",
+      "productUid": "framed_poster_500x700-mm-20x28-inch_natural-wood_wood_w12xt22-mm_plexiglass_500x700-mm-20x28-inch_200-gsm-80lb-uncoated_4-0_ver",
+      "httpStatus": 200
+    },
+    {
+      "size": "50x70",
+      "kind": "natural-wood-frame",
+      "country": "NO",
+      "currency": "NOK",
+      "productUid": "framed_poster_500x700-mm-20x28-inch_natural-wood_wood_w12xt22-mm_plexiglass_500x700-mm-20x28-inch_200-gsm-80lb-uncoated_4-0_ver",
+      "httpStatus": 200
+    },
+    {
+      "size": "40x50",
+      "kind": "black-frame",
+      "country": "GB",
+      "currency": "GBP",
+      "productUid": "framed_poster_400x500-mm-16x20-inch_black_wood_w12xt22-mm_plexiglass_400x500-mm-16x20-inch_200-gsm-80lb-uncoated_4-0_ver",
+      "httpStatus": 200
+    },
+    {
+      "size": "40x50",
+      "kind": "black-frame",
+      "country": "NO",
+      "currency": "NOK",
+      "productUid": "framed_poster_400x500-mm-16x20-inch_black_wood_w12xt22-mm_plexiglass_400x500-mm-16x20-inch_200-gsm-80lb-uncoated_4-0_ver",
+      "httpStatus": 200
+    },
+    {
+      "size": "40x50",
+      "kind": "white-frame",
+      "country": "GB",
+      "currency": "GBP",
+      "productUid": "framed_poster_400x500-mm-16x20-inch_white_wood_w12xt22-mm_plexiglass_400x500-mm-16x20-inch_200-gsm-80lb-uncoated_4-0_ver",
+      "httpStatus": 200
+    },
+    {
+      "size": "40x50",
+      "kind": "white-frame",
+      "country": "NO",
+      "currency": "NOK",
+      "productUid": "framed_poster_400x500-mm-16x20-inch_white_wood_w12xt22-mm_plexiglass_400x500-mm-16x20-inch_200-gsm-80lb-uncoated_4-0_ver",
+      "httpStatus": 200
+    },
+    {
+      "size": "45x60",
+      "kind": "black-frame",
+      "country": "GB",
+      "currency": "GBP",
+      "productUid": "framed_poster_450x600-mm-18x24-inch_black_wood_w12xt22-mm_plexiglass_450x600-mm-18x24-inch_200-gsm-80lb-uncoated_4-0_ver",
+      "httpStatus": 200
+    },
+    {
+      "size": "45x60",
+      "kind": "black-frame",
+      "country": "NO",
+      "currency": "NOK",
+      "productUid": "framed_poster_450x600-mm-18x24-inch_black_wood_w12xt22-mm_plexiglass_450x600-mm-18x24-inch_200-gsm-80lb-uncoated_4-0_ver",
+      "httpStatus": 200
+    },
+    {
+      "size": "45x60",
+      "kind": "white-frame",
+      "country": "GB",
+      "currency": "GBP",
+      "productUid": "framed_poster_450x600-mm-18x24-inch_white_wood_w12xt22-mm_plexiglass_450x600-mm-18x24-inch_200-gsm-80lb-uncoated_4-0_ver",
+      "httpStatus": 200
+    },
+    {
+      "size": "45x60",
+      "kind": "white-frame",
+      "country": "NO",
+      "currency": "NOK",
+      "productUid": "framed_poster_450x600-mm-18x24-inch_white_wood_w12xt22-mm_plexiglass_450x600-mm-18x24-inch_200-gsm-80lb-uncoated_4-0_ver",
+      "httpStatus": 200
+    }
+  ]
+}

@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { getShopProducts as getAllProducts } from '@/lib/products';
 import { getShopArtists as getPublishedArtists } from '@/lib/published-artists';
 import { ContentSection, ContentBody } from '@/components/v2/ui';
+import { ArticleLinks } from '@/components/v2/landing/ArticleLinks';
+import { wallArtJournalLinks, journalLinksFor } from '@/lib/journal-links';
 import { LandingTemplate } from '@/components/v2/landing/LandingTemplate';
 import { collectionPageJsonLd, faqPageJsonLd, landingBreadcrumbJsonLd } from '@/lib/landing-jsonld';
 import { socialCard } from '@/lib/site';
@@ -70,7 +72,12 @@ export default async function NorwegianWallArtPage() {
         </ContentBody>
       </ContentSection>
 
-      <ContentSection id="room-by-room" title={t.stylingHeading} className="mt-section">
+      <ContentSection
+        id="room-by-room"
+        title={t.stylingHeading}
+        className="mt-section"
+        footer={<ArticleLinks links={journalLinksFor(wallArtJournalLinks, 'no')} locale="no" />}
+      >
         <ContentBody>
           {/* JSX rather than one config string so the room mentions carry real
               internal links to the Norwegian collection landings. */}

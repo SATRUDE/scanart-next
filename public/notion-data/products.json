@@ -864,6 +864,306 @@
     "last_edited_time": "2026-09-26T09:00:00.000Z"
   },
   {
+    "id": "71cbf29f-29ce-59af-b78b-6dbe1b785f5d",
+    "name": "Through the Willows",
+    "slug": "through-the-willows",
+    "description": "Through the Willows by Markus Naarttijärvi is a photograph of a river glowing gold beneath a screen of willow and oak leaves. A single bird crosses the haze above the water, and dark branches frame the light on both sides. Almost the whole picture is warm gold, so the leaves read as dark lace against the glow, and the stillness is soft and waiting. A portrait-format print.",
+    "category": "Photography",
+    "artist": "Markus Naarttijärvi",
+    "artistId": "9",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/through-the-willows-paper-45x60-2026-09-28.png",
+    "secondaryImage": "/images/products/through-the-willows-room-clean-rebuild-45x60-2026-09-28.avif",
+    "sourceImage": "/images/artworks/through-the-willows.avif",
+    "availableSizes": [
+      "45x60cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "43",
+    "recommendedProducts": [
+      "Pines Under Starlight",
+      "Boathouses in winter",
+      "Frozen currents",
+      "The Road at Sunset"
+    ],
+    "orientation": "portrait",
+    "created_time": "2026-09-28T09:00:00.000Z",
+    "last_edited_time": "2026-09-28T09:00:00.000Z"
+  },
+  {
+    "id": "6d0903b6-ec66-5a65-9eba-29da564da7f9",
+    "name": "Pines Under Starlight",
+    "slug": "pines-under-starlight",
+    "description": "Pines Under Starlight by Markus Naarttijärvi is a night photograph of snow-laden pines under a clear, star-scattered sky. The whole picture sits in deep blue, with pale snow in the foreground and the trees dark against the sky. The stars are faint and scattered across the whole sky rather than gathered in one place. Nothing moves: a hushed, cold-clear winter night, held still. A portrait-format print.",
+    "category": "Photography",
+    "artist": "Markus Naarttijärvi",
+    "artistId": "9",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/pines-under-starlight-paper-45x60-2026-09-28.png",
+    "secondaryImage": "/images/products/pines-under-starlight-room-clean-rebuild-45x60-2026-09-28.avif",
+    "sourceImage": "/images/artworks/pines-under-starlight.avif",
+    "availableSizes": [
+      "45x60cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "44",
+    "recommendedProducts": [
+      "Through the Willows",
+      "Boathouses in winter",
+      "Frozen currents",
+      "The Road at Sunset"
+    ],
+    "orientation": "portrait",
+    "created_time": "2026-09-28T09:00:00.000Z",
+    "last_edited_time": "2026-09-28T09:00:00.000Z"
+  },
+  {
+    "id": "c5956741-86b7-5022-a7f4-fd001c49c1d1",
+    "name": "Boathouses in winter",
+    "slug": "boathouses-in-winter",
+    "description": "Boathouses in winter by Markus Naarttijärvi catches a lit window and a lone streetlamp on a dark, snow-heavy night beside the boathouses. Falling snow glows where the lamp touches it, and faint tracks cross the snow in front of the buildings. Everything outside the light stays in shadow, so the few warm points do all the work. A portrait-format print.",
+    "category": "Photography",
+    "artist": "Markus Naarttijärvi",
+    "artistId": "9",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/winter-yard-night-paper-45x60-2026-09-28.png",
+    "secondaryImage": "/images/products/winter-yard-night-room-clean-rebuild-45x60-2026-09-28.avif",
+    "sourceImage": "/images/artworks/winter-yard-night.avif",
+    "availableSizes": [
+      "45x60cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "45",
+    "recommendedProducts": [
+      "Through the Willows",
+      "Pines Under Starlight",
+      "Frozen currents",
+      "The Road at Sunset"
+    ],
+    "orientation": "portrait",
+    "created_time": "2026-09-28T09:00:00.000Z",
+    "last_edited_time": "2026-09-28T09:00:00.000Z"
+  },
+  {
+    "id": "6253f0d7-2a37-524f-9f84-3fd7de70e4d1",
+    "name": "Frozen currents",
+    "slug": "frozen-currents",
+    "description": "Frozen currents by Markus Naarttijärvi is a close photograph of pale ridges of ice swirling across dark water, dusted with fresh snow. There is no horizon and nothing to show the scale, so it reads closer to an abstract painting than a landscape. Blue-grey and white on near-black, it is a study in movement and cold. A portrait-format print.",
+    "category": "Photography",
+    "artist": "Markus Naarttijärvi",
+    "artistId": "9",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/current-and-foam-paper-45x60-2026-09-28.png",
+    "secondaryImage": "/images/products/current-and-foam-room-clean-rebuild-45x60-2026-09-28.avif",
+    "sourceImage": "/images/artworks/current-and-foam.avif",
+    "availableSizes": [
+      "45x60cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "46",
+    "recommendedProducts": [
+      "Through the Willows",
+      "Pines Under Starlight",
+      "Boathouses in winter",
+      "The Road at Sunset"
+    ],
+    "orientation": "portrait",
+    "created_time": "2026-09-28T09:00:00.000Z",
+    "last_edited_time": "2026-09-28T09:00:00.000Z"
+  },
+  {
+    "id": "6042da5e-4912-5462-9e1e-39b0191654a0",
+    "name": "The Road at Sunset",
+    "slug": "the-road-at-sunset",
+    "description": "The Road at Sunset by Markus Naarttijärvi follows a small group of cyclists around a curving road into low evening sun. Forest and hills fade into the haze beyond, and the lane markings lead the eye round the bend. Seen from above, the riders are small against the wide road: a warm, quiet end to the day, caught mid-journey. A portrait-format print.",
+    "category": "Photography",
+    "artist": "Markus Naarttijärvi",
+    "artistId": "9",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/the-road-at-sunset-paper-45x60-2026-09-28.png",
+    "secondaryImage": "/images/products/the-road-at-sunset-room-clean-rebuild-45x60-2026-09-28.avif",
+    "sourceImage": "/images/artworks/the-road-at-sunset.avif",
+    "availableSizes": [
+      "45x60cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "47",
+    "recommendedProducts": [
+      "Through the Willows",
+      "Pines Under Starlight",
+      "Boathouses in winter",
+      "Frozen currents"
+    ],
+    "orientation": "portrait",
+    "created_time": "2026-09-28T09:00:00.000Z",
+    "last_edited_time": "2026-09-28T09:00:00.000Z"
+  },
+  {
+    "id": "7e0ceaa6-69cd-5440-92f5-78f74a21ac37",
+    "name": "Sun Over the Forest",
+    "slug": "sun-over-the-forest",
+    "description": "Sun Over the Forest by Markus Naarttijärvi shows a huge, hazy sun hanging low over a dark line of trees. The sky burns orange around it, with thin bands of cloud crossing the disc. The treeline is a flat silhouette, so the picture is nothing but sun, sky and forest, with no ground in the frame, only the dark band of trees and the glow above. A landscape-format print, simple and elemental.",
+    "category": "Photography",
+    "artist": "Markus Naarttijärvi",
+    "artistId": "9",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/sun-over-the-forest-paper-45x60-2026-09-28.png",
+    "secondaryImage": "/images/products/sun-over-the-forest-room-clean-rebuild-60x45-2026-09-28-v2.avif",
+    "sourceImage": "/images/artworks/sun-over-the-forest.avif",
+    "availableSizes": [
+      "45x60cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "48",
+    "recommendedProducts": [
+      "Through the Willows",
+      "Pines Under Starlight",
+      "Boathouses in winter",
+      "Frozen currents"
+    ],
+    "orientation": "landscape",
+    "created_time": "2026-09-28T09:00:00.000Z",
+    "last_edited_time": "2026-09-28T09:00:00.000Z"
+  },
+  {
+    "id": "71b0dd41-46c3-523b-bcd3-a56bf848b3e5",
+    "name": "Swan on Still Water",
+    "slug": "swan-on-still-water",
+    "description": "Swan on Still Water by Markus Naarttijärvi shows a lone swan drifting across a misty lake at first light. Dark reeds stand in the foreground, and forest rises in soft haze behind. Mist lies low on the water, softening the line where the lake meets the trees. The water is almost mirror-still, and the small white bird is the only bright point in the frame. A landscape-format print, calm and hushed.",
+    "category": "Photography",
+    "artist": "Markus Naarttijärvi",
+    "artistId": "9",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/swan-on-still-water-paper-40x50-2026-09-28.png",
+    "secondaryImage": "/images/products/swan-on-still-water-room-clean-rebuild-50x40-2026-09-28.avif",
+    "sourceImage": "/images/artworks/swan-on-still-water.avif",
+    "availableSizes": [
+      "40x50cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "49",
+    "recommendedProducts": [
+      "Through the Willows",
+      "Pines Under Starlight",
+      "Boathouses in winter",
+      "Frozen currents"
+    ],
+    "orientation": "landscape",
+    "created_time": "2026-09-28T09:00:00.000Z",
+    "last_edited_time": "2026-09-28T09:00:00.000Z"
+  },
+  {
+    "id": "bf2acf69-fa3a-536c-b921-f638ef78063b",
+    "name": "Morning, Cabin Room",
+    "slug": "morning-cabin-room",
+    "description": "Morning, Cabin Room by Markus Naarttijärvi shows soft light falling through lace curtains onto a simple bed in a wooden cabin. A tall window opens on to greenery, the bed has a dark blue cover and striped cushions, and the green presses close against the room. It is an unmade, ordinary corner, caught in the quiet of early morning. A landscape-format print.",
+    "category": "Photography",
+    "artist": "Markus Naarttijärvi",
+    "artistId": "9",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/morning-cabin-room-paper-45x60-2026-09-28.png",
+    "secondaryImage": "/images/products/morning-cabin-room-room-clean-rebuild-60x45-2026-09-28.avif",
+    "sourceImage": "/images/artworks/morning-cabin-room.avif",
+    "availableSizes": [
+      "45x60cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "50",
+    "recommendedProducts": [
+      "Through the Willows",
+      "Pines Under Starlight",
+      "Boathouses in winter",
+      "Frozen currents"
+    ],
+    "orientation": "landscape",
+    "created_time": "2026-09-28T09:00:00.000Z",
+    "last_edited_time": "2026-09-28T09:00:00.000Z"
+  },
+  {
+    "id": "40bea107-e5ec-5b32-b235-33c83160ee16",
+    "name": "Path Through the Trees",
+    "slug": "path-through-the-trees",
+    "description": "Path Through the Trees by Markus Naarttijärvi follows a wooden boardwalk winding through dense, shadowed forest towards a bright clearing. Slim trunks crowd in from both sides, and the planks catch a little pale light as they bend away. The brightness at the far end is the pull: the kind of path that makes you want to see what comes next. A landscape-format print.",
+    "category": "Photography",
+    "artist": "Markus Naarttijärvi",
+    "artistId": "9",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/path-through-the-trees-paper-40x50-2026-09-28.png",
+    "secondaryImage": "/images/products/path-through-the-trees-room-clean-rebuild-50x40-2026-09-28-v2.avif",
+    "sourceImage": "/images/artworks/path-through-the-trees.avif",
+    "availableSizes": [
+      "40x50cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "51",
+    "recommendedProducts": [
+      "Through the Willows",
+      "Pines Under Starlight",
+      "Boathouses in winter",
+      "Frozen currents"
+    ],
+    "orientation": "landscape",
+    "created_time": "2026-09-28T09:00:00.000Z",
+    "last_edited_time": "2026-09-28T09:00:00.000Z"
+  },
+  {
+    "id": "b86a2c64-4e04-55b3-9f80-92a7f71c96d3",
+    "name": "Sheep on the Track",
+    "slug": "sheep-on-the-track",
+    "description": "Sheep on the Track by Markus Naarttijärvi shows a small flock of dark sheep standing on a muddy track between hedgerows, looking straight at the camera. Puddles sit in the wheel ruts, trees arch overhead and a green pasture opens beyond them. The light is damp and overcast, and the whole scene is entirely rural. A portrait-format print, a little wry.",
+    "category": "Photography",
+    "artist": "Markus Naarttijärvi",
+    "artistId": "9",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/sheep-on-the-track-paper-40x50-2026-09-28.png",
+    "secondaryImage": "/images/products/sheep-on-the-track-room-clean-rebuild-40x50-2026-09-28-v2.avif",
+    "sourceImage": "/images/artworks/sheep-on-the-track.avif",
+    "availableSizes": [
+      "40x50cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "52",
+    "recommendedProducts": [
+      "Through the Willows",
+      "Pines Under Starlight",
+      "Boathouses in winter",
+      "Frozen currents"
+    ],
+    "orientation": "portrait",
+    "created_time": "2026-09-28T09:00:00.000Z",
+    "last_edited_time": "2026-09-28T09:00:00.000Z"
+  },
+  {
     "id": "53829e5f-6356-59cc-b554-c6413d8af58c",
     "name": "In to the woods II",
     "slug": "in-to-the-woods-ii",

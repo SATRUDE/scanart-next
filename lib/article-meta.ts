@@ -8,3 +8,12 @@ export const ARTICLE_META_DESCRIPTIONS: Record<string, string> = {
   'an-interview-by-nordic-notes':
     'Nordic Notes talks to Scandinavian Art founder Mark Diffey about moving from the UK to Oslo and building a carefully considered collection of art prints.',
 };
+
+// Search titles for articles whose headline claims a head term a shop page owns.
+// Only the <title> changes: the H1 and the journal cards keep the article's own
+// headline, which lives in the articles database. "Scandinavian art prints" and
+// "Nordic art prints" belong to /scandinavian-wall-art (T-0156), so the best-of
+// guide asks for "best Scandinavian prints" instead.
+export const ARTICLE_META_TITLES: Record<string, string> = {
+  'best-scandinavian-art-prints': 'Best Scandinavian Prints: Seven Picks by Independent Artists',
+};

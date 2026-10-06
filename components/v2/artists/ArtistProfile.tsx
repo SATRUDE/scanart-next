@@ -1,5 +1,6 @@
 import type React from 'react';
 import Link from 'next/link';
+import { TrackedLink } from '@/components/TrackedLink';
 import { scenePosition } from '@/lib/scene-focus';
 import Image from 'next/image';
 import { Breadcrumb, Hairline, SectionHeader, ContentSection, FactRow } from '@/components/v2/ui';
@@ -72,7 +73,7 @@ export interface ArtistProfileProps {
   /** "5 prints" */
   printCount: string;
   lowest: CurrencyPrices | null;
-  hero: { src: string; alt: string; href: string; title: string } | null;
+  hero: { src: string; alt: string; href: string; title: string; productSlug: string } | null;
   editorial?: { heading: string; para1: string; para2: string };
   facts: { label: string; value: React.ReactNode }[];
   map: { city: string; label: string; caption: string } | null;
@@ -171,7 +172,18 @@ export function ArtistProfile(p: ArtistProfileProps) {
           <figure className="col-span-full -mx-margin flex flex-col gap-tight tab:mx-0 desk:col-span-7">
             <div className="relative h-[460px] w-full overflow-hidden bg-image-bg tab:h-[700px]">
               {/* The hero scene is the LCP candidate on a profile, so it is preloaded. */}
-              <Image src={p.hero.src} alt={p.hero.alt} fill priority sizes="(max-width: 1199px) 100vw, 733px" style={{ objectPosition: scenePosition(p.hero.src) }} className="object-cover" />
+              {/* The scene links to the print it shows (T-0128): the caption below was
+                  the only way through and artist pages were not sending people to prints.
+                  The accessible name is "View <print>"; the image alt stays for image search. */}
+              <TrackedLink
+                href={p.hero.href}
+                aria-label={`${p.locale === 'no' ? 'Se' : 'View'} ${p.hero.title}`}
+                event="artist-scene-click"
+                eventData={{ artist: p.slug, product: p.hero.productSlug }}
+                className="absolute inset-0 block cursor-pointer focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-focus"
+              >
+                <Image src={p.hero.src} alt={p.hero.alt} fill priority sizes="(max-width: 1199px) 100vw, 733px" style={{ objectPosition: scenePosition(p.hero.src) }} className="object-cover" />
+              </TrackedLink>
             </div>
             {/* Just the print's name (Mark, 29 Sep 2026): no separator or room description. */}
             <figcaption className="px-margin type-caption tab:px-0">
@@ -195,7 +207,12 @@ export function ArtistProfile(p: ArtistProfileProps) {
             <ul key={c} className="flex flex-col gap-10 tab:gap-band">
               {column.map(({ product, index }) => (
                 <li key={product.id}>
-                  <Link href={p.t.productHref(product.slug)} className="block">
+                  <TrackedLink
+                    href={p.t.productHref(product.slug)}
+                    event="artist-print-click"
+                    eventData={{ artist: p.slug, product: product.slug }}
+                    className="block"
+                  >
                     {/* the first four are above the fold on a short hero: preload them */}
                     <PrintCard
                       product={product}
@@ -205,7 +222,7 @@ export function ArtistProfile(p: ArtistProfileProps) {
                       outOfStockLabel={p.t.outOfStock}
                       locale={p.locale}
                     />
-                  </Link>
+                  </TrackedLink>
                 </li>
               ))}
             </ul>

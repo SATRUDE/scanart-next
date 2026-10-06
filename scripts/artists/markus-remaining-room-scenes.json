@@ -1,0 +1,303 @@
+{
+  "date": "2026-09-28",
+  "surface": "Codex built-in image_gen",
+  "verifiedModel": null,
+  "authorisation": "Mark requested new images on the preview test link for in-place review; no production publication or sale activation.",
+  "assets": [
+    {
+      "slug": "through-the-willows",
+      "test": 3,
+      "source": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-through-the-willows-fresh-products-test-03.png",
+      "sourceSha256": "5e07c24551799ace613b9a16d5e002bb4cef0987c0852ed5eff1d21354c08c12",
+      "artworkReference": "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-pilot-2026-09-28/through-the-willows-reference.png",
+      "artworkSha256": "3dce6bd10823b188bfa6bc21439ed6f86e51eb693691ea70f0695209bd7bb84a",
+      "originalGeneratorPath": "/Users/markdiffey/.codex/generated_images/01a0e80e-1a82-7070-b9cd-6cede60cd5cf/exec-bd0fa210-9cf9-49b5-9d8f-a7f314438cb2.png",
+      "provenance": "willows-accessories.json",
+      "image": "/images/products/through-the-willows-room-fresh-03-2026-09-28.avif",
+      "webp": "/images/products/through-the-willows-room-fresh-03-2026-09-28.webp",
+      "width": 1122,
+      "height": 1402,
+      "innerArtworkBoxPercent": {
+        "x": 48,
+        "y": 9.3,
+        "width": 22.7,
+        "height": 26.1
+      },
+      "sceneAlt": "Through the Willows by Markus Naarttijärvi above a black dining table with coffee, flowers, a cream rug and beige curtain",
+      "reviewStatus": "Preview candidate; not approved for publication",
+      "productIds": {
+        "rug": "bd037b76-76cb-4b61-8e74-5961bf650288",
+        "vase": "dd3b6873-dbf4-41a1-a8b1-0c2f6257e94f",
+        "curtain": "5d1333b6-ddbc-456a-86da-fd42bbc31d1f"
+      },
+      "prompt": "Use case: precise-object-edit. Edit Image 1, the existing photorealistic portrait dining-room photograph. Images 2–5 are independent references: Image 2 is the authoritative original 'Through the Willows' landscape photograph INSIDE the wall frame; Image 3 is the HAY Crayon 170 x 240 cm rug; Image 4 is the small clear bubble-glass Alvar Aalto vase; Image 5 is the beige Göran curtain fabric. Keep Image 1's exact camera viewpoint, crop, warm muted yellow walls, white skirting, oak plank floor and its directional daylight from the left window. Keep the existing round black SK3 dining table (90 cm diameter, 73 cm high), both black wooden SK1 chairs, two black coffee cups with saucers, open book, and all their positions. Keep the artwork, its 50 x 70 cm print with white paper surround and slim oak 52 x 72 cm frame, at exactly the same size and position. The design inside must match Image 2's actual silhouette landscape: warm golden sky and lake, dark overhanging leaves on the top/right, delicate willow branches on the left, far shore, single small bird. Render it naturally as photographed paper behind plausible glazing with only faint edge reflection; remove any window-shaped white bars crossing the art if possible without changing the art.\nAdd the cream low-pile flatwoven Crayon rug from Image 3 under the table and chairs: the 170 x 240 cm rectangle extends beyond the front and side chair legs, its edge perspective sits flat on the floor, subtle fine multicolour flecks visible, modest natural pile/edge thickness, room light and chair-leg contact shadows coherent. Leave some oak floor visible at edges of the photograph. Add a small clear wavy-sided bubble-glass Aalto vase from Image 4 with water and a few loose natural cut flowers on a free rear/side part of the tabletop, away from the cups and book; keep both coffee places reachable and the wall art fully visible. If it fits the actual left window crop, add only a narrow drawn-back length of beige Göran cotton-blend curtain at the far left edge, with gravity-led folds, without blocking daylight, artwork, or chair. Do not invent other furniture, decorations, prints, people, text, logos or an extra window. Preserve the natural photographic tonal balance, real wood and fabric texture, and existing coherent window light and shadows.",
+      "referencePathsOrdered": [
+        "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-through-the-willows-fresh-products-test-02.png",
+        "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-pilot-2026-09-28/through-the-willows-reference.png",
+        "/Users/markdiffey/socialagent/.local-products/bd037b76-76cb-4b61-8e74-5961bf650288/001-ba5a42db-b53a-446f-9e1d-c7eaef6d7760.png",
+        "/Users/markdiffey/socialagent/.local-products/dd3b6873-dbf4-41a1-a8b1-0c2f6257e94f/000-51e8ad8f-33a0-4829-9b0c-ae73481c65bb.png",
+        "/Users/markdiffey/socialagent/.local-products/5d1333b6-ddbc-456a-86da-fd42bbc31d1f/000-704cee43-af2d-4fe6-ba7f-bffcf958fc80.webp"
+      ],
+      "qa": {
+        "artwork": "Silhouette layout and golden lake remain recognisable against authoritative source; fine details remain limited by the image size. The art is in the original frame position and has plausible glazing, but pale vertical reflection remains along the left edge.",
+        "furniture": "Round black table, both black wood chairs, two coffee settings and open book remain in place. Vase stands behind the book, between the coffee settings, with access to both cups.",
+        "rug": "Cream textured rug with fine colour flecks beneath table and both chairs; visible oak floor at front and left edge. Edges, perspective, and chair-leg contact read plausibly.",
+        "curtain": "Beige drawn-back panel fits the far-left window crop and leaves daylight visible.",
+        "photography": "Left-window illumination and floor shadows are coherent; yellow wall and overall camera crop preserved.",
+        "limitations": "Flowers overlap the lower white mount slightly, but do not cover the image area. Print remains a generated interpretation of the photograph, not a pixel-exact source reproduction.",
+        "reviewStatus": "candidate for Mark review; no publication or integration performed"
+      }
+    },
+    {
+      "slug": "pines-under-starlight",
+      "test": 3,
+      "source": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-pines-under-starlight-fresh-products-test-03.png",
+      "sourceSha256": "07aff7b267fbfd1b307f1fda84253b3bd8ee9236f77c70535a19194b6a637c53",
+      "artworkReference": "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-remaining-seven-2026-09-28/pines-under-starlight-reference.png",
+      "artworkSha256": "46487d222bb4b6a1828f1f1472bc69ab66f0077ed39c7cdfb57950b030dcb7d4",
+      "provenance": "batch-a.json",
+      "image": "/images/products/pines-under-starlight-room-fresh-03-2026-09-28.avif",
+      "webp": "/images/products/pines-under-starlight-room-fresh-03-2026-09-28.webp",
+      "width": 1122,
+      "height": 1402,
+      "innerArtworkBoxPercent": {
+        "x": 45.9,
+        "y": 10.6,
+        "w": 20.1,
+        "h": 22.5
+      },
+      "sceneAlt": "Pines Under Starlight by Markus Naarttijärvi: a snow-pine night photograph in an oak frame hangs above a side-on pine bed with green striped bedding, a burgundy bedside stool, cream curtains and a pale woven rug.",
+      "reviewStatus": "Preview candidate; not approved for publication",
+      "originalGeneratorPath": "/Users/markdiffey/.codex/generated_images/01a0e800-31ff-7860-a22a-c8c601fb914e/exec-59060a8a-e016-42c5-9761-742a7f8f9d75.png",
+      "prompt": "Make a precise photographic edit to image 1 (the bedroom scene). Image 2 is the original Pines Under Starlight photograph. Keep the room, furniture, bedding, window, rug, camera and all light completely unchanged. Do not alter the frame's horizontal position or its width, and keep the print hanging above the bed.\n\nThe remaining correction is the image INSIDE the existing oak frame: it is still stretched TOO TALL relative to its width. The original photo has a measured width:height aspect ratio of 3:4 = 0.75. Keep the inner photo's existing WIDTH and its original content, but reduce its HEIGHT by about 14% to 75% of its width, centred vertically on the white paper. This creates VISIBLE additional white paper at TOP AND BOTTOM, roughly equal. Do not crop the top starry sky or bottom snow clearing, and do not move the trees; recreate the COMPLETE image 2 at the correct aspect, naturally photographed through the existing glass with the same window reflection and gentle light falloff. Slightly shorten the oak frame's overall height if necessary so outer width:height is about 52:72 = 0.72. These are physical print dimensions, not a request to crop the room. No other change.",
+      "referencePathsOrdered": [
+        "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-pines-under-starlight-fresh-products-test-02.png",
+        "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-remaining-seven-2026-09-28/pines-under-starlight-reference.png"
+      ],
+      "productIds": [
+        "ef6133a0-6b16-4531-b363-7c0abfc91a78",
+        "dc5ec00e-94ea-4a95-9829-465e7a9d542e",
+        "e9c5d7c2-5c4a-47f5-b377-c55895dfa45c",
+        "596406ae-a628-4941-ac45-5b8eec7a5cb0",
+        "dab60a20-4294-49dc-ade3-b8091c8a997c",
+        "c3d7387d-0981-4e8f-8ab0-68d85e4030f3",
+        "5d1333b6-ddbc-456a-86da-fd42bbc31d1f",
+        "d5e1559e-5b52-45cf-8864-f16347bea80d"
+      ],
+      "qa": "Best room placement and integration of the three tests. Framed print remains slightly narrower/taller than a precise 52:72 outer ratio; small snowy-pine details are approximated by generation. Review artwork fidelity before publishing."
+    },
+    {
+      "slug": "current-and-foam",
+      "test": 2,
+      "source": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-current-and-foam-fresh-products-test-02.png",
+      "sourceSha256": "89f08fb4f3dc53af23adf400da586745d7e85f9d576a09ccdff4b1e033dab0f5",
+      "artworkReference": "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-remaining-seven-2026-09-28/current-and-foam-reference.png",
+      "artworkSha256": "e4f0eaed39f586eac8d1644032283a3ceccd8e6c112f5440d94625cf1efd274f",
+      "provenance": "batch-a.json",
+      "image": "/images/products/current-and-foam-room-fresh-02-2026-09-28.avif",
+      "webp": "/images/products/current-and-foam-room-fresh-02-2026-09-28.webp",
+      "width": 1122,
+      "height": 1402,
+      "innerArtworkBoxPercent": {
+        "x": 41.3,
+        "y": 8.6,
+        "w": 23.8,
+        "h": 26.3
+      },
+      "sceneAlt": "Current and Foam by Markus Naarttijärvi: an oak-framed abstract foam photograph hangs over a green USM desk, black chair and white task lamp in a sunlit work corner with a flecked rug.",
+      "reviewStatus": "Preview candidate; not approved for publication",
+      "originalGeneratorPath": "/Users/markdiffey/.codex/generated_images/01a0e800-31ff-7860-a22a-c8c601fb914e/exec-08b7a96b-dbf0-4a9a-9fa0-ca7c53ec4743.png",
+      "prompt": "Edit image 1, the generated Scandinavian work-corner photograph. Reference image 2 is the exact original Current and Foam photograph and is the authority for the image in the wall frame. Preserve the camera, green USM desk and structure, black Rey chair, white Leaf lamp, books, open notebook, glass, rug, concrete floor, window, wall light and all positions exactly.\n\nCorrect ONLY the framed print's dimensions and photographic identity. The existing oak frame is too tall for 50×70cm portrait paper. Keep its current WIDTH and horizontal centre fixed, shorten the OUTER FRAME HEIGHT approximately 10% by lowering its top edge while retaining roughly its current bottom edge above the desk, targeting width:height = 52:72 = 0.72. The photographic image inside should have the exact original 3:4 ratio without any crop or stretch, fitted fully onto white paper with modest top and bottom borders. Match image 2: the upper section is mostly almost-black navy water with small white flecks, diffuse grey-blue foam streams become stronger downward, the lower half is pale turbulent swirls and tiny white particles; no sea horizon or waterfall. Preserve the original's dense fine detail. Thin natural oak frame with true rebate, glass and the same soft left-window reflection and local wall light/shadow as the room. It must not turn into a pasted flat picture or glowing screen. Keep the entire room photographic and unchanged.",
+      "referencePathsOrdered": [
+        "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-current-and-foam-fresh-products-test-01.png",
+        "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-remaining-seven-2026-09-28/current-and-foam-reference.png"
+      ],
+      "productIds": [
+        "ef51897f-52ed-4e8f-a034-a1a1ed7a1491",
+        "6f52497a-6a2f-4ac6-8ead-ea7cdc199a1e",
+        "8ceea884-662a-4a68-94c8-8bc2fabb30d2",
+        "4edff980-2dd0-4a84-a35f-f444d72fa4ce",
+        "21474df7-2085-49f3-8177-2268c321ce84",
+        "bd037b76-76cb-4b61-8e74-5961bf650288"
+      ],
+      "qa": "Art and frame ratios are close to target after edit. The rug is visually more textured and warmer than its catalogue source; desktop product details are approximate. Review before publishing."
+    },
+    {
+      "slug": "the-road-at-sunset",
+      "test": 2,
+      "source": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-the-road-at-sunset-fresh-products-test-02.png",
+      "sourceSha256": "9cf95b0778d3436d05e98cd6f36bdc1f2a6aef64d7046ac4891f58edb0d6e1fe",
+      "artworkReference": "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-remaining-seven-2026-09-28/the-road-at-sunset-reference.png",
+      "artworkSha256": "067a567acc3f18e412c9b6ac8776b5bdbe1f5e5a2a51d9112fc1f1f0a01fd845",
+      "provenance": "batch-a.json",
+      "image": "/images/products/the-road-at-sunset-room-fresh-02-2026-09-28.avif",
+      "webp": "/images/products/the-road-at-sunset-room-fresh-02-2026-09-28.webp",
+      "width": 1122,
+      "height": 1402,
+      "innerArtworkBoxPercent": {
+        "x": 27.4,
+        "y": 7.1,
+        "w": 22.3,
+        "h": 24.5
+      },
+      "sceneAlt": "The Road at Sunset by Markus Naarttijärvi: an oak-framed road at sunset hangs above a ribbed green sideboard in a terracotta-tiled entry, beside a coat stand, pine shoe stool and grey rug.",
+      "reviewStatus": "Preview candidate; not approved for publication",
+      "originalGeneratorPath": "/Users/markdiffey/.codex/generated_images/01a0e800-31ff-7860-a22a-c8c601fb914e/exec-4a61b105-c581-47e5-b175-74e4b4bd3c15.png",
+      "prompt": "Edit image 1, the generated Scandinavian entryway photograph. Reference image 2 is the exact original The Road at Sunset photograph and is the authority for the image inside the wall frame. Preserve everything in the room: green ribbed Enfold cabinet, oak top, keys/mail, beige wall, left door daylight, red tile, rug, white coat stand, dark coat, tote, pine stool, boots, camera position, sunlight pattern and colour.\n\nOnly adjust the framed print: its current frame is a little too tall for its actual 50×70cm portrait paper. Keep the current WIDTH and horizontal centre, reduce the OUTER HEIGHT about 7%, preferably by lowering the top edge and retaining its bottom position above the cabinet, so the frame has width:height 52:72 = 0.72. Inside, preserve all four edges of original image 2 without crop or stretch, 3:4 image ratio with narrow white top and bottom borders. Keep its broad light sunset sky/cloud bank, dark forested distant hills, the divided highway sweeping from foreground up and RIGHT, accurately spaced white lane markings and guard rails, and the small group of tiny cyclists near the middle-lower road. They must not become cars or oversized people. Oak frame depth, real glass, and its soft left-door/window reflection should stay consistent with room light and shadow. Art image's sunset casts no light outside its glass. It must remain a physical print integrated in this same unchanged room.",
+      "referencePathsOrdered": [
+        "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-the-road-at-sunset-fresh-products-test-01.png",
+        "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-remaining-seven-2026-09-28/the-road-at-sunset-reference.png"
+      ],
+      "productIds": [
+        "17f72504-fbc7-4ecb-a729-6e8a3354ca71",
+        "3029577f-0fd9-45af-bc64-75291bd40dd5",
+        "4dd73ec9-7e50-44b3-a18b-a812b7b69df6",
+        "0ca68e7a-7020-418e-b4c3-77fe0a90d00f",
+        "e4473149-b539-49e3-841e-5d33d69f11b6",
+        "d5e1559e-5b52-45cf-8864-f16347bea80d"
+      ],
+      "qa": "Frame and source image ratios are close to target after edit. Cyclists are tiny and approximately reproduced; stool is partly cropped by the right edge and visible coat stand construction is limited by the hung coat. Review before publishing."
+    },
+    {
+      "slug": "sun-over-the-forest",
+      "test": 1,
+      "source": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-sun-over-the-forest-fresh-products-test-01.png",
+      "sourceSha256": "2a61b59e493342cda776b71dfb6ed068657f03d9d49657bdce11202e2475f141",
+      "artworkReference": "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-remaining-seven-2026-09-28/sun-over-the-forest-reference.png",
+      "artworkSha256": "7644df881ecdc65ffa5c0f8300d6dc0d351f5e339ebb2fd940ad76c523ae0296",
+      "provenance": "batch-b.json",
+      "image": "/images/products/sun-over-the-forest-room-fresh-01-2026-09-28.avif",
+      "webp": "/images/products/sun-over-the-forest-room-fresh-01-2026-09-28.webp",
+      "width": 1122,
+      "height": 1402,
+      "innerArtworkBoxPercent": {
+        "x": 42.9,
+        "y": 9.3,
+        "w": 32.5,
+        "h": 18.8
+      },
+      "sceneAlt": "Sun Over the Forest by Markus Naarttijärvi: olive corner sofa, oak coffee table, drinks and a striped throw beneath a sunset photograph on a peach wall.",
+      "reviewStatus": "Preview candidate; not approved for publication",
+      "originalGeneratorPath": "/Users/markdiffey/.codex/generated_images/01a0e800-d23f-7d43-b5af-1b8d05d1e13c/exec-6ced48bb-040b-4947-8445-979c7b326a0b.png",
+      "prompt": "Use case: photorealistic-natural. Create ONE tall portrait 4:5 editorial DSLR interior photograph for Scandinavian Art. Reference 1 is the exact original Sun Over the Forest photographic artwork; reference 2 is a LABELLED catalogue item and material board. Use the board's selected products, floor material and paint swatch only; never copy any whole room or furniture in a floor/paint photo. No other art or furniture.\n\nThe framed print is a physically real 70 × 50 cm landscape paper print in a thin natural oak glazed frame about 72 × 52 cm, hanging above and related to the occupied sofa seating group. The full source image is 4:3 landscape; show ALL four edges and original composition inside the white paper, with appropriate white margins, wider at the sides. Do not crop, stretch, invent a different sunset or turn it into an illuminated screen. Original photograph: gigantic distinct white-hot circular sun slightly above centre, horizontal cloud bands crossing its lower half, orange and rust sky, silhouettes of conifer treetops along the lower third, nearly black forest base. The sun belongs only INSIDE the framed photograph and casts NO light into the room. The paper, ink, glass, oak frame and neighbouring peach wall all receive the same actual LEFT window daylight falloff. A soft, physically plausible left-window reflection crosses a small part of the glazing without obscuring the sun; real recessed glass edge and a frame contact shadow consistent with the room. Render the art as part of initial image generation, never composite it afterwards.\n\nScene: a lived-in family sitting room. The EXACT catalogue olive-green IKEA corner sectional, 310 cm wide and 71 cm tall, rests against the peach-painted wall. The framed print is only 72/310 = 23% of that true sofa width. Do not inflate the print to fill the wall, but frame closely enough for it to remain clear. The EXACT catalogue natural-oak Nyhem coffee table, 89 × 59 × 37 cm, sits in reachable position in front of the sofa, its feet on the catalogue Crayon beige/multicolour 170 × 240 cm rug. The Marimekko powder/off-white Jokeri cushion is gently compressed in the corner, and the black-and-white Tekla striped wool throw is casually draped over one sofa arm. The clear Ripple carafe is filled with water and paired with two HAY clear drinking glasses on the coffee table, within reach of the seats; one book can be in use near a glass. Keep useful surface visible. No extra sofa, chair, sideboard, shelving or lamps.\n\nUse the catalogue Peach wall colour alone, not its pictured console. Exposed floor is the catalogue Oak wood flooring with broad pale timber boards and plausible room-scale plank joints, not parquet. A real window at the LEFT edge is the sole daylight source. Softly broken daylight lights part of wall and floor, with sheltered sofa folds darker. A standing camera around 145 cm, level verticals, moderate 40–50 mm view, slight oblique viewpoint showing tabletop and seating without an oversized foreground corner. Carefully developed low-ISO full-frame DSLR RAW character: restrained exposure, neutral daylight balance, local volume, organic but clean materials, real contact shadows, readable print, moderate depth of field. Avoid flat HDR illumination, CGI perfection, generic vase props, artificial grain, logos, people and text.",
+      "referencePathsOrdered": [
+        "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-remaining-seven-2026-09-28/sun-over-the-forest-reference.png",
+        "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-remaining-seven-2026-09-28/sun-over-the-forest-board.png"
+      ],
+      "productIds": [
+        "5d7a6a6c-adf5-4885-b69a-131a72a8f8c7",
+        "81c8757c-c932-41b0-a8f8-8918ad723264",
+        "bd037b76-76cb-4b61-8e74-5961bf650288",
+        "1d09566d-b848-4da5-bc8a-c968a716cc7f",
+        "a5ff73e8-5b21-4298-843d-d7cdb961f659",
+        "9087b12c-9476-4dab-b04d-104328416be5",
+        "5a53096f-ad8c-419f-983a-59d5f6f9e455",
+        "c3d7387d-0981-4e8f-8ab0-68d85e4030f3",
+        "1a8f321c-9517-4fb5-85a7-eb7a6cdd4dea"
+      ],
+      "qa": {
+        "art": "Recognisable source composition and dark lower forest; rendered sun remains inside print.",
+        "integration": "Good left-window reflection, frame shadow and shared directional light.",
+        "scale": "Frame looks a little generous against full 310 cm sofa, whose right portion is cropped; precise width ratio cannot be confirmed.",
+        "products": "Sofa, Nyhem table, Crayon rug, cushion, throw, carafe and glasses visible.",
+        "room": "Natural seating activity and credible floor/window geometry.",
+        "status": "review candidate; not user approved"
+      }
+    },
+    {
+      "slug": "path-through-the-trees",
+      "test": 2,
+      "source": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-path-through-the-trees-fresh-products-test-02.png",
+      "sourceSha256": "0a1948079ec300bb1bdda7c5dfda323fb2465ce4190f4e3532e708734f6a94e4",
+      "artworkReference": "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-remaining-seven-2026-09-28/path-through-the-trees-reference.png",
+      "artworkSha256": "091ab11b4149b14aa14306309379a2fe69c1b983d32c36463ec8898942339723",
+      "provenance": "batch-b.json",
+      "image": "/images/products/path-through-the-trees-room-fresh-02-2026-09-28.avif",
+      "webp": "/images/products/path-through-the-trees-room-fresh-02-2026-09-28.webp",
+      "width": 1122,
+      "height": 1402,
+      "innerArtworkBoxPercent": {
+        "x": 27.1,
+        "y": 12.4,
+        "w": 21.4,
+        "h": 13.2
+      },
+      "sceneAlt": "Path Through the Trees by Markus Naarttijärvi: oak reading chair and white side table beside a book-filled low shelf, with a dark boardwalk photograph above.",
+      "reviewStatus": "Preview candidate; not approved for publication",
+      "originalGeneratorPath": "/Users/markdiffey/.codex/generated_images/01a0e800-d23f-7d43-b5af-1b8d05d1e13c/exec-a80b0d27-3016-4825-b12d-ec5cc83db110.png",
+      "prompt": "Use case: precise-object-edit. Edit reference 1, the generated Scandinavian reading-corner photograph. Reference 2 is the exact source artwork inside the frame. Correct ONE physical-scale problem only: the existing natural-oak wall frame above the low bookcase is too wide for a 70 × 50 cm paper print. Keep the bookcase at its current full width of 203 cm and keep all room geometry, camera, chair, white side table, cup, open book, rug, curtain, blue floor, blue-green wall, window light, colour and materials completely unchanged. Reduce the OUTER oak frame to about 60% of its current pixel width and 60% of its current height, at the same physical wall plane and same centre position above the bookcase. The revised 72 cm outer frame must be approximately 35% of the 203 cm bookcase width shown in the picture, not 55–60%. Fill the newly exposed wall area with seamless original Spring Breeze blue paint, light falloff and wall texture. Keep the frame fully above the shelf with plausible 25–30 cm gap. Inside its now smaller white paper, preserve the WHOLE original 5:4 landscape photograph with original dark forest, wet boardwalk winding from lower centre to pale meadow opening, no crop or stretching. Render the glass recess, right-window reflection and frame contact shadow at their new correct scale, all matched to the unchanged room light. No extra art. No change to any other element, no repositioning of bookcase or furniture. Same tall portrait editorial photo, no pasted flat print.",
+      "referencePathsOrdered": [
+        "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-path-through-the-trees-fresh-products-test-01.png",
+        "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-remaining-seven-2026-09-28/path-through-the-trees-reference.png"
+      ],
+      "productIds": [
+        "c1fa346d-758c-4903-b621-56d35b7cf602",
+        "5a6d103a-21c8-4af2-92cc-4ca6dea808ed",
+        "591c66d1-c824-497f-b181-79751001994d",
+        "c65fe288-abfd-4b1d-ae5c-6e5be343c548",
+        "769cdf8a-52b6-4960-9693-bb571f9d1415",
+        "5d1333b6-ddbc-456a-86da-fd42bbc31d1f",
+        "6e3a167b-0e6b-4c12-b291-85ef362bd345",
+        "ecf1dc18-7b60-461a-a346-613ec6d57bca"
+      ],
+      "qa": {
+        "art": "Curving wet boardwalk, dense dark trees and pale opening preserved; approximate aspect ratio.",
+        "integration": "Strong coherent right-window reflection with frame depth and shadow.",
+        "scale": "Initial frame was about 58% of 203 cm shelf width; corrected version is about 37%, close to physical target 35%.",
+        "products": "Low bookcase loaded with books, Icon lounge chair, DLM side table, Ethan Cook rug, curtain, blue floor and blue-green wall retained.",
+        "room": "Reachable book and cup, convincing grounded furniture and circulation.",
+        "status": "corrected review candidate; not user approved"
+      }
+    },
+    {
+      "slug": "morning-cabin-room",
+      "test": 2,
+      "source": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-morning-cabin-room-fresh-products-test-02.png",
+      "sourceSha256": "1c59d5eedc6d909f0873f69a18dfb00246d4c20b0365641f0f35b78dc6bfcfff",
+      "artworkReference": "/Users/markdiffey/Desktop/ScanArt Image Tests/Experiment files/markus-remaining-seven-2026-09-28/morning-cabin-room-reference.png",
+      "artworkSha256": "cd60a65819ace0acb8a2a7e2a556151839c71d033b65fa4d2cdc602f960931a2",
+      "provenance": "batch-b.json",
+      "image": "/images/products/morning-cabin-room-room-fresh-02-2026-09-28.avif",
+      "webp": "/images/products/morning-cabin-room-room-fresh-02-2026-09-28.webp",
+      "width": 1122,
+      "height": 1402,
+      "innerArtworkBoxPercent": {
+        "x": 17.2,
+        "y": 7.1,
+        "w": 36.1,
+        "h": 22.8
+      },
+      "sceneAlt": "Morning, Cabin Room by Markus Naarttijärvi: black-topped birch breakfast table set for two beneath a framed dark cabin and foliage photograph.",
+      "reviewStatus": "Preview candidate; not approved for publication",
+      "originalGeneratorPath": "/Users/markdiffey/.codex/generated_images/01a0e800-d23f-7d43-b5af-1b8d05d1e13c/exec-5cc1ce24-e8af-4e3a-8232-44781a5c328e.png",
+      "prompt": "Use case: precise-object-edit. Edit the attached Morning Cabin Room breakfast-room photograph. Remove ONLY the unlisted tall ceramic flower jug and all of its stems/flowers from the LEFT edge of the table. Restore the black Artek tabletop, light-yellow wall and their existing daylight/shadows in that area. Keep the small bowl of fruit beside it exactly where it is. Keep both blue mugs, two plates with bread/fruit, cutlery, partially draped red checked cloth, table, both birch chairs, herringbone floor, curtain, right window, original framed cabin photograph and its glazing, camera position, colour balance, composition and room light unchanged. Do not add or move any prop, or alter any other part of the photograph. Same tall portrait native-resolution image.",
+      "referencePathsOrdered": [
+        "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-morning-cabin-room-fresh-products-test-01.png"
+      ],
+      "productIds": [
+        "b1e1be79-852c-4a38-998b-5b4f7043c8ac",
+        "4fd6d263-83dc-4c6a-b970-fe076115967d",
+        "d3de4b5b-25c3-4548-9078-3f0674585a1b",
+        "a98cf296-7d46-46ea-843c-f2c8b769a859",
+        "99cbc043-8637-4101-a377-8cbc30bb3946",
+        "5d1333b6-ddbc-456a-86da-fd42bbc31d1f",
+        "942b5c48-e6e5-4e9a-8279-931f9a53081f",
+        "fc134d8a-a69b-4970-a866-4840bfd95378"
+      ],
+      "qa": {
+        "art": "Original dark cabin window, blue bed and right-side foliage remain distinct; source aspect close but not pixel exact.",
+        "integration": "Soft right-window light and faint glass reflection relate frame to wall.",
+        "scale": "Frame is visibly prominent over table; perspective and partial table crop limit true-width measurement.",
+        "products": "Artek table/chairs, checked cloth, Barro mugs, plates, herringbone floor, yellow wall and curtain present. Unlisted flower jug removed in test-02; fruit bowl and breakfast setting remain.",
+        "room": "Two breakfast places are reachable; bread and fruit look plausible.",
+        "status": "corrected review candidate; not user approved"
+      }
+    }
+  ],
+  "heldCandidate": {
+    "slug": "sheep-on-the-track",
+    "source": "/Users/markdiffey/Desktop/ScanArt Image Tests/Markus-sheep-on-the-track-fresh-products-test-05.png",
+    "reason": "Fresh source-art generation improved scale but framed image ratio remains about 0.75 versus source 0.80, flock is simplified, and an unrequested child blocks the frame. Earlier test-02 ratio was about 0.70. Existing preview room retained pending faithful correction.",
+    "provenance": "batch-b.json"
+  }
+}

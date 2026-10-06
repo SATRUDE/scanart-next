@@ -90,7 +90,6 @@ export function ProductView({
     .filter(([, available]) => available)
     .map(([size]) => sizeLabel(size));
   const deliveryHref = `${prefix}/delivery`;
-
   return (
     <div className="page-x tab:pt-8">
       <div className="page-grid gap-y-6 tab:gap-y-band">
