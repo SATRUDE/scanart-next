@@ -1440,6 +1440,26 @@ export const no = {
       description:
         'Sheep on the Track av Markus Naarttijärvi viser en liten flokk mørke sauer på en gjørmete kjerrevei mellom hekker, med blikket rett mot kameraet. Det står vann i hjulsporene, trær buer seg over, og en grønn beitemark åpner seg bak dem. Lyset er fuktig og overskyet, og hele scenen er gjennomført landlig. Et trykk i stående format, med et lite glimt i øyet.',
     },
+    'in-to-the-woods-ii': {
+      description:
+        "Bare en kort spasertur fra der jeg bor ligger det en liten innsjø. Når tåke og litt snø kommer om vinteren, trer de mørke furuene tydelig frem og tar imot deg inn i skogen.",
+    },
+    'storm': {
+      description:
+        "En virkelig fin, stormfull dag på Sveriges vestkyst. Jeg ble gjennomvåt, men svært fornøyd med alle bildene.",
+    },
+    'tjurpannan-bathus': {
+      description:
+        "Sveriges vestkyst har mange verneområder. Dette heter Tjurpannan og har noen små, gamle båthus.",
+    },
+    'wake-up': {
+      description:
+        "Tatt tidlig en vårmorgen mens vi gikk tur med hundene, omtrent 20 minutters gange fra der jeg bor.",
+    },
+    'moody-19-the-crow': {
+      description:
+        "En del av en serie jeg tok i desember for et par år siden, på en av de sjeldne, fantastiske dagene med ekstremt tett tåke. Solen prøvde å bryte gjennom, men lyktes ikke. Jeg løp rundt på landsbygda og tok masse bilder. Tåken varte i omtrent 45 minutter, og jeg har ikke opplevd noe lignende siden.",
+    },
   } as Record<string, { description: string; buyerDescription?: string }>,
 
   productPage: {
