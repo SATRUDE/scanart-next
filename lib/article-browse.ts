@@ -16,6 +16,12 @@ export interface BrowseLink {
 }
 
 const browseLinksByArticle: Record<string, BrowseLink[]> = {
+  // The best-of guide ends in a purchase, and /scandinavian-wall-art owns the
+  // "Scandinavian art prints" search family (T-0156), so it is the first link.
+  'best-scandinavian-art-prints': [
+    { href: '/scandinavian-wall-art', label: 'Scandinavian wall art and Nordic art prints' },
+    { href: '/products', label: 'browse every print' },
+  ],
   'how-to-style-scandinavian-wall-art-living-room': [
     { href: '/collection/living-room', label: 'living room wall art collection' },
     { href: '/category/abstract', label: 'abstract art prints' },

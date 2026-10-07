@@ -4,6 +4,8 @@ import { wallArtLanding } from '@/lib/wall-art';
 import { getShopProducts as getAllProducts } from '@/lib/products';
 import { getShopArtists as getPublishedArtists } from '@/lib/published-artists';
 import { ContentSection, ContentBody } from '@/components/v2/ui';
+import { ArticleLinks } from '@/components/v2/landing/ArticleLinks';
+import { wallArtJournalLinks, journalLinksFor } from '@/lib/journal-links';
 import { LandingTemplate } from '@/components/v2/landing/LandingTemplate';
 import { collectionPageJsonLd, faqPageJsonLd, landingBreadcrumbJsonLd } from '@/lib/landing-jsonld';
 import { socialCard } from '@/lib/site';
@@ -64,7 +66,12 @@ export default async function ScandinavianWallArtPage() {
         </ContentBody>
       </ContentSection>
 
-      <ContentSection id="room-by-room" title={wallArtLanding.stylingHeading} className="mt-section">
+      <ContentSection
+        id="room-by-room"
+        title={wallArtLanding.stylingHeading}
+        className="mt-section"
+        footer={<ArticleLinks links={journalLinksFor(wallArtJournalLinks, 'en')} locale="en" />}
+      >
         <ContentBody>
           {/* Rendered as JSX rather than a config string so the room mentions can
               carry real internal links to the collection landings. Copy by Ken. */}

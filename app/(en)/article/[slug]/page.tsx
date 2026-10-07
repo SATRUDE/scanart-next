@@ -17,7 +17,7 @@ import { BASE_URL, OG_IMAGE, SITE_NAME, OG_LOCALE, TWITTER_SITE } from '@/lib/si
 import { getBrowseLinksForArticle } from '@/lib/article-browse';
 import { selectRelatedArticles } from '@/lib/related-articles';
 import { clipToLength } from '@/lib/meta-snippet';
-import { ARTICLE_META_DESCRIPTIONS } from '@/lib/article-meta';
+import { ARTICLE_META_DESCRIPTIONS, ARTICLE_META_TITLES } from '@/lib/article-meta';
 import { metaTitle } from '@/lib/meta-title';
 import { articleSceneSlugs } from '@/lib/shop-scenes';
 import { getShopArtists as getPublishedArtists } from '@/lib/published-artists';
@@ -47,7 +47,7 @@ export async function generateMetadata({
   // (nordic-art-and-design-books, 243 impressions over the 28 days to 15 Aug,
   // cut at "worth ow..."). metaTitle keeps the suffix where it fits and drops
   // it where it would cost the headline, the same call the product pages make.
-  const title = metaTitle(article.title);
+  const title = metaTitle(ARTICLE_META_TITLES[article.slug] ?? article.title);
   // Excerpts are teasers rather than stand-alone opening sentences, so they get
   // the plain clip and not metaSnippet's first-sentence rule, which would have
   // cut two of them to under 65 characters.
