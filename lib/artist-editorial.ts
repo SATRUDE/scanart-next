@@ -87,4 +87,6 @@ export const artistHeroScene: Record<string, string> = {
   'simen-wahlqvist': 'slingshot',
   'helene-brox': 'dancer',
   'emma-iben': 'pressure',
+  // Patrik's approved vignettes are the room image (no shop scene); Mark picked Storm, 6 Oct 2026.
+  'patrik-wennerlund': 'storm',
 };

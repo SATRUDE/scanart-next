@@ -1164,6 +1164,156 @@
     "last_edited_time": "2026-09-28T09:00:00.000Z"
   },
   {
+    "id": "53829e5f-6356-59cc-b554-c6413d8af58c",
+    "name": "In to the woods II",
+    "slug": "in-to-the-woods-ii",
+    "description": "Just a short walk from where I live, there is a small lake. When mist and a little snow arrive in winter, the dark pines stand out and welcome you into the woods.",
+    "category": "Photography",
+    "artist": "Patrik Wennerlund",
+    "artistId": "10",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/in-to-the-woods-ii-paper-40x60-2026-10-02-v2.png",
+    "secondaryImage": "/images/products/in-to-the-woods-ii-vignette-v2-2026-10-03.avif",
+    "sourceImage": "/images/artworks/in-to-the-woods-ii.avif",
+    "availableSizes": [
+      "40x60cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "41",
+    "recommendedProducts": [
+      "Storm",
+      "Tjurpannan Båthus",
+      "Wake up",
+      "Moody 19 - The Crow"
+    ],
+    "orientation": "landscape",
+    "created_time": "2026-10-02T12:00:00.000Z",
+    "last_edited_time": "2026-10-02T12:00:00.000Z"
+  },
+  {
+    "id": "6433de07-c02a-5481-b5a7-a6c928ec29f7",
+    "name": "Storm",
+    "slug": "storm",
+    "description": "One really nice, stormy day on Sweden's west coast. I ended up soaked, but very satisfied with all the pictures.",
+    "category": "Photography",
+    "artist": "Patrik Wennerlund",
+    "artistId": "10",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/storm-paper-40x60-2026-10-02-v2.png",
+    "secondaryImage": "/images/products/storm-vignette-pilot-2026-10-02.avif",
+    "sourceImage": "/images/artworks/storm.avif",
+    "availableSizes": [
+      "40x60cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "42",
+    "recommendedProducts": [
+      "In to the woods II",
+      "Tjurpannan Båthus",
+      "Wake up",
+      "Moody 19 - The Crow"
+    ],
+    "orientation": "portrait",
+    "created_time": "2026-10-02T12:00:00.000Z",
+    "last_edited_time": "2026-10-02T12:00:00.000Z"
+  },
+  {
+    "id": "d2d7f217-7a21-5b9f-b9c3-b2dfba5f7575",
+    "name": "Tjurpannan Båthus",
+    "slug": "tjurpannan-bathus",
+    "description": "Sweden's west coast has many protected nature areas. This one is called Tjurpannan and has some small, old boathouses.",
+    "category": "Photography",
+    "artist": "Patrik Wennerlund",
+    "artistId": "10",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/tjurpannan-bathus-paper-40x50-2026-10-02-v2.png",
+    "secondaryImage": "/images/products/tjurpannan-bathus-vignette-v3-2026-10-03.avif",
+    "sourceImage": "/images/artworks/tjurpannan-bathus.avif",
+    "availableSizes": [
+      "40x50cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "43",
+    "recommendedProducts": [
+      "In to the woods II",
+      "Storm",
+      "Wake up",
+      "Moody 19 - The Crow"
+    ],
+    "orientation": "portrait",
+    "created_time": "2026-10-02T12:00:00.000Z",
+    "last_edited_time": "2026-10-02T12:00:00.000Z"
+  },
+  {
+    "id": "6d391da9-a7a3-5316-993f-172160a22fc4",
+    "name": "Wake up",
+    "slug": "wake-up",
+    "description": "Taken early one spring morning while walking our dogs, about 20 minutes' walk from where I live.",
+    "category": "Photography",
+    "artist": "Patrik Wennerlund",
+    "artistId": "10",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/wake-up-paper-40x60-2026-10-02-v2.png",
+    "secondaryImage": "/images/products/wake-up-vignette-v2-2026-10-03.avif",
+    "sourceImage": "/images/artworks/wake-up.avif",
+    "availableSizes": [
+      "40x60cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "44",
+    "recommendedProducts": [
+      "In to the woods II",
+      "Storm",
+      "Tjurpannan Båthus",
+      "Moody 19 - The Crow"
+    ],
+    "orientation": "landscape",
+    "created_time": "2026-10-02T12:00:00.000Z",
+    "last_edited_time": "2026-10-02T12:00:00.000Z"
+  },
+  {
+    "id": "da4e0170-b48c-5fe1-8dbb-b0ab29d9e92a",
+    "name": "Moody 19 - The Crow",
+    "slug": "moody-19-the-crow",
+    "description": "Part of a series I took in December a couple of years ago, on one of those rare, amazing days of extremely thick fog. The sun tried to break through but didn't succeed. I ran around the countryside taking lots of photos. The fog lasted about 45 minutes, and I haven't experienced anything like it since.",
+    "category": "Photography",
+    "artist": "Patrik Wennerlund",
+    "artistId": "10",
+    "brand": "",
+    "inStock": true,
+    "featured": false,
+    "published": true,
+    "image": "/images/products/moody-19-the-crow-paper-45x60-2026-10-02-v2.png",
+    "secondaryImage": "/images/products/moody-19-the-crow-vignette-v2-2026-10-03.avif",
+    "sourceImage": "/images/artworks/moody-19-the-crow.avif",
+    "availableSizes": [
+      "45x60cm"
+    ],
+    "priceCategory": "Premium",
+    "productId": "45",
+    "recommendedProducts": [
+      "In to the woods II",
+      "Storm",
+      "Tjurpannan Båthus",
+      "Wake up"
+    ],
+    "orientation": "landscape",
+    "created_time": "2026-10-02T12:00:00.000Z",
+    "last_edited_time": "2026-10-02T12:00:00.000Z"
+  },
+  {
     "id": "ca03082f-7da5-51b2-86b4-52de766311c4",
     "name": "Fitting in",
     "slug": "fitting-in",

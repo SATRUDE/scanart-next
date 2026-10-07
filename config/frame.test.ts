@@ -10,7 +10,7 @@ import { FRAME_SIZES, getFramePrice, getFrameName, frameOptions, type FrameSize 
 // choosing the lighter paper made the rolled print cheaper without moving the
 // framed one, so the frame had more to cover. Re-measure when the paper
 // changes.
-type PreviouslyCostedSize = Exclude<FrameSize, '40x50cm' | '45x60cm'>;
+type PreviouslyCostedSize = Exclude<FrameSize, '40x50cm' | '40x60cm' | '45x60cm'>;
 const PREVIOUSLY_COSTED_SIZES: PreviouslyCostedSize[] = ['A3', 'A2', '50x50cm', '50x70cm', 'A1'];
 const GELATO_FRAME_COST: Record<string, Record<PreviouslyCostedSize, number>> = {
   GBP: { A3: 13.62, A2: 22.75, '50x50cm': 25.01, '50x70cm': 31.09, A1: 43.73 },
@@ -72,7 +72,7 @@ describe('the price ladder', () => {
 
   it('uses the approved effective 50 × 70 supplement for both new sizes in all markets', () => {
     for (const currency of CURRENCIES) {
-      for (const size of ['40x50cm', '45x60cm'] as const) {
+      for (const size of ['40x50cm', '40x60cm', '45x60cm'] as const) {
         for (const frame of FRAMED) {
           expect(getFramePrice(frame, size, currency)).toBe(getFramePrice(frame, '50x70cm', currency));
         }
@@ -106,7 +106,7 @@ describe('getFramePrice', () => {
   it('prices every size the catalogue sells', () => {
     // products.json offers exactly these; a size with no price would fall back
     // to A1 silently and overcharge, so the list has to stay in step.
-    expect(FRAME_SIZES).toEqual(['A3', 'A2', '50x50cm', '40x50cm', '45x60cm', '50x70cm', 'A1']);
+    expect(FRAME_SIZES).toEqual(['A3', 'A2', '50x50cm', '40x50cm', '40x60cm', '45x60cm', '50x70cm', 'A1']);
     for (const option of frameOptions) {
       for (const size of FRAME_SIZES) {
         expect(option.prices[size], `${option.id} ${size}`).toBeDefined();

@@ -30,4 +30,6 @@ export const artistStatements: Record<string, string> = {
   'markus-naarttijarvi': 'Long-term photographs of northern Sweden, exploring solitude, perseverance and the passage of time.',
   // data/artists.ts bio, its last sentence (from Emma's own application).
   'emma-iben': 'Melodramatic, humorous drawings that convey emotional experiences.',
+  // Mark approved this line for Patrik, 6 Oct 2026; the mist and storms are his own Moody and Storm.
+  'patrik-wennerlund': 'His photographs find quiet drama in mist, storms and Sweden\'s west coast.',
 };

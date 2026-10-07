@@ -1,0 +1,119 @@
+{
+  "artist": {
+    "id": "10",
+    "name": "Patrik Wennerlund",
+    "slug": "patrik-wennerlund",
+    "location": "Borås, Sweden",
+    "business": "PWM AB / PWMFoto",
+    "website": "https://www.pwmfoto.com",
+    "originalsShop": "https://www.pwmfotoshop.com",
+    "bioSource": "Patrik's email of 2 October 2026 (light corrections, as he invited)",
+    "image": "/images/artists/patrik-wennerlund.jpg"
+  },
+  "status": "Live from 7 October 2026 (T-0098). Sizes set per artwork from native ratio and resolution; retail print and frame prices copy the Premium 50x70 band, 40x60cm included (Mark approved the 40x60 price at the 50x70 level, 6 Oct 2026).",
+  "priceCategory": "Premium",
+  "availableSizes": [
+    "40x60cm",
+    "40x50cm",
+    "45x60cm"
+  ],
+  "noTextOnPrints": true,
+  "missingFromPatrik": [
+        "Approved Norwegian translation of bio",
+    "Confirmation that Tjurpannan Båthus (C045) is the fifth picked work: it is in the transfer"
+  ],
+  "prints": [
+    {
+      "file": "B004_In to the woods II.tif",
+      "slug": "in-to-the-woods-ii",
+      "title": "In to the woods II",
+      "code": "B004",
+      "px": [
+        8811,
+        5884
+      ],
+      "size": "40x60cm",
+      "paper": [
+        60,
+        40
+      ],
+      "margin": 0.0333,
+      "number": 1
+    },
+    {
+      "file": "B011_Storm.tif",
+      "slug": "storm",
+      "title": "Storm",
+      "code": "B011",
+      "px": [
+        6142,
+        9213
+      ],
+      "size": "40x60cm",
+      "paper": [
+        40,
+        60
+      ],
+      "margin": 0.0333,
+      "number": 2
+    },
+    {
+      "file": "C045_Tjurpannan Båthus.tif",
+      "slug": "tjurpannan-bathus",
+      "title": "Tjurpannan Båthus",
+      "code": "C045",
+      "px": [
+        11385,
+        14304
+      ],
+      "size": "40x50cm",
+      "paper": [
+        40,
+        50
+      ],
+      "margin": 0.03,
+      "number": 3
+    },
+    {
+      "file": "C067_Wake up.tif",
+      "slug": "wake-up",
+      "title": "Wake up",
+      "code": "C067",
+      "px": [
+        8037,
+        5358
+      ],
+      "size": "40x60cm",
+      "paper": [
+        60,
+        40
+      ],
+      "margin": 0.0333,
+      "number": 4
+    },
+    {
+      "file": "M19_Moody 19 - The Crow.tif",
+      "slug": "moody-19-the-crow",
+      "title": "Moody 19 - The Crow",
+      "code": "M19",
+      "px": [
+        7280,
+        5464
+      ],
+      "size": "45x60cm",
+      "paper": [
+        60,
+        45
+      ],
+      "margin": 0.0333,
+      "number": 5
+    }
+  ],
+  "largerSizesFeasible": {
+    "in-to-the-woods-ii": "60x90cm (249 dpi)",
+    "storm": "60x90cm (260 dpi)",
+    "wake-up": "60x90cm (227 dpi)",
+    "moody-19-the-crow": "60x80cm is 3:4 not 4:3; 80x60 not in Gelato list. 60x45 stays the largest exact 4:3",
+    "tjurpannan-bathus": "no larger exact 4:5 Gelato size; 718 dpi at 40x50"
+  }
+}
