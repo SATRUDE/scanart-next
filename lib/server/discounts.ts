@@ -11,9 +11,18 @@ import { neon } from '@neondatabase/serverless';
 // when the store is unreachable is a bad afternoon; one that gives money away
 // is a bad quarter.
 
+/**
+ * What a code's percentage applies to. ALL is the original behaviour (print and
+ * frame) and is what any row without a scope means, so a code created before
+ * the column existed is unchanged. UNFRAMED discounts only lines with no frame:
+ * framed prints carry a thin margin, so a sale leaves them at full price.
+ */
+export type DiscountScope = 'ALL' | 'UNFRAMED';
+
 export interface Discount {
   code: string;
   percentage: number;
+  scope: DiscountScope;
 }
 
 export interface DiscountRow {
@@ -21,6 +30,8 @@ export interface DiscountRow {
   percentage: number;
   active: boolean;
   expiresAt: string | Date | null;
+  /** Absent before the scope migration ran; absent or unknown means ALL. */
+  scope?: string | null;
 }
 
 /** Injected so the maths can be tested without a database. */
@@ -45,7 +56,10 @@ export function selectValidDiscount(row: DiscountRow | undefined | null, now: Da
   if (row.expiresAt && new Date(row.expiresAt).getTime() <= now.getTime()) return null;
   const percentage = Number(row.percentage);
   if (!Number.isFinite(percentage) || percentage <= 0 || percentage > 100) return null;
-  return { code: row.code, percentage };
+  // Anything but the exact word UNFRAMED is the old behaviour. The narrower
+  // scope has to be asked for by name; it can never be reached by a typo.
+  const scope: DiscountScope = row.scope === 'UNFRAMED' ? 'UNFRAMED' : 'ALL';
+  return { code: row.code, percentage, scope };
 }
 
 function databaseUrl(): string | undefined {
@@ -61,8 +75,12 @@ export const lookupDiscountCode: DiscountLookup = async code => {
 
   try {
     const sql = neon(url);
+    // SELECT * rather than named columns, on purpose: "scope" arrived with a
+    // socialagent migration, and naming it would make every lookup fail (and so
+    // every code read as "no discount") if this deployed before that ran. With
+    // *, an old table simply has no scope and means ALL.
     const rows = (await sql`
-      SELECT "code", "percentage", "active", "expiresAt"
+      SELECT *
       FROM "DiscountCode"
       WHERE "code" = ${normalised}
       LIMIT 1

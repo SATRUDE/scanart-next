@@ -8,9 +8,9 @@ import type { DeliveryQuote } from './shipping-rates';
 const DELIVERY = 60;
 const deliver = async (): Promise<DeliveryQuote> => ({ amount: DELIVERY, source: 'gelato' });
 import { getAllProducts } from '@/lib/products';
-import { getProductPrice } from '@/lib/pricing';
 import { getShippingRate } from '@/config/shipping';
 import { getFramePrice } from '@/config/frame';
+import { getProductPrice } from '@/lib/pricing';
 
 // The order maths is the single source of truth for what gets charged, so it
 // gets real tests: computed against the live catalogue, not fixtures, because
@@ -26,7 +26,8 @@ const CODES: Record<string, number> = { WELCOME10: 10, SAVE20: 20 };
 const lookup: DiscountLookup = async code => {
   const normalised = code.trim().toUpperCase();
   const percentage = CODES[normalised];
-  return percentage ? { code: normalised, percentage } : null;
+  if (normalised === 'SALE20U') return { code: normalised, percentage: 20, scope: 'UNFRAMED' };
+  return percentage ? { code: normalised, percentage, scope: 'ALL' } : null;
 };
 
 const noCodes: DiscountLookup = async () => null;
@@ -70,7 +71,7 @@ describe('computeOrderAmount', () => {
     );
     const expectedOff = Math.round(base.subtotal * 0.2 * 100) / 100;
     expect(discounted.amount).toBe(Math.round((base.amount - expectedOff) * 100) / 100);
-    expect(discounted.discount).toEqual({ code: 'SAVE20', percentage: 20 });
+    expect(discounted.discount).toEqual({ code: 'SAVE20', percentage: 20, scope: 'ALL' });
     expect(discounted.discountAmount).toBe(expectedOff);
   });
 
@@ -83,7 +84,7 @@ describe('computeOrderAmount', () => {
       ' welcome10 ',
       lookup
     );
-    expect(order.discount).toEqual({ code: 'WELCOME10', percentage: 10 });
+    expect(order.discount).toEqual({ code: 'WELCOME10', percentage: 10, scope: 'ALL' });
   });
 
   it('ignores an invalid discount code rather than failing the order', async () => {
@@ -194,5 +195,54 @@ describe('computeOrderAmount', () => {
     );
     expect(order.shipping).toBe(105);
     expect(order.shippingSource).toBe('set-by-hand');
+  });
+
+  describe('an unframed-only code', () => {
+    const basket = async (frames: (string | undefined)[]) => {
+      const [product] = await getAllProducts();
+      const size = Object.keys(product.sizes ?? {})[0];
+      return [product, size, frames.map(frame => ({ productId: product.id, size, frame, quantity: 1 }))] as const;
+    };
+
+    it('discounts an unframed print by the full percentage', async () => {
+      const [, , items] = await basket([undefined]);
+      const base = await computeOrderAmount(items, 'GBP', 'GB', undefined, lookup);
+      const sale = await computeOrderAmount(items, 'GBP', 'GB', 'SALE20U', lookup);
+      expect(sale.discountAmount).toBe(Math.round(base.subtotal * 0.2 * 100) / 100);
+    });
+
+    it('treats the explicit no-frame option as unframed', async () => {
+      const [, , items] = await basket(['no-frame']);
+      const sale = await computeOrderAmount(items, 'GBP', 'GB', 'SALE20U', lookup);
+      expect(sale.discountAmount).toBeGreaterThan(0);
+    });
+
+    it('leaves a framed print, frame included, at full price', async () => {
+      const [, , items] = await basket(['wood']);
+      const base = await computeOrderAmount(items, 'GBP', 'GB', undefined, lookup);
+      const sale = await computeOrderAmount(items, 'GBP', 'GB', 'SALE20U', lookup);
+      expect(sale.discountAmount).toBe(0);
+      expect(sale.amount).toBe(base.amount);
+    });
+
+    it('in a mixed basket discounts only the unframed line', async () => {
+      const [product, size, items] = await basket([undefined, 'wood']);
+      const plain = getProductPrice(product, size, 'GBP');
+      const sale = await computeOrderAmount(items, 'GBP', 'GB', 'SALE20U', lookup);
+      expect(sale.discountAmount).toBe(Math.round(plain * 0.2 * 100) / 100);
+    });
+
+    it('does not discount a frame id the catalogue does not know', async () => {
+      const [, , items] = await basket(['not-a-frame']);
+      const sale = await computeOrderAmount(items, 'GBP', 'GB', 'SALE20U', lookup);
+      expect(sale.discountAmount).toBe(0);
+    });
+
+    it('an ALL code still discounts the frame, as before', async () => {
+      const [, , items] = await basket(['wood']);
+      const base = await computeOrderAmount(items, 'GBP', 'GB', undefined, lookup);
+      const sale = await computeOrderAmount(items, 'GBP', 'GB', 'SAVE20', lookup);
+      expect(sale.discountAmount).toBe(Math.round(base.subtotal * 0.2 * 100) / 100);
+    });
   });
 });

@@ -1,7 +1,7 @@
 import { getAllProducts } from '@/lib/products';
 import { getProductPrice } from '@/lib/pricing';
 import { getFramePrice } from '@/config/frame';
-import { lookupDiscountCode, type DiscountLookup } from '@/lib/server/discounts';
+import { lookupDiscountCode, type DiscountLookup, type DiscountScope } from '@/lib/server/discounts';
 import type { MetadataItem } from '@/lib/server/order-metadata';
 import { quoteDelivery, type DeliveryItem, type DeliveryQuote } from '@/lib/server/shipping-rates';
 
@@ -33,10 +33,21 @@ export interface ComputedOrder {
   shipping: number;
   /** Where the delivery figure came from, for the order record. */
   shippingSource: DeliveryQuote['source'];
-  discount: { code: string; percentage: number } | null;
+  discount: { code: string; percentage: number; scope: DiscountScope } | null;
   discountAmount: number;
   /** The priced lines, ready to be recorded onto the PaymentIntent. */
   items: MetadataItem[];
+}
+
+/**
+ * The part of the basket a code's percentage applies to. ALL is every line,
+ * frame included. UNFRAMED is only the lines with no frame; anything with a
+ * frame id, including one the catalogue does not know, is left at full price,
+ * so the narrow scope can only ever err towards discounting less.
+ */
+export function discountableAmount(lines: MetadataItem[], scope: DiscountScope): number {
+  const eligible = scope === 'UNFRAMED' ? lines.filter(l => !l.frame || l.frame === 'no-frame') : lines;
+  return eligible.reduce((sum, l) => sum + l.unitPrice * l.quantity, 0);
 }
 
 export async function computeOrderAmount(
@@ -97,7 +108,7 @@ export async function computeOrderAmount(
 
   const discount = discountCode ? await lookup(discountCode) : null;
   const discountAmount = discount
-    ? Math.round(((subtotal * discount.percentage) / 100) * 100) / 100
+    ? Math.round(((discountableAmount(resolved, discount.scope) * discount.percentage) / 100) * 100) / 100
     : 0;
 
   const amount = Math.round((subtotal + shipping - discountAmount) * 100) / 100;
