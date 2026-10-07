@@ -1175,15 +1175,15 @@
     "inStock": true,
     "featured": false,
     "published": true,
-    "image": "/images/products/fitting-in-paper-a-ratio-2026-10-04.png",
-    "secondaryImage": "/images/products/fitting-in-vignette-2026-10-05.avif",
+    "image": "/images/products/fitting-in-paper-a-ratio-2026-10-07.png",
+    "secondaryImage": "/images/products/fitting-in-vignette-2026-10-07.avif",
     "sourceImage": "/images/artworks/fitting-in.avif",
     "availableSizes": [
       "A3",
       "A2",
       "A1"
     ],
-    "priceCategory": "Budget",
+    "priceCategory": "Premium",
     "productId": "53",
     "recommendedProducts": [
       "Precautions",
@@ -1212,7 +1212,7 @@
     "availableSizes": [
       "A3"
     ],
-    "priceCategory": "Budget",
+    "priceCategory": "Premium",
     "productId": "54",
     "recommendedProducts": [
       "Fitting in",
@@ -1243,7 +1243,7 @@
       "A2",
       "A1"
     ],
-    "priceCategory": "Budget",
+    "priceCategory": "Premium",
     "productId": "55",
     "recommendedProducts": [
       "Fitting in",
@@ -1274,7 +1274,7 @@
       "A2",
       "A1"
     ],
-    "priceCategory": "Budget",
+    "priceCategory": "Premium",
     "productId": "56",
     "recommendedProducts": [
       "Fitting in",
