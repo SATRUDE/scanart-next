@@ -180,7 +180,7 @@ const PaymentForm: React.FC<{
   /** The total as the page shows it (formatPrice), for the Pay button. */
   totalLabel: string;
   t: CheckoutStrings;
-  orderItems: { productId: string; size?: string; frame?: string; quantity: number }[];
+  orderItems: { productId: string; slug?: string; size?: string; frame?: string; quantity: number }[];
   countryCode: string;
   discountCode?: string;
   // Recorded onto the PaymentIntent so a completed order is fulfillable from
@@ -481,7 +481,7 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' |
   // payment is charged with (app/api/order-quote). The page shows its delivery
   // and total, so what is on screen is what Stripe is asked to take. Keyed by
   // everything that changes the price; a stale answer is never used.
-  const quoteItems = state.items.map(item => ({ productId: item.product.id, size: item.size, frame: item.frame, quantity: item.quantity }));
+  const quoteItems = state.items.map(item => ({ productId: item.product.id, slug: item.product.slug, size: item.size, frame: item.frame, quantity: item.quantity }));
   const quoteKey = JSON.stringify([quoteItems, selectedCountry.currency, formData.country, appliedDiscount?.code ?? null]);
   const [quote, setQuote] = useState<{ key: string; shipping: number; discountAmount: number; amount: number } | null>(null);
   useEffect(() => {
@@ -1046,6 +1046,7 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' |
                   totalLabel={totalLabel}
                   orderItems={state.items.map(item => ({
                     productId: item.product.id,
+                    slug: item.product.slug,
                     size: item.size,
                     frame: item.frame,
                     quantity: item.quantity,

@@ -44,8 +44,8 @@ describe('Markus Naarttijärvi is live', () => {
     vi.stubEnv('VERCEL_ENV', 'production');
     const print = await getShopProductBySlug('through-the-willows');
     const order = await computeOrderAmount([
-      { productId: print!.id, size: '45x60cm', quantity: 1 },
-      { productId: print!.id, size: '45x60cm', frame: 'wood', quantity: 1 },
+      { productId: print!.id, slug: print!.slug, size: '45x60cm', quantity: 1 },
+      { productId: print!.id, slug: print!.slug, size: '45x60cm', frame: 'wood', quantity: 1 },
     ], 'GBP', 'GB');
     // GBP 56 unframed, GBP 56 + 39 framed: the approved prices, unchanged.
     expect(order.subtotal).toBe(56 + 56 + 39);

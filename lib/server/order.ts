@@ -22,6 +22,13 @@ export const CURRENCIES: Currency[] = ['GBP', 'NOK', 'USD', 'DKK', 'SEK'];
 
 export interface OrderItemInput {
   productId: string;
+  /**
+   * The print's slug, which is unique. Sent by the checkout since 2026-10-07,
+   * when product ids 43, 44 and 45 turned out to be shared by a Markus and a
+   * Patrik print, so an id alone priced and recorded the wrong print. The id
+   * is only the fallback for a basket saved before then.
+   */
+  slug?: string;
   size?: string;
   frame?: string;
   quantity: number;
@@ -71,6 +78,7 @@ export async function computeOrderAmount(
 
   const products = await getAllProducts();
   const byId = new Map(products.map(p => [p.id, p]));
+  const bySlug = new Map(products.map(p => [p.slug, p]));
 
   let subtotal = 0;
   // Built here rather than from the request body, because this is the only
@@ -79,9 +87,9 @@ export async function computeOrderAmount(
   // not what the browser said it was buying.
   const resolved: MetadataItem[] = [];
   for (const item of items) {
-    const product = byId.get(item.productId);
+    const product = item.slug ? bySlug.get(item.slug) : byId.get(item.productId);
     const quantity = Math.floor(item.quantity);
-    if (!product) throw new Error(`Unknown product: ${item.productId}`);
+    if (!product) throw new Error(`Unknown product: ${item.slug ?? item.productId}`);
     if (!Number.isFinite(quantity) || quantity < 1 || quantity > 20) {
       throw new Error('Invalid quantity');
     }
