@@ -51,14 +51,14 @@ def load_srgb(path, long_side):
         im = ImageCms.profileToProfile(im, src, ImageCms.createProfile('sRGB'), renderingIntent=1, outputMode='RGB')  # relative colorimetric
     return im
 
-# Fitting in uses its A3 export: the A1 and A2 exports have a white side band on one side only and A4 on neither
-# (A3 and A5 are symmetric), so A3 is the only clean reference.
+# Fitting in (6 Oct 2026): Emma's full-bleed Fitting_in_A1_bleed.png (7075 x 9993, A1 plus 2.5 mm bleed each side) replaces the old A1-A5
+# set that carried white side bands. The bleed must be CROPPED to trim (29/30 px left/right, 30/30 top/bottom) before it is fitted.
 # file (relative to the master dir), slug, paper cm (w,h), margin fraction (white border each side).
 # Fitting in and Pressure arrive as finished A-sheets with their own white margin, so they get none
 # added; Good conversation is full-bleed yellow and Precautions sits on white, both get the shop's
 # 3.33% border. Precautions is 2354 px wide, so it is shown on A3 landscape only.
 PRINTS = [
-    ('Fitting in - A5-A1 PNGs/Print_A3.png', 'fitting-in', (21.0, 29.7), 0.0, 'a-ratio'),
+    ('Fitting_in_A1_bleed.png', 'fitting-in', (21.0, 29.7), 0.0, 'a-ratio'),   # crop bleed to trim first
     ('Precautions.png', 'precautions', (42.0, 29.7), 0.0333, 'a3-landscape'),
     ('Pressure_A1.png', 'pressure', (21.0, 29.7), 0.0, 'a-ratio'),
     ('Good_conversation_large.png', 'good-conversation', (21.0, 29.7), 0.0333, 'a-ratio'),

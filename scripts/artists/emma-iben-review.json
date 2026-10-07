@@ -9,7 +9,15 @@
     "portfolio": "https://www.emmaiben.dk/"
   },
   "works": [
-    { "slug": "fitting-in", "title": "Fitting in", "year": 2023, "master": "Fitting in - A5-A1 PNGs/Print_A3.png (A1 7016x9933 exists but the A1, A2 and A4 exports have uneven side bands)", "px": [3508, 4961], "profile": "none embedded, treated as sRGB", "sizes": ["A3", "A2", "A1"], "margin_added": 0 },
+    { "slug": "fitting-in", "title": "Fitting in", "year": 2023,
+      "master": "Fitting_in_A1_bleed.png (Emma, WeTransfer https://we.tl/t-9ePCOYuR7PXcmHv4, Tue 6 Oct 2026 16:55; replaces the A1 to A5 set that carried white side bands)",
+      "px": [7075, 9993], "sha256": "4bc92001383f5aa688146f7f64fe06a9ae0fc39bb8d70e62ed6cd10d2262b1cb",
+      "profile": "none embedded, treated as sRGB; RGBA with the alpha fully opaque",
+      "bleed": "A1 594 x 841 mm plus 2.5 mm per side (599 x 846 mm at 299.9994 dpi). Trim is 7016 x 9933 px (crop 29/30 px left/right, 30/30 top/bottom). Full-bleed pink to every edge, no white strips.",
+      "sizes": ["A3", "A2", "A1"],
+      "printFiles": { "A1": "Fitting_in_A1_bleed.png, 1:1, 300 ppi at trim", "A2": "Fitting_in_A1_bleed.png, scaled down, about 424 ppi at trim", "A3": "Fitting_in_A1_bleed.png, scaled down, about 600 ppi at trim" },
+      "margin_added": 0,
+      "note": "One master serves every size, so the sizes can no longer disagree. The old set is kept as a backup in Material for Scandinavian Art/_superseded-2026-10-06/. Framed shot and room mockup to be redone by Megan from this file (T-0099, 7 Oct)." },
     { "slug": "precautions", "title": "Precautions", "year": 2025, "master": "Precautions.png", "px": [2354, 1836], "profile": "Display P3, converted to sRGB for the shop images", "sizes": ["A3"], "margin_added": "3.33% (white ground anyway)", "note": "Only 168 ppi at A3 landscape with the border, about 119 ppi at A2. Ask Emma for a larger file for more sizes." },
     { "slug": "pressure", "title": "Pressure", "year": 2023, "master": "Pressure_A1.png (her vectorised version, rendered at A1)", "px": [7016, 9933], "profile": "none embedded, treated as sRGB", "sizes": ["A3", "A2", "A1"], "margin_added": 0 },
     { "slug": "good-conversation", "title": "Good conversation", "year": 2021, "master": "Good_conversation_large.png (her vectorised version)", "px": [10865, 15383], "profile": "none embedded, treated as sRGB", "sizes": ["A3", "A2", "A1"], "margin_added": "3.33% (full-bleed yellow, so the shop's narrow white border)" }
