@@ -1,7 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import type { Product } from '@/contexts/CartContext';
-import { getShopProducts as getAllProducts, getShopFeaturedProducts as getFeaturedProducts } from '@/lib/products';
+import { getShopProducts as getAllProducts, getShopFeaturedProducts as getFeaturedProducts, getShopProductsByArtist } from '@/lib/products';
+import { artists as artistRoster } from '@/data/artists';
+import { heroSceneFor } from '@/components/v2/artists/artist-data';
 import { getAllArticles, type Article } from '@/lib/articles';
 import { getShopArtists as getPublishedArtists, type PublishedArtist } from '@/lib/published-artists';
 import { getProductPrices } from '@/lib/pricing';
@@ -117,6 +119,9 @@ export const homeStrings: HomeStrings = {
       'hedvig-wallin': 'Illustrator from Gothenburg who borrows from naive art: simple shapes, wonky perspective, detail everywhere.',
       'mikko-saarainen': 'Illustrator, children’s author and comic artist from Lahti: bold line, flat colour, detail right out to the edges.',
       'ishtar-backlund-dakhil': 'Swedish illustrator and visual artist who paints by hand, trained at Konstfack in Stockholm.',
+      'markus-naarttijarvi': 'Documentary photographer from Umeå whose long-term projects follow industry, nature and culture in northern Sweden.',
+      'patrik-wennerlund': 'Art director and photographer from Borås, whose photographs find quiet drama in mist, storms and Sweden’s west coast.',
+      'emma-iben': 'Illustrator, graphic designer and motion designer from Copenhagen, with melodramatic, humorous drawings that convey emotional experiences.',
     },
   },
   journal: { heading: 'Journal', all: 'All stories' },
@@ -149,6 +154,34 @@ export interface HomeData {
   wallPrints: WallPrint[];
   artists: PublishedArtist[];
   articles: Article[];
+}
+
+// New prints: one print from each of the NEW_PRINTS_ARTISTS_COUNT most recently
+// added artists, newest first. An artist arrives when their first print was
+// added to the catalogue (created_time, the same record the old "newest prints"
+// row used), so the next artist to go live rotates in and the oldest of the
+// three rotates out with no list to edit. Each artist is shown by the print
+// that opens their profile page (heroSceneFor), so the two always agree; an
+// artist with no scene falls back to their first print.
+const NEW_PRINTS_ARTISTS_COUNT = 3;
+
+/** The newest-arrived artists, newest first. Ties (a batch added at once) go to
+ *  the artist later in the roster, which is the later go-live. */
+export function newestArtistSlugs(
+  roster: { id: string; slug: string }[],
+  products: { slug: string; artistId?: string }[],
+  created: Record<string, string>,
+  count = NEW_PRINTS_ARTISTS_COUNT,
+): string[] {
+  return roster
+    .map((artist, order) => {
+      const times = products.filter(p => p.artistId === artist.id).map(p => created[p.slug] ?? '').filter(Boolean);
+      return { slug: artist.slug, order, arrived: times.length ? times.sort()[0] : '' };
+    })
+    .filter(a => a.arrived)
+    .sort((a, b) => b.arrived.localeCompare(a.arrived) || b.order - a.order)
+    .slice(0, count)
+    .map(a => a.slug);
 }
 
 // The design's hero row (Figma 30:222): these four in this order.
@@ -206,15 +239,14 @@ export async function getHomeData(localePrefix: '' | '/no' = ''): Promise<HomeDa
     return { product: { ...p, secondaryImage: scene }, scene };
   });
 
-  // New prints: the three most recently added that the hero does not already show.
-  const created = createdTimes();
-  const inHero = new Set(heroProducts.map(p => p.slug));
-  const newPrints = all
-    .map((p, i) => ({ p, i }))
-    .filter(({ p }) => !inHero.has(p.slug))
-    .sort((a, b) => (created[b.p.slug] ?? '').localeCompare(created[a.p.slug] ?? '') || a.i - b.i)
-    .slice(0, 3)
-    .map(({ p }) => ({ product: { ...p, secondaryImage: sceneFor(p) }, scene: sceneFor(p) }));
+  // New prints: the profile-page hero print of each of the newest artists.
+  const newPrints: HomeTile[] = [];
+  for (const slug of newestArtistSlugs(artistRoster, all, createdTimes())) {
+    const artist = artistRoster.find(a => a.slug === slug)!;
+    const owned = await getShopProductsByArtist(artist.id);
+    const pick = heroSceneFor(slug, owned)?.product ?? owned[0];
+    if (pick) newPrints.push({ product: { ...pick, secondaryImage: sceneFor(pick) }, scene: sceneFor(pick) });
+  }
 
   // Start from your wall: every print sold at the room frame's size that has
   // its artwork crop (public/images/v2/wall/prints). A new print without a crop
