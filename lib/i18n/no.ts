@@ -1597,6 +1597,7 @@ export const no = {
       discountPlaceholder: 'Rabattkode',
       apply: 'Bruk',
       percentOff: 'rabatt lagt til',
+      unframedOnly: 'Gjelder trykk uten ramme. Rammer og innrammede trykk har full pris.',
       subtotal: 'Delsum',
       shipping: 'Levering',
       free: 'Gratis',

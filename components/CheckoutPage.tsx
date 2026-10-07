@@ -109,6 +109,7 @@ const EN: CheckoutStrings = {
   discountPlaceholder: 'Discount code',
   apply: 'Apply',
   percentOff: 'off applied',
+  unframedOnly: 'Applies to unframed prints. Frames and framed prints are full price.',
   subtotal: 'Subtotal',
   shipping: 'Delivery',
   free: 'Free',
@@ -450,7 +451,7 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' |
   const { formatPrice, selectedCountry } = useLanguage();
   const [orderComplete, setOrderComplete] = useState(false);
   const [discountCode, setDiscountCode] = useState('');
-  const [appliedDiscount, setAppliedDiscount] = useState<{ code: string; percentage: number; description: string } | null>(null);
+  const [appliedDiscount, setAppliedDiscount] = useState<{ code: string; percentage: number; scope: 'ALL' | 'UNFRAMED'; description: string } | null>(null);
   const [discountError, setDiscountError] = useState<string | null>(null);
   // Presentation only: the mobile "Show your order" bar, and the order as it
   // was at the moment of payment, kept for the confirmation after the basket
@@ -532,7 +533,7 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' |
       });
       const result = await response.json();
       if (result.valid) {
-        setAppliedDiscount({ code: result.code, percentage: result.percentage, description: result.description });
+        setAppliedDiscount({ code: result.code, percentage: result.percentage, scope: result.scope === 'UNFRAMED' ? 'UNFRAMED' : 'ALL', description: result.description });
         setDiscountError(null);
         setDiscountCode('');
       } else {
@@ -785,11 +786,17 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' |
     // Get shipping cost in user's selected currency
   const shipping: number = shippingRate ? shippingRate.costs[selectedCountry.currency] || 0 : 0;
 
-  // Calculate discount
+  // Calculate discount. Display only until the server's quote lands; an
+  // unframed-only code counts just the lines with no frame, as the server does.
+  const discountableSubtotal = appliedDiscount?.scope === 'UNFRAMED'
+    ? state.items
+        .filter(item => !item.frame || item.frame === 'no-frame')
+        .reduce((sum, item) => sum + getProductPrice(item.product, item.size, selectedCountry.currency) * item.quantity, 0)
+    : subtotal;
   const discountAmount = serverQuote
     ? serverQuote.discountAmount
     : appliedDiscount
-      ? Math.round((subtotal * appliedDiscount.percentage / 100) * 100) / 100
+      ? Math.round((discountableSubtotal * appliedDiscount.percentage / 100) * 100) / 100
       : 0;
 
   const finalTax = 0; // No tax for any orders
@@ -904,6 +911,7 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' |
                   {appliedDiscount.code}, {appliedDiscount.description}
                   <br />
                   {appliedDiscount.percentage}% {t.percentOff}
+                  {appliedDiscount.scope === 'UNFRAMED' && (<><br />{t.unframedOnly}</>)}
                 </p>
                 <Button variant="link" onClick={handleRemoveDiscount} className="type-body">{v.remove}</Button>
               </div>

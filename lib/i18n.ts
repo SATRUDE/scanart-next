@@ -696,6 +696,8 @@ export interface CheckoutStrings {
   discountPlaceholder: string;
   apply: string;
   percentOff: string;
+  /** Said under a code that discounts unframed prints only. */
+  unframedOnly: string;
   subtotal: string;
   shipping: string;
   free: string;

@@ -22,7 +22,7 @@ describe('normaliseCode', () => {
 
 describe('selectValidDiscount', () => {
   it('accepts a live code', () => {
-    expect(selectValidDiscount(live, NOW)).toEqual({ code: 'SUMMER10', percentage: 10 });
+    expect(selectValidDiscount(live, NOW)).toEqual({ code: 'SUMMER10', percentage: 10, scope: 'ALL' });
   });
 
   it('refuses a code that is switched off', () => {
@@ -54,5 +54,25 @@ describe('selectValidDiscount', () => {
   it('gives no discount when the code is not in the store at all', () => {
     expect(selectValidDiscount(undefined, NOW)).toBeNull();
     expect(selectValidDiscount(null, NOW)).toBeNull();
+  });
+});
+
+describe('discount scope', () => {
+  it('reads UNFRAMED when the row says so', () => {
+    expect(selectValidDiscount({ ...live, scope: 'UNFRAMED' }, NOW)?.scope).toBe('UNFRAMED');
+  });
+
+  it('means ALL for a row from before the scope column existed', () => {
+    expect(selectValidDiscount(live, NOW)?.scope).toBe('ALL');
+    expect(selectValidDiscount({ ...live, scope: null }, NOW)?.scope).toBe('ALL');
+  });
+
+  it('never reaches the narrow scope by a typo or a lower-case word', () => {
+    expect(selectValidDiscount({ ...live, scope: 'unframed' }, NOW)?.scope).toBe('ALL');
+    expect(selectValidDiscount({ ...live, scope: 'UNFRAMD' }, NOW)?.scope).toBe('ALL');
+  });
+
+  it('still refuses a switched-off unframed code', () => {
+    expect(selectValidDiscount({ ...live, scope: 'UNFRAMED', active: false }, NOW)).toBeNull();
   });
 });

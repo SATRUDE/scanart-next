@@ -26,6 +26,7 @@ export async function POST(request: Request) {
       valid: true,
       code: discount.code,
       percentage: discount.percentage,
+      scope: discount.scope,
       description: `${discount.percentage}% off`,
     });
   } catch {
