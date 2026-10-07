@@ -920,6 +920,10 @@ export const no = {
       location: 'Umeå, Sverige',
       bio: 'Markus Naarttijärvi er dokumentarfotograf med base i Umeå i Sverige. De langsiktige prosjektene hans følger industri, natur og kultur i Nord-Sverige, med temaer som ensomhet, utholdenhet og tidens gang.',
     },
+    'patrik-wennerlund': {
+      location: 'Borås, Sverige',
+      bio: 'Patrik Wennerlund er art director og fotograf, og eier av PWM AB / PWMFoto. Han har jobbet med reklame og markedsføring store deler av livet, og fotografi har alltid spilt en sentral rolle i arbeidet hans, både som kunde og som bildemaker innen reklame, redaksjonelt stoff og annen kommunikasjon. I 2011 kjøpte han sitt første ordentlige systemkamera for å prøve noe nytt, og reising og fotografi viste seg å være en uslåelig kombinasjon. På sine mange reiser fanger han gjenstander, natur, bygninger og vesener og forvandler dem til forlokkende kunstverk. Målet er å lage bilder han selv ville hengt på sin egen vegg. Arbeidene hans har blitt stilt ut flere ganger.',
+    },
   } as Record<string, ArtistCopy>,
 
   // The product page's artist statement (lib/artist-statements.ts), each
@@ -933,6 +937,7 @@ export const no = {
     'mikko-saarainen': 'Han lar detaljene fortsette helt ut i kantene, så tegningene blir lest like mye som sett.',
     'ishtar-backlund-dakhil': 'Bildene hennes beveger seg mellom nøye observerte detaljer og fantasiverdener.',
     'markus-naarttijarvi': 'Langsiktige fotoprosjekter fra Nord-Sverige utforsker ensomhet, utholdenhet og tidens gang.',
+    'patrik-wennerlund': 'Fotografiene hans finner stille dramatikk i tåke, storm og den svenske vestkysten.',
   } as Record<string, string>,
 
   // Norwegian versions of lib/artist-editorial.ts, keyed by slug. para2 keeps
@@ -1441,6 +1446,26 @@ export const no = {
     'sheep-on-the-track': {
       description:
         'Sheep on the Track av Markus Naarttijärvi viser en liten flokk mørke sauer på en gjørmete kjerrevei mellom hekker, med blikket rett mot kameraet. Det står vann i hjulsporene, trær buer seg over, og en grønn beitemark åpner seg bak dem. Lyset er fuktig og overskyet, og hele scenen er gjennomført landlig. Et trykk i stående format, med et lite glimt i øyet.',
+    },
+    'in-to-the-woods-ii': {
+      description:
+        "Bare en kort spasertur fra der jeg bor ligger det en liten innsjø. Når tåke og litt snø kommer om vinteren, trer de mørke furuene tydelig frem og tar imot deg inn i skogen.",
+    },
+    'storm': {
+      description:
+        "En virkelig fin, stormfull dag på Sveriges vestkyst. Jeg ble gjennomvåt, men svært fornøyd med alle bildene.",
+    },
+    'tjurpannan-bathus': {
+      description:
+        "Sveriges vestkyst har mange verneområder. Dette heter Tjurpannan og har noen små, gamle båthus.",
+    },
+    'wake-up': {
+      description:
+        "Tatt tidlig en vårmorgen mens vi gikk tur med hundene, omtrent 20 minutters gange fra der jeg bor.",
+    },
+    'moody-19-the-crow': {
+      description:
+        "En del av en serie jeg tok i desember for et par år siden, på en av de sjeldne, fantastiske dagene med ekstremt tett tåke. Solen prøvde å bryte gjennom, men lyktes ikke. Jeg løp rundt på landsbygda og tok masse bilder. Tåken varte i omtrent 45 minutter, og jeg har ikke opplevd noe lignende siden.",
     },
   } as Record<string, { description: string; buyerDescription?: string }>,
 

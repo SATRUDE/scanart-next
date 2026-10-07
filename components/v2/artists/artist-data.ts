@@ -33,6 +33,7 @@ const TONED: Record<string, string> = {
   'hedvig-wallin': '/images/artists/hedvig-wallin-tone.webp',
   'mikko-saarainen': '/images/artists/mikko-saarainen-tone.webp',
   'ishtar-backlund-dakhil': '/images/artists/ishtar-backlund-dakhil-tone.webp',
+  'patrik-wennerlund': '/images/artists/patrik-wennerlund-tone.webp',
   'markus-naarttijarvi': '/images/artists/markus-naarttijarvi-tone.webp',
 };
 
@@ -100,13 +101,24 @@ export function framingLine(prefix: string, and: string, labels?: Record<string,
   return `${prefix} ${list}`;
 }
 
-/** The hero's room scene: the design's pick, else the first print with a scene. */
-export function heroSceneFor<P extends ProductLike>(slug: string, products: P[]): { scene: ShopScene; product: P } | null {
+/**
+ * The hero's room scene: the design's pick, else the first print with a scene.
+ * A print with no shop scene but a room image of its own (an unpublished
+ * artist preview, whose approved vignette is the product's room slot) uses that.
+ */
+export function heroSceneFor<P extends ProductLike & { secondaryImage?: string }>(slug: string, products: P[]): { scene: ShopScene; product: P } | null {
   const pick = artistHeroScene[slug];
   const ordered = pick ? [...products.filter(p => p.slug === pick), ...products.filter(p => p.slug !== pick)] : products;
   for (const product of ordered) {
     const scene = shopScenes[product.slug];
     if (scene) return { scene, product };
+  }
+  for (const product of ordered) {
+    if (!product.secondaryImage) continue;
+    return {
+      scene: { image: product.secondaryImage, alt: `${product.name} framed in a room`, width: 1122, height: 1402 },
+      product,
+    };
   }
   return null;
 }
