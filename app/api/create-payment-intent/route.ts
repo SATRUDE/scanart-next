@@ -3,6 +3,7 @@ import { NextResponse } from 'next/server';
 import { computeOrderAmount, CURRENCIES, type Currency, type OrderItemInput } from '@/lib/server/order';
 import { buildOrderDescription, buildOrderMetadata } from '@/lib/server/order-metadata';
 import { isDeliverable } from '@/lib/address';
+import { assertOrderIsSafe, UnsafeOrderError } from '@/lib/server/order-guard';
 
 function getStripe() {
   const key = process.env.STRIPE_SECRET_KEY;
@@ -63,6 +64,18 @@ export async function POST(request: Request) {
     const order = await computeOrderAmount(items, upperCurrency, countryCode, discountCode);
     if (order.amount <= 0) {
       return NextResponse.json({ error: 'Order total invalid' }, { status: 400 });
+    }
+
+    // Never take an order that loses money, or one with a price or delivery
+    // charge of nothing (lib/server/order-guard.ts). Refused before Stripe is
+    // asked for anything, so nothing is charged.
+    try {
+      await assertOrderIsSafe(order, countryCode, upperCurrency);
+    } catch (error) {
+      if (error instanceof UnsafeOrderError) {
+        return NextResponse.json({ error: error.message, code: 'order-refused' }, { status: 422 });
+      }
+      throw error;
     }
 
     const email = trimmed(customer?.email, 200);

@@ -1,6 +1,6 @@
 import { getAllProducts } from '@/lib/products';
 import { getProductPrice } from '@/lib/pricing';
-import { getFramePrice } from '@/config/frame';
+import { frameOptions, getFramePrice } from '@/config/frame';
 import { lookupDiscountCode, type DiscountLookup, type DiscountScope } from '@/lib/server/discounts';
 import type { MetadataItem } from '@/lib/server/order-metadata';
 import { quoteDelivery, type DeliveryItem, type DeliveryQuote } from '@/lib/server/shipping-rates';
@@ -16,6 +16,8 @@ import { quoteDelivery, type DeliveryItem, type DeliveryQuote } from '@/lib/serv
 // in production, so every code a buyer typed was rejected. Either way the rule
 // is unchanged: no code found means no discount, which fails safe, and no
 // working code is ever committed to this public repository.
+
+const isKnownFrame = (id: string) => frameOptions.some(f => f.id === id);
 
 export type Currency = 'GBP' | 'NOK' | 'USD' | 'DKK' | 'SEK';
 export const CURRENCIES: Currency[] = ['GBP', 'NOK', 'USD', 'DKK', 'SEK'];
@@ -44,6 +46,12 @@ export interface ComputedOrder {
   discountAmount: number;
   /** The priced lines, ready to be recorded onto the PaymentIntent. */
   items: MetadataItem[];
+  /**
+   * The same lines with the print and the frame priced separately, for the
+   * margin guard (lib/server/order-guard.ts): the frame is the gallery's
+   * alone, so the artist's share is worked out on the print.
+   */
+  lines: { size?: string; frame?: string; quantity: number; printPrice: number; framePrice: number }[];
 }
 
 /**
@@ -86,6 +94,7 @@ export async function computeOrderAmount(
   // recorded on the PaymentIntent, so what Stripe carries is what we charged,
   // not what the browser said it was buying.
   const resolved: MetadataItem[] = [];
+  const lines: ComputedOrder['lines'] = [];
   for (const item of items) {
     const product = item.slug ? bySlug.get(item.slug) : byId.get(item.productId);
     const quantity = Math.floor(item.quantity);
@@ -95,7 +104,19 @@ export async function computeOrderAmount(
     }
     const unitPrice = getProductPrice(product, item.size, currency);
     if (!unitPrice) throw new Error(`No price for product: ${item.productId}`);
+    // A size the print is not sold in would otherwise be priced as another
+    // size (getProductPrice falls back to the first one it has), so a request
+    // for a framed A1 of a 50 x 70 print paid the 50 x 70 price.
+    if (item.size !== undefined && !product.prices?.[item.size]) {
+      throw new Error(`${product.name} is not sold in ${item.size}`);
+    }
+    if (item.frame !== undefined && !isKnownFrame(item.frame)) {
+      throw new Error(`Unknown frame: ${item.frame}`);
+    }
     const frameCost = item.frame ? getFramePrice(item.frame, item.size, currency) : 0;
+    if (item.frame && item.frame !== 'no-frame' && !(frameCost > 0)) {
+      throw new Error(`No frame price for ${item.size ?? 'this size'}`);
+    }
     subtotal += (unitPrice + frameCost) * quantity;
     resolved.push({
       slug: product.slug,
@@ -104,6 +125,7 @@ export async function computeOrderAmount(
       quantity,
       unitPrice: Math.round((unitPrice + frameCost) * 100) / 100,
     });
+    lines.push({ size: item.size, frame: item.frame, quantity, printPrice: unitPrice, framePrice: frameCost });
   }
   subtotal = Math.round(subtotal * 100) / 100;
 
@@ -120,5 +142,5 @@ export async function computeOrderAmount(
     : 0;
 
   const amount = Math.round((subtotal + shipping - discountAmount) * 100) / 100;
-  return { amount, subtotal, shipping, shippingSource: delivery.source, discount, discountAmount, items: resolved };
+  return { amount, subtotal, shipping, shippingSource: delivery.source, discount, discountAmount, items: resolved, lines };
 }
