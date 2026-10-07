@@ -27,17 +27,17 @@ describe('Emma Iben is live', () => {
     expect((await getPublishedArtists()).find(a => a.id === '11')?.printCount).toBe(4);
   });
 
-  it('offers each print only in the sizes its file supports, at the Premium band', async () => {
+  it('offers each print only in the sizes its file supports, at the Budget (middle) band', async () => {
     vi.stubEnv('VERCEL_ENV', 'production');
     for (const work of manifest.works) {
       const product = await getShopProductBySlug(work.slug);
       expect(product?.published, work.slug).toBe(true);
       expect(product?.name).toBe(work.title);
       expect(Object.keys(product!.prices).sort(), work.slug).toEqual([...SIZES[work.slug]].sort());
-      expect(product!.prices.A3.GBP, work.slug).toBe(42);
+      expect(product!.prices.A3.GBP, work.slug).toBe(35);
       if (SIZES[work.slug].length > 1) {
-        expect(product!.prices.A2.GBP).toBe(56);
-        expect(product!.prices.A1.GBP).toBe(77);
+        expect(product!.prices.A2.GBP).toBe(45);
+        expect(product!.prices.A1.GBP).toBe(66);
       }
     }
   });
@@ -60,8 +60,8 @@ describe('Emma Iben is live', () => {
       { productId: print!.id, size: 'A3', quantity: 1 },
       { productId: print!.id, size: 'A1', frame: 'wood', quantity: 1 },
     ], 'GBP', 'GB');
-    // GBP 42 for the A3; GBP 77 + 55 framing for the A1 (config/frame.ts).
-    expect(order.subtotal).toBe(42 + 77 + 55);
+    // GBP 35 for the A3; GBP 66 + 55 framing for the A1 (config/frame.ts).
+    expect(order.subtotal).toBe(35 + 66 + 55);
   });
 
   it('has Copenhagen on the artist map and Norwegian copy for the page and each print', () => {

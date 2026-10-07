@@ -179,6 +179,20 @@ export const priceCategories: { [category: string]: PriceCategory } = (() => {
       merged.Premium[size] = { ...merged.Premium['50x70cm'] };
     }
   }
+  // Emma Iben (T-0099, Mark 7 Oct 2026): the middle tier, Budget, for every
+  // size she is offered. Budget had no A-series rows, so they follow how
+  // Premium relates its own rows: A3 sits on the 50 × 50 price and A2 on the
+  // 50 × 70 price. Budget has no A1 anywhere to copy, so A1 is Budget's A2 plus
+  // the step Premium takes from A2 to A1 (keeps Gelato's larger cost step out
+  // of the margin). Derived, awaiting Mark's confirmation; a published row wins.
+  const budget = merged.Budget;
+  const step = (a: 'GBP' | 'USD' | 'NOK' | 'DKK' | 'SEK') => merged.Premium.A1[a] - merged.Premium.A2[a];
+  if (!isUsable(PUBLISHED_ARTWORK?.Budget?.A3)) budget.A3 = { ...budget['50x50cm'] };
+  if (!isUsable(PUBLISHED_ARTWORK?.Budget?.A2)) budget.A2 = { ...budget['50x70cm'] };
+  if (!isUsable(PUBLISHED_ARTWORK?.Budget?.A1)) {
+    const a2 = budget.A2;
+    budget.A1 = { GBP: a2.GBP + step('GBP'), USD: a2.USD + step('USD'), NOK: a2.NOK + step('NOK'), DKK: a2.DKK + step('DKK'), SEK: a2.SEK + step('SEK') };
+  }
   return merged;
 })();
 
