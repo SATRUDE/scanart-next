@@ -1,13 +1,13 @@
 # Patrik Wennerlund preview
 
-Prepared 2 October 2026. Branch `codex/patrik-wennerlund-preview`, built the way Markus's preview was (see Markus's `docs/add-an-artist.md` on `codex/markus-naarttijarvi-preview`). All five products are unpublished, out of stock and review-only. Nothing is merged. Mark merges.
+Prepared 2 October 2026 on `codex/patrik-wennerlund-preview`, built the way Markus's preview was (see `docs/add-an-artist.md`). **Taken live 7 October 2026** (T-0098, PR "Take Patrik Wennerlund live: five photographs"): the five products are `published: true`, `inStock: true`, with the review marker removed, as for Markus in #233. The notes below are the preview record.
 
 - Print masters (5 TIFFs, Adobe RGB, unchanged) stay out of Git in `~/Desktop/Patrik-Wennerlund-photos/Print exports/`; hashes and dimensions in `inventory-sha256.json` beside them.
 - Bio is Patrik's own wording from his email of 2 October, lightly corrected. Location Borås. Originals link: www.pwmfotoshop.com (Mark, 29 Sep).
 - No text or credit on the prints (Mark, 29 Sep). Gallery order matches the live artists: framed product image first (`image`), room scene second (`secondaryImage`), with no third image. Mark, 3 Oct: vignettes ARE the mockup images, so all five prints use their vignette in the room slot. Room scenes are no longer shipped for any of them.
-- Sizes are proposed per artwork from native ratio and resolution, all verified as Gelato 200gsm uncoated, rolled and natural/black/white frame, GB and NO (read-only quotes, 2 Oct): 40x60 for the three 3:2 works, 40x50 for the 4:5 work, 45x60 (landscape) for the 4:3 work. 40x60cm is new to the shop. Prices copy the Premium 50x70 band as Mark approved for Markus's formats; that is NOT yet approved for 40x60cm.
+- Sizes are proposed per artwork from native ratio and resolution, all verified as Gelato 200gsm uncoated, rolled and natural/black/white frame, GB and NO (read-only quotes, 2 Oct): 40x60 for the three 3:2 works, 40x50 for the 4:5 work, 45x60 (landscape) for the 4:3 work. 40x60cm is new to the shop. Prices copy the Premium 50x70 band as Mark approved for Markus's formats; Mark approved the same price for 40x60cm on 6 Oct 2026.
 - Larger exact-ratio sizes feasible but unpriced: 60x90 for the three 3:2 works.
-- Missing from Patrik: Norwegian copy (product pages show English on /no, as for Markus).
+- Norwegian copy (bio, statement line, product descriptions) was approved and added 6 Oct 2026.
 
 ## Images, 3 October 2026 (T-0098)
 
