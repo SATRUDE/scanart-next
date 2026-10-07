@@ -942,5 +942,37 @@
     "h": 22.7,
     "score": 0.86,
     "ar": 0.8003
+  },
+  "/images/products/fitting-in-vignette-2026-10-07.avif": {
+    "x": 53.8,
+    "y": 23.9,
+    "w": 33.1,
+    "h": 34.0,
+    "score": "manual",
+    "ar": 0.8003
+  },
+  "/images/products/precautions-vignette-2026-10-05.avif": {
+    "x": 50.6,
+    "y": 52.4,
+    "w": 32.9,
+    "h": 19.2,
+    "score": 0.89,
+    "ar": 0.8003
+  },
+  "/images/products/pressure-vignette-2026-10-05.avif": {
+    "x": 50.4,
+    "y": 31.8,
+    "w": 30.0,
+    "h": 33.7,
+    "score": 0.947,
+    "ar": 0.8003
+  },
+  "/images/products/good-conversation-vignette-2026-10-05.avif": {
+    "x": 43.3,
+    "y": 31.5,
+    "w": 32.1,
+    "h": 36.0,
+    "score": 0.924,
+    "ar": 0.8003
   }
 }

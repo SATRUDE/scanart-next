@@ -33,11 +33,11 @@ describe('Merchant Center listing trial', () => {
     const xml = await (await GET()).text();
     const items = xml.match(/<item>[\s\S]*?<\/item>/g)!;
     expect(items).toHaveLength(products.length);
-    // 46 published prints: Mikko Saarainen's four, Ishtar Bäcklund
+    // 50 published prints: Mikko Saarainen's four, Ishtar Bäcklund
     // Dakhil's seven, Markus Naarttijärvi's ten and Patrik Wennerlund's five
-    // joined (2026-09-26, 2026-09-29, 2026-10-02 and 2026-10-07). Update it
+    // and Emma Iben's four joined (2026-09-26, 2026-09-29, 2026-10-02 and 2026-10-07). Update it
     // when the catalogue changes.
-    expect(items).toHaveLength(46);
+    expect(items).toHaveLength(50);
     expect(xml.match(/<g:product_type>/g)).toHaveLength(5);
     for (const product of products) {
       const item = items.find(item => item.includes(`<g:id>${product.slug}</g:id>`))!;

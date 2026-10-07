@@ -1,0 +1,7 @@
+# Emma Iben preview
+
+Prepared 4 October 2026 (T-0099). Branch `codex/emma-iben-preview`, from main at 41a46a1. All four products are unpublished, out of stock and review-only. Nothing is merged. Mark merges.
+
+**Go-live (7 October 2026, `peggy/emma-iben-live`, PR open, not merged):** Emma approved the titles, descriptions and bio on 6 October and said it can go live. The four products are `published: true`, `inStock: true`, with the `review` marker removed; Copenhagen has its map pin in `lib/artist-cities.ts`; the Merchant Center count is 45; `lib/emma-iben-live.test.ts` holds the live-state checks. Norwegian bio, statement, About the work and the four descriptions are in `lib/i18n/no.ts` (Mark, 6 October: `/no` uses Norwegian wherever possible). Mark decided on 7 October: Premium pricing as Emma saw and confirmed it on the preview (GBP 42 / 56 / 77 for A3 / A2 / A1; a Budget trial was reverted), Precautions A3 only, Norwegian kept as written. The framed product shot (`fitting-in-paper-a-ratio-2026-10-07.png` and warm webp) and the room vignette (`fitting-in-vignette-2026-10-07.avif/.webp`, focal point x 53.8, y 23.9, w 33.1, h 39.0) were redone by Megan from the new file (T-0167) and approved by Mark on 7 October.
+- Product ids 53 to 56 and artist id 11 follow main; the unmerged Patrik branch uses 10 and 41 to 45 and will need renumbering when it is rebased.
+- Superseded: the 5 October measurement of the old Fitting in exports (white side bands, A2 and A4 keyline) no longer applies; it is why Emma was asked, and why she sent the full-bleed file.

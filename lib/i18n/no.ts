@@ -924,6 +924,11 @@ export const no = {
       location: 'Borås, Sverige',
       bio: 'Patrik Wennerlund er art director og fotograf, og eier av PWM AB / PWMFoto. Han har jobbet med reklame og markedsføring store deler av livet, og fotografi har alltid spilt en sentral rolle i arbeidet hans, både som kunde og som bildemaker innen reklame, redaksjonelt stoff og annen kommunikasjon. I 2011 kjøpte han sitt første ordentlige systemkamera for å prøve noe nytt, og reising og fotografi viste seg å være en uslåelig kombinasjon. På sine mange reiser fanger han gjenstander, natur, bygninger og vesener og forvandler dem til forlokkende kunstverk. Målet er å lage bilder han selv ville hengt på sin egen vegg. Arbeidene hans har blitt stilt ut flere ganger.',
     },
+    // Norwegian translation by Peggy, 4 Oct 2026; reviewed for the go-live PR 7 Oct 2026, Mark to confirm.
+    'emma-iben': {
+      location: 'København, Danmark',
+      bio: 'Emma Iben er illustratør, grafisk designer og motion designer med base i København i Danmark. Hun lager visuelt materiale til albumcovere, plakater, tatoveringer, undervisningsressurser, fiktive kortfilmer og public service-TV, både profesjonelt og for moro skyld. Tegningene hennes er melodramatiske og humoristiske og formidler følelsesmessige opplevelser gjennom gjentakende motiver: vanskelige kropper, unormale størrelser og floker.',
+    },
   } as Record<string, ArtistCopy>,
 
   // The product page's artist statement (lib/artist-statements.ts), each
@@ -938,6 +943,7 @@ export const no = {
     'ishtar-backlund-dakhil': 'Bildene hennes beveger seg mellom nøye observerte detaljer og fantasiverdener.',
     'markus-naarttijarvi': 'Langsiktige fotoprosjekter fra Nord-Sverige utforsker ensomhet, utholdenhet og tidens gang.',
     'patrik-wennerlund': 'Fotografiene hans finner stille dramatikk i tåke, storm og den svenske vestkysten.',
+    'emma-iben': 'Melodramatiske, humoristiske tegninger som formidler følelsesmessige opplevelser.',
   } as Record<string, string>,
 
   // Norwegian versions of lib/artist-editorial.ts, keyed by slug. para2 keeps
@@ -996,6 +1002,14 @@ export const no = {
         'Ishtars bilder beveger seg mellom nøye observerte detaljer og fantasiverdener. Stockholms tårn og bygninger langs vannet står side om side med lag på lag av blader, geometriske landskap og et fly som svever over en dal og kan leses som en fugl. Små merker og fargenyanser gir mye å oppdage på nært hold. Alt Ishtar lager er håndmalt, med akvarell, naturlige pigmenter og blandingsteknikk.',
       para2:
         'Uttrykket varierer, men sansen for farger går igjen. [Frukt & Grönt](/no/product/frukt-och-gront) samler grønt, rødt og gult på kjøkkenveggen, mens [Surfer with Orange Sun](/no/product/surfer-with-orange-sun) er tegnet med færre former og tydeligere fargeflater. [Creature Among Blue Leaves](/no/product/creature-among-blue-leaves) passer et roligere sted der det er tid til å se detaljene.',
+    },
+    // Norwegian translation by Peggy, 5 Oct 2026; reviewed for the go-live PR 7 Oct 2026, Mark to confirm.
+    'emma-iben': {
+      heading: 'Floker, vanskelige kropper og et tørt smil',
+      para1:
+        'Emma Ibens tegninger er melodramatiske og humoristiske, og de formidler følelsesmessige opplevelser gjennom gjentakende motiver som vanskelige kropper, unormale størrelser og floker. I [Fitting in](/no/product/fitting-in) er en figur i kjole bygget av en floke av kropper mot et felt av rosa; i [Pressure](/no/product/pressure) har en person en veldig stor klesklype på hodet.',
+      para2:
+        'Samlingen består av fire illustrasjoner av Emma Iben. [Precautions](/no/product/precautions) får deg til å stille spørsmål ved uskylden til et marsvin i et piggete halsbånd, og [Good conversation](/no/product/good-conversation) tar for seg hvordan ukonstruktiv kommunikasjon føles, med to anstrengte ansikter stablet til en åtter på en klar gul bunn.',
     },
     'markus-naarttijarvi': {
       heading: 'Lys, vann og stille steder',
@@ -1259,6 +1273,23 @@ export const no = {
   },
 
   productCopy: {
+    // Emma Iben, Norwegian translation by Peggy 4 Oct 2026; reviewed for the go-live PR 7 Oct 2026, Mark to confirm.
+    'fitting-in': {
+      description:
+        'Et verk som reflekterer over kjønn, kropp og forholdet mellom individuell menneskelig erfaring og den offentlige forventningen om å passe inn i en bestemt ramme. Tegnet med kraftig svart strek: en figur i kjole, bygget av en floke av kropper, mot et felt av rosa.',
+    },
+    'precautions': {
+      description:
+        'En illustrasjon som får deg til å stille spørsmål ved både marsvinets uskyld og forholdsreglene som tas rundt det. Et lite marsvin sitter inni et piggbesatt halsbånd, tegnet i fin blå skravur på hvitt.',
+    },
+    'pressure': {
+      description:
+        'En illustrasjon av en person med en veldig stor klesklype på hodet, eller en visuell fremstilling av en psykologisk opplevelse. Tegnet med ren svart strek på hvitt.',
+    },
+    'good-conversation': {
+      description:
+        'Et blikk på hvordan ukonstruktiv kommunikasjon føles. To anstrengte ansikter, hver av dem løpende inni sitt eget hjul, er stablet til et åttetall mot en klar gul bakgrunn.',
+    },
     dancer: {
       description:
         'Dancer av Helene Brox fanger en kremhvit figur midt i skrittet mot en himmelblå bakgrunn, med armer som bølger som silkebånd fanget i sin egen fart. Det finnes verken ansikt eller gulv, bare selve formen av bevegelse: én arm som krøller seg bakover mens den andre strekker seg høyt, malt med den løse selvtilliten til en papirutklipping. Den leses tydelig tvers over et rom, og den gir ekte bevegelse til et rolig ett.',

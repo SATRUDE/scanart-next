@@ -93,6 +93,18 @@ export const artists: Artist[] = [
     // Signed and limited editions (Mark, 29 Sep 2026); Mark, 6 Oct 2026: link www.pwmfoto.com.
     originalsUrl: 'https://www.pwmfoto.com',
   },
+  {
+    id: '11',
+    name: 'Emma Iben',
+    slug: 'emma-iben',
+    location: 'Copenhagen, Denmark',
+    // Emma's own wording, from her email of 4 October 2026 (first two sentences, only the
+    // grammar touched), plus a last sentence taken from her artist application of
+    // 31 August 2026 ("melodramatic and humoristic drawings", "tricky bodies, abnormal
+    // sizes and tangles"). Portrait supplied by Emma the same day; no credit given, so none shown.
+    bio: 'Emma Iben is an illustrator, graphic designer and motion designer based in Copenhagen, Denmark. She creates visual material for album covers, posters, tattoos, educational resources, fictional short films and public service TV, professionally as well as for fun. Her drawings are melodramatic and humorous, and convey emotional experiences through recurring motifs of tricky bodies, abnormal sizes and tangles.',
+    image: '/images/artists/emma-iben.jpg',
+  },
 ];
 
 export const getArtistById = (id: string) => {

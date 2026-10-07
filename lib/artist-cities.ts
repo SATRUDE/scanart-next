@@ -24,6 +24,7 @@ const CITY_COORDINATES: Record<string, [lat: number, lon: number]> = {
   Lahti: [60.98, 25.66],
   Umeå: [63.83, 20.26],
   Borås: [57.72, 12.94],
+  Copenhagen: [55.68, 12.57],
 };
 
 export interface CityPin {

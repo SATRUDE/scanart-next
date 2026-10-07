@@ -63,6 +63,8 @@ export const shopScenes: Record<string, ShopScene> = {
   'flight-over-the-valley': { image: '/images/products/flight-over-the-valley-room.avif', alt: 'Flight Over the Valley by Ishtar Bäcklund Dakhil framed in a reading corner with an oak lounge chair', width: 1054, height: 1492 },
   'creature-among-blue-leaves': { image: '/images/products/creature-among-blue-leaves-room.avif', alt: 'Creature Among Blue Leaves by Ishtar Bäcklund Dakhil framed above a rattan sideboard', width: 1122, height: 1402 },
   'surfer-with-orange-sun': { image: '/images/products/surfer-with-orange-sun-room.avif', alt: 'Surfer with Orange Sun by Ishtar Bäcklund Dakhil framed above a red chair in a blue room', width: 1122, height: 1402 },
+  // Emma Iben's room (branch codex/emma-iben-preview, Mark-approved 5 October 2026). Good conversation has none until its vignette is fixed.
+  pressure: { image: '/images/products/pressure-vignette-2026-10-05.avif', alt: 'Pressure by Emma Iben in a slim oak frame above a terracotta kitchen counter with an orange coffee maker, a carafe of water and a pot of herbs', width: 1122, height: 1402 },
 };
 
 /** Only label a room image when it is this scene and its current size is known. */
