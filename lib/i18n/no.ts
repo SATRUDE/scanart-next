@@ -920,7 +920,7 @@ export const no = {
       location: 'Umeå, Sverige',
       bio: 'Markus Naarttijärvi er dokumentarfotograf med base i Umeå i Sverige. De langsiktige prosjektene hans følger industri, natur og kultur i Nord-Sverige, med temaer som ensomhet, utholdenhet og tidens gang.',
     },
-    // Norwegian translation by Peggy, 4 Oct 2026, awaiting Mark's approval.
+    // Norwegian translation by Peggy, 4 Oct 2026; reviewed for the go-live PR 7 Oct 2026, Mark to confirm.
     'emma-iben': {
       location: 'København, Danmark',
       bio: 'Emma Iben er illustratør, grafisk designer og motion designer med base i København i Danmark. Hun lager visuelt materiale til albumcovere, plakater, tatoveringer, undervisningsressurser, fiktive kortfilmer og public service-TV, både profesjonelt og for moro skyld. Tegningene hennes er melodramatiske og humoristiske og formidler følelsesmessige opplevelser gjennom gjentakende motiver: vanskelige kropper, unormale størrelser og floker.',
@@ -998,7 +998,7 @@ export const no = {
       para2:
         'Uttrykket varierer, men sansen for farger går igjen. [Frukt & Grönt](/no/product/frukt-och-gront) samler grønt, rødt og gult på kjøkkenveggen, mens [Surfer with Orange Sun](/no/product/surfer-with-orange-sun) er tegnet med færre former og tydeligere fargeflater. [Creature Among Blue Leaves](/no/product/creature-among-blue-leaves) passer et roligere sted der det er tid til å se detaljene.',
     },
-    // Norwegian translation by Peggy, 5 Oct 2026, awaiting Mark's approval.
+    // Norwegian translation by Peggy, 5 Oct 2026; reviewed for the go-live PR 7 Oct 2026, Mark to confirm.
     'emma-iben': {
       heading: 'Floker, vanskelige kropper og et tørt smil',
       para1:
@@ -1268,10 +1268,10 @@ export const no = {
   },
 
   productCopy: {
-    // Emma Iben, Norwegian translation by Peggy 4 Oct 2026, awaiting approval.
+    // Emma Iben, Norwegian translation by Peggy 4 Oct 2026; reviewed for the go-live PR 7 Oct 2026, Mark to confirm.
     'fitting-in': {
       description:
-        'Et verk som reflekterer over kjønn, kropp og forholdet mellom individuell menneskelig erfaring og det offentlige presset om å passe inn i en bestemt ramme. Tegnet med kraftig svart strek: en figur i kjole, bygget av en floke av kropper, mot et felt av rosa.',
+        'Et verk som reflekterer over kjønn, kropp og forholdet mellom individuell menneskelig erfaring og den offentlige forventningen om å passe inn i en bestemt ramme. Tegnet med kraftig svart strek: en figur i kjole, bygget av en floke av kropper, mot et felt av rosa.',
     },
     'precautions': {
       description:
@@ -1283,7 +1283,7 @@ export const no = {
     },
     'good-conversation': {
       description:
-        'Et bidrag om hvordan ukonstruktiv kommunikasjon føles. To anstrengte ansikter, hver av dem løpende inni sitt eget hjul, er stablet til et åttetall mot en klar gul bakgrunn.',
+        'Et blikk på hvordan ukonstruktiv kommunikasjon føles. To anstrengte ansikter, hver av dem løpende inni sitt eget hjul, er stablet til et åttetall mot en klar gul bakgrunn.',
     },
     dancer: {
       description:

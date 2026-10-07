@@ -2,6 +2,8 @@
 
 Prepared 4 October 2026 (T-0099). Branch `codex/emma-iben-preview`, from main at 41a46a1. All four products are unpublished, out of stock and review-only. Nothing is merged. Mark merges.
 
+**Go-live (7 October 2026, `peggy/emma-iben-live`, PR open, not merged):** Emma approved the titles, descriptions and bio on 6 October and said it can go live. The four products are `published: true`, `inStock: true`, with the `review` marker removed; Copenhagen has its map pin in `lib/artist-cities.ts`; the Merchant Center count is 45; `lib/emma-iben-live.test.ts` holds the live-state checks. Norwegian bio, statement, About the work and the four descriptions are in `lib/i18n/no.ts` (Mark, 6 October: `/no` uses Norwegian wherever possible). Still open for Mark: Premium pricing for Emma, Precautions A3 only, the Norwegian wording, and Megan's new Fitting in framed shot and room image. The notes below are the preview history.
+
 - Source: Emma's email of 4 October 16:03 and her WeTransfer (downloaded the same day). Masters stay out of Git in `~/Desktop/Emma-Iben-files/`; hashes, dimensions and profiles in `inventory-sha256.json` beside them. Per-work notes in `scripts/artists/emma-iben-review.json`.
 - Bio: her own two sentences plus one sentence from her artist application (31 Aug). Location Copenhagen (added to the artist map). Norwegian bio, statement and product descriptions are Peggy's translations, awaiting approval.
 - Descriptions: hers, lightly edited into British English ("clothes peg", "the body", "expectation to fit into"), each followed by one plain sentence saying what the picture shows. No facts added beyond what is visible.
