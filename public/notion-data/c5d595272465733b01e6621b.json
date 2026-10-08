@@ -1,0 +1,562 @@
+[
+  {
+    "object": "block",
+    "id": "md-1",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Ask someone to name a Scandinavian painting and you'll get The Scream. Ask for a second and the room usually goes quiet. That gap is worth closing, because the generation that produced Munch produced a dozen painters worth knowing, and between them they explain most of what Scandinavian means on a wall today.",
+          "href": null,
+          "text": {
+            "content": "Ask someone to name a Scandinavian painting and you'll get The Scream. Ask for a second and the room usually goes quiet. That gap is worth closing, because the generation that produced Munch produced a dozen painters worth knowing, and between them they explain most of what Scandinavian means on a wall today.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-2",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "The Skagen painters and the light",
+          "href": null,
+          "text": {
+            "content": "The Skagen painters and the light",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-3",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "In the 1870s and 80s, painters gathered at Skagen, the fishing village at Denmark's northern tip, because the light there does something the rest of Europe's doesn't. The two names to hold onto are Anna Ancher, who was born in the village and painted its interiors the way the sun actually enters a room, and P.S. Krøyer, whose blue-hour beach scenes are still the most romantic pictures the North has produced. Ancher matters doubly: she wasn't a visitor painting the locals, she was the local, and her small canvases of women working in warm rooms hold up better than most of the grand ones.",
+          "href": null,
+          "text": {
+            "content": "In the 1870s and 80s, painters gathered at Skagen, the fishing village at Denmark's northern tip, because the light there does something the rest of Europe's doesn't. The two names to hold onto are Anna Ancher, who was born in the village and painted its interiors the way the sun actually enters a room, and P.S. Krøyer, whose blue-hour beach scenes are still the most romantic pictures the North has produced. Ancher matters doubly: she wasn't a visitor painting the locals, she was the local, and her small canvases of women working in warm rooms hold up better than most of the grand ones.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-4",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "The quiet Dane and the loud Norwegian",
+          "href": null,
+          "text": {
+            "content": "The quiet Dane and the loud Norwegian",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-5",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Vilhelm Hammershøi and Edvard Munch were near contemporaries, and you couldn't design two more opposite answers to the same century. Hammershøi painted the same grey Copenhagen rooms over and over, often with a single figure turned away, and made silence into a subject. Munch went the other way and made feeling itself the subject: ",
+          "href": null,
+          "text": {
+            "content": "Vilhelm Hammershøi and Edvard Munch were near contemporaries, and you couldn't design two more opposite answers to the same century. Hammershøi painted the same grey Copenhagen rooms over and over, often with a single figure turned away, and made silence into a subject. Munch went the other way and made feeling itself the subject: ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "the 1893 Scream",
+          "href": "https://www.nasjonalmuseet.no/en/collection/object/NG.M.00939",
+          "text": {
+            "content": "the 1893 Scream",
+            "link": {
+              "url": "https://www.nasjonalmuseet.no/en/collection/object/NG.M.00939"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " hangs in the National Museum in Oslo, and it earns the fame, but it crowds out a career's worth of pictures about love, illness and jealousy that are just as direct. Most Scandinavian art since sits somewhere on the line between those two: the quiet room or the loud feeling.",
+          "href": null,
+          "text": {
+            "content": " hangs in the National Museum in Oslo, and it earns the fame, but it crowds out a career's worth of pictures about love, illness and jealousy that are just as direct. Most Scandinavian art since sits somewhere on the line between those two: the quiet room or the loud feeling.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-6",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "The Swedes at home",
+          "href": null,
+          "text": {
+            "content": "The Swedes at home",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-7",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Carl Larsson",
+          "href": "https://carllarsson.se/en/",
+          "text": {
+            "content": "Carl Larsson",
+            "link": {
+              "url": "https://carllarsson.se/en/"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " painted watercolours of his own house at Sundborn, his wife Karin's interiors, his children at the table. It sounds slight and it's anything but: those pictures made domestic life a serious subject, and every pale, plant-filled Scandinavian interior you've saved to a board descends from them in some way. ",
+          "href": null,
+          "text": {
+            "content": " painted watercolours of his own house at Sundborn, his wife Karin's interiors, his children at the table. It sounds slight and it's anything but: those pictures made domestic life a serious subject, and every pale, plant-filled Scandinavian interior you've saved to a board descends from them in some way. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Anders Zorn",
+          "href": "https://zorn.se/en/",
+          "text": {
+            "content": "Anders Zorn",
+            "link": {
+              "url": "https://zorn.se/en/"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " is the other half of the Swedish story, a virtuoso with water and skin who became one of the most sought-after portraitists of his era on both sides of the Atlantic.",
+          "href": null,
+          "text": {
+            "content": " is the other half of the Swedish story, a virtuoso with water and skin who became one of the most sought-after portraitists of his era on both sides of the Atlantic.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-8",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "The women the histories skipped",
+          "href": null,
+          "text": {
+            "content": "The women the histories skipped",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-9",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "The textbooks caught up late here. ",
+          "href": null,
+          "text": {
+            "content": "The textbooks caught up late here. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Hilma af Klint",
+          "href": "https://www.guggenheim.org/artist/hilma-af-klint",
+          "text": {
+            "content": "Hilma af Klint",
+            "link": {
+              "url": "https://www.guggenheim.org/artist/hilma-af-klint"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " was painting large abstract canvases in Stockholm by 1906, years before the men who got the credit for inventing abstraction, and asked for her work to be kept from the public for decades after her death. Harriet Backer painted Norwegian interiors with a colourist's eye that reads as modern a century on. Add Anna Ancher from Skagen and you have three careers that would headline any national school, and for a long time headlined nothing.",
+          "href": null,
+          "text": {
+            "content": " was painting large abstract canvases in Stockholm by 1906, years before the men who got the credit for inventing abstraction, and asked for her work to be kept from the public for decades after her death. Harriet Backer painted Norwegian interiors with a colourist's eye that reads as modern a century on. Add Anna Ancher from Skagen and you have three careers that would headline any national school, and for a long time headlined nothing.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-10",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "The troll painter",
+          "href": null,
+          "text": {
+            "content": "The troll painter",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-11",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Theodor Kittelsen doesn't fit the painter box, which is exactly why he belongs on this list. His pictures for the Norwegian folk tales, the trolls above all, are the images Norwegians still see when they hear the stories. The line between illustration and painting has always been thin in the North, and it still is: it's why so much Nordic work on paper feels like it's telling you something rather than posing for you.",
+          "href": null,
+          "text": {
+            "content": "Theodor Kittelsen doesn't fit the painter box, which is exactly why he belongs on this list. His pictures for the Norwegian folk tales, the trolls above all, are the images Norwegians still see when they hear the stories. The line between illustration and painting has always been thin in the North, and it still is: it's why so much Nordic work on paper feels like it's telling you something rather than posing for you.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-12",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Where that leaves a modern wall",
+          "href": null,
+          "text": {
+            "content": "Where that leaves a modern wall",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-13",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "You don't hang a Munch. But the habits these painters set, quiet rooms, flat honest colour, domestic subjects taken seriously, a story in the picture, are exactly what the ",
+          "href": null,
+          "text": {
+            "content": "You don't hang a Munch. But the habits these painters set, quiet rooms, flat honest colour, domestic subjects taken seriously, a story in the picture, are exactly what the ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "artists working now",
+          "href": "/artists",
+          "text": {
+            "content": "artists working now",
+            "link": {
+              "url": "/artists"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " inherit. If you want the fuller argument about what holds it all together, start with ",
+          "href": null,
+          "text": {
+            "content": " inherit. If you want the fuller argument about what holds it all together, start with ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "what Scandinavian art actually is",
+          "href": "/article/what-is-scandinavian-art",
+          "text": {
+            "content": "what Scandinavian art actually is",
+            "link": {
+              "url": "/article/what-is-scandinavian-art"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "; if you'd rather just look, the ",
+          "href": null,
+          "text": {
+            "content": "; if you'd rather just look, the ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "gallery",
+          "href": "/products",
+          "text": {
+            "content": "gallery",
+            "link": {
+              "url": "/products"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " is small enough to browse in one sitting.",
+          "href": null,
+          "text": {
+            "content": " is small enough to browse in one sitting.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  }
+]

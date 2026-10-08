@@ -13,25 +13,25 @@ type Story = StoryObj<typeof ProductImageGalleryWrapper>;
 
 // Built the same way the product page builds them, so the stories show the
 // real alt text rather than a hand-written stand-in.
-const swallowDive = {
-  name: 'Swallow Dive',
-  artist: 'Helene Brox',
+const eltsjoen = {
+  name: 'Eltsjoen',
+  artist: 'Simen Wahlqvist',
   category: 'Abstract',
-  image: '/images/products/swallow-dive.png',
-  secondaryImage: '/images/products/swallow-dive-scene.avif',
+  image: '/images/products/eltsjoen.png',
+  secondaryImage: '/images/products/eltsjoen-scene.avif',
 };
 
 export const SingleImage: Story = {
   args: {
-    images: productImages({ ...swallowDive, secondaryImage: '' }),
-    productName: 'Swallow Dive',
+    images: productImages({ ...eltsjoen, secondaryImage: '' }),
+    productName: 'Eltsjoen',
   },
 };
 
 export const MultipleImages: Story = {
   args: {
-    images: productImages(swallowDive),
-    productName: 'Swallow Dive',
+    images: productImages(eltsjoen),
+    productName: 'Eltsjoen',
   },
 };
 
@@ -39,17 +39,17 @@ export const ThreeImages: Story = {
   args: {
     images: [
       ...productImages({
-        name: 'Dragon',
-        artist: 'Helene Brox',
+        name: 'Slingshot',
+        artist: 'Simen Wahlqvist',
         category: 'Illustrations',
-        image: '/images/products/dragon.png',
-        secondaryImage: '/images/products/dragon-scene.avif',
+        image: '/images/products/slingshot.png',
+        secondaryImage: '/images/products/slingshot-scene.avif',
       }),
       {
-        src: '/images/products/dancer.png',
-        alt: 'Dragon by Helene Brox, shown alongside another print in the series',
+        src: '/images/products/half-man.png',
+        alt: 'Slingshot by Simen Wahlqvist, shown alongside another print in the series',
       },
     ],
-    productName: 'Dragon',
+    productName: 'Slingshot',
   },
 };

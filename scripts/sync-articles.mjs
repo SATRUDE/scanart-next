@@ -138,13 +138,16 @@ console.log(`[sync-articles] wrote ${articles.length} published articles (of ${r
 
 // The inspiration wall: scenes tagged on the socialagent Inspiration page.
 const sceneRows = await sql`SELECT * FROM "InspireScene" ORDER BY "createdAt" ASC`;
+// A scene with no prints tagged is never shown (lib/inspire.ts), so it is not
+// downloaded into public either: clearing a scene's slugs in socialagent is how
+// a scene is taken down (an artist's withdrawal, 2026-10-08).
 const scenes = sceneRows.map((r) => ({
   image: r.imageUrl,
   alt: r.alt,
   slugs: (() => { try { const v = JSON.parse(r.slugs); return Array.isArray(v) ? v : []; } catch { return []; } })(),
   width: r.width,
   height: r.height,
-}));
+})).filter((s) => s.slugs.length > 0);
 for (const [i, s] of scenes.entries()) {
   s.image = await localiseImage(s.image, `inspire-scene-${i + 1}`);
 }

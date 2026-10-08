@@ -27,7 +27,6 @@ type ProductLike = {
  * not listed falls back to their original photo, then to initials.
  */
 const TONED: Record<string, string> = {
-  'helene-brox': '/images/artists/helene-brox-tone.webp',
   'simen-wahlqvist': '/images/artists/simen-wahlqvist-tone.webp',
   'sia-siamos': '/images/artists/sia-siamos-tone.webp',
   'hedvig-wallin': '/images/artists/hedvig-wallin-tone.webp',

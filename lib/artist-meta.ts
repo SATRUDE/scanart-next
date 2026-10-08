@@ -3,8 +3,8 @@
 // Artist pages are the best-ranking template on the site and the worst at
 // converting that rank into a visit. Over 1 to 28 August 2026 we ranked on page
 // one for our artists' own names and took nothing from it: "sia siamos" 12
-// impressions at position 5.2 with no clicks, "helene brox" 9 at 6.0 with no
-// clicks, "ingunn dybendal" 5 at 7.4 with no clicks. Forty-four page-one
+// impressions at position 5.2 with no clicks, another artist's name 9 at 6.0
+// with no clicks, "ingunn dybendal" 5 at 7.4 with no clicks. Forty-four page-one
 // impressions, zero clicks.
 //
 // The cause is what the result said. The title was the artist's name and
@@ -124,7 +124,7 @@ function fitClause(clause: string, budget: number): string {
  * The meta description: the offer, then what makes this artist this artist,
  * then how the print arrives.
  *
- * "Art prints by Helene Brox, an illustrator, hand letterer and mural painter
+ * "Art prints by Simen Wahlqvist, a graphic designer and illustrator
  * based in Oslo. Framed or unframed, delivered worldwide."
  *
  * Capped at the same 155 characters as every other snippet on the site, so

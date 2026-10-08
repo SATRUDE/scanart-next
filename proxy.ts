@@ -13,6 +13,7 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { noRedirectPathFor } from '@/lib/i18n';
+import { withdrawnResponseFor, withdrawnPageHtml } from '@/lib/withdrawn';
 
 const SUPPORTED_COUNTRIES = ['GB', 'NO', 'US', 'DK', 'SE'];
 
@@ -58,8 +59,30 @@ function countryOf(request: NextRequest): string {
 }
 
 export function proxy(request: NextRequest) {
-  const country = countryOf(request);
   const { pathname, search } = request.nextUrl;
+
+  // Withdrawn work is answered before anything else, crawlers included
+  // (lib/withdrawn.ts): the artist page 301s to the artists index, the prints
+  // are 410 Gone so search engines drop them.
+  const withdrawn = withdrawnResponseFor(pathname);
+  if (withdrawn?.kind === 'redirect') {
+    const url = request.nextUrl.clone();
+    url.pathname = withdrawn.to;
+    url.search = '';
+    return NextResponse.redirect(url, 301);
+  }
+  if (withdrawn?.kind === 'gone') {
+    return new NextResponse(withdrawnPageHtml(pathname.startsWith('/no/')), {
+      status: 410,
+      headers: {
+        'content-type': 'text/html; charset=utf-8',
+        'x-robots-tag': 'noindex',
+        'cache-control': 'no-store',
+      },
+    });
+  }
+
+  const country = countryOf(request);
 
   // A Norwegian visitor, on an English page that HAS a Norwegian twin, who has
   // not been offered it before and is not a crawler: send them to the twin.

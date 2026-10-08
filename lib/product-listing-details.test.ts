@@ -33,11 +33,11 @@ describe('Merchant Center listing trial', () => {
     const xml = await (await GET()).text();
     const items = xml.match(/<item>[\s\S]*?<\/item>/g)!;
     expect(items).toHaveLength(products.length);
-    // 50 published prints: Mikko Saarainen's four, Ishtar Bäcklund
+    // 45 published prints: Mikko Saarainen's four, Ishtar Bäcklund
     // Dakhil's seven, Markus Naarttijärvi's ten and Patrik Wennerlund's five
     // and Emma Iben's four joined (2026-09-26, 2026-09-29, 2026-10-02 and 2026-10-07). Update it
-    // when the catalogue changes.
-    expect(items).toHaveLength(50);
+    // when the catalogue changes. Helene Brox's five left on 2026-10-08.
+    expect(items).toHaveLength(45);
     expect(xml.match(/<g:product_type>/g)).toHaveLength(5);
     for (const product of products) {
       const item = items.find(item => item.includes(`<g:id>${product.slug}</g:id>`))!;
@@ -52,9 +52,9 @@ describe('Merchant Center listing trial', () => {
     }
   });
 
-  it('keeps AI source metadata in all fifteen refreshed Merchant Center room images', async () => {
+  it('keeps AI source metadata in all ten refreshed Merchant Center room images', async () => {
     const products = (await getAllProducts()).filter(p => p.secondaryImage?.includes('-2026-09-23.'));
-    expect(products).toHaveLength(15);
+    expect(products).toHaveLength(10);
     for (const product of products) {
       const path = join(process.cwd(), 'public', product.secondaryImage!.replace(/\.avif$/, '.webp'));
       const bytes = readFileSync(path);

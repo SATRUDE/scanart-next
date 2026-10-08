@@ -112,7 +112,6 @@ export const homeStrings: HomeStrings = {
     printOne: 'print',
     printOther: 'prints',
     lines: {
-      'helene-brox': 'Illustrator, hand letterer and mural painter, and a founding member of the agency Heiaklubben.',
       'simen-wahlqvist': 'Graphic designer and illustrator who catches moments with as few lines as possible.',
       'sia-siamos': 'Half Greek, half Norwegian: still life, food and the quiet details of everyday life.',
       'ingunn-dybendal': 'Illustrator in the Heiaklubben collective, whose work runs from a Google Doodle to a 360 square metre wall.',
@@ -185,7 +184,7 @@ export function newestArtistSlugs(
 }
 
 // The design's hero row (Figma 30:222): these four in this order.
-const HERO_PICKS = ['rosa-blomster', 'massa-applen', 'dragon', 'dancer'];
+const HERO_PICKS = ['rosa-blomster', 'massa-applen', 'eye-nose-eye', 'eltsjoen'];
 
 // Hero-only override: these prints show their styled room scene in the hero
 // rotation, while the product page keeps the clean print. Mark picks the

@@ -26,14 +26,14 @@ export const Default: Story = {
   args: {
     product: {
       id: '1',
-      name: 'Swallow Dive',
+      name: 'Eltsjoen',
       prices: {
         A3: { GBP: 42, NOK: 577, USD: 54, DKK: 367, SEK: 577 },
         A2: { GBP: 56, NOK: 770, USD: 72, DKK: 490, SEK: 770 },
       },
-      image: '/images/products/swallow-dive.png',
+      image: '/images/products/eltsjoen.png',
       category: 'Abstract',
-      brand: 'Helene Brox',
+      brand: 'Simen Wahlqvist',
       inStock: true,
     },
     currency: 'GBP',
@@ -44,11 +44,11 @@ export const OutOfStock: Story = {
   args: {
     product: {
       id: '2',
-      name: 'Dragon',
+      name: 'Slingshot',
       prices: {
         '50x70cm': { GBP: 56, NOK: 770, USD: 72, DKK: 490, SEK: 770 },
       },
-      image: '/images/products/dragon.png',
+      image: '/images/products/slingshot.png',
       category: 'Illustrations',
       brand: 'Simen Strum',
       inStock: false,

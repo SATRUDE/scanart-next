@@ -11,11 +11,11 @@ function CartWithToggle() {
 
   const addSampleItem = () => {
     addToCart({
-      id: '1', name: 'Swallow Dive', slug: 'swallow-dive',
+      id: '1', name: 'Eltsjoen', slug: 'eltsjoen',
       prices: { A3: { GBP: 42, NOK: 577, USD: 54, DKK: 367, SEK: 577 } },
-      image: '/images/products/swallow-dive.png', secondaryImage: '',
-      description: '', category: 'Abstract', brand: 'Helene Brox',
-      artist: 'Helene Brox', artistId: '', inStock: true, published: true, featured: false,
+      image: '/images/products/eltsjoen.png', secondaryImage: '',
+      description: '', category: 'Abstract', brand: 'Simen Wahlqvist',
+      artist: 'Simen Wahlqvist', artistId: '', inStock: true, published: true, featured: false,
       sizes: { A3: true },
     }, 1, 'A3');
   };

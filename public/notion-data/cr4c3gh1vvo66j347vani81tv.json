@@ -1,0 +1,330 @@
+[
+  {
+    "object": "block",
+    "id": "md-1",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "All Things Nordic published an interview with me",
+          "href": "https://all-things-nordic.com/2026/09/27/meet-mark-diffey-the-curator-behind-scandinavian-art-online-gallery/",
+          "text": {
+            "content": "All Things Nordic published an interview with me",
+            "link": {
+              "url": "https://all-things-nordic.com/2026/09/27/meet-mark-diffey-the-curator-behind-scandinavian-art-online-gallery/"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " on 27 September, about why Scandinavian Art exists and what we're actually trying to do differently. It's a good, thorough read. Here are three things worth pulling out, and the link to read the whole thing.",
+          "href": null,
+          "text": {
+            "content": " on 27 September, about why Scandinavian Art exists and what we're actually trying to do differently. It's a good, thorough read. Here are three things worth pulling out, and the link to read the whole thing.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-2",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Why the gallery exists",
+          "href": null,
+          "text": {
+            "content": "Why the gallery exists",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-3",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "\"I wanted to help people discover the paintings, drawings and illustrations being made in the region, and make prints of that work easier to buy internationally.\" We started with a small Norwegian collection and have since added ",
+          "href": null,
+          "text": {
+            "content": "\"I wanted to help people discover the paintings, drawings and illustrations being made in the region, and make prints of that work easier to buy internationally.\" We started with a small Norwegian collection and have since added ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Hedvig Wallin",
+          "href": "/artist/hedvig-wallin",
+          "text": {
+            "content": "Hedvig Wallin",
+            "link": {
+              "url": "/artist/hedvig-wallin"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " from Sweden, with more artists from across the Nordic region to come.",
+          "href": null,
+          "text": {
+            "content": " from Sweden, with more artists from across the Nordic region to come.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-4",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "What \"Scandinavian\" actually means here",
+          "href": null,
+          "text": {
+            "content": "What \"Scandinavian\" actually means here",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-5",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Scandinavian design has a reputation the art doesn't automatically inherit, and it shouldn't have to. \"The clean lines and restraint associated with Scandinavian furniture don't set the rules for what an artist makes.\" What I look for instead is \"a recognisable point of view\": artists like ",
+          "href": null,
+          "text": {
+            "content": "Scandinavian design has a reputation the art doesn't automatically inherit, and it shouldn't have to. \"The clean lines and restraint associated with Scandinavian furniture don't set the rules for what an artist makes.\" What I look for instead is \"a recognisable point of view\": artists like ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Ingunn Dybendal",
+          "href": "/artist/ingunn-dybendal",
+          "text": {
+            "content": "Ingunn Dybendal",
+            "link": {
+              "url": "/artist/ingunn-dybendal"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ", part of Oslo's Heiaklubben collective, drawing their own lives in their own places, so the work carries the place with it.",
+          "href": null,
+          "text": {
+            "content": ", part of Oslo's Heiaklubben collective, drawing their own lives in their own places, so the work carries the place with it.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-6",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Provenance, discovery, support",
+          "href": null,
+          "text": {
+            "content": "Provenance, discovery, support",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-7",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Asked what a curated gallery offers that a big poster retailer doesn't, I put it simply: \"it comes down to provenance, discovery and support for the artist.\" Provenance, because you know who made it: each print is a specific work by a named living artist. Discovery, because we help you find artists you might never have come across. Support, because a share of every sale goes to the artist, and it's another way for them to earn from their work: \"When you buy a Dybendal from us, Ingunn is paid for it.\"",
+          "href": null,
+          "text": {
+            "content": "Asked what a curated gallery offers that a big poster retailer doesn't, I put it simply: \"it comes down to provenance, discovery and support for the artist.\" Provenance, because you know who made it: each print is a specific work by a named living artist. Discovery, because we help you find artists you might never have come across. Support, because a share of every sale goes to the artist, and it's another way for them to earn from their work: \"When you buy a Dybendal from us, Ingunn is paid for it.\"",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-8",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Read the full interview on ",
+          "href": null,
+          "text": {
+            "content": "Read the full interview on ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "All Things Nordic",
+          "href": "https://all-things-nordic.com/2026/09/27/meet-mark-diffey-the-curator-behind-scandinavian-art-online-gallery/",
+          "text": {
+            "content": "All Things Nordic",
+            "link": {
+              "url": "https://all-things-nordic.com/2026/09/27/meet-mark-diffey-the-curator-behind-scandinavian-art-online-gallery/"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ".",
+          "href": null,
+          "text": {
+            "content": ".",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  }
+]

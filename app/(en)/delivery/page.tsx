@@ -23,7 +23,7 @@ const LAST_UPDATED = '18 August 2026';
 /** A Help answer, verbatim, so the two pages can never disagree. */
 const answer = (q: string) => helpGroups.flatMap(g => g.items).find(i => i.q === q)?.a ?? '';
 
-const scene = shopScenes['swallow-dive'];
+const scene = shopScenes.vinkveld;
 
 export default function DeliveryPage() {
   return (
@@ -52,7 +52,7 @@ export default function DeliveryPage() {
             'Delivery time starts after dispatch and varies by destination; you will see an estimate for your address at checkout',
           ],
         },
-        figure: { src: scene.image, alt: scene.alt, width: scene.width, height: scene.height, caption: 'Swallow Dive by Helene Brox' },
+        figure: { src: scene.image, alt: scene.alt, width: scene.width, height: scene.height, caption: 'Vinkveld by Sia Siamos' },
         times: {
           heading: 'Delivery times and costs',
           body: (

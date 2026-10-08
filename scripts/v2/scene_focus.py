@@ -13,7 +13,7 @@ lib/scene-focus.json  { "/images/products/x-room.avif": { "x": 52.1, "y": 24.8,
 "w": 31.0, "h": 38.5, "score": 0.83 } }  (percent of the scene's width/height).
 
     python3 scripts/v2/scene_focus.py          # every scene the shop uses
-    python3 scripts/v2/scene_focus.py dragon   # one product's scenes
+    python3 scripts/v2/scene_focus.py eltsjoen # one product's scenes
 
 Deterministic; nothing is generated. Run it when a scene is added or changed
 (lib/scene-focus.test.ts fails until you do).
@@ -100,11 +100,10 @@ def scenes_in_use():
 
 # Checked by eye on the contact sheet (2026-09-26) where the matcher lost the
 # print: it matched the bedside table in Morgenlevering, and landed between the
-# pair in the Tree Top Peach kitchen (it is the pink print on the right).
+# pair in the kitchen scene (it is the pink print on the right).
 OVERRIDES = {
     "/images/homepage/morgenlevering-scene.jpg": {"x": 55.0, "y": 31.0, "w": 19.5, "h": 24.5},
     "/images/products/Morgenlevering-scene.avif": {"x": 55.0, "y": 31.0, "w": 19.5, "h": 24.5},
-    "/images/products/tree-top-peach-room-chatgpt-2026-09-23.avif": {"x": 70.5, "y": 20.0, "w": 19.5, "h": 23.0},
 }
 
 

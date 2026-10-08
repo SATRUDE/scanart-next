@@ -34,10 +34,10 @@
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "Strictly, Scandinavian art means the art of Denmark, Norway and Sweden, though the term usually stretches to the Nordic neighbours, Finland and Iceland. It has never been one style with one name. It is closer to a sensibility, formed by living somewhere the sun barely sets in June and barely rises in January, and it runs from nineteenth-century landscape painting to the chair you might be sitting on now.",
+          "plain_text": "Strictly, Scandinavian art means the art of Denmark, Norway and Sweden, though the term usually stretches to the Nordic neighbours, Finland and Iceland. It's never been one style with one name. It's closer to a sensibility, formed by living somewhere the sun barely sets in June and barely rises in January, and it runs from nineteenth-century landscape painting to the chair you might be sitting on now.",
           "href": null,
           "text": {
-            "content": "Strictly, Scandinavian art means the art of Denmark, Norway and Sweden, though the term usually stretches to the Nordic neighbours, Finland and Iceland. It has never been one style with one name. It is closer to a sensibility, formed by living somewhere the sun barely sets in June and barely rises in January, and it runs from nineteenth-century landscape painting to the chair you might be sitting on now.",
+            "content": "Strictly, Scandinavian art means the art of Denmark, Norway and Sweden, though the term usually stretches to the Nordic neighbours, Finland and Iceland. It's never been one style with one name. It's closer to a sensibility, formed by living somewhere the sun barely sets in June and barely rises in January, and it runs from nineteenth-century landscape painting to the chair you might be sitting on now.",
             "link": null
           },
           "annotations": {
@@ -60,10 +60,10 @@
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "Where it came from",
+          "plain_text": "Where did Scandinavian art come from?",
           "href": null,
           "text": {
-            "content": "Where it came from",
+            "content": "Where did Scandinavian art come from?",
             "link": null
           },
           "annotations": {
@@ -164,10 +164,10 @@
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "What does it look like?",
+          "plain_text": "What does Scandinavian art look like?",
           "href": null,
           "text": {
-            "content": "What does it look like?",
+            "content": "What does Scandinavian art look like?",
             "link": null
           },
           "annotations": {
@@ -316,10 +316,10 @@
         },
         {
           "type": "text",
-          "plain_text": " Muted palettes, empty space, and the confidence not to fill it. The silence in a Hammershøi room is not a lack of content; it is the content.",
+          "plain_text": " Muted palettes, empty space, and the confidence not to fill it. The silence in a Hammershøi room isn't a lack of content; it's the content.",
           "href": null,
           "text": {
-            "content": " Muted palettes, empty space, and the confidence not to fill it. The silence in a Hammershøi room is not a lack of content; it is the content.",
+            "content": " Muted palettes, empty space, and the confidence not to fill it. The silence in a Hammershøi room isn't a lack of content; it's the content.",
             "link": null
           },
           "annotations": {
@@ -410,10 +410,44 @@
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "In the twentieth century the same sensibility moved into the home. When the exhibition Design in Scandinavia began touring the United States and Canada in 1954, it fixed \"Scandinavian design\" in the world's vocabulary: simple forms, natural materials, everyday objects made carefully and made for everyone. If you have ever admired a pale wooden chair with clean lines, you have met the tradition. Painting and design are usually told as separate stories; in Scandinavia they are the same instinct in different clothes.",
+          "plain_text": "In the twentieth century the same sensibility moved into the home. When the exhibition Design in Scandinavia began touring the United States and Canada in 1954, it fixed \"Scandinavian design\" in the world's vocabulary: simple forms, natural materials, everyday objects made carefully and made for everyone. If you've ever admired a pale wooden chair with clean lines, you've met the tradition. Painting and design are usually told as separate stories; in Scandinavia they're the same instinct in different clothes. If the chair sends you to the bookshelf, we've picked out ",
           "href": null,
           "text": {
-            "content": "In the twentieth century the same sensibility moved into the home. When the exhibition Design in Scandinavia began touring the United States and Canada in 1954, it fixed \"Scandinavian design\" in the world's vocabulary: simple forms, natural materials, everyday objects made carefully and made for everyone. If you have ever admired a pale wooden chair with clean lines, you have met the tradition. Painting and design are usually told as separate stories; in Scandinavia they are the same instinct in different clothes.",
+            "content": "In the twentieth century the same sensibility moved into the home. When the exhibition Design in Scandinavia began touring the United States and Canada in 1954, it fixed \"Scandinavian design\" in the world's vocabulary: simple forms, natural materials, everyday objects made carefully and made for everyone. If you've ever admired a pale wooden chair with clean lines, you've met the tradition. Painting and design are usually told as separate stories; in Scandinavia they're the same instinct in different clothes. If the chair sends you to the bookshelf, we've picked out ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "five Nordic design and architecture books",
+          "href": "/article/nordic-design-and-architecture-books",
+          "text": {
+            "content": "five Nordic design and architecture books",
+            "link": {
+              "url": "/article/nordic-design-and-architecture-books"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " that tell that story properly.",
+          "href": null,
+          "text": {
+            "content": " that tell that story properly.",
             "link": null
           },
           "annotations": {
@@ -531,11 +565,11 @@
         {
           "type": "text",
           "plain_text": "independent Norwegian artists behind our prints",
-          "href": "https://www.scandinavianart.co.uk/artists",
+          "href": "/artists",
           "text": {
             "content": "independent Norwegian artists behind our prints",
             "link": {
-              "url": "https://www.scandinavianart.co.uk/artists"
+              "url": "/artists"
             }
           },
           "annotations": {
@@ -548,10 +582,10 @@
         },
         {
           "type": "text",
-          "plain_text": " work in the same northern light, still turning nature, quiet and carefully rationed colour into pictures for real walls. If this has you wanting to look longer, we have picked out the ",
+          "plain_text": " work in the same northern light, still turning nature, quiet and carefully rationed colour into pictures for real walls. If this has you wanting to look longer, we've picked out the ",
           "href": null,
           "text": {
-            "content": " work in the same northern light, still turning nature, quiet and carefully rationed colour into pictures for real walls. If this has you wanting to look longer, we have picked out the ",
+            "content": " work in the same northern light, still turning nature, quiet and carefully rationed colour into pictures for real walls. If this has you wanting to look longer, we've picked out the ",
             "link": null
           },
           "annotations": {
@@ -565,11 +599,11 @@
         {
           "type": "text",
           "plain_text": "Nordic art and design books worth owning",
-          "href": "https://www.scandinavianart.co.uk/article/nordic-art-and-design-books",
+          "href": "/article/nordic-art-and-design-books",
           "text": {
             "content": "Nordic art and design books worth owning",
             "link": {
-              "url": "https://www.scandinavianart.co.uk/article/nordic-art-and-design-books"
+              "url": "/article/nordic-art-and-design-books"
             }
           },
           "annotations": {
@@ -599,11 +633,11 @@
         {
           "type": "text",
           "plain_text": "artist monographs worth sitting with",
-          "href": "https://www.scandinavianart.co.uk/article/nordic-artist-monographs",
+          "href": "/article/nordic-artist-monographs",
           "text": {
             "content": "artist monographs worth sitting with",
             "link": {
-              "url": "https://www.scandinavianart.co.uk/article/nordic-artist-monographs"
+              "url": "/article/nordic-artist-monographs"
             }
           },
           "annotations": {
@@ -633,11 +667,11 @@
         {
           "type": "text",
           "plain_text": "living room collection",
-          "href": "https://www.scandinavianart.co.uk/collection/living-room",
+          "href": "/collection/living-room",
           "text": {
             "content": "living room collection",
             "link": {
-              "url": "https://www.scandinavianart.co.uk/collection/living-room"
+              "url": "/collection/living-room"
             }
           },
           "annotations": {

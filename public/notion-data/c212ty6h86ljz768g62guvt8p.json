@@ -8,10 +8,10 @@
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "A calm bedroom, a kitchen with company, a desk that needs a little less seriousness. The right print depends on the wall you're buying for. These are five we'd hang from our own gallery, with a different reason for each.",
+          "plain_text": "October is a strong month across the Nordic capitals: proper new openings in Oslo and Stockholm, and enough already running in Copenhagen, Helsinki and Reykjavik to fill a long weekend in any of them. Here's where to go in each.",
           "href": null,
           "text": {
-            "content": "A calm bedroom, a kitchen with company, a desk that needs a little less seriousness. The right print depends on the wall you're buying for. These are five we'd hang from our own gallery, with a different reason for each.",
+            "content": "October is a strong month across the Nordic capitals: proper new openings in Oslo and Stockholm, and enough already running in Copenhagen, Helsinki and Reykjavik to fill a long weekend in any of them. Here's where to go in each.",
             "link": null
           },
           "annotations": {
@@ -28,16 +28,16 @@
   {
     "object": "block",
     "id": "md-2",
-    "type": "paragraph",
+    "type": "heading_2",
     "has_children": false,
-    "paragraph": {
+    "heading_2": {
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "This is a selection from the artists we work with, not a survey of every Scandinavian print you can buy. We've kept the choice small enough to compare: bold colour, quiet pattern, detailed drawing and a good visual joke.",
+          "plain_text": "Oslo",
           "href": null,
           "text": {
-            "content": "This is a selection from the artists we work with, not a survey of every Scandinavian print you can buy. We've kept the choice small enough to compare: bold colour, quiet pattern, detailed drawing and a good visual joke.",
+            "content": "Oslo",
             "link": null
           },
           "annotations": {
@@ -60,10 +60,26 @@
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "If you're choosing for a particular room, start with the short note under each title. If you haven't settled on a style, ",
+          "plain_text": "\"W̶o̶m̶a̶n̶ Painter\"",
           "href": null,
           "text": {
-            "content": "If you're choosing for a particular room, start with the short note under each title. If you haven't settled on a style, ",
+            "content": "\"W̶o̶m̶a̶n̶ Painter\"",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ", Nasjonalmuseet, 8 October to 7 February. The museum's own title crosses out the word \"Woman\", which is the show's whole argument: around fifty works by female artists who won professional recognition in Europe between 1550 and 1650, among them Artemisia Gentileschi and Lavinia Fontana, on loan from the Rijksmuseum, the Uffizi and Nationalmuseum in Stockholm. ",
+          "href": null,
+          "text": {
+            "content": ", Nasjonalmuseet, 8 October to 7 February. The museum's own title crosses out the word \"Woman\", which is the show's whole argument: around fifty works by female artists who won professional recognition in Europe between 1550 and 1650, among them Artemisia Gentileschi and Lavinia Fontana, on loan from the Rijksmuseum, the Uffizi and Nationalmuseum in Stockholm. ",
             "link": null
           },
           "annotations": {
@@ -76,12 +92,12 @@
         },
         {
           "type": "text",
-          "plain_text": "our guide to choosing a Nordic art print",
-          "href": "/article/best-nordic-art-prints",
+          "plain_text": "See the show",
+          "href": "https://www.nasjonalmuseet.no/en/exhibitions-and-events/national-museum/exhibitions/2026/-painter/",
           "text": {
-            "content": "our guide to choosing a Nordic art print",
+            "content": "See the show",
             "link": {
-              "url": "/article/best-nordic-art-prints"
+              "url": "https://www.nasjonalmuseet.no/en/exhibitions-and-events/national-museum/exhibitions/2026/-painter/"
             }
           },
           "annotations": {
@@ -94,10 +110,10 @@
         },
         {
           "type": "text",
-          "plain_text": " works through colour, subject and viewing distance.",
+          "plain_text": ".",
           "href": null,
           "text": {
-            "content": " works through colour, subject and viewing distance.",
+            "content": ".",
             "link": null
           },
           "annotations": {
@@ -114,16 +130,66 @@
   {
     "object": "block",
     "id": "md-4",
-    "type": "heading_2",
+    "type": "paragraph",
     "has_children": false,
-    "heading_2": {
+    "paragraph": {
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "Eltsjoen, Ingunn Dybendal",
+          "plain_text": "Lap-See Lam: Ombres",
           "href": null,
           "text": {
-            "content": "Eltsjoen, Ingunn Dybendal",
+            "content": "Lap-See Lam: Ombres",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ", Henie Onstad Kunstsenter, until 3 January. Shadow-play installations, video and new glass sculpture from the Swedish artist, built around her family's move from Hong Kong to Sweden. ",
+          "href": null,
+          "text": {
+            "content": ", Henie Onstad Kunstsenter, until 3 January. Shadow-play installations, video and new glass sculpture from the Swedish artist, built around her family's move from Hong Kong to Sweden. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "See the show",
+          "href": "https://www.hok.no/en/exhibitions/lap-see-lam",
+          "text": {
+            "content": "See the show",
+            "link": {
+              "url": "https://www.hok.no/en/exhibitions/lap-see-lam"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ".",
+          "href": null,
+          "text": {
+            "content": ".",
             "link": null
           },
           "annotations": {
@@ -146,10 +212,10 @@
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "For a reading corner or beside a desk. Detailed coloured-pencil landscape; 50 x 70 cm.",
+          "plain_text": "Katharina Grosse: Black Bed",
           "href": null,
           "text": {
-            "content": "For a reading corner or beside a desk. Detailed coloured-pencil landscape; 50 x 70 cm.",
+            "content": "Katharina Grosse: Black Bed",
             "link": null
           },
           "annotations": {
@@ -159,23 +225,13 @@
             "strikethrough": false,
             "underline": false
           }
-        }
-      ]
-    }
-  },
-  {
-    "object": "block",
-    "id": "md-6",
-    "type": "paragraph",
-    "has_children": false,
-    "paragraph": {
-      "rich_text": [
+        },
         {
           "type": "text",
-          "plain_text": "The opposite bet, and the reason it's here. ",
+          "plain_text": ", MUNCH, until 3 January. An immersive, sprayed-colour environment from the German painter who treats a room as the canvas, not just the walls. ",
           "href": null,
           "text": {
-            "content": "The opposite bet, and the reason it's here. ",
+            "content": ", MUNCH, until 3 January. An immersive, sprayed-colour environment from the German painter who treats a room as the canvas, not just the walls. ",
             "link": null
           },
           "annotations": {
@@ -188,12 +244,12 @@
         },
         {
           "type": "text",
-          "plain_text": "Eltsjoen",
-          "href": "/product/eltsjoen",
+          "plain_text": "See the show",
+          "href": "https://munch.no/en/exhibitions/katharina-grosse/",
           "text": {
-            "content": "Eltsjoen",
+            "content": "See the show",
             "link": {
-              "url": "/product/eltsjoen"
+              "url": "https://munch.no/en/exhibitions/katharina-grosse/"
             }
           },
           "annotations": {
@@ -206,10 +262,36 @@
         },
         {
           "type": "text",
-          "plain_text": " takes a Nordic lake landscape and redraws the whole thing as pattern: pink sky, dark mountain, a forest turned into folk motifs, water pooling in pale rings around a bridge. It's the most detailed piece in the gallery, worked stroke by stroke in coloured pencil, and it's the one print here that genuinely rewards the hundredth look. Which means hanging it where people sit rather than where they walk past. A reading corner, the wall beside a desk, anywhere you're close enough to keep finding things.",
+          "plain_text": ".",
           "href": null,
           "text": {
-            "content": " takes a Nordic lake landscape and redraws the whole thing as pattern: pink sky, dark mountain, a forest turned into folk motifs, water pooling in pale rings around a bridge. It's the most detailed piece in the gallery, worked stroke by stroke in coloured pencil, and it's the one print here that genuinely rewards the hundredth look. Which means hanging it where people sit rather than where they walk past. A reading corner, the wall beside a desk, anywhere you're close enough to keep finding things.",
+            "content": ".",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-6",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Stockholm",
+          "href": null,
+          "text": {
+            "content": "Stockholm",
             "link": null
           },
           "annotations": {
@@ -226,16 +308,66 @@
   {
     "object": "block",
     "id": "md-7",
-    "type": "heading_2",
+    "type": "paragraph",
     "has_children": false,
-    "heading_2": {
+    "paragraph": {
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "Trysilkaffe, Ingunn Dybendal",
+          "plain_text": "Monir Shahroudy Farmanfarmaian: Tehran/New York",
           "href": null,
           "text": {
-            "content": "Trysilkaffe, Ingunn Dybendal",
+            "content": "Monir Shahroudy Farmanfarmaian: Tehran/New York",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ", Moderna Museet, 3 October to 28 February. A retrospective of the Iranian artist's mirror-mosaic sculptures and drawings, made across four decades between Tehran and her exile in New York after 1979. ",
+          "href": null,
+          "text": {
+            "content": ", Moderna Museet, 3 October to 28 February. A retrospective of the Iranian artist's mirror-mosaic sculptures and drawings, made across four decades between Tehran and her exile in New York after 1979. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "See the show",
+          "href": "https://www.modernamuseet.se/stockholm/en/exhibitions/monir-shahroudy-farmanfarmaian/",
+          "text": {
+            "content": "See the show",
+            "link": {
+              "url": "https://www.modernamuseet.se/stockholm/en/exhibitions/monir-shahroudy-farmanfarmaian/"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ".",
+          "href": null,
+          "text": {
+            "content": ".",
             "link": null
           },
           "annotations": {
@@ -258,14 +390,64 @@
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "For a kitchen or dining wall. Colourful folk flowers; 50 x 70 cm.",
+          "plain_text": "To the Sea!",
           "href": null,
           "text": {
-            "content": "For a kitchen or dining wall. Colourful folk flowers; 50 x 70 cm.",
+            "content": "To the Sea!",
             "link": null
           },
           "annotations": {
             "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ", Nationalmuseum, until 7 February. Over two hundred paintings, photographs and beachwear, Monet and Zorn among them, tracing a century of coastal holidaymaking. ",
+          "href": null,
+          "text": {
+            "content": ", Nationalmuseum, until 7 February. Over two hundred paintings, photographs and beachwear, Monet and Zorn among them, tracing a century of coastal holidaymaking. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "See the show",
+          "href": "https://www.nationalmuseum.se/en/exhibitions/to-the-sea",
+          "text": {
+            "content": "See the show",
+            "link": {
+              "url": "https://www.nationalmuseum.se/en/exhibitions/to-the-sea"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ".",
+          "href": null,
+          "text": {
+            "content": ".",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
             "italic": false,
             "code": false,
             "strikethrough": false,
@@ -284,12 +466,76 @@
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "Trysilkaffe",
-          "href": "/product/trysilkaffe",
+          "plain_text": "The Defeated",
+          "href": null,
           "text": {
-            "content": "Trysilkaffe",
+            "content": "The Defeated",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ", Bonniers Konsthall, until 8 November. Nineteen artists responding to Peter Weiss's novel ",
+          "href": null,
+          "text": {
+            "content": ", Bonniers Konsthall, until 8 November. Nineteen artists responding to Peter Weiss's novel ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "The Aesthetics of Resistance",
+          "href": null,
+          "text": {
+            "content": "The Aesthetics of Resistance",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": true,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ", new commissions shown alongside Weiss's own work. ",
+          "href": null,
+          "text": {
+            "content": ", new commissions shown alongside Weiss's own work. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "See the show",
+          "href": "https://www.bonnierskonsthall.se/en/exhibitions/the-defeated/",
+          "text": {
+            "content": "See the show",
             "link": {
-              "url": "/product/trysilkaffe"
+              "url": "https://www.bonnierskonsthall.se/en/exhibitions/the-defeated/"
             }
           },
           "annotations": {
@@ -302,10 +548,10 @@
         },
         {
           "type": "text",
-          "plain_text": " is the most classically Scandinavian thing we sell, if classic means the folk tradition rather than the minimalist one. A green mug crammed with an impossible bouquet, daisies, rosettes and seed heads that never grew on the same plant, every bloom a different invention in red, purple and teal above a diamond-check cloth. It's rosemaling logic worked in coloured pencil, pattern first and botany second, and it does a job nothing else in the gallery does: it brings the whole folk-art shelf onto one wall. Where Eltsjoen turns a landscape into ornament, this does it to a table top, and the two hang together beautifully if you want the pair. 50 x 70 cm, and best somewhere with company, a kitchen or dining wall.",
+          "plain_text": ".",
           "href": null,
           "text": {
-            "content": " is the most classically Scandinavian thing we sell, if classic means the folk tradition rather than the minimalist one. A green mug crammed with an impossible bouquet, daisies, rosettes and seed heads that never grew on the same plant, every bloom a different invention in red, purple and teal above a diamond-check cloth. It's rosemaling logic worked in coloured pencil, pattern first and botany second, and it does a job nothing else in the gallery does: it brings the whole folk-art shelf onto one wall. Where Eltsjoen turns a landscape into ornament, this does it to a table top, and the two hang together beautifully if you want the pair. 50 x 70 cm, and best somewhere with company, a kitchen or dining wall.",
+            "content": ".",
             "link": null
           },
           "annotations": {
@@ -328,10 +574,10 @@
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "Mean Snothing, Simen Wahlqvist",
+          "plain_text": "Copenhagen",
           "href": null,
           "text": {
-            "content": "Mean Snothing, Simen Wahlqvist",
+            "content": "Copenhagen",
             "link": null
           },
           "annotations": {
@@ -354,14 +600,64 @@
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "For a home office. A dry visual joke in a square format; 50 x 50 cm.",
+          "plain_text": "Jochen Lempert: Flora Incognita",
           "href": null,
           "text": {
-            "content": "For a home office. A dry visual joke in a square format; 50 x 50 cm.",
+            "content": "Jochen Lempert: Flora Incognita",
             "link": null
           },
           "annotations": {
             "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ", Kunsthal Charlottenborg, until 21 February. The German artist trained as a biologist, and it shows: three decades of black-and-white photographs of plants, insects and birds, hung unframed in small, quiet clusters. ",
+          "href": null,
+          "text": {
+            "content": ", Kunsthal Charlottenborg, until 21 February. The German artist trained as a biologist, and it shows: three decades of black-and-white photographs of plants, insects and birds, hung unframed in small, quiet clusters. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "See the show",
+          "href": "https://kunsthalcharlottenborg.dk/en/exhibitions/jochen-lempert/",
+          "text": {
+            "content": "See the show",
+            "link": {
+              "url": "https://kunsthalcharlottenborg.dk/en/exhibitions/jochen-lempert/"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ".",
+          "href": null,
+          "text": {
+            "content": ".",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
             "italic": false,
             "code": false,
             "strikethrough": false,
@@ -380,10 +676,26 @@
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "Scandinavian design gets written up as serious, which misses the dry wit running underneath it. ",
+          "plain_text": "Henrik Vibskov: The exhibition",
           "href": null,
           "text": {
-            "content": "Scandinavian design gets written up as serious, which misses the dry wit running underneath it. ",
+            "content": "Henrik Vibskov: The exhibition",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ", Designmuseum Danmark, until 21 February. Installation models and forty-four display cases on the fashion designer and artist's working methods, closer to a workshop than a retrospective. ",
+          "href": null,
+          "text": {
+            "content": ", Designmuseum Danmark, until 21 February. Installation models and forty-four display cases on the fashion designer and artist's working methods, closer to a workshop than a retrospective. ",
             "link": null
           },
           "annotations": {
@@ -396,12 +708,12 @@
         },
         {
           "type": "text",
-          "plain_text": "Mean Snothing",
-          "href": "/product/mean-snothing",
+          "plain_text": "See the show",
+          "href": "https://designmuseum.dk/en/exhibition/henrik-vibskov/",
           "text": {
-            "content": "Mean Snothing",
+            "content": "See the show",
             "link": {
-              "url": "/product/mean-snothing"
+              "url": "https://designmuseum.dk/en/exhibition/henrik-vibskov/"
             }
           },
           "annotations": {
@@ -414,44 +726,10 @@
         },
         {
           "type": "text",
-          "plain_text": " is that wit in one image: an orange man with a Newton's cradle for eyes, one ball caught mid-swing, the face beneath it entirely deadpan. Physics happening on a forehead and nobody reacting. Wahlqvist draws with as few lines as he can get away with, and reckons a drawing's finished when it makes him laugh; this one clearly did. It's square, 50 x 50 cm, and it does more for a ",
+          "plain_text": ".",
           "href": null,
           "text": {
-            "content": " is that wit in one image: an orange man with a Newton's cradle for eyes, one ball caught mid-swing, the face beneath it entirely deadpan. Physics happening on a forehead and nobody reacting. Wahlqvist draws with as few lines as he can get away with, and reckons a drawing's finished when it makes him laugh; this one clearly did. It's square, 50 x 50 cm, and it does more for a ",
-            "link": null
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": "home office",
-          "href": "/collection/home-office",
-          "text": {
-            "content": "home office",
-            "link": {
-              "url": "/collection/home-office"
-            }
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": " than any motivational poster ever has.",
-          "href": null,
-          "text": {
-            "content": " than any motivational poster ever has.",
+            "content": ".",
             "link": null
           },
           "annotations": {
@@ -474,10 +752,10 @@
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "Morgenstrekk, Simen Wahlqvist",
+          "plain_text": "Helsinki",
           "href": null,
           "text": {
-            "content": "Morgenstrekk, Simen Wahlqvist",
+            "content": "Helsinki",
             "link": null
           },
           "annotations": {
@@ -500,14 +778,64 @@
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "For a bedroom or a quieter workspace. Warm peach and ochre; 50 x 70 cm.",
+          "plain_text": "Modern Classics: Elga Sesemann",
           "href": null,
           "text": {
-            "content": "For a bedroom or a quieter workspace. Warm peach and ochre; 50 x 70 cm.",
+            "content": "Modern Classics: Elga Sesemann",
             "link": null
           },
           "annotations": {
             "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ", Ateneum, until 8 August 2027. The first in a new series, and a good place to start: around eighty semi-abstract paintings by the Finnish artist, made out of wartime displacement and memories of a lost Vyborg. ",
+          "href": null,
+          "text": {
+            "content": ", Ateneum, until 8 August 2027. The first in a new series, and a good place to start: around eighty semi-abstract paintings by the Finnish artist, made out of wartime displacement and memories of a lost Vyborg. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "See the show",
+          "href": "https://ateneum.fi/en/exhibitions/modern-classics-elga-sesemann/",
+          "text": {
+            "content": "See the show",
+            "link": {
+              "url": "https://ateneum.fi/en/exhibitions/modern-classics-elga-sesemann/"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ".",
+          "href": null,
+          "text": {
+            "content": ".",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
             "italic": false,
             "code": false,
             "strikethrough": false,
@@ -526,10 +854,26 @@
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "Two by the same hand needs justifying, so: ",
+          "plain_text": "Antti Tolvi: For Organ and Pause",
           "href": null,
           "text": {
-            "content": "Two by the same hand needs justifying, so: ",
+            "content": "Antti Tolvi: For Organ and Pause",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ", HAM Helsinki Art Museum, until 10 January. A sound and light installation built round a continuous organ drone, broken by six scheduled live performances. ",
+          "href": null,
+          "text": {
+            "content": ", HAM Helsinki Art Museum, until 10 January. A sound and light installation built round a continuous organ drone, broken by six scheduled live performances. ",
             "link": null
           },
           "annotations": {
@@ -542,12 +886,12 @@
         },
         {
           "type": "text",
-          "plain_text": "Morgenstrekk",
-          "href": "/product/morgenstrekk",
+          "plain_text": "See the show",
+          "href": "https://www.hamhelsinki.fi/en/exhibitions/antti-tolvi/",
           "text": {
-            "content": "Morgenstrekk",
+            "content": "See the show",
             "link": {
-              "url": "/product/morgenstrekk"
+              "url": "https://www.hamhelsinki.fi/en/exhibitions/antti-tolvi/"
             }
           },
           "annotations": {
@@ -560,10 +904,10 @@
         },
         {
           "type": "text",
-          "plain_text": " is the gentle end of the same joke. A figure reaching for a small sun with a charging cable wound round him, the cable trailing down to a plug at the skirting board, as though he's unplugged himself from the night and is charging off the morning instead. Ochre on warm peach, drawn with the same handful of lines. Where Mean Snothing gets a laugh out of a guest, this is a print you can wake up to, and at 50 x 70 cm it scales to a wall the square illustrations can't.",
+          "plain_text": ".",
           "href": null,
           "text": {
-            "content": " is the gentle end of the same joke. A figure reaching for a small sun with a charging cable wound round him, the cable trailing down to a plug at the skirting board, as though he's unplugged himself from the night and is charging off the morning instead. Ochre on warm peach, drawn with the same handful of lines. Where Mean Snothing gets a laugh out of a guest, this is a print you can wake up to, and at 50 x 70 cm it scales to a wall the square illustrations can't.",
+            "content": ".",
             "link": null
           },
           "annotations": {
@@ -580,16 +924,66 @@
   {
     "object": "block",
     "id": "md-16",
-    "type": "heading_2",
+    "type": "paragraph",
     "has_children": false,
-    "heading_2": {
+    "paragraph": {
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "Vinkveld, Sia Siamos",
+          "plain_text": "A Dream in Four Colours",
           "href": null,
           "text": {
-            "content": "Vinkveld, Sia Siamos",
+            "content": "A Dream in Four Colours",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ", Kiasma, until 10 January. A collection show across two floors, around fifty artists from Louise Bourgeois to Eija-Liisa Ahtila, much of it not shown at Kiasma in years. ",
+          "href": null,
+          "text": {
+            "content": ", Kiasma, until 10 January. A collection show across two floors, around fifty artists from Louise Bourgeois to Eija-Liisa Ahtila, much of it not shown at Kiasma in years. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "See the show",
+          "href": "https://kiasma.fi/en/exhibitions/a-dream-in-four-colours/",
+          "text": {
+            "content": "See the show",
+            "link": {
+              "url": "https://kiasma.fi/en/exhibitions/a-dream-in-four-colours/"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ".",
+          "href": null,
+          "text": {
+            "content": ".",
             "link": null
           },
           "annotations": {
@@ -606,20 +1000,20 @@
   {
     "object": "block",
     "id": "md-17",
-    "type": "paragraph",
+    "type": "heading_2",
     "has_children": false,
-    "paragraph": {
+    "heading_2": {
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "For a kitchen or dining room. A richly coloured wine-table scene; 50 x 70 cm.",
+          "plain_text": "Reykjavik",
           "href": null,
           "text": {
-            "content": "For a kitchen or dining room. A richly coloured wine-table scene; 50 x 70 cm.",
+            "content": "Reykjavik",
             "link": null
           },
           "annotations": {
-            "bold": true,
+            "bold": false,
             "italic": false,
             "code": false,
             "strikethrough": false,
@@ -638,10 +1032,26 @@
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "Sia Siamos paints four table scenes for us, and ",
+          "plain_text": "Erró: Remix",
           "href": null,
           "text": {
-            "content": "Sia Siamos paints four table scenes for us, and ",
+            "content": "Erró: Remix",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ", Reykjavík Art Museum, Hafnarhús, until 31 December. A full-career overview of Iceland's best-known pop artist: paintings, collages, video, all of it loud. ",
+          "href": null,
+          "text": {
+            "content": ", Reykjavík Art Museum, Hafnarhús, until 31 December. A full-career overview of Iceland's best-known pop artist: paintings, collages, video, all of it loud. ",
             "link": null
           },
           "annotations": {
@@ -654,12 +1064,12 @@
         },
         {
           "type": "text",
-          "plain_text": "Vinkveld",
-          "href": "/product/vinkveld",
+          "plain_text": "See the show",
+          "href": "https://www.listasafnreykjavikur.is/en/exhibitions/erro-1-en",
           "text": {
-            "content": "Vinkveld",
+            "content": "See the show",
             "link": {
-              "url": "/product/vinkveld"
+              "url": "https://www.listasafnreykjavikur.is/en/exhibitions/erro-1-en"
             }
           },
           "annotations": {
@@ -672,44 +1082,10 @@
         },
         {
           "type": "text",
-          "plain_text": " is the best of them because it's the loosest. Wine evening, in Norwegian: a glass of red, green olives, dark grapes and vine tomatoes against checked tiles, the tiles dissolving into brushstrokes behind. The bottle in the foreground has its cork already adrift, which tells you where the evening's heading. The paint is thicker and moodier than in her other tables, and the print belongs on a kitchen or dining wall, near actual food and actual wine. If you'd rather have the same table earlier in the day, ",
+          "plain_text": ".",
           "href": null,
           "text": {
-            "content": " is the best of them because it's the loosest. Wine evening, in Norwegian: a glass of red, green olives, dark grapes and vine tomatoes against checked tiles, the tiles dissolving into brushstrokes behind. The bottle in the foreground has its cork already adrift, which tells you where the evening's heading. The paint is thicker and moodier than in her other tables, and the print belongs on a kitchen or dining wall, near actual food and actual wine. If you'd rather have the same table earlier in the day, ",
-            "link": null
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": "Morgenlevering",
-          "href": "/product/morgenlevering",
-          "text": {
-            "content": "Morgenlevering",
-            "link": {
-              "url": "/product/morgenlevering"
-            }
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": " is breakfast.",
-          "href": null,
-          "text": {
-            "content": " is breakfast.",
+            "content": ".",
             "link": null
           },
           "annotations": {
@@ -726,16 +1102,66 @@
   {
     "object": "block",
     "id": "md-19",
-    "type": "heading_2",
+    "type": "paragraph",
     "has_children": false,
-    "heading_2": {
+    "paragraph": {
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "What isn't on the list",
+          "plain_text": "Alicja Kwade: Big Be-Hide",
           "href": null,
           "text": {
-            "content": "What isn't on the list",
+            "content": "Alicja Kwade: Big Be-Hide",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ", National Gallery of Iceland, until 1 November. An outdoor sculpture in stone, aluminium and a two-way mirror, sitting in the gallery's grounds rather than a room. ",
+          "href": null,
+          "text": {
+            "content": ", National Gallery of Iceland, until 1 November. An outdoor sculpture in stone, aluminium and a two-way mirror, sitting in the gallery's grounds rather than a room. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "See the show",
+          "href": "https://www.listasafn.is/en/art/exhibitions/alicja-kwade-big-be-hide/",
+          "text": {
+            "content": "See the show",
+            "link": {
+              "url": "https://www.listasafn.is/en/art/exhibitions/alicja-kwade-big-be-hide/"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ".",
+          "href": null,
+          "text": {
+            "content": ".",
             "link": null
           },
           "annotations": {
@@ -758,10 +1184,26 @@
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "A shortlist can't cover every wall. ",
+          "plain_text": "Janice Kerbel",
           "href": null,
           "text": {
-            "content": "A shortlist can't cover every wall. ",
+            "content": "Janice Kerbel",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ", i8 Gallery, until 7 November. Nine mosaic works, each a single letterform cast in glass smalti and stripped of anything it used to spell. ",
+          "href": null,
+          "text": {
+            "content": ", i8 Gallery, until 7 November. Nine mosaic works, each a single letterform cast in glass smalti and stripped of anything it used to spell. ",
             "link": null
           },
           "annotations": {
@@ -774,182 +1216,12 @@
         },
         {
           "type": "text",
-          "plain_text": "Hyttefrokost",
-          "href": "/product/hyttefrokost",
+          "plain_text": "See the show",
+          "href": "https://i8.is/exhibitions/223/",
           "text": {
-            "content": "Hyttefrokost",
+            "content": "See the show",
             "link": {
-              "url": "/product/hyttefrokost"
-            }
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": " is the sunniest of Siamos's tables and the easiest way into them. For a looser, playful still life, try ",
-          "href": null,
-          "text": {
-            "content": " is the sunniest of Siamos's tables and the easiest way into them. For a looser, playful still life, try ",
-            "link": null
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": "Sunday Brunch",
-          "href": "/product/sunday-brunch",
-          "text": {
-            "content": "Sunday Brunch",
-            "link": {
-              "url": "/product/sunday-brunch"
-            }
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": " by Gothenburg-based ",
-          "href": null,
-          "text": {
-            "content": " by Gothenburg-based ",
-            "link": null
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": "Hedvig Wallin",
-          "href": "/artist/hedvig-wallin",
-          "text": {
-            "content": "Hedvig Wallin",
-            "link": {
-              "url": "/artist/hedvig-wallin"
-            }
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": ": a blue breakfast cloth, green kitchen tiles and a table crowded with croissants, coffee and flowers. These are different answers to the same question: what would you like to live with? Have a look through the three categories whole and make them yourself: ",
-          "href": null,
-          "text": {
-            "content": ": a blue breakfast cloth, green kitchen tiles and a table crowded with croissants, coffee and flowers. These are different answers to the same question: what would you like to live with? Have a look through the three categories whole and make them yourself: ",
-            "link": null
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": "abstract",
-          "href": "/category/abstract",
-          "text": {
-            "content": "abstract",
-            "link": {
-              "url": "/category/abstract"
-            }
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": ", ",
-          "href": null,
-          "text": {
-            "content": ", ",
-            "link": null
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": "botanical",
-          "href": "/category/botanical",
-          "text": {
-            "content": "botanical",
-            "link": {
-              "url": "/category/botanical"
-            }
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": " and ",
-          "href": null,
-          "text": {
-            "content": " and ",
-            "link": null
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": "illustrations",
-          "href": "/category/illustrations",
-          "text": {
-            "content": "illustrations",
-            "link": {
-              "url": "/category/illustrations"
+              "url": "https://i8.is/exhibitions/223/"
             }
           },
           "annotations": {
@@ -982,68 +1254,16 @@
   {
     "object": "block",
     "id": "md-21",
-    "type": "heading_2",
-    "has_children": false,
-    "heading_2": {
-      "rich_text": [
-        {
-          "type": "text",
-          "plain_text": "Sizes and framing",
-          "href": null,
-          "text": {
-            "content": "Sizes and framing",
-            "link": null
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        }
-      ]
-    }
-  },
-  {
-    "object": "block",
-    "id": "md-22",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "Four of these picks are 50 x 70 cm; Mean Snothing is 50 x 50 cm. Those are the print dimensions, so allow for the frame when you measure the wall. Each product page shows its current price and the available frame choices: wood, black or white, or an unframed print if you've already got a frame. Every print is made to order. Delivery costs appear at checkout.",
+          "plain_text": "That's fourteen shows across five cities and not one of them needs an introduction from me. If a show here sends you home wanting something on your own wall, ",
           "href": null,
           "text": {
-            "content": "Four of these picks are 50 x 70 cm; Mean Snothing is 50 x 50 cm. Those are the print dimensions, so allow for the frame when you measure the wall. Each product page shows its current price and the available frame choices: wood, black or white, or an unframed print if you've already got a frame. Every print is made to order. Delivery costs appear at checkout.",
-            "link": null
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        }
-      ]
-    }
-  },
-  {
-    "object": "block",
-    "id": "md-23",
-    "type": "paragraph",
-    "has_children": false,
-    "paragraph": {
-      "rich_text": [
-        {
-          "type": "text",
-          "plain_text": "If you know what you want but not what size, ",
-          "href": null,
-          "text": {
-            "content": "If you know what you want but not what size, ",
+            "content": "That's fourteen shows across five cities and not one of them needs an introduction from me. If a show here sends you home wanting something on your own wall, ",
             "link": null
           },
           "annotations": {
@@ -1056,180 +1276,10 @@
         },
         {
           "type": "text",
-          "plain_text": "our guide to print sizes",
-          "href": "/article/complete-guide-choosing-print-sizes",
-          "text": {
-            "content": "our guide to print sizes",
-            "link": {
-              "url": "/article/complete-guide-choosing-print-sizes"
-            }
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": " works through it room by room. If you know the wall but not the piece, ",
-          "href": null,
-          "text": {
-            "content": " works through it room by room. If you know the wall but not the piece, ",
-            "link": null
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": "eight ways to dress a wall",
-          "href": "/article/scandinavian-wall-decor-ideas",
-          "text": {
-            "content": "eight ways to dress a wall",
-            "link": {
-              "url": "/article/scandinavian-wall-decor-ideas"
-            }
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": " is the practical version and ",
-          "href": null,
-          "text": {
-            "content": " is the practical version and ",
-            "link": null
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": "The Art of Choosing Art",
-          "href": "/article/the-art-of-choosing-art-comprehensive-guide",
-          "text": {
-            "content": "The Art of Choosing Art",
-            "link": {
-              "url": "/article/the-art-of-choosing-art-comprehensive-guide"
-            }
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": " is the long one. If you know the room but nothing else, the ",
-          "href": null,
-          "text": {
-            "content": " is the long one. If you know the room but nothing else, the ",
-            "link": null
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": "living room",
-          "href": "/collection/living-room",
-          "text": {
-            "content": "living room",
-            "link": {
-              "url": "/collection/living-room"
-            }
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": " and ",
-          "href": null,
-          "text": {
-            "content": " and ",
-            "link": null
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": "bedroom",
-          "href": "/collection/bedroom",
-          "text": {
-            "content": "bedroom",
-            "link": {
-              "url": "/collection/bedroom"
-            }
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": " collections are curated for exactly that. And if you'd rather just look, ",
-          "href": null,
-          "text": {
-            "content": " collections are curated for exactly that. And if you'd rather just look, ",
-            "link": null
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": "browse every print",
+          "plain_text": "have a look at the gallery",
           "href": "/products",
           "text": {
-            "content": "browse every print",
+            "content": "have a look at the gallery",
             "link": {
               "url": "/products"
             }

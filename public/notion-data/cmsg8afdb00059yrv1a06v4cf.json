@@ -25,11 +25,11 @@
         {
           "type": "text",
           "plain_text": "Nordic art and design books",
-          "href": "https://www.scandinavianart.co.uk/article/nordic-art-and-design-books",
+          "href": "/article/nordic-art-and-design-books",
           "text": {
             "content": "Nordic art and design books",
             "link": {
-              "url": "https://www.scandinavianart.co.uk/article/nordic-art-and-design-books"
+              "url": "/article/nordic-art-and-design-books"
             }
           },
           "annotations": {
@@ -59,11 +59,11 @@
         {
           "type": "text",
           "plain_text": "Nordic artist monographs",
-          "href": "https://www.scandinavianart.co.uk/article/nordic-artist-monographs",
+          "href": "/article/nordic-artist-monographs",
           "text": {
             "content": "Nordic artist monographs",
             "link": {
-              "url": "https://www.scandinavianart.co.uk/article/nordic-artist-monographs"
+              "url": "/article/nordic-artist-monographs"
             }
           },
           "annotations": {
@@ -102,10 +102,10 @@
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "It is a natural shelf for anyone who lives with prints. A botanical pattern on the wall and a hand-thrown bowl on the table are closer relations than they look, both built on the same Nordic instinct for pared-back form and honest material. Here are five books we keep coming back to, each real, in print or findable second-hand, and each worth the space.",
+          "plain_text": "It's a natural shelf for anyone who lives with prints. A botanical pattern on the wall and a hand-thrown bowl on the table are closer relations than they look, both built on the same Nordic instinct for pared-back form and honest material. Here are five books we keep coming back to, each real, in print or findable second-hand, and each worth the space.",
           "href": null,
           "text": {
-            "content": "It is a natural shelf for anyone who lives with prints. A botanical pattern on the wall and a hand-thrown bowl on the table are closer relations than they look, both built on the same Nordic instinct for pared-back form and honest material. Here are five books we keep coming back to, each real, in print or findable second-hand, and each worth the space.",
+            "content": "It's a natural shelf for anyone who lives with prints. A botanical pattern on the wall and a hand-thrown bowl on the table are closer relations than they look, both built on the same Nordic instinct for pared-back form and honest material. Here are five books we keep coming back to, each real, in print or findable second-hand, and each worth the space.",
             "link": null
           },
           "annotations": {
@@ -122,6 +122,58 @@
   {
     "object": "block",
     "id": "md-3",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "How do you identify Scandinavian glass and ceramics?",
+          "href": null,
+          "text": {
+            "content": "How do you identify Scandinavian glass and ceramics?",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-4",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "With a reference book on the shelf, mostly. Marks, shapes and a firm designer attribution are what turn a nice vase into a known one, and these two are the ones people actually reach for.",
+          "href": null,
+          "text": {
+            "content": "With a reference book on the shelf, mostly. Marks, shapes and a firm designer attribution are what turn a nice vase into a known one, and these two are the ones people actually reach for.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-5",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
@@ -197,7 +249,7 @@
   },
   {
     "object": "block",
-    "id": "md-4",
+    "id": "md-6",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
@@ -220,10 +272,10 @@
         },
         {
           "type": "text",
-          "plain_text": " by Robin Hecht Minardi is the ceramics companion. It walks the great factories and studios, Royal Copenhagen, Saxbo, Gustavsberg and more, and gives the makers their due, Axel Salto and Gunnar Nylund among them. Practical too, with real detail on marks and dating. ",
+          "plain_text": " by Robin Hecht Minardi is the ceramics companion. It walks the great factories and studios, Royal Copenhagen, Saxbo, Gustavsberg and more, and gives the makers their due, Axel Salto and Gunnar Nylund among them. Practical too, with real detail on marks and dating, which is what you want the moment you start picking things up in shops. ",
           "href": null,
           "text": {
-            "content": " by Robin Hecht Minardi is the ceramics companion. It walks the great factories and studios, Royal Copenhagen, Saxbo, Gustavsberg and more, and gives the makers their due, Axel Salto and Gunnar Nylund among them. Practical too, with real detail on marks and dating. ",
+            "content": " by Robin Hecht Minardi is the ceramics companion. It walks the great factories and studios, Royal Copenhagen, Saxbo, Gustavsberg and more, and gives the makers their due, Axel Salto and Gunnar Nylund among them. Practical too, with real detail on marks and dating, which is what you want the moment you start picking things up in shops. ",
             "link": null
           },
           "annotations": {
@@ -273,7 +325,33 @@
   },
   {
     "object": "block",
-    "id": "md-5",
+    "id": "md-7",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Marimekko and Nordic textile design",
+          "href": null,
+          "text": {
+            "content": "Marimekko and Nordic textile design",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-8",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
@@ -296,10 +374,10 @@
         },
         {
           "type": "text",
-          "plain_text": ", edited by Marianne Aav, is the serious study of the print house that taught the world to love a bold repeat. It sets Maija Isola's patterns in their proper context, as design history rather than nostalgia, and it is the book that best explains why a Marimekko motif still reads as modern. ",
+          "plain_text": ", edited by Marianne Aav, is the serious study of the print house that taught the world to love a bold repeat. It sets Maija Isola's patterns in their proper context, as design history rather than nostalgia, and it's the book that best explains why a Marimekko motif still reads as modern. ",
           "href": null,
           "text": {
-            "content": ", edited by Marianne Aav, is the serious study of the print house that taught the world to love a bold repeat. It sets Maija Isola's patterns in their proper context, as design history rather than nostalgia, and it is the book that best explains why a Marimekko motif still reads as modern. ",
+            "content": ", edited by Marianne Aav, is the serious study of the print house that taught the world to love a bold repeat. It sets Maija Isola's patterns in their proper context, as design history rather than nostalgia, and it's the book that best explains why a Marimekko motif still reads as modern. ",
             "link": null
           },
           "annotations": {
@@ -349,11 +427,53 @@
   },
   {
     "object": "block",
-    "id": "md-6",
+    "id": "md-9",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Georg Jensen silver and Norwegian tapestry",
+          "href": null,
+          "text": {
+            "content": "Georg Jensen silver and Norwegian tapestry",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-10",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
       "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Two more, at opposite ends of the room. ",
+          "href": null,
+          "text": {
+            "content": "Two more, at opposite ends of the room. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
         {
           "type": "text",
           "plain_text": "Georg Jensen Jewelry",
@@ -425,7 +545,7 @@
   },
   {
     "object": "block",
-    "id": "md-7",
+    "id": "md-11",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
@@ -448,44 +568,10 @@
         },
         {
           "type": "text",
-          "plain_text": " brings it home to Norway. Hansen (1855 to 1931) was the great Norwegian tapestry artist, a gold medallist in Paris in 1900, and this Stavanger Art Museum book gathers her floral, transparent weavings in one place. A quieter title, museum-published and easiest to find through ",
+          "plain_text": " brings it home to Norway. Hansen (1855 to 1931) was the great Norwegian tapestry artist, a gold medallist in Paris in 1900, and this Stavanger Art Museum book gathers her floral, transparent weavings in one place. A quieter title, museum-published and long out of regular circulation, so it takes a proper second-hand hunt. Worth it.",
           "href": null,
           "text": {
-            "content": " brings it home to Norway. Hansen (1855 to 1931) was the great Norwegian tapestry artist, a gold medallist in Paris in 1900, and this Stavanger Art Museum book gathers her floral, transparent weavings in one place. A quieter title, museum-published and easiest to find through ",
-            "link": null
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": "Vesterheim",
-          "href": "https://store.vesterheim.org/products/frida-hansen-art-nouveau-in-full-bloom",
-          "text": {
-            "content": "Vesterheim",
-            "link": {
-              "url": "https://store.vesterheim.org/products/frida-hansen-art-nouveau-in-full-bloom"
-            }
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": ", but worth the hunt.",
-          "href": null,
-          "text": {
-            "content": ", but worth the hunt.",
+            "content": " brings it home to Norway. Hansen (1855 to 1931) was the great Norwegian tapestry artist, a gold medallist in Paris in 1900, and this Stavanger Art Museum book gathers her floral, transparent weavings in one place. A quieter title, museum-published and long out of regular circulation, so it takes a proper second-hand hunt. Worth it.",
             "link": null
           },
           "annotations": {
@@ -501,7 +587,7 @@
   },
   {
     "object": "block",
-    "id": "md-8",
+    "id": "md-12",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
@@ -525,11 +611,11 @@
         {
           "type": "text",
           "plain_text": "botanical",
-          "href": "https://www.scandinavianart.co.uk/category/botanical",
+          "href": "/category/botanical",
           "text": {
             "content": "botanical",
             "link": {
-              "url": "https://www.scandinavianart.co.uk/category/botanical"
+              "url": "/category/botanical"
             }
           },
           "annotations": {
@@ -542,10 +628,44 @@
         },
         {
           "type": "text",
-          "plain_text": " work in our own collection. If a book sends you looking for a piece to live with, that is the right place to start.",
+          "plain_text": " work in our own collection. The furniture and buildings side of the same story sits in ",
           "href": null,
           "text": {
-            "content": " work in our own collection. If a book sends you looking for a piece to live with, that is the right place to start.",
+            "content": " work in our own collection. The furniture and buildings side of the same story sits in ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Nordic design and architecture books",
+          "href": "/article/nordic-design-and-architecture-books",
+          "text": {
+            "content": "Nordic design and architecture books",
+            "link": {
+              "url": "/article/nordic-design-and-architecture-books"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ". And if a book sends you looking for a piece to live with, that's the right place to start.",
+          "href": null,
+          "text": {
+            "content": ". And if a book sends you looking for a piece to live with, that's the right place to start.",
             "link": null
           },
           "annotations": {

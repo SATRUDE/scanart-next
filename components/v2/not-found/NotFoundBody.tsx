@@ -48,7 +48,7 @@ export const NOT_FOUND_COPY = {
  * The prints offered, all sold at 50 × 70, the frame's size (the "Start from
  * your wall" rule). One that leaves the catalogue or loses that size drops out.
  */
-const FILL = ['dancer', 'dragon', 'hyttefrokost'];
+const FILL = ['hyttefrokost'];
 
 export async function NotFoundBody({ locale }: { locale: 'en' | 'no' }) {
   const t = NOT_FOUND_COPY[locale];

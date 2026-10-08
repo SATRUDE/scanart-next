@@ -31,12 +31,12 @@ export const categoryLandings: CategoryLanding[] = [
     heading: 'Botanical Prints',
     // Ken's buyer-language rewrite (Studio row, 2026-08-13).
     intro:
-      'Botanical, in this gallery’s hands, means the natural world as Nordic artists actually live with it. Ingunn Dybendal draws folk flowers and a patterned lakeland in coloured pencil, Helene Brox threads dozens of birds through a soft papercut lattice, and Sia Siamos paints the outdoors arriving at the table: lobster and wine, cabin breakfasts, ripe tomatoes against green tiles. From Sweden, Hedvig Wallin paints rows of watercolour apples and Ishtar Bäcklund Dakhil draws lilacs and a page of fruit and vegetables with handwritten Swedish labels. Every botanical print here is made to order and sold framed, wood, black or white, or unframed if you’d rather choose your own.',
+      'Botanical, in this gallery’s hands, means the natural world as Nordic artists actually live with it. Ingunn Dybendal draws folk flowers and a patterned lakeland in coloured pencil, and Sia Siamos paints the outdoors arriving at the table: lobster and wine, cabin breakfasts, ripe tomatoes against green tiles. From Sweden, Hedvig Wallin paints rows of watercolour apples and Ishtar Bäcklund Dakhil draws lilacs and a page of fruit and vegetables with handwritten Swedish labels. Every botanical print here is made to order and sold framed, wood, black or white, or unframed if you’d rather choose your own.',
     intro2:
       'That range makes botanical prints one of the easiest ways into art for a Scandinavian-style home. White walls and pale wood are a palette waiting for exactly this kind of warmth, and a botanical piece supplies it without tipping the room into clutter. They are independent artists we work with directly, and every piece in the category is printed to order on 200gsm uncoated paper.',
     stylingHeading: 'Styling botanical prints',
     stylingBody:
-      'Kitchens and dining spaces are the natural home for Sia Siamos’s table scenes; hang one near where you actually eat and it earns its keep daily. The gentler pieces, Tree Top Peach especially, suit bedrooms and reading corners, while Eltsjoen’s dense pattern rewards a wall you pass slowly, a hallway or a landing. Most pieces here share the 50 x 70 cm format, so pairs come easily: try a Dybendal beside a Siamos and let the colours talk.',
+      'Kitchens and dining spaces are the natural home for Sia Siamos’s table scenes; hang one near where you actually eat and it earns its keep daily. The gentler pieces, Rosa Blomster especially, suit bedrooms and reading corners, while Eltsjoen’s dense pattern rewards a wall you pass slowly, a hallway or a landing. Most pieces here share the 50 x 70 cm format, so pairs come easily: try a Dybendal beside a Siamos and let the colours talk.',
     faqs: [
       {
         question: 'Are botanical prints all flowers?',
@@ -60,28 +60,28 @@ export const categoryLandings: CategoryLanding[] = [
     category: 'Abstract',
     title: 'Nordic Abstract Wall Art Prints',
     description:
-      'Nordic abstract wall art by independent artists: pared-back figures, bold bird silhouettes and geometric landscapes in confident colour. Framing options.',
+      'Nordic abstract wall art by independent artists: geometric landscapes in confident colour, printed to order. Framing options.',
     heading: 'Abstract Prints',
     // Ken's buyer-language rewrite (Studio row, 2026-08-13), trimmed when
     // Renate Thor's Birdie series left the catalogue (21 Aug); Ishtar
     // Bäcklund Dakhil's Desert Circles joined on 2026-09-26.
     intro:
-      'Nordic abstraction leans to clarity rather than chaos: forms pared back until only the essential shape is left, one or two flat colours doing the work of ten. Helene Brox paints her loose, cut-out figures in Oslo, and cuts a diving swallow down to the plunge of its wings; Ishtar Bäcklund Dakhil, in Stockholm, breaks a desert landscape into overlapping circles. If you’re looking to buy Scandinavian abstract art prints with real presence, this is the confident end of the gallery, and you choose the frame on each product page: wood, black, white or none at all.',
+      'Nordic abstraction leans to clarity rather than chaos: forms pared back until only the essential shape is left, one or two flat colours doing the work of ten. Ishtar Bäcklund Dakhil, in Stockholm, breaks a desert landscape into overlapping white circles, with rust-coloured rocks, cacti and dusty pink hills repeating inside the pattern and bright turquoise openings breaking through. If you’re looking to buy Scandinavian abstract art prints with real presence, this is the confident end of the gallery, and you choose the frame on each product page: wood, black, white or none at all.',
     intro2:
       'Modern Scandinavian wall art of this kind suits rooms that are already close to calm. If your space leans minimalist, pale wood, quiet textiles, plenty of light, an abstract print gives the eye one confident place to land without shouting over the room. And because the compositions are simple, they read from across the room as well as they do up close.',
     stylingHeading: 'Styling abstract prints',
     stylingBody:
-      'One large abstract can carry a feature wall alone; hang it with the centre of the piece roughly 145 to 150 cm from the floor. Helene Brox’s pieces share a flat-colour language, so a pair hung side by side reads as one deliberate gesture rather than two unrelated prints. Pick a print whose ground colour echoes something already in the room, a cushion, a rug, a run of book spines, and the wall clicks into place.',
+      'One large abstract can carry a feature wall alone; hang it with the centre of the piece roughly 145 to 150 cm from the floor. Pick a print whose ground colour echoes something already in the room, a cushion, a rug, a run of book spines, and the wall clicks into place.',
     faqs: [
       {
         question: 'What makes abstract art Scandinavian?',
         answer:
-          'Mostly restraint. Where much abstract art piles on texture and gesture, the Nordic strain simplifies: flat colour, clean silhouettes, and forms that trace back to nature, birds, bodies, water. Every abstract print here is by an independent artist living and working in the Nordics.',
+          'Mostly restraint. Where much abstract art piles on texture and gesture, the Nordic strain simplifies: flat colour, clean silhouettes, and forms that trace back to nature, landscape, water. Every abstract print here is by an independent artist living and working in the Nordics.',
       },
       {
         question: 'What sizes do the abstract prints come in?',
         answer:
-          'Helene Brox’s pieces are all printed at 50 x 70 cm, which is a generous single-print size, and Desert Circles is a 50 x 50 cm square. As a rule of thumb, 50 x 70 cm holds a sofa or bed wall on its own, and a pair of them fills a wider wall without needing a third.',
+          'Desert Circles is a 50 x 50 cm square. The size is listed on the product page, with the price shown before you add it to the basket.',
       },
       {
         question: 'Can I buy abstract prints framed?',

@@ -33,11 +33,11 @@ function fill(template: string, values: Record<string, string>): string {
 /** A Help answer, verbatim, so the two pages can never disagree. */
 const answer = (q: string) => no.help.groups.flatMap(g => g.items).find(i => i.q === q)?.a ?? '';
 
-const scene = shopScenes['swallow-dive'];
+const scene = shopScenes.vinkveld;
 
 export default async function NorwegianDeliveryPage() {
   // The picture's alt in bokmål, from the catalogue, as the product page says it.
-  const print = await getProductBySlug('swallow-dive');
+  const print = await getProductBySlug('vinkveld');
   const alt = print
     ? sceneImageAlt({ name: print.name, artist: print.artist, brand: print.brand, category: print.category }, 'no')
     : scene.alt;
@@ -54,7 +54,7 @@ export default async function NorwegianDeliveryPage() {
         lastUpdated: t.lastUpdated,
         made: { heading: s.made.heading, body: <p>{s.made.body}</p> },
         production: { heading: s.production.heading, list: v.productionList },
-        figure: { src: scene.image, alt, width: scene.width, height: scene.height, caption: `Swallow Dive ${v.by} Helene Brox` },
+        figure: { src: scene.image, alt, width: scene.width, height: scene.height, caption: `Vinkveld ${v.by} Sia Siamos` },
         times: { heading: s.times.heading, body: <p>{s.times.body}</p> },
         worldwide: { heading: s.worldwide.heading, body: <p>{fill(s.worldwide.body, { country: COMPANY.country })}</p> },
         returns: {

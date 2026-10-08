@@ -89,11 +89,11 @@ export function rosterCards(
 const w = (name: string) => `/images/v2/about/windows/${name}.webp`;
 export const ABOUT_WINDOW_POOLS: Record<WindowPool, string[]> = {
   prints: [
-    'hummer-og-vin-0', 'trysilkaffe-0', 'hyttefrokost-1', 'dragon-0', 'hummer-og-vin-1', 'trysilkaffe-2',
-    'hyttefrokost-0', 'swallow-dive-1', 'tree-top-peach-0', 'sunday-brunch-2', 'rosa-blomster-0', 'ithinkithink-0',
+    'hummer-og-vin-0', 'trysilkaffe-0', 'hyttefrokost-1', 'hummer-og-vin-1', 'trysilkaffe-2',
+    'hyttefrokost-0', 'sunday-brunch-2', 'rosa-blomster-0',
   ].map(w),
   homes: [
-    'eltsjoen-0', 'tree-top-peach-2', 'small-house-big-ocean-1', 'massa-applen-1', 'dancer-1', 'slingshot-0',
+    'eltsjoen-0', 'small-house-big-ocean-1', 'massa-applen-1', 'slingshot-0',
     'sunday-brunch-1', 'trysilkaffe-1', 'eltsjoen-2', 'slingshot-1',
   ].map(w),
   nature: ['nature-forest-floor', 'nature-moss', 'nature-sea-ripples', 'nature-lupins', 'nature-forest-spruce'].map(w),

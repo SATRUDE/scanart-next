@@ -49,28 +49,21 @@ export const TAGGED_ROOMS: TaggedRoom[] = [
   { scene: 'hummer-og-vin', wall: 'blue', room: 'dining-room', ratio: 'portrait' },
   { scene: 'eye-nose-eye', wall: 'blue', room: 'home-office', ratio: 'tall' },
   { scene: 'massa-applen', wall: 'peach', room: 'dining-room', ratio: 'tall' },
-  { scene: 'ithinkithink', wall: 'yellow', room: 'home-office', ratio: 'tall' },
-  { scene: 'swallow-dive', wall: 'yellow', room: 'hallway', ratio: 'tall' },
-  { scene: 'tree-top-peach', wall: 'yellow', room: 'kitchen', ratio: 'square' },
-  { scene: 'dancer', wall: 'green', room: 'living-room', ratio: 'tall' },
   { scene: 'eltsjoen', wall: 'white', room: 'living-room', ratio: 'tall' },
   { scene: 'hyttefrokost', wall: 'yellow', room: 'dining-room', ratio: 'tall' },
   { scene: 'trysilkaffe', wall: 'peach', room: 'kitchen', ratio: 'tall' },
   { scene: 'small-house-big-ocean', wall: 'blue', room: 'living-room', ratio: 'tall' },
   { scene: 'sunday-brunch', wall: 'yellow', room: 'kitchen', ratio: 'tall' },
   { scene: 'slingshot', wall: 'blue', room: 'childs-room', ratio: 'tall' },
-  { scene: 'dragon', wall: 'blue', room: 'dining-room', ratio: 'tall' },
   { scene: 'rosa-blomster', wall: 'white', room: 'living-room', ratio: 'tall' },
 ];
 
 /**
  * The prints each tagged scene shows, where it is more than its lead print.
- * The tree-top-peach kitchen hangs Massa Äpplen beside it (lib/shop-scenes.ts
- * says so in the alt).
+ * (The one multi-print scene, a kitchen pair, left with its artist's work on
+ * 2026-10-08.)
  */
-export const SCENE_PRINTS: Record<string, string[]> = {
-  'tree-top-peach': ['tree-top-peach', 'massa-applen'],
-};
+export const SCENE_PRINTS: Record<string, string[]> = {};
 
 export function isWall(value: string | null | undefined): value is WallId {
   return WALLS.some(w => w.id === value);

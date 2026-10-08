@@ -186,12 +186,12 @@
         },
         {
           "type": "text",
-          "plain_text": "Dragon",
-          "href": "/product/dragon",
+          "plain_text": "Eye Nose Eye",
+          "href": "/product/eye-nose-eye",
           "text": {
-            "content": "Dragon",
+            "content": "Eye Nose Eye",
             "link": {
-              "url": "/product/dragon"
+              "url": "/product/eye-nose-eye"
             }
           },
           "annotations": {
@@ -204,10 +204,10 @@
         },
         {
           "type": "text",
-          "plain_text": " on its black ground, or the square illustrations in the ",
+          "plain_text": " on its near-black ground, or the square illustrations in the ",
           "href": null,
           "text": {
-            "content": " on its black ground, or the square illustrations in the ",
+            "content": " on its near-black ground, or the square illustrations in the ",
             "link": null
           },
           "annotations": {
@@ -296,12 +296,12 @@
         },
         {
           "type": "text",
-          "plain_text": "Birdie Green",
-          "href": "/product/birdie-green",
+          "plain_text": "Half Man",
+          "href": "/product/half-man",
           "text": {
-            "content": "Birdie Green",
+            "content": "Half Man",
             "link": {
-              "url": "/product/birdie-green"
+              "url": "/product/half-man"
             }
           },
           "annotations": {
@@ -314,10 +314,10 @@
         },
         {
           "type": "text",
-          "plain_text": ", where the ground colour is the whole point.",
+          "plain_text": ", where the bright green ground is half the picture.",
           "href": null,
           "text": {
-            "content": ", where the ground colour is the whole point.",
+            "content": ", where the bright green ground is half the picture.",
             "link": null
           },
           "annotations": {
@@ -452,40 +452,6 @@
         },
         {
           "type": "text",
-          "plain_text": " or ",
-          "href": null,
-          "text": {
-            "content": " or ",
-            "link": null
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": "Swallow Dive",
-          "href": "/product/swallow-dive",
-          "text": {
-            "content": "Swallow Dive",
-            "link": {
-              "url": "/product/swallow-dive"
-            }
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
           "plain_text": ", gain the most from that pause between image and wall. Sparse prints supply their own margin already: ",
           "href": null,
           "text": {
@@ -598,10 +564,10 @@
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "This is where most orders go wrong. 50 x 70 cm is a standard European poster size, and it is not the same as A2 (42 x 59.4 cm). Buy an A2 frame for a 50 x 70 print and you will be trimming something you paid good money for.",
+          "plain_text": "This is where most orders go wrong. 50 x 70 cm is a standard European poster size, and it is not the same as A2 (42 x 59.4 cm). Buy an A2 frame for a 50 x 70 print and you will be trimming something you paid good money for. It cuts the other way too: a few prints here really are A2 or A3, and a 50 x 70 frame would swallow them.",
           "href": null,
           "text": {
-            "content": "This is where most orders go wrong. 50 x 70 cm is a standard European poster size, and it is not the same as A2 (42 x 59.4 cm). Buy an A2 frame for a 50 x 70 print and you will be trimming something you paid good money for.",
+            "content": "This is where most orders go wrong. 50 x 70 cm is a standard European poster size, and it is not the same as A2 (42 x 59.4 cm). Buy an A2 frame for a 50 x 70 print and you will be trimming something you paid good money for. It cuts the other way too: a few prints here really are A2 or A3, and a 50 x 70 frame would swallow them.",
             "link": null
           },
           "annotations": {
@@ -650,10 +616,10 @@
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "Most prints in the gallery are 50 x 70 cm.",
+          "plain_text": "Each print comes in one size, shown on its product page, so check it before you buy a frame.",
           "href": null,
           "text": {
-            "content": "Most prints in the gallery are 50 x 70 cm.",
+            "content": "Each print comes in one size, shown on its product page, so check it before you buy a frame.",
             "link": null
           },
           "annotations": {
@@ -676,10 +642,10 @@
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "Simen Wahlqvist's illustrations are square, 50 x 50 cm.",
+          "plain_text": "Most prints in the gallery are 50 x 70 cm.",
           "href": null,
           "text": {
-            "content": "Simen Wahlqvist's illustrations are square, 50 x 50 cm.",
+            "content": "Most prints in the gallery are 50 x 70 cm.",
             "link": null
           },
           "annotations": {
@@ -702,10 +668,10 @@
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "Renate Thor's Birdies come in A3, A2 and A1.",
+          "plain_text": "Simen Wahlqvist's illustrations are square, 50 x 50 cm, with one exception: Morgenstrekk is 50 x 70.",
           "href": null,
           "text": {
-            "content": "Renate Thor's Birdies come in A3, A2 and A1.",
+            "content": "Simen Wahlqvist's illustrations are square, 50 x 50 cm, with one exception: Morgenstrekk is 50 x 70.",
             "link": null
           },
           "annotations": {
@@ -722,6 +688,32 @@
   {
     "object": "block",
     "id": "md-19",
+    "type": "bulleted_list_item",
+    "has_children": false,
+    "bulleted_list_item": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "A few artists work to other formats: 45 x 60 cm and 40 x 50 cm for the photography, and A2 or A3 for some paintings.",
+          "href": null,
+          "text": {
+            "content": "A few artists work to other formats: 45 x 60 cm and 40 x 50 cm for the photography, and A2 or A3 for some paintings.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-20",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
@@ -781,7 +773,7 @@
   },
   {
     "object": "block",
-    "id": "md-20",
+    "id": "md-21",
     "type": "heading_2",
     "has_children": false,
     "heading_2": {
@@ -807,7 +799,7 @@
   },
   {
     "object": "block",
-    "id": "md-21",
+    "id": "md-22",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
@@ -833,17 +825,17 @@
   },
   {
     "object": "block",
-    "id": "md-22",
+    "id": "md-23",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "Whatever you glaze it with, keep the print out of direct sunlight. Archival paper and pigment inks last a long time. They do not last forever pointed at a south-facing window.",
+          "plain_text": "Whatever you glaze it with, keep the print out of direct sunlight. Paper and ink last a long time on a wall out of the sun. They do not last forever pointed at a south-facing window.",
           "href": null,
           "text": {
-            "content": "Whatever you glaze it with, keep the print out of direct sunlight. Archival paper and pigment inks last a long time. They do not last forever pointed at a south-facing window.",
+            "content": "Whatever you glaze it with, keep the print out of direct sunlight. Paper and ink last a long time on a wall out of the sun. They do not last forever pointed at a south-facing window.",
             "link": null
           },
           "annotations": {
@@ -859,7 +851,7 @@
   },
   {
     "object": "block",
-    "id": "md-23",
+    "id": "md-24",
     "type": "heading_2",
     "has_children": false,
     "heading_2": {
@@ -885,32 +877,6 @@
   },
   {
     "object": "block",
-    "id": "md-24",
-    "type": "paragraph",
-    "has_children": false,
-    "paragraph": {
-      "rich_text": [
-        {
-          "type": "text",
-          "plain_text": "The unglamorous option is often the right one. Every print here can be ordered unframed, or with a wood, black or white frame for £25, chosen on the product page before it goes in the basket. It turns up ready to hang, which is worth something when the alternative is a Saturday at the framers with a cardboard tube under your arm.",
-          "href": null,
-          "text": {
-            "content": "The unglamorous option is often the right one. Every print here can be ordered unframed, or with a wood, black or white frame for £25, chosen on the product page before it goes in the basket. It turns up ready to hang, which is worth something when the alternative is a Saturday at the framers with a cardboard tube under your arm.",
-            "link": null
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        }
-      ]
-    }
-  },
-  {
-    "object": "block",
     "id": "md-25",
     "type": "paragraph",
     "has_children": false,
@@ -918,10 +884,10 @@
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "Go unframed when you are matching frames you already own, or when you want a mount cut to your own taste. Otherwise the ready-framed route is quicker, cheaper and perfectly good.",
+          "plain_text": "The unglamorous option is often the right one. Every print here can be ordered unframed, or with a wood, black or white frame, chosen on the product page before it goes in the basket. The three colours cost the same, and the price follows the size of the print: currently it adds anywhere from £18 for an A3 to £39 for a 50 x 70, and the exact figure shows on the page before you commit. It turns up ready to hang, which is worth something when the alternative is a Saturday at the framers with a cardboard tube under your arm.",
           "href": null,
           "text": {
-            "content": "Go unframed when you are matching frames you already own, or when you want a mount cut to your own taste. Otherwise the ready-framed route is quicker, cheaper and perfectly good.",
+            "content": "The unglamorous option is often the right one. Every print here can be ordered unframed, or with a wood, black or white frame, chosen on the product page before it goes in the basket. The three colours cost the same, and the price follows the size of the print: currently it adds anywhere from £18 for an A3 to £39 for a 50 x 70, and the exact figure shows on the page before you commit. It turns up ready to hang, which is worth something when the alternative is a Saturday at the framers with a cardboard tube under your arm.",
             "link": null
           },
           "annotations": {
@@ -938,6 +904,32 @@
   {
     "object": "block",
     "id": "md-26",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Go unframed when you are matching frames you already own, or when you want a mount cut to your own taste. Otherwise the ready-framed route is quicker and perfectly good.",
+          "href": null,
+          "text": {
+            "content": "Go unframed when you are matching frames you already own, or when you want a mount cut to your own taste. Otherwise the ready-framed route is quicker and perfectly good.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-27",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {

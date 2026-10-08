@@ -1,0 +1,500 @@
+[
+  {
+    "object": "block",
+    "id": "md-1",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "The room's done. White walls, pale floor, the sofa you saved for. Then the wall behind it asks the only question left, and it turns out to be four questions wearing one coat. Here they are, answered in order.",
+          "href": null,
+          "text": {
+            "content": "The room's done. White walls, pale floor, the sofa you saved for. Then the wall behind it asks the only question left, and it turns out to be four questions wearing one coat. Here they are, answered in order.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-2",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Which style of art suits a Scandinavian interior?",
+          "href": null,
+          "text": {
+            "content": "Which style of art suits a Scandinavian interior?",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-3",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "A looser range than the pinboards suggest. The safe advice is minimal line art in neutral tones, and it's safe precisely because it disappears. The interiors the style is actually built on have always carried real pictures with real subjects. Three directions work reliably. Flat-colour abstraction, shapes doing the talking, sits naturally against clean-lined furniture: browse the ",
+          "href": null,
+          "text": {
+            "content": "A looser range than the pinboards suggest. The safe advice is minimal line art in neutral tones, and it's safe precisely because it disappears. The interiors the style is actually built on have always carried real pictures with real subjects. Three directions work reliably. Flat-colour abstraction, shapes doing the talking, sits naturally against clean-lined furniture: browse the ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "abstract prints",
+          "href": "/category/abstract",
+          "text": {
+            "content": "abstract prints",
+            "link": {
+              "url": "/category/abstract"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " to see the register. Line illustration brings wit into rooms that risk solemnity, which is most white rooms: that's the ",
+          "href": null,
+          "text": {
+            "content": " to see the register. Line illustration brings wit into rooms that risk solemnity, which is most white rooms: that's the ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "illustrations category",
+          "href": "/category/illustrations",
+          "text": {
+            "content": "illustrations category",
+            "link": {
+              "url": "/category/illustrations"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ". And the still life, food on a table, flowers in a glass, is the most Scandinavian move of all, because the style has always taken domestic life seriously: those live in ",
+          "href": null,
+          "text": {
+            "content": ". And the still life, food on a table, flowers in a glass, is the most Scandinavian move of all, because the style has always taken domestic life seriously: those live in ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "botanical and still life",
+          "href": "/category/botanical",
+          "text": {
+            "content": "botanical and still life",
+            "link": {
+              "url": "/category/botanical"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ".",
+          "href": null,
+          "text": {
+            "content": ".",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-4",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "How big should it be?",
+          "href": null,
+          "text": {
+            "content": "How big should it be?",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-5",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Bigger than your first instinct. The most common mistake in pale rooms is a small print marooned on a large wall, which reads as an apology. The old rule of thumb holds: art hung above furniture wants to be roughly two-thirds the width of what's beneath it, either as one piece or as a group hung tight enough to read as one. Above a standard sofa that means one 50 x 70 print is a minimum, a pair is better, and a trio earns the wall. On its own wall, a single 50 x 70 in a frame holds a surprising amount of space, because the frame and the margin do half the work.",
+          "href": null,
+          "text": {
+            "content": "Bigger than your first instinct. The most common mistake in pale rooms is a small print marooned on a large wall, which reads as an apology. The old rule of thumb holds: art hung above furniture wants to be roughly two-thirds the width of what's beneath it, either as one piece or as a group hung tight enough to read as one. Above a standard sofa that means one 50 x 70 print is a minimum, a pair is better, and a trio earns the wall. On its own wall, a single 50 x 70 in a frame holds a surprising amount of space, because the frame and the margin do half the work.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-6",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "What are the best framed print combinations?",
+          "href": null,
+          "text": {
+            "content": "What are the best framed print combinations?",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-7",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Combinations beat singles in this style, and the recipe is simple: the frames agree, the prints converse. A pair works when one is quiet and one is loud, the calm piece giving the bold one permission. A trio works when something repeats across all three, a palette, an artist's hand, a subject. Hanging ",
+          "href": null,
+          "text": {
+            "content": "Combinations beat singles in this style, and the recipe is simple: the frames agree, the prints converse. A pair works when one is quiet and one is loud, the calm piece giving the bold one permission. A trio works when something repeats across all three, a palette, an artist's hand, a subject. Hanging ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Sia Siamos's table still lifes",
+          "href": "/collection/kitchen",
+          "text": {
+            "content": "Sia Siamos's table still lifes",
+            "link": {
+              "url": "/collection/kitchen"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " as a set is the obvious worked example: same hand, same warmth, three different meals. Whatever you combine, match the frames; in a Scandinavian room the frames are architecture, not decoration.",
+          "href": null,
+          "text": {
+            "content": " as a set is the obvious worked example: same hand, same warmth, three different meals. Whatever you combine, match the frames; in a Scandinavian room the frames are architecture, not decoration.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-8",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Will colour break the look?",
+          "href": null,
+          "text": {
+            "content": "Will colour break the look?",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-9",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "No, and believing it will is how rooms end up beige. The white walls aren't the point of the style, they're the backdrop for the things that are. A saturated print in a white room isn't a risk, it's the reward: the room was calm so that something could speak. If everything on the wall whispers, the wall is just texture.",
+          "href": null,
+          "text": {
+            "content": "No, and believing it will is how rooms end up beige. The white walls aren't the point of the style, they're the backdrop for the things that are. A saturated print in a white room isn't a risk, it's the reward: the room was calm so that something could speak. If everything on the wall whispers, the wall is just texture.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-10",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "When you've chosen, the practical half is already written up: the ",
+          "href": null,
+          "text": {
+            "content": "When you've chosen, the practical half is already written up: the ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "living room styling guide",
+          "href": "/article/how-to-style-scandinavian-wall-art-living-room",
+          "text": {
+            "content": "living room styling guide",
+            "link": {
+              "url": "/article/how-to-style-scandinavian-wall-art-living-room"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " covers placement, and the ",
+          "href": null,
+          "text": {
+            "content": " covers placement, and the ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "print size guide",
+          "href": "/article/complete-guide-choosing-print-sizes",
+          "text": {
+            "content": "print size guide",
+            "link": {
+              "url": "/article/complete-guide-choosing-print-sizes"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " covers the measuring. Or start from the art itself and let the room follow: the whole collection is on the ",
+          "href": null,
+          "text": {
+            "content": " covers the measuring. Or start from the art itself and let the room follow: the whole collection is on the ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Scandinavian wall art",
+          "href": "/scandinavian-wall-art",
+          "text": {
+            "content": "Scandinavian wall art",
+            "link": {
+              "url": "/scandinavian-wall-art"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " page.",
+          "href": null,
+          "text": {
+            "content": " page.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  }
+]
