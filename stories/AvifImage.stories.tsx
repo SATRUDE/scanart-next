@@ -12,17 +12,17 @@ type Story = StoryObj<typeof AvifImage>;
 
 export const Default: Story = {
   args: {
-    src: '/images/products/swallow-dive-scene.avif',
-    alt: 'Swallow Dive Scene',
+    src: '/images/products/eltsjoen-scene.avif',
+    alt: 'Eltsjoen Scene',
     className: 'w-full h-full object-cover rounded',
   },
 };
 
 export const WithFallback: Story = {
   args: {
-    src: '/images/products/dragon-scene.avif',
-    fallbackSrc: '/images/products/dragon.png',
-    alt: 'Dragon with PNG fallback',
+    src: '/images/products/slingshot-scene.avif',
+    fallbackSrc: '/images/products/slingshot.png',
+    alt: 'Slingshot with PNG fallback',
     className: 'w-full h-full object-cover rounded',
   },
 };

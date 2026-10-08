@@ -29,8 +29,6 @@ export async function generateStaticParams() {
 // characters. The remaining products fall back to their art-led first
 // sentence until their strings are written.
 const BUYER_DESCRIPTIONS: Record<string, string> = {
-  'swallow-dive':
-    'Cobalt birds dive edge to edge over warm cream, all the movement carried by shape alone. Buy Swallow Dive framed in wood, black or white, or unframed.',
   'morgenstrekk':
     "The day's first full-body stretch, drawn in a handful of lines. Buy Morgenstrekk framed in wood, black or white, or unframed, printed to order.",
   'eltsjoen':

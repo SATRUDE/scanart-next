@@ -1,0 +1,450 @@
+[
+  {
+    "object": "block",
+    "id": "md-1",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "You can tell a Scandinavian gallery wall by what isn't on it. No frames touching, no shelf of clutter underneath, no eleventh piece squeezed in because the gap looked lonely. The style's whole trick is treating the wall as part of the arrangement rather than the thing to be covered.",
+          "href": null,
+          "text": {
+            "content": "You can tell a Scandinavian gallery wall by what isn't on it. No frames touching, no shelf of clutter underneath, no eleventh piece squeezed in because the gap looked lonely. The style's whole trick is treating the wall as part of the arrangement rather than the thing to be covered.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-2",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "How far apart should the pictures be?",
+          "href": null,
+          "text": {
+            "content": "How far apart should the pictures be?",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-3",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "It's the question everyone asks, and the answer is a convention rather than a law: keep the gap consistent, and keep it small, roughly a hand's width between frames. Consistency matters far more than the number. A wall where every gap matches reads as one deliberate piece; a wall where the gaps drift reads as things that happened to be hung near each other.",
+          "href": null,
+          "text": {
+            "content": "It's the question everyone asks, and the answer is a convention rather than a law: keep the gap consistent, and keep it small, roughly a hand's width between frames. Consistency matters far more than the number. A wall where every gap matches reads as one deliberate piece; a wall where the gaps drift reads as things that happened to be hung near each other.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-4",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Height follows the same logic. Galleries hang pictures so their centres sit near eye level, and a gallery wall borrows the habit: treat the whole cluster as one big picture and put the centre of the cluster at eye height, not the centre of each frame.",
+          "href": null,
+          "text": {
+            "content": "Height follows the same logic. Galleries hang pictures so their centres sit near eye level, and a gallery wall borrows the habit: treat the whole cluster as one big picture and put the centre of the cluster at eye height, not the centre of each frame.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-5",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "The rules that earn their keep",
+          "href": null,
+          "text": {
+            "content": "The rules that earn their keep",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-6",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Three are worth obeying. Pick an anchor first: the largest or strongest print, placed just off the centre of the arrangement, with everything else built out from it. Align to a line: a shared bottom edge, a shared centre line, or a clean grid, but pick one and hold it. And make the frames agree: either every frame matches, or the frames vary and the palette of the prints holds the group together. One of those two has to be constant or the wall falls apart.",
+          "href": null,
+          "text": {
+            "content": "Three are worth obeying. Pick an anchor first: the largest or strongest print, placed just off the centre of the arrangement, with everything else built out from it. Align to a line: a shared bottom edge, a shared centre line, or a clean grid, but pick one and hold it. And make the frames agree: either every frame matches, or the frames vary and the palette of the prints holds the group together. One of those two has to be constant or the wall falls apart.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-7",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Lay it out on the floor before anything goes near a hook. Paper templates on the wall, if you want to be certain, cost ten minutes and save ten holes.",
+          "href": null,
+          "text": {
+            "content": "Lay it out on the floor before anything goes near a hook. Paper templates on the wall, if you want to be certain, cost ten minutes and save ten holes.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-8",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Two formats are plenty",
+          "href": null,
+          "text": {
+            "content": "Two formats are plenty",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-9",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Every print in ",
+          "href": null,
+          "text": {
+            "content": "Every print in ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "our gallery",
+          "href": "/products",
+          "text": {
+            "content": "our gallery",
+            "link": {
+              "url": "/products"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " hangs in one of two shapes: a 50 x 70 cm portrait or a 50 x 50 cm square. That's a constraint we chose, and it's a gift for gallery walls, because two repeating formats organise themselves almost without help. A row of squares with one portrait as the anchor; portraits in a line with a square tucked at the end; a two-by-two of squares beside a single tall piece. Matching frames across both shapes, and the wall reads as designed rather than collected.",
+          "href": null,
+          "text": {
+            "content": " hangs in one of two shapes: a 50 x 70 cm portrait or a 50 x 50 cm square. That's a constraint we chose, and it's a gift for gallery walls, because two repeating formats organise themselves almost without help. A row of squares with one portrait as the anchor; portraits in a line with a square tucked at the end; a two-by-two of squares beside a single tall piece. Matching frames across both shapes, and the wall reads as designed rather than collected.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-10",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "What to leave out",
+          "href": null,
+          "text": {
+            "content": "What to leave out",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-11",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Start with three pieces. Three is already a gallery wall, and a Scandinavian one at that: the style trusts a wall with room left in it. You can add later, one piece at a time, and the arrangement will tell you when it's done, which is usually two prints before you think it is. If a piece needs the wall to be busier to work, it's the wrong piece.",
+          "href": null,
+          "text": {
+            "content": "Start with three pieces. Three is already a gallery wall, and a Scandinavian one at that: the style trusts a wall with room left in it. You can add later, one piece at a time, and the arrangement will tell you when it's done, which is usually two prints before you think it is. If a piece needs the wall to be busier to work, it's the wrong piece.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-12",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "For the mechanics of building bigger arrangements, we've a ",
+          "href": null,
+          "text": {
+            "content": "For the mechanics of building bigger arrangements, we've a ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "full guide to creating an art wall",
+          "href": "/article/create-an-art-wall",
+          "text": {
+            "content": "full guide to creating an art wall",
+            "link": {
+              "url": "/article/create-an-art-wall"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "; for the room around it, start with ",
+          "href": null,
+          "text": {
+            "content": "; for the room around it, start with ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "eight ways to dress a wall",
+          "href": "/article/scandinavian-wall-decor-ideas",
+          "text": {
+            "content": "eight ways to dress a wall",
+            "link": {
+              "url": "/article/scandinavian-wall-decor-ideas"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ". And if you're deciding between the two formats, the ",
+          "href": null,
+          "text": {
+            "content": ". And if you're deciding between the two formats, the ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "print size guide",
+          "href": "/article/complete-guide-choosing-print-sizes",
+          "text": {
+            "content": "print size guide",
+            "link": {
+              "url": "/article/complete-guide-choosing-print-sizes"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " settles it wall by wall.",
+          "href": null,
+          "text": {
+            "content": " settles it wall by wall.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  }
+]

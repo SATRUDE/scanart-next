@@ -478,12 +478,12 @@
         },
         {
           "type": "text",
-          "plain_text": "Renate Thor's screenprints",
-          "href": "/product/birdie-blue",
+          "plain_text": "Simen Wahlqvist's illustrations",
+          "href": "/artist/simen-wahlqvist",
           "text": {
-            "content": "Renate Thor's screenprints",
+            "content": "Simen Wahlqvist's illustrations",
             "link": {
-              "url": "/product/birdie-blue"
+              "url": "/artist/simen-wahlqvist"
             }
           },
           "annotations": {
@@ -512,10 +512,10 @@
         },
         {
           "type": "text",
-          "plain_text": "the artists behind them",
+          "plain_text": "the artists in our gallery",
           "href": "/artists",
           "text": {
-            "content": "the artists behind them",
+            "content": "the artists in our gallery",
             "link": {
               "url": "/artists"
             }
@@ -530,10 +530,10 @@
         },
         {
           "type": "text",
-          "plain_text": " are working in the same city.",
+          "plain_text": " are working in the same part of the world.",
           "href": null,
           "text": {
-            "content": " are working in the same city.",
+            "content": " are working in the same part of the world.",
             "link": null
           },
           "annotations": {

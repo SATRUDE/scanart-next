@@ -18,13 +18,6 @@ export const artistEditorial: Record<string, ArtistEditorial> = {
     para1: 'A river seen through leaves, pines under a starry sky and a swan on misty water. These photographs move between open landscapes and quieter details, from a low sun over the forest to light falling through a cabin window.',
     para2: 'The collection brings together ten photographs by Markus Naarttijärvi. Each is shown in full, with a white border where the photograph and paper have different proportions.',
   },
-  'helene-brox': {
-    heading: 'Shape doing the talking',
-    para1:
-      "Helene Brox, an Oslo-based artist and illustrator, works in bold, flat shape: figures and birds cut down to silhouette, painted with the confidence of a papercut and set on a single ground colour. Across her prints the same discipline holds whether the mood is calm or loud. Swallow Dive carries all its movement in one cobalt and one cream; Dancer catches a figure mid-stride with no face and no floor; Dragon dissolves a beast into ribbons of colour on black. Even IThinkIThink, the loudest print in the gallery, carries its confession in the same bold, cut-out shapes.",
-    para2:
-      "Which Brox suits a room depends on how much nerve the wall has. Tree Top Peach and Swallow Dive are the gentle ones, settling a bedroom or reading corner without disappearing into it; both sit comfortably among the calmer pieces in the [bedroom collection](/collection/bedroom). [Dragon](/product/dragon) and IThinkIThink want the room where people gather and talk. They all share the same cut-out language, so any two hang together naturally, one calm and one loud, and the pairing reads as deliberate rather than matched.",
-  },
   'simen-wahlqvist': {
     heading: 'As few lines as possible',
     para1:
@@ -85,7 +78,6 @@ export const artistEditorial: Record<string, ArtistEditorial> = {
 // the first of their prints that has a scene, and on no image if none does.
 export const artistHeroScene: Record<string, string> = {
   'simen-wahlqvist': 'slingshot',
-  'helene-brox': 'dancer',
   'emma-iben': 'pressure',
   // Patrik's approved vignettes are the room image (no shop scene); Mark picked Storm, 6 Oct 2026.
   'patrik-wennerlund': 'storm',

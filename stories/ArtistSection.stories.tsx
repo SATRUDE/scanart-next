@@ -10,19 +10,6 @@ const meta: Meta<typeof ArtistSection> = {
 export default meta;
 type Story = StoryObj<typeof ArtistSection>;
 
-export const HeleneBrox: Story = {
-  args: {
-    artist: {
-      id: '1',
-      name: 'Helene Brox',
-      slug: 'helene-brox',
-      location: 'Oslo, Norway',
-      bio: 'Helene Brox is an artist and illustrator based in Oslo, Norway.',
-      image: '/images/artists/helene-brox.png',
-    },
-  },
-};
-
 export const SimenWahlqvist: Story = {
   args: {
     artist: {

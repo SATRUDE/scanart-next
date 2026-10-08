@@ -19,7 +19,7 @@ export function Hairline({ className = '', onDark = false }: Cls & { onDark?: bo
   return <span aria-hidden className={`hairline ${onDark ? '!bg-on-primary' : ''} ${className}`} />;
 }
 
-/** Items separated by the hairline, e.g. "Helene Brox — 50 × 70 cm". */
+/** Items separated by the hairline, e.g. "Sia Siamos — 50 × 70 cm". */
 export function Meta({ items, className = '' }: Cls & { items: React.ReactNode[] }) {
   const shown = items.filter(Boolean);
   return (

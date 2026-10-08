@@ -53,11 +53,4 @@ describe('scene focus', () => {
     expect(cut).toEqual([]);
   });
 
-  it('checks the Dragon scene Mark saw cut off', () => {
-    const dragon = shopScenes['dragon']?.image;
-    expect(dragon && sceneFocus(dragon)).toBeTruthy();
-    const { y } = printInTile(dragon!, 6 / 5, FRAME_PAD);
-    expect(y[0]).toBeGreaterThanOrEqual(0);
-    expect(y[1]).toBeLessThanOrEqual(1);
-  });
 });

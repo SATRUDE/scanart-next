@@ -53,35 +53,37 @@ export const collections: Collection[] = [
     // costs a redirect. An animal print widens the heading, never the slug, and
     // that is exactly what happened on 2026-08-21: retiring the four Birdie
     // prints left only two birds, under the three-print floor this file's test
-    // enforces, so Dragon joins as the animal half and the H1 widens to match
+    // enforces, so Dragon joined as the animal half and the H1 widened to match
     // the chip. The title tag stays bird-led because that is where the demand is.
+    // 2026-10-08: the artist withdrew her work, so the collection was rebuilt
+    // around the swan, crow and sheep photographs and Ishtar's two illustrations.
     slug: 'birds-and-animals',
-    revisedAt: '2026-09-26',
+    revisedAt: '2026-10-08',
     chipLabel: 'Birds & Animals',
     axis: 'subject',
     title:
       'Scandinavian Bird Wall Art & Prints',
     description:
-      'Nordic bird and animal wall art by independent artists: a diving cobalt swallow, a flock hidden in peach branches, a dragon, and an aeroplane over a valley that can pass for a bird.',
+      'Nordic bird and animal wall art by independent artists: a swan on a misty lake, a crow in December fog, sheep on a farm track, a horned creature among blue leaves and an aeroplane that can pass for a bird.',
     heading:
       'Bird & Animal Wall Art from Nordic Artists',
     intro:
-      'Every creature here is a shape before it\'s a creature. Helene Brox works flat and unfussy: a cobalt swallow cut down to the plunge of its wings, dozens of small silhouettes hidden in a peach lattice of branches, and a dragon that coils across black in ribbons of white, red and pink. Ishtar Bäcklund Dakhil, in Stockholm, sends a pale aeroplane, which can also pass for a bird, gliding over a green valley and half-hides a horned creature among blue leaves. That\'s what makes an animal print sit well in a Scandinavian room, pattern and silhouette rather than field-guide detail. Every print here can be bought framed in wood, black or white, or unframed.',
+      'Every creature here lives inside its landscape rather than posing for it. Ishtar Bäcklund Dakhil, in Stockholm, sends a pale aeroplane, which can also pass for a bird, gliding over a green valley, and half-hides a horned creature among blue leaves. Markus Naarttijärvi photographs a lone swan drifting across a misty lake at first light, and a small flock of dark sheep looking straight at the camera from a muddy track. Patrik Wennerlund caught his crow on a December morning of thick fog. That\'s what makes an animal print sit well in a Scandinavian room: atmosphere and shape rather than field-guide detail. Every print here can be bought framed in wood, black or white, or unframed.',
     intro2:
-      'The moods differ more than the subjects. Swallow Dive is only two colours, cobalt on cream, and it wants a wall to itself where the dive has somewhere to go. Tree Top Peach is the gentlest of them, closer to a folk papercut than an illustration, and it rewards hanging where you actually sit. Dragon is the loud one, a beast glimpsed in fragments on a black ground, and it needs a wall that can hold its nerve. Choose on the ground colour rather than the creature: cobalt runs cool against white walls and pale wood, peach runs warm alongside wood and earthy textiles, and black will anchor a whole room. Get the background right and the rest looks after itself.',
+      'The moods differ more than the subjects. Swan on Still Water is the calmest of them, almost mirror-still, with the small white bird the only bright point in the frame. Sheep on the Track is a little wry, and the crow is the moodiest, a bird held in fog the sun never quite broke through. Ishtar\'s two illustrations bring the colour: green valley, blue rivers and pink rock under the aeroplane, cool blue leaves with touches of ochre around the creature. Choose on the light rather than the animal. Misty grey and soft white run quiet against pale walls and wood, and the painted pieces will carry a wall that needs colour.',
     productSlugs: [
-      'swallow-dive',
-      'tree-top-peach',
-      'dragon',
+      'swan-on-still-water',
+      'moody-19-the-crow',
+      'sheep-on-the-track',
       'flight-over-the-valley',
       'creature-among-blue-leaves',
     ],
     stylingHeading: 'Styling bird and animal prints',
     stylingTips: [
-      'A single animal print does better with a wall to itself. Centre it at eye level, roughly 145 to 150 cm off the floor, and leave the space either side empty; the movement in these prints needs somewhere to go.',
-      'Match the ground colour to the room, not the birds. Cobalt sits happily on white walls and pale wood, while Tree Top Peach wants warmth around it: wood, leather, earthy textiles.',
-      'Swallow Dive and Tree Top Peach hang well together because neither shouts. Same size, same frame, an even 5 to 8 cm gap, and they read as a considered pair rather than two prints that happened to both have birds in them. Dragon is better on its own.',
-      'If you would rather stay with one artist across a bigger wall, both of these sit comfortably beside Helene Brox\'s abstract pieces, which share the same flat-colour language.',
+      'A single animal print does better with a wall to itself. Centre it at eye level, roughly 145 to 150 cm off the floor, and leave the space either side empty so the landscape around the creature has room.',
+      'Match the light to the room, not the animal. The misty photographs sit happily on white walls and pale wood, while Ishtar\'s painted pieces want warmth and colour around them.',
+      'The two photographs from Markus Naarttijärvi hang well together because they share a photographer\'s eye and a damp northern light. Same frame, an even 5 to 8 cm gap, and they read as a considered pair.',
+      'If you would rather stay with one artist across a bigger wall, Ishtar Bäcklund Dakhil\'s other illustrations share the same hand-painted language as the aeroplane and the creature.',
     ],
     relatedArticleSlug: 'create-an-art-wall',
     relatedArticleLabel: 'How to create an art wall with multiple pieces',
@@ -89,7 +91,7 @@ export const collections: Collection[] = [
       {
         question: 'What makes an animal print feel Scandinavian?',
         answer:
-          'Flat colour and silhouette, mostly. Helene Brox treats the creature as a shape rather than a study: Swallow Dive carries a whole diving bird in two colours, Tree Top Peach is closer to a folk papercut than an illustration, and Dragon dissolves its beast into pure rhythm, while Ishtar Bäcklund Dakhil\'s aeroplane crosses its valley as one pale shape. Both artists live and work in the Nordics, which is why these read as Nordic animal prints rather than anything out of the wildlife-plate tradition.',
+          'Atmosphere and shape, mostly. The animals here are part of a northern landscape rather than studies of themselves: Markus Naarttijärvi\'s swan drifts on a misty lake, Patrik Wennerlund\'s crow sits in December fog, and Ishtar Bäcklund Dakhil\'s aeroplane crosses its valley as one pale shape. All three artists live and work in the Nordics, which is why these read as Nordic animal prints rather than anything out of the wildlife-plate tradition.',
       },
       {
         question: 'What sizes do these prints come in, and can I have them framed?',
@@ -110,17 +112,14 @@ export const collections: Collection[] = [
     // Ken's buyer-language rewrite (Studio row, 2026-08-13), written to
     // dovetail with intro2, which owns the morning-light idea.
     intro:
-      'The living room wall is the one guests actually look at, so it deserves a print bought on purpose rather than a poster that came with the frame. This edit gathers our Scandinavian wall art with living room presence: Sia Siamos’s warm table scenes, Ingunn Dybendal’s patterned lakeland, Helene Brox’s bold cream figures among them. Each piece is made to order and can be bought framed, in wood, black or white, or unframed, whichever suits the wall it’s headed for.',
+      'The living room wall is the one guests actually look at, so it deserves a print bought on purpose rather than a poster that came with the frame. This edit gathers our Scandinavian wall art with living room presence: Sia Siamos’s warm table scenes, Ingunn Dybendal’s patterned lakeland and Simen Wahlqvist’s deadpan line among them. Each piece is made to order and can be bought framed, in wood, black or white, or unframed, whichever suits the wall it’s headed for.',
     intro2:
       'It is also the room a print is seen in most, in morning light and lamplight both, so it pays to choose something you will still enjoy on the hundredth glance rather than the first. Scandinavian living room wall art tends to earn that staying power through restraint, confident colour and clean form over busy detail. Start with one piece you are sure of and build the wall around it; a gallery grouping rarely works when it all arrives at once.',
     productSlugs: [
-      'tree-top-peach',
       'eltsjoen',
       'vinkveld',
       'hyttefrokost',
       'morgenlevering',
-      'dancer',
-      'swallow-dive',
       'morgenstrekk',
       'slingshot',
       'journey',
@@ -129,8 +128,8 @@ export const collections: Collection[] = [
     stylingHeading: 'Styling art in the living room',
     stylingTips: [
       'Hang the centre of the piece at eye level, roughly 145 to 150 cm off the floor. Above a sofa, leave 15 to 25 cm between the frame and the sofa back.',
-      'One large print makes a feature wall; a pair or trio (Swallow Dive and Tree Top Peach sit well together) makes an easy gallery wall.',
-      'Warm tones like Tree Top Peach soften a minimalist room, while a bold abstract lifts a calmer palette.',
+      'One large print makes a feature wall; a pair or trio (Eye Nose Eye and Half Man sit well together) makes an easy gallery wall.',
+      'Warm tones like Hyttefrokost soften a minimalist room, while a bold abstract lifts a calmer palette.',
     ],
     stylingCards: [
       {
@@ -141,15 +140,15 @@ export const collections: Collection[] = [
       },
       {
         label: 'Grouping',
-        tip: 'One large print makes a feature wall; a pair or trio (Swallow Dive and Tree Top Peach sit well together) makes an easy gallery wall.',
+        tip: 'One large print makes a feature wall; a pair or trio (Eye Nose Eye and Half Man sit well together) makes an easy gallery wall.',
         image: '/images/collections/living-room-grouping.jpg',
         alt: 'A pair of framed Scandinavian prints side by side above a sideboard in a living room',
       },
       {
         label: 'Tone',
-        tip: 'Warm tones like Tree Top Peach soften a minimalist room, while a bold abstract lifts a calmer palette.',
-        image: shopScenes.dancer.image,
-        alt: shopScenes.dancer.alt,
+        tip: 'Warm tones like Hyttefrokost soften a minimalist room, while a bold abstract lifts a calmer palette.',
+        image: shopScenes.hyttefrokost.image,
+        alt: shopScenes.hyttefrokost.alt,
       },
     ],
     relatedArticleSlug: 'how-to-style-scandinavian-wall-art-living-room',
@@ -188,12 +187,9 @@ export const collections: Collection[] = [
     productSlugs: [
       'eltsjoen',
       'trysilkaffe',
-      'tree-top-peach',
       'morgenlevering',
       'hyttefrokost',
       'hummer-og-vin',
-      'ithinkithink',
-      'swallow-dive',
       'vinkveld',
       'month-of-may',
       'creature-among-blue-leaves',
@@ -263,10 +259,6 @@ export const collections: Collection[] = [
       'mean-snothing',
       'morgenstrekk',
       'slingshot',
-      'dragon',
-      'dancer',
-      'ithinkithink',
-      'swallow-dive',
       'urf',
       'desert-circles',
       'family-trip',

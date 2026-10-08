@@ -16,7 +16,6 @@ export const artistStatements: Record<string, string> = {
   // lib/artist-editorial.ts para1, the habit borrowed from naive art.
   'hedvig-wallin': 'Keep the drawing simple, let the perspective go wonky, and pack in detail for the second look.',
   // lib/artist-editorial.ts para1.
-  'helene-brox': 'Figures and birds cut down to silhouette, painted with the confidence of a papercut.',
   // data/artists.ts bio: her motto.
   'ingunn-dybendal': 'More is more is more is more.',
   // data/artists.ts bio.

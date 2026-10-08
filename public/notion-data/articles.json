@@ -1,10 +1,202 @@
 [
   {
+    "id": "cr4c3gh1vvo66j347vani81tv",
+    "slug": "an-interview-by-all-things-nordic",
+    "title": "Our story, in All Things Nordic",
+    "excerpt": "All Things Nordic interviewed Mark about why the gallery exists, what actually makes the work Scandinavian, and how it supports the artists behind it. Three highlights, and the full interview.",
+    "published": true,
+    "featured": false,
+    "image": "/images/products/morgenstrekk-room-02-2026-09-26.avif",
+    "author": "",
+    "category": "About",
+    "tags": [],
+    "relatedArticles": [
+      "who-are-scandinavian-art"
+    ],
+    "selectedArtworkIds": [
+      "08d177eb-8d61-4f62-ae2a-a1b2cd595e32",
+      "25933fb2-2b5f-8066-83d3-ce953cc0fab9"
+    ],
+    "created_time": "2026-09-28T06:26:32.625Z",
+    "last_edited_time": "2026-10-08T10:18:10.367Z",
+    "published_time": "2025-08-08T13:02:00.000Z"
+  },
+  {
+    "id": "c212ty6h86ljz768g62guvt8p",
+    "slug": "art-in-the-nordics-october-2026",
+    "title": "Art in the Nordics, October 2026",
+    "excerpt": "A five-city guide to what's genuinely on this October: a museum title that crosses out its own headline word in Oslo, a mirror-mosaic retrospective in Stockholm, and twelve more shows worth crossing town for in Copenhagen, Helsinki and Reykjavik.",
+    "published": true,
+    "featured": false,
+    "image": "/notion-data/heroes/art-in-the-nordics-october-2026-473b81ac.jpg",
+    "author": "",
+    "category": "Exhibitions",
+    "tags": [
+      "What's on"
+    ],
+    "relatedArticles": [],
+    "selectedArtworkIds": [],
+    "created_time": "2026-09-26T14:55:02.019Z",
+    "last_edited_time": "2026-10-03T08:16:11.766Z",
+    "published_time": "2026-10-03T08:16:11.766Z"
+  },
+  {
+    "id": "cfc0982301a090204d7c57c47",
+    "slug": "best-nordic-art-prints",
+    "title": "How to choose a Nordic art print for your room",
+    "excerpt": "Choose a Nordic art print by colour, subject and where you'll see it. A practical guide to narrowing the choice, with examples from our gallery.",
+    "published": true,
+    "featured": false,
+    "image": "/images/products/eltsjoen-scene.avif",
+    "author": "",
+    "category": "Guide",
+    "tags": [
+      "nordic art prints",
+      "scandinavian art prints",
+      "buying guide"
+    ],
+    "relatedArticles": [
+      "best-scandinavian-art-prints",
+      "what-is-scandinavian-art",
+      "complete-guide-choosing-print-sizes",
+      "how-to-choose-wall-art-for-a-scandinavian-interior"
+    ],
+    "selectedArtworkIds": [
+      "eltsjoen",
+      "vinkveld",
+      "mean-snothing"
+    ],
+    "created_time": "2026-08-24T17:44:32.885Z",
+    "last_edited_time": "2026-10-08T10:18:08.323Z",
+    "published_time": "2026-08-29T04:00:18.230Z"
+  },
+  {
+    "id": "c9180d35b9e6587970977176",
+    "slug": "working-with-scandinavian-art",
+    "title": "We're looking for artists: what working with Scandinavian Art means",
+    "excerpt": "A small, curated Nordic print gallery with room on the roster. What we offer the artists we take on, who we're looking for, and how to show us your work.",
+    "published": true,
+    "featured": false,
+    "image": "/images/journal/framed-prints-table.jpg",
+    "author": "",
+    "category": "About",
+    "tags": [],
+    "relatedArticles": [
+      "who-are-scandinavian-art",
+      "an-interview-by-nordic-notes",
+      "what-is-scandinavian-art"
+    ],
+    "selectedArtworkIds": [
+      "25933fb2-2b5f-8082-8dd4-c381e316909c",
+      "25933fb2-2b5f-80e9-8300-ffb3584852bc",
+      "25833fb2-2b5f-80df-ba0c-c6345279c5f7"
+    ],
+    "created_time": "2026-08-24T17:07:30.847Z",
+    "last_edited_time": "2026-10-08T10:18:07.515Z",
+    "published_time": "2026-08-26T04:01:15.330Z"
+  },
+  {
+    "id": "caac72de2ef007dab9610004",
+    "slug": "modern-scandinavian-art",
+    "title": "Modern Scandinavian art: the movement, the painters and what it means now",
+    "excerpt": "The term was coined on an American tour in 1954. What modern Scandinavian art actually is, from af Klint to the museums that keep it, and what it looks like on a wall.",
+    "published": true,
+    "featured": false,
+    "image": "/images/products/desert-circles-room.avif",
+    "author": "",
+    "category": "Guide",
+    "tags": [],
+    "relatedArticles": [
+      "what-is-scandinavian-art",
+      "scandinavian-abstract-art",
+      "contemporary-nordic-art-books"
+    ],
+    "selectedArtworkIds": [
+      "25833fb2-2b5f-804d-abaa-fed77eeeb706"
+    ],
+    "created_time": "2026-08-24T17:07:30.648Z",
+    "last_edited_time": "2026-10-08T10:18:07.716Z",
+    "published_time": "2026-09-19T04:00:18.211Z"
+  },
+  {
+    "id": "c6bcdbe827746cced3e6a4f0",
+    "slug": "how-to-choose-wall-art-for-a-scandinavian-interior",
+    "title": "How to choose wall art for a Scandinavian interior",
+    "excerpt": "Style, size, combinations and colour: the four questions behind choosing wall art for a Scandinavian interior, answered plainly.",
+    "published": true,
+    "featured": false,
+    "image": "/images/products/eltsjoen-scene.avif",
+    "author": "",
+    "category": "Guide",
+    "tags": [],
+    "relatedArticles": [
+      "how-to-style-scandinavian-wall-art-living-room",
+      "complete-guide-choosing-print-sizes",
+      "scandinavian-wall-decor-ideas"
+    ],
+    "selectedArtworkIds": [
+      "25933fb2-2b5f-806c-91e3-d6a543d98a98",
+      "25833fb2-2b5f-8035-bcd5-e762f4db18fc"
+    ],
+    "created_time": "2026-08-24T17:07:30.449Z",
+    "last_edited_time": "2026-10-08T10:18:31.122Z",
+    "published_time": "2026-09-16T04:00:18.312Z"
+  },
+  {
+    "id": "ce9070df412b8d3b5fed0d0d",
+    "slug": "scandinavian-gallery-wall",
+    "title": "The Scandinavian gallery wall: spacing, rules and restraint",
+    "excerpt": "Spacing, alignment, frames and restraint: how to hang a gallery wall that reads as Scandinavian, and why what you leave off matters most.",
+    "published": true,
+    "featured": false,
+    "image": "/images/journal/gallery-wall-living-room.jpg",
+    "author": "",
+    "category": "Styling",
+    "tags": [],
+    "relatedArticles": [
+      "create-an-art-wall",
+      "scandinavian-wall-decor-ideas",
+      "complete-guide-choosing-print-sizes"
+    ],
+    "selectedArtworkIds": [
+      "25833fb2-2b5f-8033-9e60-c29f291281f9",
+      "25833fb2-2b5f-80df-ba0c-c6345279c5f7",
+      "25933fb2-2b5f-8075-8088-e906c2d45bfc"
+    ],
+    "created_time": "2026-08-24T17:07:30.252Z",
+    "last_edited_time": "2026-10-08T10:18:31.224Z",
+    "published_time": "2026-09-23T04:00:18.943Z"
+  },
+  {
+    "id": "c5d595272465733b01e6621b",
+    "slug": "famous-scandinavian-artists",
+    "title": "Famous Scandinavian artists: the painters behind the North's pictures",
+    "excerpt": "The Scream is the answer everyone gives. Here are the painters behind it: Skagen light, grey Copenhagen rooms, Sundborn watercolours and abstraction before its time.",
+    "published": true,
+    "featured": false,
+    "image": "/notion-data/heroes/famous-scandinavian-artists-426e297c.jpg",
+    "author": "",
+    "category": "Guide",
+    "tags": [],
+    "relatedArticles": [
+      "what-is-scandinavian-art",
+      "scandinavian-illustrators",
+      "nordic-artist-monographs"
+    ],
+    "selectedArtworkIds": [
+      "25833fb2-2b5f-8035-bcd5-e762f4db18fc",
+      "25933fb2-2b5f-8082-8dd4-c381e316909c"
+    ],
+    "created_time": "2026-08-24T17:07:30.038Z",
+    "last_edited_time": "2026-10-08T10:18:30.295Z",
+    "published_time": "2026-09-09T04:00:18.748Z"
+  },
+  {
     "id": "cmsnhdacmzwaseyw4q3",
     "slug": "astrup-fearnley-in-focus-august-2026",
     "title": "Astrup Fearnley in focus: contemporary art under a glass roof",
     "excerpt": "Oslo's contemporary art museum on Tjuvholmen, with a 150-work Beatriz González retrospective and a year-long collection rehang both on through the summer.",
-    "published": false,
+    "published": true,
     "featured": false,
     "image": "/notion-data/heroes/astrup-fearnley-in-focus-august-2026-e7ab6e48.jpg",
     "author": "",
@@ -19,51 +211,17 @@
       "contemporary-nordic-art-books",
       "what-is-scandinavian-art"
     ],
-    "selectedArtworkIds": [
-      "birdie-blue",
-      "birdie-pink",
-      "swallow-dive",
-      "mean-snothing"
-    ],
+    "selectedArtworkIds": [],
     "created_time": "2026-08-10T15:03:31.881Z",
-    "last_edited_time": "2026-08-14T05:38:09.610Z"
-  },
-  {
-    "id": "c9df4bebe2be51e1b38bd6ca1",
-    "slug": "scandinavian-abstract-art",
-    "title": "Scandinavian abstract art: what abstraction looks like in the North",
-    "excerpt": "Say abstract art and most people picture mid-century New York. The Nordic version's a different animal: flat colour, cut silhouettes and a motif you can still name. What Scandinavian abstraction actually looks like, and how the gallery's abstract prints read against it.",
-    "published": false,
-    "featured": false,
-    "image": "/notion-data/heroes/scandinavian-abstract-art-6b57bdc1.jpg",
-    "author": "",
-    "category": "Guide",
-    "tags": [
-      "abstract art",
-      "scandinavian art",
-      "nordic abstraction"
-    ],
-    "relatedArticles": [
-      "what-is-scandinavian-art",
-      "scandinavian-wall-decor-ideas",
-      "how-to-style-scandinavian-wall-art-living-room",
-      "henie-onstad-in-focus"
-    ],
-    "selectedArtworkIds": [
-      "birdie-blue",
-      "swallow-dive",
-      "dancer",
-      "dragon"
-    ],
-    "created_time": "2026-08-10T15:03:01.699Z",
-    "last_edited_time": "2026-08-14T05:14:09.503Z"
+    "last_edited_time": "2026-10-08T10:18:09.961Z",
+    "published_time": "2026-08-18T04:00:04.432Z"
   },
   {
     "id": "cd5b3b59f92242b58b65c181b",
     "slug": "nordic-botanical-prints",
     "title": "Nordic botanical prints: folk flowers, a patterned lake and a table full of food",
-    "excerpt": "Nordic botanical work looks nothing like the Victorian botanical plate: no specimens, no Latin names. What the seven botanical prints in this gallery actually are, from folk flowers to a coloured-pencil lake and four kitchen-table still lifes.",
-    "published": false,
+    "excerpt": "Nordic botanical work looks nothing like the Victorian botanical plate: no specimens, no Latin names. What the six botanical prints in this gallery actually are, from folk flowers to a coloured-pencil lake and four kitchen-table still lifes.",
+    "published": true,
     "featured": false,
     "image": "/notion-data/heroes/nordic-botanical-prints-5582af26.jpg",
     "author": "",
@@ -79,20 +237,20 @@
       "nordic-craft-books-glass-ceramics-textiles"
     ],
     "selectedArtworkIds": [
-      "trysilkaffe",
-      "eltsjoen",
-      "tree-top-peach",
-      "vinkveld"
+      "25933fb2-2b5f-8082-8dd4-c381e316909c",
+      "25933fb2-2b5f-8066-83d3-ce953cc0fab9",
+      "25933fb2-2b5f-80e9-8300-ffb3584852bc"
     ],
     "created_time": "2026-08-10T15:01:11.250Z",
-    "last_edited_time": "2026-08-10T15:17:36.804Z"
+    "last_edited_time": "2026-10-08T10:18:08.121Z",
+    "published_time": "2026-09-02T04:01:17.826Z"
   },
   {
     "id": "cmst7tkp5y8ldtxcgjdrt9xh9",
     "slug": "scandinavian-illustrators",
     "title": "Scandinavian illustrators: the Nordic line, from trolls to now",
     "excerpt": "Nordic illustration is a tradition in its own right, not a footnote to the painting. Kittelsen's trolls, Bauer's forests, Tove Jansson and the picture-book studios working now, and where our own illustration prints sit in it.",
-    "published": false,
+    "published": true,
     "featured": false,
     "image": "/notion-data/heroes/scandinavian-illustrators-473b81ac.jpg",
     "author": "",
@@ -111,17 +269,20 @@
       "eye-nose-eye",
       "morgenstrekk",
       "mean-snothing",
+      "small-house-big-ocean",
+      "urf",
       "slingshot"
     ],
     "created_time": "2026-08-10T15:00:31.604Z",
-    "last_edited_time": "2026-08-14T05:14:05.089Z"
+    "last_edited_time": "2026-10-08T10:18:10.166Z",
+    "published_time": "2026-09-05T04:00:18.715Z"
   },
   {
     "id": "c8kx92f8injmsnh34rx",
     "slug": "best-scandinavian-art-prints",
-    "title": "The best Scandinavian art prints in our gallery: seven picks",
-    "excerpt": "No fake survey here: twenty prints is our whole gallery. These are the seven we'd hang first, with the case for each and the honest reason the rest aren't on the list.",
-    "published": false,
+    "title": "Five Scandinavian Art Prints to Buy, by Independent Artists",
+    "excerpt": "Five Scandinavian art prints for kitchens, living rooms and home offices. Compare colours, sizes and framing options, then shop each print.",
+    "published": true,
     "featured": false,
     "image": "/images/journal/gallery-wall-living-room.jpg",
     "author": "",
@@ -135,42 +296,45 @@
       "scandinavian-wall-decor-ideas",
       "complete-guide-choosing-print-sizes",
       "the-art-of-choosing-art-comprehensive-guide",
-      "what-is-scandinavian-art"
+      "what-is-scandinavian-art",
+      "best-nordic-art-prints"
     ],
     "selectedArtworkIds": [
-      "swallow-dive",
       "eltsjoen",
-      "birdie-blue",
+      "trysilkaffe",
       "mean-snothing",
       "morgenstrekk",
-      "vinkveld",
-      "ithinkithink"
+      "vinkveld"
     ],
     "created_time": "2026-08-10T14:55:40.310Z",
-    "last_edited_time": "2026-08-14T05:14:00.326Z"
+    "last_edited_time": "2026-10-08T10:18:07.312Z",
+    "published_time": "2026-08-22T04:00:18.167Z"
   },
   {
     "id": "cmsk57o4000072orvdhx2oqz4",
     "slug": "art-print-or-poster",
     "title": "Art print or poster: what you are actually buying",
     "excerpt": "Original, original print, giclée, poster: the words are unregulated, so here is what to check on the spec instead, and how to make a good print last.",
-    "published": false,
+    "published": true,
     "featured": false,
     "image": "/notion-data/heroes/art-print-or-poster-f3952db2.jpg",
     "author": "",
     "category": "Guide",
     "tags": [],
     "relatedArticles": [],
-    "selectedArtworkIds": [],
+    "selectedArtworkIds": [
+      "25833fb2-2b5f-8033-9e60-c29f291281f9"
+    ],
     "created_time": "2026-08-08T06:59:54.960Z",
-    "last_edited_time": "2026-08-10T14:49:54.741Z"
+    "last_edited_time": "2026-10-08T10:18:28.703Z",
+    "published_time": "2026-09-30T04:00:18.001Z"
   },
   {
     "id": "cmsk56ccl00062orv1px5m7rt",
     "slug": "norwegian-words-behind-the-prints",
     "title": "Hyttefrokost, vinkveld, morgenstrekk: the Norwegian words behind the prints",
     "excerpt": "What the Norwegian titles in the gallery actually mean, from a cabin breakfast to a wine evening, and the untranslatable word sitting behind all of them.",
-    "published": false,
+    "published": true,
     "featured": false,
     "image": "/notion-data/heroes/norwegian-words-behind-the-prints-ed62f868.png",
     "author": "",
@@ -179,55 +343,68 @@
     "relatedArticles": [],
     "selectedArtworkIds": [],
     "created_time": "2026-08-08T06:58:53.061Z",
-    "last_edited_time": "2026-08-10T12:56:30.800Z"
+    "last_edited_time": "2026-08-15T05:00:04.733Z",
+    "published_time": "2026-08-15T05:00:04.733Z"
   },
   {
     "id": "cmsk550rh00052orvy3c807af",
     "slug": "kitchen-and-dining-wall-art",
     "title": "Kitchen and dining room wall art: two rooms, two problems",
     "excerpt": "Where to hang art in a kitchen that has no spare wall, why dining room art should hang lower than standard, and the prints that suit a room built around a table.",
-    "published": false,
+    "published": true,
     "featured": false,
     "image": "/notion-data/heroes/kitchen-and-dining-wall-art-e7ab6e48.jpg",
     "author": "",
     "category": "Styling",
     "tags": [],
     "relatedArticles": [],
-    "selectedArtworkIds": [],
+    "selectedArtworkIds": [
+      "25933fb2-2b5f-8075-8088-e906c2d45bfc",
+      "25933fb2-2b5f-80e9-8300-ffb3584852bc",
+      "25933fb2-2b5f-8066-83d3-ce953cc0fab9"
+    ],
     "created_time": "2026-08-08T06:57:51.389Z",
-    "last_edited_time": "2026-08-10T14:49:54.527Z"
+    "last_edited_time": "2026-10-08T10:18:09.753Z",
+    "published_time": "2026-10-07T04:00:18.484Z"
   },
   {
     "id": "cmsk542tl00042orvfw6v5ifi",
     "slug": "bedroom-wall-art-ideas",
     "title": "Wall art for the bedroom: what to hang above a bed",
     "excerpt": "The height and width that work above a headboard, why pairs beat singles, and the wall opposite the bed that everyone forgets to style.",
-    "published": false,
+    "published": true,
     "featured": false,
     "image": "/notion-data/heroes/bedroom-wall-art-ideas-b283d557.jpg",
     "author": "",
     "category": "Styling",
     "tags": [],
     "relatedArticles": [],
-    "selectedArtworkIds": [],
+    "selectedArtworkIds": [
+      "25933fb2-2b5f-8082-8dd4-c381e316909c",
+      "25933fb2-2b5f-8066-83d3-ce953cc0fab9"
+    ],
     "created_time": "2026-08-08T06:57:07.401Z",
-    "last_edited_time": "2026-08-10T14:49:54.419Z"
+    "last_edited_time": "2026-10-08T10:18:09.544Z",
+    "published_time": "2026-10-03T04:00:18.142Z"
   },
   {
     "id": "cmsk5323u00032orvius9nyj7",
     "slug": "how-to-frame-an-art-print",
     "title": "How to frame an art print (and the size trap to avoid)",
     "excerpt": "Wood, black or white, mount or no mount, glass or acrylic, and the standard-size mistake that ruins a print. A practical guide to framing without overthinking it.",
-    "published": false,
+    "published": true,
     "featured": false,
     "image": "/notion-data/heroes/how-to-frame-an-art-print-02f47199.jpg",
     "author": "",
     "category": "Guide",
     "tags": [],
     "relatedArticles": [],
-    "selectedArtworkIds": [],
+    "selectedArtworkIds": [
+      "25833fb2-2b5f-80df-ba0c-c6345279c5f7"
+    ],
     "created_time": "2026-08-08T06:56:19.818Z",
-    "last_edited_time": "2026-08-10T14:49:54.634Z"
+    "last_edited_time": "2026-10-08T10:18:09.337Z",
+    "published_time": "2026-09-26T04:00:47.244Z"
   },
   {
     "id": "cmsg7yhbf00019jrvk5yyl1f3",
@@ -250,118 +427,11 @@
       "create-an-art-wall"
     ],
     "selectedArtworkIds": [
-      "eltsjoen",
-      "swallow-dive",
-      "morgenstrekk",
-      "birdie-blue"
+      "25833fb2-2b5f-8035-bcd5-e762f4db18fc"
     ],
     "created_time": "2026-08-05T13:05:40.395Z",
-    "last_edited_time": "2026-08-08T06:37:30.043Z"
-  },
-  {
-    "id": "cmsg8adr100019yrv0h81b86t",
-    "slug": "henie-onstad-in-focus",
-    "title": "Henie Onstad in focus: a fjord-side art centre",
-    "excerpt": "A fjord-side art centre founded by an Olympic skater, with a major Kai Fjell retrospective and Lap-See Lam's Ombres both on through the summer.",
-    "published": true,
-    "featured": false,
-    "image": "/images/journal/framed-prints-table.jpg",
-    "author": "",
-    "category": "Exhibitions",
-    "tags": [
-      "What's on"
-    ],
-    "relatedArticles": [
-      "art-in-oslo-july-2026"
-    ],
-    "selectedArtworkIds": [
-      "hyttefrokost",
-      "swallow-dive",
-      "eltsjoen"
-    ],
-    "created_time": "2026-07-23T01:55:00.000Z",
-    "last_edited_time": "2026-08-05T13:14:55.645Z"
-  },
-  {
-    "id": "cmsg8ae1f00029yrvs115tisk",
-    "slug": "nordic-photography-books",
-    "title": "Nordic photography books: the North through a lens",
-    "excerpt": "Five photography books that chase the same northern light the painters did, from the ice of Greenland to the forests of Varmland.",
-    "published": true,
-    "featured": false,
-    "image": "/images/journal/bookshelf-print.jpg",
-    "author": "",
-    "category": "Guide",
-    "tags": [],
-    "relatedArticles": [
-      "nordic-art-and-design-books",
-      "nordic-artist-monographs",
-      "nordic-design-and-architecture-books",
-      "nordic-craft-books-glass-ceramics-textiles",
-      "contemporary-nordic-art-books"
-    ],
-    "selectedArtworkIds": [
-      "eltsjoen",
-      "birdie-blue",
-      "swallow-dive"
-    ],
-    "created_time": "2026-07-23T01:55:00.000Z",
-    "last_edited_time": "2026-08-05T13:14:56.019Z"
-  },
-  {
-    "id": "cmsg8aebj00039yrv3jmaidn8",
-    "slug": "contemporary-nordic-art-books",
-    "title": "Contemporary Nordic art books: the scene now",
-    "excerpt": "Five contemporary Nordic art books, from a survey of the whole scene to monographs on Olafur Eliasson, Mamma Andersson, Tal R and Ida Ekblad, tracing the North as it is being made now.",
-    "published": true,
-    "featured": false,
-    "image": "/images/journal/reading-corner.jpg",
-    "author": "",
-    "category": "Guide",
-    "tags": [],
-    "relatedArticles": [
-      "nordic-art-and-design-books",
-      "nordic-artist-monographs",
-      "nordic-design-and-architecture-books",
-      "nordic-craft-books-glass-ceramics-textiles",
-      "nordic-photography-books"
-    ],
-    "selectedArtworkIds": [
-      "birdie-blue",
-      "birdie-green",
-      "dancer",
-      "swallow-dive"
-    ],
-    "created_time": "2026-07-23T01:55:00.000Z",
-    "last_edited_time": "2026-08-05T13:14:56.384Z"
-  },
-  {
-    "id": "cmsg8aem300049yrvyzsmhxyd",
-    "slug": "nordic-design-and-architecture-books",
-    "title": "Nordic design and architecture books: five worth owning",
-    "excerpt": "Five design and architecture books worth living with, from a survey of the whole tradition to monographs on Aalto, Jacobsen, Wegner and Juhl.",
-    "published": true,
-    "featured": false,
-    "image": "/images/journal/design-office.jpg",
-    "author": "",
-    "category": "Guide",
-    "tags": [
-      "nordic design"
-    ],
-    "relatedArticles": [
-      "nordic-art-and-design-books",
-      "nordic-artist-monographs",
-      "nordic-craft-books-glass-ceramics-textiles",
-      "nordic-photography-books",
-      "contemporary-nordic-art-books"
-    ],
-    "selectedArtworkIds": [
-      "eye-nose-eye",
-      "slingshot",
-      "mean-snothing"
-    ],
-    "created_time": "2026-07-23T01:55:00.000Z",
-    "last_edited_time": "2026-08-05T13:14:56.764Z"
+    "last_edited_time": "2026-10-08T10:18:08.522Z",
+    "published_time": "2026-08-08T06:37:30.040Z"
   },
   {
     "id": "cmsg8afdb00059yrv1a06v4cf",
@@ -384,13 +454,111 @@
       "contemporary-nordic-art-books"
     ],
     "selectedArtworkIds": [
-      "eltsjoen",
-      "hyttefrokost",
-      "morgenstrekk",
-      "birdie-green"
+      "25933fb2-2b5f-8066-83d3-ce953cc0fab9",
+      "25933fb2-2b5f-8082-8dd4-c381e316909c",
+      "25933fb2-2b5f-8075-8088-e906c2d45bfc"
     ],
     "created_time": "2026-07-23T01:55:00.000Z",
-    "last_edited_time": "2026-08-05T13:14:57.743Z"
+    "last_edited_time": "2026-10-08T10:18:27.685Z",
+    "published_time": "2026-07-23T01:55:00.000Z"
+  },
+  {
+    "id": "cmsg8ae1f00029yrvs115tisk",
+    "slug": "nordic-photography-books",
+    "title": "Nordic photography books: the North through a lens",
+    "excerpt": "Five photography books that chase the same northern light the painters did, from the ice of Greenland to the forests of Varmland.",
+    "published": true,
+    "featured": false,
+    "image": "/images/journal/bookshelf-print.jpg",
+    "author": "",
+    "category": "Guide",
+    "tags": [],
+    "relatedArticles": [
+      "nordic-art-and-design-books",
+      "nordic-artist-monographs",
+      "nordic-design-and-architecture-books",
+      "nordic-craft-books-glass-ceramics-textiles",
+      "contemporary-nordic-art-books"
+    ],
+    "selectedArtworkIds": [
+      "25933fb2-2b5f-8082-8dd4-c381e316909c",
+      "25933fb2-2b5f-80e9-8300-ffb3584852bc"
+    ],
+    "created_time": "2026-07-23T01:55:00.000Z",
+    "last_edited_time": "2026-10-08T10:18:27.040Z",
+    "published_time": "2026-07-23T01:55:00.000Z"
+  },
+  {
+    "id": "cmsg8aebj00039yrv3jmaidn8",
+    "slug": "contemporary-nordic-art-books",
+    "title": "Contemporary Nordic art books: the scene now",
+    "excerpt": "Five contemporary Nordic art books, from a survey of the whole scene to monographs on Olafur Eliasson, Mamma Andersson, Tal R and Ida Ekblad, tracing the North as it is being made now.",
+    "published": true,
+    "featured": false,
+    "image": "/images/journal/reading-corner.jpg",
+    "author": "",
+    "category": "Guide",
+    "tags": [],
+    "relatedArticles": [
+      "nordic-art-and-design-books",
+      "nordic-artist-monographs",
+      "nordic-design-and-architecture-books",
+      "nordic-craft-books-glass-ceramics-textiles",
+      "nordic-photography-books"
+    ],
+    "selectedArtworkIds": [],
+    "created_time": "2026-07-23T01:55:00.000Z",
+    "last_edited_time": "2026-10-08T10:18:08.727Z",
+    "published_time": "2026-07-23T01:55:00.000Z"
+  },
+  {
+    "id": "cmsg8aem300049yrvyzsmhxyd",
+    "slug": "nordic-design-and-architecture-books",
+    "title": "Nordic design and architecture books: five worth owning",
+    "excerpt": "Five design and architecture books worth living with, from a survey of the whole tradition to monographs on Aalto, Jacobsen, Wegner and Juhl.",
+    "published": true,
+    "featured": false,
+    "image": "/images/journal/design-office.jpg",
+    "author": "",
+    "category": "Guide",
+    "tags": [
+      "nordic design"
+    ],
+    "relatedArticles": [
+      "nordic-art-and-design-books",
+      "nordic-artist-monographs",
+      "nordic-craft-books-glass-ceramics-textiles",
+      "nordic-photography-books",
+      "contemporary-nordic-art-books"
+    ],
+    "selectedArtworkIds": [
+      "25833fb2-2b5f-8035-bcd5-e762f4db18fc",
+      "25933fb2-2b5f-8075-8088-e906c2d45bfc"
+    ],
+    "created_time": "2026-07-23T01:55:00.000Z",
+    "last_edited_time": "2026-10-08T10:18:25.993Z",
+    "published_time": "2026-07-23T01:55:00.000Z"
+  },
+  {
+    "id": "cmsg8adr100019yrv0h81b86t",
+    "slug": "henie-onstad-in-focus",
+    "title": "Henie Onstad in focus: a fjord-side art centre",
+    "excerpt": "A fjord-side art centre founded by an Olympic skater, with a major Kai Fjell retrospective and Lap-See Lam's Ombres both on through the summer.",
+    "published": true,
+    "featured": false,
+    "image": "/images/journal/framed-prints-table.jpg",
+    "author": "",
+    "category": "Exhibitions",
+    "tags": [
+      "What's on"
+    ],
+    "relatedArticles": [
+      "art-in-oslo-july-2026"
+    ],
+    "selectedArtworkIds": [],
+    "created_time": "2026-07-23T01:55:00.000Z",
+    "last_edited_time": "2026-10-08T10:18:27.809Z",
+    "published_time": "2026-07-23T01:55:00.000Z"
   },
   {
     "id": "cmsg8afoz00069yrv6491i6pi",
@@ -410,13 +578,13 @@
       "scandinavian-abstract-art"
     ],
     "selectedArtworkIds": [
-      "eltsjoen",
-      "dancer",
-      "hyttefrokost",
-      "birdie-blue"
+      "25933fb2-2b5f-8082-8dd4-c381e316909c",
+      "25933fb2-2b5f-80e9-8300-ffb3584852bc",
+      "25833fb2-2b5f-80df-ba0c-c6345279c5f7"
     ],
     "created_time": "2026-07-21T12:35:00.000Z",
-    "last_edited_time": "2026-08-10T15:03:01.915Z"
+    "last_edited_time": "2026-10-08T10:18:27.577Z",
+    "published_time": "2026-07-21T12:35:00.000Z"
   },
   {
     "id": "cmsg8agfy00079yrvd55lz4dy",
@@ -439,19 +607,19 @@
       "contemporary-nordic-art-books"
     ],
     "selectedArtworkIds": [
-      "eltsjoen",
-      "hyttefrokost",
-      "morgenstrekk",
-      "swallow-dive"
+      "25933fb2-2b5f-8082-8dd4-c381e316909c",
+      "25833fb2-2b5f-8033-9e60-c29f291281f9",
+      "25933fb2-2b5f-8075-8088-e906c2d45bfc"
     ],
     "created_time": "2026-07-21T11:41:00.000Z",
-    "last_edited_time": "2026-08-13T15:31:50.042Z"
+    "last_edited_time": "2026-10-08T10:18:27.147Z",
+    "published_time": "2026-07-21T11:41:00.000Z"
   },
   {
     "id": "cmsg8agq800089yrv3btfver5",
     "slug": "nordic-art-and-design-books",
     "title": "Nordic art and design books worth owning",
-    "excerpt": "Five Nordic art and design books worth living with, from the single-volume survey to the warm, browsable end of the shelf, and where the prints on your wall fit in.",
+    "excerpt": "Five Nordic art and design books worth living with, and the starting point for a six-part series: painters, design and architecture, craft, photography and the scene now.",
     "published": true,
     "featured": true,
     "image": "/images/journal/hammershoi-interior-strandgade.jpg",
@@ -471,40 +639,13 @@
       "best-scandinavian-art-prints"
     ],
     "selectedArtworkIds": [
-      "eltsjoen",
-      "morgenstrekk",
-      "dancer",
-      "birdie-blue"
+      "25933fb2-2b5f-8082-8dd4-c381e316909c",
+      "25933fb2-2b5f-8075-8088-e906c2d45bfc",
+      "25833fb2-2b5f-80df-ba0c-c6345279c5f7"
     ],
     "created_time": "2026-07-12T16:11:00.000Z",
-    "last_edited_time": "2026-08-13T15:31:49.827Z"
-  },
-  {
-    "id": "cmsg8ah1h00099yrvrfq4qt7h",
-    "slug": "complete-guide-choosing-print-sizes",
-    "title": "The Complete Guide to Choosing Print Sizes for Your Home",
-    "excerpt": "A3, A2, A1 or one of the 50 cm formats? This guide breaks down every size we print, where each works best, and how to pick the right one for your wall.",
-    "published": true,
-    "featured": false,
-    "image": "/images/products/hummer-og-vin-scene.avif",
-    "author": "",
-    "category": "Guide",
-    "tags": [
-      "print sizes"
-    ],
-    "relatedArticles": [
-      "how-to-style-scandinavian-wall-art-living-room",
-      "the-art-of-choosing-art-comprehensive-guide",
-      "nordic-art-and-design-books",
-      "best-scandinavian-art-prints"
-    ],
-    "selectedArtworkIds": [
-      "hummer-og-vin",
-      "tree-top-peach",
-      "dancer"
-    ],
-    "created_time": "2026-07-08T06:01:00.000Z",
-    "last_edited_time": "2026-08-13T15:31:50.471Z"
+    "last_edited_time": "2026-10-08T10:18:27.916Z",
+    "published_time": "2026-07-12T16:11:00.000Z"
   },
   {
     "id": "cmsg8ahcj000a9yrvj8qb7hep",
@@ -527,12 +668,38 @@
       "best-scandinavian-art-prints"
     ],
     "selectedArtworkIds": [
-      "morgenstrekk",
-      "birdie-blue",
-      "eltsjoen"
+      "25933fb2-2b5f-8082-8dd4-c381e316909c"
     ],
     "created_time": "2026-07-08T06:01:00.000Z",
-    "last_edited_time": "2026-08-13T15:31:50.256Z"
+    "last_edited_time": "2026-10-08T10:18:08.931Z",
+    "published_time": "2026-07-08T06:01:00.000Z"
+  },
+  {
+    "id": "cmsg8ah1h00099yrvrfq4qt7h",
+    "slug": "complete-guide-choosing-print-sizes",
+    "title": "The Complete Guide to Choosing Print Sizes for Your Home",
+    "excerpt": "From A3 up to 50 x 70 cm: how the sizes we print compare, where each works best in the home, and how to pick the right one for your wall.",
+    "published": true,
+    "featured": false,
+    "image": "/images/products/hummer-og-vin-scene.avif",
+    "author": "",
+    "category": "Guide",
+    "tags": [
+      "print sizes"
+    ],
+    "relatedArticles": [
+      "how-to-style-scandinavian-wall-art-living-room",
+      "the-art-of-choosing-art-comprehensive-guide",
+      "nordic-art-and-design-books",
+      "best-scandinavian-art-prints"
+    ],
+    "selectedArtworkIds": [
+      "25833fb2-2b5f-80df-ba0c-c6345279c5f7",
+      "25933fb2-2b5f-8082-8dd4-c381e316909c"
+    ],
+    "created_time": "2026-07-08T06:01:00.000Z",
+    "last_edited_time": "2026-10-08T10:18:25.891Z",
+    "published_time": "2026-07-08T06:01:00.000Z"
   },
   {
     "id": "cmsg8ahnc000b9yrvefa80g77",
@@ -553,12 +720,11 @@
       "an-interview-by-nordic-notes"
     ],
     "selectedArtworkIds": [
-      "birdie-blue",
-      "swallow-dive",
-      "hyttefrokost"
+      "25833fb2-2b5f-8035-bcd5-e762f4db18fc"
     ],
     "created_time": "2026-07-08T05:22:00.000Z",
-    "last_edited_time": "2026-08-10T15:07:53.863Z"
+    "last_edited_time": "2026-10-08T10:18:28.810Z",
+    "published_time": "2026-07-08T05:22:00.000Z"
   },
   {
     "id": "cmsg8ahwb000c9yrvg9ypr8b1",
@@ -578,12 +744,13 @@
       "scandinavian-wall-decor-ideas"
     ],
     "selectedArtworkIds": [
-      "hyttefrokost",
-      "birdie-blue",
-      "slingshot"
+      "25933fb2-2b5f-8075-8088-e906c2d45bfc",
+      "25933fb2-2b5f-8038-b599-f96a307224e5",
+      "25933fb2-2b5f-806c-91e3-d6a543d98a98"
     ],
     "created_time": "2025-08-30T18:39:00.000Z",
-    "last_edited_time": "2026-08-05T13:38:27.602Z"
+    "last_edited_time": "2026-10-08T10:18:09.132Z",
+    "published_time": "2025-08-30T18:39:00.000Z"
   },
   {
     "id": "cmsg8ai8s000d9yrvukjqu084",
@@ -600,12 +767,12 @@
       "who-are-scandinavian-art"
     ],
     "selectedArtworkIds": [
-      "eye-nose-eye",
-      "morgenstrekk",
-      "slingshot"
+      "25833fb2-2b5f-8035-bcd5-e762f4db18fc",
+      "25933fb2-2b5f-8075-8088-e906c2d45bfc"
     ],
     "created_time": "2025-08-08T13:02:00.000Z",
-    "last_edited_time": "2026-08-05T13:15:01.468Z"
+    "last_edited_time": "2026-10-08T10:18:28.982Z",
+    "published_time": "2025-08-08T13:02:00.000Z"
   },
   {
     "id": "cmsg8aijl000e9yrv7s5qpx6q",
@@ -623,12 +790,12 @@
       "an-interview-by-nordic-notes"
     ],
     "selectedArtworkIds": [
-      "eye-nose-eye",
-      "morgenstrekk",
-      "slingshot"
+      "25933fb2-2b5f-8082-8dd4-c381e316909c",
+      "25933fb2-2b5f-80e9-8300-ffb3584852bc"
     ],
     "created_time": "2025-08-08T12:57:00.000Z",
-    "last_edited_time": "2026-08-05T13:15:01.857Z"
+    "last_edited_time": "2026-10-08T10:18:29.085Z",
+    "published_time": "2025-08-08T12:57:00.000Z"
   },
   {
     "id": "cmsg8aiwm000f9yrvv7afysed",
@@ -646,11 +813,11 @@
       "an-interview-by-nordic-notes"
     ],
     "selectedArtworkIds": [
-      "birdie-blue",
-      "hummer-og-vin",
-      "swallow-dive"
+      "25933fb2-2b5f-806c-91e3-d6a543d98a98",
+      "25833fb2-2b5f-8033-9e60-c29f291281f9"
     ],
     "created_time": "2025-08-08T07:17:00.000Z",
-    "last_edited_time": "2026-08-05T13:15:02.326Z"
+    "last_edited_time": "2026-10-08T10:18:30.193Z",
+    "published_time": "2025-08-08T07:17:00.000Z"
   }
 ]

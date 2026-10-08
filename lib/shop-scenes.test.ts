@@ -21,11 +21,11 @@ describe('curated scenes survive refreshed CMS snapshots', () => {
 
   it('refreshes single-work inspiration dimensions and alt without changing paired compositions', async () => {
     vi.spyOn(fs, 'readFile').mockResolvedValue(JSON.stringify([
-      { image: '/cms/old.jpg', alt: 'Old composition', slugs: ['dancer'], width: 1600, height: 1394 },
-      { image: '/cms/pair.jpg', alt: 'A pair', slugs: ['dancer', 'half-man'], width: 1600, height: 900 },
+      { image: '/cms/old.jpg', alt: 'Old composition', slugs: ['eltsjoen'], width: 1600, height: 1394 },
+      { image: '/cms/pair.jpg', alt: 'A pair', slugs: ['eltsjoen', 'half-man'], width: 1600, height: 900 },
     ]));
     const scenes = await getInspireScenes();
-    expect(scenes[0]).toMatchObject({ ...shopScenes.dancer, slugs: ['dancer'] });
+    expect(scenes[0]).toMatchObject({ ...shopScenes.eltsjoen, slugs: ['eltsjoen'] });
     expect(scenes[1]).toMatchObject({ image: '/cms/pair.jpg', alt: 'A pair', width: 1600, height: 900 });
   });
 });
@@ -55,7 +55,7 @@ describe('room image paper size', () => {
     expect(displayedScenePaperSize('through-the-willows', scene.image, { '50x70cm': false })).toBeUndefined();
     expect(displayedScenePaperSize('through-the-willows', scene.image, undefined)).toBeUndefined();
     expect(displayedScenePaperSize('through-the-willows', scene.image, { '50x70cm': true, '40x50cm': true })).toBeUndefined();
-    expect(displayedScenePaperSize('dancer', shopScenes.dancer.image, { '50x70cm': true })).toBeUndefined();
+    expect(displayedScenePaperSize('eltsjoen', shopScenes.eltsjoen.image, { '50x70cm': true })).toBeUndefined();
   });
 });
 

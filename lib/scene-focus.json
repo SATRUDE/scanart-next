@@ -63,28 +63,12 @@
     "score": 0.931,
     "ar": 0.8003
   },
-  "/images/products/dancer-room-chatgpt-2026-09-23.avif": {
-    "x": 56.4,
-    "y": 20.6,
-    "w": 19,
-    "h": 21.5,
-    "score": 0.936,
-    "ar": 0.8003
-  },
   "/images/products/desert-circles-room.avif": {
     "x": 50.6,
     "y": 23.5,
     "w": 32.1,
     "h": 26,
     "score": 0.877,
-    "ar": 0.8003
-  },
-  "/images/products/dragon-room-chatgpt-2026-09-23.avif": {
-    "x": 66.1,
-    "y": 25.9,
-    "w": 24,
-    "h": 27.2,
-    "score": 0.67,
     "ar": 0.8003
   },
   "/images/products/eltsjoen-room-chatgpt-2026-09-23.avif": {
@@ -157,14 +141,6 @@
     "w": 21,
     "h": 23.8,
     "score": 0.631,
-    "ar": 0.8003
-  },
-  "/images/products/ithinkithink-room-2026-09-23.avif": {
-    "x": 36.9,
-    "y": 23.8,
-    "w": 22.1,
-    "h": 25,
-    "score": 0.534,
     "ar": 0.8003
   },
   "/images/products/journey-room-test29-2026-09-28.avif": {
@@ -311,14 +287,6 @@
     "score": 0.919,
     "ar": 0.8003
   },
-  "/images/products/swallow-dive-room-2026-09-23.avif": {
-    "x": 36.1,
-    "y": 34.4,
-    "w": 26,
-    "h": 29.5,
-    "score": 0.311,
-    "ar": 0.8003
-  },
   "/images/products/swan-on-still-water-room-2026-09-28.avif": {
     "x": 50.8,
     "y": 26.6,
@@ -341,14 +309,6 @@
     "w": 15,
     "h": 16.7,
     "score": 0.946,
-    "ar": 0.8003
-  },
-  "/images/products/tree-top-peach-room-chatgpt-2026-09-23.avif": {
-    "x": 70.5,
-    "y": 20,
-    "w": 19.5,
-    "h": 23,
-    "score": "manual",
     "ar": 0.8003
   },
   "/images/products/trysilkaffe-room-chatgpt-2026-09-23.avif": {

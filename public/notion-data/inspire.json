@@ -115,23 +115,5 @@
     ],
     "width": 1194,
     "height": 1600
-  },
-  {
-    "image": "/notion-data/heroes/inspire-scene-14-f0058a95.jpg",
-    "alt": "swallow dive styled in a room scene",
-    "slugs": [
-      "swallow-dive"
-    ],
-    "width": 1024,
-    "height": 1024
-  },
-  {
-    "image": "/notion-data/heroes/inspire-scene-15-6b57bdc1.jpg",
-    "alt": "dancer styled in a room scene",
-    "slugs": [
-      "dancer"
-    ],
-    "width": 1600,
-    "height": 1394
   }
 ]

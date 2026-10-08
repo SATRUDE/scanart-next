@@ -22,7 +22,7 @@
 export type AltLocale = 'en' | 'no';
 
 interface AltVocabulary {
-  /** Joins the work to its maker: "Dragon by Helene Brox" / "Dragon av ...". */
+  /** Joins the work to its maker: "Slingshot by Simen Wahlqvist" / "Slingshot av ...". */
   by: string;
   /**
    * The catalogue's `category` values are plural nouns used as page headings

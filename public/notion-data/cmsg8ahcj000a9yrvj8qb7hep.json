@@ -86,10 +86,10 @@
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "A common mistake is choosing art that simply matches your sofa cushions. Think contrast and conversation instead. A bold abstract like ",
+          "plain_text": "A common mistake is choosing art that simply matches your sofa cushions. Think contrast and conversation instead. A bold print like ",
           "href": null,
           "text": {
-            "content": "A common mistake is choosing art that simply matches your sofa cushions. Think contrast and conversation instead. A bold abstract like ",
+            "content": "A common mistake is choosing art that simply matches your sofa cushions. Think contrast and conversation instead. A bold print like ",
             "link": null
           },
           "annotations": {
@@ -102,12 +102,12 @@
         },
         {
           "type": "text",
-          "plain_text": "IThinkIThink",
-          "href": "/product/ithinkithink",
+          "plain_text": "Half Man",
+          "href": "/product/half-man",
           "text": {
-            "content": "IThinkIThink",
+            "content": "Half Man",
             "link": {
-              "url": "/product/ithinkithink"
+              "url": "/product/half-man"
             }
           },
           "annotations": {
@@ -136,12 +136,12 @@
         },
         {
           "type": "text",
-          "plain_text": "Tree Top Peach",
-          "href": "/product/tree-top-peach",
+          "plain_text": "Rosa Blomster",
+          "href": "/product/rosa-blomster",
           "text": {
-            "content": "Tree Top Peach",
+            "content": "Rosa Blomster",
             "link": {
-              "url": "/product/tree-top-peach"
+              "url": "/product/rosa-blomster"
             }
           },
           "annotations": {
@@ -396,10 +396,10 @@
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "Dedicate one wall to a single large-format piece and let it anchor the space, which works especially well in open-plan rooms. The biggest formats we print are A1 and 50 x 70 cm: ",
+          "plain_text": "Dedicate one wall to a single large-format piece and let it anchor the space, which works especially well in open-plan rooms. The biggest format we print is 50 x 70 cm, and it's enough: ",
           "href": null,
           "text": {
-            "content": "Dedicate one wall to a single large-format piece and let it anchor the space, which works especially well in open-plan rooms. The biggest formats we print are A1 and 50 x 70 cm: ",
+            "content": "Dedicate one wall to a single large-format piece and let it anchor the space, which works especially well in open-plan rooms. The biggest format we print is 50 x 70 cm, and it's enough: ",
             "link": null
           },
           "annotations": {
@@ -412,12 +412,12 @@
         },
         {
           "type": "text",
-          "plain_text": "Birdie Blue",
-          "href": "/product/birdie-blue",
+          "plain_text": "Morgenlevering",
+          "href": "/product/morgenlevering",
           "text": {
-            "content": "Birdie Blue",
+            "content": "Morgenlevering",
             "link": {
-              "url": "/product/birdie-blue"
+              "url": "/product/morgenlevering"
             }
           },
           "annotations": {
@@ -430,10 +430,10 @@
         },
         {
           "type": "text",
-          "plain_text": " in A1 can command a wall on its own, and the 50 x 70 pieces, ",
+          "plain_text": " can command a wall on its own, and ",
           "href": null,
           "text": {
-            "content": " in A1 can command a wall on its own, and the 50 x 70 pieces, ",
+            "content": " can command a wall on its own, and ",
             "link": null
           },
           "annotations": {
@@ -464,10 +464,10 @@
         },
         {
           "type": "text",
-          "plain_text": " for one, hold the same job through presence rather than sheer size.",
+          "plain_text": " holds the same job through density rather than sheer size.",
           "href": null,
           "text": {
-            "content": " for one, hold the same job through presence rather than sheer size.",
+            "content": " holds the same job through density rather than sheer size.",
             "link": null
           },
           "annotations": {
@@ -550,10 +550,10 @@
         },
         {
           "type": "text",
-          "plain_text": " is the house example, ochre on warm peach. Blues and teals add a cool, coastal feel, which is the deep cobalt of ",
+          "plain_text": " is the house example, ochre on warm peach. Blues and teals add a cool, coastal feel, which is the layered blue leaves of ",
           "href": null,
           "text": {
-            "content": " is the house example, ochre on warm peach. Blues and teals add a cool, coastal feel, which is the deep cobalt of ",
+            "content": " is the house example, ochre on warm peach. Blues and teals add a cool, coastal feel, which is the layered blue leaves of ",
             "link": null
           },
           "annotations": {
@@ -566,12 +566,12 @@
         },
         {
           "type": "text",
-          "plain_text": "Swallow Dive",
-          "href": "/product/swallow-dive",
+          "plain_text": "Creature Among Blue Leaves",
+          "href": "/product/creature-among-blue-leaves",
           "text": {
-            "content": "Swallow Dive",
+            "content": "Creature Among Blue Leaves",
             "link": {
-              "url": "/product/swallow-dive"
+              "url": "/product/creature-among-blue-leaves"
             }
           },
           "annotations": {

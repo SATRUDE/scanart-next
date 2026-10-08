@@ -6,7 +6,7 @@
 //
 // Register: the site's warm, plain British English carried over into equally
 // plain, natural bokmål. Translate meaning, never word for word. No em dashes.
-// Product names (Eltsjoen, Tree Top Peach, Morgenstrekk...) and the brand name
+// Product names (Eltsjoen, Vinkveld, Morgenstrekk...) and the brand name
 // stay as they are in the catalogue.
 
 import type {
@@ -136,7 +136,6 @@ export const no = {
         printOne: 'trykk',
         printOther: 'trykk',
         lines: {
-          'helene-brox': 'Illustratør, bokstavkunstner og veggmaler, og en av grunnleggerne av byrået Heiaklubben.',
           'simen-wahlqvist': 'Grafisk designer og illustratør som fanger øyeblikk med så få streker som mulig.',
           'sia-siamos': 'Halvt gresk, halvt norsk: stilleben, mat og de stille detaljene i hverdagen.',
           'ingunn-dybendal': 'Illustratør i kollektivet Heiaklubben, med arbeider fra en Google Doodle til en vegg på 360 kvadratmeter.',
@@ -516,12 +515,12 @@ export const no = {
         'Botaniske trykk og kunstplakater fra nordiske kunstnere: blomstermotiver, nordiske landskap og fargerike stilleben. Med eller uten ramme.',
       heading: 'Botaniske trykk',
       intro:
-        'Botaniske trykk er en av de enkleste veiene inn i kunsten for et hjem i skandinavisk stil, og her spenner de fra blomster til dekkede bord. Ingunn Dybendal tegner folkelige blomstermotiver og et mønstret nordisk landskap, Helene Brox fyller rammen med fugler blant grener i en myk papirklippstil, og Sia Siamos maler fargerike stilleben fra kjøkkenbordet. Fra Sverige maler Hedvig Wallin rader av akvarellepler, og Ishtar Bäcklund Dakhil tegner syriner og en side med frukt og grønnsaker med håndskrevne svenske navn. Hvert botanisk kunsttrykk lages på bestilling, med eller uten ramme.',
+        'Botaniske trykk er en av de enkleste veiene inn i kunsten for et hjem i skandinavisk stil, og her spenner de fra blomster til dekkede bord. Ingunn Dybendal tegner folkelige blomstermotiver og et mønstret nordisk landskap, og Sia Siamos maler fargerike stilleben fra kjøkkenbordet. Fra Sverige maler Hedvig Wallin rader av akvarellepler, og Ishtar Bäcklund Dakhil tegner syriner og en side med frukt og grønnsaker med håndskrevne svenske navn. Hvert botanisk kunsttrykk lages på bestilling, med eller uten ramme.',
       intro2:
         'Hvite vegger og lyst treverk er en palett som venter på nettopp denne typen varme, og en botanisk plakat gir rommet det uten at det tipper over i rot. Dette er uavhengige kunstnere vi jobber direkte med, og hvert verk i kategorien trykkes på bestilling på 200 g ubestrøket papir.',
       stylingHeading: 'Slik bruker du botaniske trykk',
       stylingBody:
-        'Kjøkken og spiseplasser er det naturlige hjemmet for Sia Siamos’ bordscener; heng en der du faktisk spiser, så gjør den nytte for seg hver dag. De mildere verkene, spesielt Tree Top Peach, passer på soverom og i lesekroker, mens det tette mønsteret i Eltsjoen belønner en vegg du passerer langsomt, en gang eller en trappeavsats. De fleste verkene her deler formatet 50 x 70 cm, så par kommer lett: prøv en Dybendal ved siden av en Siamos og la fargene snakke sammen.',
+        'Kjøkken og spiseplasser er det naturlige hjemmet for Sia Siamos’ bordscener; heng en der du faktisk spiser, så gjør den nytte for seg hver dag. De mildere verkene, spesielt Rosa Blomster, passer på soverom og i lesekroker, mens det tette mønsteret i Eltsjoen belønner en vegg du passerer langsomt, en gang eller en trappeavsats. De fleste verkene her deler formatet 50 x 70 cm, så par kommer lett: prøv en Dybendal ved siden av en Siamos og la fargene snakke sammen.',
       faqs: [
         {
           question: 'Er botaniske trykk bare blomster?',
@@ -543,25 +542,25 @@ export const no = {
     abstract: {
       title: 'Abstrakte trykk og kunstplakater',
       description:
-        'Abstrakte trykk og kunstplakater fra nordiske kunstnere: rene silhuetter, djerve fuglemotiver og geometriske landskap. Med eller uten ramme.',
+        'Abstrakte trykk og kunstplakater fra nordiske kunstnere: geometriske landskap i trygge farger, laget på bestilling. Med eller uten ramme.',
       heading: 'Abstrakte trykk',
       intro:
-        'Leter du etter abstrakt kunst som plakat eller trykk, er dette den rolige, nordiske enden av sjangeren: former skrelles ned til bare den essensielle silhuetten står igjen, og én eller to flate farger gjør jobben til ti. Helene Brox maler løse, papirklippaktige figurer i kremhvitt på én fargeflate, og skjærer en stupende svale ned til selve vingekastet. Ishtar Bäcklund Dakhil i Stockholm deler et ørkenlandskap i overlappende sirkler. Hvert trykk kan bestilles med eller uten ramme.',
+        'Leter du etter abstrakt kunst som plakat eller trykk, er dette den rolige, nordiske enden av sjangeren: former skrelles ned til bare den essensielle silhuetten står igjen, og én eller to flate farger gjør jobben til ti. Ishtar Bäcklund Dakhil i Stockholm deler et ørkenlandskap i overlappende hvite sirkler, der rustfargede klipper, kaktuser og støvrosa åser gjentas i mønsteret og klare turkise åpninger bryter gjennom. Hvert trykk kan bestilles med eller uten ramme.',
       intro2:
         'Abstrakt veggkunst av dette slaget passer i stuer og soverom som allerede nærmer seg ro. Hvis rommet ditt heller mot det minimalistiske, lyst treverk, rolige tekstiler, rikelig med lys, gir et abstrakt trykk øyet ett trygt sted å lande uten å rope over rommet. Og fordi komposisjonene er enkle, leses de like godt fra andre siden av rommet som på nært hold.',
       stylingHeading: 'Slik bruker du abstrakte trykk',
       stylingBody:
-        'Ett stort abstrakt verk kan bære en vegg alene; heng det med midten av verket omtrent 145 til 150 cm fra gulvet. Verkene til Helene Brox deler samme flatfargespråk, så to av dem side om side leses som én bevisst gest snarere enn to trykk uten sammenheng. Velg et trykk der bunnfargen speiler noe som allerede finnes i rommet, en pute, et teppe, en rad bokrygger, så faller veggen på plass.',
+        'Ett stort abstrakt verk kan bære en vegg alene; heng det med midten av verket omtrent 145 til 150 cm fra gulvet. Velg et trykk der bunnfargen speiler noe som allerede finnes i rommet, en pute, et teppe, en rad bokrygger, så faller veggen på plass.',
       faqs: [
         {
           question: 'Hva gjør abstrakt kunst skandinavisk?',
           answer:
-            'Mest av alt tilbakeholdenhet. Der mye abstrakt kunst legger på tekstur og store gester, forenkler den nordiske retningen: flate farger, rene silhuetter, og former som kan spores tilbake til naturen, fugler, kropper, vann. Hvert abstrakte trykk her er laget av en uavhengig kunstner som lever og arbeider i Norden.',
+            'Mest av alt tilbakeholdenhet. Der mye abstrakt kunst legger på tekstur og store gester, forenkler den nordiske retningen: flate farger, rene silhuetter, og former som kan spores tilbake til naturen, landskap, vann. Hvert abstrakte trykk her er laget av en uavhengig kunstner som lever og arbeider i Norden.',
         },
         {
           question: 'Hvilke størrelser finnes de abstrakte trykkene i?',
           answer:
-            'Helene Brox’ verk trykkes alle i 50 x 70 cm, som er et romslig format for ett enkelt trykk, og Desert Circles er et kvadrat på 50 x 50 cm. Som en tommelfingerregel bærer 50 x 70 cm en sofa- eller sengevegg alene, og to av dem fyller en bredere vegg uten at du trenger et tredje.',
+            'Desert Circles er et kvadrat på 50 x 50 cm. Størrelsen står på produktsiden, med prisen oppgitt før du legger trykket i kurven.',
         },
         {
           question: 'Kan jeg kjøpe abstrakte trykk med ramme?',
@@ -618,14 +617,14 @@ export const no = {
         'Utvalgt skandinavisk og nordisk veggkunst til stua: varme trykk med karakter fra uavhengige nordiske kunstnere. Velg med eller uten ramme, sendes over hele verden.',
       heading: 'Skandinavisk veggkunst til stua',
       intro:
-        'Stueveggen er den gjestene faktisk ser på, så den fortjener et trykk du har valgt med vilje, ikke en plakat som fulgte med rammen. Dette utvalget samler den skandinaviske veggkunsten vår som har nok nærvær for en stue: Sia Siamos sine varme bordscener, Ingunn Dybendals mønstrede innsjølandskap og Helene Brox sine djerve, kremhvite figurer, blant andre. Hvert verk lages på bestilling og kan kjøpes med ramme i tre, svart eller hvitt, eller helt uten.',
+        'Stueveggen er den gjestene faktisk ser på, så den fortjener et trykk du har valgt med vilje, ikke en plakat som fulgte med rammen. Dette utvalget samler den skandinaviske veggkunsten vår som har nok nærvær for en stue: Sia Siamos sine varme bordscener, Ingunn Dybendals mønstrede innsjølandskap og Simen Wahlqvists tørrvittige strek, blant andre. Hvert verk lages på bestilling og kan kjøpes med ramme i tre, svart eller hvitt, eller helt uten.',
       intro2:
         'Stua er også rommet der et trykk blir sett mest, både i morgenlys og i lampelys, så det lønner seg å velge noe du fortsatt liker ved hundrede blikk og ikke bare ved det første. Skandinavisk veggkunst til stua får den holdbarheten gjennom tilbakeholdenhet: trygg farge og ren form framfor travle detaljer. Start med ett verk du er sikker på, og bygg veggen rundt det. En gallerivegg blir sjelden god når alt kommer opp samtidig.',
       stylingHeading: 'Slik henger du kunst i stua',
       stylingTips: [
         'Heng midten av verket i øyehøyde, omtrent 145 til 150 cm over gulvet. Over en sofa bør du la det stå 15 til 25 cm mellom rammen og sofaryggen.',
-        'Ett stort trykk gir en blikkfangervegg; et par eller en trio (Swallow Dive og Tree Top Peach går fint sammen) gir en enkel gallerivegg.',
-        'Varme toner som Tree Top Peach myker opp et minimalistisk rom, mens et djervt abstrakt verk løfter en roligere palett.',
+        'Ett stort trykk gir en blikkfangervegg; et par eller en trio (Eye Nose Eye og Half Man går fint sammen) gir en enkel gallerivegg.',
+        'Varme toner som Hyttefrokost myker opp et minimalistisk rom, mens et djervt abstrakt verk løfter en roligere palett.',
       ],
       stylingCards: [
         {
@@ -635,12 +634,12 @@ export const no = {
         },
         {
           label: 'Gruppering',
-          tip: 'Ett stort trykk gir en blikkfangervegg; et par eller en trio (Swallow Dive og Tree Top Peach går fint sammen) gir en enkel gallerivegg.',
+          tip: 'Ett stort trykk gir en blikkfangervegg; et par eller en trio (Eye Nose Eye og Half Man går fint sammen) gir en enkel gallerivegg.',
           alt: 'To innrammede skandinaviske trykk side om side over et skjenk i en stue',
         },
         {
           label: 'Tone',
-          tip: 'Varme toner som Tree Top Peach myker opp et minimalistisk rom, mens et djervt abstrakt verk løfter en roligere palett.',
+          tip: 'Varme toner som Hyttefrokost myker opp et minimalistisk rom, mens et djervt abstrakt verk løfter en roligere palett.',
           alt: 'Ett djervt rødt kunsttrykk på en nøytral vegg i en skandinavisk stue',
         },
       ],
@@ -807,25 +806,25 @@ export const no = {
     'birds-and-animals': {
       title: 'Skandinavisk fuglekunst og dyretrykk',
       description:
-        'Nordisk fugle- og dyrekunst av uavhengige kunstnere: en stupende koboltblå svale, en flokk skjult i ferskenfargede grener, en drage og et fly over en dal som også kan leses som en fugl.',
+        'Nordisk fugle- og dyrekunst av uavhengige kunstnere: en svane på en tåkete innsjø, en kråke i desembertåke, sauer på en gårdsvei, et vesen med horn blant blå blader og et fly som også kan leses som en fugl.',
       heading: 'Fugle- og dyrekunst fra nordiske kunstnere',
       intro:
-        'Hvert vesen her er en form før det er et vesen. Helene Brox arbeider flatt og uten dill: en koboltblå svale skåret ned til selve vingekastet, dusinvis av små silhuetter skjult i et ferskenfarget gitter av grener, og en drage som slynger seg over sort i bånd av hvitt, rødt og rosa. Ishtar Bäcklund Dakhil i Stockholm sender et lyst fly, som også kan leses som en fugl, over en grønn dal og halvveis skjuler en hornet skapning blant blå blader. Det er dette som gjør at et dyretrykk sitter godt i et skandinavisk rom, mønster og silhuett framfor detaljer fra en feltguide. Hvert trykk her kan kjøpes med ramme i tre, svart eller hvitt, eller uten.',
+        'Hvert dyr her lever inne i landskapet sitt i stedet for å posere for det. Ishtar Bäcklund Dakhil i Stockholm sender et blekt fly, som også kan leses som en fugl, over en grønn dal, og halvt skjuler et vesen med horn blant blå blader. Markus Naarttijärvi fotograferer en ensom svane som driver over en tåkete innsjø i morgenlyset, og en liten flokk mørke sauer som ser rett inn i kameraet fra en gjørmete vei. Patrik Wennerlund fanget kråka si en desembermorgen med tykk tåke. Det er dette som gjør at et dyretrykk sitter godt i et skandinavisk rom: stemning og form framfor detaljer fra en fuglebok. Hvert trykk her kan kjøpes med ramme i tre, svart eller hvitt, eller uten ramme.',
       intro2:
-        'Stemningene skiller seg mer enn motivene. Swallow Dive er bare to farger, kobolt på kremhvitt, og den vil ha en vegg for seg selv der stupet har et sted å gå. Tree Top Peach er den mildeste av dem, nærmere en folkelig papirklipp enn en illustrasjon, og den belønner å bli hengt der du faktisk sitter. Dragon er den høylytte, et fabeldyr sett i glimt på sort bunn, og den trenger en vegg som holder nervene i sjakk. Velg på bunnfargen framfor vesenet: kobolt går kjølig mot hvite vegger og lyst tre, fersken går varmt sammen med tre og jordnære tekstiler, og sort forankrer et helt rom. Få bakgrunnen riktig, så ordner resten seg selv.',
+        'Stemningene skiller seg mer enn motivene. Swan on Still Water er den roligste, nesten speilblank, med den lille hvite fuglen som eneste lyse punkt i bildet. Sheep on the Track er litt lun, og kråka er den mest dystre, en fugl holdt i en tåke sola aldri helt brøt gjennom. Ishtars to illustrasjoner bringer fargen: grønn dal, blå elver og rosa fjell under flyet, kjølige blå blader med innslag av oker rundt vesenet. Velg etter lyset framfor dyret. Tåkegrått og mykt hvitt er stille mot lyse vegger og tre, og de malte verkene bærer en vegg som trenger farge.',
       stylingHeading: 'Slik henger du fugle- og dyretrykk',
       stylingTips: [
-        'Ett enkelt dyretrykk gjør seg best med en vegg for seg selv. Sentrer det i øyehøyde, omtrent 145 til 150 cm over gulvet, og la plassen på hver side stå tom; bevegelsen i disse trykkene trenger et sted å gå.',
-        'Match bunnfargen til rommet, ikke til fuglene. Kobolt trives på hvite vegger og lyst tre, mens Tree Top Peach vil ha varme rundt seg: tre, lær, jordnære tekstiler.',
-        'Swallow Dive og Tree Top Peach henger godt sammen fordi ingen av dem roper. Samme størrelse, samme ramme, en jevn åpning på 5 til 8 cm, og de leses som et bevisst par framfor to trykk som tilfeldigvis begge har fugler i seg. Dragon gjør seg best alene.',
-        'Vil du heller holde deg til én kunstner over en større vegg, sitter begge disse godt ved siden av de abstrakte verkene til Helene Brox, som deler samme flatfargespråk.',
+        'Ett enkelt dyretrykk gjør seg best med en vegg for seg selv. Sentrer det i øyehøyde, omtrent 145 til 150 cm over gulvet, og la plassen på hver side stå tom, så landskapet rundt dyret får rom.',
+        'Match lyset til rommet, ikke til dyret. De tåkete fotografiene trives på hvite vegger og lyst tre, mens Ishtars malte verk vil ha varme og farge rundt seg.',
+        'De to fotografiene til Markus Naarttijärvi henger godt sammen fordi de deler fotografens blikk og et fuktig nordisk lys. Samme ramme, en jevn åpning på 5 til 8 cm, og de leses som et bevisst par.',
+        'Vil du heller holde deg til én kunstner over en større vegg, deler Ishtar Bäcklund Dakhils andre illustrasjoner det samme håndmalte språket som flyet og vesenet.',
       ],
       relatedArticleLabel: 'Slik lager du en kunstvegg med flere verk',
       faqs: [
         {
           question: 'Hva gjør at et dyretrykk føles skandinavisk?',
           answer:
-            'Flat farge og silhuett, stort sett. Helene Brox behandler vesenet som en form framfor en studie: Swallow Dive bærer en hel stupende fugl i to farger, Tree Top Peach er nærmere en folkelig papirklipp enn en illustrasjon, og Dragon løser fabeldyret opp i ren rytme, mens flyet til Ishtar Bäcklund Dakhil krysser dalen som én lys form. Begge kunstnerne lever og arbeider i Norden, og det er derfor disse leses som nordiske dyretrykk framfor noe fra tradisjonen med zoologiske plansjer.',
+            'Stemning og form, stort sett. Dyrene her er en del av et nordisk landskap framfor studier av seg selv: Markus Naarttijärvis svane driver på en tåkete innsjø, Patrik Wennerlunds kråke sitter i desembertåke, og Ishtar Bäcklund Dakhils fly krysser dalen sin som én blek form. Alle tre kunstnerne lever og arbeider i Norden, og derfor leses dette som nordiske dyretrykk og ikke som noe fra tradisjonen med naturhistoriske plansjer.',
         },
         {
           question: 'Hvilke størrelser kommer disse trykkene i, og kan jeg få dem med ramme?',
@@ -891,10 +890,6 @@ export const no = {
   // Norwegian versions of data/artists.ts bios and locations, keyed by slug.
   // Fall back to the English data for any artist missing here.
   artists: {
-    'helene-brox': {
-      location: 'Oslo, Norge',
-      bio: 'Helene Brox er illustratør, veggmaler og arbeider med håndtegnede bokstaver, bosatt i Oslo, og en av grunnleggerne av illustrasjonsbyrået Heiaklubben. Bokomslagene hennes fikk sølv og diplom i Årets vakreste bøker i 2016, og hun finner opp helt urealistiske, podede planter som hun selger som trykk.',
-    },
     'simen-wahlqvist': {
       location: 'Oslo, Norge',
       bio: 'Simen Wahlqvist er en norsk grafisk designer og illustratør bosatt i Oslo. I arbeidet sitt prøver han å fange øyeblikk, ofte før de skjer, med så få streker som mulig. Får en illustrasjon ham til å le, er den ferdig.',
@@ -939,7 +934,6 @@ export const no = {
   artistStatements: {
     'simen-wahlqvist': 'Han prøver å fange øyeblikk, ofte før de skjer, med så få streker som mulig.',
     'hedvig-wallin': 'Hold tegningen enkel, la perspektivet bli skjevt, og fyll på med detaljer til det andre blikket.',
-    'helene-brox': 'Figurer og fugler skåret ned til silhuett, malt med papirklippets selvsikkerhet.',
     'ingunn-dybendal': 'More is more is more is more.',
     'sia-siamos': 'Tiltrukket av de stille detaljene som sier mest.',
     'mikko-saarainen': 'Han lar detaljene fortsette helt ut i kantene, så tegningene blir lest like mye som sett.',
@@ -957,13 +951,6 @@ export const no = {
   // when this copy was written, which is exactly the kind of link that goes
   // stale silently when the tree grows.
   artistEditorial: {
-    'helene-brox': {
-      heading: 'Formen får snakke',
-      para1:
-        'Helene Brox, kunstner og illustratør bosatt i Oslo, arbeider i djerve, flate former: figurer og fugler skåret ned til silhuett, malt med papirklippets selvsikkerhet og satt på én bunnfarge. Gjennom trykkene hennes holder den samme disiplinen, enten stemningen er rolig eller høylytt. Swallow Dive bærer all bevegelsen sin i én koboltblå og én kremhvit; Dancer fanger en figur midt i steget, uten ansikt og uten gulv; Dragon løser et fabeldyr opp i bånd av farge mot sort. Selv IThinkIThink, det mest høylytte trykket i galleriet, bærer bekjennelsen sin i de samme djerve, utklippede formene.',
-      para2:
-        'Hvilken Brox som passer i et rom, avhenger av hvor mye mot veggen har. Tree Top Peach og Swallow Dive er de milde; de faller til ro på et soverom eller i en lesekrok uten å forsvinne i det, og begge trives blant de roligere verkene i [soveromssamlingen](/no/collection/bedroom). [Dragon](/no/product/dragon) og IThinkIThink vil ha rommet der folk samles og prater. Alle deler det samme utklippsspråket, så to av dem henger naturlig sammen, ett rolig og ett høylytt, og paret leses som bevisst snarere enn matchet.',
-    },
     'simen-wahlqvist': {
       heading: 'Så få streker som mulig',
       para1:
@@ -1228,9 +1215,9 @@ export const no = {
       'Kjøp skandinavisk veggkunst og nordiske kunsttrykk av uavhengige kunstnere fra hele Norden: med ramme i tre, svart eller hvit, eller uten ramme, laget på bestilling.',
     heading: 'Skandinavisk veggkunst og nordiske kunsttrykk',
     intro:
-      'Denne siden er hele galleriet av skandinavisk veggkunst: nordiske kunsttrykk, hvert av dem av en uavhengig kunstner som lever og arbeider i Norden, og hvert av dem solgt med eller uten ramme. Helene Brox maler nedskrelte, kremhvite figurer i Oslo og skjærer en svale ned til selve stupet av vingene. Ingunn Dybendal tegner folkeblomster og mønstret innsjølandskap i fargeblyant, Sia Siamos fyller bord med hummer, vin og hyttefrokost, Simen Wahlqvist får plass til en hel vits i en håndfull streker, Hedvig Wallin dekker et frokostbord fra Göteborg i tusj og akvarell, Mikko Saarainen fyller hver krok av en finsk tegneserieside, og Ishtar Bäcklund Dakhil beveger seg mellom Stockholms havnefront og fantasiverdener. Ikke et fyllbilde blant dem.',
+      'Denne siden er hele galleriet av skandinavisk veggkunst: nordiske kunsttrykk, hvert av dem av en uavhengig kunstner som lever og arbeider i Norden, og hvert av dem solgt med eller uten ramme. Ingunn Dybendal tegner folkeblomster og mønstret innsjølandskap i fargeblyant, Sia Siamos fyller bord med hummer, vin og hyttefrokost, Simen Wahlqvist får plass til en hel vits i en håndfull streker, Hedvig Wallin dekker et frokostbord fra Göteborg i tusj og akvarell, Mikko Saarainen fyller hver krok av en finsk tegneserieside, og Ishtar Bäcklund Dakhil beveger seg mellom Stockholms havnefront og fantasiverdener. Ikke et fyllbilde blant dem.',
     intro2:
-      'Å kjøpe skandinaviske kunsttrykk på nett betyr vanligvis å skrolle gjennom et marked med ti tusen plakater som aldri har vært i nærheten av en fjord. Dette er det motsatte. Et lite galleri, kunstnere vi jobber direkte med, og hvert trykk laget på bestilling framfor hentet fra et lager. Velg bildet først og rammen etterpå, og klarer du ikke å velge mellom to, er kvadratene til Wahlqvist og fugleparet til Brox laget for å henge sammen.',
+      'Å kjøpe skandinaviske kunsttrykk på nett betyr vanligvis å skrolle gjennom et marked med ti tusen plakater som aldri har vært i nærheten av en fjord. Dette er det motsatte. Et lite galleri, kunstnere vi jobber direkte med, og hvert trykk laget på bestilling framfor hentet fra et lager. Velg bildet først og rammen etterpå, og klarer du ikke å velge mellom to, er kvadratene til Wahlqvist laget for å henge sammen.',
     framedHeading: 'Med eller uten ramme',
     framedBody:
       'Hvert trykk her kommer med valget mellom tre rammer, tre, svart eller hvit, tilpasset trykket. Tre passer de varmere botaniske bildene og rom som allerede har tre i seg; svart skjerper de grafiske abstraktene og illustrasjonene; hvit forsvinner nesten mot en lys skandinavisk vegg og lar fargen snakke. Skal du henge flere sammen? Hold rammen lik gjennom hele gruppen, og veggen leses som én beslutning. Og har du en innrammer du stoler på, selges hvert bilde uten ramme også.',
@@ -1293,14 +1280,6 @@ export const no = {
       description:
         'Et blikk på hvordan ukonstruktiv kommunikasjon føles. To anstrengte ansikter, hver av dem løpende inni sitt eget hjul, er stablet til et åttetall mot en klar gul bakgrunn.',
     },
-    dancer: {
-      description:
-        'Dancer av Helene Brox fanger en kremhvit figur midt i skrittet mot en himmelblå bakgrunn, med armer som bølger som silkebånd fanget i sin egen fart. Det finnes verken ansikt eller gulv, bare selve formen av bevegelse: én arm som krøller seg bakover mens den andre strekker seg høyt, malt med den løse selvtilliten til en papirutklipping. Den leses tydelig tvers over et rom, og den gir ekte bevegelse til et rolig ett.',
-    },
-    dragon: {
-      description:
-        'Dragon av Helene Brox slynger seg over en svart bakgrunn i bånd av hvitt, rødt, rosa og grått, et beist man bare aner i fragmenter framfor å se tegnet helt ut. Finn de lyseblå øynene, og komposisjonen faller på plass; slipp taket, og den løser seg opp i ren rytme igjen. Det mest energiske trykket i samlingen til Brox ligger nærmere mønster enn portrett, og den svarte bakgrunnen gir hver farge skikkelig bitt. Ett for en vegg som tør litt.',
-    },
     eltsjoen: {
       description:
         'Eltsjoen av Ingunn Dybendal gjenskaper et nordisk innsjølandskap som tett fargeblyantmønster: rosa himmel, mørkt fjell, mønstret skog, blått vann. Hvert bånd i motivet blir ornament, med skyer strukket ut til bånd, trær forvandlet til folkemotiver og vannet som samler seg i bleke ringer rundt en bro. Det er det mest detaljerte trykket i galleriet, tegnet strøk for strøk, og det belønner det hundrede blikket like godt som det første.',
@@ -1325,10 +1304,6 @@ export const no = {
       description:
         'Hyttefrokost av Sia Siamos stabler modne tomater, druer og en vannkaraffel mot grønne kjøkkenfliser, tegnet i djerve, glade farger. Tegningen har nøyaktig den ferieroen tittelen lover: store tomater i haug på et stripet brett, cherrytomater strødd utover et lilla bord, en gulrutet duk kastet ned heller enn lagt. Hver kontur er rask og selvsikker, nærmere en side i en skissebok enn et formelt stilleben.',
     },
-    ithinkithink: {
-      description:
-        'IThinkIThink av Helene Brox staver ut sin egen bekjennelse, I think I think too much, i grønne penselstrøk over et koboltblått hode på sjokkrosa. Røde krusedoller løper gjennom profilen som tanker som nekter å falle til ro, og to store, ulike øyne fullfører bildet av en hjerne på fullt volum. Det høyeste trykket i galleriet, og det mest umiddelbart sympatiske; kjøp det til den som aldri får hodet til å sette seg ned, selv om den personen er deg.',
-    },
     'mean-snothing': {
       description:
         'Mean Snothing av Simen Wahlqvist gir en oransje mann en Newtons vugge til øyne, med én kule fanget midt i svingen, mot en flat grønn bakgrunn. Ansiktet under holder seg helt uttrykksløst, og det er hele poenget: fysikk som utspiller seg på en panne uten at noen reagerer. Tegnet i Wahlqvists sparsomme, sikre strek er det den typen trykk som får et nytt blikk fra hver gjest, og det gjør seg bedre på et hjemmekontor enn noen motivasjonsplakat.',
@@ -1346,16 +1321,6 @@ export const no = {
     slingshot: {
       description:
         'Slingshot av Simen Wahlqvist strekker en strikk mellom to hevede fingre og laster en liten, fornøyd figur i håndflaten under, klar til å fly. Et fredstegn gjort om til sprettert, tegnet i hvitt mot en klar tomatrød bakgrunn med de færreste linjene vitsen tillater. Figuren ser helt avslappet ut med tanke på hva som venter, og det er på et vis det morsomste av alt. Et kvadratisk trykk med ordentlig glimt i øyet.',
-    },
-    'swallow-dive': {
-      description:
-        'Swallow Dive av Helene Brox fyller rammen fra kant til kant med stupende fugler i dyp kobolt, djerve utklippsformer som svinger over varm kremhvit. Det finnes ingen horisont og ingen hvileplass, bare det gjentatte stupet av vinger som gjør en flokk til mønster. Disiplinen i de to fargene er det som bærer det: én blå, én kremhvit, og all bevegelsen båret av form alene. Rolig nok for et soverom, sikkert nok for rommet gjestene lander i.',
-      buyerDescription:
-        'Koboltblå fugler stuper over varm kremhvit, all bevegelse båret av form alene. Kjøp Swallow Dive innrammet i tre, svart eller hvit, eller uten ramme.',
-    },
-    'tree-top-peach': {
-      description:
-        'Tree Top Peach av Helene Brox vever grener og sittende fugler til et mykt ferskenfarget flettverk i papirklippstil, innenfor sin egen tegnede ramme. Se lenger, og fuglene fortsetter å komme: dusinvis av små silhuetter stukket inn i floken, alle i én varm tone mot kremhvitt. Det er det mildeste trykket i galleriet, nærmere folkelig papirklipp enn illustrasjon, og det roer ned et soverom eller en lesekrok uten å forsvinne inn i det.',
     },
     trysilkaffe: {
       description:

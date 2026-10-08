@@ -128,10 +128,10 @@
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "None of the seven ",
+          "plain_text": "None of the six ",
           "href": null,
           "text": {
-            "content": "None of the seven ",
+            "content": "None of the six ",
             "link": null
           },
           "annotations": {
@@ -162,10 +162,10 @@
         },
         {
           "type": "text",
-          "plain_text": " in this gallery (botaniske trykk, if you're shopping in Norwegian) is doing that job. Three artists, seven pictures, not one specimen study among them. Here's what the Nordic version actually looks like.",
+          "plain_text": " in this gallery (botaniske trykk, if you're shopping in Norwegian) is doing that job. Two artists, six pictures, not one specimen study among them. Here's what the Nordic version actually looks like.",
           "href": null,
           "text": {
-            "content": " in this gallery (botaniske trykk, if you're shopping in Norwegian) is doing that job. Three artists, seven pictures, not one specimen study among them. Here's what the Nordic version actually looks like.",
+            "content": " in this gallery (botaniske trykk, if you're shopping in Norwegian) is doing that job. Two artists, six pictures, not one specimen study among them. Here's what the Nordic version actually looks like.",
             "link": null
           },
           "annotations": {
@@ -456,10 +456,10 @@
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "Silhouette instead of description",
+          "plain_text": "The other end of botanical: plants once they're indoors",
           "href": null,
           "text": {
-            "content": "Silhouette instead of description",
+            "content": "The other end of botanical: plants once they're indoors",
             "link": null
           },
           "annotations": {
@@ -482,140 +482,10 @@
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "Tree Top Peach",
-          "href": "/product/tree-top-peach",
-          "text": {
-            "content": "Tree Top Peach",
-            "link": {
-              "url": "/product/tree-top-peach"
-            }
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": " by ",
+          "plain_text": "Four of the six are ",
           "href": null,
           "text": {
-            "content": " by ",
-            "link": null
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": "Helene Brox",
-          "href": "/artist/helene-brox",
-          "text": {
-            "content": "Helene Brox",
-            "link": {
-              "url": "/artist/helene-brox"
-            }
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": " weaves branches and perched birds into a soft peach lattice inside its own drawn border, papercut style. Look longer and the birds keep arriving, dozens of small silhouettes tucked among the tangle, all in a single warm tone on cream.",
-          "href": null,
-          "text": {
-            "content": " weaves branches and perched birds into a soft peach lattice inside its own drawn border, papercut style. Look longer and the birds keep arriving, dozens of small silhouettes tucked among the tangle, all in a single warm tone on cream.",
-            "link": null
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        }
-      ]
-    }
-  },
-  {
-    "object": "block",
-    "id": "md-13",
-    "type": "paragraph",
-    "has_children": false,
-    "paragraph": {
-      "rich_text": [
-        {
-          "type": "text",
-          "plain_text": "Paper cutting has its own Nordic lineage. Hans Christian Andersen was a serious practitioner, cutting figures while he improvised stories for party guests and handing the result over at the end of the tale. About a thousand of them still exist, on the count of the Royal Danish Library, which holds two of the collections itself. Smaller figures do the rounds, but they tend to be one museum's holdings rather than the total. The technique forces a decision a botanical plate never has to make: with one tone and one cut edge you can't describe a leaf, only its shape. Brox's branches work the same way, and it's why the print settles a bedroom or a reading corner instead of demanding attention from it.",
-          "href": null,
-          "text": {
-            "content": "Paper cutting has its own Nordic lineage. Hans Christian Andersen was a serious practitioner, cutting figures while he improvised stories for party guests and handing the result over at the end of the tale. About a thousand of them still exist, on the count of the Royal Danish Library, which holds two of the collections itself. Smaller figures do the rounds, but they tend to be one museum's holdings rather than the total. The technique forces a decision a botanical plate never has to make: with one tone and one cut edge you can't describe a leaf, only its shape. Brox's branches work the same way, and it's why the print settles a bedroom or a reading corner instead of demanding attention from it.",
-            "link": null
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        }
-      ]
-    }
-  },
-  {
-    "object": "block",
-    "id": "md-14",
-    "type": "heading_2",
-    "has_children": false,
-    "heading_2": {
-      "rich_text": [
-        {
-          "type": "text",
-          "plain_text": "The other end of botanical: plants once they're indoors",
-          "href": null,
-          "text": {
-            "content": "The other end of botanical: plants once they're indoors",
-            "link": null
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        }
-      ]
-    }
-  },
-  {
-    "object": "block",
-    "id": "md-15",
-    "type": "paragraph",
-    "has_children": false,
-    "paragraph": {
-      "rich_text": [
-        {
-          "type": "text",
-          "plain_text": "Four of the seven are ",
-          "href": null,
-          "text": {
-            "content": "Four of the seven are ",
+            "content": "Four of the six are ",
             "link": null
           },
           "annotations": {
@@ -665,7 +535,7 @@
   },
   {
     "object": "block",
-    "id": "md-16",
+    "id": "md-13",
     "type": "bulleted_list_item",
     "has_children": false,
     "bulleted_list_item": {
@@ -709,7 +579,7 @@
   },
   {
     "object": "block",
-    "id": "md-17",
+    "id": "md-14",
     "type": "bulleted_list_item",
     "has_children": false,
     "bulleted_list_item": {
@@ -753,7 +623,7 @@
   },
   {
     "object": "block",
-    "id": "md-18",
+    "id": "md-15",
     "type": "bulleted_list_item",
     "has_children": false,
     "bulleted_list_item": {
@@ -797,7 +667,7 @@
   },
   {
     "object": "block",
-    "id": "md-19",
+    "id": "md-16",
     "type": "bulleted_list_item",
     "has_children": false,
     "bulleted_list_item": {
@@ -841,7 +711,7 @@
   },
   {
     "object": "block",
-    "id": "md-20",
+    "id": "md-17",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
@@ -901,7 +771,7 @@
   },
   {
     "object": "block",
-    "id": "md-21",
+    "id": "md-18",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
@@ -927,17 +797,17 @@
   },
   {
     "object": "block",
-    "id": "md-22",
+    "id": "md-19",
     "type": "heading_2",
     "has_children": false,
     "heading_2": {
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "What the seven have in common",
+          "plain_text": "What the six have in common",
           "href": null,
           "text": {
-            "content": "What the seven have in common",
+            "content": "What the six have in common",
             "link": null
           },
           "annotations": {
@@ -953,7 +823,7 @@
   },
   {
     "object": "block",
-    "id": "md-23",
+    "id": "md-20",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
@@ -979,17 +849,17 @@
   },
   {
     "object": "block",
-    "id": "md-24",
+    "id": "md-21",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "It hangs better than plates do, too. Botanical plates want a set and a grid, four or six matched in identical frames. These seven all print at 50 x 70 cm, so a pair works without any of that formality, and the pairing becomes a choice about temperament rather than taxonomy. A Dybendal beside a Siamos is pattern next to appetite.",
+          "plain_text": "It hangs better than plates do, too. Botanical plates want a set and a grid, four or six matched in identical frames. These six all print at 50 x 70 cm, so a pair works without any of that formality, and the pairing becomes a choice about temperament rather than taxonomy. A Dybendal beside a Siamos is pattern next to appetite.",
           "href": null,
           "text": {
-            "content": "It hangs better than plates do, too. Botanical plates want a set and a grid, four or six matched in identical frames. These seven all print at 50 x 70 cm, so a pair works without any of that formality, and the pairing becomes a choice about temperament rather than taxonomy. A Dybendal beside a Siamos is pattern next to appetite.",
+            "content": "It hangs better than plates do, too. Botanical plates want a set and a grid, four or six matched in identical frames. These six all print at 50 x 70 cm, so a pair works without any of that formality, and the pairing becomes a choice about temperament rather than taxonomy. A Dybendal beside a Siamos is pattern next to appetite.",
             "link": null
           },
           "annotations": {
@@ -1005,7 +875,7 @@
   },
   {
     "object": "block",
-    "id": "md-25",
+    "id": "md-22",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {

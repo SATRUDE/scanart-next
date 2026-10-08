@@ -12,26 +12,26 @@ type Story = StoryObj<typeof SmartImage>;
 
 export const PNG: Story = {
   args: {
-    src: '/images/products/swallow-dive.png',
-    alt: 'Swallow Dive',
+    src: '/images/products/eltsjoen.png',
+    alt: 'Eltsjoen',
     className: 'w-full h-full object-cover rounded',
   },
 };
 
 export const AVIF: Story = {
   args: {
-    src: '/images/products/swallow-dive-scene.avif',
-    alt: 'Swallow Dive Scene',
+    src: '/images/products/eltsjoen-scene.avif',
+    alt: 'Eltsjoen Scene',
     className: 'w-full h-full object-cover rounded',
   },
 };
 
 export const WithSecondary: Story = {
   args: {
-    src: '/images/products/swallow-dive.png',
-    secondarySrc: '/images/products/swallow-dive-scene.avif',
+    src: '/images/products/eltsjoen.png',
+    secondarySrc: '/images/products/eltsjoen-scene.avif',
     useSecondary: true,
-    alt: 'Swallow Dive with secondary',
+    alt: 'Eltsjoen with secondary',
     className: 'w-full h-full object-cover rounded',
   },
 };

@@ -181,9 +181,9 @@ export function InspireWall({
               <ul className={`${r.wall ? 'mt-2' : 'mt-tight'} flex flex-col gap-tight`}>
                 {r.prints.map((p, i) => (
                   <li key={p.slug} className="flex items-start justify-between gap-4 type-small tab:type-body">
-                    {/* Reads "Featuring Dragon by Helene Brox" to a screen reader
+                    {/* Reads "Featuring Slingshot by Simen Wahlqvist" to a screen reader
                         and to search, as the caption always has; the design
-                        shows it as "Dragon, Helene Brox". */}
+                        shows it as "Slingshot, Simen Wahlqvist". */}
                     <span>
                       <span className="sr-only-sa">{i === 0 ? `${strings.featuring} ` : ` ${strings.and} `}</span>
                       <Link href={`${prefix}/product/${p.slug}`} className="transition-colors hover:text-brand">

@@ -66,10 +66,10 @@
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "Start there and you notice something about how illustration sits in Scandinavia: it wasn't the junior partner to painting. It was the medium that gave the region its shared pictures.",
+          "plain_text": "Start there and you notice something about how illustration sits in Scandinavia: it wasn't the junior partner to painting.",
           "href": null,
           "text": {
-            "content": "Start there and you notice something about how illustration sits in Scandinavia: it wasn't the junior partner to painting. It was the medium that gave the region its shared pictures.",
+            "content": "Start there and you notice something about how illustration sits in Scandinavia: it wasn't the junior partner to painting.",
             "link": null
           },
           "annotations": {
@@ -86,6 +86,32 @@
   {
     "object": "block",
     "id": "md-3",
+    "type": "quote",
+    "has_children": false,
+    "quote": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "It was the medium that gave the region its shared pictures.",
+          "href": null,
+          "text": {
+            "content": "It was the medium that gave the region its shared pictures.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-4",
     "type": "heading_2",
     "has_children": false,
     "heading_2": {
@@ -111,7 +137,7 @@
   },
   {
     "object": "block",
-    "id": "md-4",
+    "id": "md-5",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
@@ -169,7 +195,7 @@
   },
   {
     "object": "block",
-    "id": "md-5",
+    "id": "md-6",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
@@ -293,7 +319,7 @@
   },
   {
     "object": "block",
-    "id": "md-6",
+    "id": "md-7",
     "type": "heading_2",
     "has_children": false,
     "heading_2": {
@@ -319,7 +345,7 @@
   },
   {
     "object": "block",
-    "id": "md-7",
+    "id": "md-8",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
@@ -409,7 +435,7 @@
   },
   {
     "object": "block",
-    "id": "md-8",
+    "id": "md-9",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
@@ -563,7 +589,7 @@
   },
   {
     "object": "block",
-    "id": "md-9",
+    "id": "md-10",
     "type": "heading_2",
     "has_children": false,
     "heading_2": {
@@ -589,7 +615,7 @@
   },
   {
     "object": "block",
-    "id": "md-10",
+    "id": "md-11",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
@@ -615,10 +641,10 @@
   },
   {
     "object": "block",
-    "id": "md-11",
-    "type": "paragraph",
+    "id": "md-12",
+    "type": "numbered_list_item",
     "has_children": false,
-    "paragraph": {
+    "numbered_list_item": {
       "rich_text": [
         {
           "type": "text",
@@ -657,10 +683,10 @@
   },
   {
     "object": "block",
-    "id": "md-12",
-    "type": "paragraph",
+    "id": "md-13",
+    "type": "numbered_list_item",
     "has_children": false,
-    "paragraph": {
+    "numbered_list_item": {
       "rich_text": [
         {
           "type": "text",
@@ -699,10 +725,10 @@
   },
   {
     "object": "block",
-    "id": "md-13",
-    "type": "paragraph",
+    "id": "md-14",
+    "type": "numbered_list_item",
     "has_children": false,
-    "paragraph": {
+    "numbered_list_item": {
       "rich_text": [
         {
           "type": "text",
@@ -741,10 +767,10 @@
   },
   {
     "object": "block",
-    "id": "md-14",
-    "type": "paragraph",
+    "id": "md-15",
+    "type": "numbered_list_item",
     "has_children": false,
-    "paragraph": {
+    "numbered_list_item": {
       "rich_text": [
         {
           "type": "text",
@@ -783,7 +809,7 @@
   },
   {
     "object": "block",
-    "id": "md-15",
+    "id": "md-16",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
@@ -809,7 +835,7 @@
   },
   {
     "object": "block",
-    "id": "md-16",
+    "id": "md-17",
     "type": "heading_2",
     "has_children": false,
     "heading_2": {
@@ -835,7 +861,7 @@
   },
   {
     "object": "block",
-    "id": "md-17",
+    "id": "md-18",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
@@ -929,7 +955,7 @@
   },
   {
     "object": "block",
-    "id": "md-18",
+    "id": "md-19",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
@@ -1051,7 +1077,7 @@
   },
   {
     "object": "block",
-    "id": "md-19",
+    "id": "md-20",
     "type": "heading_2",
     "has_children": false,
     "heading_2": {
@@ -1077,7 +1103,7 @@
   },
   {
     "object": "block",
-    "id": "md-20",
+    "id": "md-21",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
@@ -1101,11 +1127,11 @@
         {
           "type": "text",
           "plain_text": "illustration prints",
-          "href": "https://www.scandinavianart.co.uk/category/illustrations",
+          "href": "/category/illustrations",
           "text": {
             "content": "illustration prints",
             "link": {
-              "url": "https://www.scandinavianart.co.uk/category/illustrations"
+              "url": "/category/illustrations"
             }
           },
           "annotations": {
@@ -1118,10 +1144,10 @@
         },
         {
           "type": "text",
-          "plain_text": " are all by one artist, and they're the economy argument in five pictures. ",
+          "plain_text": " come from several hands now, and between them they carry most of the habits above. ",
           "href": null,
           "text": {
-            "content": " are all by one artist, and they're the economy argument in five pictures. ",
+            "content": " come from several hands now, and between them they carry most of the habits above. ",
             "link": null
           },
           "annotations": {
@@ -1135,11 +1161,11 @@
         {
           "type": "text",
           "plain_text": "Simen Wahlqvist",
-          "href": "https://www.scandinavianart.co.uk/artist/simen-wahlqvist",
+          "href": "/artist/simen-wahlqvist",
           "text": {
             "content": "Simen Wahlqvist",
             "link": {
-              "url": "https://www.scandinavianart.co.uk/artist/simen-wahlqvist"
+              "url": "/artist/simen-wahlqvist"
             }
           },
           "annotations": {
@@ -1152,10 +1178,10 @@
         },
         {
           "type": "text",
-          "plain_text": " is an Oslo graphic designer and illustrator who tries to catch a moment, often just before it happens, in as few lines as possible, and reckons a drawing is finished when it makes him laugh. ",
+          "plain_text": " is the economy argument. He's an Oslo graphic designer and illustrator who tries to catch a moment, often just before it happens, in as few lines as possible, and reckons a drawing is finished when it makes him laugh. ",
           "href": null,
           "text": {
-            "content": " is an Oslo graphic designer and illustrator who tries to catch a moment, often just before it happens, in as few lines as possible, and reckons a drawing is finished when it makes him laugh. ",
+            "content": " is the economy argument. He's an Oslo graphic designer and illustrator who tries to catch a moment, often just before it happens, in as few lines as possible, and reckons a drawing is finished when it makes him laugh. ",
             "link": null
           },
           "annotations": {
@@ -1169,11 +1195,11 @@
         {
           "type": "text",
           "plain_text": "Eye Nose Eye",
-          "href": "https://www.scandinavianart.co.uk/product/eye-nose-eye",
+          "href": "/product/eye-nose-eye",
           "text": {
             "content": "Eye Nose Eye",
             "link": {
-              "url": "https://www.scandinavianart.co.uk/product/eye-nose-eye"
+              "url": "/product/eye-nose-eye"
             }
           },
           "annotations": {
@@ -1203,11 +1229,11 @@
         {
           "type": "text",
           "plain_text": "Morgenstrekk",
-          "href": "https://www.scandinavianart.co.uk/product/morgenstrekk",
+          "href": "/product/morgenstrekk",
           "text": {
             "content": "Morgenstrekk",
             "link": {
-              "url": "https://www.scandinavianart.co.uk/product/morgenstrekk"
+              "url": "/product/morgenstrekk"
             }
           },
           "annotations": {
@@ -1237,11 +1263,11 @@
         {
           "type": "text",
           "plain_text": "Mean Snothing",
-          "href": "https://www.scandinavianart.co.uk/product/mean-snothing",
+          "href": "/product/mean-snothing",
           "text": {
             "content": "Mean Snothing",
             "link": {
-              "url": "https://www.scandinavianart.co.uk/product/mean-snothing"
+              "url": "/product/mean-snothing"
             }
           },
           "annotations": {
@@ -1273,35 +1299,19 @@
   },
   {
     "object": "block",
-    "id": "md-21",
+    "id": "md-22",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "The tradition's other habits turn up elsewhere in the gallery. ",
-          "href": null,
+          "plain_text": "Hedvig Wallin",
+          "href": "/artist/hedvig-wallin",
           "text": {
-            "content": "The tradition's other habits turn up elsewhere in the gallery. ",
-            "link": null
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": "Renate Thor",
-          "href": "https://www.scandinavianart.co.uk/artist/renate-thor",
-          "text": {
-            "content": "Renate Thor",
+            "content": "Hedvig Wallin",
             "link": {
-              "url": "https://www.scandinavianart.co.uk/artist/renate-thor"
+              "url": "/artist/hedvig-wallin"
             }
           },
           "annotations": {
@@ -1314,10 +1324,172 @@
         },
         {
           "type": "text",
-          "plain_text": ", who took her MA in illustration at Oslo National Academy of the Arts, screen prints her Birdie flock so tightly that it reads as pattern before it reads as birds. Ingunn Dybendal draws ",
+          "plain_text": ", from Gothenburg, has illustrated children's books since she was eighteen, and ",
           "href": null,
           "text": {
-            "content": ", who took her MA in illustration at Oslo National Academy of the Arts, screen prints her Birdie flock so tightly that it reads as pattern before it reads as birds. Ingunn Dybendal draws ",
+            "content": ", from Gothenburg, has illustrated children's books since she was eighteen, and ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Small House Big Ocean",
+          "href": "/product/small-house-big-ocean",
+          "text": {
+            "content": "Small House Big Ocean",
+            "link": {
+              "url": "/product/small-house-big-ocean"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " is pattern doing the work: a little house on a rock, and a whole sea built from patient parallel strokes of ink. ",
+          "href": null,
+          "text": {
+            "content": " is pattern doing the work: a little house on a rock, and a whole sea built from patient parallel strokes of ink. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Mikko Saarainen",
+          "href": "/artist/mikko-saarainen",
+          "text": {
+            "content": "Mikko Saarainen",
+            "link": {
+              "url": "/artist/mikko-saarainen"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ", a children's author and comic artist from Lahti in Finland, brings the humour. ",
+          "href": null,
+          "text": {
+            "content": ", a children's author and comic artist from Lahti in Finland, brings the humour. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "URF!",
+          "href": "/product/urf",
+          "text": {
+            "content": "URF!",
+            "link": {
+              "url": "/product/urf"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " is a whole comic page in one print, a knight losing an argument with a dragon across three panels, with a joke in almost every gap.",
+          "href": null,
+          "text": {
+            "content": " is a whole comic page in one print, a knight losing an argument with a dragon across three panels, with a joke in almost every gap.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-23",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "The tradition's other habits turn up elsewhere in the gallery. Hedvig Wallin lines up ",
+          "href": null,
+          "text": {
+            "content": "The tradition's other habits turn up elsewhere in the gallery. Hedvig Wallin lines up ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Massa Äpplen",
+          "href": "/product/massa-applen",
+          "text": {
+            "content": "Massa Äpplen",
+            "link": {
+              "url": "/product/massa-applen"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " row upon row, so it reads as pattern before it reads as apples. Ingunn Dybendal draws ",
+          "href": null,
+          "text": {
+            "content": " row upon row, so it reads as pattern before it reads as apples. Ingunn Dybendal draws ",
             "link": null
           },
           "annotations": {
@@ -1331,11 +1503,11 @@
         {
           "type": "text",
           "plain_text": "Eltsjoen",
-          "href": "https://www.scandinavianart.co.uk/product/eltsjoen",
+          "href": "/product/eltsjoen",
           "text": {
             "content": "Eltsjoen",
             "link": {
-              "url": "https://www.scandinavianart.co.uk/product/eltsjoen"
+              "url": "/product/eltsjoen"
             }
           },
           "annotations": {
@@ -1365,11 +1537,11 @@
         {
           "type": "text",
           "plain_text": "Trysilkaffe",
-          "href": "https://www.scandinavianart.co.uk/product/trysilkaffe",
+          "href": "/product/trysilkaffe",
           "text": {
             "content": "Trysilkaffe",
             "link": {
-              "url": "https://www.scandinavianart.co.uk/product/trysilkaffe"
+              "url": "/product/trysilkaffe"
             }
           },
           "annotations": {
@@ -1399,11 +1571,11 @@
         {
           "type": "text",
           "plain_text": "tables mid-meal",
-          "href": "https://www.scandinavianart.co.uk/category/botanical",
+          "href": "/category/botanical",
           "text": {
             "content": "tables mid-meal",
             "link": {
-              "url": "https://www.scandinavianart.co.uk/category/botanical"
+              "url": "/category/botanical"
             }
           },
           "annotations": {
@@ -1435,7 +1607,7 @@
   },
   {
     "object": "block",
-    "id": "md-22",
+    "id": "md-24",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
@@ -1459,11 +1631,11 @@
         {
           "type": "text",
           "plain_text": "what is Scandinavian art",
-          "href": "https://www.scandinavianart.co.uk/article/what-is-scandinavian-art",
+          "href": "/article/what-is-scandinavian-art",
           "text": {
             "content": "what is Scandinavian art",
             "link": {
-              "url": "https://www.scandinavianart.co.uk/article/what-is-scandinavian-art"
+              "url": "/article/what-is-scandinavian-art"
             }
           },
           "annotations": {
@@ -1493,11 +1665,11 @@
         {
           "type": "text",
           "plain_text": "full collection",
-          "href": "https://www.scandinavianart.co.uk/scandinavian-wall-art",
+          "href": "/scandinavian-wall-art",
           "text": {
             "content": "full collection",
             "link": {
-              "url": "https://www.scandinavianart.co.uk/scandinavian-wall-art"
+              "url": "/scandinavian-wall-art"
             }
           },
           "annotations": {

@@ -1,0 +1,526 @@
+[
+  {
+    "object": "block",
+    "id": "md-1",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "This one is for the artists. Most of the journal talks to people choosing art for a wall; this piece talks to the people who make it, because we're actively looking for new work and it seems fairer to say so in plain sight than to rely on the right printmaker stumbling across our footer.",
+          "href": null,
+          "text": {
+            "content": "This one is for the artists. Most of the journal talks to people choosing art for a wall; this piece talks to the people who make it, because we're actively looking for new work and it seems fairer to say so in plain sight than to rely on the right printmaker stumbling across our footer.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-2",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "What we are",
+          "href": null,
+          "text": {
+            "content": "What we are",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-3",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "A small, curated print gallery: sixteen prints by four artists at the time of writing, sold to a mostly British and Nordic audience through an English-language shop. Everything here got in the same way, a person found it and a person said yes. Nothing arrives by feed or bulk upload, and we take on very few of the artists we look at. That's not gatekeeping for its own sake; in a collection this size every piece changes how the others read, so each new print has to survive the company it keeps.",
+          "href": null,
+          "text": {
+            "content": "A small, curated print gallery: sixteen prints by four artists at the time of writing, sold to a mostly British and Nordic audience through an English-language shop. Everything here got in the same way, a person found it and a person said yes. Nothing arrives by feed or bulk upload, and we take on very few of the artists we look at. That's not gatekeeping for its own sake; in a collection this size every piece changes how the others read, so each new print has to survive the company it keeps.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-4",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "What working with us actually means",
+          "href": null,
+          "text": {
+            "content": "What working with us actually means",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-5",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "You keep making work. We run the shop: the storefront, the framing options, made-to-order production and worldwide delivery, the customer emails, all of it. Your prints get a proper home rather than a listing: ",
+          "href": null,
+          "text": {
+            "content": "You keep making work. We run the shop: the storefront, the framing options, made-to-order production and worldwide delivery, the customer emails, all of it. Your prints get a proper home rather than a listing: ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "every artist here",
+          "href": "/artists",
+          "text": {
+            "content": "every artist here",
+            "link": {
+              "url": "/artists"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " has their own page with a real bio, and the journal works your prints into its guides and styling pieces the way a gallery talks about the people it shows. And because the roster is small, you're one of a handful, not one of ten thousand. When someone browses this gallery, they will actually see your work. That's rarer than it should be.",
+          "href": null,
+          "text": {
+            "content": " has their own page with a real bio, and the journal works your prints into its guides and styling pieces the way a gallery talks about the people it shows. And because the roster is small, you're one of a handful, not one of ten thousand. When someone browses this gallery, they will actually see your work. That's rarer than it should be.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-6",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "We won't pretend the rest doesn't matter, terms and money get discussed openly when we talk, but that conversation happens person to person, not in a journal article.",
+          "href": null,
+          "text": {
+            "content": "We won't pretend the rest doesn't matter, terms and money get discussed openly when we talk, but that conversation happens person to person, not in a journal article.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-7",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Who we're looking for",
+          "href": null,
+          "text": {
+            "content": "Who we're looking for",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-8",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Illustrators and printmakers, particularly those working in the Nordics or in a recognisably Nordic register: flat colour, confident line, subjects taken from real life. The honest test is fit. Look at ",
+          "href": null,
+          "text": {
+            "content": "Illustrators and printmakers, particularly those working in the Nordics or in a recognisably Nordic register: flat colour, confident line, subjects taken from real life. The honest test is fit. Look at ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Simen Wahlqvist's wry line drawings",
+          "href": "/category/illustrations",
+          "text": {
+            "content": "Simen Wahlqvist's wry line drawings",
+            "link": {
+              "url": "/category/illustrations"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ", ",
+          "href": null,
+          "text": {
+            "content": ", ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Sia Siamos's crowded tables",
+          "href": "/category/botanical",
+          "text": {
+            "content": "Sia Siamos's crowded tables",
+            "link": {
+              "url": "/category/botanical"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " and ",
+          "href": null,
+          "text": {
+            "content": " and ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Ingunn Dybendal's coloured-pencil patterns",
+          "href": "/artist/ingunn-dybendal",
+          "text": {
+            "content": "Ingunn Dybendal's coloured-pencil patterns",
+            "link": {
+              "url": "/artist/ingunn-dybendal"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ", and ask whether your work would make that company better without repeating it. We're not after more of what we have; we're after what's missing.",
+          "href": null,
+          "text": {
+            "content": ", and ask whether your work would make that company better without repeating it. We're not after more of what we have; we're after what's missing.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-9",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "How to show us your work",
+          "href": null,
+          "text": {
+            "content": "How to show us your work",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-10",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "There's ",
+          "href": null,
+          "text": {
+            "content": "There's ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "one door",
+          "href": "/artists/apply",
+          "text": {
+            "content": "one door",
+            "link": {
+              "url": "/artists/apply"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ": a short form, a few minutes to fill in, and one link to your work is enough. A person reads every application. We're a small gallery and we say no far more often than yes, but if the fit isn't right today you can ask us to keep your details and look again later, and we mean that too.",
+          "href": null,
+          "text": {
+            "content": ": a short form, a few minutes to fill in, and one link to your work is enough. A person reads every application. We're a small gallery and we say no far more often than yes, but if the fit isn't right today you can ask us to keep your details and look again later, and we mean that too.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-11",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "If you'd like to know who you'd be dealing with first, ",
+          "href": null,
+          "text": {
+            "content": "If you'd like to know who you'd be dealing with first, ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "that story is here",
+          "href": "/article/who-are-scandinavian-art",
+          "text": {
+            "content": "that story is here",
+            "link": {
+              "url": "/article/who-are-scandinavian-art"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ". Otherwise: ",
+          "href": null,
+          "text": {
+            "content": ". Otherwise: ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "show us your work",
+          "href": "/artists/apply",
+          "text": {
+            "content": "show us your work",
+            "link": {
+              "url": "/artists/apply"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ".",
+          "href": null,
+          "text": {
+            "content": ".",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  }
+]

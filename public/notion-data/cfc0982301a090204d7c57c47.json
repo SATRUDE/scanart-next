@@ -8,10 +8,10 @@
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "A print on the wall and a good book on the table do much the same job. Both slow you down and ask you to look properly. So if you love the work we sell, here are a few Nordic art and design books worth living with, the ones that reward a second and third read. This list opened what's since grown into a six-part series, and it's still the place to start.",
+          "plain_text": "A print can look right on a screen and feel wrong once it's above the sofa. Before choosing, look at the room from the place where you'll actually see the work: the chair, the doorway, the end of the bed.",
           "href": null,
           "text": {
-            "content": "A print on the wall and a good book on the table do much the same job. Both slow you down and ask you to look properly. So if you love the work we sell, here are a few Nordic art and design books worth living with, the ones that reward a second and third read. This list opened what's since grown into a six-part series, and it's still the place to start.",
+            "content": "A print can look right on a screen and feel wrong once it's above the sofa. Before choosing, look at the room from the place where you'll actually see the work: the chair, the doorway, the end of the bed.",
             "link": null
           },
           "annotations": {
@@ -28,16 +28,16 @@
   {
     "object": "block",
     "id": "md-2",
-    "type": "heading_2",
+    "type": "paragraph",
     "has_children": false,
-    "heading_2": {
+    "paragraph": {
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "Scandinavian art books: where to start",
+          "plain_text": "Three decisions will narrow the choice. How much colour can the room take? Do you want a recognisable subject or something closer to pattern? And how far away will you be when you look at it?",
           "href": null,
           "text": {
-            "content": "Scandinavian art books: where to start",
+            "content": "Three decisions will narrow the choice. How much colour can the room take? Do you want a recognisable subject or something closer to pattern? And how far away will you be when you look at it?",
             "link": null
           },
           "annotations": {
@@ -60,10 +60,10 @@
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "Start broad. ",
+          "plain_text": "If you'd rather start with a shortlist, ",
           "href": null,
           "text": {
-            "content": "Start broad. ",
+            "content": "If you'd rather start with a shortlist, ",
             "link": null
           },
           "annotations": {
@@ -76,17 +76,17 @@
         },
         {
           "type": "text",
-          "plain_text": "Art of the Nordic Nations",
-          "href": "https://www.amazon.co.uk/dp/0500029563",
+          "plain_text": "our seven Scandinavian art prints to buy",
+          "href": "/article/best-scandinavian-art-prints",
           "text": {
-            "content": "Art of the Nordic Nations",
+            "content": "our seven Scandinavian art prints to buy",
             "link": {
-              "url": "https://www.amazon.co.uk/dp/0500029563"
+              "url": "/article/best-scandinavian-art-prints"
             }
           },
           "annotations": {
             "bold": false,
-            "italic": true,
+            "italic": false,
             "code": false,
             "strikethrough": false,
             "underline": false
@@ -94,10 +94,10 @@
         },
         {
           "type": "text",
-          "plain_text": " by Serge Fauchereau (Thames & Hudson, 2025) is about the closest thing to a single-volume survey of the region's art in the years it found its voice, 1870 to 1950, and at 464 pages it has room to do it properly. It's the one to reach for when you want to understand why Nordic art looks the way it does: the long northern light, the quiet interiors, the pull between clarity and melancholy that runs through so much of it.",
+          "plain_text": " gives a reason for each pick. This guide helps you decide which kind of print belongs on your wall, using work from our own gallery as examples.",
           "href": null,
           "text": {
-            "content": " by Serge Fauchereau (Thames & Hudson, 2025) is about the closest thing to a single-volume survey of the region's art in the years it found its voice, 1870 to 1950, and at 464 pages it has room to do it properly. It's the one to reach for when you want to understand why Nordic art looks the way it does: the long northern light, the quiet interiors, the pull between clarity and melancholy that runs through so much of it.",
+            "content": " gives a reason for each pick. This guide helps you decide which kind of print belongs on your wall, using work from our own gallery as examples.",
             "link": null
           },
           "annotations": {
@@ -114,50 +114,16 @@
   {
     "object": "block",
     "id": "md-4",
-    "type": "paragraph",
+    "type": "heading_2",
     "has_children": false,
-    "paragraph": {
+    "heading_2": {
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "From there, follow the light to the painters themselves. Vilhelm Hammershøi built a whole career out of empty rooms and grey Copenhagen daylight, and once you've sat with his interiors you start noticing that calm everywhere. Harald Sohlberg and Harriet Backer gave the Norwegian landscape and the lamplit room the same still attention. Munch you already know, but he repays a proper monograph rather than a fridge magnet of The Scream. When one of these painters asks for a closer look, we've picked out ",
+          "plain_text": "Start with the room's colour",
           "href": null,
           "text": {
-            "content": "From there, follow the light to the painters themselves. Vilhelm Hammershøi built a whole career out of empty rooms and grey Copenhagen daylight, and once you've sat with his interiors you start noticing that calm everywhere. Harald Sohlberg and Harriet Backer gave the Norwegian landscape and the lamplit room the same still attention. Munch you already know, but he repays a proper monograph rather than a fridge magnet of The Scream. When one of these painters asks for a closer look, we've picked out ",
-            "link": null
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": "six Nordic artist monographs worth living with",
-          "href": "/article/nordic-artist-monographs",
-          "text": {
-            "content": "six Nordic artist monographs worth living with",
-            "link": {
-              "url": "/article/nordic-artist-monographs"
-            }
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": ".",
-          "href": null,
-          "text": {
-            "content": ".",
+            "content": "Start with the room's colour",
             "link": null
           },
           "annotations": {
@@ -174,16 +140,16 @@
   {
     "object": "block",
     "id": "md-5",
-    "type": "heading_2",
+    "type": "paragraph",
     "has_children": false,
-    "heading_2": {
+    "paragraph": {
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "Are Nordic and Scandinavian the same thing?",
+          "plain_text": "Choose one thing you want the print to do. It might repeat a colour that's already in the room, or bring in the colour the room is missing. You don't have to match every cushion.",
           "href": null,
           "text": {
-            "content": "Are Nordic and Scandinavian the same thing?",
+            "content": "Choose one thing you want the print to do. It might repeat a colour that's already in the room, or bring in the colour the room is missing. You don't have to match every cushion.",
             "link": null
           },
           "annotations": {
@@ -206,10 +172,10 @@
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "No, and the difference is why this series says Nordic. ",
+          "plain_text": "In a pale living room, Simen Wahlqvist's ",
           "href": null,
           "text": {
-            "content": "No, and the difference is why this series says Nordic. ",
+            "content": "In a pale living room, Simen Wahlqvist's ",
             "link": null
           },
           "annotations": {
@@ -222,12 +188,12 @@
         },
         {
           "type": "text",
-          "plain_text": "Scandinavia is the smaller word",
-          "href": "https://nordics.info/show/artikel/the-nordic-region",
+          "plain_text": "Half Man",
+          "href": "/product/half-man",
           "text": {
-            "content": "Scandinavia is the smaller word",
+            "content": "Half Man",
             "link": {
-              "url": "https://nordics.info/show/artikel/the-nordic-region"
+              "url": "/product/half-man"
             }
           },
           "annotations": {
@@ -240,10 +206,10 @@
         },
         {
           "type": "text",
-          "plain_text": ": Denmark, Norway and Sweden, and some people stretch it no further than the Norwegian and Swedish peninsula. The Nordic region takes in those three plus Finland and Iceland, and the Faroe Islands, Greenland and Åland with them. Fauchereau works to the wider definition, all five nations in one volume, and so does everything below. Narrow the shelf to Scandinavian and you'd lose Finnish glass and most of the photography, which would be a strange thing to do on purpose. If you want the longer answer about the art rather than the map, here's ",
+          "plain_text": " makes a clear focal point, a pink figure on a bright green ground. ",
           "href": null,
           "text": {
-            "content": ": Denmark, Norway and Sweden, and some people stretch it no further than the Norwegian and Swedish peninsula. The Nordic region takes in those three plus Finland and Iceland, and the Faroe Islands, Greenland and Åland with them. Fauchereau works to the wider definition, all five nations in one volume, and so does everything below. Narrow the shelf to Scandinavian and you'd lose Finnish glass and most of the photography, which would be a strange thing to do on purpose. If you want the longer answer about the art rather than the map, here's ",
+            "content": " makes a clear focal point, a pink figure on a bright green ground. ",
             "link": null
           },
           "annotations": {
@@ -256,12 +222,12 @@
         },
         {
           "type": "text",
-          "plain_text": "what Scandinavian art actually is",
-          "href": "/article/what-is-scandinavian-art",
+          "plain_text": "Eye Nose Eye",
+          "href": "/product/eye-nose-eye",
           "text": {
-            "content": "what Scandinavian art actually is",
+            "content": "Eye Nose Eye",
             "link": {
-              "url": "/article/what-is-scandinavian-art"
+              "url": "/product/eye-nose-eye"
             }
           },
           "annotations": {
@@ -274,10 +240,10 @@
         },
         {
           "type": "text",
-          "plain_text": ".",
+          "plain_text": " is darker, a cream head on a near-black ground, so try it against the whole room rather than judging the colours in isolation. Both are assertive choices; give them room to be seen.",
           "href": null,
           "text": {
-            "content": ".",
+            "content": " is darker, a cream head on a near-black ground, so try it against the whole room rather than judging the colours in isolation. Both are assertive choices; give them room to be seen.",
             "link": null
           },
           "annotations": {
@@ -294,16 +260,84 @@
   {
     "object": "block",
     "id": "md-7",
-    "type": "heading_2",
+    "type": "paragraph",
     "has_children": false,
-    "heading_2": {
+    "paragraph": {
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "Which Scandinavian design books are worth owning?",
+          "plain_text": "If the furniture and textiles already carry plenty of pattern, try a more limited palette. ",
           "href": null,
           "text": {
-            "content": "Which Scandinavian design books are worth owning?",
+            "content": "If the furniture and textiles already carry plenty of pattern, try a more limited palette. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Morgenstrekk",
+          "href": "/product/morgenstrekk",
+          "text": {
+            "content": "Morgenstrekk",
+            "link": {
+              "url": "/product/morgenstrekk"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " is ochre on warm peach. ",
+          "href": null,
+          "text": {
+            "content": " is ochre on warm peach. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Small House Big Ocean",
+          "href": "/product/small-house-big-ocean",
+          "text": {
+            "content": "Small House Big Ocean",
+            "link": {
+              "url": "/product/small-house-big-ocean"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " is drawn entirely in black ink line. Quiet colour doesn't have to mean an empty picture.",
+          "href": null,
+          "text": {
+            "content": " is drawn entirely in black ink line. Quiet colour doesn't have to mean an empty picture.",
             "link": null
           },
           "annotations": {
@@ -320,84 +354,16 @@
   {
     "object": "block",
     "id": "md-8",
-    "type": "paragraph",
+    "type": "heading_2",
     "has_children": false,
-    "paragraph": {
+    "heading_2": {
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "Then there's design, which in the Nordic countries was never really treated as separate from art. ",
+          "plain_text": "Decide what you want to look at",
           "href": null,
           "text": {
-            "content": "Then there's design, which in the Nordic countries was never really treated as separate from art. ",
-            "link": null
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": "Scandinavian Home",
-          "href": "https://www.amazon.co.uk/dp/1849497494",
-          "text": {
-            "content": "Scandinavian Home",
-            "link": {
-              "url": "https://www.amazon.co.uk/dp/1849497494"
-            }
-          },
-          "annotations": {
-            "bold": false,
-            "italic": true,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": " by Elizabeth Wilhide is a clear, country-by-country guide to the mid-century furniture and interiors the region is famous for. ",
-          "href": null,
-          "text": {
-            "content": " by Elizabeth Wilhide is a clear, country-by-country guide to the mid-century furniture and interiors the region is famous for. ",
-            "link": null
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": "New Nordic Houses",
-          "href": "https://www.amazon.co.uk/dp/0500021554",
-          "text": {
-            "content": "New Nordic Houses",
-            "link": {
-              "url": "https://www.amazon.co.uk/dp/0500021554"
-            }
-          },
-          "annotations": {
-            "bold": false,
-            "italic": true,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": " by Dominic Bradbury carries that instinct into the present, all cabins in the woods and coastal retreats, shot beautifully enough to frame.",
-          "href": null,
-          "text": {
-            "content": " by Dominic Bradbury carries that instinct into the present, all cabins in the woods and coastal retreats, shot beautifully enough to frame.",
+            "content": "Decide what you want to look at",
             "link": null
           },
           "annotations": {
@@ -414,16 +380,16 @@
   {
     "object": "block",
     "id": "md-9",
-    "type": "heading_2",
+    "type": "paragraph",
     "has_children": false,
-    "heading_2": {
+    "paragraph": {
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "Nordic interior design books for the coffee table",
+          "plain_text": "Some people want a subject they recognise. Others prefer a shape or a rhythm they don't have to name. Neither choice is more Scandinavian than the other.",
           "href": null,
           "text": {
-            "content": "Nordic interior design books for the coffee table",
+            "content": "Some people want a subject they recognise. Others prefer a shape or a rhythm they don't have to name. Neither choice is more Scandinavian than the other.",
             "link": null
           },
           "annotations": {
@@ -446,10 +412,10 @@
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "If you want the feeling more than the history, ",
+          "plain_text": "For a kitchen or dining wall, Sia Siamos's ",
           "href": null,
           "text": {
-            "content": "If you want the feeling more than the history, ",
+            "content": "For a kitchen or dining wall, Sia Siamos's ",
             "link": null
           },
           "annotations": {
@@ -462,17 +428,17 @@
         },
         {
           "type": "text",
-          "plain_text": "North: How to Live Scandinavian",
-          "href": "https://www.amazon.co.uk/dp/178131652X",
+          "plain_text": "Vinkveld",
+          "href": "/product/vinkveld",
           "text": {
-            "content": "North: How to Live Scandinavian",
+            "content": "Vinkveld",
             "link": {
-              "url": "https://www.amazon.co.uk/dp/178131652X"
+              "url": "/product/vinkveld"
             }
           },
           "annotations": {
             "bold": false,
-            "italic": true,
+            "italic": false,
             "code": false,
             "strikethrough": false,
             "underline": false
@@ -480,10 +446,10 @@
         },
         {
           "type": "text",
-          "plain_text": " by Brontë Aurell and ",
+          "plain_text": " puts wine and food at the centre of the picture. ",
           "href": null,
           "text": {
-            "content": " by Brontë Aurell and ",
+            "content": " puts wine and food at the centre of the picture. ",
             "link": null
           },
           "annotations": {
@@ -496,17 +462,17 @@
         },
         {
           "type": "text",
-          "plain_text": "The Monocle Book of the Nordics",
-          "href": "https://www.amazon.co.uk/dp/0500971218",
+          "plain_text": "Sunday Brunch",
+          "href": "/product/sunday-brunch",
           "text": {
-            "content": "The Monocle Book of the Nordics",
+            "content": "Sunday Brunch",
             "link": {
-              "url": "https://www.amazon.co.uk/dp/0500971218"
+              "url": "/product/sunday-brunch"
             }
           },
           "annotations": {
             "bold": false,
-            "italic": true,
+            "italic": false,
             "code": false,
             "strikethrough": false,
             "underline": false
@@ -514,10 +480,44 @@
         },
         {
           "type": "text",
-          "plain_text": " sit at the warmer, browsable end of the shelf: design, food and the small habits that make the region what it is. These are the two to leave out where people will pick them up.",
+          "plain_text": ", by Swedish artist Hedvig Wallin, is a lighter, playful table scene. Start with the kind of atmosphere you enjoy, then browse the ",
           "href": null,
           "text": {
-            "content": " sit at the warmer, browsable end of the shelf: design, food and the small habits that make the region what it is. These are the two to leave out where people will pick them up.",
+            "content": ", by Swedish artist Hedvig Wallin, is a lighter, playful table scene. Start with the kind of atmosphere you enjoy, then browse the ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "kitchen prints",
+          "href": "/collection/kitchen",
+          "text": {
+            "content": "kitchen prints",
+            "link": {
+              "url": "/collection/kitchen"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ".",
+          "href": null,
+          "text": {
+            "content": ".",
             "link": null
           },
           "annotations": {
@@ -534,16 +534,118 @@
   {
     "object": "block",
     "id": "md-11",
-    "type": "heading_2",
+    "type": "paragraph",
     "has_children": false,
-    "heading_2": {
+    "paragraph": {
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "Books on Scandinavian painters, craft and photography",
+          "plain_text": "For work that sits between a picture and a pattern, look at Ishtar Bäcklund Dakhil's ",
           "href": null,
           "text": {
-            "content": "Books on Scandinavian painters, craft and photography",
+            "content": "For work that sits between a picture and a pattern, look at Ishtar Bäcklund Dakhil's ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Desert Circles",
+          "href": "/product/desert-circles",
+          "text": {
+            "content": "Desert Circles",
+            "link": {
+              "url": "/product/desert-circles"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ". It's a desert landscape, but the overlapping white circles that divide it carry the image. Ingunn Dybendal's ",
+          "href": null,
+          "text": {
+            "content": ". It's a desert landscape, but the overlapping white circles that divide it carry the image. Ingunn Dybendal's ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Eltsjoen",
+          "href": "/product/eltsjoen",
+          "text": {
+            "content": "Eltsjoen",
+            "link": {
+              "url": "/product/eltsjoen"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " takes the opposite route: a recognisable lake landscape builds into dense coloured-pencil detail. ",
+          "href": null,
+          "text": {
+            "content": " takes the opposite route: a recognisable lake landscape builds into dense coloured-pencil detail. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Trysilkaffe",
+          "href": "/product/trysilkaffe",
+          "text": {
+            "content": "Trysilkaffe",
+            "link": {
+              "url": "/product/trysilkaffe"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " applies that decorative richness to flowers on a table.",
+          "href": null,
+          "text": {
+            "content": " applies that decorative richness to flowers on a table.",
             "link": null
           },
           "annotations": {
@@ -560,16 +662,16 @@
   {
     "object": "block",
     "id": "md-12",
-    "type": "paragraph",
+    "type": "heading_2",
     "has_children": false,
-    "paragraph": {
+    "heading_2": {
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "This first list stays deliberately short and broad. The rest of the series does the digging, one strand each:",
+          "plain_text": "Check the viewing distance",
           "href": null,
           "text": {
-            "content": "This first list stays deliberately short and broad. The rest of the series does the digging, one strand each:",
+            "content": "Check the viewing distance",
             "link": null
           },
           "annotations": {
@@ -586,34 +688,16 @@
   {
     "object": "block",
     "id": "md-13",
-    "type": "bulleted_list_item",
+    "type": "paragraph",
     "has_children": false,
-    "bulleted_list_item": {
+    "paragraph": {
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "Nordic artist monographs",
-          "href": "/article/nordic-artist-monographs",
-          "text": {
-            "content": "Nordic artist monographs",
-            "link": {
-              "url": "/article/nordic-artist-monographs"
-            }
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": ", for when a single painter asks for a closer look",
+          "plain_text": "A print beside your desk gets a different kind of attention from one across the living room. Detail such as Eltsjoen's gives you something to keep looking into at close range. A broad shape or a limited palette is easier to take in from a doorway.",
           "href": null,
           "text": {
-            "content": ", for when a single painter asks for a closer look",
+            "content": "A print beside your desk gets a different kind of attention from one across the living room. Detail such as Eltsjoen's gives you something to keep looking into at close range. A broad shape or a limited palette is easier to take in from a doorway.",
             "link": null
           },
           "annotations": {
@@ -630,18 +714,34 @@
   {
     "object": "block",
     "id": "md-14",
-    "type": "bulleted_list_item",
+    "type": "paragraph",
     "has_children": false,
-    "bulleted_list_item": {
+    "paragraph": {
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "Nordic design and architecture books",
-          "href": "/article/nordic-design-and-architecture-books",
+          "plain_text": "Simen Wahlqvist's ",
+          "href": null,
           "text": {
-            "content": "Nordic design and architecture books",
+            "content": "Simen Wahlqvist's ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Mean Snothing",
+          "href": "/product/mean-snothing",
+          "text": {
+            "content": "Mean Snothing",
             "link": {
-              "url": "/article/nordic-design-and-architecture-books"
+              "url": "/product/mean-snothing"
             }
           },
           "annotations": {
@@ -654,10 +754,10 @@
         },
         {
           "type": "text",
-          "plain_text": ", on chairs, rooms and buildings",
+          "plain_text": " works as a small visual joke near a desk: a Newton's cradle where a man's eyes should be. Before deciding, hold a sheet of paper on the wall at the intended size and return to your usual seat. Check whether the position feels natural without leaning back or turning round.",
           "href": null,
           "text": {
-            "content": ", on chairs, rooms and buildings",
+            "content": " works as a small visual joke near a desk: a Newton's cradle where a man's eyes should be. Before deciding, hold a sheet of paper on the wall at the intended size and return to your usual seat. Check whether the position feels natural without leaning back or turning round.",
             "link": null
           },
           "annotations": {
@@ -674,34 +774,16 @@
   {
     "object": "block",
     "id": "md-15",
-    "type": "bulleted_list_item",
+    "type": "heading_2",
     "has_children": false,
-    "bulleted_list_item": {
+    "heading_2": {
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "Nordic craft books",
-          "href": "/article/nordic-craft-books-glass-ceramics-textiles",
-          "text": {
-            "content": "Nordic craft books",
-            "link": {
-              "url": "/article/nordic-craft-books-glass-ceramics-textiles"
-            }
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": ", on glass, ceramics, textiles and silver",
+          "plain_text": "Measure the work and the space around it",
           "href": null,
           "text": {
-            "content": ", on glass, ceramics, textiles and silver",
+            "content": "Measure the work and the space around it",
             "link": null
           },
           "annotations": {
@@ -718,18 +800,34 @@
   {
     "object": "block",
     "id": "md-16",
-    "type": "bulleted_list_item",
+    "type": "paragraph",
     "has_children": false,
-    "bulleted_list_item": {
+    "paragraph": {
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "Nordic photography books",
-          "href": "/article/nordic-photography-books",
+          "plain_text": "The prints featured here are 50 x 70 cm, apart from Mean Snothing at 50 x 50 cm. Those measurements describe the print, so allow extra space for a frame. The ",
+          "href": null,
           "text": {
-            "content": "Nordic photography books",
+            "content": "The prints featured here are 50 x 70 cm, apart from Mean Snothing at 50 x 50 cm. Those measurements describe the print, so allow extra space for a frame. The ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "print-size guide",
+          "href": "/article/complete-guide-choosing-print-sizes",
+          "text": {
+            "content": "print-size guide",
             "link": {
-              "url": "/article/nordic-photography-books"
+              "url": "/article/complete-guide-choosing-print-sizes"
             }
           },
           "annotations": {
@@ -742,10 +840,10 @@
         },
         {
           "type": "text",
-          "plain_text": ", the same North through a lens",
+          "plain_text": " helps you test placement before ordering.",
           "href": null,
           "text": {
-            "content": ", the same North through a lens",
+            "content": " helps you test placement before ordering.",
             "link": null
           },
           "annotations": {
@@ -762,18 +860,34 @@
   {
     "object": "block",
     "id": "md-17",
-    "type": "bulleted_list_item",
+    "type": "paragraph",
     "has_children": false,
-    "bulleted_list_item": {
+    "paragraph": {
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "Contemporary Nordic art books",
-          "href": "/article/contemporary-nordic-art-books",
+          "plain_text": "For more than one print, use the ",
+          "href": null,
           "text": {
-            "content": "Contemporary Nordic art books",
+            "content": "For more than one print, use the ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "gallery wall planner",
+          "href": "/gallery-wall-planner",
+          "text": {
+            "content": "gallery wall planner",
             "link": {
-              "url": "/article/contemporary-nordic-art-books"
+              "url": "/gallery-wall-planner"
             }
           },
           "annotations": {
@@ -786,10 +900,10 @@
         },
         {
           "type": "text",
-          "plain_text": ", on the artists working right now",
+          "plain_text": " to try the arrangement and spacing. It helps with the layout; you still need to measure the real wall and the frames you choose.",
           "href": null,
           "text": {
-            "content": ", on the artists working right now",
+            "content": " to try the arrangement and spacing. It helps with the layout; you still need to measure the real wall and the frames you choose.",
             "link": null
           },
           "annotations": {
@@ -812,10 +926,10 @@
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "None of these will teach you to make art, and that's not why you own them. They train the eye. A few evenings with Hammershøi's rooms and you start choosing what goes on your own walls a little more carefully.",
+          "plain_text": "Every product page lists the available size, current price and framing choices. Prints are made to order, with wood, black or white frames available, or unframed if you prefer. Delivery costs appear at checkout.",
           "href": null,
           "text": {
-            "content": "None of these will teach you to make art, and that's not why you own them. They train the eye. A few evenings with Hammershøi's rooms and you start choosing what goes on your own walls a little more carefully.",
+            "content": "Every product page lists the available size, current price and framing choices. Prints are made to order, with wood, black or white frames available, or unframed if you prefer. Delivery costs appear at checkout.",
             "link": null
           },
           "annotations": {
@@ -838,10 +952,10 @@
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "Which is where we come in. The prints we carry come from the same Nordic sensibility these books trace, the same light, the same restraint, the same quiet confidence. If a book sends you looking for a piece to live with, ",
+          "plain_text": "You don't have to settle the whole room at once. Choose the wall, find two or three prints that could work there, and look at them from the place where you'll live with them. Then return to ",
           "href": null,
           "text": {
-            "content": "Which is where we come in. The prints we carry come from the same Nordic sensibility these books trace, the same light, the same restraint, the same quiet confidence. If a book sends you looking for a piece to live with, ",
+            "content": "You don't have to settle the whole room at once. Choose the wall, find two or three prints that could work there, and look at them from the place where you'll live with them. Then return to ",
             "link": null
           },
           "annotations": {
@@ -854,12 +968,12 @@
         },
         {
           "type": "text",
-          "plain_text": "browse our Scandinavian art prints",
-          "href": "/scandinavian-wall-art",
+          "plain_text": "the seven-print shortlist",
+          "href": "/article/best-scandinavian-art-prints",
           "text": {
-            "content": "browse our Scandinavian art prints",
+            "content": "the seven-print shortlist",
             "link": {
-              "url": "/scandinavian-wall-art"
+              "url": "/article/best-scandinavian-art-prints"
             }
           },
           "annotations": {
@@ -872,10 +986,10 @@
         },
         {
           "type": "text",
-          "plain_text": ", and if you'd rather meet the people making that work now, ",
+          "plain_text": " or ",
           "href": null,
           "text": {
-            "content": ", and if you'd rather meet the people making that work now, ",
+            "content": " or ",
             "link": null
           },
           "annotations": {
@@ -888,12 +1002,12 @@
         },
         {
           "type": "text",
-          "plain_text": "our artists are here",
-          "href": "/artists",
+          "plain_text": "browse the full gallery",
+          "href": "/products",
           "text": {
-            "content": "our artists are here",
+            "content": "browse the full gallery",
             "link": {
-              "url": "/artists"
+              "url": "/products"
             }
           },
           "annotations": {
@@ -906,10 +1020,10 @@
         },
         {
           "type": "text",
-          "plain_text": ".",
+          "plain_text": " with a clearer idea of what you're looking for.",
           "href": null,
           "text": {
-            "content": ".",
+            "content": " with a clearer idea of what you're looking for.",
             "link": null
           },
           "annotations": {

@@ -8,10 +8,10 @@
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "One of the questions we hear most is: what size print should I get? It's a surprisingly important decision. The wrong size can make a beautiful piece of art look lost on a large wall or cramped in a small space. This guide walks you through the sizes we actually print, from A3 up to A1 and the two 50 cm formats, so you can choose with confidence.",
+          "plain_text": "One of the questions we hear most is: what size print should I get? It's a surprisingly important decision. The wrong size can make a beautiful piece of art look lost on a large wall or cramped in a small space. This guide walks you through the sizes we print, from A3 up to 50 x 70 cm, so you can choose with confidence.",
           "href": null,
           "text": {
-            "content": "One of the questions we hear most is: what size print should I get? It's a surprisingly important decision. The wrong size can make a beautiful piece of art look lost on a large wall or cramped in a small space. This guide walks you through the sizes we actually print, from A3 up to A1 and the two 50 cm formats, so you can choose with confidence.",
+            "content": "One of the questions we hear most is: what size print should I get? It's a surprisingly important decision. The wrong size can make a beautiful piece of art look lost on a large wall or cramped in a small space. This guide walks you through the sizes we print, from A3 up to 50 x 70 cm, so you can choose with confidence.",
             "link": null
           },
           "annotations": {
@@ -34,10 +34,10 @@
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "Understanding print sizes: A3, A2 and A1 explained",
+          "plain_text": "Sizes are chosen per artwork, and how they compare to A sizes",
           "href": null,
           "text": {
-            "content": "Understanding print sizes: A3, A2 and A1 explained",
+            "content": "Sizes are chosen per artwork, and how they compare to A sizes",
             "link": null
           },
           "annotations": {
@@ -60,10 +60,10 @@
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "If you're not familiar with A-series paper sizes, here's a quick reference. These are the standard sizes used across Europe for art prints:",
+          "plain_text": "We don't squeeze every artwork into one format. Each print is made at the size that suits its proportions and resolution, and it comes in the size shown on its product page. At the moment that means:",
           "href": null,
           "text": {
-            "content": "If you're not familiar with A-series paper sizes, here's a quick reference. These are the standard sizes used across Europe for art prints:",
+            "content": "We don't squeeze every artwork into one format. Each print is made at the size that suits its proportions and resolution, and it comes in the size shown on its product page. At the moment that means:",
             "link": null
           },
           "annotations": {
@@ -86,10 +86,26 @@
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "A3 (29.7 x 42 cm): the most compact option. Suits smaller walls, home offices and gallery wall arrangements where several pieces share the space.",
+          "plain_text": "50 x 70 cm",
           "href": null,
           "text": {
-            "content": "A3 (29.7 x 42 cm): the most compact option. Suits smaller walls, home offices and gallery wall arrangements where several pieces share the space.",
+            "content": "50 x 70 cm",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ", the portrait most of the gallery uses.",
+          "href": null,
+          "text": {
+            "content": ", the portrait most of the gallery uses.",
             "link": null
           },
           "annotations": {
@@ -112,10 +128,26 @@
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "A2 (42 x 59.4 cm): the versatile middle ground. Works above a desk, in a hallway, or as one of a pair flanking a window.",
+          "plain_text": "50 x 50 cm",
           "href": null,
           "text": {
-            "content": "A2 (42 x 59.4 cm): the versatile middle ground. Works above a desk, in a hallway, or as one of a pair flanking a window.",
+            "content": "50 x 50 cm",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ", the square, used for the illustrations and a few other pieces.",
+          "href": null,
+          "text": {
+            "content": ", the square, used for the illustrations and a few other pieces.",
             "link": null
           },
           "annotations": {
@@ -138,10 +170,60 @@
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "A1 (59.4 x 84.1 cm): the statement maker. Best for large walls, above sofas, or as a single feature piece that anchors an entire room.",
+          "plain_text": "45 x 60 cm and 40 x 50 cm",
           "href": null,
           "text": {
-            "content": "A1 (59.4 x 84.1 cm): the statement maker. Best for large walls, above sofas, or as a single feature piece that anchors an entire room.",
+            "content": "45 x 60 cm and 40 x 50 cm",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ", for the ",
+          "href": null,
+          "text": {
+            "content": ", for the ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "photography",
+          "href": "/category/photography",
+          "text": {
+            "content": "photography",
+            "link": {
+              "url": "/category/photography"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ", where the natural proportions of the photograph are kept rather than cropped to a poster ratio.",
+          "href": null,
+          "text": {
+            "content": ", where the natural proportions of the photograph are kept rather than cropped to a poster ratio.",
             "link": null
           },
           "annotations": {
@@ -158,20 +240,20 @@
   {
     "object": "block",
     "id": "md-7",
-    "type": "paragraph",
+    "type": "bulleted_list_item",
     "has_children": false,
-    "paragraph": {
+    "bulleted_list_item": {
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "In our gallery the A sizes belong to Renate Thor's ",
+          "plain_text": "A2 (42 x 59.4 cm) and A3 (29.7 x 42 cm)",
           "href": null,
           "text": {
-            "content": "In our gallery the A sizes belong to Renate Thor's ",
+            "content": "A2 (42 x 59.4 cm) and A3 (29.7 x 42 cm)",
             "link": null
           },
           "annotations": {
-            "bold": false,
+            "bold": true,
             "italic": false,
             "code": false,
             "strikethrough": false,
@@ -180,28 +262,10 @@
         },
         {
           "type": "text",
-          "plain_text": "Birdie prints",
-          "href": "/product/birdie-blue",
-          "text": {
-            "content": "Birdie prints",
-            "link": {
-              "url": "/product/birdie-blue"
-            }
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": ", which come in all three. The rest of the catalogue is printed at the size chosen for the artwork: 50 x 70 cm for most pieces, and 50 x 50 cm for the square illustrations. The square format is quietly useful, sitting well on a picture shelf and holding a narrow wall a rectangle would crowd, while 50 x 70 lands between A2 and A1, big enough to hold a wall on its own.",
+          "plain_text": ", for a handful of paintings.",
           "href": null,
           "text": {
-            "content": ", which come in all three. The rest of the catalogue is printed at the size chosen for the artwork: 50 x 70 cm for most pieces, and 50 x 50 cm for the square illustrations. The square format is quietly useful, sitting well on a picture shelf and holding a narrow wall a rectangle would crowd, while 50 x 70 lands between A2 and A1, big enough to hold a wall on its own.",
+            "content": ", for a handful of paintings.",
             "link": null
           },
           "annotations": {
@@ -218,6 +282,58 @@
   {
     "object": "block",
     "id": "md-8",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "If you think in A-series paper sizes, here's where the others land. 50 x 70 sits between A2 and A1 (59.4 x 84.1 cm), with closer to A1's presence on a wall. 45 x 60 is a touch bigger than A2, and 40 x 50 sits between A3 and A2. The square has no A-series equivalent at all, which is one reason it's quietly useful: it sits well on a picture shelf and holds a narrow wall that a rectangle would crowd.",
+          "href": null,
+          "text": {
+            "content": "If you think in A-series paper sizes, here's where the others land. 50 x 70 sits between A2 and A1 (59.4 x 84.1 cm), with closer to A1's presence on a wall. 45 x 60 is a touch bigger than A2, and 40 x 50 sits between A3 and A2. The square has no A-series equivalent at all, which is one reason it's quietly useful: it sits well on a picture shelf and holds a narrow wall that a rectangle would crowd.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-9",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Mixing sizes on one wall works too. Match the frames rather than the sizes, and let the biggest piece anchor the group.",
+          "href": null,
+          "text": {
+            "content": "Mixing sizes on one wall works too. Match the frames rather than the sizes, and let the biggest piece anchor the group.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-10",
     "type": "heading_2",
     "has_children": false,
     "heading_2": {
@@ -243,7 +359,7 @@
   },
   {
     "object": "block",
-    "id": "md-9",
+    "id": "md-11",
     "type": "heading_3",
     "has_children": false,
     "heading_3": {
@@ -269,17 +385,17 @@
   },
   {
     "object": "block",
-    "id": "md-10",
+    "id": "md-12",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "The living room is where most people want their most impactful piece. If you're hanging art above a sofa, the general rule is that the artwork should be roughly 60 to 75 per cent of the sofa's width. For a standard three-seater, that usually means an A1, a 50 x 70, or a pair of A2 prints side by side. A single A3 above a large sofa will look too small; it's a common mistake that's easily avoided. The ",
+          "plain_text": "The living room is where most people want their most impactful piece. If you're hanging art above a sofa, the general rule is that the artwork should be roughly 60 to 75 per cent of the sofa's width. For a standard three-seater, that means one 50 x 70 as the minimum, and a pair side by side to really own the wall. A single small print above a large sofa will look lost; it's a common mistake that's easily avoided. The ",
           "href": null,
           "text": {
-            "content": "The living room is where most people want their most impactful piece. If you're hanging art above a sofa, the general rule is that the artwork should be roughly 60 to 75 per cent of the sofa's width. For a standard three-seater, that usually means an A1, a 50 x 70, or a pair of A2 prints side by side. A single A3 above a large sofa will look too small; it's a common mistake that's easily avoided. The ",
+            "content": "The living room is where most people want their most impactful piece. If you're hanging art above a sofa, the general rule is that the artwork should be roughly 60 to 75 per cent of the sofa's width. For a standard three-seater, that means one 50 x 70 as the minimum, and a pair side by side to really own the wall. A single small print above a large sofa will look lost; it's a common mistake that's easily avoided. The ",
             "link": null
           },
           "annotations": {
@@ -329,7 +445,7 @@
   },
   {
     "object": "block",
-    "id": "md-11",
+    "id": "md-13",
     "type": "heading_3",
     "has_children": false,
     "heading_3": {
@@ -355,17 +471,17 @@
   },
   {
     "object": "block",
-    "id": "md-12",
+    "id": "md-14",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "Above the bed, A2 or 50 x 70 is often the sweet spot: large enough to be the focal point without dominating a room meant for winding down. If your bed has a tall headboard, consider hanging the print slightly higher than you normally would. For bedside walls or the space above a chest of drawers, A3 works perfectly. The ",
+          "plain_text": "Above the bed, a 50 x 70 is the sweet spot: large enough to be the focal point without dominating a room meant for winding down. If your bed has a tall headboard, consider hanging the print slightly higher than you normally would. For bedside walls or the space above a chest of drawers, the 50 x 50 squares work perfectly. The ",
           "href": null,
           "text": {
-            "content": "Above the bed, A2 or 50 x 70 is often the sweet spot: large enough to be the focal point without dominating a room meant for winding down. If your bed has a tall headboard, consider hanging the print slightly higher than you normally would. For bedside walls or the space above a chest of drawers, A3 works perfectly. The ",
+            "content": "Above the bed, a 50 x 70 is the sweet spot: large enough to be the focal point without dominating a room meant for winding down. If your bed has a tall headboard, consider hanging the print slightly higher than you normally would. For bedside walls or the space above a chest of drawers, the 50 x 50 squares work perfectly. The ",
             "link": null
           },
           "annotations": {
@@ -415,7 +531,7 @@
   },
   {
     "object": "block",
-    "id": "md-13",
+    "id": "md-15",
     "type": "heading_3",
     "has_children": false,
     "heading_3": {
@@ -441,17 +557,17 @@
   },
   {
     "object": "block",
-    "id": "md-14",
+    "id": "md-16",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "Hallways are often narrow, so a single A2 or 50 x 70 cm print works well. Hang it at eye level; this is one space where you view art from close range, so the details matter. For a longer hallway, consider a series of three A3 prints, or the square 50 x 50 illustrations, spaced evenly along the wall.",
+          "plain_text": "Hallways are often narrow, so a single 50 x 70 cm print works well. Hang it at eye level; this is one space where you view art from close range, so the details matter. For a longer hallway, consider a series of the square 50 x 50 illustrations, spaced evenly along the wall.",
           "href": null,
           "text": {
-            "content": "Hallways are often narrow, so a single A2 or 50 x 70 cm print works well. Hang it at eye level; this is one space where you view art from close range, so the details matter. For a longer hallway, consider a series of three A3 prints, or the square 50 x 50 illustrations, spaced evenly along the wall.",
+            "content": "Hallways are often narrow, so a single 50 x 70 cm print works well. Hang it at eye level; this is one space where you view art from close range, so the details matter. For a longer hallway, consider a series of the square 50 x 50 illustrations, spaced evenly along the wall.",
             "link": null
           },
           "annotations": {
@@ -467,7 +583,7 @@
   },
   {
     "object": "block",
-    "id": "md-15",
+    "id": "md-17",
     "type": "heading_3",
     "has_children": false,
     "heading_3": {
@@ -493,17 +609,17 @@
   },
   {
     "object": "block",
-    "id": "md-16",
+    "id": "md-18",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "An A3 or A2 print above or beside your desk adds personality to video calls and gives you somewhere to look that isn't the screen. Choose something that inspires without distracting; the ",
+          "plain_text": "A 50 x 50 square above or beside your desk adds personality to video calls and gives you somewhere to look that isn't the screen. Choose something that inspires without distracting; the ",
           "href": null,
           "text": {
-            "content": "An A3 or A2 print above or beside your desk adds personality to video calls and gives you somewhere to look that isn't the screen. Choose something that inspires without distracting; the ",
+            "content": "A 50 x 50 square above or beside your desk adds personality to video calls and gives you somewhere to look that isn't the screen. Choose something that inspires without distracting; the ",
             "link": null
           },
           "annotations": {
@@ -553,7 +669,7 @@
   },
   {
     "object": "block",
-    "id": "md-17",
+    "id": "md-19",
     "type": "heading_2",
     "has_children": false,
     "heading_2": {
@@ -579,7 +695,7 @@
   },
   {
     "object": "block",
-    "id": "md-18",
+    "id": "md-20",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
@@ -605,7 +721,7 @@
   },
   {
     "object": "block",
-    "id": "md-19",
+    "id": "md-21",
     "type": "heading_2",
     "has_children": false,
     "heading_2": {
@@ -631,7 +747,7 @@
   },
   {
     "object": "block",
-    "id": "md-20",
+    "id": "md-22",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
@@ -657,7 +773,7 @@
   },
   {
     "object": "block",
-    "id": "md-21",
+    "id": "md-23",
     "type": "heading_2",
     "has_children": false,
     "heading_2": {
@@ -683,7 +799,7 @@
   },
   {
     "object": "block",
-    "id": "md-22",
+    "id": "md-24",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
@@ -709,17 +825,17 @@
   },
   {
     "object": "block",
-    "id": "md-23",
+    "id": "md-25",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "Every print's available sizes and prices sit on its product page. Start from the whole gallery on our ",
+          "plain_text": "The size and price of each print sit on its product page. Start from the whole gallery on our ",
           "href": null,
           "text": {
-            "content": "Every print's available sizes and prices sit on its product page. Start from the whole gallery on our ",
+            "content": "The size and price of each print sit on its product page. Start from the whole gallery on our ",
             "link": null
           },
           "annotations": {

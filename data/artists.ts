@@ -13,14 +13,6 @@ export interface Artist {
 
 export const artists: Artist[] = [
   {
-    id: '1',
-    name: 'Helene Brox',
-    slug: 'helene-brox',
-    location: 'Oslo, Norway',
-    bio: 'Helene Brox is an illustrator, hand letterer and mural painter based in Oslo, and a founding member of the illustration agency Heiaklubben. Her book covers won silver and a diploma at Norway\u2019s \u00c5rets vakreste b\u00f8ker in 2016, and she invents wholly unreal grafted plants to sell as prints.',
-    image: '/images/artists/helene-brox.png'
-  },
-  {
     id: '2',
     name: 'Simen Wahlqvist',
     slug: 'simen-wahlqvist',

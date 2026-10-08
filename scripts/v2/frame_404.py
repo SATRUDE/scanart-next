@@ -78,5 +78,5 @@ def hang(slug: str) -> Path:
 
 
 if __name__ == "__main__":
-    for s in sys.argv[1:] or ["dancer", "dragon", "hyttefrokost"]:
+    for s in sys.argv[1:] or ["hyttefrokost"]:
         print(hang(s))

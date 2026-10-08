@@ -6,13 +6,13 @@ import { describe, expect, it } from 'vitest';
 import { ABOUT_HERO_SLUG, aboutHeroImage, aboutHeroSitemapImages } from '@/lib/about-hero';
 import { getAllProducts } from '@/lib/products';
 
-const treeTopPeach = {
-  name: 'Tree Top Peach',
-  slug: 'tree-top-peach',
-  artist: 'Helene Brox',
+const eltsjoen = {
+  name: 'Eltsjoen',
+  slug: 'eltsjoen',
+  artist: 'Ingunn Dybendal',
   category: 'Botanical',
-  image: '/images/products/tree-top-peach.png',
-  secondaryImage: '/images/products/tree-top-peach-scene.avif',
+  image: '/images/products/eltsjoen.png',
+  secondaryImage: '/images/products/eltsjoen-scene.avif',
 };
 
 // The pages pass real catalogue rows; these fixtures only need the fields the
@@ -23,26 +23,26 @@ const catalogue = (...products: unknown[]) =>
 
 describe('aboutHeroImage', () => {
   it('names the print and its artist rather than describing it generically', () => {
-    expect(aboutHeroImage(catalogue(treeTopPeach))).toEqual({
-      src: '/images/products/tree-top-peach-scene.avif',
-      alt: 'Tree Top Peach by Helene Brox, framed and styled in a room setting',
+    expect(aboutHeroImage(catalogue(eltsjoen))).toEqual({
+      src: '/images/products/eltsjoen-scene.avif',
+      alt: 'Eltsjoen by Ingunn Dybendal, framed and styled in a room setting',
     });
   });
 
   it('says the same thing in bokmål on the Norwegian page', () => {
-    expect(aboutHeroImage(catalogue(treeTopPeach), 'no')).toEqual({
-      src: '/images/products/tree-top-peach-scene.avif',
-      alt: 'Tree Top Peach av Helene Brox, innrammet i et nordisk interiør',
+    expect(aboutHeroImage(catalogue(eltsjoen), 'no')).toEqual({
+      src: '/images/products/eltsjoen-scene.avif',
+      alt: 'Eltsjoen av Ingunn Dybendal, innrammet i et nordisk interiør',
     });
   });
 
   it('falls back to the print itself when it has no styled scene', () => {
     const { src, alt } = aboutHeroImage(
-      catalogue({ ...treeTopPeach, secondaryImage: '' })
+      catalogue({ ...eltsjoen, secondaryImage: '' })
     );
 
-    expect(src).toBe('/images/products/tree-top-peach.png');
-    expect(alt).toBe('Tree Top Peach by Helene Brox, a botanical Scandinavian art print');
+    expect(src).toBe('/images/products/eltsjoen.png');
+    expect(alt).toBe('Eltsjoen by Ingunn Dybendal, a botanical Scandinavian art print');
   });
 
   it('still draws a hero when the print is not in the catalogue at all', () => {
@@ -50,16 +50,16 @@ describe('aboutHeroImage', () => {
     // branch is never the one production takes.
     const { src, alt } = aboutHeroImage(catalogue());
 
-    expect(src).toBe('/images/products/tree-top-peach-scene.avif');
+    expect(src).toBe('/images/products/eltsjoen-scene.avif');
     expect(alt.length).toBeGreaterThan(0);
   });
 });
 
 describe('aboutHeroSitemapImages', () => {
   it('declares the hero as an absolute URL, in the shape the other entries use', () => {
-    expect(aboutHeroSitemapImages(catalogue(treeTopPeach))).toEqual({
+    expect(aboutHeroSitemapImages(catalogue(eltsjoen))).toEqual({
       images: [
-        'https://www.scandinavianart.co.uk/images/products/tree-top-peach-scene.avif',
+        'https://www.scandinavianart.co.uk/images/products/eltsjoen-scene.avif',
       ],
     });
   });
@@ -81,7 +81,7 @@ describe('the /about hero against the real catalogue', () => {
     const { src, alt } = aboutHeroImage(products);
 
     expect(existsSync(join(process.cwd(), 'public', src))).toBe(true);
-    expect(alt).toContain('Tree Top Peach');
-    expect(alt).toContain('Helene Brox');
+    expect(alt).toContain('Eltsjoen');
+    expect(alt).toContain('Ingunn Dybendal');
   });
 });

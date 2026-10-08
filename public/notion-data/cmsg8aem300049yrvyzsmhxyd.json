@@ -25,11 +25,11 @@
         {
           "type": "text",
           "plain_text": "Nordic art and design books",
-          "href": "https://www.scandinavianart.co.uk/article/nordic-art-and-design-books",
+          "href": "/article/nordic-art-and-design-books",
           "text": {
             "content": "Nordic art and design books",
             "link": {
-              "url": "https://www.scandinavianart.co.uk/article/nordic-art-and-design-books"
+              "url": "/article/nordic-art-and-design-books"
             }
           },
           "annotations": {
@@ -59,11 +59,11 @@
         {
           "type": "text",
           "plain_text": "Nordic artist monographs",
-          "href": "https://www.scandinavianart.co.uk/article/nordic-artist-monographs",
+          "href": "/article/nordic-artist-monographs",
           "text": {
             "content": "Nordic artist monographs",
             "link": {
-              "url": "https://www.scandinavianart.co.uk/article/nordic-artist-monographs"
+              "url": "/article/nordic-artist-monographs"
             }
           },
           "annotations": {
@@ -96,6 +96,32 @@
   {
     "object": "block",
     "id": "md-2",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "The best Scandinavian design book: Fiell's Taschen survey",
+          "href": null,
+          "text": {
+            "content": "The best Scandinavian design book: Fiell's Taschen survey",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-3",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
@@ -134,10 +160,10 @@
         },
         {
           "type": "text",
-          "plain_text": " by Charlotte and Peter Fiell (Taschen, first published 2002) is as close to a single-volume survey of the field as you will find, a country-by-country run through the furniture, lighting and objects that made the region famous, with 179 illustrated entries on the designers and firms behind them. Reach for it first and the other four make more sense. ",
+          "plain_text": " by Charlotte and Peter Fiell (Taschen) is as close to a single-volume survey of the field as you'll find. The current edition runs to 512 pages with in-depth entries on 125 designers and design-led companies, and it's arranged by what things are made of rather than by country: furniture, glass, ceramics, textiles, jewellery, metalware and product design, 1900 to the present day. Reach for it first and the other four make more sense. ",
           "href": null,
           "text": {
-            "content": " by Charlotte and Peter Fiell (Taschen, first published 2002) is as close to a single-volume survey of the field as you will find, a country-by-country run through the furniture, lighting and objects that made the region famous, with 179 illustrated entries on the designers and firms behind them. Reach for it first and the other four make more sense. ",
+            "content": " by Charlotte and Peter Fiell (Taschen) is as close to a single-volume survey of the field as you'll find. The current edition runs to 512 pages with in-depth entries on 125 designers and design-led companies, and it's arranged by what things are made of rather than by country: furniture, glass, ceramics, textiles, jewellery, metalware and product design, 1900 to the present day. Reach for it first and the other four make more sense. ",
             "link": null
           },
           "annotations": {
@@ -187,7 +213,119 @@
   },
   {
     "object": "block",
-    "id": "md-3",
+    "id": "md-4",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "What's the difference between Nordic and Scandinavian design?",
+          "href": null,
+          "text": {
+            "content": "What's the difference between Nordic and Scandinavian design?",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-5",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Mostly which countries you're counting, and it changes the reading list. ",
+          "href": null,
+          "text": {
+            "content": "Mostly which countries you're counting, and it changes the reading list. ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Scandinavia proper",
+          "href": "https://nordics.info/show/artikel/the-nordic-region",
+          "text": {
+            "content": "Scandinavia proper",
+            "link": {
+              "url": "https://nordics.info/show/artikel/the-nordic-region"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " is Denmark, Norway and Sweden, so Scandinavian design tends to mean the furniture, the mid-century Danish and Swedish chairs and cabinets above all. Nordic is the bigger tent, Finland and Iceland included, and it's the word you need for Alvar Aalto, for Iittala glass and for Marimekko, all Finnish. Fiell's book covers the Finns properly and still calls itself Scandinavian, which tells you how loosely both words get used once you're standing in a bookshop.",
+          "href": null,
+          "text": {
+            "content": " is Denmark, Norway and Sweden, so Scandinavian design tends to mean the furniture, the mid-century Danish and Swedish chairs and cabinets above all. Nordic is the bigger tent, Finland and Iceland included, and it's the word you need for Alvar Aalto, for Iittala glass and for Marimekko, all Finnish. Fiell's book covers the Finns properly and still calls itself Scandinavian, which tells you how loosely both words get used once you're standing in a bookshop.",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-6",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Nordic architecture books: Alvar Aalto",
+          "href": null,
+          "text": {
+            "content": "Nordic architecture books: Alvar Aalto",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-7",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
@@ -279,17 +417,43 @@
   },
   {
     "object": "block",
-    "id": "md-4",
+    "id": "md-8",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Danish design books: Jacobsen, Wegner and Juhl",
+          "href": null,
+          "text": {
+            "content": "Danish design books: Jacobsen, Wegner and Juhl",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-9",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "For the Danes, two designers who worked at every scale. ",
+          "plain_text": "For the Danes, three designers who worked at every scale. ",
           "href": null,
           "text": {
-            "content": "For the Danes, two designers who worked at every scale. ",
+            "content": "For the Danes, three designers who worked at every scale. ",
             "link": null
           },
           "annotations": {
@@ -371,7 +535,7 @@
   },
   {
     "object": "block",
-    "id": "md-5",
+    "id": "md-10",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
@@ -394,10 +558,10 @@
         },
         {
           "type": "text",
-          "plain_text": " by Christian Holmsted Olesen (Hatje Cantz, 2014) is the definitive book on the man who designed roughly 500 of them and made the world care about the joinery. The title comes from Wegner's own line, that you cannot design just one good chair in a lifetime and must keep trying, which tells you everything about the discipline in the pages. ",
+          "plain_text": " by Christian Holmsted Olesen (Hatje Cantz, 2014) is the definitive book on the man who designed roughly 500 of them and made the world care about the joinery. The title comes from Wegner's own line, that you can't design just one good chair in a lifetime and must keep trying, which tells you everything about the discipline in the pages. ",
           "href": null,
           "text": {
-            "content": " by Christian Holmsted Olesen (Hatje Cantz, 2014) is the definitive book on the man who designed roughly 500 of them and made the world care about the joinery. The title comes from Wegner's own line, that you cannot design just one good chair in a lifetime and must keep trying, which tells you everything about the discipline in the pages. ",
+            "content": " by Christian Holmsted Olesen (Hatje Cantz, 2014) is the definitive book on the man who designed roughly 500 of them and made the world care about the joinery. The title comes from Wegner's own line, that you can't design just one good chair in a lifetime and must keep trying, which tells you everything about the discipline in the pages. ",
             "link": null
           },
           "annotations": {
@@ -447,7 +611,7 @@
   },
   {
     "object": "block",
-    "id": "md-6",
+    "id": "md-11",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
@@ -539,7 +703,67 @@
   },
   {
     "object": "block",
-    "id": "md-7",
+    "id": "md-12",
+    "type": "paragraph",
+    "has_children": false,
+    "paragraph": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Fiell's chapters on glass, ceramics and textiles are only a taste of a much bigger shelf, and there's a whole instalment on it: ",
+          "href": null,
+          "text": {
+            "content": "Fiell's chapters on glass, ceramics and textiles are only a taste of a much bigger shelf, and there's a whole instalment on it: ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "Nordic craft books",
+          "href": "/article/nordic-craft-books-glass-ceramics-textiles",
+          "text": {
+            "content": "Nordic craft books",
+            "link": {
+              "url": "/article/nordic-craft-books-glass-ceramics-textiles"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": ".",
+          "href": null,
+          "text": {
+            "content": ".",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-13",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
@@ -563,11 +787,11 @@
         {
           "type": "text",
           "plain_text": "illustration prints",
-          "href": "https://www.scandinavianart.co.uk/category/illustrations",
+          "href": "/category/illustrations",
           "text": {
             "content": "illustration prints",
             "link": {
-              "url": "https://www.scandinavianart.co.uk/category/illustrations"
+              "url": "/category/illustrations"
             }
           },
           "annotations": {

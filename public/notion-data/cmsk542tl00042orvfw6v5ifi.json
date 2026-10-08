@@ -320,12 +320,12 @@
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "Tree Top Peach",
-          "href": "/product/tree-top-peach",
+          "plain_text": "Small House Big Ocean",
+          "href": "/product/small-house-big-ocean",
           "text": {
-            "content": "Tree Top Peach",
+            "content": "Small House Big Ocean",
             "link": {
-              "url": "/product/tree-top-peach"
+              "url": "/product/small-house-big-ocean"
             }
           },
           "annotations": {
@@ -338,10 +338,10 @@
         },
         {
           "type": "text",
-          "plain_text": " is the gentlest thing in the gallery, a papercut lattice of branches and birds in a single warm tone. It settles a room without disappearing into it.",
+          "plain_text": " sets a little house on a rock in a sea of waves drawn in black ink line, a stormy subject that ends up oddly calm.",
           "href": null,
           "text": {
-            "content": " is the gentlest thing in the gallery, a papercut lattice of branches and birds in a single warm tone. It settles a room without disappearing into it.",
+            "content": " sets a little house on a rock in a sea of waves drawn in black ink line, a stormy subject that ends up oddly calm.",
             "link": null
           },
           "annotations": {
@@ -358,94 +358,6 @@
   {
     "object": "block",
     "id": "md-14",
-    "type": "bulleted_list_item",
-    "has_children": false,
-    "bulleted_list_item": {
-      "rich_text": [
-        {
-          "type": "text",
-          "plain_text": "Swallow Dive",
-          "href": "/product/swallow-dive",
-          "text": {
-            "content": "Swallow Dive",
-            "link": {
-              "url": "/product/swallow-dive"
-            }
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": " is all movement, but in two colours only, cobalt on cream. Calm from the bed, confident from the door.",
-          "href": null,
-          "text": {
-            "content": " is all movement, but in two colours only, cobalt on cream. Calm from the bed, confident from the door.",
-            "link": null
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        }
-      ]
-    }
-  },
-  {
-    "object": "block",
-    "id": "md-15",
-    "type": "bulleted_list_item",
-    "has_children": false,
-    "bulleted_list_item": {
-      "rich_text": [
-        {
-          "type": "text",
-          "plain_text": "Birdie Pink",
-          "href": "/product/birdie-pink",
-          "text": {
-            "content": "Birdie Pink",
-            "link": {
-              "url": "/product/birdie-pink"
-            }
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        },
-        {
-          "type": "text",
-          "plain_text": " is soft rose with cobalt tail feathers, sweet enough for a nursery and sharp enough not to be twee.",
-          "href": null,
-          "text": {
-            "content": " is soft rose with cobalt tail feathers, sweet enough for a nursery and sharp enough not to be twee.",
-            "link": null
-          },
-          "annotations": {
-            "bold": false,
-            "italic": false,
-            "code": false,
-            "strikethrough": false,
-            "underline": false
-          }
-        }
-      ]
-    }
-  },
-  {
-    "object": "block",
-    "id": "md-16",
     "type": "bulleted_list_item",
     "has_children": false,
     "bulleted_list_item": {
@@ -489,7 +401,7 @@
   },
   {
     "object": "block",
-    "id": "md-17",
+    "id": "md-15",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
@@ -515,7 +427,7 @@
   },
   {
     "object": "block",
-    "id": "md-18",
+    "id": "md-16",
     "type": "heading_2",
     "has_children": false,
     "heading_2": {
@@ -541,7 +453,7 @@
   },
   {
     "object": "block",
-    "id": "md-19",
+    "id": "md-17",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
@@ -567,17 +479,17 @@
   },
   {
     "object": "block",
-    "id": "md-20",
+    "id": "md-18",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "The easiest pair is two colourways of the same image. Hang ",
+          "plain_text": "The easiest pair is two prints from the same hand. Hang ",
           "href": null,
           "text": {
-            "content": "The easiest pair is two colourways of the same image. Hang ",
+            "content": "The easiest pair is two prints from the same hand. Hang ",
             "link": null
           },
           "annotations": {
@@ -590,12 +502,12 @@
         },
         {
           "type": "text",
-          "plain_text": "Birdie Blue",
-          "href": "/product/birdie-blue",
+          "plain_text": "Eltsjoen",
+          "href": "/product/eltsjoen",
           "text": {
-            "content": "Birdie Blue",
+            "content": "Eltsjoen",
             "link": {
-              "url": "/product/birdie-blue"
+              "url": "/product/eltsjoen"
             }
           },
           "annotations": {
@@ -624,12 +536,12 @@
         },
         {
           "type": "text",
-          "plain_text": "Birdie Brown",
-          "href": "/product/birdie-brown",
+          "plain_text": "Trysilkaffe",
+          "href": "/product/trysilkaffe",
           "text": {
-            "content": "Birdie Brown",
+            "content": "Trysilkaffe",
             "link": {
-              "url": "/product/birdie-brown"
+              "url": "/product/trysilkaffe"
             }
           },
           "annotations": {
@@ -642,10 +554,10 @@
         },
         {
           "type": "text",
-          "plain_text": " side by side and you get variation and repetition at once, which is the whole trick of a small series. Keep the gap tight, 5 to 8 cm, so they read as one object.",
+          "plain_text": " side by side and you get variation and repetition at once, the same coloured-pencil density across a lake and a bouquet, which is the whole trick of a small series. Keep the gap tight, 5 to 8 cm, so they read as one object.",
           "href": null,
           "text": {
-            "content": " side by side and you get variation and repetition at once, which is the whole trick of a small series. Keep the gap tight, 5 to 8 cm, so they read as one object.",
+            "content": " side by side and you get variation and repetition at once, the same coloured-pencil density across a lake and a bouquet, which is the whole trick of a small series. Keep the gap tight, 5 to 8 cm, so they read as one object.",
             "link": null
           },
           "annotations": {
@@ -661,7 +573,7 @@
   },
   {
     "object": "block",
-    "id": "md-21",
+    "id": "md-19",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
@@ -721,7 +633,7 @@
   },
   {
     "object": "block",
-    "id": "md-22",
+    "id": "md-20",
     "type": "heading_2",
     "has_children": false,
     "heading_2": {
@@ -747,7 +659,7 @@
   },
   {
     "object": "block",
-    "id": "md-23",
+    "id": "md-21",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
@@ -773,7 +685,7 @@
   },
   {
     "object": "block",
-    "id": "md-24",
+    "id": "md-22",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
@@ -799,7 +711,7 @@
   },
   {
     "object": "block",
-    "id": "md-25",
+    "id": "md-23",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {

@@ -27,11 +27,11 @@ type Story = StoryObj<typeof ProductActions>;
 export const MultipleSizes: Story = {
   args: {
     product: {
-      id: '1', name: 'Swallow Dive', slug: 'swallow-dive',
+      id: '1', name: 'Eltsjoen', slug: 'eltsjoen',
       prices: { A3: { GBP: 42, NOK: 577, USD: 54, DKK: 367, SEK: 577 }, A2: { GBP: 56, NOK: 770, USD: 72, DKK: 490, SEK: 770 }, A1: { GBP: 77, NOK: 1058, USD: 99, DKK: 673, SEK: 1058 } },
-      image: '/images/products/swallow-dive.png', secondaryImage: '',
-      description: '', category: 'Abstract', brand: 'Helene Brox',
-      artist: 'Helene Brox', artistId: '', inStock: true, published: true, featured: false,
+      image: '/images/products/eltsjoen.png', secondaryImage: '',
+      description: '', category: 'Abstract', brand: 'Simen Wahlqvist',
+      artist: 'Simen Wahlqvist', artistId: '', inStock: true, published: true, featured: false,
       sizes: { A3: true, A2: true, A1: true },
     },
   },
@@ -40,9 +40,9 @@ export const MultipleSizes: Story = {
 export const SingleSize: Story = {
   args: {
     product: {
-      id: '2', name: 'Dragon', slug: 'dragon',
+      id: '2', name: 'Slingshot', slug: 'slingshot',
       prices: { '50x70cm': { GBP: 56, NOK: 770, USD: 72, DKK: 490, SEK: 770 } },
-      image: '/images/products/dragon.png', secondaryImage: '',
+      image: '/images/products/slingshot.png', secondaryImage: '',
       description: '', category: 'Illustrations', brand: 'Simen Strum',
       artist: 'Simen Strum', artistId: '', inStock: true, published: true, featured: false,
       sizes: { '50x70cm': true },
@@ -54,7 +54,7 @@ export const SoldOut: Story = {
   args: {
     product: {
       id: '3', name: 'Sold Out Print', slug: 'sold-out',
-      prices: {}, image: '/images/products/dragon.png', secondaryImage: '',
+      prices: {}, image: '/images/products/slingshot.png', secondaryImage: '',
       description: '', category: 'Abstract', brand: 'Test',
       artist: '', artistId: '', inStock: false, published: true, featured: false,
       sizes: {},

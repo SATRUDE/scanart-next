@@ -59,7 +59,7 @@ export const noV2 = {
       body: 'Vi er et lite galleri og tar inn svært få, men et menneske leser alt som kommer inn. Fortell oss om arbeidet ditt.',
       button: 'Be om å bli vurdert',
     },
-    /** "Tree Top Peach av Helene Brox" under the catalogue picture. */
+    /** "Vinkveld av Sia Siamos" under the catalogue picture. */
     by: 'av',
   },
 

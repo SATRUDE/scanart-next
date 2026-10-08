@@ -25,11 +25,11 @@
         {
           "type": "text",
           "plain_text": "Nordic art and design books",
-          "href": "https://www.scandinavianart.co.uk/article/nordic-art-and-design-books",
+          "href": "/article/nordic-art-and-design-books",
           "text": {
             "content": "Nordic art and design books",
             "link": {
-              "url": "https://www.scandinavianart.co.uk/article/nordic-art-and-design-books"
+              "url": "/article/nordic-art-and-design-books"
             }
           },
           "annotations": {
@@ -59,11 +59,11 @@
         {
           "type": "text",
           "plain_text": "Nordic artist monographs",
-          "href": "https://www.scandinavianart.co.uk/article/nordic-artist-monographs",
+          "href": "/article/nordic-artist-monographs",
           "text": {
             "content": "Nordic artist monographs",
             "link": {
-              "url": "https://www.scandinavianart.co.uk/article/nordic-artist-monographs"
+              "url": "/article/nordic-artist-monographs"
             }
           },
           "annotations": {
@@ -76,10 +76,10 @@
         },
         {
           "type": "text",
-          "plain_text": " piece went deep on the painters. This shelf hands the North to the photographers. It is the same light the painters chased, the long low sun, the white winters, the stillness, only now it arrives through a lens and a darkroom rather than a brush. Set one of these on the table beside a print on the wall and you are looking at two halves of the same country, a century or so apart and chasing the same weather. Five books, one from each Nordic nation.",
+          "plain_text": " piece went deep on the painters. This shelf hands the North to the photographers. It's the same light the painters chased, the long low sun, the white winters, the stillness, only now it arrives through a lens and a darkroom rather than a brush. Set one of these on the table beside a print on the wall and you're looking at two halves of the same country, a century or so apart and chasing the same weather. Five books, one from each Nordic nation.",
           "href": null,
           "text": {
-            "content": " piece went deep on the painters. This shelf hands the North to the photographers. It is the same light the painters chased, the long low sun, the white winters, the stillness, only now it arrives through a lens and a darkroom rather than a brush. Set one of these on the table beside a print on the wall and you are looking at two halves of the same country, a century or so apart and chasing the same weather. Five books, one from each Nordic nation.",
+            "content": " piece went deep on the painters. This shelf hands the North to the photographers. It's the same light the painters chased, the long low sun, the white winters, the stillness, only now it arrives through a lens and a darkroom rather than a brush. Set one of these on the table beside a print on the wall and you're looking at two halves of the same country, a century or so apart and chasing the same weather. Five books, one from each Nordic nation.",
             "link": null
           },
           "annotations": {
@@ -96,6 +96,32 @@
   {
     "object": "block",
     "id": "md-2",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Famous Icelandic and Finnish photographers",
+          "href": null,
+          "text": {
+            "content": "Famous Icelandic and Finnish photographers",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-3",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
@@ -155,7 +181,7 @@
   },
   {
     "object": "block",
-    "id": "md-3",
+    "id": "md-4",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
@@ -196,10 +222,10 @@
         },
         {
           "type": "text",
-          "plain_text": " gathers more than forty years of it. Snow, dogs and small figures in enormous landscapes, all held in a soft silver light. Open it anywhere and the noise drops. It is the most quietly beautiful book on the list.",
+          "plain_text": " gathers more than forty years of it. Snow, dogs and small figures in enormous landscapes, all held in a soft silver light. Open it anywhere and the noise drops. It's the most quietly beautiful book on the list.",
           "href": null,
           "text": {
-            "content": " gathers more than forty years of it. Snow, dogs and small figures in enormous landscapes, all held in a soft silver light. Open it anywhere and the noise drops. It is the most quietly beautiful book on the list.",
+            "content": " gathers more than forty years of it. Snow, dogs and small figures in enormous landscapes, all held in a soft silver light. Open it anywhere and the noise drops. It's the most quietly beautiful book on the list.",
             "link": null
           },
           "annotations": {
@@ -215,7 +241,33 @@
   },
   {
     "object": "block",
-    "id": "md-4",
+    "id": "md-5",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Famous Norwegian and Swedish photographers",
+          "href": null,
+          "text": {
+            "content": "Famous Norwegian and Swedish photographers",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-6",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
@@ -256,10 +308,44 @@
         },
         {
           "type": "text",
-          "plain_text": " walks into Finnskogen, the forest along the Swedish border once settled by Finnish farmers. Part documentary and part something stranger and more dreamlike, it won the Leica Oskar Barnack Award and proves Nordic photography kept getting interesting long after the old masters.",
+          "plain_text": " walks into Finnskogen, the forest along the Swedish border once settled by Finnish farmers. Part documentary and part something stranger and more dreamlike, it won the Leica Oskar Barnack Award and proves Nordic photography kept getting interesting long after the old masters, much as the ",
           "href": null,
           "text": {
-            "content": " walks into Finnskogen, the forest along the Swedish border once settled by Finnish farmers. Part documentary and part something stranger and more dreamlike, it won the Leica Oskar Barnack Award and proves Nordic photography kept getting interesting long after the old masters.",
+            "content": " walks into Finnskogen, the forest along the Swedish border once settled by Finnish farmers. Part documentary and part something stranger and more dreamlike, it won the Leica Oskar Barnack Award and proves Nordic photography kept getting interesting long after the old masters, much as the ",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": "contemporary art books",
+          "href": "/article/contemporary-nordic-art-books",
+          "text": {
+            "content": "contemporary art books",
+            "link": {
+              "url": "/article/contemporary-nordic-art-books"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        },
+        {
+          "type": "text",
+          "plain_text": " do for painting.",
+          "href": null,
+          "text": {
+            "content": " do for painting.",
             "link": null
           },
           "annotations": {
@@ -275,17 +361,17 @@
   },
   {
     "object": "block",
-    "id": "md-5",
+    "id": "md-7",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "Sweden gives us two names for the price of one. Anders Petersen and JH Engstrom both grew up in rural Varmland, and for ",
+          "plain_text": "Sweden gives us two names for the price of one. Anders Petersen and JH Engström both grew up in rural Värmland, and for ",
           "href": null,
           "text": {
-            "content": "Sweden gives us two names for the price of one. Anders Petersen and JH Engstrom both grew up in rural Varmland, and for ",
+            "content": "Sweden gives us two names for the price of one. Anders Petersen and JH Engström both grew up in rural Värmland, and for ",
             "link": null
           },
           "annotations": {
@@ -335,17 +421,43 @@
   },
   {
     "object": "block",
-    "id": "md-6",
+    "id": "md-8",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Famous Danish photographers: Jacob Aue Sobol",
+          "href": null,
+          "text": {
+            "content": "Famous Danish photographers: Jacob Aue Sobol",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-9",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "Denmark closes the shelf with the most personal book of the five. Jacob Aue Sobol lived three years in a tiny settlement on the east coast of Greenland, and ",
+          "plain_text": "Denmark closes the shelf with the most personal book of the five. Sobol lived three years in a tiny settlement on the east coast of Greenland, and ",
           "href": null,
           "text": {
-            "content": "Denmark closes the shelf with the most personal book of the five. Jacob Aue Sobol lived three years in a tiny settlement on the east coast of Greenland, and ",
+            "content": "Denmark closes the shelf with the most personal book of the five. Sobol lived three years in a tiny settlement on the east coast of Greenland, and ",
             "link": null
           },
           "annotations": {
@@ -393,17 +505,43 @@
   },
   {
     "object": "block",
-    "id": "md-7",
+    "id": "md-10",
+    "type": "heading_2",
+    "has_children": false,
+    "heading_2": {
+      "rich_text": [
+        {
+          "type": "text",
+          "plain_text": "Why Nordic landscape photography looks the way it does",
+          "href": null,
+          "text": {
+            "content": "Why Nordic landscape photography looks the way it does",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "code": false,
+            "strikethrough": false,
+            "underline": false
+          }
+        }
+      ]
+    }
+  },
+  {
+    "object": "block",
+    "id": "md-11",
     "type": "paragraph",
     "has_children": false,
     "paragraph": {
       "rich_text": [
         {
           "type": "text",
-          "plain_text": "What holds these five together is the light. The same pale, level, northern light that drew the painters to their easels draws the photographers to the ice, the forest and the kitchen table. None of them are showy books; they reward a slow look, the way a good print does. If a book here sends you looking for something to live with rather than shelve, our ",
+          "plain_text": "What holds these five together is the light. The same pale, level, northern light that drew the painters to their easels draws the photographers to the ice, the forest and the kitchen table. There's not much sun to waste up here, so everyone learns to work with the little there is, and it shows in how patient these pictures are. None of them are showy books; they reward a slow look, the way a good print does. If a book here sends you looking for something to live with rather than shelve, our ",
           "href": null,
           "text": {
-            "content": "What holds these five together is the light. The same pale, level, northern light that drew the painters to their easels draws the photographers to the ice, the forest and the kitchen table. None of them are showy books; they reward a slow look, the way a good print does. If a book here sends you looking for something to live with rather than shelve, our ",
+            "content": "What holds these five together is the light. The same pale, level, northern light that drew the painters to their easels draws the photographers to the ice, the forest and the kitchen table. There's not much sun to waste up here, so everyone learns to work with the little there is, and it shows in how patient these pictures are. None of them are showy books; they reward a slow look, the way a good print does. If a book here sends you looking for something to live with rather than shelve, our ",
             "link": null
           },
           "annotations": {
@@ -417,11 +555,11 @@
         {
           "type": "text",
           "plain_text": "botanical prints",
-          "href": "https://www.scandinavianart.co.uk/category/botanical",
+          "href": "/category/botanical",
           "text": {
             "content": "botanical prints",
             "link": {
-              "url": "https://www.scandinavianart.co.uk/category/botanical"
+              "url": "/category/botanical"
             }
           },
           "annotations": {

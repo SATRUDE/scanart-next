@@ -13,17 +13,17 @@ import { siteImage } from '@/lib/product-sitemap-images';
  * image to anyone who cannot see it: the alt text a screen reader announces,
  * and the alt text Google Images ranks on. /about is our second-biggest
  * image-search surface at 275 image impressions in the 28 days to 2026-09-06,
- * and it was describing a Helene Brox print as "a framed Scandinavian art
- * print".
+ * and it was describing a named artist's print as "a framed Scandinavian
+ * art print".
  *
  * Naming the slug here and resolving the rest from the catalogue fixes both
  * halves at once: the alt comes from `productImages`, the same function that
- * describes this exact picture on /product/tree-top-peach, so the two can never
+ * describes this exact picture on the print's product page, so the two can never
  * disagree; and `about-hero.test.ts` fails the build if the print ever leaves
  * the catalogue, which is the drift a hardcoded path cannot notice. Retiring an
  * artist has already stranded live references on this site once.
  */
-export const ABOUT_HERO_SLUG = 'tree-top-peach';
+export const ABOUT_HERO_SLUG = 'eltsjoen';
 
 /**
  * What the hero renders if the catalogue cannot be read or the print is gone.
@@ -32,11 +32,11 @@ export const ABOUT_HERO_SLUG = 'tree-top-peach';
  */
 const FALLBACK: Record<AltLocale, AboutHeroImage> = {
   en: {
-    src: '/images/products/tree-top-peach-scene.avif',
+    src: '/images/products/eltsjoen-scene.avif',
     alt: 'A framed Scandinavian art print in a light Nordic interior',
   },
   no: {
-    src: '/images/products/tree-top-peach-scene.avif',
+    src: '/images/products/eltsjoen-scene.avif',
     alt: 'Et innrammet skandinavisk kunsttrykk i et lyst, nordisk interiør',
   },
 };

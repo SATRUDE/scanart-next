@@ -730,12 +730,12 @@
         },
         {
           "type": "text",
-          "plain_text": "Birdie Green",
-          "href": "/product/birdie-green",
+          "plain_text": "Slingshot",
+          "href": "/product/slingshot",
           "text": {
-            "content": "Birdie Green",
+            "content": "Slingshot",
             "link": {
-              "url": "/product/birdie-green"
+              "url": "/product/slingshot"
             }
           },
           "annotations": {
@@ -748,10 +748,10 @@
         },
         {
           "type": "text",
-          "plain_text": " does the other job: emerald and candy pink, fresh enough to lift a kitchen that has gone slightly too tasteful. Both bring colour without adding another plate to the table.",
+          "plain_text": " does the other job: white on a bright tomato red, fresh enough to lift a kitchen that has gone slightly too tasteful. Both bring colour without adding another plate to the table.",
           "href": null,
           "text": {
-            "content": " does the other job: emerald and candy pink, fresh enough to lift a kitchen that has gone slightly too tasteful. Both bring colour without adding another plate to the table.",
+            "content": " does the other job: white on a bright tomato red, fresh enough to lift a kitchen that has gone slightly too tasteful. Both bring colour without adding another plate to the table.",
             "link": null
           },
           "annotations": {
