@@ -32,6 +32,7 @@ describe('homepage New prints', () => {
     expect(newPrints).toHaveLength(3);
     const owners = newPrints.map(t => artists.find(a => a.id === t.product.artistId)?.slug);
     expect(new Set(owners).size).toBe(3);
-    expect(owners).toEqual(['emma-iben', 'patrik-wennerlund', 'markus-naarttijarvi']);
+    // Christina Hägerfors's prints (created 29 Sep 2026) went live 9 Oct, ahead of Markus's (28 Sep).
+    expect(owners).toEqual(['emma-iben', 'patrik-wennerlund', 'christina-hagerfors']);
   });
 });

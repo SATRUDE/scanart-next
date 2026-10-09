@@ -27,6 +27,12 @@
 // and anything already present (matched by slug) is skipped, so the script can
 // be re-run after fixing a manifest without duplicating entries.
 //
+// A manifest with "review": true adds the prints as an unpublished preview
+// (published false, review true, out of stock), the gate Markus
+// Naarttijärvi's and Christina Hägerfors's previews use; "bleedMm" crops a
+// bleed the PDF carries without a TrimBox. scripts/artists/christina-hagerfors.json
+// is the worked example of both.
+//
 // What it deliberately does NOT do, and tells you about at the end:
 //   - the room scene (secondaryImage). lib/feed-images.test.ts requires one per
 //     print because Merchant Center wants lifestyle staging; scenes are made
@@ -151,7 +157,7 @@ function hasPoppler() {
  * with poppler and cropped to their TrimBox (the finished print size); images
  * are used as they are.
  */
-function renderArtwork(file, workDir) {
+function renderArtwork(file, workDir, bleedMm = 0) {
   if (!/\.pdf$/i.test(file)) return fs.readFileSync(file);
   if (!hasPoppler()) fail('PDF input needs poppler (pdftoppm, pdfinfo): brew install poppler');
 
@@ -175,7 +181,15 @@ function renderArtwork(file, workDir) {
   const top = Math.round((media[3] - trim[3]) * scale);
   const width = Math.round((trim[2] - trim[0]) * scale);
   const height = Math.round((trim[3] - trim[1]) * scale);
-  return sharp(rendered).extract({ left, top, width, height }).png().toBuffer();
+  // Some exports carry the bleed without a TrimBox (Christina Hägerfors's
+  // Photoshop PDFs: the page is 50.8 x 70.8 cm and every box is the page).
+  // The manifest's bleedMm then says how much to take off each side, so the
+  // product shot shows the finished 50 x 70 cm print, not the bleed.
+  const bleed = Math.round((bleedMm / 25.4) * dpi);
+  return sharp(rendered)
+    .extract({ left: left + bleed, top: top + bleed, width: width - 2 * bleed, height: height - 2 * bleed })
+    .png()
+    .toBuffer();
 }
 
 /**
@@ -314,6 +328,9 @@ async function main() {
     if (opener.length > SNIPPET_MAX) {
       fail(`print "${print.name}": the first sentence of the description is ${opener.length} characters; it becomes the meta description, so keep it under ${SNIPPET_MAX}.`);
     }
+    if (print.productId && products.some((p) => p.productId === String(print.productId) && p.slug !== print.slug)) {
+      fail(`print "${print.name}": productId ${print.productId} is already used by another product.`);
+    }
     productNames.add(print.name);
   }
   for (const print of prints) {
@@ -336,7 +353,7 @@ async function main() {
   }
   for (const print of prints) {
     const out = path.join(ROOT, 'public', 'images', 'products', `${print.slug}.png`);
-    const artwork = await renderArtwork(resolveInput(print.file, manifestDir), workDir);
+    const artwork = await renderArtwork(resolveInput(print.file, manifestDir), workDir, print.bleedMm ?? manifest.bleedMm ?? 0);
     await buildProductShot(artwork, out, sizesOf(print), print.name);
     console.log(`  ✓ ${path.relative(ROOT, out)}`);
   }
@@ -366,6 +383,9 @@ async function main() {
   let nextProductId = Math.max(0, ...products.map((p) => Number(p.productId) || 0)) + 1;
   let added = 0;
   for (const print of prints) {
+    // An unpublished preview: shown only on preview deployments
+    // (lib/server/catalogue-review.ts), never in checkout, feeds or sitemap.
+    const review = Boolean(print.review ?? manifest.review);
     if (products.some((p) => p.slug === print.slug)) {
       console.log(`  - products.json already has ${print.slug}`);
       continue;
@@ -379,15 +399,16 @@ async function main() {
       artist: artist.name,
       artistId: artist.id,
       brand: '',
-      inStock: true,
+      inStock: !review,
       featured: Boolean(print.featured),
-      published: print.published ?? true,
+      published: review ? false : (print.published ?? true),
+      ...(review ? { review: true } : {}),
       image: `/images/products/${print.slug}.png`,
       // The room scene. Made separately; see the note at the end of the run.
       secondaryImage: print.secondaryImage ?? '',
       availableSizes: sizesOf(print),
       priceCategory: print.priceCategory ?? 'Premium',
-      productId: String(nextProductId++),
+      productId: print.productId ?? String(nextProductId++),
       recommendedProducts: print.recommended ?? [],
       created_time: now,
       last_edited_time: now,

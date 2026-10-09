@@ -60,6 +60,13 @@ export const shopScenes: Record<string, ShopScene> = {
   'surfer-with-orange-sun': { image: '/images/products/surfer-with-orange-sun-room.avif', alt: 'Surfer with Orange Sun by Ishtar Bäcklund Dakhil framed above a red chair in a blue room', width: 1122, height: 1402 },
   // Emma Iben's room (branch codex/emma-iben-preview, Mark-approved 5 October 2026). Good conversation has none until its vignette is fixed.
   pressure: { image: '/images/products/pressure-vignette-2026-10-05.avif', alt: 'Pressure by Emma Iben in a slim oak frame above a terracotta kitchen counter with an orange coffee maker, a carafe of water and a pot of herbs', width: 1122, height: 1402 },
+  // Christina Hägerfors's four rooms of 2026-09-29 (branch peggy/christina-hagerfors-preview,
+  // approved by Mark 29 Sep 2026). The art in each frame is her original file relit with
+  // the room's light; 50 x 70 cm frames measured against the furniture.
+  'mushroom-picking': { image: '/images/products/mushroom-picking-room-kitchen-2026-09-29-v4.avif', alt: 'Mushroom Picking by Christina Hägerfors framed above the worktop in a wooden kitchen with oak cabinets and a pale blue wall', width: 1122, height: 1402, depictedPaperSize: { catalogSize: '50x70cm', widthCm: 50, heightCm: 70 } },
+  'big-whale': { image: '/images/products/big-whale-room-2026-09-29-v4.avif', alt: 'Big Whale by Christina Hägerfors framed above a child’s bed in a peach bedroom, with a round wool rug and a toy box', width: 1122, height: 1402, depictedPaperSize: { catalogSize: '50x70cm', widthCm: 50, heightCm: 70 } },
+  'polar-bear-castle': { image: '/images/products/polar-bear-castle-room-2026-09-29-v4.avif', alt: 'Polar Bear Castle by Christina Hägerfors framed above a low shelf beside a sheepskin reading chair in a green room', width: 1122, height: 1402, depictedPaperSize: { catalogSize: '50x70cm', widthCm: 50, heightCm: 70 } },
+  'funny-mermaid': { image: '/images/products/funny-mermaid-room-2026-09-29-v4.avif', alt: 'Funny Mermaid by Christina Hägerfors framed above an oak bench with towels in a pale blue tiled bathroom', width: 1122, height: 1402, depictedPaperSize: { catalogSize: '50x70cm', widthCm: 50, heightCm: 70 } },
 };
 
 /** Only label a room image when it is this scene and its current size is known. */

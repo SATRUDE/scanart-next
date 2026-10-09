@@ -1,0 +1,93 @@
+{
+  "$comment": "Input for scripts/add-artist.mjs (npm run add-artist -- scripts/artists/christina-hagerfors.json). Built as an unpublished preview on 29 Sep 2026 (branch peggy/christina-hagerfors-preview); the four prints below went live on 9 Oct 2026 (branch peggy/christina-hagerfors-live, Mark: get Christina live), so products.json now has them published and in stock. \"review\": true stays so that her two remaining posters arrive as a preview first. The print masters are her four PDFs from the WeTransfer of 29 Sep 2026, kept outside Git in ~/Desktop/ScanArt Image Tests/Christina Hägerfors/. Each is 6000 x 8362 px at 300 ppi: 50 x 70 cm plus 4 mm bleed on every side, with the TrimBox left at the full page, hence bleedMm. Titles are working titles from her own file names; titles confirmed by Christina on 30 Sep 2026; descriptions are built on the lines she wrote about each piece (email of 30 Sep 2026). The bio is from her own Illustratörcentrum profile (https://illustratorcentrum.se/kreator/christina_hagerfors/, read 29 Sep 2026) and her 30 Aug application (location). To add her two remaining posters: append two entries to prints (next productIds after the catalogue's highest, a fresh id), put the PDFs beside the others and re-run; existing slugs are skipped. docs/christina-preview.md has the open questions. Location: Cérons, France, where she lives (application); the map pin is Karlstad, her home town (her email of 30 Sep 2026), via data/artists.ts mapCity and is 'originally from Sweden' (https://eastendprints.co.uk/categories/artists/artists-a-f/christina-hagerfors.html). Polar Bear Castle: her Illustratörcentrum profile titles it 'Isbjörnarnas vinterslott', the likely real title; not renamed until she confirms.",
+  "review": true,
+  "bleedMm": 4,
+  "artist": {
+    "id": "12",
+    "name": "Christina Hägerfors",
+    "slug": "christina-hagerfors",
+    "location": "Cérons, France",
+    "locationNo": "Cérons, Frankrike",
+    "bio": "Christina Hägerfors is an illustrator originally from Sweden and now based in France, who has worked in illustration since her BA (Hons) at London College of Communication. She is inspired by colour, old prints and book covers, and hopes her pictures carry a kind of nostalgia. Her clients include The Guardian, The New York Times, The Observer and Time Out.",
+    "bioNo": "Christina Hägerfors er illustratør fra Sverige, nå bosatt i Frankrike, og har jobbet som illustratør siden hun tok en BA (Hons) ved London College of Communication. Hun henter inspirasjon fra farger, gamle trykk og bokomslag, og håper bildene hennes har et slags nostalgisk preg. Blant kundene hennes er The Guardian, The New York Times, The Observer og Time Out.",
+    "mapCity": "Karlstad"
+  },
+  "prints": [
+    {
+      "id": "b4a9337f-1a54-4035-ada5-1dc2b2a0790b",
+      "productId": "60",
+      "name": "Big Whale",
+      "slug": "big-whale",
+      "file": "~/Desktop/ScanArt Image Tests/Christina Hägerfors/big_whale_50x70.pdf",
+      "category": "Illustrations",
+      "sizes": [
+        "50x70cm"
+      ],
+      "priceCategory": "Entry",
+      "description": "Big Whale by Christina Hägerfors splits the sea in two: a small steamer and its gulls on top, and the pale head of a whale rising from the deep below. The tail of another is glimpsed in the dark. “I have always been scared of big things in the water,” Christina says, “and I was drawn to the idea of imagining what might be hiding beneath the surface.” She also liked the composition of the big whale and the small boat.",
+      "descriptionNo": "Big Whale av Christina Hägerfors deler havet i to: et lite dampskip og måkene øverst, og under det lyse hodet til en hval som stiger opp fra dypet. Halen til en annen skimtes i mørket. «Jeg har alltid vært redd for store ting i vannet», sier Christina, «og jeg ble tiltrukket av tanken på å forestille meg hva som kan skjule seg under overflaten.» Hun likte også komposisjonen med den store hvalen og den lille båten.",
+      "recommended": [
+        "Funny Mermaid",
+        "Mushroom Picking",
+        "Polar Bear Castle"
+      ]
+    },
+    {
+      "id": "a79ef63a-c67d-48be-918a-aed9486cf065",
+      "productId": "61",
+      "name": "Funny Mermaid",
+      "slug": "funny-mermaid",
+      "file": "~/Desktop/ScanArt Image Tests/Christina Hägerfors/funny_mermaid_50x70.pdf",
+      "category": "Illustrations",
+      "sizes": [
+        "50x70cm"
+      ],
+      "priceCategory": "Entry",
+      "description": "Funny Mermaid by Christina Hägerfors puts a mermaid just below the waterline, reaching up towards the float of an angler on a jetty. Behind the jetty stands a red boathouse. Above the water are a ferry, gulls and a big yellow sun; below it, fish and halftone texture, in a palette kept to teal, yellow, orange and cream. “I have a thing for mermaids and maritime imagery since forever,” Christina says. Here she wanted a retro feel and simple colours.",
+      "descriptionNo": "Funny Mermaid av Christina Hägerfors plasserer en havfrue rett under vannflaten, der hun strekker seg opp mot duppen til en fisker på en brygge. Bak bryggen står et rødt naust. Over vannet er det en ferje, måker og en stor gul sol, under vannet fisk og rastermønster, i en palett holdt til blågrønt, gult, oransje og krem. «Jeg har hatt sans for havfruer og maritime motiver så lenge jeg kan huske», sier Christina. Her ville hun ha et retropreg og enkle farger.",
+      "recommended": [
+        "Big Whale",
+        "Mushroom Picking",
+        "Polar Bear Castle"
+      ]
+    },
+    {
+      "id": "8d9b8b46-79ae-4b98-8dcb-bd311f5738be",
+      "productId": "62",
+      "name": "Mushroom Picking",
+      "slug": "mushroom-picking",
+      "file": "~/Desktop/ScanArt Image Tests/Christina Hägerfors/mushroom_picking_50x70.pdf",
+      "category": "Illustrations",
+      "sizes": [
+        "50x70cm"
+      ],
+      "priceCategory": "Entry",
+      "description": "Mushroom Picking by Christina Hägerfors sends a picker in a red coat running through an autumn forest, basket in hand, with a small grey dog alongside. All around, the dark forest floor is crowded with fly agarics, chanterelles, berries, a hare, a robin on a stump, a worm and an ant. “I wanted to create a forest filled with details and fun, and for me an autumn forest is the best,” Christina says. “I love picking mushrooms and I don’t do it often enough.”",
+      "descriptionNo": "Mushroom Picking av Christina Hägerfors sender en soppsanker i rød jakke løpende gjennom en høstskog, med kurv i hånden og en liten grå hund ved siden av. Rundt omkring er den mørke skogbunnen full av fluesopp, kantareller, bær, en hare, en rødstrupe på en stubbe, en meitemark og en maur. «Jeg ville lage en skog full av detaljer og moro, og for meg er en høstskog det beste», sier Christina. «Jeg elsker å plukke sopp, og jeg gjør det ikke ofte nok.»",
+      "recommended": [
+        "Big Whale",
+        "Funny Mermaid",
+        "Polar Bear Castle"
+      ]
+    },
+    {
+      "id": "81566021-504b-4720-bc38-409d04a5228c",
+      "productId": "63",
+      "name": "Polar Bear Castle",
+      "slug": "polar-bear-castle",
+      "file": "~/Desktop/ScanArt Image Tests/Christina Hägerfors/polar_bear_castle_50x70.pdf",
+      "category": "Illustrations",
+      "sizes": [
+        "50x70cm"
+      ],
+      "priceCategory": "Entry",
+      "description": "Polar Bear Castle by Christina Hägerfors builds a castle of ice under a starry winter sky, with three polar bears in front, two of them wearing crowns. Penguins stand on its ledges. “I really do enjoy making winter illustrations,” Christina says, “and I do enjoy drawing bears. They have a big slouchy body that is really pleasing to draw.” She wanted to make a Christmas scene that felt a bit different.",
+      "descriptionNo": "Polar Bear Castle av Christina Hägerfors bygger et slott av is under en stjerneklar vinterhimmel, med tre isbjørner foran, to av dem med krone. Pingviner står på avsatsene. «Jeg liker virkelig å lage vinterillustrasjoner», sier Christina, «og jeg liker å tegne bjørner. De har en stor, slapp kropp som er veldig fin å tegne.» Hun ville lage en julescene som føltes litt annerledes.",
+      "recommended": [
+        "Big Whale",
+        "Funny Mermaid",
+        "Mushroom Picking"
+      ]
+    }
+  ]
+}

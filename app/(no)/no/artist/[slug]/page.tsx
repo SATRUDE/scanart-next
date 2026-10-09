@@ -124,8 +124,9 @@ export default async function NorwegianArtistPage({
   const lowest = lowestPrices(products);
   const hero = heroSceneFor(artist.slug, products);
   // The marker is looked up by the English city; the label is the Norwegian one.
-  const mapCity = cityOf(artist.location);
-  const cityLabel = cityOf(location);
+  // An artist living outside the Nordic map is pinned at her home town (data/artists.ts mapCity).
+  const mapCity = artist.mapCity ?? cityOf(artist.location);
+  const cityLabel = artist.mapCity ?? cityOf(location);
   const facts = [
     { label: t.factBasedIn, value: location },
     { label: t.factFormats, value: formatsLine(products, { and: t.and, for: t.for }) },
@@ -168,7 +169,7 @@ export default async function NorwegianArtistPage({
         }
         editorial={editorial}
         facts={facts}
-        map={hasCity(mapCity) ? { city: mapCity, label: cityLabel, caption: `${cityLabel}, ${t.mapWhere} ${firstName(artist.name)} ${t.mapWorks}.` } : null}
+        map={hasCity(mapCity) ? { city: mapCity, label: cityLabel, caption: artist.mapCity ? `${cityLabel}, ${t.mapWhere} ${firstName(artist.name)} ${t.mapFrom}.` : `${cityLabel}, ${t.mapWhere} ${firstName(artist.name)} ${t.mapWorks}.` } : null}
         more={more}
         explore={published.filter(a => a.id !== artist.id).map(a => ({ slug: a.slug, name: a.name }))}
         t={{

@@ -19,6 +19,8 @@ function firstSentence(text: string): string {
 export function aboutPlaces(artists: PublishedArtist[], cityLabels: Record<string, string> = {}): AboutPlace[] {
   const byCity = new Map<string, string[]>();
   for (const artist of artists) {
+    // Pinned at a home town, not where she works (data/artists.ts mapCity).
+    if (artist.mapCity) continue;
     const city = cityOf(artist.location);
     if (!city) continue;
     byCity.set(city, [...(byCity.get(city) ?? []), artist.name]);

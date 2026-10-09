@@ -113,7 +113,8 @@ export default async function ArtistPage({
 
   const lowest = lowestPrices(products);
   const hero = heroSceneFor(artist.slug, products);
-  const city = cityOf(artist.location);
+  // An artist living outside the Nordic map is pinned at her home town (data/artists.ts mapCity).
+  const city = artist.mapCity ?? cityOf(artist.location);
   const words = { and: 'and', for: 'for' };
   const facts = [
     { label: 'Based in', value: artist.location },
@@ -158,7 +159,7 @@ export default async function ArtistPage({
         }
         editorial={editorial}
         facts={facts}
-        map={hasCity(city) ? { city, label: city, caption: `${city}, where ${firstName(artist.name)} works.` } : null}
+        map={hasCity(city) ? { city, label: city, caption: `${city}, where ${firstName(artist.name)} ${artist.mapCity ? 'is from' : 'works'}.` } : null}
         more={more}
         explore={published.filter(a => a.id !== artist.id).map(a => ({ slug: a.slug, name: a.name }))}
         t={{

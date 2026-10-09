@@ -121,6 +121,7 @@ export const homeStrings: HomeStrings = {
       'markus-naarttijarvi': 'Documentary photographer from Umeå whose long-term projects follow industry, nature and culture in northern Sweden.',
       'patrik-wennerlund': 'Art director and photographer from Borås, whose photographs find quiet drama in mist, storms and Sweden’s west coast.',
       'emma-iben': 'Illustrator, graphic designer and motion designer from Copenhagen, with melodramatic, humorous drawings that convey emotional experiences.',
+      'christina-hagerfors': 'Illustrator from Sweden, now based in France, inspired by colour, old prints and book covers.',
     },
   },
   journal: { heading: 'Journal', all: 'All stories' },

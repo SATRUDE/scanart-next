@@ -9,6 +9,10 @@ export interface Artist {
   imageCredit?: string;
   /** The artist's own shop for signed or limited originals (Mark, 29 Sep 2026). */
   originalsUrl?: string;
+  /** The pin on the Nordic map when the artist lives outside it: her home town.
+   *  The artist page then captions it as where she is from, not where she
+   *  works, and the About map ("Where the artists work") leaves her out. */
+  mapCity?: string;
 }
 
 export const artists: Artist[] = [
@@ -96,6 +100,19 @@ export const artists: Artist[] = [
     // sizes and tangles"). Portrait supplied by Emma the same day; no credit given, so none shown.
     bio: 'Emma Iben is an illustrator, graphic designer and motion designer based in Copenhagen, Denmark. She creates visual material for album covers, posters, tattoos, educational resources, fictional short films and public service TV, professionally as well as for fun. Her drawings are melodramatic and humorous, and convey emotional experiences through recurring motifs of tricky bodies, abnormal sizes and tangles.',
     image: '/images/artists/emma-iben.jpg',
+  },
+  {
+    id: '12',
+    name: 'Christina Hägerfors',
+    slug: 'christina-hagerfors',
+    // She lives in Cérons, France (her artist application of 30 Aug 2026) and is
+    // from Karlstad (her email of 30 Sep 2026), which is the pin on the map.
+    location: 'Cérons, France',
+    mapCity: 'Karlstad',
+    // From her own Illustratörcentrum profile; approved by Christina 30 Sep 2026.
+    bio: 'Christina Hägerfors is an illustrator originally from Sweden and now based in France, who has worked in illustration since her BA (Hons) at London College of Communication. She is inspired by colour, old prints and book covers, and hopes her pictures carry a kind of nostalgia. Her clients include The Guardian, The New York Times, The Observer and Time Out.',
+    // Portrait supplied by Christina 30 Sep 2026. No photographer credit given, so none shown.
+    image: '/images/artists/christina-hagerfors.png',
   },
 ];
 
