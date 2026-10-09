@@ -34,7 +34,7 @@ export const wallArtLanding: WallArtLanding = {
     'Shop Scandinavian wall art and Nordic art prints by independent artists from across the Nordics: framed in wood, black or white, or unframed, and made to order.',
   heading: 'Scandinavian Wall Art and Nordic Art Prints',
   intro:
-    "This page is the whole gallery of Scandinavian wall art: Nordic art prints, every one by an independent artist living and working in the Nordics, and every one sold framed or unframed. Ingunn Dybendal draws folk flowers and patterned lakeland in coloured pencil, Sia Siamos crowds tables with lobster, wine and cabin breakfasts, Simen Wahlqvist fits an entire joke into a handful of lines, Hedvig Wallin sets a Gothenburg breakfast table in ink and watercolour, Mikko Saarainen fills every corner of a Finnish comic artist's page, and Ishtar Bäcklund Dakhil moves between Stockholm's waterfront and imagined worlds. Not a filler print among them.",
+    "This page is the whole gallery of Scandinavian wall art: Nordic art prints, every one by an independent Nordic artist, and every one sold framed or unframed. Ingunn Dybendal draws folk flowers and patterned lakeland in coloured pencil, Sia Siamos crowds tables with lobster, wine and cabin breakfasts, Simen Wahlqvist fits an entire joke into a handful of lines, Hedvig Wallin sets a Gothenburg breakfast table in ink and watercolour, Mikko Saarainen fills every corner of a Finnish comic artist's page, and Ishtar Bäcklund Dakhil moves between Stockholm's waterfront and imagined worlds. Not a filler print among them.",
   intro2:
     "Buying Scandinavian art prints online usually means scrolling a marketplace of ten thousand posters that have never been within a thousand miles of a fjord. This is the opposite. A small gallery, artists we work with directly, and every print made to order rather than pulled from a warehouse. Choose the piece first and the frame second, and if you can't choose between two, Wahlqvist's squares are built to hang together.",
   framedHeading: 'Framed or unframed',
@@ -60,7 +60,7 @@ export const wallArtLanding: WallArtLanding = {
     {
       question: 'Scandinavian, Nordic or Scandi: is there a difference?',
       answer:
-        "Not one that matters when you're choosing a print. Scandinavian strictly means Norway, Sweden and Denmark; Nordic adds Finland and Iceland; Scandi is what everyone says by the third mention. The artists here live and work across the Nordics, so Nordic is the precise word for the gallery and Scandinavian is the one most people type.",
+        "Not one that matters when you're choosing a print. Scandinavian strictly means Norway, Sweden and Denmark; Nordic adds Finland and Iceland; Scandi is what everyone says by the third mention. The artists here come from across the Nordics, so Nordic is the precise word for the gallery and Scandinavian is the one most people type.",
     },
   ],
 };

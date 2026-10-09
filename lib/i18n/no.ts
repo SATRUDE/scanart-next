@@ -586,7 +586,7 @@ export const no = {
         {
           question: 'Hva gjør disse illustrasjonene skandinaviske?',
           answer:
-            'Delvis økonomien: nordisk illustrasjon foretrekker så få streker som nødvendig og ikke én mer, og lar luften og en begrenset palett gjøre tungløftet, som er hele metoden til Simen Wahlqvist. Mikko Saarainen er motstykket, og regionen rommer begge: Finland har en lang tradisjon for tegneserier og barnebøker som fyller siden i stedet. Disse er tegnet av kunstnere som lever og arbeider i Norden, så merkelappen er bokstavelig så vel som stilistisk.',
+            'Delvis økonomien: nordisk illustrasjon foretrekker så få streker som nødvendig og ikke én mer, og lar luften og en begrenset palett gjøre tungløftet, som er hele metoden til Simen Wahlqvist. Mikko Saarainen er motstykket, og regionen rommer begge: Finland har en lang tradisjon for tegneserier og barnebøker som fyller siden i stedet. Disse er tegnet av kunstnere fra Norden, så merkelappen er bokstavelig så vel som stilistisk.',
         },
         {
           question: 'Hvilke størrelser finnes illustrasjonstrykkene i?',
@@ -1224,7 +1224,7 @@ export const no = {
       'Kjøp skandinavisk veggkunst og nordiske kunsttrykk av uavhengige kunstnere fra hele Norden: med ramme i tre, svart eller hvit, eller uten ramme, laget på bestilling.',
     heading: 'Skandinavisk veggkunst og nordiske kunsttrykk',
     intro:
-      'Denne siden er hele galleriet av skandinavisk veggkunst: nordiske kunsttrykk, hvert av dem av en uavhengig kunstner som lever og arbeider i Norden, og hvert av dem solgt med eller uten ramme. Ingunn Dybendal tegner folkeblomster og mønstret innsjølandskap i fargeblyant, Sia Siamos fyller bord med hummer, vin og hyttefrokost, Simen Wahlqvist får plass til en hel vits i en håndfull streker, Hedvig Wallin dekker et frokostbord fra Göteborg i tusj og akvarell, Mikko Saarainen fyller hver krok av en finsk tegneserieside, og Ishtar Bäcklund Dakhil beveger seg mellom Stockholms havnefront og fantasiverdener. Ikke et fyllbilde blant dem.',
+      'Denne siden er hele galleriet av skandinavisk veggkunst: nordiske kunsttrykk, hvert av dem av en uavhengig nordisk kunstner, og hvert av dem solgt med eller uten ramme. Ingunn Dybendal tegner folkeblomster og mønstret innsjølandskap i fargeblyant, Sia Siamos fyller bord med hummer, vin og hyttefrokost, Simen Wahlqvist får plass til en hel vits i en håndfull streker, Hedvig Wallin dekker et frokostbord fra Göteborg i tusj og akvarell, Mikko Saarainen fyller hver krok av en finsk tegneserieside, og Ishtar Bäcklund Dakhil beveger seg mellom Stockholms havnefront og fantasiverdener. Ikke et fyllbilde blant dem.',
     intro2:
       'Å kjøpe skandinaviske kunsttrykk på nett betyr vanligvis å skrolle gjennom et marked med ti tusen plakater som aldri har vært i nærheten av en fjord. Dette er det motsatte. Et lite galleri, kunstnere vi jobber direkte med, og hvert trykk laget på bestilling framfor hentet fra et lager. Velg bildet først og rammen etterpå, og klarer du ikke å velge mellom to, er kvadratene til Wahlqvist laget for å henge sammen.',
     framedHeading: 'Med eller uten ramme',
