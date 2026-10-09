@@ -47,7 +47,7 @@ export const ArtistsList: React.FC<ArtistsListProps> = ({
                 {artist.name}
               </h2>
               <p className="text-sm text-muted-foreground">
-                {artist.location} · {artist.printCount} {artist.printCount === 1 ? printLabels.one : printLabels.other}
+                {artist.from ?? artist.location} · {artist.printCount} {artist.printCount === 1 ? printLabels.one : printLabels.other}
               </p>
               {artist.bio && (
                 <p className="text-sm text-muted-foreground mt-1 line-clamp-2">{artist.bio}</p>

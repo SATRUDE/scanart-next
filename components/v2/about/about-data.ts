@@ -1,4 +1,5 @@
 import type { PublishedArtist } from '@/lib/published-artists';
+import { artistPlace } from '@/data/artists';
 import { artistStatements } from '@/lib/artist-statements';
 import { cityOf, portraitFor } from '@/components/v2/artists/artist-data';
 import type { ArtistCardData } from '@/components/v2/artists/ArtistCard';
@@ -19,6 +20,8 @@ function firstSentence(text: string): string {
 export function aboutPlaces(artists: PublishedArtist[], cityLabels: Record<string, string> = {}): AboutPlace[] {
   const byCity = new Map<string, string[]>();
   for (const artist of artists) {
+    // Lives outside the Nordics: the map would show where they are from, not where they work.
+    if (artist.from) continue;
     const city = cityOf(artist.location);
     if (!city) continue;
     byCity.set(city, [...(byCity.get(city) ?? []), artist.name]);
@@ -66,7 +69,7 @@ export function rosterCards(
   return artists.map(artist => {
     const portrait = portraitFor(artist);
     const bio = words.bios?.[artist.slug]?.bio ?? artist.bio;
-    const city = cityOf(artist.location);
+    const city = cityOf(artistPlace(artist).value);
     return {
       slug: artist.slug,
       name: artist.name,

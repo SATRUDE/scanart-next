@@ -13,7 +13,7 @@ interface ArtistSectionProps {
 
 export const ArtistSection: React.FC<ArtistSectionProps> = ({ artist, locale = 'en', copy }) => {
   const hrefPrefix = locale === 'no' ? '/no' : '';
-  const location = copy?.location ?? artist.location;
+  const location = artist.from ?? copy?.location ?? artist.location;
   const bio = copy?.bio ?? artist.bio;
   return (
     <div className="mt-16 pt-8 border-t">

@@ -32,7 +32,7 @@ export default async function NorwegianHomePage() {
     journal: { ...no.home.v2.journal, categoryLabels: no.journal.page.categoryLabels as Record<string, string> },
   };
   const artistLocations = Object.fromEntries(
-    Object.entries(no.artists).map(([slug, copy]) => [slug, copy.location])
+    Object.entries(no.artists).map(([slug, copy]) => [slug, copy.from ?? copy.location])
   );
 
   return (

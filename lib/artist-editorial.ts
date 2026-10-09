@@ -81,4 +81,6 @@ export const artistHeroScene: Record<string, string> = {
   'emma-iben': 'pressure',
   // Patrik's approved vignettes are the room image (no shop scene); Mark picked Storm, 6 Oct 2026.
   'patrik-wennerlund': 'storm',
+  // Mark, 29 Sep 2026: the child's bedroom scene leads Christina's page.
+  'christina-hagerfors': 'big-whale',
 };

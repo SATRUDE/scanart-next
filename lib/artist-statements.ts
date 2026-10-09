@@ -31,4 +31,7 @@ export const artistStatements: Record<string, string> = {
   'emma-iben': 'Melodramatic, humorous drawings that convey emotional experiences.',
   // Mark approved this line for Patrik, 6 Oct 2026; the mist and storms are his own Moody and Storm.
   'patrik-wennerlund': 'His photographs find quiet drama in mist, storms and Sweden\'s west coast.',
+  // data/artists.ts bio, from her own Illustratörcentrum profile ("Hoppas att mina
+  // bilder har en sorts nostalgi över sig"); bio approved by Christina 30 Sep 2026.
+  'christina-hagerfors': 'She hopes her pictures carry a kind of nostalgia.',
 };

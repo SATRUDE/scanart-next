@@ -36,6 +36,8 @@ export interface ProductPageStrings {
   /** Artist section fact rows (Fact row 237:3728). */
   facts: {
     basedIn: string;
+    /** For an artist living outside the Nordics (data/artists.ts `from`). */
+    from: string;
     sizes: string;
     inTheShop: string;
     /** "{count} prints, from", then the price in the buyer's currency. */
@@ -84,6 +86,7 @@ export const productPageEn: ProductPageStrings = {
   aboutLink: 'All prints by {name}',
   facts: {
     basedIn: 'Based in',
+    from: 'From',
     sizes: 'Sizes',
     inTheShop: 'In the shop',
     printsFromOne: '{count} print, from',

@@ -934,5 +934,37 @@
     "h": 36.0,
     "score": 0.924,
     "ar": 0.8003
+  },
+  "/images/products/big-whale-room-2026-09-29-v4.avif": {
+    "x": 52.1,
+    "y": 23.0,
+    "w": 17.9,
+    "h": 20.3,
+    "score": 0.977,
+    "ar": 0.8003
+  },
+  "/images/products/funny-mermaid-room-2026-09-29-v4.avif": {
+    "x": 53.1,
+    "y": 24.0,
+    "w": 17.1,
+    "h": 19.3,
+    "score": 0.924,
+    "ar": 0.8003
+  },
+  "/images/products/mushroom-picking-room-kitchen-2026-09-29-v4.avif": {
+    "x": 59.6,
+    "y": 24.7,
+    "w": 22.1,
+    "h": 25.0,
+    "score": 0.862,
+    "ar": 0.8003
+  },
+  "/images/products/polar-bear-castle-room-2026-09-29-v4.avif": {
+    "x": 64.9,
+    "y": 23.9,
+    "w": 16.0,
+    "h": 18.2,
+    "score": 0.947,
+    "ar": 0.8003
   }
 }

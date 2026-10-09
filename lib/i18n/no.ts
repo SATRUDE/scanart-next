@@ -145,6 +145,7 @@ export const no = {
           'markus-naarttijarvi': 'Dokumentarfotograf fra Umeå, med langsiktige prosjekter om industri, natur og kultur i Nord-Sverige.',
           'patrik-wennerlund': 'Art director og fotograf fra Borås, med bilder som finner stille dramatikk i tåke, storm og den svenske vestkysten.',
           'emma-iben': 'Illustratør, grafisk designer og motion designer fra København, med melodramatiske, humoristiske tegninger som formidler følelsesmessige opplevelser.',
+          'christina-hagerfors': 'Illustratør fra Sverige, nå bosatt i Frankrike, med inspirasjon fra farger, gamle trykk og bokomslag.',
         },
       },
       journal: { heading: 'Journal', all: 'Alle artikler', inEnglish: 'På engelsk' },
@@ -585,7 +586,7 @@ export const no = {
         {
           question: 'Hva gjør disse illustrasjonene skandinaviske?',
           answer:
-            'Delvis økonomien: nordisk illustrasjon foretrekker så få streker som nødvendig og ikke én mer, og lar luften og en begrenset palett gjøre tungløftet, som er hele metoden til Simen Wahlqvist. Mikko Saarainen er motstykket, og regionen rommer begge: Finland har en lang tradisjon for tegneserier og barnebøker som fyller siden i stedet. Disse er tegnet av kunstnere som lever og arbeider i Norden, så merkelappen er bokstavelig så vel som stilistisk.',
+            'Delvis økonomien: nordisk illustrasjon foretrekker så få streker som nødvendig og ikke én mer, og lar luften og en begrenset palett gjøre tungløftet, som er hele metoden til Simen Wahlqvist. Mikko Saarainen er motstykket, og regionen rommer begge: Finland har en lang tradisjon for tegneserier og barnebøker som fyller siden i stedet. Disse er tegnet av kunstnere fra Norden, så merkelappen er bokstavelig så vel som stilistisk.',
         },
         {
           question: 'Hvilke størrelser finnes illustrasjonstrykkene i?',
@@ -873,6 +874,8 @@ export const no = {
     allArtists: 'Alle kunstnere',
     atAGlance: 'Kort fortalt',
     factBasedIn: 'Bosted',
+    /** For an artist living outside the Nordics (data/artists.ts `from`). */
+    factFrom: 'Fra',
     factFormats: 'Formater',
     factInShop: 'I butikken',
     factFraming: 'Innramming',
@@ -883,6 +886,8 @@ export const no = {
     /** "{by} Oslo, der Simen arbeider." */
     mapWhere: 'der',
     mapWorks: 'arbeider',
+    /** "Karlstad, der Christina kommer fra." for an artist living outside the map. */
+    mapFrom: 'kommer fra',
     printsHeadingCount: 'trykk',
   },
 
@@ -927,6 +932,12 @@ export const no = {
       location: 'København, Danmark',
       bio: 'Emma Iben er illustratør, grafisk designer og motion designer med base i København i Danmark. Hun lager visuelt materiale til albumcovere, plakater, tatoveringer, undervisningsressurser, fiktive kortfilmer og public service-TV, både profesjonelt og for moro skyld. Tegningene hennes er melodramatiske og humoristiske og formidler følelsesmessige opplevelser gjennom gjentakende motiver: vanskelige kropper, unormale størrelser og floker.',
     },
+    // Norwegian by Peggy from her approved English bio, 29 Sep 2026; Mark to confirm.
+    'christina-hagerfors': {
+      location: 'Cérons, Frankrike',
+      from: 'Karlstad, Sverige',
+      bio: 'Christina Hägerfors er illustratør fra Sverige, nå bosatt i Frankrike, og har jobbet som illustratør siden hun tok en BA (Hons) ved London College of Communication. Hun henter inspirasjon fra farger, gamle trykk og bokomslag, og håper bildene hennes har et slags nostalgisk preg. Blant kundene hennes er The Guardian, The New York Times, The Observer og Time Out.',
+    },
   } as Record<string, ArtistCopy>,
 
   // The product page's artist statement (lib/artist-statements.ts), each
@@ -941,6 +952,7 @@ export const no = {
     'markus-naarttijarvi': 'Langsiktige fotoprosjekter fra Nord-Sverige utforsker ensomhet, utholdenhet og tidens gang.',
     'patrik-wennerlund': 'Fotografiene hans finner stille dramatikk i tåke, storm og den svenske vestkysten.',
     'emma-iben': 'Melodramatiske, humoristiske tegninger som formidler følelsesmessige opplevelser.',
+    'christina-hagerfors': 'Hun håper bildene hennes har et slags nostalgisk preg.',
   } as Record<string, string>,
 
   // Norwegian versions of lib/artist-editorial.ts, keyed by slug. para2 keeps
@@ -1215,7 +1227,7 @@ export const no = {
       'Kjøp skandinavisk veggkunst og nordiske kunsttrykk av uavhengige kunstnere fra hele Norden: med ramme i tre, svart eller hvit, eller uten ramme, laget på bestilling.',
     heading: 'Skandinavisk veggkunst og nordiske kunsttrykk',
     intro:
-      'Denne siden er hele galleriet av skandinavisk veggkunst: nordiske kunsttrykk, hvert av dem av en uavhengig kunstner som lever og arbeider i Norden, og hvert av dem solgt med eller uten ramme. Ingunn Dybendal tegner folkeblomster og mønstret innsjølandskap i fargeblyant, Sia Siamos fyller bord med hummer, vin og hyttefrokost, Simen Wahlqvist får plass til en hel vits i en håndfull streker, Hedvig Wallin dekker et frokostbord fra Göteborg i tusj og akvarell, Mikko Saarainen fyller hver krok av en finsk tegneserieside, og Ishtar Bäcklund Dakhil beveger seg mellom Stockholms havnefront og fantasiverdener. Ikke et fyllbilde blant dem.',
+      'Denne siden er hele galleriet av skandinavisk veggkunst: nordiske kunsttrykk, hvert av dem av en uavhengig nordisk kunstner, og hvert av dem solgt med eller uten ramme. Ingunn Dybendal tegner folkeblomster og mønstret innsjølandskap i fargeblyant, Sia Siamos fyller bord med hummer, vin og hyttefrokost, Simen Wahlqvist får plass til en hel vits i en håndfull streker, Hedvig Wallin dekker et frokostbord fra Göteborg i tusj og akvarell, Mikko Saarainen fyller hver krok av en finsk tegneserieside, og Ishtar Bäcklund Dakhil beveger seg mellom Stockholms havnefront og fantasiverdener. Ikke et fyllbilde blant dem.',
     intro2:
       'Å kjøpe skandinaviske kunsttrykk på nett betyr vanligvis å skrolle gjennom et marked med ti tusen plakater som aldri har vært i nærheten av en fjord. Dette er det motsatte. Et lite galleri, kunstnere vi jobber direkte med, og hvert trykk laget på bestilling framfor hentet fra et lager. Velg bildet først og rammen etterpå, og klarer du ikke å velge mellom to, er kvadratene til Wahlqvist laget for å henge sammen.',
     framedHeading: 'Med eller uten ramme',
@@ -1466,6 +1478,23 @@ export const no = {
       description:
         "En del av en serie jeg tok i desember for et par år siden, på en av de sjeldne, fantastiske dagene med ekstremt tett tåke. Solen prøvde å bryte gjennom, men lyktes ikke. Jeg løp rundt på landsbygda og tok masse bilder. Tåken varte i omtrent 45 minutter, og jeg har ikke opplevd noe lignende siden.",
     },
+    // Christina Hägerfors: Norwegian by Peggy from the English descriptions built on her own lines (30 Sep 2026).
+    'big-whale': {
+      description:
+        'Big Whale av Christina Hägerfors deler havet i to: et lite dampskip og måkene øverst, og under det lyse hodet til en hval som stiger opp fra dypet. Halen til en annen skimtes i mørket. «Jeg har alltid vært redd for store ting i vannet», sier Christina, «og jeg ble tiltrukket av tanken på å forestille meg hva som kan skjule seg under overflaten.» Hun likte også komposisjonen med den store hvalen og den lille båten.',
+    },
+    'funny-mermaid': {
+      description:
+        'Funny Mermaid av Christina Hägerfors plasserer en havfrue rett under vannflaten, der hun strekker seg opp mot duppen til en fisker på en brygge. Bak bryggen står et rødt naust. Over vannet er det en ferje, måker og en stor gul sol, under vannet fisk og rastermønster, i en palett holdt til blågrønt, gult, oransje og krem. «Jeg har hatt sans for havfruer og maritime motiver så lenge jeg kan huske», sier Christina. Her ville hun ha et retropreg og enkle farger.',
+    },
+    'mushroom-picking': {
+      description:
+        'Mushroom Picking av Christina Hägerfors sender en soppsanker i rød jakke løpende gjennom en høstskog, med kurv i hånden og en liten grå hund ved siden av. Rundt omkring er den mørke skogbunnen full av fluesopp, kantareller, bær, en hare, en rødstrupe på en stubbe, en meitemark og en maur. «Jeg ville lage en skog full av detaljer og moro, og for meg er en høstskog det beste», sier Christina. «Jeg elsker å plukke sopp, og jeg gjør det ikke ofte nok.»',
+    },
+    'polar-bear-castle': {
+      description:
+        'Polar Bear Castle av Christina Hägerfors bygger et slott av is under en stjerneklar vinterhimmel, med tre isbjørner foran, to av dem med krone. Pingviner står på avsatsene. «Jeg liker virkelig å lage vinterillustrasjoner», sier Christina, «og jeg liker å tegne bjørner. De har en stor, slapp kropp som er veldig fin å tegne.» Hun ville lage en julescene som føltes litt annerledes.',
+    },
   } as Record<string, { description: string; buyerDescription?: string }>,
 
   productPage: {
@@ -1514,6 +1543,7 @@ export const no = {
       aboutLink: 'Alle trykk av {name}',
       facts: {
         basedIn: 'Bor i',
+        from: 'Fra',
         sizes: 'Størrelser',
         inTheShop: 'I butikken',
         printsFromOne: '{count} trykk, fra',

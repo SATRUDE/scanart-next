@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { artists } from '@/data/artists';
+import { artistPlace, artists } from '@/data/artists';
 import { getShopProductsByArtist as getProductsByArtist } from '@/lib/products';
 import { ArtistApplyBand } from '@/components/ArtistApplyBand';
 import { PageHeader } from '@/components/v2/ui';
@@ -59,7 +59,7 @@ export default async function ArtistsPage() {
       portrait: src,
       initials,
       about: artist.bio,
-      city: cityOf(artist.location),
+      city: cityOf(artistPlace(artist).value),
       prints: prints(artist.printCount),
     };
   });

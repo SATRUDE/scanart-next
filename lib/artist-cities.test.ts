@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { artists } from '@/data/artists';
+import { artistPlace, artists } from '@/data/artists';
 import { cityOf } from '@/components/v2/artists/artist-data';
 import { aboutPlaces } from '@/components/v2/about/about-data';
 import { hasCity } from '@/components/v2/artists/ArtistMap';
@@ -8,7 +8,7 @@ import type { PublishedArtist } from '@/lib/published-artists';
 
 describe('artist city pins', () => {
   it('has a pin for the city of every artist in the catalogue, so the map follows the list', () => {
-    const missing = artists.map(a => cityOf(a.location)).filter(city => city && !pinFor(city));
+    const missing = artists.map(a => cityOf(artistPlace(a).value)).filter(city => city && !pinFor(city));
     expect(missing).toEqual([]);
   });
 
@@ -22,7 +22,7 @@ describe('artist city pins', () => {
   });
 
   it('gives the artist page a map for every artist city too', () => {
-    for (const a of artists) expect(hasCity(cityOf(a.location)), a.name).toBe(true);
+    for (const a of artists) expect(hasCity(cityOf(artistPlace(a).value)), a.name).toBe(true);
   });
 
   it('reproduces the original markers within half a pixel', () => {

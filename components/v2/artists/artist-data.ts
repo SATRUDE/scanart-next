@@ -32,6 +32,7 @@ const TONED: Record<string, string> = {
   'hedvig-wallin': '/images/artists/hedvig-wallin-tone.webp',
   'mikko-saarainen': '/images/artists/mikko-saarainen-tone.webp',
   'ishtar-backlund-dakhil': '/images/artists/ishtar-backlund-dakhil-tone.webp',
+  'christina-hagerfors': '/images/artists/christina-hagerfors-tone.webp',
   'patrik-wennerlund': '/images/artists/patrik-wennerlund-tone.webp',
   'markus-naarttijarvi': '/images/artists/markus-naarttijarvi-tone.webp',
   'emma-iben': '/images/artists/emma-iben-tone.webp',

@@ -110,7 +110,7 @@ export const categoryLandings: CategoryLanding[] = [
       {
         question: 'What makes these illustrations Scandinavian?',
         answer:
-          'Partly the economy: Nordic illustration favours as few lines as necessary and no more, letting white space and a limited palette do the heavy lifting, which is Simen Wahlqvist’s whole method. Mikko Saarainen is the counter-example, and the region holds both: Finland has a long comic and children’s-book tradition that fills the page instead. These are drawn by artists living and working in the Nordics, so the label is literal as well as stylistic.',
+          'Partly the economy: Nordic illustration favours as few lines as necessary and no more, letting white space and a limited palette do the heavy lifting, which is Simen Wahlqvist’s whole method. Mikko Saarainen is the counter-example, and the region holds both: Finland has a long comic and children’s-book tradition that fills the page instead. These are drawn by artists from the Nordics, so the label is literal as well as stylistic.',
       },
       {
         question: 'What sizes do the illustration prints come in?',

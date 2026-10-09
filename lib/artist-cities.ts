@@ -25,6 +25,8 @@ const CITY_COORDINATES: Record<string, [lat: number, lon: number]> = {
   Umeå: [63.83, 20.26],
   Borås: [57.72, 12.94],
   Copenhagen: [55.68, 12.57],
+  // Christina Hägerfors's home town; she lives in France (data/artists.ts `from`).
+  Karlstad: [59.38, 13.5],
 };
 
 export interface CityPin {
