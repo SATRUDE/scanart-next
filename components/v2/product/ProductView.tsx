@@ -166,7 +166,7 @@ export function ProductView({
             </Question>
             {artist && artistHref && (
               <Question question={fill(t.questions.about, { name: artist.name })} size="small" as="h2">
-                <p>{artist.location}</p>
+                <p>{artist.from ?? artist.location}</p>
                 <p>
                   <TextLink href={artistHref} size="body">{fill(t.aboutLink, { name: artist.name })}</TextLink>
                 </p>
@@ -193,7 +193,8 @@ export function ProductView({
             </h2>
             {artist.bio && <p className="type-body">{artist.bio}</p>}
             <dl>
-              {artist.location && <FactRow label={t.facts.basedIn}>{artist.location}</FactRow>}
+              {/* An artist living outside the Nordics shows where they are from (data/artists.ts `from`). */}
+              {artist.from ? <FactRow label={t.facts.from}>{artist.from}</FactRow> : artist.location && <FactRow label={t.facts.basedIn}>{artist.location}</FactRow>}
               {artistFacts && artistFacts.sizes.length > 0 && (
                 <FactRow label={t.facts.sizes}>{artistFacts.sizes.join(', ')}</FactRow>
               )}

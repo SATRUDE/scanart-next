@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { artists, getArtistBySlug } from '@/data/artists';
+import { artistPlace, artists, getArtistBySlug } from '@/data/artists';
 import { getShopProductsByArtist as getProductsByArtist } from '@/lib/products';
 import { getShopArtists as getPublishedArtists } from '@/lib/published-artists';
 import { artistEditorial } from '@/lib/artist-editorial';
@@ -106,18 +106,19 @@ export default async function ArtistPage({
       portrait: src,
       initials,
       about: pub.bio,
-      city: cityOf(pub.location),
+      city: cityOf(artistPlace(pub).value),
       prints: prints(pub.printCount),
     }];
   });
 
   const lowest = lowestPrices(products);
   const hero = heroSceneFor(artist.slug, products);
-  // An artist living outside the Nordic map is pinned at her home town (data/artists.ts mapCity).
-  const city = artist.mapCity ?? cityOf(artist.location);
+  // An artist living outside the Nordics shows, and is pinned at, where they are from (data/artists.ts `from`).
+  const place = artistPlace(artist);
+  const city = cityOf(place.value);
   const words = { and: 'and', for: 'for' };
   const facts = [
-    { label: 'Based in', value: artist.location },
+    { label: place.kind === 'from' ? 'From' : 'Based in', value: place.value },
     { label: 'Formats', value: formatsLine(products, words) },
     { label: 'In the shop', value: prints(products.length) },
     { label: 'Framing', value: framingLine('Unframed, or', 'or') },
@@ -131,7 +132,7 @@ export default async function ArtistPage({
         slug={artist.slug}
         name={artist.name}
         bio={artist.bio}
-        location={artist.location}
+        location={place.value}
         portrait={portrait.src}
         portraitCredit={artist.imageCredit}
         originalsUrl={artist.originalsUrl}
@@ -159,7 +160,7 @@ export default async function ArtistPage({
         }
         editorial={editorial}
         facts={facts}
-        map={hasCity(city) ? { city, label: city, caption: `${city}, where ${firstName(artist.name)} ${artist.mapCity ? 'is from' : 'works'}.` } : null}
+        map={hasCity(city) ? { city, label: city, caption: `${city}, where ${firstName(artist.name)} ${place.kind === 'from' ? 'is from' : 'works'}.` } : null}
         more={more}
         explore={published.filter(a => a.id !== artist.id).map(a => ({ slug: a.slug, name: a.name }))}
         t={{
@@ -201,7 +202,7 @@ export default async function ArtistPage({
             '@context': 'https://schema.org',
             '@type': 'CollectionPage',
             name: `Prints by ${artist.name}`,
-            description: `Art prints by ${artist.name}, ${artist.location}, at Scandinavian Art Gallery.`,
+            description: `Art prints by ${artist.name}, ${place.value}, at Scandinavian Art Gallery.`,
             url: `${BASE_URL}/artist/${artist.slug}`,
             mainEntity: {
               '@type': 'ItemList',

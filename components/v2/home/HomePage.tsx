@@ -243,7 +243,7 @@ export function HomePage({ locale, strings: t, data, help, artistLocations = {},
             <ul className="flex w-max gap-gutter px-margin desk:pl-0">
               {data.artists.map(a => {
                 const photo = portraitFor(a.slug, a.image);
-                const city = (artistLocations[a.slug] ?? a.location).split(',')[0];
+                const city = (artistLocations[a.slug] ?? a.from ?? a.location).split(',')[0];
                 return (
                   <li key={a.slug} className="w-[240px] border-t border-ink tab:w-[300px] desk:w-[405px]">
                     <TrackedLink href={`${p}/artist/${a.slug}`} event="homepage-section-click" eventData={ev('the-artists', a.slug)} className="group flex h-full flex-col justify-between gap-group pt-4 desk:h-[380px] desk:pt-6">

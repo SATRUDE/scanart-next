@@ -600,6 +600,8 @@ export interface CollectionLandingCopy {
 
 export interface ArtistCopy {
   location: string;
+  /** Norwegian of data/artists.ts `from`, for an artist living outside the Nordics. */
+  from?: string;
   bio: string;
 }
 

@@ -44,7 +44,7 @@ export async function buildSearchIndex(lang: 'en' | 'no'): Promise<SearchIndex> 
   const artistRows = artists.map(artist => {
     const copy = lang === 'no' ? no.artists[artist.slug] : undefined;
     const bio = copy?.bio ?? artist.bio;
-    const location = copy?.location ?? artist.location;
+    const location = artist.from ? (copy?.from ?? artist.from) : (copy?.location ?? artist.location);
     return {
       slug: artist.slug,
       name: artist.name,

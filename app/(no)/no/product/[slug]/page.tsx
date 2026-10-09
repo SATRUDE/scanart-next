@@ -129,7 +129,7 @@ export default async function NorwegianProductPage({
             ? { href: `/no/category/${landing.slug}`, label: (no.crossLinks.categoryLabels as Record<string, string>)[landing.slug] ?? landing.heading }
             : undefined
         }
-        artist={artist ? { ...artist, location: artistCopy?.location ?? artist.location, bio: artistCopy?.bio ?? artist.bio } : null}
+        artist={artist ? { ...artist, location: artistCopy?.location ?? artist.location, from: artist.from && (artistCopy?.from ?? artist.from), bio: artistCopy?.bio ?? artist.bio } : null}
         artistStatement={artist ? no.artistStatements[artist.slug] : undefined}
         artistFacts={artistFactsFor(artistProducts)}
         recommended={recommended}

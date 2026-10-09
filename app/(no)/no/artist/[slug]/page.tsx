@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { artists, getArtistBySlug } from '@/data/artists';
+import { artistPlace, artists, getArtistBySlug } from '@/data/artists';
 import { getShopProductsByArtist as getProductsByArtist } from '@/lib/products';
 import { getShopArtists as getPublishedArtists } from '@/lib/published-artists';
 import { BASE_URL, OG_IMAGE, SITE_NAME, TWITTER_SITE } from '@/lib/site';
@@ -99,7 +99,9 @@ export default async function NorwegianArtistPage({
 
   const copy = no.artists[artist.slug];
   const bio = copy?.bio || artist.bio;
-  const location = copy?.location || artist.location;
+  // An artist living outside the Nordics shows where they are from (data/artists.ts `from`).
+  const place = artistPlace(artist, copy);
+  const location = place.value;
   const editorial = no.artistEditorial[artist.slug];
   const published = await getPublishedArtists();
 
@@ -116,7 +118,7 @@ export default async function NorwegianArtistPage({
       portrait: src,
       initials,
       about: otherCopy?.bio || pub.bio,
-      city: cityOf(otherCopy?.location || pub.location),
+      city: cityOf(artistPlace(pub, otherCopy).value),
       prints: prints(pub.printCount),
     }];
   });
@@ -124,11 +126,11 @@ export default async function NorwegianArtistPage({
   const lowest = lowestPrices(products);
   const hero = heroSceneFor(artist.slug, products);
   // The marker is looked up by the English city; the label is the Norwegian one.
-  // An artist living outside the Nordic map is pinned at her home town (data/artists.ts mapCity).
-  const mapCity = artist.mapCity ?? cityOf(artist.location);
-  const cityLabel = artist.mapCity ?? cityOf(location);
+  // The marker is looked up by the English city; the label is the Norwegian one.
+  const mapCity = cityOf(artistPlace(artist).value);
+  const cityLabel = cityOf(location);
   const facts = [
-    { label: t.factBasedIn, value: location },
+    { label: place.kind === 'from' ? t.factFrom : t.factBasedIn, value: location },
     { label: t.factFormats, value: formatsLine(products, { and: t.and, for: t.for }) },
     { label: t.factInShop, value: prints(products.length) },
     { label: t.factFraming, value: framingLine(t.framingPrefix, t.and, no.productPage.actions.frameLabels) },
@@ -169,7 +171,7 @@ export default async function NorwegianArtistPage({
         }
         editorial={editorial}
         facts={facts}
-        map={hasCity(mapCity) ? { city: mapCity, label: cityLabel, caption: artist.mapCity ? `${cityLabel}, ${t.mapWhere} ${firstName(artist.name)} ${t.mapFrom}.` : `${cityLabel}, ${t.mapWhere} ${firstName(artist.name)} ${t.mapWorks}.` } : null}
+        map={hasCity(mapCity) ? { city: mapCity, label: cityLabel, caption: place.kind === 'from' ? `${cityLabel}, ${t.mapWhere} ${firstName(artist.name)} ${t.mapFrom}.` : `${cityLabel}, ${t.mapWhere} ${firstName(artist.name)} ${t.mapWorks}.` } : null}
         more={more}
         explore={published.filter(a => a.id !== artist.id).map(a => ({ slug: a.slug, name: a.name }))}
         t={{

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { artists } from '@/data/artists';
+import { artistPlace, artists } from '@/data/artists';
 import { getShopProductsByArtist as getProductsByArtist } from '@/lib/products';
 import { ArtistApplyBand } from '@/components/ArtistApplyBand';
 import { PageHeader } from '@/components/v2/ui';
@@ -34,7 +34,8 @@ export default async function NorwegianArtistsPage() {
       const copy = no.artists[artist.slug];
       withCounts.push({
         ...artist,
-        ...(copy ? { bio: copy.bio, location: copy.location } : {}),
+        // The shown place: where they are from, for an artist living outside the Nordics.
+        ...(copy ? { bio: copy.bio, location: artistPlace(artist, copy).value } : { location: artistPlace(artist).value }),
         printCount: products.length,
       });
     }

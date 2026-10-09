@@ -51,7 +51,7 @@ export function ArticleArtists({ artists, articleSlug, locale = 'en' }: { artist
                 <span className="type-body transition-colors group-hover:text-brand tab:type-h3">{artist.name}</span>
                 <span className="hidden type-body tab:block">{firstSentence(artist.bio)}</span>
                 <span className="flex items-center gap-[6px] type-caption">
-                  <span>{artist.location.split(',')[0]}</span>
+                  <span>{(artist.from ?? artist.location).split(',')[0]}</span>
                   <Hairline />
                   <span>
                     {artist.printCount} {artist.printCount === 1 ? 'print' : 'prints'}

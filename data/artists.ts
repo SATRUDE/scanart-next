@@ -9,10 +9,23 @@ export interface Artist {
   imageCredit?: string;
   /** The artist's own shop for signed or limited originals (Mark, 29 Sep 2026). */
   originalsUrl?: string;
-  /** The pin on the Nordic map when the artist lives outside it: her home town.
-   *  The artist page then captions it as where she is from, not where she
-   *  works, and the About map ("Where the artists work") leaves her out. */
-  mapCity?: string;
+  /** Where the artist is from, for an artist who does not live in the Nordics
+   *  (Mark, 9 Oct 2026). When set, the shop shows it everywhere instead of
+   *  `location`, labelled "From" / "Fra" rather than "Based in" / "Bosted"; the
+   *  Nordic map pins its city, captioned as where the artist is from; and the
+   *  About map ("Where the artists work") leaves the artist out. `location`
+   *  stays the record of where they live. Norwegian: no.artists[slug].from. */
+  from?: string;
+}
+
+/** The place the shop shows for an artist, and whether it is where they are
+ *  from or where they are based. `copy` is the Norwegian copy on /no. */
+export function artistPlace(
+  artist: Pick<Artist, 'location' | 'from'>,
+  copy?: { location?: string; from?: string }
+): { kind: 'from' | 'basedIn'; value: string } {
+  if (artist.from) return { kind: 'from', value: copy?.from ?? artist.from };
+  return { kind: 'basedIn', value: copy?.location ?? artist.location };
 }
 
 export const artists: Artist[] = [
@@ -105,10 +118,10 @@ export const artists: Artist[] = [
     id: '12',
     name: 'Christina Hägerfors',
     slug: 'christina-hagerfors',
-    // She lives in Cérons, France (her artist application of 30 Aug 2026) and is
-    // from Karlstad (her email of 30 Sep 2026), which is the pin on the map.
+    // She lives in Cérons, France (her artist application of 30 Aug 2026); the shop
+    // shows where she is from, Karlstad (her email of 30 Sep 2026), and pins it.
     location: 'Cérons, France',
-    mapCity: 'Karlstad',
+    from: 'Karlstad, Sweden',
     // From her own Illustratörcentrum profile; approved by Christina 30 Sep 2026.
     bio: 'Christina Hägerfors is an illustrator originally from Sweden and now based in France, who has worked in illustration since her BA (Hons) at London College of Communication. She is inspired by colour, old prints and book covers, and hopes her pictures carry a kind of nostalgia. Her clients include The Guardian, The New York Times, The Observer and Time Out.',
     // Portrait supplied by Christina 30 Sep 2026. No photographer credit given, so none shown.

@@ -5,7 +5,7 @@ import { getPublishedArtists } from '@/lib/published-artists';
 import { computeOrderAmount } from '@/lib/server/order';
 import { sceneFocus } from '@/lib/scene-focus';
 import { pinFor } from '@/lib/artist-cities';
-import { getArtistBySlug } from '@/data/artists';
+import { artistPlace, artists, getArtistBySlug } from '@/data/artists';
 import { aboutPlaces } from '@/components/v2/about/about-data';
 import { no } from '@/lib/i18n/no';
 import manifest from '@/scripts/artists/christina-hagerfors.json';
@@ -55,13 +55,23 @@ describe('Christina Hägerfors is live', () => {
     expect(order.subtotal).toBe(35 + 35 + 39);
   });
 
-  it('says she lives in France, pins Karlstad as her home town and keeps her off "Where the artists work"', () => {
+  it('shows where she is from, Karlstad, pins it, and keeps her off "Where the artists work"', () => {
     const christina = getArtistBySlug('christina-hagerfors')!;
     expect(christina.location).toBe('Cérons, France');
-    expect(christina.mapCity).toBe('Karlstad');
+    expect(artistPlace(christina)).toEqual({ kind: 'from', value: 'Karlstad, Sweden' });
+    expect(artistPlace(christina, no.artists['christina-hagerfors'])).toEqual({ kind: 'from', value: 'Karlstad, Sverige' });
     expect(pinFor('Karlstad')).not.toBeNull();
     const places = aboutPlaces([{ ...christina, printCount: 4 }]);
     expect(places).toEqual([]);
+  });
+
+  it('leaves every Nordic-resident artist on "Based in" where they live (Mark, 9 Oct 2026)', () => {
+    for (const a of artists.filter(a => a.slug !== 'christina-hagerfors')) {
+      expect(a.from, a.slug).toBeUndefined();
+      expect(artistPlace(a), a.slug).toEqual({ kind: 'basedIn', value: a.location });
+      const copy = no.artists[a.slug];
+      if (copy) expect(artistPlace(a, copy), a.slug).toEqual({ kind: 'basedIn', value: copy.location });
+    }
   });
 
   it('has Norwegian copy for the page and each poster', () => {

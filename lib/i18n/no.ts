@@ -874,6 +874,8 @@ export const no = {
     allArtists: 'Alle kunstnere',
     atAGlance: 'Kort fortalt',
     factBasedIn: 'Bosted',
+    /** For an artist living outside the Nordics (data/artists.ts `from`). */
+    factFrom: 'Fra',
     factFormats: 'Formater',
     factInShop: 'I butikken',
     factFraming: 'Innramming',
@@ -933,6 +935,7 @@ export const no = {
     // Norwegian by Peggy from her approved English bio, 29 Sep 2026; Mark to confirm.
     'christina-hagerfors': {
       location: 'Cérons, Frankrike',
+      from: 'Karlstad, Sverige',
       bio: 'Christina Hägerfors er illustratør fra Sverige, nå bosatt i Frankrike, og har jobbet som illustratør siden hun tok en BA (Hons) ved London College of Communication. Hun henter inspirasjon fra farger, gamle trykk og bokomslag, og håper bildene hennes har et slags nostalgisk preg. Blant kundene hennes er The Guardian, The New York Times, The Observer og Time Out.',
     },
   } as Record<string, ArtistCopy>,
@@ -1540,6 +1543,7 @@ export const no = {
       aboutLink: 'Alle trykk av {name}',
       facts: {
         basedIn: 'Bor i',
+        from: 'Fra',
         sizes: 'Størrelser',
         inTheShop: 'I butikken',
         printsFromOne: '{count} trykk, fra',
