@@ -149,6 +149,32 @@ describe('computeOrderAmount', () => {
     await expect(computeOrderAmount([], 'GBP', 'GB')).rejects.toThrow('Invalid order items');
   });
 
+  // getProductPrice falls back to another size when asked for one the print
+  // does not have, so a tampered basket could buy a framed A1 at a 50 x 70
+  // print's price. The order now refuses a size the print is not sold in.
+  it('refuses a size the print is not sold in, and a frame that does not exist', async () => {
+    const products = await getAllProducts();
+    const single = products.find(p => Object.keys(p.prices ?? {}).length === 1 && !p.prices?.A1)!;
+    await expect(
+      computeOrderAmount([{ productId: single.id, size: 'A1', frame: 'wood', quantity: 1 }], 'GBP', 'GB', undefined, noCodes, deliver)
+    ).rejects.toThrow('is not sold in A1');
+    const size = Object.keys(single.prices ?? {})[0];
+    await expect(
+      computeOrderAmount([{ productId: single.id, size, frame: 'gold-leaf', quantity: 1 }], 'GBP', 'GB', undefined, noCodes, deliver)
+    ).rejects.toThrow('Unknown frame');
+  });
+
+  it('hands the guard the print and frame priced separately', async () => {
+    const [product] = await getAllProducts();
+    const size = Object.keys(product.prices ?? {})[0];
+    const order = await computeOrderAmount(
+      [{ productId: product.id, size, frame: 'wood', quantity: 2 }], 'GBP', 'GB', undefined, noCodes, deliver
+    );
+    expect(order.lines).toEqual([
+      { size, frame: 'wood', quantity: 2, printPrice: getProductPrice(product, size, 'GBP'), framePrice: getFramePrice('wood', size, 'GBP') },
+    ]);
+  });
+
   // Delivery now comes from Gelato's swept prices, and this is the guarantee
   // that survives that change: whatever the country, and whatever the store
   // says, an order is never posted for nothing. It used to be, because
@@ -232,10 +258,11 @@ describe('computeOrderAmount', () => {
       expect(sale.discountAmount).toBe(Math.round(plain * 0.2 * 100) / 100);
     });
 
-    it('does not discount a frame id the catalogue does not know', async () => {
+    // It used to be taken, at no frame price and no discount. A frame the
+    // catalogue does not know cannot be priced or made, so it is refused.
+    it('refuses a frame id the catalogue does not know', async () => {
       const [, , items] = await basket(['not-a-frame']);
-      const sale = await computeOrderAmount(items, 'GBP', 'GB', 'SALE20U', lookup);
-      expect(sale.discountAmount).toBe(0);
+      await expect(computeOrderAmount(items, 'GBP', 'GB', 'SALE20U', lookup)).rejects.toThrow('Unknown frame');
     });
 
     it('an ALL code still discounts the frame, as before', async () => {
