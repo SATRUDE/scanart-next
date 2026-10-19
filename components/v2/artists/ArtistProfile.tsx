@@ -11,6 +11,7 @@ import type { CurrencyPrices } from '@/lib/pricing';
 import { ArtistCardList, type ArtistCardData } from './ArtistCard';
 import { ArtistMap } from './ArtistMap';
 import { FromPrice } from './FromPrice';
+import { ArtistBio } from './ArtistBio';
 
 // Ken's editorial paragraphs carry inline links in Markdown form
 // ([text](/path)); render them as real <Link>s, everything else as text.
@@ -153,7 +154,7 @@ export function ArtistProfile(p: ArtistProfileProps) {
               <h1 className="type-h1 tab:type-display min-w-0 flex-1">{p.name}</h1>
             </div>
             {line}
-            {p.bio && <p className="type-body tab:max-w-[624px] desk:max-w-none">{p.bio}</p>}
+            {p.bio && <ArtistBio text={p.bio} locale={p.locale} className="tab:max-w-[624px] desk:max-w-none" />}
             {p.originalsUrl && (
               <p className="type-small">
                 {p.locale === 'no' ? 'Signerte og limiterte originaler: ' : 'Signed and limited editions: '}
