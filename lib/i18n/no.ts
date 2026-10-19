@@ -1129,9 +1129,11 @@ export const no = {
       },
     },
     meta: {
-      title: 'Journal',
+      // The English page is also titled "Journal", so /no/journal was the one
+      // duplicate title on the site (T-0204). Name it in Norwegian.
+      title: 'Journal om skandinavisk kunst og design',
       description:
-        'Les om skandinavisk kunst, nordisk design og kunstnerne bak den kuraterte samlingen vår.',
+        'Guider og artikler om skandinavisk kunst, nordisk design og kunstnerne bak samlingen vår, med råd om å velge og henge trykk. Artiklene er foreløpig på engelsk.',
     },
     /** Phase 1 keeps the articles themselves in English, so the index says so
      *  rather than letting a reader click through and be surprised. */
