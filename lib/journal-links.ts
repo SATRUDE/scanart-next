@@ -36,13 +36,6 @@ export const journalLinks = {
       no: 'Veggkunst til soverommet: hva du henger over sengen',
     },
   },
-  'scandinavian-abstract-art': {
-    slug: 'scandinavian-abstract-art',
-    label: {
-      en: 'Scandinavian abstract art: what abstraction looks like in the North',
-      no: 'Skandinavisk abstrakt kunst: slik ser abstraksjon ut i Norden',
-    },
-  },
   'modern-scandinavian-art': {
     slug: 'modern-scandinavian-art',
     label: {
@@ -82,9 +75,14 @@ export const collectionJournalLinks: Record<string, JournalLinkSlug[]> = {
   bedroom: ['bedroom-wall-art-ideas'],
 };
 
-/** Article links on a category page, by category slug. */
+/** Article links on a category page, by category slug.
+ *  scandinavian-abstract-art went back to draft on 8 Oct when Helene Brox left
+ *  (T-0181) and its link 404'd from both abstract categories (T-0202). Restore
+ *  it here, with its labels above, when the rewrite is republished on the same
+ *  URL: en 'Scandinavian abstract art: what abstraction looks like in the North',
+ *  no 'Skandinavisk abstrakt kunst: slik ser abstraksjon ut i Norden'. */
 export const categoryJournalLinks: Record<string, JournalLinkSlug[]> = {
-  abstract: ['scandinavian-abstract-art', 'modern-scandinavian-art'],
+  abstract: ['modern-scandinavian-art'],
 };
 
 /** Article links on the /scandinavian-wall-art landing. */

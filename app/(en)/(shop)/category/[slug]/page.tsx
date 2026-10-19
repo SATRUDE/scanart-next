@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { categoryLandings, getCategoryLandingBySlug } from '@/lib/categories';
-import { getShopProductsByCategory as getProductsByCategory } from '@/lib/products';
+import { getShopProductsForLanding } from '@/lib/products';
 import { getShopArtists as getPublishedArtists } from '@/lib/published-artists';
 import { ContentSection, ContentBody } from '@/components/v2/ui';
 import { ArticleLinks } from '@/components/v2/landing/ArticleLinks';
@@ -25,7 +25,7 @@ export async function generateMetadata({
   if (!category) return {};
 
   // Lead print as the social image; socialCard falls back to the site OG image.
-  const products = await getProductsByCategory(category.category);
+  const products = await getShopProductsForLanding(category);
 
   return {
     title: category.title,
@@ -55,7 +55,7 @@ export default async function CategoryPage({
     notFound();
   }
 
-  const products = await getProductsByCategory(category.category);
+  const products = await getShopProductsForLanding(category);
   if (products.length === 0) {
     notFound();
   }

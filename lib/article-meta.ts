@@ -13,7 +13,9 @@ export const ARTICLE_META_DESCRIPTIONS: Record<string, string> = {
 // Only the <title> changes: the H1 and the journal cards keep the article's own
 // headline, which lives in the articles database. "Scandinavian art prints" and
 // "Nordic art prints" belong to /scandinavian-wall-art (T-0156), so the best-of
-// guide asks for "best Scandinavian prints" instead.
+// guide asks for "best Scandinavian prints" instead. The count must match the
+// picks in the article: it lost two when Helene Brox left (8 Oct), so the title
+// said seven while the H1 said five until 19 Oct (T-0203).
 export const ARTICLE_META_TITLES: Record<string, string> = {
-  'best-scandinavian-art-prints': 'Best Scandinavian Prints: Seven Picks by Independent Artists',
+  'best-scandinavian-art-prints': 'Best Scandinavian Prints: Five Picks by Independent Artists',
 };

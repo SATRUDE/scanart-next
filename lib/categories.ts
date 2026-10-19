@@ -19,6 +19,11 @@ export interface CategoryLanding {
   stylingHeading: string;
   stylingBody: string;
   faqs: { question: string; answer: string }[];
+  /** Product slugs shown on this landing as well as their own category. The
+   *  print keeps its catalogue category (and its place on that landing); this
+   *  only adds it here. Mark, 19 Oct 2026 (T-0202): after Helene Brox left,
+   *  Abstract held one print, and he did not want artists' work moved around. */
+  alsoIncludes?: string[];
 }
 
 export const categoryLandings: CategoryLanding[] = [
@@ -58,6 +63,7 @@ export const categoryLandings: CategoryLanding[] = [
   {
     slug: 'abstract',
     category: 'Abstract',
+    alsoIncludes: ['month-of-may', 'frozen-currents', 'sun-over-the-forest'],
     title: 'Nordic Abstract Wall Art Prints',
     description:
       'Nordic abstract wall art by independent artists: geometric landscapes in confident colour, printed to order. Framing options.',
@@ -66,7 +72,7 @@ export const categoryLandings: CategoryLanding[] = [
     // Renate Thor's Birdie series left the catalogue (21 Aug); Ishtar
     // Bäcklund Dakhil's Desert Circles joined on 2026-09-26.
     intro:
-      'Nordic abstraction leans to clarity rather than chaos: forms pared back until only the essential shape is left, one or two flat colours doing the work of ten. Ishtar Bäcklund Dakhil, in Stockholm, breaks a desert landscape into overlapping white circles, with rust-coloured rocks, cacti and dusty pink hills repeating inside the pattern and bright turquoise openings breaking through. If you’re looking to buy Scandinavian abstract art prints with real presence, this is the confident end of the gallery, and you choose the frame on each product page: wood, black, white or none at all.',
+      'Nordic abstraction leans to clarity rather than chaos: forms pared back until only the essential shape is left, one or two flat colours doing the work of ten. Ishtar Bäcklund Dakhil, in Stockholm, breaks a desert landscape into overlapping white circles, with rust-coloured rocks, cacti and dusty pink hills repeating inside the pattern and bright turquoise openings breaking through. Markus Naarttijärvi finds the same pared-back shapes in nature with a camera: ice swirling across dark water with no horizon, a low sun over a flat black treeline. If you’re looking to buy Scandinavian abstract art prints with real presence, this is the confident end of the gallery, and you choose the frame on each product page: wood, black, white or none at all.',
     intro2:
       'Modern Scandinavian wall art of this kind suits rooms that are already close to calm. If your space leans minimalist, pale wood, quiet textiles, plenty of light, an abstract print gives the eye one confident place to land without shouting over the room. And because the compositions are simple, they read from across the room as well as they do up close.',
     stylingHeading: 'Styling abstract prints',
@@ -81,7 +87,7 @@ export const categoryLandings: CategoryLanding[] = [
       {
         question: 'What sizes do the abstract prints come in?',
         answer:
-          'Desert Circles is a 50 x 50 cm square. The size is listed on the product page, with the price shown before you add it to the basket.',
+          'Sizes vary by print: Desert Circles is a 50 x 50 cm square, and the others are rectangular. The size is listed on the product page, with the price shown before you add it to the basket.',
       },
       {
         question: 'Can I buy abstract prints framed?',

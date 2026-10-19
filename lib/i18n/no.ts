@@ -546,7 +546,7 @@ export const no = {
         'Abstrakte trykk og kunstplakater fra nordiske kunstnere: geometriske landskap i trygge farger, laget på bestilling. Med eller uten ramme.',
       heading: 'Abstrakte trykk',
       intro:
-        'Leter du etter abstrakt kunst som plakat eller trykk, er dette den rolige, nordiske enden av sjangeren: former skrelles ned til bare den essensielle silhuetten står igjen, og én eller to flate farger gjør jobben til ti. Ishtar Bäcklund Dakhil i Stockholm deler et ørkenlandskap i overlappende hvite sirkler, der rustfargede klipper, kaktuser og støvrosa åser gjentas i mønsteret og klare turkise åpninger bryter gjennom. Hvert trykk kan bestilles med eller uten ramme.',
+        'Leter du etter abstrakt kunst som plakat eller trykk, er dette den rolige, nordiske enden av sjangeren: former skrelles ned til bare den essensielle silhuetten står igjen, og én eller to flate farger gjør jobben til ti. Ishtar Bäcklund Dakhil i Stockholm deler et ørkenlandskap i overlappende hvite sirkler, der rustfargede klipper, kaktuser og støvrosa åser gjentas i mønsteret og klare turkise åpninger bryter gjennom. Markus Naarttijärvi finner de samme enkle formene i naturen med kameraet: is som virvler over mørkt vann uten horisont, og en lav sol over en flat, svart skogkant. Hvert trykk kan bestilles med eller uten ramme.',
       intro2:
         'Abstrakt veggkunst av dette slaget passer i stuer og soverom som allerede nærmer seg ro. Hvis rommet ditt heller mot det minimalistiske, lyst treverk, rolige tekstiler, rikelig med lys, gir et abstrakt trykk øyet ett trygt sted å lande uten å rope over rommet. Og fordi komposisjonene er enkle, leses de like godt fra andre siden av rommet som på nært hold.',
       stylingHeading: 'Slik bruker du abstrakte trykk',
@@ -561,7 +561,7 @@ export const no = {
         {
           question: 'Hvilke størrelser finnes de abstrakte trykkene i?',
           answer:
-            'Desert Circles er et kvadrat på 50 x 50 cm. Størrelsen står på produktsiden, med prisen oppgitt før du legger trykket i kurven.',
+            'Størrelsen varierer fra trykk til trykk: Desert Circles er et kvadrat på 50 x 50 cm, og de andre er rektangulære. Størrelsen står på produktsiden, med prisen oppgitt før du legger trykket i kurven.',
         },
         {
           question: 'Kan jeg kjøpe abstrakte trykk med ramme?',
@@ -1129,9 +1129,11 @@ export const no = {
       },
     },
     meta: {
-      title: 'Journal',
+      // The English page is also titled "Journal", so /no/journal was the one
+      // duplicate title on the site (T-0204). Name it in Norwegian.
+      title: 'Journal om skandinavisk kunst og design',
       description:
-        'Les om skandinavisk kunst, nordisk design og kunstnerne bak den kuraterte samlingen vår.',
+        'Guider og artikler om skandinavisk kunst, nordisk design og kunstnerne bak samlingen vår, med råd om å velge og henge trykk. Artiklene er foreløpig på engelsk.',
     },
     /** Phase 1 keeps the articles themselves in English, so the index says so
      *  rather than letting a reader click through and be surprised. */
