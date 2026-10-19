@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { metaTitle } from '@/lib/meta-title';
 import { notFound } from 'next/navigation';
 import { categoryLandings, getCategoryLandingBySlug } from '@/lib/categories';
-import { getShopProductsByCategory as getProductsByCategory } from '@/lib/products';
+import { getShopProductsForLanding } from '@/lib/products';
 import { getShopArtists as getPublishedArtists } from '@/lib/published-artists';
 import { ContentSection, ContentBody } from '@/components/v2/ui';
 import { ArticleLinks } from '@/components/v2/landing/ArticleLinks';
@@ -38,7 +38,7 @@ export async function generateMetadata({
   const { landing, copy } = found;
 
   // Lead print as the social image; socialCard falls back to the site OG image.
-  const products = await getProductsByCategory(landing.category);
+  const products = await getShopProductsForLanding(landing);
 
   return {
     // The Norwegian category titles are the longest in the /no tree, and
@@ -73,7 +73,7 @@ export default async function NorwegianCategoryPage({
   }
   const { landing, copy } = found;
 
-  const products = await getProductsByCategory(landing.category);
+  const products = await getShopProductsForLanding(landing);
   if (products.length === 0) {
     notFound();
   }

@@ -117,6 +117,17 @@ export async function getShopProductsByArtist(artistId: string): Promise<Product
 export async function getShopProductsByCategory(category: string): Promise<Product[]> {
   return (await getShopProducts()).filter(p => category === 'All' || p.category === category);
 }
+/** A category landing's prints: its own category first, then any prints it
+ *  also shows (CategoryLanding.alsoIncludes) that are live in the shop. */
+export async function getShopProductsForLanding(landing: { category: string; alsoIncludes?: string[] }): Promise<Product[]> {
+  const shop = await getShopProducts();
+  const own = shop.filter(p => p.category === landing.category);
+  const seen = new Set(own.map(p => p.slug));
+  const also = (landing.alsoIncludes ?? [])
+    .map(slug => shop.find(p => p.slug === slug))
+    .filter((p): p is Product => !!p && !seen.has(p.slug));
+  return [...own, ...also];
+}
 export async function getShopFeaturedProducts(): Promise<Product[]> {
   return (await getShopProducts()).filter(p => p.featured);
 }
