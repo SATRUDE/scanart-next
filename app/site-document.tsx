@@ -8,6 +8,7 @@ import { buildSearchIndex } from '@/lib/search-index';
 import { availableCategoryLandings } from '@/lib/categories';
 import { getDeliveryGuide } from '@/lib/server/delivery-guide';
 import { BASE_URL, SITE_NAME } from '@/lib/site';
+import { TRACKER_GUARD_FUNCTION, TRACKER_GUARD_SCRIPT } from '@/lib/tracker-guard';
 import Script from 'next/script';
 import { Hedvig_Letters_Sans, Hedvig_Letters_Serif } from 'next/font/google';
 import './globals.css';
@@ -67,11 +68,18 @@ export async function SiteDocument({
           title={`${SITE_NAME} Journal`}
           href={`${BASE_URL}/feed.xml`}
         />
+        {/* Drops automated browsers and the crawler screen shapes before the
+            tracker sends anything (T-0248). It must exist before the
+            tracker's first send, hence beforeInteractive. */}
+        <Script id="umami-bot-guard" strategy="beforeInteractive">
+          {TRACKER_GUARD_SCRIPT}
+        </Script>
         <Script
           defer
           src="https://datamachine.vercel.app/script.js"
           data-website-id="a2c30bff-57c9-4b47-a7a1-c77bb1718e41"
           data-domains="www.scandinavianart.co.uk"
+          data-before-send={TRACKER_GUARD_FUNCTION}
           data-performance="true"
           strategy="afterInteractive"
         />
