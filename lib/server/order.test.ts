@@ -11,7 +11,6 @@ import { getAllProducts } from '@/lib/products';
 import { getShippingRate } from '@/config/shipping';
 import { getFramePrice } from '@/config/frame';
 import { getProductPrice } from '@/lib/pricing';
-import { qualifiesForFreeDelivery } from '@/config/free-delivery';
 
 // The order maths is the single source of truth for what gets charged, so it
 // gets real tests: computed against the live catalogue, not fixtures, because
@@ -49,11 +48,10 @@ describe('computeOrderAmount', () => {
     );
 
     expect(order.subtotal).toBe(Math.round((unit + frame) * 2 * 100) / 100);
-    // Two framed prints clear the free-delivery threshold, so no delivery is
-    // added; the boundary itself is tested in order-free-delivery.test.ts.
-    const shipping = qualifiesForFreeDelivery(order.subtotal, 'GBP') ? 0 : DELIVERY;
-    expect(order.shipping).toBe(shipping);
-    expect(order.amount).toBe(Math.round((order.subtotal + shipping) * 100) / 100);
+    // Two framed prints clear GBP 100 but a framed print never ships free
+    // (config/free-delivery.ts), so delivery is charged as normal.
+    expect(order.shipping).toBe(DELIVERY);
+    expect(order.amount).toBe(Math.round((order.subtotal + DELIVERY) * 100) / 100);
     expect(order.discount).toBeNull();
   });
 

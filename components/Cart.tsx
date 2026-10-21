@@ -13,11 +13,11 @@ import { getProductPrices, formatDisplayPrice } from '@/lib/pricing';
 import { getFramePrice } from '@/config/frame';
 import { deliveryGuideLine, type DeliveryGuide } from '@/lib/delivery-guide';
 import {
-  FREE_DELIVERY_THRESHOLD,
   amountToFreeDelivery,
   formatFreeDeliveryAmount,
   freeDeliveryProgress,
-  qualifiesForFreeDelivery,
+  freeDeliveryVerdict,
+  isFramed,
 } from '@/config/free-delivery';
 import { track } from '@/lib/analytics';
 import { printImageAlt } from '@/lib/product-image-alt';
@@ -69,11 +69,18 @@ export const Cart: React.FC<{ deliveryGuide: DeliveryGuide }> = ({ deliveryGuide
   }, [state.isOpen]);
 
   const subtotal = getTotalPriceInCurrency(currency);
-  // Free delivery (config/free-delivery.ts), judged on the basket subtotal:
-  // the same number and rule the server charges with.
-  const free = qualifiesForFreeDelivery(subtotal, currency);
+  // Free delivery (config/free-delivery.ts), the same rule the server charges
+  // with. The basket does not know the destination or a discount code yet, so
+  // it is judged on the subtotal and the frames, and the copy names the
+  // countries and says the amount counts after a code.
+  const verdict = freeDeliveryVerdict({
+    goods: subtotal,
+    currency,
+    country: null,
+    hasFramed: state.items.some(i => isFramed(i.frame)),
+  });
+  const free = verdict === 'free';
   const awayText = t.freeAway.replace('{amount}', formatFreeDeliveryAmount(amountToFreeDelivery(subtotal, currency), currency));
-  const freeNote = t.freeNote.replace('{amount}', formatFreeDeliveryAmount(FREE_DELIVERY_THRESHOLD[currency], currency));
 
   const handleCheckout = () => {
     track('checkout', {
@@ -200,7 +207,7 @@ export const Cart: React.FC<{ deliveryGuide: DeliveryGuide }> = ({ deliveryGuide
                   <p>{free ? t.freeValue : t.deliveryValue}</p>
                 </div>
                 {free ? (
-                  <p className="type-caption">{freeNote}</p>
+                  <p className="type-caption">{t.freeNote}</p>
                 ) : (
                   <p className="type-caption">
                     {t.guidePrefix} {deliveryGuideLine(deliveryGuide, currency, t.regions, t.and, locale)}. {t.guideSuffix}
@@ -209,12 +216,15 @@ export const Cart: React.FC<{ deliveryGuide: DeliveryGuide }> = ({ deliveryGuide
                 {/* Free delivery 492:921: under the threshold, how far off it is,
                     with a 3px line that fills towards it. The sentence is the
                     text equivalent of the line (which is hidden from assistive
-                    technology), and this region is live so a change of quantity
-                    or a removal is announced; over the threshold it announces
-                    that delivery is free instead ("Delivery: Free"). */}
+                    technology), and this region is live so a change of quantity,
+                    a frame or a removal is announced. Over the threshold it
+                    announces where delivery is free; with a framed print in the
+                    basket it says plainly that free delivery does not apply. */}
                 <div role="status" className={free ? 'sr-only' : 'flex flex-col gap-[10px] overflow-clip pt-[14px] pb-4'}>
                   {free ? (
                     <p>{`${t.delivery}: ${t.freeValue}`}</p>
+                  ) : verdict === 'framed' ? (
+                    <p className="type-small">{t.freeFramed}</p>
                   ) : (
                     <>
                       <p className="type-small">{awayText}</p>

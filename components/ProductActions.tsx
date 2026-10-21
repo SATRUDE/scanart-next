@@ -33,7 +33,7 @@ const EN: ProductActionsStrings & { assurance: NonNullable<ProductActionsStrings
   // currency (lib/server/delivery-guide.ts); the Delivery row says the exact
   // amount is worked out at checkout.
   assurance: {
-    free: 'Free delivery on orders of {amount} or more',
+    free: 'Free delivery on orders of {amount} or more with no framed prints, to the UK, EU, Norway and US',
     printed: 'Printed to order on 200gsm uncoated paper, made in 1–4 working days',
     delivery: 'UK delivery 2–3 working days, worldwide from {price} unframed',
     returns: '14 days to change your mind',
@@ -142,8 +142,10 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings
     formatDeliveryPrice(worldwideFrom(deliveryGuide, currency), currency, locale),
   );
 
-  // "Free delivery on orders of £100 or more": the first line, from the one
-  // threshold table (config/free-delivery.ts), in the buyer's currency.
+  // "Free delivery on orders of £100 or more with no framed prints, to the UK,
+  // EU, Norway and US": the first line, from the one rule
+  // (config/free-delivery.ts), in the buyer's currency. It names every
+  // condition because the product page cannot know the basket or address.
   const freeLine = t.assurance.free.replace(
     '{amount}',
     formatFreeDeliveryAmount(FREE_DELIVERY_THRESHOLD[currency], currency),

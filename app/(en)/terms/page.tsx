@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 };
 
 // The date these terms take effect; bump by hand when the wording changes.
-const LAST_UPDATED = '12 July 2026';
+const LAST_UPDATED = '21 October 2026';
 
 const sections: LegalSection[] = [
   {
@@ -49,7 +49,8 @@ const sections: LegalSection[] = [
       <>
         <p>
           A contract is formed when we confirm your order. Prices are shown in your selected currency and are inclusive
-          of any applicable taxes; delivery is charged separately and shown before you pay.
+          of any applicable taxes; delivery is charged separately and shown before you pay, unless the order qualifies
+          for free delivery as set out on our <Link href="/delivery">Delivery &amp; Returns</Link> page.
         </p>
         <p>
           If we spot a genuine error (for example an obvious mispricing) or cannot fulfil an order, we may decline or
@@ -82,8 +83,10 @@ const sections: LegalSection[] = [
     body: (
       <p>
         You have the right to cancel your order within 14 days. Because items are made to order, you do not need to return
-        them, we will issue a refund. Faulty, damaged, incorrect or lost items are covered separately. Full details are on
-        our <Link href="/delivery">Delivery &amp; Returns</Link> page.
+        them, we will issue a refund. If you cancel part of an order and the remaining items come to less than the
+        free-delivery minimum, we will deduct the standard delivery charge for your destination from the refund. If you
+        cancel the whole order, delivery is refunded in full. Faulty, damaged, incorrect or lost items are covered
+        separately. Full details are on our <Link href="/delivery">Delivery &amp; Returns</Link> page.
       </p>
     ),
   },

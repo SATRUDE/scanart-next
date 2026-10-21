@@ -45,6 +45,9 @@ describe('Merchant Center listing trial', () => {
       expect(item).toContain(`<g:price>${getLowestProductPrices(product).GBP.toFixed(2)} GBP</g:price>`);
       expect(item).toContain(`${product.image}</g:image_link>`);
       expect(item.match(/<g:additional_image_link>/g)).toHaveLength(1);
+      // Merchant Center's free-delivery service is scoped to this label; every
+      // feed item is the print alone, at a price with no frame in it.
+      expect(item).toContain('<g:shipping_label>unframed</g:shipping_label>');
       if (trial.includes(product.slug)) {
         expect(item).toContain('<g:structured_title>');
         expect(item).toContain('<g:digital_source_type>trained_algorithmic_media</g:digital_source_type>');

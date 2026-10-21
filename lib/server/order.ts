@@ -3,7 +3,7 @@ import { getProductPrice } from '@/lib/pricing';
 import { getFramePrice } from '@/config/frame';
 import { lookupDiscountCode, type DiscountLookup, type DiscountScope } from '@/lib/server/discounts';
 import type { MetadataItem } from '@/lib/server/order-metadata';
-import { qualifiesForFreeDelivery } from '@/config/free-delivery';
+import { isFramed, qualifiesForFreeDelivery } from '@/config/free-delivery';
 import { quoteDelivery, type DeliveryItem, type DeliveryQuote } from '@/lib/server/shipping-rates';
 
 // Server-side order maths: the single source of truth for what an order
@@ -115,13 +115,19 @@ export async function computeOrderAmount(
     ? Math.round(((discountableAmount(resolved, discount.scope) * discount.percentage) / 100) * 100) / 100
     : 0;
 
-  // Free delivery (config/free-delivery.ts): the goods total after any
-  // discount, before delivery, at or above the threshold in the order's
-  // currency ships free to every destination. Decided first so a qualifying
-  // order does not even ask the store for a quote.
+  // Free delivery (config/free-delivery.ts, Mark 2026-10-21): the goods total
+  // after any discount, before delivery, at or above the threshold in the
+  // order's currency, with no framed line, to the UK, Norway, the US or the
+  // EU. Decided first so a qualifying order does not even ask for a quote.
+  const freeDelivery = qualifiesForFreeDelivery({
+    goods: Math.round((subtotal - discountAmount) * 100) / 100,
+    currency,
+    country: countryCode,
+    hasFramed: resolved.some(l => isFramed(l.frame)),
+  });
   let shipping: number;
   let shippingSource: ShippingSource;
-  if (qualifiesForFreeDelivery(Math.round((subtotal - discountAmount) * 100) / 100, currency)) {
+  if (freeDelivery) {
     shipping = 0;
     shippingSource = 'free-delivery';
   } else {

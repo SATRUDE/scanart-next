@@ -703,6 +703,11 @@ export interface CheckoutStrings {
   subtotal: string;
   shipping: string;
   free: string;
+  /** Under the Delivery row when the order does not ship free, saying why
+   *  (config/free-delivery.ts). {amount} is in the order's currency. */
+  freeAway: string;
+  freeFramed: string;
+  freeDestination: string;
   discount: string;
   total: string;
   secureHeading: string;
@@ -802,8 +807,12 @@ export interface BasketStrings {
   assurance: string[];
   /** Free delivery (config/free-delivery.ts). {amount} is written in the visitor's currency. */
   freeAway: string;
+  /** The Delivery row once the basket qualifies: free, and where. */
   freeValue: string;
+  /** Under the Delivery row once it qualifies: the code caveat and elsewhere. */
   freeNote: string;
+  /** In place of the progress line when a framed print is in the basket. */
+  freeFramed: string;
   checkout: string;
   continueShopping: string;
   emptyHeading: string;
@@ -827,9 +836,10 @@ export const basketStrings: Record<Locale, BasketStrings> = {
     regions: { GB: 'UK', NO: 'Norway', DK: 'Denmark', SE: 'Sweden', US: 'United States', ELSEWHERE: 'rest of world' },
     and: 'and',
     assurance: ['Made to order, produced in 1 to 4 business days', '14 days to change your mind', 'Secure payment by Stripe'],
-    freeAway: "You\u2019re {amount} away from free delivery",
-    freeValue: 'Free',
-    freeNote: 'Orders of {amount} or more have free delivery.',
+    freeAway: "You\u2019re {amount} away from free delivery to the UK, EU, Norway and US",
+    freeValue: 'Free to the UK, EU, Norway and US',
+    freeNote: 'Counted after any discount code. Elsewhere, checkout shows the cost before you pay.',
+    freeFramed: "Free delivery doesn\u2019t include orders with a framed print.",
     checkout: 'Checkout',
     continueShopping: 'Continue shopping',
     emptyHeading: 'Your basket is empty.',
@@ -851,9 +861,10 @@ export const basketStrings: Record<Locale, BasketStrings> = {
     regions: { GB: 'Storbritannia', NO: 'Norge', DK: 'Danmark', SE: 'Sverige', US: 'USA', ELSEWHERE: 'resten av verden' },
     and: 'og',
     assurance: ['Lages på bestilling, produseres på 1 til 4 virkedager', '14 dagers angrerett', 'Sikker betaling med Stripe'],
-    freeAway: 'Du er {amount} unna fri frakt',
-    freeValue: 'Gratis',
-    freeNote: 'Bestillinger fra {amount} har fri frakt.',
+    freeAway: 'Du er {amount} unna fri frakt til Norge, EU, Storbritannia og USA',
+    freeValue: 'Gratis til Norge, EU, Storbritannia og USA',
+    freeNote: 'Regnes etter eventuell rabattkode. Til andre land ser du prisen i kassen før du betaler.',
+    freeFramed: 'Fri frakt gjelder ikke bestillinger med innrammet trykk.',
     checkout: 'Til kassen',
     continueShopping: 'Fortsett å handle',
     emptyHeading: 'Handlekurven din er tom.',

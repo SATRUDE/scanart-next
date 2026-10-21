@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 };
 
 // Same effective date as the English page; bump both by hand together.
-const LAST_UPDATED = '12. juli 2026';
+const LAST_UPDATED = '21. oktober 2026';
 
 const sections: LegalSection[] = [
   {
@@ -58,7 +58,8 @@ const sections: LegalSection[] = [
       <>
         <p>
           En avtale inngås når vi bekrefter bestillingen din. Prisene vises i valutaen du har valgt og er inkludert
-          eventuelle gjeldende avgifter; frakt kommer i tillegg og vises før du betaler.
+          eventuelle gjeldende avgifter; frakt kommer i tillegg og vises før du betaler, med mindre bestillingen gir fri
+          frakt slik det står på siden vår om <Link href="/no/delivery">levering og retur</Link>.
         </p>
         <p>
           Oppdager vi en reell feil (for eksempel en åpenbar prisfeil), eller kan vi ikke oppfylle en bestilling, kan
@@ -91,8 +92,11 @@ const sections: LegalSection[] = [
     body: (
       <p>
         Du har rett til å gå fra kjøpet innen 14 dager. Fordi varene lages på bestilling, behøver du ikke sende dem
-        tilbake, vi utbetaler refusjon. Defekte, skadde, feilsendte eller tapte varer dekkes særskilt. Alle detaljer
-        står på siden vår om <Link href="/no/delivery">levering og retur</Link>.
+        tilbake, vi utbetaler refusjon. Hvis du avbestiller deler av en bestilling og de gjenværende varene til sammen
+        koster mindre enn grensen for fri frakt, trekker vi den vanlige fraktprisen for leveringslandet ditt fra
+        refusjonen. Hvis du avbestiller hele bestillingen, refunderer vi frakten i sin helhet. Defekte, skadde,
+        feilsendte eller tapte varer dekkes særskilt. Alle detaljer står på siden vår om{' '}
+        <Link href="/no/delivery">levering og retur</Link>.
       </p>
     ),
   },
