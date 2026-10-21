@@ -2,7 +2,8 @@
 //
 // Generated from ICU's own region data (Intl.DisplayNames, en-GB) rather than
 // typed by hand, so no code here is invented. Groupings and uninhabited
-// territories that cannot receive post are excluded.
+// territories that cannot receive post are excluded, and so are Cuba and
+// North Korea (Mark, 2026-10-03: we do not deliver there).
 //
 // This list decides only WHERE an order goes. What it costs to send is a
 // separate question: lib/address.ts maps each country to one of the shipping
@@ -76,7 +77,6 @@ export const ALL_COUNTRIES: CountryOption[] = [
   { code: 'CR', name: "Costa Rica" },
   { code: 'CI', name: "Côte d’Ivoire" },
   { code: 'HR', name: "Croatia" },
-  { code: 'CU', name: "Cuba" },
   { code: 'CW', name: "Curaçao" },
   { code: 'CY', name: "Cyprus" },
   { code: 'CZ', name: "Czechia" },
@@ -184,7 +184,6 @@ export const ALL_COUNTRIES: CountryOption[] = [
   { code: 'NG', name: "Nigeria" },
   { code: 'NU', name: "Niue" },
   { code: 'NF', name: "Norfolk Island" },
-  { code: 'KP', name: "North Korea" },
   { code: 'MK', name: "North Macedonia" },
   { code: 'MP', name: "Northern Mariana Islands" },
   { code: 'NO', name: "Norway" },

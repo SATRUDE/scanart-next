@@ -12,6 +12,7 @@ import stripePromise from '@/config/stripe';
 import { OrderComplete, type CompletedOrder } from '@/components/OrderComplete';
 import { saveCompletedOrder } from '@/lib/completed-order';
 import { getShippingRate } from '@/config/shipping';
+import { amountToFreeDelivery, formatFreeDeliveryAmount, freeDeliveryVerdict, isFramed } from '@/config/free-delivery';
 import {
   DESTINATIONS,
   defaultDestination,
@@ -113,6 +114,9 @@ const EN: CheckoutStrings = {
   subtotal: 'Subtotal',
   shipping: 'Delivery',
   free: 'Free',
+  freeAway: "You\u2019re {amount} away from free delivery, counted after any discount.",
+  freeFramed: "Free delivery doesn\u2019t include orders with a framed print.",
+  freeDestination: 'Free delivery covers the UK, EU, Norway and US only.',
   discount: 'Discount',
   total: 'Total',
   secureHeading: 'Secure checkout',
@@ -802,7 +806,33 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' |
   const finalTax = 0; // No tax for any orders
   // The server's delivery price once it has answered; the old table only
   // until then (Pay is disabled meanwhile).
-  const finalShipping = serverQuote ? serverQuote.shipping : shipping;
+  // Free delivery (config/free-delivery.ts) applies to the stand-in too, on
+  // the subtotal after discount, the frames and the destination, so the
+  // figure does not flash a charge the server will not make. The server's
+  // quote, once in, is what counts.
+  const goodsAfterDiscount = Math.round((subtotal - discountAmount) * 100) / 100;
+  const freeVerdict = freeDeliveryVerdict({
+    goods: goodsAfterDiscount,
+    currency: selectedCountry.currency,
+    country: selectedCountryCode || null,
+    hasFramed: state.items.some(item => isFramed(item.frame)),
+  });
+  const finalShipping = serverQuote
+    ? serverQuote.shipping
+    : freeVerdict === 'free'
+      ? 0
+      : shipping;
+  // Why it is not free, in one sentence under the Delivery row. Only said once
+  // there is a delivery charge to explain.
+  const freeReason = finalShipping === 0
+    ? undefined
+    : freeVerdict === 'framed'
+      ? t.freeFramed
+      : freeVerdict === 'destination'
+        ? t.freeDestination
+        : freeVerdict === 'under'
+          ? t.freeAway.replace('{amount}', formatFreeDeliveryAmount(amountToFreeDelivery(goodsAfterDiscount, selectedCountry.currency), selectedCountry.currency))
+          : undefined;
 
   const total = serverQuote
     ? serverQuote.amount
@@ -935,7 +965,9 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' |
             {discountError && <p role="alert" className="type-small text-error">{discountError}</p>}
           </div>
 
-          <OrderTotals {...totals} />
+          {/* The free-delivery reason shows here only, not on the
+              confirmation, which reuses `totals`. */}
+          <OrderTotals {...totals} note={[totals.note && `${totals.note}.`, freeReason].filter(Boolean).join(' ') || undefined} />
           <AssuranceLines lines={[v.assuranceMade, v.assuranceReturns, v.assuranceStripe]} />
         </aside>
 

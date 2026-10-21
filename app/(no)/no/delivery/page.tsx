@@ -55,12 +55,13 @@ export default async function NorwegianDeliveryPage() {
         made: { heading: s.made.heading, body: <p>{s.made.body}</p> },
         production: { heading: s.production.heading, list: v.productionList },
         figure: { src: scene.image, alt, width: scene.width, height: scene.height, caption: `Vinkveld ${v.by} Sia Siamos` },
-        times: { heading: s.times.heading, body: <p>{s.times.body}</p> },
+        times: { heading: s.times.heading, body: <><p>{s.times.body}</p><p>{s.times.free}</p></> },
         worldwide: { heading: s.worldwide.heading, body: <p>{fill(s.worldwide.body, { country: COMPANY.country })}</p> },
         returns: {
           heading: v.returnsHeading,
           items: [
             { title: s.cancellations.heading, body: fill(s.cancellations.body, { email: COMPANY.email }) },
+            { title: s.partCancel.heading, body: s.partCancel.body },
             { title: s.faulty.heading, body: fill(s.faulty.body, { email: COMPANY.email }) },
             { title: s.refunds.heading, body: s.refunds.body },
           ],

@@ -223,7 +223,7 @@ export const no = {
         'Slik lages og sendes trykkene fra Scandinavian Art til hele verden, og slik fungerer retur og refusjon.',
     },
     pageTitle: 'Levering og retur',
-    lastUpdated: '18. august 2026',
+    lastUpdated: '21. oktober 2026',
     lastUpdatedLabel: 'Sist oppdatert:',
     breadcrumbHome: 'Hjem',
     sections: {
@@ -243,6 +243,9 @@ export const no = {
         heading: 'Leveringstider og kostnader',
         body:
           'Leveringskostnaden avhenger av leveringsstedet og størrelsen, rammen og antallet i handlekurven. Vi beregner den fra den gjeldende leveringskostnaden og viser det nøyaktige beløpet før du betaler i kassen.',
+        // Free delivery, config/free-delivery.ts (Mark, 2026-10-21).
+        free:
+          'Frakten er gratis på bestillinger fra 1 500 kr når ingenting i bestillingen er innrammet og den skal til Norge, et EU-land, Storbritannia eller USA. Beløpet regnes etter eventuell rabattkode. Betaler du i en annen valuta, er grensen 1 350 SEK, 900 DKK, 135 USD eller 100 GBP. Bestillinger med innrammet trykk, og bestillinger til andre land, betaler frakt som vanlig.',
       },
       worldwide: {
         heading: 'Frakt til hele verden og importavgifter',
@@ -255,6 +258,11 @@ export const no = {
         // {email} is filled in by the page from COMPANY.email.
         body:
           'Du kan avbestille innen 14 dager etter at du har mottatt bestillingen. Fordi hvert trykk lages på bestilling, trenger du ikke sende noe tilbake. Send oss en e-post på {email} innen fristen, så refunderer vi deg.',
+      },
+      partCancel: {
+        heading: 'Avbestille deler av en bestilling',
+        body:
+          'Hvis du avbestiller deler av en bestilling og de gjenværende varene til sammen koster mindre enn grensen for fri frakt, trekker vi den vanlige fraktprisen for leveringslandet ditt fra refusjonen. Hvis du avbestiller hele bestillingen, refunderer vi frakten i sin helhet.',
       },
       faulty: {
         heading: 'Feil, skadde, uriktige eller tapte varer',
@@ -1518,6 +1526,7 @@ export const no = {
       // cheapest delivery for an unframed print outside the UK, in the
       // buyer's currency (lib/server/delivery-guide.ts).
       assurance: {
+        free: 'Fri frakt på bestillinger fra {amount} uten innrammede trykk, til Norge, EU, Storbritannia og USA',
         printed: 'Trykkes på bestilling på 200 g ubestrøket papir, ferdig på 1–4 virkedager',
         delivery: 'Levering i Storbritannia på 2–3 virkedager, resten av verden fra {price} uten ramme',
         returns: '14 dagers angrerett',
@@ -1601,6 +1610,9 @@ export const no = {
       subtotal: 'Delsum',
       shipping: 'Levering',
       free: 'Gratis',
+      freeAway: 'Du er {amount} unna fri frakt, regnet etter eventuell rabatt.',
+      freeFramed: 'Fri frakt gjelder ikke bestillinger med innrammet trykk.',
+      freeDestination: 'Fri frakt gjelder bare Norge, EU, Storbritannia og USA.',
       discount: 'Rabatt',
       total: 'Totalt',
       secureHeading: 'Trygg betaling',

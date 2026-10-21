@@ -48,6 +48,9 @@ describe('computeOrderAmount', () => {
     );
 
     expect(order.subtotal).toBe(Math.round((unit + frame) * 2 * 100) / 100);
+    // Two framed prints clear GBP 100 but a framed print never ships free
+    // (config/free-delivery.ts), so delivery is charged as normal.
+    expect(order.shipping).toBe(DELIVERY);
     expect(order.amount).toBe(Math.round((order.subtotal + DELIVERY) * 100) / 100);
     expect(order.discount).toBeNull();
   });

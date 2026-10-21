@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 };
 
 // The date this policy takes effect; bump by hand when the wording changes.
-const LAST_UPDATED = '18 August 2026';
+const LAST_UPDATED = '21 October 2026';
 
 /** A Help answer, verbatim, so the two pages can never disagree. */
 const answer = (q: string) => helpGroups.flatMap(g => g.items).find(i => i.q === q)?.a ?? '';
@@ -56,10 +56,18 @@ export default function DeliveryPage() {
         times: {
           heading: 'Delivery times and costs',
           body: (
-            <p>
-              Delivery cost depends on the destination and the size, frame and quantity in your basket. We calculate it
-              from the current fulfilment cost and show the exact amount before you pay at checkout.
-            </p>
+            <>
+              <p>
+                Delivery cost depends on the destination and the size, frame and quantity in your basket. We calculate it
+                from the current fulfilment cost and show the exact amount before you pay at checkout.
+              </p>
+              <p>
+                Delivery is free on orders of £100 or more when nothing in the order is framed and it is going to the UK,
+                an EU country, Norway or the US. The £100 is counted after any discount code. Paying in another currency,
+                the amount is $135, 1,350 SEK, 900 DKK or 1,500 NOK. Orders with a framed print, and orders to anywhere
+                else, pay delivery as normal.
+              </p>
+            </>
           ),
         },
         worldwide: {
@@ -77,6 +85,10 @@ export default function DeliveryPage() {
             {
               title: 'Cancellations and change-of-mind returns',
               body: `You may cancel your order within 14 days of receiving it. Because each print is made to order, you do not need to send it back, just email us at ${COMPANY.email} within that time and we will refund you.`,
+            },
+            {
+              title: 'Cancelling part of an order',
+              body: 'If you cancel part of an order and the remaining items come to less than the free-delivery minimum, we will deduct the standard delivery charge for your destination from the refund. If you cancel the whole order, delivery is refunded in full.',
             },
             {
               title: 'Faulty, damaged, incorrect or lost items',

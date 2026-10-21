@@ -13,6 +13,14 @@ export const dynamic = 'force-static';
 
 const GOOGLE_PRODUCT_CATEGORY = 'Home & Garden > Decor > Artwork > Posters, Prints, & Visual Artwork';
 
+// Every item here is the UNFRAMED print at its lowest price (frames are priced
+// on top, config/frame.ts, and never enter the feed). Free delivery over
+// GBP 100 is for baskets with no framed print (config/free-delivery.ts), so
+// Merchant Center's free-delivery shipping service is scoped to this label
+// and nothing else: if a framed offer is ever added to the feed it must carry
+// a different label, and then Google can never show it with free delivery.
+const SHIPPING_LABEL = 'unframed';
+
 function esc(s: string): string {
   return s
     .replace(/&/g, '&amp;')
@@ -57,6 +65,7 @@ export async function GET() {
       <g:brand>${esc(p.artist || p.brand || 'Scandinavian Art Gallery')}</g:brand>
       <g:identifier_exists>false</g:identifier_exists>
       <g:google_product_category>${esc(GOOGLE_PRODUCT_CATEGORY)}</g:google_product_category>
+      <g:shipping_label>${SHIPPING_LABEL}</g:shipping_label>
     </item>`;
     })
     .filter(Boolean)
