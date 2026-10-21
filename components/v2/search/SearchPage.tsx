@@ -3,8 +3,8 @@
 import React, { useEffect, useId, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { searchStrings } from '@/lib/i18n';
-import { fill, type SearchIndex, type SearchResults, type SearchTab } from '@/lib/site-search';
-import { shouldTrackSiteSearch } from '@/lib/site-search-signal';
+import { fill, searchIndex, type SearchIndex, type SearchResults, type SearchTab } from '@/lib/site-search';
+import { analyticsQuery, resultClickPath, shouldTrackSiteSearch, trackSearchResultClick, trackSearchSubmit } from '@/lib/site-search-signal';
 import { track } from '@/lib/analytics';
 import { NoResults, Results, ResultTabs, TryList, tryLinks } from '@/components/v2/search/SearchResultViews';
 
@@ -49,7 +49,7 @@ export function SearchPage({
   // overlay's and the Prints grid's so no count is inflated.
   useEffect(() => {
     if (shouldTrackSiteSearch(query, index.prints.length)) {
-      track('site-search', { query, results: results.total, source: 'search-page' });
+      track('site-search', { query: analyticsQuery(query), results: results.total, source: 'search-page' });
     }
   }, [query, index.prints.length, results.total]);
 
@@ -66,6 +66,7 @@ export function SearchPage({
     e.preventDefault();
     const next = q.trim();
     if (!next) return;
+    trackSearchSubmit(track, next, searchIndex(index, next).total, 'search-page', index.prints.length);
     router.push(`${index.searchHref}?q=${encodeURIComponent(next)}`);
   };
 
@@ -78,7 +79,14 @@ export function SearchPage({
   const found = results.total > 0;
 
   return (
-    <div className="page-x pt-6 pb-section tab:pt-band">
+    <div
+      className="page-x pt-6 pb-section tab:pt-band"
+      // Which result the search sent them to (T-0151). Without a query the
+      // links are suggestions, not results, and record nothing.
+      onClickCapture={e => {
+        if (query) trackSearchResultClick(track, query, resultClickPath(e.target, window.location.origin), 'search-page');
+      }}
+    >
       <h1 className="sr-only-sa">{hasQuery ? fill(t.pageTitleFor, { q: query }) : t.pageTitle}</h1>
 
       <div className="flex flex-col gap-6">

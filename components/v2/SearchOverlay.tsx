@@ -8,7 +8,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { searchStrings, type SearchStrings } from '@/lib/i18n';
 import { formatDisplayPrice, getLowestProductPrices } from '@/lib/pricing';
 import { fill, highlight, searchIndex, type SearchIndex, type SearchPrint, type SearchResults, type SearchTab as Tab } from '@/lib/site-search';
-import { shouldTrackSiteSearch } from '@/lib/site-search-signal';
+import { analyticsQuery, resultClickPath, shouldTrackSiteSearch, trackSearchResultClick, trackSearchSubmit } from '@/lib/site-search-signal';
 import { track } from '@/lib/analytics';
 import { NoResults, Results, ResultTabs } from '@/components/v2/search/SearchResultViews';
 
@@ -212,7 +212,7 @@ function SearchPanel({ onClose, isNo, index }: { onClose: () => void; isNo: bool
     // The overlay's own record of demand, kept apart from the grid's
     // site-search events by `source` so neither count is inflated.
     if (shouldTrackSiteSearch(query, index.prints.length)) {
-      track('site-search', { query, results: found.total, source: 'overlay' });
+      track('site-search', { query: analyticsQuery(query), results: found.total, source: 'overlay' });
     }
     inputRef.current?.focus();
   };
@@ -225,6 +225,8 @@ function SearchPanel({ onClose, isNo, index }: { onClose: () => void; isNo: bool
     const query = q.trim();
     if (!query) return;
     saveRecent(query);
+    // The submit itself (T-0151); the results page records its own landing.
+    trackSearchSubmit(track, query, searchIndex(index, query).total, 'overlay', index.prints.length);
     router.push(`${index.searchHref}?q=${encodeURIComponent(query)}`);
     requestClose();
   };
@@ -297,7 +299,15 @@ function SearchPanel({ onClose, isNo, index }: { onClose: () => void; isNo: bool
           {debounced.trim() && !pending ? fill(t.resultCount, { n: results.total }) : ''}
         </p>
 
-        <div ref={bodyRef}>
+        {/* One listener for every result link in the dialog: which query
+            took the searcher where (T-0151). The open state has no query,
+            so its popular links are not search results and record nothing. */}
+        <div
+          ref={bodyRef}
+          onClickCapture={e => {
+            if (hasQuery) trackSearchResultClick(track, debounced.trim() || q, resultClickPath(e.target, window.location.origin), 'overlay');
+          }}
+        >
           {!hasQuery ? (
             <OpenState t={t} index={index} recent={recent} onRecent={term => showAll(term)} onNavigate={requestClose} />
           ) : view === 'suggest' ? (

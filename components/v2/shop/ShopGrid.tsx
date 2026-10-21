@@ -4,7 +4,7 @@
 import React, { ViewTransition, useEffect, useMemo, useRef } from 'react';
 import Link from 'next/link';
 import { track } from '@/lib/analytics';
-import { shouldTrackSiteSearch } from '@/lib/site-search-signal';
+import { analyticsQuery, shouldTrackSiteSearch } from '@/lib/site-search-signal';
 import { Hairline } from '@/components/v2/ui';
 import { PrintGrid } from '@/components/v2/prints/PrintGrid';
 import { SHOP_TRANSITION, useShop } from '@/components/v2/shop/ShopFrame';
@@ -43,7 +43,7 @@ export function ShopGrid({ products }: { products: Product[] }) {
     if (!shouldTrackSiteSearch(query, products.length)) return;
     if (lastTrackedQuery.current === query) return;
     lastTrackedQuery.current = query;
-    track('site-search', { query, results: resultCount });
+    track('site-search', { query: analyticsQuery(query), results: resultCount });
   }, [query, resultCount, products.length]);
 
   return (
