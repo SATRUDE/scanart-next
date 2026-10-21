@@ -38,7 +38,9 @@ async function changedSince(since) {
 const args = process.argv.slice(2);
 const dryRun = args.includes('--dry-run');
 const sinceIndex = args.indexOf('--since');
-const explicit = args.filter((a, i) => a.startsWith('http') && i !== sinceIndex + 1);
+// The value after --since is a date, not a URL; with no --since there is
+// nothing to skip (sinceIndex + 1 would be 0 and drop the first URL).
+const explicit = args.filter((a, i) => a.startsWith('http') && (sinceIndex === -1 || i !== sinceIndex + 1));
 
 let urls = explicit;
 if (sinceIndex !== -1) {
