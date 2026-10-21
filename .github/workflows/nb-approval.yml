@@ -1,0 +1,71 @@
+# Fails a pull request that changes Norwegian (bokmål) copy until Mark has
+# read it and added the "nb approved" label. Only Mark adds that label.
+#
+# Why: PR #235 (free delivery) shipped new bokmål copy before Mark had read
+# it (Studio T-0278). Agents write the Norwegian; Mark is the one who can
+# tell whether it reads as Norwegian.
+#
+# What counts as Norwegian copy (the paths below, and nothing else):
+#   lib/i18n/**   the full Norwegian page dictionaries (no.ts, no-v2-pages.ts)
+#   lib/i18n.ts   the shared chrome dictionaries; it holds the `no` entries
+#                 for header, footer, basket, checkout and product actions.
+#                 It also holds types and path helpers, so a change to those
+#                 alone trips the check too: a cheap read for Mark, and far
+#                 cheaper than a missed string.
+#   app/(no)/**   the /no route tree, where page copy is written inline.
+# English pages keep their strings inline in app/(en) and components, and
+# are deliberately not covered.
+#
+# The label is read live from the API, not from the event payload, so a
+# re-run after labelling sees the label. Adding or removing the label
+# re-runs the check on its own (the labeled/unlabeled triggers).
+
+name: Norwegian copy approval
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled, unlabeled]
+
+concurrency:
+  group: nb-approval-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  pull-requests: read
+  contents: read
+
+jobs:
+  nb-approval:
+    name: nb approval
+    runs-on: ubuntu-latest
+    steps:
+      - name: Norwegian copy needs Mark's 'nb approved' label
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          set -euo pipefail
+
+          # Every file the PR touches, including the old name of a rename.
+          files=$(gh api --paginate "repos/$REPO/pulls/$PR/files" \
+            --jq '.[] | .filename, (.previous_filename // empty)' | sort -u)
+
+          nb=$(printf '%s\n' "$files" | grep -E '^(lib/i18n\.ts$|lib/i18n/|app/\(no\)/)' || true)
+
+          if [ -z "$nb" ]; then
+            echo "No Norwegian locale files changed. Nothing for Mark to read."
+            exit 0
+          fi
+
+          echo "Norwegian locale files changed in this PR:"
+          printf '%s\n' "$nb" | sed 's/^/  /'
+
+          labels=$(gh api "repos/$REPO/issues/$PR/labels" --jq '.[].name')
+          if printf '%s\n' "$labels" | grep -qx 'nb approved'; then
+            echo "Labelled 'nb approved': Mark has read the Norwegian copy."
+            exit 0
+          fi
+
+          echo "::error title=Norwegian copy not approved::Norwegian copy changed: Mark must read it and add the 'nb approved' label"
+          exit 1
