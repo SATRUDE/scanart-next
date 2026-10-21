@@ -7,12 +7,16 @@ import { ArtistCardList } from '@/components/v2/artists/ArtistCard';
 import { cityOf, portraitFor } from '@/components/v2/artists/artist-data';
 import { BASE_URL, socialCard } from '@/lib/site';
 import { hreflangPair } from '@/lib/i18n';
+import { metaTitle } from '@/lib/meta-title';
 
-const PAGE_TITLE = 'Artists';
-const PAGE_DESCRIPTION = 'Meet the artists behind the collection, a small group of illustrators and printmakers from across the Nordics.';
+// T-0178: the hub shows for 'scandinavian illustrators' (pos 9.7), 'norwegian
+// illustrator' (8.9) and 'swedish illustrators' (16), and 'Artists' named none
+// of it. The roster includes photographers now, so the title says so.
+const PAGE_TITLE = 'Scandinavian Illustrators and Photographers';
+const PAGE_DESCRIPTION = 'Meet the Scandinavian illustrators, painters and photographers behind the collection, with their stories and every print they sell through the gallery.';
 
 export const metadata: Metadata = {
-  title: PAGE_TITLE,
+  title: metaTitle(PAGE_TITLE),
   description: PAGE_DESCRIPTION,
   alternates: {
     canonical: '/artists',

@@ -8,13 +8,14 @@ import { cityOf, portraitFor } from '@/components/v2/artists/artist-data';
 import { BASE_URL, socialCard } from '@/lib/site';
 import { hreflangPair } from '@/lib/i18n';
 import { no } from '@/lib/i18n/no';
+import { metaTitle } from '@/lib/meta-title';
 
 // The Norwegian artists hub: app/(en)/artists/page.tsx mirrored exactly (V2), with bios
 // and locations swapped for the Norwegian copy in lib/i18n/no.ts.
 const t = no.artistsIndex;
 
 export const metadata: Metadata = {
-  title: t.meta.title,
+  title: metaTitle(t.meta.title),
   description: t.meta.description,
   alternates: {
     canonical: '/no/artists',

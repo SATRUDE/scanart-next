@@ -30,7 +30,7 @@ export const categoryLandings: CategoryLanding[] = [
   {
     slug: 'botanical',
     category: 'Botanical',
-    title: 'Botanical Art Prints',
+    title: 'Scandinavian Botanical Prints',
     description:
       'Scandinavian botanical prints by independent Nordic artists: folk florals, patterned landscapes and vivid still lifes, framed or unframed.',
     heading: 'Botanical Prints',
@@ -64,9 +64,9 @@ export const categoryLandings: CategoryLanding[] = [
     slug: 'abstract',
     category: 'Abstract',
     alsoIncludes: ['month-of-may', 'frozen-currents', 'sun-over-the-forest'],
-    title: 'Nordic Abstract Wall Art Prints',
+    title: 'Scandinavian Abstract Art Prints',
     description:
-      'Nordic abstract wall art by independent artists: geometric landscapes in confident colour, printed to order. Framing options.',
+      'Scandinavian abstract art prints by independent Nordic artists: geometric landscapes in confident colour, made to order. Framed or unframed.',
     heading: 'Abstract Prints',
     // Ken's buyer-language rewrite (Studio row, 2026-08-13), trimmed when
     // Renate Thor's Birdie series left the catalogue (21 Aug); Ishtar
@@ -99,9 +99,9 @@ export const categoryLandings: CategoryLanding[] = [
   {
     slug: 'illustrations',
     category: 'Illustrations',
-    title: 'Scandinavian Illustrations',
+    title: 'Scandinavian Illustration Prints',
     description:
-      'Nordic illustration prints by independent artists: dry one-liners, comic pages packed with detail and imagined worlds. Framed or unframed.',
+      'Scandinavian and Nordic illustration prints for sale by independent artists: dry one-liners, comic pages packed with detail and imagined worlds. Framed or not.',
     heading: 'Illustrations',
     // Ken's buyer-language rewrite (Studio row, 2026-08-13), rewritten again
     // on 2026-09-15 for the second and third illustrator in the category.
