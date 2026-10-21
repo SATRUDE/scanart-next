@@ -16,6 +16,8 @@ import { getShopArtists as getPublishedArtists } from '@/lib/published-artists';
 import { getProductVideo } from '@/config/product-videos';
 import { ProductView } from '@/components/v2/product/ProductView';
 import { getDeliveryGuide } from '@/lib/server/delivery-guide';
+import { getOfferShippingRates } from '@/lib/server/offer-shipping';
+import { lowestPricedSize, offerShippingDetails, productReturnPolicy } from '@/lib/offer-structured-data';
 import { artistFactsFor } from '@/components/v2/product/artist-facts';
 
 // The Norwegian product page: app/(en)/product/[slug]/page.tsx mirrored exactly,
@@ -95,16 +97,6 @@ export default async function NorwegianProductPage({
   const description = no.productCopy[slug]?.description ?? product.description;
   const categoryLabel = no.shared.categoryLabels[product.category] ?? product.category;
 
-  // 14-day right to cancel; made to order, so nothing is sent back and the
-  // refund is issued on request (data/help.ts, "Returns & refunds").
-  const returnPolicy = {
-    '@type': 'MerchantReturnPolicy',
-    applicableCountry: ['GB', 'NO', 'US', 'DK', 'SE'],
-    returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
-    merchantReturnDays: 14,
-    returnFees: 'https://schema.org/FreeReturn',
-  };
-
   const landing = getCategoryLandingByCategory(product.category);
   const artistProducts = artist ? await getProductsByArtist(artist.id) : [];
   const exploreArtists = (await getPublishedArtists()).map(a => ({ slug: a.slug, name: a.name }));
@@ -112,6 +104,8 @@ export default async function NorwegianProductPage({
 
   // Delivery "from" prices, from the store checkout charges from.
   const deliveryGuide = await getDeliveryGuide();
+  // Delivery for one unframed print at the Offer's price, for the JSON-LD.
+  const shippingRates = await getOfferShippingRates(lowestPricedSize(product));
 
   return (
     <>
@@ -180,7 +174,8 @@ export default async function NorwegianProductPage({
               price: getLowestProductPrices(product).GBP,
               priceValidUntil: priceValidUntil(),
               itemCondition: 'https://schema.org/NewCondition',
-              hasMerchantReturnPolicy: returnPolicy,
+              hasMerchantReturnPolicy: productReturnPolicy(),
+              shippingDetails: offerShippingDetails(getLowestProductPrices(product).GBP, shippingRates),
             },
           }),
         }}
