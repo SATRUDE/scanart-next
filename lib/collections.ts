@@ -54,7 +54,8 @@ export const collections: Collection[] = [
     // that is exactly what happened on 2026-08-21: retiring the four Birdie
     // prints left only two birds, under the three-print floor this file's test
     // enforces, so Dragon joined as the animal half and the H1 widened to match
-    // the chip. The title tag stays bird-led because that is where the demand is.
+    // the chip. The title tag stays bird-led because that is where the demand is;
+    // 2026-10-21 (T-0178) it added 'Animal' for 'scandinavian animal art' (pos 9.7).
     // 2026-10-08: the artist withdrew her work, so the collection was rebuilt
     // around the swan, crow and sheep photographs and Ishtar's two illustrations.
     slug: 'birds-and-animals',
@@ -62,9 +63,9 @@ export const collections: Collection[] = [
     chipLabel: 'Birds & Animals',
     axis: 'subject',
     title:
-      'Scandinavian Bird Wall Art & Prints',
+      'Scandinavian Bird & Animal Art',
     description:
-      'Nordic bird and animal wall art by independent artists: a swan on a misty lake, a crow in December fog, sheep on a farm track, a horned creature among blue leaves and an aeroplane that can pass for a bird.',
+      'Nordic bird and animal art prints by independent artists: a swan on a misty lake, a crow in December fog, sheep on a farm track. Framed or unframed.',
     heading:
       'Bird & Animal Wall Art from Nordic Artists',
     intro:

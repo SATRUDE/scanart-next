@@ -90,9 +90,9 @@ export const no = {
 
   home: {
     meta: {
-      title: 'Scandinavian Art Gallery | Trykk av nordiske kunstnere',
+      title: 'Scandinavian Art Gallery | Nordiske kunsttrykk og plakater',
       description:
-        'Kuraterte skandinaviske og nordiske kunsttrykk fra uavhengige kunstnere. Kjøp veggkunst med eller uten ramme, levert til hele verden. Utforsk samlingen.',
+        'Nordiske og skandinaviske kunsttrykk fra uavhengige kunstnere. Laget på bestilling, med ramme i tre, svart eller hvit, eller uten. Sendes over hele verden.',
     },
     /** The V2 homepage (lib/home.ts has the English and the shape). */
     v2: {
@@ -579,9 +579,9 @@ export const no = {
       ],
     },
     illustrations: {
-      title: 'Illustrasjoner og morsomme plakater',
+      title: 'Illustrasjonstrykk og plakater',
       description:
-        'Nordiske illustrasjonstrykk av uavhengige kunstnere: tørr humor på få streker, tegneseriesider fulle av detaljer og fantasiverdener.',
+        'Nordiske illustrasjonstrykk av uavhengige kunstnere: tørr humor på få streker, tegneseriesider fulle av detaljer og fantasiverdener. Med eller uten ramme.',
       heading: 'Illustrasjoner',
       intro:
         'Illustrasjon betyr her tegninger med humor, og kategorien trekker i to retninger. Simen Wahlqvist i Oslo fanger et øyeblikk rett før det skjer, med så få streker som mulig; regelen hans er enkel: får en tegning ham til å le, er den ferdig. Mikko Saarainen i Lahti gjør det motsatte og fyller kvadratet til hver eneste krok har en spøk i seg, og ett av trykkene hans er en hel tegneserieside. Hedvig Wallins tusjhav ligger midt imellom, og Ishtar Bäcklund Dakhil i Stockholm bidrar med byen sin, en surfer og skapninger fra fantasiverdener. Morgenstrekk fanger dagens aller første helkroppsstrekk, og kvadratene rundt bærer sin egen humor.',
@@ -813,9 +813,9 @@ export const no = {
     },
 
     'birds-and-animals': {
-      title: 'Skandinavisk fuglekunst og dyretrykk',
+      title: 'Skandinavisk fugle- og dyrekunst',
       description:
-        'Nordisk fugle- og dyrekunst av uavhengige kunstnere: en svane på en tåkete innsjø, en kråke i desembertåke, sauer på en gårdsvei, et vesen med horn blant blå blader og et fly som også kan leses som en fugl.',
+        'Nordiske fugle- og dyretrykk av uavhengige kunstnere: en svane på en tåkete innsjø, en kråke i desembertåke, sauer på en gårdsvei. Med eller uten ramme.',
       heading: 'Fugle- og dyrekunst fra nordiske kunstnere',
       intro:
         'Hvert dyr her lever inne i landskapet sitt i stedet for å posere for det. Ishtar Bäcklund Dakhil i Stockholm sender et blekt fly, som også kan leses som en fugl, over en grønn dal, og halvt skjuler et vesen med horn blant blå blader. Markus Naarttijärvi fotograferer en ensom svane som driver over en tåkete innsjø i morgenlyset, og en liten flokk mørke sauer som ser rett inn i kameraet fra en gjørmete vei. Patrik Wennerlund fanget kråka si en desembermorgen med tykk tåke. Det er dette som gjør at et dyretrykk sitter godt i et skandinavisk rom: stemning og form framfor detaljer fra en fuglebok. Hvert trykk her kan kjøpes med ramme i tre, svart eller hvitt, eller uten ramme.',
@@ -846,9 +846,9 @@ export const no = {
 
   artistsIndex: {
     meta: {
-      title: 'Kunstnere',
+      title: 'Skandinaviske illustratører og fotografer',
       description:
-        'Møt kunstnerne bak samlingen, en liten gruppe illustratører og grafikere fra hele Norden.',
+        'Møt de skandinaviske illustratørene, malerne og fotografene bak samlingen, med historiene deres og alle trykkene de selger gjennom galleriet.',
     },
     heading: 'Kunstnere',
     /** {count} kunstnere */

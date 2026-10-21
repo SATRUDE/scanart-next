@@ -12,10 +12,10 @@ import { catalogueReviewEnabled } from '@/lib/server/catalogue-review';
 export const siteMetadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: 'Scandinavian Art Gallery | Prints by Nordic Artists',
+    default: 'Scandinavian Art Gallery | Nordic & Scandi Art Prints',
     template: '%s | Scandinavian Art Gallery',
   },
-  description: 'Curated Scandinavian and Nordic art prints from independent artists. Shop framed or unframed wall art, delivered worldwide. Discover the collection.',
+  description: 'Nordic and Scandinavian art prints by independent artists. Made to order, framed in wood, black or white, or unframed, with delivery to the UK and worldwide.',
   keywords: ['Scandinavian art', 'Nordic art', 'Scandinavian wall art', 'Nordic prints', 'Scandinavian artists', 'art gallery', 'wall art', 'prints', 'artwork', 'Nordic design'],
   authors: [{ name: 'Scandinavian Art Gallery' }],
   robots: catalogueReviewEnabled() ? 'noindex, nofollow' : 'index, follow',
@@ -33,8 +33,8 @@ export const siteMetadata: Metadata = {
     'p:domain_verify': 'f545c7d3764c8418167cc16b7612b605',
   },
   openGraph: {
-    title: 'Scandinavian Art Gallery | Prints by Nordic Artists',
-    description: 'Curated Scandinavian and Nordic art prints from independent artists. Shop framed or unframed wall art, delivered worldwide.',
+    title: 'Scandinavian Art Gallery | Nordic & Scandi Art Prints',
+    description: 'Nordic and Scandinavian art prints by independent artists. Made to order, framed or unframed, with delivery to the UK and worldwide.',
     url: BASE_URL,
     siteName: 'Scandinavian Art Gallery',
     locale: 'en_GB',
@@ -43,8 +43,8 @@ export const siteMetadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Scandinavian Art Gallery | Prints by Nordic Artists',
-    description: 'Curated Scandinavian and Nordic art prints from independent artists. Framed or unframed, delivered worldwide.',
+    title: 'Scandinavian Art Gallery | Nordic & Scandi Art Prints',
+    description: 'Nordic and Scandinavian art prints by independent artists. Framed or unframed, delivered worldwide.',
     images: ['/images/scandinavian-art-gallery-og-wahlqvist.jpg'],
     site: '@scandinavianart',
   },
