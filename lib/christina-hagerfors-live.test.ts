@@ -10,20 +10,24 @@ import { aboutPlaces } from '@/components/v2/about/about-data';
 import { no } from '@/lib/i18n/no';
 import manifest from '@/scripts/artists/christina-hagerfors.json';
 
+// Seagull on Bin (24 Oct 2026) is in the manifest as a review preview, not live;
+// lib/christina-hagerfors-seagull-preview.test.ts covers it.
+const live = manifest.prints.filter(p => p.slug !== 'seagull-on-bin');
+
 afterEach(() => vi.unstubAllEnvs());
 
 describe('Christina Hägerfors is live', () => {
   it('sells her four posters in production, with no draft gate involved', async () => {
     vi.stubEnv('VERCEL_ENV', 'production');
     const mine = (await getAllProducts()).filter(p => p.artistId === '12');
-    expect(mine.map(p => p.slug).sort()).toEqual(manifest.prints.map(p => p.slug).sort());
+    expect(mine.map(p => p.slug).sort()).toEqual(live.map(p => p.slug).sort());
     expect(mine.every(p => p.inStock)).toBe(true);
     expect((await getPublishedArtists()).find(a => a.id === '12')?.printCount).toBe(4);
   });
 
   it('offers each poster at 50 x 70 cm on the Entry list she saw on her preview', async () => {
     vi.stubEnv('VERCEL_ENV', 'production');
-    for (const work of manifest.prints) {
+    for (const work of live) {
       const product = await getShopProductBySlug(work.slug);
       expect(product?.published, work.slug).toBe(true);
       expect(product?.name).toBe(work.name);
@@ -35,7 +39,7 @@ describe('Christina Hägerfors is live', () => {
 
   it('keeps every image and scene focus on disk', async () => {
     vi.stubEnv('VERCEL_ENV', 'production');
-    for (const work of manifest.prints) {
+    for (const work of live) {
       const product = await getShopProductBySlug(work.slug);
       for (const src of [product!.image, product!.secondaryImage!, product!.secondaryImage!.replace('.avif', '.webp')]) {
         expect(existsSync(`public${src}`), src).toBe(true);
@@ -78,7 +82,7 @@ describe('Christina Hägerfors is live', () => {
     expect(no.artists['christina-hagerfors'].bio).toMatch(/^Christina Hägerfors er /);
     expect(no.artists['christina-hagerfors'].location).toBe('Cérons, Frankrike');
     expect(no.artistStatements['christina-hagerfors']).toBeTruthy();
-    for (const work of manifest.prints) {
+    for (const work of live) {
       expect(no.productCopy[work.slug]?.description, `no Norwegian description for ${work.slug}`).toBe(work.descriptionNo);
     }
   });

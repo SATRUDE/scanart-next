@@ -1396,5 +1396,34 @@
     ],
     "created_time": "2026-09-29T15:37:36.674Z",
     "last_edited_time": "2026-10-09T12:00:00.000Z"
+  },
+  {
+    "id": "c0f82ea5-6c20-457a-82d2-59f8e8b85664",
+    "name": "Seagull on Bin",
+    "slug": "seagull-on-bin",
+    "description": "Seagull on Bin by Christina Hägerfors puts a gull on top of a green litter bin, a red crumb in its beak and more scattered on the ground below. The bin stands on a single grey-blue post with a yellow edge, set against plain white paper, in the flat, grainy print style and the teal, green, yellow and coral palette of her other posters.",
+    "category": "Illustrations",
+    "artist": "Christina Hägerfors",
+    "artistId": "12",
+    "brand": "",
+    "inStock": false,
+    "featured": false,
+    "published": false,
+    "review": true,
+    "image": "/images/products/seagull-on-bin.png",
+    "secondaryImage": "/images/products/seagull-on-bin-room-hall-2026-10-24.avif",
+    "availableSizes": [
+      "50x70cm"
+    ],
+    "priceCategory": "Entry",
+    "productId": "64",
+    "recommendedProducts": [
+      "Big Whale",
+      "Funny Mermaid",
+      "Mushroom Picking",
+      "Polar Bear Castle"
+    ],
+    "created_time": "2026-10-24T19:18:19.516Z",
+    "last_edited_time": "2026-10-24T19:18:19.516Z"
   }
 ]

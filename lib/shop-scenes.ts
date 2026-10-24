@@ -67,6 +67,10 @@ export const shopScenes: Record<string, ShopScene> = {
   'big-whale': { image: '/images/products/big-whale-room-2026-09-29-v4.avif', alt: 'Big Whale by Christina Hägerfors framed above a child’s bed in a peach bedroom, with a round wool rug and a toy box', width: 1122, height: 1402, depictedPaperSize: { catalogSize: '50x70cm', widthCm: 50, heightCm: 70 } },
   'polar-bear-castle': { image: '/images/products/polar-bear-castle-room-2026-09-29-v4.avif', alt: 'Polar Bear Castle by Christina Hägerfors framed above a low shelf beside a sheepskin reading chair in a green room', width: 1122, height: 1402, depictedPaperSize: { catalogSize: '50x70cm', widthCm: 50, heightCm: 70 } },
   'funny-mermaid': { image: '/images/products/funny-mermaid-room-2026-09-29-v4.avif', alt: 'Funny Mermaid by Christina Hägerfors framed above an oak bench with towels in a pale blue tiled bathroom', width: 1122, height: 1402, depictedPaperSize: { catalogSize: '50x70cm', widthCm: 50, heightCm: 70 } },
+  // Seagull on Bin (preview, 24 Oct 2026, branch peggy/christina-seagull-on-bin): one ChatGPT-subscription
+  // generation of a coastal hall, the frame shape corrected once by a continuous warp, and her original
+  // relit into the opening (SSIM L* 0.949, ΔE 3.0). Records: ~/Desktop/ScanArt Image Tests/Christina Hägerfors/seagull-on-bin-2026-10-24/.
+  'seagull-on-bin': { image: '/images/products/seagull-on-bin-room-hall-2026-10-24.avif', alt: 'Seagull on Bin by Christina Hägerfors framed above a black slatted bench in a pale yellow hall, with a linen jacket and a canvas tote on the hooks beside it', width: 1122, height: 1402, depictedPaperSize: { catalogSize: '50x70cm', widthCm: 50, heightCm: 70 } },
 };
 
 /** Only label a room image when it is this scene and its current size is known. */
