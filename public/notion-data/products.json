@@ -1406,10 +1406,9 @@
     "artist": "Christina Hägerfors",
     "artistId": "12",
     "brand": "",
-    "inStock": false,
+    "inStock": true,
     "featured": false,
-    "published": false,
-    "review": true,
+    "published": true,
     "image": "/images/products/seagull-on-bin.png",
     "secondaryImage": "/images/products/seagull-on-bin-room-hall-2026-10-24.avif",
     "availableSizes": [
@@ -1424,6 +1423,6 @@
       "Polar Bear Castle"
     ],
     "created_time": "2026-10-24T19:18:19.516Z",
-    "last_edited_time": "2026-10-25T10:00:00.000Z"
+    "last_edited_time": "2026-10-25T12:00:00.000Z"
   }
 ]
