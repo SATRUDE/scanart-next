@@ -1505,11 +1505,10 @@ export const no = {
       description:
         'Polar Bear Castle av Christina Hägerfors bygger et slott av is under en stjerneklar vinterhimmel, med tre isbjørner foran, to av dem med krone. Pingviner står på avsatsene. «Jeg liker virkelig å lage vinterillustrasjoner», sier Christina, «og jeg liker å tegne bjørner. De har en stor, slapp kropp som er veldig fin å tegne.» Hun ville lage en julescene som føltes litt annerledes.',
     },
-    // Seagull on Bin: PLACEHOLDER, Norwegian by Peggy from her placeholder English (24 Oct 2026).
-    // Replace with Christina's own words once she sends a title and description.
+    // Seagull on Bin: from Christina's own words (email of 24 Oct 2026).
     'seagull-on-bin': {
       description:
-        'Seagull on Bin av Christina Hägerfors setter en måke på toppen av en grønn søppelkasse, med en rød smule i nebbet og flere strødd på bakken under. Søppelkassen står på en enkelt gråblå stolpe med gul kant, mot hvitt papir, i den samme flate, kornete trykkstilen og paletten av blågrønt, grønt, gult og korall som de andre plakatene hennes.',
+        'Seagull on Bin av Christina Hägerfors setter en måke på toppen av en grønn søppelkasse, med en rød smule i nebbet og flere strødd på bakken under. Hun kaller det en detalj fra livet i en by ved vannet. «Jeg liker måker ganske godt, og synes de er morsomme og griseete», sier Christina. Måker dukker også opp i Big Whale og Funny Mermaid, men her har én av dem bildet for seg selv.',
     },
   } as Record<string, { description: string; buyerDescription?: string }>,
 

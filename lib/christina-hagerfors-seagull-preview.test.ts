@@ -9,7 +9,7 @@ import manifest from '@/scripts/artists/christina-hagerfors.json';
 // Seagull on Bin, Christina Hägerfors's fifth poster (24 Oct 2026). It arrives as a
 // review preview: visible on preview deployments, never sold in production, so
 // merging this branch does not put it live. Going live is a separate change, made
-// once Christina has sent her own title and description and Mark says yes.
+// once Mark approves the copy and says yes.
 const SLUG = 'seagull-on-bin';
 const work = manifest.prints.find(p => p.slug === SLUG)!;
 
