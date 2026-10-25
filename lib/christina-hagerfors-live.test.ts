@@ -1,28 +1,28 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { existsSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { getAllProducts, getShopProductBySlug } from '@/lib/products';
 import { getPublishedArtists } from '@/lib/published-artists';
 import { computeOrderAmount } from '@/lib/server/order';
 import { sceneFocus } from '@/lib/scene-focus';
+import { shopScenes } from '@/lib/shop-scenes';
 import { pinFor } from '@/lib/artist-cities';
 import { artistPlace, artists, getArtistBySlug } from '@/data/artists';
 import { aboutPlaces } from '@/components/v2/about/about-data';
 import { no } from '@/lib/i18n/no';
 import manifest from '@/scripts/artists/christina-hagerfors.json';
 
-// Seagull on Bin (24 Oct 2026) is in the manifest as a review preview, not live;
-// lib/christina-hagerfors-seagull-preview.test.ts covers it.
-const live = manifest.prints.filter(p => p.slug !== 'seagull-on-bin');
+// Her first four went live on 9 Oct 2026; Seagull on Bin, her fifth, on 25 Oct 2026.
+const live = manifest.prints;
 
 afterEach(() => vi.unstubAllEnvs());
 
 describe('Christina Hägerfors is live', () => {
-  it('sells her four posters in production, with no draft gate involved', async () => {
+  it('sells her five posters in production, with no draft gate involved', async () => {
     vi.stubEnv('VERCEL_ENV', 'production');
     const mine = (await getAllProducts()).filter(p => p.artistId === '12');
     expect(mine.map(p => p.slug).sort()).toEqual(live.map(p => p.slug).sort());
     expect(mine.every(p => p.inStock)).toBe(true);
-    expect((await getPublishedArtists()).find(a => a.id === '12')?.printCount).toBe(4);
+    expect((await getPublishedArtists()).find(a => a.id === '12')?.printCount).toBe(5);
   });
 
   it('offers each poster at 50 x 70 cm on the Entry list she saw on her preview', async () => {
@@ -46,6 +46,18 @@ describe('Christina Hägerfors is live', () => {
       }
       expect(sceneFocus(product!.secondaryImage!), work.slug).toBeDefined();
     }
+  });
+
+  it('sells Seagull on Bin, held back as a preview until 25 Oct 2026, with its warm backdrop and shop scene', async () => {
+    vi.stubEnv('VERCEL_ENV', 'production');
+    const product = (await getShopProductBySlug('seagull-on-bin'))!;
+    expect(product.inStock).toBe(true);
+    const raw = JSON.parse(readFileSync('public/notion-data/products.json', 'utf8'));
+    const entry = raw.find((p: { slug: string }) => p.slug === 'seagull-on-bin');
+    expect(entry).toMatchObject({ published: true, inStock: true });
+    expect(entry).not.toHaveProperty('review');
+    expect(existsSync('public/images/products/warm/seagull-on-bin.webp')).toBe(true);
+    expect(shopScenes['seagull-on-bin']?.image).toBe(product.secondaryImage);
   });
 
   it('prices an unframed and a framed Big Whale at checkout', async () => {

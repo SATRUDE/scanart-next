@@ -37,8 +37,9 @@ describe('Merchant Center listing trial', () => {
     // Dakhil's seven, Markus Naarttijärvi's ten and Patrik Wennerlund's five
     // and Emma Iben's four joined (2026-09-26, 2026-09-29, 2026-10-02 and 2026-10-07). Update it
     // when the catalogue changes. Helene Brox's five left on 2026-10-08; Christina
-    // Hägerfors's four joined on 2026-10-09, making 49.
-    expect(items).toHaveLength(49);
+    // Hägerfors's four joined on 2026-10-09, making 49; her Seagull on Bin on
+    // 2026-10-25, making 50.
+    expect(items).toHaveLength(50);
     expect(xml.match(/<g:product_type>/g)).toHaveLength(5);
     for (const product of products) {
       const item = items.find(item => item.includes(`<g:id>${product.slug}</g:id>`))!;
