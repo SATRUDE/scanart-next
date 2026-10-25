@@ -1,5 +1,5 @@
 {
-  "$comment": "Input for scripts/add-artist.mjs (npm run add-artist -- scripts/artists/christina-hagerfors.json). Built as an unpublished preview on 29 Sep 2026 (branch peggy/christina-hagerfors-preview); the four prints below went live on 9 Oct 2026 (branch peggy/christina-hagerfors-live, Mark: get Christina live), so products.json now has them published and in stock. \"review\": true stays so that her two remaining posters arrive as a preview first. The print masters are her four PDFs from the WeTransfer of 29 Sep 2026, kept outside Git in ~/Desktop/ScanArt Image Tests/Christina Hägerfors/. Each is 6000 x 8362 px at 300 ppi: 50 x 70 cm plus 4 mm bleed on every side, with the TrimBox left at the full page, hence bleedMm. Titles are working titles from her own file names; titles confirmed by Christina on 30 Sep 2026; descriptions are built on the lines she wrote about each piece (email of 30 Sep 2026). The bio is from her own Illustratörcentrum profile (https://illustratorcentrum.se/kreator/christina_hagerfors/, read 29 Sep 2026) and her 30 Aug application (location). To add her two remaining posters: append two entries to prints (next productIds after the catalogue's highest, a fresh id), put the PDFs beside the others and re-run; existing slugs are skipped. docs/christina-preview.md has the open questions. Location: Cérons, France, where she lives (application); she is 'originally from Sweden' (https://eastendprints.co.uk/categories/artists/artists-a-f/christina-hagerfors.html), and the shop shows, and pins, Karlstad, her home town (her email of 30 Sep 2026), through data/artists.ts `from` (Mark, 9 Oct 2026: an artist living outside the Nordics is shown by where they are from). Polar Bear Castle: her Illustratörcentrum profile titles it 'Isbjörnarnas vinterslott', the likely real title; not renamed until she confirms.",
+  "$comment": "Input for scripts/add-artist.mjs (npm run add-artist -- scripts/artists/christina-hagerfors.json). Built as an unpublished preview on 29 Sep 2026 (branch peggy/christina-hagerfors-preview); the four prints below went live on 9 Oct 2026 (branch peggy/christina-hagerfors-live, Mark: get Christina live), so products.json now has them published and in stock. \"review\": true stays so that her two remaining posters arrive as a preview first. The print masters are her four PDFs from the WeTransfer of 29 Sep 2026, kept outside Git in ~/Desktop/ScanArt Image Tests/Christina Hägerfors/. Each is 6000 x 8362 px at 300 ppi: 50 x 70 cm plus 4 mm bleed on every side, with the TrimBox left at the full page, hence bleedMm. Titles are working titles from her own file names; titles confirmed by Christina on 30 Sep 2026; descriptions are built on the lines she wrote about each piece (email of 30 Sep 2026). The bio is from her own Illustratörcentrum profile (https://illustratorcentrum.se/kreator/christina_hagerfors/, read 29 Sep 2026) and her 30 Aug application (location). To add her two remaining posters: append two entries to prints (next productIds after the catalogue's highest, a fresh id), put the PDFs beside the others and re-run; existing slugs are skipped. docs/christina-preview.md has the open questions. Location: Cérons, France, where she lives (application); she is 'originally from Sweden' (https://eastendprints.co.uk/categories/artists/artists-a-f/christina-hagerfors.html), and the shop shows, and pins, Karlstad, her home town (her email of 30 Sep 2026), through data/artists.ts `from` (Mark, 9 Oct 2026: an artist living outside the Nordics is shown by where they are from). Polar Bear Castle: her Illustratörcentrum profile titles it 'Isbjörnarnas vinterslott', the likely real title; not renamed until she confirms. Seagull on Bin (24 Oct 2026, branch peggy/christina-seagull-on-bin): her fifth poster, from Seagull_on_bin.pdf (sent 24 Oct 2026, Photoshop CS6, CMYK with U.S. Web Coated (SWOP) v2 as DefaultCMYK), 5976 x 8339 px at 300 ppi, so 50 x 70 cm plus 3 mm bleed on every side (hence its own bleedMm of 3); the art sits on white paper and nothing runs into the bleed. It arrives as a review preview (the manifest-wide review flag). Title and description: Christina's email of 24 Oct 2026 (\"It is called Seagull on bin and it is a detail from life in a town close to water. I quite like seagulls and think they are funny and messy.\"); the title is set in the same title case as her other four, and the description is built on her lines like the others, with the picture described as it is.",
   "review": true,
   "bleedMm": 4,
   "artist": {
@@ -89,6 +89,28 @@
         "Funny Mermaid",
         "Mushroom Picking"
       ]
+    },
+    {
+      "id": "c0f82ea5-6c20-457a-82d2-59f8e8b85664",
+      "productId": "64",
+      "name": "Seagull on Bin",
+      "slug": "seagull-on-bin",
+      "file": "~/Desktop/ScanArt Image Tests/Christina Hägerfors/seagull_on_bin_50x70.pdf",
+      "bleedMm": 3,
+      "category": "Illustrations",
+      "sizes": [
+        "50x70cm"
+      ],
+      "priceCategory": "Entry",
+      "description": "Seagull on Bin by Christina Hägerfors puts a gull on top of a green litter bin, a red crumb in its beak and more scattered on the ground below. She calls it a detail from life in a town close to the water. “I quite like seagulls and think they are funny and messy,” Christina says. Gulls turn up in her Big Whale and Funny Mermaid too; here one has the picture to itself.",
+      "descriptionNo": "Seagull on Bin av Christina Hägerfors setter en måke på toppen av en grønn søppelkasse, med en rød smule i nebbet og flere strødd på bakken under. Hun kaller det en detalj fra livet i en by ved vannet. «Jeg liker måker ganske godt, og synes de er morsomme og griseete», sier Christina. Måker dukker også opp i Big Whale og Funny Mermaid, men her har én av dem bildet for seg selv.",
+      "recommended": [
+        "Big Whale",
+        "Funny Mermaid",
+        "Mushroom Picking",
+        "Polar Bear Castle"
+      ],
+      "secondaryImage": "/images/products/seagull-on-bin-room-hall-2026-10-24.avif"
     }
   ]
 }
