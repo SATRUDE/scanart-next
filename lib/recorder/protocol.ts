@@ -34,18 +34,21 @@ export const SAMPLE_RATE = 0.3;
 /** A recording stops after five minutes, as Umami's did. */
 export const MAX_DURATION_MS = 5 * 60 * 1000;
 
-/** Largest request body accepted, compressed. A full snapshot of the heaviest
- * page gzips to well under this. */
-export const MAX_BODY_BYTES = 1024 * 1024;
+/** Largest request body accepted, compressed, and the largest chunk stored.
+ * A full snapshot of the heaviest page gzips to well under this. Part of the
+ * free-tier cap (see lib/server/recording-budget.ts). */
+export const MAX_BODY_BYTES = 192 * 1024;
 /** Largest chunk accepted once decompressed, so a small gzip bomb is refused. */
-export const MAX_RAW_BYTES = 10 * 1024 * 1024;
+export const MAX_RAW_BYTES = 4 * 1024 * 1024;
 /** keepalive requests (sent while the page closes) are capped at 64 KiB by
  * browsers; stay under it. */
 export const KEEPALIVE_MAX_BYTES = 60 * 1024;
 export const MAX_EVENTS_PER_CHUNK = 20000;
-/** Five minutes of recording at one flush every few seconds, plus the extra
- * chunks each full snapshot starts, is far below this. */
-export const MAX_CHUNK_INDEX = 999;
+/** At most 120 chunks (0 to 119) per recording. Five minutes at one flush
+ * every 5 seconds is 60, plus one per full snapshot (every 30 seconds, 10),
+ * so a real recording never reaches it. The recorder stops at the cap. */
+export const MAX_CHUNKS_PER_SESSION = 120;
+export const MAX_CHUNK_INDEX = MAX_CHUNKS_PER_SESSION - 1;
 
 const SESSION_ID = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
 

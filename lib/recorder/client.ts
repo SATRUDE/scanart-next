@@ -32,6 +32,7 @@ import {
   JSON_CONTENT_TYPE,
   KEEPALIVE_MAX_BYTES,
   MAX_BODY_BYTES,
+  MAX_CHUNK_INDEX,
   MAX_DURATION_MS,
   RECORDER_VERSION,
   type RecEnvelope,
@@ -105,8 +106,14 @@ export class Recording {
     }
   }
 
-  private envelope(events: RecEvent[]): RecEnvelope {
+  /** The next envelope, or null once the recording has used its 120 chunks,
+   * which ends it. */
+  private envelope(events: RecEvent[]): RecEnvelope | null {
     const c = this.session.nextChunk();
+    if (c > MAX_CHUNK_INDEX) {
+      this.halt();
+      return null;
+    }
     const env: RecEnvelope = { v: RECORDER_VERSION, s: this.session.id, c, t: this.session.startedAt, e: events };
     if (!this.sentMeta) {
       env.m = this.meta();
@@ -122,17 +129,22 @@ export class Recording {
     return events;
   }
 
+  /** Any answer that is not 2xx (budget spent, rate limit, no bucket, refused,
+   * too large) ends the recording for this tab. Nothing is ever retried. */
+  private check(res: Response | void): void {
+    if (res && !res.ok) this.halt();
+  }
+
   /** Normal flush: gzip, then post. */
   flush(): void {
     if (!this.buffer.length) return;
-    const json = JSON.stringify(this.envelope(this.take()));
-    void gzip(json)
+    const env = this.envelope(this.take());
+    if (!env) return;
+    void gzip(JSON.stringify(env))
       .then(body => {
-        if (body.byteLength > MAX_BODY_BYTES) return; // too big to accept: drop this chunk
-        return this.send(body as BodyInit, GZIP_CONTENT_TYPE, false).then(res => {
-          // The server has no bucket yet, or refuses us: stop rather than keep posting.
-          if (res && (res.status === 403 || res.status === 503)) this.end();
-        });
+        // Too big to be accepted: a recording with a hole in it is no use, so stop.
+        if (body.byteLength > MAX_BODY_BYTES) return this.halt();
+        return this.send(body as BodyInit, GZIP_CONTENT_TYPE, false).then(res => this.check(res));
       })
       .catch(() => {});
   }
@@ -142,6 +154,7 @@ export class Recording {
   flushOnHide(): void {
     if (!this.buffer.length) return;
     const env = this.envelope(this.take());
+    if (!env) return;
     const json = JSON.stringify(env);
     if (json.length <= KEEPALIVE_MAX_BYTES) {
       void this.send(json, JSON_CONTENT_TYPE, true).catch(() => {});
@@ -152,10 +165,19 @@ export class Recording {
     }
   }
 
+  /** Five minutes are up: send what is buffered, then stop. */
   end(): void {
     if (this.stopped) return;
-    this.stopped = true;
     this.flush();
+    this.halt();
+  }
+
+  /** Stop at once, dropping anything buffered. */
+  halt(): void {
+    if (this.stopped) return;
+    this.stopped = true;
+    this.buffer = [];
+    this.rawBytes = 0;
     try {
       this.stop();
     } catch {

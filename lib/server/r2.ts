@@ -125,3 +125,19 @@ export async function putObject(
     return 'failed';
   }
 }
+
+export type HeadResult = 'exists' | 'missing' | 'failed';
+
+/** HEAD one object (a Class B operation, the cheap kind). Used by the daily
+ * budget (lib/server/recording-budget.ts) to find the next free lease. */
+export async function headObject(config: R2Config, key: string, fetchImpl: typeof fetch = fetch): Promise<HeadResult> {
+  const { url, headers } = signRequest({ config, method: 'HEAD', key, body: '', headers: {} });
+  try {
+    const res = await fetchImpl(url, { method: 'HEAD', headers });
+    if (res.ok) return 'exists';
+    if (res.status === 404) return 'missing';
+    return 'failed';
+  } catch {
+    return 'failed';
+  }
+}
