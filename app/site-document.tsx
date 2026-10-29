@@ -8,7 +8,7 @@ import { buildSearchIndex } from '@/lib/search-index';
 import { availableCategoryLandings } from '@/lib/categories';
 import { getDeliveryGuide } from '@/lib/server/delivery-guide';
 import { BASE_URL, SITE_NAME } from '@/lib/site';
-import { TRACKER_GUARD_FUNCTION, TRACKER_GUARD_SCRIPT } from '@/lib/tracker-guard';
+import { TRACKER_GUARD_FUNCTION, TRACKER_GUARD_SCRIPT, UMAMI_RECORDER_LOADER } from '@/lib/tracker-guard';
 import Script from 'next/script';
 import { Hedvig_Letters_Sans, Hedvig_Letters_Serif } from 'next/font/google';
 import './globals.css';
@@ -83,17 +83,16 @@ export async function SiteDocument({
           data-performance="true"
           strategy="afterInteractive"
         />
-        {/* Umami heatmap recorder (click coordinates + scroll depth, no DOM
-            capture). Completely inert until the Heatmaps toggle is on in the
-            Umami dashboard: it self-configures from the /recorder endpoint,
-            currently {"enabled":false}. Waits on the tracker's session, so it
-            sits alongside script.js above. */}
-        <Script
-          defer
-          src="https://datamachine.vercel.app/recorder.js"
-          data-website-id="a2c30bff-57c9-4b47-a7a1-c77bb1718e41"
-          strategy="afterInteractive"
-        />
+        {/* Umami's recorder: heatmaps and session recordings (rrweb, inputs
+            masked). It configures itself from datamachine's /recorder
+            endpoint (on 29 October 2026: replays at a 30% sample, heatmaps
+            for every visit, 5 minutes at most) and waits on the tracker's
+            session, so the opt-out flag and the bot guard above stop it too.
+            The loader leaves it out for browsers sending Global Privacy
+            Control or Do Not Track, as the privacy page says (T-0410). */}
+        <Script id="umami-recorder" strategy="afterInteractive">
+          {UMAMI_RECORDER_LOADER}
+        </Script>
         {/* Pinterest Tag (conversion + retargeting). Enhanced-match email is
             intentionally omitted: we have no visitor email at page load. */}
         <Script id="pinterest-tag" strategy="afterInteractive">
