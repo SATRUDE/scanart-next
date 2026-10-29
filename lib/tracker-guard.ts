@@ -47,3 +47,31 @@ export const TRACKER_GUARD_SCRIPT = `(function () {
     }
   };
 })();`;
+
+// Loads Umami's session recorder (recorder.js) unless the browser sends a
+// privacy signal: Global Privacy Control (navigator.globalPrivacyControl) or
+// Do Not Track ("1"). The privacy page promises that such browsers are not
+// recorded (T-0410), and the recorder has no setting for it, so the tag is
+// simply never added. Inserted as a classic script, so the recorder still
+// finds its data-website-id through document.currentScript.
+//
+// Temporary: it goes when Umami is retired (about 9 November 2026) and the
+// recordings move to our own recorder (T-0411), which applies the same rule.
+
+export const UMAMI_RECORDER_SRC = 'https://datamachine.vercel.app/recorder.js';
+export const UMAMI_WEBSITE_ID = 'a2c30bff-57c9-4b47-a7a1-c77bb1718e41';
+
+export const UMAMI_RECORDER_LOADER = `(function () {
+  try {
+    var n = navigator;
+    if (n.globalPrivacyControl === true) return;
+    if (n.doNotTrack === '1' || window.doNotTrack === '1' || n.msDoNotTrack === '1') return;
+  } catch (e) {
+    return;
+  }
+  var s = document.createElement('script');
+  s.src = '${UMAMI_RECORDER_SRC}';
+  s.defer = true;
+  s.setAttribute('data-website-id', '${UMAMI_WEBSITE_ID}');
+  document.head.appendChild(s);
+})();`;
