@@ -34,6 +34,14 @@
 // - the visitor looks like one of the crawlers lib/tracker-guard.ts keeps out
 //   of Umami (the same rule, so the two tools count the same visits during the
 //   overlap).
+//
+// Custom events: lib/analytics.ts track() sends every event to Umami and to
+// capturePostHog() below. PostHog loads late, so an event fired before then
+// (a 404, an early scroll-depth) waits in a small queue and is sent the moment
+// posthog.init() returns. If PostHog is not going to load (no key, not the
+// production host, opted out, a crawler, blocked), the queue is dropped and
+// later events are ignored, so the same guards cover custom events as cover
+// pageviews.
 
 export const POSTHOG_DEFAULT_HOST = 'https://eu.i.posthog.com';
 export const POSTHOG_UI_HOST = 'https://eu.posthog.com';
@@ -88,9 +96,78 @@ export function posthogConfig(host: string | undefined) {
   } as const;
 }
 
+type Props = Record<string, unknown> | undefined;
+type Capture = (event: string, props?: Props) => void;
+
+/** Most events a visitor can fire before PostHog loads; beyond this the oldest
+ * are dropped. A page fires a handful at most, so this only bounds a runaway. */
+export const QUEUE_LIMIT = 30;
+
+/**
+ * Holds custom events until PostHog has loaded, then sends them. 'pending'
+ * until startPostHog decides; 'ready' once init has returned; 'off' when
+ * PostHog will not load on this page view, which drops everything.
+ */
+export function createEventQueue() {
+  let status: 'pending' | 'ready' | 'off' = 'pending';
+  let send: Capture | undefined;
+  let queue: Array<[string, Props]> = [];
+  return {
+    get status() {
+      return status;
+    },
+    get size() {
+      return queue.length;
+    },
+    capture(event: string, props?: Props) {
+      if (status === 'ready') send?.(event, props);
+      else if (status === 'pending') {
+        queue.push([event, props]);
+        if (queue.length > QUEUE_LIMIT) queue.shift();
+      }
+    },
+    ready(capture: Capture) {
+      if (status !== 'pending') return;
+      status = 'ready';
+      send = capture;
+      const waiting = queue;
+      queue = [];
+      for (const [event, props] of waiting) capture(event, props);
+    },
+    off() {
+      status = 'off';
+      queue = [];
+    },
+  };
+}
+
+// One queue per page, kept on the window rather than in module scope so the
+// instrumentation-client entry and the app code always share it, whichever
+// chunk each ends up in.
+const QUEUE_KEY = '__scanartPostHogQueue';
+type EventQueue = ReturnType<typeof createEventQueue>;
+
+export function eventQueue(): EventQueue {
+  const g = globalThis as typeof globalThis & { [QUEUE_KEY]?: EventQueue };
+  return (g[QUEUE_KEY] ??= createEventQueue());
+}
+
+/** Sends a custom event to PostHog, or queues it until PostHog has loaded.
+ * Does nothing when PostHog is not going to load on this page view. */
+export function capturePostHog(event: string, props?: Record<string, unknown>): void {
+  if (typeof window === 'undefined') return;
+  try {
+    eventQueue().capture(event, props);
+  } catch {
+    // Analytics must never break the shop.
+  }
+}
+
 /** Loads PostHog after the page has finished loading, if it should load at all. */
 export function startPostHog(key: string | undefined, host: string | undefined): void {
-  if (typeof window === 'undefined' || !key) return;
+  if (typeof window === 'undefined') return;
+  const queue = eventQueue();
+  if (!key) return queue.off();
   const go = () => {
     const ok = shouldLoadPostHog({
       key,
@@ -98,11 +175,15 @@ export function startPostHog(key: string | undefined, host: string | undefined):
       optedOut: isOptedOut(() => window.localStorage),
       bot: looksLikeBot(navigator, window.screen?.width ?? 0, window.screen?.height ?? 0),
     });
-    if (!ok) return;
+    if (!ok) return queue.off();
     import('posthog-js')
-      .then(({ default: posthog }) => posthog.init(key, posthogConfig(host)))
+      .then(({ default: posthog }) => {
+        posthog.init(key, posthogConfig(host));
+        queue.ready((event, props) => posthog.capture(event, props));
+      })
       .catch(() => {
         // An ad blocker or a network failure: analytics must never break the shop.
+        queue.off();
       });
   };
   const idle = () =>
