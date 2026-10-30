@@ -117,6 +117,11 @@ const sections: LegalSection[] = [
           tekst i skjemaer og på kasse- og ordresidene.
         </p>
         <p>
+          Vi analyserer opptakene selv, omtrent hver fjortende dag, og sletter dem deretter. Vi beholder bare skriftlige
+          funn, som ikke inneholder personopplysninger. Inntil 5 opptak kan beholdes i opptil 30 dager slik at vi kan se
+          dem på nytt. Opptak vi ikke har analysert, slettes automatisk etter 90 dager.
+        </p>
+        <p>
           Det rettslige grunnlaget er vår berettigede interesse i å forstå hvordan butikken brukes og forbedre den. Du
           kan når som helst protestere ved å sende en e-post til {COMPANY.email}. Fordi opptakene ikke er knyttet til
           navnet ditt, kan det hende vi ikke finner et bestemt besøk, så å slå på Global Privacy Control eller Do Not
@@ -163,7 +168,9 @@ const sections: LegalSection[] = [
         ordre- og betalingsopplysningene dine ligger hos betalings- og trykkpartnerne våre (Stripe og Gelato) under
         deres egne retningslinjer, og så lenge vi trenger dem for å oppfylle regnskaps- og skatteforpliktelser.
         Nettstatistikken vår er uten informasjonskapsler og aggregert, og lagres i tråd med innstillingene våre.
-        Øktopptak som lagres i Cloudflare R2, slettes etter 90 dager. Opptak laget med Umami blir liggende i databasen
+        Øktopptak som lagres i Cloudflare R2, slettes når vi har analysert dem, vanligvis innen
+        omtrent to uker, bortsett fra inntil 5 som vi kan beholde i opptil 30 dager. Opptak som ikke analyseres, slettes
+        automatisk etter 90 dager. Opptak laget med Umami blir liggende i databasen
         dets til vi legger den ned, noe vi planlegger å gjøre i november 2026.
       </p>
     ),
