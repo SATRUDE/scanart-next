@@ -110,6 +110,11 @@ const sections: LegalSection[] = [
           also hide all text in forms and on the checkout and order pages.
         </p>
         <p>
+          We analyse the recordings ourselves, about every two weeks, and then delete them. We keep only our written
+          findings, which contain no personal data. Up to 5 recordings may be kept for up to 30 days so we can review
+          them again. Any recording we have not analysed is deleted automatically after 90 days.
+        </p>
+        <p>
           Our legal basis is our legitimate interest in understanding how the shop is used and improving it. You can
           object at any time by emailing {COMPANY.email}. Because recordings are not linked to your name, we may not be
           able to find a particular visit, so turning on Global Privacy Control or Do Not Track is the surest way to
@@ -156,7 +161,8 @@ const sections: LegalSection[] = [
         payment details are held by our payment and print partners (Stripe and Gelato) under their own policies, and
         for as long as we need them to meet accounting and tax obligations. Our website analytics is cookieless and
         aggregate, and is retained in line with our analytics settings. Session recordings stored in Cloudflare R2 are
-        deleted after 90 days. Recordings made with Umami stay in its database until we close it, which we plan to do
+        deleted once we have analysed them, normally within about two weeks, apart from up to 5 that we may keep for up
+        to 30 days. Any that are not analysed are deleted automatically after 90 days. Recordings made with Umami stay in its database until we close it, which we plan to do
         in November 2026.
       </p>
     ),
