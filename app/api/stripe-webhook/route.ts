@@ -2,6 +2,7 @@ import Stripe from 'stripe';
 import { NextResponse } from 'next/server';
 import { recordRedemption } from '@/lib/server/discounts';
 import { sendSlackOrder, type SlackOrderItem } from '@/lib/server/slack-order';
+import { verifyWithAny, webhookSecrets } from '@/lib/server/stripe-webhook-secrets';
 
 // The order's record of last resort.
 //
@@ -18,6 +19,10 @@ import { sendSlackOrder, type SlackOrderItem } from '@/lib/server/slack-order';
 // payment_intent.succeeded, then put its signing secret in Vercel as
 // STRIPE_WEBHOOK_SECRET. The browser-side notification stands down by itself
 // the moment that variable exists, so there is never a gap and never a double.
+//
+// Switching Stripe account: put the old endpoint's secret in
+// STRIPE_WEBHOOK_SECRET_PREVIOUS for a day or two, so a buyer who started
+// checkout on the old account is still recorded (lib/server/stripe-webhook-secrets.ts).
 
 export const runtime = 'nodejs';
 // Signature verification needs the raw body exactly as sent.
@@ -63,8 +68,8 @@ function itemsFromMetadata(metadata: Record<string, string>, currency: string): 
 }
 
 export async function POST(request: Request) {
-  const secret = process.env.STRIPE_WEBHOOK_SECRET;
-  if (!secret) {
+  const secrets = webhookSecrets();
+  if (secrets.length === 0) {
     // Not wired up yet. 404 rather than 500 so an accidental probe does not
     // look like an outage, and so Stripe stops retrying if it is pointed here
     // before the secret exists.
@@ -80,7 +85,8 @@ export async function POST(request: Request) {
   try {
     const body = await request.text();
     // Anyone can POST to this URL, so an unverified body is not an order.
-    event = await getStripe().webhooks.constructEventAsync(body, signature, secret);
+    const stripe = getStripe();
+    event = await verifyWithAny(secrets, secret => stripe.webhooks.constructEventAsync(body, signature, secret));
   } catch (error) {
     const message = error instanceof Error ? error.message : 'Invalid signature';
     console.error('[stripe-webhook] rejected:', message);
