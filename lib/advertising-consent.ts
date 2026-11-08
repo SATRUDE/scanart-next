@@ -1,6 +1,8 @@
 // Versioned, purpose-specific permission. Unknown, damaged and expired choices
 // all leave advertising off. This preference is the only storage we need before consent.
-export const ADVERTISING_CONSENT_KEY = 'sa-advertising-consent-v1';
+export const ADVERTISING_CONSENT_KEY = 'sa-advertising-consent-v2';
+const LEGACY_CONSENT_KEY = 'sa-advertising-consent-v1';
+export const ADVERTISING_PURCHASES_KEY = 'sa-pinterest-purchases-v1';
 export const ADVERTISING_CONSENT_EVENT = 'sa-advertising-consent-changed';
 export const ADVERTISING_SETTINGS_EVENT = 'sa-advertising-settings';
 export const CONSENT_LIFETIME_MS = 180 * 24 * 60 * 60 * 1000;
@@ -13,14 +15,24 @@ export function parseAdvertisingChoice(raw: string | null, now = Date.now()): Ad
   if (!raw) return null;
   try {
     const record = JSON.parse(raw);
-    if (record.version !== 1 || !['accepted', 'rejected'].includes(record.choice)) return null;
+    if (record.version !== 2 || !['accepted', 'rejected'].includes(record.choice)) return null;
     if (!Number.isFinite(record.savedAt) || record.savedAt > now || now - record.savedAt >= CONSENT_LIFETIME_MS) return null;
     return record.choice;
   } catch { return null; }
 }
 
 export function readAdvertisingRecord(): string | null {
-  try { return window.localStorage.getItem(ADVERTISING_CONSENT_KEY); }
+  try {
+    const current = window.localStorage.getItem(ADVERTISING_CONSENT_KEY);
+    if (current !== null) return current;
+    // Earlier acceptance explicitly excluded order details in the policy.
+    // Ask for a new yes, but keep a valid earlier rejection respected.
+    const legacy = JSON.parse(window.localStorage.getItem(LEGACY_CONSENT_KEY) || 'null');
+    if (legacy?.version === 1 && legacy.choice === 'rejected') {
+      return JSON.stringify({ ...legacy, version: 2 });
+    }
+    return null;
+  }
   catch { return null; }
 }
 
@@ -35,7 +47,7 @@ export function subscribeToAdvertisingChoice(callback: () => void): () => void {
     callback();
   };
   const storageChanged = (event: StorageEvent) => {
-    if (event.key === ADVERTISING_CONSENT_KEY || event.key === null) changed();
+    if (event.key === ADVERTISING_CONSENT_KEY || event.key === LEGACY_CONSENT_KEY || event.key === null) changed();
   };
   window.addEventListener('storage', storageChanged);
   window.addEventListener(ADVERTISING_CONSENT_EVENT, changed);
@@ -46,7 +58,7 @@ export function subscribeToAdvertisingChoice(callback: () => void): () => void {
 }
 
 export function saveAdvertisingChoice(choice: AdvertisingChoice): boolean {
-  const raw = JSON.stringify({ version: 1, choice, savedAt: Date.now() });
+  const raw = JSON.stringify({ version: 2, choice, savedAt: Date.now() });
   try {
     window.localStorage.setItem(ADVERTISING_CONSENT_KEY, raw);
     if (readAdvertisingRecord() !== raw) throw new Error('Preference not saved');
@@ -81,6 +93,7 @@ export function loadConsentedPinterest(): void {
 
 /** We can remove our first-party copies, not cookies on Pinterest's domain. */
 export function clearPinterestCookies(): void {
+  try { window.localStorage.removeItem(ADVERTISING_PURCHASES_KEY); } catch { /* optional ad storage */ }
   const names = ['_epik', '_derived_epik', '_pin_unauth', '_routing_id', '_pin_aem'];
   const host = window.location.hostname;
   const domains = ['', host, ...(host.endsWith('.scandinavianart.co.uk') ? ['scandinavianart.co.uk'] : [])];

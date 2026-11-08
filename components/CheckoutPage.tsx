@@ -24,6 +24,7 @@ import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, Command
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { getFrameName, getFramePrice } from '@/config/frame';
 import { track } from '@/lib/analytics';
+import { measureConfirmedPinterestPurchase, purchaseAnalyticsAllowed } from '@/lib/commerce-measurement';
 import { COMPANY } from '@/config/company';
 import { getArtistById } from '@/data/artists';
 import { sizeLabel } from '@/components/PrintCard';
@@ -150,6 +151,7 @@ const EN: CheckoutStrings = {
     assuranceStripe: 'Secure payment by Stripe',
     paymentFailedTitle: 'Your payment didn’t go through',
     paymentFailedHint: 'Nothing has been charged. Check the card details or try another card.',
+    paymentPending: 'Your payment is still processing. Please do not pay again. Stripe will email your receipt when it completes.',
     contactHelp: 'Still stuck? Email {email} and we will help.',
     unavailableTitle: 'Payment isn’t available right now',
     unavailableBody: 'The payment form from Stripe didn’t load. Please try again in a moment.',
@@ -207,12 +209,10 @@ const PaymentForm: React.FC<{
   const elements = useElements();
   const [isProcessing, setIsProcessing] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [paymentPending, setPaymentPending] = useState(false);
   // Stripe's own live message for the card field (incomplete number, expired
   // date), shown under the field; the payment error goes in the Form error.
   const [cardError, setCardError] = useState<string | null>(null);
-
-  // Debug logging
-  console.log('PaymentForm rendered:', { stripe: !!stripe, elements: !!elements, publishableKey });
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -243,6 +243,7 @@ const PaymentForm: React.FC<{
           countryCode,
           discountCode,
           customer,
+          analyticsAllowed: purchaseAnalyticsAllowed(),
         }),
       });
 
@@ -262,7 +263,7 @@ const PaymentForm: React.FC<{
       const { clientSecret } = responseData;
 
       // Confirm payment
-      const { error: paymentError } = await stripe.confirmCardPayment(clientSecret, {
+      const { error: paymentError, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
         payment_method: {
           card: elements.getElement(CardElement)!,
           // What the hidden postcode box used to collect, from the address form.
@@ -284,8 +285,13 @@ const PaymentForm: React.FC<{
         track('checkout-error', { code: paymentError.code || 'unknown', total, currency });
         setError(paymentError.message || t.paymentFailed);
         onError(paymentError.message || t.paymentFailed);
-      } else {
+      } else if (paymentIntent?.status === 'succeeded') {
+        void measureConfirmedPinterestPurchase(clientSecret);
         onSuccess();
+      } else {
+        // No error does not prove success (for example processing). Do not
+        // count it, empty the basket or invite another payment.
+        setPaymentPending(true);
       }
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : t.paymentFailed;
@@ -323,6 +329,7 @@ const PaymentForm: React.FC<{
       </div>
 
       <div className="flex flex-col gap-4">
+        {paymentPending && <p role="status" className="type-small">{t.v2.paymentPending}</p>}
         {/* Form error 268:5258, fed by the real Stripe (or server) message. */}
         {error && (
           <div className="mb-4">
@@ -336,7 +343,7 @@ const PaymentForm: React.FC<{
         <Button
           type="submit"
           className="self-start"
-          disabled={!stripe || isProcessing || !priced}
+          disabled={!stripe || isProcessing || paymentPending || !priced}
           data-primary-cta="pay"
           price={isProcessing ? undefined : totalLabel}
         >

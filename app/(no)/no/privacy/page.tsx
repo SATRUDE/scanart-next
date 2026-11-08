@@ -85,6 +85,11 @@ const sections: LegalSection[] = [
           telles uten at du blir gjenkjent fra én dag til den neste. PostHog lager ingen profil av deg.
         </p>
         <p>
+          Vi teller også fullførte kjøp fra Stripes betalingsbekreftelse, med en ordrereferanse, beløp, valuta og
+          antall varer. Disse ordretallene er atskilt fra besøksøkter. Vi sender ikke navn, e-postadresse,
+          leveringsadresse eller kortopplysninger til PostHog, og respekterer reservasjonen mot statistikk i denne nettleseren.
+        </p>
+        <p>
           Fram til rundt 9. november 2026 bruker vi også <strong>Umami</strong>, det forrige statistikkverktøyet vårt,
           ved siden av. Det fungerer også uten informasjonskapsler og teller besøk samlet.
         </p>
@@ -140,7 +145,9 @@ const sections: LegalSection[] = [
         </p>
         <p>
           Vi husker annonsevalget ditt i denne nettleseren i 180 dager med lokal lagring
-          (sa-advertising-consent-v1). Du kan når som helst endre det under Innstillinger for informasjonskapsler nederst på siden.
+          (sa-advertising-consent-v2). Du kan når som helst endre det under Innstillinger for informasjonskapsler nederst på siden.
+          Etter at du har godtatt, lagrer vi også opptil 100 kjøpsreferanser for å unngå å telle samme Pinterest-konvertering
+          to ganger. Disse referansene fjernes når du trekker tilbake samtykket til annonsering.
         </p>
       </>
     ),
@@ -154,7 +161,9 @@ const sections: LegalSection[] = [
           Hvis du velger Godta annonsering, laster vi inn Pinterest-taggen for å måle besøk fra annonsene våre og
           støtte tilpasset annonsering på Pinterest. Taggen deler sideadressen, nettleser- og enhetsopplysninger,
           IP-adressen og identifikatorer fra informasjonskapsler med Pinterest. Pinterest kan koble disse til
-          Pinterest-kontoen din eller annen aktivitet. Vi sender ikke e-postadressen eller ordredetaljene dine gjennom taggen.
+          Pinterest-kontoen din eller annen aktivitet. Når du godtar, sender vi også tillegg i handlekurven,
+          påbegynt utsjekking og bekreftede kjøp, med beløp, valuta, antall varer og en ordrereferanse. Vi sender
+          ikke navn, e-postadresse, leveringsadresse eller kortopplysninger gjennom taggen.
         </p>
         <p>
           Pinterest kan sette eller lese informasjonskapsler som _epik, _derived_epik og _pin_unauth for å gjenkjenne

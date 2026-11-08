@@ -9,6 +9,7 @@ import { frameOptions, getFramePrice } from '@/config/frame';
 import { worldwideFrom, formatDeliveryPrice, type DeliveryGuide } from '@/lib/delivery-guide';
 import { FREE_DELIVERY_THRESHOLD, formatFreeDeliveryAmount } from '@/config/free-delivery';
 import { track } from '@/lib/analytics';
+import { trackPinterestCart } from '@/lib/commerce-measurement';
 import { Button, Hairline } from '@/components/v2/ui';
 import { OPTION_PAD } from '@/components/v2/OptionTrack';
 import { sizeLabel } from '@/components/PrintCard';
@@ -111,6 +112,7 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings
       size: selectedSize || undefined,
       frame: selectedFrame || undefined,
     });
+    trackPinterestCart((currentPrices[selectedCountry.currency] + framePrices[selectedCountry.currency]) * quantity, selectedCountry.currency, quantity);
     if (!state.isOpen) toggleCart();
   };
 
