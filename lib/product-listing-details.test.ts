@@ -44,7 +44,18 @@ describe('Merchant Center listing trial', () => {
     for (const product of products) {
       const item = items.find(item => item.includes(`<g:id>${product.slug}</g:id>`))!;
       expect(item).toContain(`<g:price>${getLowestProductPrices(product).GBP.toFixed(2)} GBP</g:price>`);
-      expect(item).toContain(`${product.image}</g:image_link>`);
+      if (product.slug === 'hummer-og-vin') {
+        expect(item).toContain('/images/products/hummer-og-vin-unframed.png</g:image_link>');
+        expect(item).not.toContain(`${product.image}</g:image_link>`);
+        const image = readFileSync(join(process.cwd(), 'public/images/products/hummer-og-vin-unframed.png'));
+        expect(image.subarray(1, 4).toString()).toBe('PNG');
+        // PNG's IHDR dimensions: the feed asset must meet Google's 500 px
+        // minimum on both axes, not reuse the small wall-planner thumbnail.
+        expect(image.readUInt32BE(16)).toBeGreaterThanOrEqual(500);
+        expect(image.readUInt32BE(20)).toBeGreaterThanOrEqual(500);
+      } else {
+        expect(item).toContain(`${product.image}</g:image_link>`);
+      }
       expect(item.match(/<g:additional_image_link>/g)).toHaveLength(1);
       // Merchant Center's free-delivery service is scoped to this label; every
       // feed item is the print alone, at a price with no frame in it.

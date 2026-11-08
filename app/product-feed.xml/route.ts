@@ -46,10 +46,12 @@ export async function GET() {
       <g:size>${esc(detail.size)}</g:size>
       <g:color>${esc(detail.colour)}</g:color>
       <g:material>${esc(detail.material)}</g:material>` : '';
-      // g:image_link is the artwork on white, which is what Google asks a main
-      // product image to be. The room scene goes in as an additional image,
-      // which is what its guidance asks for and the picture that actually earns
-      // our image-search impressions.
+      // Hummer's catalogue image includes a frame, but this feed sells the
+      // unframed print. Use a direct render of the artist's 50 x 70 cm print
+      // PDF for that offer; keep the room scene as an additional image.
+      const primaryImage = p.slug === 'hummer-og-vin'
+        ? '/images/products/hummer-og-vin-unframed.png'
+        : p.image;
       const additionalImages = feedAdditionalImages(p)
         .map(url => `\n      <g:additional_image_link>${esc(url)}</g:additional_image_link>`)
         .join('');
@@ -58,7 +60,7 @@ export async function GET() {
       <g:title>${esc(title)}</g:title>
       <g:description>${esc(description)}</g:description>${listingAttributes}
       <g:link>${BASE_URL}/product/${esc(p.slug)}</g:link>
-      <g:image_link>${BASE_URL}${esc(p.image)}</g:image_link>${additionalImages}
+      <g:image_link>${BASE_URL}${esc(primaryImage)}</g:image_link>${additionalImages}
       <g:price>${price.toFixed(2)} GBP</g:price>
       <g:availability>${p.inStock ? 'in_stock' : 'out_of_stock'}</g:availability>
       <g:condition>new</g:condition>
