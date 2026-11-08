@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { LegalPage, LegalSection } from '@/components/LegalPage';
-import { COMPANY } from '@/config/company';
+import { COMPANY, companyIdentification } from '@/config/company';
 import { socialCard } from '@/lib/site';
 import { hreflangPair } from '@/lib/i18n';
 import { no } from '@/lib/i18n/no';
@@ -29,16 +29,14 @@ export const metadata: Metadata = {
 };
 
 // Same effective date as the English page; bump both by hand together.
-const LAST_UPDATED = '21. oktober 2026';
+const LAST_UPDATED = '8. november 2026';
 
 const sections: LegalSection[] = [
   {
     heading: 'Om oss og disse vilkårene',
     body: (
       <p>
-        Scandinavian Art er et nettgalleri for kunsttrykk, drevet fra {COMPANY.countryNo}
-        {COMPANY.orgNr ? ` (org.nr ${COMPANY.orgNr})` : ''}, og kan kontaktes på {COMPANY.email}. Disse vilkårene
-        gjelder for din bruk av dette nettstedet og for kjøp du gjør. Ved å legge inn en bestilling godtar du dem.
+        {companyIdentification('no')} Disse vilkårene gjelder for din bruk av dette nettstedet og for kjøp fra {COMPANY.legalName}. Ved å legge inn en bestilling godtar du dem.
       </p>
     ),
   },

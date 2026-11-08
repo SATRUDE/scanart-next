@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { companyIdentification } from '@/config/company';
 import { WordmarkVideo } from '@/components/v2/WordmarkVideo';
 import { OPTION_PAD } from '@/components/v2/OptionTrack';
 import Link from 'next/link';
@@ -240,6 +241,8 @@ export const Footer: React.FC<FooterProps> = ({ year = new Date().getFullYear(),
             <button type="button" onClick={() => track('newsletter-click')} className="opacity-50 cursor-not-allowed">{t.newsletter}</button>
           </p>
         </div>
+
+        <p className="pt-6 type-caption max-w-3xl">{companyIdentification(isNo ? 'no' : 'en')}</p>
 
         <div className="flex items-center justify-between pt-6 pb-6 tab:pb-8 type-caption">
           <p>&copy; {year} Scandinavian Art</p>

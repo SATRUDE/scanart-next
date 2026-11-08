@@ -1,3 +1,4 @@
+import { COMPANY_IDENTITY } from '@/config/company';
 import type { Metadata } from 'next';
 import { BASE_URL, socialCard } from '@/lib/site';
 import { hreflangPair } from '@/lib/i18n';
@@ -58,6 +59,7 @@ export default async function NorwegianHomePage() {
             description: no.home.jsonLdDescription,
             publisher: {
               '@type': 'Organization',
+              ...COMPANY_IDENTITY,
               name: 'Scandinavian Art Gallery',
               url: BASE_URL,
               logo: `${BASE_URL}/images/scandinavian-art-gallery-og.jpg`,

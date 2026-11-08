@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { COMPANY } from '@/config/company';
+import { COMPANY, companyIdentification } from '@/config/company';
 import { socialCard } from '@/lib/site';
 import { hreflangPair } from '@/lib/i18n';
 import { helpGroups } from '@/data/help';
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 };
 
 // The date this policy takes effect; bump by hand when the wording changes.
-const LAST_UPDATED = '21 October 2026';
+const LAST_UPDATED = '8 November 2026';
 
 /** A Help answer, verbatim, so the two pages can never disagree. */
 const answer = (q: string) => helpGroups.flatMap(g => g.items).find(i => i.q === q)?.a ?? '';
@@ -114,7 +114,7 @@ export default function DeliveryPage() {
         },
         contact: {
           heading: 'Contact',
-          intro: 'Any questions? Email us, or read the terms that apply to every order.',
+          intro: `${companyIdentification('en')} Any questions? Email us, or read the terms that apply to every order.`,
           rows: [
             { href: `mailto:${COMPANY.email}`, label: COMPANY.email },
             { href: '/terms', label: 'Terms & Conditions' },

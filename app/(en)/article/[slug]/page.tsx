@@ -1,3 +1,4 @@
+import { COMPANY_IDENTITY } from '@/config/company';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { TrackedLink } from '@/components/TrackedLink';
@@ -231,6 +232,7 @@ export default async function ArticlePage({
               ? { '@type': 'Person', name: article.author }
               : {
                   '@type': 'Organization',
+                  ...COMPANY_IDENTITY,
                   name: 'Scandinavian Art Gallery',
                   // Google-recommended author.url: a page that uniquely
                   // identifies the author. For the gallery byline that is the
@@ -240,6 +242,7 @@ export default async function ArticlePage({
                 },
             publisher: {
               '@type': 'Organization',
+              ...COMPANY_IDENTITY,
               name: 'Scandinavian Art Gallery',
               logo: {
                 '@type': 'ImageObject',
