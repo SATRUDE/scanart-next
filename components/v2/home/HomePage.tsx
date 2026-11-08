@@ -15,6 +15,7 @@ import { StartFromYourWall } from './StartFromYourWall';
 import { HeroVideo, HeroVideoLayer } from './HeroVideo';
 import { getProductVideo } from '@/config/product-videos';
 import { chromeAria } from '@/lib/i18n';
+import { SalePromotion } from './SalePromotion';
 
 type Locale = 'en' | 'no';
 
@@ -178,6 +179,8 @@ export function HomePage({ locale, strings: t, data, help, artistLocations = {},
           ))}
         </ul>
       </section>
+
+      <SalePromotion locale={locale} />
 
       {/* Start from your wall */}
       {data.wallPrints.length > 0 && (
