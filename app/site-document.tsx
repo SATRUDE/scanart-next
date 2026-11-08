@@ -1,3 +1,4 @@
+import { AdvertisingConsent } from '@/components/AdvertisingConsent';
 import { Providers } from './providers';
 import { Header } from '@/components/Header';
 import { Cart } from '@/components/Cart';
@@ -93,30 +94,8 @@ export async function SiteDocument({
         <Script id="umami-recorder" strategy="afterInteractive">
           {UMAMI_RECORDER_LOADER}
         </Script>
-        {/* Pinterest Tag (conversion + retargeting). Enhanced-match email is
-            intentionally omitted: we have no visitor email at page load. */}
-        <Script id="pinterest-tag" strategy="afterInteractive">
-          {`!function(e){if(!window.pintrk){window.pintrk = function () {
-window.pintrk.queue.push(Array.prototype.slice.call(arguments))};var
-  n=window.pintrk;n.queue=[],n.version="3.0";var
-  t=document.createElement("script");t.async=!0,t.src=e;var
-  r=document.getElementsByTagName("script")[0];
-  r.parentNode.insertBefore(t,r)}}("https://s.pinimg.com/ct/core.js");
-pintrk('load', '2613500774753');
-pintrk('page');`}
-        </Script>
       </head>
       <body>
-        <noscript>
-          {/* eslint-disable-next-line @next/next/no-img-element -- Pinterest 1x1 tracking beacon for no-JS visitors; cannot be next/image */}
-          <img
-            height="1"
-            width="1"
-            style={{ display: 'none' }}
-            alt=""
-            src="https://ct.pinterest.com/v3/?event=init&tid=2613500774753&noscript=1"
-          />
-        </noscript>
         <Providers>
           <div className="min-h-screen bg-bg">
             {/* First-visit suggestion for Norwegian-speaking browsers; renders
@@ -132,6 +111,7 @@ pintrk('page');`}
               it can lag is a new year with no deploy in it. */}
           <Footer year={new Date().getFullYear()} categorySlugs={availableCategoryLandings(products).map(category => category.slug)} />
           <ScrollDepth />
+          <AdvertisingConsent locale={lang} />
         </Providers>
       </body>
     </html>
