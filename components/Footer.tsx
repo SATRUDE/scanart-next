@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { openAdvertisingSettings } from '@/lib/advertising-consent';
 import { WordmarkVideo } from '@/components/v2/WordmarkVideo';
 import { OPTION_PAD } from '@/components/v2/OptionTrack';
 import Link from 'next/link';
@@ -225,6 +226,7 @@ export const Footer: React.FC<FooterProps> = ({ year = new Date().getFullYear(),
           <p className="flex flex-wrap gap-x-4 gap-y-1">
             <Link href={deliveryHref} className={linkClass}>{t.delivery}</Link>
             <Link href={`${localeHrefPrefix}/privacy`} className={linkClass}>{t.privacy}</Link>
+            <button type="button" onClick={openAdvertisingSettings} className={linkClass}>{isNo ? 'Innstillinger for informasjonskapsler' : 'Cookie settings'}</button>
             <Link href={`${localeHrefPrefix}/terms`} className={linkClass}>{t.terms}</Link>
             {/* Attribution for the Wikimedia Commons footage in the wordmark
                 above and the About photographs (lib/credits.ts). */}
