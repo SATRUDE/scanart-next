@@ -78,6 +78,7 @@ describe('advertising permission boundary', () => {
     expect(append.mock.calls[0][0].src).toBe('https://connect.facebook.net/en_US/fbevents.js');
     expect(target.fbq?.queue).toEqual([
       ['set', 'autoConfig', false, META_PIXEL_ID], ['set', 'smartSetup', false, META_PIXEL_ID],
+      ['optOut', META_PIXEL_ID, 'AutomaticMatching'], ['optOut', META_PIXEL_ID, 'AutomaticMatchingForPartnerIntegrations'],
       ['init', META_PIXEL_ID], ['track', 'PageView'],
     ]);
   });

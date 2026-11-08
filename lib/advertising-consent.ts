@@ -123,6 +123,8 @@ export function loadConsentedMeta(): void {
   target._fbq = fbq;
   fbq('set', 'autoConfig', false, META_PIXEL_ID);
   fbq('set', 'smartSetup', false, META_PIXEL_ID);
+  fbq('optOut', META_PIXEL_ID, 'AutomaticMatching');
+  fbq('optOut', META_PIXEL_ID, 'AutomaticMatchingForPartnerIntegrations');
   fbq('init', META_PIXEL_ID);
   fbq('track', 'PageView');
   const script = document.createElement('script');
