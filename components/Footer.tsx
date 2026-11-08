@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { openAdvertisingSettings } from '@/lib/advertising-consent';
 import { WordmarkVideo } from '@/components/v2/WordmarkVideo';
 import { OPTION_PAD } from '@/components/v2/OptionTrack';
 import Link from 'next/link';
@@ -10,6 +9,7 @@ import { categoryLandings } from '@/lib/categories';
 import { collections } from '@/lib/collections';
 import { track } from '@/lib/analytics';
 import { chromeAria, footerStrings, isNoPath } from '@/lib/i18n';
+import { openAdvertisingSettings } from '@/lib/advertising-consent';
 
 interface FooterProps {
   /**
