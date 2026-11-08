@@ -46,7 +46,7 @@ const sections: LegalSection[] = [
           <li><strong>Payment</strong>: payments are processed by Stripe. Your card details go directly to Stripe; we never see or store your full card number.</li>
           <li><strong>Site usage</strong>: which pages are visited and how the site is used, measured without cookies and without building a profile of you (see Analytics below).</li>
           <li><strong>Session recordings</strong>: for some visits, a recording of how the pages were used, with anything typed into a form hidden (see Session recordings below).</li>
-          <li><strong>Advertising</strong>: if you accept advertising cookies, Pinterest receives information about your visit and device (see Advertising cookies below).</li>
+          <li><strong>Advertising</strong>: if you accept advertising cookies, Meta and Pinterest receive information about your visit and device (see Advertising cookies below).</li>
           <li><strong>Messages</strong>: anything you send us by email.</li>
         </ul>
       </>
@@ -59,7 +59,7 @@ const sections: LegalSection[] = [
         <p>We use your data on the following legal bases:</p>
         <ul>
           <li>To process, produce and deliver your order and provide customer service: to perform our contract with you.</li>
-          <li>To measure our Pinterest ads and personalise advertising on Pinterest: your consent.</li>
+          <li>To measure our ads and personalise advertising on Facebook, Instagram and Pinterest: your consent.</li>
           <li>To keep accounting and tax records: to meet our legal obligations.</li>
           <li>To understand how the site is used, improve the shop and keep the site working, including analytics and session recordings: our legitimate interests.</li>
         </ul>
@@ -138,8 +138,8 @@ const sections: LegalSection[] = [
         </p>
         <p>
           We remember your advertising choice in this browser for 180 days using local storage
-          (sa-advertising-consent-v2). You can change it at any time using Cookie settings in the footer.
-          After you accept, we also store up to 100 purchase references to avoid counting the same Pinterest
+          (sa-advertising-consent-v3). You can change it at any time using Cookie settings in the footer.
+          After you accept, we also store up to 100 purchase references per advertising provider to avoid counting the same
           conversion twice. We clear these references when you withdraw advertising consent.
         </p>
       </>
@@ -151,12 +151,12 @@ const sections: LegalSection[] = [
     body: (
       <>
         <p>
-          If you choose Accept advertising, we load the Pinterest tag to measure visits from our ads and support
-          personalised advertising on Pinterest. The tag shares the page address, browser and device information,
-          IP address and cookie identifiers with Pinterest. Pinterest may match these to your Pinterest account
-          or other activity. With your acceptance we also send basket additions, checkout starts and confirmed
+          If you choose Accept advertising, we load the Meta Pixel and Pinterest tag to measure visits from our ads and support
+          personalised advertising on Facebook, Instagram and Pinterest. The tags share the page address, browser
+          and device information, IP address and cookie identifiers with Meta and Pinterest. These providers may
+          match this information to your accounts or other activity. With your acceptance we also send basket additions, checkout starts and confirmed
           purchases, including amount, currency, item count and an order reference. We do not send your name,
-          email address, delivery address or card details through this tag.
+          email address, delivery address or card details through these tags. Automatic advanced matching and automatic event collection are disabled for our Meta Pixel.
         </p>
         <p>
           Pinterest may set or read cookies including _epik, _derived_epik and _pin_unauth to recognise ad visits
@@ -165,10 +165,14 @@ const sections: LegalSection[] = [
           including processing outside Norway and the EEA.
         </p>
         <p>
-          Choose Reject advertising to keep the tag off. You can withdraw consent at any time in Cookie settings
-          in the footer; we then reload the page to stop the tag and remove the Pinterest cookies accessible on
-          our site. This does not undo processing that happened while consent was in place. Cookies on Pinterest’s
-          own domain are controlled by Pinterest; you can also manage your{' '}
+          Meta may set or read _fbp and _fbc cookies. See Meta’s <a href="https://www.facebook.com/privacy/policies/cookies/">cookie policy</a> and{' '}
+          <a href="https://www.facebook.com/privacy/policy/">privacy policy</a> for its use, retention and international transfers.
+        </p>
+        <p>
+          Choose Reject advertising to keep both tags off. You can withdraw consent at any time in Cookie settings
+          in the footer; we then reload the page to stop the tags and remove the advertising cookies accessible on
+          our site. This does not undo processing that happened while consent was in place. Cookies on providers’
+          own domains are controlled by those providers; you can also manage your{' '}
           <a href="https://help.pinterest.com/en/article/your-privacy-and-data-settings">Pinterest privacy and data settings</a>.
           Rejecting advertising does not affect your ability to shop.
         </p>
@@ -182,7 +186,7 @@ const sections: LegalSection[] = [
         <p>We share data with the following providers to run the shop, fulfil orders and, only with your consent, support advertising:</p>
         <ul>
           <li><strong>Stripe</strong>: to take payment.</li>
-          <li><strong>Pinterest</strong>: advertising measurement and personalisation, only after you accept advertising cookies.</li>
+          <li><strong>Meta</strong> (Facebook and Instagram) and <strong>Pinterest</strong>: advertising measurement and personalisation, only after you accept advertising cookies.</li>
           <li><strong>Gelato</strong> and its delivery partners: to print and ship your order.</li>
           <li><strong>Slack</strong>: your order details are sent to our team as an order notification.</li>
           <li><strong>PostHog</strong> (EU cloud): to count visits and measure how the site is used.</li>

@@ -32,11 +32,21 @@ After Stripe's browser SDK reports `succeeded`, the browser can request `/api/pu
 
 The resulting Pinterest `checkout` carries the actual total/currency/quantity and stable order/event ID. Consent is checked both before the receipt request and after its response. Up to 100 purchase IDs are stored only after acceptance to suppress repeat sends, and cleared on withdrawal. No events are replayed after a later acceptance. Preview/automation and the existing browser analytics opt-out also suppress these commerce events.
 
-The previous privacy notice explicitly excluded order details, so its acceptance does not silently enable the new data. Consent v2 asks for visits, basket activity and purchase measurement. Valid v1 rejections remain respected; v1 acceptances require a new yes. EN/NO notices describe the non-personal order fields and duplicate-prevention storage.
+Consent v3 names Meta and Pinterest, including visits, basket activity and confirmed purchase measurement. Valid v1/v2 rejections remain respected. Earlier acceptances require a renewed yes because v2 covered Pinterest only. EN/NO notices describe both providers, the non-personal order fields, cookies and duplicate-prevention storage.
+
+## Meta
+
+The verified website pixel/dataset is **2148270909141839**, owned by Scandinavian Art portfolio **1017077290121627** and shared with its business ad account **697209872563103**. It is separate from the historical Mark OS Megan data source. Mark has full management access.
+
+After renewed advertising acceptance, the production browser loads the Meta SDK and sends `PageView`. An actual basket addition sends `AddToCart` with value/currency/quantity. Starting checkout sends `InitiateCheckout`, never `Purchase`. Only the same server-confirmed succeeded receipt described above can send `Purchase`, carrying actual value/currency/item count and the PaymentIntent ID as stable `eventID`. A separate, consented list of at most 100 order references suppresses duplicate Meta purchases without suppressing Pinterest events. No historical replay or conversion is generated on accepting later.
+
+Automatic advanced matching, automatic events, track-events-without-code, AI detailed page/product collection and on-device measurement were all verified **off** in this pixel's Events Manager settings on 8 November. The last two were on by default and were turned off. The browser also queues `set autoConfig false` and `set smartSetup false` for the verified pixel **before init**; Meta's first-party SDK maps these to opt-outs of AutomaticSetup and SmartSetup. No advanced-matching/user-data object, form fields or customer identity is passed. No Meta Conversions API credential or server integration is configured. Preview, bots and the existing browser analytics opt-out suppress the Meta loader and commerce events.
+
+Withdrawing advertising permission stops loaded tags by reloading and clears accessible Meta/Pinterest first-party cookies and both dedupe lists. Provider-domain cookies remain controlled by the providers. A browser/extension can block an accepted tag; no receipt in Events Manager is claimed until it is genuinely observed. QA intercepts every advertising request and creates no payment or synthetic live purchase.
 
 ## External account work still required
 
-- Meta: no verified pixel/dataset ID or Conversions API credentials. The portfolio's Norway/NOK ad-account setup is blocked by Meta's existing-account state review. No guessed pixel or server destination is installed.
+- Meta: existing business-owned GBP account is correctly billed to Diffey AS, Norway, with Oslo time zone. The old card is expired; Mark has received his Folio card and will enter it after noncard setup. No card is charged, campaign launched or currency/account replaced. No Conversions API token is configured; browser purchase measurement uses the existing server-verified receipt.
 - Google: no verified Ads conversion ID and label. Correct account onboarding is still blocked by the account UI's ad-blocker notice; billing/conversion setup is unverified. No placeholder Google tag is installed.
 - Pinterest: site instrumentation can be released, but Ads billing remains unverified because the advertiser app did not render. Platform-side receipt of real future conversions still needs an account check.
 
@@ -48,3 +58,5 @@ No extra purchase is made to populate these systems. Coverage begins after this 
 - [PostHog capture API](https://posthog.com/docs/api/capture) and [deduplication](https://posthog.com/docs/data/events): anonymous capture and identical retry identity.
 - [Stripe PaymentIntent retrieval](https://docs.stripe.com/api/payment_intents/retrieve).
 - [Next.js after](https://nextjs.org/docs/app/api-reference/functions/after): post-response analytics execution.
+
+- [Meta Pixel reference](https://developers.facebook.com/docs/meta-pixel/reference/) and [advanced configuration](https://developers.facebook.com/docs/meta-pixel/advanced/). Meta returned HTTP 429 to unauthenticated documentation fetches during this review; automatic-setup semantics were additionally inspected in the actual [first-party browser SDK](https://connect.facebook.net/en_US/fbevents.js), version 2.9.438, and account controls verified in the signed-in UI.
