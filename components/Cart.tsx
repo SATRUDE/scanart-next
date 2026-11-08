@@ -20,7 +20,7 @@ import {
   isFramed,
 } from '@/config/free-delivery';
 import { track } from '@/lib/analytics';
-import { trackPinterestCheckoutStarted } from '@/lib/commerce-measurement';
+import { trackAdvertisingCheckoutStarted } from '@/lib/commerce-measurement';
 import { printImageAlt } from '@/lib/product-image-alt';
 import { Button, Hairline } from '@/components/v2/ui';
 
@@ -84,7 +84,7 @@ export const Cart: React.FC<{ deliveryGuide: DeliveryGuide }> = ({ deliveryGuide
   const awayText = t.freeAway.replace('{amount}', formatFreeDeliveryAmount(amountToFreeDelivery(subtotal, currency), currency));
 
   const handleCheckout = () => {
-    trackPinterestCheckoutStarted();
+    trackAdvertisingCheckoutStarted();
     track('checkout', {
       itemCount: state.items.reduce((n, i) => n + i.quantity, 0),
       total: subtotal,

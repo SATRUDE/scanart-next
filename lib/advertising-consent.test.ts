@@ -4,6 +4,9 @@ import {
   ADVERTISING_CONSENT_KEY,
   CONSENT_LIFETIME_MS,
   loadConsentedPinterest,
+  loadConsentedMeta,
+  META_PIXEL_ID,
+  META_PURCHASES_KEY,
   readAdvertisingRecord,
   parseAdvertisingChoice,
   saveAdvertisingChoice,
@@ -11,7 +14,7 @@ import {
 } from './advertising-consent';
 
 function saved(choice: string, savedAt = Date.now()) {
-  return JSON.stringify({ version: 2, choice, savedAt });
+  return JSON.stringify({ version: 3, choice, savedAt });
 }
 
 let storage: Map<string, string>;
@@ -22,6 +25,8 @@ let target: EventTarget & {
   localStorage: Pick<Storage, 'getItem' | 'setItem' | 'removeItem'>;
   location: { hostname: string; reload: () => void };
   pintrk?: { queue: unknown[][] };
+  fbq?: { queue: unknown[][] };
+  screen?: { width: number; height: number };
 };
 
 beforeEach(() => {
@@ -36,8 +41,10 @@ beforeEach(() => {
       removeItem: (key: string) => storage.delete(key),
     },
     location: { hostname: 'www.scandinavianart.co.uk', reload },
+    screen: { width: 1920, height: 1080 },
   });
   vi.stubGlobal('window', target);
+  vi.stubGlobal('navigator', { webdriver: false, userAgent: 'Chrome', maxTouchPoints: 0 });
   vi.stubGlobal('document', {
     createElement: () => ({}),
     head: { appendChild: append },
@@ -53,6 +60,40 @@ describe('advertising permission boundary', () => {
     loadConsentedPinterest();expect(append).not.toHaveBeenCalled();
     storage.set('sa-advertising-consent-v1', JSON.stringify({ version: 1, choice: 'rejected', savedAt: Date.now() }));
     expect(parseAdvertisingChoice(readAdvertisingRecord())).toBe('rejected');
+  });
+  it('renews v2 Pinterest-only yes and preserves valid v2 no but not expired no', () => {
+    const v2 = (choice: string, savedAt = Date.now()) => JSON.stringify({ version: 2, choice, savedAt });
+    storage.set('sa-advertising-consent-v2', v2('accepted'));
+    expect(parseAdvertisingChoice(readAdvertisingRecord())).toBeNull();
+    loadConsentedMeta();expect(append).not.toHaveBeenCalled();
+    storage.set('sa-advertising-consent-v2', v2('rejected'));
+    expect(parseAdvertisingChoice(readAdvertisingRecord())).toBe('rejected');
+    storage.set('sa-advertising-consent-v2', v2('rejected', Date.now() - CONSENT_LIFETIME_MS));
+    expect(parseAdvertisingChoice(readAdvertisingRecord())).toBeNull();
+  });
+  it('loads Meta once only after a renewed yes with automatic setup disabled before init and no customer data', () => {
+    loadConsentedMeta();expect(append).not.toHaveBeenCalled();
+    saveAdvertisingChoice('accepted');loadConsentedMeta();loadConsentedMeta();
+    expect(append).toHaveBeenCalledTimes(1);
+    expect(append.mock.calls[0][0].src).toBe('https://connect.facebook.net/en_US/fbevents.js');
+    expect(target.fbq?.queue).toEqual([
+      ['set', 'autoConfig', false, META_PIXEL_ID], ['set', 'smartSetup', false, META_PIXEL_ID],
+      ['optOut', META_PIXEL_ID, 'AutomaticMatching'], ['optOut', META_PIXEL_ID, 'AutomaticMatchingForPartnerIntegrations'],
+      ['init', META_PIXEL_ID], ['track', 'PageView'],
+    ]);
+  });
+  it('suppresses Meta for opt-out, previews and automation even with a saved yes', () => {
+    saveAdvertisingChoice('accepted');storage.set('umami.disabled', '1');loadConsentedMeta();
+    storage.delete('umami.disabled');target.location.hostname = 'preview.vercel.app';loadConsentedMeta();
+    target.location.hostname = 'www.scandinavianart.co.uk';vi.stubGlobal('navigator', { webdriver: true });loadConsentedMeta();
+    expect(append).not.toHaveBeenCalled();expect(target.fbq).toBeUndefined();
+  });
+  it('withdraws a loaded Meta pixel, clears its dedupe references and first-party cookies', () => {
+    saveAdvertisingChoice('accepted');loadConsentedMeta();
+    storage.set(META_PURCHASES_KEY, '["pi_verifiedOrder"]');
+    const stop = subscribeToAdvertisingChoice(vi.fn());saveAdvertisingChoice('rejected');
+    expect(reload).toHaveBeenCalledOnce();expect(storage.has(META_PURCHASES_KEY)).toBe(false);
+    expect(cookies.some(value => value.startsWith('_fbp=; Max-Age=0;'))).toBe(true);stop();
   });
   it('makes no Pinterest request before a choice, after rejection, or with invalid or expired storage', () => {
     for (const raw of [null, saved('rejected'), 'true', '{broken', saved('accepted', Date.now() - CONSENT_LIFETIME_MS), saved('accepted', Date.now() + 60000)]) {

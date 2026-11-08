@@ -24,7 +24,7 @@ import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, Command
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { getFrameName, getFramePrice } from '@/config/frame';
 import { track } from '@/lib/analytics';
-import { measureConfirmedPinterestPurchase, purchaseAnalyticsAllowed } from '@/lib/commerce-measurement';
+import { measureConfirmedPurchase, purchaseAnalyticsAllowed } from '@/lib/commerce-measurement';
 import { COMPANY } from '@/config/company';
 import { getArtistById } from '@/data/artists';
 import { sizeLabel } from '@/components/PrintCard';
@@ -286,7 +286,7 @@ const PaymentForm: React.FC<{
         setError(paymentError.message || t.paymentFailed);
         onError(paymentError.message || t.paymentFailed);
       } else if (paymentIntent?.status === 'succeeded') {
-        void measureConfirmedPinterestPurchase(clientSecret);
+        void measureConfirmedPurchase(clientSecret);
         onSuccess();
       } else {
         // No error does not prove success (for example processing). Do not

@@ -53,7 +53,7 @@ const sections: LegalSection[] = [
           <li><strong>Betaling</strong>: betalinger behandles av Stripe. Kortopplysningene dine går direkte til Stripe; vi ser eller lagrer aldri hele kortnummeret ditt.</li>
           <li><strong>Bruk av nettstedet</strong>: hvilke sider som besøkes og hvordan nettstedet brukes, målt uten informasjonskapsler og uten å bygge en profil av deg (se Statistikk nedenfor).</li>
           <li><strong>Øktopptak</strong>: for noen besøk, et opptak av hvordan sidene ble brukt, der alt som skrives inn i et skjema er skjult (se Øktopptak nedenfor).</li>
-          <li><strong>Annonsering</strong>: hvis du godtar informasjonskapsler for annonsering, mottar Pinterest opplysninger om besøket og enheten din (se Annonsering nedenfor).</li>
+          <li><strong>Annonsering</strong>: hvis du godtar informasjonskapsler for annonsering, mottar Meta og Pinterest opplysninger om besøket og enheten din (se Annonsering nedenfor).</li>
           <li><strong>Meldinger</strong>: alt du sender oss på e-post.</li>
         </ul>
       </>
@@ -66,7 +66,7 @@ const sections: LegalSection[] = [
         <p>Vi bruker opplysningene dine på følgende rettslige grunnlag:</p>
         <ul>
           <li>For å behandle, produsere og levere bestillingen din og gi kundeservice: for å oppfylle avtalen med deg.</li>
-          <li>For å måle Pinterest-annonsene våre og tilpasse annonsering på Pinterest: samtykket ditt.</li>
+          <li>For å måle annonsene våre og tilpasse annonsering på Facebook, Instagram og Pinterest: samtykket ditt.</li>
           <li>For å føre regnskap og skatteopplysninger: for å oppfylle våre rettslige forpliktelser.</li>
           <li>For å forstå hvordan nettstedet brukes, forbedre butikken og holde nettstedet i gang, blant annet med statistikk og øktopptak: våre berettigede interesser.</li>
         </ul>
@@ -145,8 +145,8 @@ const sections: LegalSection[] = [
         </p>
         <p>
           Vi husker annonsevalget ditt i denne nettleseren i 180 dager med lokal lagring
-          (sa-advertising-consent-v2). Du kan når som helst endre det under Innstillinger for informasjonskapsler nederst på siden.
-          Etter at du har godtatt, lagrer vi også opptil 100 kjøpsreferanser for å unngå å telle samme Pinterest-konvertering
+          (sa-advertising-consent-v3). Du kan når som helst endre det under Innstillinger for informasjonskapsler nederst på siden.
+          Etter at du har godtatt, lagrer vi også opptil 100 kjøpsreferanser per annonseleverandør for å unngå å telle samme konvertering
           to ganger. Disse referansene fjernes når du trekker tilbake samtykket til annonsering.
         </p>
       </>
@@ -158,12 +158,12 @@ const sections: LegalSection[] = [
     body: (
       <>
         <p>
-          Hvis du velger Godta annonsering, laster vi inn Pinterest-taggen for å måle besøk fra annonsene våre og
-          støtte tilpasset annonsering på Pinterest. Taggen deler sideadressen, nettleser- og enhetsopplysninger,
-          IP-adressen og identifikatorer fra informasjonskapsler med Pinterest. Pinterest kan koble disse til
-          Pinterest-kontoen din eller annen aktivitet. Når du godtar, sender vi også tillegg i handlekurven,
+          Hvis du velger Godta annonsering, laster vi inn Meta Pixel og Pinterest-taggen for å måle besøk fra annonsene våre og
+          støtte tilpasset annonsering på Facebook, Instagram og Pinterest. Taggene deler sideadressen, nettleser- og
+          enhetsopplysninger, IP-adressen og identifikatorer fra informasjonskapsler med Meta og Pinterest.
+          Leverandørene kan koble disse til kontoene dine eller annen aktivitet. Når du godtar, sender vi også tillegg i handlekurven,
           påbegynt utsjekking og bekreftede kjøp, med beløp, valuta, antall varer og en ordrereferanse. Vi sender
-          ikke navn, e-postadresse, leveringsadresse eller kortopplysninger gjennom taggen.
+          ikke navn, e-postadresse, leveringsadresse eller kortopplysninger gjennom taggene. Automatisk avansert matching og automatisk innsamling av hendelser er slått av for Meta Pixel.
         </p>
         <p>
           Pinterest kan sette eller lese informasjonskapsler som _epik, _derived_epik og _pin_unauth for å gjenkjenne
@@ -172,11 +172,15 @@ const sections: LegalSection[] = [
           og oppbevares, inkludert behandling utenfor Norge og EØS.
         </p>
         <p>
-          Velg Avvis annonsering for å holde taggen av. Du kan når som helst trekke tilbake samtykket under
-          Innstillinger for informasjonskapsler nederst på siden; da laster vi siden på nytt for å stoppe taggen
-          og fjerner Pinterest-informasjonskapslene vi har tilgang til på nettstedet vårt. Dette opphever ikke
-          behandling som fant sted mens samtykket gjaldt. Informasjonskapsler på Pinterests eget domene styres av
-          Pinterest; du kan også endre <a href="https://help.pinterest.com/en/article/your-privacy-and-data-settings">personvern- og datainnstillingene dine hos Pinterest</a>.
+          Meta kan sette eller lese _fbp og _fbc. Se Metas <a href="https://www.facebook.com/privacy/policies/cookies/">retningslinjer for informasjonskapsler</a> og{' '}
+          <a href="https://www.facebook.com/privacy/policy/">personvernerklæring</a> om bruk, lagring og overføring til utlandet.
+        </p>
+        <p>
+          Velg Avvis annonsering for å holde begge taggene av. Du kan når som helst trekke tilbake samtykket under
+          Innstillinger for informasjonskapsler nederst på siden; da laster vi siden på nytt for å stoppe taggene
+          og fjerner annonseinformasjonskapslene vi har tilgang til på nettstedet vårt. Dette opphever ikke
+          behandling som fant sted mens samtykket gjaldt. Informasjonskapsler på leverandørenes egne domener styres av
+          leverandørene; du kan også endre <a href="https://help.pinterest.com/en/article/your-privacy-and-data-settings">personvern- og datainnstillingene dine hos Pinterest</a>.
           Du kan handle selv om du avviser annonsering.
         </p>
       </>
@@ -189,7 +193,7 @@ const sections: LegalSection[] = [
         <p>Vi deler opplysninger med disse leverandørene for å drive butikken, oppfylle bestillinger og, bare med samtykket ditt, støtte annonsering:</p>
         <ul>
           <li><strong>Stripe</strong>: for å ta imot betaling.</li>
-          <li><strong>Pinterest</strong>: annonsemåling og tilpasning, bare etter at du har godtatt informasjonskapsler for annonsering.</li>
+          <li><strong>Meta</strong> (Facebook og Instagram) og <strong>Pinterest</strong>: annonsemåling og tilpasning, bare etter at du har godtatt informasjonskapsler for annonsering.</li>
           <li><strong>Gelato</strong> og deres leveringspartnere: for å trykke og sende bestillingen din.</li>
           <li><strong>Slack</strong>: ordredetaljene dine sendes til teamet vårt som et ordrevarsel.</li>
           <li><strong>PostHog</strong> (EU-sky): for å telle besøk og måle hvordan nettstedet brukes.</li>

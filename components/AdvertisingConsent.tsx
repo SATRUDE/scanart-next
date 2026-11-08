@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Button } from '@/components/v2/ui';
 import {
   ADVERTISING_SETTINGS_EVENT,
-  loadConsentedPinterest,
+  loadConsentedAdvertising,
   parseAdvertisingChoice,
   readAdvertisingRecord,
   saveAdvertisingChoice,
@@ -16,7 +16,7 @@ import {
 const copy = {
   en: {
     title: 'Advertising cookies',
-    body: 'May we use Pinterest cookies to measure visits, basket activity and purchases from our ads, and show you relevant ads on Pinterest? You can shop with either choice and change it in Cookie settings in the footer.',
+    body: 'May we use Meta and Pinterest cookies to measure visits, basket activity and purchases from our ads, and show you relevant ads on Facebook, Instagram and Pinterest? You can shop with either choice and change it in Cookie settings in the footer.',
     accept: 'Accept advertising',
     reject: 'Reject advertising',
     privacy: 'Privacy policy',
@@ -24,7 +24,7 @@ const copy = {
   },
   no: {
     title: 'Informasjonskapsler for annonsering',
-    body: 'Kan vi bruke informasjonskapsler fra Pinterest til å måle besøk, handlekurvaktivitet og kjøp fra annonsene våre, og vise deg relevante annonser på Pinterest? Du kan handle uansett hva du velger, og endre valget under Innstillinger for informasjonskapsler nederst på siden.',
+    body: 'Kan vi bruke informasjonskapsler fra Meta og Pinterest til å måle besøk, handlekurvaktivitet og kjøp fra annonsene våre, og vise deg relevante annonser på Facebook, Instagram og Pinterest? Du kan handle uansett hva du velger, og endre valget under Innstillinger for informasjonskapsler nederst på siden.',
     accept: 'Godta annonsering',
     reject: 'Avvis annonsering',
     privacy: 'Personvernerklæring',
@@ -44,7 +44,7 @@ export function AdvertisingConsent({ locale }: { locale: 'en' | 'no' }) {
   const returnFocus = useRef<HTMLElement | null>(null);
   const t = copy[locale];
 
-  useEffect(() => { loadConsentedPinterest(); }, [record]);
+  useEffect(() => { loadConsentedAdvertising(); }, [record]);
   useEffect(() => {
     const open = () => {
       returnFocus.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
