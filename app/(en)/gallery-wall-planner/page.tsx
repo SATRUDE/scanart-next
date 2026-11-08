@@ -1,3 +1,4 @@
+import { COMPANY_IDENTITY } from '@/config/company';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { GalleryWallCalculator } from '@/components/GalleryWallCalculator';
@@ -181,7 +182,12 @@ export default function GalleryWallPlannerPage() {
             operatingSystem: 'Any',
             browserRequirements: 'Requires JavaScript',
             offers: { '@type': 'Offer', price: '0', priceCurrency: 'GBP' },
-            publisher: { '@type': 'Organization', name: 'Scandinavian Art Gallery', url: BASE_URL },
+            publisher: {
+              '@type': 'Organization',
+              ...COMPANY_IDENTITY,
+              name: 'Scandinavian Art Gallery',
+              url: BASE_URL,
+            },
           }),
         }}
       />

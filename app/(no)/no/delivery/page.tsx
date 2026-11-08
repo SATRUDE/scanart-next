@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { COMPANY } from '@/config/company';
+import { COMPANY, companyIdentification } from '@/config/company';
 import { socialCard } from '@/lib/site';
 import { hreflangPair } from '@/lib/i18n';
 import { no } from '@/lib/i18n/no';
@@ -51,7 +51,7 @@ export default async function NorwegianDeliveryPage() {
         breadcrumb: [{ label: t.breadcrumbHome, href: '/no' }, { label: t.pageTitle }],
         lead: v.lead,
         lastUpdatedLabel: t.lastUpdatedLabel.replace(/:\s*$/, ''),
-        lastUpdated: t.lastUpdated,
+        lastUpdated: '8. november 2026',
         made: { heading: s.made.heading, body: <p>{s.made.body}</p> },
         production: { heading: s.production.heading, list: v.productionList },
         figure: { src: scene.image, alt, width: scene.width, height: scene.height, caption: `Vinkveld ${v.by} Sia Siamos` },
@@ -80,7 +80,7 @@ export default async function NorwegianDeliveryPage() {
         },
         contact: {
           heading: s.contact.heading,
-          intro: v.contactIntro,
+          intro: `${companyIdentification('no')} ${v.contactIntro}`,
           rows: [
             { href: `mailto:${COMPANY.email}`, label: COMPANY.email },
             { href: '/no/terms', label: v.termsRow },

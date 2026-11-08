@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { LegalPage, LegalSection } from '@/components/LegalPage';
-import { COMPANY } from '@/config/company';
+import { COMPANY, companyIdentification } from '@/config/company';
 import { socialCard } from '@/lib/site';
 import { hreflangPair } from '@/lib/i18n';
 
@@ -20,16 +20,14 @@ export const metadata: Metadata = {
 };
 
 // The date these terms take effect; bump by hand when the wording changes.
-const LAST_UPDATED = '21 October 2026';
+const LAST_UPDATED = '8 November 2026';
 
 const sections: LegalSection[] = [
   {
     heading: 'About us and these terms',
     body: (
       <p>
-        Scandinavian Art is an online art-print gallery operated from {COMPANY.country}
-        {COMPANY.orgNr ? ` (org.nr ${COMPANY.orgNr})` : ''}, contactable at {COMPANY.email}. These terms govern your use
-        of this site and any purchase you make. By placing an order you accept them.
+        {companyIdentification('en')} These terms govern your use of this site and purchases from {COMPANY.legalName}. By placing an order you accept them.
       </p>
     ),
   },

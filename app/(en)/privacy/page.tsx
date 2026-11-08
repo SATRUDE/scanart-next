@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { LegalPage, LegalSection } from '@/components/LegalPage';
-import { COMPANY } from '@/config/company';
+import { COMPANY, companyIdentification } from '@/config/company';
 import { socialCard } from '@/lib/site';
 import { hreflangPair } from '@/lib/i18n';
 
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 };
 
 // The date this policy takes effect; bump by hand when the wording changes.
-const LAST_UPDATED = '29 October 2026';
+const LAST_UPDATED = '8 November 2026';
 
 const sections: LegalSection[] = [
   {
@@ -28,13 +28,10 @@ const sections: LegalSection[] = [
     body: (
       <>
         <p>
-          Scandinavian Art is an online gallery selling art prints, operated from {COMPANY.country}
-          {COMPANY.orgNr ? ` (org.nr ${COMPANY.orgNr})` : ''}. We are the data controller for the personal
-          data described here.
+          {companyIdentification('en')} {COMPANY.legalName} is the data controller for the personal data described here.
         </p>
         <p>
           You can reach us at {COMPANY.email}.
-          {COMPANY.address ? ` Our registered address is ${COMPANY.address}.` : ''}
         </p>
       </>
     ),
