@@ -741,6 +741,7 @@ export interface CheckoutStrings {
     assuranceStripe: string;
     paymentFailedTitle: string;
     paymentFailedHint: string;
+    paymentPending: string;
     contactHelp: string;
     unavailableTitle: string;
     unavailableBody: string;

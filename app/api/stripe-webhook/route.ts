@@ -1,7 +1,8 @@
 import Stripe from 'stripe';
-import { NextResponse } from 'next/server';
+import { after, NextResponse } from 'next/server';
 import { recordRedemption } from '@/lib/server/discounts';
 import { sendSlackOrder, type SlackOrderItem } from '@/lib/server/slack-order';
+import { sendPurchaseMeasurement } from '@/lib/server/purchase-measurement';
 
 // The order's record of last resort.
 //
@@ -94,6 +95,10 @@ export async function POST(request: Request) {
   const intent = event.data.object as Stripe.PaymentIntent;
   const metadata = (intent.metadata ?? {}) as Record<string, string>;
   const currency = intent.currency.toUpperCase();
+
+  // The signed succeeded event, never a Pay click or confirmation-page view.
+  // Run after the response so analytics cannot delay or retry fulfilment.
+  after(() => sendPurchaseMeasurement(event));
 
   try {
     await sendSlackOrder({

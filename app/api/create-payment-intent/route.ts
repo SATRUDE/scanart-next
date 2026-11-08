@@ -38,12 +38,13 @@ function trimmed(value: unknown, max: number): string | undefined {
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { items, currency, countryCode, discountCode, customer } = body as {
+    const { items, currency, countryCode, discountCode, customer, analyticsAllowed } = body as {
       items: OrderItemInput[];
       currency: string;
       countryCode: string;
       discountCode?: string;
       customer?: CustomerInput;
+      analyticsAllowed?: boolean;
     };
 
     const upperCurrency = String(currency || '').toUpperCase() as Currency;
@@ -77,15 +78,20 @@ export async function POST(request: Request) {
       currency: upperCurrency.toLowerCase(),
       automatic_payment_methods: { enabled: true },
       description: buildOrderDescription(order.items),
-      metadata: buildOrderMetadata({
-        items: order.items,
-        currency: upperCurrency,
-        subtotal: order.subtotal,
-        shipping: order.shipping,
-        countryCode,
-        discount: order.discount,
-        discountAmount: order.discountAmount,
-      }),
+      metadata: {
+        ...buildOrderMetadata({
+          items: order.items,
+          currency: upperCurrency,
+          subtotal: order.subtotal,
+          shipping: order.shipping,
+          countryCode,
+          discount: order.discount,
+          discountAmount: order.discountAmount,
+        }),
+        measurement_version: '1',
+        // Consent/opt-out changes never affect what a buyer is charged.
+        measurement_analytics: analyticsAllowed === true && process.env.VERCEL_ENV === 'production' ? '1' : '0',
+      },
       // Stripe emails the buyer their own receipt, which is the only
       // confirmation they get today beyond the on-screen one.
       ...(email ? { receipt_email: email } : {}),

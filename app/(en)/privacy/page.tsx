@@ -78,6 +78,11 @@ const sections: LegalSection[] = [
           one day to the next. PostHog does not create a profile of you.
         </p>
         <p>
+          We also count completed purchases from Stripe&apos;s payment confirmation, using an order reference,
+          amount, currency and number of items. These order counts are separate from visitor sessions. We do not
+          send your name, email, delivery address or card details to PostHog, and respect this browser&apos;s analytics opt-out.
+        </p>
+        <p>
           Until about 9 November 2026 we also run <strong>Umami</strong>, our previous analytics tool, alongside it. It
           also works without cookies and counts visits in aggregate.
         </p>
@@ -133,7 +138,9 @@ const sections: LegalSection[] = [
         </p>
         <p>
           We remember your advertising choice in this browser for 180 days using local storage
-          (sa-advertising-consent-v1). You can change it at any time using Cookie settings in the footer.
+          (sa-advertising-consent-v2). You can change it at any time using Cookie settings in the footer.
+          After you accept, we also store up to 100 purchase references to avoid counting the same Pinterest
+          conversion twice. We clear these references when you withdraw advertising consent.
         </p>
       </>
     ),
@@ -147,7 +154,9 @@ const sections: LegalSection[] = [
           If you choose Accept advertising, we load the Pinterest tag to measure visits from our ads and support
           personalised advertising on Pinterest. The tag shares the page address, browser and device information,
           IP address and cookie identifiers with Pinterest. Pinterest may match these to your Pinterest account
-          or other activity. We do not send your email address or order details through this tag.
+          or other activity. With your acceptance we also send basket additions, checkout starts and confirmed
+          purchases, including amount, currency, item count and an order reference. We do not send your name,
+          email address, delivery address or card details through this tag.
         </p>
         <p>
           Pinterest may set or read cookies including _epik, _derived_epik and _pin_unauth to recognise ad visits

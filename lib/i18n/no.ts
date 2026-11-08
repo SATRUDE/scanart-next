@@ -1653,6 +1653,7 @@ export const no = {
         assuranceStripe: 'Trygg betaling med Stripe',
         paymentFailedTitle: 'Betalingen gikk ikke gjennom',
         paymentFailedHint: 'Ingenting er trukket. Sjekk kortopplysningene eller prøv et annet kort.',
+        paymentPending: 'Betalingen behandles fortsatt. Ikke betal på nytt. Stripe sender kvitteringen din på e-post når betalingen er fullført.',
         contactHelp: 'Står du fast? Send en e-post til {email}, så hjelper vi deg.',
         unavailableTitle: 'Betalingen er ikke tilgjengelig akkurat nå',
         unavailableBody: 'Betalingsskjemaet fra Stripe ble ikke lastet inn. Prøv igjen om litt.',

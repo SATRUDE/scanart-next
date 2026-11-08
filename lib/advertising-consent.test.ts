@@ -4,13 +4,14 @@ import {
   ADVERTISING_CONSENT_KEY,
   CONSENT_LIFETIME_MS,
   loadConsentedPinterest,
+  readAdvertisingRecord,
   parseAdvertisingChoice,
   saveAdvertisingChoice,
   subscribeToAdvertisingChoice,
 } from './advertising-consent';
 
 function saved(choice: string, savedAt = Date.now()) {
-  return JSON.stringify({ version: 1, choice, savedAt });
+  return JSON.stringify({ version: 2, choice, savedAt });
 }
 
 let storage: Map<string, string>;
@@ -46,6 +47,13 @@ beforeEach(() => {
 afterEach(() => vi.unstubAllGlobals());
 
 describe('advertising permission boundary', () => {
+  it('requires a renewed yes for order measurement while respecting an earlier rejection', () => {
+    storage.set('sa-advertising-consent-v1', JSON.stringify({ version: 1, choice: 'accepted', savedAt: Date.now() }));
+    expect(parseAdvertisingChoice(readAdvertisingRecord())).toBeNull();
+    loadConsentedPinterest();expect(append).not.toHaveBeenCalled();
+    storage.set('sa-advertising-consent-v1', JSON.stringify({ version: 1, choice: 'rejected', savedAt: Date.now() }));
+    expect(parseAdvertisingChoice(readAdvertisingRecord())).toBe('rejected');
+  });
   it('makes no Pinterest request before a choice, after rejection, or with invalid or expired storage', () => {
     for (const raw of [null, saved('rejected'), 'true', '{broken', saved('accepted', Date.now() - CONSENT_LIFETIME_MS), saved('accepted', Date.now() + 60000)]) {
       if (raw) storage.set(ADVERTISING_CONSENT_KEY, raw);
