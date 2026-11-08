@@ -11,6 +11,8 @@ import { SearchOverlay } from '@/components/v2/SearchOverlay';
 import { getCategoryLandingByCategory } from '@/lib/categories';
 import { chromeAria, headerStrings, isNoPath } from '@/lib/i18n';
 import type { SearchIndex } from '@/lib/site-search';
+import { useSalePromotion } from '@/contexts/SalePromotionContext';
+import { salePromotionStrings } from '@/lib/sale-promotion';
 
 interface HeaderProps {
   // Live catalogue categories, derived server-side in the root layout so the
@@ -34,6 +36,7 @@ export const Header: React.FC<HeaderProps> = ({ categories, search }) => {
   const { getTotalItems, toggleCart } = useCart();
   const totalItems = getTotalItems();
   const pathname = usePathname();
+  const saleActive = useSalePromotion();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
@@ -126,7 +129,13 @@ export const Header: React.FC<HeaderProps> = ({ categories, search }) => {
   return (
     <>
       <div className="bg-brand text-on-primary">
-        <p className="page-x flex h-9 items-center justify-center type-small text-center">{t.announcement}</p>
+        {saleActive ? (
+          <Link href={`${p1}/products`} className="page-x flex min-h-9 items-center justify-center py-2 type-caption text-center" data-sale-announcement>
+            {salePromotionStrings[isNo ? 'no' : 'en'].announcement}
+          </Link>
+        ) : (
+          <p className="page-x flex h-9 items-center justify-center type-small text-center">{t.announcement}</p>
+        )}
       </div>
 
       <header
@@ -207,7 +216,9 @@ export const Header: React.FC<HeaderProps> = ({ categories, search }) => {
           <div className="flex h-full flex-col overflow-y-auto px-5 pb-8">
             {/* The announcement bar's height, then the header row's, so Close
                 and the wordmark sit exactly where Menu and the wordmark were. */}
-            <div aria-hidden className="h-9 shrink-0" />
+            <div aria-hidden className={saleActive ? 'invisible min-h-9 shrink-0 py-2 type-caption text-center' : 'h-9 shrink-0'}>
+              {saleActive ? salePromotionStrings[isNo ? 'no' : 'en'].announcement : null}
+            </div>
             <div className="flex h-[60px] shrink-0 items-center justify-between tab:h-[88px]">
               <button type="button" className="type-small" onClick={() => setMobileMenuOpen(false)}>{t.close}</button>
               <Link href={homeHref} onClick={() => setMobileMenuOpen(false)} className="font-serif text-[22px] leading-[28px]">Scandinavian Art</Link>
