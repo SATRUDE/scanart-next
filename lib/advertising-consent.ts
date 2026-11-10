@@ -1,3 +1,4 @@
+import { ADVERTISING_ENABLED } from '@/config/advertising';
 import { isOptedOut, looksLikeBot } from '@/lib/posthog';
 
 // Versioned, purpose-specific permission. Unknown, damaged and expired choices
@@ -30,6 +31,8 @@ export function parseAdvertisingChoice(raw: string | null, now = Date.now()): Ad
 }
 
 export function readAdvertisingRecord(): string | null {
+  // With advertising off, an earlier yes is never read, so it can load nothing.
+  if (!ADVERTISING_ENABLED) return null;
   try {
     const current = window.localStorage.getItem(ADVERTISING_CONSENT_KEY);
     if (current !== null) return current;
@@ -69,6 +72,7 @@ export function subscribeToAdvertisingChoice(callback: () => void): () => void {
 }
 
 export function saveAdvertisingChoice(choice: AdvertisingChoice): boolean {
+  if (!ADVERTISING_ENABLED) return false;
   const raw = JSON.stringify({ version: 3, choice, savedAt: Date.now() });
   try {
     window.localStorage.setItem(ADVERTISING_CONSENT_KEY, raw);
@@ -87,6 +91,7 @@ export function saveAdvertisingChoice(choice: AdvertisingChoice): boolean {
 
 /** Load no external script, pixel or preconnect until a saved yes exists. */
 export function loadConsentedPinterest(): void {
+  if (!ADVERTISING_ENABLED) return;
   if (parseAdvertisingChoice(readAdvertisingRecord()) !== 'accepted') return;
   const target = window as AdvertisingWindow;
   if (target.pintrk) return;
@@ -105,6 +110,7 @@ export function loadConsentedPinterest(): void {
 /** Explicit events only. Disable automatic form/page/product collection before
  * init and never provide advanced-matching data. No noscript bypass exists. */
 export function loadConsentedMeta(): void {
+  if (!ADVERTISING_ENABLED) return;
   if (typeof window === 'undefined' || window.location.hostname !== 'www.scandinavianart.co.uk'
     || isOptedOut(() => window.localStorage)
     || looksLikeBot(navigator, window.screen?.width ?? 0, window.screen?.height ?? 0)) return;
@@ -155,6 +161,16 @@ export function clearAdvertisingCookies(): void {
   }
 }
 
+/** With advertising off: forget any earlier choice and remove what an earlier
+ * acceptance left behind. Removes only; it never writes. */
+export function clearAdvertisingLeftovers(): void {
+  try {
+    for (const key of [ADVERTISING_CONSENT_KEY, ...LEGACY_CONSENT_KEYS]) window.localStorage.removeItem(key);
+  } catch { /* storage blocked: nothing of ours to remove */ }
+  clearAdvertisingCookies();
+}
+
 export function openAdvertisingSettings(): void {
+  if (!ADVERTISING_ENABLED) return;
   window.dispatchEvent(new Event(ADVERTISING_SETTINGS_EVENT));
 }

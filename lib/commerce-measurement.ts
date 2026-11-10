@@ -1,3 +1,4 @@
+import { ADVERTISING_ENABLED } from '@/config/advertising';
 import { ADVERTISING_PURCHASES_KEY, META_PURCHASES_KEY, loadConsentedMeta, loadConsentedPinterest, parseAdvertisingChoice, readAdvertisingRecord } from '@/lib/advertising-consent';
 import { isOptedOut, looksLikeBot, shouldLoadPostHog } from '@/lib/posthog';
 import { parsePurchaseReceipt, type PurchaseReceipt } from '@/lib/purchase-measurement';
@@ -16,7 +17,7 @@ export function purchaseAnalyticsAllowed(): boolean {
 
 function advertisingAllowed(): boolean {
   try {
-    if (typeof window === 'undefined' || window.location.hostname !== 'www.scandinavianart.co.uk'
+    if (!ADVERTISING_ENABLED || typeof window === 'undefined' || window.location.hostname !== 'www.scandinavianart.co.uk'
       || isOptedOut(() => window.localStorage)
       || looksLikeBot(navigator, window.screen?.width ?? 0, window.screen?.height ?? 0)
       || parseAdvertisingChoice(readAdvertisingRecord()) !== 'accepted') return false;

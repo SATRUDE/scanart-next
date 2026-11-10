@@ -3,8 +3,17 @@
 // lib/recorder/client.ts), so it adds nothing measurable to first load. Umami
 // is still loaded separately in app/site-document.tsx while the two run side
 // by side.
+import { captureCampaign } from '@/lib/campaign';
 import { startPostHog } from '@/lib/posthog';
 import { startRecorder } from '@/lib/recorder/client';
+
+try {
+  // Which ad this visit came from, read once from the landing URL and kept in
+  // memory only (lib/campaign.ts), so a same-visit order can be credited to it.
+  captureCampaign();
+} catch {
+  // Attribution must never stop the app from starting.
+}
 
 try {
   startPostHog(process.env.NEXT_PUBLIC_POSTHOG_KEY, process.env.NEXT_PUBLIC_POSTHOG_HOST);

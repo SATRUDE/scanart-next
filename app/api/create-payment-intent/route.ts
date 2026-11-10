@@ -3,6 +3,7 @@ import { NextResponse } from 'next/server';
 import { computeOrderAmount, CURRENCIES, type Currency, type OrderItemInput } from '@/lib/server/order';
 import { buildOrderDescription, buildOrderMetadata } from '@/lib/server/order-metadata';
 import { isDeliverable } from '@/lib/address';
+import { cleanCampaign } from '@/lib/campaign';
 
 function getStripe() {
   const key = process.env.STRIPE_SECRET_KEY;
@@ -38,13 +39,14 @@ function trimmed(value: unknown, max: number): string | undefined {
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { items, currency, countryCode, discountCode, customer, analyticsAllowed } = body as {
+    const { items, currency, countryCode, discountCode, customer, analyticsAllowed, campaign } = body as {
       items: OrderItemInput[];
       currency: string;
       countryCode: string;
       discountCode?: string;
       customer?: CustomerInput;
       analyticsAllowed?: boolean;
+      campaign?: unknown;
     };
 
     const upperCurrency = String(currency || '').toUpperCase() as Currency;
@@ -88,6 +90,9 @@ export async function POST(request: Request) {
           discount: order.discount,
           discountAmount: order.discountAmount,
         }),
+        // The ad the visit came from, for crediting the order (lib/campaign.ts).
+        // Invalid or missing values are simply absent; they never fail checkout.
+        ...cleanCampaign(campaign),
         measurement_version: '1',
         // Consent/opt-out changes never affect what a buyer is charged.
         measurement_analytics: analyticsAllowed === true && process.env.VERCEL_ENV === 'production' ? '1' : '0',

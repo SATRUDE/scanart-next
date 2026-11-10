@@ -25,6 +25,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { getFrameName, getFramePrice } from '@/config/frame';
 import { track } from '@/lib/analytics';
 import { measureConfirmedPurchase, purchaseAnalyticsAllowed } from '@/lib/commerce-measurement';
+import { visitCampaign } from '@/lib/campaign';
 import { COMPANY } from '@/config/company';
 import { getArtistById } from '@/data/artists';
 import { sizeLabel } from '@/components/PrintCard';
@@ -244,6 +245,8 @@ const PaymentForm: React.FC<{
           discountCode,
           customer,
           analyticsAllowed: purchaseAnalyticsAllowed(),
+          // The ad this visit arrived from, if any; validated again on the server.
+          campaign: visitCampaign(),
         }),
       });
 

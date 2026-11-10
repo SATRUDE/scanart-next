@@ -3,8 +3,10 @@
 import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/v2/ui';
+import { ADVERTISING_ENABLED } from '@/config/advertising';
 import {
   ADVERTISING_SETTINGS_EVENT,
+  clearAdvertisingLeftovers,
   loadConsentedAdvertising,
   parseAdvertisingChoice,
   readAdvertisingRecord,
@@ -33,8 +35,19 @@ const copy = {
 };
 const serverRecord = () => null;
 
-/** Non-modal: visitors can keep browsing without accepting anything. */
+/** Rendered instead of the prompt while advertising is off (config/advertising.ts).
+ * Shows nothing and loads nothing; it only removes what an earlier acceptance left. */
+function AdvertisingOff() {
+  useEffect(() => { clearAdvertisingLeftovers(); }, []);
+  return null;
+}
+
 export function AdvertisingConsent({ locale }: { locale: 'en' | 'no' }) {
+  return ADVERTISING_ENABLED ? <AdvertisingPrompt locale={locale} /> : <AdvertisingOff />;
+}
+
+/** Non-modal: visitors can keep browsing without accepting anything. */
+function AdvertisingPrompt({ locale }: { locale: 'en' | 'no' }) {
   const record = useSyncExternalStore(subscribeToAdvertisingChoice, readAdvertisingRecord, serverRecord);
   const choice = parseAdvertisingChoice(record);
   const [opened, setOpened] = useState(false);

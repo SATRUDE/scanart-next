@@ -1,4 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+// These tests cover the consent machinery itself, so they run with the switch on.
+// lib/advertising-off.test.ts covers the shipped default (off).
+vi.mock('@/config/advertising', () => ({ ADVERTISING_ENABLED: true }));
 import { ADVERTISING_CONSENT_KEY, ADVERTISING_PURCHASES_KEY, META_PURCHASES_KEY } from './advertising-consent';
 import { measureConfirmedPurchase, purchaseAnalyticsAllowed, trackPinterestCart, trackPinterestCheckoutStarted, trackPinterestPurchase, trackMetaPurchase, trackAdvertisingCart, trackAdvertisingCheckoutStarted } from './commerce-measurement';
 
