@@ -52,6 +52,26 @@ describe('verified purchase data', () => {
   });
 });
 
+describe('same-visit campaign on the purchase event', () => {
+  const base = { measurement_version: '1', measurement_analytics: '1', order_items_1: 'hummer-og-vin~50x70cm~no-frame~1~800' };
+  it('adds the validated campaign labels recorded on the payment', () => {
+    const payload = purchaseEvent(event(intent({ metadata: { ...base, utm_source: 'meta', utm_medium: 'paid', utm_campaign: 'first-ads-2026-11-09', utm_content: 'vinkveld-room-static' } })))!;
+    expect(payload.properties).toMatchObject({ utm_source: 'meta', utm_medium: 'paid', utm_campaign: 'first-ads-2026-11-09', utm_content: 'vinkveld-room-static' });
+    expect(payload.properties).toMatchObject({ orderId: 'pi_verifiedOrder', source: 'stripe-webhook', $host: 'www.scandinavianart.co.uk', site: 'scanart', $process_person_profile: false, $geoip_disable: true, $ip: null });
+  });
+  it('leaves the event exactly as before on an older payment with no campaign', () => {
+    const payload = purchaseEvent(event())!;
+    expect(Object.keys(payload.properties).filter(key => key.startsWith('utm_'))).toEqual([]);
+    expect(Object.keys(payload.properties)).toEqual(['orderId', 'total', 'currency', 'itemCount', '$host', 'site', 'source', '$process_person_profile', '$geoip_disable', '$ip']);
+  });
+  it('drops a malformed stored label and cannot be used to overwrite fixed properties', () => {
+    const payload = purchaseEvent(event(intent({ metadata: { ...base, utm_source: "me'ta", utm_medium: 'Paid', utm_campaign: 'x'.repeat(81), utm_content: 'a b', source: 'forged', $host: 'evil.example' } })))!;
+    expect(payload.properties.utm_medium).toBe('paid');
+    for (const key of ['utm_source', 'utm_campaign', 'utm_content']) expect(payload.properties).not.toHaveProperty(key);
+    expect(payload.properties).toMatchObject({ source: 'stripe-webhook', $host: 'www.scandinavianart.co.uk' });
+  });
+});
+
 describe('PostHog purchase delivery', () => {
   function configure() {
     vi.stubEnv('VERCEL_ENV', 'production');

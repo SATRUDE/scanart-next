@@ -1,6 +1,7 @@
 import { createHash, timingSafeEqual } from 'node:crypto';
 import type Stripe from 'stripe';
 import type { PurchaseReceipt } from '@/lib/purchase-measurement';
+import { cleanCampaign } from '@/lib/campaign';
 import { POSTHOG_DEFAULT_HOST, PRODUCTION_HOST } from '@/lib/posthog';
 
 /** Metadata is written by our pricing endpoint, not the browser's totals. */
@@ -57,6 +58,9 @@ export function purchaseEvent(event: Stripe.Event) {
     timestamp: new Date(event.created * 1000).toISOString(),
     properties: {
       ...receipt,
+      // The same-visit ad campaign recorded when the payment was created, if
+      // any. Revalidated here; absent on older payments and unattributed visits.
+      ...cleanCampaign(intent.metadata),
       $host: PRODUCTION_HOST,
       site: 'scanart',
       source: 'stripe-webhook',

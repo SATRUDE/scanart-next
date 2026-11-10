@@ -10,6 +10,7 @@ import { categoryLandings } from '@/lib/categories';
 import { collections } from '@/lib/collections';
 import { track } from '@/lib/analytics';
 import { chromeAria, footerStrings, isNoPath } from '@/lib/i18n';
+import { ADVERTISING_ENABLED } from '@/config/advertising';
 import { openAdvertisingSettings } from '@/lib/advertising-consent';
 
 interface FooterProps {
@@ -227,7 +228,8 @@ export const Footer: React.FC<FooterProps> = ({ year = new Date().getFullYear(),
           <p className="flex flex-wrap gap-x-4 gap-y-1">
             <Link href={deliveryHref} className={linkClass}>{t.delivery}</Link>
             <Link href={`${localeHrefPrefix}/privacy`} className={linkClass}>{t.privacy}</Link>
-            <button type="button" onClick={openAdvertisingSettings} className={linkClass}>{isNo ? 'Innstillinger for informasjonskapsler' : 'Cookie settings'}</button>
+            {/* Only while advertising cookies exist to be chosen (config/advertising.ts). */}
+            {ADVERTISING_ENABLED && <button type="button" onClick={openAdvertisingSettings} className={linkClass}>{isNo ? 'Innstillinger for informasjonskapsler' : 'Cookie settings'}</button>}
             <Link href={`${localeHrefPrefix}/terms`} className={linkClass}>{t.terms}</Link>
             {/* Attribution for the Wikimedia Commons footage in the wordmark
                 above and the About photographs (lib/credits.ts). */}

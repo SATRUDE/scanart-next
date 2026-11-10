@@ -2,6 +2,29 @@
 
 T-0169, November 2026. No new payment, Stripe credentials, advertising spend or paid service is needed to release this instrumentation.
 
+## Status: advertising cookies are off (10 November 2026)
+
+Mark's decision: the shop does not need Meta or Pinterest advertising cookies, so it does not ask about them. One switch controls this: `ADVERTISING_ENABLED` in `config/advertising.ts`, currently `false`.
+
+While it is off:
+
+- the "Advertising cookies" prompt never renders in either language, and the footer has no "Cookie settings" entry;
+- no Meta Pixel or Pinterest tag is requested, no advertising cookie or storage is written, and no basket, checkout or purchase event is sent to either provider (there is no Conversions API integration);
+- a consent choice saved by an earlier visit is never read. It, the purchase dedupe lists and the first-party advertising cookies are removed on the next visit;
+- the privacy pages say there are no advertising cookies.
+
+Everything under "Pinterest" and "Meta" below describes the machinery as it behaves when the switch is on. It is kept, with its tests, so advertising can return.
+
+To turn advertising back on: set `ADVERTISING_ENABLED` to `true`. The prompt, the footer entry and the consent-gated tags all come back together, and the privacy pages switch to their consent wording. Review that wording and the consent version before releasing.
+
+## Same-visit campaign on the order
+
+Ad links carry `utm_source`, `utm_medium`, `utm_campaign` and `utm_content`. `lib/campaign.ts` reads them once from the landing URL (`captureCampaign()` in `instrumentation-client.ts`) and keeps them in memory only: no cookie, localStorage, sessionStorage or IndexedDB, because storing them on the device would need consent. First touch wins within the visit; a reload or a later visit starts empty.
+
+When checkout creates the PaymentIntent, the browser sends the labels (`visitCampaign()` in `components/CheckoutPage.tsx`) and `app/api/create-payment-intent/route.ts` writes the validated ones into the payment metadata. Validation (`cleanCampaign`) lower-cases each value and keeps it only if it is 1 to 80 characters of `a-z`, `0-9`, `.`, `_` or `-`; anything else is dropped and never fails checkout. The webhook's `purchase` event (`lib/server/purchase-measurement.ts`) revalidates the metadata and adds the same four properties, so the private dashboard can count orders per campaign. They are sent nowhere else.
+
+This credits a purchase made in the same visit as the ad click. A purchase in a later visit carries no campaign.
+
 ## Confirmed purchase source
 
 `purchase` is sent to the existing PostHog EU project only from a signature-verified Stripe `payment_intent.succeeded` webhook. New shop PaymentIntents carry `measurement_version=1` and the browser's existing analytics eligibility decision. Opted-out browsers, automation, previews, test-mode payments, unfinished payments and historical payments without this marker are excluded. The server reads the received amount and item quantity from the verified payment and server-written order metadata.
@@ -19,8 +42,9 @@ The event has an order-derived UUIDv5, an anonymous order entity as `distinct_id
 | `source` | `stripe-webhook` |
 | `$process_person_profile` | false |
 | `$geoip_disable`, `$ip` | true and null, so the server's location is not attributed to the buyer |
+| `utm_source`, `utm_medium`, `utm_campaign`, `utm_content` | The same-visit ad campaign, when there was one; absent otherwise |
 
-There is no invented visitor/session ID, customer identity, address, email, card data, campaign join or historical backfill. Order entities must be excluded from visitor/session counts. Report **distinct orderId**, group monetary amounts by currency, and label this as gross completed purchases rather than net revenue: refunds are not instrumented here. This does not produce a session conversion funnel or ROAS attribution.
+There is no invented visitor/session ID, customer identity, address, email, card data or historical backfill. The only campaign information is the same-visit label described above. Order entities must be excluded from visitor/session counts. Report **distinct orderId**, group monetary amounts by currency, and label this as gross completed purchases rather than net revenue: refunds are not instrumented here. This does not produce a session conversion funnel or ROAS attribution.
 
 Delivery runs through Next.js `after`, after the webhook response, with a four-second request timeout and one retry using the identical UUID, name, timestamp and distinct ID. An analytics outage cannot delay the buyer, retry Slack or increment discount redemption again. PostHog deduplication is eventual. Bounded retries are best effort, not a financial ledger; delivery/quota failures are logged without credentials or personal information.
 

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { ADVERTISING_ENABLED } from '@/config/advertising';
 import Link from 'next/link';
 import { LegalPage, LegalSection } from '@/components/LegalPage';
 import { COMPANY, companyIdentification } from '@/config/company';
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
 };
 
 // Same effective date as the English page; bump both by hand together.
-const LAST_UPDATED = '8. november 2026';
+const LAST_UPDATED = '10. november 2026';
 
 const sections: LegalSection[] = [
   {
@@ -53,7 +54,9 @@ const sections: LegalSection[] = [
           <li><strong>Betaling</strong>: betalinger behandles av Stripe. Kortopplysningene dine går direkte til Stripe; vi ser eller lagrer aldri hele kortnummeret ditt.</li>
           <li><strong>Bruk av nettstedet</strong>: hvilke sider som besøkes og hvordan nettstedet brukes, målt uten informasjonskapsler og uten å bygge en profil av deg (se Statistikk nedenfor).</li>
           <li><strong>Øktopptak</strong>: for noen besøk, et opptak av hvordan sidene ble brukt, der alt som skrives inn i et skjema er skjult (se Øktopptak nedenfor).</li>
-          <li><strong>Annonsering</strong>: hvis du godtar informasjonskapsler for annonsering, mottar Meta og Pinterest opplysninger om besøket og enheten din (se Annonsering nedenfor).</li>
+          {ADVERTISING_ENABLED
+            ? <li><strong>Annonsering</strong>: hvis du godtar informasjonskapsler for annonsering, mottar Meta og Pinterest opplysninger om besøket og enheten din (se Annonsering nedenfor).</li>
+            : <li><strong>Annonsering</strong>: når du kommer fra en av annonsene våre, har lenken en kampanjemerking som forteller oss hvilken annonse det var (se Annonsering nedenfor).</li>}
           <li><strong>Meldinger</strong>: alt du sender oss på e-post.</li>
         </ul>
       </>
@@ -66,7 +69,9 @@ const sections: LegalSection[] = [
         <p>Vi bruker opplysningene dine på følgende rettslige grunnlag:</p>
         <ul>
           <li>For å behandle, produsere og levere bestillingen din og gi kundeservice: for å oppfylle avtalen med deg.</li>
-          <li>For å måle annonsene våre og tilpasse annonsering på Facebook, Instagram og Pinterest: samtykket ditt.</li>
+          {ADVERTISING_ENABLED
+            ? <li>For å måle annonsene våre og tilpasse annonsering på Facebook, Instagram og Pinterest: samtykket ditt.</li>
+            : <li>For å se hvilke annonser som gir besøk og bestillinger, ved hjelp av kampanjemerkingen i lenken: våre berettigede interesser.</li>}
           <li>For å føre regnskap og skatteopplysninger: for å oppfylle våre rettslige forpliktelser.</li>
           <li>For å forstå hvordan nettstedet brukes, forbedre butikken og holde nettstedet i gang, blant annet med statistikk og øktopptak: våre berettigede interesser.</li>
         </ul>
@@ -136,7 +141,7 @@ const sections: LegalSection[] = [
   },
   {
     heading: 'Informasjonskapsler',
-    body: (
+    body: ADVERTISING_ENABLED ? (
       <>
         <p>
           Vi bruker nødvendig lagring i nettleseren til å beholde handlekurven og huske valg som språk, valuta og
@@ -150,12 +155,20 @@ const sections: LegalSection[] = [
           to ganger. Disse referansene fjernes når du trekker tilbake samtykket til annonsering.
         </p>
       </>
+    ) : (
+      <>
+        <p>
+          Vi bruker nødvendig lagring i nettleseren til å beholde handlekurven og huske valg som språk og valuta.
+          Statistikken og øktopptakene våre setter ingen informasjonskapsler og lagrer ikke data i nettleseren. Vi
+          bruker ikke informasjonskapsler for annonsering, så det er ikke noe valg å ta.
+        </p>
+      </>
     ),
   },
   {
     heading: 'Annonsering',
     id: 'advertising',
-    body: (
+    body: ADVERTISING_ENABLED ? (
       <>
         <p>
           Hvis du velger Godta annonsering, laster vi inn Meta Pixel og Pinterest-taggen for å måle besøk fra annonsene våre og
@@ -184,16 +197,32 @@ const sections: LegalSection[] = [
           Du kan handle selv om du avviser annonsering.
         </p>
       </>
+    ) : (
+      <>
+        <p>
+          Vi annonserer på Facebook, Instagram, Pinterest og Google. Vi laster ikke inn tagger fra Meta eller
+          Pinterest på dette nettstedet, setter ingen informasjonskapsler for annonsering og sender ikke disse
+          selskapene opplysninger om besøket eller bestillingen din.
+        </p>
+        <p>
+          Lenkene i annonsene våre har en kampanjemerking i adressen, for eksempel utm_source og utm_campaign. Vi
+          leser den når du kommer, og beholder den bare mens siden er åpen, ikke i en informasjonskapsel eller i
+          nettleserens lagring. Hvis du bestiller i løpet av samme besøk, lagres merkingen sammen med bestillingen
+          slik at vi kan se hvilken annonse som førte til den. Den sier hvilken annonse, ikke hvem du er.
+        </p>
+      </>
     ),
   },
   {
     heading: 'Hvem vi deler dem med',
     body: (
       <>
-        <p>Vi deler opplysninger med disse leverandørene for å drive butikken, oppfylle bestillinger og, bare med samtykket ditt, støtte annonsering:</p>
+        <p>{ADVERTISING_ENABLED
+          ? 'Vi deler opplysninger med disse leverandørene for å drive butikken, oppfylle bestillinger og, bare med samtykket ditt, støtte annonsering:'
+          : 'Vi deler opplysninger med disse leverandørene for å drive butikken og oppfylle bestillinger:'}</p>
         <ul>
           <li><strong>Stripe</strong>: for å ta imot betaling.</li>
-          <li><strong>Meta</strong> (Facebook og Instagram) og <strong>Pinterest</strong>: annonsemåling og tilpasning, bare etter at du har godtatt informasjonskapsler for annonsering.</li>
+          {ADVERTISING_ENABLED && <li><strong>Meta</strong> (Facebook og Instagram) og <strong>Pinterest</strong>: annonsemåling og tilpasning, bare etter at du har godtatt informasjonskapsler for annonsering.</li>}
           <li><strong>Gelato</strong> og deres leveringspartnere: for å trykke og sende bestillingen din.</li>
           <li><strong>Slack</strong>: ordredetaljene dine sendes til teamet vårt som et ordrevarsel.</li>
           <li><strong>PostHog</strong> (EU-sky): for å telle besøk og måle hvordan nettstedet brukes.</li>

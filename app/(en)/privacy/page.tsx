@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { ADVERTISING_ENABLED } from '@/config/advertising';
 import Link from 'next/link';
 import { LegalPage, LegalSection } from '@/components/LegalPage';
 import { COMPANY, companyIdentification } from '@/config/company';
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
 };
 
 // The date this policy takes effect; bump by hand when the wording changes.
-const LAST_UPDATED = '8 November 2026';
+const LAST_UPDATED = '10 November 2026';
 
 const sections: LegalSection[] = [
   {
@@ -46,7 +47,9 @@ const sections: LegalSection[] = [
           <li><strong>Payment</strong>: payments are processed by Stripe. Your card details go directly to Stripe; we never see or store your full card number.</li>
           <li><strong>Site usage</strong>: which pages are visited and how the site is used, measured without cookies and without building a profile of you (see Analytics below).</li>
           <li><strong>Session recordings</strong>: for some visits, a recording of how the pages were used, with anything typed into a form hidden (see Session recordings below).</li>
-          <li><strong>Advertising</strong>: if you accept advertising cookies, Meta and Pinterest receive information about your visit and device (see Advertising cookies below).</li>
+          {ADVERTISING_ENABLED
+            ? <li><strong>Advertising</strong>: if you accept advertising cookies, Meta and Pinterest receive information about your visit and device (see Advertising cookies below).</li>
+            : <li><strong>Advertising</strong>: when you arrive from one of our ads, the link carries a campaign label that tells us which ad it was (see Advertising below).</li>}
           <li><strong>Messages</strong>: anything you send us by email.</li>
         </ul>
       </>
@@ -59,7 +62,9 @@ const sections: LegalSection[] = [
         <p>We use your data on the following legal bases:</p>
         <ul>
           <li>To process, produce and deliver your order and provide customer service: to perform our contract with you.</li>
-          <li>To measure our ads and personalise advertising on Facebook, Instagram and Pinterest: your consent.</li>
+          {ADVERTISING_ENABLED
+            ? <li>To measure our ads and personalise advertising on Facebook, Instagram and Pinterest: your consent.</li>
+            : <li>To see which of our ads bring visits and orders, using the campaign label in the link: our legitimate interests.</li>}
           <li>To keep accounting and tax records: to meet our legal obligations.</li>
           <li>To understand how the site is used, improve the shop and keep the site working, including analytics and session recordings: our legitimate interests.</li>
         </ul>
@@ -129,7 +134,7 @@ const sections: LegalSection[] = [
   },
   {
     heading: 'Cookies',
-    body: (
+    body: ADVERTISING_ENABLED ? (
       <>
         <p>
           We use essential browser storage to keep your basket and remember choices such as language, currency and
@@ -143,12 +148,20 @@ const sections: LegalSection[] = [
           conversion twice. We clear these references when you withdraw advertising consent.
         </p>
       </>
+    ) : (
+      <>
+        <p>
+          We use essential browser storage to keep your basket and remember choices such as language and currency.
+          Our analytics and session recordings do not set cookies or store data in your browser. We do not use
+          advertising cookies, so there is no cookie choice to make.
+        </p>
+      </>
     ),
   },
   {
-    heading: 'Advertising cookies',
+    heading: ADVERTISING_ENABLED ? 'Advertising cookies' : 'Advertising',
     id: 'advertising',
-    body: (
+    body: ADVERTISING_ENABLED ? (
       <>
         <p>
           If you choose Accept advertising, we load the Meta Pixel and Pinterest tag to measure visits from our ads and support
@@ -177,16 +190,31 @@ const sections: LegalSection[] = [
           Rejecting advertising does not affect your ability to shop.
         </p>
       </>
+    ) : (
+      <>
+        <p>
+          We advertise on Facebook, Instagram, Pinterest and Google. We do not load Meta or Pinterest tags on this
+          site, set advertising cookies, or send those companies information about your visit or your order.
+        </p>
+        <p>
+          Links in our ads carry a campaign label in the address, such as utm_source and utm_campaign. We read it
+          when you arrive and keep it only while the page is open, not in a cookie or in your browser’s storage. If
+          you place an order during the same visit, the label is saved with the order so we can see which ad led to
+          it. It says which ad, not who you are.
+        </p>
+      </>
     ),
   },
   {
     heading: 'Who we share it with',
     body: (
       <>
-        <p>We share data with the following providers to run the shop, fulfil orders and, only with your consent, support advertising:</p>
+        <p>{ADVERTISING_ENABLED
+          ? 'We share data with the following providers to run the shop, fulfil orders and, only with your consent, support advertising:'
+          : 'We share data with the following providers to run the shop and fulfil orders:'}</p>
         <ul>
           <li><strong>Stripe</strong>: to take payment.</li>
-          <li><strong>Meta</strong> (Facebook and Instagram) and <strong>Pinterest</strong>: advertising measurement and personalisation, only after you accept advertising cookies.</li>
+          {ADVERTISING_ENABLED && <li><strong>Meta</strong> (Facebook and Instagram) and <strong>Pinterest</strong>: advertising measurement and personalisation, only after you accept advertising cookies.</li>}
           <li><strong>Gelato</strong> and its delivery partners: to print and ship your order.</li>
           <li><strong>Slack</strong>: your order details are sent to our team as an order notification.</li>
           <li><strong>PostHog</strong> (EU cloud): to count visits and measure how the site is used.</li>
