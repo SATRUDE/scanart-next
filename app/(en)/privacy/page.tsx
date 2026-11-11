@@ -46,7 +46,7 @@ const sections: LegalSection[] = [
           <li><strong>Order details</strong>: your name, email address, delivery address and the items you order.</li>
           <li><strong>Payment</strong>: payments are processed by Stripe. Your card details go directly to Stripe; we never see or store your full card number.</li>
           <li><strong>Site usage</strong>: which pages are visited and how the site is used, measured without cookies and without building a profile of you (see Analytics below).</li>
-          <li><strong>Session recordings</strong>: for some visits, a recording of how the pages were used, with anything typed into a form hidden (see Session recordings below).</li>
+          <li><strong>Session recordings</strong>: for each visit, a recording of how the pages were used, with anything typed into a form hidden (see Session recordings below).</li>
           {ADVERTISING_ENABLED
             ? <li><strong>Advertising</strong>: if you accept advertising cookies, Meta and Pinterest receive information about your visit and device (see Advertising cookies below).</li>
             : <li><strong>Advertising</strong>: when you arrive from one of our ads, the link carries a campaign label that tells us which ad it was (see Advertising below).</li>}
