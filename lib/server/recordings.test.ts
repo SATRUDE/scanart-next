@@ -179,6 +179,13 @@ describe('RateLimiter', () => {
 });
 
 describe('describeAgent', () => {
+  it('reads a narrow Android screen as a phone even without "Mobile" in the agent', () => {
+    const inApp = 'Mozilla/5.0 (Linux; Android 14; SM-A146B; wv) AppleWebKit/537.36 Chrome/131 Safari/537.36 [FB_IAB/FB4A]';
+    expect(describeAgent(inApp, 412).device).toBe('mobile');
+    expect(describeAgent(inApp, 800).device).toBe('tablet');
+    expect(describeAgent(inApp).device).toBe('tablet');
+  });
+
   it('reads coarse device, browser and OS', () => {
     expect(describeAgent(CHROME)).toEqual({ device: 'mobile', browser: 'safari', os: 'ios' });
     expect(

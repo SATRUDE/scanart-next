@@ -209,8 +209,12 @@ export function decodeBody(bytes: Uint8Array, contentType: string): unknown {
 
 /** Coarse device, browser and OS from a user agent. Only these three words
  * are kept; the user agent itself is not stored. */
-export function describeAgent(ua: string): { device: string; browser: string; os: string } {
-  const device = /iPad|Tablet|(Android(?!.*Mobile))/i.test(ua) ? 'tablet' : /Mobi|iPhone|Android/i.test(ua) ? 'mobile' : 'desktop';
+export function describeAgent(ua: string, screenWidth?: number): { device: string; browser: string; os: string } {
+  let device = /iPad|Tablet|(Android(?!.*Mobile))/i.test(ua) ? 'tablet' : /Mobi|iPhone|Android/i.test(ua) ? 'mobile' : 'desktop';
+  // In-app browsers (Meta's on Android) leave "Mobile" out of the user agent,
+  // so a 412 px phone read as a tablet (Mark, 2026-11-11). A screen under
+  // 600 px wide is a phone whatever the agent says.
+  if (device === 'tablet' && screenWidth && screenWidth < 600) device = 'mobile';
   const browser = /Edg\//.test(ua)
     ? 'edge'
     : /SamsungBrowser/.test(ua)
@@ -248,7 +252,7 @@ export function metaFor(env: RecEnvelope, headers: Headers) {
     recorder: `scanart-rrweb/${RECORDER_VERSION}`,
     sampleRate: SAMPLE_RATE,
     country: country && /^[A-Z]{2}$/.test(country) ? country : null,
-    ...describeAgent(headers.get('user-agent') || ''),
+    ...describeAgent(headers.get('user-agent') || '', env.m?.w),
     screen: env.m?.w && env.m?.h ? `${env.m.w}x${env.m.h}` : null,
     language: env.m?.l ?? null,
   };

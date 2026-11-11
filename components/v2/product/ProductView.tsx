@@ -169,6 +169,8 @@ export function ProductView({
             </Question>
             {artist && artistHref && (
               <Question question={fill(t.questions.about, { name: artist.name })} size="small" as="h2">
+                {/* The bio, not just the town: opened, this row was nearly empty (Mark, 2026-11-11). */}
+                {artist.bio && <p>{artist.bio}</p>}
                 <p>{artist.from ?? artist.location}</p>
                 <p>
                   <TextLink href={artistHref} size="body">{fill(t.aboutLink, { name: artist.name })}</TextLink>

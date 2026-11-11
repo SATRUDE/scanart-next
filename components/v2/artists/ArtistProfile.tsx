@@ -12,6 +12,7 @@ import { ArtistCardList, type ArtistCardData } from './ArtistCard';
 import { ArtistMap } from './ArtistMap';
 import { FromPrice } from './FromPrice';
 import { ArtistBio } from './ArtistBio';
+import { ProductReadMore } from '@/components/v2/product/ReadMore';
 
 // Ken's editorial paragraphs carry inline links in Markdown form
 // ([text](/path)); render them as real <Link>s, everything else as text.
@@ -234,10 +235,17 @@ export function ArtistProfile(p: ArtistProfileProps) {
       {/* About the work: Ken's editorial, verbatim, with its inline links. */}
       {p.editorial && (
         <ContentSection id="about-the-work" title={p.editorial.heading} className="mt-section">
-          <div className="flex flex-col gap-6 type-body tab:max-w-[624px] [&_a]:text-text-accent">
+          {/* Folded to two lines with Read more, as the product description is:
+              in full it filled a phone screen (Mark, 2026-11-11). The whole text
+              stays in the served HTML. */}
+          <ProductReadMore
+            moreLabel={p.locale === 'no' ? 'Les mer' : 'Read more'}
+            lessLabel={p.locale === 'no' ? 'Les mindre' : 'Read less'}
+            className="type-body tab:max-w-[624px] [&_a]:text-text-accent [&_p+p]:mt-6"
+          >
             <p>{renderInlineLinks(p.editorial.para1)}</p>
             <p>{renderInlineLinks(p.editorial.para2)}</p>
-          </div>
+          </ProductReadMore>
         </ContentSection>
       )}
 

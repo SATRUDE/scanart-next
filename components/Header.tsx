@@ -156,7 +156,7 @@ export const Header: React.FC<HeaderProps> = ({ categories, search }) => {
         <div className="page-x flex h-[60px] tab:h-[88px] items-center min-[1320px]:grid min-[1320px]:grid-cols-12 min-[1320px]:gap-x-[var(--sa-gutter)]">
           <button
             type="button"
-            className="type-small flex-1 basis-0 text-left desk:hidden"
+            className="type-small max-[359px]:text-[13px] flex-1 basis-0 text-left desk:hidden"
             aria-label={t.aria.openMenu}
             aria-expanded={mobileMenuOpen}
             onClick={() => setMobileMenuOpen(true)}
@@ -182,11 +182,11 @@ export const Header: React.FC<HeaderProps> = ({ categories, search }) => {
           </nav>
 
           <div className="contents min-[1320px]:col-span-6 min-[1320px]:flex min-[1320px]:items-center min-[1320px]:justify-between">
-          <Link href={homeHref} className="flex-none px-3 min-[1320px]:px-0 text-center font-serif text-[22px] leading-[28px] tab:text-[34px] tab:leading-[42px] tab:tracking-[-0.01em] whitespace-nowrap">
+          <Link href={homeHref} className="flex-none px-3 max-[359px]:px-1.5 max-[359px]:text-[17px] max-[359px]:leading-[24px] min-[1320px]:px-0 text-center font-serif text-[22px] leading-[28px] tab:text-[34px] tab:leading-[42px] tab:tracking-[-0.01em] whitespace-nowrap">
             Scandinavian Art
           </Link>
 
-          <div className="flex flex-1 basis-0 items-center justify-end gap-8 type-small min-[1320px]:flex-none">
+          <div className="flex flex-1 basis-0 items-center justify-end gap-8 type-small max-[359px]:text-[13px] min-[1320px]:flex-none">
             <button type="button" className="hidden desk:inline transition-opacity hover:opacity-60" onClick={() => setIsSearchOpen(true)}>
               {t.aria.search}
             </button>

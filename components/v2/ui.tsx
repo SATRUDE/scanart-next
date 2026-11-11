@@ -168,8 +168,10 @@ export function SectionHeader({
   id,
   className = '',
 }: Cls & { title: React.ReactNode; link?: { href: string; label: string }; as?: 'h2' | 'h3'; id?: string }) {
+  // Phones stack the link under the heading: side by side, a long heading
+  // wrapped beside it and felt squashed (Mark, 2026-11-11).
   return (
-    <div className={`flex items-baseline justify-between gap-6 border-t border-ink pt-4 tab:pt-6 ${className}`}>
+    <div className={`flex flex-col items-start gap-3 border-t border-ink pt-4 tab:flex-row tab:items-baseline tab:justify-between tab:gap-6 tab:pt-6 ${className}`}>
       <Heading id={id} className="type-h2">{title}</Heading>
       {link && (
         <TextLink href={link.href} arrow={false} className="shrink-0 tab:type-label">

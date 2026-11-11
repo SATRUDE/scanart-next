@@ -30,7 +30,7 @@ export function ArtistCard({ artist, href, as: Heading = 'h2', priority = false 
   return (
     <Link
       href={href}
-      className="group/card flex h-full gap-4 pb-6 tab:min-h-[380px] tab:flex-col tab:justify-between tab:gap-group tab:pb-0"
+      className="group/card flex h-full gap-4 pb-6 tab:flex-col tab:gap-4 tab:pb-0"
     >
       <div className="flex min-w-0 flex-1 gap-4 tab:flex-none tab:flex-col tab:gap-group">
         <div className="relative size-16 shrink-0 overflow-hidden bg-image-bg tab:size-14">
