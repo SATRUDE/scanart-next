@@ -109,7 +109,7 @@ export function OrderLine({
           <span className="flex shrink-0 items-baseline gap-2">
             <span>{price}</span>
             {was && (
-              <s className="type-small opacity-60">
+              <s className="relative type-small opacity-60">
                 {wasLabel && <span className="sr-only">{wasLabel} </span>}
                 {was}
               </s>
