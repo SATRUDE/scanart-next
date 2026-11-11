@@ -53,7 +53,7 @@ const sections: LegalSection[] = [
           <li><strong>Ordredetaljer</strong>: navn, e-postadresse, leveringsadresse og varene du bestiller.</li>
           <li><strong>Betaling</strong>: betalinger behandles av Stripe. Kortopplysningene dine går direkte til Stripe; vi ser eller lagrer aldri hele kortnummeret ditt.</li>
           <li><strong>Bruk av nettstedet</strong>: hvilke sider som besøkes og hvordan nettstedet brukes, målt uten informasjonskapsler og uten å bygge en profil av deg (se Statistikk nedenfor).</li>
-          <li><strong>Øktopptak</strong>: for noen besøk, et opptak av hvordan sidene ble brukt, der alt som skrives inn i et skjema er skjult (se Øktopptak nedenfor).</li>
+          <li><strong>Øktopptak</strong>: for hvert besøk, et opptak av hvordan sidene ble brukt, der alt som skrives inn i et skjema er skjult (se Øktopptak nedenfor).</li>
           {ADVERTISING_ENABLED
             ? <li><strong>Annonsering</strong>: hvis du godtar informasjonskapsler for annonsering, mottar Meta og Pinterest opplysninger om besøket og enheten din (se Annonsering nedenfor).</li>
             : <li><strong>Annonsering</strong>: når du kommer fra en av annonsene våre, har lenken en kampanjemerking som forteller oss hvilken annonse det var (se Annonsering nedenfor).</li>}

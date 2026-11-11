@@ -91,20 +91,15 @@ describe('privacy signals', () => {
 });
 
 describe('sampling', () => {
-  it('samples 30% of page loads, as Umami did', () => {
-    expect(SAMPLE_RATE).toBe(0.3);
-    expect(sampled(() => 0.29)).toBe(true);
-    expect(sampled(() => 0.3)).toBe(false);
-    expect(sampled(() => 0.99)).toBe(false);
+  it('records every page load (Mark, 2026-11-11)', () => {
+    expect(SAMPLE_RATE).toBe(1);
+    expect(sampled(() => 0)).toBe(true);
+    expect(sampled(() => 0.99)).toBe(true);
   });
 
-  it('comes out near 30% over many page loads', () => {
-    let seed = 42;
-    const random = () => ((seed = (seed * 16807) % 2147483647) - 1) / 2147483646;
-    let hits = 0;
-    for (let i = 0; i < 20000; i++) if (sampled(random)) hits++;
-    expect(hits / 20000).toBeGreaterThan(0.28);
-    expect(hits / 20000).toBeLessThan(0.32);
+  it('still honours a lower rate when one is passed', () => {
+    expect(sampled(() => 0.29, 0.3)).toBe(true);
+    expect(sampled(() => 0.3, 0.3)).toBe(false);
   });
 
   it('handles the edges', () => {

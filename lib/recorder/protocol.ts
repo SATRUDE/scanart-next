@@ -29,8 +29,12 @@ export const INGEST_PATH = '/api/rec';
 export const GZIP_CONTENT_TYPE = 'application/x-rec+gzip';
 export const JSON_CONTENT_TYPE = 'application/json';
 
-/** Share of page loads recorded: Umami's replay sample on 29 October 2026. */
-export const SAMPLE_RATE = 0.3;
+/**
+ * Share of page loads recorded. Every visit since 11 November 2026 (Mark):
+ * at about 50 visits a day, 3 in 10 gave too few replays to learn from, and
+ * all of them fit well inside the ingest's daily caps. Was 0.3, Umami's rate.
+ */
+export const SAMPLE_RATE = 1;
 /** A recording stops after five minutes, as Umami's did. */
 export const MAX_DURATION_MS = 5 * 60 * 1000;
 
