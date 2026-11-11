@@ -124,13 +124,15 @@ export const PrintCard: React.FC<PrintCardProps> = ({
           sizes={sizes}
           className={`h-full w-full object-cover transition-transform duration-500 ease-out ${product.secondaryImage ? '' : 'group-hover:scale-[1.015]'}`}
         />
-        {/* The room mockup fades in on hover, on devices that hover (mouse and
-            trackpad); touch never sees it, so a tap goes straight to the print.
+        {/* The room mockup fades in on hover, only with a mouse or trackpad:
+            (hover: hover) alone let some phones and tablets swap the image
+            while scrolling a row (Mark, 2026-11-11), so the primary pointer
+            must also be fine. Touch never sees it; a tap goes to the print.
             Lazy and decorative here: the product page carries the scene with
             its descriptive alt, so this copy stays out of the accessibility
             tree. */}
         {product.secondaryImage && (
-          <div aria-hidden className="pointer-events-none absolute inset-0 hidden overflow-hidden opacity-0 transition-opacity duration-[350ms] ease-out [@media(hover:hover)]:block group-hover:opacity-100 group-focus-within:opacity-100">
+          <div aria-hidden className="pointer-events-none absolute inset-0 hidden overflow-hidden opacity-0 transition-opacity duration-[350ms] ease-out [@media(hover:hover)_and_(pointer:fine)]:block group-hover:opacity-100 group-focus-within:opacity-100">
             {/* Plain next/image, not SmartImage: SmartImage adds its own
                 fade-in on load, which made the mockup arrive a beat late. It
                 loads as the tile nears the viewport, so it is ready on hover,
