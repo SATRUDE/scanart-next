@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 
-// The product description, clamped to three lines with a Read more toggle
+// The product description, clamped to two lines with a Read more toggle
 // (Figma 116:409). The full text always ships in the served HTML and the clamp
 // is pure CSS, so search reads every word: the catalogue description and the
 // listing summary both sit inside it. Without JavaScript the copy simply stays
@@ -35,7 +35,7 @@ export function ProductReadMore({
 
   return (
     <div className={`flex flex-col items-start gap-tight ${className}`}>
-      <div ref={ref} className={`${expanded ? '' : 'line-clamp-3'} [&_p+p]:mt-3`}>
+      <div ref={ref} className={`${expanded ? '' : 'line-clamp-2'} [&_p+p]:mt-3`}>
         {children}
       </div>
       {/* Always rendered, so its line is reserved in the server HTML and the

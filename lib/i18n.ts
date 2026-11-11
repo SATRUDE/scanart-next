@@ -220,6 +220,8 @@ export interface ChromeAriaStrings {
   cart: {
     /** Prefixed to the print's name: "Remove Dragon" / "Fjern Dragon". */
     removePrefix: string;
+    /** Names the − / + group: "Quantity, Dragon". */
+    quantity: string;
     decreaseQuantity: string;
     increaseQuantity: string;
   };
@@ -265,6 +267,7 @@ export const chromeAria: Record<Locale, ChromeAriaStrings> = {
     landmarks: { main: 'Main', menu: 'Menu', footer: 'Footer', breadcrumb: 'Breadcrumb' },
     cart: {
       removePrefix: 'Remove',
+      quantity: 'Quantity',
       decreaseQuantity: 'Decrease quantity',
       increaseQuantity: 'Increase quantity',
     },
@@ -303,6 +306,7 @@ export const chromeAria: Record<Locale, ChromeAriaStrings> = {
     landmarks: { main: 'Hovedmeny', menu: 'Meny', footer: 'Bunntekst', breadcrumb: 'Brødsmulesti' },
     cart: {
       removePrefix: 'Fjern',
+      quantity: 'Antall',
       decreaseQuantity: 'Reduser antall',
       increaseQuantity: 'Øk antall',
     },

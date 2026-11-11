@@ -23,6 +23,9 @@ import { track } from '@/lib/analytics';
 import { trackAdvertisingCheckoutStarted } from '@/lib/commerce-measurement';
 import { printImageAlt } from '@/lib/product-image-alt';
 import { Button, Hairline } from '@/components/v2/ui';
+import { useSalePromotion } from '@/contexts/SalePromotionContext';
+import { saleDiscount, salePrice, salePromotionStrings } from '@/lib/sale-promotion';
+import { SaleAmount } from '@/components/v2/product/LocalPrice';
 
 /** '50x70cm' → '50 × 70 cm' (as PrintCard's sizeLabel). */
 function sizeLabel(size: string): string {
@@ -56,6 +59,8 @@ export const Cart: React.FC<{ deliveryGuide: DeliveryGuide }> = ({ deliveryGuide
   const router = useRouter();
   const currency = selectedCountry.currency;
   const count = getTotalItems();
+  const saleActive = useSalePromotion();
+  const sale = salePromotionStrings[locale];
 
   // The cart-open step sits between add-to-cart and checkout in the funnel.
   useEffect(() => {
@@ -70,24 +75,32 @@ export const Cart: React.FC<{ deliveryGuide: DeliveryGuide }> = ({ deliveryGuide
   }, [state.isOpen]);
 
   const subtotal = getTotalPriceInCurrency(currency);
+  // NORDIC20, taken off automatically while the store says it is live: 20% of
+  // the unframed lines, rounded as the server rounds it. Checkout applies the
+  // code itself and the server's quote is what is charged.
+  const unframedSubtotal = state.items
+    .filter(i => !isFramed(i.frame))
+    .reduce((sum, i) => sum + getProductPrices(i.product, i.size)[currency] * i.quantity, 0);
+  const discount = saleActive ? saleDiscount(unframedSubtotal) : 0;
+  const goods = Math.round((subtotal - discount) * 100) / 100;
   // Free delivery (config/free-delivery.ts), the same rule the server charges
   // with. The basket does not know the destination or a discount code yet, so
   // it is judged on the subtotal and the frames, and the copy names the
   // countries and says the amount counts after a code.
   const verdict = freeDeliveryVerdict({
-    goods: subtotal,
+    goods,
     currency,
     country: null,
     hasFramed: state.items.some(i => isFramed(i.frame)),
   });
   const free = verdict === 'free';
-  const awayText = t.freeAway.replace('{amount}', formatFreeDeliveryAmount(amountToFreeDelivery(subtotal, currency), currency));
+  const awayText = t.freeAway.replace('{amount}', formatFreeDeliveryAmount(amountToFreeDelivery(goods, currency), currency));
 
   const handleCheckout = () => {
     trackAdvertisingCheckoutStarted();
     track('checkout', {
       itemCount: state.items.reduce((n, i) => n + i.quantity, 0),
-      total: subtotal,
+      total: goods,
       currency,
     });
     closeCart();
@@ -128,6 +141,7 @@ export const Cart: React.FC<{ deliveryGuide: DeliveryGuide }> = ({ deliveryGuide
                 {state.items.map(item => {
                   const unit = getProductPrices(item.product, item.size)[currency] + getFramePrice(item.frame || 'no-frame', item.size, currency);
                   const line = Math.round(unit * item.quantity * 100) / 100;
+                  const lineOnSale = saleActive && !isFramed(item.frame);
                   const description = [item.size ? sizeLabel(item.size) : null, t.frames[item.frame || 'no-frame']].filter(Boolean).join(', ');
                   return (
                     <li
@@ -154,28 +168,34 @@ export const Cart: React.FC<{ deliveryGuide: DeliveryGuide }> = ({ deliveryGuide
                         <div className="flex flex-col gap-[2px]">
                           <div className="flex items-start justify-between gap-4 type-body">
                             <p>{item.product.name}</p>
-                            <p className="shrink-0">{formatDisplayPrice(line, currency)}</p>
+                            <p className="shrink-0 text-right">
+                              {lineOnSale ? (
+                                <SaleAmount now={formatDisplayPrice(salePrice(line), currency)} was={formatDisplayPrice(line, currency)} wasLabel={sale.was} />
+                              ) : formatDisplayPrice(line, currency)}
+                            </p>
                           </div>
                           {(item.product.artist || item.product.brand) && <p className="type-small">{item.product.artist || item.product.brand}</p>}
                           <p className="type-small">{description}</p>
                         </div>
                         <div className="flex items-center justify-between type-small">
                           {/* Quantity 237:3701 */}
-                          <div className="flex items-center gap-[14px]">
+                          {/* 44 × 44 targets in one bordered group: the bare − and +
+                              were too small to hit and hard to spot (Mark, 2026-11-11). */}
+                          <div role="group" aria-label={`${aria.cart.quantity}, ${item.product.name}`} className="flex items-center border border-ink">
                             <button
                               type="button"
                               aria-label={aria.cart.decreaseQuantity}
                               onClick={() => updateQuantity(item.product.id, item.quantity - 1, item.size, item.frame)}
-                              className="transition-colors hover:text-brand"
+                              className="flex size-11 items-center justify-center type-body transition-colors hover:bg-surface-strong"
                             >
                               −
                             </button>
-                            <span aria-live="polite">{item.quantity}</span>
+                            <span aria-live="polite" className="min-w-8 text-center">{item.quantity}</span>
                             <button
                               type="button"
                               aria-label={aria.cart.increaseQuantity}
                               onClick={() => updateQuantity(item.product.id, item.quantity + 1, item.size, item.frame)}
-                              className="transition-colors hover:text-brand"
+                              className="flex size-11 items-center justify-center type-body transition-colors hover:bg-surface-strong"
                             >
                               +
                             </button>
@@ -204,6 +224,12 @@ export const Cart: React.FC<{ deliveryGuide: DeliveryGuide }> = ({ deliveryGuide
                   <p>{t.subtotal}</p>
                   <p>{formatDisplayPrice(subtotal, currency)}</p>
                 </div>
+                {discount > 0 && (
+                  <div className="flex items-start justify-between gap-4 type-body text-brand">
+                    <p>{sale.basketLine}</p>
+                    <p>−{formatDisplayPrice(discount, currency)}</p>
+                  </div>
+                )}
                 <div className="flex items-start justify-between gap-4 type-small">
                   <p>{t.delivery}</p>
                   <p>{free ? t.freeValue : t.deliveryValue}</p>
@@ -233,7 +259,7 @@ export const Cart: React.FC<{ deliveryGuide: DeliveryGuide }> = ({ deliveryGuide
                       <div aria-hidden className="h-[3px] w-full overflow-clip bg-surface-strong">
                         <div
                           className="h-[3px] bg-brand transition-[width] duration-300 motion-reduce:transition-none"
-                          style={{ width: `${Math.round(freeDeliveryProgress(subtotal, currency) * 10000) / 100}%` }}
+                          style={{ width: `${Math.round(freeDeliveryProgress(goods, currency) * 10000) / 100}%` }}
                         />
                       </div>
                     </>
@@ -251,7 +277,7 @@ export const Cart: React.FC<{ deliveryGuide: DeliveryGuide }> = ({ deliveryGuide
               </ul>
 
               <div className="p-[3px]">
-                <Button onClick={handleCheckout} fullWidth price={formatDisplayPrice(subtotal, currency)}>
+                <Button onClick={handleCheckout} fullWidth price={formatDisplayPrice(goods, currency)}>
                   {t.checkout}
                 </Button>
               </div>

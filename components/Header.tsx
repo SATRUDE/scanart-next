@@ -110,7 +110,12 @@ export const Header: React.FC<HeaderProps> = ({ categories, search }) => {
           </Link>
           <Link href={homeHref} className="type-h3 whitespace-nowrap">Scandinavian Art</Link>
           <p className="type-label w-[90px] tab:w-[400px] text-right">
-            <span className="tab:hidden">{t.checkout.secureShort}</span>
+            {/* "Secure" alone read as a stray word on phones (Mark, 2026-11-11):
+                the full phrase, small, with a lock. */}
+            <span className="block text-right type-caption tab:hidden">
+              <svg aria-hidden width="10" height="12" viewBox="0 0 12 14" className="mr-1 inline-block align-[-1px]"><rect x="1" y="6" width="10" height="7.5" rx="1" fill="none" stroke="currentColor" /><path d="M3.5 6V4a2.5 2.5 0 0 1 5 0v2" fill="none" stroke="currentColor" /></svg>
+              {t.checkout.secure}
+            </span>
             <span className="hidden tab:inline">{t.checkout.secure}</span>
           </p>
         </div>

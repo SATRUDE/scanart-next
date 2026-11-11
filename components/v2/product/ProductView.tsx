@@ -118,7 +118,8 @@ export function ProductView({
             <div className="flex flex-col gap-1">
               <h1 className="type-h1 tab:type-h3">{product.name}</h1>
               <p className="type-body">
-                <LocalPrice prices={getLowestProductPrices(product)} />
+                {/* The lowest price is always the smallest unframed print, so the sale applies. */}
+                <LocalPrice prices={getLowestProductPrices(product)} sale locale={locale} />
               </p>
               <Meta
                 className="type-small"
@@ -142,8 +143,10 @@ export function ProductView({
             </div>
           </div>
 
+          {/* 15 px and two lines on every screen: 18 px on phones pushed Add to basket
+              too far down (Mark, 2026-11-11). */}
           {(description || listingSummary) && (
-            <ProductReadMore moreLabel={t.readMore} lessLabel={t.readLess} className="type-body tab:type-small">
+            <ProductReadMore moreLabel={t.readMore} lessLabel={t.readLess} className="type-small">
               {description && <p>{description}</p>}
               {listingSummary && <p>{listingSummary}</p>}
             </ProductReadMore>

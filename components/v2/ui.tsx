@@ -39,7 +39,7 @@ type ButtonBase = {
   /** Primary: black and square, one per section. Secondary: outlined. Link: text only. */
   variant?: 'primary' | 'secondary' | 'link';
   /** Show price: the total after a hairline (white on Primary). */
-  price?: string;
+  price?: React.ReactNode;
   className?: string;
   fullWidth?: boolean;
 };

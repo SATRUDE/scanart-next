@@ -11,6 +11,8 @@ import { FREE_DELIVERY_THRESHOLD, formatFreeDeliveryAmount } from '@/config/free
 import { track } from '@/lib/analytics';
 import { trackAdvertisingCart } from '@/lib/commerce-measurement';
 import { Button, Hairline } from '@/components/v2/ui';
+import { useSalePromotion } from '@/contexts/SalePromotionContext';
+import { salePrices, salePromotionStrings } from '@/lib/sale-promotion';
 import { OPTION_PAD } from '@/components/v2/OptionTrack';
 import { sizeLabel } from '@/components/PrintCard';
 
@@ -80,6 +82,7 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [selectedFrame, setSelectedFrame] = useState<string>('no-frame');
   const groupId = useId();
+  const saleActive = useSalePromotion();
 
   // Memoised because the array's identity feeds the useEffect below: a fresh
   // array every render would re-run the effect every render.
@@ -112,7 +115,7 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings
       size: selectedSize || undefined,
       frame: selectedFrame || undefined,
     });
-    trackAdvertisingCart((currentPrices[selectedCountry.currency] + framePrices[selectedCountry.currency]) * quantity, selectedCountry.currency, quantity);
+    trackAdvertisingCart(payPrices[selectedCountry.currency] * quantity, selectedCountry.currency, quantity);
     if (!state.isOpen) toggleCart();
   };
 
@@ -132,6 +135,12 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings
     DKK: (currentPrices.DKK || 0) + framePrices.DKK,
     SEK: (currentPrices.SEK || 0) + framePrices.SEK,
   };
+
+  // NORDIC20 is on unframed prints only: with no frame the button shows what
+  // checkout will charge, the full price struck through beside it.
+  const onSale = saleActive && selectedFrame === 'no-frame';
+  const payPrices = onSale ? salePrices(totalPrices) : totalPrices;
+  const sale = salePromotionStrings[locale];
 
   const hasAvailableSizes = availableSizes.length > 0;
   const frameLabel = (id: string) => t.frameLabels?.[id] ?? frameOptions.find(f => f.id === id)?.name ?? id;
@@ -217,6 +226,9 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings
             </div>
           ))}
         </div>
+        {saleActive && selectedFrame !== 'no-frame' && (
+          <p className="type-caption">{sale.unframedOnly}</p>
+        )}
       </fieldset>
 
       <div className="p-[3px]">
@@ -224,7 +236,14 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings
           onClick={handleAddToCart}
           disabled={product.published === false || !hasAvailableSizes || (product.sizes && !selectedSize)}
           fullWidth
-          price={hasAvailableSizes && selectedSize ? formatPrice(totalPrices) : undefined}
+          price={hasAvailableSizes && selectedSize ? (
+            onSale ? (
+              <span className="inline-flex items-baseline gap-2">
+                <span>{formatPrice(payPrices)}</span>
+                <s className="opacity-70"><span className="sr-only">{sale.was} </span>{formatPrice(totalPrices)}</s>
+              </span>
+            ) : formatPrice(totalPrices)
+          ) : undefined}
           // Watched by FeedbackIntercept: the card refuses to render if it would
           // cover this. Occlusion is the test, not co-presence.
           data-primary-cta="add-to-cart"
