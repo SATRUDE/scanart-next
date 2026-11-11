@@ -60,6 +60,14 @@ export function campaignMeta(): RecMeta['u'] | undefined {
   return c.utm_source ? { source: c.utm_source, campaign: c.utm_campaign, content: c.utm_content } : undefined;
 }
 
+/** Whether a new page height is worth an event: the first one always, then
+ * only a change of more than 50 px, so lazy images loading one by one do not
+ * fill the recording with events. */
+export function heightChanged(last: number, now: number): boolean {
+  if (!Number.isFinite(now) || now <= 0) return false;
+  return last === 0 || Math.abs(now - last) > 50;
+}
+
 export function recordingAllowed(enabled: string | undefined, random: () => number = Math.random): boolean {
   if (typeof window === 'undefined') return false;
   const supported =
@@ -303,7 +311,43 @@ function begin(rrweb: Rrweb): void {
   }
   window.addEventListener('popstate', onUrl);
 
-  const hide = () => rec.flushOnHide();
+  // The page's full height, which rrweb never records, so the dashboard's
+  // scroll map can say how far down each visit got as a share of the page
+  // (Mark, 2026-11-11). Sent at the start, when a scroll settles, after a page
+  // change and on leaving, and only when the height has really changed.
+  let lastHeight = 0;
+  const reportHeight = () => {
+    if (rec.isStopped) return;
+    const height = Math.max(document.documentElement.scrollHeight, document.body?.scrollHeight || 0);
+    if (!heightChanged(lastHeight, height)) return;
+    lastHeight = height;
+    try {
+      rrweb.addCustomEvent('page-height', { height, width: window.innerWidth });
+    } catch {
+      // ignore
+    }
+  };
+  reportHeight();
+  let settle: number | undefined;
+  window.addEventListener('scroll', () => {
+    window.clearTimeout(settle);
+    settle = window.setTimeout(reportHeight, 400);
+  }, { passive: true });
+  window.addEventListener('popstate', () => window.setTimeout(reportHeight, 800));
+  for (const method of ['pushState', 'replaceState'] as const) {
+    const wrapped = history[method];
+    history[method] = function (this: History, ...args: Parameters<History['pushState']>) {
+      const result = wrapped.apply(this, args);
+      lastHeight = 0; // a new page: report its height even if it matches
+      window.setTimeout(reportHeight, 800);
+      return result;
+    } as History['pushState'];
+  }
+
+  const hide = () => {
+    reportHeight();
+    rec.flushOnHide();
+  };
   document.addEventListener('visibilitychange', () => {
     if (document.visibilityState === 'hidden') hide();
   });

@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
 import zlib from 'node:zlib';
 
-import { Recording, recordOptions } from './client';
+import { Recording, heightChanged, recordOptions } from './client';
 import { createSession } from './guards';
 import { GZIP_CONTENT_TYPE, JSON_CONTENT_TYPE, MAX_CHUNKS_PER_SESSION, MAX_DURATION_MS, type RecEnvelope } from './protocol';
 
@@ -208,5 +208,15 @@ describe('campaign in the first chunk', () => {
     expect(ok.m?.u).toEqual({ source: 'meta', campaign: undefined, content: 'x' });
     const bad = validateEnvelope({ ...base, m: { w: 390, u: { source: "me'ta" } } }, now) as RecEnvelope;
     expect(bad.m?.u).toBeUndefined();
+  });
+});
+
+describe('page height events', () => {
+  it('reports the first height and then only real changes', () => {
+    expect(heightChanged(0, 4200)).toBe(true);
+    expect(heightChanged(4200, 4230)).toBe(false);
+    expect(heightChanged(4200, 4300)).toBe(true);
+    expect(heightChanged(4200, 0)).toBe(false);
+    expect(heightChanged(0, Number.NaN)).toBe(false);
   });
 });
