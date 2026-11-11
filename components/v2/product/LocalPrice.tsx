@@ -28,7 +28,10 @@ export function SaleAmount({ now, was, off, wasLabel }: { now: string; was: stri
   return (
     <span className="inline-flex flex-wrap items-baseline gap-x-2">
       <span>{now}</span>
-      <s className="opacity-60">
+      {/* relative: the sr-only label inside is absolutely positioned, and
+          without a positioned parent it escaped the sideways-scrolling
+          "More prints like this" row and made phone pages 731 px wide. */}
+      <s className="relative opacity-60">
         <span className="sr-only">{wasLabel} </span>
         {was}
       </s>

@@ -240,7 +240,7 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings
             onSale ? (
               <span className="inline-flex items-baseline gap-2">
                 <span>{formatPrice(payPrices)}</span>
-                <s className="opacity-70"><span className="sr-only">{sale.was} </span>{formatPrice(totalPrices)}</s>
+                <s className="relative opacity-70"><span className="sr-only">{sale.was} </span>{formatPrice(totalPrices)}</s>
               </span>
             ) : formatPrice(totalPrices)
           ) : undefined}
