@@ -115,7 +115,7 @@ const sections: LegalSection[] = [
         </ul>
         <p>
           Until about 9 November 2026 recordings are made with Umami and stored in its database, hosted by Neon in the
-          United States. After that they are made by our own recorder and stored in Cloudflare R2, in the EU, and we
+          United States. After that they are made by our own recorder and stored with Cloudflare, in the EU, and we
           also hide all text in forms and on the checkout and order pages.
         </p>
         <p>
@@ -219,7 +219,7 @@ const sections: LegalSection[] = [
           <li><strong>Slack</strong>: your order details are sent to our team as an order notification.</li>
           <li><strong>PostHog</strong> (EU cloud): to count visits and measure how the site is used.</li>
           <li><strong>Umami</strong>, hosted for us by Vercel and Neon in the United States: our previous analytics tool and session recordings, until about 9 November 2026.</li>
-          <li><strong>Cloudflare</strong>: to store session recordings in its R2 storage, in the EU.</li>
+          <li><strong>Cloudflare</strong>: to store session recordings, in the EU.</li>
         </ul>
         <p>
           Some of these providers operate outside {COMPANY.country} and the EEA. Where your data is transferred abroad,
@@ -235,7 +235,7 @@ const sections: LegalSection[] = [
         We hold personal data only as long as we need it. We do not keep our own customer database: your order and
         payment details are held by our payment and print partners (Stripe and Gelato) under their own policies, and
         for as long as we need them to meet accounting and tax obligations. Our website analytics is cookieless and
-        aggregate, and is retained in line with our analytics settings. Session recordings stored in Cloudflare R2 are
+        aggregate, and is retained in line with our analytics settings. Session recordings stored with Cloudflare are
         deleted once we have analysed them, normally within about two weeks, apart from up to 5 that we may keep for up
         to 30 days. Any that are not analysed are deleted automatically after 90 days. Recordings made with Umami stay in its database until we close it, which we plan to do
         in November 2026.

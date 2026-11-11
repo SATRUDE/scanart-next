@@ -14,6 +14,7 @@
 // R2 bucket and keys exist. See guards.ts for who is recorded and what is
 // hidden, and protocol.ts for the wire format.
 
+import { visitCampaign } from '@/lib/campaign';
 import {
   BLOCK_SELECTOR,
   createSession,
@@ -37,6 +38,7 @@ import {
   RECORDER_VERSION,
   type RecEnvelope,
   type RecEvent,
+  type RecMeta,
 } from './protocol';
 
 const FLUSH_INTERVAL_MS = 5000;
@@ -51,6 +53,13 @@ type Rrweb = {
 };
 
 /** The guards, read from the live browser. */
+/** The first-touch campaign this visit arrived with (kept in memory only, never
+ * stored in the browser), in the recorder's short form. */
+export function campaignMeta(): RecMeta['u'] | undefined {
+  const c = visitCampaign();
+  return c.utm_source ? { source: c.utm_source, campaign: c.utm_campaign, content: c.utm_content } : undefined;
+}
+
 export function recordingAllowed(enabled: string | undefined, random: () => number = Math.random): boolean {
   if (typeof window === 'undefined') return false;
   const supported =
@@ -257,6 +266,7 @@ function begin(rrweb: Rrweb): void {
     w: window.screen?.width || undefined,
     h: window.screen?.height || undefined,
     l: navigator.language || undefined,
+    u: campaignMeta(),
   }));
 
   const stopFn = rrweb.record(recordOptions(event => rec.push(event)));

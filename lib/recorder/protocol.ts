@@ -52,7 +52,10 @@ export const MAX_CHUNK_INDEX = MAX_CHUNKS_PER_SESSION - 1;
 
 const SESSION_ID = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
 
-export type RecMeta = { w?: number; h?: number; l?: string };
+/** u: the visit's first-touch campaign (lib/campaign.ts), validated like the
+ * campaign label on orders. Chunk 0 only. */
+export type RecMeta = { w?: number; h?: number; l?: string; u?: { source?: string; campaign?: string; content?: string } };
+const UTM_VALUE = /^[a-z0-9._-]{1,80}$/;
 export type RecEvent = { type: number; timestamp: number; data?: unknown; [k: string]: unknown };
 export type RecEnvelope = { v: 1; s: string; c: number; t: number; m?: RecMeta; e: RecEvent[] };
 
@@ -99,7 +102,10 @@ export function validateEnvelope(body: unknown, now: number): RecEnvelope | { er
     const raw = b.m as Record<string, unknown>;
     const dim = (n: unknown) => (typeof n === 'number' && Number.isInteger(n) && n > 0 && n < 20000 ? n : undefined);
     const lang = typeof raw.l === 'string' && /^[A-Za-z]{2,3}(-[A-Za-z0-9]{2,8})*$/.test(raw.l) ? raw.l : undefined;
-    m = { w: dim(raw.w), h: dim(raw.h), l: lang };
+    const rawU = raw.u && typeof raw.u === 'object' && !Array.isArray(raw.u) ? (raw.u as Record<string, unknown>) : {};
+    const utm = (key: string) => (typeof rawU[key] === 'string' && UTM_VALUE.test(rawU[key] as string) ? (rawU[key] as string) : undefined);
+    const u = { source: utm('source'), campaign: utm('campaign'), content: utm('content') };
+    m = { w: dim(raw.w), h: dim(raw.h), l: lang, ...(u.source ? { u } : {}) };
   }
   return { v: 1, s: b.s, c: b.c, t: b.t, m, e: b.e as RecEvent[] };
 }

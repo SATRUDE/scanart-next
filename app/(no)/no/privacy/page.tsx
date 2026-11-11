@@ -122,7 +122,7 @@ const sections: LegalSection[] = [
         </ul>
         <p>
           Fram til rundt 9. november 2026 lages opptakene med Umami og lagres i databasen dets, som Neon drifter i USA.
-          Etter det lages de av vårt eget opptaksverktøy og lagres i Cloudflare R2, i EU, og da skjuler vi også all
+          Etter det lages de av vårt eget opptaksverktøy og lagres hos Cloudflare, i EU, og da skjuler vi også all
           tekst i skjemaer og på kasse- og ordresidene.
         </p>
         <p>
@@ -227,7 +227,7 @@ const sections: LegalSection[] = [
           <li><strong>Slack</strong>: ordredetaljene dine sendes til teamet vårt som et ordrevarsel.</li>
           <li><strong>PostHog</strong> (EU-sky): for å telle besøk og måle hvordan nettstedet brukes.</li>
           <li><strong>Umami</strong>, driftet for oss av Vercel og Neon i USA: det forrige statistikkverktøyet vårt og øktopptak, fram til rundt 9. november 2026.</li>
-          <li><strong>Cloudflare</strong>: for å lagre øktopptak i R2-lagringen deres, i EU.</li>
+          <li><strong>Cloudflare</strong>: for å lagre øktopptak, i EU.</li>
         </ul>
         <p>
           Noen av disse leverandørene opererer utenfor {COMPANY.countryNo} og EØS. Der opplysningene dine overføres til
@@ -244,7 +244,7 @@ const sections: LegalSection[] = [
         ordre- og betalingsopplysningene dine ligger hos betalings- og trykkpartnerne våre (Stripe og Gelato) under
         deres egne retningslinjer, og så lenge vi trenger dem for å oppfylle regnskaps- og skatteforpliktelser.
         Nettstatistikken vår er uten informasjonskapsler og aggregert, og lagres i tråd med innstillingene våre.
-        Øktopptak som lagres i Cloudflare R2, slettes når vi har analysert dem, vanligvis innen
+        Øktopptak som lagres hos Cloudflare, slettes når vi har analysert dem, vanligvis innen
         omtrent to uker, bortsett fra inntil 5 som vi kan beholde i opptil 30 dager. Opptak som ikke analyseres, slettes
         automatisk etter 90 dager. Opptak laget med Umami blir liggende i databasen
         dets til vi legger den ned, noe vi planlegger å gjøre i november 2026.
