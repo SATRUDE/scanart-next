@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { track } from '@/lib/analytics';
 import { scrollDepthPercent } from '@/lib/scroll-depth';
+import { currentRecordingId } from '@/lib/recorder/client';
 import {
   COPY as COPY_EN,
   DISMISSED_DAYS,
@@ -90,7 +91,7 @@ function FeedbackInterceptForPath({
       void fetch('/api/feedback', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ step: stepName, answer, path: pathname, placement }),
+        body: JSON.stringify({ step: stepName, answer, path: pathname, placement, recordingId: currentRecordingId() ?? undefined, screenWidth: window.screen?.width || undefined }),
       }).catch(() => {});
     },
     [pathname, placement]
