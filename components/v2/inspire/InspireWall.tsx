@@ -1,12 +1,13 @@
 'use client';
 
+import { ShopPrice } from '@/components/v2/ShopPrice';
 import React, { useEffect, useId, useMemo, useState } from 'react';
 import Link from 'next/link';
 import { scenePosition } from '@/lib/scene-focus';
 import Image from 'next/image';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Hairline } from '@/components/v2/ui';
-import { formatDisplayPrice, getLowestProductPrices, type CurrencyPrices } from '@/lib/pricing';
+import { getLowestProductPrices, type CurrencyPrices } from '@/lib/pricing';
 import {
   WALLS,
   ROOMS,
@@ -197,7 +198,7 @@ export function InspireWall({
                         </>
                       )}
                     </span>
-                    <span className="shrink-0">{formatDisplayPrice(getLowestProductPrices(p)[currency], currency)}</span>
+                    <span className="shrink-0"><ShopPrice amount={getLowestProductPrices(p)[currency]} currency={currency} /></span>
                   </li>
                 ))}
               </ul>

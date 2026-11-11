@@ -1,10 +1,10 @@
 'use client';
 
+import { ShopPrice } from '@/components/v2/ShopPrice';
 import React, { useCallback, useEffect, useId, useRef, useState } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/v2/ui';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { formatDisplayPrice } from '@/lib/pricing';
 import { track } from '@/lib/analytics';
 import {
   DEFAULT_PRINT,
@@ -68,7 +68,7 @@ export function StartFromYourWall({
 }) {
   const { selectedCountry } = useLanguage();
   const currency = selectedCountry.currency;
-  const priceOf = (p: WallPrint) => formatDisplayPrice(p.prices[currency], currency);
+  const priceOf = (p: WallPrint) => <ShopPrice amount={p.prices[currency]} currency={currency} />;
 
   const initialPrint = prints.find(p => p.slug === DEFAULT_PRINT)?.slug ?? prints[0]?.slug;
   const [wall, setWall] = useState<WallId>(DEFAULT_WALL);
