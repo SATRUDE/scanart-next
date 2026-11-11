@@ -6,11 +6,12 @@ import { useRouter } from 'next/navigation';
 import { SmartImage } from '@/components/SmartImage';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { searchStrings, type SearchStrings } from '@/lib/i18n';
-import { formatDisplayPrice, getLowestProductPrices } from '@/lib/pricing';
+import { getLowestProductPrices } from '@/lib/pricing';
 import { fill, highlight, searchIndex, type SearchIndex, type SearchPrint, type SearchResults, type SearchTab as Tab } from '@/lib/site-search';
 import { analyticsQuery, resultClickPath, shouldTrackSiteSearch, trackSearchResultClick, trackSearchSubmit } from '@/lib/site-search-signal';
 import { track } from '@/lib/analytics';
 import { NoResults, Results, ResultTabs } from '@/components/v2/search/SearchResultViews';
+import { ShopPrice } from '@/components/v2/ShopPrice';
 
 /**
  * Full-screen search (Figma: Search overlay 242:4241, the Search frames on
@@ -389,7 +390,7 @@ function PriceLine({ print }: { print: SearchPrint }) {
     <p className="flex items-center gap-[6px] type-caption">
       <span>{print.artist}</span>
       <span aria-hidden className="hairline" />
-      <span>{formatDisplayPrice(getLowestProductPrices(print)[currency], currency)}</span>
+      <span><ShopPrice amount={getLowestProductPrices(print)[currency]} currency={currency} /></span>
     </p>
   );
 }

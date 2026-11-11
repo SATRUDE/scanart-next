@@ -204,7 +204,7 @@ export function ProductView({
               {artistFacts && artistFacts.count > 0 && (
                 <FactRow label={t.facts.inTheShop}>
                   {fill(artistFacts.count === 1 ? t.facts.printsFromOne : t.facts.printsFromOther, { count: artistFacts.count })}{' '}
-                  <LocalPrice prices={artistFacts.lowestPrices} />
+                  <LocalPrice prices={artistFacts.lowestPrices} sale locale={locale} />
                 </FactRow>
               )}
             </dl>

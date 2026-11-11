@@ -2,6 +2,7 @@
 
 import { useLanguage } from '@/contexts/LanguageContext';
 import type { CurrencyPrices } from '@/lib/pricing';
+import { ShopPrice } from '@/components/v2/ShopPrice';
 
 /**
  * "from £35": the artist's cheapest print in the buyer's own currency, the
@@ -9,6 +10,6 @@ import type { CurrencyPrices } from '@/lib/pricing';
  * the hero line and the grid below it never quote two currencies.
  */
 export function FromPrice({ prices, from }: { prices: CurrencyPrices; from: string }) {
-  const { formatPrice } = useLanguage();
-  return <>{`${from} ${formatPrice(prices)}`}</>;
+  const { selectedCountry } = useLanguage();
+  return <ShopPrice amount={prices[selectedCountry.currency]} currency={selectedCountry.currency} prefix={from} />;
 }

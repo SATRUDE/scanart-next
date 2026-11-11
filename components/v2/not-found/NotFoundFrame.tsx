@@ -5,7 +5,8 @@ import Image from 'next/image';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { Button, TextLink } from '@/components/v2/ui';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { formatDisplayPrice, getLowestProductPrices, type CurrencyPrices } from '@/lib/pricing';
+import { getLowestProductPrices, type CurrencyPrices } from '@/lib/pricing';
+import { ShopPrice } from '@/components/v2/ShopPrice';
 
 export interface FramePrint {
   slug: string;
@@ -45,7 +46,7 @@ export function NotFoundFrame({ t, prints, productsHref, artistsHref }: {
   const [hung, setHung] = useState('');
   const chosen = prints.find(p => p.slug === hung);
   const { selectedCountry } = useLanguage();
-  const priceOf = (p: FramePrint) => formatDisplayPrice(getLowestProductPrices(p)[selectedCountry.currency], selectedCountry.currency);
+  const priceOf = (p: FramePrint) => <ShopPrice amount={getLowestProductPrices(p)[selectedCountry.currency]} currency={selectedCountry.currency} />;
 
   const meta = (p: FramePrint) => (
     <span className="flex items-center gap-[6px] type-caption">

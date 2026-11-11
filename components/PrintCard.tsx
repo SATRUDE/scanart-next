@@ -6,9 +6,10 @@ import Image from 'next/image';
 import { SmartImage } from './SmartImage';
 import { scenePosition } from '@/lib/scene-focus';
 import { getArtistById } from '@/data/artists';
-import { formatDisplayPrice, getLowestProductPrices } from '@/lib/pricing';
+import { getLowestProductPrices } from '@/lib/pricing';
 import { printImageAlt, type AltLocale } from '@/lib/product-image-alt';
 import { warmImage } from '@/lib/warm-image';
+import { ShopPrice } from '@/components/v2/ShopPrice';
 
 interface PrintCardProps {
   product: {
@@ -154,7 +155,7 @@ export const PrintCard: React.FC<PrintCardProps> = ({
       <div>
         <div className="flex items-start justify-between gap-4 type-body">
           <Title className="type-body">{product.name}</Title>
-          <p className="shrink-0">{formatDisplayPrice(getLowestProductPrices(product)[activeCurrency], activeCurrency)}</p>
+          <p className="shrink-0"><ShopPrice amount={getLowestProductPrices(product)[activeCurrency]} currency={activeCurrency} /></p>
         </div>
         <p className="flex items-center gap-[6px] type-caption">
           <span>{artistName}</span>

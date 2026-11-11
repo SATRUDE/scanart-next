@@ -2,6 +2,7 @@
 
 import { useLanguage } from '@/contexts/LanguageContext';
 import { getLowestProductPrices, type PricedProduct } from '@/lib/pricing';
+import { ShopPrice } from '@/components/v2/ShopPrice';
 
 /**
  * A print's lowest price in the visitor's currency (the country picker). A
@@ -9,6 +10,7 @@ import { getLowestProductPrices, type PricedProduct } from '@/lib/pricing';
  * HTML carries the GBP price, as PrintCard's does.
  */
 export function Price({ product }: { product: PricedProduct }) {
-  const { formatPrice } = useLanguage();
-  return <>{formatPrice(getLowestProductPrices(product))}</>;
+  const { selectedCountry } = useLanguage();
+  const currency = selectedCountry.currency;
+  return <ShopPrice amount={getLowestProductPrices(product)[currency]} currency={currency} />;
 }

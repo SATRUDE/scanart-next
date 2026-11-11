@@ -2,6 +2,7 @@
 
 import { useLanguage } from '@/contexts/LanguageContext';
 import type { CurrencyPrices } from '@/lib/pricing';
+import { ShopPrice } from '@/components/v2/ShopPrice';
 
 /**
  * "from £35" in the page header's meta line. A client leaf only because the
@@ -9,6 +10,6 @@ import type { CurrencyPrices } from '@/lib/pricing';
  * The prices come from lowestPrices() on the server.
  */
 export function FromPrice({ prices, label }: { prices: CurrencyPrices; label: string }) {
-  const { formatPrice } = useLanguage();
-  return <>{label} {formatPrice(prices)}</>;
+  const { selectedCountry } = useLanguage();
+  return <ShopPrice amount={prices[selectedCountry.currency]} currency={selectedCountry.currency} prefix={label} />;
 }
