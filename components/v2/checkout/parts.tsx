@@ -82,10 +82,15 @@ export function OrderLine({
   detail,
   quantity,
   size,
+  was,
+  wasLabel,
 }: {
   image: string;
   title: string;
   price: string;
+  /** The full price, struck beside `price` when a code takes something off this line. */
+  was?: string;
+  wasLabel?: string;
   artist?: string;
   detail: string;
   quantity: string;
@@ -101,7 +106,15 @@ export function OrderLine({
       <span className="flex min-w-0 flex-1 flex-col gap-[2px]">
         <span className="flex items-start justify-between gap-4 type-body">
           <span>{title}</span>
-          <span className="shrink-0">{price}</span>
+          <span className="flex shrink-0 items-baseline gap-2">
+            <span>{price}</span>
+            {was && (
+              <s className="type-small opacity-60">
+                {wasLabel && <span className="sr-only">{wasLabel} </span>}
+                {was}
+              </s>
+            )}
+          </span>
         </span>
         {artist && <span className="type-small">{artist}</span>}
         <span className="type-small">{detail}</span>
@@ -118,7 +131,8 @@ export function OrderTotals({
   totalLabel,
   total,
 }: {
-  rows: { label: React.ReactNode; value: React.ReactNode }[];
+  /** `sale` draws the row in the sale colour (the discount line). */
+  rows: { label: React.ReactNode; value: React.ReactNode; sale?: boolean }[];
   note?: string;
   totalLabel: string;
   total: string;
@@ -127,11 +141,12 @@ export function OrderTotals({
     <div className="flex flex-col gap-[10px] pt-5">
       {rows.map((row, i) => (
         <React.Fragment key={i}>
-          <div className="flex items-baseline justify-between gap-4 type-body">
+          <div className={`flex items-baseline justify-between gap-4 type-body ${row.sale ? 'text-brand' : ''}`}>
             <span>{row.label}</span>
             <span>{row.value}</span>
           </div>
-          {i === 1 && note && <p className="type-small">{note}</p>}
+          {/* The delivery note sits under Delivery, which is always the last row. */}
+          {i === rows.length - 1 && note && <p className="type-small">{note}</p>}
         </React.Fragment>
       ))}
       <div className="flex items-baseline justify-between gap-4 border-t border-line pt-[14px] type-h3">

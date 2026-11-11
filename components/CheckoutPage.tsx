@@ -30,6 +30,8 @@ import { COMPANY } from '@/config/company';
 import { getArtistById } from '@/data/artists';
 import { sizeLabel } from '@/components/PrintCard';
 import { Button } from '@/components/v2/ui';
+import { useSalePromotion } from '@/contexts/SalePromotionContext';
+import { isSalePromotionActive, SALE_CODE, salePromotionStrings } from '@/lib/sale-promotion';
 import {
   AssuranceLines,
   FormError,
@@ -471,6 +473,29 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' |
   // was at the moment of payment, kept for the confirmation after the basket
   // is cleared.
   const [summaryOpen, setSummaryOpen] = useState(false);
+  // NORDIC20 applies itself while the store says the sale is live, so the
+  // price a buyer saw on the product page and in the basket is the price here
+  // without typing anything. Removing it is respected for the visit; any other
+  // code typed in replaces it (codes do not stack).
+  const saleActive = useSalePromotion();
+  const sale = salePromotionStrings[locale];
+  const [saleRemoved, setSaleRemoved] = useState(false);
+  useEffect(() => {
+    if (!saleActive || appliedDiscount || saleRemoved) return;
+    let cancelled = false;
+    fetch('/api/validate-discount', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ code: SALE_CODE }),
+    })
+      .then(response => (response.ok ? response.json() : null))
+      .then(result => {
+        if (cancelled || !isSalePromotionActive(result)) return;
+        setAppliedDiscount(current => current ?? { code: result.code, percentage: result.percentage, scope: 'UNFRAMED', description: result.description });
+      })
+      .catch(() => { /* no sale shown is the safe failure */ });
+    return () => { cancelled = true; };
+  }, [saleActive, appliedDiscount, saleRemoved]);
   const [completedOrder, setCompletedOrder] = useState<CompletedOrder | null>(null);
   const hydrated = useSyncExternalStore(subscribeNever, () => true, () => false);
 
@@ -560,18 +585,33 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' |
   };
 
   const handleRemoveDiscount = () => {
+    if (appliedDiscount?.code === SALE_CODE) setSaleRemoved(true);
     setAppliedDiscount(null);
     setDiscountError(null);
   };
 
   // One line's price, exactly as the order summary has always computed it.
-  const linePrice = (item: (typeof state.items)[number]) => formatPrice({
-    GBP: Math.round(((getProductPrice(item.product, item.size, 'GBP') + getFramePrice(item.frame || 'no-frame', item.size, 'GBP')) * item.quantity) * 100) / 100,
-    NOK: Math.round(((getProductPrice(item.product, item.size, 'NOK') + getFramePrice(item.frame || 'no-frame', item.size, 'NOK')) * item.quantity) * 100) / 100,
-    USD: Math.round(((getProductPrice(item.product, item.size, 'USD') + getFramePrice(item.frame || 'no-frame', item.size, 'USD')) * item.quantity) * 100) / 100,
-    DKK: Math.round(((getProductPrice(item.product, item.size, 'DKK') + getFramePrice(item.frame || 'no-frame', item.size, 'DKK')) * item.quantity) * 100) / 100,
-    SEK: Math.round(((getProductPrice(item.product, item.size, 'SEK') + getFramePrice(item.frame || 'no-frame', item.size, 'SEK')) * item.quantity) * 100) / 100
+  type Line = (typeof state.items)[number];
+  const lineAmount = (item: Line, currency: 'GBP' | 'NOK' | 'USD' | 'DKK' | 'SEK') =>
+    Math.round(((getProductPrice(item.product, item.size, currency) + getFramePrice(item.frame || 'no-frame', item.size, currency)) * item.quantity) * 100) / 100;
+  const lineAmounts = (item: Line, after: (n: number) => number = n => n) => ({
+    GBP: after(lineAmount(item, 'GBP')),
+    NOK: after(lineAmount(item, 'NOK')),
+    USD: after(lineAmount(item, 'USD')),
+    DKK: after(lineAmount(item, 'DKK')),
+    SEK: after(lineAmount(item, 'SEK')),
   });
+  const linePrice = (item: Line) => formatPrice(lineAmounts(item));
+  // The line after the applied code, when the code covers it: the price shows
+  // what is charged, with the full price struck beside it.
+  const lineDiscounted = (item: Line) => {
+    if (!appliedDiscount) return false;
+    return appliedDiscount.scope === 'ALL' || !item.frame || item.frame === 'no-frame';
+  };
+  const lineAfter = (item: Line) => {
+    const pct = appliedDiscount?.percentage ?? 0;
+    return formatPrice(lineAmounts(item, n => Math.round((n - Math.round(n * pct) / 100) * 100) / 100));
+  };
 
   // Order line 275:5613 props for one basket item.
   const orderLineProps = (item: (typeof state.items)[number]) => {
@@ -580,7 +620,9 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' |
     return {
       image: item.product.image,
       title: item.product.name,
-      price: linePrice(item),
+      price: lineDiscounted(item) ? lineAfter(item) : linePrice(item),
+      was: lineDiscounted(item) ? linePrice(item) : undefined,
+      wasLabel: sale.was,
       artist: item.product.artist || item.product.brand || (item.product.artistId ? getArtistById(item.product.artistId)?.name : undefined),
       detail: item.size ? `${sizeLabel(item.size)}, ${frameText}` : frameText,
       quantity: fill(v.quantity, { n: item.quantity }),
@@ -866,8 +908,11 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' |
   const totals = {
     rows: [
       { label: t.subtotal, value: subtotalLabel },
+      // One line, straight under the subtotal it comes off: "Discount
+      // applied: NORDIC20  −£11.20" (Mark, 2026-11-11). Hidden when it takes
+      // nothing off, e.g. NORDIC20 with only framed prints in the basket.
+      ...(appliedDiscount && discountAmount > 0 ? [{ label: `${sale.applied}: ${appliedDiscount.code}`, value: discountLabel, sale: true }] : []),
       { label: t.shipping, value: shippingLabel },
-      ...(appliedDiscount ? [{ label: `${t.discount} (${appliedDiscount.percentage}%)`, value: discountLabel }] : []),
     ],
     note: days ? fill(v.deliveryNote, days) : undefined,
     totalLabel: t.total,
@@ -922,7 +967,8 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' |
           {summaryOpen ? v.hideOrder : fill(v.showOrder, { count: printCountLabel })}
           <span aria-hidden className={`inline-block transition-transform ${summaryOpen ? 'rotate-180' : ''}`}>⌄</span>
         </span>
-        <span className="type-body">{totalLabel}</span>
+        {/* Open, the total is right there in the order; folded, it is the one figure to show. */}
+        {!summaryOpen && <span className="type-body">{totalLabel}</span>}
       </button>
 
       <div className="page-x page-grid pt-10 pb-section tab:pt-band">
@@ -945,7 +991,7 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' |
 
           {/* Discount Code Section */}
           <div className="flex flex-col gap-tight pt-6">
-            {appliedDiscount ? (
+            {appliedDiscount && appliedDiscount.code !== SALE_CODE ? (
               <div className="flex items-baseline justify-between gap-4">
                 <p className="type-small">
                   {appliedDiscount.code}, {appliedDiscount.description}

@@ -96,8 +96,11 @@ const CURRENCY_SYMBOLS: Record<Currency, string> = {
  */
 export function formatDisplayPrice(price: number, currency: Currency): string {
   const symbol = CURRENCY_SYMBOLS[currency] ?? '';
+  // Whole amounts stay whole (£56); anything else shows both decimals, so a
+  // sale price reads £44.80, never £44.8.
+  const amount = Number.isInteger(price) ? String(price) : price.toFixed(2);
   if (currency === 'NOK' || currency === 'DKK' || currency === 'SEK') {
-    return `${price} ${symbol}`;
+    return `${amount} ${symbol}`;
   }
-  return `${symbol}${price}`;
+  return `${symbol}${amount}`;
 }
