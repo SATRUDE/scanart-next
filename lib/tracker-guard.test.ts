@@ -6,9 +6,6 @@ import path from 'node:path';
 import {
   TRACKER_GUARD_FUNCTION,
   TRACKER_GUARD_SCRIPT,
-  UMAMI_RECORDER_LOADER,
-  UMAMI_RECORDER_SRC,
-  UMAMI_WEBSITE_ID,
 } from './tracker-guard';
 
 const CHROME_WIN =
@@ -93,56 +90,11 @@ describe('tracker guard', () => {
   });
 });
 
-// Runs the exact loader string and returns the recorder tag it added, if any.
-function loadRecorder(nav: Record<string, unknown> = {}, win: Record<string, unknown> = {}) {
-  const added: Array<{ src?: string; defer?: boolean; attrs: Record<string, string> }> = [];
-  const document = {
-    createElement: () => {
-      const el = { attrs: {} as Record<string, string>, setAttribute(k: string, v: string) { el.attrs[k] = v; } };
-      return el;
-    },
-    head: { appendChild: (el: (typeof added)[number]) => added.push(el) },
-  };
-  vm.runInNewContext(UMAMI_RECORDER_LOADER, { window: win, navigator: nav, document });
-  return added;
-}
-
-describe('Umami recorder loader', () => {
-  it('adds the recorder with its website id for an ordinary browser', () => {
-    const added = loadRecorder({ userAgent: CHROME_WIN });
-    expect(added).toHaveLength(1);
-    expect(added[0].src).toBe(UMAMI_RECORDER_SRC);
-    expect(added[0].attrs['data-website-id']).toBe(UMAMI_WEBSITE_ID);
-  });
-
-  it('leaves the recorder out when the browser sends Global Privacy Control', () => {
-    expect(loadRecorder({ globalPrivacyControl: true })).toHaveLength(0);
-  });
-
-  it('leaves the recorder out when the browser sends Do Not Track, in any of its spellings', () => {
-    expect(loadRecorder({ doNotTrack: '1' })).toHaveLength(0);
-    expect(loadRecorder({ msDoNotTrack: '1' })).toHaveLength(0);
-    expect(loadRecorder({}, { doNotTrack: '1' })).toHaveLength(0);
-  });
-
-  it('records when Do Not Track is explicitly off or unset', () => {
-    expect(loadRecorder({ doNotTrack: '0' })).toHaveLength(1);
-    expect(loadRecorder({ doNotTrack: 'unspecified', globalPrivacyControl: false })).toHaveLength(1);
-  });
-
-  it('leaves the recorder out if reading the signals throws', () => {
-    const nav = {};
-    Object.defineProperty(nav, 'globalPrivacyControl', {
-      get() {
-        throw new Error('blocked');
-      },
-    });
-    expect(loadRecorder(nav)).toHaveLength(0);
-  });
-
-  it('is the only way the recorder reaches the page', () => {
+describe('Umami recorder', () => {
+  it('is no longer loaded: recordings come from the shop recorder (lib/recorder), kept in Cloudflare', () => {
     const doc = fs.readFileSync(path.join(__dirname, '..', 'app', 'site-document.tsx'), 'utf8');
-    expect(doc).toContain('{UMAMI_RECORDER_LOADER}');
-    expect(doc).not.toContain('recorder.js"');
+    expect(doc).not.toContain('recorder.js');
+    expect(doc).not.toContain('UMAMI_RECORDER');
+    expect(doc).toContain('src="https://datamachine.vercel.app/script.js"');
   });
 });

@@ -48,8 +48,28 @@ import { DailyBudget, type LeaseStore } from './recording-budget';
 
 const BOT_UA = /bot|crawl|spider|slurp|headless|phantomjs|lighthouse|preview|facebookexternalhit|python|curl|wget|httpclient/i;
 
+/** Where chunks go when recordings are kept in Cloudflare D1 (the
+ * scanart-recordings-ingest Worker in datamachine-reports), instead of R2. */
+export type ForwardConfig = { url: string; secret: string };
+
+/** RECORDINGS_INGEST_URL (https, the ingest Worker's /v1/chunk) and
+ * RECORDINGS_INGEST_SECRET (at least 32 characters), or null. */
+export function forwardConfigFromEnv(env: Record<string, string | undefined> = process.env): ForwardConfig | null {
+  const url = env.RECORDINGS_INGEST_URL, secret = env.RECORDINGS_INGEST_SECRET;
+  if (!url || !secret || secret.length < 32) return null;
+  try {
+    const u = new URL(url);
+    if (u.protocol !== 'https:' || u.username || u.password || u.search || u.hash) return null;
+    return { url: u.href, secret };
+  } catch {
+    return null;
+  }
+}
+
 export type IngestDeps = {
   config: R2Config | null;
+  /** When set, chunks are forwarded here and R2 is not used. */
+  forward?: ForwardConfig | null;
   fetch?: typeof fetch;
   now?: () => number;
   limiter?: RateLimiter;
@@ -238,7 +258,7 @@ export async function ingest(request: Request, deps: IngestDeps): Promise<Ingest
   const now = (deps.now ?? Date.now)();
   const h = request.headers;
 
-  if (!deps.config) return { status: 503, reason: 'not-configured' };
+  if (!deps.config && !deps.forward) return { status: 503, reason: 'not-configured' };
   if (h.get('origin') !== PRODUCTION_ORIGIN) return { status: 403, reason: 'origin' };
   const site = h.get('sec-fetch-site');
   if (site && site !== 'same-origin') return { status: 403, reason: 'origin' };
@@ -267,6 +287,8 @@ export async function ingest(request: Request, deps: IngestDeps): Promise<Ingest
   const doFetch = deps.fetch ?? fetch;
   const data = zlib.gzipSync(JSON.stringify(env.e));
   if (data.byteLength > MAX_BODY_BYTES) return { status: 413, reason: 'too-large' };
+  if (deps.forward) return forward(deps.forward, env, h, data, doFetch);
+  if (!deps.config) return { status: 503, reason: 'not-configured' };
   const meta = env.c === 0 ? Buffer.from(JSON.stringify(metaFor(env, h))) : null;
 
   // The free-tier cap: pay for every PUT before sending it (fail closed).
@@ -280,4 +302,59 @@ export async function ingest(request: Request, deps: IngestDeps): Promise<Ingest
   if (put === 'exists') return { status: 409, reason: 'duplicate' };
   if (meta) await putObject(deps.config, metaKey(env.s, env.t), meta, 'application/json', doFetch);
   return { status: 204 };
+}
+
+/**
+ * Hands one validated chunk to the ingest Worker, which keeps its own daily cap
+ * and stores the chunk once in Cloudflare D1 (EU). The secret goes only in the
+ * Authorization header. A slow or failing Worker never holds the visitor: the
+ * answer maps to the same codes the recorder already treats as final.
+ */
+export async function forward(
+  config: ForwardConfig,
+  env: RecEnvelope,
+  headers: Headers,
+  data: Uint8Array,
+  doFetch: typeof fetch,
+): Promise<IngestResult> {
+  const meta = env.c === 0 ? metaFor(env, headers) : null;
+  const envelope = {
+    v: 1,
+    s: env.s,
+    c: env.c,
+    t: env.t,
+    ...(meta
+      ? {
+          m: {
+            country: meta.country,
+            device: meta.device,
+            browser: meta.browser,
+            os: meta.os,
+            screen: meta.screen,
+            lang: meta.language,
+            ...(env.m?.u ? { utm: env.m.u } : {}),
+          },
+        }
+      : {}),
+  };
+  let res: Response;
+  try {
+    res = await doFetch(config.url, {
+      method: 'POST',
+      body: data as unknown as BodyInit,
+      redirect: 'error',
+      signal: AbortSignal.timeout(4000),
+      headers: {
+        authorization: `Bearer ${config.secret}`,
+        'content-type': 'application/gzip',
+        'x-rec-envelope': Buffer.from(JSON.stringify(envelope)).toString('base64url'),
+      },
+    });
+  } catch {
+    return { status: 502, reason: 'storage' };
+  }
+  if (res.ok) return { status: 204 };
+  if (res.status === 409) return { status: 409, reason: 'duplicate' };
+  if (res.status === 429) return { status: 429, reason: 'budget' };
+  return { status: 502, reason: 'storage' };
 }

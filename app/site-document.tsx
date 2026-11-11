@@ -9,7 +9,7 @@ import { buildSearchIndex } from '@/lib/search-index';
 import { availableCategoryLandings } from '@/lib/categories';
 import { getDeliveryGuide } from '@/lib/server/delivery-guide';
 import { BASE_URL, SITE_NAME } from '@/lib/site';
-import { TRACKER_GUARD_FUNCTION, TRACKER_GUARD_SCRIPT, UMAMI_RECORDER_LOADER } from '@/lib/tracker-guard';
+import { TRACKER_GUARD_FUNCTION, TRACKER_GUARD_SCRIPT } from '@/lib/tracker-guard';
 import Script from 'next/script';
 import { Hedvig_Letters_Sans, Hedvig_Letters_Serif } from 'next/font/google';
 import './globals.css';
@@ -84,16 +84,6 @@ export async function SiteDocument({
           data-performance="true"
           strategy="afterInteractive"
         />
-        {/* Umami's recorder: heatmaps and session recordings (rrweb, inputs
-            masked). It configures itself from datamachine's /recorder
-            endpoint (on 29 October 2026: replays at a 30% sample, heatmaps
-            for every visit, 5 minutes at most) and waits on the tracker's
-            session, so the opt-out flag and the bot guard above stop it too.
-            The loader leaves it out for browsers sending Global Privacy
-            Control or Do Not Track, as the privacy page says (T-0410). */}
-        <Script id="umami-recorder" strategy="afterInteractive">
-          {UMAMI_RECORDER_LOADER}
-        </Script>
       </head>
       <body>
         <Providers>

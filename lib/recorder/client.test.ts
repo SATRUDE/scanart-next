@@ -188,3 +188,25 @@ describe('rrweb from posthog-js', () => {
     expect(src).not.toMatch(/localStorage|sessionStorage|document\.cookie|indexedDB/);
   });
 });
+
+describe('campaign in the first chunk', () => {
+  it('carries the in-memory first-touch campaign in its short form, and nothing without one', async () => {
+    const { campaignMeta } = await import('./client');
+    const { captureCampaign, resetCampaignForTest } = await import('@/lib/campaign');
+    resetCampaignForTest();
+    expect(campaignMeta()).toBeUndefined();
+    captureCampaign('?utm_source=meta&utm_medium=paid&utm_campaign=first-ads-2026-11-09&utm_content=vinkveld-room-static');
+    expect(campaignMeta()).toEqual({ source: 'meta', campaign: 'first-ads-2026-11-09', content: 'vinkveld-room-static' });
+    resetCampaignForTest();
+  });
+
+  it('is validated on the server: only clean values survive, chunk 0 only', async () => {
+    const { validateEnvelope } = await import('./protocol');
+    const now = Date.now();
+    const base = { v: 1, s: '0b8f3c2e-5d1a-4c7b-9e2f-1a2b3c4d5e6f', c: 0, t: now - 1000, e: [{ type: 4, timestamp: now - 900 }] };
+    const ok = validateEnvelope({ ...base, m: { w: 390, h: 844, u: { source: 'meta', campaign: 'A B', content: 'x' } } }, now) as RecEnvelope;
+    expect(ok.m?.u).toEqual({ source: 'meta', campaign: undefined, content: 'x' });
+    const bad = validateEnvelope({ ...base, m: { w: 390, u: { source: "me'ta" } } }, now) as RecEnvelope;
+    expect(bad.m?.u).toBeUndefined();
+  });
+});

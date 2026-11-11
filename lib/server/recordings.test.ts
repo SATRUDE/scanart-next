@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
 import zlib from 'node:zlib';
 
-import { IpRateLimiter, RateLimiter, clientIp, describeAgent, ingest } from './recordings';
+import { IpRateLimiter, RateLimiter, clientIp, describeAgent, forwardConfigFromEnv, ingest } from './recordings';
 import { DailyBudget } from './recording-budget';
 import { r2ConfigFromEnv, r2Host, signRequest, type R2Config } from './r2';
 import { GZIP_CONTENT_TYPE, JSON_CONTENT_TYPE, PRODUCTION_ORIGIN, chunkKey, metaKey } from '@/lib/recorder/protocol';
@@ -349,5 +349,59 @@ describe('per-IP rate limit', () => {
     });
     expect((await ingest(r, deps(r2.fetch))).status).toBe(413);
     expect(pulled).toBeLessThan(10); // 192 KiB is four 64 KiB pulls, not 100
+  });
+});
+
+describe('forwarding to the Cloudflare ingest Worker', () => {
+  const forward = { url: 'https://scanart-recordings-ingest.example.workers.dev/v1/chunk', secret: 'k'.repeat(40) };
+  const fwdDeps = (f: typeof fetch) => ({ config: null, forward, fetch: f, now: () => NOW, limiter: new RateLimiter(), ipLimiter: new IpRateLimiter() });
+  const decode = (header: string) => JSON.parse(Buffer.from(header, 'base64url').toString('utf8'));
+
+  it('reads its settings only when both are present, https and long enough', () => {
+    expect(forwardConfigFromEnv({ RECORDINGS_INGEST_URL: forward.url, RECORDINGS_INGEST_SECRET: forward.secret })).toEqual(forward);
+    expect(forwardConfigFromEnv({ RECORDINGS_INGEST_URL: forward.url })).toBeNull();
+    expect(forwardConfigFromEnv({ RECORDINGS_INGEST_URL: forward.url, RECORDINGS_INGEST_SECRET: 'short' })).toBeNull();
+    expect(forwardConfigFromEnv({ RECORDINGS_INGEST_URL: 'http://x.workers.dev/v1/chunk', RECORDINGS_INGEST_SECRET: forward.secret })).toBeNull();
+    expect(forwardConfigFromEnv({ RECORDINGS_INGEST_URL: 'https://u:p@x.workers.dev/v1/chunk', RECORDINGS_INGEST_SECRET: forward.secret })).toBeNull();
+  });
+
+  it('posts the gzipped events with the secret and a coarse envelope, after every existing check', async () => {
+    const { fetch, puts } = fakeR2(204);
+    const res = await ingest(req(envelope({ m: { w: 390, h: 844, l: 'en-GB', u: { source: 'meta', campaign: 'first-ads-2026-11-09', content: 'vinkveld-room-static' } } })), fwdDeps(fetch));
+    expect(res.status).toBe(204);
+    expect(puts).toHaveLength(1);
+    expect(puts[0].url).toBe(forward.url);
+    expect(puts[0].headers.authorization).toBe(`Bearer ${forward.secret}`);
+    expect(puts[0].headers['content-type']).toBe('application/gzip');
+    expect(JSON.parse(zlib.gunzipSync(puts[0].body).toString())).toHaveLength(1);
+    const env = decode(puts[0].headers['x-rec-envelope']);
+    expect(env).toMatchObject({ v: 1, s: SID, c: 0, m: { country: 'GB', device: 'mobile', os: 'ios', screen: '390x844', lang: 'en-GB', utm: { source: 'meta', campaign: 'first-ads-2026-11-09' } } });
+    expect(JSON.stringify(env)).not.toContain('203.0.113.9');
+    expect(JSON.stringify(env)).not.toContain('Mozilla');
+  });
+
+  it('drops an invalid campaign and sends no metadata after chunk 0', async () => {
+    const { fetch, puts } = fakeR2(204);
+    await ingest(req(envelope({ m: { w: 390, h: 844, u: { source: "me'ta" } } })), fwdDeps(fetch));
+    expect(decode(puts[0].headers['x-rec-envelope']).m.utm).toBeUndefined();
+    await ingest(req(envelope({ c: 1, m: undefined })), fwdDeps(fetch));
+    expect(decode(puts[1].headers['x-rec-envelope']).m).toBeUndefined();
+  });
+
+  it('still refuses before forwarding: origin, bots and bad bodies never reach the Worker', async () => {
+    const { fetch, puts } = fakeR2(204);
+    expect((await ingest(req(envelope(), { origin: 'https://evil.example' }), fwdDeps(fetch))).status).toBe(403);
+    expect((await ingest(req(envelope(), { 'user-agent': 'Googlebot/2.1' }), fwdDeps(fetch))).status).toBe(204);
+    expect((await ingest(req({ v: 1 }), fwdDeps(fetch))).status).toBe(400);
+    expect(puts).toHaveLength(0);
+  });
+
+  it('maps the Worker answers to final codes and never throws', async () => {
+    for (const [status, expected] of [[409, 409], [429, 429], [401, 502], [500, 502]] as const) {
+      const { fetch } = fakeR2(status);
+      expect((await ingest(req(envelope()), fwdDeps(fetch))).status).toBe(expected);
+    }
+    const down = vi.fn(async () => { throw new Error('network'); }) as unknown as typeof globalThis.fetch;
+    expect((await ingest(req(envelope()), fwdDeps(down))).status).toBe(502);
   });
 });
