@@ -19,6 +19,10 @@ export interface FeedbackAnswer {
    *  volume that turns one completion rate into three. */
   step: 'q1' | 'q2' | 'q3';
   answer: string;
+  /** The visit's recording id, when it was recorded (lib/recorder/client.ts). */
+  recordingId?: string;
+  /** Screen width, so a narrow in-app browser still counts as a phone. */
+  screenWidth?: number;
   /** Where they were when asked. */
   path?: string;
   /** Which placement asked: the product page or the checkout. */
@@ -52,6 +56,8 @@ export function validateFeedback(body: unknown): FeedbackAnswer | { error: strin
     step,
     answer: step === 'q3' ? answer.slice(0, MAX_FREE_TEXT) : answer,
     path: typeof b.path === 'string' ? b.path.slice(0, 200) : undefined,
+    recordingId: typeof b.recordingId === 'string' && /^[0-9a-f-]{36}$/.test(b.recordingId) ? b.recordingId : undefined,
+    screenWidth: typeof b.screenWidth === 'number' && b.screenWidth > 0 && b.screenWidth < 10000 ? Math.round(b.screenWidth) : undefined,
     placement:
       placement === 'product' || placement === 'checkout' || placement === 'page'
         ? placement

@@ -233,6 +233,13 @@ export function recordOptions(emit: (event: RecEvent) => void): Record<string, u
 }
 
 let started = false;
+let currentId: string | null = null;
+
+/** This visit's recording id, if it is being recorded: the feedback card sends
+ * it so an answer can be shown beside the recording (Mark, 2026-11-11). */
+export function currentRecordingId(): string | null {
+  return currentId;
+}
 
 /** Starts recording after the page has loaded, if this page load is recorded. */
 export function startRecorder(enabled: string | undefined): void {
@@ -254,6 +261,7 @@ export function startRecorder(enabled: string | undefined): void {
 
 function begin(rrweb: Rrweb): void {
   const session = createSession(() => window.crypto.randomUUID(), () => Date.now());
+  currentId = session.id;
   const send = (body: BodyInit, contentType: string, keepalive: boolean) =>
     fetch(INGEST_PATH, {
       method: 'POST',
