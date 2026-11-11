@@ -5,8 +5,10 @@ import type { Product } from '@/contexts/CartContext';
 
 /**
  * The V2 print grid (Figma: Grid · 3 columns in Prints · desktop 153:241).
- * Three continuous columns from tab up, tiles 64 apart with no row gaps; one
- * column on mobile, 40 apart. The split is contiguous (lib/print-columns.ts), so
+ * Three continuous columns from tab up, tiles 64 apart with no row gaps; two
+ * on small tablets (600 to 833 px, Mark 2026-11-11: one column there made
+ * each print far too big), flowing down the first column then the second;
+ * one column on phones, 40 apart. The split is contiguous (lib/print-columns.ts), so
  * the DOM stays in list order and mobile, keyboard and screen reader all read
  * the same sequence as the ItemList.
  *
@@ -36,18 +38,18 @@ export function PrintGrid({
   const columnTops = new Set(columns.map(c => c[0]?.index));
 
   return (
-    <div className={`flex flex-col gap-10 tab:flex-row tab:items-start tab:gap-gutter ${className}`}>
+    <div className={`flex flex-col gap-10 [@media(min-width:600px)_and_(max-width:833px)]:block [@media(min-width:600px)_and_(max-width:833px)]:columns-2 [@media(min-width:600px)_and_(max-width:833px)]:gap-x-gutter tab:flex-row tab:items-start tab:gap-gutter ${className}`}>
       {columns.map((column, c) => (
-        <div key={c} className="flex min-w-0 flex-1 flex-col gap-10 desk:gap-band">
+        <div key={c} className="flex min-w-0 flex-1 flex-col gap-10 [@media(min-width:600px)_and_(max-width:833px)]:contents desk:gap-band">
           {column.map(({ product, index }) => (
-            <div key={product.id}>
+            <div key={product.id} className="[@media(min-width:600px)_and_(max-width:833px)]:mb-10 [@media(min-width:600px)_and_(max-width:833px)]:break-inside-avoid">
               <Link href={`${prefix}/product/${product.slug}`} className="block">
                 <PrintCard
                   product={product}
                   locale={locale}
                   priority={index < 4 || columnTops.has(index)}
                   headingLevel={headingLevel}
-                  sizes="(max-width: 833px) 100vw, (max-width: 1440px) 30vw, 405px"
+                  sizes="(max-width: 599px) 100vw, (max-width: 833px) 50vw, (max-width: 1440px) 30vw, 405px"
                   {...(outOfStockLabel ? { outOfStockLabel } : {})}
                 />
               </Link>
