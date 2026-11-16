@@ -99,6 +99,13 @@ export function trackAdvertisingCart(value: number, currency: string, quantity: 
   } catch { /* advertising cannot interrupt basket changes */ }
 }
 
+/** Engaged visit (T-0516). Custom event, Meta only, never Pinterest. Needs
+ * accepted advertising and a loaded pixel; otherwise nothing is sent. */
+export function trackMetaEngagedVisit(trigger: 'gallery' | 'second_product' | 'time_60s'): void {
+  try { if (metaReady()) (window as TagWindow).fbq?.('trackCustom', 'EngagedVisit', { trigger }); }
+  catch { /* advertising cannot interrupt browsing */ }
+}
+
 export function trackAdvertisingCheckoutStarted(): void {
   trackPinterestCheckoutStarted();
   try { if (metaReady()) (window as TagWindow).fbq?.('track', 'InitiateCheckout'); }

@@ -1,4 +1,5 @@
 import { AdvertisingConsent } from '@/components/AdvertisingConsent';
+import { EngagedVisit } from '@/components/EngagedVisit';
 import { Providers } from './providers';
 import { Header } from '@/components/Header';
 import { Cart } from '@/components/Cart';
@@ -101,6 +102,7 @@ export async function SiteDocument({
               it can lag is a new year with no deploy in it. */}
           <Footer year={new Date().getFullYear()} categorySlugs={availableCategoryLandings(products).map(category => category.slug)} />
           <ScrollDepth />
+          <EngagedVisit />
           <AdvertisingConsent locale={lang} />
         </Providers>
       </body>

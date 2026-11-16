@@ -24,6 +24,17 @@ When checkout creates the PaymentIntent, the browser sends the labels (`visitCam
 
 This works with the switch on or off, and needs no consent because nothing is stored on the device. It credits a purchase made in the same visit as the ad click. A purchase in a later visit carries no campaign.
 
+## Engaged visit (T-0516)
+
+Meta can only optimise for page views while add-to-carts are about 1 in 200 ad visits. A visit counts as **engaged** once, at the first of: the photo gallery is opened on a product page (where `gallery-image-view` fires); a second, different product page (`/product/...` or `/no/product/...`, the two languages counting as one product) is viewed; or 60 seconds of visible time on the site, paused while the tab is hidden. It fires at most once per page session. The decision logic is `lib/engaged-visit.ts` (in-memory only, nothing stored, tested in `lib/engaged-visit.test.ts`); `components/EngagedVisit.tsx` is mounted in `app/site-document.tsx` and the gallery calls `noteGalleryOpened()`.
+
+At that moment:
+
+- PostHog gets the cookieless event `engaged-visit` with `trigger` (`gallery`, `second_product` or `time_60s`) and the visit's first-touch `utm_source`, `utm_medium`, `utm_campaign` and `utm_content` when there were any. It uses the same path as every other custom event, so it fires with or without advertising consent, and is dropped for bots, opt-outs, previews and a missing key.
+- Only when advertising was accepted and the Meta pixel is loaded, `fbq('trackCustom', 'EngagedVisit', { trigger })` is sent (`trackMetaEngagedVisit` in `lib/commerce-measurement.ts`). Never without consent, never to Pinterest. If consent is not there at that moment the Meta event is not retried later in the visit, so a visitor who accepts afterwards is not counted retroactively.
+
+Because it is a custom event, create a custom conversion on `EngagedVisit` in Events Manager before an ad set can optimise for it. That account step is not done here.
+
 ## Confirmed purchase source
 
 `purchase` is sent to the existing PostHog EU project only from a signature-verified Stripe `payment_intent.succeeded` webhook. New shop PaymentIntents carry `measurement_version=1` and the browser's existing analytics eligibility decision. Opted-out browsers, automation, previews, test-mode payments, unfinished payments and historical payments without this marker are excluded. The server reads the received amount and item quantity from the verified payment and server-written order metadata.

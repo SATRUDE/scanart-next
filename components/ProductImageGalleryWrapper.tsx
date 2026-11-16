@@ -13,6 +13,7 @@ import { galleryEn, fill, type GalleryStrings } from '@/lib/product-page-copy';
 import type { ProductVideo as ProductVideoData } from '@/config/product-videos';
 import { ProductVideo } from '@/components/v2/product/ProductVideo';
 import { Hairline } from '@/components/v2/ui';
+import { noteGalleryOpened } from '@/lib/engaged-visit';
 
 interface ProductImageGalleryWrapperProps {
   /**
@@ -82,6 +83,7 @@ export const ProductImageGalleryWrapper: React.FC<ProductImageGalleryWrapperProp
       // clip, and whether people look at scenes is the signal this event
       // exists for.
       track('gallery-image-view', { productName, imageIndex: i, isScene: i > 0 });
+      noteGalleryOpened();
     },
     [count, productName]
   );
@@ -115,6 +117,7 @@ export const ProductImageGalleryWrapper: React.FC<ProductImageGalleryWrapperProp
     if (i !== slide) {
       setSlide(i);
       track('gallery-image-view', { productName, imageIndex: i, isScene: i > 0 });
+      noteGalleryOpened();
     }
   };
 
