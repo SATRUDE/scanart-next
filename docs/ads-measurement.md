@@ -2,20 +2,19 @@
 
 T-0169, November 2026. No new payment, Stripe credentials, advertising spend or paid service is needed to release this instrumentation.
 
-## Status: advertising cookies are off (10 November 2026)
+## Status: advertising cookies are on (16 November 2026)
 
-Mark's decision: the shop does not need Meta or Pinterest advertising cookies, so it does not ask about them. One switch controls this: `ADVERTISING_ENABLED` in `config/advertising.ts`, currently `false`.
+Mark's decision, 16 November 2026: advertising measurement is back on, for retargeting. It reverses the 10 November decision (#274) to switch it off, which also removed retargeting. One switch controls this: `ADVERTISING_ENABLED` in `config/advertising.ts`, currently `true`.
 
-While it is off:
+While it is on:
 
-- the "Advertising cookies" prompt never renders in either language, and the footer has no "Cookie settings" entry;
-- no Meta Pixel or Pinterest tag is requested, no advertising cookie or storage is written, and no basket, checkout or purchase event is sent to either provider (there is no Conversions API integration);
-- a consent choice saved by an earlier visit is never read. It, the purchase dedupe lists and the first-party advertising cookies are removed on the next visit;
-- the privacy pages say there are no advertising cookies.
+- the "Advertising cookies" prompt renders in both languages, and the footer has a "Cookie settings" entry;
+- the Meta Pixel (2148270909141839) and the Pinterest tag load only after a visitor accepts advertising. Nothing is requested, and no cookie or storage is written, before that;
+- the privacy pages describe the optional advertising cookies, with the Meta and Pinterest wording, in both languages.
 
-Everything under "Pinterest" and "Meta" below describes the machinery as it behaves when the switch is on. It is kept, with its tests, so advertising can return.
+Everything under "Pinterest" and "Meta" below describes this behaviour.
 
-To turn advertising back on: set `ADVERTISING_ENABLED` to `true`. The prompt, the footer entry and the consent-gated tags all come back together, and the privacy pages switch to their consent wording. Review that wording and the consent version before releasing.
+To turn advertising off again: set `ADVERTISING_ENABLED` to `false`. The prompt, the footer entry, the tags and all ad-platform events go off together, a consent choice saved by an earlier visit is never read and is cleared on the next visit, and the privacy pages switch to their no-advertising-cookies wording. `lib/advertising-off.test.ts` covers that state.
 
 ## Same-visit campaign on the order
 
@@ -23,7 +22,7 @@ Ad links carry `utm_source`, `utm_medium`, `utm_campaign` and `utm_content`. `li
 
 When checkout creates the PaymentIntent, the browser sends the labels (`visitCampaign()` in `components/CheckoutPage.tsx`) and `app/api/create-payment-intent/route.ts` writes the validated ones into the payment metadata. Validation (`cleanCampaign`) lower-cases each value and keeps it only if it is 1 to 80 characters of `a-z`, `0-9`, `.`, `_` or `-`; anything else is dropped and never fails checkout. The webhook's `purchase` event (`lib/server/purchase-measurement.ts`) revalidates the metadata and adds the same four properties, so the private dashboard can count orders per campaign. They are sent nowhere else.
 
-This credits a purchase made in the same visit as the ad click. A purchase in a later visit carries no campaign.
+This works with the switch on or off, and needs no consent because nothing is stored on the device. It credits a purchase made in the same visit as the ad click. A purchase in a later visit carries no campaign.
 
 ## Confirmed purchase source
 

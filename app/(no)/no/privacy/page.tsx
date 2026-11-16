@@ -28,7 +28,7 @@ export const metadata: Metadata = {
 };
 
 // Same effective date as the English page; bump both by hand together.
-const LAST_UPDATED = '10. november 2026';
+const LAST_UPDATED = '16. november 2026';
 
 const sections: LegalSection[] = [
   {
