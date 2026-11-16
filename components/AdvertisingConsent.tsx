@@ -17,19 +17,19 @@ import {
 
 const copy = {
   en: {
-    title: 'Advertising cookies',
-    body: 'May we use Meta and Pinterest cookies to measure visits, basket activity and purchases from our ads, and show you relevant ads on Facebook, Instagram and Pinterest? You can shop with either choice and change it in Cookie settings in the footer.',
-    accept: 'Accept advertising',
-    reject: 'Reject advertising',
+    title: 'Cookies',
+    body: 'We use cookies to improve your experience and show you relevant ads.',
+    accept: 'Accept',
+    reject: 'Reject',
     privacy: 'Privacy policy',
     error: 'Your browser could not save this choice. Please allow site storage or clear this site’s data in your browser settings and try again.',
   },
   no: {
-    title: 'Informasjonskapsler for annonsering',
-    body: 'Kan vi bruke informasjonskapsler fra Meta og Pinterest til å måle besøk, handlekurvaktivitet og kjøp fra annonsene våre, og vise deg relevante annonser på Facebook, Instagram og Pinterest? Du kan handle uansett hva du velger, og endre valget under Innstillinger for informasjonskapsler nederst på siden.',
-    accept: 'Godta annonsering',
-    reject: 'Avvis annonsering',
-    privacy: 'Personvernerklæring',
+    title: 'Informasjonskapsler',
+    body: 'Vi bruker informasjonskapsler for å gi deg en bedre opplevelse og relevante annonser.',
+    accept: 'Godta',
+    reject: 'Avslå',
+    privacy: 'Personvern',
     error: 'Nettleseren kunne ikke lagre valget. Tillat lagring for nettstedet, eller slett nettstedets data i nettleserinnstillingene og prøv igjen.',
   },
 };
