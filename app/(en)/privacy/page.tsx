@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 };
 
 // The date this policy takes effect; bump by hand when the wording changes.
-const LAST_UPDATED = '10 November 2026';
+const LAST_UPDATED = '16 November 2026';
 
 const sections: LegalSection[] = [
   {

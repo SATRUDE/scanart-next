@@ -1,11 +1,12 @@
-// The shipped default: advertising measurement is off (config/advertising.ts).
+// The off state of the switch (config/advertising.ts). The shipped value is on since
+// 16 November 2026; these tests force it off to keep that state covered.
 import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 vi.mock('next/navigation', () => ({ usePathname: () => '/' }));
+vi.mock('@/config/advertising', () => ({ ADVERTISING_ENABLED: false }));
 
-import { ADVERTISING_ENABLED } from '@/config/advertising';
 import { AdvertisingConsent } from '@/components/AdvertisingConsent';
 import { Footer } from '@/components/Footer';
 import {
@@ -48,11 +49,14 @@ beforeEach(() => {
 });
 afterEach(() => { vi.unstubAllGlobals(); vi.unstubAllEnvs(); });
 
-describe('advertising measurement is off', () => {
-  it('ships with the switch off', () => {
-    expect(ADVERTISING_ENABLED).toBe(false);
+describe('the shipped switch', () => {
+  it('is on (Mark, 16 November 2026, for retargeting)', async () => {
+    const shipped = await vi.importActual<typeof import('@/config/advertising')>('@/config/advertising');
+    expect(shipped.ADVERTISING_ENABLED).toBe(true);
   });
+});
 
+describe('advertising measurement with the switch off', () => {
   it('never reads an earlier yes, so it loads no Meta or Pinterest script', () => {
     expect(readAdvertisingRecord()).toBeNull();
     expect(parseAdvertisingChoice(readAdvertisingRecord())).toBeNull();
