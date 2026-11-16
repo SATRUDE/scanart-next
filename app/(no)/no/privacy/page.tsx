@@ -171,7 +171,7 @@ const sections: LegalSection[] = [
     body: ADVERTISING_ENABLED ? (
       <>
         <p>
-          Hvis du velger Godta annonsering, laster vi inn Meta Pixel og Pinterest-taggen for å måle besøk fra annonsene våre og
+          Hvis du velger Godta, laster vi inn Meta Pixel og Pinterest-taggen for å måle besøk fra annonsene våre og
           støtte tilpasset annonsering på Facebook, Instagram og Pinterest. Taggene deler sideadressen, nettleser- og
           enhetsopplysninger, IP-adressen og identifikatorer fra informasjonskapsler med Meta og Pinterest.
           Leverandørene kan koble disse til kontoene dine eller annen aktivitet. Når du godtar, sender vi også tillegg i handlekurven,
@@ -189,7 +189,7 @@ const sections: LegalSection[] = [
           <a href="https://www.facebook.com/privacy/policy/">personvernerklæring</a> om bruk, lagring og overføring til utlandet.
         </p>
         <p>
-          Velg Avvis annonsering for å holde begge taggene av. Du kan når som helst trekke tilbake samtykket under
+          Velg Avslå for å holde begge taggene av. Du kan når som helst trekke tilbake samtykket under
           Innstillinger for informasjonskapsler nederst på siden; da laster vi siden på nytt for å stoppe taggene
           og fjerner annonseinformasjonskapslene vi har tilgang til på nettstedet vårt. Dette opphever ikke
           behandling som fant sted mens samtykket gjaldt. Informasjonskapsler på leverandørenes egne domener styres av

@@ -164,7 +164,7 @@ const sections: LegalSection[] = [
     body: ADVERTISING_ENABLED ? (
       <>
         <p>
-          If you choose Accept advertising, we load the Meta Pixel and Pinterest tag to measure visits from our ads and support
+          If you choose Accept, we load the Meta Pixel and Pinterest tag to measure visits from our ads and support
           personalised advertising on Facebook, Instagram and Pinterest. The tags share the page address, browser
           and device information, IP address and cookie identifiers with Meta and Pinterest. These providers may
           match this information to your accounts or other activity. With your acceptance we also send basket additions, checkout starts and confirmed
@@ -182,7 +182,7 @@ const sections: LegalSection[] = [
           <a href="https://www.facebook.com/privacy/policy/">privacy policy</a> for its use, retention and international transfers.
         </p>
         <p>
-          Choose Reject advertising to keep both tags off. You can withdraw consent at any time in Cookie settings
+          Choose Reject to keep both tags off. You can withdraw consent at any time in Cookie settings
           in the footer; we then reload the page to stop the tags and remove the advertising cookies accessible on
           our site. This does not undo processing that happened while consent was in place. Cookies on providers’
           own domains are controlled by those providers; you can also manage your{' '}
