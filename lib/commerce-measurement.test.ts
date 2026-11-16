@@ -3,7 +3,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 // lib/advertising-off.test.ts covers the shipped default (off).
 vi.mock('@/config/advertising', () => ({ ADVERTISING_ENABLED: true }));
 import { ADVERTISING_CONSENT_KEY, ADVERTISING_PURCHASES_KEY, META_PURCHASES_KEY } from './advertising-consent';
-import { measureConfirmedPurchase, purchaseAnalyticsAllowed, trackPinterestCart, trackPinterestCheckoutStarted, trackPinterestPurchase, trackMetaPurchase, trackAdvertisingCart, trackAdvertisingCheckoutStarted } from './commerce-measurement';
+import { measureConfirmedPurchase, purchaseAnalyticsAllowed, trackPinterestCart, trackPinterestCheckoutStarted, trackPinterestPurchase, trackMetaPurchase, trackAdvertisingCart, trackAdvertisingCheckoutStarted, trackMetaEngagedVisit } from './commerce-measurement';
 
 const receipt = { orderId: 'pi_verifiedOrder', total: 740, currency: 'NOK', itemCount: 1 };
 let storage: Map<string, string>;
@@ -79,5 +79,21 @@ describe('consented commerce events', () => {
     accept();tag.mockImplementation(() => { throw Error('advertising unavailable'); });
     expect(() => trackPinterestCart(800, 'NOK', 1)).not.toThrow();
     expect(() => trackPinterestCheckoutStarted()).not.toThrow();
+  });
+});
+
+describe('engaged visit to Meta', () => {
+  it('sends the custom event to Meta only, with the trigger and nothing else', () => {
+    accept();trackMetaEngagedVisit('gallery');
+    expect(meta.mock.calls).toEqual([['trackCustom', 'EngagedVisit', { trigger: 'gallery' }]]);
+    expect(tag).not.toHaveBeenCalled();
+  });
+  it('sends nothing without consent, after rejection, for opt-outs, bots or previews', () => {
+    trackMetaEngagedVisit('gallery');
+    storage.set(ADVERTISING_CONSENT_KEY, JSON.stringify({ version: 3, choice: 'rejected', savedAt: Date.now() }));trackMetaEngagedVisit('time_60s');
+    accept();storage.set('umami.disabled', '1');trackMetaEngagedVisit('gallery');
+    storage.delete('umami.disabled');target.location.hostname = 'preview.vercel.app';trackMetaEngagedVisit('gallery');
+    target.location.hostname = 'www.scandinavianart.co.uk';vi.stubGlobal('navigator', { webdriver: true });trackMetaEngagedVisit('gallery');
+    expect(meta).not.toHaveBeenCalled();expect(tag).not.toHaveBeenCalled();
   });
 });
