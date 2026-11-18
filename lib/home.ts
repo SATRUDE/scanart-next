@@ -67,7 +67,13 @@ export interface HomeStrings {
     /** /no only: the cards open English articles, so each says so ("På engelsk"). */
     inEnglish?: string;
   };
-  questions: { heading: string; all: string };
+  questions: {
+    heading: string;
+    all: string;
+    /** A question about the art rather than the shop, shown after the help
+     *  questions with a link to the article that answers it in full (T-0531). */
+    about?: { q: string; a: string; link: { href: string; label: string } };
+  };
   apply: { heading: string; body: string; cta: string };
 }
 
@@ -125,7 +131,17 @@ export const homeStrings: HomeStrings = {
     },
   },
   journal: { heading: 'Journal', all: 'All stories' },
-  questions: { heading: 'Questions', all: 'All help and delivery' },
+  questions: {
+    heading: 'Questions',
+    all: 'All help and delivery',
+    // T-0531 (18 Nov 2026): the home page and the article both rank for
+    // 'scandinavian art'; this points the home page's weight at the article.
+    about: {
+      q: 'What is Scandinavian art?',
+      a: 'Strictly, the art of Denmark, Norway and Sweden, though most people include Finland and Iceland too. It runs from Viking carving and folk painting to Munch and the artists working today, and what holds it together is northern light, nature and restraint.',
+      link: { href: '/article/what-is-scandinavian-art', label: 'Read the short guide' },
+    },
+  },
   apply: {
     heading: 'Are you an artist?',
     body: 'We represent a small number of Nordic artists. Tell us about your work and we will be in touch if it is a fit.',

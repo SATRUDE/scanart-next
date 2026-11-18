@@ -324,6 +324,24 @@
   }
 }
 
+/* Phone basket bar (components/ProductActions.tsx, lib/basket-bar.ts): it is
+   pinned to the bottom of the screen at all times on a product page below the
+   tablet breakpoint, so the page gets the bar's height as bottom padding and
+   the footer and last content always scroll clear of it. 75 px is the bar:
+   1 px top border, 8 px padding, the 3 px focus pad, the 52 px Button, 3 px,
+   8 px; plus the iPhone safe area, as on the bar itself. */
+@media (width < 834px) {
+  body:has([data-basket-bar]) {
+    padding-bottom: calc(75px + env(safe-area-inset-bottom));
+  }
+  /* The feedback card and pill (components/FeedbackIntercept.tsx) sit 1rem
+     above the bar instead of over it: the bar is the only add button on a
+     phone, and the card must never cover it. */
+  body:has([data-basket-bar]) [data-feedback-float] {
+    bottom: calc(75px + env(safe-area-inset-bottom) + 1rem);
+  }
+}
+
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
