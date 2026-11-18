@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useMemo, useId } from 'react';
+import React, { useState, useEffect, useMemo, useId, useRef } from 'react';
 import type { ProductActionsStrings } from '@/lib/i18n';
 import { useCart, Product } from '@/contexts/CartContext';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -15,6 +15,7 @@ import { useSalePromotion } from '@/contexts/SalePromotionContext';
 import { salePrices, salePromotionStrings } from '@/lib/sale-promotion';
 import { OPTION_PAD } from '@/components/v2/OptionTrack';
 import { sizeLabel } from '@/components/PrintCard';
+import { basketBarVisible } from '@/lib/basket-bar';
 
 const EN: ProductActionsStrings & { assurance: NonNullable<ProductActionsStrings['assurance']> } = {
   size: 'Size',
@@ -83,6 +84,11 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings
   const [selectedFrame, setSelectedFrame] = useState<string>('no-frame');
   const groupId = useId();
   const saleActive = useSalePromotion();
+  // Phone basket bar (lib/basket-bar.ts): starts hidden, as if the button were
+  // on screen, so the server HTML and the first paint carry no bar.
+  const mainButtonRef = useRef<HTMLDivElement>(null);
+  const [mainButtonInView, setMainButtonInView] = useState(true);
+  const [footerInView, setFooterInView] = useState(false);
 
   // Memoised because the array's identity feeds the useEffect below: a fresh
   // array every render would re-run the effect every render.
@@ -104,7 +110,10 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings
     }
   }, [availableSizes, selectedSize]);
 
-  const handleAddToCart = () => {
+  // One handler for the main button and the phone basket bar, so a tap on
+  // either is the same add: same basket line, same add-to-cart event, same
+  // basket opening (and so the same cart-open). `placement` says which was tapped.
+  const handleAddToCart = (placement: 'main' | 'bar') => {
     if (product.published === false) return;
     if (product.sizes && !selectedSize) return;
     addToCart(product, quantity, selectedSize || undefined, selectedFrame);
@@ -114,6 +123,7 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings
       quantity,
       size: selectedSize || undefined,
       frame: selectedFrame || undefined,
+      placement,
     });
     trackAdvertisingCart(payPrices[selectedCountry.currency] * quantity, selectedCountry.currency, quantity);
     if (!state.isOpen) toggleCart();
@@ -143,6 +153,35 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings
   const sale = salePromotionStrings[locale];
 
   const hasAvailableSizes = availableSizes.length > 0;
+  const canAdd = product.published !== false && hasAvailableSizes && !(product.sizes && !selectedSize);
+  const priceNode = hasAvailableSizes && selectedSize ? (
+    onSale ? (
+      <span className="inline-flex items-baseline gap-2">
+        <span>{formatPrice(payPrices)}</span>
+        <s className="relative opacity-70"><span className="sr-only">{sale.was} </span>{formatPrice(totalPrices)}</s>
+      </span>
+    ) : formatPrice(totalPrices)
+  ) : undefined;
+
+  // Watch the main button and the site footer. The bar shows only while the
+  // button is off screen (above or below) and steps aside when the footer
+  // arrives, so it never sits on the footer's links for good.
+  useEffect(() => {
+    if (typeof IntersectionObserver === 'undefined') return;
+    const button = mainButtonRef.current;
+    const footers = document.querySelectorAll('footer');
+    const footer = footers[footers.length - 1];
+    const observer = new IntersectionObserver(entries => {
+      for (const entry of entries) {
+        if (entry.target === button) setMainButtonInView(entry.isIntersecting);
+        else if (entry.target === footer) setFooterInView(entry.isIntersecting);
+      }
+    });
+    if (button) observer.observe(button);
+    if (footer) observer.observe(footer);
+    return () => observer.disconnect();
+  }, []);
+  const showBar = basketBarVisible({ mainButtonInView, footerInView, canAdd: Boolean(canAdd) });
   const frameLabel = (id: string) => t.frameLabels?.[id] ?? frameOptions.find(f => f.id === id)?.name ?? id;
 
   // "worldwide from £4.50 unframed": the store's cheapest delivery outside
@@ -231,19 +270,12 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings
         )}
       </fieldset>
 
-      <div className="p-[3px]">
+      <div ref={mainButtonRef} className="p-[3px]">
         <Button
-          onClick={handleAddToCart}
-          disabled={product.published === false || !hasAvailableSizes || (product.sizes && !selectedSize)}
+          onClick={() => handleAddToCart('main')}
+          disabled={!canAdd}
           fullWidth
-          price={hasAvailableSizes && selectedSize ? (
-            onSale ? (
-              <span className="inline-flex items-baseline gap-2">
-                <span>{formatPrice(payPrices)}</span>
-                <s className="relative opacity-70"><span className="sr-only">{sale.was} </span>{formatPrice(totalPrices)}</s>
-              </span>
-            ) : formatPrice(totalPrices)
-          ) : undefined}
+          price={priceNode}
           // Watched by FeedbackIntercept: the card refuses to render if it would
           // cover this. Occlusion is the test, not co-presence.
           data-primary-cta="add-to-cart"
@@ -251,6 +283,28 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings
           {product.published === false ? (locale === 'no' ? 'Kommer snart' : 'Coming soon') : !hasAvailableSizes ? t.soldOut : (product.sizes && !selectedSize) ? t.selectSize : t.addToCart}
         </Button>
       </div>
+
+      {/* Phone basket bar (experiment basket-in-view): the main button again,
+          pinned to the bottom while the main one is off screen. Phones only
+          (tab:hidden). z-30 keeps it under the feedback card (z-40), the
+          basket panel and lightbox (z-50) and the consent banner (z-60). */}
+      {showBar && (
+        <div
+          data-basket-bar
+          className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-bg px-[calc(var(--sa-margin)-3px)] pt-2 pb-[calc(0.5rem+env(safe-area-inset-bottom))] tab:hidden"
+        >
+          <div className="p-[3px]">
+            <Button
+              onClick={() => handleAddToCart('bar')}
+              fullWidth
+              price={priceNode}
+              data-primary-cta="add-to-cart-bar"
+            >
+              {t.addToCart}
+            </Button>
+          </div>
+        </div>
+      )}
 
       <ul className="flex flex-col gap-[6px] tab:gap-1">
         {[freeLine, t.assurance.printed, deliveryLine, t.assurance.returns].map(line => (
