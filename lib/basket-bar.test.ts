@@ -1,20 +1,14 @@
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { basketBarVisible } from './basket-bar';
+import { basketBarShown } from './basket-bar';
 
-describe('basketBarVisible', () => {
-  it('shows only when the main button is off screen, the footer is not in view and something can be added', () => {
-    expect(basketBarVisible({ mainButtonInView: false, footerInView: false, canAdd: true })).toBe(true);
-  });
-  it('hides while the main button is on screen', () => {
-    expect(basketBarVisible({ mainButtonInView: true, footerInView: false, canAdd: true })).toBe(false);
-  });
-  it('steps aside for the footer', () => {
-    expect(basketBarVisible({ mainButtonInView: false, footerInView: true, canAdd: true })).toBe(false);
+describe('basketBarShown', () => {
+  it('shows whenever something can be added', () => {
+    expect(basketBarShown({ canAdd: true })).toBe(true);
   });
   it('never offers a sold out, coming soon or sizeless print', () => {
-    expect(basketBarVisible({ mainButtonInView: false, footerInView: false, canAdd: false })).toBe(false);
+    expect(basketBarShown({ canAdd: false })).toBe(false);
   });
 });
 
@@ -24,7 +18,9 @@ describe('basketBarVisible', () => {
 // needs a browser to render.
 describe('ProductActions basket bar', () => {
   const src = readFileSync(path.join(__dirname, '../components/ProductActions.tsx'), 'utf8');
-  const bar = src.slice(src.indexOf('data-basket-bar'));
+  // The bar element itself: the attribute on a line of its own, not a mention in a comment.
+  const bar = src.slice(src.search(/^\s*data-basket-bar$/m));
+  const css = readFileSync(path.join(__dirname, '../app/globals.css'), 'utf8');
 
   it('is rendered by ProductActions', () => {
     expect(src).toContain('data-basket-bar');
@@ -34,9 +30,21 @@ describe('ProductActions basket bar', () => {
     expect(src).toMatch(/onClick=\{\(\) => handleAddToCart\('main'\)\}/);
     expect(src).toMatch(/track\('add-to-cart', \{[^}]*placement/);
   });
-  it('is phones only and sits under the consent banner and the basket panel', () => {
+  it('is fixed at all times: nothing watches the scroll to show or hide it', () => {
+    expect(src).not.toContain('IntersectionObserver');
+    expect(src).not.toMatch(/addEventListener\('scroll'/);
+  });
+  it('is phones only and sits under the feedback card, the basket panel and the consent banner', () => {
     const cls = bar.slice(0, 600);
     expect(cls).toContain('tab:hidden');
     expect(cls).toMatch(/\bz-30\b/);
+    expect(cls).toContain('env(safe-area-inset-bottom)');
+  });
+  it('is not a primary CTA, so the feedback card can still show above it', () => {
+    const barBlock = bar.slice(0, bar.indexOf('</Button>'));
+    expect(barBlock).not.toContain('data-primary-cta');
+  });
+  it('pads the page bottom on phones so the footer is never hidden behind it', () => {
+    expect(css).toMatch(/@media \(width < 834px\) \{\s*body:has\(\[data-basket-bar\]\) \{\s*padding-bottom: calc\(75px \+ env\(safe-area-inset-bottom\)\);/);
   });
 });

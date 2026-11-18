@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useMemo, useId, useRef } from 'react';
+import React, { useState, useEffect, useMemo, useId } from 'react';
 import type { ProductActionsStrings } from '@/lib/i18n';
 import { useCart, Product } from '@/contexts/CartContext';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -15,7 +15,7 @@ import { useSalePromotion } from '@/contexts/SalePromotionContext';
 import { salePrices, salePromotionStrings } from '@/lib/sale-promotion';
 import { OPTION_PAD } from '@/components/v2/OptionTrack';
 import { sizeLabel } from '@/components/PrintCard';
-import { basketBarVisible } from '@/lib/basket-bar';
+import { basketBarShown } from '@/lib/basket-bar';
 
 const EN: ProductActionsStrings & { assurance: NonNullable<ProductActionsStrings['assurance']> } = {
   size: 'Size',
@@ -84,11 +84,6 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings
   const [selectedFrame, setSelectedFrame] = useState<string>('no-frame');
   const groupId = useId();
   const saleActive = useSalePromotion();
-  // Phone basket bar (lib/basket-bar.ts): starts hidden, as if the button were
-  // on screen, so the server HTML and the first paint carry no bar.
-  const mainButtonRef = useRef<HTMLDivElement>(null);
-  const [mainButtonInView, setMainButtonInView] = useState(true);
-  const [footerInView, setFooterInView] = useState(false);
 
   // Memoised because the array's identity feeds the useEffect below: a fresh
   // array every render would re-run the effect every render.
@@ -163,25 +158,7 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings
     ) : formatPrice(totalPrices)
   ) : undefined;
 
-  // Watch the main button and the site footer. The bar shows only while the
-  // button is off screen (above or below) and steps aside when the footer
-  // arrives, so it never sits on the footer's links for good.
-  useEffect(() => {
-    if (typeof IntersectionObserver === 'undefined') return;
-    const button = mainButtonRef.current;
-    const footers = document.querySelectorAll('footer');
-    const footer = footers[footers.length - 1];
-    const observer = new IntersectionObserver(entries => {
-      for (const entry of entries) {
-        if (entry.target === button) setMainButtonInView(entry.isIntersecting);
-        else if (entry.target === footer) setFooterInView(entry.isIntersecting);
-      }
-    });
-    if (button) observer.observe(button);
-    if (footer) observer.observe(footer);
-    return () => observer.disconnect();
-  }, []);
-  const showBar = basketBarVisible({ mainButtonInView, footerInView, canAdd: Boolean(canAdd) });
+  const showBar = basketBarShown({ canAdd: Boolean(canAdd) });
   const frameLabel = (id: string) => t.frameLabels?.[id] ?? frameOptions.find(f => f.id === id)?.name ?? id;
 
   // "worldwide from £4.50 unframed": the store's cheapest delivery outside
@@ -270,7 +247,7 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings
         )}
       </fieldset>
 
-      <div ref={mainButtonRef} className="p-[3px]">
+      <div className="p-[3px]">
         <Button
           onClick={() => handleAddToCart('main')}
           disabled={!canAdd}
@@ -285,9 +262,13 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings
       </div>
 
       {/* Phone basket bar (experiment basket-in-view): the main button again,
-          pinned to the bottom while the main one is off screen. Phones only
-          (tab:hidden). z-30 keeps it under the feedback card (z-40), the
-          basket panel and lightbox (z-50) and the consent banner (z-60). */}
+          pinned to the bottom of the screen at all times. Phones only
+          (tab:hidden); the body gets matching bottom padding in globals.css
+          (body:has([data-basket-bar])) so the footer never sits under it.
+          z-30 keeps it under the feedback card (z-40), the basket panel and
+          lightbox (z-50) and the consent banner (z-60). Not a
+          data-primary-cta: it is always on screen, so marking it would stop
+          the feedback card ever showing on a phone product page. */}
       {showBar && (
         <div
           data-basket-bar
@@ -298,7 +279,6 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings
               onClick={() => handleAddToCart('bar')}
               fullWidth
               price={priceNode}
-              data-primary-cta="add-to-cart-bar"
             >
               {t.addToCart}
             </Button>
