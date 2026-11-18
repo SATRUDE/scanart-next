@@ -3,7 +3,8 @@ import { TrackedLink } from '@/components/TrackedLink';
 import { ProductActions } from '@/components/ProductActions';
 import type { DeliveryGuide } from '@/lib/delivery-guide';
 import { ProductImageGalleryWrapper } from '@/components/ProductImageGalleryWrapper';
-import { PrintCard } from '@/components/PrintCard';
+import { PrintRow } from '@/components/v2/prints/PrintRow';
+import { allByArtist } from '@/lib/related-prints';
 import { sizeLabel } from '@/components/v2/product/artist-facts';
 import { LandingCrossLinks } from '@/components/LandingCrossLinks';
 import { FeedbackIntercept } from '@/components/FeedbackIntercept';
@@ -35,6 +36,8 @@ export interface ProductViewProps {
   /** The artist's published prints, for the fact rows. */
   artistFacts?: { sizes: string[]; count: number; lowestPrices: CurrencyPrices };
   recommended: Product[];
+  /** Three buyable prints for the row under Add to basket (lib/related-prints.ts). */
+  related?: Product[];
   exploreArtists: { slug: string; name: string }[];
   strings: ProductPageStrings;
   galleryStrings?: GalleryStrings;
@@ -75,6 +78,7 @@ export function ProductView({
   artistStatement,
   artistFacts,
   recommended,
+  related = [],
   exploreArtists,
   strings: t,
   galleryStrings,
@@ -155,6 +159,21 @@ export function ProductView({
           <ProductActions product={product} strings={actionsStrings} deliveryGuide={deliveryGuide} locale={locale} />
           <FeedbackIntercept placement="product" />
 
+          {/* Three prints right under the buying controls: phone visitors who
+              stayed went looking for other prints (Meta ad recordings, Nov
+              2026). The same header and row as "More prints like this", at
+              the same size (Mark, 18 Nov 2026: "not so tiny"). The panel is
+              narrow from tablet up, so the row keeps scrolling there. */}
+          {related.length > 0 && (
+            <section aria-labelledby="related-prints">
+              <SectionHeader
+                id="related-prints"
+                title={artist && allByArtist(related, product.artistId) ? fill(t.moreByArtist, { name: artist.name }) : t.youMayAlsoLike}
+              />
+              <PrintRow className="mt-band" products={related} from={product.slug} locale={locale} placement="under-basket" fit="column" />
+            </section>
+          )}
+
           <div className="flex flex-col">
             <Question question={t.questions.details} size="small" as="h2">
               <p>{fill(t.detailsBody, { sizes: sizes.join(', ') })}</p>
@@ -220,22 +239,13 @@ export function ProductView({
       {recommended.length > 0 && (
         <section aria-labelledby="more-prints" className="mt-section">
           <SectionHeader id="more-prints" title={t.moreLikeThis} link={categoryLink ? { href: categoryLink.href, label: fill(t.allInCategory, { label: categoryLink.label.toLowerCase() }) } : undefined} />
-          {/* Desktop: three columns, top edges aligned, each print at its own
-              ratio. Mobile: one row that runs off the right edge. */}
-          <ul className="-mr-margin mt-band flex gap-3 overflow-x-auto scrollbar-hide tab:mr-0 tab:grid tab:grid-cols-2 tab:gap-x-gutter tab:gap-y-band tab:overflow-visible desk:grid-cols-3">
-            {recommended.map(rec => (
-              <li key={rec.id} className="w-[240px] shrink-0 tab:w-auto">
-                <TrackedLink event="related-product-click" eventData={{ from: product.slug, to: rec.slug }} href={`${prefix}/product/${rec.slug}`}>
-                  <PrintCard
-                    product={rec}
-                    locale={locale}
-                    sizes="(max-width: 833px) 240px, (max-width: 1199px) 50vw, 405px"
-                    {...(outOfStockLabel ? { outOfStockLabel } : {})}
-                  />
-                </TrackedLink>
-              </li>
-            ))}
-          </ul>
+          <PrintRow
+            className="mt-band"
+            products={recommended}
+            from={product.slug}
+            locale={locale}
+            {...(outOfStockLabel ? { outOfStockLabel } : {})}
+          />
         </section>
       )}
 
