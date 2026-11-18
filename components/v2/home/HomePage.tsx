@@ -328,9 +328,10 @@ export function HomePage({ locale, strings: t, data, help, artistLocations = {},
           <h2 id="questions" className="type-h2">{t.questions.heading}</h2>
         </div>
         <div className="mt-6 border-b border-ink tab:mt-band desk:col-span-8 desk:col-start-5 desk:row-span-2 desk:row-start-1 desk:mt-0">
-          {HOME_QUESTIONS.map(([g, j], i) => {
-            const item = help[g]?.items[j];
-            if (!item) return null;
+          {[
+            ...HOME_QUESTIONS.map(([g, j]) => help[g]?.items[j]).filter((item) => item !== undefined),
+            ...(t.questions.about ? [t.questions.about] : []),
+          ].map((item: { q: string; a: string; link?: { href: string; label: string } }, i) => {
             return (
               <details key={item.q} open={i === 0} className="group/q border-t border-line desk:border-ink">
                 <summary className="flex cursor-pointer list-none items-start gap-4 py-4 desk:gap-gutter desk:py-6 [&::-webkit-details-marker]:hidden">
@@ -341,7 +342,14 @@ export function HomePage({ locale, strings: t, data, help, artistLocations = {},
                     <span className="hidden group-open/q:inline">−</span>
                   </span>
                 </summary>
-                <div className="pb-6 type-body tab:max-w-[624px] desk:max-w-[624px] desk:pb-band desk:pl-[109px]">{item.a}</div>
+                <div className="pb-6 type-body tab:max-w-[624px] desk:max-w-[624px] desk:pb-band desk:pl-[109px]">
+                  {item.a}
+                  {item.link && (
+                    <div className="mt-4">
+                      <TextLink href={item.link.href} size="body">{item.link.label}</TextLink>
+                    </div>
+                  )}
+                </div>
               </details>
             );
           })}
