@@ -113,6 +113,17 @@ describe('wiring', () => {
     expect(view.match(/fit="column"/g)).toHaveLength(1);
   });
 
+  // Mark, 18 Nov 2026: "it can be scrolled up and down instead of just left
+  // and right". overflow-x: auto alone makes overflow-y auto as well, so the
+  // row must close the vertical axis itself and never claim every touch axis.
+  it('scrolls sideways only on phones, without taking the page scroll', () => {
+    expect(row).toMatch(/overflow-x-auto overflow-y-hidden overscroll-x-contain/);
+    expect(row).toContain('snap-x snap-mandatory');
+    expect(row).toContain('snap-start');
+    expect(row).not.toMatch(/snap-y|snap-both|touch-none|touch-action/);
+    expect(row).toContain('className="block"');
+  });
+
   it('adds no scroll or visibility watcher (sticky controls never come and go)', () => {
     for (const src of [view, row]) {
       expect(src).not.toContain('IntersectionObserver');

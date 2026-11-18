@@ -18,6 +18,17 @@ import type { Product } from '@/contexts/CartContext';
  *   so it stays the phone's scrolling row of 240 px cards at every width,
  *   ending on the column's edge from tablet up.
  *
+ * Where it scrolls it scrolls sideways only (Mark, 18 Nov 2026: "it can be
+ * scrolled up and down instead of just left and right"). `overflow-x: auto`
+ * alone turns `overflow-y` into `auto` too, so iOS Safari let the row be
+ * dragged up and down, sliding the cards up inside it and leaving an empty
+ * band under them. `overflow-y: hidden` closes that axis; the row is as tall
+ * as its tallest card, so it hides nothing real. The link is a block, not
+ * an inline box wrapped round the card, so the card alone sets each item's
+ * height; the row snaps card by card on x only, and `overscroll-x-contain`
+ * keeps a sideways fling from pulling the page or the browser's back swipe.
+ * No touch override either: the page still scrolls vertically over the row.
+ *
  * No 'use client': it has no state, so it renders on the server.
  */
 export function PrintRow({
@@ -43,13 +54,14 @@ export function PrintRow({
   const page = fit === 'page';
   return (
     <ul
-      className={`-mr-margin flex gap-3 overflow-x-auto scrollbar-hide tab:mr-0 ${
-        page ? 'tab:grid tab:grid-cols-2 tab:gap-x-gutter tab:gap-y-band tab:overflow-visible desk:grid-cols-3' : ''
+      className={`-mr-margin flex snap-x snap-mandatory gap-3 overflow-x-auto overflow-y-hidden overscroll-x-contain scrollbar-hide tab:mr-0 ${
+        page ? 'tab:grid tab:snap-none tab:grid-cols-2 tab:gap-x-gutter tab:gap-y-band tab:overflow-visible desk:grid-cols-3' : ''
       } ${className}`}
     >
       {products.map(p => (
-        <li key={p.id} className={`w-[240px] shrink-0 ${page ? 'tab:w-auto' : ''}`}>
+        <li key={p.id} className={`w-[240px] shrink-0 snap-start ${page ? 'tab:w-auto' : ''}`}>
           <TrackedLink
+            className="block"
             event="related-product-click"
             eventData={placement ? { from, to: p.slug, placement } : { from, to: p.slug }}
             href={`${prefix}/product/${p.slug}`}
