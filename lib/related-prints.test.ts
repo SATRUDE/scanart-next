@@ -89,10 +89,28 @@ describe('wiring', () => {
 
   it('reuses one row module and the existing print card for both rows', () => {
     expect(view.match(/<PrintRow\b/g)).toHaveLength(2);
-    expect(view).toContain('layout="three"');
     expect(view).not.toContain('<PrintCard');
     expect(row).toContain('<PrintCard');
-    expect(row).toContain("variant={three ? 'compact' : 'default'}");
+  });
+
+  // Mark, 18 Nov 2026: "more like this part so it's not so tiny". The row
+  // under the button uses the same section header and the same scrolling row
+  // of full-size cards as "More prints like this", with no layout or card
+  // variant of its own.
+  it('shows the prints under the button at the same size and with the same header as "More prints like this"', () => {
+    const related = view.slice(view.indexOf('aria-labelledby="related-prints"'), view.indexOf('t.questions.details'));
+    expect(related).toContain('<SectionHeader');
+    expect(related).toContain('id="related-prints"');
+    expect(related).toContain('className="mt-band"');
+    expect(view).not.toMatch(/layout=/);
+    expect(row).not.toMatch(/layout\??:|'three'|compact/);
+    expect(row).toContain("fit?: 'page' | 'column'");
+    expect(read('components/PrintCard.tsx')).not.toContain('compact');
+    expect(row).toContain('w-[240px] shrink-0');
+    // The panel is narrow from tablet up: the row keeps scrolling there
+    // rather than squeezing three cards into four columns.
+    expect(related).toContain('fit="column"');
+    expect(view.match(/fit="column"/g)).toHaveLength(1);
   });
 
   it('adds no scroll or visibility watcher (sticky controls never come and go)', () => {

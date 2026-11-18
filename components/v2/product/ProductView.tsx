@@ -161,15 +161,16 @@ export function ProductView({
 
           {/* Three prints right under the buying controls: phone visitors who
               stayed went looking for other prints (Meta ad recordings, Nov
-              2026). In the page flow after ProductActions, so it sits under
-              the price and the button here, and under the price block once
-              the phone basket bar (#292) hides the in-page button. */}
+              2026). The same header and row as "More prints like this", at
+              the same size (Mark, 18 Nov 2026: "not so tiny"). The panel is
+              narrow from tablet up, so the row keeps scrolling there. */}
           {related.length > 0 && (
-            <section aria-labelledby="related-prints" className="flex flex-col gap-3">
-              <h2 id="related-prints" className="type-body">
-                {artist && allByArtist(related, product.artistId) ? fill(t.moreByArtist, { name: artist.name }) : t.youMayAlsoLike}
-              </h2>
-              <PrintRow products={related} from={product.slug} locale={locale} layout="three" placement="under-basket" />
+            <section aria-labelledby="related-prints">
+              <SectionHeader
+                id="related-prints"
+                title={artist && allByArtist(related, product.artistId) ? fill(t.moreByArtist, { name: artist.name }) : t.youMayAlsoLike}
+              />
+              <PrintRow className="mt-band" products={related} from={product.slug} locale={locale} placement="under-basket" fit="column" />
             </section>
           )}
 
