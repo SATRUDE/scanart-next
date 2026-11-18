@@ -5,6 +5,7 @@ import { TrackedLink } from '@/components/TrackedLink';
 import { getAllArticles, getArticleBySlug, getArticleBlocks } from '@/lib/articles';
 import { getShopProductBySlug as getProductBySlug, getProductsByArtworkIds } from '@/lib/products';
 import { resolvePrintFeatures } from '@/lib/article-prints';
+import { applyBuyingLinks } from '@/lib/article-buying-links';
 import { getArtistById } from '@/data/artists';
 import { ArticleBody } from '@/components/ArticleBody';
 import { ArticleCard } from '@/components/ArticleCard';
@@ -93,7 +94,8 @@ export default async function ArticlePage({
 
   // Any `::print[slug]` in the body is filled from the published catalogue at
   // build, so the feature is static HTML like the rest of the article.
-  const blocks = await resolvePrintFeatures(await getArticleBlocks(article.id));
+  // Then the chosen words become links to the buying pages (lib/article-buying-links.ts).
+  const blocks = applyBuyingLinks(await resolvePrintFeatures(await getArticleBlocks(article.id)), article.slug);
   const browseLinks = getBrowseLinksForArticle(article.slug);
   const featuredPrints = await getProductsByArtworkIds(article.selectedArtworkIds || []);
   const allArticles = await getAllArticles();

@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
 import { siteMetadata } from '@/app/site-metadata';
-import { ARTICLE_META_TITLES } from '@/lib/article-meta';
+import { ARTICLE_META_DESCRIPTIONS, ARTICLE_META_TITLES } from '@/lib/article-meta';
 import { categoryLandings } from '@/lib/categories';
 import { collections } from '@/lib/collections';
 import { no } from '@/lib/i18n/no';
@@ -65,6 +65,12 @@ describe('search titles and descriptions (T-0174, T-0178)', () => {
       title: rendered(no.artistsIndex.meta.title),
       description: no.artistsIndex.meta.description,
     },
+    // T-0531 / T-0532 (18 Nov 2026).
+    ...(['what-is-scandinavian-art', 'bedroom-wall-art-ideas'] as const).map((slug) => ({
+      page: `/article/${slug}`,
+      title: rendered(ARTICLE_META_TITLES[slug]),
+      description: ARTICLE_META_DESCRIPTIONS[slug],
+    })),
   ];
 
   it.each(cases)('$page fits the title and description budget', ({ title, description }) => {
@@ -90,6 +96,12 @@ describe('search titles and descriptions (T-0174, T-0178)', () => {
     );
     expect(rendered(ARTICLE_META_TITLES['best-scandinavian-art-prints'])).toBe(
       'Best Scandinavian Art Prints: Five Picks by Nordic Artists',
+    );
+    expect(rendered(ARTICLE_META_TITLES['what-is-scandinavian-art'])).toBe(
+      'What Is Scandinavian Art? From the Vikings to Munch and Now',
+    );
+    expect(rendered(ARTICLE_META_TITLES['bedroom-wall-art-ideas'])).toBe(
+      'Bedroom Wall Art Ideas: What to Hang Above the Bed',
     );
     // Too long for the suffix, so metaTitle drops it rather than cut the words.
     expect(rendered(no.artistsIndex.meta.title)).toBe('Skandinaviske illustratører og fotografer');
