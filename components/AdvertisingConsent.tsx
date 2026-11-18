@@ -80,23 +80,30 @@ function AdvertisingPrompt({ locale }: { locale: 'en' | 'no' }) {
   return (
     <>
     <noscript><style>{'#advertising-consent { display: none; }'}</style></noscript>
+    {/* Phones: a slim bar (one short paragraph, the two choices side by side)
+        so the print's name and price stay on the first screen; on a product
+        page the old stacked panel covered everything under the picture.
+        Tablet and desktop are unchanged. Same copy, same two choices with the
+        same weight, nothing pre-chosen, and still nothing loads until Accept. */}
     <section
       id="advertising-consent"
       ref={region}
       tabIndex={-1}
       aria-labelledby="advertising-consent-title"
-      className="fixed inset-x-0 bottom-0 z-[60] max-h-[80dvh] overflow-y-auto border-t border-ink bg-bg page-x py-6 shadow-lg focus:outline-none"
+      className="fixed inset-x-0 bottom-0 z-[60] max-h-[80dvh] overflow-y-auto border-t border-ink bg-bg page-x pt-3 pb-[calc(12px+env(safe-area-inset-bottom))] shadow-lg focus:outline-none tab:py-6"
     >
-      <div className="mx-auto flex max-w-7xl flex-col gap-5 desk:flex-row desk:items-center desk:gap-10">
+      <div className="mx-auto flex max-w-7xl flex-col gap-[10px] tab:gap-5 desk:flex-row desk:items-center desk:gap-10">
         <div className="flex-1">
-          <h2 id="advertising-consent-title" className="type-h3">{t.title}</h2>
-          <p className="mt-2 type-small max-w-3xl">{t.body}</p>
-          <Link href={locale === 'no' ? '/no/privacy#advertising' : '/privacy#advertising'} className="mt-2 inline-block type-small underline underline-offset-4">{t.privacy}</Link>
-          {error && <p role="alert" className="mt-2 type-small">{t.error}</p>}
+          <h2 id="advertising-consent-title" className="sr-only tab:not-sr-only type-h3">{t.title}</h2>
+          <p className="type-caption tab:mt-2 tab:type-small max-w-3xl">
+            {t.body}{' '}
+            <Link href={locale === 'no' ? '/no/privacy#advertising' : '/privacy#advertising'} className="underline underline-offset-4 tab:mt-2 tab:block tab:w-fit">{t.privacy}</Link>
+          </p>
+          {error && <p role="alert" className="mt-2 type-caption tab:type-small">{t.error}</p>}
         </div>
-        <div className="flex flex-col gap-3 tab:flex-row desk:shrink-0">
-          <Button variant="secondary" onClick={() => choose('rejected')}>{t.reject}</Button>
-          <Button variant="secondary" onClick={() => choose('accepted')}>{t.accept}</Button>
+        <div className="grid grid-cols-2 gap-3 tab:flex tab:flex-row desk:shrink-0">
+          <Button variant="secondary" size="compact" onClick={() => choose('rejected')}>{t.reject}</Button>
+          <Button variant="secondary" size="compact" onClick={() => choose('accepted')}>{t.accept}</Button>
         </div>
       </div>
     </section>

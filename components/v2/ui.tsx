@@ -42,18 +42,22 @@ type ButtonBase = {
   price?: React.ReactNode;
   className?: string;
   fullWidth?: boolean;
+  /** Regular: 16/24 padding everywhere. Compact: 10/16 on phones, regular from
+   *  tablet up, for a slim bar that must not cover the page (the consent bar). */
+  size?: 'regular' | 'compact';
 };
 type ButtonAsLink = ButtonBase & { href: string; prefetch?: boolean } & Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'href' | 'children'>;
 type ButtonAsButton = ButtonBase & { href?: undefined } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 /** Button 12:91. Body 16/24 padding, Label type; the 3 px outer pad leaves room for the 2 px focus ring. */
 export function Button(props: ButtonAsLink | ButtonAsButton) {
-  const { children, variant = 'primary', price, className = '', fullWidth, ...rest } = props;
+  const { children, variant = 'primary', price, className = '', fullWidth, size = 'regular', ...rest } = props;
+  const pad = size === 'compact' ? 'px-4 py-[10px] tab:px-6 tab:py-4' : 'px-6 py-4';
   const body =
     variant === 'primary'
-      ? 'bg-ink text-on-primary hover:bg-primary-hover px-6 py-4'
+      ? `bg-ink text-on-primary hover:bg-primary-hover ${pad}`
       : variant === 'secondary'
-        ? 'border border-ink text-ink hover:bg-surface-strong px-6 py-4'
+        ? `border border-ink text-ink hover:bg-surface-strong ${pad}`
         : 'text-ink hover:text-brand py-1';
   const cls = `inline-flex items-center justify-center gap-3 type-label whitespace-nowrap transition-colors disabled:opacity-40 aria-disabled:opacity-40 ${body} ${fullWidth ? 'w-full' : ''} ${className}`;
   const inner = (
