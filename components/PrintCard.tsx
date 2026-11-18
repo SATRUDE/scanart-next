@@ -54,6 +54,13 @@ interface PrintCardProps {
   locale?: AltLocale;
   /** The card title's heading level: h3 under a section h2 (the default), h2 directly under the page H1. */
   headingLevel?: 'h2' | 'h3';
+  /**
+   * Default: title and price side by side, artist and size underneath.
+   * Compact: for a narrow column (three across in the product page's buying
+   * panel), the title then the price, each on its own line in Small, with no
+   * artist line (the row's heading names the artist).
+   */
+  variant?: 'default' | 'compact';
 }
 
 const DEFAULT_SIZES = '(max-width: 833px) 100vw, (max-width: 1199px) 50vw, 33vw';
@@ -92,6 +99,7 @@ export const PrintCard: React.FC<PrintCardProps> = ({
   outOfStockLabel = 'Out of stock',
   locale = 'en',
   headingLevel = 'h3',
+  variant = 'default',
 }) => {
   // The picker's country prices every card unless a caller overrides it, so
   // every template quotes the buyer's own currency.
@@ -152,6 +160,12 @@ export const PrintCard: React.FC<PrintCardProps> = ({
           </div>
         )}
       </div>
+      {variant === 'compact' ? (
+        <div className="type-small">
+          <Title className="truncate type-small">{product.name}</Title>
+          <p><ShopPrice amount={getLowestProductPrices(product)[activeCurrency]} currency={activeCurrency} /></p>
+        </div>
+      ) : (
       <div>
         <div className="flex items-start justify-between gap-4 type-body">
           <Title className="type-body">{product.name}</Title>
@@ -170,6 +184,7 @@ export const PrintCard: React.FC<PrintCardProps> = ({
           ? <p className="mt-1 type-caption">{locale === 'no' ? 'Kommer snart' : 'Coming soon'}</p>
           : !product.inStock && <p className="mt-1 type-caption">{outOfStockLabel}</p>}
       </div>
+      )}
     </div>
   );
 };

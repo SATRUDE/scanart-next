@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getShopProducts as getAllProducts, getShopProductBySlug as getProductBySlug, getShopRecommendedProducts as getRecommendedProducts, getShopProductsByArtist as getProductsByArtist } from '@/lib/products';
+import { getShopProducts as getAllProducts, getShopProductBySlug as getProductBySlug, getShopRecommendedProducts as getRecommendedProducts } from '@/lib/products';
+import { collections } from '@/lib/collections';
+import { pickRelatedPrints, withoutShown } from '@/lib/related-prints';
 import { getArtistById } from '@/data/artists';
 import { getLowestProductPrices } from '@/lib/pricing';
 import { priceValidUntil } from '@/lib/price-validity';
@@ -117,7 +119,11 @@ export default async function ProductPage({
   const listingDetails = productListingDetails(product, 'en');
 
   const landing = getCategoryLandingByCategory(product.category);
-  const artistProducts = artist ? await getProductsByArtist(artist.id) : [];
+  // One read of the shop serves the artist facts and the three prints under
+  // Add to basket (lib/related-prints.ts).
+  const shop = await getAllProducts();
+  const artistProducts = artist ? shop.filter(p => p.artistId === artist.id) : [];
+  const related = pickRelatedPrints(product, shop, collections);
   const exploreArtists = (await getPublishedArtists()).map(a => ({ slug: a.slug, name: a.name }));
 
   // Delivery "from" prices, from the store checkout charges from.
@@ -140,7 +146,8 @@ export default async function ProductPage({
         artist={artist ?? null}
         artistStatement={artist ? artistStatements[artist.slug] : undefined}
         artistFacts={artistFactsFor(artistProducts)}
-        recommended={recommended}
+        recommended={withoutShown(recommended, related)}
+        related={related}
         exploreArtists={exploreArtists}
         strings={productPageEn}
       />
