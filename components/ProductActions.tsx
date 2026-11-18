@@ -15,7 +15,7 @@ import { useSalePromotion } from '@/contexts/SalePromotionContext';
 import { salePrices, salePromotionStrings } from '@/lib/sale-promotion';
 import { OPTION_PAD } from '@/components/v2/OptionTrack';
 import { sizeLabel } from '@/components/PrintCard';
-import { basketBarShown } from '@/lib/basket-bar';
+import { addButtonState } from '@/lib/basket-bar';
 
 const EN: ProductActionsStrings & { assurance: NonNullable<ProductActionsStrings['assurance']> } = {
   size: 'Size',
@@ -105,9 +105,10 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings
     }
   }, [availableSizes, selectedSize]);
 
-  // One handler for the main button and the phone basket bar, so a tap on
-  // either is the same add: same basket line, same add-to-cart event, same
-  // basket opening (and so the same cart-open). `placement` says which was tapped.
+  // One handler for the in-page button (tablet up) and the phone basket bar,
+  // so a tap on either is the same add: same basket line, same add-to-cart
+  // event, same basket opening (and so the same cart-open). `placement` says
+  // which was tapped.
   const handleAddToCart = (placement: 'main' | 'bar') => {
     if (product.published === false) return;
     if (product.sizes && !selectedSize) return;
@@ -148,7 +149,13 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings
   const sale = salePromotionStrings[locale];
 
   const hasAvailableSizes = availableSizes.length > 0;
-  const canAdd = product.published !== false && hasAvailableSizes && !(product.sizes && !selectedSize);
+  const addButton = addButtonState({
+    published: product.published !== false,
+    hasAvailableSizes,
+    needsSize: Boolean(product.sizes) && !selectedSize,
+    locale,
+    strings: t,
+  });
   const priceNode = hasAvailableSizes && selectedSize ? (
     onSale ? (
       <span className="inline-flex items-baseline gap-2">
@@ -158,7 +165,6 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings
     ) : formatPrice(totalPrices)
   ) : undefined;
 
-  const showBar = basketBarShown({ canAdd: Boolean(canAdd) });
   const frameLabel = (id: string) => t.frameLabels?.[id] ?? frameOptions.find(f => f.id === id)?.name ?? id;
 
   // "worldwide from £4.50 unframed": the store's cheapest delivery outside
@@ -247,44 +253,51 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings
         )}
       </fieldset>
 
-      <div className="p-[3px]">
+      {/* The in-page button: tablet and desktop only (hidden tab:block). On a
+          phone the basket bar below is the one add button, so the two never
+          show together; the flex gap closes up, so the assurance lines follow
+          the frame options directly. */}
+      <div data-basket-main className="hidden p-[3px] tab:block">
         <Button
           onClick={() => handleAddToCart('main')}
-          disabled={!canAdd}
+          disabled={addButton.disabled}
           fullWidth
           price={priceNode}
           // Watched by FeedbackIntercept: the card refuses to render if it would
           // cover this. Occlusion is the test, not co-presence.
           data-primary-cta="add-to-cart"
         >
-          {product.published === false ? (locale === 'no' ? 'Kommer snart' : 'Coming soon') : !hasAvailableSizes ? t.soldOut : (product.sizes && !selectedSize) ? t.selectSize : t.addToCart}
+          {addButton.label}
         </Button>
       </div>
 
-      {/* Phone basket bar (experiment basket-in-view): the main button again,
-          pinned to the bottom of the screen at all times. Phones only
-          (tab:hidden); the body gets matching bottom padding in globals.css
+      {/* Phone basket bar (experiment basket-in-view): the only add button on
+          a phone, pinned to the bottom of the screen at all times, in every
+          state the in-page button has (Coming soon, Sold out, Select a size
+          show disabled, exactly as there). Phones only (tab:hidden); the body
+          gets matching bottom padding in globals.css
           (body:has([data-basket-bar])) so the footer never sits under it.
           z-30 keeps it under the feedback card (z-40), the basket panel and
-          lightbox (z-50) and the consent banner (z-60). Not a
-          data-primary-cta: it is always on screen, so marking it would stop
-          the feedback card ever showing on a phone product page. */}
-      {showBar && (
-        <div
-          data-basket-bar
-          className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-bg px-[calc(var(--sa-margin)-3px)] pt-2 pb-[calc(0.5rem+env(safe-area-inset-bottom))] tab:hidden"
-        >
-          <div className="p-[3px]">
-            <Button
-              onClick={() => handleAddToCart('bar')}
-              fullWidth
-              price={priceNode}
-            >
-              {t.addToCart}
-            </Button>
-          </div>
+          lightbox (z-50) and the consent banner (z-60). It is a primary CTA
+          for FeedbackIntercept like the in-page button; on phones the card
+          and pill are lifted clear above the bar in globals.css, so the card
+          still shows and never covers the only way to buy. */}
+      <div
+        data-basket-bar
+        className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-bg px-[calc(var(--sa-margin)-3px)] pt-2 pb-[calc(0.5rem+env(safe-area-inset-bottom))] tab:hidden"
+      >
+        <div className="p-[3px]">
+          <Button
+            onClick={() => handleAddToCart('bar')}
+            disabled={addButton.disabled}
+            fullWidth
+            price={priceNode}
+            data-primary-cta="add-to-cart"
+          >
+            {addButton.label}
+          </Button>
         </div>
-      )}
+      </div>
 
       <ul className="flex flex-col gap-[6px] tab:gap-1">
         {[freeLine, t.assurance.printed, deliveryLine, t.assurance.returns].map(line => (

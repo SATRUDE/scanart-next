@@ -245,7 +245,7 @@ function FeedbackInterceptForPath({
 
   if (step === 'pill') {
     return (
-      <div className="fixed bottom-4 right-4 z-40">
+      <div data-feedback-float className="fixed bottom-4 right-4 z-40">
         <button
           type="button"
           onClick={() => setStep('invitation')}
@@ -260,6 +260,9 @@ function FeedbackInterceptForPath({
   return (
     <div
       ref={cardRef}
+      // On a phone product page the basket bar is pinned to the bottom, so
+      // globals.css lifts anything marked data-feedback-float clear above it.
+      data-feedback-float
       // z-40 deliberately: the cart sheet and the image lightbox are z-50 and
       // must always be able to cover this.
       className="fixed bottom-4 right-4 z-40 w-[calc(100%-2rem)] max-w-sm rounded-lg border border-border bg-card p-4 shadow-lg motion-safe:animate-in motion-safe:slide-in-from-bottom-2 sm:w-80"
@@ -399,6 +402,9 @@ function overlapsPrimaryCta(card: HTMLElement | null): boolean {
   const a = card.getBoundingClientRect();
   return Array.from(document.querySelectorAll('[data-primary-cta]')).some(el => {
     const b = el.getBoundingClientRect();
+    // A CTA hidden at this width (the in-page Add to basket on a phone, the
+    // basket bar from tablet up) has an empty rect and cannot be covered.
+    if (b.width === 0 && b.height === 0) return false;
     return !(a.right < b.left || a.left > b.right || a.bottom < b.top || a.top > b.bottom);
   });
 }

@@ -334,6 +334,12 @@
   body:has([data-basket-bar]) {
     padding-bottom: calc(75px + env(safe-area-inset-bottom));
   }
+  /* The feedback card and pill (components/FeedbackIntercept.tsx) sit 1rem
+     above the bar instead of over it: the bar is the only add button on a
+     phone, and the card must never cover it. */
+  body:has([data-basket-bar]) [data-feedback-float] {
+    bottom: calc(75px + env(safe-area-inset-bottom) + 1rem);
+  }
 }
 
 .scrollbar-hide {
