@@ -7,16 +7,13 @@ import type { Product } from '@/contexts/CartContext';
  * row that runs off the right edge, two columns on tablet, three on desktop,
  * top edges aligned and each print at its own ratio.
  *
- * The product page uses it twice: the prints under Add to basket and "More
- * prints like this" further down, with the same cards at the same size (Mark,
- * 18 Nov 2026: "more like this part so it's not so tiny").
- *
- * `fit` is the width the row sits in:
- * - `page` (the default): the full content width, as described above.
- * - `column`: a narrow column such as the buying panel (half the page on
- *   tablet, four columns on desktop). A grid there would squeeze the cards,
- *   so it stays the phone's scrolling row of 240 px cards at every width,
- *   ending on the column's edge from tablet up.
+ * The product page uses it twice: the related prints and "More prints like
+ * this" further down, with the same cards at the same size (Mark, 18 Nov 2026:
+ * "more like this part so it's not so tiny"). It always sits on the page's
+ * content width: the related prints scroll in the buying panel on phones only
+ * and move under the product as a full row from tablet up (Mark, 18 Nov 2026:
+ * "on desktop it's broken and should be a full row"), so there is no narrow
+ * column version any more.
  *
  * Where it scrolls it scrolls sideways only (Mark, 18 Nov 2026: "it can be
  * scrolled up and down instead of just left and right"). `overflow-x: auto`
@@ -36,7 +33,6 @@ export function PrintRow({
   from,
   locale = 'en',
   placement,
-  fit = 'page',
   outOfStockLabel,
   className = '',
 }: {
@@ -46,20 +42,16 @@ export function PrintRow({
   locale?: 'en' | 'no';
   /** Added to the click event when a page has more than one row. */
   placement?: string;
-  fit?: 'page' | 'column';
   outOfStockLabel?: string;
   className?: string;
 }) {
   const prefix = locale === 'no' ? '/no' : '';
-  const page = fit === 'page';
   return (
     <ul
-      className={`-mr-margin flex snap-x snap-mandatory gap-3 overflow-x-auto overflow-y-hidden overscroll-x-contain scrollbar-hide tab:mr-0 ${
-        page ? 'tab:grid tab:snap-none tab:grid-cols-2 tab:gap-x-gutter tab:gap-y-band tab:overflow-visible desk:grid-cols-3' : ''
-      } ${className}`}
+      className={`-mr-margin flex snap-x snap-mandatory gap-3 overflow-x-auto overflow-y-hidden overscroll-x-contain scrollbar-hide tab:mr-0 tab:grid tab:snap-none tab:grid-cols-2 tab:gap-x-gutter tab:gap-y-band tab:overflow-visible desk:grid-cols-3 ${className}`}
     >
       {products.map(p => (
-        <li key={p.id} className={`w-[240px] shrink-0 snap-start ${page ? 'tab:w-auto' : ''}`}>
+        <li key={p.id} className="w-[240px] shrink-0 snap-start tab:w-auto">
           <TrackedLink
             className="block"
             event="related-product-click"
@@ -69,7 +61,7 @@ export function PrintRow({
             <PrintCard
               product={p}
               locale={locale}
-              sizes={page ? '(max-width: 833px) 240px, (max-width: 1199px) 50vw, 405px' : '240px'}
+              sizes="(max-width: 833px) 240px, (max-width: 1199px) 50vw, 405px"
               {...(outOfStockLabel ? { outOfStockLabel } : {})}
             />
           </TrackedLink>
