@@ -2,14 +2,19 @@ import { feedAdditionalImages } from '@/lib/feed-images';
 import { getAllProducts } from '@/lib/products';
 import { getLowestProductPrices } from '@/lib/pricing';
 import { productListingDetails } from '@/lib/product-listing-details';
+import { unframedOffer } from '@/lib/sale-promotion';
+import { isSaleOn } from '@/lib/server/sale-promotion';
 import { BASE_URL } from '@/lib/site';
 
 // Google Merchant Center product feed (RSS 2.0 + g: namespace) for free
 // listings on the Shopping tab and image-search overlays. One item per print
 // at its lowest GBP price; art prints have no GTIN/MPN, so identifier_exists
 // is false and brand carries the artist. Prerendered at build like the rest
-// of the catalogue (products are baked JSON), so it updates on deploy.
+// of the catalogue (products are baked JSON), so it updates on deploy, and
+// regenerated at most every ten minutes after that so the sale price below
+// follows NORDIC20 being switched on or off in the store without a deploy.
 export const dynamic = 'force-static';
+export const revalidate = 600;
 
 const GOOGLE_PRODUCT_CATEGORY = 'Home & Garden > Decor > Artwork > Posters, Prints, & Visual Artwork';
 
@@ -31,11 +36,21 @@ function esc(s: string): string {
 
 export async function GET() {
   const products = await getAllProducts();
+  // While NORDIC20 is on, every item is on sale: the sale is 20% off unframed
+  // prints and every item here is the unframed print. Google's sale_price
+  // rule: submit the full price as price and the price the landing page and
+  // checkout charge as sale_price, or the item is disapproved. The sale has
+  // no end date, so no sale_price_effective_date (optional, and the sale
+  // price then applies at once). Off, items carry the full price only.
+  const saleOn = await isSaleOn();
 
   const items = products
     .map(p => {
       const price = getLowestProductPrices(p).GBP;
       if (!price) return null;
+      const offer = unframedOffer(price, saleOn);
+      const salePrice = offer.was === undefined ? '' : `
+      <g:sale_price>${offer.price.toFixed(2)} GBP</g:sale_price>`;
       const detail = productListingDetails(p);
       const title = detail?.title ?? `${p.name} by ${p.artist || p.brand}, Scandinavian Art Print`;
       const description = [p.description || `${p.name} by ${p.artist || p.brand}.`, detail?.summary].filter(Boolean).join(' ');
@@ -61,7 +76,7 @@ export async function GET() {
       <g:description>${esc(description)}</g:description>${listingAttributes}
       <g:link>${BASE_URL}/product/${esc(p.slug)}</g:link>
       <g:image_link>${BASE_URL}${esc(primaryImage)}</g:image_link>${additionalImages}
-      <g:price>${price.toFixed(2)} GBP</g:price>
+      <g:price>${price.toFixed(2)} GBP</g:price>${salePrice}
       <g:availability>${p.inStock ? 'in_stock' : 'out_of_stock'}</g:availability>
       <g:condition>new</g:condition>
       <g:brand>${esc(p.artist || p.brand || 'Scandinavian Art Gallery')}</g:brand>

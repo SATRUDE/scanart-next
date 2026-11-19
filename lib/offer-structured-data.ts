@@ -1,5 +1,7 @@
 import { EU_COUNTRIES, FREE_DELIVERY_COUNTRIES, FREE_DELIVERY_THRESHOLD } from '@/config/free-delivery';
 import type { PricedProduct } from '@/lib/pricing';
+import { priceValidUntil } from '@/lib/price-validity';
+import { unframedOffer } from '@/lib/sale-promotion';
 
 // The return policy and the shipping details on every product Offer (T-0158).
 //
@@ -103,4 +105,36 @@ export function offerShippingDetails(priceGBP: number, rates: Partial<Record<Off
       },
     ];
   });
+}
+
+/**
+ * The price fields of the Offer: what a shopper sees for the unframed print.
+ *
+ * Off sale: the full price, valid for the rolling year (lib/price-validity.ts).
+ *
+ * During NORDIC20: Google's merchant-listing markup for a sale. `price` is the
+ * active (sale) price, and the full price goes in a UnitPriceSpecification
+ * typed StrikethroughPrice; the active price itself carries no priceType.
+ * priceValidUntil is left off on purpose: on a sale price Google reads it as
+ * the sale's end date, and this sale has none. If it ever gets one, this is
+ * where validFrom/priceValidUntil would go (and sale_price_effective_date in
+ * the feed).
+ *
+ * @param fullGBP the unframed print's full price, the lowest size's.
+ */
+export function offerPrice(fullGBP: number, saleActive: boolean, from: Date = new Date()) {
+  const { price, was } = unframedOffer(fullGBP, saleActive);
+  if (was === undefined) {
+    return { priceCurrency: 'GBP', price, priceValidUntil: priceValidUntil(from) };
+  }
+  return {
+    priceCurrency: 'GBP',
+    price,
+    priceSpecification: {
+      '@type': 'UnitPriceSpecification',
+      priceType: 'https://schema.org/StrikethroughPrice',
+      price: was,
+      priceCurrency: 'GBP',
+    },
+  };
 }
