@@ -78,13 +78,38 @@ describe('wiring', () => {
   const view = read('components/v2/product/ProductView.tsx');
   const row = read('components/v2/prints/PrintRow.tsx');
 
-  it('sits in the buying panel straight after the buying controls and before Details', () => {
+  // One row of three, placed twice: in the buying panel on phones, and as a
+  // full row under the product from tablet up (Mark, 18 Nov 2026: "on desktop
+  // it's broken and should be a full row and has to come under the accordion.
+  // Then on mobile we can have this version").
+  const helper = view.slice(view.indexOf('const relatedRow ='), view.indexOf('  return (\n    <div className="page-x'));
+  const panel = view.indexOf("relatedRow('related-prints', 'under-basket', 'tab:hidden')");
+  const wide = view.indexOf("relatedRow('related-prints-wide', 'below-product', 'hidden tab:block mt-section')");
+
+  it('on phones sits in the buying panel straight after the buying controls and before Details', () => {
     const actions = view.indexOf('<ProductActions ');
-    const related = view.indexOf('aria-labelledby="related-prints"');
     const details = view.indexOf('t.questions.details');
     expect(actions).toBeGreaterThan(0);
-    expect(related).toBeGreaterThan(actions);
-    expect(details).toBeGreaterThan(related);
+    expect(panel).toBeGreaterThan(actions);
+    expect(details).toBeGreaterThan(panel);
+  });
+
+  it('from tablet up is a full row under the product, after the accordions and before the artist', () => {
+    const about = view.indexOf('t.questions.about');
+    const artistSection = view.indexOf('aria-labelledby="about-the-artist"');
+    const moreLikeThis = view.indexOf('aria-labelledby="more-prints"');
+    expect(wide).toBeGreaterThan(about);
+    expect(artistSection).toBeGreaterThan(wide);
+    expect(moreLikeThis).toBeGreaterThan(wide);
+    // Outside the product grid: the grid's closing tags come before it, so the
+    // row sits on the page's content edges like "More prints like this".
+    expect(view.slice(about, wide)).toMatch(/<\/div>\s*<\/div>\s*<\/div>\s*\n/);
+  });
+
+  it('is displayed at exactly one width each: CSS only, no user-agent or client check', () => {
+    expect(view.match(/relatedRow\(/g)).toHaveLength(2);
+    expect(view).not.toMatch(/useMediaQuery|matchMedia|user-?agent|headers\(\)/i);
+    expect(view).not.toContain("'use client'");
   });
 
   it('reuses one row module and the existing print card for both rows', () => {
@@ -93,24 +118,20 @@ describe('wiring', () => {
     expect(row).toContain('<PrintCard');
   });
 
-  // Mark, 18 Nov 2026: "more like this part so it's not so tiny". The row
-  // under the button uses the same section header and the same scrolling row
-  // of full-size cards as "More prints like this", with no layout or card
-  // variant of its own.
-  it('shows the prints under the button at the same size and with the same header as "More prints like this"', () => {
-    const related = view.slice(view.indexOf('aria-labelledby="related-prints"'), view.indexOf('t.questions.details'));
-    expect(related).toContain('<SectionHeader');
-    expect(related).toContain('id="related-prints"');
-    expect(related).toContain('className="mt-band"');
-    expect(view).not.toMatch(/layout=/);
-    expect(row).not.toMatch(/layout\??:|'three'|compact/);
-    expect(row).toContain("fit?: 'page' | 'column'");
+  // Mark, 18 Nov 2026: "more like this part so it's not so tiny". The related
+  // prints use the same section header and the same row of full-size cards as
+  // "More prints like this", with no layout or card variant of their own.
+  it('shows the related prints at the same size and with the same header as "More prints like this"', () => {
+    expect(helper).toContain('<SectionHeader id={id}');
+    expect(helper).toContain('aria-labelledby={id}');
+    expect(helper).toContain('className="mt-band"');
+    expect(view).not.toMatch(/layout=|fit=/);
+    expect(row).not.toMatch(/layout\??:|fit\??:|'three'|compact/);
     expect(read('components/PrintCard.tsx')).not.toContain('compact');
     expect(row).toContain('w-[240px] shrink-0');
-    // The panel is narrow from tablet up: the row keeps scrolling there
-    // rather than squeezing three cards into four columns.
-    expect(related).toContain('fit="column"');
-    expect(view.match(/fit="column"/g)).toHaveLength(1);
+    // Three across on desktop, the same grid as "More prints like this".
+    expect(row).toContain('tab:grid');
+    expect(row).toContain('desk:grid-cols-3');
   });
 
   // Mark, 18 Nov 2026: "it can be scrolled up and down instead of just left

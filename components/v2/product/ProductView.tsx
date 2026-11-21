@@ -61,6 +61,10 @@ export interface ProductViewProps {
  * controls, and the Details / Delivery / About rows as native <details>, so
  * their answers are in the HTML.
  *
+ * The three related prints ("More by {artist}" / "You may also like") sit in
+ * the panel under the buying controls on phones, and from tablet up as a full
+ * row right under the product.
+ *
  * Then, a section apart each: the artist (statement on eight columns, name,
  * full bio, fact rows and link on four), "More prints like this" (was "You may
  * also like"), and Explore the shop.
@@ -94,6 +98,17 @@ export function ProductView({
     .filter(([, available]) => available)
     .map(([size]) => sizeLabel(size));
   const deliveryHref = `${prefix}/delivery`;
+  const relatedTitle = artist && allByArtist(related, product.artistId) ? fill(t.moreByArtist, { name: artist.name }) : t.youMayAlsoLike;
+  // The three related prints: one SectionHeader and PrintRow, placed in the
+  // buying panel on phones and as a full row under the product from tablet up.
+  // `placement` tells the two apart in the click event.
+  const relatedRow = (id: string, placement: string, className: string) =>
+    related.length > 0 && (
+      <section aria-labelledby={id} className={className}>
+        <SectionHeader id={id} title={relatedTitle} />
+        <PrintRow className="mt-band" products={related} from={product.slug} locale={locale} placement={placement} />
+      </section>
+    );
   return (
     <div className="page-x tab:pt-8">
       <div className="page-grid gap-y-6 tab:gap-y-band">
@@ -159,20 +174,11 @@ export function ProductView({
           <ProductActions product={product} strings={actionsStrings} deliveryGuide={deliveryGuide} locale={locale} />
           <FeedbackIntercept placement="product" />
 
-          {/* Three prints right under the buying controls: phone visitors who
-              stayed went looking for other prints (Meta ad recordings, Nov
-              2026). The same header and row as "More prints like this", at
-              the same size (Mark, 18 Nov 2026: "not so tiny"). The panel is
-              narrow from tablet up, so the row keeps scrolling there. */}
-          {related.length > 0 && (
-            <section aria-labelledby="related-prints">
-              <SectionHeader
-                id="related-prints"
-                title={artist && allByArtist(related, product.artistId) ? fill(t.moreByArtist, { name: artist.name }) : t.youMayAlsoLike}
-              />
-              <PrintRow className="mt-band" products={related} from={product.slug} locale={locale} placement="under-basket" fit="column" />
-            </section>
-          )}
+          {/* Phones: the three prints right under the buying controls, where
+              visitors who stayed went looking for other prints (Meta ad
+              recordings, Nov 2026). From tablet up the panel is narrow, so the
+              same row moves under the product as a full row (below). */}
+          {relatedRow('related-prints', 'under-basket', 'tab:hidden')}
 
           <div className="flex flex-col">
             <Question question={t.questions.details} size="small" as="h2">
@@ -199,6 +205,13 @@ export function ProductView({
           </div>
         </div>
       </div>
+
+      {/* Tablet and desktop: the same row, full width under the product and
+          its Details / Delivery rows (Mark, 18 Nov 2026: "on desktop it's
+          broken and should be a full row and has to come under the
+          accordion"). Only one of the two placements is ever displayed; both
+          are in the HTML, so there is no layout shift and nothing to hydrate. */}
+      {relatedRow('related-prints-wide', 'below-product', 'hidden tab:block mt-section')}
 
       {artist && artistHref && (
         <section aria-labelledby="about-the-artist" className="page-grid mt-section gap-y-6">
