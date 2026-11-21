@@ -5,7 +5,6 @@ import { collections } from '@/lib/collections';
 import { pickRelatedPrints, withoutShown } from '@/lib/related-prints';
 import { getArtistById } from '@/data/artists';
 import { getLowestProductPrices } from '@/lib/pricing';
-import { priceValidUntil } from '@/lib/price-validity';
 import { metaSnippet } from '@/lib/meta-snippet';
 import { productListingDetails } from '@/lib/product-listing-details';
 import { productImages } from '@/lib/product-image-alt';
@@ -20,8 +19,16 @@ import { getProductVideo } from '@/config/product-videos';
 import { ProductView } from '@/components/v2/product/ProductView';
 import { getDeliveryGuide } from '@/lib/server/delivery-guide';
 import { getOfferShippingRates } from '@/lib/server/offer-shipping';
-import { lowestPricedSize, offerShippingDetails, productReturnPolicy } from '@/lib/offer-structured-data';
+import { lowestPricedSize, offerPrice, offerShippingDetails, productReturnPolicy } from '@/lib/offer-structured-data';
+import { unframedOffer } from '@/lib/sale-promotion';
+import { isSaleOn } from '@/lib/server/sale-promotion';
 import { artistFactsFor } from '@/components/v2/product/artist-facts';
+
+// Regenerated at most every ten minutes, so the price in the structured data
+// (and the feed, app/product-feed.xml) follows NORDIC20 being switched on or
+// off in the store without a deploy. The visible price already follows it
+// live (LocalPrice); Google disapproves an offer whose markup disagrees.
+export const revalidate = 600;
 
 export async function generateStaticParams() {
   const products = await getAllProducts();
@@ -130,6 +137,12 @@ export default async function ProductPage({
   const deliveryGuide = await getDeliveryGuide();
   // Delivery for one unframed print at the Offer's price, for the JSON-LD.
   const shippingRates = await getOfferShippingRates(lowestPricedSize(product));
+  // The Offer is the unframed print at its lowest price, at the sale price
+  // while NORDIC20 is on, which is what the page shows. Delivery is judged on
+  // that price, as checkout judges free delivery after the discount.
+  const saleOn = await isSaleOn();
+  const fullPrice = getLowestProductPrices(product).GBP;
+  const shownPrice = unframedOffer(fullPrice, saleOn).price;
 
   return (
     <>
@@ -158,9 +171,9 @@ export default async function ProductPage({
           rendered directly and React hoists them into <head>. Values mirror
           the Offer JSON-LD below (lowest price in GBP, the catalogue currency). */}
       <meta property="og:type" content="product" />
-      <meta property="og:price:amount" content={String(getLowestProductPrices(product).GBP)} />
+      <meta property="og:price:amount" content={String(shownPrice)} />
       <meta property="og:price:currency" content="GBP" />
-      <meta property="product:price:amount" content={String(getLowestProductPrices(product).GBP)} />
+      <meta property="product:price:amount" content={String(shownPrice)} />
       <meta property="product:price:currency" content="GBP" />
       <meta
         property="product:availability"
@@ -189,23 +202,10 @@ export default async function ProductPage({
               '@type': 'Offer',
               url: `${BASE_URL}/product/${product.slug}`,
               availability: product.inStock ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
-              priceCurrency: 'GBP',
-              price: getLowestProductPrices(product).GBP,
-              // A rolling one-year horizon from the build, not the end of the
-              // build's calendar year. Product pages are statically generated,
-              // so whatever is written here is frozen into the HTML until the
-              // next deploy: a calendar-year expression built in December left
-              // every offer claiming a date days away, and a quiet new year
-              // with no deploy in it would have put all twenty into the past.
-              // Google reads a lapsed priceValidUntil as a stale offer, which
-              // is a merchant-listing eligibility risk on exactly the pages we
-              // are trying to get into Shopping free listings. A year ahead
-              // can never lapse between deploys, and the site rebuilds several
-              // times a week, so in practice it stays a year out.
-              priceValidUntil: priceValidUntil(),
+              ...offerPrice(fullPrice, saleOn),
               itemCondition: 'https://schema.org/NewCondition',
               hasMerchantReturnPolicy: productReturnPolicy(),
-              shippingDetails: offerShippingDetails(getLowestProductPrices(product).GBP, shippingRates),
+              shippingDetails: offerShippingDetails(shownPrice, shippingRates),
             },
           }),
         }}

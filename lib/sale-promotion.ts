@@ -58,3 +58,16 @@ export const salePromotionStrings = {
     applied: 'Rabatt brukt',
   },
 } as const;
+
+/**
+ * The price of an unframed print as a shopper sees it, for the machine-read
+ * copies of that price: the Merchant Center feed (app/product-feed.xml) and
+ * the product pages' Offer JSON-LD and price meta tags. Google disapproves an
+ * item whose feed or markup disagrees with the page, and the page shows the
+ * sale price whenever the store says NORDIC20 is on (LocalPrice), so these
+ * follow the same switch. `was` is set only during the sale: the full price
+ * the sale price is struck through from. Off, it is the plain full price.
+ */
+export function unframedOffer(fullPrice: number, saleActive: boolean): { price: number; was?: number } {
+  return saleActive ? { price: salePrice(fullPrice), was: fullPrice } : { price: fullPrice };
+}
