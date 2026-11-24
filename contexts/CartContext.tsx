@@ -156,11 +156,13 @@ function loadCartFromStorage() {
     if (data) {
       // A basket saved before the euro list (24 Nov 2026) carries prices with
       // no EUR, which would show every line at €0 to a euro visitor while
-      // checkout charges the real price. Those lines are dropped for them;
-      // everyone else keeps their basket as it was.
+      // checkout charges the real price; one saved before the per-country
+      // euro prices has no price list, so it would show the EUR list while a
+      // main EU market is charged its own. Those lines are dropped for euro
+      // visitors; everyone else keeps their basket as it was.
       const inEuro = /(?:^|;\s*)geo-country=EU(?:;|$)/.test(document.cookie);
       return (JSON.parse(data) as CartItem[]).filter(
-        item => item.product.published !== false && (!inEuro || getProductPrices(item.product, item.size).EUR > 0)
+        item => item.product.published !== false && (!inEuro || (getProductPrices(item.product, item.size).EUR > 0 && !!item.product.priceCategory))
       );
     }
   } catch { /* ignore */ }

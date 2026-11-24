@@ -14,6 +14,8 @@ export interface FramePrint {
   name: string;
   artist: string;
   prices: Record<string, CurrencyPrices>;
+  /** The price list, for the per-country euro prices. */
+  priceCategory?: string;
   /** The artwork thumbnail the wall picker uses (public/images/v2/wall/chips). */
   chip: string;
   /** The room with this print hung in the frame (scripts/v2/frame_404.py). */

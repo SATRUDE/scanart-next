@@ -19,6 +19,8 @@ export interface SearchPrint {
   image: string;
   inStock: boolean;
   prices: Prices;
+  /** The price list, for the per-country euro prices. */
+  priceCategory?: string;
   href: string;
 }
 

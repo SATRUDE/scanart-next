@@ -23,6 +23,8 @@ export interface InspireRoomPrint {
   name: string;
   artist: string;
   prices: Record<string, CurrencyPrices>;
+  /** The price list, for the per-country euro prices. */
+  priceCategory?: string;
 }
 
 export interface InspireRoom {

@@ -22,6 +22,8 @@ export interface PrintFeatureData {
   /** The warm-backdrop copy of the standard shot (lib/warm-image.ts). */
   image: string;
   prices: { [size: string]: CurrencyPrices };
+  /** The price list, for the per-country euro prices. */
+  priceCategory?: string;
 }
 
 /**
@@ -60,6 +62,7 @@ export async function resolvePrintFeatures<T extends NotionBlock>(blocks: T[]): 
       ...sizeFacts(Object.keys(product.prices)[0]),
       image: warmImage(product.image),
       prices: product.prices,
+      priceCategory: product.priceCategory,
     };
     return [{ ...block, print_feature: { slug: product.slug, product: data } }];
   });

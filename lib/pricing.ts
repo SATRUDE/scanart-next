@@ -73,7 +73,7 @@ export function getProductPrices(
 
   // Fallback to 'default' pricing if no size-specific price exists
   if (prices['default']) {
-    return prices['default'];
+    return withCountryEuro(prices['default'], product, 'default', country);
   }
 
   // Fallback to first available price key
