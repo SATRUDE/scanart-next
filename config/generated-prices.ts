@@ -34,8 +34,8 @@ export const PUBLISHED_ARTWORK: Record<string, Record<string, PublishedPrices>> 
     '50x70cm': { GBP: 56, USD: 72, NOK: 800, DKK: 500, SEK: 800 },
   },
   'Budget': {
-    '50x50cm': { GBP: 35, USD: 45, NOK: 480, DKK: 307, SEK: 480 },
-    '50x70cm': { GBP: 45, USD: 58, NOK: 700, DKK: 395, SEK: 617 },
+    '50x50cm': { GBP: 50, USD: 65, NOK: 750, DKK: 475, SEK: 700 },
+    '50x70cm': { GBP: 50, USD: 65, NOK: 800, DKK: 475, SEK: 700 },
   },
 };
 

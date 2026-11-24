@@ -69,20 +69,22 @@ const compiledCategories: { [category: string]: PriceCategory } = {
   },
 
   // Budget pricing for smaller/standard products
+  // Both sizes raised to GBP 50 under Mark's margin rule (24 Nov 2026,
+  // T-0573), once the artists on this list agreed (Artist Agreement clause 4).
   'Budget': {
     '50x50cm': {
-      GBP: 35,
-      USD: 45,
-      NOK: 480,
-      DKK: 307,
-      SEK: 480
+      GBP: 50,
+      USD: 65,
+      NOK: 750,
+      DKK: 475,
+      SEK: 700
     },
     '50x70cm': {
-      GBP: 45,
-      USD: 58,
-      NOK: 617,
-      DKK: 395,
-      SEK: 617
+      GBP: 50,
+      USD: 65,
+      NOK: 800,
+      DKK: 475,
+      SEK: 700
     }
   },
 
