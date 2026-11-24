@@ -47,8 +47,9 @@ describe('Markus Naarttijärvi is live', () => {
       { productId: print!.id, slug: print!.slug, size: '45x60cm', quantity: 1 },
       { productId: print!.id, slug: print!.slug, size: '45x60cm', frame: 'wood', quantity: 1 },
     ], 'GBP', 'GB');
-    // GBP 56 unframed, GBP 56 + 39 framed: the approved prices, unchanged.
-    expect(order.subtotal).toBe(56 + 56 + 39);
+    // GBP 56 unframed, GBP 56 + 40 framed: the 45 x 60 supplement since
+    // Mark's margin rule (2026-11-24), no longer the 50 x 70 one.
+    expect(order.subtotal).toBe(56 + 56 + 40);
   });
 });
 
@@ -87,8 +88,9 @@ describe('Patrik Wennerlund is live', () => {
       { productId: print!.id, size: '40x60cm', quantity: 1 },
       { productId: print!.id, size: '40x60cm', frame: 'wood', quantity: 1 },
     ], 'GBP', 'GB');
-    // GBP 56 unframed, GBP 56 + 39 framed: the 50 x 70 price and supplement.
-    expect(order.subtotal).toBe(56 + 56 + 39);
+    // GBP 56 unframed, GBP 56 + 40 framed: the 50 x 70 price and the 40 x 60
+    // supplement (config/frame.ts, 2026-11-24).
+    expect(order.subtotal).toBe(56 + 56 + 40);
   });
 });
 

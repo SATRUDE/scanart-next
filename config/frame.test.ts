@@ -1,23 +1,21 @@
 import { describe, it, expect } from 'vitest';
 import { FRAME_SIZES, getFramePrice, getFrameName, frameOptions, type FrameSize } from './frame';
 
-// Gelato's charge for the frame alone, quoted live on 2026-08-12 against the
-// 200gsm uncoated stock the shop sells. Every price in config/frame.ts has to
-// sit above its row here or we are paying people to take frames, which is what
-// the single flat price was doing on the big sizes.
-//
-// These moved once already: they were measured against 250gsm archival, and
-// choosing the lighter paper made the rolled print cheaper without moving the
-// framed one, so the frame had more to cover. Re-measure when the paper
-// changes.
-type PreviouslyCostedSize = Exclude<FrameSize, '40x50cm' | '40x60cm' | '45x60cm'>;
-const PREVIOUSLY_COSTED_SIZES: PreviouslyCostedSize[] = ['A3', 'A2', '50x50cm', '50x70cm', 'A1'];
-const GELATO_FRAME_COST: Record<string, Record<PreviouslyCostedSize, number>> = {
-  GBP: { A3: 13.62, A2: 22.75, '50x50cm': 25.01, '50x70cm': 31.09, A1: 43.73 },
-  USD: { A3: 25.47, A2: 40.74, '50x50cm': 37.57, '50x70cm': 46.79, A1: 64.85 },
-  NOK: { A3: 209.76, A2: 335.7, '50x50cm': 377.14, '50x70cm': 476.99, A1: 586.0 },
-  DKK: { A3: 166.52, A2: 250.67, '50x50cm': 279.39, '50x70cm': 354.52, A1: 457.98 },
-  SEK: { A3: 211.73, A2: 325.88, '50x50cm': 364.27, '50x70cm': 448.59, A1: 588.09 },
+// Gelato's charge for the frame alone (framed quote minus the rolled quote for
+// the same size, dearest colour), quoted live against the 200gsm uncoated
+// stock the shop sells. Every price in config/frame.ts has to sit above its
+// row here or we are paying people to take frames, which is what the single
+// flat price was doing on the big sizes. Re-measured on 2026-11-24 for Mark's
+// margin rule (T-0573): the five original sizes had not moved since
+// 2026-08-12, and the three natural-ratio sizes are costed for the first time.
+// Re-measure when the paper changes.
+const COSTED_SIZES = FRAME_SIZES;
+const GELATO_FRAME_COST: Record<string, Record<FrameSize, number>> = {
+  GBP: { A3: 13.62, A2: 22.75, '40x50cm': 22.67, '40x60cm': 22.55, '45x60cm': 24.12, '50x50cm': 25.01, '50x70cm': 31.09, A1: 43.73 },
+  USD: { A3: 25.47, A2: 40.74, '40x50cm': 34.82, '40x60cm': 36.19, '45x60cm': 40.07, '50x50cm': 37.57, '50x70cm': 46.79, A1: 64.85 },
+  NOK: { A3: 209.76, A2: 335.7, '40x50cm': 330.91, '40x60cm': 328.69, '45x60cm': 367.5, '50x50cm': 377.14, '50x70cm': 476.99, A1: 586.0 },
+  DKK: { A3: 166.52, A2: 250.67, '40x50cm': 258.21, '40x60cm': 247.3, '45x60cm': 270.76, '50x50cm': 279.39, '50x70cm': 354.52, A1: 457.98 },
+  SEK: { A3: 211.73, A2: 325.88, '40x50cm': 337.7, '40x60cm': 320.99, '45x60cm': 346.19, '50x50cm': 364.27, '50x70cm': 448.59, A1: 588.09 },
 };
 
 const CURRENCIES = ['GBP', 'USD', 'NOK', 'DKK', 'SEK'] as const;
@@ -26,7 +24,7 @@ const FRAMED = ['wood', 'black', 'white'];
 describe('frame pricing covers what the frame costs', () => {
   it('never sells a frame for less than Gelato charges for it', () => {
     for (const currency of CURRENCIES) {
-      for (const size of PREVIOUSLY_COSTED_SIZES) {
+      for (const size of COSTED_SIZES) {
         const price = getFramePrice('wood', size, currency);
         const cost = GELATO_FRAME_COST[currency][size];
         expect(price, `${currency} ${size}: ${price} against a ${cost} cost`).toBeGreaterThan(cost);
@@ -35,19 +33,13 @@ describe('frame pricing covers what the frame costs', () => {
   });
 
   it('keeps a real margin rather than scraping the cost', () => {
-    // Mark chose 700 kr for the A1 Norwegian frame (2026-08-13, chat), a
-    // 1.19x margin against the 1.2x asked of everything else: the frame is
-    // an upsell, none of it is shared with the artist, and the round number
-    // matters more to him than the last few kroner. A price he chose gets a
-    // floor that documents the choice, not a test that argues with it. The
-    // floor is not gone: 1.15 still fails if Gelato's frame price creeps up.
-    const CHOSEN: Record<string, Partial<Record<FrameSize, number>>> = {
-      NOK: { A1: 1.15 },
-    };
+    // The frame is wholly the gallery's, so since Mark's margin rule
+    // (2026-11-24) it carries most of the order's keep: every supplement is at
+    // least 1.3 times what Gelato charges for the frame alone.
     for (const currency of CURRENCIES) {
-      for (const size of PREVIOUSLY_COSTED_SIZES) {
+      for (const size of COSTED_SIZES) {
         const margin = getFramePrice('wood', size, currency) / GELATO_FRAME_COST[currency][size];
-        expect(margin, `${currency} ${size}`).toBeGreaterThan(CHOSEN[currency]?.[size] ?? 1.2);
+        expect(margin, `${currency} ${size}`).toBeGreaterThan(1.3);
       }
     }
   });
@@ -70,12 +62,13 @@ describe('the price ladder', () => {
     }
   });
 
-  it('uses the approved effective 50 × 70 supplement for both new sizes in all markets', () => {
+  it('prices the three natural-ratio formats the same as each other, below 50 × 70', () => {
     for (const currency of CURRENCIES) {
-      for (const size of ['40x50cm', '40x60cm', '45x60cm'] as const) {
-        for (const frame of FRAMED) {
-          expect(getFramePrice(frame, size, currency)).toBe(getFramePrice(frame, '50x70cm', currency));
-        }
+      for (const frame of FRAMED) {
+        const price = getFramePrice(frame, '40x50cm', currency);
+        expect(getFramePrice(frame, '40x60cm', currency)).toBe(price);
+        expect(getFramePrice(frame, '45x60cm', currency)).toBe(price);
+        expect(price).toBeLessThan(getFramePrice(frame, '50x70cm', currency));
       }
     }
   });
@@ -106,7 +99,7 @@ describe('getFramePrice', () => {
   it('prices every size the catalogue sells', () => {
     // products.json offers exactly these; a size with no price would fall back
     // to A1 silently and overcharge, so the list has to stay in step.
-    expect(FRAME_SIZES).toEqual(['A3', 'A2', '50x50cm', '40x50cm', '40x60cm', '45x60cm', '50x70cm', 'A1']);
+    expect(FRAME_SIZES).toEqual(['A3', 'A2', '40x50cm', '40x60cm', '45x60cm', '50x50cm', '50x70cm', 'A1']);
     for (const option of frameOptions) {
       for (const size of FRAME_SIZES) {
         expect(option.prices[size], `${option.id} ${size}`).toBeDefined();

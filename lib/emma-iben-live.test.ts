@@ -60,8 +60,8 @@ describe('Emma Iben is live', () => {
       { productId: print!.id, size: 'A3', quantity: 1 },
       { productId: print!.id, size: 'A1', frame: 'wood', quantity: 1 },
     ], 'GBP', 'GB');
-    // GBP 42 for the A3; GBP 77 + 55 framing for the A1 (config/frame.ts).
-    expect(order.subtotal).toBe(42 + 77 + 55);
+    // GBP 42 for the A3; GBP 77 + 70 framing for the A1 (config/frame.ts).
+    expect(order.subtotal).toBe(42 + 77 + 70);
   });
 
   it('has Copenhagen on the artist map and Norwegian copy for the page and each print', () => {

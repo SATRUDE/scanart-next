@@ -44,11 +44,14 @@ export const PUBLISHED_RETIRED: string[] = ['Luxary', 'Standard'];
 
 /** What a frame adds, by size. Colours are priced the same as each other. */
 export const PUBLISHED_FRAMES: Record<string, PublishedPrices> = {
-  'A3': { GBP: 18, USD: 32, NOK: 300, DKK: 210, SEK: 265 },
-  'A2': { GBP: 29, USD: 51, NOK: 450, DKK: 315, SEK: 410 },
-  '50x50cm': { GBP: 32, USD: 51, NOK: 500, DKK: 350, SEK: 455 },
-  '50x70cm': { GBP: 39, USD: 59, NOK: 600, DKK: 445, SEK: 560 },
-  'A1': { GBP: 55, USD: 82, NOK: 700, DKK: 575, SEK: 735 },
+  'A3': { GBP: 20, USD: 35, NOK: 350, DKK: 275, SEK: 350 },
+  'A2': { GBP: 40, USD: 70, NOK: 600, DKK: 425, SEK: 550 },
+  '40x50cm': { GBP: 40, USD: 70, NOK: 650, DKK: 450, SEK: 550 },
+  '40x60cm': { GBP: 40, USD: 70, NOK: 650, DKK: 450, SEK: 550 },
+  '45x60cm': { GBP: 40, USD: 70, NOK: 650, DKK: 450, SEK: 550 },
+  '50x50cm': { GBP: 45, USD: 70, NOK: 750, DKK: 500, SEK: 650 },
+  '50x70cm': { GBP: 55, USD: 85, NOK: 900, DKK: 625, SEK: 800 },
+  'A1': { GBP: 70, USD: 105, NOK: 1050, DKK: 750, SEK: 950 },
 };
 
 /**
