@@ -28,7 +28,7 @@ describe('published prices', () => {
     expect(priceCategories.Premium.A3.GBP).toBe(42);
     expect(priceCategories.Premium['50x50cm'].GBP).toBe(42);
     expect(priceCategories.Budget['50x70cm'].GBP).toBe(45);
-    expect(getFramePrice('wood', 'A1', 'GBP')).toBe(55);
+    expect(getFramePrice('wood', 'A1', 'GBP')).toBe(70);
     expect(getFramePrice('no-frame', 'A1', 'GBP')).toBe(0);
   });
 

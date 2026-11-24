@@ -30,7 +30,7 @@ import { PUBLISHED_FRAMES, isUsable } from './generated-prices';
 export type FrameSize = 'A3' | 'A2' | '40x50cm' | '40x60cm' | '50x50cm' | '45x60cm' | '50x70cm' | 'A1';
 
 /** Every size the catalogue sells, ordered by frame supplement, dearest last. */
-export const FRAME_SIZES: FrameSize[] = ['A3', 'A2', '50x50cm', '40x50cm', '40x60cm', '45x60cm', '50x70cm', 'A1'];
+export const FRAME_SIZES: FrameSize[] = ['A3', 'A2', '40x50cm', '40x60cm', '45x60cm', '50x50cm', '50x70cm', 'A1'];
 
 export interface CurrencyPrices {
   GBP: number;
@@ -62,21 +62,27 @@ const NO_CHARGE: Record<FrameSize, CurrencyPrices> = {
  * The three frame colours cost Gelato the same as each other, so they are
  * priced the same. Only the size moves the number.
  *
- * USD 50x50cm is set level with A2 rather than below it: Gelato charges
- * slightly less to frame it, and a price list where a bigger print frames
- * cheaper reads as a mistake. Levelling up covers both.
+ * Mark's margin rule (24 Nov 2026, T-0573): every single-print order keeps at
+ * least GBP 10 (or the local equivalent) and 20% of the price ex VAT, after
+ * Gelato's cost, the artist's 60%, card fees and VAT as if registered in the
+ * buyer's market, and still keeps GBP 5 with 20% off the whole order. The
+ * frame money is wholly the gallery's, so the frame carries most of that. GBP
+ * prices are Mark's; the other currencies start from the shop's ratios and
+ * were raised to the next round number wherever a live Gelato quote and the
+ * shop's real delivery charge said they missed. The 40 x 50, 40 x 60 and
+ * 45 x 60 formats now have their own supplement (they cost Gelato much less
+ * to frame than a 50 x 70), and a size never frames cheaper than the one
+ * before it in FRAME_SIZES.
  */
 const COMPILED_FRAMED_PRICES: Record<FrameSize, CurrencyPrices> = {
-  A3: { GBP: 18, USD: 32, NOK: 265, DKK: 210, SEK: 265 },
-  A2: { GBP: 29, USD: 51, NOK: 420, DKK: 315, SEK: 410 },
-  // Mark approved the existing 50 × 70 supplement for these smaller formats.
-  '40x50cm': { GBP: 39, USD: 59, NOK: 600, DKK: 445, SEK: 560 },
-  // Proposed for Patrik Wennerlund's 3:2 photographs: the same supplement.
-  '40x60cm': { GBP: 39, USD: 59, NOK: 600, DKK: 445, SEK: 560 },
-  '50x50cm': { GBP: 32, USD: 51, NOK: 475, DKK: 350, SEK: 455 },
-  '45x60cm': { GBP: 39, USD: 59, NOK: 600, DKK: 445, SEK: 560 },
-  '50x70cm': { GBP: 39, USD: 59, NOK: 600, DKK: 445, SEK: 560 },
-  A1: { GBP: 55, USD: 82, NOK: 735, DKK: 575, SEK: 735 },
+  A3: { GBP: 20, USD: 35, NOK: 350, DKK: 275, SEK: 350 },
+  A2: { GBP: 40, USD: 70, NOK: 600, DKK: 425, SEK: 550 },
+  '40x50cm': { GBP: 40, USD: 70, NOK: 650, DKK: 450, SEK: 550 },
+  '40x60cm': { GBP: 40, USD: 70, NOK: 650, DKK: 450, SEK: 550 },
+  '45x60cm': { GBP: 40, USD: 70, NOK: 650, DKK: 450, SEK: 550 },
+  '50x50cm': { GBP: 45, USD: 70, NOK: 750, DKK: 500, SEK: 650 },
+  '50x70cm': { GBP: 55, USD: 85, NOK: 900, DKK: 625, SEK: 800 },
+  A1: { GBP: 70, USD: 105, NOK: 1050, DKK: 750, SEK: 950 },
 };
 
 /**
@@ -89,11 +95,6 @@ const FRAMED_PRICES: Record<FrameSize, CurrencyPrices> = (() => {
   for (const size of FRAME_SIZES) {
     const published = PUBLISHED_FRAMES?.[size];
     if (isUsable(published)) merged[size] = { ...published };
-  }
-  // Preserve the current effective 50 × 70 supplement, including its
-  // published overlay, until a complete price is published for either size.
-  for (const size of ['40x50cm', '40x60cm', '45x60cm'] as const) {
-    if (!isUsable(PUBLISHED_FRAMES?.[size])) merged[size] = { ...merged['50x70cm'] };
   }
   return merged;
 })();

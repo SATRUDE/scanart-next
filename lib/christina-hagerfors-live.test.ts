@@ -67,8 +67,8 @@ describe('Christina Hägerfors is live', () => {
       { productId: print!.id, size: '50x70cm', quantity: 1 },
       { productId: print!.id, size: '50x70cm', frame: 'wood', quantity: 1 },
     ], 'GBP', 'GB');
-    // GBP 35 unframed; GBP 35 + 39 framing for the 50 x 70 (config/frame.ts).
-    expect(order.subtotal).toBe(35 + 35 + 39);
+    // GBP 35 unframed; GBP 35 + 55 framing for the 50 x 70 (config/frame.ts).
+    expect(order.subtotal).toBe(35 + 35 + 55);
   });
 
   it('shows where she is from, Karlstad, pins it, and keeps her off "Where the artists work"', () => {
