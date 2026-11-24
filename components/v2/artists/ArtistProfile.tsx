@@ -75,6 +75,8 @@ export interface ArtistProfileProps {
   /** "5 prints" */
   printCount: string;
   lowest: CurrencyPrices | null;
+  /** The euro "from" per country with its own euro prices. */
+  lowestEuro?: Record<string, number>;
   hero: { src: string; alt: string; href: string; title: string; productSlug: string } | null;
   editorial?: { heading: string; para1: string; para2: string };
   facts: { label: string; value: React.ReactNode }[];
@@ -125,7 +127,7 @@ export function ArtistProfile(p: ArtistProfileProps) {
         {p.lowest && (
           <>
             {', '}
-            <FromPrice prices={p.lowest} from={p.t.from} />
+            <FromPrice prices={p.lowest} euro={p.lowestEuro} from={p.t.from} />
           </>
         )}
       </span>

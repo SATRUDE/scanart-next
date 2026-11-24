@@ -4,7 +4,7 @@ import { categoryLandings } from '@/lib/categories';
 import { collections, type Collection } from '@/lib/collections';
 import { PageHeader } from '@/components/v2/ui';
 import { FromPrice } from '@/components/v2/prints/FromPrice';
-import { lowestPrices } from '@/components/v2/prints/lowest-prices';
+import { lowestEuroByCountry, lowestPrices } from '@/components/v2/prints/lowest-prices';
 import { LandingIntro } from '@/components/v2/landing/LandingIntro';
 import { refineOptions } from '@/components/v2/shop/shop-filters';
 import { no } from '@/lib/i18n/no';
@@ -59,7 +59,7 @@ export async function shopRoutes(locale: 'en' | 'no'): Promise<Record<string, Sh
       title={title}
       locale={locale}
       lead={lead}
-      meta={[count(products.length), <FromPrice key="from" prices={lowestPrices(products)} label={fromLabel} />]}
+      meta={[count(products.length), <FromPrice key="from" prices={lowestPrices(products)} euro={lowestEuroByCountry(products)} label={fromLabel} />]}
     />
   );
   const intro = (paragraphs: string[]) =>

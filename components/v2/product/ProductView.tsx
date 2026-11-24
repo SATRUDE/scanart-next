@@ -15,7 +15,7 @@ import type { Product } from '@/contexts/CartContext';
 import type { Artist } from '@/data/artists';
 import type { ProductImage } from '@/lib/product-image-alt';
 import type { ProductVideo } from '@/config/product-videos';
-import { getLowestProductPrices, type CurrencyPrices } from '@/lib/pricing';
+import { euroByCountry, getLowestProductPrices, type CurrencyPrices } from '@/lib/pricing';
 import type { CrossLinksStrings, ProductActionsStrings } from '@/lib/i18n';
 import { fill, type GalleryStrings, type ProductPageStrings } from '@/lib/product-page-copy';
 
@@ -34,7 +34,7 @@ export interface ProductViewProps {
   artist: (Artist & { location: string; bio: string }) | null;
   artistStatement?: string;
   /** The artist's published prints, for the fact rows. */
-  artistFacts?: { sizes: string[]; count: number; lowestPrices: CurrencyPrices };
+  artistFacts?: { sizes: string[]; count: number; lowestPrices: CurrencyPrices; lowestEuro?: Record<string, number> };
   recommended: Product[];
   /** Three buyable prints for the row under Add to basket (lib/related-prints.ts). */
   related?: Product[];
@@ -138,7 +138,7 @@ export function ProductView({
               <h1 className="type-h1 tab:type-h3">{product.name}</h1>
               <p className="type-body">
                 {/* The lowest price is always the smallest unframed print, so the sale applies. */}
-                <LocalPrice prices={getLowestProductPrices(product)} sale locale={locale} />
+                <LocalPrice prices={getLowestProductPrices(product)} euro={euroByCountry(country => getLowestProductPrices(product, country).EUR)} sale locale={locale} />
               </p>
               <Meta
                 className="type-small"
@@ -238,7 +238,7 @@ export function ProductView({
               {artistFacts && artistFacts.count > 0 && (
                 <FactRow label={t.facts.inTheShop}>
                   {fill(artistFacts.count === 1 ? t.facts.printsFromOne : t.facts.printsFromOther, { count: artistFacts.count })}{' '}
-                  <LocalPrice prices={artistFacts.lowestPrices} sale locale={locale} />
+                  <LocalPrice prices={artistFacts.lowestPrices} euro={artistFacts.lowestEuro} sale locale={locale} />
                 </FactRow>
               )}
             </dl>

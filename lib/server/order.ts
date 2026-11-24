@@ -96,9 +96,10 @@ export async function computeOrderAmount(
     if (!Number.isFinite(quantity) || quantity < 1 || quantity > 20) {
       throw new Error('Invalid quantity');
     }
-    const unitPrice = getProductPrice(product, item.size, currency);
+    // Euro is priced for the country the parcel goes to (config/eur-countries.ts).
+    const unitPrice = getProductPrice(product, item.size, currency, countryCode);
     if (!unitPrice) throw new Error(`No price for product: ${item.productId}`);
-    const frameCost = item.frame ? getFramePrice(item.frame, item.size, currency) : 0;
+    const frameCost = item.frame ? getFramePrice(item.frame, item.size, currency, countryCode) : 0;
     subtotal += (unitPrice + frameCost) * quantity;
     resolved.push({
       slug: product.slug,

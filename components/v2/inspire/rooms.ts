@@ -25,7 +25,7 @@ export async function getInspireRooms(locale: 'en' | 'no'): Promise<InspireRoom[
     slugs
       .map(s => bySlug.get(s))
       .filter((p): p is NonNullable<typeof p> => Boolean(p))
-      .map(p => ({ slug: p.slug, name: p.name, artist: p.artist ?? "", prices: p.prices }));
+      .map(p => ({ slug: p.slug, name: p.name, artist: p.artist ?? "", prices: p.prices, priceCategory: p.priceCategory }));
   // The scene alt where the scene is shown. shopScenes' alts are English, so
   // the Norwegian wall describes the same picture from the catalogue in bokmål
   // (sceneImageAlt), as the product pages do.

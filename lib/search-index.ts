@@ -38,6 +38,7 @@ export async function buildSearchIndex(lang: 'en' | 'no'): Promise<SearchIndex> 
     image: product.image,
     inStock: product.inStock,
     prices: product.prices,
+    priceCategory: product.priceCategory,
     href: `${p}/product/${product.slug}`,
   }));
 

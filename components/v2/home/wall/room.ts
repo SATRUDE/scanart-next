@@ -117,6 +117,8 @@ export interface WallPrint {
   size: string;
   /** Prices at the slot's size, in every currency; the client picks the visitor's. */
   prices: { GBP: number; NOK: number; USD: number; DKK: number; SEK: number; EUR: number };
+  /** The euro price per country with its own euro prices. */
+  euro?: Record<string, number>;
   art: string;
   chip: string;
   href: string;

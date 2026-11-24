@@ -15,8 +15,11 @@ import type { CurrencyPrices } from '@/lib/pricing';
  * says the sale is on, so a switched-off code never shows a price checkout
  * would not charge.
  */
-export function LocalPrice({ prices, sale = false, locale = 'en' }: { prices: CurrencyPrices; sale?: boolean; locale?: 'en' | 'no' }) {
-  const { formatPrice } = useLanguage();
+export function LocalPrice({ prices: listPrices, euro, sale = false, locale = 'en' }: { prices: CurrencyPrices; euro?: Record<string, number>; sale?: boolean; locale?: 'en' | 'no' }) {
+  const { formatPrice, euroCountry } = useLanguage();
+  // The visitor's own euro figure, where their country has one (config/eur-countries.ts).
+  const own = euroCountry ? euro?.[euroCountry] : undefined;
+  const prices = own === undefined ? listPrices : { ...listPrices, EUR: own };
   const saleActive = useSalePromotion();
   if (!sale || !saleActive) return <>{formatPrice(prices)}</>;
   const t = salePromotionStrings[locale];

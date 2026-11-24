@@ -2,6 +2,7 @@
 
 import React, { createContext, useContext, useSyncExternalStore, ReactNode } from 'react';
 import { formatDisplayPrice, type CurrencyPrices } from '@/lib/pricing';
+import { euroVisitorCountry } from '@/lib/euro';
 
 export type Currency = 'GBP' | 'NOK' | 'USD' | 'DKK' | 'SEK' | 'EUR';
 /** 'EU' is not a country: it is the euro price list, for every EU member but
@@ -72,6 +73,12 @@ interface LanguageContextType {
   selectedCountry: CountryInfo;
   setSelectedCountry: (country: CountryInfo) => void;
   formatPrice: (prices: CurrencyPrices) => string;
+  /**
+   * The country a euro price is shown for (config/eur-countries.ts): the
+   * visitor's own, while they are on the euro list, else ''. Pass it to the
+   * price getters; checkout uses the delivery country instead.
+   */
+  euroCountry: string;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -163,12 +170,17 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
   const formatPrice = (prices: CurrencyPrices) =>
     formatDisplayPrice(prices[selectedCountry.currency], selectedCountry.currency);
 
+  // Only read once the visitor is on euro, which never happens during SSR or
+  // hydration (the server snapshot is Great Britain), so it cannot mismatch.
+  const euroCountry = selectedCountry.currency === 'EUR' ? euroVisitorCountry() : '';
+
   return (
     <LanguageContext.Provider
       value={{
         selectedCountry,
         setSelectedCountry,
         formatPrice,
+        euroCountry,
       }}
     >
       {children}

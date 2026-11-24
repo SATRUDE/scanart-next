@@ -1,12 +1,12 @@
-import { getLowestProductPrices, type CurrencyPrices, type PricedProduct } from '@/lib/pricing';
+import { euroByCountry, getLowestProductPrices, type CurrencyPrices, type PricedProduct } from '@/lib/pricing';
 
 /**
  * The lowest price in each currency across a set of prints, for the page
  * header's "from £35". Computed on the server from the catalogue's own prices
  * (lib/pricing.ts), never written into copy, so it cannot drift from the tiles.
  */
-export function lowestPrices(products: PricedProduct[]): CurrencyPrices {
-  const all = products.map(p => getLowestProductPrices(p));
+export function lowestPrices(products: PricedProduct[], country?: string): CurrencyPrices {
+  const all = products.map(p => getLowestProductPrices(p, country));
   const out: CurrencyPrices = { ...(all[0] ?? { GBP: 0, NOK: 0, USD: 0, DKK: 0, SEK: 0, EUR: 0 }) };
   for (const prices of all.slice(1)) {
     for (const cur of Object.keys(out) as (keyof CurrencyPrices)[]) {
@@ -14,4 +14,9 @@ export function lowestPrices(products: PricedProduct[]): CurrencyPrices {
     }
   }
   return out;
+}
+
+/** The euro "from" for each country with its own euro prices. */
+export function lowestEuroByCountry(products: PricedProduct[]): Record<string, number> {
+  return euroByCountry(country => lowestPrices(products, country).EUR);
 }

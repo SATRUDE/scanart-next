@@ -27,6 +27,7 @@
 
 import { PUBLISHED_FRAMES } from './generated-prices';
 import { overlayPrices } from './published-overlay';
+import { countryEuroFrame } from './eur-countries';
 
 export type FrameSize = 'A3' | 'A2' | '40x50cm' | '40x60cm' | '50x50cm' | '45x60cm' | '50x70cm' | 'A1';
 
@@ -133,11 +134,18 @@ export function isFrameSize(size: string | undefined): size is FrameSize {
 export const getFramePrice = (
   frameId: string,
   size: string | undefined,
-  currency: keyof CurrencyPrices
+  currency: keyof CurrencyPrices,
+  /** Where a euro price is judged (config/eur-countries.ts); see getProductPrice. */
+  country?: string
 ): number => {
   const frame = frameOptions.find(f => f.id === frameId);
   if (!frame) return 0;
-  return frame.prices[isFrameSize(size) ? size : LARGEST][currency];
+  const known = isFrameSize(size) ? size : LARGEST;
+  if (currency === 'EUR' && frame.id !== 'no-frame') {
+    const own = countryEuroFrame(known, country);
+    if (own !== undefined) return own;
+  }
+  return frame.prices[known][currency];
 };
 
 export const getFrameName = (frameId: string): string => {

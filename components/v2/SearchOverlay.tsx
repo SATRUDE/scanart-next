@@ -384,13 +384,13 @@ function OpenState({
 }
 
 function PriceLine({ print }: { print: SearchPrint }) {
-  const { selectedCountry } = useLanguage();
+  const { selectedCountry, euroCountry } = useLanguage();
   const currency = selectedCountry.currency;
   return (
     <p className="flex items-center gap-[6px] type-caption">
       <span>{print.artist}</span>
       <span aria-hidden className="hairline" />
-      <span><ShopPrice amount={getLowestProductPrices(print)[currency]} currency={currency} /></span>
+      <span><ShopPrice amount={getLowestProductPrices(print, euroCountry)[currency]} currency={currency} /></span>
     </p>
   );
 }

@@ -18,6 +18,10 @@ export interface Product {
       EUR: number;
     };
   };
+  /** The price list (Premium, Budget, Entry): the per-country euro prices
+   *  are keyed by it. Absent on a basket saved before 24 Nov 2026, which then
+   *  shows the EUR list until checkout prices it. */
+  priceCategory?: string;
   image: string;
   secondaryImage?: string;
   description: string;
@@ -139,7 +143,8 @@ interface CartContextType {
   closeCart: () => void;
   getTotalItems: () => number;
   getTotalPrice: () => number;
-  getTotalPriceInCurrency: (currency: 'GBP' | 'NOK' | 'USD' | 'DKK' | 'SEK' | 'EUR') => number;
+  /** `country` prices euro for that country (config/eur-countries.ts). */
+  getTotalPriceInCurrency: (currency: 'GBP' | 'NOK' | 'USD' | 'DKK' | 'SEK' | 'EUR', country?: string) => number;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -151,11 +156,13 @@ function loadCartFromStorage() {
     if (data) {
       // A basket saved before the euro list (24 Nov 2026) carries prices with
       // no EUR, which would show every line at €0 to a euro visitor while
-      // checkout charges the real price. Those lines are dropped for them;
-      // everyone else keeps their basket as it was.
+      // checkout charges the real price; one saved before the per-country
+      // euro prices has no price list, so it would show the EUR list while a
+      // main EU market is charged its own. Those lines are dropped for euro
+      // visitors; everyone else keeps their basket as it was.
       const inEuro = /(?:^|;\s*)geo-country=EU(?:;|$)/.test(document.cookie);
       return (JSON.parse(data) as CartItem[]).filter(
-        item => item.product.published !== false && (!inEuro || getProductPrices(item.product, item.size).EUR > 0)
+        item => item.product.published !== false && (!inEuro || (getProductPrices(item.product, item.size).EUR > 0 && !!item.product.priceCategory))
       );
     }
   } catch { /* ignore */ }
@@ -225,24 +232,14 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     }, 0);
   };
 
-  const getTotalPriceInCurrency = (currency: 'GBP' | 'NOK' | 'USD' | 'DKK' | 'SEK' | 'EUR') => {
+  const getTotalPriceInCurrency = (currency: 'GBP' | 'NOK' | 'USD' | 'DKK' | 'SEK' | 'EUR', country?: string) => {
     const total = state.items.reduce((total: number, item: CartItem) => {
-      let price = 0;
-      
-      // If item has a size and that size exists in prices, use it
-      if (item.size && item.product.prices[item.size]) {
-        price = item.product.prices[item.size][currency] || 0;
-      } else {
-        // Otherwise, use the first available price (usually 'default' for single-size products)
-        const availablePrices = Object.keys(item.product.prices);
-        if (availablePrices.length > 0) {
-          const firstPriceKey = availablePrices[0];
-          price = item.product.prices[firstPriceKey][currency] || 0;
-        }
-      }
-      
+      // The size's price, or the first one for a single-size product, with
+      // the country's own euro figure where it has one.
+      const price = getProductPrices(item.product, item.size, country)[currency] || 0;
+
       // Add frame cost
-      const frameCost = item.frame ? getFramePrice(item.frame, item.size, currency) : 0;
+      const frameCost = item.frame ? getFramePrice(item.frame, item.size, currency, country) : 0;
       
       return total + ((price + frameCost) * item.quantity);
     }, 0);

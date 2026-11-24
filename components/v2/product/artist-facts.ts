@@ -1,4 +1,4 @@
-import { getLowestProductPrices, type CurrencyPrices, type PricedProduct } from '@/lib/pricing';
+import { euroByCountry, getLowestProductPrices, type CurrencyPrices, type PricedProduct } from '@/lib/pricing';
 
 /**
  * '50x70cm' → '50 × 70 cm'. The same rule as sizeLabel in PrintCard, repeated
@@ -21,11 +21,13 @@ const SIZE_ORDER: Record<string, number> = {
  */
 export function artistFactsFor(
   products: (PricedProduct & { sizes?: Record<string, boolean> })[]
-): { sizes: string[]; count: number; lowestPrices: CurrencyPrices } | undefined {
+): { sizes: string[]; count: number; lowestPrices: CurrencyPrices; lowestEuro: Record<string, number> } | undefined {
   if (products.length === 0) return undefined;
   const sizes = [...new Set(products.flatMap(p => Object.entries(p.sizes ?? {}).filter(([, ok]) => ok).map(([s]) => s)))]
     .sort((a, b) => (SIZE_ORDER[a] ?? 99) - (SIZE_ORDER[b] ?? 99));
-  const lows = products.map(p => getLowestProductPrices(p));
+  // A print with no price list would drag the "from" to zero.
+  const priced = products.filter(p => getLowestProductPrices(p).GBP > 0);
+  const lows = (priced.length ? priced : products).map(p => getLowestProductPrices(p));
   const lowestPrices = (Object.keys(lows[0]) as (keyof CurrencyPrices)[]).reduce(
     (acc, c) => ({ ...acc, [c]: Math.min(...lows.map(l => l[c])) }),
     {} as CurrencyPrices
@@ -35,5 +37,7 @@ export function artistFactsFor(
   const joined = labels.every(l => l.endsWith(' cm')) && labels.length > 1
     ? [...labels.slice(0, -1).map(l => l.replace(/ cm$/, '')), labels[labels.length - 1]]
     : labels;
-  return { sizes: joined, count: products.length, lowestPrices };
+  // The euro "from" for each country with its own euro prices.
+  const lowestEuro = euroByCountry(country => Math.min(...(priced.length ? priced : products).map(p => getLowestProductPrices(p, country).EUR)));
+  return { sizes: joined, count: products.length, lowestPrices, lowestEuro };
 }

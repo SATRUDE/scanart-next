@@ -1,7 +1,7 @@
 'use client';
 
 import { useLanguage } from '@/contexts/LanguageContext';
-import type { CurrencyPrices } from '@/lib/pricing';
+import { amountIn, type CurrencyPrices } from '@/lib/pricing';
 import { ShopPrice } from '@/components/v2/ShopPrice';
 
 /**
@@ -9,7 +9,8 @@ import { ShopPrice } from '@/components/v2/ShopPrice';
  * price follows the visitor's country picker, as every print tile's does.
  * The prices come from lowestPrices() on the server.
  */
-export function FromPrice({ prices, label }: { prices: CurrencyPrices; label: string }) {
-  const { selectedCountry } = useLanguage();
-  return <ShopPrice amount={prices[selectedCountry.currency]} currency={selectedCountry.currency} prefix={label} />;
+export function FromPrice({ prices, euro, label }: { prices: CurrencyPrices; euro?: Record<string, number>; label: string }) {
+  const { selectedCountry, euroCountry } = useLanguage();
+  const currency = selectedCountry.currency;
+  return <ShopPrice amount={amountIn(prices, currency, euroCountry, euro)} currency={currency} prefix={label} />;
 }

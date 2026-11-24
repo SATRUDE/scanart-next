@@ -249,3 +249,20 @@ describe('computeOrderAmount', () => {
     });
   });
 });
+
+describe('euro is charged for the delivery country (T-0573)', () => {
+  it('a main market pays its own euro price; any other euro country the EUR list', async () => {
+    const { EUR_COUNTRY_PRICES } = await import('@/config/eur-countries');
+    const { priceCategories } = await import('@/config/priceCategories');
+    const product = (await getAllProducts()).find(p => p.priceCategory === 'Premium' && p.sizes?.['50x70cm']);
+    expect(product).toBeDefined();
+    const line = [{ productId: product!.id, slug: product!.slug, size: '50x70cm', frame: 'wood', quantity: 1 }];
+    const de = await computeOrderAmount(line, 'EUR', 'DE', undefined, noCodes, deliver);
+    expect(de.subtotal).toBe(EUR_COUNTRY_PRICES.DE.prints.Premium['50x70cm'] + EUR_COUNTRY_PRICES.DE.frames['50x70cm']!);
+    const hu = await computeOrderAmount(line, 'EUR', 'HU', undefined, noCodes, deliver);
+    expect(hu.subtotal).toBe(priceCategories.Premium['50x70cm'].EUR + getFramePrice('wood', '50x70cm', 'EUR'));
+    // Other currencies ignore the country.
+    const gbp = await computeOrderAmount(line, 'GBP', 'DE', undefined, noCodes, deliver);
+    expect(gbp.subtotal).toBe(priceCategories.Premium['50x70cm'].GBP + getFramePrice('wood', '50x70cm', 'GBP'));
+  });
+});

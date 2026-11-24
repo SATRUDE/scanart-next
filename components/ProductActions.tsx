@@ -78,7 +78,7 @@ const SIZE_ORDER: Record<string, number> = {
 export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings, deliveryGuide, locale = 'en' }) => {
   const t = { ...EN, ...strings, assurance: strings?.assurance ?? EN.assurance };
   const { addToCart, state, toggleCart } = useCart();
-  const { formatPrice, selectedCountry } = useLanguage();
+  const { formatPrice, selectedCountry, euroCountry } = useLanguage();
   const quantity = 1;
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [selectedFrame, setSelectedFrame] = useState<string>('no-frame');
@@ -125,14 +125,14 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings
     if (!state.isOpen) toggleCart();
   };
 
-  const currentPrices = getProductPrices(product, selectedSize || undefined);
+  const currentPrices = getProductPrices(product, selectedSize || undefined, euroCountry);
   const framePrices = {
-    GBP: getFramePrice(selectedFrame, selectedSize || undefined, 'GBP'),
-    NOK: getFramePrice(selectedFrame, selectedSize || undefined, 'NOK'),
-    USD: getFramePrice(selectedFrame, selectedSize || undefined, 'USD'),
-    DKK: getFramePrice(selectedFrame, selectedSize || undefined, 'DKK'),
-    SEK: getFramePrice(selectedFrame, selectedSize || undefined, 'SEK'),
-    EUR: getFramePrice(selectedFrame, selectedSize || undefined, 'EUR'),
+    GBP: getFramePrice(selectedFrame, selectedSize || undefined, 'GBP', euroCountry),
+    NOK: getFramePrice(selectedFrame, selectedSize || undefined, 'NOK', euroCountry),
+    USD: getFramePrice(selectedFrame, selectedSize || undefined, 'USD', euroCountry),
+    DKK: getFramePrice(selectedFrame, selectedSize || undefined, 'DKK', euroCountry),
+    SEK: getFramePrice(selectedFrame, selectedSize || undefined, 'SEK', euroCountry),
+    EUR: getFramePrice(selectedFrame, selectedSize || undefined, 'EUR', euroCountry),
   };
 
   const totalPrices = {

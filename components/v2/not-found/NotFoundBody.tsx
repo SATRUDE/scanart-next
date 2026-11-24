@@ -57,7 +57,7 @@ export async function NotFoundBody({ locale }: { locale: 'en' | 'no' }) {
   const prints: FramePrint[] = FILL.flatMap(slug => {
     const x = products.find(item => item.slug === slug);
     if (!x || !x.prices['50x70cm']) return [];
-    return [{ slug, href: `${p}/product/${slug}`, name: x.name, artist: x.artist ?? '', prices: x.prices, chip: `/images/v2/wall/chips/${slug}.jpg`, composite: `/images/v2/not-found/fill-${slug}.webp` }];
+    return [{ slug, href: `${p}/product/${slug}`, name: x.name, artist: x.artist ?? '', prices: x.prices, priceCategory: x.priceCategory, chip: `/images/v2/wall/chips/${slug}.jpg`, composite: `/images/v2/not-found/fill-${slug}.webp` }];
   });
   return (
     <>

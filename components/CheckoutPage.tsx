@@ -594,7 +594,7 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' |
   // One line's price, exactly as the order summary has always computed it.
   type Line = (typeof state.items)[number];
   const lineAmount = (item: Line, currency: Currency) =>
-    Math.round(((getProductPrice(item.product, item.size, currency) + getFramePrice(item.frame || 'no-frame', item.size, currency)) * item.quantity) * 100) / 100;
+    Math.round(((getProductPrice(item.product, item.size, currency, formData.country) + getFramePrice(item.frame || 'no-frame', item.size, currency, formData.country)) * item.quantity) * 100) / 100;
   const lineAmounts = (item: Line, after: (n: number) => number = n => n) => ({
     GBP: after(lineAmount(item, 'GBP')),
     NOK: after(lineAmount(item, 'NOK')),
@@ -653,12 +653,12 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' |
           frame: item.frame && item.frame !== 'no-frame' ? getFrameName(item.frame) : null,
           quantity: item.quantity,
           price: formatPrice({
-            GBP: Math.round(((getProductPrice(item.product, item.size, 'GBP') + getFramePrice(item.frame || 'no-frame', item.size, 'GBP')) * item.quantity) * 100) / 100,
-            NOK: Math.round(((getProductPrice(item.product, item.size, 'NOK') + getFramePrice(item.frame || 'no-frame', item.size, 'NOK')) * item.quantity) * 100) / 100,
-            USD: Math.round(((getProductPrice(item.product, item.size, 'USD') + getFramePrice(item.frame || 'no-frame', item.size, 'USD')) * item.quantity) * 100) / 100,
-            DKK: Math.round(((getProductPrice(item.product, item.size, 'DKK') + getFramePrice(item.frame || 'no-frame', item.size, 'DKK')) * item.quantity) * 100) / 100,
-            SEK: Math.round(((getProductPrice(item.product, item.size, 'SEK') + getFramePrice(item.frame || 'no-frame', item.size, 'SEK')) * item.quantity) * 100) / 100,
-            EUR: Math.round(((getProductPrice(item.product, item.size, 'EUR') + getFramePrice(item.frame || 'no-frame', item.size, 'EUR')) * item.quantity) * 100) / 100
+            GBP: Math.round(((getProductPrice(item.product, item.size, 'GBP', formData.country) + getFramePrice(item.frame || 'no-frame', item.size, 'GBP', formData.country)) * item.quantity) * 100) / 100,
+            NOK: Math.round(((getProductPrice(item.product, item.size, 'NOK', formData.country) + getFramePrice(item.frame || 'no-frame', item.size, 'NOK', formData.country)) * item.quantity) * 100) / 100,
+            USD: Math.round(((getProductPrice(item.product, item.size, 'USD', formData.country) + getFramePrice(item.frame || 'no-frame', item.size, 'USD', formData.country)) * item.quantity) * 100) / 100,
+            DKK: Math.round(((getProductPrice(item.product, item.size, 'DKK', formData.country) + getFramePrice(item.frame || 'no-frame', item.size, 'DKK', formData.country)) * item.quantity) * 100) / 100,
+            SEK: Math.round(((getProductPrice(item.product, item.size, 'SEK', formData.country) + getFramePrice(item.frame || 'no-frame', item.size, 'SEK', formData.country)) * item.quantity) * 100) / 100,
+            EUR: Math.round(((getProductPrice(item.product, item.size, 'EUR', formData.country) + getFramePrice(item.frame || 'no-frame', item.size, 'EUR', formData.country)) * item.quantity) * 100) / 100
           }),
         })),
         // `total` is already in the buyer's currency; it used to be multiplied
@@ -713,12 +713,12 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' |
           frame: item.frame && item.frame !== 'no-frame' ? getFrameName(item.frame) : null,
           quantity: item.quantity,
           price: formatPrice({
-            GBP: Math.round(((getProductPrice(item.product, item.size, 'GBP') + getFramePrice(item.frame || 'no-frame', item.size, 'GBP')) * item.quantity) * 100) / 100,
-            NOK: Math.round(((getProductPrice(item.product, item.size, 'NOK') + getFramePrice(item.frame || 'no-frame', item.size, 'NOK')) * item.quantity) * 100) / 100,
-            USD: Math.round(((getProductPrice(item.product, item.size, 'USD') + getFramePrice(item.frame || 'no-frame', item.size, 'USD')) * item.quantity) * 100) / 100,
-            DKK: Math.round(((getProductPrice(item.product, item.size, 'DKK') + getFramePrice(item.frame || 'no-frame', item.size, 'DKK')) * item.quantity) * 100) / 100,
-            SEK: Math.round(((getProductPrice(item.product, item.size, 'SEK') + getFramePrice(item.frame || 'no-frame', item.size, 'SEK')) * item.quantity) * 100) / 100,
-            EUR: Math.round(((getProductPrice(item.product, item.size, 'EUR') + getFramePrice(item.frame || 'no-frame', item.size, 'EUR')) * item.quantity) * 100) / 100
+            GBP: Math.round(((getProductPrice(item.product, item.size, 'GBP', formData.country) + getFramePrice(item.frame || 'no-frame', item.size, 'GBP', formData.country)) * item.quantity) * 100) / 100,
+            NOK: Math.round(((getProductPrice(item.product, item.size, 'NOK', formData.country) + getFramePrice(item.frame || 'no-frame', item.size, 'NOK', formData.country)) * item.quantity) * 100) / 100,
+            USD: Math.round(((getProductPrice(item.product, item.size, 'USD', formData.country) + getFramePrice(item.frame || 'no-frame', item.size, 'USD', formData.country)) * item.quantity) * 100) / 100,
+            DKK: Math.round(((getProductPrice(item.product, item.size, 'DKK', formData.country) + getFramePrice(item.frame || 'no-frame', item.size, 'DKK', formData.country)) * item.quantity) * 100) / 100,
+            SEK: Math.round(((getProductPrice(item.product, item.size, 'SEK', formData.country) + getFramePrice(item.frame || 'no-frame', item.size, 'SEK', formData.country)) * item.quantity) * 100) / 100,
+            EUR: Math.round(((getProductPrice(item.product, item.size, 'EUR', formData.country) + getFramePrice(item.frame || 'no-frame', item.size, 'EUR', formData.country)) * item.quantity) * 100) / 100
           }),
         })),
         // `total` is already in the buyer's currency; it used to be multiplied
@@ -764,12 +764,12 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' |
           frame: item.frame && item.frame !== 'no-frame' ? getFrameName(item.frame) : null,
           quantity: item.quantity,
           price: formatPrice({
-            GBP: Math.round(((getProductPrice(item.product, item.size, 'GBP') + getFramePrice(item.frame || 'no-frame', item.size, 'GBP')) * item.quantity) * 100) / 100,
-            NOK: Math.round(((getProductPrice(item.product, item.size, 'NOK') + getFramePrice(item.frame || 'no-frame', item.size, 'NOK')) * item.quantity) * 100) / 100,
-            USD: Math.round(((getProductPrice(item.product, item.size, 'USD') + getFramePrice(item.frame || 'no-frame', item.size, 'USD')) * item.quantity) * 100) / 100,
-            DKK: Math.round(((getProductPrice(item.product, item.size, 'DKK') + getFramePrice(item.frame || 'no-frame', item.size, 'DKK')) * item.quantity) * 100) / 100,
-            SEK: Math.round(((getProductPrice(item.product, item.size, 'SEK') + getFramePrice(item.frame || 'no-frame', item.size, 'SEK')) * item.quantity) * 100) / 100,
-            EUR: Math.round(((getProductPrice(item.product, item.size, 'EUR') + getFramePrice(item.frame || 'no-frame', item.size, 'EUR')) * item.quantity) * 100) / 100
+            GBP: Math.round(((getProductPrice(item.product, item.size, 'GBP', formData.country) + getFramePrice(item.frame || 'no-frame', item.size, 'GBP', formData.country)) * item.quantity) * 100) / 100,
+            NOK: Math.round(((getProductPrice(item.product, item.size, 'NOK', formData.country) + getFramePrice(item.frame || 'no-frame', item.size, 'NOK', formData.country)) * item.quantity) * 100) / 100,
+            USD: Math.round(((getProductPrice(item.product, item.size, 'USD', formData.country) + getFramePrice(item.frame || 'no-frame', item.size, 'USD', formData.country)) * item.quantity) * 100) / 100,
+            DKK: Math.round(((getProductPrice(item.product, item.size, 'DKK', formData.country) + getFramePrice(item.frame || 'no-frame', item.size, 'DKK', formData.country)) * item.quantity) * 100) / 100,
+            SEK: Math.round(((getProductPrice(item.product, item.size, 'SEK', formData.country) + getFramePrice(item.frame || 'no-frame', item.size, 'SEK', formData.country)) * item.quantity) * 100) / 100,
+            EUR: Math.round(((getProductPrice(item.product, item.size, 'EUR', formData.country) + getFramePrice(item.frame || 'no-frame', item.size, 'EUR', formData.country)) * item.quantity) * 100) / 100
           }),
         })),
         // `total` is already in the buyer's currency; it used to be multiplied
@@ -823,7 +823,8 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' |
     return <OrderComplete t={t} order={completedOrder} productsHref={productsHref} />;
   }
 
-  const subtotal = getTotalPriceInCurrency(selectedCountry.currency);
+  // Priced for the delivery country, as the server charges (config/eur-countries.ts).
+  const subtotal = getTotalPriceInCurrency(selectedCountry.currency, formData.country);
 
   // The form holds the real country code; the RATE is looked up by zone. Both
   // sides must agree: the server prices the same way, and if the displayed
@@ -843,7 +844,7 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' |
   const discountableSubtotal = appliedDiscount?.scope === 'UNFRAMED'
     ? state.items
         .filter(item => !item.frame || item.frame === 'no-frame')
-        .reduce((sum, item) => sum + getProductPrice(item.product, item.size, selectedCountry.currency) * item.quantity, 0)
+        .reduce((sum, item) => sum + getProductPrice(item.product, item.size, selectedCountry.currency, formData.country) * item.quantity, 0)
     : subtotal;
   const discountAmount = serverQuote
     ? serverQuote.discountAmount

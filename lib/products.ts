@@ -45,6 +45,7 @@ function convertNotionProductToProduct(
     name: np.name,
     slug: np.slug,
     prices,
+    priceCategory: np.priceCategory,
     image: np.image,
     secondaryImage: np.secondaryImage,
     description: np.description,

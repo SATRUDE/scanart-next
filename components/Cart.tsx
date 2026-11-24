@@ -51,7 +51,7 @@ function sizeLabel(size: string): string {
  */
 export const Cart: React.FC<{ deliveryGuide: DeliveryGuide }> = ({ deliveryGuide }) => {
   const { state, removeFromCart, updateQuantity, closeCart, getTotalPriceInCurrency, getTotalItems } = useCart();
-  const { selectedCountry } = useLanguage();
+  const { selectedCountry, euroCountry } = useLanguage();
   const locale = isNoPath(usePathname() || '/') ? 'no' : 'en';
   const aria = chromeAria[locale];
   const t = basketStrings[locale];
@@ -74,13 +74,13 @@ export const Cart: React.FC<{ deliveryGuide: DeliveryGuide }> = ({ deliveryGuide
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state.isOpen]);
 
-  const subtotal = getTotalPriceInCurrency(currency);
+  const subtotal = getTotalPriceInCurrency(currency, euroCountry);
   // NORDIC20, taken off automatically while the store says it is live: 20% of
   // the unframed lines, rounded as the server rounds it. Checkout applies the
   // code itself and the server's quote is what is charged.
   const unframedSubtotal = state.items
     .filter(i => !isFramed(i.frame))
-    .reduce((sum, i) => sum + getProductPrices(i.product, i.size)[currency] * i.quantity, 0);
+    .reduce((sum, i) => sum + getProductPrices(i.product, i.size, euroCountry)[currency] * i.quantity, 0);
   const discount = saleActive ? saleDiscount(unframedSubtotal) : 0;
   const goods = Math.round((subtotal - discount) * 100) / 100;
   // Free delivery (config/free-delivery.ts), the same rule the server charges
@@ -139,7 +139,7 @@ export const Cart: React.FC<{ deliveryGuide: DeliveryGuide }> = ({ deliveryGuide
             <>
               <ul>
                 {state.items.map(item => {
-                  const unit = getProductPrices(item.product, item.size)[currency] + getFramePrice(item.frame || 'no-frame', item.size, currency);
+                  const unit = getProductPrices(item.product, item.size, euroCountry)[currency] + getFramePrice(item.frame || 'no-frame', item.size, currency, euroCountry);
                   const line = Math.round(unit * item.quantity * 100) / 100;
                   const lineOnSale = saleActive && !isFramed(item.frame);
                   const description = [item.size ? sizeLabel(item.size) : null, t.frames[item.frame || 'no-frame']].filter(Boolean).join(', ');

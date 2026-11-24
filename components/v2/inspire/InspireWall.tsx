@@ -23,6 +23,8 @@ export interface InspireRoomPrint {
   name: string;
   artist: string;
   prices: Record<string, CurrencyPrices>;
+  /** The price list, for the per-country euro prices. */
+  priceCategory?: string;
 }
 
 export interface InspireRoom {
@@ -70,7 +72,7 @@ export function InspireWall({
   // gallery of rooms. Rooms still carry their wall colour in the caption, and
   // an old ?wall= link simply shows every room.
   const [room, setRoom] = useState<RoomId | null>(null);
-  const { selectedCountry } = useLanguage();
+  const { selectedCountry, euroCountry } = useLanguage();
   const currency = selectedCountry.currency;
   const roomLabelId = useId();
   const prefix = locale === 'no' ? '/no' : '';
@@ -198,7 +200,7 @@ export function InspireWall({
                         </>
                       )}
                     </span>
-                    <span className="shrink-0"><ShopPrice amount={getLowestProductPrices(p)[currency]} currency={currency} /></span>
+                    <span className="shrink-0"><ShopPrice amount={getLowestProductPrices(p, euroCountry)[currency]} currency={currency} /></span>
                   </li>
                 ))}
               </ul>
