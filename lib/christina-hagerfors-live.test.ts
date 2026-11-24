@@ -25,7 +25,7 @@ describe('Christina Hägerfors is live', () => {
     expect((await getPublishedArtists()).find(a => a.id === '12')?.printCount).toBe(5);
   });
 
-  it('offers each poster at 50 x 70 cm on the Entry list she saw on her preview', async () => {
+  it('offers each poster at 50 x 70 cm on the Entry list, at its margin-rule price', async () => {
     vi.stubEnv('VERCEL_ENV', 'production');
     for (const work of live) {
       const product = await getShopProductBySlug(work.slug);
@@ -33,7 +33,7 @@ describe('Christina Hägerfors is live', () => {
       expect(product?.name).toBe(work.name);
       expect(product?.description).toBe(work.description);
       expect(Object.keys(product!.prices)).toEqual(['50x70cm']);
-      expect(product!.prices['50x70cm']).toEqual({ GBP: 35, USD: 45, NOK: 500, DKK: 325, SEK: 500 });
+      expect(product!.prices['50x70cm']).toEqual({ GBP: 50, USD: 65, NOK: 800, DKK: 475, SEK: 700 });
     }
   });
 
@@ -67,8 +67,8 @@ describe('Christina Hägerfors is live', () => {
       { productId: print!.id, size: '50x70cm', quantity: 1 },
       { productId: print!.id, size: '50x70cm', frame: 'wood', quantity: 1 },
     ], 'GBP', 'GB');
-    // GBP 35 unframed; GBP 35 + 55 framing for the 50 x 70 (config/frame.ts).
-    expect(order.subtotal).toBe(35 + 35 + 55);
+    // GBP 50 unframed (Entry, since 2026-11-24); GBP 50 + 55 framing for the 50 x 70.
+    expect(order.subtotal).toBe(50 + 50 + 55);
   });
 
   it('shows where she is from, Karlstad, pins it, and keeps her off "Where the artists work"', () => {

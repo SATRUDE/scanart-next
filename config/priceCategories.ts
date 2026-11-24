@@ -31,12 +31,15 @@ const compiledCategories: { [category: string]: PriceCategory } = {
 
   // Premium pricing for larger sizes (A3, A2, A1 format)
   'Premium': {
+    // A3 and 50 x 50 raised to GBP 50 under Mark's margin rule (24 Nov 2026,
+    // T-0573), once the artists on these sizes agreed (Artist Agreement
+    // clause 4).
     'A3': {
-      GBP: 42,
-      USD: 54,
-      NOK: 577,
-      DKK: 367,
-      SEK: 577
+      GBP: 50,
+      USD: 65,
+      NOK: 750,
+      DKK: 450,
+      SEK: 700
     },
     'A2': {
       GBP: 56,
@@ -53,11 +56,11 @@ const compiledCategories: { [category: string]: PriceCategory } = {
       SEK: 1058
     },
     '50x50cm': {
-      GBP: 42,
-      USD: 54,
-      NOK: 577,
-      DKK: 367,
-      SEK: 577
+      GBP: 50,
+      USD: 65,
+      NOK: 750,
+      DKK: 475,
+      SEK: 700
     },
     '50x70cm': {
       GBP: 56,
@@ -69,20 +72,22 @@ const compiledCategories: { [category: string]: PriceCategory } = {
   },
 
   // Budget pricing for smaller/standard products
+  // Both sizes raised to GBP 50 under Mark's margin rule (24 Nov 2026,
+  // T-0573), once the artists on this list agreed (Artist Agreement clause 4).
   'Budget': {
     '50x50cm': {
-      GBP: 35,
-      USD: 45,
-      NOK: 480,
-      DKK: 307,
-      SEK: 480
+      GBP: 50,
+      USD: 65,
+      NOK: 750,
+      DKK: 475,
+      SEK: 700
     },
     '50x70cm': {
-      GBP: 45,
-      USD: 58,
-      NOK: 617,
-      DKK: 395,
-      SEK: 617
+      GBP: 50,
+      USD: 65,
+      NOK: 800,
+      DKK: 475,
+      SEK: 700
     }
   },
 
@@ -102,12 +107,18 @@ const compiledCategories: { [category: string]: PriceCategory } = {
       DKK: 260,
       SEK: 400
     },
+    // Raised to GBP 50 under Mark's margin rule (24 Nov 2026, T-0573), once
+    // the artists on this list agreed (Artist Agreement clause 4). At 35 an
+    // unframed print kept under GBP 6 after Gelato, the artist, card fees
+    // and VAT. NOK and DKK sit above the plain ratio because Norwegian and
+    // Danish costs are higher: those are the lowest round numbers that keep
+    // GBP 10 and 20% in that market.
     '50x70cm': {
-      GBP: 35,
-      USD: 45,
-      NOK: 500,
-      DKK: 325,
-      SEK: 500
+      GBP: 50,
+      USD: 65,
+      NOK: 800,
+      DKK: 475,
+      SEK: 700
     }
   },
 

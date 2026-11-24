@@ -27,15 +27,15 @@ export const PUBLISHED_AT = '2026-08-12T14:24:17.389Z';
 /** Artwork prices, by price category and then size. */
 export const PUBLISHED_ARTWORK: Record<string, Record<string, PublishedPrices>> = {
   'Premium': {
-    'A3': { GBP: 42, USD: 54, NOK: 600, DKK: 400, SEK: 600 },
+    'A3': { GBP: 50, USD: 65, NOK: 750, DKK: 450, SEK: 700 },
     'A2': { GBP: 56, USD: 72, NOK: 800, DKK: 500, SEK: 800 },
     'A1': { GBP: 77, USD: 99, NOK: 1000, DKK: 700, SEK: 1100 },
-    '50x50cm': { GBP: 42, USD: 54, NOK: 600, DKK: 400, SEK: 600 },
+    '50x50cm': { GBP: 50, USD: 65, NOK: 750, DKK: 475, SEK: 700 },
     '50x70cm': { GBP: 56, USD: 72, NOK: 800, DKK: 500, SEK: 800 },
   },
   'Budget': {
-    '50x50cm': { GBP: 35, USD: 45, NOK: 480, DKK: 307, SEK: 480 },
-    '50x70cm': { GBP: 45, USD: 58, NOK: 700, DKK: 395, SEK: 617 },
+    '50x50cm': { GBP: 50, USD: 65, NOK: 750, DKK: 475, SEK: 700 },
+    '50x70cm': { GBP: 50, USD: 65, NOK: 800, DKK: 475, SEK: 700 },
   },
 };
 
