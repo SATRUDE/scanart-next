@@ -9,7 +9,7 @@ import type { Currency } from '@/lib/pricing';
 // basket panel and the product page (both client components) can use it
 // without pulling the database client into the browser.
 
-export const GUIDE_CURRENCIES: Currency[] = ['GBP', 'NOK', 'USD', 'DKK', 'SEK'];
+export const GUIDE_CURRENCIES: Currency[] = ['GBP', 'NOK', 'USD', 'DKK', 'SEK', 'EUR'];
 
 /** The five priced markets, then everywhere else. */
 export const GUIDE_DESTINATIONS = ['GB', 'NO', 'SE', 'DK', 'US', 'ELSEWHERE'] as const;
@@ -32,7 +32,7 @@ export function formatDeliveryPrice(amount: number, currency: Currency, locale: 
     return `${locale === 'no' ? n.replace('.', ',') : n} kr`;
   }
   const n = Number.isInteger(amount) ? String(amount) : amount.toFixed(2);
-  const symbol = currency === 'GBP' ? '£' : '$';
+  const symbol = currency === 'GBP' ? '£' : currency === 'EUR' ? '€' : '$';
   return `${symbol}${locale === 'no' ? n.replace('.', ',') : n}`;
 }
 

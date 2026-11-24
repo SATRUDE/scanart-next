@@ -14,8 +14,9 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { noRedirectPathFor } from '@/lib/i18n';
 import { withdrawnResponseFor, withdrawnPageHtml } from '@/lib/withdrawn';
+import { WHERE_COOKIE, marketFor, paysInEuro } from '@/lib/euro';
 
-const SUPPORTED_COUNTRIES = ['GB', 'NO', 'US', 'DK', 'SE'];
+
 
 /** Countries whose visitors get Norwegian by default. Norway only: Danish and
  *  Swedish readers are not served by a Norwegian page any better than by an
@@ -111,12 +112,30 @@ export function proxy(request: NextRequest) {
 
   // Currency. Only set if the cookie does not exist, so a manual choice in the
   // header control is never overridden by where someone happens to be.
-  if (!request.cookies.get('geo-country')) {
-    const detected = SUPPORTED_COUNTRIES.includes(country) ? country : 'GB';
-    response.cookies.set('geo-country', detected, {
+  //
+  // One exception, once: before the euro list (24 Nov 2026) every EU visitor
+  // was put on pounds automatically. A visitor whose cookie still says GB,
+  // who is in a euro country and has no `currency-chosen` cookie, is moved to
+  // euro. That cookie only exists from this release, so someone in the EU
+  // who picked pounds by hand BEFORE it is moved too, once; they can pick
+  // pounds again and are never moved after that. Accepted on purpose: the
+  // alternative left every automatic EU visitor on the pounds list.
+  const current = request.cookies.get('geo-country')?.value;
+  const stalePounds = current === 'GB' && !request.cookies.get('currency-chosen') && paysInEuro(country);
+  if (!current || stalePounds) {
+    response.cookies.set('geo-country', marketFor(country), {
       path: '/',
       maxAge: 60 * 60 * 24 * 30,
     });
+  }
+
+  // A euro visitor's own country, so checkout can start the delivery country
+  // there (the price list cookie only says EU).
+  const where = request.cookies.get(WHERE_COOKIE)?.value;
+  if (paysInEuro(country) && where !== country) {
+    response.cookies.set(WHERE_COOKIE, country, { path: '/', maxAge: 60 * 60 * 24 * 30 });
+  } else if (!paysInEuro(country) && where) {
+    response.cookies.delete(WHERE_COOKIE);
   }
 
   // Remember that this visitor has had their one redirect, including the ones

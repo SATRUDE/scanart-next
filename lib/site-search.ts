@@ -6,7 +6,7 @@ import { matchesCategoryQuery } from '@/lib/category-search';
  * anything that reads the catalogue from disk.
  */
 
-type Prices = { [size: string]: { GBP: number; NOK: number; USD: number; DKK: number; SEK: number } };
+type Prices = { [size: string]: { GBP: number; NOK: number; USD: number; DKK: number; SEK: number; EUR: number } };
 
 export interface SearchPrint {
   id: string;

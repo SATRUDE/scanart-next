@@ -33,7 +33,7 @@ describe('Christina Hägerfors is live', () => {
       expect(product?.name).toBe(work.name);
       expect(product?.description).toBe(work.description);
       expect(Object.keys(product!.prices)).toEqual(['50x70cm']);
-      expect(product!.prices['50x70cm']).toEqual({ GBP: 50, USD: 65, NOK: 800, DKK: 475, SEK: 700 });
+      expect(product!.prices['50x70cm']).toEqual({ GBP: 50, USD: 65, NOK: 800, DKK: 475, SEK: 700, EUR: 90 });
     }
   });
 

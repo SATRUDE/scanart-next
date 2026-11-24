@@ -44,7 +44,7 @@ export const helpGroups: HelpGroup[] = [
       },
       {
         q: 'What currency will I pay in?',
-        a: 'Prices are shown in your selected currency, change it from the menu at the top of the site (we support GBP, NOK, USD, DKK and SEK). All prices include any applicable taxes; delivery is added at checkout.',
+        a: 'Prices are shown in your selected currency, change it from the menu at the top of the site (we support GBP, EUR, NOK, USD, DKK and SEK; buyers in the EU outside Denmark and Sweden see euros). All prices include any applicable taxes; delivery is added at checkout.',
       },
       {
         q: 'Can I add a frame?',

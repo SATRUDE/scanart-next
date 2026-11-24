@@ -245,7 +245,7 @@ export const no = {
           'Leveringskostnaden avhenger av leveringsstedet og størrelsen, rammen og antallet i handlekurven. Vi beregner den fra den gjeldende leveringskostnaden og viser det nøyaktige beløpet før du betaler i kassen.',
         // Free delivery, config/free-delivery.ts (Mark, 2026-10-21).
         free:
-          'Frakten er gratis på bestillinger fra 1 500 kr når ingenting i bestillingen er innrammet og den skal til Norge, et EU-land, Storbritannia eller USA. Beløpet regnes etter eventuell rabattkode. Betaler du i en annen valuta, er grensen 1 350 SEK, 900 DKK, 135 USD eller 100 GBP. Bestillinger med innrammet trykk, og bestillinger til andre land, betaler frakt som vanlig.',
+          'Frakten er gratis på bestillinger fra 1 500 kr når ingenting i bestillingen er innrammet og den skal til Norge, et EU-land, Storbritannia eller USA. Beløpet regnes etter eventuell rabattkode. Betaler du i en annen valuta, er grensen 1 350 SEK, 900 DKK, 120 EUR, 135 USD eller 100 GBP. Bestillinger med innrammet trykk, og bestillinger til andre land, betaler frakt som vanlig.',
       },
       worldwide: {
         heading: 'Frakt til hele verden og importavgifter',
@@ -417,7 +417,7 @@ export const no = {
           },
           {
             q: 'Hvilken valuta betaler jeg i?',
-            a: 'Prisene vises i valutaen du har valgt; bytt fra menyen øverst på siden (vi støtter GBP, NOK, USD, DKK og SEK). Alle priser inkluderer eventuelle avgifter; frakt kommer i tillegg i kassen.',
+            a: 'Prisene vises i valutaen du har valgt; bytt fra menyen øverst på siden (vi støtter GBP, EUR, NOK, USD, DKK og SEK; kjøpere i EU utenom Danmark og Sverige ser euro). Alle priser inkluderer eventuelle avgifter; frakt kommer i tillegg i kassen.',
           },
           {
             q: 'Kan jeg legge til en ramme?',

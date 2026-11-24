@@ -28,7 +28,7 @@ export const MultipleSizes: Story = {
   args: {
     product: {
       id: '1', name: 'Eltsjoen', slug: 'eltsjoen',
-      prices: { A3: { GBP: 42, NOK: 577, USD: 54, DKK: 367, SEK: 577 }, A2: { GBP: 56, NOK: 770, USD: 72, DKK: 490, SEK: 770 }, A1: { GBP: 77, NOK: 1058, USD: 99, DKK: 673, SEK: 1058 } },
+      prices: { A3: { GBP: 42, NOK: 577, USD: 54, DKK: 367, SEK: 577, EUR: 49 }, A2: { GBP: 56, NOK: 770, USD: 72, DKK: 490, SEK: 770, EUR: 65.5 }, A1: { GBP: 77, NOK: 1058, USD: 99, DKK: 673, SEK: 1058, EUR: 90 } },
       image: '/images/products/eltsjoen.png', secondaryImage: '',
       description: '', category: 'Abstract', brand: 'Simen Wahlqvist',
       artist: 'Simen Wahlqvist', artistId: '', inStock: true, published: true, featured: false,
@@ -41,7 +41,7 @@ export const SingleSize: Story = {
   args: {
     product: {
       id: '2', name: 'Slingshot', slug: 'slingshot',
-      prices: { '50x70cm': { GBP: 56, NOK: 770, USD: 72, DKK: 490, SEK: 770 } },
+      prices: { '50x70cm': { GBP: 56, NOK: 770, USD: 72, DKK: 490, SEK: 770, EUR: 65.5 } },
       image: '/images/products/slingshot.png', secondaryImage: '',
       description: '', category: 'Illustrations', brand: 'Simen Strum',
       artist: 'Simen Strum', artistId: '', inStock: true, published: true, featured: false,

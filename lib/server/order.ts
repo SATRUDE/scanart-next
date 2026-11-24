@@ -18,8 +18,8 @@ import { quoteDelivery, type DeliveryItem, type DeliveryQuote } from '@/lib/serv
 // is unchanged: no code found means no discount, which fails safe, and no
 // working code is ever committed to this public repository.
 
-export type Currency = 'GBP' | 'NOK' | 'USD' | 'DKK' | 'SEK';
-export const CURRENCIES: Currency[] = ['GBP', 'NOK', 'USD', 'DKK', 'SEK'];
+export type Currency = 'GBP' | 'NOK' | 'USD' | 'DKK' | 'SEK' | 'EUR';
+export const CURRENCIES: Currency[] = ['GBP', 'NOK', 'USD', 'DKK', 'SEK', 'EUR'];
 
 export interface OrderItemInput {
   productId: string;

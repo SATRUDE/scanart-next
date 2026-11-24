@@ -13,6 +13,9 @@ import { Country } from '@/contexts/LanguageContext';
 //
 // Still the source for: the six delivery zones (lib/address.ts) and the
 // delivery-day estimates (estimatedDays), which checkout and the order page show.
+//
+// EUR (T-0573, 24 Nov 2026) is the pounds figure at the stored rate (0.85483 GBP
+// per euro), rounded up to the next 50 cents.
 
 export interface ShippingRate {
   countryCode: Country | 'ELSEWHERE';
@@ -23,6 +26,7 @@ export interface ShippingRate {
     NOK: number;
     DKK: number;
     SEK: number;
+    EUR: number;
   };
   estimatedDays?: string;
   description?: string;
@@ -37,7 +41,8 @@ export const shippingRates: ShippingRate[] = [
       USD: 7.49,
       NOK: 80.87,
       DKK: 52.11,
-      SEK: 79.13
+      SEK: 79.13,
+      EUR: 7.5
     },
     estimatedDays: '2-3 business days',
     description: 'Standard UK delivery'
@@ -50,7 +55,8 @@ export const shippingRates: ShippingRate[] = [
       USD: 8.24,
       NOK: 89,
       DKK: 57.35,
-      SEK: 87.12
+      SEK: 87.12,
+      EUR: 8
     },
     estimatedDays: '3-5 business days',
     description: 'Standard Norwegian delivery'
@@ -63,7 +69,8 @@ export const shippingRates: ShippingRate[] = [
       USD: 12.99,
       NOK: 140.29,
       DKK: 90.39,
-      SEK: 137.69
+      SEK: 137.69,
+      EUR: 12.5
     },
     estimatedDays: '5-7 business days',
     description: 'Standard US delivery'
@@ -76,7 +83,8 @@ export const shippingRates: ShippingRate[] = [
       USD: 8.24,
       NOK: 89,
       DKK: 57.35,
-      SEK: 87.12
+      SEK: 87.12,
+      EUR: 8
     },
     estimatedDays: '3-5 business days',
     description: 'Standard Danish delivery'
@@ -89,7 +97,8 @@ export const shippingRates: ShippingRate[] = [
       USD: 9.16,
       NOK: 98.89,
       DKK: 63.72,
-      SEK: 99
+      SEK: 99,
+      EUR: 9
     },
     estimatedDays: '3-5 business days',
     description: 'Standard Swedish delivery'
@@ -102,7 +111,8 @@ export const shippingRates: ShippingRate[] = [
       USD: 19.99,
       NOK: 215.89,
       DKK: 139.11,
-      SEK: 211.88
+      SEK: 211.88,
+      EUR: 19
     },
     estimatedDays: '7-14 business days',
     description: 'International delivery'
@@ -153,6 +163,8 @@ export const formatShippingCost = (rate: ShippingRate, currency: string): string
       return `£${cost.toFixed(2)}`;
     case 'USD':
       return `$${cost.toFixed(2)}`;
+    case 'EUR':
+      return `€${cost.toFixed(2)}`;
     case 'NOK':
     case 'DKK':
     case 'SEK':

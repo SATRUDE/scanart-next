@@ -1,10 +1,12 @@
 'use client';
 
 import React, { createContext, useContext, useSyncExternalStore, ReactNode } from 'react';
-import { formatDisplayPrice } from '@/lib/pricing';
+import { formatDisplayPrice, type CurrencyPrices } from '@/lib/pricing';
 
-export type Currency = 'GBP' | 'NOK' | 'USD' | 'DKK' | 'SEK';
-export type Country = 'GB' | 'NO' | 'US' | 'DK' | 'SE';
+export type Currency = 'GBP' | 'NOK' | 'USD' | 'DKK' | 'SEK' | 'EUR';
+/** 'EU' is not a country: it is the euro price list, for every EU member but
+ *  Denmark and Sweden (lib/euro.ts). */
+export type Country = 'GB' | 'NO' | 'US' | 'DK' | 'SE' | 'EU';
 
 export interface CountryInfo {
   code: Country;
@@ -55,19 +57,29 @@ export const countries: CountryInfo[] = [
     currency: 'SEK',
     symbol: 'kr',
     flag: '🇸🇪'
+  },
+  {
+    code: 'EU',
+    name: 'Europe',
+    language: 'EN',
+    currency: 'EUR',
+    symbol: '€',
+    flag: '🇪🇺'
   }
 ];
 
 interface LanguageContextType {
   selectedCountry: CountryInfo;
   setSelectedCountry: (country: CountryInfo) => void;
-  formatPrice: (prices: { GBP: number; NOK: number; USD: number; DKK: number; SEK: number }) => string;
+  formatPrice: (prices: CurrencyPrices) => string;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 const COOKIE = 'geo-country';
 const COOKIE_MAX_AGE = 60 * 60 * 24 * 365;
+/** Set when the visitor picks a currency themselves; read by proxy.ts. */
+const CHOSEN_COOKIE = 'currency-chosen';
 
 /**
  * The country the `geo-country` cookie names, or Great Britain when there is
@@ -140,12 +152,15 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
   const setSelectedCountry = (country: CountryInfo) => {
     // Write the cookie, then tell every reader. No mirrored state to drift.
     document.cookie = `${COOKIE}=${country.code};path=/;max-age=${COOKIE_MAX_AGE}`;
+    // A choice made by hand, so proxy.ts never moves this visitor to the euro
+    // list on its own (it does that once for EU visitors it had put on pounds).
+    document.cookie = `${CHOSEN_COOKIE}=1;path=/;max-age=${COOKIE_MAX_AGE}`;
     listeners.forEach(l => l());
   };
 
   // Delegates to the shared formatter so cards formatting outside this
   // context can never drift from it again (they did: "kr600" vs "600 kr").
-  const formatPrice = (prices: { GBP: number; NOK: number; USD: number; DKK: number; SEK: number }) =>
+  const formatPrice = (prices: CurrencyPrices) =>
     formatDisplayPrice(prices[selectedCountry.currency], selectedCountry.currency);
 
   return (

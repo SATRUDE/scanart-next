@@ -1,5 +1,16 @@
-import { PUBLISHED_ARTWORK, PUBLISHED_RETIRED, isUsable } from './generated-prices';
+import { PUBLISHED_ARTWORK, PUBLISHED_RETIRED } from './generated-prices';
+import { overlayPrices } from './published-overlay';
 
+// EUR (T-0573, 24 Nov 2026) is the price list for EU buyers outside Denmark
+// and Sweden (lib/euro.ts). Each figure is the lowest round number, in fives,
+// that keeps Mark's margin rule in every one of those 25 countries at its own
+// VAT, and also in a worst case made of the highest VAT among them (Hungary,
+// 27%), the dearest live Gelato quote and the cheapest delivery the shop
+// charges there. Finland, with 25.5% VAT and Gelato's dearest EU quotes, is
+// the market that binds. Every unframed print keeps at least EUR 11.70 (GBP
+// 10) and 20% of the price ex VAT at full price, and EUR 5.85 (GBP 5) with
+// NORDIC20. Retired lists (Standard, Luxary) are never offered but carry a
+// figure at least as high as Premium's for the same size.
 export interface PriceCategory {
   [size: string]: {
     GBP: number;
@@ -7,6 +18,7 @@ export interface PriceCategory {
     NOK: number;
     DKK: number;
     SEK: number;
+    EUR: number;
   };
 }
 
@@ -18,14 +30,16 @@ const compiledCategories: { [category: string]: PriceCategory } = {
       USD: 54,
       NOK: 600,
       DKK: 370,
-      SEK: 600
+      SEK: 600,
+      EUR: 90
     },
     '50x70cm': {
       GBP: 56,
       USD: 72,
       NOK: 770,
       DKK: 490,
-      SEK: 770
+      SEK: 770,
+      EUR: 90
     }
   },
 
@@ -39,35 +53,40 @@ const compiledCategories: { [category: string]: PriceCategory } = {
       USD: 65,
       NOK: 750,
       DKK: 450,
-      SEK: 700
+      SEK: 700,
+      EUR: 80
     },
     'A2': {
       GBP: 56,
       USD: 72,
       NOK: 770,
       DKK: 490,
-      SEK: 770
+      SEK: 770,
+      EUR: 90
     },
     'A1': {
       GBP: 77,
       USD: 99,
       NOK: 1058,
       DKK: 673,
-      SEK: 1058
+      SEK: 1058,
+      EUR: 115
     },
     '50x50cm': {
       GBP: 50,
       USD: 65,
       NOK: 750,
       DKK: 475,
-      SEK: 700
+      SEK: 700,
+      EUR: 90
     },
     '50x70cm': {
       GBP: 56,
       USD: 72,
       NOK: 770,
       DKK: 490,
-      SEK: 770
+      SEK: 770,
+      EUR: 90
     }
   },
 
@@ -80,14 +99,16 @@ const compiledCategories: { [category: string]: PriceCategory } = {
       USD: 65,
       NOK: 750,
       DKK: 475,
-      SEK: 700
+      SEK: 700,
+      EUR: 90
     },
     '50x70cm': {
       GBP: 50,
       USD: 65,
       NOK: 800,
       DKK: 475,
-      SEK: 700
+      SEK: 700,
+      EUR: 90
     }
   },
 
@@ -105,8 +126,12 @@ const compiledCategories: { [category: string]: PriceCategory } = {
       USD: 36,
       NOK: 400,
       DKK: 260,
-      SEK: 400
+      SEK: 400,
+      EUR: 90
     },
+    // EUR 90 for both sizes is not a slip: Gelato charges almost the same
+    // for a 50 x 50 as a 50 x 70 in the EU, so the margin rule puts both on
+    // the same euro price (no print sits on the 50 x 50 yet).
     // Raised to GBP 50 under Mark's margin rule (24 Nov 2026, T-0573), once
     // the artists on this list agreed (Artist Agreement clause 4). At 35 an
     // unframed print kept under GBP 6 after Gelato, the artist, card fees
@@ -118,7 +143,8 @@ const compiledCategories: { [category: string]: PriceCategory } = {
       USD: 65,
       NOK: 800,
       DKK: 475,
-      SEK: 700
+      SEK: 700,
+      EUR: 90
     }
   },
 
@@ -129,35 +155,40 @@ const compiledCategories: { [category: string]: PriceCategory } = {
       USD: 77,
       NOK: 823,
       DKK: 526,
-      SEK: 823
+      SEK: 823,
+      EUR: 80
     },
     'A2': {
       GBP: 80,
       USD: 103,
       NOK: 1100,
       DKK: 703,
-      SEK: 1100
+      SEK: 1100,
+      EUR: 95
     },
     'A1': {
       GBP: 110,
       USD: 141,
       NOK: 1500,
       DKK: 960,
-      SEK: 1500
+      SEK: 1500,
+      EUR: 130
     },
     '50x50cm': {
       GBP: 60,
       USD: 77,
       NOK: 823,
       DKK: 526,
-      SEK: 823
+      SEK: 823,
+      EUR: 90
     },
     '50x70cm': {
       GBP: 80,
       USD: 103,
       NOK: 1100,
       DKK: 703,
-      SEK: 1100
+      SEK: 1100,
+      EUR: 95
     }
   }
 };
@@ -179,14 +210,17 @@ export const priceCategories: { [category: string]: PriceCategory } = (() => {
   for (const [category, sizes] of Object.entries(PUBLISHED_ARTWORK ?? {})) {
     if (!merged[category]) merged[category] = {};
     for (const [size, prices] of Object.entries(sizes)) {
-      if (isUsable(prices)) merged[category][size] = { ...prices };
+      const overlaid = overlayPrices(merged[category][size], prices);
+      if (overlaid) merged[category][size] = overlaid;
     }
   }
   // Markus's and Patrik's natural-ratio formats use the current effective Premium 50 × 70
   // retail price in every market, as approved, until their own rows are
   // published. Copy after overlays so a published 50 × 70 change is respected.
   for (const size of ['40x50cm', '40x60cm', '45x60cm'] as const) {
-    if (!isUsable(PUBLISHED_ARTWORK?.Premium?.[size])) {
+    // The same test as the overlay above, so a row published before euro
+    // existed (no EUR) still counts as published here.
+    if (!overlayPrices(compiledCategories.Premium[size], PUBLISHED_ARTWORK?.Premium?.[size])) {
       merged.Premium[size] = { ...merged.Premium['50x70cm'] };
     }
   }

@@ -22,6 +22,7 @@ interface PrintCardProps {
         USD: number;
         DKK: number;
         SEK: number;
+        EUR: number;
       };
     };
     image: string;
@@ -33,7 +34,7 @@ interface PrintCardProps {
     inStock: boolean;
     published?: boolean;
   };
-  currency?: 'GBP' | 'NOK' | 'USD' | 'DKK' | 'SEK';
+  currency?: 'GBP' | 'NOK' | 'USD' | 'DKK' | 'SEK' | 'EUR';
   onClick?: () => void;
   className?: string;
   /** Set on the cards above the fold so the LCP image is preloaded, not lazy. */

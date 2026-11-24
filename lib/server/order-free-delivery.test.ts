@@ -10,7 +10,7 @@ import type { DeliveryQuote } from './shipping-rates';
 // penny either side of, each currency's threshold, so the boundary is tested
 // rather than approximated from whatever the live prices happen to be.
 
-const CURRENCIES: Currency[] = ['GBP', 'NOK', 'USD', 'DKK', 'SEK'];
+const CURRENCIES: Currency[] = ['GBP', 'NOK', 'USD', 'DKK', 'SEK', 'EUR'];
 const spread = (f: (c: Currency) => number) =>
   Object.fromEntries(CURRENCIES.map(c => [c, f(c)])) as Record<Currency, number>;
 const cents = (n: number) => Math.round(n * 100) / 100;

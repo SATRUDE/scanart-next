@@ -8,7 +8,7 @@ import { POSTHOG_DEFAULT_HOST, PRODUCTION_HOST } from '@/lib/posthog';
 export function receiptFromIntent(intent: Stripe.PaymentIntent): PurchaseReceipt | null {
   if (intent.status !== 'succeeded' || !intent.livemode || !Number.isSafeInteger(intent.amount_received) || intent.amount_received <= 0
     || intent.metadata.measurement_version !== '1'
-    || !/^(gbp|nok|usd|dkk|sek)$/.test(intent.currency)
+    || !/^(gbp|nok|usd|dkk|sek|eur)$/.test(intent.currency)
     || intent.metadata.order_items_truncated) return null;
   let encoded = '';
   for (let i = 1; i <= 4; i++) encoded += intent.metadata[`order_items_${i}`] || '';

@@ -28,8 +28,8 @@ export const Default: Story = {
       id: '1',
       name: 'Eltsjoen',
       prices: {
-        A3: { GBP: 42, NOK: 577, USD: 54, DKK: 367, SEK: 577 },
-        A2: { GBP: 56, NOK: 770, USD: 72, DKK: 490, SEK: 770 },
+        A3: { GBP: 42, NOK: 577, USD: 54, DKK: 367, SEK: 577, EUR: 49 },
+        A2: { GBP: 56, NOK: 770, USD: 72, DKK: 490, SEK: 770, EUR: 65.5 },
       },
       image: '/images/products/eltsjoen.png',
       category: 'Abstract',
@@ -46,7 +46,7 @@ export const OutOfStock: Story = {
       id: '2',
       name: 'Slingshot',
       prices: {
-        '50x70cm': { GBP: 56, NOK: 770, USD: 72, DKK: 490, SEK: 770 },
+        '50x70cm': { GBP: 56, NOK: 770, USD: 72, DKK: 490, SEK: 770, EUR: 65.5 },
       },
       image: '/images/products/slingshot.png',
       category: 'Illustrations',

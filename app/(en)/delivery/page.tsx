@@ -64,7 +64,7 @@ export default function DeliveryPage() {
               <p>
                 Delivery is free on orders of £100 or more when nothing in the order is framed and it is going to the UK,
                 an EU country, Norway or the US. The £100 is counted after any discount code. Paying in another currency,
-                the amount is $135, 1,350 SEK, 900 DKK or 1,500 NOK. Orders with a framed print, and orders to anywhere
+                the amount is €120, $135, 1,350 SEK, 900 DKK or 1,500 NOK. Orders with a framed print, and orders to anywhere
                 else, pay delivery as normal.
               </p>
             </>

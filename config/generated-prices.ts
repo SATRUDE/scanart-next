@@ -19,6 +19,7 @@ export interface PublishedPrices {
   NOK: number;
   DKK: number;
   SEK: number;
+  EUR: number;
 }
 
 /** When socialagent last published. Empty means never. */
@@ -27,15 +28,15 @@ export const PUBLISHED_AT = '2026-08-12T14:24:17.389Z';
 /** Artwork prices, by price category and then size. */
 export const PUBLISHED_ARTWORK: Record<string, Record<string, PublishedPrices>> = {
   'Premium': {
-    'A3': { GBP: 50, USD: 65, NOK: 750, DKK: 450, SEK: 700 },
-    'A2': { GBP: 56, USD: 72, NOK: 800, DKK: 500, SEK: 800 },
-    'A1': { GBP: 77, USD: 99, NOK: 1000, DKK: 700, SEK: 1100 },
-    '50x50cm': { GBP: 50, USD: 65, NOK: 750, DKK: 475, SEK: 700 },
-    '50x70cm': { GBP: 56, USD: 72, NOK: 800, DKK: 500, SEK: 800 },
+    'A3': { GBP: 50, USD: 65, NOK: 750, DKK: 450, SEK: 700, EUR: 80 },
+    'A2': { GBP: 56, USD: 72, NOK: 800, DKK: 500, SEK: 800, EUR: 90 },
+    'A1': { GBP: 77, USD: 99, NOK: 1000, DKK: 700, SEK: 1100, EUR: 115 },
+    '50x50cm': { GBP: 50, USD: 65, NOK: 750, DKK: 475, SEK: 700, EUR: 90 },
+    '50x70cm': { GBP: 56, USD: 72, NOK: 800, DKK: 500, SEK: 800, EUR: 90 },
   },
   'Budget': {
-    '50x50cm': { GBP: 50, USD: 65, NOK: 750, DKK: 475, SEK: 700 },
-    '50x70cm': { GBP: 50, USD: 65, NOK: 800, DKK: 475, SEK: 700 },
+    '50x50cm': { GBP: 50, USD: 65, NOK: 750, DKK: 475, SEK: 700, EUR: 90 },
+    '50x70cm': { GBP: 50, USD: 65, NOK: 800, DKK: 475, SEK: 700, EUR: 90 },
   },
 };
 
@@ -44,14 +45,14 @@ export const PUBLISHED_RETIRED: string[] = ['Luxary', 'Standard'];
 
 /** What a frame adds, by size. Colours are priced the same as each other. */
 export const PUBLISHED_FRAMES: Record<string, PublishedPrices> = {
-  'A3': { GBP: 20, USD: 35, NOK: 350, DKK: 275, SEK: 350 },
-  'A2': { GBP: 40, USD: 70, NOK: 600, DKK: 425, SEK: 550 },
-  '40x50cm': { GBP: 40, USD: 70, NOK: 650, DKK: 450, SEK: 550 },
-  '40x60cm': { GBP: 40, USD: 70, NOK: 650, DKK: 450, SEK: 550 },
-  '45x60cm': { GBP: 40, USD: 70, NOK: 650, DKK: 450, SEK: 550 },
-  '50x50cm': { GBP: 45, USD: 70, NOK: 750, DKK: 500, SEK: 650 },
-  '50x70cm': { GBP: 55, USD: 85, NOK: 900, DKK: 625, SEK: 800 },
-  'A1': { GBP: 70, USD: 105, NOK: 1050, DKK: 750, SEK: 950 },
+  'A3': { GBP: 20, USD: 35, NOK: 350, DKK: 275, SEK: 350, EUR: 30 },
+  'A2': { GBP: 40, USD: 70, NOK: 600, DKK: 425, SEK: 550, EUR: 60 },
+  '40x50cm': { GBP: 40, USD: 70, NOK: 650, DKK: 450, SEK: 550, EUR: 60 },
+  '40x60cm': { GBP: 40, USD: 70, NOK: 650, DKK: 450, SEK: 550, EUR: 60 },
+  '45x60cm': { GBP: 40, USD: 70, NOK: 650, DKK: 450, SEK: 550, EUR: 70 },
+  '50x50cm': { GBP: 45, USD: 70, NOK: 750, DKK: 500, SEK: 650, EUR: 70 },
+  '50x70cm': { GBP: 55, USD: 85, NOK: 900, DKK: 625, SEK: 800, EUR: 95 },
+  'A1': { GBP: 70, USD: 105, NOK: 1050, DKK: 750, SEK: 950, EUR: 100 },
 };
 
 /**
@@ -61,7 +62,7 @@ export const PUBLISHED_FRAMES: Record<string, PublishedPrices> = {
  */
 export function isUsable(prices: PublishedPrices | undefined): prices is PublishedPrices {
   if (!prices) return false;
-  return (['GBP', 'USD', 'NOK', 'DKK', 'SEK'] as const).every(currency => {
+  return (['GBP', 'USD', 'NOK', 'DKK', 'SEK', 'EUR'] as const).every(currency => {
     const value = prices[currency];
     return typeof value === 'number' && Number.isFinite(value) && value > 0;
   });

@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import { useCart } from '@/contexts/CartContext';
 import { useLanguage } from '@/contexts/LanguageContext';
 import type { CheckoutStrings } from '@/lib/i18n';
-import { getProductPrice } from '@/lib/pricing';
+import { formatDisplayPrice, getProductPrice, type Currency } from '@/lib/pricing';
 import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import stripePromise from '@/config/stripe';
 import { OrderComplete, type CompletedOrder } from '@/components/OrderComplete';
@@ -29,6 +29,7 @@ import { visitCampaign } from '@/lib/campaign';
 import { COMPANY } from '@/config/company';
 import { getArtistById } from '@/data/artists';
 import { sizeLabel } from '@/components/PrintCard';
+import { EURO_MARKET, euroVisitorCountry } from '@/lib/euro';
 import { Button } from '@/components/v2/ui';
 import { useSalePromotion } from '@/contexts/SalePromotionContext';
 import { isSalePromotionActive, SALE_CODE, salePromotionStrings } from '@/lib/sale-promotion';
@@ -513,7 +514,7 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' |
     city: '',
     state: '',
     zipCode: '',
-    country: defaultDestination(selectedCountry.code),
+    country: defaultDestination(selectedCountry.code === EURO_MARKET ? euroVisitorCountry() : selectedCountry.code),
   });
 
   // The price of this exact order from the server, the same function the
@@ -592,7 +593,7 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' |
 
   // One line's price, exactly as the order summary has always computed it.
   type Line = (typeof state.items)[number];
-  const lineAmount = (item: Line, currency: 'GBP' | 'NOK' | 'USD' | 'DKK' | 'SEK') =>
+  const lineAmount = (item: Line, currency: Currency) =>
     Math.round(((getProductPrice(item.product, item.size, currency) + getFramePrice(item.frame || 'no-frame', item.size, currency)) * item.quantity) * 100) / 100;
   const lineAmounts = (item: Line, after: (n: number) => number = n => n) => ({
     GBP: after(lineAmount(item, 'GBP')),
@@ -600,6 +601,7 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' |
     USD: after(lineAmount(item, 'USD')),
     DKK: after(lineAmount(item, 'DKK')),
     SEK: after(lineAmount(item, 'SEK')),
+    EUR: after(lineAmount(item, 'EUR')),
   });
   const linePrice = (item: Line) => formatPrice(lineAmounts(item));
   // The line after the applied code, when the code covers it: the price shows
@@ -655,16 +657,14 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' |
             NOK: Math.round(((getProductPrice(item.product, item.size, 'NOK') + getFramePrice(item.frame || 'no-frame', item.size, 'NOK')) * item.quantity) * 100) / 100,
             USD: Math.round(((getProductPrice(item.product, item.size, 'USD') + getFramePrice(item.frame || 'no-frame', item.size, 'USD')) * item.quantity) * 100) / 100,
             DKK: Math.round(((getProductPrice(item.product, item.size, 'DKK') + getFramePrice(item.frame || 'no-frame', item.size, 'DKK')) * item.quantity) * 100) / 100,
-            SEK: Math.round(((getProductPrice(item.product, item.size, 'SEK') + getFramePrice(item.frame || 'no-frame', item.size, 'SEK')) * item.quantity) * 100) / 100
+            SEK: Math.round(((getProductPrice(item.product, item.size, 'SEK') + getFramePrice(item.frame || 'no-frame', item.size, 'SEK')) * item.quantity) * 100) / 100,
+            EUR: Math.round(((getProductPrice(item.product, item.size, 'EUR') + getFramePrice(item.frame || 'no-frame', item.size, 'EUR')) * item.quantity) * 100) / 100
           }),
         })),
-        total: formatPrice({
-          GBP: total,
-          NOK: total * 13.75,
-          USD: total * 1.29,
-          DKK: total * 8.75,
-          SEK: total * 13.75
-        }),
+        // `total` is already in the buyer's currency; it used to be multiplied
+        // by a fixed rate for every currency but pounds, so the record said
+        // 13.75 times the real total for a kroner order.
+        total: formatDisplayPrice(total, selectedCountry.currency),
         currency: selectedCountry.currency,
         discountCode: appliedDiscount?.code || null,
       };
@@ -717,16 +717,14 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' |
             NOK: Math.round(((getProductPrice(item.product, item.size, 'NOK') + getFramePrice(item.frame || 'no-frame', item.size, 'NOK')) * item.quantity) * 100) / 100,
             USD: Math.round(((getProductPrice(item.product, item.size, 'USD') + getFramePrice(item.frame || 'no-frame', item.size, 'USD')) * item.quantity) * 100) / 100,
             DKK: Math.round(((getProductPrice(item.product, item.size, 'DKK') + getFramePrice(item.frame || 'no-frame', item.size, 'DKK')) * item.quantity) * 100) / 100,
-            SEK: Math.round(((getProductPrice(item.product, item.size, 'SEK') + getFramePrice(item.frame || 'no-frame', item.size, 'SEK')) * item.quantity) * 100) / 100
+            SEK: Math.round(((getProductPrice(item.product, item.size, 'SEK') + getFramePrice(item.frame || 'no-frame', item.size, 'SEK')) * item.quantity) * 100) / 100,
+            EUR: Math.round(((getProductPrice(item.product, item.size, 'EUR') + getFramePrice(item.frame || 'no-frame', item.size, 'EUR')) * item.quantity) * 100) / 100
           }),
         })),
-        total: formatPrice({
-          GBP: total,
-          NOK: total * 13.75,
-          USD: total * 1.29,
-          DKK: total * 8.75,
-          SEK: total * 13.75
-        }),
+        // `total` is already in the buyer's currency; it used to be multiplied
+        // by a fixed rate for every currency but pounds, so the record said
+        // 13.75 times the real total for a kroner order.
+        total: formatDisplayPrice(total, selectedCountry.currency),
         currency: selectedCountry.currency,
         discountCode: appliedDiscount?.code || null,
       };
@@ -770,16 +768,14 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' |
             NOK: Math.round(((getProductPrice(item.product, item.size, 'NOK') + getFramePrice(item.frame || 'no-frame', item.size, 'NOK')) * item.quantity) * 100) / 100,
             USD: Math.round(((getProductPrice(item.product, item.size, 'USD') + getFramePrice(item.frame || 'no-frame', item.size, 'USD')) * item.quantity) * 100) / 100,
             DKK: Math.round(((getProductPrice(item.product, item.size, 'DKK') + getFramePrice(item.frame || 'no-frame', item.size, 'DKK')) * item.quantity) * 100) / 100,
-            SEK: Math.round(((getProductPrice(item.product, item.size, 'SEK') + getFramePrice(item.frame || 'no-frame', item.size, 'SEK')) * item.quantity) * 100) / 100
+            SEK: Math.round(((getProductPrice(item.product, item.size, 'SEK') + getFramePrice(item.frame || 'no-frame', item.size, 'SEK')) * item.quantity) * 100) / 100,
+            EUR: Math.round(((getProductPrice(item.product, item.size, 'EUR') + getFramePrice(item.frame || 'no-frame', item.size, 'EUR')) * item.quantity) * 100) / 100
           }),
         })),
-        total: formatPrice({
-          GBP: total,
-          NOK: total * 13.75,
-          USD: total * 1.29,
-          DKK: total * 8.75,
-          SEK: total * 13.75
-        }),
+        // `total` is already in the buyer's currency; it used to be multiplied
+        // by a fixed rate for every currency but pounds, so the record said
+        // 13.75 times the real total for a kroner order.
+        total: formatDisplayPrice(total, selectedCountry.currency),
         currency: selectedCountry.currency,
         discountCode: appliedDiscount?.code || null,
       };
@@ -892,16 +888,10 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' |
 
   // Everything below is display: the same numbers as above, formatted the
   // way the summary always formatted them.
-  const subtotalLabel = formatPrice({ GBP: subtotal, NOK: subtotal, USD: subtotal, DKK: subtotal, SEK: subtotal });
-  const shippingLabel = finalShipping === 0 ? t.free : formatPrice({
-    GBP: selectedCountry.currency === 'GBP' ? finalShipping : 0,
-    NOK: selectedCountry.currency === 'NOK' ? finalShipping : 0,
-    USD: selectedCountry.currency === 'USD' ? finalShipping : 0,
-    DKK: selectedCountry.currency === 'DKK' ? finalShipping : 0,
-    SEK: selectedCountry.currency === 'SEK' ? finalShipping : 0
-  });
-  const discountLabel = `−${formatPrice({ GBP: discountAmount, NOK: discountAmount, USD: discountAmount, DKK: discountAmount, SEK: discountAmount })}`;
-  const totalLabel = formatPrice({ GBP: total, NOK: total, USD: total, DKK: total, SEK: total });
+  const subtotalLabel = formatDisplayPrice(subtotal, selectedCountry.currency);
+  const shippingLabel = finalShipping === 0 ? t.free : formatDisplayPrice(finalShipping, selectedCountry.currency);
+  const discountLabel = `−${formatDisplayPrice(discountAmount, selectedCountry.currency)}`;
+  const totalLabel = formatDisplayPrice(total, selectedCountry.currency);
   const days = deliveryDays(shippingRate?.estimatedDays);
   const printCount = state.items.reduce((n, item) => n + item.quantity, 0);
   const printCountLabel = printCount === 1 ? v.printCountOne : fill(v.printCount, { n: printCount });

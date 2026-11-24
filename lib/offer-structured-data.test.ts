@@ -103,7 +103,7 @@ describe('offer shipping details (T-0158)', () => {
 
 describe('lowestPricedSize', () => {
   it('picks the size whose GBP price is the Offer price', () => {
-    const p = { GBP: 0, NOK: 0, USD: 0, DKK: 0, SEK: 0 };
+    const p = { GBP: 0, NOK: 0, USD: 0, DKK: 0, SEK: 0, EUR: 0 };
     expect(lowestPricedSize({ prices: { '50x70': { ...p, GBP: 79 }, '30x40': { ...p, GBP: 45 }, '70x100': { ...p, GBP: 119 } } })).toBe('30x40');
     expect(lowestPricedSize({ prices: null })).toBeUndefined();
   });
