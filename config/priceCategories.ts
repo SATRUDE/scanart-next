@@ -102,12 +102,18 @@ const compiledCategories: { [category: string]: PriceCategory } = {
       DKK: 260,
       SEK: 400
     },
+    // Raised to GBP 50 under Mark's margin rule (24 Nov 2026, T-0573), once
+    // the artists on this list agreed (Artist Agreement clause 4). At 35 an
+    // unframed print kept under GBP 6 after Gelato, the artist, card fees
+    // and VAT. NOK and DKK sit above the plain ratio because Norwegian and
+    // Danish costs are higher: those are the lowest round numbers that keep
+    // GBP 10 and 20% in that market.
     '50x70cm': {
-      GBP: 35,
-      USD: 45,
-      NOK: 500,
-      DKK: 325,
-      SEK: 500
+      GBP: 50,
+      USD: 65,
+      NOK: 800,
+      DKK: 475,
+      SEK: 700
     }
   },
 
