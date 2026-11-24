@@ -27,7 +27,8 @@ export const BUFFER = 0.08;
  * What each currency rounds up to.
  *
  * Always UP, so rounding can never take the price below cost. The kroner
- * currencies go to the nearest 5 and the rest to the nearest 0.50, because
+ * currencies go to the nearest 5 and the rest (euro included) to the nearest
+ * 0.50, because
  * 250.05 kr is not a number anyone would write on a delivery line.
  */
 const ROUND_TO: Record<Currency, number> = {
@@ -36,6 +37,7 @@ const ROUND_TO: Record<Currency, number> = {
   DKK: 5,
   GBP: 0.5,
   USD: 0.5,
+  EUR: 0.5,
 };
 
 export interface DeliveryItem {
@@ -227,7 +229,9 @@ export async function quoteDelivery(
       };
     }
 
-    const perEur = fx[0]?.perEur;
+    // The swept rates are already in euro, so euro needs no exchange rate
+    // (the FxRate table has no EUR row, and must not need one).
+    const perEur = currency === 'EUR' ? 1 : fx[0]?.perEur;
     if (!rates.length || !perEur) {
       return { amount: fallback(countryCode, currency), source: 'fallback' };
     }

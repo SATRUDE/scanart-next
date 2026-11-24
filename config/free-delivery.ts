@@ -33,6 +33,9 @@ export const FREE_DELIVERY_THRESHOLD: Record<Currency, number> = {
   SEK: 1350,
   DKK: 900,
   NOK: 1500,
+  // Added with the euro list (T-0573, 24 Nov 2026): at the stored rate of
+  // 0.85483 GBP per euro, EUR 120 = GBP 102.6.
+  EUR: 120,
 };
 
 /** The 27 EU member states, ISO 3166-1 alpha-2. Their overseas territories
@@ -101,7 +104,7 @@ export function freeDeliveryProgress(goods: number, currency: Currency): number 
 }
 
 /**
- * A money amount the way the free-delivery copy writes it: "£100", "$135",
+ * A money amount the way the free-delivery copy writes it: "£100", "$135", "€120",
  * "1 500 kr". Whole units (the amount away rounds UP, so the line never
  * promises free delivery for less than it takes), and kroner amounts group
  * thousands with a non-breaking space as the Norwegian sketches do.
@@ -111,5 +114,5 @@ export function formatFreeDeliveryAmount(amount: number, currency: Currency, who
   if (currency === 'NOK' || currency === 'DKK' || currency === 'SEK') {
     return `${String(value).replace(/\B(?=(\d{3})+(?!\d))/g, ' ')} kr`;
   }
-  return `${currency === 'GBP' ? '£' : '$'}${value}`;
+  return `${currency === 'GBP' ? '£' : currency === 'EUR' ? '€' : '$'}${value}`;
 }

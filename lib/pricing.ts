@@ -12,6 +12,8 @@ export interface CurrencyPrices {
   USD: number;
   DKK: number;
   SEK: number;
+  /** Euro, for buyers in the EU outside Denmark and Sweden (T-0573). */
+  EUR: number;
 }
 
 export type Currency = keyof CurrencyPrices;
@@ -21,7 +23,7 @@ export interface PricedProduct {
   prices?: { [size: string]: CurrencyPrices } | null;
 }
 
-const NO_PRICES: CurrencyPrices = { GBP: 0, NOK: 0, USD: 0, DKK: 0, SEK: 0 };
+const NO_PRICES: CurrencyPrices = { GBP: 0, NOK: 0, USD: 0, DKK: 0, SEK: 0, EUR: 0 };
 
 export function getProductPrice(
   product: PricedProduct | null | undefined,
@@ -85,11 +87,12 @@ const CURRENCY_SYMBOLS: Record<Currency, string> = {
   USD: '$',
   DKK: 'kr',
   SEK: 'kr',
+  EUR: '€',
 };
 
 /**
  * The one place a price becomes a string. Kroner currencies read "600 kr",
- * the rest "£42" / "$54". PrintCard used to carry a private formatter that
+ * the rest "£42" / "$54" / "€60". PrintCard used to carry a private formatter that
  * wrote "kr600", so category, collection, artist and article cards disagreed
  * with the prints grid, the product page and the cart, which all format via
  * the language context. Both now call this.

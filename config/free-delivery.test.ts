@@ -13,23 +13,28 @@ import {
 import { isDeliverable } from '@/lib/address';
 import type { Currency } from '@/lib/pricing';
 
-const CURRENCIES: Currency[] = ['GBP', 'NOK', 'USD', 'DKK', 'SEK'];
+const CURRENCIES: Currency[] = ['GBP', 'NOK', 'USD', 'DKK', 'SEK', 'EUR'];
 const basket = (goods: number, currency: Currency = 'GBP', country = 'GB', hasFramed = false) =>
   ({ goods, currency, country, hasFramed });
 
 describe('free delivery thresholds', () => {
   it('are the agreed numbers, one per currency the shop sells in', () => {
-    expect(FREE_DELIVERY_THRESHOLD).toEqual({ GBP: 100, USD: 135, SEK: 1350, DKK: 900, NOK: 1500 });
+    expect(FREE_DELIVERY_THRESHOLD).toEqual({ GBP: 100, USD: 135, SEK: 1350, DKK: 900, NOK: 1500, EUR: 120 });
   });
 
   it('never ask a foreign buyer for less than 100 pounds, at the rates they were set and re-checked on', () => {
-    const rates = {
+    const rates: Record<string, Partial<Record<(typeof CURRENCIES)[number], number>>> = {
       '2026-10-02': { GBP: 1, USD: 1.3201, SEK: 13.2772, DKK: 8.7891, NOK: 12.738 },
       '2026-10-20': { GBP: 1, USD: 1.3347, SEK: 13.2373, DKK: 8.8954, NOK: 12.525 },
+      // The euro threshold (T-0573) was set on the shop's stored rate,
+      // socialagent's FxRate of 2026-08-12: 0.85483 GBP per euro.
+      'stored rate': { EUR: 1 / 0.85483 },
     };
     for (const [day, perGbp] of Object.entries(rates)) {
       for (const c of CURRENCIES) {
-        expect(FREE_DELIVERY_THRESHOLD[c] / perGbp[c], `${c} ${day}`).toBeGreaterThanOrEqual(100);
+        const rate = perGbp[c];
+        if (rate === undefined) continue;
+        expect(FREE_DELIVERY_THRESHOLD[c] / rate, `${c} ${day}`).toBeGreaterThanOrEqual(100);
       }
     }
   });

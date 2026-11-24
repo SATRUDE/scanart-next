@@ -38,7 +38,7 @@ function metaReady(): boolean {
 
 export function trackPinterestCart(value: number, currency: string, quantity: number): void {
   if (!Number.isFinite(value) || value <= 0 || !Number.isInteger(quantity) || quantity < 1
-    || !/^(GBP|NOK|USD|DKK|SEK)$/.test(currency) || !pinterestReady()) return;
+    || !/^(GBP|NOK|USD|DKK|SEK|EUR)$/.test(currency) || !pinterestReady()) return;
   try { (window as TagWindow).pintrk?.('track', 'addtocart', { value, currency, order_quantity: quantity }); }
   catch { /* advertising cannot interrupt basket changes */ }
 }
@@ -93,7 +93,7 @@ export async function measureConfirmedPurchase(clientSecret: string): Promise<vo
 export function trackAdvertisingCart(value: number, currency: string, quantity: number): void {
   trackPinterestCart(value, currency, quantity);
   if (!Number.isFinite(value) || value <= 0 || !Number.isInteger(quantity) || quantity < 1
-    || !/^(GBP|NOK|USD|DKK|SEK)$/.test(currency)) return;
+    || !/^(GBP|NOK|USD|DKK|SEK|EUR)$/.test(currency)) return;
   try {
     if (metaReady()) (window as TagWindow).fbq?.('track', 'AddToCart', { value, currency, num_items: quantity });
   } catch { /* advertising cannot interrupt basket changes */ }

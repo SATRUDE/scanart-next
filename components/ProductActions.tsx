@@ -132,6 +132,7 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings
     USD: getFramePrice(selectedFrame, selectedSize || undefined, 'USD'),
     DKK: getFramePrice(selectedFrame, selectedSize || undefined, 'DKK'),
     SEK: getFramePrice(selectedFrame, selectedSize || undefined, 'SEK'),
+    EUR: getFramePrice(selectedFrame, selectedSize || undefined, 'EUR'),
   };
 
   const totalPrices = {
@@ -140,6 +141,7 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings
     USD: (currentPrices.USD || 0) + framePrices.USD,
     DKK: (currentPrices.DKK || 0) + framePrices.DKK,
     SEK: (currentPrices.SEK || 0) + framePrices.SEK,
+    EUR: (currentPrices.EUR || 0) + framePrices.EUR,
   };
 
   // NORDIC20 is on unframed prints only: with no frame the button shows what

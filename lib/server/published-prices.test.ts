@@ -12,14 +12,15 @@ describe('published prices', () => {
   it('refuses anything incomplete, zero or not a number', () => {
     expect(isUsable(undefined)).toBe(false);
     expect(isUsable({ GBP: 10, USD: 12, NOK: 140, DKK: 90 } as never)).toBe(false);
-    expect(isUsable({ GBP: 10, USD: 12, NOK: 140, DKK: 90, SEK: 0 })).toBe(false);
-    expect(isUsable({ GBP: 10, USD: 12, NOK: 140, DKK: 90, SEK: -5 })).toBe(false);
-    expect(isUsable({ GBP: 10, USD: 12, NOK: 140, DKK: 90, SEK: NaN })).toBe(false);
+    expect(isUsable({ GBP: 10, USD: 12, NOK: 140, DKK: 90, SEK: 0, EUR: 12 })).toBe(false);
+    expect(isUsable({ GBP: 10, USD: 12, NOK: 140, DKK: 90, SEK: -5, EUR: 12 })).toBe(false);
+    expect(isUsable({ GBP: 10, USD: 12, NOK: 140, DKK: 90, SEK: NaN, EUR: 12 })).toBe(false);
+    expect(isUsable({ GBP: 10, USD: 12, NOK: 140, DKK: 90, SEK: 140, EUR: 0 })).toBe(false);
     expect(isUsable({ GBP: '10' } as never)).toBe(false);
   });
 
   it('accepts a complete set', () => {
-    expect(isUsable({ GBP: 42, USD: 54, NOK: 577, DKK: 367, SEK: 577 })).toBe(true);
+    expect(isUsable({ GBP: 42, USD: 54, NOK: 577, DKK: 367, SEK: 577, EUR: 60 })).toBe(true);
   });
 
   // With nothing published, every price must still be the compiled one. This

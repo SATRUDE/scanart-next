@@ -14,6 +14,7 @@ export interface Product {
       USD: number;
       DKK: number;
       SEK: number;
+      EUR: number;
     };
   };
   image: string;
@@ -137,7 +138,7 @@ interface CartContextType {
   closeCart: () => void;
   getTotalItems: () => number;
   getTotalPrice: () => number;
-  getTotalPriceInCurrency: (currency: 'GBP' | 'NOK' | 'USD' | 'DKK' | 'SEK') => number;
+  getTotalPriceInCurrency: (currency: 'GBP' | 'NOK' | 'USD' | 'DKK' | 'SEK' | 'EUR') => number;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -214,7 +215,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     }, 0);
   };
 
-  const getTotalPriceInCurrency = (currency: 'GBP' | 'NOK' | 'USD' | 'DKK' | 'SEK') => {
+  const getTotalPriceInCurrency = (currency: 'GBP' | 'NOK' | 'USD' | 'DKK' | 'SEK' | 'EUR') => {
     const total = state.items.reduce((total: number, item: CartItem) => {
       let price = 0;
       

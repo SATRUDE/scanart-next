@@ -29,11 +29,11 @@ function convertNotionProductToProduct(
   np: NotionProduct,
   categories: { [category: string]: PriceCategory } = priceCategories
 ): Product {
-  const prices: { [key: string]: { GBP: number; NOK: number; USD: number; DKK: number; SEK: number } } = {};
+  const prices: { [key: string]: { GBP: number; NOK: number; USD: number; DKK: number; SEK: number; EUR: number } } = {};
   const categoryPrices = categories[np.priceCategory];
   if (categoryPrices) {
     np.availableSizes.forEach(size => {
-      if (categoryPrices[size]) prices[size] = categoryPrices[size] as { GBP: number; NOK: number; USD: number; DKK: number; SEK: number };
+      if (categoryPrices[size]) prices[size] = categoryPrices[size] as { GBP: number; NOK: number; USD: number; DKK: number; SEK: number; EUR: number };
     });
   }
 

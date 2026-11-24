@@ -7,7 +7,7 @@ import { getLowestProductPrices, type CurrencyPrices, type PricedProduct } from 
  */
 export function lowestPrices(products: PricedProduct[]): CurrencyPrices {
   const all = products.map(p => getLowestProductPrices(p));
-  const out: CurrencyPrices = { ...(all[0] ?? { GBP: 0, NOK: 0, USD: 0, DKK: 0, SEK: 0 }) };
+  const out: CurrencyPrices = { ...(all[0] ?? { GBP: 0, NOK: 0, USD: 0, DKK: 0, SEK: 0, EUR: 0 }) };
   for (const prices of all.slice(1)) {
     for (const cur of Object.keys(out) as (keyof CurrencyPrices)[]) {
       if (prices[cur] > 0 && (!(out[cur] > 0) || prices[cur] < out[cur])) out[cur] = prices[cur];

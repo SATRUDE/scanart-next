@@ -12,7 +12,7 @@ function CartWithToggle() {
   const addSampleItem = () => {
     addToCart({
       id: '1', name: 'Eltsjoen', slug: 'eltsjoen',
-      prices: { A3: { GBP: 42, NOK: 577, USD: 54, DKK: 367, SEK: 577 } },
+      prices: { A3: { GBP: 42, NOK: 577, USD: 54, DKK: 367, SEK: 577, EUR: 49 } },
       image: '/images/products/eltsjoen.png', secondaryImage: '',
       description: '', category: 'Abstract', brand: 'Simen Wahlqvist',
       artist: 'Simen Wahlqvist', artistId: '', inStock: true, published: true, featured: false,
