@@ -25,8 +25,8 @@ describe('published prices', () => {
   // With nothing published, every price must still be the compiled one. This
   // is what makes an empty or deleted generated file safe.
   it('leaves the compiled prices alone when nothing is published', () => {
-    expect(priceCategories.Premium.A3.GBP).toBe(42);
-    expect(priceCategories.Premium['50x50cm'].GBP).toBe(42);
+    expect(priceCategories.Premium.A3.GBP).toBe(50);
+    expect(priceCategories.Premium['50x50cm'].GBP).toBe(50);
     expect(priceCategories.Budget['50x70cm'].GBP).toBe(50);
     expect(getFramePrice('wood', 'A1', 'GBP')).toBe(70);
     expect(getFramePrice('no-frame', 'A1', 'GBP')).toBe(0);

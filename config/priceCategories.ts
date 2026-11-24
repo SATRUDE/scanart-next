@@ -31,12 +31,15 @@ const compiledCategories: { [category: string]: PriceCategory } = {
 
   // Premium pricing for larger sizes (A3, A2, A1 format)
   'Premium': {
+    // A3 and 50 x 50 raised to GBP 50 under Mark's margin rule (24 Nov 2026,
+    // T-0573), once the artists on these sizes agreed (Artist Agreement
+    // clause 4).
     'A3': {
-      GBP: 42,
-      USD: 54,
-      NOK: 577,
-      DKK: 367,
-      SEK: 577
+      GBP: 50,
+      USD: 65,
+      NOK: 750,
+      DKK: 450,
+      SEK: 700
     },
     'A2': {
       GBP: 56,
@@ -53,11 +56,11 @@ const compiledCategories: { [category: string]: PriceCategory } = {
       SEK: 1058
     },
     '50x50cm': {
-      GBP: 42,
-      USD: 54,
-      NOK: 577,
-      DKK: 367,
-      SEK: 577
+      GBP: 50,
+      USD: 65,
+      NOK: 750,
+      DKK: 475,
+      SEK: 700
     },
     '50x70cm': {
       GBP: 56,

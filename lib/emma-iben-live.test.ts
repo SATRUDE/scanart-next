@@ -34,7 +34,7 @@ describe('Emma Iben is live', () => {
       expect(product?.published, work.slug).toBe(true);
       expect(product?.name).toBe(work.title);
       expect(Object.keys(product!.prices).sort(), work.slug).toEqual([...SIZES[work.slug]].sort());
-      expect(product!.prices.A3.GBP, work.slug).toBe(42);
+      expect(product!.prices.A3.GBP, work.slug).toBe(50);
       if (SIZES[work.slug].length > 1) {
         expect(product!.prices.A2.GBP).toBe(56);
         expect(product!.prices.A1.GBP).toBe(77);
@@ -60,8 +60,8 @@ describe('Emma Iben is live', () => {
       { productId: print!.id, size: 'A3', quantity: 1 },
       { productId: print!.id, size: 'A1', frame: 'wood', quantity: 1 },
     ], 'GBP', 'GB');
-    // GBP 42 for the A3; GBP 77 + 70 framing for the A1 (config/frame.ts).
-    expect(order.subtotal).toBe(42 + 77 + 70);
+    // GBP 50 for the A3 (since 2026-11-24); GBP 77 + 70 framing for the A1 (config/frame.ts).
+    expect(order.subtotal).toBe(50 + 77 + 70);
   });
 
   it('has Copenhagen on the artist map and Norwegian copy for the page and each print', () => {
