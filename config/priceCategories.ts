@@ -1,4 +1,4 @@
-import { PUBLISHED_ARTWORK, PUBLISHED_RETIRED, isUsable } from './generated-prices';
+import { PUBLISHED_ARTWORK, PUBLISHED_RETIRED } from './generated-prices';
 import { overlayPrices } from './published-overlay';
 
 // EUR (T-0573, 24 Nov 2026) is the price list for EU buyers outside Denmark
@@ -129,6 +129,9 @@ const compiledCategories: { [category: string]: PriceCategory } = {
       SEK: 400,
       EUR: 90
     },
+    // EUR 90 for both sizes is not a slip: Gelato charges almost the same
+    // for a 50 x 50 as a 50 x 70 in the EU, so the margin rule puts both on
+    // the same euro price (no print sits on the 50 x 50 yet).
     // Raised to GBP 50 under Mark's margin rule (24 Nov 2026, T-0573), once
     // the artists on this list agreed (Artist Agreement clause 4). At 35 an
     // unframed print kept under GBP 6 after Gelato, the artist, card fees
@@ -215,7 +218,9 @@ export const priceCategories: { [category: string]: PriceCategory } = (() => {
   // retail price in every market, as approved, until their own rows are
   // published. Copy after overlays so a published 50 × 70 change is respected.
   for (const size of ['40x50cm', '40x60cm', '45x60cm'] as const) {
-    if (!isUsable(PUBLISHED_ARTWORK?.Premium?.[size])) {
+    // The same test as the overlay above, so a row published before euro
+    // existed (no EUR) still counts as published here.
+    if (!overlayPrices(compiledCategories.Premium[size], PUBLISHED_ARTWORK?.Premium?.[size])) {
       merged.Premium[size] = { ...merged.Premium['50x70cm'] };
     }
   }

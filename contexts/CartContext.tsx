@@ -2,6 +2,7 @@
 
 import React, { createContext, useContext, useReducer, ReactNode, useEffect } from 'react';
 import { getFramePrice } from '@/config/frame';
+import { getProductPrices } from '@/lib/pricing';
 
 export interface Product {
   id: string;
@@ -147,7 +148,16 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 function loadCartFromStorage() {
   try {
     const data = localStorage.getItem('scanart-cart');
-    if (data) return (JSON.parse(data) as CartItem[]).filter(item => item.product.published !== false);
+    if (data) {
+      // A basket saved before the euro list (24 Nov 2026) carries prices with
+      // no EUR, which would show every line at €0 to a euro visitor while
+      // checkout charges the real price. Those lines are dropped for them;
+      // everyone else keeps their basket as it was.
+      const inEuro = /(?:^|;\s*)geo-country=EU(?:;|$)/.test(document.cookie);
+      return (JSON.parse(data) as CartItem[]).filter(
+        item => item.product.published !== false && (!inEuro || getProductPrices(item.product, item.size).EUR > 0)
+      );
+    }
   } catch { /* ignore */ }
   return [];
 }

@@ -115,8 +115,11 @@ export function proxy(request: NextRequest) {
   //
   // One exception, once: before the euro list (24 Nov 2026) every EU visitor
   // was put on pounds automatically. A visitor whose cookie still says GB,
-  // who is in a euro country and has never picked a currency by hand
-  // (LanguageContext sets `currency-chosen` when they do), is moved to euro.
+  // who is in a euro country and has no `currency-chosen` cookie, is moved to
+  // euro. That cookie only exists from this release, so someone in the EU
+  // who picked pounds by hand BEFORE it is moved too, once; they can pick
+  // pounds again and are never moved after that. Accepted on purpose: the
+  // alternative left every automatic EU visitor on the pounds list.
   const current = request.cookies.get('geo-country')?.value;
   const stalePounds = current === 'GB' && !request.cookies.get('currency-chosen') && paysInEuro(country);
   if (!current || stalePounds) {
@@ -128,8 +131,11 @@ export function proxy(request: NextRequest) {
 
   // A euro visitor's own country, so checkout can start the delivery country
   // there (the price list cookie only says EU).
-  if (paysInEuro(country) && request.cookies.get(WHERE_COOKIE)?.value !== country) {
+  const where = request.cookies.get(WHERE_COOKIE)?.value;
+  if (paysInEuro(country) && where !== country) {
     response.cookies.set(WHERE_COOKIE, country, { path: '/', maxAge: 60 * 60 * 24 * 30 });
+  } else if (!paysInEuro(country) && where) {
+    response.cookies.delete(WHERE_COOKIE);
   }
 
   // Remember that this visitor has had their one redirect, including the ones
