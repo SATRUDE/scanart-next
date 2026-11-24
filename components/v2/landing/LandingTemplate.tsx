@@ -3,7 +3,7 @@ import { PageHeader, ContentSection, Question } from '@/components/v2/ui';
 import { LandingCrossLinks } from '@/components/LandingCrossLinks';
 import { PrintGrid } from '@/components/v2/prints/PrintGrid';
 import { FromPrice } from '@/components/v2/prints/FromPrice';
-import { lowestPrices } from '@/components/v2/prints/lowest-prices';
+import { lowestEuroByCountry, lowestPrices } from '@/components/v2/prints/lowest-prices';
 import { LandingIntro } from '@/components/v2/landing/LandingIntro';
 import type { CrossLinksStrings } from '@/lib/i18n';
 import type { Product } from '@/contexts/CartContext';
@@ -75,7 +75,7 @@ export function LandingTemplate({
         breadcrumb={breadcrumb}
         locale={locale}
         lead={<LandingIntro paragraphs={intro} moreLabel={readMoreLabel} lessLabel={readLessLabel} />}
-        meta={[countLabel, <FromPrice key="from" prices={lowestPrices(products)} label={fromLabel} />]}
+        meta={[countLabel, <FromPrice key="from" prices={lowestPrices(products)} euro={lowestEuroByCountry(products)} label={fromLabel} />]}
       />
 
       <section aria-labelledby="prints-heading" className="mt-band">

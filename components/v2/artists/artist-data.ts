@@ -1,6 +1,6 @@
 import type { Artist } from '@/data/artists';
 import { getArtistInitials } from '@/data/artists';
-import { getLowestProductPrices, type CurrencyPrices } from '@/lib/pricing';
+import { euroByCountry, getLowestProductPrices, type CurrencyPrices } from '@/lib/pricing';
 import { shopScenes, type ShopScene } from '@/lib/shop-scenes';
 import { artistHeroScene } from '@/lib/artist-editorial';
 import { frameOptions } from '@/config/frame';
@@ -59,10 +59,10 @@ export function firstName(name: string): string {
 }
 
 /** The cheapest price in each currency across an artist's prints ("from £35"). */
-export function lowestPrices(products: ProductLike[]): CurrencyPrices | null {
+export function lowestPrices(products: ProductLike[], country?: string): CurrencyPrices | null {
   let low: CurrencyPrices | null = null;
   for (const p of products) {
-    const prices = getLowestProductPrices(p);
+    const prices = getLowestProductPrices(p, country);
     if (!prices || !prices.GBP) continue;
     if (!low) low = { ...prices };
     else for (const c of Object.keys(low) as (keyof CurrencyPrices)[]) low[c] = Math.min(low[c], prices[c]);
@@ -124,3 +124,8 @@ export function heroSceneFor<P extends ProductLike & { secondaryImage?: string }
   return null;
 }
 
+
+/** The euro "from" for each country with its own euro prices. */
+export function lowestEuroByCountry(products: ProductLike[]): Record<string, number> {
+  return euroByCountry(country => lowestPrices(products, country)?.EUR ?? 0);
+}

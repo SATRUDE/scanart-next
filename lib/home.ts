@@ -6,7 +6,7 @@ import { artists as artistRoster } from '@/data/artists';
 import { heroSceneFor } from '@/components/v2/artists/artist-data';
 import { getAllArticles, type Article } from '@/lib/articles';
 import { getShopArtists as getPublishedArtists, type PublishedArtist } from '@/lib/published-artists';
-import { getProductPrices } from '@/lib/pricing';
+import { euroByCountry, getProductPrices } from '@/lib/pricing';
 import { shopScenes } from '@/lib/shop-scenes';
 import { ROOM, wallArtPath, wallChipPath, type WallPrint, type WallId } from '@/components/v2/home/wall/room';
 
@@ -277,6 +277,7 @@ export async function getHomeData(localePrefix: '' | '/no' = ''): Promise<HomeDa
       artist: p.artist || p.brand,
       size: sizeLabel(size),
       prices: getProductPrices(p, size),
+      euro: euroByCountry(country => getProductPrices(p, size, country).EUR),
       art: wallArtPath(p.slug),
       chip: wallChipPath(p.slug),
       href: `${localePrefix}/product/${p.slug}`,

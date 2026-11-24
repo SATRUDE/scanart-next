@@ -16,6 +16,7 @@ import {
   framingLine,
   heroSceneFor,
   lowestPrices,
+  lowestEuroByCountry,
   portraitFor,
 } from '@/components/v2/artists/artist-data';
 
@@ -146,6 +147,7 @@ export default async function ArtistPage({
         products={products}
         printCount={prints(products.length)}
         lowest={lowest}
+        lowestEuro={lowestEuroByCountry(products)}
         hero={
           hero
             ? {

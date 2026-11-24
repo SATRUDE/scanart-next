@@ -45,8 +45,8 @@ export function NotFoundFrame({ t, prints, productsHref, artistsHref }: {
 }) {
   const [hung, setHung] = useState('');
   const chosen = prints.find(p => p.slug === hung);
-  const { selectedCountry } = useLanguage();
-  const priceOf = (p: FramePrint) => <ShopPrice amount={getLowestProductPrices(p)[selectedCountry.currency]} currency={selectedCountry.currency} />;
+  const { selectedCountry, euroCountry } = useLanguage();
+  const priceOf = (p: FramePrint) => <ShopPrice amount={getLowestProductPrices(p, euroCountry)[selectedCountry.currency]} currency={selectedCountry.currency} />;
 
   const meta = (p: FramePrint) => (
     <span className="flex items-center gap-[6px] type-caption">

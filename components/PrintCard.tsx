@@ -96,7 +96,7 @@ export const PrintCard: React.FC<PrintCardProps> = ({
 }) => {
   // The picker's country prices every card unless a caller overrides it, so
   // every template quotes the buyer's own currency.
-  const { selectedCountry } = useLanguage();
+  const { selectedCountry, euroCountry } = useLanguage();
   const activeCurrency = currency ?? selectedCountry.currency;
   const artistName = product.artistId ? getArtistById(product.artistId)?.name || product.brand : product.brand;
   const size = Object.keys(product.prices)[0];
@@ -156,7 +156,7 @@ export const PrintCard: React.FC<PrintCardProps> = ({
       <div>
         <div className="flex items-start justify-between gap-4 type-body">
           <Title className="type-body">{product.name}</Title>
-          <p className="shrink-0"><ShopPrice amount={getLowestProductPrices(product)[activeCurrency]} currency={activeCurrency} /></p>
+          <p className="shrink-0"><ShopPrice amount={getLowestProductPrices(product, euroCountry)[activeCurrency]} currency={activeCurrency} /></p>
         </div>
         <p className="flex items-center gap-[6px] type-caption">
           <span>{artistName}</span>

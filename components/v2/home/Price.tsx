@@ -10,7 +10,7 @@ import { ShopPrice } from '@/components/v2/ShopPrice';
  * HTML carries the GBP price, as PrintCard's does.
  */
 export function Price({ product }: { product: PricedProduct }) {
-  const { selectedCountry } = useLanguage();
+  const { selectedCountry, euroCountry } = useLanguage();
   const currency = selectedCountry.currency;
-  return <ShopPrice amount={getLowestProductPrices(product)[currency]} currency={currency} />;
+  return <ShopPrice amount={getLowestProductPrices(product, euroCountry)[currency]} currency={currency} />;
 }
