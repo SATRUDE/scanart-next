@@ -24,12 +24,27 @@
 // so sessions from before this guard are filtered there, and their raw view
 // (include_bots=1) still shows everything Umami stored.
 //
+// It also applies Mark's `?notrack=on` / `?notrack=off` opt-out (lib/notrack.ts)
+// to Umami's own flag, first thing on every page.
+//
 // The script is a string because it runs inline in <head>, before the tracker
 // loads; lib/tracker-guard.test.ts runs this exact string.
+
+import { NOTRACK_COOKIE, NOTRACK_PARAM } from '@/lib/notrack';
+import { OPT_OUT_KEY } from '@/lib/posthog';
 
 export const TRACKER_GUARD_FUNCTION = 'umamiBeforeSend';
 
 export const TRACKER_GUARD_SCRIPT = `(function () {
+  // ?notrack=on / ?notrack=off (lib/notrack.ts): copy the choice, or the
+  // cookie proxy.ts set for it, into Umami's own opt-out flag before the
+  // tracker loads, because Umami only reads that flag.
+  try {
+    var q = /[?&]${NOTRACK_PARAM}=(on|off)(?:&|$)/.exec(location.search);
+    var on = q ? q[1] === 'on' : /(?:^|;\\s*)${NOTRACK_COOKIE}=1(?:;|$)/.test(document.cookie);
+    if (on) localStorage.setItem('${OPT_OUT_KEY}', '1');
+    else if (q) localStorage.removeItem('${OPT_OUT_KEY}');
+  } catch (e) {}
   function isBot(nav, screen) {
     if (nav.webdriver === true) return true;
     if (/HeadlessChrome|PhantomJS/.test(nav.userAgent || '')) return true;
