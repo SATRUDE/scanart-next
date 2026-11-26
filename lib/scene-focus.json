@@ -974,5 +974,37 @@
     "h": 27.2,
     "score": 0.981,
     "ar": 0.8003
+  },
+  "/images/products/democracy-room-2026-11-26.avif": {
+    "x": 58.2,
+    "y": 24.0,
+    "w": 21.0,
+    "h": 23.3,
+    "score": 0.792,
+    "ar": 0.8003
+  },
+  "/images/products/kopia-landscape-vignette-2026-11-26.avif": {
+    "x": 48.3,
+    "y": 29.2,
+    "w": 55.3,
+    "h": 37.2,
+    "score": "manual",
+    "ar": 0.8003
+  },
+  "/images/products/texting-you-vignette-2026-11-26.avif": {
+    "x": 38.5,
+    "y": 30.7,
+    "w": 30.0,
+    "h": 33.3,
+    "score": 0.953,
+    "ar": 0.8003
+  },
+  "/images/products/kopia-portrait-room-2026-11-26.avif": {
+    "x": 37.9,
+    "y": 26.7,
+    "w": 37.3,
+    "h": 40.7,
+    "score": "manual",
+    "ar": 0.8003
   }
 }

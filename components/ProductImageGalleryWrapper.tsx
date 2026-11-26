@@ -14,6 +14,8 @@ import type { ProductVideo as ProductVideoData } from '@/config/product-videos';
 import { ProductVideo } from '@/components/v2/product/ProductVideo';
 import { Hairline } from '@/components/v2/ui';
 import { noteGalleryOpened } from '@/lib/engaged-visit';
+import type { Orientation } from '@/lib/print-options';
+import { useProductOrientation } from '@/components/v2/product/OrientationContext';
 
 interface ProductImageGalleryWrapperProps {
   /**
@@ -22,6 +24,9 @@ interface ProductImageGalleryWrapperProps {
    * arrays keeps them in step when a blank src is filtered out below.
    */
   images: ProductImage[];
+  /** Each orientation's own images, on a print offering portrait and
+   *  landscape (lib/print-options.ts); the chosen one replaces `images`. */
+  orientationImages?: { id: Orientation; images: ProductImage[] }[];
   productName: string;
   /** A light-motion clip (config/product-videos.ts); takes the second slot. */
   video?: ProductVideoData;
@@ -32,7 +37,7 @@ interface ProductImageGalleryWrapperProps {
 }
 
 type Media =
-  | { kind: 'image'; src: string; alt: string; caption: string }
+  | { kind: 'image'; src: string; alt: string; caption: string; contain?: boolean }
   | { kind: 'video'; caption: string };
 
 /**
@@ -47,13 +52,16 @@ type Media =
  * both, and the room still moves to third.
  */
 export const ProductImageGalleryWrapper: React.FC<ProductImageGalleryWrapperProps> = ({
-  images,
+  images: defaultImages,
+  orientationImages,
   productName,
   video,
   videoLabel,
   strings = galleryEn,
 }) => {
   const aria = chromeAria[isNoPath(usePathname() || '/') ? 'no' : 'en'];
+  const chosen = useProductOrientation();
+  const images = orientationImages?.find(o => o.id === chosen?.orientation)?.images ?? defaultImages;
   const validImages = images.filter(img => img.src && img.src.trim() !== '');
 
   const media: Media[] = validImages.map((img, i) => ({
@@ -63,6 +71,7 @@ export const ProductImageGalleryWrapper: React.FC<ProductImageGalleryWrapperProp
     src: warmImage(img.src),
     alt: img.alt,
     caption: i === 0 ? strings.captions.print : strings.captions.scene,
+    contain: img.contain,
   }));
   if (video) media.splice(Math.min(1, media.length), 0, { kind: 'video', caption: strings.captions.video });
 
@@ -121,7 +130,10 @@ export const ProductImageGalleryWrapper: React.FC<ProductImageGalleryWrapperProp
     }
   };
 
-  const renderMedia = (m: Media, i: number, sizes: string, fit: 'cover' | 'contain' = 'cover') =>
+  const renderMedia = (m: Media, i: number, sizes: string, slotFit: 'cover' | 'contain' = 'cover') => {
+    // Bare artwork (no frame or room yet) is shown whole, never cropped to the slot.
+    const fit = m.kind === 'image' && m.contain ? 'contain' : slotFit;
+    return (
     m.kind === 'video' && video ? (
       <ProductVideo
         video={video}
@@ -138,12 +150,14 @@ export const ProductImageGalleryWrapper: React.FC<ProductImageGalleryWrapperProp
         fill
         // The first two, and only in the page gallery: the print is the LCP on
         // a phone, the room beside it (the larger image) on desktop.
-        preload={i < 2 && fit === 'cover'}
+        preload={i < 2 && slotFit === 'cover'}
         sizes={sizes}
         style={fit === 'cover' ? { objectPosition: scenePosition(m.src) } : undefined}
         className={fit === 'cover' ? 'object-cover' : 'object-contain'}
       />
-    ) : null;
+    ) : null
+    );
+  };
 
   return (
     <div>
@@ -217,7 +231,7 @@ export const ProductImageGalleryWrapper: React.FC<ProductImageGalleryWrapperProp
                     >
                       <span className="relative block aspect-[392/380] w-full overflow-hidden bg-image-bg">
                         {m.kind === 'image' ? (
-                          <Image src={m.src} alt={m.alt} fill sizes="(max-width: 833px) 100vw, 400px" style={{ objectPosition: scenePosition(m.src) }} className="object-cover transition-transform duration-500 group-hover:scale-[1.015]" />
+                          <Image src={m.src} alt={m.alt} fill sizes="(max-width: 833px) 100vw, 400px" style={m.contain ? undefined : { objectPosition: scenePosition(m.src) }} className={`${m.contain ? 'object-contain' : 'object-cover'} transition-transform duration-500 group-hover:scale-[1.015]`} />
                         ) : video ? (
                           // The poster stands in for the clip in the overview.
                           <Image src={video.poster} alt={videoLabel ?? productName} fill sizes="(max-width: 833px) 100vw, 400px" className="object-cover" />

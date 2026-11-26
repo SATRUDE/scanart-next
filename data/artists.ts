@@ -127,6 +127,18 @@ export const artists: Artist[] = [
     // Portrait supplied by Christina 30 Sep 2026. No photographer credit given, so none shown.
     image: '/images/artists/christina-hagerfors.png',
   },
+  {
+    id: '13',
+    name: 'Åsa Törnquist',
+    slug: 'asa-tornquist',
+    // GAP: none of her emails to date (24 Sep to 25 Nov 2026) gives a bio, a
+    // photo or where she is based, so all three are left empty rather than
+    // written for her: the page shows her initials and no bio. Ask her for a
+    // short bio, a portrait and her town before she goes live.
+    location: '',
+    bio: '',
+    image: '',
+  },
 ];
 
 export const getArtistById = (id: string) => {

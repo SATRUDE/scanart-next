@@ -3,6 +3,7 @@ import { after, NextResponse } from 'next/server';
 import { recordRedemption } from '@/lib/server/discounts';
 import { sendSlackOrder, type SlackOrderItem } from '@/lib/server/slack-order';
 import { sendPurchaseMeasurement } from '@/lib/server/purchase-measurement';
+import { orientedSize } from '@/lib/print-options';
 
 // The order's record of last resort.
 //
@@ -50,12 +51,13 @@ function itemsFromMetadata(metadata: Record<string, string>, currency: string): 
     .split(';')
     .filter(Boolean)
     .map(chunk => {
-      const [slug, size, frame, quantity, unitPrice] = chunk.split('~');
+      // A sixth field, "hor" or "ver", is the orientation on a print that offers both.
+      const [slug, size, frame, quantity, unitPrice, orientation] = chunk.split('~');
       const qty = Number(quantity);
       const unit = Number(unitPrice);
       return {
         name: (slug || 'unknown').replace(/-/g, ' '),
-        size: size && size !== '-' ? size : null,
+        size: size && size !== '-' ? (orientation === 'hor' ? `${orientedSize(size, 'landscape')} landscape` : size) : null,
         frame: frame && frame !== '-' && frame !== 'no-frame' ? frame : null,
         quantity: Number.isFinite(qty) && qty > 0 ? qty : 1,
         price: `${Number.isFinite(unit) ? unit.toFixed(2) : '?'} ${currency.toUpperCase()}`,

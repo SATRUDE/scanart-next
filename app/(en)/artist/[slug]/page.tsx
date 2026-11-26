@@ -122,7 +122,8 @@ export default async function ArtistPage({
     { label: place.kind === 'from' ? 'From' : 'Based in', value: place.value },
     { label: 'Formats', value: formatsLine(products, words) },
     { label: 'In the shop', value: prints(products.length) },
-    { label: 'Framing', value: framingLine('Unframed, or', 'or') },
+    // A print sold unframed only (lib/print-options.ts) has no framing to offer.
+    { label: 'Framing', value: products.every(p => p.unframedOnly) ? '' : framingLine('Unframed, or', 'or') },
   ].filter(f => f.value);
   const portrait = portraitFor(artist);
 

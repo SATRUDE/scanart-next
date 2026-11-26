@@ -5,6 +5,10 @@ import { aboutPlaces } from '@/components/v2/about/about-data';
 import { hasCity } from '@/components/v2/artists/ArtistMap';
 import { labelSides, pinFor } from '@/lib/artist-cities';
 import type { PublishedArtist } from '@/lib/published-artists';
+import catalogue from '../public/notion-data/products.json';
+
+// As lib/home-artist-lines.test.ts: an artist with only preview prints may not have a town yet.
+const shipping = new Set((catalogue as { artistId: string; published: boolean }[]).filter(p => p.published).map(p => p.artistId));
 
 describe('artist city pins', () => {
   it('has a pin for the city of every artist in the catalogue, so the map follows the list', () => {
@@ -22,7 +26,7 @@ describe('artist city pins', () => {
   });
 
   it('gives the artist page a map for every artist city too', () => {
-    for (const a of artists) expect(hasCity(cityOf(artistPlace(a).value)), a.name).toBe(true);
+    for (const a of artists.filter(x => shipping.has(x.id))) expect(hasCity(cityOf(artistPlace(a).value)), a.name).toBe(true);
   });
 
   it('reproduces the original markers within half a pixel', () => {

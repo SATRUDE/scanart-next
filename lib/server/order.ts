@@ -5,6 +5,7 @@ import { lookupDiscountCode, type DiscountLookup, type DiscountScope } from '@/l
 import type { MetadataItem } from '@/lib/server/order-metadata';
 import { isFramed, qualifiesForFreeDelivery } from '@/config/free-delivery';
 import { quoteDelivery, type DeliveryItem, type DeliveryQuote } from '@/lib/server/shipping-rates';
+import { lineOrientation, offersFrame } from '@/lib/print-options';
 
 // Server-side order maths: the single source of truth for what an order
 // costs. The client's totals are display only; the payment intent amount is
@@ -32,6 +33,8 @@ export interface OrderItemInput {
   slug?: string;
   size?: string;
   frame?: string;
+  /** 'portrait' or 'landscape', on a print that offers both (lib/print-options.ts). */
+  orientation?: string;
   quantity: number;
 }
 
@@ -99,12 +102,15 @@ export async function computeOrderAmount(
     // Euro is priced for the country the parcel goes to (config/eur-countries.ts).
     const unitPrice = getProductPrice(product, item.size, currency, countryCode);
     if (!unitPrice) throw new Error(`No price for product: ${item.productId}`);
+    if (!offersFrame(product, item.frame)) throw new Error(`No frame for product: ${product.slug}`);
+    const orientation = lineOrientation(product, item.orientation);
     const frameCost = item.frame ? getFramePrice(item.frame, item.size, currency, countryCode) : 0;
     subtotal += (unitPrice + frameCost) * quantity;
     resolved.push({
       slug: product.slug,
       size: item.size,
       frame: item.frame,
+      ...(orientation ? { orientation } : {}),
       quantity,
       unitPrice: Math.round((unitPrice + frameCost) * 100) / 100,
     });

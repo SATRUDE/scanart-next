@@ -18,6 +18,8 @@ export const STRIPE_METADATA_VALUE_LIMIT = 500;
 /** How many `order_items_N` chunks we will write (2,000 characters of basket). */
 export const MAX_ITEM_CHUNKS = 4;
 
+import { gelatoOrientation, type Orientation } from '@/lib/print-options';
+
 const ITEM_SEPARATOR = ';';
 const FIELD_SEPARATOR = '~';
 
@@ -25,6 +27,8 @@ export interface MetadataItem {
   slug: string;
   size?: string;
   frame?: string;
+  /** Only on a print that offers a choice (lib/print-options.ts). */
+  orientation?: Orientation;
   quantity: number;
   /** Unit price in major units, print plus frame, before any discount. */
   unitPrice: number;
@@ -52,6 +56,12 @@ function encodeField(value: string | undefined | null): string {
   return cleaned === '' ? '-' : cleaned;
 }
 
+/**
+ * A line is "slug~size~frame~qty~unitPrice", and a print with an orientation
+ * choice adds a sixth field, Gelato's own suffix: "hor" (landscape) or "ver".
+ * Every other line stays exactly five fields, so a decoder that reads five
+ * (socialagent, datamachine-reports) reads every existing order unchanged.
+ */
 export function encodeOrderItems(items: MetadataItem[]): string {
   return items
     .map(item =>
@@ -61,6 +71,7 @@ export function encodeOrderItems(items: MetadataItem[]): string {
         encodeField(item.frame),
         String(Math.max(1, Math.floor(item.quantity))),
         String(Math.round(item.unitPrice * 100) / 100),
+        ...(item.orientation ? [gelatoOrientation(item.orientation)] : []),
       ].join(FIELD_SEPARATOR)
     )
     .join(ITEM_SEPARATOR);
@@ -111,6 +122,7 @@ export function buildOrderDescription(items: MetadataItem[]): string {
       const name = item.slug.replace(/-/g, ' ');
       const parts = [name];
       if (item.size) parts.push(item.size);
+      if (item.orientation) parts.push(item.orientation);
       if (item.frame && item.frame !== 'no-frame') parts.push(`${item.frame} frame`);
       const line = parts.join(', ');
       return item.quantity > 1 ? `${line} x${item.quantity}` : line;

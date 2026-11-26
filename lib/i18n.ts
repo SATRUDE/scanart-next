@@ -671,6 +671,9 @@ export interface ProductActionsStrings {
   soldOut: string;
   selectSize: string;
   addToCart: string;
+  /** The orientation group, on a print offering portrait and landscape (lib/print-options.ts). */
+  orientation?: string;
+  orientationLabels?: Record<string, string>;
   /** Frame option id -> visible label. Falls back to the config's name. */
   frameLabels?: Record<string, string>;
   /** V2 assurance lines under the button; {price} is the store's cheapest
