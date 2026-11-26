@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getShopProducts as getAllProducts, getShopProductBySlug as getProductBySlug, getShopRecommendedProducts as getRecommendedProducts } from '@/lib/products';
+import { getShopProducts as getAllProducts, getShopProductBySlug as getProductBySlug } from '@/lib/products';
 import { collections } from '@/lib/collections';
-import { pickRelatedPrints, withoutShown } from '@/lib/related-prints';
+import { pickOtherArtistPrints, pickRelatedPrints } from '@/lib/related-prints';
 import { getArtistById } from '@/data/artists';
 import { getLowestProductPrices } from '@/lib/pricing';
 import { metaSnippet } from '@/lib/meta-snippet';
@@ -97,9 +97,6 @@ export default async function NorwegianProductPage({
   }
 
   const artist = product.artistId ? getArtistById(product.artistId) : null;
-  const recommended = product.recommendedProducts?.length
-    ? await getRecommendedProducts(product.recommendedProducts)
-    : [];
 
   const images = productImages(product, 'no');
   const listingDetails = productListingDetails(product, 'no');
@@ -107,11 +104,13 @@ export default async function NorwegianProductPage({
   const categoryLabel = no.shared.categoryLabels[product.category] ?? product.category;
 
   const landing = getCategoryLandingByCategory(product.category);
-  // One read of the shop serves the artist facts and the three prints under
-  // Add to basket (lib/related-prints.ts).
+  // One read of the shop serves the artist facts, the artist's prints under
+  // Add to basket and the other artists' row lower down (lib/related-prints.ts).
   const shop = await getAllProducts();
   const artistProducts = artist ? shop.filter(p => p.artistId === artist.id) : [];
   const related = pickRelatedPrints(product, shop, collections);
+  // The lower "More prints like this" row: other artists only (Mark, 26 Nov 2026).
+  const others = pickOtherArtistPrints(product, shop, collections, related);
   const exploreArtists = (await getPublishedArtists()).map(a => ({ slug: a.slug, name: a.name }));
   const artistCopy = artist ? no.artists[artist.slug] : undefined;
 
@@ -145,7 +144,7 @@ export default async function NorwegianProductPage({
         artist={artist ? { ...artist, location: artistCopy?.location ?? artist.location, from: artist.from && (artistCopy?.from ?? artist.from), bio: artistCopy?.bio ?? artist.bio } : null}
         artistStatement={artist ? no.artistStatements[artist.slug] : undefined}
         artistFacts={artistFactsFor(artistProducts)}
-        recommended={withoutShown(recommended, related)}
+        recommended={others}
         related={related}
         exploreArtists={exploreArtists}
         strings={t.page}
