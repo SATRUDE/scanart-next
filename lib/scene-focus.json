@@ -998,5 +998,13 @@
     "h": 33.3,
     "score": 0.953,
     "ar": 0.8003
+  },
+  "/images/products/kopia-portrait-room-2026-11-26.avif": {
+    "x": 37.9,
+    "y": 26.7,
+    "w": 37.3,
+    "h": 40.7,
+    "score": "manual",
+    "ar": 0.8003
   }
 }

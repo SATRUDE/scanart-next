@@ -1495,7 +1495,7 @@
     "published": false,
     "review": true,
     "image": "/images/products/kopia-paper-50x70-2026-11-26.png",
-    "secondaryImage": "",
+    "secondaryImage": "/images/products/kopia-portrait-room-2026-11-26.avif",
     "availableSizes": [
       "50x70cm"
     ],
@@ -1509,7 +1509,8 @@
     "orientations": [
       {
         "id": "portrait",
-        "image": "/images/products/kopia-paper-50x70-2026-11-26.png"
+        "image": "/images/products/kopia-paper-50x70-2026-11-26.png",
+        "secondaryImage": "/images/products/kopia-portrait-room-2026-11-26.avif"
       },
       {
         "id": "landscape",
