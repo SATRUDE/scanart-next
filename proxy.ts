@@ -15,6 +15,7 @@ import type { NextRequest } from 'next/server';
 import { noRedirectPathFor } from '@/lib/i18n';
 import { withdrawnResponseFor, withdrawnPageHtml } from '@/lib/withdrawn';
 import { WHERE_COOKIE, marketFor, paysInEuro } from '@/lib/euro';
+import { NOTRACK_COOKIE, NOTRACK_MAX_AGE, notrackChoice } from '@/lib/notrack';
 
 
 
@@ -59,7 +60,26 @@ function countryOf(request: NextRequest): string {
   return /\b(nb|nn|no)\b/i.test(accept.split(',')[0] || '') ? 'NO' : 'GB';
 }
 
+/**
+ * `?notrack=on` / `?notrack=off` on any page (lib/notrack.ts): Mark's own
+ * devices out of the shop's numbers. Set here, by the server, so the cookie
+ * lasts 400 days even in Safari, which caps anything a script writes at seven.
+ */
+function withNotrack(request: NextRequest, response: NextResponse): NextResponse {
+  const choice = notrackChoice(request.nextUrl.search);
+  if (choice === 'on') {
+    response.cookies.set(NOTRACK_COOKIE, '1', { path: '/', maxAge: NOTRACK_MAX_AGE, sameSite: 'lax', secure: request.nextUrl.protocol === 'https:' });
+  } else if (choice === 'off') {
+    response.cookies.delete(NOTRACK_COOKIE);
+  }
+  return response;
+}
+
 export function proxy(request: NextRequest) {
+  return withNotrack(request, route(request));
+}
+
+function route(request: NextRequest): NextResponse {
   const { pathname, search } = request.nextUrl;
 
   // Withdrawn work is answered before anything else, crawlers included

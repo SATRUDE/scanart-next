@@ -30,7 +30,8 @@
 // - the page is not on the production host (the same limit as Umami's
 //   data-domains, so previews and localhost stay out);
 // - the browser carries Umami's opt-out flag, localStorage `umami.disabled`,
-//   which Mark has set in his own browsers;
+//   which Mark has set in his own browsers, or the `?notrack=on` cookie
+//   (lib/notrack.ts);
 // - the visitor looks like one of the crawlers lib/tracker-guard.ts keeps out
 //   of Umami (the same rule, so the two tools count the same visits during the
 //   overlap).
@@ -43,6 +44,8 @@
 // later events are ignored, so the same guards cover custom events as cover
 // pageviews.
 
+import { hasNotrackCookie } from '@/lib/notrack';
+
 export const POSTHOG_DEFAULT_HOST = 'https://eu.i.posthog.com';
 export const POSTHOG_UI_HOST = 'https://eu.posthog.com';
 export const PRODUCTION_HOST = 'www.scandinavianart.co.uk';
@@ -51,11 +54,22 @@ export const OPT_OUT_KEY = 'umami.disabled';
 type Nav = { webdriver?: boolean; userAgent?: string; maxTouchPoints?: number };
 type Storage = { getItem(key: string): string | null };
 
-/** True when Umami's opt-out flag is set in this browser. Same test as Umami's
- * tracker: any value at all counts. Unreadable storage counts as not set. */
-export function isOptedOut(getStorage: () => Storage | undefined): boolean {
+/** True when this browser is opted out: Umami's flag (same test as Umami's
+ * tracker: any value at all counts), or the `?notrack=on` cookie
+ * (lib/notrack.ts). Unreadable storage or cookies count as not set. */
+export function isOptedOut(
+  getStorage: () => Storage | undefined,
+  getCookie: () => string | undefined = () => (typeof document === 'undefined' ? undefined : document.cookie),
+): boolean {
+  let flagged = false;
   try {
-    return Boolean(getStorage()?.getItem(OPT_OUT_KEY));
+    flagged = Boolean(getStorage()?.getItem(OPT_OUT_KEY));
+  } catch {
+    // Storage blocked: fall through to the cookie.
+  }
+  if (flagged) return true;
+  try {
+    return hasNotrackCookie(getCookie());
   } catch {
     return false;
   }
