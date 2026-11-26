@@ -134,7 +134,7 @@ export default async function NorwegianArtistPage({
     { label: place.kind === 'from' ? t.factFrom : t.factBasedIn, value: location },
     { label: t.factFormats, value: formatsLine(products, { and: t.and, for: t.for }) },
     { label: t.factInShop, value: prints(products.length) },
-    { label: t.factFraming, value: framingLine(t.framingPrefix, t.and, no.productPage.actions.frameLabels) },
+    { label: t.factFraming, value: products.every(p => p.unframedOnly) ? '' : framingLine(t.framingPrefix, t.and, no.productPage.actions.frameLabels) },
   ].filter(f => f.value);
   const portrait = portraitFor(artist);
 

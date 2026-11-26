@@ -125,7 +125,12 @@ export function sceneImageAlt(
 export interface ProductImage {
   src: string;
   alt: string;
+  /** Bare artwork with no frame or room yet: shown whole, never cropped. */
+  contain?: boolean;
 }
+
+/** Plain artwork files live in /images/artworks/; product shots and rooms elsewhere. */
+const isBareArtwork = (src: string) => src.startsWith('/images/artworks/');
 
 /**
  * The gallery's images in display order: the print itself first, then the
@@ -136,7 +141,7 @@ export function productImages(
   locale: AltLocale = 'en'
 ): ProductImage[] {
   const images: ProductImage[] = [
-    { src: product.image, alt: printImageAlt(product, locale) },
+    { src: product.image, alt: printImageAlt(product, locale), ...(isBareArtwork(product.image) ? { contain: true } : {}) },
   ];
 
   const secondary = product.secondaryImage?.trim();

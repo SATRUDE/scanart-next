@@ -11,6 +11,7 @@ import { SmartImage } from '@/components/SmartImage';
 import { warmImage } from '@/lib/warm-image';
 import { getProductPrices, formatDisplayPrice } from '@/lib/pricing';
 import { getFramePrice } from '@/config/frame';
+import { lineImage, orientedSize } from '@/lib/print-options';
 import { deliveryGuideLine, type DeliveryGuide } from '@/lib/delivery-guide';
 import {
   amountToFreeDelivery,
@@ -142,10 +143,10 @@ export const Cart: React.FC<{ deliveryGuide: DeliveryGuide }> = ({ deliveryGuide
                   const unit = getProductPrices(item.product, item.size, euroCountry)[currency] + getFramePrice(item.frame || 'no-frame', item.size, currency, euroCountry);
                   const line = Math.round(unit * item.quantity * 100) / 100;
                   const lineOnSale = saleActive && !isFramed(item.frame);
-                  const description = [item.size ? sizeLabel(item.size) : null, t.frames[item.frame || 'no-frame']].filter(Boolean).join(', ');
+                  const description = [item.size ? sizeLabel(orientedSize(item.size, item.orientation)) : null, t.frames[item.frame || 'no-frame']].filter(Boolean).join(', ');
                   return (
                     <li
-                      key={`${item.product.id}-${item.size || 'no-size'}-${item.frame || 'no-frame'}`}
+                      key={`${item.product.id}-${item.size || 'no-size'}-${item.frame || 'no-frame'}-${item.orientation || ''}`}
                       className="flex gap-5 border-t border-ink py-5"
                     >
                       <Link
@@ -158,7 +159,7 @@ export const Cart: React.FC<{ deliveryGuide: DeliveryGuide }> = ({ deliveryGuide
                             variant to fill a thumbnail. */}
                         <SmartImage
                           // The warm-backdrop shot, as on the prints grid (lib/warm-image.ts).
-                          src={warmImage(item.product.image)}
+                          src={warmImage(lineImage(item.product, item.orientation))}
                           alt={printImageAlt({ name: item.product.name, artist: item.product.artist, brand: item.product.brand, category: item.product.category }, locale)}
                           className="h-full w-full"
                           sizes="96px"
@@ -185,7 +186,7 @@ export const Cart: React.FC<{ deliveryGuide: DeliveryGuide }> = ({ deliveryGuide
                             <button
                               type="button"
                               aria-label={aria.cart.decreaseQuantity}
-                              onClick={() => updateQuantity(item.product.id, item.quantity - 1, item.size, item.frame)}
+                              onClick={() => updateQuantity(item.product.id, item.quantity - 1, item.size, item.frame, item.orientation)}
                               className="flex size-11 items-center justify-center type-body transition-colors hover:bg-surface-strong"
                             >
                               −
@@ -194,7 +195,7 @@ export const Cart: React.FC<{ deliveryGuide: DeliveryGuide }> = ({ deliveryGuide
                             <button
                               type="button"
                               aria-label={aria.cart.increaseQuantity}
-                              onClick={() => updateQuantity(item.product.id, item.quantity + 1, item.size, item.frame)}
+                              onClick={() => updateQuantity(item.product.id, item.quantity + 1, item.size, item.frame, item.orientation)}
                               className="flex size-11 items-center justify-center type-body transition-colors hover:bg-surface-strong"
                             >
                               +
@@ -205,7 +206,7 @@ export const Cart: React.FC<{ deliveryGuide: DeliveryGuide }> = ({ deliveryGuide
                             aria-label={`${aria.cart.removePrefix} ${item.product.name}`}
                             onClick={() => {
                               track('remove-from-cart', { productId: item.product.id, productName: item.product.name, size: item.size, frame: item.frame });
-                              removeFromCart(item.product.id, item.size, item.frame);
+                              removeFromCart(item.product.id, item.size, item.frame, item.orientation);
                             }}
                             className="transition-colors hover:text-brand"
                           >

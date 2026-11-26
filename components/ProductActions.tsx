@@ -16,6 +16,8 @@ import { salePrices, salePromotionStrings } from '@/lib/sale-promotion';
 import { OPTION_PAD } from '@/components/v2/OptionTrack';
 import { sizeLabel } from '@/components/PrintCard';
 import { addButtonState } from '@/lib/basket-bar';
+import { offersFrame, orientationsOf, orientedSize } from '@/lib/print-options';
+import { useProductOrientation } from '@/components/v2/product/OrientationContext';
 
 const EN: ProductActionsStrings & { assurance: NonNullable<ProductActionsStrings['assurance']> } = {
   size: 'Size',
@@ -25,6 +27,8 @@ const EN: ProductActionsStrings & { assurance: NonNullable<ProductActionsStrings
   soldOut: 'Sold out',
   selectSize: 'Select a size',
   addToCart: 'Add to basket',
+  orientation: 'Orientation',
+  orientationLabels: { portrait: 'Portrait', landscape: 'Landscape' },
   frameLabels: {
     'no-frame': 'None',
     wood: 'Wood',
@@ -84,6 +88,13 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings
   const [selectedFrame, setSelectedFrame] = useState<string>('no-frame');
   const groupId = useId();
   const saleActive = useSalePromotion();
+  // Portrait or landscape, where the print offers both (lib/print-options.ts):
+  // shared with the gallery, which shows the chosen one.
+  const orientations = orientationsOf(product);
+  const chosen = useProductOrientation();
+  const orientation = orientations.length > 0 ? chosen?.orientation ?? orientations[0].id : undefined;
+  // A print sold unframed only offers None.
+  const frames = frameOptions.filter(f => offersFrame(product, f.id));
 
   // Memoised because the array's identity feeds the useEffect below: a fresh
   // array every render would re-run the effect every render.
@@ -112,13 +123,14 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings
   const handleAddToCart = (placement: 'main' | 'bar') => {
     if (product.published === false) return;
     if (product.sizes && !selectedSize) return;
-    addToCart(product, quantity, selectedSize || undefined, selectedFrame);
+    addToCart(product, quantity, selectedSize || undefined, selectedFrame, orientation);
     track('add-to-cart', {
       productId: product.id,
       productName: product.name,
       quantity,
       size: selectedSize || undefined,
       frame: selectedFrame || undefined,
+      orientation,
       placement,
     });
     trackAdvertisingCart(payPrices[selectedCountry.currency] * quantity, selectedCountry.currency, quantity);
@@ -213,12 +225,40 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings
               />
               <label htmlFor={`${groupId}-size-${size}`} data-option={size} className={labelCls}>
                 <span aria-hidden className="option-mark" />
-                {sizeLabel(size)}
+                {sizeLabel(orientedSize(size, orientation))}
               </label>
             </div>
           ))}
         </div>
       </fieldset>
+
+      {orientations.length > 0 && (
+        <fieldset className="flex flex-col gap-3 border-t border-ink pt-4 tab:border-t-0 tab:pt-0">
+          <legend className="float-left w-full type-small tab:type-caption">{t.orientation ?? EN.orientation}</legend>
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+            {orientations.map(o => (
+              <div key={o.id} className="relative">
+                <input
+                  type="radio"
+                  id={`${groupId}-orientation-${o.id}`}
+                  name={`${groupId}-orientation`}
+                  value={o.id}
+                  checked={orientation === o.id}
+                  onChange={() => {
+                    chosen?.setOrientation(o.id);
+                    track('select-orientation', { productId: product.id, productName: product.name, orientation: o.id });
+                  }}
+                  className={optionCls}
+                />
+                <label htmlFor={`${groupId}-orientation-${o.id}`} data-option={o.id} className={labelCls}>
+                  <span aria-hidden className="option-mark" />
+                  {t.orientationLabels?.[o.id] ?? EN.orientationLabels?.[o.id] ?? o.id}
+                </label>
+              </div>
+            ))}
+          </div>
+        </fieldset>
+      )}
 
       <fieldset className="flex flex-col gap-3 border-t border-ink pt-4 tab:border-t-0 tab:pt-0">
         <legend className="float-left flex w-full items-start justify-between type-small tab:type-caption">
@@ -229,7 +269,7 @@ export const ProductActions: React.FC<ProductActionsProps> = ({ product, strings
           )}
         </legend>
         <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
-          {frameOptions.map(frame => (
+          {frames.map(frame => (
             <div key={frame.id} className="relative">
               <input
                 type="radio"

@@ -19,7 +19,9 @@ export function receiptFromIntent(intent: Stripe.PaymentIntent): PurchaseReceipt
     const fields = line.split('~');
     const quantity = Number(fields[3]);
     const unitPrice = Number(fields[4]);
-    if (fields.length !== 5 || !fields[0] || !Number.isInteger(quantity) || quantity < 1
+    // Five fields, or six on a print with an orientation choice (lib/server/order-metadata.ts).
+    const shape = fields.length === 5 || (fields.length === 6 && /^(hor|ver)$/.test(fields[5]));
+    if (!shape || !fields[0] || !Number.isInteger(quantity) || quantity < 1
       || !Number.isFinite(unitPrice) || unitPrice <= 0) return null;
     itemCount += quantity;
   }

@@ -3,6 +3,7 @@ import { catalogueReviewEnabled } from '@/lib/server/catalogue-review';
 import path from 'path';
 import { Product } from '@/contexts/CartContext';
 import { priceCategories, offeredPriceCategories, type PriceCategory } from '@/config/priceCategories';
+import { orientationsOf, type OrientationOption } from '@/lib/print-options';
 
 interface NotionProduct {
   id: string;
@@ -23,6 +24,8 @@ interface NotionProduct {
   priceCategory: string;
   productId: string;
   recommendedProducts: string[];
+  orientations?: OrientationOption[];
+  unframedOnly?: boolean;
 }
 
 function convertNotionProductToProduct(
@@ -58,6 +61,9 @@ function convertNotionProductToProduct(
     featured: np.featured,
     sizes,
     recommendedProducts: np.recommendedProducts,
+    // Optional options (lib/print-options.ts): set only where the print has them.
+    ...(orientationsOf(np).length > 0 ? { orientations: orientationsOf(np) } : {}),
+    ...(np.unframedOnly ? { unframedOnly: true } : {}),
   };
 }
 

@@ -1521,6 +1521,8 @@ export const no = {
       soldOut: 'Utsolgt',
       selectSize: 'Velg størrelse',
       addToCart: 'Legg i kurven',
+      orientation: 'Retning',
+      orientationLabels: { portrait: 'Stående', landscape: 'Liggende' },
       frameLabels: {
         'no-frame': 'Uten ramme',
         wood: 'Tre',

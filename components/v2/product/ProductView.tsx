@@ -13,7 +13,9 @@ import { ProductReadMore } from '@/components/v2/product/ReadMore';
 import { LocalPrice } from '@/components/v2/product/LocalPrice';
 import type { Product } from '@/contexts/CartContext';
 import type { Artist } from '@/data/artists';
-import type { ProductImage } from '@/lib/product-image-alt';
+import { productImages, type ProductImage } from '@/lib/product-image-alt';
+import { orientationsOf } from '@/lib/print-options';
+import { OrientationProvider } from '@/components/v2/product/OrientationContext';
 import type { ProductVideo } from '@/config/product-videos';
 import { euroByCountry, getLowestProductPrices, type CurrencyPrices } from '@/lib/pricing';
 import type { CrossLinksStrings, ProductActionsStrings } from '@/lib/i18n';
@@ -98,6 +100,13 @@ export function ProductView({
     .filter(([, available]) => available)
     .map(([size]) => sizeLabel(size));
   const deliveryHref = `${prefix}/delivery`;
+  // Portrait and landscape (lib/print-options.ts): each orientation's own
+  // gallery, the first being the default the server renders.
+  const orientations = orientationsOf(product);
+  const orientationImages = orientations.map(o => ({
+    id: o.id,
+    images: productImages({ ...product, image: o.image, secondaryImage: o.secondaryImage }, locale),
+  }));
   const relatedTitle = artist && allByArtist(related, product.artistId) ? fill(t.moreByArtist, { name: artist.name }) : t.youMayAlsoLike;
   // The three related prints: one SectionHeader and PrintRow, placed in the
   // buying panel on phones and as a full row under the product from tablet up.
@@ -109,12 +118,12 @@ export function ProductView({
         <PrintRow className="mt-band" products={related} from={product.slug} locale={locale} placement={placement} />
       </section>
     );
-  return (
-    <div className="page-x tab:pt-8">
+  const top = (
       <div className="page-grid gap-y-6 tab:gap-y-band">
         <div className="col-span-full desk:col-span-8">
           <ProductImageGalleryWrapper
             images={images}
+            orientationImages={orientationImages.length > 0 ? orientationImages : undefined}
             productName={product.name}
             video={video}
             videoLabel={video?.label[locale]}
@@ -183,7 +192,7 @@ export function ProductView({
           <div className="flex flex-col">
             <Question question={t.questions.details} size="small" as="h2">
               <p>{fill(t.detailsBody, { sizes: sizes.join(', ') })}</p>
-              <p>{t.detailsFrames}</p>
+              {!product.unframedOnly && <p>{t.detailsFrames}</p>}
             </Question>
             <Question question={t.questions.delivery} size="small" as="h2">
               <p>{t.deliveryBody}</p>
@@ -205,6 +214,10 @@ export function ProductView({
           </div>
         </div>
       </div>
+  );
+  return (
+    <div className="page-x tab:pt-8">
+      {orientations.length > 0 ? <OrientationProvider offered={orientations.map(o => o.id)}>{top}</OrientationProvider> : top}
 
       {/* Tablet and desktop: the same row, full width under the product and
           its Details / Delivery rows (Mark, 18 Nov 2026: "on desktop it's

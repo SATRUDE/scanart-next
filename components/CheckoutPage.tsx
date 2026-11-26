@@ -23,6 +23,7 @@ import {
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { getFrameName, getFramePrice } from '@/config/frame';
+import { lineImage, orientedSize } from '@/lib/print-options';
 import { track } from '@/lib/analytics';
 import { measureConfirmedPurchase, purchaseAnalyticsAllowed } from '@/lib/commerce-measurement';
 import { visitCampaign } from '@/lib/campaign';
@@ -190,7 +191,7 @@ const PaymentForm: React.FC<{
   /** The total as the page shows it (formatPrice), for the Pay button. */
   totalLabel: string;
   t: CheckoutStrings;
-  orderItems: { productId: string; slug?: string; size?: string; frame?: string; quantity: number }[];
+  orderItems: { productId: string; slug?: string; size?: string; frame?: string; orientation?: string; quantity: number }[];
   countryCode: string;
   discountCode?: string;
   // Recorded onto the PaymentIntent so a completed order is fulfillable from
@@ -521,7 +522,7 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' |
   // payment is charged with (app/api/order-quote). The page shows its delivery
   // and total, so what is on screen is what Stripe is asked to take. Keyed by
   // everything that changes the price; a stale answer is never used.
-  const quoteItems = state.items.map(item => ({ productId: item.product.id, slug: item.product.slug, size: item.size, frame: item.frame, quantity: item.quantity }));
+  const quoteItems = state.items.map(item => ({ productId: item.product.id, slug: item.product.slug, size: item.size, frame: item.frame, ...(item.orientation ? { orientation: item.orientation } : {}), quantity: item.quantity }));
   const quoteKey = JSON.stringify([quoteItems, selectedCountry.currency, formData.country, appliedDiscount?.code ?? null]);
   const [quote, setQuote] = useState<{ key: string; shipping: number; discountAmount: number; amount: number } | null>(null);
   useEffect(() => {
@@ -620,13 +621,13 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' |
     const frame = item.frame || 'no-frame';
     const frameText = v.frameLabels[frame] ?? getFrameName(frame);
     return {
-      image: item.product.image,
+      image: lineImage(item.product, item.orientation),
       title: item.product.name,
       price: lineDiscounted(item) ? lineAfter(item) : linePrice(item),
       was: lineDiscounted(item) ? linePrice(item) : undefined,
       wasLabel: sale.was,
       artist: item.product.artist || item.product.brand || (item.product.artistId ? getArtistById(item.product.artistId)?.name : undefined),
-      detail: item.size ? `${sizeLabel(item.size)}, ${frameText}` : frameText,
+      detail: item.size ? `${sizeLabel(orientedSize(item.size, item.orientation))}, ${frameText}` : frameText,
       quantity: fill(v.quantity, { n: item.quantity }),
       size: item.size,
     };
@@ -649,7 +650,7 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' |
         },
         items: state.items.map(item => ({
           name: item.product.name,
-          size: item.size,
+          size: item.size ? orientedSize(item.size, item.orientation) : item.size,
           frame: item.frame && item.frame !== 'no-frame' ? getFrameName(item.frame) : null,
           quantity: item.quantity,
           price: formatPrice({
@@ -709,7 +710,7 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' |
         },
         items: state.items.map(item => ({
           name: item.product.name,
-          size: item.size,
+          size: item.size ? orientedSize(item.size, item.orientation) : item.size,
           frame: item.frame && item.frame !== 'no-frame' ? getFrameName(item.frame) : null,
           quantity: item.quantity,
           price: formatPrice({
@@ -760,7 +761,7 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' |
         },
         items: state.items.map(item => ({
           name: item.product.name,
-          size: item.size,
+          size: item.size ? orientedSize(item.size, item.orientation) : item.size,
           frame: item.frame && item.frame !== 'no-frame' ? getFrameName(item.frame) : null,
           quantity: item.quantity,
           price: formatPrice({
@@ -1128,6 +1129,7 @@ export const CheckoutPage: React.FC<{ strings?: CheckoutStrings; locale?: 'en' |
                     slug: item.product.slug,
                     size: item.size,
                     frame: item.frame,
+                    ...(item.orientation ? { orientation: item.orientation } : {}),
                     quantity: item.quantity,
                   }))}
                   countryCode={selectedCountryCode}

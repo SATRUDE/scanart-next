@@ -1424,5 +1424,99 @@
     ],
     "created_time": "2026-10-24T19:18:19.516Z",
     "last_edited_time": "2026-10-25T12:00:00.000Z"
+  },
+  {
+    "id": "2da5bfb3-f16d-4593-9959-2623c4e3580b",
+    "name": "Democracy",
+    "slug": "democracy",
+    "description": "Democracy (Folkstyre in Swedish) by Åsa Törnquist is a bicycle drawn on a pale yellow-green ground. Its frame and wheels are built from small pieces in many colours. Signed and dated 2006.",
+    "category": "Illustrations",
+    "artist": "Åsa Törnquist",
+    "artistId": "13",
+    "brand": "",
+    "inStock": false,
+    "featured": false,
+    "published": false,
+    "review": true,
+    "image": "/images/artworks/democracy.avif",
+    "secondaryImage": "",
+    "availableSizes": [
+      "50x70cm"
+    ],
+    "priceCategory": "Entry",
+    "productId": "65",
+    "recommendedProducts": [
+      "Texting You",
+      "Kopia"
+    ],
+    "unframedOnly": true,
+    "created_time": "2026-11-26T12:00:00.000Z",
+    "last_edited_time": "2026-11-26T12:00:00.000Z"
+  },
+  {
+    "id": "1d07d34e-f7f7-41fa-853b-289bc22e5306",
+    "name": "Texting You",
+    "slug": "texting-you",
+    "description": "Texting You by Åsa Törnquist is a brush-and-ink drawing in black on white: a face in round glasses peers over an edge between two tall black ears. Åsa kept the little ink bleed by the left ear on purpose, as part of the charm of the original drawing.",
+    "category": "Illustrations",
+    "artist": "Åsa Törnquist",
+    "artistId": "13",
+    "brand": "",
+    "inStock": false,
+    "featured": false,
+    "published": false,
+    "review": true,
+    "image": "/images/artworks/texting-you.avif",
+    "secondaryImage": "",
+    "availableSizes": [
+      "50x70cm"
+    ],
+    "priceCategory": "Entry",
+    "productId": "66",
+    "recommendedProducts": [
+      "Democracy",
+      "Kopia"
+    ],
+    "unframedOnly": true,
+    "created_time": "2026-11-26T12:00:00.000Z",
+    "last_edited_time": "2026-11-26T12:00:00.000Z"
+  },
+  {
+    "id": "f3a2c18c-2533-408f-b054-bd67665057a0",
+    "name": "Kopia",
+    "slug": "kopia",
+    "description": "Kopia by Åsa Törnquist is a repeating pattern of working life in dark green on white. A copier, a pen and figures at work sit among Swedish words such as Tack, Kanon, Enkel and Klok. Choose it portrait or landscape: the same pattern, arranged for each.",
+    "category": "Illustrations",
+    "artist": "Åsa Törnquist",
+    "artistId": "13",
+    "brand": "",
+    "inStock": false,
+    "featured": false,
+    "published": false,
+    "review": true,
+    "image": "/images/artworks/kopia.avif",
+    "secondaryImage": "",
+    "availableSizes": [
+      "50x70cm"
+    ],
+    "priceCategory": "Entry",
+    "productId": "67",
+    "recommendedProducts": [
+      "Democracy",
+      "Texting You"
+    ],
+    "unframedOnly": true,
+    "orientations": [
+      {
+        "id": "portrait",
+        "image": "/images/artworks/kopia.avif"
+      },
+      {
+        "id": "landscape",
+        "image": "/images/artworks/kopia-landscape.avif"
+      }
+    ],
+    "created_time": "2026-11-26T12:00:00.000Z",
+    "last_edited_time": "2026-11-26T12:00:00.000Z"
   }
 ]

@@ -3,6 +3,7 @@
 import React, { createContext, useContext, useReducer, ReactNode, useEffect } from 'react';
 import { getFramePrice } from '@/config/frame';
 import { getProductPrices } from '@/lib/pricing';
+import type { Orientation, OrientationOption } from '@/lib/print-options';
 
 export interface Product {
   id: string;
@@ -36,6 +37,10 @@ export interface Product {
     [key: string]: boolean;
   };
   recommendedProducts?: string[]; // Array of product names to recommend
+  /** Portrait and landscape, where the print offers both (lib/print-options.ts). */
+  orientations?: OrientationOption[];
+  /** Sold without a frame only (lib/print-options.ts). */
+  unframedOnly?: boolean;
 }
 
 export interface CartItem {
@@ -43,7 +48,13 @@ export interface CartItem {
   quantity: number;
   size?: string;
   frame?: string;
+  /** Set only on a print that offers a choice (lib/print-options.ts). */
+  orientation?: Orientation;
 }
+
+/** One basket line is one print in one size, frame and orientation. */
+const sameLine = (item: CartItem, productId: string, size?: string, frame?: string, orientation?: Orientation) =>
+  item.product.id === productId && item.size === size && item.frame === frame && item.orientation === orientation;
 
 interface CartState {
   items: CartItem[];
@@ -51,9 +62,9 @@ interface CartState {
 }
 
 type CartAction =
-  | { type: 'ADD_TO_CART'; product: Product; quantity?: number; size?: string; frame?: string }
-  | { type: 'REMOVE_FROM_CART'; productId: string; size?: string; frame?: string }
-  | { type: 'UPDATE_QUANTITY'; productId: string; quantity: number; size?: string; frame?: string }
+  | { type: 'ADD_TO_CART'; product: Product; quantity?: number; size?: string; frame?: string; orientation?: Orientation }
+  | { type: 'REMOVE_FROM_CART'; productId: string; size?: string; frame?: string; orientation?: Orientation }
+  | { type: 'UPDATE_QUANTITY'; productId: string; quantity: number; size?: string; frame?: string; orientation?: Orientation }
   | { type: 'CLEAR_CART' }
   | { type: 'TOGGLE_CART' }
   | { type: 'CLOSE_CART' };
@@ -62,15 +73,13 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
   switch (action.type) {
     case 'ADD_TO_CART': {
       if (action.product.published === false) return state;
-      const existingItem = state.items.find(
-        item => item.product.id === action.product.id && item.size === action.size && item.frame === action.frame
-      );
+      const existingItem = state.items.find(item => sameLine(item, action.product.id, action.size, action.frame, action.orientation));
       
       if (existingItem) {
         return {
           ...state,
           items: state.items.map(item =>
-            item.product.id === action.product.id && item.size === action.size && item.frame === action.frame
+            sameLine(item, action.product.id, action.size, action.frame, action.orientation)
               ? { ...item, quantity: item.quantity + (action.quantity || 1) }
               : item
           ),
@@ -79,32 +88,37 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
       
       return {
         ...state,
-        items: [...state.items, { product: action.product, quantity: action.quantity || 1, size: action.size, frame: action.frame }],
+        items: [
+          ...state.items,
+          {
+            product: action.product,
+            quantity: action.quantity || 1,
+            size: action.size,
+            frame: action.frame,
+            ...(action.orientation ? { orientation: action.orientation } : {}),
+          },
+        ],
       };
     }
     
     case 'REMOVE_FROM_CART':
       return {
         ...state,
-        items: state.items.filter(item => 
-          !(item.product.id === action.productId && item.size === action.size && item.frame === action.frame)
-        ),
+        items: state.items.filter(item => !sameLine(item, action.productId, action.size, action.frame, action.orientation)),
       };
     
     case 'UPDATE_QUANTITY':
       if (action.quantity <= 0) {
         return {
           ...state,
-          items: state.items.filter(item => 
-            !(item.product.id === action.productId && item.size === action.size && item.frame === action.frame)
-          ),
+          items: state.items.filter(item => !sameLine(item, action.productId, action.size, action.frame, action.orientation)),
         };
       }
       
       return {
         ...state,
         items: state.items.map(item =>
-          item.product.id === action.productId && item.size === action.size && item.frame === action.frame
+          sameLine(item, action.productId, action.size, action.frame, action.orientation)
             ? { ...item, quantity: action.quantity }
             : item
         ),
@@ -135,9 +149,9 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
 
 interface CartContextType {
   state: CartState;
-  addToCart: (product: Product, quantity?: number, size?: string, frame?: string) => void;
-  removeFromCart: (productId: string, size?: string, frame?: string) => void;
-  updateQuantity: (productId: string, quantity: number, size?: string, frame?: string) => void;
+  addToCart: (product: Product, quantity?: number, size?: string, frame?: string, orientation?: Orientation) => void;
+  removeFromCart: (productId: string, size?: string, frame?: string, orientation?: Orientation) => void;
+  updateQuantity: (productId: string, quantity: number, size?: string, frame?: string, orientation?: Orientation) => void;
   clearCart: () => void;
   toggleCart: () => void;
   closeCart: () => void;
@@ -184,16 +198,16 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     saveCartToStorage(state.items);
   }, [state.items]);
 
-  const addToCart = (product: Product, quantity = 1, size?: string, frame?: string) => {
-    dispatch({ type: 'ADD_TO_CART', product, quantity, size, frame });
+  const addToCart = (product: Product, quantity = 1, size?: string, frame?: string, orientation?: Orientation) => {
+    dispatch({ type: 'ADD_TO_CART', product, quantity, size, frame, orientation });
   };
 
-  const removeFromCart = (productId: string, size?: string, frame?: string) => {
-    dispatch({ type: 'REMOVE_FROM_CART', productId, size, frame });
+  const removeFromCart = (productId: string, size?: string, frame?: string, orientation?: Orientation) => {
+    dispatch({ type: 'REMOVE_FROM_CART', productId, size, frame, orientation });
   };
 
-  const updateQuantity = (productId: string, quantity: number, size?: string, frame?: string) => {
-    dispatch({ type: 'UPDATE_QUANTITY', productId, quantity, size, frame });
+  const updateQuantity = (productId: string, quantity: number, size?: string, frame?: string, orientation?: Orientation) => {
+    dispatch({ type: 'UPDATE_QUANTITY', productId, quantity, size, frame, orientation });
   };
 
   const clearCart = () => {
