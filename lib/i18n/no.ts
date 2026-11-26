@@ -1569,6 +1569,7 @@ export const no = {
       allPrintsOther: 'Alle {count} trykkene',
       moreLikeThis: 'Flere trykk som dette',
       moreByArtist: 'Mer av {name}',
+      moreByArtistAndSimilar: 'Mer av {name} og lignende trykk',
       youMayAlsoLike: 'Kanskje du også liker',
       allInCategory: 'Alle {label}',
     } satisfies ProductPageStrings,

@@ -4,7 +4,7 @@ import { ProductActions } from '@/components/ProductActions';
 import type { DeliveryGuide } from '@/lib/delivery-guide';
 import { ProductImageGalleryWrapper } from '@/components/ProductImageGalleryWrapper';
 import { PrintRow } from '@/components/v2/prints/PrintRow';
-import { allByArtist } from '@/lib/related-prints';
+import { relatedHeading, relatedMatch } from '@/lib/related-prints';
 import { sizeLabel } from '@/components/v2/product/artist-facts';
 import { LandingCrossLinks } from '@/components/LandingCrossLinks';
 import { FeedbackIntercept } from '@/components/FeedbackIntercept';
@@ -35,6 +35,7 @@ export interface ProductViewProps {
   artistStatement?: string;
   /** The artist's published prints, for the fact rows. */
   artistFacts?: { sizes: string[]; count: number; lowestPrices: CurrencyPrices; lowestEuro?: Record<string, number> };
+  /** Other artists' prints for "More prints like this" (pickOtherArtistPrints). */
   recommended: Product[];
   /** Three buyable prints for the row under Add to basket (lib/related-prints.ts). */
   related?: Product[];
@@ -61,13 +62,14 @@ export interface ProductViewProps {
  * controls, and the Details / Delivery / About rows as native <details>, so
  * their answers are in the HTML.
  *
- * The three related prints ("More by {artist}" / "You may also like") sit in
- * the panel under the buying controls on phones, and from tablet up as a full
- * row right under the product.
+ * The three related prints, the artist's own first ("More from {artist}",
+ * "... and similar prints" when similar ones fill the row, or "You may also
+ * like"), sit in the panel under the buying controls on phones, and from
+ * tablet up as a full row right under the product.
  *
  * Then, a section apart each: the artist (statement on eight columns, name,
- * full bio, fact rows and link on four), "More prints like this" (was "You may
- * also like"), and Explore the shop.
+ * full bio, fact rows and link on four), "More prints like this" (other
+ * artists' prints only, Mark 26 Nov 2026), and Explore the shop.
  */
 export function ProductView({
   locale,
@@ -98,7 +100,14 @@ export function ProductView({
     .filter(([, available]) => available)
     .map(([size]) => sizeLabel(size));
   const deliveryHref = `${prefix}/delivery`;
-  const relatedTitle = artist && allByArtist(related, product.artistId) ? fill(t.moreByArtist, { name: artist.name }) : t.youMayAlsoLike;
+  const heading = artist ? relatedHeading(related, product.artistId) : 'general';
+  const relatedTitle =
+    heading === 'artist' && artist ? fill(t.moreByArtist, { name: artist.name })
+    : heading === 'artist-and-similar' && artist ? fill(t.moreByArtistAndSimilar, { name: artist.name })
+    : t.youMayAlsoLike;
+  // The click event's `match` tells the artist's own prints from the similar
+  // ones that fill the row, and both from the other artists' row lower down.
+  const matchRelated = (p: Product) => relatedMatch(p, product.artistId);
   // The three related prints: one SectionHeader and PrintRow, placed in the
   // buying panel on phones and as a full row under the product from tablet up.
   // `placement` tells the two apart in the click event.
@@ -106,7 +115,7 @@ export function ProductView({
     related.length > 0 && (
       <section aria-labelledby={id} className={className}>
         <SectionHeader id={id} title={relatedTitle} />
-        <PrintRow className="mt-band" products={related} from={product.slug} locale={locale} placement={placement} />
+        <PrintRow className="mt-band" products={related} from={product.slug} locale={locale} placement={placement} match={matchRelated} />
       </section>
     );
   return (
@@ -257,6 +266,7 @@ export function ProductView({
             products={recommended}
             from={product.slug}
             locale={locale}
+            match={() => 'other-artist'}
             {...(outOfStockLabel ? { outOfStockLabel } : {})}
           />
         </section>

@@ -48,9 +48,11 @@ export interface ProductPageStrings {
   allPrintsOne: string;
   allPrintsOther: string;
   moreLikeThis: string;
-  /** The three prints under Add to basket: "More by {name}" when all three are
-   *  the artist's, otherwise the general heading. */
+  /** The three prints under Add to basket: "More from {name}" when all three
+   *  are the artist's, "More from {name} and similar prints" when similar
+   *  prints fill the row, otherwise the general heading. */
   moreByArtist: string;
+  moreByArtistAndSimilar: string;
   youMayAlsoLike: string;
   /** "All {label}", the category link on the section header. */
   allInCategory: string;
@@ -99,7 +101,8 @@ export const productPageEn: ProductPageStrings = {
   allPrintsOne: 'The print',
   allPrintsOther: 'All {count} prints',
   moreLikeThis: 'More prints like this',
-  moreByArtist: 'More by {name}',
+  moreByArtist: 'More from {name}',
+  moreByArtistAndSimilar: 'More from {name} and similar prints',
   youMayAlsoLike: 'You may also like',
   allInCategory: 'All {label}',
 };

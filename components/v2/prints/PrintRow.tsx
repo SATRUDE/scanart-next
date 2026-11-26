@@ -33,6 +33,7 @@ export function PrintRow({
   from,
   locale = 'en',
   placement,
+  match,
   outOfStockLabel,
   className = '',
 }: {
@@ -42,6 +43,9 @@ export function PrintRow({
   locale?: 'en' | 'no';
   /** Added to the click event when a page has more than one row. */
   placement?: string;
+  /** Added to the click event per print: same-artist, similar or other-artist
+   *  (lib/related-prints.ts), for the onward test. */
+  match?: (p: Product) => string;
   outOfStockLabel?: string;
   className?: string;
 }) {
@@ -55,7 +59,7 @@ export function PrintRow({
           <TrackedLink
             className="block"
             event="related-product-click"
-            eventData={placement ? { from, to: p.slug, placement } : { from, to: p.slug }}
+            eventData={{ from, to: p.slug, ...(placement ? { placement } : {}), ...(match ? { match: match(p) } : {}) }}
             href={`${prefix}/product/${p.slug}`}
           >
             <PrintCard
