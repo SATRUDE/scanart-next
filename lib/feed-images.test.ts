@@ -3,7 +3,7 @@ import { join } from 'node:path';
 
 import { describe, expect, it } from 'vitest';
 
-import { feedAdditionalImages, merchantCenterImagePath } from '@/lib/feed-images';
+import { feedAdditionalImages, feedMainImage, merchantCenterImagePath } from '@/lib/feed-images';
 import { getAllProducts } from '@/lib/products';
 
 describe('merchantCenterImagePath', () => {
@@ -100,5 +100,33 @@ describe('every print in the catalogue', () => {
       missing,
       `these feed images are named but not served, which disapproves the item:\n${missing.join('\n')}`
     ).toEqual([]);
+  });
+});
+
+describe('feedMainImage', () => {
+  it('gives the warm-backdrop copy the product page shows, not the grey original', () => {
+    expect(feedMainImage({ slug: 'eltsjoen', image: '/images/products/eltsjoen.png' })).toBe(
+      '/images/products/warm/eltsjoen.webp'
+    );
+  });
+
+  it('keeps the unframed render for Hummer og Vin, whose offer is the bare print', () => {
+    expect(
+      feedMainImage({ slug: 'hummer-og-vin', image: '/images/products/hummer-og-vin.png' })
+    ).toBe('/images/products/hummer-og-vin-unframed.png');
+  });
+
+  it('every print in the catalogue has a warm main image on disk, in a format the feeds read', async () => {
+    const products = await getAllProducts();
+    const wrong: string[] = [];
+    for (const product of products) {
+      const main = feedMainImage(product);
+      if (product.slug !== 'hummer-og-vin' && !main.startsWith('/images/products/warm/')) {
+        wrong.push(`${product.slug}: no warm copy, still ${main}`);
+      }
+      if (merchantCenterImagePath(main) !== main) wrong.push(`${product.slug}: ${main} is not a feed format`);
+      if (!existsSync(join(process.cwd(), 'public', main))) wrong.push(`${product.slug}: ${main} is not served`);
+    }
+    expect(wrong, wrong.join('\n')).toEqual([]);
   });
 });

@@ -1,4 +1,4 @@
-import { feedAdditionalImages } from '@/lib/feed-images';
+import { feedAdditionalImages, feedMainImage } from '@/lib/feed-images';
 import { getAllProducts } from '@/lib/products';
 import { getLowestProductPrices } from '@/lib/pricing';
 import { productListingDetails } from '@/lib/product-listing-details';
@@ -61,12 +61,9 @@ export async function GET() {
       <g:size>${esc(detail.size)}</g:size>
       <g:color>${esc(detail.colour)}</g:color>
       <g:material>${esc(detail.material)}</g:material>` : '';
-      // Hummer's catalogue image includes a frame, but this feed sells the
-      // unframed print. Use a direct render of the artist's 50 x 70 cm print
-      // PDF for that offer; keep the room scene as an additional image.
-      const primaryImage = p.slug === 'hummer-og-vin'
-        ? '/images/products/hummer-og-vin-unframed.png'
-        : p.image;
+      // The print on the warm backdrop, as the product page shows it (Hummer
+      // keeps its unframed render, see feedMainImage).
+      const primaryImage = feedMainImage(p);
       const additionalImages = feedAdditionalImages(p)
         .map(url => `\n      <g:additional_image_link>${esc(url)}</g:additional_image_link>`)
         .join('');
