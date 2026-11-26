@@ -104,6 +104,8 @@ def scenes_in_use():
 OVERRIDES = {
     "/images/homepage/morgenlevering-scene.jpg": {"x": 55.0, "y": 31.0, "w": 19.5, "h": 24.5},
     "/images/products/Morgenlevering-scene.avif": {"x": 55.0, "y": 31.0, "w": 19.5, "h": 24.5},
+    # Kopia's repeating pattern fools the matcher; box measured by eye (26 Nov 2026).
+    "/images/products/kopia-landscape-vignette-2026-11-26.avif": {"x": 48.3, "y": 29.2, "w": 55.3, "h": 37.2},
 }
 
 
