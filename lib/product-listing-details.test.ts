@@ -5,6 +5,7 @@ import { GET } from '@/app/product-feed.xml/route';
 import { getAllProducts } from '@/lib/products';
 import { getLowestProductPrices } from '@/lib/pricing';
 import { productListingDetails } from '@/lib/product-listing-details';
+import { warmImage } from '@/lib/warm-image';
 
 const trial = ['sunday-brunch', 'rosa-blomster', 'massa-applen', 'small-house-big-ocean', 'mean-snothing'];
 
@@ -54,7 +55,9 @@ describe('Merchant Center listing trial', () => {
         expect(image.readUInt32BE(16)).toBeGreaterThanOrEqual(500);
         expect(image.readUInt32BE(20)).toBeGreaterThanOrEqual(500);
       } else {
-        expect(item).toContain(`${product.image}</g:image_link>`);
+        // The warm-backdrop copy the product page shows, never the grey original.
+        expect(item).toContain(`${warmImage(product.image)}</g:image_link>`);
+        expect(warmImage(product.image)).not.toBe(product.image);
       }
       expect(item.match(/<g:additional_image_link>/g)).toHaveLength(1);
       // Merchant Center's free-delivery service is scoped to this label; every

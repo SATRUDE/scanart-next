@@ -1,4 +1,5 @@
 import { siteImage } from '@/lib/product-sitemap-images';
+import { warmImage } from '@/lib/warm-image';
 
 /**
  * The image formats Merchant Center will fetch. AVIF is deliberately absent:
@@ -70,4 +71,25 @@ export function feedAdditionalImages(product: {
   const scene = siteImage(merchantCenterImagePath(product.secondaryImage));
   if (!scene || scene === main) return [];
   return [scene];
+}
+
+/**
+ * Hummer og Vin's catalogue shot shows a frame, but every feed item sells the
+ * UNFRAMED print, and Google disapproves a main image that shows something
+ * not sold with the item (PR #270). So its offer keeps a direct render of the
+ * artist's print file.
+ */
+const UNFRAMED_MAIN_IMAGES: Record<string, string> = {
+  'hummer-og-vin': '/images/products/hummer-og-vin-unframed.png',
+};
+
+/**
+ * The path of a feed item's `g:image_link`: the print as the product page
+ * shows it, on the warm backdrop (`lib/warm-images.json`), not the grey
+ * studio original it was shot on. Shopping and ad catalogues fed from this
+ * feed (Google, Pinterest, Meta) then show the same picture as the shop.
+ * The warm copies are WebP, a format all three accept.
+ */
+export function feedMainImage(product: { slug: string; image: string }): string {
+  return UNFRAMED_MAIN_IMAGES[product.slug] ?? warmImage(product.image);
 }
