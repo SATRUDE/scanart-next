@@ -19,7 +19,7 @@ const copy = {
   en: {
     title: 'Cookies',
     body: 'We use cookies to improve your experience and show you relevant ads.',
-    short: 'We use cookies for ads and site stats.',
+    short: 'We use cookies.',
     accept: 'Accept',
     reject: 'Reject',
     privacy: 'Privacy policy',
@@ -31,7 +31,7 @@ const copy = {
     body: 'Vi bruker informasjonskapsler for å gi deg en bedre opplevelse og relevante annonser.',
     // \u00AD: a soft hyphen, so the long word can break on the narrowest phones
     // (iPhone SE) instead of running into the Avslå button.
-    short: 'Vi bruker informasjons\u00ADkapsler til annonser og statistikk.',
+    short: 'Vi bruker informasjons\u00ADkapsler.',
     accept: 'Godta',
     reject: 'Avslå',
     privacy: 'Personvern',
