@@ -46,11 +46,11 @@ describe('consent bar on phones', () => {
 
   it('uses the short wording on phones and the full wording from tablet up', () => {
     const en = render();
-    expect(en).toContain('<span class="tab:hidden">We use cookies for ads and site stats.</span>');
+    expect(en).toContain('<span class="tab:hidden">We use cookies.</span>');
     expect(en).toContain('<span class="hidden tab:inline">We use cookies to improve your experience and show you relevant ads.</span>');
     expect(en).toMatch(/<span class="tab:hidden">Privacy<\/span><span class="hidden tab:inline">Privacy policy<\/span>/);
     const no = render('no');
-    expect(no).toContain('<span class="tab:hidden">Vi bruker informasjons\u00ADkapsler til annonser og statistikk.</span>');
+    expect(no).toContain('<span class="tab:hidden">Vi bruker informasjons\u00ADkapsler.</span>');
     expect(no).toContain('Vi bruker informasjonskapsler for å gi deg en bedre opplevelse og relevante annonser.');
   });
 
