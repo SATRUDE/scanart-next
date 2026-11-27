@@ -1,7 +1,10 @@
 // The consent banner as a slim bar on phones (Mark's decision board, 18 Nov
 // 2026): on a product page the stacked phone panel covered everything under the
-// picture. The bar must stay legally the same banner: the same two choices with
+// picture. Since 27 Nov 2026 (option 3) it is a one-row strip on phones that
+// stacks on top of the phone basket bar instead of covering Add to basket. The bar must stay legally the same banner: the same two choices with
 // the same weight, nothing chosen in advance, and nothing loaded before Accept.
+import { readFileSync } from 'node:fs';
+import path from 'node:path';
 import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { afterEach, describe, expect, it, vi } from 'vitest';
@@ -29,7 +32,26 @@ describe('consent bar on phones', () => {
 
   it('puts the two choices side by side on phones, so neither sits lower than the other', () => {
     const html = render();
-    expect(html).toMatch(/<div class="grid grid-cols-2 gap-3 tab:flex tab:flex-row desk:shrink-0">/);
+    expect(html).toMatch(/<div class="grid shrink-0 grid-cols-2 gap-2 tab:flex tab:gap-3">/);
+  });
+
+  it('keeps both choices at least 44 px tall', () => {
+    for (const b of buttons(render())) expect(b[1].split(' ')).toContain('min-h-11');
+  });
+
+  it('is one row on phones and keeps the tablet column and desktop row', () => {
+    const html = render();
+    expect(html).toContain('flex max-w-7xl flex-row items-center gap-3 tab:flex-col tab:items-stretch tab:gap-5 desk:flex-row desk:items-center desk:gap-10');
+  });
+
+  it('uses the short wording on phones and the full wording from tablet up', () => {
+    const en = render();
+    expect(en).toContain('<span class="tab:hidden">We use cookies for ads and site stats.</span>');
+    expect(en).toContain('<span class="hidden tab:inline">We use cookies to improve your experience and show you relevant ads.</span>');
+    expect(en).toMatch(/<span class="tab:hidden">Privacy<\/span><span class="hidden tab:inline">Privacy policy<\/span>/);
+    const no = render('no');
+    expect(no).toContain('<span class="tab:hidden">Vi bruker informasjons\u00ADkapsler til annonser og statistikk.</span>');
+    expect(no).toContain('Vi bruker informasjonskapsler for å gi deg en bedre opplevelse og relevante annonser.');
   });
 
   it('pre-ticks nothing: no checkbox, toggle or pre-selected control', () => {
@@ -52,10 +74,18 @@ describe('consent bar on phones', () => {
 
   it('is slim on phones and keeps the tablet and desktop padding', () => {
     const cls = sectionClass(render());
-    expect(cls).toContain('pt-3');
+    expect(cls).toContain('pt-[6px]');
     expect(cls).toContain('tab:py-6');
+    expect(cls).toContain('tab:shadow-lg');
+    expect(cls).not.toMatch(/(^|\s)shadow-lg/);
     expect(cls).toContain('env(safe-area-inset-bottom)');
     expect(cls).not.toMatch(/(^|\s)py-6/);
+  });
+
+  it('stacks on top of the phone basket bar instead of covering it', () => {
+    const css = readFileSync(path.join(__dirname, '../app/globals.css'), 'utf8');
+    const phone = css.slice(css.indexOf('@media (width < 834px) {'));
+    expect(phone).toMatch(/body:has\(\[data-basket-bar\]\) #advertising-consent \{\s*bottom: calc\(75px \+ env\(safe-area-inset-bottom\)\);/);
   });
 
   it('stays non-modal and above everything fixed at the bottom of the page', () => {

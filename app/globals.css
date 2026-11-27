@@ -340,6 +340,14 @@
   body:has([data-basket-bar]) [data-feedback-float] {
     bottom: calc(75px + env(safe-area-inset-bottom) + 1rem);
   }
+  /* The cookie strip (components/AdvertisingConsent.tsx) stacks directly on
+     top of the bar rather than over it, so Add to basket stays visible and
+     tappable before the visitor chooses. The bar already clears the iPhone
+     safe area, so the strip needs only its own padding here. */
+  body:has([data-basket-bar]) #advertising-consent {
+    bottom: calc(75px + env(safe-area-inset-bottom));
+    padding-bottom: 6px;
+  }
 }
 
 .scrollbar-hide {

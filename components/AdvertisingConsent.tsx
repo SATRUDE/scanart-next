@@ -19,17 +19,23 @@ const copy = {
   en: {
     title: 'Cookies',
     body: 'We use cookies to improve your experience and show you relevant ads.',
+    short: 'We use cookies for ads and site stats.',
     accept: 'Accept',
     reject: 'Reject',
     privacy: 'Privacy policy',
+    privacyShort: 'Privacy',
     error: 'Your browser could not save this choice. Please allow site storage or clear this site’s data in your browser settings and try again.',
   },
   no: {
     title: 'Informasjonskapsler',
     body: 'Vi bruker informasjonskapsler for å gi deg en bedre opplevelse og relevante annonser.',
+    // \u00AD: a soft hyphen, so the long word can break on the narrowest phones
+    // (iPhone SE) instead of running into the Avslå button.
+    short: 'Vi bruker informasjons\u00ADkapsler til annonser og statistikk.',
     accept: 'Godta',
     reject: 'Avslå',
     privacy: 'Personvern',
+    privacyShort: 'Personvern',
     error: 'Nettleseren kunne ikke lagre valget. Tillat lagring for nettstedet, eller slett nettstedets data i nettleserinnstillingene og prøv igjen.',
   },
 };
@@ -80,30 +86,37 @@ function AdvertisingPrompt({ locale }: { locale: 'en' | 'no' }) {
   return (
     <>
     <noscript><style>{'#advertising-consent { display: none; }'}</style></noscript>
-    {/* Phones: a slim bar (one short paragraph, the two choices side by side)
-        so the print's name and price stay on the first screen; on a product
-        page the old stacked panel covered everything under the picture.
-        Tablet and desktop are unchanged. Same copy, same two choices with the
-        same weight, nothing pre-chosen, and still nothing loads until Accept. */}
+    {/* Phones: a slim strip, one row: the short wording and the privacy link
+        on the left, Reject and Accept side by side on the right, both the same
+        secondary button at least 44 px tall. On a product page the strip sits
+        directly on top of the phone basket bar instead of over it (globals.css,
+        body:has([data-basket-bar]) #advertising-consent), so Add to basket is
+        never covered; elsewhere it sits at the bottom on its own. Tablet and
+        desktop are unchanged. Same two choices with the same weight, nothing
+        pre-chosen, and still nothing loads until Accept. */}
     <section
       id="advertising-consent"
       ref={region}
       tabIndex={-1}
       aria-labelledby="advertising-consent-title"
-      className="fixed inset-x-0 bottom-0 z-[60] max-h-[80dvh] overflow-y-auto border-t border-ink bg-bg page-x pt-3 pb-[calc(12px+env(safe-area-inset-bottom))] shadow-lg focus:outline-none tab:py-6"
+      className="fixed inset-x-0 bottom-0 z-[60] max-h-[80dvh] overflow-y-auto border-t border-line bg-bg page-x pt-[6px] pb-[calc(6px+env(safe-area-inset-bottom))] focus:outline-none tab:border-ink tab:py-6 tab:shadow-lg"
     >
-      <div className="mx-auto flex max-w-7xl flex-col gap-[10px] tab:gap-5 desk:flex-row desk:items-center desk:gap-10">
-        <div className="flex-1">
+      <div className="mx-auto flex max-w-7xl flex-row items-center gap-3 tab:flex-col tab:items-stretch tab:gap-5 desk:flex-row desk:items-center desk:gap-10">
+        <div className="min-w-0 flex-1">
           <h2 id="advertising-consent-title" className="sr-only tab:not-sr-only type-h3">{t.title}</h2>
           <p className="type-caption tab:mt-2 tab:type-small max-w-3xl">
-            {t.body}{' '}
-            <Link href={locale === 'no' ? '/no/privacy#advertising' : '/privacy#advertising'} className="underline underline-offset-4 tab:mt-2 tab:block tab:w-fit">{t.privacy}</Link>
+            <span className="tab:hidden">{t.short}</span>
+            <span className="hidden tab:inline">{t.body}</span>{' '}
+            <Link href={locale === 'no' ? '/no/privacy#advertising' : '/privacy#advertising'} className="underline underline-offset-4 tab:mt-2 tab:block tab:w-fit">
+              <span className="tab:hidden">{t.privacyShort}</span>
+              <span className="hidden tab:inline">{t.privacy}</span>
+            </Link>
           </p>
           {error && <p role="alert" className="mt-2 type-caption tab:type-small">{t.error}</p>}
         </div>
-        <div className="grid grid-cols-2 gap-3 tab:flex tab:flex-row desk:shrink-0">
-          <Button variant="secondary" size="compact" onClick={() => choose('rejected')}>{t.reject}</Button>
-          <Button variant="secondary" size="compact" onClick={() => choose('accepted')}>{t.accept}</Button>
+        <div className="grid shrink-0 grid-cols-2 gap-2 tab:flex tab:gap-3">
+          <Button variant="secondary" size="compact" className="min-h-11" onClick={() => choose('rejected')}>{t.reject}</Button>
+          <Button variant="secondary" size="compact" className="min-h-11" onClick={() => choose('accepted')}>{t.accept}</Button>
         </div>
       </div>
     </section>
