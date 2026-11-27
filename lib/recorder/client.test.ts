@@ -211,6 +211,39 @@ describe('campaign in the first chunk', () => {
   });
 });
 
+describe('referring site in the first chunk', () => {
+  it('keeps the hostname only, and nothing for a direct visit, our own site or a non-web referrer', async () => {
+    const { referrerHost } = await import('./protocol');
+    expect(referrerHost('https://www.google.com/')).toBe('google.com');
+    expect(referrerHost('https://www.google.com/search?q=kari+nordmann+art&client=safari')).toBe('google.com');
+    expect(referrerHost('https://nordicdesignblog.com/2026/11/best-prints/?ref=x#top')).toBe('nordicdesignblog.com');
+    expect(referrerHost('https://uk.pinterest.com/pin/12345/')).toBe('uk.pinterest.com');
+    expect(referrerHost('http://Example.ORG:8080/path')).toBe('example.org');
+    expect(referrerHost('')).toBeUndefined();
+    expect(referrerHost(undefined)).toBeUndefined();
+    expect(referrerHost('https://www.scandinavianart.co.uk/product/morgenstrekk')).toBeUndefined();
+    expect(referrerHost('https://scandinavianart.co.uk/')).toBeUndefined();
+    expect(referrerHost('https://y-git-main.scandinavianart.co.uk/')).toBeUndefined();
+    expect(referrerHost('android-app://com.google.android.gm/')).toBeUndefined();
+    expect(referrerHost('https://localhost:3000/')).toBeUndefined();
+    expect(referrerHost('https://203.0.113.9/x')).toBeUndefined();
+    expect(referrerHost('not a url')).toBeUndefined();
+  });
+
+  it('is checked again on the server: a hostname survives, a URL or our own site does not, chunk 0 only', async () => {
+    const { validateEnvelope } = await import('./protocol');
+    const now = Date.now();
+    const base = { v: 1, s: '0b8f3c2e-5d1a-4c7b-9e2f-1a2b3c4d5e6f', c: 0, t: now - 1000, e: [{ type: 4, timestamp: now - 900 }] };
+    const m = (r: unknown, c = 0) => (validateEnvelope({ ...base, c, m: { w: 390, r } }, now) as RecEnvelope).m;
+    expect(m('google.com')?.r).toBe('google.com');
+    expect(m('https://google.com/search?q=x')?.r).toBeUndefined();
+    expect(m('google.com/search')?.r).toBeUndefined();
+    expect(m('scandinavianart.co.uk')?.r).toBeUndefined();
+    expect(m(42)?.r).toBeUndefined();
+    expect(m('google.com', 1)).toBeUndefined();
+  });
+});
+
 describe('page height events', () => {
   it('reports the first height and then only real changes', () => {
     expect(heightChanged(0, 4200)).toBe(true);

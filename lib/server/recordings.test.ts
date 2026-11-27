@@ -374,7 +374,7 @@ describe('forwarding to the Cloudflare ingest Worker', () => {
 
   it('posts the gzipped events with the secret and a coarse envelope, after every existing check', async () => {
     const { fetch, puts } = fakeR2(204);
-    const res = await ingest(req(envelope({ m: { w: 390, h: 844, l: 'en-GB', u: { source: 'meta', campaign: 'first-ads-2026-11-09', content: 'vinkveld-room-static' } } })), fwdDeps(fetch));
+    const res = await ingest(req(envelope({ m: { w: 390, h: 844, l: 'en-GB', u: { source: 'meta', campaign: 'first-ads-2026-11-09', content: 'vinkveld-room-static' }, r: 'pinterest.com' } })), fwdDeps(fetch));
     expect(res.status).toBe(204);
     expect(puts).toHaveLength(1);
     expect(puts[0].url).toBe(forward.url);
@@ -382,7 +382,7 @@ describe('forwarding to the Cloudflare ingest Worker', () => {
     expect(puts[0].headers['content-type']).toBe('application/gzip');
     expect(JSON.parse(zlib.gunzipSync(puts[0].body).toString())).toHaveLength(1);
     const env = decode(puts[0].headers['x-rec-envelope']);
-    expect(env).toMatchObject({ v: 1, s: SID, c: 0, m: { country: 'GB', device: 'mobile', os: 'ios', screen: '390x844', lang: 'en-GB', utm: { source: 'meta', campaign: 'first-ads-2026-11-09' } } });
+    expect(env).toMatchObject({ v: 1, s: SID, c: 0, m: { country: 'GB', device: 'mobile', os: 'ios', screen: '390x844', lang: 'en-GB', utm: { source: 'meta', campaign: 'first-ads-2026-11-09' }, ref: 'pinterest.com' } });
     expect(JSON.stringify(env)).not.toContain('203.0.113.9');
     expect(JSON.stringify(env)).not.toContain('Mozilla');
   });
@@ -391,6 +391,7 @@ describe('forwarding to the Cloudflare ingest Worker', () => {
     const { fetch, puts } = fakeR2(204);
     await ingest(req(envelope({ m: { w: 390, h: 844, u: { source: "me'ta" } } })), fwdDeps(fetch));
     expect(decode(puts[0].headers['x-rec-envelope']).m.utm).toBeUndefined();
+    expect(decode(puts[0].headers['x-rec-envelope']).m.ref).toBeUndefined();
     await ingest(req(envelope({ c: 1, m: undefined })), fwdDeps(fetch));
     expect(decode(puts[1].headers['x-rec-envelope']).m).toBeUndefined();
   });
