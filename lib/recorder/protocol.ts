@@ -5,7 +5,8 @@
 // One POST carries one chunk of one recording:
 //
 //   { v: 1, s: <session id>, c: <chunk index>, t: <recording start, ms>,
-//     m: { w, h, l } (chunk 0 only: screen width, height, language),
+//     m: { w, h, l, u, r } (chunk 0 only: screen width, height, language,
+//                          first-touch UTM, referring site's hostname),
 //     e: [ ...rrweb events ] }
 //
 // gzipped in the browser (CompressionStream) and sent as
@@ -57,9 +58,36 @@ export const MAX_CHUNK_INDEX = MAX_CHUNKS_PER_SESSION - 1;
 const SESSION_ID = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
 
 /** u: the visit's first-touch campaign (lib/campaign.ts), validated like the
- * campaign label on orders. Chunk 0 only. */
-export type RecMeta = { w?: number; h?: number; l?: string; u?: { source?: string; campaign?: string; content?: string } };
+ * campaign label on orders. r: the referring site's hostname only (see
+ * referrerHost), never the URL. Chunk 0 only. */
+export type RecMeta = { w?: number; h?: number; l?: string; u?: { source?: string; campaign?: string; content?: string }; r?: string };
 const UTM_VALUE = /^[a-z0-9._-]{1,80}$/;
+/** A bare hostname: lowercase labels, at least one dot, no port, path or query. */
+const HOSTNAME = /^(?=.{3,253}$)([a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9-]{2,63}$/;
+/** The shop's own domain and its subdomains: a referrer from here is internal. */
+export const OWN_DOMAIN = 'scandinavianart.co.uk';
+
+/**
+ * The site a visit came from, as a hostname only ("google.com"), or undefined
+ * for a direct visit, our own site, or anything that is not a web page. The
+ * path and query are never kept: search terms and personal data can be in them
+ * (Mark, 27 Nov 2026). A leading "www." is dropped, so www.google.com and
+ * google.com count as one site.
+ */
+export function referrerHost(referrer: string | null | undefined, ownDomain: string = OWN_DOMAIN): string | undefined {
+  if (!referrer) return undefined;
+  let url: URL;
+  try {
+    url = new URL(referrer);
+  } catch {
+    return undefined;
+  }
+  if (url.protocol !== 'https:' && url.protocol !== 'http:') return undefined;
+  const host = url.hostname.toLowerCase().replace(/\.$/, '').replace(/^www\./, '');
+  if (!HOSTNAME.test(host)) return undefined;
+  if (host === ownDomain || host.endsWith(`.${ownDomain}`)) return undefined;
+  return host;
+}
 export type RecEvent = { type: number; timestamp: number; data?: unknown; [k: string]: unknown };
 export type RecEnvelope = { v: 1; s: string; c: number; t: number; m?: RecMeta; e: RecEvent[] };
 
@@ -109,7 +137,8 @@ export function validateEnvelope(body: unknown, now: number): RecEnvelope | { er
     const rawU = raw.u && typeof raw.u === 'object' && !Array.isArray(raw.u) ? (raw.u as Record<string, unknown>) : {};
     const utm = (key: string) => (typeof rawU[key] === 'string' && UTM_VALUE.test(rawU[key] as string) ? (rawU[key] as string) : undefined);
     const u = { source: utm('source'), campaign: utm('campaign'), content: utm('content') };
-    m = { w: dim(raw.w), h: dim(raw.h), l: lang, ...(u.source ? { u } : {}) };
+    const r = typeof raw.r === 'string' && HOSTNAME.test(raw.r) && !(raw.r === OWN_DOMAIN || raw.r.endsWith(`.${OWN_DOMAIN}`)) ? raw.r : undefined;
+    m = { w: dim(raw.w), h: dim(raw.h), l: lang, ...(u.source ? { u } : {}), ...(r ? { r } : {}) };
   }
   return { v: 1, s: b.s, c: b.c, t: b.t, m, e: b.e as RecEvent[] };
 }

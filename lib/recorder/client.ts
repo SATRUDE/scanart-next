@@ -36,6 +36,7 @@ import {
   MAX_CHUNK_INDEX,
   MAX_DURATION_MS,
   RECORDER_VERSION,
+  referrerHost,
   type RecEnvelope,
   type RecEvent,
   type RecMeta,
@@ -283,6 +284,7 @@ function begin(rrweb: Rrweb): void {
     h: window.screen?.height || undefined,
     l: navigator.language || undefined,
     u: campaignMeta(),
+    r: referrerHost(document.referrer),
   }));
 
   const stopFn = rrweb.record(recordOptions(event => rec.push(event)));

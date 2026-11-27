@@ -337,6 +337,7 @@ export async function forward(
             screen: meta.screen,
             lang: meta.language,
             ...(env.m?.u ? { utm: env.m.u } : {}),
+            ...(env.m?.r ? { ref: env.m.r } : {}),
           },
         }
       : {}),

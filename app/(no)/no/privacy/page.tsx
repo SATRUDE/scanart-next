@@ -28,7 +28,7 @@ export const metadata: Metadata = {
 };
 
 // Same effective date as the English page; bump both by hand together.
-const LAST_UPDATED = '16. november 2026';
+const LAST_UPDATED = '27. november 2026';
 
 const sections: LegalSection[] = [
   {
@@ -114,6 +114,7 @@ const sections: LegalSection[] = [
           <li>Alt du skriver inn i et skjema, skjules i nettleseren din før opptaket sendes.</li>
           <li>Kortopplysninger blir aldri tatt opp: du skriver dem inn i Stripes sikre betalingsfelt, som opptaksverktøyet ikke kan se.</li>
           <li>Opptakene er ikke knyttet til navnet eller e-postadressen din, og et opptak stopper etter 5 minutter.</li>
+          <li>Med hvert opptak lagrer vi navnet på nettstedet du kom fra, for eksempel google.com, hvis du fulgte en lenke fra et annet nettsted. Bare navnet på nettstedet: aldri hele adressen til siden eller det du søkte etter.</li>
           <li>Opptaksverktøyet setter ingen informasjonskapsler og lagrer ingenting i nettleseren din.</li>
           <li>
             Hvis nettleseren din sender Global Privacy Control eller Do Not Track, tar vi ikke opp besøket ditt i det hele

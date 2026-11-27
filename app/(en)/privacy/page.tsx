@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 };
 
 // The date this policy takes effect; bump by hand when the wording changes.
-const LAST_UPDATED = '16 November 2026';
+const LAST_UPDATED = '27 November 2026';
 
 const sections: LegalSection[] = [
   {
@@ -107,6 +107,7 @@ const sections: LegalSection[] = [
           <li>Anything you type into a form is hidden in your browser before the recording is sent.</li>
           <li>Card details are never recorded: you enter them in Stripe&apos;s secure payment field, which the recorder cannot see.</li>
           <li>Recordings are not linked to your name or email address, and a recording stops after 5 minutes.</li>
+          <li>With each recording we keep the name of the website you came from, such as google.com, if you followed a link from another site. Only the site&apos;s name: never the full address of the page or anything you searched for.</li>
           <li>The recorder sets no cookies and stores nothing in your browser.</li>
           <li>
             If your browser sends Global Privacy Control or Do Not Track, we do not record your visit at all. Most
