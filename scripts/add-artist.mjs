@@ -90,6 +90,8 @@ const TEMPLATE_FRAME_WIDTH = 811;
 // The canvas is 4:5 like theirs, at twice the pixels for sharper artwork.
 const CANVAS = { width: 1640, height: 2048, background: '#f3f3f3' };
 const FRAME_FRACTION = 481 / 820;
+// Gelato's framed poster has no mount; the frame's lip covers about this much of each edge.
+const LIP_MM = 5;
 const AVATAR_SIZE = 1100;
 const CATEGORIES = new Set(['Abstract', 'Botanical', 'Illustrations', 'Photography']);
 const SNIPPET_MAX = 155; // lib/meta-snippet.ts: the first sentence is the meta description
@@ -220,8 +222,14 @@ function frameFor(meta, sizes, printName) {
 
 async function buildProductShot(artworkBuffer, outputPath, sizes, printName) {
   const meta = await sharp(artworkBuffer).metadata();
-  const { template: TEMPLATE, artBox: ART_BOX } = frameFor(meta, sizes, printName);
+  const { template: TEMPLATE, artBox: ART_BOX, size } = frameFor(meta, sizes, printName);
+  // No mount: the print runs to the frame, and the frame's lip covers LIP_MM of each edge, so
+  // that strip is not shown (scripts/framed-no-mount.py, 27 Nov 2026).
+  const [paperWmm, paperHmm] = size.replace('cm', '').split('x').map((cm) => Number(cm) * 10);
+  const lipX = Math.round((meta.width * LIP_MM) / paperWmm);
+  const lipY = Math.round((meta.height * LIP_MM) / paperHmm);
   const art = await sharp(artworkBuffer)
+    .extract({ left: lipX, top: lipY, width: meta.width - 2 * lipX, height: meta.height - 2 * lipY })
     .resize(ART_BOX.width, ART_BOX.height, { fit: 'fill', kernel: 'lanczos3' })
     .png()
     .toBuffer();
