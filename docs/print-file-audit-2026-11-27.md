@@ -109,43 +109,43 @@ Columns 1 to 4 are Mark’s four checks. The last column is the verdict: can the
 | Desert Circles | 50×50 cm | Unframed | `Desert Circles.png` | Pass: 0.1% | – | Note: 178 ppi | Pass | Yes |
 | Desert Circles | 50×50 cm | Framed | `Desert Circles.png` | Pass: 0.1% | **Problem**: no bleed: 4–5 mm of picture under the lip on each side. Bleed version made, awaiting Mark’s check | Note: 178 ppi | Pass | **No** |
 | Month of May | 50×70 cm | Unframed | `Month of May.jpg` | **Problem**: 19% off (1.13 vs 1.4 to 1): Gelato fills and crops; the order tool refuses it | – | Note: 150 ppi | Pass | Yes, with a printed border |
-| Month of May | 50×70 cm | Framed | `Month of May.jpg` | **Problem**: 19% off (1.13 vs 1.4 to 1): Gelato fills and crops; the order tool refuses it | **Problem**: no bleed: 4–5 mm of picture under the lip on each side. Bleed version made, awaiting Mark’s check | Note: 150 ppi | Pass | Yes, with a printed border |
+| Month of May | 50×70 cm | Framed | `Month of May.jpg` | **Problem**: 19% off (1.13 vs 1.4 to 1): Gelato fills and crops; the order tool refuses it | **Problem**: no bleed: 4–5 mm of picture under the lip on each side | Note: 150 ppi | Pass | Yes, with a printed border |
 | Flight Over the Valley | A3 | Unframed | `Flight Over the Valley.jpg` | **Problem**: 11% off (1.26 vs 1.41 to 1): Gelato fills and crops; the order tool refuses it | – | Note: 189 ppi | Pass | Yes, with a printed border |
-| Flight Over the Valley | A3 | Framed | `Flight Over the Valley.jpg` | **Problem**: 11% off (1.26 vs 1.41 to 1): Gelato fills and crops; the order tool refuses it | **Problem**: no bleed: 4–5 mm of picture under the lip on each side. Bleed version made, awaiting Mark’s check | Note: 189 ppi | Pass | Yes, with a printed border |
+| Flight Over the Valley | A3 | Framed | `Flight Over the Valley.jpg` | **Problem**: 11% off (1.26 vs 1.41 to 1): Gelato fills and crops; the order tool refuses it | **Problem**: no bleed: 4–5 mm of picture under the lip on each side | Note: 189 ppi | Pass | Yes, with a printed border |
 | Creature Among Blue Leaves | 50×70 cm | Unframed | `Creature Among Blue Leaves.jpg` | Pass: 0.6% | – | Note: 153 ppi | Pass | Yes |
 | Creature Among Blue Leaves | 50×70 cm | Framed | `Creature Among Blue Leaves.jpg` | Pass: 0.6% | Note: no bleed, but the edge is plain white, so the lip hides nothing that matters | Note: 153 ppi | Pass | Yes |
 | Surfer with Orange Sun | A3 | Unframed | `Surfer with Orange Sun.jpg` | Pass: 0.0% | – | Pass: 884 ppi | Pass | Yes |
 | Surfer with Orange Sun | A3 | Framed | `Surfer with Orange Sun.jpg` | Pass: 0.0% | **Problem**: no bleed: 4–5 mm of picture under the lip on each side. Bleed version made, awaiting Mark’s check | Pass: 884 ppi | Pass | **No** |
 | Through the Willows | 45×60 cm | Unframed | `Through the Willows.jpg` | Pass: 0.0% | – | Pass: 345 ppi | Pass | Yes |
-| Through the Willows | 45×60 cm | Framed | `Through the Willows.jpg` | Pass: 0.0% | **Problem**: no bleed: 4–5 mm of picture under the lip on each side. Bleed version made, awaiting Mark’s check | Pass: 345 ppi | Pass | Yes, with a printed border |
+| Through the Willows | 45×60 cm | Framed | `Through the Willows.jpg` | Pass: 0.0% | **Problem**: no bleed: 4–5 mm of picture under the lip on each side | Pass: 345 ppi | Pass | Yes, with a printed border |
 | Pines Under Starlight | 45×60 cm | Unframed | `Pines Under Starlight.jpg` | Pass: 0.0% | – | Pass: 325 ppi | Pass | Yes |
-| Pines Under Starlight | 45×60 cm | Framed | `Pines Under Starlight.jpg` | Pass: 0.0% | **Problem**: no bleed: 4–5 mm of picture under the lip on each side. Bleed version made, awaiting Mark’s check | Pass: 325 ppi | Pass | Yes, with a printed border |
+| Pines Under Starlight | 45×60 cm | Framed | `Pines Under Starlight.jpg` | Pass: 0.0% | **Problem**: no bleed: 4–5 mm of picture under the lip on each side | Pass: 325 ppi | Pass | Yes, with a printed border |
 | Boathouses in winter | 45×60 cm | Unframed | `Boathouses in winter.jpg` | Pass: 0.0% | – | Pass: 335 ppi | Pass | Yes |
-| Boathouses in winter | 45×60 cm | Framed | `Boathouses in winter.jpg` | Pass: 0.0% | **Problem**: no bleed: 4–5 mm of picture under the lip on each side. Bleed version made, awaiting Mark’s check | Pass: 335 ppi | Pass | Yes, with a printed border |
+| Boathouses in winter | 45×60 cm | Framed | `Boathouses in winter.jpg` | Pass: 0.0% | **Problem**: no bleed: 4–5 mm of picture under the lip on each side | Pass: 335 ppi | Pass | Yes, with a printed border |
 | Frozen currents | 45×60 cm | Unframed | `Frozen currents.jpg` | Pass: 0.0% | – | Pass: 297 ppi | Pass | Yes |
-| Frozen currents | 45×60 cm | Framed | `Frozen currents.jpg` | Pass: 0.0% | **Problem**: no bleed: 4–5 mm of picture under the lip on each side. Bleed version made, awaiting Mark’s check | Pass: 297 ppi | Pass | Yes, with a printed border |
+| Frozen currents | 45×60 cm | Framed | `Frozen currents.jpg` | Pass: 0.0% | **Problem**: no bleed: 4–5 mm of picture under the lip on each side | Pass: 297 ppi | Pass | Yes, with a printed border |
 | The Road at Sunset | 45×60 cm | Unframed | `The Road at Sunset.jpg` | Pass: 0.0% | – | Pass: 292 ppi | Pass | Yes |
-| The Road at Sunset | 45×60 cm | Framed | `The Road at Sunset.jpg` | Pass: 0.0% | **Problem**: no bleed: 4–5 mm of picture under the lip on each side. Bleed version made, awaiting Mark’s check | Pass: 292 ppi | Pass | Yes, with a printed border |
+| The Road at Sunset | 45×60 cm | Framed | `The Road at Sunset.jpg` | Pass: 0.0% | **Problem**: no bleed: 4–5 mm of picture under the lip on each side | Pass: 292 ppi | Pass | Yes, with a printed border |
 | Sun Over the Forest | 45×60 cm | Unframed | `Sun Over the Forest.jpg` | Pass: 0.0% | – | Pass: 287 ppi | Pass | Yes |
-| Sun Over the Forest | 45×60 cm | Framed | `Sun Over the Forest.jpg` | Pass: 0.0% | **Problem**: no bleed: 4–5 mm of picture under the lip on each side. Bleed version made, awaiting Mark’s check | Pass: 287 ppi | Pass | Yes, with a printed border |
+| Sun Over the Forest | 45×60 cm | Framed | `Sun Over the Forest.jpg` | Pass: 0.0% | **Problem**: no bleed: 4–5 mm of picture under the lip on each side | Pass: 287 ppi | Pass | Yes, with a printed border |
 | Swan on Still Water | 40×50 cm | Unframed | `Swan on Still Water.jpg` | Pass: 0.0% | – | Pass: 428 ppi | Pass | Yes |
-| Swan on Still Water | 40×50 cm | Framed | `Swan on Still Water.jpg` | Pass: 0.0% | **Problem**: no bleed: 4–5 mm of picture under the lip on each side. Bleed version made, awaiting Mark’s check | Pass: 428 ppi | Pass | Yes, with a printed border |
+| Swan on Still Water | 40×50 cm | Framed | `Swan on Still Water.jpg` | Pass: 0.0% | **Problem**: no bleed: 4–5 mm of picture under the lip on each side | Pass: 428 ppi | Pass | Yes, with a printed border |
 | Morning, Cabin Room | 45×60 cm | Unframed | `Morning, Cabin Room.jpg` | Pass: 0.0% | – | Pass: 358 ppi | Pass | Yes |
-| Morning, Cabin Room | 45×60 cm | Framed | `Morning, Cabin Room.jpg` | Pass: 0.0% | **Problem**: no bleed: 4–5 mm of picture under the lip on each side. Bleed version made, awaiting Mark’s check | Pass: 358 ppi | Pass | Yes, with a printed border |
+| Morning, Cabin Room | 45×60 cm | Framed | `Morning, Cabin Room.jpg` | Pass: 0.0% | **Problem**: no bleed: 4–5 mm of picture under the lip on each side | Pass: 358 ppi | Pass | Yes, with a printed border |
 | Path Through the Trees | 40×50 cm | Unframed | `Path Through the Trees.jpg` | Pass: 0.0% | – | Pass: 450 ppi | Pass | Yes |
-| Path Through the Trees | 40×50 cm | Framed | `Path Through the Trees.jpg` | Pass: 0.0% | **Problem**: no bleed: 4–5 mm of picture under the lip on each side. Bleed version made, awaiting Mark’s check | Pass: 450 ppi | Pass | Yes, with a printed border |
+| Path Through the Trees | 40×50 cm | Framed | `Path Through the Trees.jpg` | Pass: 0.0% | **Problem**: no bleed: 4–5 mm of picture under the lip on each side | Pass: 450 ppi | Pass | Yes, with a printed border |
 | Sheep on the Track | 40×50 cm | Unframed | `Sheep on the Track.jpg` | Pass: 0.0% | – | Pass: 395 ppi | Pass | Yes |
-| Sheep on the Track | 40×50 cm | Framed | `Sheep on the Track.jpg` | Pass: 0.0% | **Problem**: no bleed: 4–5 mm of picture under the lip on each side. Bleed version made, awaiting Mark’s check | Pass: 395 ppi | Pass | Yes, with a printed border |
+| Sheep on the Track | 40×50 cm | Framed | `Sheep on the Track.jpg` | Pass: 0.0% | **Problem**: no bleed: 4–5 mm of picture under the lip on each side | Pass: 395 ppi | Pass | Yes, with a printed border |
 | In to the woods II | 40×60 cm | Unframed | `In to the woods II.tif` | Pass: 0.2% | – | Pass: 373 ppi | Pass | Yes |
-| In to the woods II | 40×60 cm | Framed | `In to the woods II.tif` | Pass: 0.2% | **Problem**: no bleed: 4–5 mm of picture under the lip on each side. Bleed version made, awaiting Mark’s check | Pass: 373 ppi | Pass | Yes, with a printed border |
+| In to the woods II | 40×60 cm | Framed | `In to the woods II.tif` | Pass: 0.2% | **Problem**: no bleed: 4–5 mm of picture under the lip on each side | Pass: 373 ppi | Pass | Yes, with a printed border |
 | Storm | 40×60 cm | Unframed | `Storm.tif` | Pass: 0.0% | – | Pass: 390 ppi | Pass | Yes |
-| Storm | 40×60 cm | Framed | `Storm.tif` | Pass: 0.0% | **Problem**: no bleed: 4–5 mm of picture under the lip on each side. Bleed version made, awaiting Mark’s check | Pass: 390 ppi | Pass | Yes, with a printed border |
+| Storm | 40×60 cm | Framed | `Storm.tif` | Pass: 0.0% | **Problem**: no bleed: 4–5 mm of picture under the lip on each side | Pass: 390 ppi | Pass | Yes, with a printed border |
 | Tjurpannan Båthus | 40×50 cm | Unframed | `Tjurpannan Båthus.tif` | Pass: 0.5% | – | Pass: 723 ppi | Pass | Yes |
-| Tjurpannan Båthus | 40×50 cm | Framed | `Tjurpannan Båthus.tif` | Pass: 0.5% | **Problem**: no bleed: 4–5 mm of picture under the lip on each side. Bleed version made, awaiting Mark’s check | Pass: 723 ppi | Pass | Yes, with a printed border |
+| Tjurpannan Båthus | 40×50 cm | Framed | `Tjurpannan Båthus.tif` | Pass: 0.5% | **Problem**: no bleed: 4–5 mm of picture under the lip on each side | Pass: 723 ppi | Pass | Yes, with a printed border |
 | Wake up | 40×60 cm | Unframed | `Wake up.tif` | Pass: 0.0% | – | Pass: 340 ppi | Pass | Yes |
 | Wake up | 40×60 cm | Framed | `Wake up.tif` | Pass: 0.0% | Note: no bleed, but the edge is plain colour, so the lip hides nothing that matters | Pass: 340 ppi | Pass | Yes |
 | Moody 19 - The Crow | 45×60 cm | Unframed | `Moody 19 - The Crow.tif` | Pass: 0.1% | – | Pass: 308 ppi | Pass | Yes |
-| Moody 19 - The Crow | 45×60 cm | Framed | `Moody 19 - The Crow.tif` | Pass: 0.1% | **Problem**: no bleed: 4–5 mm of picture under the lip on each side. Bleed version made, awaiting Mark’s check | Pass: 308 ppi | Pass | Yes, with a printed border |
+| Moody 19 - The Crow | 45×60 cm | Framed | `Moody 19 - The Crow.tif` | Pass: 0.1% | **Problem**: no bleed: 4–5 mm of picture under the lip on each side | Pass: 308 ppi | Pass | Yes, with a printed border |
 | Fitting in | A3 | Unframed | `Fitting in.png` | Pass: 0.1% | – | Pass: 604 ppi | Pass | Yes |
 | Fitting in | A3 | Framed | `Fitting in.png` | Pass: 0.1% | Note: 2.5 mm of bleed at A1, scaled for A3/A2; about 1.5 to 2.5 mm of the pink edge goes under the lip (flat colour) | Pass: 604 ppi | Pass | Yes |
 | Fitting in | A2 | Unframed | `Fitting in.png` | Pass: 0.1% | – | Pass: 427 ppi | Pass | Yes |
